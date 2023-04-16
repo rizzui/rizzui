@@ -1,0 +1,702 @@
+---
+sidebar_position: 1
+---
+
+import { Avatar, Badge, ActionIcon } from '@redq/rizz';
+import { CheckIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { ShoppingBagIcon } from '@heroicons/react/24/solid';
+import Paper from '@site/src/components/paper';
+
+# Avatar
+
+Avatar is a small UI item which represents user profile picture, or event that appears in relativity with the underlying object. We are using `react-avatar` package for this component. Please follow their documentation for any query -> https://www.npmjs.com/package/react-avatar
+
+```tsx
+import { Avatar } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Default
+
+The default style of the **Avatar**
+
+<Paper>
+	<Avatar
+		size="48px"
+		onClick={() => {}}
+		src="https://randomuser.me/api/portraits/women/40.jpg"
+	/>
+</Paper>
+
+```tsx
+import { Avatar } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<Avatar
+			size="48px"
+			onClick={() => {}}
+			src="https://randomuser.me/api/portraits/women/40.jpg"
+		/>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Variants
+
+You can add text or avatar icon to **Avatar** component with property **initials** or **src**
+
+<Paper>
+	<div className="flex items-center gap-3 justify-around w-full">
+		<Avatar name="John Doe" initials="AB" size="48px" />
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/40.jpg"
+			size="48px"
+		/>
+		<Avatar
+			src="https://isomorphic-furyroad.vercel.app/_next/static/media/avatar-icon.ebad7416.png"
+			size="48px"
+		/>
+	</div>
+</Paper>
+
+```tsx
+import { Avatar } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Avatar name="John Doe" initials="AB" size="48px" />
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/40.jpg"
+				size="48px"
+			/>
+			<Avatar
+				src="https://isomorphic-furyroad.vercel.app/_next/static/media/avatar-icon.ebad7416.png"
+				size="48px"
+			/>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the size of the **Avatar** with property **size**
+
+<Paper>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<Avatar name="John Doe" initials="SM" size="36px" />
+		<Avatar src="https://randomuser.me/api/portraits/men/40.jpg" size="48px" />
+		<Avatar name="John Doe" initials="L" size="64px" />
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/40.jpg"
+			size="80px"
+		/>
+	</div>
+</Paper>
+
+```tsx
+import { Avatar } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Avatar name="John Doe" initials="SM" size="36px" />
+			<Avatar
+				src="https://randomuser.me/api/portraits/men/40.jpg"
+				size="48px"
+			/>
+			<Avatar name="John Doe" initials="L" size="64px" />
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/40.jpg"
+				size="80px"
+			/>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change the border radius of the **Avatar** with property **rounded**
+
+<Paper>
+	<div className="mt-4 flex items-center justify-around gap-3 w-full">
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/40.jpg"
+			size="48px"
+			rounded="none"
+		/>
+		<Avatar
+			size="48px"
+			src="https://randomuser.me/api/portraits/women/41.jpg"
+			rounded="sm"
+		/>
+		<Avatar
+			rounded="md"
+			src="https://randomuser.me/api/portraits/women/42.jpg"
+			size="48px"
+		/>
+		<Avatar
+			rounded="lg"
+			src="https://randomuser.me/api/portraits/women/43.jpg"
+			size="48px"
+		/>
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/44.jpg"
+			size="48px"
+		/>
+	</div>
+</Paper>
+
+```tsx
+import { Avatar } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/40.jpg"
+				size="48px"
+				rounded="none"
+			/>
+			<Avatar
+				size="48px"
+				src="https://randomuser.me/api/portraits/women/41.jpg"
+				rounded="sm"
+			/>
+			<Avatar
+				rounded="md"
+				src="https://randomuser.me/api/portraits/women/42.jpg"
+				size="48px"
+			/>
+			<Avatar
+				rounded="lg"
+				src="https://randomuser.me/api/portraits/women/43.jpg"
+				size="48px"
+			/>
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/44.jpg"
+				size="48px"
+			/>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can change the color of the **Avatar** with property **color**
+
+<Paper>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<Avatar name="John Doe" initials="SM" size="48px" color="#111" />
+		<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
+		<Avatar name="John Doe" initials="SM" size="48px" color="#7928ca" />
+		<Avatar name="John Doe" initials="SM" size="48px" color="#e00" />
+		<Avatar name="John Doe" initials="SM" size="48px" color="#f5a623" />
+		<Avatar name="John Doe" initials="SM" size="48px" color="#0070f3" />
+		<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
+		<Avatar name="John Doe" initials="SM" size="48px" color="#11a849" />
+	</div>
+</Paper>
+
+```tsx
+import { Avatar } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Avatar name="John Doe" initials="SM" size="48px" color="#111" />
+			<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
+			<Avatar name="John Doe" initials="SM" size="48px" color="#7928ca" />
+			<Avatar name="John Doe" initials="SM" size="48px" color="#e00" />
+			<Avatar name="John Doe" initials="SM" size="48px" color="#f5a623" />
+			<Avatar name="John Doe" initials="SM" size="48px" color="#0070f3" />
+			<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
+			<Avatar name="John Doe" initials="SM" size="48px" color="#11a849" />
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Borders
+
+You can add border to **Avatar** by adding extra className with property **className**.
+
+<Paper>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/40.jpg"
+			size="48px"
+			className="ring-2 ring-gray-900 ring-offset-2"
+		/>
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/41.jpg"
+			size="48px"
+			className="ring-2 ring-primary ring-offset-2"
+		/>
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/42.jpg"
+			size="48px"
+			className="ring-2 ring-secondary ring-offset-2"
+		/>
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/43.jpg"
+			size="48px"
+			className="ring-2 ring-red ring-offset-2"
+		/>
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/44.jpg"
+			size="48px"
+			className="ring-2 ring-orange ring-offset-2"
+		/>
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/45.jpg"
+			size="48px"
+			className="ring-2 ring-green ring-offset-2"
+		/>
+		<Avatar
+			src="https://randomuser.me/api/portraits/women/46.jpg"
+			size="48px"
+			className="ring-2 ring-blue ring-offset-2"
+		/>
+	</div>
+</Paper>
+
+```tsx
+import { Avatar } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/40.jpg"
+				size="48px"
+				className="ring-2 ring-gray-900 ring-offset-2"
+			/>
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/41.jpg"
+				size="48px"
+				className="ring-2 ring-primary ring-offset-2"
+			/>
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/42.jpg"
+				size="48px"
+				className="ring-2 ring-secondary ring-offset-2"
+			/>
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/43.jpg"
+				size="48px"
+				className="ring-2 ring-red ring-offset-2"
+			/>
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/44.jpg"
+				size="48px"
+				className="ring-2 ring-orange ring-offset-2"
+			/>
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/45.jpg"
+				size="48px"
+				className="ring-2 ring-green ring-offset-2"
+			/>
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/46.jpg"
+				size="48px"
+				className="ring-2 ring-blue ring-offset-2"
+			/>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Online Status
+
+You can use **Badge** with **Avatar** component for online status.
+
+<Paper>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<div className="relative inline-flex">
+			<Avatar
+				size="48px"
+				src="https://randomuser.me/api/portraits/women/40.jpg"
+			/>
+			<Badge
+				renderAsDot
+				color="success"
+				enableOutlineRing
+				size="lg"
+				className="absolute right-0 top-0 -translate-y-[25%]"
+			/>
+		</div>
+		<div className="relative ml-3 inline-flex">
+			<Avatar
+				size="48px"
+				src="https://randomuser.me/api/portraits/women/43.jpg"
+			/>
+			<Badge
+				renderAsDot
+				color="danger"
+				enableOutlineRing
+				size="lg"
+				className="absolute right-0 top-0 -translate-y-[25%]"
+			/>
+		</div>
+		<div className="relative ml-3 inline-flex">
+			<Avatar
+				size="48px"
+				src="https://randomuser.me/api/portraits/women/44.jpg"
+			/>
+			<Badge
+				renderAsDot
+				color="warning"
+				enableOutlineRing
+				size="lg"
+				className="absolute right-0 top-0 -translate-y-[30%]"
+			/>
+		</div>
+	</div>
+</Paper>
+
+```tsx
+import { Avatar, Badge } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<div className="relative inline-flex">
+				<Avatar
+					size="48px"
+					src="https://randomuser.me/api/portraits/women/40.jpg"
+				/>
+				<Badge
+					renderAsDot
+					color="success"
+					enableOutlineRing
+					size="lg"
+					className="absolute right-0 top-0 -translate-y-[25%]"
+				/>
+			</div>
+			<div className="relative ml-3 inline-flex">
+				<Avatar
+					size="48px"
+					src="https://randomuser.me/api/portraits/women/43.jpg"
+				/>
+				<Badge
+					renderAsDot
+					color="danger"
+					enableOutlineRing
+					size="lg"
+					className="absolute right-0 top-0 -translate-y-[25%]"
+				/>
+			</div>
+			<div className="relative ml-3 inline-flex">
+				<Avatar
+					size="48px"
+					src="https://randomuser.me/api/portraits/women/44.jpg"
+				/>
+				<Badge
+					renderAsDot
+					color="warning"
+					enableOutlineRing
+					size="lg"
+					className="absolute right-0 top-0 -translate-y-[30%]"
+				/>
+			</div>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## With Icons
+
+You can use **ActionIcon** component with **Avatar** component.
+
+<Paper>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<div className="relative inline-flex">
+			<Avatar
+				size="48px"
+				src="https://randomuser.me/api/portraits/women/40.jpg"
+			/>
+			<ActionIcon
+				size="sm"
+				rounded="full"
+				variant="solid"
+				color="warning"
+				className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+			>
+				<PlusIcon />
+			</ActionIcon>
+		</div>
+		<div className="relative inline-flex">
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/43.jpg"
+				size="48px"
+			/>
+			<ActionIcon
+				size="sm"
+				rounded="full"
+				variant="solid"
+				color="danger"
+				className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+			>
+				<ShoppingBagIcon className="w-4" />
+			</ActionIcon>
+		</div>
+		<div className="relative inline-flex">
+			<Avatar
+				src="https://randomuser.me/api/portraits/women/44.jpg"
+				size="48px"
+			/>
+			<ActionIcon
+				size="sm"
+				rounded="full"
+				variant="solid"
+				color="success"
+				className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+			>
+				<CheckIcon />
+			</ActionIcon>
+		</div>
+	</div>
+</Paper>
+
+```tsx
+import { Avatar, ActionIcon } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<div className="relative inline-flex">
+				<Avatar
+					size="48px"
+					src="https://randomuser.me/api/portraits/women/40.jpg"
+				/>
+				<ActionIcon
+					size="sm"
+					rounded="full"
+					variant="solid"
+					color="warning"
+					className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+				>
+					<PlusIcon />
+				</ActionIcon>
+			</div>
+			<div className="relative inline-flex">
+				<Avatar
+					src="https://randomuser.me/api/portraits/women/43.jpg"
+					size="48px"
+				/>
+				<ActionIcon
+					size="sm"
+					rounded="full"
+					variant="solid"
+					color="danger"
+					className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+				>
+					<ShoppingBagIcon className="w-4" />
+				</ActionIcon>
+			</div>
+			<div className="relative inline-flex">
+				<Avatar
+					src="https://randomuser.me/api/portraits/women/44.jpg"
+					size="48px"
+				/>
+				<ActionIcon
+					size="sm"
+					rounded="full"
+					variant="solid"
+					color="success"
+					className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+				>
+					<CheckIcon />
+				</ActionIcon>
+			</div>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Group
+
+You can use **Avatar** component to create a group of avatars.
+
+<Paper>
+	<div className="relative my-4 flex">
+		<Avatar
+			size="42"
+			src="https://randomuser.me/api/portraits/women/40.jpg"
+			className="relative inline-flex  object-cover"
+		/>
+		<Avatar
+			size="42"
+			src="https://randomuser.me/api/portraits/women/41.jpg"
+			className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
+		/>
+		<Avatar
+			size="42"
+			src="https://randomuser.me/api/portraits/women/42.jpg"
+			className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
+		/>
+		<Avatar
+			size="42"
+			src="https://randomuser.me/api/portraits/women/43.jpg"
+			className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
+		/>
+		<Avatar
+			size="42"
+			src="https://randomuser.me/api/portraits/women/44.jpg"
+			className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
+		/>
+		<div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[45px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
+			+5
+		</div>
+	</div>
+</Paper>
+
+```tsx
+import { Avatar } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Avatar
+				size="42"
+				src="https://randomuser.me/api/portraits/women/40.jpg"
+				className="relative inline-flex  object-cover"
+			/>
+			<Avatar
+				size="42"
+				src="https://randomuser.me/api/portraits/women/41.jpg"
+				className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
+			/>
+			<Avatar
+				size="42"
+				src="https://randomuser.me/api/portraits/women/42.jpg"
+				className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
+			/>
+			<Avatar
+				size="42"
+				src="https://randomuser.me/api/portraits/women/43.jpg"
+				className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
+			/>
+			<Avatar
+				size="42"
+				src="https://randomuser.me/api/portraits/women/44.jpg"
+				className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
+			/>
+			<div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[45px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
+				+5
+			</div>
+		</>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### Avatar Props
+
+Here is the API documentation of the Avatar component. You can use props like `id`, `title`, `onClick`, `onFocus`, `onBlur` etc.
+
+|      Props      |                Type                |                                                                                              Description                                                                                              | Default  |
+| :-------------: | :--------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------: |
+|      email      |              `string`              |                                                                               String of the email address of the user.                                                                                |  \_ \_   |
+|    md5Email     |              `string`              |                                                                         String of the MD5 hash of email address of the user.                                                                          |  \_ \_   |
+|   facebookId    |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
+|  twitterHandle  |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
+|    googleId     |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
+|   instagramId   |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
+|  githubHandle   |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
+|     skypeId     |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
+|      name       |              `string`              |                                                                  Will be used to generate avatar based on the initials of the person                                                                  |  \_ \_   |
+|   maxInitials   |              `number`              |                                         Set max nr of characters used for the initials. If maxInitials=2 and the name is Foo Bar Var the initials will be FB                                          |  \_ \_   |
+|    initials     | [AvatarInitials](#avatar-initials) |                                                                      Initials to show or a method converting name into initials                                                                       |  \_ \_   |
+|      value      |              `string`              |                                                                                        Show a value as avatar                                                                                         |  \_ \_   |
+|       alt       |      [AvatarAlt](#avatar-alt)      |                                                   The alt attribute used on the avatar img tag. If not set we will fallback to either name or value                                                   |  \_ \_   |
+|      title      |    [AvatarTitle](#avatar-title)    |                                                  The title attribute used on the avatar img tag. If not set we will fallback to either name or value                                                  |  \_ \_   |
+|      color      |              `string`              |                                         Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example `#FF0000`                                          |  \_ \_   |
+|     fgColor     |              `string`              |                                         Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example `#FF0000`                                          |  \_ \_   |
+|      size       |              `string`              |                                                                                          Size of the avatar                                                                                           |  \_ \_   |
+|  textSizeRatio  |              `number`              |                                                       For text based avatars the size of the text as a fragment of size (size / textSizeRatio)                                                        |  \_ \_   |
+| textMarginRatio |              `number`              | For text based avatars. The size of the minimum margin between the text and the avatar's edge, used to make sure the text will always fit inside the avatar. (calculated as `size * textMarginRatio`) |  \_ \_   |
+|      round      |    [AvatarRound](#avatar-round)    |                                                  The amount of `border-radius` to apply to the avatar corners, `true` shows the avatar in a circle.                                                   |  \_ \_   |
+|       src       |              `string`              |                                                                                         Fallback image to use                                                                                         |  \_ \_   |
+|      style      |               `any`                |                                                                            Style that will be applied on the root element                                                                             |  \_ \_   |
+|    unstyled     |             `boolean`              |                                                                                          Disable all styles                                                                                           |  \_ \_   |
+|     onClick     |  [AvatarOnclick](#avatar-onclick)  |                                                                                           Mouse click event                                                                                           |  \_ \_   |
+|     rounded     |  [AvatarRounded](#avatar-rounded)  |                                                                                                                                                                                                       | `"full"` |
+|    className    |              `string`              |                                                       Name of the CSS class you want to add to this component alongside the default sb-avatar.                                                        |  \_ \_   |
+
+<div className="mb-10" />
+
+### Avatar Initials
+
+```ts
+type AvatarInitials = 'string' | ((name: string, props: any) => string);
+```
+
+<div className="mb-10" />
+
+### Avatar Alt
+
+```ts
+type AvatarAlt = 'string' | 'boolean';
+```
+
+<div className="mb-10" />
+
+### Avatar Title
+
+```ts
+type AvatarTitle = 'string' | 'boolean';
+```
+
+<div className="mb-10" />
+
+### Avatar Round
+
+```ts
+type AvatarRound = 'string' | 'boolean';
+```
+
+<div className="mb-10" />
+
+### Avatar Onclick
+
+```ts
+type AvatarOnclick = (e: SyntheticEvent<any, Event>) => any;
+```
+
+<div className="mb-10" />
+
+### Avatar Rounded
+
+```ts
+type AvatarRounded = 'sm' | 'lg' | 'none' | 'full' | 'md';
+```

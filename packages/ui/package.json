@@ -1,0 +1,115 @@
+{
+  "name": "@redq/rizz",
+  "version": "0.4.0",
+  "license": "MIT",
+  "keywords": [
+    "Rizz",
+    "Rizz UI",
+    "components",
+    "modern components",
+    "react components",
+    "react ui",
+    "rizz ui",
+    "rizz"
+  ],
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "lint": "eslint \"**/*.ts*\"",
+    "dev": "concurrently \"yarn build --watch\"",
+    "build": "tsup",
+    "storybook": "start-storybook -p 6006",
+    "dev-storybook": "concurrently \"yarn build --watch\" \"yarn storybook\"",
+    "build-storybook": "build-storybook",
+    "test": "jest --coverage",
+    "test:ci": "yarn test --ci",
+    "test:watch": "jest --watch"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.tsx"
+    ],
+    "treeshake": true,
+    "sourcemap": true,
+    "minify": true,
+    "clean": true,
+    "dts": true,
+    "splitting": false,
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "external": [
+      "react"
+    ]
+  },
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist/**"
+  ],
+  "dependencies": {
+    "@floating-ui/react": "0.22.0",
+    "@headlessui/react": "1.7.7",
+    "clsx": "1.2.1",
+    "react-avatar": "5.0.3",
+    "rc-pagination": "3.3.1",
+    "rc-rate": "2.10.0",
+    "rc-slider": "10.1.1",
+    "rc-table": "7.31.1",
+    "react-number-format": "5.1.4",
+    "react-phone-input-2": "2.15.1",
+    "tailwind-merge": "1.10.0"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/addon-styling": "0.3.2",
+    "@storybook/addons": "6.5.16",
+    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
+    "@storybook/theming": "6.5.16",
+    "@tailwindcss/forms": "0.5.3",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "14.0.0",
+    "@testing-library/user-event": "14.4.3",
+    "@types/react": "^18.0.22",
+    "@types/react-datepicker": "4.10.0",
+    "autoprefixer": "10.4.7",
+    "babel-loader": "^8.3.0",
+    "concurrently": "7.6.0",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "*",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "29.5.0",
+    "jest-environment-jsdom": "29.5.0",
+    "postcss": "8.4.21",
+    "postcss-loader": "7.0.2",
+    "prettier": "2.8.1",
+    "prettier-plugin-tailwindcss": "0.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-dropzone": "14.2.3",
+    "react-hot-toast": "2.4.0",
+    "rimraf": "4.4.0",
+    "tailwindcss": "3.2.3",
+    "ts-jest": "29.0.5",
+    "tsconfig": "*",
+    "tsconfig-paths-webpack-plugin": "3.5.2",
+    "tsup": "6.6.3",
+    "typescript": "4.9.5"
+  }
+}

@@ -1,0 +1,662 @@
+import Paper from '@site/src/components/paper';
+import ModalDefault, {
+	ModalSizes,
+	ModalRounded,
+	ModalCustomSize,
+	ModalCustomStyle,
+} from '@site/src/components/modal';
+
+# Modal
+
+A fully-managed renderless Modal component. When requiring users to interact with the application, but without jumping to a new page and interrupting the user's workflow, you can use Modal to create a new floating layer over the current page to get user feedback or display information.
+
+```tsx
+import { Modal } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Default
+
+The default style of **Modal**.
+
+<Paper>
+	<ModalDefault />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import {
+	Modal,
+	Button,
+	Text,
+	ActionIcon,
+	Input,
+	Password,
+	Checkbox,
+} from '@redq/rizz';
+import { XMarkIcon } from '@heroicons/react/20/solid';
+
+export default function App() {
+	const [modalState, setModalState] = useState(false);
+
+	return (
+		<>
+			<Button onClick={() => setModalState(true)}>Open Modal</Button>
+			<Modal isOpen={modalState} onClose={() => setModalState(false)}>
+				<div className="m-auto px-7 pt-6 pb-8">
+					<div className="mb-7 flex items-center justify-between">
+						<Text tag="h3">Welcome to AegonUI</Text>
+						<ActionIcon
+							size="sm"
+							variant="text"
+							onClick={() => setModalState(false)}
+						>
+							<XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+						</ActionIcon>
+					</div>
+					<div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+						<Input label="First Name *" inputClassName="border-2" size="lg" />
+						<Input label="Last Name *" inputClassName="border-2" size="lg" />
+						<Input
+							label="Email *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Confirm Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Checkbox
+							size="lg"
+							inputClassName="border-2"
+							className="col-span-2"
+							label={
+								<Text className="text-sm">
+									I agree to AegonUI&lsquo;s{' '}
+									<a className="underline">Terms of Service</a> and{' '}
+									<a className="underline">Privacy Policy</a>
+								</Text>
+							}
+						/>
+						<Button
+							type="submit"
+							size="lg"
+							className="col-span-2 mt-2"
+							onClick={() => setModalState(false)}
+						>
+							Create an Account
+						</Button>
+					</div>
+				</div>
+			</Modal>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the size of **Modal**.
+
+<Paper className="block">
+	<ModalSizes />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import {
+	Modal,
+	Button,
+	Text,
+	ActionIcon,
+	Input,
+	Password,
+	Checkbox,
+} from '@redq/rizz';
+import { XMarkIcon } from '@heroicons/react/20/solid';
+
+export default function App() {
+	const [modalState, setModalState] = useState({
+		isOpen: false,
+		size: 'DEFAULT',
+	});
+
+	return (
+		<>
+			<div className="flex items-center justify-around">
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							size: 'sm',
+						}))
+					}
+				>
+					sm
+				</Button>
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							size: 'DEFAULT',
+						}))
+					}
+				>
+					Default
+				</Button>
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							size: 'lg',
+						}))
+					}
+				>
+					lg
+				</Button>
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							size: 'xl',
+						}))
+					}
+				>
+					xl
+				</Button>
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							size: 'full',
+						}))
+					}
+				>
+					full
+				</Button>
+			</div>
+			<Modal
+				isOpen={modalState.isOpen}
+				size={modalState.size}
+				onClose={() =>
+					setModalState((prevState) => ({ ...prevState, isOpen: false }))
+				}
+			>
+				<div className="m-auto px-7 pt-6 pb-8">
+					<div className="mb-7 flex items-center justify-between">
+						<Text tag="h3">Welcome to AegonUI</Text>
+						<ActionIcon
+							size="sm"
+							variant="text"
+							onClick={() =>
+								setModalState((prevState) => ({ ...prevState, isOpen: false }))
+							}
+						>
+							<XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+						</ActionIcon>
+					</div>
+					<div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+						<Input label="First Name *" inputClassName="border-2" size="lg" />
+						<Input label="Last Name *" inputClassName="border-2" size="lg" />
+						<Input
+							label="Email *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Confirm Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Checkbox
+							size="lg"
+							inputClassName="border-2"
+							className="col-span-2"
+							label={
+								<Text className="text-sm">
+									I agree to AegonUI&lsquo;s{' '}
+									<a className="underline">Terms of Service</a> and{' '}
+									<a className="underline">Privacy Policy</a>
+								</Text>
+							}
+						/>
+						<Button
+							type="submit"
+							size="lg"
+							className="col-span-2 mt-2"
+							onClick={() =>
+								setModalState((prevState) => ({ ...prevState, isOpen: false }))
+							}
+						>
+							Create an Account
+						</Button>
+					</div>
+				</div>
+			</Modal>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change the radious of **Modal** by changing property **Rounded**
+
+<Paper className="block">
+	<ModalRounded />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import {
+	Modal,
+	Button,
+	Text,
+	ActionIcon,
+	Input,
+	Password,
+	Checkbox,
+} from '@redq/rizz';
+import { XMarkIcon } from '@heroicons/react/20/solid';
+
+export default function App() {
+	const [modalState, setModalState] = useState({
+		isOpen: false,
+		rounded: 'DEFAULT',
+	});
+
+	return (
+		<>
+			<div className="flex items-center justify-around">
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							rounded: 'none',
+						}))
+					}
+				>
+					None
+				</Button>
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							rounded: 'sm',
+						}))
+					}
+				>
+					sm
+				</Button>
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							rounded: 'DEFAULT',
+						}))
+					}
+				>
+					Default
+				</Button>
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							rounded: 'lg',
+						}))
+					}
+				>
+					lg
+				</Button>
+				<Button
+					variant="outline"
+					onClick={() =>
+						setModalState((prevState) => ({
+							...prevState,
+							isOpen: true,
+							rounded: 'xl',
+						}))
+					}
+				>
+					xl
+				</Button>
+			</div>
+			<Modal
+				isOpen={modalState.isOpen}
+				rounded={modalState.rounded}
+				onClose={() =>
+					setModalState((prevState) => ({ ...prevState, isOpen: false }))
+				}
+			>
+				<div className="m-auto px-7 pt-6 pb-8">
+					<div className="mb-7 flex items-center justify-between">
+						<Text tag="h3">Welcome to AegonUI</Text>
+						<ActionIcon
+							size="sm"
+							variant="text"
+							onClick={() =>
+								setModalState((prevState) => ({ ...prevState, isOpen: false }))
+							}
+						>
+							<XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+						</ActionIcon>
+					</div>
+					<div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+						<Input label="First Name *" inputClassName="border-2" size="lg" />
+						<Input label="Last Name *" inputClassName="border-2" size="lg" />
+						<Input
+							label="Email *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Confirm Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Checkbox
+							size="lg"
+							inputClassName="border-2"
+							className="col-span-2"
+							label={
+								<Text className="text-sm">
+									I agree to AegonUI&lsquo;s{' '}
+									<a className="underline">Terms of Service</a> and{' '}
+									<a className="underline">Privacy Policy</a>
+								</Text>
+							}
+						/>
+						<Button
+							type="submit"
+							size="lg"
+							className="col-span-2 mt-2"
+							onClick={() =>
+								setModalState((prevState) => ({ ...prevState, isOpen: false }))
+							}
+						>
+							Create an Account
+						</Button>
+					</div>
+				</div>
+			</Modal>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## With Custom Size
+
+You can use custom size **Modal** by changing property **customSize**
+
+<Paper>
+	<ModalCustomSize />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import {
+	Modal,
+	Button,
+	Text,
+	ActionIcon,
+	Input,
+	Password,
+	Checkbox,
+} from '@redq/rizz';
+import { XMarkIcon } from '@heroicons/react/20/solid';
+
+export default function App() {
+	const [modalState, setModalState] = useState(false);
+
+	return (
+		<>
+			<Button onClick={() => setModalState(true)}>Custom Size Modal</Button>
+			<Modal
+				isOpen={modalState}
+				onClose={() => setModalState(false)}
+				customSize="1080px"
+			>
+				<div className="m-auto px-7 pt-6 pb-8">
+					<div className="mb-7 flex items-center justify-between">
+						<Text tag="h3">Welcome to AegonUI</Text>
+						<ActionIcon
+							size="sm"
+							variant="text"
+							onClick={() => setModalState(false)}
+						>
+							<XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+						</ActionIcon>
+					</div>
+					<div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+						<Input label="First Name *" inputClassName="border-2" size="lg" />
+						<Input label="Last Name *" inputClassName="border-2" size="lg" />
+						<Input
+							label="Email *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Confirm Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Checkbox
+							size="lg"
+							inputClassName="border-2"
+							className="col-span-2"
+							label={
+								<Text className="text-sm">
+									I agree to AegonUI&lsquo;s{' '}
+									<a className="underline">Terms of Service</a> and{' '}
+									<a className="underline">Privacy Policy</a>
+								</Text>
+							}
+						/>
+						<Button
+							type="submit"
+							size="lg"
+							className="col-span-2 mt-2"
+							onClick={() => setModalState(false)}
+						>
+							Create an Account
+						</Button>
+					</div>
+				</div>
+			</Modal>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## With Custom Style
+
+You can add custom style to **Modal**.
+
+<Paper>
+	<ModalCustomStyle />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import {
+	Modal,
+	Button,
+	Text,
+	ActionIcon,
+	Input,
+	Password,
+	Checkbox,
+} from '@redq/rizz';
+import { XMarkIcon } from '@heroicons/react/20/solid';
+
+export default function App() {
+	const [modalState, setModalState] = useState(false);
+
+	return (
+		<>
+			<Button onClick={() => setModalState(true)}>Custom Style Modal</Button>
+			<Modal
+				isOpen={modalState}
+				onClose={() => setModalState(false)}
+				overlayClassName="backdrop-blur"
+				containerClassName="!max-w-4xl !shadow-2xl"
+			>
+				<div className="m-auto px-7 pt-6 pb-8">
+					<div className="mb-7 flex items-center justify-between">
+						<Text tag="h3">Welcome to AegonUI</Text>
+						<ActionIcon
+							size="sm"
+							variant="text"
+							onClick={() => setModalState(false)}
+						>
+							<XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+						</ActionIcon>
+					</div>
+					<div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+						<Input label="First Name *" inputClassName="border-2" size="lg" />
+						<Input label="Last Name *" inputClassName="border-2" size="lg" />
+						<Input
+							label="Email *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Password
+							label="Confirm Password *"
+							inputClassName="border-2"
+							size="lg"
+							className="col-span-2"
+						/>
+						<Checkbox
+							size="lg"
+							inputClassName="border-2"
+							className="col-span-2"
+							label={
+								<Text className="text-sm">
+									I agree to AegonUI&lsquo;s{' '}
+									<a className="underline">Terms of Service</a> and{' '}
+									<a className="underline">Privacy Policy</a>
+								</Text>
+							}
+						/>
+						<Button
+							type="submit"
+							size="lg"
+							className="col-span-2 mt-2"
+							onClick={() => setModalState(false)}
+						>
+							Create an Account
+						</Button>
+					</div>
+				</div>
+			</Modal>
+		</>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### Modal Props
+
+Here is the API documentation of the Modal component.
+
+|       Props        |              Type              |                                                                 Description                                                                  |   Default   |
+| :----------------: | :----------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :---------: |
+|       isOpen       |           `boolean`            |                                                       Whether the Modal is open or not                                                       |    \_ \_    |
+|      onClose       |          `() => void`          |                               Called when modal is closed (Escape key and click outside, depending on options)                               |    \_ \_    |
+|        size        |   [ModalSizes](#modal-sizes)   |                                              Preset size of modal is sm, DEFAULT, lg, xl, full                                               | `"DEFAULT"` |
+|      rounded       | [ModalRounded](#modal-rounded) |                                                          The rounded variants are:                                                           | `"DEFAULT"` |
+|     customSize     |            `string`            | Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" |    \_ \_    |
+|      noGutter      |           `boolean`            |                                           This prop will remove extra padding spacing from screen                                            |    \_ \_    |
+|  overlayClassName  |            `string`            |                                                Override default CSS style of Modal's overlay                                                 |    \_ \_    |
+| containerClassName |            `string`            |            Set custom style classes for the Modal container, where you can set custom Modal size and padding and background color            |    \_ \_    |
+|     className      |            `string`            |                                             Set custom style classes for the Modal root element                                              |    \_ \_    |
+
+<div className="mb-10" />
+
+### Modal Sizes
+
+```ts
+type ModalSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'full';
+```
+
+<div className="mb-10" />
+
+### Modal Rounded
+
+```ts
+type ModalRounded = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'none';
+```

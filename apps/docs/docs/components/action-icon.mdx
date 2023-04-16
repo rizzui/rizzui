@@ -1,0 +1,416 @@
+---
+sidebar_position: 6
+---
+
+import { ActionIcon } from '@redq/rizz';
+import {
+	BellIcon,
+	BoltIcon,
+	HeartIcon,
+	HandThumbUpIcon,
+	ChatBubbleOvalLeftIcon,
+	AdjustmentsHorizontalIcon,
+} from '@heroicons/react/24/outline';
+import Paper from '@site/src/components/paper';
+
+# ActionIcon
+
+Primary action icon button to trigger an operation.
+
+```tsx
+import { ActionIcon } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Default
+
+The default style of the **ActionIcon**
+
+<Paper>
+	<ActionIcon>
+		<AdjustmentsHorizontalIcon className="w-5 h-5" />
+	</ActionIcon>
+</Paper>
+
+```tsx
+import { ActionIcon } from '@redq/rizz';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+
+export default function App() {
+	return (
+		<ActionIcon>
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Variants
+
+You can change the style of the **ActionIcon** with property [**variant**](#actionicon-variants)
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<ActionIcon variant="text">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon variant="outline">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon variant="flat">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon variant="solid">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+	</div>
+</Paper>
+
+```tsx
+import { ActionIcon } from '@redq/rizz';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+
+export default function App() {
+	return (
+		<>
+			<ActionIcon variant="text">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon variant="outline">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon variant="flat">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon variant="solid">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the size of the **ActionIcon** with property [**size**](#actionicon-sizes)
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<ActionIcon size="sm">
+			<AdjustmentsHorizontalIcon className="w-4 h-4" />
+		</ActionIcon>
+		<ActionIcon>
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon size="lg">
+			<AdjustmentsHorizontalIcon className="w-6 h-6" />
+		</ActionIcon>
+		<ActionIcon size="xl">
+			<AdjustmentsHorizontalIcon className="w-7 h-7" />
+		</ActionIcon>
+	</div>
+</Paper>
+
+```tsx
+import { ActionIcon } from '@redq/rizz';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+
+export default function App() {
+	return (
+		<>
+			<ActionIcon size="sm">
+				<AdjustmentsHorizontalIcon className="w-4 h-4" />
+			</ActionIcon>
+			<ActionIcon>
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon size="lg">
+				<AdjustmentsHorizontalIcon className="w-6 h-6" />
+			</ActionIcon>
+			<ActionIcon size="xl">
+				<AdjustmentsHorizontalIcon className="w-7 h-7" />
+			</ActionIcon>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change the border radius of the **ActionIcon** with property [**rounded**](#actionicon-rounded)
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<ActionIcon rounded="none">
+			<BoltIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon rounded="sm">
+			<HandThumbUpIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon>
+			<HeartIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon rounded="lg">
+			<ChatBubbleOvalLeftIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon rounded="pill">
+			<BellIcon className="w-5 h-5" />
+		</ActionIcon>
+	</div>
+</Paper>
+
+```tsx
+import { ActionIcon } from '@redq/rizz';
+import {
+	BellIcon,
+	BoltIcon,
+	HeartIcon,
+	HandThumbUpIcon,
+	ChatBubbleOvalLeftIcon,
+} from '@heroicons/react/24/outline';
+
+export default function App() {
+	return (
+		<>
+			<ActionIcon rounded="none">
+				<BoltIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon rounded="sm">
+				<HandThumbUpIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon>
+				<BoltIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon rounded="lg">
+				<BoltIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon rounded="pill">
+				<BoltIcon className="w-5 h-5" />
+			</ActionIcon>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can change the color of the **ActionIcon** with property [**color**](#actionicon-colors)
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<ActionIcon>
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon color="primary">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon color="secondary">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon color="info">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon color="warning">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon color="danger">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon color="success">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+	</div>
+</Paper>
+
+```tsx
+import { ActionIcon } from '@redq/rizz';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+
+export default function App() {
+	return (
+		<>
+			<ActionIcon>
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon color="primary">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon color="secondary">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon color="info">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon color="warning">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon color="danger">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon color="success">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Loading
+
+You can set the loading state of the **ActionIcon** button using **isLoading** property
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<ActionIcon isLoading={true}>Default</ActionIcon>
+		<ActionIcon isLoading={true} color="primary">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon isLoading={true} color="secondary">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon isLoading={true} color="info">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon isLoading={true} color="warning">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon isLoading={true} color="danger">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+		<ActionIcon isLoading={true} color="success">
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+	</div>
+</Paper>
+
+```tsx
+import { ActionIcon } from '@redq/rizz';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+
+export default function App() {
+	return (
+		<>
+			<ActionIcon isLoading={true}>
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon isLoading={true} color="primary">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon isLoading={true} color="secondary">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon isLoading={true} color="info">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon isLoading={true} color="warning">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon isLoading={true} color="danger">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+			<ActionIcon isLoading={true} color="success">
+				<AdjustmentsHorizontalIcon className="w-5 h-5" />
+			</ActionIcon>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Disabled
+
+The disabled style of the **ActionIcon** component
+
+<Paper>
+	<ActionIcon disabled={true}>
+		<AdjustmentsHorizontalIcon className="w-5 h-5" />
+	</ActionIcon>
+</Paper>
+
+```tsx
+import { ActionIcon } from '@redq/rizz';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+
+export default function App() {
+	return (
+		<ActionIcon disabled={true}>
+			<AdjustmentsHorizontalIcon className="w-5 h-5" />
+		</ActionIcon>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### ActionIcon Props
+
+Here is the API documentation of the ActionIcon component. And the rest of the props are the same as the original html button. You can use props like `id`, `title`, `onClick`, `onFocus`, `onBlur` etc.
+
+|   Props   |                    Type                    |                                         Description                                         |   Default   |
+| :-------: | :----------------------------------------: | :-----------------------------------------------------------------------------------------: | :---------: |
+| children  |             `React.ReactNode`              |                                      Use any SVG icon                                       |    \_ \_    |
+|  variant  | [ActionIconVariants](#actionicon-variants) |                                 Set the ActionIcon variants                                 |  `"solid"`  |
+|   size    |    [ActionIconSizes](#actionicon-sizes)    | Set the size of the component. <br /> `"sm"` is equivalent to the dense ActionIcon styling. | `"DEFAULT"` |
+|  rounded  |  [ActionIconRounded](#actionicon-rounded)  |                        Set border radius of the ActionIcon component                        | `"DEFAULT"` |
+|   color   |   [ActionIconColors](#actionicon-colors)   |                                   Change ActionIcon color                                   | `"DEFAULT"` |
+| isLoading |                 `boolean`                  |                            Set the loading status of ActionIcon                             |    \_ \_    |
+| disabled  |                 `boolean`                  |                              Disabled state of the ActionIcon                               |    \_ \_    |
+|    ref    |          `Ref<HTMLButtonElement>`          |                                         forwardRef                                          |    \_ \_    |
+| className |                  `string`                  |                             Add custom classes for extra style                              |    \_ \_    |
+
+<div className="mb-10" />
+
+### ActionIcon Variants
+
+```ts
+type ActionIconVariants = 'solid' | 'flat' | 'outline' | 'text';
+```
+
+<div className="mb-10" />
+
+### ActionIcon Sizes
+
+```ts
+type ActionIconSizes = 'solid' | 'flat' | 'outline' | 'text';
+```
+
+<div className="mb-10" />
+
+### ActionIcon Rounded
+
+```ts
+type ActionIconRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
+```
+
+<div className="mb-10" />
+
+### ActionIcon Colors
+
+```ts
+type ActionIconColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
+```

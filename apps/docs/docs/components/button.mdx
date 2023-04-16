@@ -1,0 +1,338 @@
+---
+sidebar_position: 5
+---
+
+import { Button } from '@redq/rizz';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import Paper from '@site/src/components/paper';
+
+# Button
+
+Primary action button to trigger an operation.
+
+```tsx
+import { Button } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Default
+
+The default style of the **Button**
+
+<Paper>
+	<Button>Button</Button>
+</Paper>
+
+```tsx
+import { Button } from '@redq/rizz';
+
+export default function App() {
+	return <Button>Default</Button>;
+}
+```
+
+<div className="mb-16" />
+
+## Variants
+
+You can change the style of the **Button** with property [**variant**](#button-variants)
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<Button variant="text">Button</Button>
+		<Button variant="outline">Button</Button>
+		<Button variant="flat">Button</Button>
+		<Button variant="solid">Button</Button>
+	</div>
+</Paper>
+
+```tsx
+import { Button } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Button variant="text">Button</Button>
+			<Button variant="outline">Button</Button>
+			<Button variant="flat">Button</Button>
+			<Button variant="solid">Button</Button>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the size of the **Button** with property [**size**](#button-sizes)
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<Button size="sm">Button</Button>
+		<Button>Button</Button>
+		<Button size="lg">Button</Button>
+		<Button size="xl">Button</Button>
+	</div>
+</Paper>
+
+```tsx
+import { Button } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Button size="sm">Button</Button>
+			<Button>Button</Button>
+			<Button size="lg">Button</Button>
+			<Button size="xl">Button</Button>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change the border radius of the **Button** with property [**rounded**](#button-rounded)
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<Button rounded="none">Button</Button>
+		<Button rounded="sm">Button</Button>
+		<Button>Button</Button>
+		<Button rounded="lg">Button</Button>
+		<Button rounded="pill">Button</Button>
+	</div>
+</Paper>
+
+```tsx
+import { Button } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Button rounded="none">Button</Button>
+			<Button rounded="sm">Button</Button>
+			<Button>Button</Button>
+			<Button rounded="lg">Button</Button>
+			<Button rounded="pill">Button</Button>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can change the color of the **Button** with property [**color**](#button-colors)
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<Button>Default</Button>
+		<Button color="primary">Primary</Button>
+		<Button color="secondary">Secondary</Button>
+		<Button color="info">Info</Button>
+		<Button color="warning">Warning</Button>
+		<Button color="danger">Danger</Button>
+		<Button color="success">Success</Button>
+	</div>
+</Paper>
+
+```tsx
+import { Button } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Button>Default</Button>
+			<Button color="primary">Primary</Button>
+			<Button color="secondary">Secondary</Button>
+			<Button color="info">Info</Button>
+			<Button color="warning">Warning</Button>
+			<Button color="danger">Danger</Button>
+			<Button color="success">Success</Button>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Loading
+
+You can set the loading state of the **Button** component using **isLoading** property
+
+<Paper>
+	<div className="flex items-center justify-around gap-4 w-full">
+		<Button isLoading={true}>Default</Button>
+		<Button isLoading={true} color="primary">
+			Primary
+		</Button>
+		<Button isLoading={true} color="secondary">
+			Secondary
+		</Button>
+		<Button isLoading={true} color="info">
+			Info
+		</Button>
+		<Button isLoading={true} color="warning">
+			Warning
+		</Button>
+		<Button isLoading={true} color="danger">
+			Danger
+		</Button>
+		<Button isLoading={true} color="success">
+			Success
+		</Button>
+	</div>
+</Paper>
+
+```tsx
+import { Button } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Button isLoading={true}>Default</Button>
+			<Button isLoading={true} color="primary">
+				Primary
+			</Button>
+			<Button isLoading={true} color="secondary">
+				Secondary
+			</Button>
+			<Button isLoading={true} color="info">
+				Info
+			</Button>
+			<Button isLoading={true} color="warning">
+				Warning
+			</Button>
+			<Button isLoading={true} color="danger">
+				Danger
+			</Button>
+			<Button isLoading={true} color="success">
+				Success
+			</Button>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Disabled
+
+This is the disabled style of the **Button** component
+
+<Paper>
+	<Button disabled={true}>Disabled</Button>
+</Paper>
+
+```tsx
+import { Button } from '@redq/rizz';
+
+export default function App() {
+	return <Button disabled={true}>Disabled</Button>;
+}
+```
+
+<div className="mb-16" />
+
+## With Icon
+
+You can set any Icon at any possition
+
+<Paper>
+	<Button>
+		<span>View Details</span>{' '}
+		<ArrowRightIcon strokeWidth="2" className="h-4 w-4 ml-2" />
+	</Button>
+</Paper>
+
+```tsx
+import { Button } from '@redq/rizz';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+
+export default function App() {
+	return (
+		<Button>
+			<span>View Details</span>{' '}
+			<ArrowRightIcon strokeWidth="2" className="h-4 w-4 ml-2" />
+		</Button>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### Button Props
+
+Here is the API documentation of the Button component. And the rest of the props are the same as the original html button. You can use props like `id`, `title`, `onClick`, `onFocus`, `onBlur` etc.
+
+|   Props   |                Type                |                                       Description                                       |   Default   |
+| :-------: | :--------------------------------: | :-------------------------------------------------------------------------------------: | :---------: |
+| children  |         `React.ReactNode`          |                           Accepts everything React can render                           |    \_ \_    |
+|   type    |    [ButtonTypes](#button-types)    |                          Set the original HTML type of button                           | `"button"`  |
+|  variant  | [ButtonVariants](#button-variants) |                                 Set the button variants                                 |  `"solid"`  |
+|   size    |    [ButtonSizes](#button-sizes)    | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. | `"DEFAULT"` |
+|  rounded  |  [ButtonRounded](#button-rounded)  |                        Set border radius of the button component                        | `"DEFAULT"` |
+|   color   |   [ButtonColors](#button-colors)   |                                   Change button color                                   | `"DEFAULT"` |
+| isLoading |             `boolean`              |                            Set the loading status of button                             |    \_ \_    |
+| disabled  |             `boolean`              |                              Disabled state of the button                               |    \_ \_    |
+|    ref    |      `Ref<HTMLButtonElement>`      |                                       forwardRef                                        |    \_ \_    |
+| className |              `string`              |                           Add custom classes for extra style                            |    \_ \_    |
+
+<div className="mb-10" />
+
+### Button Types
+
+```ts
+type ButtonTypes = 'button' | 'submit' | 'reset';
+```
+
+<div className="mb-10" />
+
+### Button Variants
+
+```ts
+type ButtonVariants = 'solid' | 'flat' | 'outline' | 'text';
+```
+
+<div className="mb-10" />
+
+### Button Sizes
+
+```ts
+type ButtonSizes = 'solid' | 'flat' | 'outline' | 'text';
+```
+
+<div className="mb-10" />
+
+### Button Rounded
+
+```ts
+type ButtonRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
+```
+
+<div className="mb-10" />
+
+### Button Colors
+
+```ts
+type ButtonColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
+```

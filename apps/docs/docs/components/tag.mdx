@@ -1,0 +1,187 @@
+import { Tag, Avatar } from '@redq/rizz';
+import { MapPinIcon } from '@heroicons/react/24/outline';
+import Paper from '@site/src/components/paper';
+
+# Tag
+
+Tag component is used to convey grouping information of elements. It is a standalone component which is commonly used for filtering or triggering some kind of action.
+
+```tsx
+import { Tag } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Default
+
+The default style of **Tag**.
+
+<Paper>
+	<Tag>Default</Tag>
+</Paper>
+
+```tsx
+import { Tag } from '@redq/rizz';
+
+export default function App() {
+	return <Tag>Default</Tag>;
+}
+```
+
+<div className="mb-16" />
+
+## With Icon
+
+You can use icon with **Tag**.
+
+<Paper>
+	<Tag>
+		<MapPinIcon className="mr-1 h-4 w-4 rtl:ml-1" />
+		With Icon
+	</Tag>
+</Paper>
+
+```tsx
+import { Tag } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<Tag>
+			<MapPinIcon className="mr-1 h-4 w-4 rtl:ml-1" />
+			With Icon
+		</Tag>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## With Avatar
+
+You can use **Avatar** component inside **Tag**
+
+<Paper>
+	<Tag>
+		<Avatar
+			className="mr-1.5 rtl:ml-1.5"
+			size="20px"
+			src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+		/>
+		With Avatar
+	</Tag>
+</Paper>
+
+```tsx
+import { Tag, Avatar } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<Tag>
+			<Avatar
+				className="mr-1.5 rtl:ml-1.5"
+				size="20px"
+				src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+			/>
+			With Avatar
+		</Tag>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Clearable
+
+You make a clearable **Tag** with property **clearable**
+
+<Paper>
+	<Tag variant="outline" clearable>
+		Clearable
+	</Tag>
+</Paper>
+
+```tsx
+import { Button } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Tag variant="outline" clearable>
+				Clearable
+			</Tag>
+		</>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### Tag Props
+
+Here is the API documentation of the Tag component.
+
+|     Props     |             Type             |              Description               |   Default   |
+| :-----------: | :--------------------------: | :------------------------------------: | :---------: |
+|   children    |      `React.ReactNode`       |    Pass content of tag as children     |    \_ \_    |
+|     size      |    [TagSizes](#tag-sizes)    |         Size of the component          | `"DEFAULT"` |
+|    rounded    |  [TagRounded](#tag-rounded)  |       The rounded variants are:        | `"DEFAULT"` |
+|    variant    | [TagVariants](#tag-variants) |   These are the variants we support    |  `"flat"`   |
+|     color     |   [TagColors](#tag-colors)   |        Choose color variations         | `"DEFAULT"` |
+|   clearable   |          `boolean`           |          Whether to clear tag          |   `false`   |
+|    onClear    |  [TagOnclear](#tag-onclear)  |       Pass function to clear tag       |    \_ \_    |
+|  cancelIcon   |         `ReactNode`          |        Pass custom cancel icon         |    \_ \_    |
+|   className   |           `string`           | Pass className to customize tag design |    \_ \_    |
+| iconClassName |           `string`           |   Pass iconClassName to design icon    |    \_ \_    |
+
+<div className="mb-10" />
+
+### Tag Sizes
+
+```ts
+type TagSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+```
+
+<div className="mb-10" />
+
+### Tag Rounded
+
+```ts
+type TagRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
+```
+
+<div className="mb-10" />
+
+### Tag Variants
+
+```ts
+type TagVariants = 'solid' | 'flat' | 'outline';
+```
+
+<div className="mb-10" />
+
+### Tag Colors
+
+```ts
+type TagColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
+```
+
+<div className="mb-10" />
+
+### Tag Onclear
+
+```ts
+type TagOnclear = (e: MouseEvent<Element, MouseEvent>) => void;
+```

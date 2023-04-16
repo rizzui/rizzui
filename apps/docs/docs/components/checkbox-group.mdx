@@ -1,0 +1,123 @@
+import { CheckboxGroup } from '@redq/rizz';
+import CheckboxGroupDefault, {
+	CheckboxGroupAdvanced,
+} from '@site/src/components/checkbox-group';
+import Paper from '@site/src/components/paper';
+
+# CheckboxGroup
+
+CheckboxGroup is a wrapper component for a set of checkbox which allows user to select multiple checkbox values easily either from a form or from a filter.
+
+```tsx
+import { CheckboxGroup } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Default
+
+The default style of **CheckboxGroup**
+
+<Paper>
+	<CheckboxGroupDefault />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import { CheckboxGroup, Checkbox } from '@redq/rizz';
+
+export default function App() {
+	const [values, setValues] = useState([]);
+	return (
+		<CheckboxGroup
+			values={values}
+			setValues={setValues}
+			className="flex flex-row gap-4"
+		>
+			<Checkbox label="Apple" value="apple" />
+			<Checkbox label="Pear" value="pear" />
+			<Checkbox label="Orange" value="orange" disabled />
+			<Checkbox label="Blueberry" value="blueberry" />
+		</CheckboxGroup>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## With Advanced Checkbox
+
+This can also be used as advanced **CheckboxGroup**
+
+<Paper>
+	<CheckboxGroupAdvanced />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import { CheckboxGroup, AdvancedCheckbox } from '@redq/rizz';
+
+export default function App() {
+	const [values, setValues] = useState(['one']);
+	return (
+		<CheckboxGroup values={values} setValues={setValues} className="flex gap-4">
+			<AdvancedCheckbox
+				value="any"
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+			>
+				Any
+			</AdvancedCheckbox>
+			<AdvancedCheckbox
+				value="one"
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+			>
+				1
+			</AdvancedCheckbox>
+			<AdvancedCheckbox
+				value="two"
+				className="cursor-not-allowed rounded-full border border-gray-300 px-6 py-1.5 text-gray-300"
+				disabled
+			>
+				2
+			</AdvancedCheckbox>
+			<AdvancedCheckbox
+				value="three"
+				defaultChecked
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+			>
+				3
+			</AdvancedCheckbox>
+			<AdvancedCheckbox
+				value="four"
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+			>
+				4
+			</AdvancedCheckbox>
+			<AdvancedCheckbox
+				value="five+"
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+			>
+				5+
+			</AdvancedCheckbox>
+		</CheckboxGroup>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### CheckboxGroup Props
+
+Here is the API documentation of the CheckboxGroup component.
+
+|   Props   |                 Type                 |          Description          | Default |
+| :-------: | :----------------------------------: | :---------------------------: | :-----: |
+|  values   |              `string[]`              |        Selected value         |  \_ \_  |
+| setValues | `Dispatch<SetStateAction<string[]>>` | Pass function to select value |  \_ \_  |
+| children  |             `ReactNode`              |   Radio buttons as children   |  \_ \_  |

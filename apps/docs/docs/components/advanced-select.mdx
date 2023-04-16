@@ -1,0 +1,249 @@
+import { AdvancedSelect, Avatar } from '@redq/rizz';
+import Paper from '@site/src/components/paper';
+import { advancedSelectOptions } from '@site/src/data/advanced-select-data';
+import AdvancedSelectDefault, {
+	AdvancedSelectSingle,
+	AdvancedSelectMulti,
+	AdvancedSelectCreateAbleSingle,
+	AdvancedSelectCreateAbleMulti,
+} from '@site/src/components/advanced-select';
+
+# AdvancedSelect
+
+AdvancedSelect is a combination of a selectbox and an auto-complete feature. AdvancedSelect allows user to select single or multiple values from options and search for them in the input field. We used `headlessUI combobox` to build the component. For more info, see their [official documentation](https://headlessui.com/react/combobox).
+
+```jsx
+import { AdvancedSelect } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Default
+
+This is the default style of the **AdvancedSelect**
+
+<Paper>
+	<AdvancedSelectDefault />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import { AdvancedSelect } from '@redq/rizz';
+
+export default function App() {
+	const [state, setState] = useState([options[0]]);
+	return (
+		<AdvancedSelect
+			label="Select Person"
+			onChange={setState}
+			options={options}
+			value={state}
+		/>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Single Select
+
+Select a single item with **AdvancedSelect**.
+
+<Paper>
+	<AdvancedSelectSingle />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import { AdvancedSelect } from '@redq/rizz';
+
+export default function App() {
+	const [state, setState] = useState([options[0]]);
+	return (
+		<AdvancedSelect
+			label="Select Person"
+			onChange={setState}
+			options={options}
+			value={state}
+		/>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Multi Select
+
+Select multiple items with **AdvancedSelect**.
+
+<Paper>
+	<AdvancedSelectMulti />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import { AdvancedSelect } from '@redq/rizz';
+
+export default function App() {
+	const [state, setState] = useState([options[0], options[1]]);
+	return (
+		<AdvancedSelect
+			label="Select Single Person"
+			value={state}
+			onChange={setState}
+			options={options}
+			multiple
+		/>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Creatable Single Select
+
+Creatable single select with **AdvancedSelect**.
+
+<Paper>
+	<AdvancedSelectCreateAbleSingle />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import { AdvancedSelect } from '@redq/rizz';
+
+export default function App() {
+	const [state, setState] = useState([options[0]]);
+	return (
+		<AdvancedSelect
+			label="Single Select"
+			onChange={setState}
+			options={options}
+			value={state}
+			isCreatable
+		/>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Creatable Multi Select
+
+Creatable multiple item select with **AdvancedSelect**.
+
+<Paper>
+	<AdvancedSelectCreateAbleMulti />
+</Paper>
+
+```tsx
+import { useState } from 'react';
+import { AdvancedSelect } from '@redq/rizz';
+
+export default function App() {
+	const [state, setState] = useState([options[0]]);
+	return (
+		<AdvancedSelect
+			label="Multi Select"
+			onChange={setState}
+			options={options}
+			value={state}
+			multiple
+			isCreatable
+		/>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### AdvancedSelect Props
+
+Here is the API documentation of the AdvancedSelect component.
+
+|          Props          |                       Type                        |                   Description                    |   Default   |
+| :---------------------: | :-----------------------------------------------: | :----------------------------------------------: | :---------: |
+|         options         |         `AdvancedSelectOptionDataTypes[]`         |                Change input color                |    \_ \_    |
+|          label          |                    `ReactNode`                    |              label of the component              |    \_ \_    |
+|          value          |   [AdvancedSelectValue](#advanced-select-value)   |                 Pass value state                 |    \_ \_    |
+|      defaultValue       |                      `{}[]`                       |                                                  |    \_ \_    |
+|        nullable         |                      `false`                      |                                                  |    \_ \_    |
+|        multiple         |                     `boolean`                     |                                                  |    \_ \_    |
+|        onChange         |             `((value: {}[]) => void)`             |                                                  |    \_ \_    |
+|           by            |      `((a: unknown, b: unknown) => boolean)`      |                                                  |    \_ \_    |
+|           as            |                `ElementType<any>`                 |                                                  |    \_ \_    |
+|         refName         |                     `string`                      |                                                  |    \_ \_    |
+|        className        |                     `string`                      |  Pass className to style the combobox containe   |    \_ \_    |
+|        disabled         |                     `boolean`                     |                                                  |    \_ \_    |
+|      \_\_demoMode       |                     `boolean`                     |                                                  |    \_ \_    |
+|          name           |                     `string`                      |                                                  |    \_ \_    |
+|          size           |   [AdvancedSelectSizes](#advanced-select-sizes)   |              Size of the component               | `"DEFAULT"` |
+|         rounded         | [AdvancedSelectRounded](#advanced-select-rounded) |            The rounded variants are:             | `"DEFAULT"` |
+|         variant         | [AdvancedSelectVariant](#advanced-select-variant) |        The variants of the component are:        | `"outline"` |
+|          color          |   [AdvancedSelectColor](#advanced-select-color)   |              Change combobox color               | `"DEFAULT"` |
+|     startInputIcon      |                    `ReactNode`                    | Provide start icon to be placed at the beginning |    \_ \_    |
+|      endInputIcon       |                    `ReactNode`                    |     Provide end icon to be placed at the end     |    \_ \_    |
+|     transitionProps     |                `TransitionClasses`                |    Pass transition props to animate combobox     |    \_ \_    |
+|       isCreatable       |                     `boolean`                     |              To create custom value              |   `false`   |
+|     labelClassName      |                     `string`                      |      Pass labelClassName to style the label      |    \_ \_    |
+|      tagClassName       |                     `string`                      | Pass to style the multi selected tag at the top  |    \_ \_    |
+|     inputClassName      |                     `string`                      |      Pass inputClassName to style the input      |    \_ \_    |
+|   creatableClassName    |                     `string`                      |            To style creatable option             |    \_ \_    |
+|    notFoundClassName    |                     `string`                      |   To style the div if search result not found    |    \_ \_    |
+|     optionClassName     |                     `string`                      |    Pass optionClassName to style each option     |    \_ \_    |
+| selectedOptionClassName |                     `string`                      |        To style the selected option only         |    \_ \_    |
+| CheckmarkIconClassName  |                     `string`                      |    To style the check icon of selected option    |    \_ \_    |
+
+<div className="mb-10" />
+
+### Advanced Select Value
+
+```ts
+type AdvancedSelectValue = {}[] &
+	(AdvancedSelectOptionDataTypes | AdvancedSelectOptionDataTypes[]);
+```
+
+<div className="mb-10" />
+
+### Advanced Select Sizes
+
+```ts
+type AdvancedSelectSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+```
+
+<div className="mb-10" />
+
+### Advanced Select Rounded
+
+```ts
+type AdvancedSelectRounded = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'none';
+```
+
+<div className="mb-10" />
+
+### Advanced Select Variant
+
+```ts
+type AdvancedSelectVariant = 'flat' | 'outline' | 'text' | 'active';
+```
+
+<div className="mb-10" />
+
+### Advanced Select Color
+
+```ts
+type AdvancedSelectColor =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
+```

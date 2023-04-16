@@ -1,0 +1,441 @@
+---
+sidebar_position: 3
+---
+
+import { Announcement } from '@redq/rizz';
+import { ChevronRightIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import Paper from '@site/src/components/paper';
+
+# Announcement
+
+```jsx
+import { Announcement } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Basic Announcement
+
+A basic **Announcement**.
+
+<Paper className="gap-4 justify-start items-start">
+	<Announcement badgeText="Trending" highlightedText="25% discount">
+		on our new product
+	</Announcement>
+</Paper>
+
+```jsx
+import { Announcement } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Announcement badgeText="Trending" highlightedText="25% discount">
+				on our new product
+			</Announcement>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change style of **Announcement** with property [**size**](#announcement-sizes).
+
+<Paper className="gap-4 justify-start items-start">
+	<Announcement size="sm" badgeText="Small" highlightedText="25% discount">
+		on our new product
+	</Announcement>
+	<Announcement badgeText="Default" highlightedText="25% discount">
+		on our new product
+	</Announcement>
+	<Announcement size="lg" badgeText="Large abc" highlightedText="25% discount">
+		on our new product
+	</Announcement>
+	<Announcement
+		size="xl"
+		badgeText="Extra Large"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+</Paper>
+
+```jsx
+import { Announcement } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Announcement size="sm" badgeText="Small" highlightedText="25% discount">
+				on our new product
+			</Announcement>
+			<Announcement badgeText="Default" highlightedText="25% discount">
+				on our new product
+			</Announcement>
+			<Announcement
+				size="lg"
+				badgeText="Large abc"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				size="xl"
+				badgeText="Extra Large"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change style of **Announcement** with property [**rounded**](#announcement-rounded).
+
+<Paper className="gap-4 justify-start items-start">
+	<Announcement
+		rounded="sm"
+		badgeText="Rounded Small"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement
+		rounded="md"
+		badgeText="Rounded Medium"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement
+		rounded="lg"
+		badgeText="Rounded Large"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement
+		rounded="none"
+		badgeText="Rounded None"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement badgeText="Rounded Full" highlightedText="25% discount">
+		on our new product
+	</Announcement>
+</Paper>
+
+```tsx
+import { Announcement } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Announcement
+				rounded="sm"
+				badgeText="Rounded Small"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				rounded="md"
+				badgeText="Rounded Medium"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				rounded="lg"
+				badgeText="Rounded Large"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				rounded="none"
+				badgeText="Rounded None"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement badgeText="Rounded Full" highlightedText="25% discount">
+				on our new product
+			</Announcement>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can change style of **Announcement** with property [**color**](#announcement-colors).
+
+<Paper className="grid grid-cols-1 gap-4">
+	<Announcement badgeText="Default" highlightedText="25% discount">
+		on our new product
+	</Announcement>
+	<Announcement
+		color="primary"
+		badgeText="Primary"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement
+		color="secondary"
+		badgeText="Secondary"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement
+		color="danger"
+		badgeText="Danger"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement color="info" badgeText="Info" highlightedText="25% discount">
+		on our new product
+	</Announcement>
+	<Announcement
+		color="success"
+		badgeText="Success"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement
+		color="warning"
+		badgeText="Warning"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+</Paper>
+
+```tsx
+import { Announcement } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Announcement badgeText="Default" highlightedText="25% discount">
+				on our new product
+			</Announcement>
+			<Announcement
+				color="primary"
+				badgeText="Primary"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				color="secondary"
+				badgeText="Secondary"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				color="danger"
+				badgeText="Danger"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				color="info"
+				badgeText="Info"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				color="success"
+				badgeText="Success"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				color="warning"
+				badgeText="Warning"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Background Colors
+
+You can change background color of **Announcement** with property **bgColor**.
+
+<Paper className="gap-4 justify-start items-start">
+	<Announcement
+		badgeText="White Background"
+		highlightedText="25% discount"
+		bgColor="white"
+	>
+		on our every product
+	</Announcement>
+	<Announcement
+		badgeText="Gray Background"
+		highlightedText="25% discount"
+		bgColor="gray"
+	>
+		on our every product
+	</Announcement>
+</Paper>
+
+```jsx
+import { Announcement } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Announcement
+				badgeText="White Background"
+				highlightedText="25% discount"
+				bgColor="white"
+			>
+				on our every product
+			</Announcement>
+			<Announcement
+				badgeText="Gray Background"
+				highlightedText="25% discount"
+				bgColor="gray"
+			>
+				on our every product
+			</Announcement>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Icons
+
+You can add icons to **Announcement** with property **startIcon** & **endIcon**.
+
+<Paper className="gap-4 justify-start items-start">
+	<Announcement
+		badgeText="Trending"
+		highlightedText="25% discount"
+		color="primary"
+		startIcon={<EnvelopeIcon className="w-5 mr-3 text-primary-dark" />}
+	>
+		on our every product
+	</Announcement>
+	<Announcement
+		badgeText="Trending"
+		highlightedText="25% discount"
+		color="danger"
+		endIcon={<ChevronRightIcon className="w-5 ml-3 text-red-dark" />}
+	>
+		on our every product
+	</Announcement>
+</Paper>
+
+```jsx
+import { Announcement } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Announcement
+				badgeText="Trending"
+				highlightedText="25% discount"
+				color="primary"
+				startIcon={<EnvelopeIcon className="w-5 mr-3 text-primary-dark" />}
+			>
+				on our every product
+			</Announcement>
+			<Announcement
+				badgeText="Trending"
+				highlightedText="25% discount"
+				color="danger"
+				endIcon={<ChevronRightIcon className="w-5 ml-3 text-red-dark" />}
+			>
+				on our every product
+			</Announcement>
+		</>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### Announcement Props
+
+Here is the API documentation of the Announcement component.
+
+|          Props           |                     Type                     |                       Description                        |   Default   |
+| :----------------------: | :------------------------------------------: | :------------------------------------------------------: | :---------: |
+|        badgeText         |                   `string`                   |      Pass badge text to have badge at the beginning      |    \_ \_    |
+|     highlightedText      |                   `string`                   |          Pass highlighted text at the beginning          |    \_ \_    |
+|         children         |                                              |                                                          |    \_ \_    |
+|           size           |   [AnnouncementSizes](#announcement-sizes)   |                The size of the component.                | `"DEFAULT"` |
+|         rounded          | [AnnouncementRounded](#announcement-rounded) |                The rounded variants are:                 | `"DEFAULT"` |
+|          color           |  [AnnouncementColors](#announcement-colors)  |                 Choose color variations                  | `"DEFAULT"` |
+|         bgColor          |                `white` `gray`                |            Background color of the component             |  `"white"`  |
+|        className         |                   `string`                   |     Pass className to customize announcement design      |    \_ \_    |
+|        startIcon         |                 `ReactNode`                  |               Place icon at the beginning                |    \_ \_    |
+|         endIcon          |                 `ReactNode`                  |                  Place icon at the end                   |    \_ \_    |
+|      badgeClassName      |                   `string`                   |            Pass badgeClassName to style badge            |    \_ \_    |
+| highlightedTextClassName |                   `string`                   | Pass hightlightedTextClassName to style highlighted text |    \_ \_    |
+
+<div className="mb-10" />
+
+### Announcement Sizes
+
+```ts
+type AnnouncementSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+```
+
+<div className="mb-10" />
+
+### Announcement Rounded
+
+```ts
+type AnnouncementRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'md';
+```
+
+<div className="mb-10" />
+
+### Announcement Colors
+
+```ts
+type AnnouncementColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
+```

@@ -1,0 +1,65 @@
+// .storybook/preview.js
+
+import '../src/styles/global.css';
+
+export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+  options: {
+    storySort: {
+      order: [
+        // 'Getting Started',
+        // ['Introduction', 'Colors'],
+        'Components',
+        [
+          'Avatar',
+          'Button',
+          'ActionIcon',
+          'Input',
+          'Password',
+          'Textarea',
+          'PinCode',
+          'Switch',
+          'Checkbox',
+          'AdvancedCheckbox',
+          'CheckboxGroup',
+          'Radio',
+          'AdvancedRadio',
+          'RadioGroup',
+          'PhoneNumber',
+          'NumberInput',
+          'NativeSelect',
+          'AdvancedSelect',
+          'Rate',
+          'RangeSlider',
+          'Switch',
+          'FileInput',
+          'Alert',
+          'Announcement',
+          'Badge',
+          'Tag',
+          'Progressbar',
+          'Dropdown',
+          'Text',
+          'Tabs',
+          'Table',
+          'Pagination',
+          'Collapse',
+          'Tooltip',
+          'Popconfirm',
+          'Loader',
+          'Stepper',
+          'Empty',
+          'Scroller',
+          'Modal',
+          'Drawer',
+        ],
+      ],
+    },
+  },
+};

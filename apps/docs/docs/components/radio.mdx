@@ -1,0 +1,404 @@
+---
+sidebar_position: 14
+---
+
+import { Radio } from '@redq/rizz';
+import Paper from '@site/src/components/paper';
+
+# Radio
+
+A basic widget for getting the user input of radio. Here is the API documentation of the Radio component. And the rest of the props of radio are the same as the original html input field. You can use props like `value`, `disabled`, `onChange`, `onFocus`, `onBlur` etc.
+
+```tsx
+import { Radio } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Default
+
+The default style of the **Radio**
+
+<Paper>
+	<Radio className="m-2" label="Yes" value="yes" />
+</Paper>
+
+```tsx
+import { Radio } from '@redq/rizz';
+
+export default function App() {
+	return <Radio className="m-2" label="Yes" value="yes" />;
+}
+```
+
+<div className="mb-16" />
+
+## With Helper Text
+
+You can add helper text to **Radio**.
+
+<Paper>
+	<Radio
+		className="m-2"
+		helperText="Hi! My name is John Doe."
+		label="John"
+		value="john"
+	/>
+</Paper>
+
+```tsx
+import { Radio } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<Radio
+			className="m-2"
+			helperText="Hi! My name is John Doe."
+			label="John"
+			value="john"
+		/>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## With Error
+
+You can add error message as validation to **Radio**.
+
+<Paper>
+	<Radio
+		className="m-2"
+		error="This field is required"
+		label="Yes"
+		value="yes"
+	/>
+</Paper>
+
+```tsx
+import { Radio } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<Radio
+			className="m-2"
+			error="This field is required"
+			label="Yes"
+			value="yes"
+		/>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Row Group
+
+You can make a group of multiple choices **Radio**.
+
+<Paper>
+	<div className="flex">
+		<Radio label="default" value="default" className="m-2" name="row-group" />
+		<Radio label="primary" value="primary" className="m-2" name="row-group" />
+		<Radio value="info" label="info" className="m-2" name="row-group" />
+	</div>
+</Paper>
+
+```tsx
+import { Radio } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Radio label="default" value="default" className="m-2" name="row-group" />
+			<Radio label="primary" value="primary" className="m-2" name="row-group" />
+			<Radio value="info" label="info" className="m-2" name="row-group" />
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Column Group With Error Text
+
+You can make a column group of multiple choices with separate error messages with **Radio**.
+
+<Paper>
+	<div className="flex flex-col">
+		<Radio
+			name="column-group"
+			label="default"
+			value="default"
+			className="m-2"
+			error="This field is required"
+		/>
+		<Radio
+			name="column-group"
+			label="primary"
+			value="primary"
+			className="m-2"
+			error="This field is required"
+		/>
+		<Radio
+			name="column-group"
+			value="info"
+			label="info"
+			className="m-2"
+			error="This field is required"
+		/>
+	</div>
+</Paper>
+
+```tsx
+import { Radio } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Radio
+				name="column-group"
+				label="default"
+				value="default"
+				className="m-2"
+				error="This field is required"
+			/>
+			<Radio
+				name="column-group"
+				label="primary"
+				value="primary"
+				className="m-2"
+				error="This field is required"
+			/>
+			<Radio
+				name="column-group"
+				value="info"
+				label="info"
+				className="m-2"
+				error="This field is required"
+			/>
+		</>
+	);
+}
+```
+
+## Column Group With Start Label
+
+You can make clickable card with **Radio**.
+
+<Paper>
+	<div className="flex justify-center space-x-4 space-y-4">
+		<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+			<Radio
+				name="column-label-start-group"
+				label="default"
+				helperText="This project would be available to anyone who have the link"
+				labelPlacement="start"
+				value="default"
+				className="p-2"
+				containerClassName="justify-between"
+			/>
+			<Radio
+				name="column-label-start-group"
+				label="primary"
+				helperText="This project would be available to anyone who have the link"
+				labelPlacement="start"
+				value="primary"
+				className="p-2"
+				containerClassName="justify-between"
+			/>
+			<Radio
+				name="column-label-start-group"
+				label="secondary"
+				helperText="This project would be available to anyone who have the link"
+				labelPlacement="start"
+				value="secondary"
+				className="p-2"
+				containerClassName="justify-between"
+			/>
+		</div>
+	</div>
+</Paper>
+
+```tsx
+import { Radio } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+				<Radio
+					name="column-label-start-group"
+					label="default"
+					helperText="This project would be available to anyone who have the link"
+					labelPlacement="start"
+					value="default"
+					className="p-2"
+					containerClassName="justify-between"
+				/>
+				<Radio
+					name="column-label-start-group"
+					label="primary"
+					helperText="This project would be available to anyone who have the link"
+					labelPlacement="start"
+					value="primary"
+					className="p-2"
+					containerClassName="justify-between"
+				/>
+				<Radio
+					name="column-label-start-group"
+					label="secondary"
+					helperText="This project would be available to anyone who have the link"
+					labelPlacement="start"
+					value="secondary"
+					className="p-2"
+					containerClassName="justify-between"
+				/>
+			</div>
+		</>
+	);
+}
+```
+
+## Column Group With End Label
+
+You can make clickable card with **Radio** left aligned.
+
+<Paper>
+	<div className="flex justify-center space-x-4 space-y-4">
+		<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+			<Radio
+				name="column-label-end-group"
+				label="warning"
+				value="warning"
+				helperText="This project would be available to anyone who have the link"
+				className="p-2"
+				labelClassName="pl-2"
+				helperClassName="ml-8"
+			/>
+			<Radio
+				name="column-label-end-group"
+				label="success"
+				value="success"
+				helperText="This project would be available to anyone who have the link"
+				className="p-2"
+				labelClassName="pl-2"
+				helperClassName="ml-8"
+			/>
+			<Radio
+				name="column-label-end-group"
+				value="info"
+				label="info"
+				helperText="This project would be available to anyone who have the link"
+				className="p-2"
+				labelClassName="pl-2"
+				helperClassName="ml-8"
+			/>
+		</div>
+	</div>
+</Paper>
+
+```tsx
+import { Radio } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+				<Radio
+					name="column-label-end-group"
+					label="warning"
+					value="warning"
+					helperText="This project would be available to anyone who have the link"
+					className="p-2"
+					labelClassName="pl-2"
+					helperClassName="ml-8"
+				/>
+				<Radio
+					name="column-label-end-group"
+					label="success"
+					value="success"
+					helperText="This project would be available to anyone who have the link"
+					className="p-2"
+					labelClassName="pl-2"
+					helperClassName="ml-8"
+				/>
+				<Radio
+					name="column-label-end-group"
+					value="info"
+					label="info"
+					helperText="This project would be available to anyone who have the link"
+					className="p-2"
+					labelClassName="pl-2"
+					helperClassName="ml-8"
+				/>
+			</div>
+		</>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### Radio Props
+
+Here is the API documentation of the radio component. And the rest of the props of radio are the same as the original html input field. You can use props like `value`, `disabled`, `onChange`, `onFocus`, `onBlur` etc.
+
+|       Props        |               Type               |                                       Description                                        |   Default   |
+| :----------------: | :------------------------------: | :--------------------------------------------------------------------------------------: | :---------: |
+|       label        |           `ReactNode`            |                                     Set field label                                      |    \_ \_    |
+|       value        |                                  |                                                                                          |    \_ \_    |
+|     className      |             `string`             |                  Use className prop to apply style for entire component                  |    \_ \_    |
+|      variant       | [RadioVariants](#radio-variants) |                            The variants of the component are:                            | `"outline"` |
+|        size        |    [RadioSizes](#radio-sizes)    |     The size of the component. <br /> "sm" is equivalent to the dense input styling.     | `"DEFAULT"` |
+|       color        |   [RadioColors](#radio-colors)   |                                Change radio button color                                 | `"DEFAULT"` |
+|   labelPlacement   |          `start` `end`           |                          Available directions of the label are:                          |   `"end"`   |
+|      disabled      |            `boolean`             |                              Whether the input is disabled                               |    \_ \_    |
+|       error        |             `string`             |                            Show error message using this prop                            |    \_ \_    |
+|     helperText     |           `ReactNode`            |                 Add helper text. It could be string or a React component                 |    \_ \_    |
+|  activeClassName   |             `string`             |       Use activeClassName prop to apply style on active component from radioGroup        |    \_ \_    |
+| containerClassName |             `string`             | Use containerClassName prop to apply some additional style for label and radio container |    \_ \_    |
+|   labelClassName   |             `string`             |         Use labelClassName prop to apply some addition style for the field label         |    \_ \_    |
+|   inputClassName   |             `string`             |                    Add custom classes for the input filed extra style                    |    \_ \_    |
+|   errorClassName   |             `string`             |                This prop allows you to customize the error message style                 |    \_ \_    |
+|  helperClassName   |             `string`             |                This prop allows you to customize the helper message style                |    \_ \_    |
+|        ref         |     `Ref<HTMLInputElement>`      |                                                                                          |    \_ \_    |
+|        key         |          ` kye``null `           |                                                                                          |    \_ \_    |
+
+<div className="mb-10" />
+
+### Radio Variants
+
+```ts
+type RadioVariants = 'flat' | 'outline' | 'active';
+```
+
+<div className="mb-10" />
+
+### Radio Sizes
+
+```ts
+type RadioSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+```
+
+<div className="mb-10" />
+
+### Radio Colors
+
+```ts
+type RadioColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
+```

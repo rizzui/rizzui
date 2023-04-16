@@ -1,0 +1,1017 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* default theme */
+  :root {
+   /* 
+    - gray/natural colors for texts, borders and disabled elements. 
+    - If required we can use as background too. 
+    */
+   /* For rgb(255 255 255 / <alpha-value>) = #ffffff */
+   --gray-0: 255 255 255;
+   /* For rgb(250 250 250 / <alpha-value>) = #fafafa */
+    --gray-50: 250 250 250;
+    /* For rgb(241 241 241 / <alpha-value>) = #f1f1f1 */
+    --gray-100: 241 241 241;
+    /* For rgb(227 227 227 / <alpha-value>) = #e3e3e3 */
+    --gray-200: 227 227 227;
+    /* For rgb(223 223 223 / <alpha-value>) = #dfdfdf */
+    --gray-300: 223 223 223;
+    /* For rgb(146 146 146 / <alpha-value>) = #929292 */
+    --gray-400: 146 146 146;
+    /* For rgb(102 102 102 / <alpha-value>) = #666666 */
+    --gray-500: 102 102 102;
+    /* For rgb(72 72 72 / <alpha-value>) = #484848 */
+    --gray-600: 72 72 72;
+    /* For rgb(51 51 51 / <alpha-value>) = #333333 */
+    --gray-700: 51 51 51;
+    /* For rgb(34 34 34 / <alpha-value>) = #222222 */
+    --gray-800: 34 34 34;
+    /* For rgb(17 17 17 / <alpha-value>) = #111111 */
+    --gray-900: 17 17 17;
+    /* For rgb(0 0 0 / <alpha-value>) = #000000 */
+    --gray-1000: 0 0 0;
+
+    
+    /* primary/brand colors */
+    /* ----------------------------------- */
+    /* For rgb(221 227 255 / <alpha-value>) = #dde3ff */
+    --primary-lighter: 221 227 255;
+    /* For rgb(99 91 255 / <alpha-value>) = #635bff */
+    --primary-light: 99 91 255;
+    /* For rgb(78 54 245 / <alpha-value>) = #4e36f5 */ 
+    --primary-default: 78 54 245;
+    /* For rgb(67 42 216 / <alpha-value>) = #432ad8 */ 
+    --primary-dark: 67 42 216; 
+
+
+    /* secondary colors */
+    /* ----------------------------------- */
+    /* For rgb(227 215 252 / <alpha-value>) = #e3d7fc */
+    --secondary-lighter: 227 215 252;
+    /* For rgb(138 99 210 / <alpha-value>) = #8a63d2 */
+    --secondary-light: 138 99 210; 
+    /* For rgb(121 40 202 / <alpha-value>) = #7928ca */
+    --secondary-default: 121 40 202;
+    /* For rgb(76 40 137 / <alpha-value>) = #4c2889 */
+    --secondary-dark: 76 40 137;
+
+
+    /* red/error colors */
+    /* ----------------------------------- */
+    /* For rgb(247 212 214 / <alpha-value>) = #f7d4d6 */
+    --red-lighter: 247 212 214;
+    /* For rgb(255 26 26 / <alpha-value>) = #ff1a1a */
+    --red-light: 255 26 26;
+    /* For rgb(238 0 0 / <alpha-value>) = #e00 */
+    --red-default: 238 0 0;
+    /* For rgb(197 0 0 / <alpha-value>) = #c50000 */
+    --red-dark: 197 0 0;
+
+
+    /* orange/warning colors */
+    /* ----------------------------------- */
+    /* For rgb(255 239 207 / <alpha-value>) = #ffefcf */
+    --orange-lighter: 255 239 207;
+    /* For rgb(247 185 85 / <alpha-value>) = #f7b955 */
+    --orange-light: 247 185 85;
+    /* For rgb(245 166 35 / <alpha-value>) = #f5a623 */
+    --orange-default: 245 166 35;
+    /* For rgb(171 87 10 / <alpha-value>) = #ab570a */
+    --orange-dark: 171 87 10;
+
+
+    /* blue/info colors */
+    /* ----------------------------------- */
+    /* For rgb(211 229 255 / <alpha-value>) = #d3e5ff */
+    --blue-lighter: 211 229 255;
+    /* For rgb(50 145 255 / <alpha-value>) = #3291ff */
+    --blue-light: 50 145 255;
+    /* For rgb(0 112 243 / <alpha-value>) = #0070f3 */
+    --blue-default: 0 112 243;
+    /* For rgb(7 97 209 / <alpha-value>) = #0761d1 */
+    --blue-dark: 7 97 209;
+
+
+    /* green/success colors */
+    /* ----------------------------------- */
+    /* For rgb(185 249 207 / <alpha-value>) = #b9f9cf */
+    --green-lighter: 185 249 207;
+    /* For rgb(28 203 92 / <alpha-value>) = #1ccb5c */
+    --green-light: 28 203 92;
+    /* For rgb(17 168 73 / <alpha-value>) = #11a849 */
+    --green-default: 17 168 73;
+    /* For rgb(17 132 60 / <alpha-value>) = #11843c */
+    --green-dark: 17 132 60;
+
+    /* write here box shadow variation */
+    /* --card-shadow-100: 0 0 0 1px rgb(35 38 59 / 5%), 0 1px 3px 0 rgb(35 38 59 / 15%);
+    --card-shadow-500: 0 0 0 1px rgb(35 38 59 / 5%), 0 20px 32px -8px rgb(35 38 59 / 25%); */
+
+
+
+  /* docusaurus theme */
+  --ifm-color-primary: #111111;
+  --ifm-color-primary-dark: #222222;
+  --ifm-color-primary-darker: #111111;
+  --ifm-color-primary-darkest: #000000;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* lists */
+  --ifm-list-left-padding: 1rem;
+  --ifm-list-item-margin: 0.875rem;
+
+  /* gray shades */
+  --ifm-color-gray-100: #f1f1f1;
+  --ifm-color-gray-200: #e3e3e3;
+  --ifm-color-gray-300: #dfdfdf;
+  --ifm-color-gray-400: #929292;
+  --ifm-color-gray-500: #666666;
+  --ifm-color-gray-600: #484848;
+  --ifm-color-gray-700: #333333;
+  --ifm-color-gray-800: #222222;
+  --ifm-color-gray-900: #111111;
+
+  /* fonts */
+  --ifm-font-family-base: 'Inter', 'sans-serif';
+
+  /* navbar */
+  --ifm-navbar-height: 4rem;
+
+  /* hr / border */
+  --ifm-hr-background-color: var(--ifm-color-gray-300);
+
+  /* border radius */
+  --ifm-global-radius: 0.5rem;
+  --ifm-toc-border-color: #e3e3e3;
+
+  /* shadow */
+  --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --ifm-navbar-shadow:  0 1px 0 0 #e3e3e3;
+  }
+
+  /* dark theme */
+  html[data-theme='dark'] {
+   /* 
+    - gray/natural color shades for texts, borders and disabled elements. 
+    - If required we can use as background too. 
+    */
+   /* For rgb(0 0 0 / <alpha-value>) = #000000 */
+   --gray-0: 0 0 0;
+   /* For rgb(17 17 17 / <alpha-value>) = #111111 */
+   --gray-50: 17 17 17;
+   /* For rgb(34 34 34 / <alpha-value>) = #222222 */
+   --gray-100: 34 34 34;
+   /* For rgb(51 51 51 / <alpha-value>) = #333333 */
+   --gray-200: 51 51 51;
+   /* For rgb(72 72 72 / <alpha-value>) = #484848 */
+   --gray-300: 72 72 72;
+   /* For rgb(102 102 102 / <alpha-value>) = #666666 */
+   --gray-400: 102 102 102;
+   /* For rgb(146 146 146 / <alpha-value>) = #929292 */
+   --gray-500: 146 146 146;
+   /* For rgb(223 223 223 / <alpha-value>) = #dfdfdf */
+   --gray-600: 223 223 223;
+   /* For rgb(227 227 227 / <alpha-value>) = #e3e3e3 */
+   --gray-700: 227 227 227;
+   /* For rgb(241 241 241 / <alpha-value>) = #f1f1f1 */
+   --gray-800: 241 241 241;
+   /* For rgb(250 250 250 / <alpha-value>) = #fafafa */
+   --gray-900: 250 250 250;
+   /* For rgb(255 255 255 / <alpha-value>) = #ffffff */
+   --gray-1000: 255 255 255;
+
+    /* docusaurus dark theme */
+    --ifm-background-color: #08090e;
+    --ifm-color-primary: #f1f1f1;
+    --ifm-color-primary-dark: #e3e3e3;
+    --ifm-color-primary-darker: #dfdfdf;
+    --ifm-color-primary-darkest: #929292;
+    --ifm-color-primary-light: #29d5b0;
+    --ifm-color-primary-lighter: #32d8b4;
+    --ifm-color-primary-lightest: #4fddbf;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+    /* gray shades */
+    --ifm-color-gray-100: #111111;
+    --ifm-color-gray-200: #222222;
+    --ifm-color-gray-300: #333333;
+    --ifm-color-gray-400: #484848;
+    --ifm-color-gray-500: #666666;
+    --ifm-color-gray-600: #929292;
+    --ifm-color-gray-700: #dfdfdf;
+    --ifm-color-gray-800: #e3e3e3;
+    --ifm-color-gray-900: #f1f1f1;
+
+    /* hr / border */
+    --ifm-hr-background-color: var(--ifm-color-gray-300);
+
+    /* shadow */
+    --ifm-toc-border-color: #222222;
+    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --ifm-navbar-shadow:  0 1px 0 0 #222222;
+  }
+
+  input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+  }
+
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
+
+@layer components {
+  /* width */
+  .scroller::-webkit-scrollbar {
+    width: var(--scroller-width);
+  }
+
+  /* Track */
+  .scroller::-webkit-scrollbar-track {
+    /* background: #f1f1f1; */
+    border-radius: 5px;
+    background: var(--trackColor);
+  }
+
+  /* Handle */
+  .scroller::-webkit-scrollbar-thumb {
+    /* background: #888; */
+    background: var(--handleColor);
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  .scroller::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  /* Progress Bar */
+  .circlePercentage {
+    background-image: conic-gradient(
+      var(--outerCirclePercentageColor) var(--progressPercentage),
+      var(--outerCircleColor) 0
+    );
+  }
+  .innerCircle {
+    width: calc(100% - 20%);
+    height: calc(100% - 20%);
+    color: var(--innerCircleTextColor);
+    background: var(--innerCircleColor);
+  }
+
+	/* Password dot */
+	.password-dot {
+		-webkit-text-security: disc;
+		-moz-text-security: circle;
+		text-security: circle;
+	}
+
+	/* ?React Datepicker Styling */
+
+	/* month container */
+	.react-datepicker .react-datepicker__month-container {
+		@apply px-3;
+	}
+
+	/* time container */
+	.react-datepicker .react-datepicker__time-container {
+		@apply border-l-0 w-auto pr-3.5;
+	}
+
+	/* header */
+	.react-datepicker .react-datepicker__header {
+		@apply bg-gray-0 border-b-gray-0;
+	}
+
+	/* current month name in header */
+	.react-datepicker .react-datepicker__current-month {
+		@apply mb-3 font-medium text-base;
+	}
+
+	/* sun-sat day names in header */
+  .react-datepicker .react-datepicker__day-names div {
+		@apply text-gray-400 text-sm m-1.5;
+	}
+
+	/* previous month button */
+	.react-datepicker .react-datepicker__navigation--previous {
+		@apply ml-6 rtl:mr-6;
+	}
+
+	/* next month button */
+	.react-datepicker .react-datepicker__navigation--next {
+		@apply mr-6 rtl:ml-6;
+	}
+
+	/* icon in previous month button */
+	.react-datepicker .react-datepicker__navigation-icon--previous {
+		@apply right-0.5;
+	}
+
+	/* icon in next month button */
+	.react-datepicker .react-datepicker__navigation-icon--next {
+		@apply left-0.5;
+	}
+
+	/* each day */
+	.react-datepicker .react-datepicker__day {
+		@apply m-1.5 text-sm leading-7 text-gray-600;
+		@apply hover:rounded-full hover:bg-gray-100 hover:text-gray-600;
+	}
+
+	/* outside month */
+	.react-datepicker .react-datepicker__day--outside-month {
+		@apply text-gray-400;
+	}
+
+	/* keyboard selected */
+	.react-datepicker .react-datepicker__day--keyboard-selected {
+		@apply bg-gray-0;
+	}
+
+	/* today */
+	.react-datepicker .react-datepicker__day--today {
+		@apply border border-gray-300 rounded-full bg-gray-0 leading-[26px] text-gray-900;
+		@apply hover:border-gray-600 hover:bg-gray-0;
+	}
+
+	/* while selecting */
+	.react-datepicker div.react-datepicker__day--in-selecting-range {
+		@apply bg-gray-100 text-gray-600 rounded-full;
+	}
+
+	/* in range */
+	.react-datepicker .react-datepicker__day--in-range {
+		@apply bg-gray-200 text-gray-600 rounded-full;
+	}
+
+	/* selected */
+	.react-datepicker .react-datepicker__day--range-start, 
+	.react-datepicker .react-datepicker__day--range-end, 
+	.react-datepicker .react-datepicker__day--selected {
+		@apply bg-gray-900 text-gray-0 rounded-full border-none leading-7 font-normal;
+		@apply hover:bg-gray-900/80 hover:text-gray-0;
+	}
+
+	/* time list */
+	.react-datepicker .react-datepicker__time-list {
+		@apply !h-[247px];
+	}
+
+	/* time item */
+	.react-datepicker .react-datepicker__time-list-item {
+		@apply text-gray-400 text-sm rounded my-2;
+		@apply hover:bg-gray-100 hover:text-gray-900;
+	}
+
+	/* selected time item */
+	.react-datepicker .react-datepicker__time-list-item--selected {
+		@apply !bg-gray-100 !text-gray-900 !font-medium;
+	}
+
+	/* time only box */
+	.react-datepicker--time-only .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
+		@apply w-auto;
+	}
+
+	/* time only item */
+	.react-datepicker--time-only .react-datepicker__time-list-item {
+		@apply rounded-none;
+	}
+
+	/* month picker text */
+	.react-datepicker .react-datepicker__month-text {
+		@apply w-0 py-1.5 px-5;
+	}
+
+	/* keyboard selected month in month picker */ 
+	.react-datepicker .react-datepicker__month-text--keyboard-selected {
+		@apply bg-gray-100 text-gray-900;
+	}
+
+	/* month in range */
+	.react-datepicker .react-datepicker__month--in-range {
+		@apply bg-gray-200 text-gray-600;
+	}
+
+	/* hover on selected months in range */
+	.react-datepicker .react-datepicker__month-text.react-datepicker__month--in-range:hover {
+		@apply bg-gray-100 text-gray-600;
+	}
+
+	/* selected month in range */
+	.react-datepicker .react-datepicker__month--range-start,
+	.react-datepicker .react-datepicker__month--range-end,
+	.react-datepicker .react-datepicker__month--selected {
+		@apply bg-gray-900 text-gray-0 font-normal;
+	}
+
+	/* hover on selected range start and end month */
+	.react-datepicker .react-datepicker__month-text.react-datepicker__month--selected:hover,
+	.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-start:hover,
+	.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-end:hover {
+		@apply bg-gray-900/80 text-gray-0;
+	}
+
+	/* year wrapper in year picker */
+	.react-datepicker .react-datepicker__year-wrapper {
+		@apply inline-block max-w-[220px];
+	}
+
+	/* year text in year picker */
+	.react-datepicker .react-datepicker__year-text {
+		@apply py-1.5 px-5 w-auto;
+	}
+
+	/* keyboard selected year in year picker */
+	.react-datepicker .react-datepicker__year-text--keyboard-selected {
+		@apply bg-gray-100 text-gray-900;
+		@apply hover:bg-gray-100 hover:text-gray-900;
+	}
+
+	/* selected year in year picker */
+	.react-datepicker .react-datepicker__year-text.react-datepicker__year-text--selected {
+		@apply bg-gray-900 text-gray-0;
+		@apply hover:bg-gray-900/80 hover:text-gray-0;
+	}
+
+	/* year and month dropdown arrow */
+	.react-datepicker	.react-datepicker__year-read-view--down-arrow,
+	.react-datepicker	.react-datepicker__month-read-view--down-arrow {
+		@apply border-t-[1.5px] border-r-[1.5px] border-gray-400 h-[7px] w-[7px] top-[5px];
+	}
+
+	/* sub-header containing year and month dropdown */
+	.react-datepicker 
+	.react-datepicker__current-month--hasYearDropdown.react-datepicker__current-month--hasMonthDropdown 
+	~ .react-datepicker__header__dropdown {
+		@apply grid grid-cols-2 my-2 text-sm divide-x divide-gray-300;
+	}
+
+	/* month and year dropdown button in sub-header */
+	.react-datepicker .react-datepicker__month-dropdown-container--scroll,
+	.react-datepicker .react-datepicker__year-dropdown-container--scroll {
+		@apply inline-flex justify-center;
+	}
+
+	/* month and year dropdown */
+	.react-datepicker .react-datepicker__year-dropdown,
+	.react-datepicker .react-datepicker__month-dropdown {
+		@apply bg-gray-0 border border-gray-100 shadow-md w-2/5 top-auto;
+	}
+
+	/* year dropdown */
+	.react-datepicker .react-datepicker__year-dropdown {
+		@apply h-80;
+	}
+
+	/* month dropdown */
+	.react-datepicker .react-datepicker__month-dropdown {
+		@apply py-3;
+	}
+
+	/* month and year option */
+	.react-datepicker .react-datepicker__month-option,
+	.react-datepicker .react-datepicker__year-option {
+		@apply text-sm my-1 py-1 text-gray-400;
+		@apply hover:text-gray-900 hover:bg-gray-100;
+	}
+
+	/* first and last type of month and year option */
+	.react-datepicker .react-datepicker__month-option:first-of-type,
+	.react-datepicker .react-datepicker__month-option:last-of-type,
+	.react-datepicker .react-datepicker__year-option:first-of-type,
+	.react-datepicker .react-datepicker__year-option:last-of-type {
+		@apply rounded-none;
+	}
+
+	/* selected month and year in dropdown */
+	.react-datepicker .react-datepicker__month-option--selected_month,
+	.react-datepicker .react-datepicker__year-option--selected_year {
+		@apply bg-gray-100 text-gray-1000;
+		@apply [&>span]:hidden;
+	}
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+  .slide-item-center {
+    transform: translateX(calc(max(1504px, 100vw)/2 - calc(1504px / 2)));
+  }
+}
+/* end of aegon ui & docusaurus css config */
+
+
+/* ------------------------------------- */
+/* custom styles of our doc site */
+/* ------------------------------------- */
+html, body {
+  color: var(--ifm-color-gray-700);
+}
+
+h1 {
+  @apply text-h1 tracking-tight;
+  color: var(--ifm-color-gray-900);
+  font-weight: 800 !important;
+}
+
+h2 {
+  @apply text-h3;
+}
+
+h3 {
+  @apply text-h4;
+}
+
+h4 {
+  @apply text-h5;
+}
+
+h5 {
+  @apply text-h6;
+}
+
+h6 {
+  @apply text-sm font-bold;
+}
+
+h2, h3, h4, h5, h6 {
+  @apply tracking-tight;
+  color: var(--ifm-color-gray-900);
+  margin-bottom: 12px !important;
+}
+
+#__docusaurus {
+  @apply font-inter text-[15px] antialiased;
+}
+
+#__docusaurus a,
+#__docusaurus strong,
+#__docusaurus b {
+  color: var(--ifm-color-gray-900);
+}
+
+#__docusaurus .navbar__link {
+  color: var(--ifm-color-gray-600);
+}
+
+#__docusaurus .navbar__link--active {
+  color: var(--ifm-color-gray-900);
+}
+
+.pagination-nav__label {
+  @apply font-medium;
+}
+
+p strong,
+li strong {
+  @apply font-semibold;
+}
+
+.theme-edit-this-page svg {
+  @apply inline-block;
+}
+
+hr {
+  @apply h-[var(--ifm-hr-height)] my-[var(--ifm-hr-margin-vertical)];
+}
+
+/* navbar style */
+nav.navbar {
+  @apply bg-white/[0.925] backdrop-blur;
+}
+
+nav.navbar .navbar__inner {
+  @apply mx-auto max-w-[1680px];
+}
+
+.navbar__toggle {
+  @apply mr-3;
+}
+
+.header-github-link {
+  @apply mr-4;
+}
+
+.header-github-link:before {
+  @apply w-[18px] h-[18px] flex;
+  background: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
+  content: "";
+}
+
+svg[class*='lightToggleIcon'] {
+  @apply w-[21px] h-[21px];
+}
+
+.navbar-sidebar,
+.navbar-sidebar__backdrop {
+  @apply min-h-screen;
+}
+
+.navbar-sidebar__item {
+  @apply p-4;
+}
+
+.navbar-sidebar__back {
+  @apply hidden;
+}
+
+.navbar-sidebar div[class*='ColorModeToggle'] {
+  @apply ml-auto;
+}
+
+.navbar-sidebar__close {
+  @apply ml-1;
+}
+
+.navbar-sidebar__close svg {
+  @apply w-4 h-4;
+}
+
+.navbar-sidebar__close g {
+  stroke-width: 1.8;
+}
+
+.menu__list-item-collapsible--active {
+  @apply bg-transparent;
+}
+
+#__docusaurus .navbar__search-input {
+  --ifm-navbar-search-input-background-color: var(--gray-0);
+  @apply ring-[1.5px] pl-3 ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900;
+}
+
+#__docusaurus input[class*='searchQueryInput'] {
+  @apply mt-8 border-2 px-5 border-gray-900 focus:outline-none h-12;
+}
+
+#__docusaurus div[class*='searchResultItem'] {
+  @apply px-5 py-4 border border-gray-300 shadow my-4 rounded-lg;
+}
+
+#__docusaurus div[class*='tocCollapsible'] .table-of-contents {
+  @apply before:hidden pt-1;
+}
+
+#__docusaurus button[class*='tocCollapsibleButton_'] {
+  @apply text-gray-900 font-semibold text-sm capitalize;
+}
+
+#__docusaurus button[class*='tocCollapsibleButton_']::after {
+  background-size: 1.6rem 1.6rem;
+}
+
+@media (min-width: 997px) {
+  nav.navbar {
+    @apply pl-6;
+  }
+  .navbar__brand {
+    @apply mr-8;
+  }
+  #__docusaurus .theme-doc-sidebar-container {
+    --doc-sidebar-width: 260px;
+  }
+  #__docusaurus div[class*='docItemCol_'] {
+    @apply !max-w-full;
+  }
+  #__docusaurus .theme-doc-toc-mobile {
+    @apply block;
+  }
+  #__docusaurus .table-of-contents {
+    @apply hidden;
+  }
+  .theme-doc-sidebar-container ~ main {
+    @apply ml-[260px];
+  }
+  .container div[class*='docItemContainer_'] {
+    @apply flex flex-col min-h-[calc(100vh-112px)] py-6 pl-[1.5rem] pr-0;
+  }
+  .container div[class*='docItemContainer_'] > article {
+    @apply flex-grow;
+  }
+}
+
+.main-wrapper > div[class*='docPage'] {
+  @apply mx-auto max-w-[1720px];
+}
+
+/* max */
+@media (max-width: 1023px) {
+  .container {
+    @apply !max-w-full;
+  }
+}
+
+@media (min-width: 1200px) {
+  #__docusaurus .theme-doc-toc-mobile {
+    @apply hidden;
+  }
+  #__docusaurus div[class*='docItemCol_'] {
+    @apply !max-w-[75%];
+  }
+  #__docusaurus .table-of-contents {
+    @apply block;
+  }
+}
+
+@media (min-width: 1536px) {
+  #__docusaurus .theme-doc-sidebar-container {
+    --doc-sidebar-width: 300px;
+  }
+  .theme-doc-sidebar-container ~ main {
+    @apply ml-[300px];
+  }
+  .container div[class*='docItemContainer_'] {
+    @apply pl-[2.4rem] pr-[0.875rem];
+  }
+}
+
+.theme-doc-sidebar-container {
+  @apply fixed h-full overflow-y-auto overflow-x-hidden;
+  border-color: var(--ifm-color-gray-300) !important;
+}
+
+.theme-doc-sidebar-container nav.menu {
+  @apply pt-8 pl-6 pr-[1.1rem];
+}
+
+#__docusaurus .navbar__link,
+#__docusaurus .menu__list {
+  @apply text-sm;
+}
+
+#__docusaurus .menu__list {
+  @apply pl-0;
+}
+
+#__docusaurus li > .menu__link {
+  @apply py-2 px-5;
+  color: var(--ifm-color-gray-600);
+}
+
+#__docusaurus li > .menu__link--active {
+  color: var(--ifm-color-gray-900);
+}
+
+#__docusaurus li > .menu__link--active:not(.menu__link--sublist) {
+  background-color: var(--ifm-color-gray-100);
+}
+
+.menu__list-item-collapsible {
+  @apply hover:bg-transparent;
+}
+
+.menu__list-item-collapsible > a {
+  @apply text-sm font-semibold flex-row-reverse justify-end px-0 -mx-1;
+  color: var(--ifm-color-gray-900);
+}
+
+.menu__list-item-collapsible > a::after {
+  background-size: 1.4rem 1.4rem;
+  @apply ml-0 mr-1;
+}
+
+#__docusaurus .menu__list li:last-of-type {
+  @apply pb-6;
+}
+
+.table-of-contents {
+  @apply text-sm;
+}
+
+.table-of-contents li {
+  @apply mx-0 my-1;
+}
+
+#__docusaurus .table-of-contents__left-border {
+  @apply border-l-0 pt-[1.6rem];
+}
+
+#__docusaurus .table-of-contents__link {
+  @apply text-[var(--ifm-color-gray-600)] py-1;
+}
+
+#__docusaurus .table-of-contents__link--active {
+  @apply font-medium text-[var(--ifm-color-gray-900)];
+}
+
+#__docusaurus .theme-doc-breadcrumbs {
+  @apply hidden;
+}
+
+ul.table-of-contents.table-of-contents__left-border::before {
+  @apply block mb-4 font-semibold text-[var(--ifm-color-gray-900)];
+  content: 'On This Page';
+}
+
+/* markdown style */
+.markdown h1:first-child {
+  @apply mb-4;
+}
+
+.markdown {
+  @apply leading-[1.8];
+}
+
+#__docusaurus kbd {
+  @apply bg-transparent;
+}
+
+#__docusaurus code {
+  @apply inline-block m-0.5 py-[0.1rem] px-1.5 text-[13px] bg-[aliceblue];
+}
+
+#__docusaurus pre code {
+  @apply bg-transparent m-0 p-[var(--ifm-pre-padding)] text-sm;
+}
+
+#__docusaurus .alert {
+  @apply bg-transparent shadow-none border-[1.5px] border-b-4
+}
+
+#__docusaurus .codeBlockTitle_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module {
+  @apply font-normal text-[#a7aebe] bg-[#0f172a] border-b-0;
+}
+
+.markdown menu,
+.markdown ul {
+  @apply list-none pl-[calc(var(--ifm-list-left-padding)-0.25rem)];
+}
+
+.markdown>ul li:before {
+  @apply relative -left-[0.75rem];
+  content: "→";
+}
+
+.markdown ol {
+  @apply list-decimal pl-[calc(var(--ifm-list-left-padding)+0.25rem)]
+}
+
+.pagination-nav__link {
+  @apply border-[var(--ifm-color-gray-300)] hover:shadow-[0_0_0_0.6px_currentColor];
+}
+
+.pagination-nav__sublabel {
+  @apply text-xs uppercase tracking-[2px] text-gray-500 mb-1.5;
+}
+
+.pagination-nav__label {
+  @apply text-[15px];
+}
+
+.pagination-nav__link--prev .pagination-nav__label::before {
+  content: '← ';
+}
+
+.pagination-nav__link--next .pagination-nav__label::after {
+  content: ' →';
+}
+
+
+/* props table */
+.markdown table {
+  @apply font-inter border-0 border-spacing-0 text-sm table w-full;
+}
+
+.markdown table thead {
+  @apply bg-transparent;
+}
+
+.markdown table th {
+  @apply bg-[var(--ifm-color-gray-100)] font-bold tracking-widest uppercase text-xs leading-[18px];
+}
+
+.markdown table th:first-child {
+  border-top-left-radius: var(--ifm-global-radius);
+  border-bottom-left-radius: var(--ifm-global-radius);
+}
+
+.markdown table th:last-child {
+  border-top-right-radius: var(--ifm-global-radius);
+  border-bottom-right-radius: var(--ifm-global-radius);
+}
+
+.markdown table th, 
+.markdown table td {
+  @apply border-0 py-3 px-[1.125rem] text-left;
+}
+
+.markdown table td {
+  @apply text-[var(--ifm-color-gray-900)];
+}
+
+.markdown table td:nth-child(4n + 1) {
+  @apply font-semibold;
+}
+
+.markdown table th:nth-child(4n),
+.markdown table td:nth-child(4n) {
+  @apply text-center;
+}
+
+.markdown table tr {
+  @apply border-0 bg-transparent;
+}
+
+.markdown table a {
+  @apply font-medium underline;
+}
+
+.markdown table a:hover {
+  @apply underline-offset-4;
+}
+
+.markdown table code {
+  @apply whitespace-nowrap;
+}
+
+.markdown .buttonGroup_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module button {
+  @apply border-0 py-2;
+}
+
+#__docusaurus .backToTopButton_node_modules-\@docusaurus-theme-classic-lib-theme-BackToTopButton-styles-module {
+  @apply w-10 h-10 bg-[var(--ifm-color-gray-900)];
+}
+
+#__docusaurus .backToTopButton_node_modules-\@docusaurus-theme-classic-lib-theme-BackToTopButton-styles-module::after {
+  filter: invert(100);
+}
+
+.custom-not-found-wrapper {
+  @apply m-auto w-full max-w-lg text-center min-h-screen grid place-content-center;
+}
+
+.custom-not-found-wrapper p {
+  @apply leading-[1.8];
+}
+
+button[class*='toggleButton'].clean-btn:hover {
+  @apply bg-transparent !important;
+}
+
+/* ------------------------------------- */
+/* dark style adjustment */
+/* ------------------------------------- */
+[data-theme='dark'] body::before {
+  content: "";
+  background-image: linear-gradient(192deg, #191515, transparent);
+  @apply block fixed inset-0 -z-[1];
+}
+
+[data-theme='dark'] nav.navbar {
+  @apply bg-black/[0.01];
+}
+
+[data-theme='dark'] nav.navbar .navbar__logo img  {
+  filter: invert(100);
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container img {
+  filter: invert(100);
+}
+
+[data-theme='dark'] .header-github-link:before {
+  filter: invert(100);
+}
+
+[data-theme='dark'] #__docusaurus li > .menu__link--active:not(.menu__link--sublist) {
+  @apply bg-[var(--ifm-color-gray-200)];
+}
+
+[data-theme='dark'] #__docusaurus code {
+  @apply bg-[var(--ifm-color-gray-200)];
+}
+
+[data-theme='dark'] #__docusaurus pre code {
+  @apply bg-transparent;
+}
+
+[data-theme='dark'] .markdown table th {
+  @apply bg-[var(--ifm-color-gray-200)];
+}
+
+[data-theme='dark'] #__docusaurus .codeBlockTitle_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module {
+  @apply bg-[#2e2e31]
+}

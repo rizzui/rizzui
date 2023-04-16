@@ -1,0 +1,184 @@
+import { Loader } from '@redq/rizz';
+import Paper from '@site/src/components/paper';
+
+# Loader
+
+A loader for displaying loading state of a page or a section.
+
+```jsx
+import { Loader } from '@redq/rizz';
+```
+
+<div className="mb-28" />
+
+## Default
+
+The default style of the **Loader**
+
+<Paper>
+	<Loader />
+</Paper>
+
+```jsx
+import { Loader } from '@redq/rizz';
+
+export default function App() {
+	return <Loader />;
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the size of the **Loader** with property [**size**](#loader-sizes)
+
+<Paper>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<Loader size="sm" />
+		<Loader />
+		<Loader size="lg" />
+		<Loader size="xl" />
+	</div>
+</Paper>
+
+```jsx
+import { Loader } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Loader size="sm" />
+			<Loader />
+			<Loader size="lg" />
+			<Loader size="xl" />
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can change the color of the **Loader** with property [**color**](#loader-colors)
+
+<Paper>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<Loader />
+		<Loader color="primary" />
+		<Loader color="secondary" />
+		<Loader color="info" />
+		<Loader color="warning" />
+		<Loader color="danger" />
+		<Loader color="success" />
+	</div>
+</Paper>
+
+```jsx
+import { Loader } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Loader />
+			<Loader color="primary" />
+			<Loader color="secondary" />
+			<Loader color="info" />
+			<Loader color="warning" />
+			<Loader color="danger" />
+			<Loader color="success" />
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Animation
+
+You can change the animation of the **Loader** with property [**animation**](#loader-animations)
+
+<Paper>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<Loader size="sm" animation="scaleUp" />
+		<Loader animation="scaleUp" />
+		<Loader size="lg" animation="scaleUp" />
+		<Loader size="xl" animation="scaleUp" />
+	</div>
+</Paper>
+
+```jsx
+import { Loader } from '@redq/rizz';
+
+export default function App() {
+	return (
+		<>
+			<Loader size="sm" animation="scaleUp" />
+			<Loader animation="scaleUp" />
+			<Loader size="lg" animation="scaleUp" />
+			<Loader size="xl" animation="scaleUp" />
+		</>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### Loader Props
+
+Here is the API documentation of the Loader component.
+
+|   Props   |                 Type                  |            Description             |   Default   |
+| :-------: | :-----------------------------------: | :--------------------------------: | :---------: |
+|    tag    |      [LoaderTags](#loader-tags)       |         HTML tag supports          |   `"div"`   |
+|   size    |     [LoaderSizes](#loader-sizes)      |          Set loader size           | `"DEFAULT"` |
+|   color   |    [LoaderColors](#loader-colors)     |        Change Loader color         | `"DEFAULT"` |
+| animation | [LoaderAnimations](#loader-animation) |       Animation variants are       |  `"blink"`  |
+| className |               `string`                | Add custom classes for extra style |    \_ \_    |
+
+<div className="mb-10" />
+
+### Loader Tags
+
+```ts
+type LoaderTags = 'div' | 'span';
+```
+
+<div className="mb-10" />
+
+### Loader Sizes
+
+```ts
+type LoaderSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+```
+
+<div className="mb-10" />
+
+### Loader Colors
+
+```ts
+type LoaderColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning'
+	| 'current';
+```
+
+<div className="mb-10" />
+
+### Loader Animations
+
+```ts
+type LoaderAnimations = 'blink' | 'scaleUp';
+```
