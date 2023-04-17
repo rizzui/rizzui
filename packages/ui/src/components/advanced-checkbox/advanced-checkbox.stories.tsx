@@ -6,6 +6,9 @@ import AdvancedCheckbox from './advanced-checkbox';
 export default {
   title: 'Components/AdvancedCheckbox',
   component: AdvancedCheckbox,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof AdvancedCheckbox>;
 
 export const NumbersInDefaultColor = () => (

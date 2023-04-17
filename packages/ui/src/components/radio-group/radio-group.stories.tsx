@@ -9,6 +9,9 @@ import AdvancedRadio from '../advanced-radio';
 export default {
   title: 'Components/RadioGroup',
   component: RadioGroup,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof RadioGroup>;
 
 export const WithRadio = () => {

@@ -5,6 +5,9 @@ import Pagination from '.';
 export default {
   title: 'Components/Pagination',
   component: Pagination,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Pagination>;
 
 const Template: ComponentStory<typeof Pagination> = (args) => (

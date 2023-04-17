@@ -10,13 +10,13 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  viewMode: 'docs',
   options: {
     storySort: {
       order: [
-        // 'Getting Started',
-        // ['Introduction', 'Colors'],
         'Components',
         [
+          'Alert',
           'Avatar',
           'Button',
           'ActionIcon',
@@ -39,7 +39,6 @@ export const parameters = {
           'RangeSlider',
           'Switch',
           'FileInput',
-          'Alert',
           'Announcement',
           'Badge',
           'Tag',

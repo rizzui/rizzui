@@ -1,17 +1,17 @@
 import React from 'react';
 import { useHistory } from '@docusaurus/router';
-import { Button, Text, Announcement, cn } from '@redq/rizz';
+import { Button, Text, Announcement, cn } from '@redq/rizzui';
 import { CopyButton } from '../copy-button';
 
 function AnnouncementText() {
 	return (
 		<Announcement
 			badgeText="Beta"
-			highlightedText="v0.5.0 -"
-			endIcon={<CopyButton value="npm install @redq/rizz" />}
+			// highlightedText="v0.5.0 -"
+			endIcon={<CopyButton value="npm install @redq/rizzui" />}
 			className="mx-auto mb-7 text-[15px] pr-4 pl-2"
 		>
-			npm install @redq/rizz
+			npm install @redq/rizzui
 		</Announcement>
 	);
 }
@@ -51,13 +51,13 @@ export default function HeroBlock() {
 					<div className="flex items-center justify-center gap-4">
 						<Button
 							size="xl"
-							onClick={() => history.push('/docs/getting-started/installation')}
+							onClick={() => history.push('/docs/guide/getting-started')}
 						>
 							Get Started
 						</Button>
 						<a
 							target="_blank"
-							href="https://github.com/RedQ/redqui"
+							href="https://github.com/RedQ/rizz"
 							className="inline-flex items-center hover:no-underline"
 							rel="noreferrer noopener"
 						>

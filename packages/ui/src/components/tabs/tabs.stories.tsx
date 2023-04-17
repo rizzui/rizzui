@@ -13,6 +13,9 @@ export default {
     TabPanels,
     TabPanel,
   },
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Tabs>;
 
 export const WithUnderline = () => (

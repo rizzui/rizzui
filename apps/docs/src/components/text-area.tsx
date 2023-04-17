@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Textarea } from '@redq/rizz';
+import { Textarea } from '@redq/rizzui';
 
 export default function TextareaCharacterCount() {
 	const [state, setState] = useState('Do not lose hope, nor be sad.');

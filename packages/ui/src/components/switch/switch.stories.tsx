@@ -5,6 +5,9 @@ import Switch from './switch';
 export default {
   title: 'Components/Switch',
   component: Switch,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Switch>;
 
 const Template: ComponentStory<typeof Switch> = (args) => <Switch {...args} />;

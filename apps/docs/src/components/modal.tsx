@@ -7,7 +7,7 @@ import {
 	Input,
 	Password,
 	Checkbox,
-} from '@redq/rizz';
+} from '@redq/rizzui';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export default function ModalDefault() {

@@ -8,6 +8,9 @@ import Avatar from '../avatar';
 export default {
   title: 'Components/Popconfirm',
   component: Popconfirm,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Popconfirm>;
 
 export const Default = () => (

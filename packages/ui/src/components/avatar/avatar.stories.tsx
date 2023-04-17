@@ -9,6 +9,9 @@ import { PlusIcon } from '../../icons/plus';
 export default {
   title: 'Components/Avatar',
   component: Avatar,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Avatar>;
 
 const Template: ComponentStory<typeof Avatar> = (args) => (

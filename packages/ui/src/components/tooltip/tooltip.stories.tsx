@@ -7,6 +7,9 @@ import Button from '../button';
 export default {
   title: 'Components/Tooltip',
   component: Tooltip,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Tooltip>;
 
 const Template: ComponentStory<typeof Tooltip> = (args) => (

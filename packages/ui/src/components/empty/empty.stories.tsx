@@ -5,6 +5,9 @@ import { EmptyProductBoxIcon, SearchNotFoundIcon } from './empty-icons';
 export default {
   title: 'Components/Empty',
   component: Empty,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Empty>;
 
 const Template: ComponentStory<typeof Empty> = (args) => <Empty {...args} />;

@@ -1,5 +1,5 @@
 import React, { useState, PropsWithChildren } from 'react';
-import { Button, cn } from '@redq/rizz';
+import { Button, cn } from '@redq/rizzui';
 
 export default function Paper({
 	className,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '@redq/rizz';
+import { Text } from '@redq/rizzui';
 import {
 	SwatchIcon,
 	RocketLaunchIcon,

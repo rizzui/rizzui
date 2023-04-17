@@ -8,6 +8,9 @@ import Avatar from '../avatar';
 export default {
   title: 'Components/AdvancedSelect',
   component: AdvancedSelect,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof AdvancedSelect>;
 
 const data = [
