@@ -2,24 +2,21 @@
 sidebar_position: 7
 ---
 
-import { Input } from '@redq/rizz';
-import Paper from '@site/src/components/paper';
-import InputCounter, {
-	InputCharacterCounter,
-	InputClearable,
-} from '@site/src/components/input';
+import { Input } from "@redq/rizz";
+import Paper from "@site/src/components/paper";
+import InputCounter, { InputCharacterCounter, InputClearable } from "@site/src/components/input";
 import {
-	MagnifyingGlassIcon,
-	ArrowRightIcon,
-	CurrencyDollarIcon,
-} from '@heroicons/react/24/outline';
+  MagnifyingGlassIcon,
+  ArrowRightIcon,
+  CurrencyDollarIcon,
+} from "@heroicons/react/24/outline";
 
 # Input
 
 A basic widget for getting the user input.
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 ```
 
 <div className="mb-28" />
@@ -29,40 +26,118 @@ import { Input } from '@redq/rizz';
 You can change the type of **Input** with property [**type**](#input-type).
 
 <Paper className="block">
-	<div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
-		<Input type="number" label="Number" placeholder="1234567890" />
-		<Input type="text" label="Name" placeholder="Enter your Name" />
-		<Input type="email" label="Email" placeholder="Your email" />
-		<Input type="time" label="Time" />
-		<Input type="date" label="Date" />
-		<Input type="datetime-local" label="Datetime Local" />
-		<Input type="month" label="Month" />
-		<Input type="search" label="Search" placeholder="Search" />
-		<Input type="tel" label="Tel" placeholder="Telephone" />
-		<Input type="url" label="Url" placeholder="Url" />
-		<Input type="week" label="Week" />
-	</div>
+  <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
+    <Input
+      type="number"
+      label="Number"
+      placeholder="1234567890"
+    />
+    <Input
+      type="text"
+      label="Name"
+      placeholder="Enter your Name"
+    />
+    <Input
+      type="email"
+      label="Email"
+      placeholder="Your email"
+    />
+    <Input
+      type="time"
+      label="Time"
+    />
+    <Input
+      type="date"
+      label="Date"
+    />
+    <Input
+      type="datetime-local"
+      label="Datetime Local"
+    />
+    <Input
+      type="month"
+      label="Month"
+    />
+    <Input
+      type="search"
+      label="Search"
+      placeholder="Search"
+    />
+    <Input
+      type="tel"
+      label="Tel"
+      placeholder="Telephone"
+    />
+    <Input
+      type="url"
+      label="Url"
+      placeholder="Url"
+    />
+    <Input
+      type="week"
+      label="Week"
+    />
+  </div>
 </Paper>
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	return (
-		<>
-			<Input type="number" label="Number" placeholder="1234567890" />
-			<Input type="text" label="Name" placeholder="Enter your Name" />
-			<Input type="email" label="Email" placeholder="Your email" />
-			<Input type="time" label="Time" />
-			<Input type="date" label="Date" />
-			<Input type="datetime-local" label="Datetime Local" />
-			<Input type="month" label="Month" />
-			<Input type="search" label="Search" placeholder="Search" />
-			<Input type="tel" label="Tel" placeholder="Telephone" />
-			<Input type="url" label="Url" placeholder="Url" />
-			<Input type="week" label="Week" />
-		</>
-	);
+  return (
+    <>
+      <Input
+        type="number"
+        label="Number"
+        placeholder="1234567890"
+      />
+      <Input
+        type="text"
+        label="Name"
+        placeholder="Enter your Name"
+      />
+      <Input
+        type="email"
+        label="Email"
+        placeholder="Your email"
+      />
+      <Input
+        type="time"
+        label="Time"
+      />
+      <Input
+        type="date"
+        label="Date"
+      />
+      <Input
+        type="datetime-local"
+        label="Datetime Local"
+      />
+      <Input
+        type="month"
+        label="Month"
+      />
+      <Input
+        type="search"
+        label="Search"
+        placeholder="Search"
+      />
+      <Input
+        type="tel"
+        label="Tel"
+        placeholder="Telephone"
+      />
+      <Input
+        type="url"
+        label="Url"
+        placeholder="Url"
+      />
+      <Input
+        type="week"
+        label="Week"
+      />
+    </>
+  );
 }
 ```
 
@@ -73,24 +148,56 @@ export default function App() {
 You can change the style of **Input** with property [**variant**](#input-variant).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
-	<Input label="Name" placeholder="Enter your name" variant="active" />
-	<Input label="Name" placeholder="Enter your name" variant="flat" />
-	<Input label="Name" placeholder="Enter your name" variant="outline" />
-	<Input label="Name" placeholder="Enter your name" variant="text" />
+  <Input
+    label="Name"
+    placeholder="Enter your name"
+    variant="active"
+  />
+  <Input
+    label="Name"
+    placeholder="Enter your name"
+    variant="flat"
+  />
+  <Input
+    label="Name"
+    placeholder="Enter your name"
+    variant="outline"
+  />
+  <Input
+    label="Name"
+    placeholder="Enter your name"
+    variant="text"
+  />
 </Paper>
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	return (
-		<>
-			<Input label="Name" placeholder="Enter your name" variant="active" />
-			<Input label="Name" placeholder="Enter your name" variant="flat" />
-			<Input label="Name" placeholder="Enter your name" variant="outline" />
-			<Input label="Name" placeholder="Enter your name" variant="text" />
-		</>
-	);
+  return (
+    <>
+      <Input
+        label="Name"
+        placeholder="Enter your name"
+        variant="active"
+      />
+      <Input
+        label="Name"
+        placeholder="Enter your name"
+        variant="flat"
+      />
+      <Input
+        label="Name"
+        placeholder="Enter your name"
+        variant="outline"
+      />
+      <Input
+        label="Name"
+        placeholder="Enter your name"
+        variant="text"
+      />
+    </>
+  );
 }
 ```
 
@@ -101,24 +208,54 @@ export default function App() {
 You can change the style of **Input** with property [**size**](#input-size).
 
 <Paper className="gap-4 justify-start items-start text-gray-1000">
-	<Input label="Email" placeholder="Your mail" size="sm" />
-	<Input label="Email" placeholder="Your mail" />
-	<Input label="Email" placeholder="Your mail" size="lg" />
-	<Input label="Email" placeholder="Your mail" size="xl" />
+  <Input
+    label="Email"
+    placeholder="Your mail"
+    size="sm"
+  />
+  <Input
+    label="Email"
+    placeholder="Your mail"
+  />
+  <Input
+    label="Email"
+    placeholder="Your mail"
+    size="lg"
+  />
+  <Input
+    label="Email"
+    placeholder="Your mail"
+    size="xl"
+  />
 </Paper>
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	return (
-		<>
-			<Input label="Email" placeholder="Your mail" size="sm" />
-			<Input label="Email" placeholder="Your mail" />
-			<Input label="Email" placeholder="Your mail" size="lg" />
-			<Input label="Email" placeholder="Your mail" size="xl" />
-		</>
-	);
+  return (
+    <>
+      <Input
+        label="Email"
+        placeholder="Your mail"
+        size="sm"
+      />
+      <Input
+        label="Email"
+        placeholder="Your mail"
+      />
+      <Input
+        label="Email"
+        placeholder="Your mail"
+        size="lg"
+      />
+      <Input
+        label="Email"
+        placeholder="Your mail"
+        size="xl"
+      />
+    </>
+  );
 }
 ```
 
@@ -129,74 +266,74 @@ export default function App() {
 You can change the style of **Input** with property [**rounded**](#input-rounded).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
-	<Input
-		label="Rounded Small"
-		placeholder="Enter your name"
-		variant="active"
-		rounded="sm"
-	/>
-	<Input
-		label="Rounded Default"
-		placeholder="Enter your name"
-		variant="active"
-	/>
-	<Input
-		label="Rounded Large"
-		placeholder="Enter your name"
-		variant="active"
-		rounded="lg"
-	/>
-	<Input
-		label="Rounded None"
-		placeholder="Enter your name"
-		variant="active"
-		rounded="none"
-	/>
-	<Input
-		label="Rounded pill"
-		placeholder="Enter your name"
-		variant="active"
-		rounded="pill"
-	/>
+  <Input
+    label="Rounded Small"
+    placeholder="Enter your name"
+    variant="active"
+    rounded="sm"
+  />
+  <Input
+    label="Rounded Default"
+    placeholder="Enter your name"
+    variant="active"
+  />
+  <Input
+    label="Rounded Large"
+    placeholder="Enter your name"
+    variant="active"
+    rounded="lg"
+  />
+  <Input
+    label="Rounded None"
+    placeholder="Enter your name"
+    variant="active"
+    rounded="none"
+  />
+  <Input
+    label="Rounded pill"
+    placeholder="Enter your name"
+    variant="active"
+    rounded="pill"
+  />
 </Paper>
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	return (
-		<>
-			<Input
-				label="Rounded Small"
-				placeholder="Enter your name"
-				variant="active"
-				rounded="sm"
-			/>
-			<Input
-				label="Rounded Default"
-				placeholder="Enter your name"
-				variant="active"
-			/>
-			<Input
-				label="Rounded Large"
-				placeholder="Enter your name"
-				variant="active"
-				rounded="lg"
-			/>
-			<Input
-				label="Rounded None"
-				placeholder="Enter your name"
-				variant="active"
-				rounded="none"
-			/>
-			<Input
-				label="Rounded pill"
-				placeholder="Enter your name"
-				variant="active"
-				rounded="pill"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Input
+        label="Rounded Small"
+        placeholder="Enter your name"
+        variant="active"
+        rounded="sm"
+      />
+      <Input
+        label="Rounded Default"
+        placeholder="Enter your name"
+        variant="active"
+      />
+      <Input
+        label="Rounded Large"
+        placeholder="Enter your name"
+        variant="active"
+        rounded="lg"
+      />
+      <Input
+        label="Rounded None"
+        placeholder="Enter your name"
+        variant="active"
+        rounded="none"
+      />
+      <Input
+        label="Rounded pill"
+        placeholder="Enter your name"
+        variant="active"
+        rounded="pill"
+      />
+    </>
+  );
 }
 ```
 
@@ -207,90 +344,98 @@ export default function App() {
 You can change the style of **Input** with property [**color**](#input-color).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
-	<Input label="Default" placeholder="Enter your name" variant="flat" />
-	<Input
-		label="Primary"
-		placeholder="Enter your name"
-		variant="flat"
-		color="primary"
-	/>
-	<Input
-		label="Secondary"
-		placeholder="Enter your name"
-		variant="flat"
-		color="secondary"
-	/>
-	<Input
-		label="Danger"
-		placeholder="Enter your name"
-		variant="flat"
-		color="danger"
-	/>
-	<Input
-		label="Info"
-		placeholder="Enter your name"
-		variant="flat"
-		color="info"
-	/>
-	<Input
-		label="Success"
-		placeholder="Enter your name"
-		variant="flat"
-		color="success"
-	/>
-	<Input
-		label="Warning"
-		placeholder="Enter your name"
-		variant="flat"
-		color="warning"
-	/>
+  <Input
+    label="Default"
+    placeholder="Enter your name"
+    variant="flat"
+  />
+  <Input
+    label="Primary"
+    placeholder="Enter your name"
+    variant="flat"
+    color="primary"
+  />
+  <Input
+    label="Secondary"
+    placeholder="Enter your name"
+    variant="flat"
+    color="secondary"
+  />
+  <Input
+    label="Danger"
+    placeholder="Enter your name"
+    variant="flat"
+    color="danger"
+  />
+  <Input
+    label="Info"
+    placeholder="Enter your name"
+    variant="flat"
+    color="info"
+  />
+  <Input
+    label="Success"
+    placeholder="Enter your name"
+    variant="flat"
+    color="success"
+  />
+  <Input
+    label="Warning"
+    placeholder="Enter your name"
+    variant="flat"
+    color="warning"
+  />
 </Paper>
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	return (
-		<>
-			<Input label="Default" placeholder="Enter your name" variant="flat" />
-			<Input
-				label="Primary"
-				placeholder="Enter your name"
-				variant="flat"
-				color="primary"
-			/>
-			<Input
-				label="Secondary"
-				placeholder="Enter your name"
-				variant="flat"
-				color="secondary"
-			/>
-			<Input
-				label="Danger"
-				placeholder="Enter your name"
-				variant="flat"
-				color="danger"
-			/>
-			<Input
-				label="Info"
-				placeholder="Enter your name"
-				variant="flat"
-				color="info"
-			/>
-			<Input
-				label="Success"
-				placeholder="Enter your name"
-				variant="flat"
-				color="success"
-			/>
-			<Input
-				label="Warning"
-				placeholder="Enter your name"
-				variant="flat"
-				color="warning"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Input
+        label="Default"
+        placeholder="Enter your name"
+        variant="flat"
+      />
+      <Input
+        label="Primary"
+        placeholder="Enter your name"
+        variant="flat"
+        color="primary"
+      />
+      <Input
+        label="Secondary"
+        placeholder="Enter your name"
+        variant="flat"
+        color="secondary"
+      />
+      <Input
+        label="Danger"
+        placeholder="Enter your name"
+        variant="flat"
+        color="danger"
+      />
+      <Input
+        label="Info"
+        placeholder="Enter your name"
+        variant="flat"
+        color="info"
+      />
+      <Input
+        label="Success"
+        placeholder="Enter your name"
+        variant="flat"
+        color="success"
+      />
+      <Input
+        label="Warning"
+        placeholder="Enter your name"
+        variant="flat"
+        color="warning"
+      />
+    </>
+  );
 }
 ```
 
@@ -301,44 +446,54 @@ export default function App() {
 You can add fixed text or icons for some fields to **Input** with property **prefix**, **suffix**.
 
 <Paper className="grid grid-cols-1 gap-4 text-gray-1000">
-	<Input label="Url" prefix="https://" suffix=".com" placeholder="mysite" />
-	<Input
-		type="number"
-		label="Price"
-		prefix={<CurrencyDollarIcon className="w-5" />}
-		suffix=".00"
-		placeholder="Enter your price"
-	/>
-	<Input
-		label="Search"
-		prefix={<MagnifyingGlassIcon className="w-4" />}
-		suffix={<ArrowRightIcon className="w-4" />}
-		placeholder="Icons as prefix and suffix"
-	/>
+  <Input
+    label="Url"
+    prefix="https://"
+    suffix=".com"
+    placeholder="mysite"
+  />
+  <Input
+    type="number"
+    label="Price"
+    prefix={<CurrencyDollarIcon className="w-5" />}
+    suffix=".00"
+    placeholder="Enter your price"
+  />
+  <Input
+    label="Search"
+    prefix={<MagnifyingGlassIcon className="w-4" />}
+    suffix={<ArrowRightIcon className="w-4" />}
+    placeholder="Icons as prefix and suffix"
+  />
 </Paper>
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	return (
-		<>
-			<Input label="Url" prefix="https://" suffix=".com" placeholder="mysite" />
-			<Input
-				type="number"
-				label="Price"
-				prefix={<CurrencyDollarIcon className="w-5" />}
-				suffix=".00"
-				placeholder="Enter your price"
-			/>
-			<Input
-				label="Search"
-				prefix={<MagnifyingGlassIcon className="w-4" />}
-				suffix={<ArrowRightIcon className="w-4" />}
-				placeholder="Icons as prefix and suffix"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Input
+        label="Url"
+        prefix="https://"
+        suffix=".com"
+        placeholder="mysite"
+      />
+      <Input
+        type="number"
+        label="Price"
+        prefix={<CurrencyDollarIcon className="w-5" />}
+        suffix=".00"
+        placeholder="Enter your price"
+      />
+      <Input
+        label="Search"
+        prefix={<MagnifyingGlassIcon className="w-4" />}
+        suffix={<ArrowRightIcon className="w-4" />}
+        placeholder="Icons as prefix and suffix"
+      />
+    </>
+  );
 }
 ```
 
@@ -349,30 +504,28 @@ export default function App() {
 You can create disable **Input** with property **disabled**.
 
 <Paper className="block text-gray-1000">
-	<Input
-		type="text"
-		label="Name"
-		variant="active"
-		placeholder="Enter your name"
-		disabled
-	/>
+  <Input
+    type="text"
+    label="Name"
+    variant="active"
+    placeholder="Enter your name"
+    disabled
+  />
 </Paper>
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	return (
-		<>
-			<Input
-				type="text"
-				label="Name"
-				variant="active"
-				placeholder="Enter your name"
-				disabled
-			/>
-		</>
-	);
+  return (
+    <Input
+      type="text"
+      label="Name"
+      variant="active"
+      placeholder="Enter your name"
+      disabled
+    />
+  );
 }
 ```
 
@@ -383,32 +536,30 @@ export default function App() {
 You can create ReadOnly **Input** with property **readOnly**.
 
 <Paper className="block text-gray-1000">
-	<Input
-		type="text"
-		label="Name"
-		variant="active"
-		color="info"
-		placeholder="Enter your name"
-		readOnly
-	/>
+  <Input
+    type="text"
+    label="Name"
+    variant="active"
+    color="info"
+    placeholder="Enter your name"
+    readOnly
+  />
 </Paper>
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	return (
-		<>
-			<Input
-				type="text"
-				label="Name"
-				variant="active"
-				color="info"
-				placeholder="Enter your name"
-				readOnly
-			/>
-		</>
-	);
+  return (
+    <Input
+      type="text"
+      label="Name"
+      variant="active"
+      color="info"
+      placeholder="Enter your name"
+      readOnly
+    />
+  );
 }
 ```
 
@@ -419,65 +570,32 @@ export default function App() {
 You can create clearable **Input** with property **clearable**.
 
 <Paper className="block text-gray-1000">
-	<InputClearable label="Name" variant="active" />
+  <InputClearable
+    label="Name"
+    variant="active"
+  />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { Input } from '@redq/rizz';
+import { useState } from "react";
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	const [state, setState] = useState('This is Jhon.');
+  const [state, setState] = useState("This is Jhon.");
 
-	return (
-		<>
-			<Input
-				type="text"
-				label="Name"
-				variant="active"
-				value={state}
-				placeholder="clearable ..."
-				onChange={(e) => setState(e.target.value)}
-				onClear={() => setState('')}
-				color="primary"
-				clearable
-			/>
-		</>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## With Error
-
-You can show error message to **Input** with property **error**.
-
-<Paper className="block text-gray-1000">
-	<Input
-		type="text"
-		label="Name"
-		variant="active"
-		placeholder="Your Name"
-		error="This error message."
-	/>
-</Paper>
-
-```tsx
-import { Input } from '@redq/rizz';
-
-export default function App() {
-	return (
-		<>
-			<Input
-				type="text"
-				label="Name"
-				variant="active"
-				placeholder="Your Name"
-				error="This error message."
-			/>
-		</>
-	);
+  return (
+    <Input
+      type="text"
+      label="Name"
+      variant="active"
+      value={state}
+      placeholder="clearable ..."
+      onChange={(e) => setState(e.target.value)}
+      onClear={() => setState("")}
+      color="primary"
+      clearable
+    />
+  );
 }
 ```
 
@@ -488,32 +606,62 @@ export default function App() {
 You can show field helper message to **Input** with property **helperText**.
 
 <Paper className="block text-gray-1000">
-	<Input
-		type="text"
-		label="Email"
-		variant="active"
-		color="primary"
-		placeholder="Your email"
-		helperText="This is helper text."
-	/>
+  <Input
+    type="text"
+    label="Email"
+    variant="active"
+    color="primary"
+    placeholder="Your email"
+    helperText="This is helper text."
+  />
 </Paper>
 
 ```tsx
-import { Input } from '@redq/rizz';
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	return (
-		<>
-			<Input
-				type="text"
-				label="Email"
-				variant="active"
-				color="primary"
-				placeholder="Your email"
-				helperText="This is helper text."
-			/>
-		</>
-	);
+  return (
+    <Input
+      type="text"
+      label="Email"
+      variant="active"
+      color="primary"
+      placeholder="Your email"
+      helperText="This is helper text."
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Error
+
+You can show error message to **Input** with property **error**.
+
+<Paper className="block text-gray-1000">
+  <Input
+    type="text"
+    label="Name"
+    variant="active"
+    placeholder="Your Name"
+    error="This error message."
+  />
+</Paper>
+
+```tsx
+import { Input } from "@redq/rizz";
+
+export default function App() {
+  return (
+    <Input
+      type="text"
+      label="Name"
+      variant="active"
+      placeholder="Your Name"
+      error="This error message."
+    />
+  );
 }
 ```
 
@@ -524,46 +672,44 @@ export default function App() {
 You can create quantity counter with **Input**.
 
 <Paper className="block text-gray-1000">
-	<InputCounter />
+  <InputCounter />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { Input } from '@redq/rizz';
+import { useState } from "react";
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	const [state, setState] = useState(0);
+  const [state, setState] = useState(0);
 
-	return (
-		<>
-			<Input
-				label="Quantity Counter"
-				type="number"
-				min={0}
-				step={1}
-				value={state}
-				onChange={(e) => setState(Number(e.target.value))}
-				suffix={
-					<div className="-mr-3.5 grid gap-[2px] p-0.5 rtl:-ml-3.5 rtl:-mr-0">
-						<button
-							type="button"
-							className="rounded-[3px] bg-gray-100 py-0.5 px-1.5 hover:bg-gray-200 focus:bg-gray-200"
-							onClick={() => setState((prevState) => prevState + 1)}
-						>
-							<ChevronUpIcon className="h-3 w-3" />
-						</button>
-						<button
-							type="button"
-							className="rounded-[3px]  bg-gray-100 py-0.5 px-1.5 hover:bg-gray-200 focus:bg-gray-200"
-							onClick={() => setState((prevState) => prevState - 1)}
-						>
-							<ChevronDownIcon className="h-3 w-3" />
-						</button>
-					</div>
-				}
-			/>
-		</>
-	);
+  return (
+    <Input
+      label="Quantity Counter"
+      type="number"
+      min={0}
+      step={1}
+      value={state}
+      onChange={(e) => setState(Number(e.target.value))}
+      suffix={
+        <div className="-mr-3.5 grid gap-[2px] p-0.5 rtl:-ml-3.5 rtl:-mr-0">
+          <button
+            type="button"
+            className="rounded-[3px] bg-gray-100 py-0.5 px-1.5 hover:bg-gray-200 focus:bg-gray-200"
+            onClick={() => setState((prevState) => prevState + 1)}
+          >
+            <ChevronUpIcon className="h-3 w-3" />
+          </button>
+          <button
+            type="button"
+            className="rounded-[3px]  bg-gray-100 py-0.5 px-1.5 hover:bg-gray-200 focus:bg-gray-200"
+            onClick={() => setState((prevState) => prevState - 1)}
+          >
+            <ChevronDownIcon className="h-3 w-3" />
+          </button>
+        </div>
+      }
+    />
+  );
 }
 ```
 
@@ -574,28 +720,28 @@ export default function App() {
 You can create character counter with **Input**.
 
 <Paper className="block text-gray-1000">
-	<InputCharacterCounter />
+  <InputCharacterCounter />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { Input } from '@redq/rizz';
+import { useState } from "react";
+import { Input } from "@redq/rizz";
 
 export default function App() {
-	const MAXLENGTH = 24;
-	const [state, setState] = React.useState('Chat GPT is awesome!');
+  const MAXLENGTH = 24;
+  const [state, setState] = React.useState("Chat GPT is awesome!");
 
-	return (
-		<Input
-			label="Character Counter"
-			type="text"
-			value={state}
-			maxLength={MAXLENGTH}
-			onChange={(e) => setState(() => e.target.value)}
-			suffix={state.length + `/${MAXLENGTH}`}
-			suffixClassName="opacity-70"
-		/>
-	);
+  return (
+    <Input
+      label="Character Counter"
+      type="text"
+      value={state}
+      maxLength={MAXLENGTH}
+      onChange={(e) => setState(() => e.target.value)}
+      suffix={state.length + `/${MAXLENGTH}`}
+      suffixClassName="opacity-70"
+    />
+  );
 }
 ```
 
@@ -642,17 +788,17 @@ Here is the API documentation of the Input component. And the rest of the props 
 
 ```ts
 type InputType =
-	| 'text'
-	| 'number'
-	| 'email'
-	| 'time'
-	| 'date'
-	| 'datetime-local'
-	| 'month'
-	| 'search'
-	| 'tel'
-	| 'url'
-	| 'week';
+  | "text"
+  | "number"
+  | "email"
+  | "time"
+  | "date"
+  | "datetime-local"
+  | "month"
+  | "search"
+  | "tel"
+  | "url"
+  | "week";
 ```
 
 <div className="mb-10" />
@@ -660,7 +806,7 @@ type InputType =
 ### Input Variant
 
 ```ts
-type InputVariant = 'flat' | 'outline' | 'text' | 'active';
+type InputVariant = "flat" | "outline" | "text" | "active";
 ```
 
 <div className="mb-10" />
@@ -668,7 +814,7 @@ type InputVariant = 'flat' | 'outline' | 'text' | 'active';
 ### Input Size
 
 ```ts
-type InputSize = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+type InputSize = "sm" | "DEFAULT" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -676,7 +822,7 @@ type InputSize = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 ### Input Rounded
 
 ```ts
-type InputRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
+type InputRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -684,14 +830,7 @@ type InputRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
 ### Input Color
 
 ```ts
-type InputColor =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+type InputColor = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
 ```
 
 <div className="mb-10" />
