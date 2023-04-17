@@ -40,7 +40,7 @@ const classes = {
   },
   variant: {
     flat: {
-      base: 'border',
+      base: 'border text-gray-900',
       color: {
         danger: 'bg-red-lighter/70 border-red-dark',
         info: 'bg-blue-lighter/70 border-blue-dark',

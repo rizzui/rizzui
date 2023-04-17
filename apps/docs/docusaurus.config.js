@@ -202,7 +202,7 @@ const config = {
 						label: 'Guide',
 					},
 					{
-						to: 'docs/components/avatar',
+						to: 'docs/components/alert',
 						position: 'left',
 						label: 'Components',
 					},
