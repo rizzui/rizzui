@@ -6,6 +6,9 @@ import PinCode from '.';
 export default {
   title: 'Components/PinCode',
   component: PinCode,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof PinCode>;
 
 const Template: ComponentStory<typeof PinCode> = (args) => {

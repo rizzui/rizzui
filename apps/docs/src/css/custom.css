@@ -754,7 +754,7 @@ svg[class*='lightToggleIcon'] {
 }
 
 .theme-doc-sidebar-container nav.menu {
-  @apply pt-8 pl-6 pr-[1.1rem];
+  @apply pt-6 pl-6 pr-[1.1rem];
 }
 
 #__docusaurus .navbar__link,
@@ -851,7 +851,7 @@ ul.table-of-contents.table-of-contents__left-border::before {
   @apply bg-transparent shadow-none border-[1.5px] border-b-4
 }
 
-#__docusaurus .codeBlockTitle_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module {
+#__docusaurus div[class*=codeBlockTitle_] {
   @apply font-normal text-[#a7aebe] bg-[#0f172a] border-b-0;
 }
 
@@ -947,17 +947,17 @@ ul.table-of-contents.table-of-contents__left-border::before {
   @apply whitespace-nowrap;
 }
 
-.markdown .buttonGroup_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module button {
+.markdown [class*="buttonGroup"] button {
   @apply border-0 py-2;
 }
 
-#__docusaurus .backToTopButton_node_modules-\@docusaurus-theme-classic-lib-theme-BackToTopButton-styles-module {
-  @apply w-10 h-10 bg-[var(--ifm-color-gray-900)];
+#__docusaurus [class*="backToTopButton"] {
+  @apply w-10 h-10 bg-[var(--ifm-color-gray-300)];
 }
 
-#__docusaurus .backToTopButton_node_modules-\@docusaurus-theme-classic-lib-theme-BackToTopButton-styles-module::after {
+/* #__docusaurus [class*="backToTopButton"]::after {
   filter: invert(100);
-}
+} */
 
 .custom-not-found-wrapper {
   @apply m-auto w-full max-w-lg text-center min-h-screen grid place-content-center;
@@ -1012,6 +1012,6 @@ button[class*='toggleButton'].clean-btn:hover {
   @apply bg-[var(--ifm-color-gray-200)];
 }
 
-[data-theme='dark'] #__docusaurus .codeBlockTitle_node_modules-\@docusaurus-theme-classic-lib-theme-CodeBlock-Content-styles-module {
+[data-theme='dark'] #__docusaurus div[class*="codeBlockTitle"] {
   @apply bg-[#2e2e31]
 }

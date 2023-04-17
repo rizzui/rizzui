@@ -9,6 +9,9 @@ import AdvancedCheckbox from '../advanced-checkbox';
 export default {
   title: 'Components/CheckboxGroup',
   component: CheckboxGroup,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof CheckboxGroup>;
 
 export const WithCheckbox = () => {

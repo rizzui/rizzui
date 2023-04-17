@@ -6,6 +6,9 @@ import Announcement from './announcement';
 export default {
   title: 'Components/Announcement',
   component: Announcement,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Announcement>;
 
 const Template: ComponentStory<typeof Announcement> = (args) => (

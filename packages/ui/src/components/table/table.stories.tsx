@@ -11,6 +11,9 @@ import Badge from '../badge';
 export default {
   title: 'Components/Table',
   component: Table,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Table>;
 
 function getStatusBadge(status: string) {

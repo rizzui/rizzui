@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckboxGroup, Checkbox, AdvancedCheckbox } from '@redq/rizz';
+import { CheckboxGroup, Checkbox, AdvancedCheckbox } from '@redq/rizzui';
 
 export default function CheckboxGroupDefault() {
 	const [values, setValues] = useState<string[]>([]);

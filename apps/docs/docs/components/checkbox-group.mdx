@@ -1,4 +1,4 @@
-import { CheckboxGroup } from '@redq/rizz';
+import { CheckboxGroup } from '@redq/rizzui';
 import CheckboxGroupDefault, {
 	CheckboxGroupAdvanced,
 } from '@site/src/components/checkbox-group';
@@ -9,7 +9,7 @@ import Paper from '@site/src/components/paper';
 CheckboxGroup is a wrapper component for a set of checkbox which allows user to select multiple checkbox values easily either from a form or from a filter.
 
 ```tsx
-import { CheckboxGroup } from '@redq/rizz';
+import { CheckboxGroup } from '@redq/rizzui';
 ```
 
 <div className="mb-28" />
@@ -24,7 +24,7 @@ The default style of **CheckboxGroup**
 
 ```tsx
 import { useState } from 'react';
-import { CheckboxGroup, Checkbox } from '@redq/rizz';
+import { CheckboxGroup, Checkbox } from '@redq/rizzui';
 
 export default function App() {
 	const [values, setValues] = useState([]);
@@ -55,7 +55,7 @@ This can also be used as advanced **CheckboxGroup**
 
 ```tsx
 import { useState } from 'react';
-import { CheckboxGroup, AdvancedCheckbox } from '@redq/rizz';
+import { CheckboxGroup, AdvancedCheckbox } from '@redq/rizzui';
 
 export default function App() {
 	const [values, setValues] = useState(['one']);

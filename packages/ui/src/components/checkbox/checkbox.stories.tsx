@@ -5,6 +5,9 @@ import Checkbox from '.';
 export default {
   title: 'Components/Checkbox',
   component: Checkbox,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Checkbox>;
 
 const Template: ComponentStory<typeof Checkbox> = (args) => (

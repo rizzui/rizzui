@@ -5,6 +5,9 @@ import { FileInput } from '.';
 export default {
   title: 'Components/FileInput',
   component: FileInput,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof FileInput>;
 
 const Template: ComponentStory<typeof FileInput> = (args) => (

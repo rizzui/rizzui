@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip, ActionIcon } from '@redq/rizz';
+import { Tooltip, ActionIcon } from '@redq/rizzui';
 
 interface CopyButtonProps {
 	value: string;

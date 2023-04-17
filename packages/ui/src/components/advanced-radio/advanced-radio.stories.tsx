@@ -6,6 +6,9 @@ import AdvancedRadio from './advanced-radio';
 export default {
   title: 'Components/AdvancedRadio',
   component: AdvancedRadio,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof AdvancedRadio>;
 
 export const NumbersInDefaultColor = () => (

@@ -7,7 +7,7 @@ import {
 	Badge,
 	Empty,
 	EmptyProductBoxIcon,
-} from '@redq/rizz';
+} from '@redq/rizzui';
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 

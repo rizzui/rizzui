@@ -7,6 +7,9 @@ import Alert from './alert';
 export default {
   title: 'Components/Alert',
   component: Alert,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Alert>;
 
 const Template: ComponentStory<typeof Alert> = (args) => <Alert {...args} />;

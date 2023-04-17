@@ -9,6 +9,9 @@ export default {
   title: 'Components/Stepper',
   component: Stepper,
   subcomponents: { Step },
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Stepper>;
 
 const Template: ComponentStory<typeof Stepper> = (args) => (

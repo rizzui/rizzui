@@ -14,6 +14,9 @@ import { XIcon } from '../../icons/x-mark';
 export default {
   title: 'Components/Drawer',
   component: Drawer,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Drawer>;
 
 type DrawerPropsType = {

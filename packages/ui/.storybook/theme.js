@@ -14,7 +14,7 @@ export default create({
   fontBase: '"Inter", sans-serif',
 
   // brand
-  brandTitle: 'Rizz',
-  brandUrl: 'https://rizz-storybook.vercel.app/',
+  brandTitle: 'RizzUI',
+  brandUrl: 'https://rizzui-storybook.vercel.app/',
   brandImage: logo,
 });

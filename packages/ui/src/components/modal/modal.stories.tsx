@@ -13,6 +13,9 @@ import { XIcon } from '../../icons/x-mark';
 export default {
   title: 'Components/Modal',
   component: Modal,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Modal>;
 
 type ModalPropsType = {
