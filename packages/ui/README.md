@@ -401,7 +401,7 @@ export default function App() {
 }
 ```
 
-Explore our Storybook docs -> https://rizz-storybook.vercel.app/
+Explore more components in our Storybook doc -> https://rizz-storybook.vercel.app/
 
 ### Warning 
 This project is still in development, it might have bugs and breaking changes so it is not recommended to use it in production. We hope to have a stable version soon 🚀.
