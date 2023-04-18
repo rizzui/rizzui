@@ -2,77 +2,674 @@
 sidebar_position: 19
 ---
 
-import { NativeSelect } from '@redq/rizzui';
-import Paper from '@site/src/components/paper';
-import NativeSelectDefault, {
-	NativeSelectCustomIcon,
-	NativeSelectHelperText,
-	NativeSelectError,
-} from '@site/src/components/native-select';
+import { NativeSelect } from "@redq/rizzui";
+import Paper from "@site/src/components/paper";
+import NativeSelectDefault from "@site/src/components/native-select";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 # NativeSelect
 
 A basic widget for user selection of the options.
 
 ```tsx
-import { NativeSelect } from '@redq/rizzui';
+import { NativeSelect } from "@redq/rizzui";
 ```
 
 <div className="mb-28" />
 
 ## Default
 
-The default style of the **NativeSelect**
+The default style of **NativeSelect** component.
 
-<Paper className="block">
-	<NativeSelectDefault />
+<Paper className="block text-gray-1000">
+  <NativeSelectDefault label="Select Person" />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { NativeSelect } from '@redq/rizzui';
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
 
 export default function App() {
-	const [value, setValue] = useState([]);
+  const [value, setValue] = useState([]);
+  return (
+    <NativeSelect
+      label="Select Person"
+      options={options}
+      selectedValue={value}
+      setSelectedValue={setValue}
+    />
+  );
+}
+```
 
-	return (
-		<NativeSelect
-			label="Select Name"
-			options={[
-				{
-					id: 1,
-					name: 'John',
-					value: 'John',
-				},
-				{
-					age: 20,
-					id: 2,
-					name: 'Doe',
-					value: 'Doe',
-				},
-				{
-					class: 12,
-					id: 3,
-					name: 'Miller',
-					value: 'Miller',
-				},
-				{
-					id: 4,
-					name: 'James',
-					value: 'James',
-				},
-				{
-					disabled: true,
-					id: 5,
-					name: 'Franky',
-					value: 'Franky',
-				},
-			]}
-			placeholder="Choose option from below"
-			selectedValue={value}
-			setSelectedValue={setValue}
-		/>
-	);
+<div className="mb-16" />
+
+## Variants
+
+You can change the style of **NativeSelect** with property [**variant**](#nativeselect-variants).
+
+<Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  <NativeSelectDefault
+    label="Active"
+    variant="active"
+  />
+  <NativeSelectDefault
+    label="Flat"
+    variant="flat"
+  />
+  <NativeSelectDefault
+    label="Outline"
+    variant="outline"
+  />
+  <NativeSelectDefault
+    label="Text"
+    variant="text"
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+
+  return (
+    <>
+      <NativeSelect
+        label="Active"
+        variant="active"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Flat"
+        variant="flat"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Outline"
+        variant="outline"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="text"
+        variant="text"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the style of **NativeSelect** with property [**size**](#nativeselect-sizes).
+
+<Paper className="justify-start items-start gap-6">
+  <NativeSelectDefault
+    label="Small"
+    size="sm"
+  />
+  <NativeSelectDefault label="Default" />
+  <NativeSelectDefault
+    label="Large"
+    size="lg"
+  />
+  <NativeSelectDefault
+    label="Extra Large"
+    size="xl"
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+
+  return (
+    <>
+      <NativeSelect
+        label="Small"
+        size="sm"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Default"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Large"
+        size="lg"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Extra Large"
+        size="xl"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change the style of **NativeSelect** with property [**rounded**](#nativeselect-rounded).
+
+<Paper className="justify-start items-start gap-6">
+  <NativeSelectDefault
+    label="Rounded Small"
+    variant="active"
+    rounded="sm"
+  />
+  <NativeSelectDefault
+    label="Rounded Default"
+    variant="active"
+  />
+  <NativeSelectDefault
+    label="Rounded Large"
+    variant="active"
+    rounded="lg"
+  />
+  <NativeSelectDefault
+    label="Rounded None"
+    variant="active"
+    rounded="none"
+  />
+  <NativeSelectDefault
+    label="Rounded Full"
+    variant="active"
+    rounded="pill"
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+
+  return (
+    <>
+      <NativeSelect
+        label="Rounded Small"
+        variant="active"
+        rounded="sm"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Rounded Default"
+        variant="active"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Rounded Large"
+        variant="active"
+        rounded="lg"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Rounded None"
+        variant="active"
+        rounded="none"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Rounded Full"
+        variant="active"
+        rounded="pill"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can change the style of **NativeSelect** with property [**color**](#nativeselect-colors).
+
+<Paper className="flex-row flex-wrap justify-between gap-6">
+  <NativeSelectDefault
+    label="Default"
+    variant="flat"
+  />
+  <NativeSelectDefault
+    label="Primary"
+    variant="flat"
+    color="primary"
+  />
+  <NativeSelectDefault
+    label="Secondary"
+    variant="flat"
+    color="secondary"
+  />
+  <NativeSelectDefault
+    label="Danger"
+    variant="flat"
+    color="danger"
+  />
+  <NativeSelectDefault
+    label="Info"
+    variant="flat"
+    color="info"
+  />
+  <NativeSelectDefault
+    label="Success"
+    variant="flat"
+    color="success"
+  />
+  <NativeSelectDefault
+    label="Warning"
+    variant="flat"
+    color="warning"
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+
+  return (
+    <>
+      <NativeSelect
+        label="Default"
+        variant="flat"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Primary"
+        variant="flat"
+        color="primary"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Secondary"
+        variant="flat"
+        color="secondary"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Danger"
+        variant="flat"
+        color="danger"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Info"
+        variant="flat"
+        color="info"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Success"
+        variant="flat"
+        color="success"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+      <NativeSelect
+        label="Warning"
+        variant="flat"
+        color="warning"
+        options={options}
+        selectedValue={value}
+        setSelectedValue={setValue}
+        placeholder="Choose option from below"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Disabled
+
+You can change the style of **NativeSelect** with property **disabled**.
+
+<Paper className="block">
+  <NativeSelectDefault
+    label="Disabled"
+    disabled
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+
+  return (
+    <NativeSelect
+      label="Disabled"
+      options={options}
+      selectedValue={value}
+      setSelectedValue={setValue}
+      placeholder="Choose option from below"
+      disabled
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Clear Button
+
+You can change the style of **NativeSelect** with property **clearable**.
+
+<Paper className="block">
+  <NativeSelectDefault
+    label="Clearable"
+    clearable
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+
+  return (
+    <NativeSelect
+      label="Clearable"
+      options={options}
+      selectedValue={value}
+      setSelectedValue={setValue}
+      placeholder="Choose option from below"
+      clearable
+    />
+  );
 }
 ```
 
@@ -80,29 +677,63 @@ export default function App() {
 
 ## With Custom Dropdown Icon
 
-The **NativeSelect** with custom dropdown icon.
+You can change the style of **NativeSelect** with property **dropDownIcon**.
 
 <Paper className="block">
-	<NativeSelectCustomIcon />
+  <NativeSelectDefault
+    label="Select Name"
+    dropDownIcon={<ChevronDownIcon className="mr-2 h-5 w-5" />}
+  />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { NativeSelect } from '@redq/rizzui';
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
 
 export default function App() {
-	const [value, setValue] = useState([]);
+  const [value, setValue] = useState([]);
 
-	return (
-		<NativeSelect
-			label="Select Name"
-			placeholder="Choose option from below"
-			options={options}
-			selectedValue={value}
-			setSelectedValue={setValue}
-			dropDownIcon={<ChevronDownIcon className="w-6" />}
-		/>
-	);
+  return (
+    <NativeSelect
+      label="Select Name"
+      options={options}
+      selectedValue={value}
+      setSelectedValue={setValue}
+      placeholder="Choose option from below"
+      dropDownIcon={<ChevronDownIcon className="w-6" />}
+    />
+  );
 }
 ```
 
@@ -110,30 +741,64 @@ export default function App() {
 
 ## With Helper Text
 
-The **NativeSelect** with helper text.
+You can change the style of **NativeSelect** with property **helperText**.
 
 <Paper className="block">
-	<NativeSelectHelperText />
+  <NativeSelectDefault
+    label="Select Name"
+    helperText="Please enter your full name"
+  />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { NativeSelect } from '@redq/rizzui';
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
 
 export default function App() {
-	const [value, setValue] = useState([]);
+  const [value, setValue] = useState([]);
 
-	return (
-		<NativeSelect
-			label="Select Name"
-			placeholder="Choose option from below"
-			options={options}
-			selectedValue={value}
-			setSelectedValue={setValue}
-			dropDownIcon={<ChevronDownIcon className="w-6" />}
-			helperText="Please enter your full name"
-		/>
-	);
+  return (
+    <NativeSelect
+      label="Select Name"
+      options={options}
+      selectedValue={value}
+      setSelectedValue={setValue}
+      placeholder="Choose option from below"
+      helperText="Please enter your full name"
+      dropDownIcon={<ChevronDownIcon className="w-6" />}
+    />
+  );
 }
 ```
 
@@ -141,30 +806,64 @@ export default function App() {
 
 ## With Error Message
 
-The **NativeSelect** with error message.
+You can change the style of **NativeSelect** with property **error**.
 
 <Paper className="block">
-	<NativeSelectError />
+  <NativeSelectDefault
+    label="Select Name"
+    error="This field is required"
+  />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { NativeSelect } from '@redq/rizzui';
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
 
 export default function App() {
-	const [value, setValue] = useState([]);
+  const [value, setValue] = useState([]);
 
-	return (
-		<NativeSelect
-			label="Select Name"
-			placeholder="Choose option from below"
-			options={options}
-			selectedValue={value}
-			setSelectedValue={setValue}
-			dropDownIcon={<ChevronDownIcon className="w-6" />}
-			error="This field is required"
-		/>
-	);
+  return (
+    <NativeSelect
+      label="Select Name"
+      options={options}
+      selectedValue={value}
+      setSelectedValue={setValue}
+      error="This field is required"
+      placeholder="Choose option from below"
+      dropDownIcon={<ChevronDownIcon className="w-6" />}
+    />
+  );
 }
 ```
 
@@ -216,7 +915,7 @@ Here is the API documentation of the Native Select component. And the rest of th
 ### NativeSelect Sizes
 
 ```ts
-type NativeSelectSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type NativeSelectSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -224,7 +923,7 @@ type NativeSelectSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### NativeSelect Rounded
 
 ```ts
-type NativeSelectRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
+type NativeSelectRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -232,7 +931,7 @@ type NativeSelectRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
 ### NativeSelect Variants
 
 ```ts
-type NativeSelectVariants = 'flat' | 'outline' | 'text' | 'active';
+type NativeSelectVariants = "flat" | "outline" | "text" | "active";
 ```
 
 <div className="mb-10" />
@@ -241,13 +940,13 @@ type NativeSelectVariants = 'flat' | 'outline' | 'text' | 'active';
 
 ```ts
 type NativeSelectColors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```
 
 <div className="mb-10" />
@@ -255,5 +954,5 @@ type NativeSelectColors =
 ### NativeSelect Values
 
 ```ts
-type NativeSelectValues = 'string' | 'number' | 'readonly' | 'string[]';
+type NativeSelectValues = "string" | "number" | "readonly" | "string[]";
 ```

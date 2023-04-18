@@ -1,45 +1,514 @@
-import { AdvancedSelect, Avatar } from '@redq/rizzui';
-import Paper from '@site/src/components/paper';
-import { advancedSelectOptions } from '@site/src/data/advanced-select-data';
+---
+sidebar_position: 20
+---
+
+import { AdvancedSelect, Avatar } from "@redq/rizzui";
+import Paper from "@site/src/components/paper";
 import AdvancedSelectDefault, {
-	AdvancedSelectSingle,
-	AdvancedSelectMulti,
-	AdvancedSelectCreateAbleSingle,
-	AdvancedSelectCreateAbleMulti,
-} from '@site/src/components/advanced-select';
+  AdvancedSelectSingle,
+  AdvancedSelectMulti,
+  AdvancedSelectCreateAbleSingle,
+  AdvancedSelectCreateAbleMulti,
+} from "@site/src/components/advanced-select";
+import { UserPlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 # AdvancedSelect
 
 AdvancedSelect is a combination of a selectbox and an auto-complete feature. AdvancedSelect allows user to select single or multiple values from options and search for them in the input field. We used `headlessUI combobox` to build the component. For more info, see their [official documentation](https://headlessui.com/react/combobox).
 
 ```jsx
-import { AdvancedSelect } from '@redq/rizzui';
+import { AdvancedSelect } from "@redq/rizzui";
 ```
 
 <div className="mb-28" />
 
 ## Default
 
-This is the default style of the **AdvancedSelect**
+The default style of **AdvancedSelect** component.
 
 <Paper>
-	<AdvancedSelectDefault />
+  <AdvancedSelectDefault label="Select person" />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { AdvancedSelect } from '@redq/rizzui';
+import { useState } from "react";
+import { AdvancedSelect, Avatar } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        John Doe
+      </span>
+    ),
+  },
+  {
+    id: 2,
+    name: "Emily",
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        Emily Josh
+      </span>
+    ),
+  },
+  {
+    id: 3,
+    name: "Miller",
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/1921168/pexels-photo-1921168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        Miller Wills
+      </span>
+    ),
+  },
+  {
+    id: 4,
+    name: "James",
+    disabled: true,
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        James Wan
+      </span>
+    ),
+  },
+  {
+    id: 5,
+    name: "Franky",
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        Franky Sam
+      </span>
+    ),
+  },
+];
 
 export default function App() {
-	const [state, setState] = useState([options[0]]);
-	return (
-		<AdvancedSelect
-			label="Select Person"
-			onChange={setState}
-			options={options}
-			value={state}
-		/>
-	);
+  const [state, setState] = useState([options[0]]);
+
+  return (
+    <AdvancedSelect
+      label="Select person"
+      value={state}
+      onChange={setState}
+      options={options}
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Variants
+
+You can change the style of **AdvancedSelect** with property [**variant**](#advanced-select-variants).
+
+<Paper className="gap-4">
+  <AdvancedSelectDefault
+    label="Select person"
+    variant="active"
+  />
+  <AdvancedSelectDefault
+    label="Select person"
+    variant="flat"
+  />
+  <AdvancedSelectDefault
+    label="Select person"
+    variant="outline"
+  />
+  <AdvancedSelectDefault
+    label="Select person"
+    variant="text"
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { AdvancedSelect, Avatar } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        John Doe
+      </span>
+    ),
+  },
+  {
+    id: 2,
+    name: "Emily",
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        Emily Josh
+      </span>
+    ),
+  },
+  {
+    id: 3,
+    name: "Miller",
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/1921168/pexels-photo-1921168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        Miller Wills
+      </span>
+    ),
+  },
+  {
+    id: 4,
+    name: "James",
+    disabled: true,
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        James Wan
+      </span>
+    ),
+  },
+  {
+    id: 5,
+    name: "Franky",
+    label: (
+      <span className="inline-flex items-center gap-2">
+        <Avatar
+          size="24px"
+          src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+        Franky Sam
+      </span>
+    ),
+  },
+];
+
+export default function App() {
+  const [state, setState] = useState([options[0]]);
+
+  return (
+    <>
+      <AdvancedSelect
+        label="Select person"
+        variant="active"
+        value={state}
+        onChange={setState}
+        options={options}
+      />
+      <AdvancedSelect
+        label="Select person"
+        variant="flat"
+        value={state}
+        onChange={setState}
+        options={options}
+      />
+      <AdvancedSelect
+        label="Select person"
+        variant="outline"
+        value={state}
+        onChange={setState}
+        options={options}
+      />
+      <AdvancedSelect
+        label="Select person"
+        variant="text"
+        value={state}
+        onChange={setState}
+        options={options}
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the style of **AdvancedSelect** with property [**size**](#advanced-select-sizes).
+
+<Paper className="gap-4">
+  <AdvancedSelectDefault
+    label="Select Small"
+    size="sm"
+  />
+  <AdvancedSelectDefault label="Select Default" />
+  <AdvancedSelectDefault
+    label="Select Large"
+    size="lg"
+  />
+  <AdvancedSelectDefault
+    label="Select Extra Large"
+    size="xl"
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { AdvancedSelect, Avatar } from "@redq/rizzui";
+
+export default function App() {
+  const [state, setState] = useState([options[0]]);
+
+  return (
+    <>
+      <AdvancedSelect
+        label="Select Small"
+        size="sm"
+        value={state}
+        onChange={setState}
+        options={options}
+      />
+      <AdvancedSelect
+        label="Select Default"
+        value={state}
+        onChange={setState}
+        options={options}
+      />
+      <AdvancedSelect
+        label="Select Large"
+        size="lg"
+        value={state}
+        onChange={setState}
+        options={options}
+      />
+      <AdvancedSelect
+        label="Select Extra Large"
+        size="xl"
+        value={state}
+        onChange={setState}
+        options={options}
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change the style of **AdvancedSelect** with property [**rounded**](#advanced-select-rounded).
+
+<Paper className="gap-4">
+  <AdvancedSelectDefault
+    label="Rounded Small"
+    rounded="sm"
+    variant="active"
+  />
+  <AdvancedSelectDefault
+    label="Rounded Default"
+    variant="active"
+  />
+  <AdvancedSelectDefault
+    label="Rounded Large"
+    rounded="lg"
+    variant="active"
+  />
+  <AdvancedSelectDefault
+    label="Rounded Extra Large"
+    rounded="xl"
+    variant="active"
+  />
+  <AdvancedSelectDefault
+    label="Rounded None"
+    rounded="none"
+    variant="active"
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { AdvancedSelect } from "@redq/rizzui";
+
+export default function App() {
+  const [state, setState] = useState([options[0]]);
+  return (
+    <>
+      <AdvancedSelect
+        label="Rounded Small"
+        value={state}
+        onChange={setState}
+        options={options}
+        rounded="sm"
+        variant="active"
+      />
+      <AdvancedSelect
+        label="Rounded Default"
+        value={state}
+        onChange={setState}
+        options={options}
+        variant="active"
+      />
+      <AdvancedSelect
+        label="Rounded Large"
+        value={state}
+        onChange={setState}
+        options={options}
+        rounded="lg"
+        variant="active"
+      />
+      <AdvancedSelect
+        label="Rounded Extra Large"
+        value={state}
+        onChange={setState}
+        options={options}
+        rounded="xl"
+        variant="active"
+      />
+      <AdvancedSelect
+        label="Rounded None"
+        value={state}
+        onChange={setState}
+        options={options}
+        rounded="none"
+        variant="active"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can change the style of **AdvancedSelect** with property [**color**](#advanced-select-color).
+
+<Paper className="gap-4">
+  <AdvancedSelectDefault
+    label="Select Default"
+    variant="flat"
+  />
+  <AdvancedSelectDefault
+    label="Select Primary"
+    variant="flat"
+    color="primary"
+  />
+  <AdvancedSelectDefault
+    label="Select Secondary"
+    variant="flat"
+    color="secondary"
+  />
+  <AdvancedSelectDefault
+    label="Select Danger"
+    variant="flat"
+    color="danger"
+  />
+  <AdvancedSelectDefault
+    label="Select Info"
+    variant="flat"
+    color="info"
+  />
+  <AdvancedSelectDefault
+    label="Select Success"
+    variant="flat"
+    color="success"
+  />
+  <AdvancedSelectDefault
+    label="Select Warning"
+    variant="flat"
+    color="warning"
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { AdvancedSelect } from "@redq/rizzui";
+
+export default function App() {
+  const [state, setState] = useState([options[0]]);
+  return (
+    <>
+      <AdvancedSelect
+        label="Select Default"
+        value={state}
+        onChange={setState}
+        options={options}
+        variant="flat"
+      />
+      <AdvancedSelect
+        label="Select Primary"
+        value={state}
+        onChange={setState}
+        options={options}
+        variant="flat"
+        color="primary"
+      />
+      <AdvancedSelect
+        label="Select Secondary"
+        value={state}
+        onChange={setState}
+        options={options}
+        variant="flat"
+        color="secondary"
+      />
+      <AdvancedSelect
+        label="Select Danger"
+        value={state}
+        onChange={setState}
+        options={options}
+        variant="flat"
+        color="danger"
+      />
+      <AdvancedSelect
+        label="Select Info"
+        value={state}
+        onChange={setState}
+        options={options}
+        variant="flat"
+        color="info"
+      />
+      <AdvancedSelect
+        label="Select Success"
+        value={state}
+        onChange={setState}
+        options={options}
+        variant="flat"
+        color="success"
+      />
+      <AdvancedSelect
+        label="Select Warning"
+        value={state}
+        onChange={setState}
+        options={options}
+        variant="flat"
+        color="warning"
+      />
+    </>
+  );
 }
 ```
 
@@ -50,51 +519,52 @@ export default function App() {
 Select a single item with **AdvancedSelect**.
 
 <Paper>
-	<AdvancedSelectSingle />
+  <AdvancedSelectSingle />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { AdvancedSelect } from '@redq/rizzui';
+import { useState } from "react";
+import { AdvancedSelect } from "@redq/rizzui";
 
 export default function App() {
-	const [state, setState] = useState([options[0]]);
-	return (
-		<AdvancedSelect
-			label="Select Person"
-			onChange={setState}
-			options={options}
-			value={state}
-		/>
-	);
+  const [state, setState] = useState([options[0]]);
+  return (
+    <AdvancedSelect
+      label="Select Person"
+      onChange={setState}
+      options={options}
+      value={state}
+    />
+  );
 }
 ```
 
 <div className="mb-16" />
 
-## Multi Select
+## Multiple Select
 
-Select multiple items with **AdvancedSelect**.
+Select multiple items of **AdvancedSelect** with property **multiple**.
 
 <Paper>
-	<AdvancedSelectMulti />
+  <AdvancedSelectMulti />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { AdvancedSelect } from '@redq/rizzui';
+import { useState } from "react";
+import { AdvancedSelect } from "@redq/rizzui";
 
 export default function App() {
-	const [state, setState] = useState([options[0], options[1]]);
-	return (
-		<AdvancedSelect
-			label="Select Single Person"
-			value={state}
-			onChange={setState}
-			options={options}
-			multiple
-		/>
-	);
+  const [state, setState] = useState([options[0], options[1]]);
+  return (
+    <AdvancedSelect
+      label="Select Single Person"
+      value={state}
+      onChange={setState}
+      options={options}
+      multiple
+      color="primary"
+    />
+  );
 }
 ```
 
@@ -105,53 +575,106 @@ export default function App() {
 Creatable single select with **AdvancedSelect**.
 
 <Paper>
-	<AdvancedSelectCreateAbleSingle />
+  <AdvancedSelectCreateAbleSingle />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { AdvancedSelect } from '@redq/rizzui';
+import { useState } from "react";
+import { AdvancedSelect } from "@redq/rizzui";
 
 export default function App() {
-	const [state, setState] = useState([options[0]]);
-	return (
-		<AdvancedSelect
-			label="Single Select"
-			onChange={setState}
-			options={options}
-			value={state}
-			isCreatable
-		/>
-	);
+  const [state, setState] = useState([options[0]]);
+  return (
+    <AdvancedSelect
+      label="Single Select"
+      onChange={setState}
+      options={options}
+      value={state}
+      isCreatable
+    />
+  );
 }
 ```
 
 <div className="mb-16" />
 
-## Creatable Multi Select
+## Creatable Multiple Select
 
 Creatable multiple item select with **AdvancedSelect**.
 
 <Paper>
-	<AdvancedSelectCreateAbleMulti />
+  <AdvancedSelectCreateAbleMulti />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { AdvancedSelect } from '@redq/rizzui';
+import { useState } from "react";
+import { AdvancedSelect } from "@redq/rizzui";
 
 export default function App() {
-	const [state, setState] = useState([options[0]]);
-	return (
-		<AdvancedSelect
-			label="Multi Select"
-			onChange={setState}
-			options={options}
-			value={state}
-			multiple
-			isCreatable
-		/>
-	);
+  const [state, setState] = useState([options[0]]);
+  return (
+    <AdvancedSelect
+      label="Multi Select"
+      onChange={setState}
+      options={options}
+      value={state}
+      multiple
+      isCreatable
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Custom Icons
+
+You can change style of **AdvancedSelect** with property **startInputIcon** & **endInputIcon**.
+
+<Paper>
+  <AdvancedSelectDefault
+    label="Select Person"
+    color="secondary"
+    startInputIcon={
+      <span className="absolute inset-y-0 left-0 pl-4 flex items-center">
+        <UserPlusIcon className="w-5" />
+      </span>
+    }
+    endInputIcon={
+      <span className="absolute inset-y-0 right-0 pr-4 flex items-center">
+        <TrashIcon className="w-5" />
+      </span>
+    }
+  />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { AdvancedSelect } from "@redq/rizzui";
+import { UserPlusIcon, TrashIcon } from "@heroicons/react/24/outline";
+
+export default function App() {
+  const [state, setState] = useState([options[0]]);
+
+  return (
+    <AdvancedSelectDefault
+      label="Select Person"
+      color="secondary"
+      value={state}
+      onChange={setState}
+      options={options}
+      startInputIcon={
+        <span className="absolute inset-y-0 left-0 pl-4 flex items-center">
+          <UserPlusIcon className="w-5" />
+        </span>
+      }
+      endInputIcon={
+        <span className="absolute inset-y-0 right-0 pr-4 flex items-center">
+          <TrashIcon className="w-5" />
+        </span>
+      }
+    />
+  );
 }
 ```
 
@@ -167,46 +690,53 @@ export default function App() {
 
 Here is the API documentation of the AdvancedSelect component.
 
-|          Props          |                       Type                        |                   Description                    |   Default   |
-| :---------------------: | :-----------------------------------------------: | :----------------------------------------------: | :---------: |
-|         options         |         `AdvancedSelectOptionDataTypes[]`         |                Change input color                |    \_ \_    |
-|          label          |                    `ReactNode`                    |              label of the component              |    \_ \_    |
-|          value          |   [AdvancedSelectValue](#advanced-select-value)   |                 Pass value state                 |    \_ \_    |
-|      defaultValue       |                      `{}[]`                       |                                                  |    \_ \_    |
-|        nullable         |                      `false`                      |                                                  |    \_ \_    |
-|        multiple         |                     `boolean`                     |                                                  |    \_ \_    |
-|        onChange         |             `((value: {}[]) => void)`             |                                                  |    \_ \_    |
-|           by            |      `((a: unknown, b: unknown) => boolean)`      |                                                  |    \_ \_    |
-|           as            |                `ElementType<any>`                 |                                                  |    \_ \_    |
-|         refName         |                     `string`                      |                                                  |    \_ \_    |
-|        className        |                     `string`                      |  Pass className to style the combobox containe   |    \_ \_    |
-|        disabled         |                     `boolean`                     |                                                  |    \_ \_    |
-|      \_\_demoMode       |                     `boolean`                     |                                                  |    \_ \_    |
-|          name           |                     `string`                      |                                                  |    \_ \_    |
-|          size           |   [AdvancedSelectSizes](#advanced-select-sizes)   |              Size of the component               | `"DEFAULT"` |
-|         rounded         | [AdvancedSelectRounded](#advanced-select-rounded) |            The rounded variants are:             | `"DEFAULT"` |
-|         variant         | [AdvancedSelectVariant](#advanced-select-variant) |        The variants of the component are:        | `"outline"` |
-|          color          |   [AdvancedSelectColor](#advanced-select-color)   |              Change combobox color               | `"DEFAULT"` |
-|     startInputIcon      |                    `ReactNode`                    | Provide start icon to be placed at the beginning |    \_ \_    |
-|      endInputIcon       |                    `ReactNode`                    |     Provide end icon to be placed at the end     |    \_ \_    |
-|     transitionProps     |                `TransitionClasses`                |    Pass transition props to animate combobox     |    \_ \_    |
-|       isCreatable       |                     `boolean`                     |              To create custom value              |   `false`   |
-|     labelClassName      |                     `string`                      |      Pass labelClassName to style the label      |    \_ \_    |
-|      tagClassName       |                     `string`                      | Pass to style the multi selected tag at the top  |    \_ \_    |
-|     inputClassName      |                     `string`                      |      Pass inputClassName to style the input      |    \_ \_    |
-|   creatableClassName    |                     `string`                      |            To style creatable option             |    \_ \_    |
-|    notFoundClassName    |                     `string`                      |   To style the div if search result not found    |    \_ \_    |
-|     optionClassName     |                     `string`                      |    Pass optionClassName to style each option     |    \_ \_    |
-| selectedOptionClassName |                     `string`                      |        To style the selected option only         |    \_ \_    |
-| CheckmarkIconClassName  |                     `string`                      |    To style the check icon of selected option    |    \_ \_    |
+|          Props          |                        Type                        |                   Description                    |   Default   |
+| :---------------------: | :------------------------------------------------: | :----------------------------------------------: | :---------: |
+|         options         |         `AdvancedSelectOptionDataTypes[]`          |                Change input color                |    \_ \_    |
+|          label          |                    `ReactNode`                     |              label of the component              |    \_ \_    |
+|          value          |   [AdvancedSelectValue](#advanced-select-value)    |                 Pass value state                 |    \_ \_    |
+|      defaultValue       |                       `{}[]`                       |                                                  |    \_ \_    |
+|        nullable         |                      `false`                       |                                                  |    \_ \_    |
+|        multiple         |                     `boolean`                      |                                                  |    \_ \_    |
+|        onChange         |             `((value: {}[]) => void)`              |                                                  |    \_ \_    |
+|           by            |      `((a: unknown, b: unknown) => boolean)`       |                                                  |    \_ \_    |
+|           as            |                 `ElementType<any>`                 |                                                  |    \_ \_    |
+|         refName         |                      `string`                      |                                                  |    \_ \_    |
+|        className        |                      `string`                      |  Pass className to style the combobox containe   |    \_ \_    |
+|        disabled         |                     `boolean`                      |                                                  |    \_ \_    |
+|      \_\_demoMode       |                     `boolean`                      |                                                  |    \_ \_    |
+|          name           |                      `string`                      |                                                  |    \_ \_    |
+|         variant         | [AdvancedSelectVariant](#advanced-select-variants) |        The variants of the component are:        | `"outline"` |
+|          size           |   [AdvancedSelectSizes](#advanced-select-sizes)    |              Size of the component               | `"DEFAULT"` |
+|         rounded         | [AdvancedSelectRounded](#advanced-select-rounded)  |            The rounded variants are:             | `"DEFAULT"` |
+|          color          |   [AdvancedSelectColor](#advanced-select-color)    |              Change combobox color               | `"DEFAULT"` |
+|     startInputIcon      |                    `ReactNode`                     | Provide start icon to be placed at the beginning |    \_ \_    |
+|      endInputIcon       |                    `ReactNode`                     |     Provide end icon to be placed at the end     |    \_ \_    |
+|     transitionProps     |                `TransitionClasses`                 |    Pass transition props to animate combobox     |    \_ \_    |
+|       isCreatable       |                     `boolean`                      |              To create custom value              |   `false`   |
+|     labelClassName      |                      `string`                      |      Pass labelClassName to style the label      |    \_ \_    |
+|      tagClassName       |                      `string`                      | Pass to style the multi selected tag at the top  |    \_ \_    |
+|     inputClassName      |                      `string`                      |      Pass inputClassName to style the input      |    \_ \_    |
+|   creatableClassName    |                      `string`                      |            To style creatable option             |    \_ \_    |
+|    notFoundClassName    |                      `string`                      |   To style the div if search result not found    |    \_ \_    |
+|     optionClassName     |                      `string`                      |    Pass optionClassName to style each option     |    \_ \_    |
+| selectedOptionClassName |                      `string`                      |        To style the selected option only         |    \_ \_    |
+| CheckmarkIconClassName  |                      `string`                      |    To style the check icon of selected option    |    \_ \_    |
 
 <div className="mb-10" />
 
 ### Advanced Select Value
 
 ```ts
-type AdvancedSelectValue = {}[] &
-	(AdvancedSelectOptionDataTypes | AdvancedSelectOptionDataTypes[]);
+type AdvancedSelectValue = {}[] & (AdvancedSelectOptionDataTypes | AdvancedSelectOptionDataTypes[]);
+```
+
+<div className="mb-10" />
+
+### Advanced Select Variants
+
+```ts
+type AdvancedSelectVariant = "flat" | "outline" | "text" | "active";
 ```
 
 <div className="mb-10" />
@@ -214,7 +744,7 @@ type AdvancedSelectValue = {}[] &
 ### Advanced Select Sizes
 
 ```ts
-type AdvancedSelectSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type AdvancedSelectSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -222,15 +752,7 @@ type AdvancedSelectSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### Advanced Select Rounded
 
 ```ts
-type AdvancedSelectRounded = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'none';
-```
-
-<div className="mb-10" />
-
-### Advanced Select Variant
-
-```ts
-type AdvancedSelectVariant = 'flat' | 'outline' | 'text' | 'active';
+type AdvancedSelectRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
 ```
 
 <div className="mb-10" />
@@ -239,11 +761,11 @@ type AdvancedSelectVariant = 'flat' | 'outline' | 'text' | 'active';
 
 ```ts
 type AdvancedSelectColor =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```

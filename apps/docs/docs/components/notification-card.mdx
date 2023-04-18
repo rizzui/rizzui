@@ -1,119 +1,392 @@
-import { Toaster } from 'react-hot-toast';
-import { NotificationCard, Avatar, Button } from '@redq/rizzui';
-import {
-	InformationCircleIcon,
-	CheckCircleIcon,
-} from '@heroicons/react/24/solid';
-import { notification } from '@site/src/data/notification-card-data';
-import Paper from '@site/src/components/paper';
+import { Toaster } from "react-hot-toast";
+import { NotificationCard, Avatar, Button } from "@redq/rizzui";
+import { InformationCircleIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
+import { notification } from "@site/src/data/notification-card-data";
+import Paper from "@site/src/components/paper";
 
 # NotificationCard
 
 A NotificationCard component is used to show notification message.
 
 ```tsx
-import { NotificationCard } from '@redq/rizzui';
+import { NotificationCard } from "@redq/rizzui";
 ```
 
 <div className="mb-28" />
 
 ## Default
 
-The default style of **NotificationCard**.
+The style of **NotificationCard** component.
 
 <Paper>
-	<NotificationCard
-		onClear={() => {}}
-		title="This is title"
-		description="This is description"
-		containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
-	/>
+  <NotificationCard
+    title="This is title"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+  />
 </Paper>
 
 ```tsx
-import { NotificationCard } from '@redq/rizzui';
+import { NotificationCard } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<NotificationCard
-			onClear={() => {}}
-			title="This is title"
-			description="Thi is description"
-			containerClassName="max-w-xs"
-		/>
-	);
+  return (
+    <NotificationCard
+      title="This is title"
+      description="This is description"
+    />
+  );
 }
 ```
 
 <div className="mb-16" />
 
-## Icon Media
+## Variants
+
+You can change the style of **NotificationCard** with property **variant**.
+
+<Paper className="flex-row gap-4 flex-wrap">
+  <NotificationCard
+    title="This is title"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    variant="flat"
+  />
+  <NotificationCard
+    title="This is title"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    variant="outline"
+  />
+</Paper>
+
+```tsx
+import { NotificationCard } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <>
+      <NotificationCard
+        title="This is title"
+        description="This is description"
+        variant="flat"
+      />
+      <NotificationCard
+        title="This is title"
+        description="This is description"
+        variant="outline"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the style of **NotificationCard** with property [**size**](#notificationcard-sizes).
+
+<Paper className="justify-start items-start gap-4">
+  <NotificationCard
+    title="This is Small"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    size="sm"
+  />
+  <NotificationCard
+    title="This is Default"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+  />
+  <NotificationCard
+    title="This is Large"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    size="lg"
+  />
+  <NotificationCard
+    title="This is Extra Large"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    size="xl"
+  />
+</Paper>
+
+```tsx
+import { NotificationCard } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <>
+      <NotificationCard
+        title="This is Small"
+        description="This is description"
+        size="sm"
+      />
+      <NotificationCard
+        title="This is Default"
+        description="This is description"
+      />
+      <NotificationCard
+        title="This is Large"
+        description="This is description"
+        size="lg"
+      />
+      <NotificationCard
+        title="This is Extra Large"
+        description="This is description"
+        size="xl"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change the style of **NotificationCard** with property [**rounded**](#notificationcard-rounded).
+
+<Paper className="justify-start items-start gap-4">
+  <NotificationCard
+    title="Rounded Small"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    variant="outline"
+    rounded="sm"
+  />
+  <NotificationCard
+    title="Rounded Default"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    variant="outline"
+  />
+  <NotificationCard
+    title="Rounded Large"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    variant="outline"
+    rounded="lg"
+  />
+  <NotificationCard
+    title="Rounded Extra Large"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    variant="outline"
+    rounded="xl"
+  />
+  <NotificationCard
+    title="Rounded None"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    variant="outline"
+    rounded="none"
+  />
+</Paper>
+
+```tsx
+import { NotificationCard } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <>
+      <NotificationCard
+        title="Rounded Small"
+        description="This is description"
+        variant="outline"
+        rounded="sm"
+      />
+      <NotificationCard
+        title="Rounded Default"
+        description="This is description"
+        variant="outline"
+      />
+      <NotificationCard
+        title="Rounded Large"
+        description="This is description"
+        variant="outline"
+        rounded="lg"
+      />
+      <NotificationCard
+        title="Rounded Extra Large"
+        description="This is description"
+        variant="outline"
+        rounded="xl"
+      />
+      <NotificationCard
+        title="Rounded None"
+        description="This is description"
+        variant="outline"
+        rounded="none"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can change the style of **NotificationCard** with property [**color**](#notificationcard-colors).
+
+<Paper className="flex-row flex-wrap justify-around gap-4">
+  <NotificationCard
+    title="Default Color"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+  />
+  <NotificationCard
+    title="Primary Color"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    color="primary"
+  />
+  <NotificationCard
+    title="Secondary Color"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    color="secondary"
+  />
+  <NotificationCard
+    title="Danger Color"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    color="danger"
+  />
+  <NotificationCard
+    title="Info Color"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    color="info"
+  />
+  <NotificationCard
+    title="Success Color"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    color="success"
+  />
+  <NotificationCard
+    title="Warning Color"
+    description="This is description"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    color="warning"
+  />
+</Paper>
+
+```tsx
+import { NotificationCard } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <>
+      <NotificationCard
+        title="Default Color"
+        description="This is description"
+      />
+      <NotificationCard
+        title="Primary Color"
+        description="This is description"
+        color="primary"
+      />
+      <NotificationCard
+        title="Secondary Color"
+        description="This is description"
+        color="secondary"
+      />
+      <NotificationCard
+        title="Danger Color"
+        description="This is description"
+        color="danger"
+      />
+      <NotificationCard
+        title="Info Color"
+        description="This is description"
+        color="info"
+      />
+      <NotificationCard
+        title="Success Color"
+        description="This is description"
+        color="success"
+      />
+      <NotificationCard
+        title="Warning Color"
+        description="This is description"
+        color="warning"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Icon Media
 
 You can use icons in **NotificationCard**.
 
 <Paper>
-	<NotificationCard
-		title="Icon"
-		description="Placing an icon at start"
-		containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
-		media={<InformationCircleIcon className="h-6 w-6 text-black" />}
-	/>
+  <NotificationCard
+    title="Icon"
+    description="Placing an icon at start"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+    media={<InformationCircleIcon className="h-6 w-6 text-black" />}
+  />
 </Paper>
 
 ```tsx
-import { NotificationCard } from '@redq/rizzui';
+import { NotificationCard } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<NotificationCard
-			onClear={() => {}}
-			title="This is title"
-			description="Thi is description"
-			containerClassName="max-w-xs"
-		/>
-	);
+  return (
+    <NotificationCard
+      onClear={() => {}}
+      title="This is title"
+      description="Thi is description"
+    />
+  );
 }
 ```
 
 <div className="mb-16" />
 
-## Avatar Media
+## With Avatar Media
 
 You can use Avatar in **NotificationCard** for user specifying.
 
 <Paper>
-	<NotificationCard
-		media={
-			<Avatar
-				size="38px"
-				src="https://images.pexels.com/photos/1666779/pexels-photo-1666779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-			/>
-		}
-		title="Avatar"
-		description="Avatar as media at start"
-		className="ml-3"
-		containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
-	/>
+  <NotificationCard
+    media={
+      <Avatar
+        size="38px"
+        src="https://images.pexels.com/photos/1666779/pexels-photo-1666779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      />
+    }
+    title="Avatar"
+    description="Avatar as media at start"
+    className="ml-3"
+    containerClassName="max-w-xs [&_h2]:font-normal [&_h2]:!mb-0"
+  />
 </Paper>
 
 ```tsx
-import { NotificationCard, Avatar } from '@redq/rizzui';
+import { NotificationCard, Avatar } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<NotificationCard
-			media={
-				<Avatar
-					size="38px"
-					src="https://images.pexels.com/photos/1666779/pexels-photo-1666779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-				/>
-			}
-			title="Avatar"
-			description="Avatar as media at start"
-			className="ml-3"
-			containerClassName="max-w-xs"
-		/>
-	);
+  return (
+    <NotificationCard
+      media={
+        <Avatar
+          size="38px"
+          src="https://images.pexels.com/photos/1666779/pexels-photo-1666779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        />
+      }
+      title="Avatar"
+      description="Avatar as media at start"
+    />
+  );
 }
 ```
 
@@ -124,26 +397,24 @@ export default function App() {
 You can create detailed **NotificationCard**.
 
 <Paper>
-	<NotificationCard
-		title="Long Description"
-		description="A notification card is a UI component that is used to display a short message or notification to the user. It is often used to alert users of important information. "
-		className="[&>.aegon-notification-title]:mb-2"
-		containerClassName="max-w-lg [&_h2]:font-normal [&_h2]:!mb-2"
-	/>
+  <NotificationCard
+    title="Long Description"
+    description="A notification card is a UI component that is used to display a short message or notification to the user. It is often used to alert users of important information. "
+    className="[&>.aegon-notification-title]:mb-2"
+    containerClassName="max-w-lg [&_h2]:font-normal [&_h2]:!mb-2"
+  />
 </Paper>
 
 ```tsx
-import { NotificationCard } from '@redq/rizzui';
+import { NotificationCard } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<NotificationCard
-			title="Long Description"
-			description="A notification card is a UI component that is used to display a short message or notification to the user. It is often used to alert users of important information. "
-			className="[&>.aegon-notification-title]:mb-2"
-			containerClassName="max-w-lg"
-		/>
-	);
+  return (
+    <NotificationCard
+      title="Long Description"
+      description="A notification card is a UI component that is used to display a short message or notification to the user. It is often used to alert users of important information. "
+    />
+  );
 }
 ```
 
@@ -154,34 +425,27 @@ export default function App() {
 You can add suffix to **NotificationCard**.
 
 <Paper>
-	<NotificationCard
-		title="Suffix Text"
-		description="A notification card is a UI component that is used to display a short message or notification to the user. It is often used to alert users of important information. "
-		suffix={
-			<span className="cursor-pointer font-medium text-primary">Close</span>
-		}
-		className="pr-12 [&>.aegon-notification-title]:mb-2"
-		suffixClassName="items-center h-full"
-		containerClassName="max-w-lg [&_h2]:font-normal [&_h2]:!mb-2"
-	/>
+  <NotificationCard
+    title="Suffix Text"
+    description="A notification card is a UI component that is used to display a short message or notification to the user. It is often used to alert users of important information. "
+    suffix={<span className="cursor-pointer font-medium text-primary">Close</span>}
+    className="pr-12 [&>.aegon-notification-title]:mb-2"
+    suffixClassName="items-center h-full"
+    containerClassName="max-w-lg [&_h2]:font-normal [&_h2]:!mb-2"
+  />
 </Paper>
 
 ```tsx
-import { NotificationCard } from '@redq/rizzui';
+import { NotificationCard } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<NotificationCard
-			title="Suffix Text"
-			description="A notification card is a UI component that is used to display a short message or notification to the user. It is often used to alert users of important information. "
-			suffix={
-				<span className="cursor-pointer font-medium text-primary">Close</span>
-			}
-			className="pr-12 [&>.aegon-notification-title]:mb-2"
-			suffixClassName="items-center h-full"
-			containerClassName="max-w-lg"
-		/>
-	);
+  return (
+    <NotificationCard
+      title="Suffix Text"
+      description="A notification card is a UI component that is used to display a short message or notification to the user. It is often used to alert users of important information. "
+      suffix={<span className="cursor-pointer font-medium text-primary">Close</span>}
+    />
+  );
 }
 ```
 
@@ -192,43 +456,45 @@ export default function App() {
 You can do a clickable **NotificationCard** with **React Hot Toast**.
 
 <Paper>
-	<Button onClick={notification}>Click to get toast notification</Button>
-	<Toaster />
+  <Button onClick={notification}>Click to get toast notification</Button>
+  <Toaster />
 </Paper>
 
 ```tsx
-import toast, { Toaster } from 'react-hot-toast';
-import { NotificationCard, Button, cn } from '@redq/rizzui';
+import toast, { Toaster } from "react-hot-toast";
+import { NotificationCard, Button, cn } from "@redq/rizzui";
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
 
 const notification = () =>
-	toast.custom(
-		(t) => (
-			<NotificationCard
-				title="Success"
-				description="This is a success notification toast."
-				media={<CheckCircleIcon className="h-6 w-6 text-green" />}
-				variant="flat"
-				color="success"
-				onClear={() => toast.dismiss(t.id)}
-				containerClassName={cn(
-					'max-w-md transition-transform ease-in-out',
-					t.visible ? '' : 'translate-x-[150%] duration-300'
-				)}
-			/>
-		),
-		{
-			duration: 10000,
-			position: 'top-right',
-		}
-	);
+  toast.custom(
+    (t) => (
+      <NotificationCard
+        title="Success"
+        description="This is a success notification toast."
+        media={<CheckCircleIcon className="h-6 w-6 text-green" />}
+        variant="flat"
+        color="success"
+        onClear={() => toast.dismiss(t.id)}
+        containerClassName={cn(
+          "max-w-xs transition-all ease-in-out duration-300 bg-green-lighter",
+          t.visible ? "" : "translate-x-[150%]"
+        )}
+        className="[&_h2]:!mb-0"
+      />
+    ),
+    {
+      duration: 5000,
+      position: "top-right",
+    }
+  );
 
 export default function App() {
-	return (
-		<>
-			<Button onClick={notification}>Click to get toast notification</Button>
-			<Toaster />
-		</>
-	);
+  return (
+    <>
+      <Button onClick={notification}>Click to get toast notification</Button>
+      <Toaster />
+    </>
+  );
 }
 ```
 
@@ -266,7 +532,7 @@ Here is the API documentation of the NotificationCard component.
 ### NotificationCard Sizes
 
 ```ts
-type NotificationCardSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type NotificationCardSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -274,7 +540,7 @@ type NotificationCardSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### NotificationCard Rounded
 
 ```ts
-type NotificationCardRounded = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'none';
+type NotificationCardRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
 ```
 
 <div className="mb-10" />
@@ -283,11 +549,11 @@ type NotificationCardRounded = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'none';
 
 ```ts
 type NotificationCardColors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```
