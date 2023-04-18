@@ -469,6 +469,11 @@ You can add fixed text or icons for some fields to **Input** with property **pre
 
 ```tsx
 import { Input } from "@redq/rizzui";
+import {
+  MagnifyingGlassIcon,
+  ArrowRightIcon,
+  CurrencyDollarIcon,
+} from "@heroicons/react/24/outline";
 
 export default function App() {
   return (
@@ -678,6 +683,7 @@ You can create quantity counter with **Input**.
 ```tsx
 import { useState } from "react";
 import { Input } from "@redq/rizzui";
+import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export default function App() {
   const [state, setState] = useState(0);
