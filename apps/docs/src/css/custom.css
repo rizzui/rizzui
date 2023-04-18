@@ -955,9 +955,9 @@ ul.table-of-contents.table-of-contents__left-border::before {
   @apply w-10 h-10 bg-[var(--ifm-color-gray-300)];
 }
 
-/* #__docusaurus [class*="backToTopButton"]::after {
-  filter: invert(100);
-} */
+#__docusaurus .rc-pagination-item-active a {
+  @apply text-gray-0;
+}
 
 .custom-not-found-wrapper {
   @apply m-auto w-full max-w-lg text-center min-h-screen grid place-content-center;

@@ -1,6 +1,17 @@
 import React from 'react';
 import { useHistory } from '@docusaurus/router';
-import { Button, ActionIcon, Text, Avatar } from '@redq/rizzui';
+import {
+	Button,
+	ActionIcon,
+	Rate,
+	Text,
+	PinCode,
+	Avatar,
+	Progressbar,
+	Pagination,
+	Switch,
+	Badge,
+} from '@redq/rizzui';
 import {
 	ArrowRightIcon,
 	ChevronLeftIcon,
@@ -15,7 +26,6 @@ const components = [
 			<Avatar
 				size="48px"
 				src="https://randomuser.me/api/portraits/women/40.jpg"
-				className="ring-2 ring-primary ring-offset-2"
 			/>
 		),
 		name: 'Avatar',
@@ -23,36 +33,37 @@ const components = [
 	},
 	{
 		id: 2,
-		component: (
-			<ActionIcon>
-				<AdjustmentsHorizontalIcon className="w-5 h-5" />
-			</ActionIcon>
-		),
-		name: 'ActionIcon',
+		component: <PinCode setValue={() => null} />,
+		name: 'PinCode',
 		description: 'Lorem ipsum dollar sit is a dummy text',
 	},
 	{
 		id: 3,
-		component: <Button>Button</Button>,
-		name: 'Button',
+		component: (
+			<Rate
+				defaultValue={3}
+				tooltips={['Terrible', 'Bad', 'Normal', 'Good', 'Wonderful']}
+			/>
+		),
+		name: 'Rate',
 		description: 'Lorem ipsum dollar sit is a dummy text',
 	},
 	{
 		id: 4,
-		component: <Button>Button</Button>,
-		name: 'Button',
+		component: <Pagination defaultCurrent={1} total={25} />,
+		name: 'Pagination',
 		description: 'Lorem ipsum dollar sit is a dummy text',
 	},
 	{
 		id: 5,
-		component: <Button>Button</Button>,
-		name: 'Button',
+		component: <Badge>Badge</Badge>,
+		name: 'Badge',
 		description: 'Lorem ipsum dollar sit is a dummy text',
 	},
 	{
 		id: 6,
-		component: <Button>Button</Button>,
-		name: 'Button',
+		component: <Progressbar value={75} size="xl" label="75%" />,
+		name: 'Progressbar',
 		description: 'Lorem ipsum dollar sit is a dummy text',
 	},
 	{
@@ -63,8 +74,8 @@ const components = [
 	},
 	{
 		id: 8,
-		component: <Button>Button</Button>,
-		name: 'Button',
+		component: <Switch size="lg" />,
+		name: 'Switch',
 		description: 'Lorem ipsum dollar sit is a dummy text',
 	},
 ];
@@ -84,17 +95,21 @@ export default function ComponentBlock() {
 	const history = useHistory();
 	const sliderRef = React.useRef<HTMLDivElement | null>(null);
 	const [sliderPosition, setSliderPosition] = React.useState(0);
+
 	const currentSlide = React.useMemo(() => {
 		return Math.floor(sliderPosition / (slideWidth + slideMargin));
 	}, [sliderPosition]);
+
 	const goToNextSlide = React.useCallback(() => {
 		scrollToSlide(sliderRef.current, currentSlide + 1);
 	}, [currentSlide]);
+
 	const goToPreviousSlide = React.useCallback(() => {
 		scrollToSlide(sliderRef.current, currentSlide - 1);
 	}, [currentSlide]);
+
 	return (
-		<section className="pt-16 pb-20">
+		<section className="pt-16 pb-20 group">
 			<div className="container mx-auto">
 				<header className="text-center mb-12">
 					<Text
@@ -104,7 +119,7 @@ export default function ComponentBlock() {
 						Beautifully Crafted
 					</Text>
 					<Text tag="h2" className="text-4xl leading-[1.3]">
-						40+ Production Ready Components
+						38+ Production Ready Components
 					</Text>
 				</header>
 			</div>
@@ -122,7 +137,7 @@ export default function ComponentBlock() {
 							className="snap-start snap-always mr-5"
 						>
 							<div className="slide-item-center flex h-full flex-col rounded-2xl w-[420px] border border-gray-300 flex-shrink-0 relative">
-								<div className="flex h-full justify-center items-center">
+								<div className="flex h-full justify-center items-center px-6 py-4">
 									{item.component}
 								</div>
 								<div className="py-5 px-6">
@@ -131,7 +146,7 @@ export default function ComponentBlock() {
 									</Text>
 									<Text>{item.description}</Text>
 								</div>
-								<div className="w-2/3 h-2/3 absolute bottom-0 right-0 bg-primary opacity-[0.07] -z-[1] filter blur-3xl" />
+								<div className="w-2/3 h-2/3 absolute bottom-5 right-0 bg-primary opacity-[0.07] -z-[1] filter blur-3xl" />
 							</div>
 						</div>
 					))}
@@ -149,27 +164,25 @@ export default function ComponentBlock() {
 									</Button>
 								</div>
 							</div>
-							<div className="w-2/3 h-2/3 absolute bottom-0 right-0 bg-primary opacity-[0.07] -z-[1] filter blur-3xl" />
+							<div className="w-2/3 h-2/3 absolute bottom-5 right-0 bg-primary opacity-[0.07] -z-[1] filter blur-3xl" />
 						</div>
 					</div>
 				</div>
 				{currentSlide !== 0 && (
 					<ActionIcon
-						size="lg"
 						rounded="full"
 						onClick={goToPreviousSlide}
-						className="absolute top-1/2 -mt-[22px] left-12 z-10 bg-opacity-25"
+						className="absolute top-1/2 -mt-[20px] left-5 z-10 bg-opacity-25 opacity-0 group-hover:opacity-100"
 					>
-						<ChevronLeftIcon className="w-6 h-6" strokeWidth={2.3} />
+						<ChevronLeftIcon className="w-5 h-5" strokeWidth={2.3} />
 					</ActionIcon>
 				)}
 				<ActionIcon
-					size="lg"
 					rounded="full"
 					onClick={goToNextSlide}
-					className="absolute top-1/2 -mt-[22px] right-12 z-10 bg-opacity-25"
+					className="absolute top-1/2 -mt-[20px] right-5 z-10 bg-opacity-25 opacity-0 group-hover:opacity-100"
 				>
-					<ChevronRightIcon className="w-6 h-6" strokeWidth={2.3} />
+					<ChevronRightIcon className="w-5 h-5" strokeWidth={2.3} />
 				</ActionIcon>
 			</div>
 		</section>
