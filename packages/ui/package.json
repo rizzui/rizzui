@@ -15,10 +15,9 @@
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "lint": "eslint \"**/*.ts*\"",
-    "dev": "concurrently \"yarn build --watch\"",
+    "dev": "concurrently \"yarn build --watch\" \"yarn storybook\"",
     "build": "tsup",
     "storybook": "start-storybook -p 6006",
-    "dev-storybook": "concurrently \"yarn build --watch\" \"yarn storybook\"",
     "build-storybook": "build-storybook",
     "test": "jest --coverage",
     "test:ci": "yarn test --ci",
