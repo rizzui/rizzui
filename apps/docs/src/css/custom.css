@@ -773,7 +773,7 @@ svg[class*='lightToggleIcon'] {
 }
 
 .theme-doc-sidebar-container nav.menu {
-  @apply pt-6 pl-6 pr-[1.1rem];
+  @apply pt-4 pl-6 pr-[1.1rem];
 }
 
 #__docusaurus .navbar__link,
