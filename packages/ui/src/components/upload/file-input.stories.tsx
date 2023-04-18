@@ -1,6 +1,6 @@
 // file-input.stories.ts|tsx
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { FileInput } from '.';
+import FileInput from './file-input';
 
 export default {
   title: 'Components/FileInput',
