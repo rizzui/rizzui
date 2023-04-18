@@ -14,11 +14,11 @@ import { Announcement } from "@redq/rizzui";
 
 <div className="mb-28" />
 
-## Basic Announcement
+## Default
 
-A basic **Announcement**.
+The default style of **Announcement** component.
 
-<Paper className="gap-4 justify-start items-start">
+<Paper>
   <Announcement
     badgeText="Trending"
     highlightedText="25% discount"
@@ -32,14 +32,12 @@ import { Announcement } from "@redq/rizzui";
 
 export default function App() {
   return (
-    <>
-      <Announcement
-        badgeText="Trending"
-        highlightedText="25% discount"
-      >
-        on our new product
-      </Announcement>
-    </>
+    <Announcement
+      badgeText="Trending"
+      highlightedText="25% discount"
+    >
+      on our new product
+    </Announcement>
   );
 }
 ```

@@ -17,6 +17,64 @@ import { NativeSelect } from "@redq/rizzui";
 
 <div className="mb-28" />
 
+## Default
+
+The default style of **NativeSelect** component.
+
+<Paper className="block text-gray-1000">
+  <NativeSelectDefault label="Select Person" />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { NativeSelect } from "@redq/rizzui";
+
+const options = [
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+  return (
+    <NativeSelect
+      label="Select Person"
+      options={options}
+      selectedValue={value}
+      setSelectedValue={setValue}
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
 ## Variants
 
 You can change the style of **NativeSelect** with property [**variant**](#nativeselect-variants).

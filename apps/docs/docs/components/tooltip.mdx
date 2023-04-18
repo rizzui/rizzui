@@ -12,9 +12,9 @@ import { Tooltip } from "@redq/rizzui";
 
 <div className="mb-28" />
 
-## Simple Tooltip
+## Default
 
-A simple **Tooltip** component.
+The default style of the **Tooltip** component.
 
 <Paper>
   <Tooltip content="I'm your tooltip">
@@ -443,142 +443,140 @@ export default function App() {
 
 You can change placement of the **Tooltip** using property **placement**
 
-<Paper className="block">
-  <div className="flex h-[560px] flex-col">
-    <div className="relative m-auto flex h-96 w-3/5 flex-wrap justify-center gap-8">
-      <Tooltip
-        content="I'm your tooltip"
-        placement="left"
+<Paper className="h-[560px]">
+  <div className="relative m-auto flex h-96 max-w-xl w-full flex-wrap justify-center gap-8">
+    <Tooltip
+      content="I'm your tooltip"
+      placement="left"
+    >
+      <Button
+        variant="outline"
+        className="absolute top-1/2 left-0"
       >
-        <Button
-          variant="outline"
-          className="absolute top-1/2 left-0"
-        >
-          Left
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="right"
+        Left
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="right"
+    >
+      <Button
+        variant="outline"
+        className="absolute top-1/2 right-0"
       >
-        <Button
-          variant="outline"
-          className="absolute top-1/2 right-0"
-        >
-          Right
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="top"
+        Right
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="top"
+    >
+      <Button
+        variant="outline"
+        className="absolute top-0"
       >
-        <Button
-          variant="outline"
-          className="absolute top-0"
-        >
-          Top
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="bottom"
+        Top
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="bottom"
+    >
+      <Button
+        variant="outline"
+        className="absolute -bottom-5"
       >
-        <Button
-          variant="outline"
-          className="absolute -bottom-5"
-        >
-          Bottom
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="top-start"
+        Bottom
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="top-start"
+    >
+      <Button
+        variant="outline"
+        className="absolute left-10 xl:left-20 top-0"
       >
-        <Button
-          variant="outline"
-          className="absolute left-20 top-0"
-        >
-          Top Start
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="top-end"
+        Top Start
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="top-end"
+    >
+      <Button
+        variant="outline"
+        className="absolute top-0 right-10 xl:right-20"
       >
-        <Button
-          variant="outline"
-          className="absolute top-0 right-20"
-        >
-          Top End
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="bottom-start"
+        Top End
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="bottom-start"
+    >
+      <Button
+        variant="outline"
+        className="absolute -bottom-5 left-10 xl:left-20"
       >
-        <Button
-          variant="outline"
-          className="absolute -bottom-5 left-20"
-        >
-          Bottom Start
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="bottom-end"
+        Bottom Start
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="bottom-end"
+    >
+      <Button
+        variant="outline"
+        className="absolute -bottom-5 right-10 xl:right-20"
       >
-        <Button
-          variant="outline"
-          className="absolute -bottom-5 right-20"
-        >
-          Bottom End
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="left-start"
+        Bottom End
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="left-start"
+    >
+      <Button
+        variant="outline"
+        className="absolute left-8 top-24"
       >
-        <Button
-          variant="outline"
-          className="absolute left-8 top-24"
-        >
-          Left Start
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="left-end"
+        Left Start
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="left-end"
+    >
+      <Button
+        variant="outline"
+        className="absolute bottom-16 left-8"
       >
-        <Button
-          variant="outline"
-          className="absolute bottom-16 left-8"
-        >
-          Left End
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="right-start"
+        Left End
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="right-start"
+    >
+      <Button
+        variant="outline"
+        className="absolute right-8 top-24"
       >
-        <Button
-          variant="outline"
-          className="absolute right-8 top-24"
-        >
-          Right Start
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="I'm your tooltip"
-        placement="right-end"
+        Right Start
+      </Button>
+    </Tooltip>
+    <Tooltip
+      content="I'm your tooltip"
+      placement="right-end"
+    >
+      <Button
+        variant="outline"
+        className="absolute right-8 bottom-16"
       >
-        <Button
-          variant="outline"
-          className="absolute right-8 bottom-16"
-        >
-          Right End
-        </Button>
-      </Tooltip>
-    </div>
+        Right End
+      </Button>
+    </Tooltip>
   </div>
 </Paper>
 
@@ -588,7 +586,7 @@ import { Tooltip, Button } from "@redq/rizzui";
 export default function App() {
   return (
     <div className="flex h-[560px] flex-col">
-      <div className="relative m-auto flex h-96 w-3/5 flex-wrap justify-center gap-8">
+      <div className="relative m-auto flex h-96 max-w-xl w-full flex-wrap justify-center gap-8">
         <Tooltip
           content="I'm your tooltip"
           placement="left"
@@ -639,7 +637,7 @@ export default function App() {
         >
           <Button
             variant="outline"
-            className="absolute left-20 top-0"
+            className="absolute left-10 xl:left-20 top-0"
           >
             Top Start
           </Button>
@@ -650,19 +648,18 @@ export default function App() {
         >
           <Button
             variant="outline"
-            className="absolute top-0 right-20"
+            className="absolute top-0 right-10 xl:right-20"
           >
             Top End
           </Button>
         </Tooltip>
-
         <Tooltip
           content="I'm your tooltip"
           placement="bottom-start"
         >
           <Button
             variant="outline"
-            className="absolute -bottom-5 left-20"
+            className="absolute -bottom-5 left-10 xl:left-20"
           >
             Bottom Start
           </Button>
@@ -673,12 +670,11 @@ export default function App() {
         >
           <Button
             variant="outline"
-            className="absolute -bottom-5 right-20"
+            className="absolute -bottom-5 right-10 xl:right-20"
           >
             Bottom End
           </Button>
         </Tooltip>
-
         <Tooltip
           content="I'm your tooltip"
           placement="left-start"
@@ -701,7 +697,6 @@ export default function App() {
             Left End
           </Button>
         </Tooltip>
-
         <Tooltip
           content="I'm your tooltip"
           placement="right-start"
