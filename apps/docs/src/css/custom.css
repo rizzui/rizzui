@@ -1034,3 +1034,15 @@ button[class*='toggleButton'].clean-btn:hover {
 [data-theme='dark'] #__docusaurus div[class*="codeBlockTitle"] {
   @apply bg-[#2e2e31]
 }
+
+[data-theme='dark'] #__docusaurus .rc-pagination-item a {
+  @apply text-gray-0;
+}
+
+[data-theme='dark'] #__docusaurus .rc-pagination-item {
+  @apply bg-gray-500;
+}
+
+[data-theme='dark'] #__docusaurus .rc-pagination-item-active {
+  @apply bg-gray-900;
+}
