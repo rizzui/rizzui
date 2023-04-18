@@ -2,33 +2,33 @@
 sidebar_position: 4
 ---
 
-import { Badge, Text, Avatar } from '@redq/rizzui';
-import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
-import Paper from '@site/src/components/paper';
+import { Badge, Text, Avatar } from "@redq/rizzui";
+import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import Paper from "@site/src/components/paper";
 
 # Badge
 
 Badge is a small overlapped UI item which indicates a status, notification, or event that appears in relativity with the underlying object.
 
 ```tsx
-import { Badge } from '@redq/rizzui';
+import { Badge } from "@redq/rizzui";
 ```
 
 <div className="mb-28" />
 
 ## Default
 
-The default style of the **Badge**
+The default style of **Badge** component.
 
 <Paper>
-	<Badge>Badge</Badge>
+  <Badge>Badge</Badge>
 </Paper>
 
 ```tsx
-import { Badge } from '@redq/rizzui';
+import { Badge } from "@redq/rizzui";
 
 export default function App() {
-	return <Badge>Badge</Badge>;
+  return <Badge>Badge</Badge>;
 }
 ```
 
@@ -36,27 +36,27 @@ export default function App() {
 
 ## Variants
 
-You can change the style of the **Badge** with property **variant**
+You can change the style of the **Badge** with property [**variant**](#badge-variants).
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Badge variant="outline">Badge</Badge>
-		<Badge variant="flat">Badge</Badge>
-		<Badge>Badge</Badge>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Badge variant="outline">Badge</Badge>
+    <Badge variant="flat">Badge</Badge>
+    <Badge>Badge</Badge>
+  </div>
 </Paper>
 
 ```tsx
-import { Badge } from '@redq/rizzui';
+import { Badge } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Badge variant="outline">Badge</Badge>
-			<Badge variant="flat">Badge</Badge>
-			<Badge>Badge</Badge>
-		</>
-	);
+  return (
+    <>
+      <Badge variant="outline">Badge</Badge>
+      <Badge variant="flat">Badge</Badge>
+      <Badge>Badge</Badge>
+    </>
+  );
 }
 ```
 
@@ -64,29 +64,29 @@ export default function App() {
 
 ## Sizes
 
-You can change the size of the **Badge** with property **size**
+You can change the size of the **Badge** with property [**size**](#badge-sizes).
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Badge size="sm">Badge</Badge>
-		<Badge>Badge</Badge>
-		<Badge size="lg">Badge</Badge>
-		<Badge size="xl">Badge</Badge>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Badge size="sm">Badge</Badge>
+    <Badge>Badge</Badge>
+    <Badge size="lg">Badge</Badge>
+    <Badge size="xl">Badge</Badge>
+  </div>
 </Paper>
 
 ```tsx
-import { Badge } from '@redq/rizzui';
+import { Badge } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Badge size="sm">Badge</Badge>
-			<Badge>Badge</Badge>
-			<Badge size="lg">Badge</Badge>
-			<Badge size="xl">Badge</Badge>
-		</>
-	);
+  return (
+    <>
+      <Badge size="sm">Badge</Badge>
+      <Badge>Badge</Badge>
+      <Badge size="lg">Badge</Badge>
+      <Badge size="xl">Badge</Badge>
+    </>
+  );
 }
 ```
 
@@ -94,31 +94,31 @@ export default function App() {
 
 ## Rounded
 
-You can change the border radius of the **Badge** with property **rounded**
+You can change the border radius of the **Badge** with property [**rounded**](#badge-rounded).
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Badge rounded="none">Badge</Badge>
-		<Badge rounded="sm">Badge</Badge>
-		<Badge rounded="md">Badge</Badge>
-		<Badge rounded="lg">Badge</Badge>
-		<Badge>Badge</Badge>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Badge rounded="none">Badge</Badge>
+    <Badge rounded="sm">Badge</Badge>
+    <Badge rounded="md">Badge</Badge>
+    <Badge rounded="lg">Badge</Badge>
+    <Badge>Badge</Badge>
+  </div>
 </Paper>
 
 ```tsx
-import { Badge } from '@redq/rizzui';
+import { Badge } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Badge rounded="none">Badge</Badge>
-			<Badge rounded="sm">Badge</Badge>
-			<Badge rounded="md">Badge</Badge>
-			<Badge rounded="lg">Badge</Badge>
-			<Badge>Badge</Badge>
-		</>
-	);
+  return (
+    <>
+      <Badge rounded="none">Badge</Badge>
+      <Badge rounded="sm">Badge</Badge>
+      <Badge rounded="md">Badge</Badge>
+      <Badge rounded="lg">Badge</Badge>
+      <Badge>Badge</Badge>
+    </>
+  );
 }
 ```
 
@@ -126,35 +126,35 @@ export default function App() {
 
 ## Colors
 
-You can change the color of the **Badge** with property **color**
+You can change the color of the **Badge** with property [**color**](#badge-colors).
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Badge>Badge</Badge>
-		<Badge color="primary">Badge</Badge>
-		<Badge color="secondary">Badge</Badge>
-		<Badge color="info">Badge</Badge>
-		<Badge color="warning">Badge</Badge>
-		<Badge color="danger">Badge</Badge>
-		<Badge color="success">Badge</Badge>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Badge>Badge</Badge>
+    <Badge color="primary">Badge</Badge>
+    <Badge color="secondary">Badge</Badge>
+    <Badge color="info">Badge</Badge>
+    <Badge color="warning">Badge</Badge>
+    <Badge color="danger">Badge</Badge>
+    <Badge color="success">Badge</Badge>
+  </div>
 </Paper>
 
 ```tsx
-import { Badge } from '@redq/rizzui';
+import { Badge } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Badge>Badge</Badge>
-			<Badge color="primary">Badge</Badge>
-			<Badge color="secondary">Badge</Badge>
-			<Badge color="info">Badge</Badge>
-			<Badge color="warning">Badge</Badge>
-			<Badge color="danger">Badge</Badge>
-			<Badge color="success">Badge</Badge>
-		</>
-	);
+  return (
+    <>
+      <Badge>Badge</Badge>
+      <Badge color="primary">Badge</Badge>
+      <Badge color="secondary">Badge</Badge>
+      <Badge color="info">Badge</Badge>
+      <Badge color="warning">Badge</Badge>
+      <Badge color="danger">Badge</Badge>
+      <Badge color="success">Badge</Badge>
+    </>
+  );
 }
 ```
 
@@ -162,77 +162,113 @@ export default function App() {
 
 ## Dot
 
-You can change **Badge** as dot with property **renderAsDot**
+You can change **Badge** as dot with property **renderAsDot**.
 
 <Paper>
-	<div className="flex flex-col gap-6 text-sm">
-		<div className="flex items-center gap-2">
-			<Badge renderAsDot />
-			<Text>Default</Text>
-		</div>
-		<div className="flex items-center gap-2">
-			<Badge renderAsDot color="primary" />
-			<Text>Primary</Text>
-		</div>
-		<div className="flex items-center gap-2">
-			<Badge renderAsDot color="secondary" />
-			<Text>Secondary</Text>
-		</div>
-		<div className="flex items-center gap-2">
-			<Badge renderAsDot color="danger" />
-			<Text>Danger</Text>
-		</div>
-		<div className="flex items-center gap-2">
-			<Badge renderAsDot color="warning" />
-			<Text>Warning</Text>
-		</div>
-		<div className="flex items-center gap-2">
-			<Badge renderAsDot color="success" />
-			<Text>Success</Text>
-		</div>
-		<div className="flex items-center gap-2">
-			<Badge renderAsDot color="info" />
-			<Text>Info</Text>
-		</div>
-	</div>
+  <div className="flex flex-col gap-6 text-sm">
+    <div className="flex items-center gap-2">
+      <Badge renderAsDot />
+      <Text>Default</Text>
+    </div>
+    <div className="flex items-center gap-2">
+      <Badge
+        renderAsDot
+        color="primary"
+      />
+      <Text>Primary</Text>
+    </div>
+    <div className="flex items-center gap-2">
+      <Badge
+        renderAsDot
+        color="secondary"
+      />
+      <Text>Secondary</Text>
+    </div>
+    <div className="flex items-center gap-2">
+      <Badge
+        renderAsDot
+        color="danger"
+      />
+      <Text>Danger</Text>
+    </div>
+    <div className="flex items-center gap-2">
+      <Badge
+        renderAsDot
+        color="warning"
+      />
+      <Text>Warning</Text>
+    </div>
+    <div className="flex items-center gap-2">
+      <Badge
+        renderAsDot
+        color="success"
+      />
+      <Text>Success</Text>
+    </div>
+    <div className="flex items-center gap-2">
+      <Badge
+        renderAsDot
+        color="info"
+      />
+      <Text>Info</Text>
+    </div>
+  </div>
 </Paper>
 
 ```tsx
-import { Badge, Text } from '@redq/rizzui';
+import { Badge, Text } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<>
-			<div className="flex items-center gap-2">
-				<Badge renderAsDot />
-				<Text>Default</Text>
-			</div>
-			<div className="flex items-center gap-2">
-				<Badge renderAsDot color="primary" />
-				<Text>Primary</Text>
-			</div>
-			<div className="flex items-center gap-2">
-				<Badge renderAsDot color="secondary" />
-				<Text>Secondary</Text>
-			</div>
-			<div className="flex items-center gap-2">
-				<Badge renderAsDot color="danger" />
-				<Text>Danger</Text>
-			</div>
-			<div className="flex items-center gap-2">
-				<Badge renderAsDot color="warning" />
-				<Text>Warning</Text>
-			</div>
-			<div className="flex items-center gap-2">
-				<Badge renderAsDot color="success" />
-				<Text>Success</Text>
-			</div>
-			<div className="flex items-center gap-2">
-				<Badge renderAsDot color="info" />
-				<Text>Info</Text>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div className="flex items-center gap-2">
+        <Badge renderAsDot />
+        <Text>Default</Text>
+      </div>
+      <div className="flex items-center gap-2">
+        <Badge
+          renderAsDot
+          color="primary"
+        />
+        <Text>Primary</Text>
+      </div>
+      <div className="flex items-center gap-2">
+        <Badge
+          renderAsDot
+          color="secondary"
+        />
+        <Text>Secondary</Text>
+      </div>
+      <div className="flex items-center gap-2">
+        <Badge
+          renderAsDot
+          color="danger"
+        />
+        <Text>Danger</Text>
+      </div>
+      <div className="flex items-center gap-2">
+        <Badge
+          renderAsDot
+          color="warning"
+        />
+        <Text>Warning</Text>
+      </div>
+      <div className="flex items-center gap-2">
+        <Badge
+          renderAsDot
+          color="success"
+        />
+        <Text>Success</Text>
+      </div>
+      <div className="flex items-center gap-2">
+        <Badge
+          renderAsDot
+          color="info"
+        />
+        <Text>Info</Text>
+      </div>
+    </>
+  );
 }
 ```
 
@@ -243,83 +279,101 @@ export default function App() {
 You can use **Badge** to highlight icons.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<div className="relative inline-flex">
-			<ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
-			<Badge
-				size="sm"
-				enableOutlineRing
-				className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
-			>
-				99
-			</Badge>
-		</div>
-		<div className="relative ml-3 inline-flex">
-			<ShoppingCartIcon className="h-auto w-8" strokeWidth={1.2} />
-			<Badge
-				size="sm"
-				color="success"
-				enableOutlineRing
-				className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
-			>
-				99+
-			</Badge>
-		</div>
-		<div className="relative ml-3 inline-flex">
-			<ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
-			<Badge
-				size="sm"
-				color="danger"
-				enableOutlineRing
-				className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
-			>
-				999+
-			</Badge>
-		</div>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <div className="relative inline-flex">
+      <ShoppingBagIcon
+        className="h-auto w-8"
+        strokeWidth={1.2}
+      />
+      <Badge
+        size="sm"
+        enableOutlineRing
+        className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
+      >
+        99
+      </Badge>
+    </div>
+    <div className="relative ml-3 inline-flex">
+      <ShoppingCartIcon
+        className="h-auto w-8"
+        strokeWidth={1.2}
+      />
+      <Badge
+        size="sm"
+        color="success"
+        enableOutlineRing
+        className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
+      >
+        99+
+      </Badge>
+    </div>
+    <div className="relative ml-3 inline-flex">
+      <ShoppingBagIcon
+        className="h-auto w-8"
+        strokeWidth={1.2}
+      />
+      <Badge
+        size="sm"
+        color="danger"
+        enableOutlineRing
+        className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
+      >
+        999+
+      </Badge>
+    </div>
+  </div>
 </Paper>
 
 ```tsx
-import { Badge } from '@redq/rizzui';
-import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { Badge } from "@redq/rizzui";
+import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 export default function App() {
-	return (
-		<>
-			<div className="relative inline-flex">
-				<ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
-				<Badge
-					size="sm"
-					enableOutlineRing
-					className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
-				>
-					99
-				</Badge>
-			</div>
-			<div className="relative ml-3 inline-flex">
-				<ShoppingCartIcon className="h-auto w-8" strokeWidth={1.2} />
-				<Badge
-					size="sm"
-					color="success"
-					enableOutlineRing
-					className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
-				>
-					99+
-				</Badge>
-			</div>
-			<div className="relative ml-3 inline-flex">
-				<ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
-				<Badge
-					size="sm"
-					color="danger"
-					enableOutlineRing
-					className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
-				>
-					999+
-				</Badge>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div className="relative inline-flex">
+        <ShoppingBagIcon
+          className="h-auto w-8"
+          strokeWidth={1.2}
+        />
+        <Badge
+          size="sm"
+          enableOutlineRing
+          className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
+        >
+          99
+        </Badge>
+      </div>
+      <div className="relative ml-3 inline-flex">
+        <ShoppingCartIcon
+          className="h-auto w-8"
+          strokeWidth={1.2}
+        />
+        <Badge
+          size="sm"
+          color="success"
+          enableOutlineRing
+          className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
+        >
+          99+
+        </Badge>
+      </div>
+      <div className="relative ml-3 inline-flex">
+        <ShoppingBagIcon
+          className="h-auto w-8"
+          strokeWidth={1.2}
+        />
+        <Badge
+          size="sm"
+          color="danger"
+          enableOutlineRing
+          className="absolute right-0 top-0 -translate-y-1/3 translate-x-1/2"
+        >
+          999+
+        </Badge>
+      </div>
+    </>
+  );
 }
 ```
 
@@ -327,99 +381,99 @@ export default function App() {
 
 ## With Avatar
 
-You can use the **Badge** with **Avatar** component to show the current state of user
+You can use the **Badge** with **Avatar** component to show the current state of user.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<div className="relative inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-			/>
-			<Badge
-				size="lg"
-				renderAsDot
-				color="success"
-				enableOutlineRing
-				className="absolute right-0 top-0 -translate-y-[25%]"
-			/>
-		</div>
-		<div className="relative ml-3 inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/43.jpg"
-			/>
-			<Badge
-				size="lg"
-				renderAsDot
-				color="danger"
-				enableOutlineRing
-				className="absolute right-0 bottom-0 -translate-y-[25%]"
-			/>
-		</div>
-		<div className="relative ml-3 inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/44.jpg"
-			/>
-			<Badge
-				size="lg"
-				renderAsDot
-				color="warning"
-				enableOutlineRing
-				className="absolute right-0 top-0 -translate-y-[30%]"
-			/>
-		</div>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <div className="relative inline-flex">
+      <Avatar
+        size="48px"
+        src="https://randomuser.me/api/portraits/women/40.jpg"
+      />
+      <Badge
+        size="lg"
+        renderAsDot
+        color="success"
+        enableOutlineRing
+        className="absolute right-0 top-0 -translate-y-[25%]"
+      />
+    </div>
+    <div className="relative ml-3 inline-flex">
+      <Avatar
+        size="48px"
+        src="https://randomuser.me/api/portraits/women/43.jpg"
+      />
+      <Badge
+        size="lg"
+        renderAsDot
+        color="danger"
+        enableOutlineRing
+        className="absolute right-0 bottom-0 -translate-y-[25%]"
+      />
+    </div>
+    <div className="relative ml-3 inline-flex">
+      <Avatar
+        size="48px"
+        src="https://randomuser.me/api/portraits/women/44.jpg"
+      />
+      <Badge
+        size="lg"
+        renderAsDot
+        color="warning"
+        enableOutlineRing
+        className="absolute right-0 top-0 -translate-y-[30%]"
+      />
+    </div>
+  </div>
 </Paper>
 
 ```tsx
-import { Badge, Avatar } from '@redq/rizzui';
+import { Badge, Avatar } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<>
-			<div className="relative inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/40.jpg"
-				/>
-				<Badge
-					size="lg"
-					renderAsDot
-					color="success"
-					enableOutlineRing
-					className="absolute right-0 top-0 -translate-y-[25%]"
-				/>
-			</div>
-			<div className="relative ml-3 inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/43.jpg"
-				/>
-				<Badge
-					size="lg"
-					renderAsDot
-					color="danger"
-					enableOutlineRing
-					className="absolute right-0 bottom-0 -translate-y-[25%]"
-				/>
-			</div>
-			<div className="relative ml-3 inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/44.jpg"
-				/>
-				<Badge
-					size="lg"
-					renderAsDot
-					color="warning"
-					enableOutlineRing
-					className="absolute right-0 top-0 -translate-y-[30%]"
-				/>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div className="relative inline-flex">
+        <Avatar
+          size="48px"
+          src="https://randomuser.me/api/portraits/women/40.jpg"
+        />
+        <Badge
+          size="lg"
+          renderAsDot
+          color="success"
+          enableOutlineRing
+          className="absolute right-0 top-0 -translate-y-[25%]"
+        />
+      </div>
+      <div className="relative ml-3 inline-flex">
+        <Avatar
+          size="48px"
+          src="https://randomuser.me/api/portraits/women/43.jpg"
+        />
+        <Badge
+          size="lg"
+          renderAsDot
+          color="danger"
+          enableOutlineRing
+          className="absolute right-0 bottom-0 -translate-y-[25%]"
+        />
+      </div>
+      <div className="relative ml-3 inline-flex">
+        <Avatar
+          size="48px"
+          src="https://randomuser.me/api/portraits/women/44.jpg"
+        />
+        <Badge
+          size="lg"
+          renderAsDot
+          color="warning"
+          enableOutlineRing
+          className="absolute right-0 top-0 -translate-y-[30%]"
+        />
+      </div>
+    </>
+  );
 }
 ```
 
@@ -451,7 +505,7 @@ Here is the API documentation of the Badge component. You can use props like `id
 ### Badge Variants
 
 ```ts
-type BadgeVariants = 'solid' | 'flat' | 'outline';
+type BadgeVariants = "solid" | "flat" | "outline";
 ```
 
 <div className="mb-10" />
@@ -459,7 +513,7 @@ type BadgeVariants = 'solid' | 'flat' | 'outline';
 ### Badge Sizes
 
 ```ts
-type BadgeSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type BadgeSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -467,7 +521,7 @@ type BadgeSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### Badge Rounded
 
 ```ts
-type BadgeRounded = 'DEFAULT' | 'none' | 'sm' | 'md' | 'lg';
+type BadgeRounded = "DEFAULT" | "none" | "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
@@ -475,12 +529,5 @@ type BadgeRounded = 'DEFAULT' | 'none' | 'sm' | 'md' | 'lg';
 ### Badge Colors
 
 ```ts
-type BadgeColors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+type BadgeColors = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
 ```

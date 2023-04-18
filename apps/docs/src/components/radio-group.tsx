@@ -1,186 +1,181 @@
 import React, { useState } from "react";
-import { CheckboxGroup, Checkbox, AdvancedCheckbox } from "@redq/rizzui";
+import { RadioGroup, Radio, AdvancedRadio } from "@redq/rizzui";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 
-export default function CheckboxGroupDefault() {
-  const [values, setValues] = useState<string[]>([]);
+export default function RadioGroupDefault() {
+  const [value, setValue] = useState("");
+
   return (
-    <CheckboxGroup
-      values={values}
-      setValues={setValues}
-      className="flex flex-row gap-4"
+    <RadioGroup
+      value={value}
+      setValue={setValue}
+      className="flex flex-wrap gap-6"
     >
-      <Checkbox
+      <Radio
         label="Apple"
         value="apple"
       />
-      <Checkbox
+      <Radio
         label="Pear"
         value="pear"
       />
-      <Checkbox
+      <Radio
         label="Orange"
         value="orange"
         disabled
       />
-      <Checkbox
+      <Radio
         label="Blueberry"
         value="blueberry"
       />
-    </CheckboxGroup>
+    </RadioGroup>
   );
 }
 
-export function CheckboxGroupLabelStart() {
-  const [values, setValues] = useState<string[]>([]);
+export function RadioGroupStartLabel() {
+  const [value, setValue] = useState("");
   return (
-    <CheckboxGroup
-      values={values}
-      setValues={setValues}
-      className="flex flex-col divide-y"
+    <RadioGroup
+      value={value}
+      setValue={setValue}
+      className="justify-center space-x-4 space-y-4"
     >
-      <Checkbox
-        name="column-label-start-group"
-        label="Checked Item"
-        value="default"
-        className="p-2"
-        color="success"
-        variant="active"
-        labelPlacement="start"
-        containerClassName="justify-between"
-        helperText="This project would be available to anyone who have the link"
-      />
-      <Checkbox
-        name="column-label-start-group"
-        label="Checked Item"
-        value="primary"
-        className="p-2"
-        color="success"
-        variant="active"
-        labelPlacement="start"
-        containerClassName="justify-between"
-        helperText="This project would be available to anyone who have the link"
-      />
-      <Checkbox
-        name="column-label-start-group"
-        label="Checked Item"
-        value="secondary"
-        className="p-2"
-        color="success"
-        variant="active"
-        labelPlacement="start"
-        helperText="This project would be available to anyone who have the link"
-        containerClassName="justify-between"
-      />
-    </CheckboxGroup>
+      <div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+        <Radio
+          name="column-label-start-group"
+          label="Default"
+          value="default"
+          className="p-2"
+          labelPlacement="start"
+          containerClassName="justify-between"
+          helperText="This project would be available to anyone who have the link"
+        />
+        <Radio
+          name="column-label-start-group"
+          label="Primary"
+          value="primary"
+          className="p-2"
+          labelPlacement="start"
+          containerClassName="justify-between"
+          helperText="This project would be available to anyone who have the link"
+        />
+        <Radio
+          name="column-label-start-group"
+          label="Secondary"
+          value="secondary"
+          className="p-2"
+          labelPlacement="start"
+          containerClassName="justify-between"
+          helperText="This project would be available to anyone who have the link"
+        />
+      </div>
+    </RadioGroup>
   );
 }
 
-export function CheckboxGroupLabelEnd() {
-  const [values, setValues] = useState<string[]>([]);
+export function RadioGroupEndLabel() {
+  const [value, setValue] = useState("");
+
   return (
-    <CheckboxGroup
-      values={values}
-      setValues={setValues}
-      className="flex flex-col divide-y"
+    <RadioGroup
+      value={value}
+      setValue={setValue}
+      className="justify-center space-x-4 space-y-4"
     >
-      <Checkbox
-        name="column-label-end-group"
-        label="Checked Item"
-        value="default"
-        color="success"
-        variant="active"
-        helperText="This project would be available to anyone who have the link"
-        className="p-2"
-        labelClassName="pl-2"
-        helperClassName="ml-8"
-      />
-      <Checkbox
-        name="column-label-end-group"
-        label="Checked Item"
-        value="primary"
-        color="success"
-        variant="active"
-        helperText="This project would be available to anyone who have the link"
-        className="p-2"
-        labelClassName="pl-2"
-        helperClassName="ml-8"
-      />
-      <Checkbox
-        name="column-label-end-group"
-        label="Checked Item"
-        value="secondary"
-        color="success"
-        variant="active"
-        helperText="This project would be available to anyone who have the link"
-        className="p-2"
-        labelClassName="pl-2"
-        helperClassName="ml-8"
-      />
-    </CheckboxGroup>
+      <div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+        <Radio
+          name="column-label-end-group"
+          label="Warning"
+          value="warning"
+          className="p-2"
+          labelClassName="pl-2"
+          helperClassName="ml-8"
+          helperText="This project would be available to anyone who have the link"
+        />
+        <Radio
+          name="column-label-end-group"
+          label="Success"
+          value="success"
+          className="p-2"
+          labelClassName="pl-2"
+          helperClassName="ml-8"
+          helperText="This project would be available to anyone who have the link"
+        />
+        <Radio
+          name="column-label-end-group"
+          value="Info"
+          label="info"
+          className="p-2"
+          labelClassName="pl-2"
+          helperClassName="ml-8"
+          helperText="This project would be available to anyone who have the link"
+        />
+      </div>
+    </RadioGroup>
   );
 }
 
-export function CheckboxGroupAdvanced() {
-  const [values, setValues] = React.useState<string[]>(["one"]);
+export function RadioGroupAdvanced() {
+  const [value, setValue] = useState("one");
+
   return (
-    <CheckboxGroup
-      values={values}
-      setValues={setValues}
+    <RadioGroup
+      value={value}
+      setValue={setValue}
       className="flex gap-4"
     >
-      <AdvancedCheckbox
+      <AdvancedRadio
         value="any"
         className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
       >
         Any
-      </AdvancedCheckbox>
-      <AdvancedCheckbox
+      </AdvancedRadio>
+      <AdvancedRadio
         value="one"
         className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
       >
         1
-      </AdvancedCheckbox>
-      <AdvancedCheckbox
+      </AdvancedRadio>
+      <AdvancedRadio
         value="two"
         className="cursor-not-allowed rounded-full border border-gray-300 px-6 py-1.5 text-gray-300"
         disabled
       >
         2
-      </AdvancedCheckbox>
-      <AdvancedCheckbox
+      </AdvancedRadio>
+      <AdvancedRadio
         value="three"
         defaultChecked
         className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
       >
         3
-      </AdvancedCheckbox>
-      <AdvancedCheckbox
+      </AdvancedRadio>
+      <AdvancedRadio
         value="four"
         className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
       >
         4
-      </AdvancedCheckbox>
-      <AdvancedCheckbox
+      </AdvancedRadio>
+      <AdvancedRadio
         value="five+"
         className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
       >
         5+
-      </AdvancedCheckbox>
-    </CheckboxGroup>
+      </AdvancedRadio>
+    </RadioGroup>
   );
 }
 
-export function CheckboxGroupWithCard() {
-  const [values, setValues] = React.useState<string[]>(["one"]);
+export function RadioGroupWithCard() {
+  const [value, setValue] = useState("one");
 
   return (
-    <CheckboxGroup
-      values={values}
-      setValues={setValues}
+    <RadioGroup
+      value={value}
+      setValue={setValue}
       className="flex gap-4"
     >
-      <AdvancedCheckbox
+      <AdvancedRadio
         name="payment-secondary"
         value="single"
         className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
@@ -191,8 +186,8 @@ export function CheckboxGroupWithCard() {
           <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
         </div>
         <p className="text-gray-500">Charge a one-time fee.</p>
-      </AdvancedCheckbox>
-      <AdvancedCheckbox
+      </AdvancedRadio>
+      <AdvancedRadio
         name="payment-secondary"
         value="subscription"
         className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
@@ -203,8 +198,8 @@ export function CheckboxGroupWithCard() {
           <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
         </div>
         <p className="text-gray-500">Charge an ongoing fee.</p>
-      </AdvancedCheckbox>
-      <AdvancedCheckbox
+      </AdvancedRadio>
+      <AdvancedRadio
         name="payment-secondary"
         value="lead"
         defaultChecked
@@ -216,7 +211,7 @@ export function CheckboxGroupWithCard() {
           <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
         </div>
         <p className="text-gray-500">Allow access for free.</p>
-      </AdvancedCheckbox>
-    </CheckboxGroup>
+      </AdvancedRadio>
+    </RadioGroup>
   );
 }
