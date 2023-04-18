@@ -4,13 +4,13 @@ Welcome to the RizzUI. A Modern and Minimal React UI Library built with Tailwind
 
 ## Installation
 
-Inside your React / Next.js project directory, install RizzUI by running either of the following:
+We need to install TailwindCSS. First, go to your React / Next.js project directory, install RizzUI by running either of the following:
 
-```ssh
+```bash title=Terminal
 yarn add -D tailwindCSS postcss autoprefixer @tailwindcss/forms
 ```
 
-```ssh
+```bash title=Terminal
 npm install -D tailwindCSS postcss autoprefixer @tailwindcss/forms
 ```
 
@@ -18,9 +18,9 @@ Follow their official guide to install [TailwindCSS](https://tailwindcss.com/doc
 
 ## Configure tailwind.config.js
 
-You need to copy and paste our tailwind configuration in your tailwind.config.js file-
+Now, we need to configure tailwind. We are using css variable for theming. You need to copy and paste the following tailwind configuration in your tailwind.config.js file-
 
-```js tailwind.config.js
+```js title=tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 
 const plugin = require('tailwindcss/plugin');
@@ -93,59 +93,7 @@ module.exports = {
 			},
 		},
 		extend: {
-			// set your base typography style
-			fontSize: {
-				h1: [
-					'2.25rem',
-					{
-						lineHeight: '2.5rem',
-						fontWeight: '700',
-					},
-				],
-				h2: [
-					'1.875rem',
-					{
-						lineHeight: '2.25rem',
-						fontWeight: '700',
-					},
-				],
-				h3: [
-					'1.5rem',
-					{
-						lineHeight: '2rem',
-						fontWeight: '700',
-					},
-				],
-				h4: [
-					'1.25rem',
-					{
-						lineHeight: '1.75rem',
-						fontWeight: '700',
-					},
-				],
-				h5: [
-					'1.125rem',
-					{
-						lineHeight: '1.5rem',
-						fontWeight: '700',
-					},
-				],
-				h6: [
-					'1rem',
-					{
-						lineHeight: '1rem',
-						fontWeight: '700',
-					},
-				],
-				quote: [
-					'1.125rem',
-					{
-						lineHeight: '1.75rem',
-						fontWeight: '600',
-					},
-				],
-			},
-			// using these animations on our loader
+			// requried these animations for the Loader component
 			animation: {
 				blink: 'blink 1.4s infinite both;',
 				'scale-up': 'scaleUp 500ms infinite alternate',
@@ -173,36 +121,21 @@ module.exports = {
 };
 ```
 
-**Only our tailwind.config.js file is not enough for styeling, you need to use our global.css file as well. Please copy and paste bellow TailwindCSS styles file's code and use it in your app style file**
+## Configure main.css
 
-```css
+Only our tailwind.config.js file is not enough for styeling, you need to use our main.css file as well. Please copy and paste bellow TailwindCSS styles file's code and use it in your style file
+
+```css title=main.css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-	html {
-		@apply antialiased;
-	}
-	input[type='search']::-webkit-search-cancel-button {
-		display: none;
-	}
-
-	input[type='number']::-webkit-inner-spin-button,
-	input[type='number']::-webkit-outer-spin-button {
-		-webkit-appearance: none;
-		margin: 0;
-	}
-
-	input[type='checkbox']:checked {
-		background-image: none;
-	}
-
 	/* default theme */
 	:root {
 		/* 
-    - gray/natural colors for texts, borders and disabled elements. 
-    - If required we can use as background too. 
+      - gray/natural colors for texts, borders and disabled elements. 
+      - If required we can use as background too. 
     */
 		/* For rgb(255 255 255 / <alpha-value>) = #ffffff */
 		--gray-0: 255 255 255;
@@ -229,6 +162,7 @@ module.exports = {
 		/* For rgb(0 0 0 / <alpha-value>) = #000000 */
 		--gray-1000: 0 0 0;
 
+		/* ----------------------------------- */
 		/* primary/brand colors */
 		/* ----------------------------------- */
 		/* For rgb(221 227 255 / <alpha-value>) = #dde3ff */
@@ -240,6 +174,7 @@ module.exports = {
 		/* For rgb(67 42 216 / <alpha-value>) = #432ad8 */
 		--primary-dark: 67 42 216;
 
+		/* ----------------------------------- */
 		/* secondary colors */
 		/* ----------------------------------- */
 		/* For rgb(227 215 252 / <alpha-value>) = #e3d7fc */
@@ -251,6 +186,7 @@ module.exports = {
 		/* For rgb(76 40 137 / <alpha-value>) = #4c2889 */
 		--secondary-dark: 76 40 137;
 
+		/* ----------------------------------- */
 		/* red/error colors */
 		/* ----------------------------------- */
 		/* For rgb(247 212 214 / <alpha-value>) = #f7d4d6 */
@@ -262,6 +198,7 @@ module.exports = {
 		/* For rgb(197 0 0 / <alpha-value>) = #c50000 */
 		--red-dark: 197 0 0;
 
+		/* ----------------------------------- */
 		/* orange/warning colors */
 		/* ----------------------------------- */
 		/* For rgb(255 239 207 / <alpha-value>) = #ffefcf */
@@ -273,6 +210,7 @@ module.exports = {
 		/* For rgb(171 87 10 / <alpha-value>) = #ab570a */
 		--orange-dark: 171 87 10;
 
+		/* ----------------------------------- */
 		/* blue/info colors */
 		/* ----------------------------------- */
 		/* For rgb(211 229 255 / <alpha-value>) = #d3e5ff */
@@ -284,6 +222,7 @@ module.exports = {
 		/* For rgb(7 97 209 / <alpha-value>) = #0761d1 */
 		--blue-dark: 7 97 209;
 
+		/* ----------------------------------- */
 		/* green/success colors */
 		/* ----------------------------------- */
 		/* For rgb(185 249 207 / <alpha-value>) = #b9f9cf */
@@ -299,8 +238,8 @@ module.exports = {
 	/* dark theme */
 	[data-theme='dark'] {
 		/* 
-    - gray/natural color shades for texts, borders and disabled elements. 
-    - If required we can use as background too. 
+      - gray/natural color shades for texts, borders and disabled elements. 
+      - If required we can use as background too. 
     */
 		/* For rgb(0 0 0 / <alpha-value>) = #000000 */
 		--gray-0: 0 0 0;
@@ -329,56 +268,55 @@ module.exports = {
 
 		/* here you can customize other colors for dark theme if design required */
 	}
-}
 
-@layer components {
-	/* width */
-	.scroller::-webkit-scrollbar {
-		width: var(--scroller-width);
+	/* base style */
+	html {
+		@apply antialiased;
 	}
-
-	/* Track */
-	.scroller::-webkit-scrollbar-track {
-		/* background: #f1f1f1; */
-		border-radius: 5px;
-		background: var(--trackColor);
+	input[type='search']::-webkit-search-cancel-button {
+		@apply hidden;
 	}
-
-	/* Handle */
-	.scroller::-webkit-scrollbar-thumb {
-		/* background: #888; */
-		background: var(--handleColor);
-		border-radius: 5px;
+	input[type='number']::-webkit-inner-spin-button,
+	input[type='number']::-webkit-outer-spin-button {
+		@apply m-0 appearance-none;
 	}
-
-	/* Handle on hover */
-	.scroller::-webkit-scrollbar-thumb:hover {
-		background: #555;
+	input[type='checkbox']:checked {
+		@apply bg-none;
 	}
-
-	/* Progress Bar */
-	.circlePercentage {
-		background-image: conic-gradient(
-			var(--outerCirclePercentageColor) var(--progressPercentage),
-			var(--outerCircleColor) 0
-		);
+	/* typography style for the Text component */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-bold;
 	}
-	.innerCircle {
-		width: calc(100% - 20%);
-		height: calc(100% - 20%);
-		color: var(--innerCircleTextColor);
-		background: var(--innerCircleColor);
+	h1 {
+		@apply text-4xl;
 	}
-
-	/* Password dot */
-	.password-dot {
-		-webkit-text-security: disc;
-		-moz-text-security: circle;
-		text-security: circle;
+	h2 {
+		@apply text-3xl;
+	}
+	h3 {
+		@apply text-2xl;
+	}
+	h4 {
+		@apply text-xl;
+	}
+	h5 {
+		@apply text-lg;
+	}
+	h6 {
+		@apply text-base;
+	}
+	q {
+		@apply text-lg;
 	}
 }
 
 @layer utilities {
+	/* animation delay required for the Loader component */
 	.animation-delay-200 {
 		animation-delay: 200ms;
 	}
@@ -388,8 +326,16 @@ module.exports = {
 	.animation-delay-700 {
 		animation-delay: 700ms;
 	}
+	/* this utilitie class required for the PinCode component */
+	.password-dot {
+		-webkit-text-security: disc;
+		-moz-text-security: circle;
+		text-security: circle;
+	}
 }
 ```
+
+You are good to go to use our components in your application
 
 ## Usage
 
@@ -403,5 +349,7 @@ export default function App() {
 
 Explore more components in our Storybook doc -> https://rizz-storybook.vercel.app/
 
+
 ### Warning 
+
 This project is still in development, it might have bugs and breaking changes so it is not recommended to use it in production. We hope to have a stable version soon 🚀.

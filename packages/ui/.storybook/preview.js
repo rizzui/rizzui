@@ -16,10 +16,10 @@ export const parameters = {
       order: [
         'Components',
         [
+          'ActionIcon',
           'Alert',
           'Avatar',
           'Button',
-          'ActionIcon',
           'Input',
           'Password',
           'Textarea',

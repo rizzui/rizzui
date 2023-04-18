@@ -4,7 +4,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HeroBlock from '@site/src/components/home/hero-block';
 import FeatureBlock from '@site/src/components/home/feature-block';
-// import ComponentBlock from '@site/src/components/home/component-block';
+import ComponentBlock from '@site/src/components/home/component-block';
 import Footer from '@site/src/components/home/footer';
 
 export default function Home(): JSX.Element {
@@ -12,11 +12,11 @@ export default function Home(): JSX.Element {
 	return (
 		<Layout
 			title={siteConfig.title}
-			description="🚀 Beautiful, fast and modern React UI library. Designed to integrate beautifully with Tailwind CSS. Rizz UI built with React, Tailwind CSS & Typescript."
+			description="🚀 Beautiful, fast and modern React UI library. Designed to integrate beautifully with Tailwind CSS. RizzUI built with React, Tailwind CSS & Typescript."
 		>
 			<div className="min-h-[calc(100vh-100px)]">
 				<HeroBlock />
-				{/* <ComponentBlock /> */}
+				<ComponentBlock />
 				<FeatureBlock />
 			</div>
 			<Footer />
