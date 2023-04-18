@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RadioGroup, Radio, AdvancedRadio } from "@redq/rizz";
+import { RadioGroup, Radio, AdvancedRadio } from "@redq/rizzui";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 
 export default function RadioGroupDefault() {
