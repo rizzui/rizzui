@@ -29,13 +29,15 @@ const components = [
 			/>
 		),
 		name: 'Avatar',
-		description: 'Lorem ipsum dollar sit is a dummy text',
+		description:
+			'A reusable UI element that represents a user or entity with a profile image or icon',
 	},
 	{
 		id: 2,
 		component: <PinCode setValue={() => null} />,
 		name: 'PinCode',
-		description: 'Lorem ipsum dollar sit is a dummy text',
+		description:
+			'It provides a simple and intuitive way for users to enter a numeric code, such as a PIN or password',
 	},
 	{
 		id: 3,
@@ -46,37 +48,41 @@ const components = [
 			/>
 		),
 		name: 'Rate',
-		description: 'Lorem ipsum dollar sit is a dummy text',
+		description:
+			'It allows users to rate or provide feedback on a particular item, such as a product or service',
 	},
 	{
 		id: 4,
 		component: <Pagination defaultCurrent={1} total={25} />,
 		name: 'Pagination',
-		description: 'Lorem ipsum dollar sit is a dummy text',
+		description:
+			'A long list can be divided into several pages using Pagination',
 	},
 	{
 		id: 5,
 		component: <Badge>Badge</Badge>,
 		name: 'Badge',
-		description: 'Lorem ipsum dollar sit is a dummy text',
+		description:
+			'Badges are used as a small numerical value or status descriptor for UI elements',
 	},
 	{
 		id: 6,
 		component: <Progressbar value={75} size="xl" label="75%" />,
 		name: 'Progressbar',
-		description: 'Lorem ipsum dollar sit is a dummy text',
+		description:
+			'The Progress component display the current progress of an operation flow',
 	},
 	{
 		id: 7,
 		component: <Button>Button</Button>,
 		name: 'Button',
-		description: 'Lorem ipsum dollar sit is a dummy text',
+		description: 'Primary action button to trigger an operation',
 	},
 	{
 		id: 8,
 		component: <Switch size="lg" />,
 		name: 'Switch',
-		description: 'Lorem ipsum dollar sit is a dummy text',
+		description: 'A basic widget for getting the user input',
 	},
 ];
 
@@ -123,6 +129,7 @@ export default function ComponentBlock() {
 					</Text>
 				</header>
 			</div>
+
 			<div className="h-[520px] overflow-hidden relative">
 				<div
 					ref={sliderRef}
@@ -134,7 +141,7 @@ export default function ComponentBlock() {
 					{components.map((item) => (
 						<div
 							key={'component-' + item.id}
-							className="snap-start snap-always mr-5"
+							className="snap-start snap-always mr-4 2xl:mr-5"
 						>
 							<div className="slide-item-center flex h-full flex-col rounded-2xl w-[420px] border border-gray-300 flex-shrink-0 relative">
 								<div className="flex h-full justify-center items-center px-6 py-4">
@@ -168,6 +175,7 @@ export default function ComponentBlock() {
 						</div>
 					</div>
 				</div>
+
 				{currentSlide !== 0 && (
 					<ActionIcon
 						rounded="full"
@@ -177,6 +185,7 @@ export default function ComponentBlock() {
 						<ChevronLeftIcon className="w-5 h-5" strokeWidth={2.3} />
 					</ActionIcon>
 				)}
+
 				<ActionIcon
 					rounded="full"
 					onClick={goToNextSlide}

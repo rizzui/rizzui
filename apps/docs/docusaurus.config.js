@@ -202,7 +202,7 @@ const config = {
 						label: 'Documentation',
 					},
 					{
-						to: 'docs/components/alert',
+						to: 'docs/components/action-icon',
 						position: 'left',
 						label: 'Components',
 					},
