@@ -1,0 +1,481 @@
+---
+sidebar_position: 22
+---
+
+import { RangeSlider } from "@redq/rizzui";
+import Paper from "@site/src/components/paper";
+import RangeSliderCounter from "@site/src/components/range-slider";
+
+# RangeSlider
+
+```jsx
+import { RangeSlider } from "@redq/rizzui";
+```
+
+<div className="mb-28" />
+
+## Default
+
+The default style of **RangeSlider** component.
+
+<Paper>
+  <RangeSlider defaultValue={20} />
+</Paper>
+
+```jsx
+import { RangeSlider } from "@redq/rizzui";
+
+export default function App() {
+  return <RangeSlider defaultValue={20} />;
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the style of **RangeSlider** with property [**size**](#rangeslider-sizes).
+
+<Paper className="gap-6">
+  <RangeSlider
+    size="sm"
+    defaultValue={20}
+  />
+  <RangeSlider defaultValue={25} />
+  <RangeSlider
+    size="lg"
+    defaultValue={30}
+  />
+  <RangeSlider
+    size="xl"
+    defaultValue={35}
+  />
+</Paper>
+
+```jsx
+import { RangeSlider } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <>
+      <RangeSlider
+        size="sm"
+        defaultValue={20}
+      />
+      <RangeSlider defaultValue={25} />
+      <RangeSlider
+        size="lg"
+        defaultValue={30}
+      />
+      <RangeSlider
+        size="xl"
+        defaultValue={35}
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can change the style of **RangeSlider** with property [**color**](#rangeslider-colors).
+
+<Paper className="gap-6">
+  <RangeSlider defaultValue={20} />
+  <RangeSlider
+    defaultValue={20}
+    color="primary"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="secondary"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="danger"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="info"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="success"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="warning"
+  />
+</Paper>
+
+```jsx
+import { RangeSlider } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <>
+      <RangeSlider defaultValue={20} />
+      <RangeSlider
+        defaultValue={20}
+        color="primary"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="secondary"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="danger"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="info"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="success"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="warning"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Disabled
+
+You can change the style of **RangeSlider** with property **disabled**.
+
+<Paper>
+  <RangeSlider
+    disabled
+    defaultValue={20}
+  />
+</Paper>
+
+```jsx
+import { RangeSlider } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <RangeSlider
+      disabled
+      defaultValue={20}
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Range
+
+You can change the style of **RangeSlider** with property **range**.
+
+<Paper>
+  <RangeSlider
+    defaultValue={[20, 60]}
+    range
+  />
+</Paper>
+
+```jsx
+import { RangeSlider } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <RangeSlider
+      defaultValue={[20, 60]}
+      range
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Marks & Steps
+
+You can change the style of **RangeSlider** with property **marks** & **step**.
+
+<Paper>
+  <RangeSlider
+    marks={{
+      0: "0",
+      20: "2000",
+      40: "4000",
+      60: "6000",
+      80: "8000",
+      100: "10000",
+    }}
+    step={20}
+    defaultValue={40}
+  />
+</Paper>
+
+```jsx
+import { RangeSlider } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <RangeSlider
+      marks={{
+        0: "0",
+        20: "2000",
+        40: "4000",
+        60: "6000",
+        80: "8000",
+        100: "10000",
+      }}
+      step={20}
+      defaultValue={40}
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Marks & Steps in Range
+
+You can change the style of **RangeSlider** with property **marks** & **step**.
+
+<Paper>
+  <RangeSlider
+    range
+    marks={{
+      0: "0",
+      20: "2000",
+      40: "4000",
+      60: "6000",
+      80: "8000",
+      100: "10000",
+    }}
+    step={20}
+    defaultValue={[20, 60]}
+  />
+</Paper>
+
+```jsx
+import { RangeSlider } from "@redq/rizzui";
+
+export default function App() {
+  return (
+    <RangeSlider
+      range
+      marks={{
+        0: "0",
+        20: "2000",
+        40: "4000",
+        60: "6000",
+        80: "8000",
+        100: "10000",
+      }}
+      step={20}
+      defaultValue={[20, 60]}
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Range Counter
+
+You can create a custom **RangeSlider** counter.
+
+<Paper className="block">
+  <RangeSliderCounter />
+</Paper>
+
+```jsx
+import React from "react";
+import { RangeSlider, cn } from "@redq/rizzui";
+
+export default function App() {
+  const [state, setState] = React.useState({
+    min: 200,
+    max: 600,
+  });
+
+  function handleRangeChange(value: any) {
+    setState({
+      min: value[0],
+      max: value[1],
+    });
+  }
+  function handleMaxChange(max: number) {
+    setState({
+      ...state,
+      max: max || state.min,
+    });
+  }
+  function handleMinChange(min: number) {
+    setState({
+      ...state,
+      min: min || 0,
+    });
+  }
+
+  return (
+    <div>
+      <RangeSlider
+        range
+        min={0}
+        max={1000}
+        value={[state.min, state.max]}
+        onChange={(value: any) => handleRangeChange(value)}
+        className={cn("[&>.rc-slider-step]:hidden")}
+      />
+      <div className="mt-5 grid grid-cols-2 items-center justify-between gap-5 text-sm font-bold">
+        <div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
+          <p className="px-3 pt-1 text-gray-400">Min</p>
+          <input
+            type="number"
+            value={state.min}
+            onChange={(e) => handleMinChange(parseInt(e.target.value))}
+            className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
+            min={0}
+            max={state.max}
+            readOnly
+          />
+        </div>
+        <div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
+          <p className="px-3 pt-1 text-gray-400">Max</p>
+          <input
+            type="number"
+            value={state.max}
+            onChange={(e) => handleMaxChange(parseInt(e.target.value))}
+            className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
+            min={state.min}
+            readOnly
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### RangeSlider Props
+
+Here is the API documentation of the ActionIcon component.
+
+|              Props              |                           Type                            |         Description         |   Default   |
+| :-----------------------------: | :-------------------------------------------------------: | :-------------------------: | :---------: |
+|          defaultValue           |                    `number` `number[]`                    |                             |    \_ \_    |
+|              size               |          [RangesliderSizes](#rangeslider-sizes)           | Sizes of the component are: | `"DEFAULT"` |
+|              color              |         [Rangeslidercolors](#rangeslider-colors)          |     Change slider color     | `"DEFAULT"` |
+|            prefixCls            |                         `string`                          |                             |    \_ \_    |
+|            className            |                         `string`                          |                             |    \_ \_    |
+|              style              |                      `CSSProperties`                      |                             |    \_ \_    |
+|            disabled             |                         `boolean`                         |                             |    \_ \_    |
+|            keyboard             |                         `boolean`                         |                             |    \_ \_    |
+|            autoFocus            |                         `boolean`                         |                             |    \_ \_    |
+|             onFocus             |   `((e: FocusEvent<HTMLDivElement, Element>) => void)`    |                             |    \_ \_    |
+|             onBlur              |   `((e: FocusEvent<HTMLDivElement, Element>) => void)`    |                             |    \_ \_    |
+|              range              |                         `boolean`                         |                             |    \_ \_    |
+|              count              |                         `boolean`                         |                             |    \_ \_    |
+|               min               |                         `number`                          |                             |    \_ \_    |
+|               max               |                         `number`                          |                             |    \_ \_    |
+|              step               |                      `number` `null`                      |                             |    \_ \_    |
+|              value              |                    `number` `number[]`                    |                             |    \_ \_    |
+|            onChange             |       [RangeSliderOnchange](#range-slider-onchange)       |                             |    \_ \_    |
+|         onBeforeChange          | [RangeSliderOnbeforechange](#range-slider-onbeforechange) |                             |    \_ \_    |
+|          onAfterChange          |  [RangeSliderOnafterchange](#range-slider-onafterchange)  |                             |    \_ \_    |
+|           allowCross            |                         `boolean`                         |                             |    \_ \_    |
+|            pushable             |                    `number` `boolean`                     |                             |    \_ \_    |
+|         draggableTrack          |                         `boolean`                         |         range only          |    \_ \_    |
+|             reverse             |                         `boolean`                         |                             |    \_ \_    |
+|            vertical             |                         `boolean`                         |                             |    \_ \_    |
+|            included             |                         `boolean`                         |                             |    \_ \_    |
+|           startPoint            |                         `number`                          |                             |    \_ \_    |
+|           trackStyle            |             `CSSProperties` `CSSProperties[]`             |                             |    \_ \_    |
+|           handleStyle           |             `CSSProperties` `CSSProperties[]`             |                             |    \_ \_    |
+|            railStyle            |                      `CSSProperties`                      |                             |    \_ \_    |
+|            dotStyle             |  `CSSProperties` `((dotValue: number) => CSSProperties)`  |                             |    \_ \_    |
+|         activeDotStyle          |  `CSSProperties` `((dotValue: number) => CSSProperties)`  |                             |    \_ \_    |
+|              marks              |          [RangeSliderMarks](#range-slider-marks)          |                             |    \_ \_    |
+|              dots               |                         `boolean`                         |                             |    \_ \_    |
+|          handleRender           |  [RangeSliderHandleRender](#range-slider-handle-render)   |                             |    \_ \_    |
+|            tabIndex             |                    `number` `number[]`                    |                             |    \_ \_    |
+|       ariaLabelForHandle        |                    `string` `string[]`                    |                             |    \_ \_    |
+|     ariaLabelledByForHandle     |                    `string` `string[]`                    |                             |    \_ \_    |
+| ariaValueTextFormatterForHandle |           `AriaValueFormat` `AriaValueFormat[]`           |                             |    \_ \_    |
+
+<div className="mb-10" />
+
+### Rangeslider Sizes
+
+```tsx
+type RangesliderSize = "sm" | "DEFAULT" | "lg" | "xl";
+```
+
+<div className="mb-10" />
+
+### Rangeslider colors
+
+```ts
+type Rangeslidercolors =
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
+```
+
+<div className="mb-10" />
+
+### Range Slider Onchange
+
+```ts
+type RangeSliderOnchange = (value: number | number[]) => void;
+```
+
+<div className="mb-10" />
+
+### Range Slider Onbeforechange
+
+```ts
+type RangeSliderOnbeforechange = (value: number | number[]) => void;
+```
+
+<div className="mb-10" />
+
+### Range Slider Onafterchange
+
+```ts
+type RangeSliderOnafterchange = (value: number | number[]) => void;
+```
+
+<div className="mb-10" />
+
+### Range Slider Marks
+
+```ts
+type RangeSliderMarks = Record<string | number, ReactNode | MarkObj>;
+```
+
+<div className="mb-10" />
+
+### Range Slider Handle Render
+
+```ts
+type RangeSliderHandleRender = ((origin: ReactElement<HandleProps, string | JSXElementConstructor<any>>, props: RenderProps) => ReactElement<any, string | JSXElementConstructor<...>>);
+```
