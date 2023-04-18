@@ -6,6 +6,9 @@ import PhoneNumber from '.';
 export default {
   title: 'Components/PhoneNumber',
   component: PhoneNumber,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof PhoneNumber>;
 
 const Template: ComponentStory<typeof PhoneNumber> = (args) => {

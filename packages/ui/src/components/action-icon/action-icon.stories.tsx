@@ -5,6 +5,9 @@ import ActionIcon from './action-icon';
 export default {
   title: 'Components/ActionIcon',
   component: ActionIcon,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof ActionIcon>;
 
 function FilterIcon({ className = 'h-auto w-5' }: { className?: string }) {

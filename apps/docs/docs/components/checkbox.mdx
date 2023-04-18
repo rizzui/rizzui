@@ -2,7 +2,7 @@
 sidebar_position: 12
 ---
 
-import { Checkbox } from "@redq/rizz";
+import { Checkbox } from "@redq/rizzui";
 import Paper from "@site/src/components/paper";
 import CheckboxGroupDefault, {
   CheckboxGroupLabelStart,
@@ -14,7 +14,7 @@ import CheckboxGroupDefault, {
 A basic widget for getting the user input of checkbox.
 
 ```tsx
-import { Checkbox } from "@redq/rizz";
+import { Checkbox } from "@redq/rizzui";
 ```
 
 <div className="mb-28" />
@@ -42,7 +42,7 @@ You can change the style of **Checkbox** with property [**variant**](#checkbox-v
 </Paper>
 
 ```tsx
-import { Checkbox } from "@redq/rizz";
+import { Checkbox } from "@redq/rizzui";
 
 export default function App() {
   return (
@@ -385,7 +385,7 @@ You can add helper text to **Checkbox** with property **helperText**.
 </Paper>
 
 ```tsx
-import { Checkbox } from "@redq/rizz";
+import { Checkbox } from "@redq/rizzui";
 
 export default function App() {
   return (
@@ -415,7 +415,7 @@ You can add error message to **Checkbox** with property **error**.
 </Paper>
 
 ```tsx
-import { Checkbox } from "@redq/rizz";
+import { Checkbox } from "@redq/rizzui";
 
 export default function App() {
   return (
@@ -441,7 +441,7 @@ You can make a group of multiple choices **Checkbox** with component **CheckboxG
 
 ```tsx
 import { useState } from "react";
-import { CheckboxGroup, Checkbox } from "@redq/rizz";
+import { Checkbox, CheckboxGroup } from "@redq/rizzui";
 
 export default function App() {
   const [values, setValues] = useState([]);
@@ -484,8 +484,8 @@ You can make clickable card with **Checkbox**.
 </Paper>
 
 ```tsx
-import React from "react";
-import { CheckboxGroup, Checkbox } from "@redq/rizz";
+import { useState } from "react";
+import { Checkbox, CheckboxGroup } from "@redq/rizzui";
 
 export default function App() {
   const [values, setValues] = useState<string[]>([]);
@@ -545,8 +545,8 @@ You can make clickable card with **Checkbox**.
 </Paper>
 
 ```tsx
-import React from "react";
-import { CheckboxGroup, Checkbox } from "@redq/rizz";
+import { useState } from "react";
+import { Checkbox, CheckboxGroup } from "@redq/rizzui";
 
 export default function App() {
   const [values, setValues] = useState<string[]>([]);

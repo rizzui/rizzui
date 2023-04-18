@@ -1,5 +1,5 @@
 import React from 'react';
-import { Password } from '@redq/rizz';
+import { Password } from '@redq/rizzui';
 
 export default function PasswordClearable({ label, variant }) {
 	const [state, setState] = React.useState('my_password');

@@ -7,6 +7,9 @@ import Input from '../input';
 export default {
   title: 'Components/NumberInput',
   component: NumberInput,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof NumberInput>;
 
 export const Currency = () => (

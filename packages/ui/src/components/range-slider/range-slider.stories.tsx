@@ -6,6 +6,9 @@ import RangeSlider from '.';
 export default {
   title: 'Components/RangeSlider',
   component: RangeSlider,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof RangeSlider>;
 
 const Template: ComponentStory<typeof RangeSlider> = (args) => (

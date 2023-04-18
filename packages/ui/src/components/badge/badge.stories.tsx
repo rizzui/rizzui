@@ -10,6 +10,9 @@ import Text from '../text';
 export default {
   title: 'Components/Badge',
   component: Badge,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Badge>;
 
 const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;

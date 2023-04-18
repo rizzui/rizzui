@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from '@docusaurus/router';
-import { Button, ActionIcon, Text, Avatar } from '@redq/rizz';
+import { Button, ActionIcon, Text, Avatar } from '@redq/rizzui';
 import {
 	ArrowRightIcon,
 	ChevronLeftIcon,

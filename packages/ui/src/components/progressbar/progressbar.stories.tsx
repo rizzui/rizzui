@@ -6,6 +6,9 @@ import Progressbar from '.';
 export default {
   title: 'Components/Progressbar',
   component: Progressbar,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Progressbar>;
 
 const Template: ComponentStory<typeof Progressbar> = (args) => (

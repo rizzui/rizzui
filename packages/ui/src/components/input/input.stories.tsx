@@ -6,6 +6,9 @@ import Input from '.';
 export default {
   title: 'Components/Input',
   component: Input,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;

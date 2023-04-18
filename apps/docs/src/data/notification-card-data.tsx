@@ -1,5 +1,5 @@
 import React from "react";
-import { NotificationCard, cn } from "@redq/rizz";
+import { NotificationCard, cn } from "@redq/rizzui";
 import toast from "react-hot-toast";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NativeSelect } from "@redq/rizz";
+import { NativeSelect } from "@redq/rizzui";
 
 const options = [
   {

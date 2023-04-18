@@ -100,13 +100,13 @@ const prismTheme = {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-	title: 'Rizz UI',
+	title: 'RizzUI',
 	tagline:
-		'🚀 Beautiful, fast and modern React UI library. Designed to integrate beautifully with Tailwind CSS. Rizz UI built with React, Tailwind CSS & Typescript.',
+		'🚀 Beautiful, fast and modern React UI library. Designed to integrate beautifully with Tailwind CSS. RizzUI built with React, Tailwind CSS & Typescript.',
 	favicon: 'img/rizz-favicon.svg',
 
 	// Set the production url of your site here
-	url: 'https://aegon-ui.vercel.app/',
+	url: 'https://rizzui.vercel.app/',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: '/',
@@ -114,7 +114,7 @@ const config = {
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
 	organizationName: 'RedQ', // Usually your GitHub org/user name.
-	projectName: 'redqui', // Usually your repo name.
+	projectName: 'rizz', // Usually your repo name.
 
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
@@ -190,24 +190,24 @@ const config = {
 			navbar: {
 				// hideOnScroll: true,
 				logo: {
-					alt: 'Rizz',
+					alt: 'RizzUI',
 					src: 'img/rizz-logo.svg',
-					width: '72px',
+					width: '96px',
 					height: 'auto',
 				},
 				items: [
 					{
-						to: 'docs/getting-started/installation',
+						to: 'docs/guide/getting-started',
 						position: 'left',
-						label: 'Getting Started',
+						label: 'Guide',
 					},
 					{
-						to: 'docs/components/avatar',
+						to: 'docs/components/alert',
 						position: 'left',
 						label: 'Components',
 					},
 					{
-						href: 'https://github.com/RedQ/redqui',
+						href: 'https://github.com/RedQ/rizz',
 						position: 'right',
 						className: 'header-github-link',
 						'aria-label': 'GitHub',

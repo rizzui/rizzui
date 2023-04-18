@@ -1,4 +1,8 @@
-# RizzUI
+---
+sidebar_position: 1
+---
+
+# Getting Started
 
 Welcome to the RizzUI. A Modern and Minimal React UI Library built with TailwindCSS. designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application. We have carefully crafted each component to ensure that they are responsive, accessible and consistent across different devices and browsers.
 
@@ -6,11 +10,11 @@ Welcome to the RizzUI. A Modern and Minimal React UI Library built with Tailwind
 
 Inside your React / Next.js project directory, install RizzUI by running either of the following:
 
-```ssh
+```bash title=Terminal
 yarn add -D tailwindCSS postcss autoprefixer @tailwindcss/forms
 ```
 
-```ssh
+```bash title=Terminal
 npm install -D tailwindCSS postcss autoprefixer @tailwindcss/forms
 ```
 
@@ -20,7 +24,7 @@ Follow their official guide to install [TailwindCSS](https://tailwindcss.com/doc
 
 You need to copy and paste our tailwind configuration in your tailwind.config.js file-
 
-```js tailwind.config.js
+```js title=tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 
 const plugin = require('tailwindcss/plugin');
@@ -175,7 +179,7 @@ module.exports = {
 
 **Only our tailwind.config.js file is not enough for styeling, you need to use our global.css file as well. Please copy and paste bellow TailwindCSS styles file's code and use it in your app style file**
 
-```css
+```css title=main.css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -401,7 +405,8 @@ export default function App() {
 }
 ```
 
-Explore more components in our Storybook doc -> https://rizz-storybook.vercel.app/
+:::warning Warning
 
-### Warning 
 This project is still in development, it might have bugs and breaking changes so it is not recommended to use it in production. We hope to have a stable version soon 🚀.
+
+:::

@@ -5,6 +5,9 @@ import Text from './text';
 export default {
   title: 'Components/Text',
   component: Text,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Text>;
 
 export const Default = () => <Text>The brown fox jumps over the lazy dog</Text>;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CheckboxGroup, Checkbox, AdvancedCheckbox } from "@redq/rizz";
+import { CheckboxGroup, Checkbox, AdvancedCheckbox } from "@redq/rizzui";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 
 export default function CheckboxGroupDefault() {

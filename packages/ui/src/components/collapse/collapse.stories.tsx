@@ -12,6 +12,9 @@ import Avatar from '../avatar';
 export default {
   title: 'Components/Collapse',
   component: Collapse,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Collapse>;
 
 export const Default = () => {

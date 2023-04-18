@@ -6,6 +6,9 @@ import Radio from '.';
 export default {
   title: 'Components/Radio',
   component: Radio,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Radio>;
 
 const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;

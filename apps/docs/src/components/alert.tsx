@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Button } from "@redq/rizz";
+import { Alert, Button } from "@redq/rizzui";
 
 export default function AlertClearable() {
   const [state, setState] = React.useState(true);

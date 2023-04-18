@@ -5,6 +5,9 @@ import Rate from './rate';
 export default {
   title: 'Components/Rate',
   component: Rate,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Rate>;
 
 const Template: ComponentStory<typeof Rate> = (args) => <Rate {...args} />;

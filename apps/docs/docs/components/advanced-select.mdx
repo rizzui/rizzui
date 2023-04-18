@@ -2,7 +2,7 @@
 sidebar_position: 20
 ---
 
-import { AdvancedSelect, Avatar } from "@redq/rizz";
+import { AdvancedSelect, Avatar } from "@redq/rizzui";
 import Paper from "@site/src/components/paper";
 import AdvancedSelectDefault, {
   AdvancedSelectSingle,
@@ -17,7 +17,7 @@ import { UserPlusIcon, TrashIcon } from "@heroicons/react/24/outline";
 AdvancedSelect is a combination of a selectbox and an auto-complete feature. AdvancedSelect allows user to select single or multiple values from options and search for them in the input field. We used `headlessUI combobox` to build the component. For more info, see their [official documentation](https://headlessui.com/react/combobox).
 
 ```jsx
-import { AdvancedSelect } from "@redq/rizz";
+import { AdvancedSelect } from "@redq/rizzui";
 ```
 
 <div className="mb-28" />
@@ -47,7 +47,7 @@ You can change the style of **AdvancedSelect** with property [**variant**](#adva
 
 ```tsx
 import { useState } from "react";
-import { AdvancedSelect, Avatar } from "@redq/rizz";
+import { AdvancedSelect, Avatar } from "@redq/rizzui";
 
 const options = [
   {
@@ -427,7 +427,7 @@ Select a single item with **AdvancedSelect**.
 
 ```tsx
 import { useState } from "react";
-import { AdvancedSelect } from "@redq/rizz";
+import { AdvancedSelect } from "@redq/rizzui";
 
 export default function App() {
   const [state, setState] = useState([options[0]]);
@@ -454,7 +454,7 @@ Select multiple items of **AdvancedSelect** with property **multiple**.
 
 ```tsx
 import { useState } from "react";
-import { AdvancedSelect } from "@redq/rizz";
+import { AdvancedSelect } from "@redq/rizzui";
 
 export default function App() {
   const [state, setState] = useState([options[0], options[1]]);
@@ -483,7 +483,7 @@ Creatable single select with **AdvancedSelect**.
 
 ```tsx
 import { useState } from "react";
-import { AdvancedSelect } from "@redq/rizz";
+import { AdvancedSelect } from "@redq/rizzui";
 
 export default function App() {
   const [state, setState] = useState([options[0]]);
@@ -511,7 +511,7 @@ Creatable multiple item select with **AdvancedSelect**.
 
 ```tsx
 import { useState } from "react";
-import { AdvancedSelect } from "@redq/rizz";
+import { AdvancedSelect } from "@redq/rizzui";
 
 export default function App() {
   const [state, setState] = useState([options[0]]);

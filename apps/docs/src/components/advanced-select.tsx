@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AdvancedSelect } from "@redq/rizz";
+import { AdvancedSelect } from "@redq/rizzui";
 import { advancedSelectOptions } from "@site/src/data/advanced-select-data";
 
 export default function AdvancedSelectDefault({

@@ -7,6 +7,9 @@ import Textarea from '.';
 export default {
   title: 'Components/Textarea',
   component: Textarea,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Textarea>;
 
 const Template: ComponentStory<typeof Textarea> = (args) => (

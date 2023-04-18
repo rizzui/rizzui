@@ -8,6 +8,9 @@ import Avatar from '../avatar';
 export default {
   title: 'Components/Tag',
   component: Tag,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Tag>;
 
 const Template: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;

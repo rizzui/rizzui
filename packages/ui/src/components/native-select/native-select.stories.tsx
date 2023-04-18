@@ -37,6 +37,9 @@ const data = [
 export default {
   title: 'Components/NativeSelect',
   component: NativeSelect,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof NativeSelect>;
 
 const Template: ComponentStory<typeof NativeSelect> = (args) => {

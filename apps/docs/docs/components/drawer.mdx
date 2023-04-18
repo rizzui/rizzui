@@ -1,4 +1,4 @@
-import { Drawer } from "@redq/rizz";
+import { Drawer } from "@redq/rizzui";
 import Paper from "@site/src/components/paper";
 import DrawerDefault, {
   DrawerSizes,
@@ -13,7 +13,7 @@ import DrawerDefault, {
 Display overlay area at any side of the screen.
 
 ```tsx
-import { Drawer } from "@redq/rizz";
+import { Drawer } from "@redq/rizzui";
 ```
 
 <div className="mb-28" />
@@ -28,7 +28,7 @@ A simple drawer with component **Drawer**.
 
 ```tsx
 import { useState } from "react";
-import { Drawer, Button } from "@redq/rizz";
+import { Drawer, Button } from "@redq/rizzui";
 
 export default function App() {
   const [drawerState, setDrawerState] = useState(false);
@@ -59,7 +59,7 @@ You can set size of the **Drawer**.
 
 ```tsx
 import { useState } from "react";
-import { Drawer, Button, Text } from "@redq/rizz";
+import { Drawer, Button, Text } from "@redq/rizzui";
 
 export default function App() {
   const [drawerSate, setDrawerState] = useState({
@@ -163,7 +163,7 @@ You can set placement of the **Drawer**.
 
 ```tsx
 import { useState } from "react";
-import { Drawer, Button, Text } from "@redq/rizz";
+import { Drawer, Button, Text } from "@redq/rizzui";
 
 export default function App() {
   const [drawerSate, setDrawerState] = useState({
@@ -258,7 +258,7 @@ You can set custom size of the **Drawer**.
 
 ```tsx
 import { useState } from "react";
-import { Drawer, Button } from "@redq/rizz";
+import { Drawer, Button } from "@redq/rizzui";
 
 export default function App() {
   const [drawerState, setDrawerState] = useState(false);
@@ -290,7 +290,7 @@ You can do custom style to **Drawer**.
 
 ```tsx
 import { useState } from "react";
-import { Drawer, Button } from "@redq/rizz";
+import { Drawer, Button } from "@redq/rizzui";
 
 export default function App() {
   const [drawerState, setDrawerState] = useState(false);
@@ -323,9 +323,9 @@ You can use **Drawer** with different type of button or icons.
 
 ```tsx
 import { useState } from "react";
-import { Drawer, Button, Badge, ActionIcon, Text, Empty, EmptyProductBoxIcon } from "@redq/rizz";
-import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/20/solid";
+import { ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { Drawer, Button, Badge, ActionIcon, Text, Empty, EmptyProductBoxIcon } from "@redq/rizzui";
 
 export default function App() {
   const [drawerState, setDrawerState] = useState(false);

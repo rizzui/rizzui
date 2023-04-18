@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from "@redq/rizz";
+import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from "@redq/rizzui";
 import { initialData } from "@site/src/data/table-data";
 
 function getStatusBadge(status: string) {

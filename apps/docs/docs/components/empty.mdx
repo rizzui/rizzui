@@ -1,4 +1,4 @@
-import { Empty, EmptyProductBoxIcon, SearchNotFoundIcon } from '@redq/rizz';
+import { Empty, EmptyProductBoxIcon, SearchNotFoundIcon } from '@redq/rizzui';
 import Paper from '@site/src/components/paper';
 
 # Empty
@@ -6,7 +6,7 @@ import Paper from '@site/src/components/paper';
 Empty state component. Note: We are highly inspired by the Ant Design empty component -> [https://ant.design/components/empty](https://ant.design/components/empty)
 
 ```tsx
-import { Empty } from '@redq/rizz';
+import { Empty } from '@redq/rizzui';
 ```
 
 <div className="mb-28" />
@@ -20,7 +20,7 @@ The default style of the **Empty**
 </Paper>
 
 ```tsx
-import { Empty } from '@redq/rizz';
+import { Empty } from '@redq/rizzui';
 
 export default function App() {
 	return <Empty text="No Data" textClassName="mt-2" />;
@@ -38,7 +38,7 @@ You can use it if your product is **Empty**
 </Paper>
 
 ```tsx
-import { Empty, EmptyProductBoxIcon } from '@redq/rizz';
+import { Empty, EmptyProductBoxIcon } from '@redq/rizzui';
 
 export default function App() {
 	return <Empty image={<EmptyProductBoxIcon />} text="No Product Available" />;
@@ -56,7 +56,7 @@ You can use it if your search is **Empty**
 </Paper>
 
 ```tsx
-import { Empty, SearchNotFoundIcon } from '@redq/rizz';
+import { Empty, SearchNotFoundIcon } from '@redq/rizzui';
 
 export default function App() {
 	return <Empty image={<SearchNotFoundIcon />} text="No Result Found" />;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Text, ActionIcon, Input, Password, Checkbox } from "@redq/rizz";
+import { Modal, Button, Text, ActionIcon, Input, Password, Checkbox } from "@redq/rizzui";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
 export default function ModalDefault() {

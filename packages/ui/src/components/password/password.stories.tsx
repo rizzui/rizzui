@@ -6,6 +6,9 @@ import Password from '.';
 export default {
   title: 'Components/Password',
   component: Password,
+  parameters: {
+    viewMode: 'docs',
+  },
 } as ComponentMeta<typeof Password>;
 
 const Template: ComponentStory<typeof Password> = (args) => (
