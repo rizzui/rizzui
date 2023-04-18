@@ -1,9 +1,9 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import { Announcement } from '@redq/rizzui';
-import { ChevronRightIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { ChevronRightIcon, MegaphoneIcon } from '@heroicons/react/24/outline';
 import Paper from '@site/src/components/paper';
 
 # Announcement
@@ -14,11 +14,11 @@ import { Announcement } from '@redq/rizzui';
 
 <div className="mb-28" />
 
-## Basic Announcement
+## Default
 
-A basic **Announcement**.
+The default style of **Announcement** component.
 
-<Paper className="gap-4 justify-start items-start">
+<Paper>
 	<Announcement badgeText="Trending" highlightedText="25% discount">
 		on our new product
 	</Announcement>
@@ -29,11 +29,9 @@ import { Announcement } from '@redq/rizzui';
 
 export default function App() {
 	return (
-		<>
-			<Announcement badgeText="Trending" highlightedText="25% discount">
-				on our new product
-			</Announcement>
-		</>
+		<Announcement badgeText="Trending" highlightedText="25% discount">
+			on our new product
+		</Announcement>
 	);
 }
 ```
@@ -332,16 +330,15 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Icons
+## With Icons
 
 You can add icons to **Announcement** with property **startIcon** & **endIcon**.
 
 <Paper className="gap-4 justify-start items-start">
 	<Announcement
-		badgeText="Trending"
 		highlightedText="25% discount"
 		color="primary"
-		startIcon={<EnvelopeIcon className="w-5 mr-3 text-primary-dark" />}
+		startIcon={<MegaphoneIcon className="w-5 text-primary-dark" />}
 	>
 		on our every product
 	</Announcement>
@@ -349,7 +346,7 @@ You can add icons to **Announcement** with property **startIcon** & **endIcon**.
 		badgeText="Trending"
 		highlightedText="25% discount"
 		color="danger"
-		endIcon={<ChevronRightIcon className="w-5 ml-3 text-red-dark" />}
+		endIcon={<ChevronRightIcon className="w-3.5 ml-1" />}
 	>
 		on our every product
 	</Announcement>
@@ -357,15 +354,15 @@ You can add icons to **Announcement** with property **startIcon** & **endIcon**.
 
 ```jsx
 import { Announcement } from '@redq/rizzui';
+import { ChevronRightIcon, MegaphoneIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
 	return (
 		<>
 			<Announcement
-				badgeText="Trending"
 				highlightedText="25% discount"
 				color="primary"
-				startIcon={<EnvelopeIcon className="w-5 mr-3 text-primary-dark" />}
+				startIcon={<MegaphoneIcon className="w-5 text-primary-dark" />}
 			>
 				on our every product
 			</Announcement>
@@ -373,7 +370,7 @@ export default function App() {
 				badgeText="Trending"
 				highlightedText="25% discount"
 				color="danger"
-				endIcon={<ChevronRightIcon className="w-5 ml-3 text-red-dark" />}
+				endIcon={<ChevronRightIcon className="w-3.5 ml-1" />}
 			>
 				on our every product
 			</Announcement>

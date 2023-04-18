@@ -102,7 +102,7 @@ const prismTheme = {
 const config = {
 	title: 'RizzUI',
 	tagline:
-		'🚀 Beautiful, fast and modern React UI library. Designed to integrate beautifully with Tailwind CSS. RizzUI built with React, Tailwind CSS & Typescript.',
+		'🎉 A Modern and Minimal React UI Library built with TailwindCSS. Designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application. We have carefully crafted each component to ensure that they are responsive, accessible and consistent across different devices and browsers.',
 	favicon: 'img/rizz-favicon.svg',
 
 	// Set the production url of your site here
@@ -114,7 +114,7 @@ const config = {
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
 	organizationName: 'RedQ', // Usually your GitHub org/user name.
-	projectName: 'rizz', // Usually your repo name.
+	projectName: 'rizzui', // Usually your repo name.
 
 	onBrokenLinks: 'throw',
 	onBrokenMarkdownLinks: 'warn',
@@ -169,7 +169,7 @@ const config = {
 					sidebarPath: require.resolve('./sidebars.js'),
 					// Please change this to your repo.
 					// Remove this to remove the "edit this page" links.
-					editUrl: 'https://github.com/RedQ/redqui/tree/with-docs/apps/docs',
+					editUrl: 'https://github.com/RedQ/rizzui/tree/with-docs/apps/docs',
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
@@ -199,15 +199,15 @@ const config = {
 					{
 						to: 'docs/guide/getting-started',
 						position: 'left',
-						label: 'Guide',
+						label: 'Documentation',
 					},
 					{
-						to: 'docs/components/alert',
+						to: 'docs/components/action-icon',
 						position: 'left',
 						label: 'Components',
 					},
 					{
-						href: 'https://github.com/RedQ/rizz',
+						href: 'https://github.com/RedQ/rizzui',
 						position: 'right',
 						className: 'header-github-link',
 						'aria-label': 'GitHub',

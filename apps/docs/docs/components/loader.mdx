@@ -1,29 +1,29 @@
-import { Loader } from '@redq/rizzui';
-import Paper from '@site/src/components/paper';
+import { Loader } from "@redq/rizzui";
+import Paper from "@site/src/components/paper";
 
 # Loader
 
 A loader for displaying loading state of a page or a section.
 
 ```jsx
-import { Loader } from '@redq/rizzui';
+import { Loader } from "@redq/rizzui";
 ```
 
 <div className="mb-28" />
 
 ## Default
 
-The default style of the **Loader**
+The default style of the **Loader** component.
 
 <Paper>
-	<Loader />
+  <Loader />
 </Paper>
 
 ```jsx
-import { Loader } from '@redq/rizzui';
+import { Loader } from "@redq/rizzui";
 
 export default function App() {
-	return <Loader />;
+  return <Loader />;
 }
 ```
 
@@ -31,29 +31,29 @@ export default function App() {
 
 ## Sizes
 
-You can change the size of the **Loader** with property [**size**](#loader-sizes)
+You can change the size of the **Loader** with property [**size**](#loader-sizes).
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Loader size="sm" />
-		<Loader />
-		<Loader size="lg" />
-		<Loader size="xl" />
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Loader size="sm" />
+    <Loader />
+    <Loader size="lg" />
+    <Loader size="xl" />
+  </div>
 </Paper>
 
 ```jsx
-import { Loader } from '@redq/rizzui';
+import { Loader } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Loader size="sm" />
-			<Loader />
-			<Loader size="lg" />
-			<Loader size="xl" />
-		</>
-	);
+  return (
+    <>
+      <Loader size="sm" />
+      <Loader />
+      <Loader size="lg" />
+      <Loader size="xl" />
+    </>
+  );
 }
 ```
 
@@ -61,65 +61,73 @@ export default function App() {
 
 ## Colors
 
-You can change the color of the **Loader** with property [**color**](#loader-colors)
+You can change the color of the **Loader** with property [**color**](#loader-colors).
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Loader />
-		<Loader color="primary" />
-		<Loader color="secondary" />
-		<Loader color="info" />
-		<Loader color="warning" />
-		<Loader color="danger" />
-		<Loader color="success" />
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Loader />
+    <Loader color="primary" />
+    <Loader color="secondary" />
+    <Loader color="info" />
+    <Loader color="warning" />
+    <Loader color="danger" />
+    <Loader color="success" />
+  </div>
 </Paper>
 
 ```jsx
-import { Loader } from '@redq/rizzui';
+import { Loader } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Loader />
-			<Loader color="primary" />
-			<Loader color="secondary" />
-			<Loader color="info" />
-			<Loader color="warning" />
-			<Loader color="danger" />
-			<Loader color="success" />
-		</>
-	);
+  return (
+    <>
+      <Loader />
+      <Loader color="primary" />
+      <Loader color="secondary" />
+      <Loader color="info" />
+      <Loader color="warning" />
+      <Loader color="danger" />
+      <Loader color="success" />
+    </>
+  );
 }
 ```
 
 <div className="mb-16" />
 
-## Animation
+## Animations
 
-You can change the animation of the **Loader** with property [**animation**](#loader-animations)
+You can change the animation of the **Loader** with property [**animation**](#loader-animations).
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Loader size="sm" animation="scaleUp" />
-		<Loader animation="scaleUp" />
-		<Loader size="lg" animation="scaleUp" />
-		<Loader size="xl" animation="scaleUp" />
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Loader
+      size="xl"
+      animation="scaleUp"
+    />
+    <Loader
+      size="xl"
+      animation="blink"
+    />
+  </div>
 </Paper>
 
 ```jsx
-import { Loader } from '@redq/rizzui';
+import { Loader } from "@redq/rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Loader size="sm" animation="scaleUp" />
-			<Loader animation="scaleUp" />
-			<Loader size="lg" animation="scaleUp" />
-			<Loader size="xl" animation="scaleUp" />
-		</>
-	);
+  return (
+    <>
+      <Loader
+        size="xl"
+        animation="scaleUp"
+      />
+      <Loader
+        size="xl"
+        animation="blink"
+      />
+    </>
+  );
 }
 ```
 
@@ -148,7 +156,7 @@ Here is the API documentation of the Loader component.
 ### Loader Tags
 
 ```ts
-type LoaderTags = 'div' | 'span';
+type LoaderTags = "div" | "span";
 ```
 
 <div className="mb-10" />
@@ -156,7 +164,7 @@ type LoaderTags = 'div' | 'span';
 ### Loader Sizes
 
 ```ts
-type LoaderSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type LoaderSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -165,14 +173,14 @@ type LoaderSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 
 ```ts
 type LoaderColors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning'
-	| 'current';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning"
+  | "current";
 ```
 
 <div className="mb-10" />
@@ -180,5 +188,5 @@ type LoaderColors =
 ### Loader Animations
 
 ```ts
-type LoaderAnimations = 'blink' | 'scaleUp';
+type LoaderAnimations = "blink" | "scaleUp";
 ```

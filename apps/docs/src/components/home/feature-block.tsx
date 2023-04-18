@@ -53,7 +53,7 @@ export default function FeatureBlock() {
 						A Next Gen UI Library with <br /> Limitless Customization Options
 					</Text>
 				</header>
-				<div className="grid grid-cols-4 gap-4">
+				<div className="grid grid-cols-4 gap-4 2xl:gap-5">
 					{features.map((feature) => (
 						<div
 							key={feature.title + feature.id}

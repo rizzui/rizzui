@@ -517,9 +517,6 @@
   .animation-delay-700 {
     animation-delay: 700ms;
   }
-  .slide-item-center {
-    transform: translateX(calc(max(1504px, 100vw)/2 - calc(1504px / 2)));
-  }
 }
 /* end of aegon ui & docusaurus css config */
 
@@ -604,7 +601,7 @@ nav.navbar {
 }
 
 nav.navbar .navbar__inner {
-  @apply mx-auto max-w-[1680px];
+  @apply mx-auto max-w-[1632px];
 }
 
 .navbar__toggle {
@@ -685,7 +682,7 @@ svg[class*='lightToggleIcon'] {
 
 @media (min-width: 997px) {
   nav.navbar {
-    @apply pl-6;
+    @apply px-6;
   }
   .navbar__brand {
     @apply mr-8;
@@ -714,10 +711,13 @@ svg[class*='lightToggleIcon'] {
 }
 
 .main-wrapper > div[class*='docPage'] {
-  @apply mx-auto max-w-[1720px];
+  @apply mx-auto max-w-[1680px];
 }
 
-/* max */
+.container {
+  @apply px-6 max-w-[1680px];
+}
+
 @media (max-width: 1023px) {
   .container {
     @apply !max-w-full;
@@ -748,13 +748,32 @@ svg[class*='lightToggleIcon'] {
   }
 }
 
+@media (min-width: 1680px) {
+  .slide-item-center {
+    transform: translateX(calc(max(1632px, 100vw)/2 - calc(1632px / 2)));
+  }
+}
+
+@media (max-width: 1679px) {
+  .slide-item-center {
+    transform: translateX(24px);
+  }
+}
+
+@media (min-width: 1728px) {
+  .container {
+    @apply px-0;
+  }  
+}
+
+
 .theme-doc-sidebar-container {
   @apply fixed h-full overflow-y-auto overflow-x-hidden;
   border-color: var(--ifm-color-gray-300) !important;
 }
 
 .theme-doc-sidebar-container nav.menu {
-  @apply pt-6 pl-6 pr-[1.1rem];
+  @apply pt-4 pl-6 pr-[1.1rem];
 }
 
 #__docusaurus .navbar__link,
@@ -955,9 +974,9 @@ ul.table-of-contents.table-of-contents__left-border::before {
   @apply w-10 h-10 bg-[var(--ifm-color-gray-300)];
 }
 
-/* #__docusaurus [class*="backToTopButton"]::after {
-  filter: invert(100);
-} */
+#__docusaurus .rc-pagination-item-active a {
+  @apply text-gray-0;
+}
 
 .custom-not-found-wrapper {
   @apply m-auto w-full max-w-lg text-center min-h-screen grid place-content-center;
