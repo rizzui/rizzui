@@ -40,20 +40,24 @@ const features = [
 
 export default function FeatureBlock() {
 	return (
-		<section className="py-20">
+		<section className="py-16 lg:py-20">
 			<div className="container mx-auto">
-				<header className="text-center mb-12">
+				<header className="text-center mb-8 sm:mb-10 md:mb-12">
 					<Text
 						tag="h6"
-						className="!mb-5 !text-sm font-semibold tracking-[4px] uppercase text-gray-500"
+						className="!mb-3 sm:!mb-5 !text-[11px] sm:!text-xs lg:!text-sm font-semibold tracking-[4px] uppercase text-gray-500"
 					>
 						Why Rizz UI?
 					</Text>
-					<Text tag="h2" className="text-4xl leading-[1.3]">
-						A Next Gen UI Library with <br /> Limitless Customization Options
+					<Text
+						tag="h2"
+						className="text-2xl sm:text-3xl lg:text-4xl leading-[1.35] sm:leading-[1.3]"
+					>
+						A Next Gen UI Library with <br className="hidden sm:inline-block" />{' '}
+						Limitless Customization Options
 					</Text>
 				</header>
-				<div className="grid grid-cols-4 gap-4 2xl:gap-5">
+				<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 2xl:gap-5">
 					{features.map((feature) => (
 						<div
 							key={feature.title + feature.id}

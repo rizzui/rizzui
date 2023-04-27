@@ -115,16 +115,19 @@ export default function ComponentBlock() {
 	}, [currentSlide]);
 
 	return (
-		<section className="pt-16 pb-20 group">
+		<section className="pt-10 md:pt-16 pb-14 md:pb-20 group">
 			<div className="container mx-auto">
-				<header className="text-center mb-12">
+				<header className="text-center mb-8 sm:mb-10 md:mb-12">
 					<Text
 						tag="h6"
-						className="!mb-5 !text-sm font-semibold tracking-[4px] uppercase text-gray-500"
+						className="!mb-3 sm:!mb-5 !text-[11px] sm:!text-xs lg:!text-sm font-semibold tracking-[4px] uppercase text-gray-500"
 					>
 						Beautifully Crafted
 					</Text>
-					<Text tag="h2" className="text-4xl leading-[1.3]">
+					<Text
+						tag="h2"
+						className="text-2xl sm:text-3xl lg:text-4xl leading-[1.35] sm:leading-[1.3]"
+					>
 						38+ Production Ready Components
 					</Text>
 				</header>

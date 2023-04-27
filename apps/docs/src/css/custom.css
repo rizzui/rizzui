@@ -578,6 +578,10 @@ h2, h3, h4, h5, h6 {
   color: var(--ifm-color-gray-900);
 }
 
+.navbar__items .navbar__toggle svg {
+  @apply w-6 h-auto sm:w-7;
+}
+
 .pagination-nav__label {
   @apply font-medium;
 }
@@ -660,6 +664,16 @@ svg[class*='lightToggleIcon'] {
   @apply ring-[1.5px] pl-3 ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900;
 }
 
+@media (max-width: 576px) {
+  #__docusaurus .navbar__search-input[aria-expanded='false'] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E%0A");
+    background-position: center;
+    background-size: 16px;
+    background-repeat: no-repeat;
+    text-indent: 100px;
+  }
+}
+
 #__docusaurus input[class*='searchQueryInput'] {
   @apply mt-8 border-2 px-5 border-gray-900 focus:outline-none h-12;
 }
@@ -715,7 +729,7 @@ svg[class*='lightToggleIcon'] {
 }
 
 .container {
-  @apply px-6 max-w-[1680px];
+  @apply px-4 sm:px-6 max-w-[1680px];
 }
 
 @media (max-width: 1023px) {
@@ -760,11 +774,17 @@ svg[class*='lightToggleIcon'] {
   }
 }
 
-@media (min-width: 1728px) {
+@media (max-width: 639px) {
+  .slide-item-center {
+    transform: translateX(16px);
+  }
+}
+
+/* @media (min-width: 1728px) {
   .container {
     @apply px-0;
   }  
-}
+} */
 
 
 .theme-doc-sidebar-container {
