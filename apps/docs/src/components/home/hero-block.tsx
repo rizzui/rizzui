@@ -7,9 +7,8 @@ function AnnouncementText() {
 	return (
 		<Announcement
 			badgeText="Beta"
-			// highlightedText="v0.5.0 -"
 			endIcon={<CopyButton value="npm install @redq/rizzui" />}
-			className="mx-auto mb-7 text-[15px] pr-4 pl-2"
+			className="mx-auto mb-5 md:mb-7 text-sm md:text-[15px] pr-4 pl-2"
 		>
 			npm install @redq/rizzui
 		</Announcement>
@@ -29,28 +28,30 @@ function BlurBGPattern() {
 export default function HeroBlock() {
 	const history = useHistory();
 	return (
-		<section className="py-32 relative">
+		<section className="py-16 md:py-20 lg:py-32 relative">
 			<div className="container relative mx-auto">
 				<header className="text-center">
 					<AnnouncementText />
 					<Text
 						tag="h1"
 						className={cn(
-							'text-6xl leading-[1.18] font-extrabold drop-shadow-sm mb-10'
+							'text-3xl sm:text-4xl xl:text-5xl 2xl:text-6xl leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] font-extrabold drop-shadow-sm mb-6 md:mb-10'
 						)}
 					>
-						A Modern and Minimal React UI Library <br /> built with TailwindCSS
+						A Modern and Minimal React UI Library{' '}
+						<br className="hidden md:inline-block" /> built with TailwindCSS
 					</Text>
-					<Text className="text-lg leading-[1.9] max-w-5xl mx-auto mb-12 text-gray-600">
+					<Text className="text-[15px] md:text-base lg:text-lg leading-[1.9] md:leading-[1.9] lg:leading-[1.9] max-w-5xl mx-auto mb-8 md:mb-12 text-gray-600">
 						designed to provide you with a simple and intuitive set of UI
 						components that are easy to use, customize and integrate into your
 						React application. We have carefully crafted each component to
 						ensure that they are responsive, accessible and consistent across
 						different devices and browsers.
 					</Text>
-					<div className="flex items-center justify-center gap-4">
+					<div className="flex items-center justify-center gap-2 md:gap-4">
 						<Button
 							size="xl"
+							className="text-sm md:text-base xl:text-lg h-12 xl:h-14"
 							onClick={() => history.push('/docs/guide/getting-started')}
 						>
 							Get Started
@@ -61,7 +62,11 @@ export default function HeroBlock() {
 							className="inline-flex items-center hover:no-underline"
 							rel="noreferrer noopener"
 						>
-							<Button size="xl" variant="outline">
+							<Button
+								size="xl"
+								className="text-sm md:text-base xl:text-lg h-12 xl:h-14"
+								variant="outline"
+							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 24 24"
