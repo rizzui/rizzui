@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { SunIcon } from '@heroicons/react/20/solid';
 import { MoonIcon, LinkIcon } from '@heroicons/react/24/outline';
-import { Avatar } from '@redq/rizzui';
+import { Avatar } from 'rizzui';
 
 export const defaultCollapseData = [
 	{

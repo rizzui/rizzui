@@ -11,7 +11,7 @@ export default function Footer() {
 						href="https://redq.io/"
 						className="text-gray-900 font-semibold"
 					>
-						RedQ, Inc
+						REDQ
 					</a>
 				</div>
 			</div>

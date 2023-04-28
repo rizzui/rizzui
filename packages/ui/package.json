@@ -1,5 +1,5 @@
 {
-  "name": "@redq/rizzui",
+  "name": "rizzui",
   "version": "0.4.0",
   "license": "MIT",
   "keywords": [
@@ -32,7 +32,7 @@
     "minify": true,
     "clean": true,
     "dts": true,
-    "splitting": false,
+    "splitting": true,
     "format": [
       "cjs",
       "esm"

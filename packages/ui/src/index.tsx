@@ -1,4 +1,4 @@
-// Hooks
+// Utils & Hooks
 export { default as cn } from './lib/cn';
 export { default as useCollapse } from './lib/use-collapse';
 
@@ -50,6 +50,9 @@ export * from './components/dropdown';
 
 export { default as Empty } from './components/empty';
 export * from './components/empty';
+
+export { default as FileInput } from './components/upload/file-input';
+export * from './components/upload/file-input';
 
 export { default as Input } from './components/input';
 export * from './components/input';
@@ -122,6 +125,3 @@ export * from './components/textarea';
 
 export { default as Tooltip } from './components/tooltip';
 export * from './components/tooltip';
-
-export { default as Upload } from './components/upload';
-export * from './components/upload';

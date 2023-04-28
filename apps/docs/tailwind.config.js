@@ -6,7 +6,7 @@ module.exports = {
 	content: [
 		'./docs/**/*.{md,mdx}',
 		'./src/**/*.{js,ts,jsx,tsx,mdx}',
-		'../../node_modules/@redq/rizzui/dist/*.{js,ts,jsx,tsx}',
+		'../../node_modules/rizzui/dist/*.{js,ts,jsx,tsx}',
 	],
 	theme: {
 		colors: {

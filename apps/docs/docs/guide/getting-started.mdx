@@ -33,7 +33,7 @@ module.exports = {
 	// The content section of your tailwind.config.js file is where you configure the paths to all of your HTML templates, JavaScript components, and any other source files that contain Tailwind class names
 	content: [
 		'./src/**/*.{js,ts,jsx,tsx}',
-		'../node_modules/@redq/rizzuiui/dist/*.{js,ts,jsx,tsx}', // must use this line to compile and generate our RizzUI components style
+		'../node_modules/rizzuiui/dist/*.{js,ts,jsx,tsx}', // must use this line to compile and generate our RizzUI components style
 	],
 	theme: {
 		colors: {
@@ -344,7 +344,7 @@ You are good to go to use our components in your application
 ## Usage
 
 ```tsx
-import { Button } from '@redq/rizzui';
+import { Button } from 'rizzui';
 
 export default function App() {
 	return <Button>Default</Button>;
