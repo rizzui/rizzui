@@ -2,16 +2,19 @@
 sidebar_position: 25
 ---
 
-import { Pagination } from "@redq/rizzui";
-import Paper from "@site/src/components/paper";
-import { ChevronDoubleRightIcon, ChevronDoubleLeftIcon } from "@heroicons/react/24/outline";
+import { Pagination } from 'rizzui';
+import Paper from '@site/src/components/paper';
+import {
+	ChevronDoubleRightIcon,
+	ChevronDoubleLeftIcon,
+} from '@heroicons/react/24/outline';
 
 # Pagination
 
 We used `rc-pagination` package to build pagination component. See their [official documentation](https://pagination-react-component.vercel.app/) for more info.
 
 ```tsx
-import { Pagination } from "@redq/rizzui";
+import { Pagination } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -21,23 +24,14 @@ import { Pagination } from "@redq/rizzui";
 The default style of **Pagination**.
 
 <Paper>
-  <Pagination
-    total={25}
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
+	<Pagination total={25} defaultCurrent={1} className="[&_li]:!mt-0" />
 </Paper>
 
 ```tsx
-import { Pagination } from "@redq/rizzui";
+import { Pagination } from 'rizzui';
 
 export default function App() {
-  return (
-    <Pagination
-      total={25}
-      defaultCurrent={1}
-    />
-  );
+	return <Pagination total={25} defaultCurrent={1} />;
 }
 ```
 
@@ -48,38 +42,30 @@ export default function App() {
 You can change the style of **Pagination** with property **variant**.
 
 <Paper className="flex-row flex-wrap justify-between">
-  <Pagination
-    total={25}
-    variant="solid"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    variant="flat"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0 [&_li>a]:!text-gray-1000"
-  />
+	<Pagination
+		total={25}
+		variant="solid"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
+	<Pagination
+		total={25}
+		variant="flat"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0 [&_li>a]:!text-gray-1000"
+	/>
 </Paper>
 
 ```tsx
-import { Pagination } from "@redq/rizzui";
+import { Pagination } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Pagination
-        total={25}
-        variant="solid"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        variant="flat"
-        defaultCurrent={1}
-      />
-    </>
-  );
+	return (
+		<>
+			<Pagination total={25} variant="solid" defaultCurrent={1} />
+			<Pagination total={25} variant="flat" defaultCurrent={1} />
+		</>
+	);
 }
 ```
 
@@ -90,70 +76,46 @@ export default function App() {
 You can change the style of **Pagination** with property [**rounded**](#pagination-rounded).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-8">
-  <Pagination
-    total={25}
-    rounded="sm"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    rounded="lg"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    rounded="none"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    rounded="full"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
+	<Pagination
+		total={25}
+		rounded="sm"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
+	<Pagination total={25} defaultCurrent={1} className="[&_li]:!mt-0" />
+	<Pagination
+		total={25}
+		rounded="lg"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
+	<Pagination
+		total={25}
+		rounded="none"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
+	<Pagination
+		total={25}
+		rounded="full"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
 </Paper>
 
 ```tsx
-import { Pagination } from "@redq/rizzui";
+import { Pagination } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Pagination
-        total={25}
-        rounded="sm"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        variant="solid"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        rounded="lg"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        rounded="none"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        rounded="full"
-        defaultCurrent={1}
-      />
-    </>
-  );
+	return (
+		<>
+			<Pagination total={25} rounded="sm" defaultCurrent={1} />
+			<Pagination total={25} variant="solid" defaultCurrent={1} />
+			<Pagination total={25} rounded="lg" defaultCurrent={1} />
+			<Pagination total={25} rounded="none" defaultCurrent={1} />
+			<Pagination total={25} rounded="full" defaultCurrent={1} />
+		</>
+	);
 }
 ```
 
@@ -164,91 +126,60 @@ export default function App() {
 You can change the style of **Pagination** with property [**color**](#pagination-colors).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-8">
-  <Pagination
-    total={25}
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    color="primary"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    color="secondary"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    color="danger"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    color="info"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    color="success"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    color="warning"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
+	<Pagination total={25} defaultCurrent={1} className="[&_li]:!mt-0" />
+	<Pagination
+		total={25}
+		color="primary"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
+	<Pagination
+		total={25}
+		color="secondary"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
+	<Pagination
+		total={25}
+		color="danger"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
+	<Pagination
+		total={25}
+		color="info"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
+	<Pagination
+		total={25}
+		color="success"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
+	<Pagination
+		total={25}
+		color="warning"
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
 </Paper>
 
 ```tsx
-import { Pagination } from "@redq/rizzui";
+import { Pagination } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Pagination
-        total={25}
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        color="primary"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        color="secondary"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        color="danger"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        color="info"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        color="success"
-        defaultCurrent={1}
-      />
-      <Pagination
-        total={25}
-        color="warning"
-        defaultCurrent={1}
-      />
-    </>
-  );
+	return (
+		<>
+			<Pagination total={25} defaultCurrent={1} />
+			<Pagination total={25} color="primary" defaultCurrent={1} />
+			<Pagination total={25} color="secondary" defaultCurrent={1} />
+			<Pagination total={25} color="danger" defaultCurrent={1} />
+			<Pagination total={25} color="info" defaultCurrent={1} />
+			<Pagination total={25} color="success" defaultCurrent={1} />
+			<Pagination total={25} color="warning" defaultCurrent={1} />
+		</>
+	);
 }
 ```
 
@@ -259,25 +190,19 @@ export default function App() {
 You can change the style of **Pagination** with property **disabled**.
 
 <Paper>
-  <Pagination
-    total={25}
-    defaultCurrent={1}
-    className="[&_li]:!mt-0 [&_li>a]:!text-[#00000040]"
-    disabled
-  />
+	<Pagination
+		total={25}
+		defaultCurrent={1}
+		className="[&_li]:!mt-0 [&_li>a]:!text-[#00000040]"
+		disabled
+	/>
 </Paper>
 
 ```tsx
-import { Pagination } from "@redq/rizzui";
+import { Pagination } from 'rizzui';
 
 export default function App() {
-  return (
-    <Pagination
-      total={25}
-      defaultCurrent={1}
-      disabled
-    />
-  );
+	return <Pagination total={25} defaultCurrent={1} disabled />;
 }
 ```
 
@@ -288,25 +213,19 @@ export default function App() {
 You can change the style of **Pagination** with property **outline**.
 
 <Paper>
-  <Pagination
-    total={25}
-    outline={true}
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
+	<Pagination
+		total={25}
+		outline={true}
+		defaultCurrent={1}
+		className="[&_li]:!mt-0"
+	/>
 </Paper>
 
 ```tsx
-import { Pagination } from "@redq/rizzui";
+import { Pagination } from 'rizzui';
 
 export default function App() {
-  return (
-    <Pagination
-      total={25}
-      outline={true}
-      defaultCurrent={1}
-    />
-  );
+	return <Pagination total={25} outline={true} defaultCurrent={1} />;
 }
 ```
 
@@ -317,31 +236,31 @@ export default function App() {
 You can change the style of **Pagination** with property **prevIcon** & **nextIcon**.
 
 <Paper>
-  <Pagination
-    total={100}
-    defaultCurrent={5}
-    nextIcon="Next"
-    prevIcon="Previous"
-    className="[&_li]:!mt-0"
-    prevIconClassName="py-0 text-gray-500 !leading-[26px]"
-    nextIconClassName="py-0 text-gray-500 !leading-[26px]"
-  />
+	<Pagination
+		total={100}
+		defaultCurrent={5}
+		nextIcon="Next"
+		prevIcon="Previous"
+		className="[&_li]:!mt-0"
+		prevIconClassName="py-0 text-gray-500 !leading-[26px]"
+		nextIconClassName="py-0 text-gray-500 !leading-[26px]"
+	/>
 </Paper>
 
 ```tsx
-import { Pagination } from "@redq/rizzui";
+import { Pagination } from 'rizzui';
 
 export default function App() {
-  return (
-    <Pagination
-      total={100}
-      defaultCurrent={5}
-      nextIcon="Next"
-      prevIcon="Previous"
-      prevIconClassName="py-0 text-gray-500 !leading-[26px]"
-      nextIconClassName="py-0 text-gray-500 !leading-[26px]"
-    />
-  );
+	return (
+		<Pagination
+			total={100}
+			defaultCurrent={5}
+			nextIcon="Next"
+			prevIcon="Previous"
+			prevIconClassName="py-0 text-gray-500 !leading-[26px]"
+			nextIconClassName="py-0 text-gray-500 !leading-[26px]"
+		/>
+	);
 }
 ```
 
@@ -352,30 +271,33 @@ export default function App() {
 You can change the style of **Pagination** with property **jumpPrevIcon** & **jumpNextIcon**.
 
 <Paper>
-  <Pagination
-    outline
-    total={100}
-    defaultCurrent={5}
-    className="[&_li]:!mt-0"
-    jumpPrevIcon={<ChevronDoubleLeftIcon className="h-4 w-4" />}
-    jumpNextIcon={<ChevronDoubleRightIcon className="h-4 w-4" />}
-  />
+	<Pagination
+		outline
+		total={100}
+		defaultCurrent={5}
+		className="[&_li]:!mt-0"
+		jumpPrevIcon={<ChevronDoubleLeftIcon className="h-4 w-4" />}
+		jumpNextIcon={<ChevronDoubleRightIcon className="h-4 w-4" />}
+	/>
 </Paper>
 
 ```tsx
-import { Pagination } from "@redq/rizzui";
-import { ChevronDoubleRightIcon, ChevronDoubleLeftIcon } from "@heroicons/react/24/outline";
+import { Pagination } from 'rizzui';
+import {
+	ChevronDoubleRightIcon,
+	ChevronDoubleLeftIcon,
+} from '@heroicons/react/24/outline';
 
 export default function App() {
-  return (
-    <Pagination
-      outline
-      total={100}
-      defaultCurrent={5}
-      jumpPrevIcon={<ChevronDoubleLeftIcon className="h-4 w-4" />}
-      jumpNextIcon={<ChevronDoubleRightIcon className="h-4 w-4" />}
-    />
-  );
+	return (
+		<Pagination
+			outline
+			total={100}
+			defaultCurrent={5}
+			jumpPrevIcon={<ChevronDoubleLeftIcon className="h-4 w-4" />}
+			jumpNextIcon={<ChevronDoubleRightIcon className="h-4 w-4" />}
+		/>
+	);
 }
 ```
 
@@ -435,7 +357,7 @@ Here is the API documentation of the Pagination component.
 ### Pagination Rounded
 
 ```ts
-type PaginationRounded = "sm" | "DEFAULT" | "lg" | "none" | "full";
+type PaginationRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'full';
 ```
 
 <div className="mb-10" />
@@ -444,13 +366,13 @@ type PaginationRounded = "sm" | "DEFAULT" | "lg" | "none" | "full";
 
 ```ts
 type PaginationColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
 ```
 
 <div className="mb-10" />
@@ -459,9 +381,9 @@ type PaginationColors =
 
 ```ts
 type PaginationItemRender = (
-  page: number,
-  type: "page" | "next" | "prev" | "jump-prev" | "jump-next",
-  element: ReactNode
+	page: number,
+	type: 'page' | 'next' | 'prev' | 'jump-prev' | 'jump-next',
+	element: ReactNode
 ) => ReactNode;
 ```
 
@@ -470,5 +392,8 @@ type PaginationItemRender = (
 ### Pagination Show Total
 
 ```ts
-type PaginationShowTotal = (total: number, range: [number, number]) => ReactNode;
+type PaginationShowTotal = (
+	total: number,
+	range: [number, number]
+) => ReactNode;
 ```

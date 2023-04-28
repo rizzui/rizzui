@@ -1,4 +1,4 @@
-// Hooks
+// Utils & Hooks
 export { default as cn } from './lib/cn';
 export { default as useCollapse } from './lib/use-collapse';
 

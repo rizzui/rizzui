@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar } from '@redq/rizzui';
+import { Avatar } from 'rizzui';
 
 export const advancedSelectOptions = [
 	{

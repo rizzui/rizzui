@@ -11,7 +11,7 @@ import {
 	Pagination,
 	Switch,
 	Badge,
-} from '@redq/rizzui';
+} from 'rizzui';
 import {
 	ArrowRightIcon,
 	ChevronLeftIcon,

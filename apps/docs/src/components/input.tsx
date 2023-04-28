@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '@redq/rizzui';
+import { Input } from 'rizzui';
 import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 export default function InputCounter() {

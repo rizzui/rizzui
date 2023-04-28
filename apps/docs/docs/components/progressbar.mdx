@@ -2,15 +2,15 @@
 sidebar_position: 22
 ---
 
-import { Progressbar } from "@redq/rizzui";
-import Paper from "@site/src/components/paper";
+import { Progressbar } from 'rizzui';
+import Paper from '@site/src/components/paper';
 
 # Progressbar
 
 A basic widget for showing the work progress.
 
 ```tsx
-import { Progressbar } from "@redq/rizzui";
+import { Progressbar } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -20,14 +20,14 @@ import { Progressbar } from "@redq/rizzui";
 The default style of **Progressbar**.
 
 <Paper>
-  <Progressbar value={75} />
+	<Progressbar value={75} />
 </Paper>
 
 ```tsx
-import { Progressbar } from "@redq/rizzui";
+import { Progressbar } from 'rizzui';
 
 export default function App() {
-  return <Progressbar value={75} />;
+	return <Progressbar value={75} />;
 }
 ```
 
@@ -38,32 +38,20 @@ export default function App() {
 You can change the style of **Progressbar** with property **variant**.
 
 <Paper className="gap-6">
-  <Progressbar
-    variant="flat"
-    value={75}
-  />
-  <Progressbar
-    variant="solid"
-    value={75}
-  />
+	<Progressbar variant="flat" value={75} />
+	<Progressbar variant="solid" value={75} />
 </Paper>
 
 ```tsx
-import { Progressbar } from "@redq/rizzui";
+import { Progressbar } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Progressbar
-        variant="flat"
-        value={75}
-      />
-      <Progressbar
-        variant="solid"
-        value={75}
-      />
-    </>
-  );
+	return (
+		<>
+			<Progressbar variant="flat" value={75} />
+			<Progressbar variant="solid" value={75} />
+		</>
+	);
 }
 ```
 
@@ -74,42 +62,24 @@ export default function App() {
 You can change the style of **Progressbar** with property [**size**](#progressbar-sizes).
 
 <Paper className="gap-6">
-  <Progressbar
-    value={75}
-    size="sm"
-  />
-  <Progressbar value={75} />
-  <Progressbar
-    value={75}
-    size="lg"
-  />
-  <Progressbar
-    value={75}
-    size="xl"
-  />
+	<Progressbar value={75} size="sm" />
+	<Progressbar value={75} />
+	<Progressbar value={75} size="lg" />
+	<Progressbar value={75} size="xl" />
 </Paper>
 
 ```tsx
-import { Progressbar } from "@redq/rizzui";
+import { Progressbar } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Progressbar
-        value={75}
-        size="sm"
-      />
-      <Progressbar value={75} />
-      <Progressbar
-        value={75}
-        size="lg"
-      />
-      <Progressbar
-        value={75}
-        size="xl"
-      />
-    </>
-  );
+	return (
+		<>
+			<Progressbar value={75} size="sm" />
+			<Progressbar value={75} />
+			<Progressbar value={75} size="lg" />
+			<Progressbar value={75} size="xl" />
+		</>
+	);
 }
 ```
 
@@ -120,50 +90,26 @@ export default function App() {
 You can change the style of **Progressbar** with property [**rounded**](#progressbar-rounded).
 
 <Paper className="gap-6">
-  <Progressbar
-    value={75}
-    rounded="sm"
-  />
-  <Progressbar value={75} />
-  <Progressbar
-    value={75}
-    rounded="md"
-  />
-  <Progressbar
-    value={75}
-    rounded="lg"
-  />
-  <Progressbar
-    value={75}
-    rounded="none"
-  />
+	<Progressbar value={75} rounded="sm" />
+	<Progressbar value={75} />
+	<Progressbar value={75} rounded="md" />
+	<Progressbar value={75} rounded="lg" />
+	<Progressbar value={75} rounded="none" />
 </Paper>
 
 ```tsx
-import { Progressbar } from "@redq/rizzui";
+import { Progressbar } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Progressbar
-        value={75}
-        rounded="sm"
-      />
-      <Progressbar value={75} />
-      <Progressbar
-        value={75}
-        rounded="md"
-      />
-      <Progressbar
-        value={75}
-        rounded="lg"
-      />
-      <Progressbar
-        value={75}
-        rounded="none"
-      />
-    </>
-  );
+	return (
+		<>
+			<Progressbar value={75} rounded="sm" />
+			<Progressbar value={75} />
+			<Progressbar value={75} rounded="md" />
+			<Progressbar value={75} rounded="lg" />
+			<Progressbar value={75} rounded="none" />
+		</>
+	);
 }
 ```
 
@@ -174,66 +120,30 @@ export default function App() {
 You can change the style of **Progressbar** with property [**color**](#progressbar-colors).
 
 <Paper className="gap-6">
-  <Progressbar value={75} />
-  <Progressbar
-    value={75}
-    color="primary"
-  />
-  <Progressbar
-    value={75}
-    color="secondary"
-  />
-  <Progressbar
-    value={75}
-    color="danger"
-  />
-  <Progressbar
-    value={75}
-    color="info"
-  />
-  <Progressbar
-    value={75}
-    color="success"
-  />
-  <Progressbar
-    value={75}
-    color="warning"
-  />
+	<Progressbar value={75} />
+	<Progressbar value={75} color="primary" />
+	<Progressbar value={75} color="secondary" />
+	<Progressbar value={75} color="danger" />
+	<Progressbar value={75} color="info" />
+	<Progressbar value={75} color="success" />
+	<Progressbar value={75} color="warning" />
 </Paper>
 
 ```tsx
-import { Progressbar } from "@redq/rizzui";
+import { Progressbar } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Progressbar value={75} />
-      <Progressbar
-        value={75}
-        color="primary"
-      />
-      <Progressbar
-        value={75}
-        color="secondary"
-      />
-      <Progressbar
-        value={75}
-        color="danger"
-      />
-      <Progressbar
-        value={75}
-        color="info"
-      />
-      <Progressbar
-        value={75}
-        color="success"
-      />
-      <Progressbar
-        value={75}
-        color="warning"
-      />
-    </>
-  );
+	return (
+		<>
+			<Progressbar value={75} />
+			<Progressbar value={75} color="primary" />
+			<Progressbar value={75} color="secondary" />
+			<Progressbar value={75} color="danger" />
+			<Progressbar value={75} color="info" />
+			<Progressbar value={75} color="success" />
+			<Progressbar value={75} color="warning" />
+		</>
+	);
 }
 ```
 
@@ -244,24 +154,14 @@ export default function App() {
 You can change the style of **Progressbar** with property **label**.
 
 <Paper>
-  <Progressbar
-    value={75}
-    size="xl"
-    label="75%"
-  />
+	<Progressbar value={75} size="xl" label="75%" />
 </Paper>
 
 ```tsx
-import { Progressbar } from "@redq/rizzui";
+import { Progressbar } from 'rizzui';
 
 export default function App() {
-  return (
-    <Progressbar
-      value={75}
-      size="xl"
-      label="75%"
-    />
-  );
+	return <Progressbar value={75} size="xl" label="75%" />;
 }
 ```
 
@@ -294,7 +194,7 @@ Here is the API documentation of the Progressbar component.
 ### Progressbar Sizes
 
 ```ts
-type ProgressbarSize = "sm" | "DEFAULT" | "lg" | "xl";
+type ProgressbarSize = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 ```
 
 <div className="mb-10" />
@@ -302,7 +202,7 @@ type ProgressbarSize = "sm" | "DEFAULT" | "lg" | "xl";
 ### Progressbar Rounded
 
 ```ts
-type ProgressbarRounded = "sm" | "DEFAULT" | "md" | "lg" | "none";
+type ProgressbarRounded = 'sm' | 'DEFAULT' | 'md' | 'lg' | 'none';
 ```
 
 <div className="mb-10" />
@@ -311,11 +211,11 @@ type ProgressbarRounded = "sm" | "DEFAULT" | "md" | "lg" | "none";
 
 ```ts
 type ProgressbarColor =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
 ```

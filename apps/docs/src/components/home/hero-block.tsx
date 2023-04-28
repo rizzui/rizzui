@@ -1,16 +1,16 @@
 import React from 'react';
 import { useHistory } from '@docusaurus/router';
-import { Button, Text, Announcement, cn } from '@redq/rizzui';
+import { Button, Text, Announcement, cn } from 'rizzui';
 import { CopyButton } from '../copy-button';
 
 function AnnouncementText() {
 	return (
 		<Announcement
 			badgeText="Beta"
-			endIcon={<CopyButton value="npm install @redq/rizzui" />}
+			endIcon={<CopyButton value="npm install rizzui" />}
 			className="mx-auto mb-5 md:mb-7 text-sm md:text-[15px] pr-4 pl-2"
 		>
-			npm install @redq/rizzui
+			npm install rizzui
 		</Announcement>
 	);
 }
