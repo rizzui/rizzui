@@ -1,14 +1,9 @@
 'use client';
 
-import React, {
-  cloneElement,
-  RefObject,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import React, { cloneElement, RefObject, useRef, useState } from 'react';
 import {
   Placement,
+  FloatingArrow,
   offset,
   flip,
   shift,
@@ -23,7 +18,6 @@ import {
   arrow,
   useTransitionStyles,
 } from '@floating-ui/react';
-import mergeRefs from 'react-merge-refs';
 
 import { cn } from '../../lib/cn';
 
@@ -36,7 +30,7 @@ const tooltipClasses = {
     xl: 'drop-shadow-2xl',
   },
   size: {
-    sm: 'px-2.5 py-1 text-sm',
+    sm: 'px-2.5 py-1 text-xs',
     DEFAULT: 'px-4 py-2 text-sm',
     lg: 'px-5 py-2 text-base',
     xl: 'px-6 py-2.5 text-lg',
@@ -49,12 +43,15 @@ const tooltipClasses = {
     pill: 'rounded-full',
   },
   arrow: {
-    base: 'bg-inherit absolute h-2 w-2 rotate-45',
-    border: {
-      top: 'border-t-transparent border-l-transparent',
-      left: 'border-b-transparent border-l-transparent',
-      bottom: 'border-b-transparent border-r-transparent',
-      right: 'border-t-transparent border-r-transparent',
+    color: {
+      DEFAULT: 'fill-gray-900',
+      invert: 'fill-gray-0',
+      primary: 'fill-primary',
+      secondary: 'fill-secondary',
+      danger: 'fill-red',
+      info: 'fill-blue',
+      success: 'fill-green',
+      warning: 'fill-orange',
     },
   },
   variant: {
@@ -62,7 +59,7 @@ const tooltipClasses = {
       base: '',
       color: {
         DEFAULT: 'text-gray-0 bg-gray-900',
-        invert: 'bg-white !text-gray-900 border border-gray-300',
+        invert: 'bg-gray-0 !text-gray-900 border border-gray-300',
         primary: 'text-white bg-primary',
         secondary: 'text-white bg-secondary',
         danger: 'text-white bg-red',
@@ -127,15 +124,7 @@ const Tooltip = ({
   const [open, setOpen] = useState(false);
   const arrowRef = useRef(null);
 
-  const {
-    x,
-    y,
-    reference,
-    floating,
-    strategy,
-    context,
-    middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
-  } = useFloating({
+  const { x, y, refs, strategy, context } = useFloating({
     placement,
     open: isOpen ?? open,
     onOpenChange: setIsOpen ?? setOpen,
@@ -148,13 +137,6 @@ const Tooltip = ({
     whileElementsMounted: autoUpdate,
   });
 
-  const staticSide = {
-    top: 'bottom',
-    right: 'left',
-    bottom: 'top',
-    left: 'right',
-  }[placement.split('-')[0]];
-
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useHover(context, { enabled: !isPopconfirm }),
     useFocus(context),
@@ -164,28 +146,26 @@ const Tooltip = ({
   ]);
 
   const { isMounted, styles } = useTransitionStyles(context, {
-    duration: { open: 300, close: 200 },
+    duration: { open: 200, close: 200 },
     initial: {
       opacity: 0,
-      transform: 'scale(0.95)',
+      transform: 'scale(0.96)',
     },
     close: {
       opacity: 0,
-      transform: 'scale(0.95)',
+      transform: 'scale(0.96)',
     },
   });
 
-  const ref = useMemo(
-    () => mergeRefs([reference, children.ref as RefObject<any>]),
-    [reference, children]
-  );
-
   return (
     <>
-      {cloneElement(children, getReferenceProps({ ref, ...children.props }))}
+      {cloneElement(
+        children,
+        getReferenceProps({ ref: refs.setReference, ...children.props })
+      )}
       {(isMounted || (isOpen ?? open)) && (
         <div
-          ref={floating}
+          ref={refs.setFloating}
           className={cn(
             tooltipClasses.base,
             tooltipClasses.size[size],
@@ -205,26 +185,17 @@ const Tooltip = ({
         >
           {content}
           {showArrow && (
-            <div
-              data-testid="tooltip-arrow"
-              style={{
-                left: arrowX != null ? `${arrowX}px` : '',
-                top: arrowY != null ? `${arrowY}px` : '',
-                [staticSide as string]: '-4px',
-              }}
-              className={cn(
-                tooltipClasses.arrow.base,
-                tooltipClasses.variant.solid.base,
-                tooltipClasses.variant.solid.color[color],
-                tooltipClasses.arrow.border[
-                  placement.split(
-                    '-'
-                  )[0] as keyof typeof tooltipClasses.arrow.border
-                ],
-                tooltipArrowClassName
-              )}
-              ref={arrowRef}
-            />
+            <>
+              <FloatingArrow
+                ref={arrowRef}
+                context={context}
+                data-testid="tooltip-arrow"
+                className={cn(
+                  tooltipClasses.arrow.color[color],
+                  tooltipArrowClassName
+                )}
+              />
+            </>
           )}
         </div>
       )}

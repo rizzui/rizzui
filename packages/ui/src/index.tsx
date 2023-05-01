@@ -12,8 +12,8 @@ export * from './components/advanced-checkbox';
 export { default as AdvancedRadio } from './components/advanced-radio';
 export * from './components/advanced-radio';
 
-export { default as AdvancedSelect } from './components/advanced-select';
-export * from './components/advanced-select';
+// export { default as AdvancedSelect } from './components/advanced-select';
+// export * from './components/advanced-select';
 
 export { default as Alert } from './components/alert';
 export * from './components/alert';
