@@ -1,5 +1,5 @@
 import React from "react";
-import { Popconfirm, Button } from "@redq/rizzui";
+import { Popconfirm, Button } from "rizzui";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 export function PopconfirmActionable() {
