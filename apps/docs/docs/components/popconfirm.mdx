@@ -1,0 +1,733 @@
+---
+sidebar_position: 27
+---
+
+import { Popconfirm, Button } from "@redq/rizzui";
+import Paper from "@site/src/components/paper";
+import { PopconfirmActionable } from "@site/src/components/popconfirm";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
+
+# Popconfirm
+
+Popconfirm is a simple dialog alert which can have details of the content. It can either have a confirm, cancel button or any action that can be triggered by the user's decision.
+
+```tsx
+import { Popconfirm } from "@redq/rizzui";
+```
+
+<div className="mb-28" />
+
+## Simple Popconfirm
+
+A simple **Popconfirm** component.
+
+<Paper>
+  <div className="h-44">
+    <Popconfirm
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+</Paper>
+
+```tsx
+import { Popconfirm, Button } from "@redq/rizzui";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
+
+export default function App() {
+  return (
+    <>
+      <Popconfirm
+        content={
+          <div className="w-56 text-start">
+            <span className="mt-2 inline-flex items-center gap-2 text-base">
+              <InformationCircleIcon className="h-5 w-5" />
+              <h2 className="font-medium">Delete the task</h2>
+            </span>
+            <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+            <div className="mt-3 mb-2 flex gap-3">
+              <Button size="sm">Yes</Button>
+              <Button
+                size="sm"
+                variant="outline"
+              >
+                No
+              </Button>
+            </div>
+          </div>
+        }
+        placement="bottom-start"
+      >
+        <Button
+          variant="text"
+          className="focus:!ring-0"
+        >
+          Click Me!
+        </Button>
+      </Popconfirm>
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the style of **Popconfirm** with property [**size**](#popconfirm-size).
+
+<Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div className="h-44">
+    <Popconfirm
+      size="sm"
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+  <div className="h-44">
+    <Popconfirm
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+  <div className="h-44">
+    <Popconfirm
+      size="lg"
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+  <div className="h-44">
+    <Popconfirm
+      size="xl"
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+</Paper>
+
+```tsx
+import { Popconfirm, Button } from "@redq/rizzui";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
+
+export default function App() {
+  return (
+    <>
+      <div className="h-44">
+        <Popconfirm
+          size="sm"
+          content={
+            <div className="w-56 text-start">
+              <span className="mt-2 inline-flex items-center gap-2 text-base">
+                <InformationCircleIcon className="h-5 w-5" />
+                <p className="font-medium">Delete the task</p>
+              </span>
+              <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+              <div className="mt-3 mb-2 flex gap-3">
+                <Button size="sm">Yes</Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          }
+          placement="bottom-start"
+        >
+          <Button
+            variant="text"
+            className="focus:!ring-0"
+          >
+            Click Me!
+          </Button>
+        </Popconfirm>
+      </div>
+      <div className="h-44">
+        <Popconfirm
+          content={
+            <div className="w-56 text-start">
+              <span className="mt-2 inline-flex items-center gap-2 text-base">
+                <InformationCircleIcon className="h-5 w-5" />
+                <p className="font-medium">Delete the task</p>
+              </span>
+              <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+              <div className="mt-3 mb-2 flex gap-3">
+                <Button size="sm">Yes</Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          }
+          placement="bottom-start"
+        >
+          <Button
+            variant="text"
+            className="focus:!ring-0"
+          >
+            Click Me!
+          </Button>
+        </Popconfirm>
+      </div>
+      <div className="h-44">
+        <Popconfirm
+          size="lg"
+          content={
+            <div className="w-56 text-start">
+              <span className="mt-2 inline-flex items-center gap-2 text-base">
+                <InformationCircleIcon className="h-5 w-5" />
+                <p className="font-medium">Delete the task</p>
+              </span>
+              <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+              <div className="mt-3 mb-2 flex gap-3">
+                <Button size="sm">Yes</Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          }
+          placement="bottom-start"
+        >
+          <Button
+            variant="text"
+            className="focus:!ring-0"
+          >
+            Click Me!
+          </Button>
+        </Popconfirm>
+      </div>
+      <div className="h-44">
+        <Popconfirm
+          size="xl"
+          content={
+            <div className="w-56 text-start">
+              <span className="mt-2 inline-flex items-center gap-2 text-base">
+                <InformationCircleIcon className="h-5 w-5" />
+                <p className="font-medium">Delete the task</p>
+              </span>
+              <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+              <div className="mt-3 mb-2 flex gap-3">
+                <Button size="sm">Yes</Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          }
+          placement="bottom-start"
+        >
+          <Button
+            variant="text"
+            className="focus:!ring-0"
+          >
+            Click Me!
+          </Button>
+        </Popconfirm>
+      </div>
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change the style of **Popconfirm** with property [**rounded**](#popconfirm-rounded).
+
+<Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div className="h-44">
+    <Popconfirm
+      rounded="sm"
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+  <div className="h-44">
+    <Popconfirm
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+  <div className="h-44">
+    <Popconfirm
+      rounded="lg"
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+  <div className="h-44">
+    <Popconfirm
+      rounded="none"
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+  <div className="h-44">
+    <Popconfirm
+      rounded="pill"
+      tooltipArrowClassName="ml-6"
+      content={
+        <div className="w-56">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex justify-center items-center gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+</Paper>
+
+```tsx
+import { Popconfirm, Button } from "@redq/rizzui";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
+
+export default function App() {
+  return (
+    <>
+      <div className="h-44">
+        <Popconfirm
+          rounded="sm"
+          content={
+            <div className="w-56 text-start">
+              <span className="mt-2 inline-flex items-center gap-2 text-base">
+                <InformationCircleIcon className="h-5 w-5" />
+                <p className="font-medium">Delete the task</p>
+              </span>
+              <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+              <div className="mt-3 mb-2 flex gap-3">
+                <Button size="sm">Yes</Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          }
+          placement="bottom-start"
+        >
+          <Button
+            variant="text"
+            className="focus:!ring-0"
+          >
+            Click Me!
+          </Button>
+        </Popconfirm>
+      </div>
+      <div className="h-44">
+        <Popconfirm
+          content={
+            <div className="w-56 text-start">
+              <span className="mt-2 inline-flex items-center gap-2 text-base">
+                <InformationCircleIcon className="h-5 w-5" />
+                <p className="font-medium">Delete the task</p>
+              </span>
+              <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+              <div className="mt-3 mb-2 flex gap-3">
+                <Button size="sm">Yes</Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          }
+          placement="bottom-start"
+        >
+          <Button
+            variant="text"
+            className="focus:!ring-0"
+          >
+            Click Me!
+          </Button>
+        </Popconfirm>
+      </div>
+      <div className="h-44">
+        <Popconfirm
+          rounded="lg"
+          content={
+            <div className="w-56 text-start">
+              <span className="mt-2 inline-flex items-center gap-2 text-base">
+                <InformationCircleIcon className="h-5 w-5" />
+                <p className="font-medium">Delete the task</p>
+              </span>
+              <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+              <div className="mt-3 mb-2 flex gap-3">
+                <Button size="sm">Yes</Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          }
+          placement="bottom-start"
+        >
+          <Button
+            variant="text"
+            className="focus:!ring-0"
+          >
+            Click Me!
+          </Button>
+        </Popconfirm>
+      </div>
+      <div className="h-44">
+        <Popconfirm
+          rounded="none"
+          content={
+            <div className="w-56 text-start">
+              <span className="mt-2 inline-flex items-center gap-2 text-base">
+                <InformationCircleIcon className="h-5 w-5" />
+                <p className="font-medium">Delete the task</p>
+              </span>
+              <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+              <div className="mt-3 mb-2 flex gap-3">
+                <Button size="sm">Yes</Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          }
+          placement="bottom-start"
+        >
+          <Button
+            variant="text"
+            className="focus:!ring-0"
+          >
+            Click Me!
+          </Button>
+        </Popconfirm>
+      </div>
+      <div className="h-44">
+        <Popconfirm
+          rounded="pill"
+          tooltipArrowClassName="ml-6"
+          content={
+            <div className="w-56">
+              <span className="mt-2 inline-flex items-center gap-2 text-base">
+                <InformationCircleIcon className="h-5 w-5" />
+                <p className="font-medium">Delete the task</p>
+              </span>
+              <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+              <div className="mt-3 mb-2 flex justify-center items-center gap-3">
+                <Button size="sm">Yes</Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                >
+                  No
+                </Button>
+              </div>
+            </div>
+          }
+          placement="bottom-start"
+        >
+          <Button
+            variant="text"
+            className="focus:!ring-0"
+          >
+            Click Me!
+          </Button>
+        </Popconfirm>
+      </div>
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Placement
+
+You can change the style of **Popconfirm** with property [**placement**](#popconfirm-placement).
+
+<Paper>
+  <div className="h-44">
+    <Popconfirm
+      placement="left"
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">Are you sure you want to delete the task?</p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm">Yes</Button>
+            <Button
+              size="sm"
+              variant="outline"
+            >
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom-start"
+    >
+      <Button
+        variant="text"
+        className="focus:!ring-0"
+      >
+        Click Me!
+      </Button>
+    </Popconfirm>
+  </div>
+</Paper>
