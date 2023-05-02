@@ -1,27 +1,24 @@
 ---
-sidebar_position: 13
+sidebar_position: 11
 ---
 
-import { AdvancedCheckbox } from 'rizzui';
+import { AdvancedCheckbox } from "rizzui";
 import {
-	CurrencyBangladeshiIcon,
-	CurrencyDollarIcon,
-	CurrencyEuroIcon,
-	CurrencyPoundIcon,
-} from '@heroicons/react/24/outline';
-import { CheckCircleIcon } from '@heroicons/react/24/solid';
-import Paper from '@site/src/components/paper';
-import {
-	CheckboxGroupAdvanced,
-	CheckboxGroupWithCard,
-} from '@site/src/components/checkbox-group';
+  CurrencyBangladeshiIcon,
+  CurrencyDollarIcon,
+  CurrencyEuroIcon,
+  CurrencyPoundIcon,
+} from "@heroicons/react/24/outline";
+import { CheckCircleIcon } from "@heroicons/react/24/solid";
+import Paper from "@site/src/components/paper";
+import { CheckboxGroupAdvanced, CheckboxGroupWithCard } from "@site/src/components/checkbox-group";
 
 # AdvancedCheckbox
 
 A basic widget for getting the user input of checkbox with advanced design.
 
 ```jsx
-import { AdvancedCheckbox } from 'rizzui';
+import { AdvancedCheckbox } from "rizzui";
 ```
 
 <div className="mb-28" />
@@ -31,102 +28,102 @@ import { AdvancedCheckbox } from 'rizzui';
 You can change style of **AdvancedCheckbox**.
 
 <Paper className="flex-row flex-wrap gap-6">
-	<AdvancedCheckbox
-		name="numbers-default"
-		value="any"
-		className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-	>
-		Any
-	</AdvancedCheckbox>
-	<AdvancedCheckbox
-		name="numbers-default"
-		value="one"
-		className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-	>
-		1
-	</AdvancedCheckbox>
-	<AdvancedCheckbox
-		name="numbers-default"
-		value="two"
-		className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-	>
-		2
-	</AdvancedCheckbox>
-	<AdvancedCheckbox
-		name="numbers-default"
-		value="three"
-		defaultChecked
-		className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-	>
-		3
-	</AdvancedCheckbox>
-	<AdvancedCheckbox
-		name="numbers-default"
-		value="four"
-		className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-	>
-		4
-	</AdvancedCheckbox>
-	<AdvancedCheckbox
-		name="numbers-default"
-		value="five+"
-		className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-	>
-		5+
-	</AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="numbers-default"
+    value="any"
+    className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+  >
+    Any
+  </AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="numbers-default"
+    value="one"
+    className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+  >
+    1
+  </AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="numbers-default"
+    value="two"
+    className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+  >
+    2
+  </AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="numbers-default"
+    value="three"
+    defaultChecked
+    className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+  >
+    3
+  </AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="numbers-default"
+    value="four"
+    className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+  >
+    4
+  </AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="numbers-default"
+    value="five+"
+    className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+  >
+    5+
+  </AdvancedCheckbox>
 </Paper>
 
 ```jsx
-import { AdvancedCheckbox } from 'rizzui';
+import { AdvancedCheckbox } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<AdvancedCheckbox
-				name="numbers-default"
-				value="any"
-				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-			>
-				Any
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				name="numbers-default"
-				value="one"
-				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-			>
-				1
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				name="numbers-default"
-				value="two"
-				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-			>
-				2
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				name="numbers-default"
-				value="three"
-				defaultChecked
-				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-			>
-				3
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				name="numbers-default"
-				value="four"
-				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-			>
-				4
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				name="numbers-default"
-				value="five+"
-				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-			>
-				5+
-			</AdvancedCheckbox>
-		</>
-	);
+  return (
+    <>
+      <AdvancedCheckbox
+        name="numbers-default"
+        value="any"
+        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+      >
+        Any
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        name="numbers-default"
+        value="one"
+        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+      >
+        1
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        name="numbers-default"
+        value="two"
+        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+      >
+        2
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        name="numbers-default"
+        value="three"
+        defaultChecked
+        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+      >
+        3
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        name="numbers-default"
+        value="four"
+        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+      >
+        4
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        name="numbers-default"
+        value="five+"
+        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+      >
+        5+
+      </AdvancedCheckbox>
+    </>
+  );
 }
 ```
 
@@ -137,106 +134,106 @@ export default function App() {
 You can give different style of **AdvancedCheckbox** as you need.
 
 <Paper className="flex-row flex-wrap gap-6">
-	<AdvancedCheckbox
-		name="currency-primary"
-		value="taka"
-		defaultChecked
-		className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
-		inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
-	>
-		<span>
-			<CurrencyBangladeshiIcon className="w-8 h-8" />
-		</span>
-		<p className="font-semibold">Taka</p>
-	</AdvancedCheckbox>
-	<AdvancedCheckbox
-		name="currency-primary"
-		value="dollar"
-		className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
-		inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
-	>
-		<span>
-			<CurrencyDollarIcon className="w-8 h-8" />
-		</span>
-		<p className="font-semibold">Dollar</p>
-	</AdvancedCheckbox>
-	<AdvancedCheckbox
-		name="currency-primary"
-		value="euro"
-		className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
-		inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
-	>
-		<span>
-			<CurrencyEuroIcon className="w-8 h-8" />
-		</span>
-		<p className="font-semibold">Euro</p>
-	</AdvancedCheckbox>
-	<AdvancedCheckbox
-		name="currency-primary"
-		value="pound"
-		className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
-		inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
-	>
-		<span>
-			<CurrencyPoundIcon className="w-8 h-8" />
-		</span>
-		<p className="font-semibold">Pound</p>
-	</AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="currency-primary"
+    value="taka"
+    defaultChecked
+    className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
+    inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
+  >
+    <span>
+      <CurrencyBangladeshiIcon className="w-8 h-8" />
+    </span>
+    <p className="font-semibold">Taka</p>
+  </AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="currency-primary"
+    value="dollar"
+    className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
+    inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
+  >
+    <span>
+      <CurrencyDollarIcon className="w-8 h-8" />
+    </span>
+    <p className="font-semibold">Dollar</p>
+  </AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="currency-primary"
+    value="euro"
+    className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
+    inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
+  >
+    <span>
+      <CurrencyEuroIcon className="w-8 h-8" />
+    </span>
+    <p className="font-semibold">Euro</p>
+  </AdvancedCheckbox>
+  <AdvancedCheckbox
+    name="currency-primary"
+    value="pound"
+    className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
+    inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
+  >
+    <span>
+      <CurrencyPoundIcon className="w-8 h-8" />
+    </span>
+    <p className="font-semibold">Pound</p>
+  </AdvancedCheckbox>
 </Paper>
 
 ```jsx
-import { AdvancedCheckbox } from 'rizzui';
+import { AdvancedCheckbox } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<AdvancedCheckbox
-				name="currency-primary"
-				value="taka"
-				defaultChecked
-				className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
-				inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
-			>
-				<span>
-					<CurrencyBangladeshiIcon className="w-8 h-8" />
-				</span>
-				<p className="font-semibold">Taka</p>
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				name="currency-primary"
-				value="dollar"
-				className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
-				inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
-			>
-				<span>
-					<CurrencyDollarIcon className="w-8 h-8" />
-				</span>
-				<p className="font-semibold">Dollar</p>
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				name="currency-primary"
-				value="euro"
-				className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
-				inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
-			>
-				<span>
-					<CurrencyEuroIcon className="w-8 h-8" />
-				</span>
-				<p className="font-semibold">Euro</p>
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				name="currency-primary"
-				value="pound"
-				className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
-				inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
-			>
-				<span>
-					<CurrencyPoundIcon className="w-8 h-8" />
-				</span>
-				<p className="font-semibold">Pound</p>
-			</AdvancedCheckbox>
-		</>
-	);
+  return (
+    <>
+      <AdvancedCheckbox
+        name="currency-primary"
+        value="taka"
+        defaultChecked
+        className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
+        inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
+      >
+        <span>
+          <CurrencyBangladeshiIcon className="w-8 h-8" />
+        </span>
+        <p className="font-semibold">Taka</p>
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        name="currency-primary"
+        value="dollar"
+        className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
+        inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
+      >
+        <span>
+          <CurrencyDollarIcon className="w-8 h-8" />
+        </span>
+        <p className="font-semibold">Dollar</p>
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        name="currency-primary"
+        value="euro"
+        className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
+        inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
+      >
+        <span>
+          <CurrencyEuroIcon className="w-8 h-8" />
+        </span>
+        <p className="font-semibold">Euro</p>
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        name="currency-primary"
+        value="pound"
+        className="flex w-36 flex-col space-y-6 rounded-xl border border-primary-lighter p-3 text-gray-600 hover:cursor-pointer hover:border-primary"
+        inputClassName="[&:checked:enabled~span]:ring-1 [&:checked:enabled~span]:ring-offset-0 [&:checked:enabled~span]:ring-primary [&:checked:enabled~span]:border-primary"
+      >
+        <span>
+          <CurrencyPoundIcon className="w-8 h-8" />
+        </span>
+        <p className="font-semibold">Pound</p>
+      </AdvancedCheckbox>
+    </>
+  );
 }
 ```
 
@@ -247,53 +244,57 @@ export default function App() {
 You can create group with **AdvancedCheckbox** with component **CheckboxGroup**.
 
 <Paper>
-	<CheckboxGroupAdvanced />
+  <CheckboxGroupAdvanced />
 </Paper>
 
 ```tsx
-import React from 'react';
-import { AdvancedCheckbox, CheckboxGroup } from 'rizzui';
+import React from "react";
+import { AdvancedCheckbox, CheckboxGroup } from "rizzui";
 
 export default function App() {
-	const [values, setValues] = React.useState<string[]>(['one']);
+  const [values, setValues] = React.useState<string[]>(["one"]);
 
-	return (
-		<CheckboxGroup values={values} setValues={setValues} className="flex gap-4">
-			<AdvancedCheckbox
-				value="Default"
-				className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
-				inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
-			>
-				<div className="flex justify-between">
-					<span className="font-medium text-black">Single Payment</span>
-					<CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
-				</div>
-				<p className="text-gray-500">Charge a one-time fee.</p>
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				value="primary"
-				className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
-				inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
-			>
-				<div className="flex justify-between">
-					<span className="font-medium text-black">Subscription</span>
-					<CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
-				</div>
-				<p className="text-gray-500">Charge an ongoing fee.</p>
-			</AdvancedCheckbox>
-			<AdvancedCheckbox
-				value="secondary"
-				className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
-				inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
-			>
-				<div className="flex justify-between">
-					<span className="font-medium text-black">Lead Magnet</span>
-					<CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
-				</div>
-				<p className="text-gray-500">Allow access for free.</p>
-			</AdvancedCheckbox>
-		</CheckboxGroup>
-	);
+  return (
+    <CheckboxGroup
+      values={values}
+      setValues={setValues}
+      className="flex gap-4"
+    >
+      <AdvancedCheckbox
+        value="Default"
+        className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
+        inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
+      >
+        <div className="flex justify-between">
+          <span className="font-medium text-black">Single Payment</span>
+          <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
+        </div>
+        <p className="text-gray-500">Charge a one-time fee.</p>
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        value="primary"
+        className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
+        inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
+      >
+        <div className="flex justify-between">
+          <span className="font-medium text-black">Subscription</span>
+          <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
+        </div>
+        <p className="text-gray-500">Charge an ongoing fee.</p>
+      </AdvancedCheckbox>
+      <AdvancedCheckbox
+        value="secondary"
+        className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
+        inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
+      >
+        <div className="flex justify-between">
+          <span className="font-medium text-black">Lead Magnet</span>
+          <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
+        </div>
+        <p className="text-gray-500">Allow access for free.</p>
+      </AdvancedCheckbox>
+    </CheckboxGroup>
+  );
 }
 ```
 
@@ -304,7 +305,7 @@ export default function App() {
 You can use custom icons in **AdvancedCheckbox** and **CheckboxGroup**.
 
 <Paper>
-	<CheckboxGroupWithCard />
+  <CheckboxGroupWithCard />
 </Paper>
 
 ```jsx

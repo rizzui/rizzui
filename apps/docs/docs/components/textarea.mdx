@@ -1,19 +1,17 @@
 ---
-sidebar_position: 9
+sidebar_position: 7
 ---
 
-import { Textarea } from 'rizzui';
-import Paper from '@site/src/components/paper';
-import TextareaCharacterCount, {
-	TextareaClear,
-} from '@site/src/components/text-area';
+import { Textarea } from "rizzui";
+import Paper from "@site/src/components/paper";
+import TextareaCharacterCount, { TextareaClear } from "@site/src/components/text-area";
 
 # Textarea
 
 A basic widget for getting the user textarea.
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 ```
 
 <div className="mb-28" />
@@ -23,14 +21,22 @@ import { Textarea } from 'rizzui';
 The default style of **Textarea** component.
 
 <Paper className="text-gray-1000 block">
-	<Textarea label="Message" placeholder="Write you message..." />
+  <Textarea
+    label="Message"
+    placeholder="Write you message..."
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return <Textarea label="Message" placeholder="Write you message..." />;
+  return (
+    <Textarea
+      label="Message"
+      placeholder="Write you message..."
+    />
+  );
 }
 ```
 
@@ -41,36 +47,56 @@ export default function App() {
 You can change the style of **Textarea** with property [**variant**](#textarea-variants).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-	<Textarea label="Active" variant="active" placeholder="Enter your message" />
-	<Textarea label="Flat" variant="flat" placeholder="Enter your message" />
-	<Textarea
-		label="Outline"
-		variant="outline"
-		placeholder="Enter your message"
-	/>
-	<Textarea label="Text" variant="text" placeholder="Enter your message" />
+  <Textarea
+    label="Active"
+    variant="active"
+    placeholder="Enter your message"
+  />
+  <Textarea
+    label="Flat"
+    variant="flat"
+    placeholder="Enter your message"
+  />
+  <Textarea
+    label="Outline"
+    variant="outline"
+    placeholder="Enter your message"
+  />
+  <Textarea
+    label="Text"
+    variant="text"
+    placeholder="Enter your message"
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Textarea
-				label="Active"
-				variant="active"
-				placeholder="Enter your message"
-			/>
-			<Textarea label="Flat" variant="flat" placeholder="Enter your message" />
-			<Textarea
-				label="Outline"
-				variant="outline"
-				placeholder="Enter your message"
-			/>
-			<Textarea label="Text" variant="text" placeholder="Enter your message" />
-		</>
-	);
+  return (
+    <>
+      <Textarea
+        label="Active"
+        variant="active"
+        placeholder="Enter your message"
+      />
+      <Textarea
+        label="Flat"
+        variant="flat"
+        placeholder="Enter your message"
+      />
+      <Textarea
+        label="Outline"
+        variant="outline"
+        placeholder="Enter your message"
+      />
+      <Textarea
+        label="Text"
+        variant="text"
+        placeholder="Enter your message"
+      />
+    </>
+  );
 }
 ```
 
@@ -81,28 +107,54 @@ export default function App() {
 You can change the style of **Textarea** with property [**size**](#textarea-sizes).
 
 <Paper className="gap-4 flex-row flex-wrap justify-start items-start">
-	<Textarea label="Small" placeholder="Enter your message" size="sm" />
-	<Textarea label="Default" placeholder="Enter your message" />
-	<Textarea label="Large" placeholder="Enter your message" size="lg" />
-	<Textarea label="Extra Large" placeholder="Enter your message" size="xl" />
+  <Textarea
+    label="Small"
+    placeholder="Enter your message"
+    size="sm"
+  />
+  <Textarea
+    label="Default"
+    placeholder="Enter your message"
+  />
+  <Textarea
+    label="Large"
+    placeholder="Enter your message"
+    size="lg"
+  />
+  <Textarea
+    label="Extra Large"
+    placeholder="Enter your message"
+    size="xl"
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Textarea label="Small" placeholder="Enter your message" size="sm" />
-			<Textarea label="Default" placeholder="Enter your message" />
-			<Textarea label="Large" placeholder="Enter your message" size="lg" />
-			<Textarea
-				label="Extra Large"
-				placeholder="Enter your message"
-				size="xl"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Textarea
+        label="Small"
+        placeholder="Enter your message"
+        size="sm"
+      />
+      <Textarea
+        label="Default"
+        placeholder="Enter your message"
+      />
+      <Textarea
+        label="Large"
+        placeholder="Enter your message"
+        size="lg"
+      />
+      <Textarea
+        label="Extra Large"
+        placeholder="Enter your message"
+        size="xl"
+      />
+    </>
+  );
 }
 ```
 
@@ -113,74 +165,74 @@ export default function App() {
 You can change the style of **Textarea** with property [**rounded**](#textarea-rounded).
 
 <Paper className="gap-4 flex-row flex-wrap justify-start items-start">
-	<Textarea
-		label="Rounded Small"
-		placeholder="Enter your message"
-		rounded="sm"
-		variant="active"
-	/>
-	<Textarea
-		label="Rounded Default"
-		placeholder="Enter your message"
-		variant="active"
-	/>
-	<Textarea
-		label="Rounded Large"
-		placeholder="Enter your message"
-		rounded="lg"
-		variant="active"
-	/>
-	<Textarea
-		label="Rounded Extra Large"
-		placeholder="Enter your message"
-		rounded="xl"
-		variant="active"
-	/>
-	<Textarea
-		label="Rounded None"
-		placeholder="Enter your message"
-		rounded="none"
-		variant="active"
-	/>
+  <Textarea
+    label="Rounded Small"
+    placeholder="Enter your message"
+    rounded="sm"
+    variant="active"
+  />
+  <Textarea
+    label="Rounded Default"
+    placeholder="Enter your message"
+    variant="active"
+  />
+  <Textarea
+    label="Rounded Large"
+    placeholder="Enter your message"
+    rounded="lg"
+    variant="active"
+  />
+  <Textarea
+    label="Rounded Extra Large"
+    placeholder="Enter your message"
+    rounded="xl"
+    variant="active"
+  />
+  <Textarea
+    label="Rounded None"
+    placeholder="Enter your message"
+    rounded="none"
+    variant="active"
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Textarea
-				label="Rounded Small"
-				placeholder="Enter your message"
-				rounded="sm"
-				variant="active"
-			/>
-			<Textarea
-				label="Rounded Default"
-				placeholder="Enter your message"
-				variant="active"
-			/>
-			<Textarea
-				label="Rounded Large"
-				placeholder="Enter your message"
-				rounded="lg"
-				variant="active"
-			/>
-			<Textarea
-				label="Rounded Extra Large"
-				placeholder="Enter your message"
-				rounded="xl"
-				variant="active"
-			/>
-			<Textarea
-				label="Rounded None"
-				placeholder="Enter your message"
-				rounded="none"
-				variant="active"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Textarea
+        label="Rounded Small"
+        placeholder="Enter your message"
+        rounded="sm"
+        variant="active"
+      />
+      <Textarea
+        label="Rounded Default"
+        placeholder="Enter your message"
+        variant="active"
+      />
+      <Textarea
+        label="Rounded Large"
+        placeholder="Enter your message"
+        rounded="lg"
+        variant="active"
+      />
+      <Textarea
+        label="Rounded Extra Large"
+        placeholder="Enter your message"
+        rounded="xl"
+        variant="active"
+      />
+      <Textarea
+        label="Rounded None"
+        placeholder="Enter your message"
+        rounded="none"
+        variant="active"
+      />
+    </>
+  );
 }
 ```
 
@@ -191,94 +243,98 @@ export default function App() {
 You can change the style of **Textarea** with property [**color**](#textarea-colors).
 
 <Paper className="gap-4 flex-row flex-wrap justify-start items-start">
-	<Textarea label="Default" variant="flat" placeholder="Enter your message" />
-	<Textarea
-		label="Primary"
-		variant="flat"
-		placeholder="Enter your message"
-		color="primary"
-	/>
-	<Textarea
-		label="Secondary"
-		variant="flat"
-		placeholder="Enter your message"
-		color="secondary"
-	/>
-	<Textarea
-		label="Danger"
-		variant="flat"
-		placeholder="Enter your message"
-		color="danger"
-	/>
-	<Textarea
-		label="Info"
-		variant="flat"
-		placeholder="Enter your message"
-		color="info"
-	/>
-	<Textarea
-		label="Success"
-		variant="flat"
-		placeholder="Enter your message"
-		color="success"
-	/>
-	<Textarea
-		label="Warning"
-		variant="flat"
-		placeholder="Enter your message"
-		color="warning"
-	/>
+  <Textarea
+    label="Default"
+    variant="flat"
+    placeholder="Enter your message"
+  />
+  <Textarea
+    label="Primary"
+    variant="flat"
+    placeholder="Enter your message"
+    color="primary"
+  />
+  <Textarea
+    label="Secondary"
+    variant="flat"
+    placeholder="Enter your message"
+    color="secondary"
+  />
+  <Textarea
+    label="Danger"
+    variant="flat"
+    placeholder="Enter your message"
+    color="danger"
+  />
+  <Textarea
+    label="Info"
+    variant="flat"
+    placeholder="Enter your message"
+    color="info"
+  />
+  <Textarea
+    label="Success"
+    variant="flat"
+    placeholder="Enter your message"
+    color="success"
+  />
+  <Textarea
+    label="Warning"
+    variant="flat"
+    placeholder="Enter your message"
+    color="warning"
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Textarea
-				label="Default"
-				variant="flat"
-				placeholder="Enter your message"
-			/>
-			<Textarea
-				label="Primary"
-				variant="flat"
-				placeholder="Enter your message"
-				color="primary"
-			/>
-			<Textarea
-				label="Secondary"
-				variant="flat"
-				placeholder="Enter your message"
-				color="secondary"
-			/>
-			<Textarea
-				label="Danger"
-				variant="flat"
-				placeholder="Enter your message"
-				color="danger"
-			/>
-			<Textarea
-				label="Info"
-				variant="flat"
-				placeholder="Enter your message"
-				color="info"
-			/>
-			<Textarea
-				label="Success"
-				variant="flat"
-				placeholder="Enter your message"
-				color="success"
-			/>
-			<Textarea
-				label="Warning"
-				variant="flat"
-				placeholder="Enter your message"
-				color="warning"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Textarea
+        label="Default"
+        variant="flat"
+        placeholder="Enter your message"
+      />
+      <Textarea
+        label="Primary"
+        variant="flat"
+        placeholder="Enter your message"
+        color="primary"
+      />
+      <Textarea
+        label="Secondary"
+        variant="flat"
+        placeholder="Enter your message"
+        color="secondary"
+      />
+      <Textarea
+        label="Danger"
+        variant="flat"
+        placeholder="Enter your message"
+        color="danger"
+      />
+      <Textarea
+        label="Info"
+        variant="flat"
+        placeholder="Enter your message"
+        color="info"
+      />
+      <Textarea
+        label="Success"
+        variant="flat"
+        placeholder="Enter your message"
+        color="success"
+      />
+      <Textarea
+        label="Warning"
+        variant="flat"
+        placeholder="Enter your message"
+        color="warning"
+      />
+    </>
+  );
 }
 ```
 
@@ -289,43 +345,39 @@ export default function App() {
 You can change rows and cols of **Textarea** with property **rows** & **cols**.
 
 <Paper className="block">
-	<Textarea
-		rows={4}
-		cols={50}
-		label="Message"
-		placeholder="Enter your message"
-		textareaClassName="overflow-y-auto"
-	>
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-		architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius
-		soluta! Quibusdam debitis natus optio quasi assumenda provident dolores
-		animi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-		architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius
-		soluta! Quibusdam debitis natus optio quasi assumenda provident dolores
-		animi?
-	</Textarea>
+  <Textarea
+    rows={4}
+    cols={50}
+    label="Message"
+    placeholder="Enter your message"
+    textareaClassName="overflow-y-auto"
+  >
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et!
+    Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
+    assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
+    Quibusdam debitis natus optio quasi assumenda provident dolores animi?
+  </Textarea>
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return (
-		<Textarea
-			rows={4}
-			cols={50}
-			label="Message"
-			placeholder="Enter your message"
-		>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-			architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius
-			soluta! Quibusdam debitis natus optio quasi assumenda provident dolores
-			animi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-			architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius
-			soluta! Quibusdam debitis natus optio quasi assumenda provident dolores
-			animi?
-		</Textarea>
-	);
+  return (
+    <Textarea
+      rows={4}
+      cols={50}
+      label="Message"
+      placeholder="Enter your message"
+    >
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla
+      et! Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
+      assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
+      Quibusdam debitis natus optio quasi assumenda provident dolores animi?
+    </Textarea>
+  );
 }
 ```
 
@@ -336,14 +388,24 @@ export default function App() {
 You can change disable state of **Textarea** with property **disabled**.
 
 <Paper className="block">
-	<Textarea disabled label="Message" placeholder="Enter your message" />
+  <Textarea
+    disabled
+    label="Message"
+    placeholder="Enter your message"
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return <Textarea disabled label="Message" placeholder="Enter your message" />;
+  return (
+    <Textarea
+      disabled
+      label="Message"
+      placeholder="Enter your message"
+    />
+  );
 }
 ```
 
@@ -354,14 +416,24 @@ export default function App() {
 You can change readOnly state of **Textarea** with property **readOnly**.
 
 <Paper className="block">
-	<Textarea readOnly label="Message" placeholder="Enter your message" />
+  <Textarea
+    readOnly
+    label="Message"
+    placeholder="Enter your message"
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return <Textarea readOnly label="Message" placeholder="Enter your message" />;
+  return (
+    <Textarea
+      readOnly
+      label="Message"
+      placeholder="Enter your message"
+    />
+  );
 }
 ```
 
@@ -372,27 +444,27 @@ export default function App() {
 You can add a clear button of **Textarea** with property **clearable**.
 
 <Paper className="block">
-	<TextareaClear />
+  <TextareaClear />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { Textarea } from 'aegon-ui';
+import { useState } from "react";
+import { Textarea } from "aegon-ui";
 
 export default function App() {
-	const [state, setState] = useState(
-		'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
-	);
+  const [state, setState] = useState(
+    "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+  );
 
-	return (
-		<Textarea
-			label="Message"
-			clearable
-			value={state}
-			onClear={() => setState('')}
-			onChange={(e) => setState(e.target.value)}
-		/>
-	);
+  return (
+    <Textarea
+      label="Message"
+      clearable
+      value={state}
+      onClear={() => setState("")}
+      onChange={(e) => setState(e.target.value)}
+    />
+  );
 }
 ```
 
@@ -403,24 +475,24 @@ export default function App() {
 You can add helper text to **Textarea** with property **helperText**.
 
 <Paper className="block">
-	<Textarea
-		label="Message"
-		placeholder="Enter your message"
-		helperText="This is helper text."
-	/>
+  <Textarea
+    label="Message"
+    placeholder="Enter your message"
+    helperText="This is helper text."
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return (
-		<Textarea
-			label="Message"
-			placeholder="Enter your message"
-			helperText="This is helper text."
-		/>
-	);
+  return (
+    <Textarea
+      label="Message"
+      placeholder="Enter your message"
+      helperText="This is helper text."
+    />
+  );
 }
 ```
 
@@ -431,24 +503,24 @@ export default function App() {
 You can show error message to **Textarea** with property **error**.
 
 <Paper className="block">
-	<Textarea
-		label="Message"
-		error="This field is required"
-		placeholder="Enter your message"
-	/>
+  <Textarea
+    label="Message"
+    error="This field is required"
+    placeholder="Enter your message"
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from 'rizzui';
+import { Textarea } from "rizzui";
 
 export default function App() {
-	return (
-		<Textarea
-			label="Message"
-			error="This field is required"
-			placeholder="Enter your message"
-		/>
-	);
+  return (
+    <Textarea
+      label="Message"
+      error="This field is required"
+      placeholder="Enter your message"
+    />
+  );
 }
 ```
 
@@ -459,29 +531,29 @@ export default function App() {
 You can set character limit and show character counter of **Textarea** with property **maxLength** & **renderCharacterCount**.
 
 <Paper className="block">
-	<TextareaCharacterCount />
+  <TextareaCharacterCount />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { Textarea } from 'aegon-ui';
+import { useState } from "react";
+import { Textarea } from "aegon-ui";
 
 export default function App() {
-	const [state, setState] = useState('Do not lose hope, nor be sad.');
+  const [state, setState] = useState("Do not lose hope, nor be sad.");
 
-	return (
-		<Textarea
-			label="Message"
-			value={state}
-			maxLength={100}
-			onChange={(e) => setState(e.target.value)}
-			renderCharacterCount={({ characterCount, maxLength }) => (
-				<div className="text-right text-sm opacity-70 rtl:text-left">
-					{characterCount}/{maxLength}
-				</div>
-			)}
-		/>
-	);
+  return (
+    <Textarea
+      label="Message"
+      value={state}
+      maxLength={100}
+      onChange={(e) => setState(e.target.value)}
+      renderCharacterCount={({ characterCount, maxLength }) => (
+        <div className="text-right text-sm opacity-70 rtl:text-left">
+          {characterCount}/{maxLength}
+        </div>
+      )}
+    />
+  );
 }
 ```
 
@@ -538,7 +610,7 @@ Here is the API documentation of the Textarea component. And the rest of the pro
 ### Textarea Variants
 
 ```ts
-type TextareaVariants = 'flat' | 'outline' | 'text' | 'active';
+type TextareaVariants = "flat" | "outline" | "text" | "active";
 ```
 
 <div className="mb-10" />
@@ -546,7 +618,7 @@ type TextareaVariants = 'flat' | 'outline' | 'text' | 'active';
 ### Textarea Sizes
 
 ```ts
-type TextareaSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+type TextareaSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -554,7 +626,7 @@ type TextareaSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 ### Textarea Rounded
 
 ```ts
-type TextareaRounded = 'sm' | 'DEFAULT' | 'lg' | 'xl' | 'none';
+type TextareaRounded = "sm" | "DEFAULT" | "lg" | "xl" | "none";
 ```
 
 <div className="mb-10" />
@@ -563,13 +635,13 @@ type TextareaRounded = 'sm' | 'DEFAULT' | 'lg' | 'xl' | 'none';
 
 ```ts
 type TextareaColors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```
 
 <div className="mb-10" />
@@ -577,7 +649,7 @@ type TextareaColors =
 ### Textarea Values
 
 ```ts
-type TextareaValues = 'string' | 'number' | 'readonly string[]';
+type TextareaValues = "string" | "number" | "readonly string[]";
 ```
 
 <div className="mb-10" />
@@ -602,12 +674,6 @@ type TextareaOnclear = (event: MouseEvent<Element, MouseEvent>) => void;
 
 ```ts
 type TextareaRenderCharacterCount =
-	| (({
-			characterCount,
-			maxLength,
-	  }: {
-			characterCount?: number;
-			maxLength?: number;
-	  }) => ReactNode)
-	| undefined;
+  | (({ characterCount, maxLength }: { characterCount?: number; maxLength?: number }) => ReactNode)
+  | undefined;
 ```
