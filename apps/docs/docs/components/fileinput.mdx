@@ -430,15 +430,15 @@ export default function App() {
 
 ### FileInput Props
 
-Here is the API documentation of the Input component. And the rest of the props are the same as the original html input field. You can use props like `value`, `disabled`, `placeholder`, `onChange`, `onFocus`, `onBlur` etc.
+Here is the API documentation of the Input component. And the rest of the props are the same as the original html input field. You can use props like **value**, **disabled**, **placeholder**, **onChange**, **onFocus**, **onBlur** etc.
 
 |      Props      |                   Type                   |                                 Description                                 |   Default   |
 | :-------------: | :--------------------------------------: | :-------------------------------------------------------------------------: | :---------: |
 |      label      |               `ReactNode`                |                               Set field label                               |    \_ \_    |
 |     variant     | [FileinputVariants](#fileinput-variants) |                     The variants of the component are:                      | `"outline"` |
-|      size       |    [FileinputSize](#fileinput-sizes)     | The size of the component. `"sm"` is equivalent to the dense input styling. | `"DEFAULT"` |
+|      size       |    [FileinputSizes](#fileinput-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. | `"DEFAULT"` |
 |     rounded     |  [FileinputRounded](#fileinput-rounded)  |                          The rounded variants are:                          | `"DEFAULT"` |
-|      color      |   [FileinputColor](#fileinput-colors)    |                             Change input color                              | `"DEFAULT"` |
+|      color      |   [FileinputColors](#fileinput-colors)   |                             Change input color                              | `"DEFAULT"` |
 |   placeholder   |                 `string`                 |                         Set input placeholder text                          |    \_ \_    |
 |    disabled     |                `boolean`                 |                        Whether the input is disabled                        |    \_ \_    |
 |    clearable    |                `boolean`                 |                            add clearable option                             |    \_ \_    |
@@ -493,7 +493,7 @@ type FileinputColor =
 
 <div className="mb-10" />
 
-### Fileinput Onclear
+### Fileinput onClear
 
 ```ts
 type FileinputOnclear = (event: MouseEvent<Element, MouseEvent>) => void;

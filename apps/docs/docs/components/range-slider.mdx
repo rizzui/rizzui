@@ -8,6 +8,8 @@ import RangeSliderCounter from "@site/src/components/range-slider";
 
 # RangeSlider
 
+A slider component enables user to pick any value from a range.
+
 ```jsx
 import { RangeSlider } from "rizzui";
 ```
@@ -83,29 +85,29 @@ export default function App() {
 You can change the style of **RangeSlider** with property [**color**](#rangeslider-colors).
 
 <Paper className="gap-6">
-  <RangeSlider defaultValue={20} />
+  <RangeSlider defaultValue={15} />
   <RangeSlider
     defaultValue={20}
     color="primary"
   />
   <RangeSlider
-    defaultValue={20}
+    defaultValue={25}
     color="secondary"
   />
   <RangeSlider
-    defaultValue={20}
+    defaultValue={30}
     color="danger"
   />
   <RangeSlider
-    defaultValue={20}
+    defaultValue={35}
     color="info"
   />
   <RangeSlider
-    defaultValue={20}
+    defaultValue={40}
     color="success"
   />
   <RangeSlider
-    defaultValue={20}
+    defaultValue={45}
     color="warning"
   />
 </Paper>
@@ -116,29 +118,29 @@ import { RangeSlider } from "rizzui";
 export default function App() {
   return (
     <>
-      <RangeSlider defaultValue={20} />
+      <RangeSlider defaultValue={15} />
       <RangeSlider
         defaultValue={20}
         color="primary"
       />
       <RangeSlider
-        defaultValue={20}
+        defaultValue={25}
         color="secondary"
       />
       <RangeSlider
-        defaultValue={20}
+        defaultValue={30}
         color="danger"
       />
       <RangeSlider
-        defaultValue={20}
+        defaultValue={35}
         color="info"
       />
       <RangeSlider
-        defaultValue={20}
+        defaultValue={40}
         color="success"
       />
       <RangeSlider
-        defaultValue={20}
+        defaultValue={45}
         color="warning"
       />
     </>
@@ -347,7 +349,7 @@ export default function App() {
 
 ### RangeSlider Props
 
-Here is the API documentation of the ActionIcon component.
+Here is the API documentation of the ActionIcon component. We used **rc-slider** package to create Slider component. See their [**Official documentation**](https://slider-react-component.vercel.app/) for more info.
 
 |              Props              |                           Type                            |         Description         |   Default   |
 | :-----------------------------: | :-------------------------------------------------------: | :-------------------------: | :---------: |
@@ -401,7 +403,7 @@ type RangesliderSize = "sm" | "DEFAULT" | "lg" | "xl";
 
 <div className="mb-10" />
 
-### Rangeslider colors
+### Rangeslider Colors
 
 ```ts
 type Rangeslidercolors =
@@ -416,7 +418,7 @@ type Rangeslidercolors =
 
 <div className="mb-10" />
 
-### Range Slider Onchange
+### Range Slider onChange
 
 ```ts
 type RangeSliderOnchange = (value: number | number[]) => void;
@@ -424,7 +426,7 @@ type RangeSliderOnchange = (value: number | number[]) => void;
 
 <div className="mb-10" />
 
-### Range Slider Onbeforechange
+### Range Slider onBeforeChange
 
 ```ts
 type RangeSliderOnbeforechange = (value: number | number[]) => void;
@@ -432,7 +434,7 @@ type RangeSliderOnbeforechange = (value: number | number[]) => void;
 
 <div className="mb-10" />
 
-### Range Slider Onafterchange
+### Range Slider onAfterChange
 
 ```ts
 type RangeSliderOnafterchange = (value: number | number[]) => void;

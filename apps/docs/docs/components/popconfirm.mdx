@@ -658,9 +658,9 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Placement
+## Placements
 
-You can change the style of **Popconfirm** with property [**placement**](#popconfirm-placement).
+You can change the style of **Popconfirm** with property [**placement**](#popconfirm-placements).
 
 <Paper className="justify-between gap-12 flex-wrap flex-row">
   <Popconfirm
@@ -1742,19 +1742,19 @@ export default function App() {
 
 Here is the API documentation of the Popconfirm component.
 
-|         Props         |                     Type                     |                     Description                     |   Default   |
-| :-------------------: | :------------------------------------------: | :-------------------------------------------------: | :---------: |
-|       children        |  [PopconfirmChildren](#popconfirm-children)  |        Pass children which will have tooltip        |    \_ \_    |
-|         size          |     [PopconfirmSizes](#popconfirm-sizes)     |            Supported Tooltip sizes are:             | `"DEFAULT"` |
-|        rounded        |   [PopconfirmRounded](#popconfirm-rounded)   |              The rounded variants are:              | `"DEFAULT"` |
-|       placement       | [PopconfirmPlacement](#popconfirm-placement) |          Supported Tooltip Placements are:          |    \_ \_    |
-|        shadow         |   [PopconfirmShadow](#popconfirm-shadows)    |           Supported tooltip shadows are:            | `"DEFAULT"` |
-|       className       |                   `string`                   | Add custom classes for Tooltip container or content |    \_ \_    |
-|        isOpen         |                  `boolean`                   |    Pass open state to open the floating element     |    \_ \_    |
-|       setIsOpen       |     `Dispatch<SetStateAction<boolean>>`      |           Pass setOpen to set open value            |    \_ \_    |
-|        content        |                 `ReactNode`                  |                 Content for tooltip                 |    \_ \_    |
-| tooltipArrowClassName |                   `string`                   |        Add custom classes for Tooltip arrow         |    \_ \_    |
-|       showArrow       |                  `boolean`                   |   Whether tooltip arrow should be shown or hidden   |    \_ \_    |
+|         Props         |                      Type                      |                     Description                     |   Default   |
+| :-------------------: | :--------------------------------------------: | :-------------------------------------------------: | :---------: |
+|       children        |   [PopconfirmChildren](#popconfirm-children)   |        Pass children which will have tooltip        |    \_ \_    |
+|         size          |      [PopconfirmSizes](#popconfirm-sizes)      |            Supported Tooltip sizes are:             | `"DEFAULT"` |
+|        rounded        |    [PopconfirmRounded](#popconfirm-rounded)    |              The rounded variants are:              | `"DEFAULT"` |
+|       placement       | [PopconfirmPlacements](#popconfirm-placements) |          Supported Tooltip Placements are:          |    \_ \_    |
+|        shadow         |    [PopconfirmShadow](#popconfirm-shadows)     |           Supported tooltip shadows are:            | `"DEFAULT"` |
+|       className       |                    `string`                    | Add custom classes for Tooltip container or content |    \_ \_    |
+|        isOpen         |                   `boolean`                    |    Pass open state to open the floating element     |    \_ \_    |
+|       setIsOpen       |      `Dispatch<SetStateAction<boolean>>`       |           Pass setOpen to set open value            |    \_ \_    |
+|        content        |                  `ReactNode`                   |                 Content for tooltip                 |    \_ \_    |
+| tooltipArrowClassName |                    `string`                    |        Add custom classes for Tooltip arrow         |    \_ \_    |
+|       showArrow       |                   `boolean`                    |   Whether tooltip arrow should be shown or hidden   |    \_ \_    |
 
 <div className="mb-10" />
 
@@ -1782,10 +1782,10 @@ type PopconfirmRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
 
 <div className="mb-10" />
 
-### Popconfirm Placement
+### Popconfirm Placements
 
 ```ts
-type PopconfirmPlacement =
+type PopconfirmPlacements =
   | "left"
   | "right"
   | "top"
