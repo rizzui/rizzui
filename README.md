@@ -6,10 +6,6 @@ A Modern and Minimal React UI Library built with TailwindCSS. Designed to provid
 
 Visit https://rizzui.vercel.app/docs/guide/getting-started to get started with RizzUI.
 
-## Storybook Demo
-
-Checkout our storybook demo -> https://rizzui-storybook.vercel.app/ as our documentation site still in development process. 
-
 
 ### Warning 
 
