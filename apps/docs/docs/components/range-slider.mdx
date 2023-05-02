@@ -1,15 +1,15 @@
 ---
-sidebar_position: 22
+sidebar_position: 19
 ---
 
-import { RangeSlider } from 'rizzui';
-import Paper from '@site/src/components/paper';
-import RangeSliderCounter from '@site/src/components/range-slider';
+import { RangeSlider } from "rizzui";
+import Paper from "@site/src/components/paper";
+import RangeSliderCounter from "@site/src/components/range-slider";
 
 # RangeSlider
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 ```
 
 <div className="mb-28" />
@@ -19,14 +19,14 @@ import { RangeSlider } from 'rizzui';
 The default style of **RangeSlider** component.
 
 <Paper>
-	<RangeSlider defaultValue={20} />
+  <RangeSlider defaultValue={20} />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return <RangeSlider defaultValue={20} />;
+  return <RangeSlider defaultValue={20} />;
 }
 ```
 
@@ -37,24 +37,42 @@ export default function App() {
 You can change the style of **RangeSlider** with property [**size**](#rangeslider-sizes).
 
 <Paper className="gap-6">
-	<RangeSlider size="sm" defaultValue={20} />
-	<RangeSlider defaultValue={25} />
-	<RangeSlider size="lg" defaultValue={30} />
-	<RangeSlider size="xl" defaultValue={35} />
+  <RangeSlider
+    size="sm"
+    defaultValue={20}
+  />
+  <RangeSlider defaultValue={25} />
+  <RangeSlider
+    size="lg"
+    defaultValue={30}
+  />
+  <RangeSlider
+    size="xl"
+    defaultValue={35}
+  />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<RangeSlider size="sm" defaultValue={20} />
-			<RangeSlider defaultValue={25} />
-			<RangeSlider size="lg" defaultValue={30} />
-			<RangeSlider size="xl" defaultValue={35} />
-		</>
-	);
+  return (
+    <>
+      <RangeSlider
+        size="sm"
+        defaultValue={20}
+      />
+      <RangeSlider defaultValue={25} />
+      <RangeSlider
+        size="lg"
+        defaultValue={30}
+      />
+      <RangeSlider
+        size="xl"
+        defaultValue={35}
+      />
+    </>
+  );
 }
 ```
 
@@ -65,30 +83,66 @@ export default function App() {
 You can change the style of **RangeSlider** with property [**color**](#rangeslider-colors).
 
 <Paper className="gap-6">
-	<RangeSlider defaultValue={20} />
-	<RangeSlider defaultValue={20} color="primary" />
-	<RangeSlider defaultValue={20} color="secondary" />
-	<RangeSlider defaultValue={20} color="danger" />
-	<RangeSlider defaultValue={20} color="info" />
-	<RangeSlider defaultValue={20} color="success" />
-	<RangeSlider defaultValue={20} color="warning" />
+  <RangeSlider defaultValue={20} />
+  <RangeSlider
+    defaultValue={20}
+    color="primary"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="secondary"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="danger"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="info"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="success"
+  />
+  <RangeSlider
+    defaultValue={20}
+    color="warning"
+  />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<RangeSlider defaultValue={20} />
-			<RangeSlider defaultValue={20} color="primary" />
-			<RangeSlider defaultValue={20} color="secondary" />
-			<RangeSlider defaultValue={20} color="danger" />
-			<RangeSlider defaultValue={20} color="info" />
-			<RangeSlider defaultValue={20} color="success" />
-			<RangeSlider defaultValue={20} color="warning" />
-		</>
-	);
+  return (
+    <>
+      <RangeSlider defaultValue={20} />
+      <RangeSlider
+        defaultValue={20}
+        color="primary"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="secondary"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="danger"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="info"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="success"
+      />
+      <RangeSlider
+        defaultValue={20}
+        color="warning"
+      />
+    </>
+  );
 }
 ```
 
@@ -99,14 +153,22 @@ export default function App() {
 You can change the style of **RangeSlider** with property **range**.
 
 <Paper>
-	<RangeSlider defaultValue={[20, 60]} range />
+  <RangeSlider
+    defaultValue={[20, 60]}
+    range
+  />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return <RangeSlider defaultValue={[20, 60]} range />;
+  return (
+    <RangeSlider
+      defaultValue={[20, 60]}
+      range
+    />
+  );
 }
 ```
 
@@ -117,38 +179,38 @@ export default function App() {
 You can change the style of **RangeSlider** with property **marks** & **step**.
 
 <Paper>
-	<RangeSlider
-		marks={{
-			0: '0',
-			20: '2000',
-			40: '4000',
-			60: '6000',
-			80: '8000',
-			100: '10000',
-		}}
-		step={20}
-		defaultValue={40}
-	/>
+  <RangeSlider
+    marks={{
+      0: "0",
+      20: "2000",
+      40: "4000",
+      60: "6000",
+      80: "8000",
+      100: "10000",
+    }}
+    step={20}
+    defaultValue={40}
+  />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return (
-		<RangeSlider
-			marks={{
-				0: '0',
-				20: '2000',
-				40: '4000',
-				60: '6000',
-				80: '8000',
-				100: '10000',
-			}}
-			step={20}
-			defaultValue={40}
-		/>
-	);
+  return (
+    <RangeSlider
+      marks={{
+        0: "0",
+        20: "2000",
+        40: "4000",
+        60: "6000",
+        80: "8000",
+        100: "10000",
+      }}
+      step={20}
+      defaultValue={40}
+    />
+  );
 }
 ```
 
@@ -159,40 +221,40 @@ export default function App() {
 You can change the style of **RangeSlider** with property **marks** & **step**.
 
 <Paper>
-	<RangeSlider
-		range
-		marks={{
-			0: '0',
-			20: '2000',
-			40: '4000',
-			60: '6000',
-			80: '8000',
-			100: '10000',
-		}}
-		step={20}
-		defaultValue={[20, 60]}
-	/>
+  <RangeSlider
+    range
+    marks={{
+      0: "0",
+      20: "2000",
+      40: "4000",
+      60: "6000",
+      80: "8000",
+      100: "10000",
+    }}
+    step={20}
+    defaultValue={[20, 60]}
+  />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return (
-		<RangeSlider
-			range
-			marks={{
-				0: '0',
-				20: '2000',
-				40: '4000',
-				60: '6000',
-				80: '8000',
-				100: '10000',
-			}}
-			step={20}
-			defaultValue={[20, 60]}
-		/>
-	);
+  return (
+    <RangeSlider
+      range
+      marks={{
+        0: "0",
+        20: "2000",
+        40: "4000",
+        60: "6000",
+        80: "8000",
+        100: "10000",
+      }}
+      step={20}
+      defaultValue={[20, 60]}
+    />
+  );
 }
 ```
 
@@ -203,75 +265,75 @@ export default function App() {
 You can create a custom **RangeSlider** counter.
 
 <Paper className="block">
-	<RangeSliderCounter />
+  <RangeSliderCounter />
 </Paper>
 
 ```jsx
-import React from 'react';
-import { RangeSlider, cn } from 'rizzui';
+import React from "react";
+import { RangeSlider, cn } from "rizzui";
 
 export default function App() {
-	const [state, setState] = React.useState({
-		min: 200,
-		max: 600,
-	});
+  const [state, setState] = React.useState({
+    min: 200,
+    max: 600,
+  });
 
-	function handleRangeChange(value: any) {
-		setState({
-			min: value[0],
-			max: value[1],
-		});
-	}
-	function handleMaxChange(max: number) {
-		setState({
-			...state,
-			max: max || state.min,
-		});
-	}
-	function handleMinChange(min: number) {
-		setState({
-			...state,
-			min: min || 0,
-		});
-	}
+  function handleRangeChange(value: any) {
+    setState({
+      min: value[0],
+      max: value[1],
+    });
+  }
+  function handleMaxChange(max: number) {
+    setState({
+      ...state,
+      max: max || state.min,
+    });
+  }
+  function handleMinChange(min: number) {
+    setState({
+      ...state,
+      min: min || 0,
+    });
+  }
 
-	return (
-		<div>
-			<RangeSlider
-				range
-				min={0}
-				max={1000}
-				value={[state.min, state.max]}
-				onChange={(value: any) => handleRangeChange(value)}
-				className={cn('[&>.rc-slider-step]:hidden')}
-			/>
-			<div className="mt-5 grid grid-cols-2 items-center justify-between gap-5 text-sm font-bold">
-				<div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
-					<p className="px-3 pt-1 text-gray-400">Min</p>
-					<input
-						type="number"
-						value={state.min}
-						onChange={(e) => handleMinChange(parseInt(e.target.value))}
-						className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
-						min={0}
-						max={state.max}
-						readOnly
-					/>
-				</div>
-				<div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
-					<p className="px-3 pt-1 text-gray-400">Max</p>
-					<input
-						type="number"
-						value={state.max}
-						onChange={(e) => handleMaxChange(parseInt(e.target.value))}
-						className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
-						min={state.min}
-						readOnly
-					/>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div>
+      <RangeSlider
+        range
+        min={0}
+        max={1000}
+        value={[state.min, state.max]}
+        onChange={(value: any) => handleRangeChange(value)}
+        className={cn("[&>.rc-slider-step]:hidden")}
+      />
+      <div className="mt-5 grid grid-cols-2 items-center justify-between gap-5 text-sm font-bold">
+        <div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
+          <p className="px-3 pt-1 text-gray-400">Min</p>
+          <input
+            type="number"
+            value={state.min}
+            onChange={(e) => handleMinChange(parseInt(e.target.value))}
+            className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
+            min={0}
+            max={state.max}
+            readOnly
+          />
+        </div>
+        <div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
+          <p className="px-3 pt-1 text-gray-400">Max</p>
+          <input
+            type="number"
+            value={state.max}
+            onChange={(e) => handleMaxChange(parseInt(e.target.value))}
+            className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
+            min={state.min}
+            readOnly
+          />
+        </div>
+      </div>
+    </div>
+  );
 }
 ```
 
@@ -334,7 +396,7 @@ Here is the API documentation of the ActionIcon component.
 ### Rangeslider Sizes
 
 ```tsx
-type RangesliderSize = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+type RangesliderSize = "sm" | "DEFAULT" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -343,13 +405,13 @@ type RangesliderSize = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 
 ```ts
 type Rangeslidercolors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```
 
 <div className="mb-10" />

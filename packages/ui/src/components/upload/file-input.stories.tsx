@@ -1,4 +1,5 @@
 // file-input.stories.ts|tsx
+import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import FileInput from './file-input';
 
@@ -16,9 +17,34 @@ const Template: ComponentStory<typeof FileInput> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Choose File',
+  label: 'Upload File',
 };
 
-export const ImageFile = () => <FileInput accept="image/*" />;
-export const Clearable = () => <FileInput clearable />;
+export const Clearable = () => {
+  const [file, setFile] = React.useState<any>('');
+  return (
+    <>
+      <FileInput
+        value={file}
+        onChange={(e) => setFile(e.target.value)}
+        clearable={!!file}
+        multiple
+        onClear={() => {
+          setFile('');
+        }}
+      />
+    </>
+  );
+};
 export const MultipleFile = () => <FileInput multiple />;
+
+export const WithHelperText = Template.bind({});
+WithHelperText.args = {
+  accept: 'image/*',
+  helperText: 'Please upload images',
+};
+
+export const WithValidationError = Template.bind({});
+WithValidationError.args = {
+  error: 'This field is required',
+};
