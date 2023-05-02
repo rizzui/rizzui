@@ -1,12 +1,12 @@
 'use client';
 
-import React from 'react';
+import React, { forwardRef, useState, useCallback } from 'react';
 
 import { cn } from '../../lib/cn';
-import FieldError from '../field-error-text';
-import FieldHelperText from '../field-helper-text';
+import ErrorText from '../field-error-text';
+import HelperText from '../field-helper-text';
+import ClearButton from '../field-clear-button';
 import { ChevronUpDownIcon } from '../../icons/chevron-up-down';
-import { XCircleIcon } from '../../icons/x-circle';
 
 const labelClasses = {
   size: {
@@ -18,14 +18,14 @@ const labelClasses = {
 };
 
 const selectClasses = {
-  base: 'block peer w-full bg-transparent focus:outline-none transition duration-200 disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed disabled:border-gray-200',
-  error:
-    'border-red hover:enabled:!border-red focus:enabled:!border-red focus:!ring-red',
+  base: 'flex items-center peer w-full transition duration-200',
+  disabled: '!bg-gray-100 cursor-not-allowed !border-gray-200',
+  error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
   size: {
-    sm: 'px-2.5 py-1 text-xs h-8',
-    DEFAULT: 'px-4 py-2 text-sm h-10',
-    lg: 'px-5 py-2 text-base h-12',
-    xl: 'px-6 py-2.5 text-base h-14',
+    sm: 'px-2 py-1 text-xs h-8 leading-[32px]',
+    DEFAULT: 'px-3.5 py-2 text-sm h-10 leading-[40px]',
+    lg: 'px-4 py-2 text-base h-12 leading-[48px]',
+    xl: 'px-5 py-2.5 text-base h-14 leading-[56px]',
   },
   rounded: {
     none: 'rounded-none',
@@ -36,135 +36,123 @@ const selectClasses = {
   },
   variant: {
     active: {
-      base: 'border focus:ring-[0.6px] bg-gray-0',
+      base: 'border bg-gray-0 [&.is-focus]:ring-[0.6px]',
       color: {
         DEFAULT:
-          'border-gray-1000 focus:enabled:border-gray-1000 focus:ring-gray-1000 text-gray-1000',
+          'border-gray-900 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000 text-gray-1000',
         primary:
-          'border-primary focus:enabled:border-primary focus:ring-primary text-primary-dark',
+          'border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-primary-dark',
         secondary:
-          'border-secondary focus:enabled:border-secondary focus:ring-secondary text-secondary-dark',
+          'border-secondary [&.is-focus]:border-secondary [&.is-focus]:ring-secondary text-secondary-dark',
         danger:
-          'border-red focus:enabled:border-red focus:ring-red text-red-dark',
-        info: 'border-blue focus:enabled:border-blue focus:ring-blue text-blue-dark',
+          'border-red [&.is-focus]:border-red [&.is-focus]:ring-red text-red-dark',
+        info: 'border-blue [&.is-focus]:border-blue [&.is-focus]:ring-blue text-blue-dark',
         success:
-          'border-green focus:enabled:border-green focus:ring-green text-green-dark',
+          'border-green [&.is-focus]:border-green [&.is-focus]:ring-green text-green-dark',
         warning:
-          'border-orange focus:enabled:border-orange-dark/70 focus:ring-orange text-orange-dark',
+          'border-orange [&.is-focus]:border-orange-dark [&.is-focus]:ring-orange-dark text-orange-dark',
       },
     },
     flat: {
-      base: 'border focus:ring-2 border-0',
+      base: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0',
       color: {
-        DEFAULT:
-          'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-1000/30 text-gray-900',
+        DEFAULT: 'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-1000',
         primary:
-          'bg-primary-lighter/70 hover:enabled:bg-primary-lighter/90 focus:ring-primary/30 text-primary-dark',
+          'bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
         secondary:
-          'bg-secondary-lighter/70 hover:enabled:bg-secondary-lighter/90 focus:ring-secondary/30 text-secondary-dark',
-        danger:
-          'bg-red-lighter/70 hover:enabled:bg-red-lighter/90 focus:ring-red/30 text-red-dark',
-        info: 'bg-blue-lighter/70 hover:enabled:bg-blue-lighter/90 focus:ring-blue/30 text-blue-dark',
+          'bg-secondary-lighter/70 [&.is-focus]:ring-secondary/30 text-secondary-dark',
+        danger: 'bg-red-lighter/70 [&.is-focus]:ring-red/30 text-red-dark',
+        info: 'bg-blue-lighter/70 [&.is-focus]:ring-blue/30 text-blue-dark',
         success:
-          'bg-green-lighter/70 hover:enabled:bg-green-lighter/90 focus:ring-green/30 text-green-dark',
+          'bg-green-lighter/70 [&.is-focus]:ring-green/30 text-green-dark',
         warning:
-          'bg-orange-lighter/80 hover:enabled:bg-orange-lighter/90 focus:ring-orange/30 text-orange-dark',
+          'bg-orange-lighter/80 [&.is-focus]:ring-orange/30 text-orange-dark',
       },
     },
     outline: {
-      base: 'bg-transparent focus:ring-[0.6px] border border-gray-300',
+      base: 'bg-transparent [&.is-focus]:ring-[0.6px] border border-gray-300',
       color: {
         DEFAULT:
-          'hover:enabled:border-gray-1000 focus:enabled:border-gray-1000 focus:ring-gray-1000',
+          'hover:border-gray-1000 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000',
         primary:
-          'hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
+          'hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
         secondary:
-          'hover:enabled:border-secondary focus:enabled:border-secondary focus:ring-secondary',
+          'hover:border-secondary [&.is-focus]:border-secondary [&.is-focus]:ring-secondary',
         danger:
-          'hover:enabled:border-red focus:enabled:border-red focus:ring-red',
-        info: 'hover:enabled:border-blue focus:enabled:border-blue focus:ring-blue',
+          'hover:border-red [&.is-focus]:border-red [&.is-focus]:ring-red',
+        info: 'hover:border-blue [&.is-focus]:border-blue [&.is-focus]:ring-blue',
         success:
-          'hover:enabled:border-green focus:enabled:border-green focus:ring-green',
+          'hover:border-green [&.is-focus]:border-green [&.is-focus]:ring-green',
         warning:
-          'hover:enabled:border-orange focus:enabled:border-orange focus:ring-orange',
+          'hover:border-orange [&.is-focus]:border-orange [&.is-focus]:ring-orange',
       },
     },
     text: {
-      base: 'focus:ring-2 border-0',
+      base: 'border-0 [&.is-focus]:ring-2 bg-transparent',
       color: {
-        DEFAULT: 'hover:text-gray-1000 focus:ring-gray-1000/30',
-        primary: 'hover:text-primary-dark focus:ring-primary/30 text-primary',
+        DEFAULT: 'hover:text-gray-1000 [&.is-focus]:ring-gray-900/20',
+        primary:
+          'hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
         secondary:
-          'hover:text-secondary-dark focus:ring-secondary/30 text-secondary',
-        danger: 'hover:text-red-600 focus:ring-red/30 text-red',
-        info: 'hover:text-blue-dark focus:ring-blue/30 text-blue',
-        success: 'hover:text-green-dark focus:ring-green/30 text-green',
-        warning: 'hover:text-orange-dark focus:ring-orange/30 text-orange',
+          'hover:text-secondary-dark [&.is-focus]:ring-secondary/30 text-secondary',
+        danger: 'hover:text-red-600 [&.is-focus]:ring-red/30 text-red',
+        info: 'hover:text-blue-dark [&.is-focus]:ring-blue/30 text-blue',
+        success: 'hover:text-green-dark [&.is-focus]:ring-green/30 text-green',
+        warning:
+          'hover:text-orange-dark [&.is-focus]:ring-orange/30 text-orange',
       },
     },
   },
 };
 
-const multiSelectClasses = {
-  size: {
-    sm: 'px-2.5 py-1 text-xs h-16',
-    DEFAULT: 'px-4 py-2 text-sm h-24',
-    lg: 'px-5 py-2 text-base h-32',
-    xl: 'px-6 py-2.5 text-base h-36',
-  },
-};
-
-const selectClassesWithIcon = {
-  disabled: 'text-gray-400 cursor-not-allowed hover:text-gray-400',
-  size: {
-    sm: 'w-5 h-5',
-    DEFAULT: 'w-6 h-6',
-    lg: 'w-7 h-7',
-    xl: 'w-8 h-8',
-  },
-  padding: {
-    base: 'rtl:pr-[inherit]',
+// actual select field styles
+const selectFieldClasses = {
+  base: 'w-full text-inherit border-0 bg-transparent p-0 focus:outline-none focus:ring-0',
+  disabled: 'cursor-not-allowed placeholder:text-gray-400',
+  clearable:
+    '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
+  prefixStartPadding: {
+    base: 'rtl:pl-[inherit]',
     size: {
-      sm: 'pr-8 rtl:pl-8',
-      DEFAULT: 'pr-10 rtl:pl-10',
-      lg: 'pr-12 rtl:pl-12',
-      xl: 'pr-14 rtl:pl-14',
+      sm: 'pl-1.5 rtl:pr-1.5',
+      DEFAULT: 'pl-2.5 rtl:pr-2.5',
+      lg: 'pl-3.5 rtl:pr-3.5',
+      xl: 'pl-4 rtl:pr-4',
     },
   },
-  color: {
-    DEFAULT: 'hover:text-gray-1000 text-gray-500',
-    primary: 'hover:text-primary-dark text-primary',
-    secondary: 'hover:text-secondary-dark text-secondary',
-    danger: 'hover:text-red-600 text-red',
-    info: 'hover:text-blue-dark text-blue',
-    success: 'hover:text-green-dark text-green',
-    warning: 'hover:text-orange-dark text-orange',
+  suffixEndPadding: {
+    base: 'rtl:pr-[inherit]',
+    size: {
+      sm: 'pr-1.5 rtl:pl-1.5',
+      DEFAULT: 'pr-2.5 rtl:pl-2.5',
+      lg: 'pr-3.5 rtl:pl-3.5',
+      xl: 'pr-4 rtl:pl-4',
+    },
   },
 };
 
-export type OptionsType = {
-  id: string | number;
-  name: string;
+export type OptionType = {
   value: string;
+  label?: string;
+  selected?: boolean;
   disabled?: boolean;
   [key: string]: any;
 };
 
 export interface NativeSelectProps
-  extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
+  extends Omit<
+    React.SelectHTMLAttributes<HTMLSelectElement>,
+    'size' | 'multiple' | 'prefix' | 'suffix'
+  > {
   /** Options for select */
-  options: OptionsType[];
-  /** Currently selected value */
-  selectedValue: OptionsType[];
-  /** Set newly selected value on change */
-  setSelectedValue: React.Dispatch<React.SetStateAction<OptionsType[]>>;
+  options: (string | OptionType)[];
   /** Set multiple values */
   multiple?: boolean;
   /** Whether the select is disabled */
   disabled?: boolean;
   /** Set field label */
   label?: React.ReactNode;
-  /** Set input placeholder text */
+  /** Set select placeholder text */
   placeholder?: string;
   /** The size of the component. `"sm"` is equivalent to the dense select styling. */
   size?: keyof typeof labelClasses.size;
@@ -172,11 +160,17 @@ export interface NativeSelectProps
   rounded?: keyof typeof selectClasses.rounded;
   /** The variants of the component are: */
   variant?: keyof typeof selectClasses.variant;
-  /** Change input color */
-  color?: keyof typeof selectClasses.variant['outline']['color'];
+  /** Change select color */
+  color?: keyof (typeof selectClasses.variant)['outline']['color'];
   /** add clearable option */
   clearable?: boolean;
-  /** The dropDownIcon is design for adding any icon on the Input field's end (it's left icon for the `ltr` and right icon for the `rtl`) */
+  /** clear event */
+  onClear?: (event: React.MouseEvent) => void;
+  /** The prefix is design for adding any icon or text on the select field's start (it's a left icon for the `ltr` and right icon for the `rtl`) */
+  prefix?: React.ReactNode;
+  /** The suffix is design for adding any icon or text on the select field's end (it's a right icon for the `ltr` and left icon for the `rtl`) */
+  suffix?: React.ReactNode;
+  /** The dropDownIcon is design for adding any icon on the select field's end (it's left icon for the `ltr` and right icon for the `rtl`) */
   dropDownIcon?: React.ReactNode;
   /** Show error message using this prop */
   error?: string;
@@ -188,12 +182,14 @@ export interface NativeSelectProps
   labelClassName?: string;
   /** Add custom classes for select */
   selectClassName?: string;
-  /** This prop allows you to customize the icon style */
-  iconClassName?: string;
+  /** Override default CSS style of prefix */
+  prefixClassName?: string;
+  /** Override default CSS style of suffix */
+  suffixClassName?: string;
   /** This prop allows you to customize the error message style */
   errorClassName?: string;
   /** This prop allows you to customize the helper text message style */
-  helperTextClassName?: string;
+  helperClassName?: string;
 }
 
 /**
@@ -201,141 +197,157 @@ export interface NativeSelectProps
  * And the rest of the props of Native Select are the same as the original html select tag.
  * You can use props like `disabled`, `name` etc.
  */
+const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
+  (
+    {
+      options,
+      disabled = false,
+      label,
+      placeholder = 'Select...',
+      size = 'DEFAULT',
+      rounded = 'DEFAULT',
+      variant = 'outline',
+      color = 'DEFAULT',
+      error,
+      clearable,
+      onClear,
+      prefix,
+      suffix = <ChevronUpDownIcon className="h-5 w-5" />,
+      helperText,
+      labelClassName,
+      selectClassName,
+      errorClassName,
+      helperClassName,
+      prefixClassName,
+      suffixClassName,
+      className,
+      onFocus,
+      onBlur,
+      ...selectProps
+    },
+    ref
+  ) => {
+    const variantStyle = selectClasses.variant[variant];
+    const [isFocus, setIsFocus] = useState(false);
 
-export default function NativeSelect({
-  options,
-  selectedValue,
-  setSelectedValue,
-  multiple = false,
-  disabled = false,
-  label,
-  placeholder = 'Select option from below',
-  size = 'DEFAULT',
-  rounded = 'DEFAULT',
-  variant = 'outline',
-  color = 'DEFAULT',
-  clearable = false,
-  dropDownIcon,
-  error,
-  helperText,
-  className,
-  labelClassName,
-  selectClassName,
-  iconClassName,
-  errorClassName,
-  helperTextClassName,
-  ...props
-}: NativeSelectProps) {
-  const variantStyle = selectClasses.variant[variant];
-
-  function getSelectedValue() {
-    const values = selectedValue.map((v) => v.value);
-    return values.length === 0 ? '' : values;
-  }
-
-  function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    const { selectedOptions } = e.target;
-    setSelectedValue(
-      options.filter((option) => {
-        for (let i = 0; i < selectedOptions.length; i += 1) {
-          if (selectedOptions[i].id == option.id) return option; // eslint-disable-line eqeqeq
-        }
-        return false;
-      })
+    const handleOnFocus = useCallback(
+      (e: React.FocusEvent<HTMLSelectElement>) => {
+        setIsFocus((prevState) => !prevState);
+        onFocus && onFocus(e);
+      },
+      [onFocus]
     );
-  }
 
-  return (
-    <div className={cn('flex flex-col', className)}>
-      <label className="block">
-        {label && (
-          <span
-            className={cn('block', labelClasses.size[size], labelClassName)}
-          >
-            {label}
-          </span>
-        )}
+    const handleOnBlur = useCallback(
+      (e: React.FocusEvent<HTMLSelectElement>) => {
+        setIsFocus(() => false);
+        onBlur && onBlur(e);
+      },
+      [onBlur]
+    );
 
-        <div className="relative">
-          <select
-            value={getSelectedValue()}
-            onChange={handleChange}
-            multiple={multiple}
-            disabled={disabled}
+    const formattedOptions = options.map((item) =>
+      typeof item === 'string' ? { label: item, value: item } : item
+    );
+
+    return (
+      <div className={cn('flex flex-col', className)}>
+        <label className="block">
+          {label && (
+            <span
+              className={cn('block', labelClasses.size[size], labelClassName)}
+            >
+              {label}
+            </span>
+          )}
+
+          <div
             className={cn(
               selectClasses.base,
-              multiple
-                ? multiSelectClasses.size[size]
-                : selectClasses.size[size],
-              multiple && rounded === 'pill'
-                ? selectClasses.rounded.none
-                : selectClasses.rounded[rounded],
+              selectClasses.size[size],
+              selectClasses.rounded[rounded],
               variantStyle.base,
               variantStyle.color[color],
-              !multiple && selectClassesWithIcon.padding.size[size],
+              isFocus && 'is-focus', // must have is-focus class based on onFocus event
+              disabled && selectClasses.disabled,
               error && selectClasses.error,
               selectClassName
             )}
-            {...props}
           >
-            <option value="" disabled>
-              {placeholder}
-            </option>
-            {options.map((option) => (
-              <option
-                key={option.id}
-                id={option.id.toString()}
-                value={option.value}
-                disabled={option.disabled}
-              >
-                {option.name}
-              </option>
-            ))}
-          </select>
-
-          {!multiple && (
-            <div
-              className={cn(
-                'absolute top-0 right-0 flex h-full cursor-pointer items-center justify-center bg-transparent p-1 leading-normal rtl:left-0 rtl:right-auto',
-                variant !== 'outline' && selectClassesWithIcon.color[color],
-                disabled && selectClassesWithIcon.disabled
-              )}
-            >
-              {clearable &&
-                !disabled &&
-                !multiple &&
-                selectedValue.length !== 0 && (
-                  <XCircleIcon
-                    className={cn(
-                      selectClassesWithIcon.size[size],
-                      iconClassName
-                    )}
-                    onClick={() => setSelectedValue([])}
-                  />
+            {prefix && (
+              <div
+                className={cn(
+                  'whitespace-nowrap leading-normal',
+                  prefixClassName
                 )}
-              {dropDownIcon || (
-                <ChevronUpDownIcon
-                  className={cn(
-                    selectClassesWithIcon.size[size],
-                    iconClassName
-                  )}
-                />
-              )}
-            </div>
-          )}
-        </div>
-      </label>
+              >
+                {prefix}
+              </div>
+            )}
 
-      {!error && helperText && (
-        <FieldHelperText size={size} className={helperTextClassName}>
-          {helperText}
-        </FieldHelperText>
-      )}
-      {error && (
-        <FieldError size={size} error={error} className={errorClassName} />
-      )}
-    </div>
-  );
-}
+            <select
+              ref={ref}
+              multiple={false}
+              disabled={disabled}
+              onBlur={handleOnBlur}
+              onFocus={handleOnFocus}
+              className={cn(
+                selectFieldClasses.base,
+                disabled && selectFieldClasses.disabled,
+                clearable && selectFieldClasses.clearable,
+                prefix && selectFieldClasses.prefixStartPadding.size[size],
+                suffix && selectFieldClasses.suffixEndPadding.size[size]
+              )}
+              style={{ fontSize: 'inherit' }}
+              {...selectProps}
+            >
+              <option value="" disabled selected hidden>
+                {placeholder}
+              </option>
+              {formattedOptions.map((item) => (
+                <option
+                  key={item.value}
+                  value={item.value}
+                  {...(item?.disabled && { disabled: item?.disabled })}
+                >
+                  {item.label}
+                </option>
+              ))}
+            </select>
+
+            {clearable && (
+              <ClearButton
+                size={size}
+                onClick={onClear}
+                hasSuffix={Boolean(suffix)}
+              />
+            )}
+            {suffix && (
+              <div
+                className={cn(
+                  'whitespace-nowrap leading-normal',
+                  suffixClassName
+                )}
+              >
+                {suffix}
+              </div>
+            )}
+          </div>
+        </label>
+
+        {!error && helperText && (
+          <HelperText size={size} className={helperClassName}>
+            {helperText}
+          </HelperText>
+        )}
+
+        {error && (
+          <ErrorText size={size} error={error} className={errorClassName} />
+        )}
+      </div>
+    );
+  }
+);
 
 NativeSelect.displayName = 'NativeSelect';
+export default NativeSelect;
