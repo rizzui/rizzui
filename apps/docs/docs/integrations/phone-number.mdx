@@ -7,7 +7,7 @@ import Paper from "@site/src/components/paper";
 
 # PhoneNumber
 
-We are using `react-phone-input-2` package for **PhoneNumber** component. Please follow their documentation for any query -> https://www.npmjs.com/package/react-phone-input-2
+A Highly customizable phone input component with auto formatting. We are using **react-phone-input-2** package for **PhoneNumber** component. Please follow their [**Official documentation**](https://www.npmjs.com/package/react-phone-input-2) for any query.
 
 <div className="mb-16" />
 
@@ -315,7 +315,7 @@ export default PhoneNumber;
 <hr />
 
 ```tsx
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 ```
 
 <div className="mb-16" />
@@ -334,7 +334,7 @@ The default style of **PhoneNumber** component.
 </Paper>
 
 ```tsx
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -381,7 +381,7 @@ You can change the style of **PhoneNumber** with property **variant**.
 </Paper>
 
 ```tsx
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -444,7 +444,7 @@ You can change the style of **PhoneNumber** with property **size**.
 </Paper>
 
 ```tsx
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -517,7 +517,7 @@ You can change the style of **PhoneNumber** with property **rounded**.
 </Paper>
 
 ```tsx
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -614,7 +614,7 @@ You can change the style of **PhoneNumber** with property **color**.
 </Paper>
 
 ```tsx
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -681,7 +681,7 @@ You can change the style of **PhoneNumber** with property **disabled**.
 </Paper>
 
 ```tsx
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -706,7 +706,7 @@ You can change the style of **PhoneNumber** with property **clearable**.
 
 ```tsx
 import React from "react";
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   const [state, setState] = React.useState("");
@@ -742,7 +742,7 @@ You can change the style of **PhoneNumber** with property **helperText**.
 </Paper>
 
 ```tsx
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -770,7 +770,7 @@ You can change the style of **PhoneNumber** with property **error**.
 </Paper>
 
 ```tsx
-import PhoneNumber from "your PhoneNumber component directory";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -781,4 +781,78 @@ export default function App() {
     />
   );
 }
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### PhoneNumber Props
+
+Here is the API documentation of the PhoneNumber component. These are some basic props.
+
+You can also use all the other props from **phone-number-input-2** package.
+
+|       Props       |                     Type                     |                                 Description                                 |   Default   |
+| :---------------: | :------------------------------------------: | :-------------------------------------------------------------------------: | :---------: |
+|       label       |                 `ReactNode`                  |                               Set field label                               |    \_ \_    |
+|       error       |                   `string`                   |                     Show error message using this prop                      |    \_ \_    |
+|      variant      | [PhoneNumberVariants](#phonenumber-variants) |                     The variants of the components are:                     | `"outline"` |
+|       size        |    [PhoneNumberSizes](#phonenumber-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. | `"DEFAULT"` |
+|      rounded      |  [PhoneNumberRounded](#phonenumber-rounded)  |                          The rounded variants are                           | `"DEFAULT"` |
+|       color       |   [PhoneNumberColors](#phonenumber-colors)   |                             Change input color                              | `"DEFAULT"` |
+|     clearable     |                  `boolean`                   |                                                                             |    \_\_     |
+|   enableSearch    |                  `boolean`                   |                                                                             |    \_\_     |
+|      onClear      |     `(event: React.MouseEvent) => void`      |                                                                             |    \_\_     |
+|  labelClassName   |                   `string`                   |    Use labelClassName prop to do some addition style for the field label    |    \_\_     |
+|  inputClassName   |                   `string`                   |                   Add custom classes for the input field                    |    \_\_     |
+|  buttonClassName  |                   `string`                   |                   Add custom classes for dropdown button                    |    \_\_     |
+| dropdownClassName |                   `string`                   |                       Add custom classes for dropdown                       |    \_\_     |
+|  searchClassName  |                   `string`                   |                  Add custom classes for dropdown's search                   |    \_\_     |
+|  helperClassName  |                   `string`                   |         This prop allows you to customize the helper message style          |    \_\_     |
+|  errorClassName   |                   `string`                   |          This prop allows you to customize the error message style          |    \_\_     |
+|    helperText     |                 `ReactNode`                  |          Add helper text. It could be string or a React component           |    \_\_     |
+|     className     |                   `string`                   | Add custom classes into the component wrapper for extra style like spacing  |    \_\_     |
+
+<div className="mb-10" />
+
+### PhoneNumber Variants
+
+```ts
+type PhoneNumberVariants = "active" | "flat" | "outline" | "text";
+```
+
+<div className="mb-10" />
+
+### PhoneNumber Sizes
+
+```ts
+type PhoneNumberSizes = "sm" | "DEFAULT" | "lg" | "xl";
+```
+
+<div className="mb-10" />
+
+### PhoneNumber Rounded
+
+```ts
+type PhoneNumberRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
+```
+
+<div className="mb-10" />
+
+### PhoneNumber Colors
+
+```ts
+type PhoneNumberColors =
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```
