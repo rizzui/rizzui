@@ -162,7 +162,7 @@ const Step = ({
       <span className="aegon-step-title flex items-center justify-center group-last:inline-block">
         <h2
           className={cn(
-            'font-mediumn mr-2 rtl:ml-2',
+            'mr-2 !mb-0 text-base font-medium rtl:ml-2',
             status === 'waiting' ? 'text-gray-500' : 'text-gray-900'
           )}
         >
