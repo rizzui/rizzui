@@ -1,20 +1,20 @@
 ---
-sidebar_position: 14
+sidebar_position: 12
 ---
 
-import { Radio } from 'rizzui';
-import Paper from '@site/src/components/paper';
+import { Radio } from "rizzui";
+import Paper from "@site/src/components/paper";
 import RadioGroupDefault, {
-	RadioGroupStartLabel,
-	RadioGroupEndLabel,
-} from '@site/src/components/radio-group';
+  RadioGroupStartLabel,
+  RadioGroupEndLabel,
+} from "@site/src/components/radio-group";
 
 # Radio
 
 A basic widget for getting the user input of radio.
 
 ```tsx
-import { Radio } from 'rizzui';
+import { Radio } from "rizzui";
 ```
 
 <div className="mb-28" />
@@ -24,14 +24,14 @@ import { Radio } from 'rizzui';
 The default style of **Radio** component.
 
 <Paper className="text-gray-1000">
-	<Radio label="Default" />
+  <Radio label="Default" />
 </Paper>
 
 ```tsx
-import { Radio } from 'rizzui';
+import { Radio } from "rizzui";
 
 export default function App() {
-	return <Radio label="Default" />;
+  return <Radio label="Default" />;
 }
 ```
 
@@ -42,22 +42,46 @@ export default function App() {
 You can change style of **Radio** with property [**variant**](#radio-variants).
 
 <Paper className="flex-row justify-around gap-4 flex-wrap">
-	<Radio className="m-2" label="Flat" variant="flat" />
-	<Radio className="m-2" label="Outline" variant="outline" />
-	<Radio className="m-2" label="Active" variant="active" />
+  <Radio
+    className="m-2"
+    label="Flat"
+    variant="flat"
+  />
+  <Radio
+    className="m-2"
+    label="Outline"
+    variant="outline"
+  />
+  <Radio
+    className="m-2"
+    label="Active"
+    variant="active"
+  />
 </Paper>
 
 ```tsx
-import { Radio } from 'rizzui';
+import { Radio } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Radio className="m-2" label="Flat" variant="flat" />
-			<Radio className="m-2" label="Outline" variant="outline" />
-			<Radio className="m-2" label="Active" variant="active" />
-		</>
-	);
+  return (
+    <>
+      <Radio
+        className="m-2"
+        label="Flat"
+        variant="flat"
+      />
+      <Radio
+        className="m-2"
+        label="Outline"
+        variant="outline"
+      />
+      <Radio
+        className="m-2"
+        label="Active"
+        variant="active"
+      />
+    </>
+  );
 }
 ```
 
@@ -68,24 +92,62 @@ export default function App() {
 You can change style of **Radio** with property [**size**](#radio-sizes).
 
 <Paper className="flex-row justify-around gap-4 flex-wrap">
-	<Radio className="m-2" label="Small" variant="active" size="sm" />
-	<Radio className="m-2" label="Default" variant="active" />
-	<Radio className="m-2" label="Large" variant="active" size="lg" />
-	<Radio className="m-2" label="Extra Large" variant="active" size="xl" />
+  <Radio
+    className="m-2"
+    label="Small"
+    variant="active"
+    size="sm"
+  />
+  <Radio
+    className="m-2"
+    label="Default"
+    variant="active"
+  />
+  <Radio
+    className="m-2"
+    label="Large"
+    variant="active"
+    size="lg"
+  />
+  <Radio
+    className="m-2"
+    label="Extra Large"
+    variant="active"
+    size="xl"
+  />
 </Paper>
 
 ```tsx
-import { Radio } from 'rizzui';
+import { Radio } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Radio className="m-2" label="Small" variant="active" size="sm" />
-			<Radio className="m-2" label="Default" variant="active" />
-			<Radio className="m-2" label="Large" variant="active" size="lg" />
-			<Radio className="m-2" label="Extra Large" variant="active" size="xl" />
-		</>
-	);
+  return (
+    <>
+      <Radio
+        className="m-2"
+        label="Small"
+        variant="active"
+        size="sm"
+      />
+      <Radio
+        className="m-2"
+        label="Default"
+        variant="active"
+      />
+      <Radio
+        className="m-2"
+        label="Large"
+        variant="active"
+        size="lg"
+      />
+      <Radio
+        className="m-2"
+        label="Extra Large"
+        variant="active"
+        size="xl"
+      />
+    </>
+  );
 }
 ```
 
@@ -96,35 +158,98 @@ export default function App() {
 You can change style of **Radio** with property [**color**](#radio-colors).
 
 <Paper className="flex-row justify-around gap-4 flex-wrap">
-	<Radio className="m-2" label="Default" variant="flat" />
-	<Radio className="m-2" label="Primary" variant="flat" color="primary" />
-	<Radio className="m-2" label="Secondary" variant="flat" color="secondary" />
-	<Radio className="m-2" label="Danger" variant="flat" color="danger" />
-	<Radio className="m-2" label="Info" variant="flat" color="info" />
-	<Radio className="m-2" label="Success" variant="flat" color="success" />
-	<Radio className="m-2" label="Warning" variant="flat" color="warning" />
+  <Radio
+    className="m-2"
+    label="Default"
+    variant="flat"
+  />
+  <Radio
+    className="m-2"
+    label="Primary"
+    variant="flat"
+    color="primary"
+  />
+  <Radio
+    className="m-2"
+    label="Secondary"
+    variant="flat"
+    color="secondary"
+  />
+  <Radio
+    className="m-2"
+    label="Danger"
+    variant="flat"
+    color="danger"
+  />
+  <Radio
+    className="m-2"
+    label="Info"
+    variant="flat"
+    color="info"
+  />
+  <Radio
+    className="m-2"
+    label="Success"
+    variant="flat"
+    color="success"
+  />
+  <Radio
+    className="m-2"
+    label="Warning"
+    variant="flat"
+    color="warning"
+  />
 </Paper>
 
 ```tsx
-import { Radio } from 'rizzui';
+import { Radio } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Radio className="m-2" label="Default" variant="flat" />
-			<Radio className="m-2" label="Primary" variant="flat" color="primary" />
-			<Radio
-				className="m-2"
-				label="Secondary"
-				variant="flat"
-				color="secondary"
-			/>
-			<Radio className="m-2" label="Danger" variant="flat" color="danger" />
-			<Radio className="m-2" label="Info" variant="flat" color="info" />
-			<Radio className="m-2" label="Success" variant="flat" color="success" />
-			<Radio className="m-2" label="Warning" variant="flat" color="warning" />
-		</>
-	);
+  return (
+    <>
+      <Radio
+        className="m-2"
+        label="Default"
+        variant="flat"
+      />
+      <Radio
+        className="m-2"
+        label="Primary"
+        variant="flat"
+        color="primary"
+      />
+      <Radio
+        className="m-2"
+        label="Secondary"
+        variant="flat"
+        color="secondary"
+      />
+      <Radio
+        className="m-2"
+        label="Danger"
+        variant="flat"
+        color="danger"
+      />
+      <Radio
+        className="m-2"
+        label="Info"
+        variant="flat"
+        color="info"
+      />
+      <Radio
+        className="m-2"
+        label="Success"
+        variant="flat"
+        color="success"
+      />
+      <Radio
+        className="m-2"
+        label="Warning"
+        variant="flat"
+        color="warning"
+      />
+    </>
+  );
 }
 ```
 
@@ -135,40 +260,40 @@ export default function App() {
 You can change style of **Radio** with property **labelPlacement**.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-	<Radio
-		className="m-2"
-		label="Left Placement"
-		variant="active"
-		labelPlacement="start"
-	/>
-	<Radio
-		className="m-2"
-		label="Right Placement"
-		variant="active"
-		labelPlacement="end"
-	/>
+  <Radio
+    className="m-2"
+    label="Left Placement"
+    variant="active"
+    labelPlacement="start"
+  />
+  <Radio
+    className="m-2"
+    label="Right Placement"
+    variant="active"
+    labelPlacement="end"
+  />
 </Paper>
 
 ```tsx
-import { Radio } from 'rizzui';
+import { Radio } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Radio
-				className="m-2"
-				label="Left Placement"
-				variant="active"
-				labelPlacement="start"
-			/>
-			<Radio
-				className="m-2"
-				label="Right Placement"
-				variant="active"
-				labelPlacement="end"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Radio
+        className="m-2"
+        label="Left Placement"
+        variant="active"
+        labelPlacement="start"
+      />
+      <Radio
+        className="m-2"
+        label="Right Placement"
+        variant="active"
+        labelPlacement="end"
+      />
+    </>
+  );
 }
 ```
 
@@ -179,14 +304,24 @@ export default function App() {
 You can change style of **Radio** with property **disabled**.
 
 <Paper>
-	<Radio className="m-2" label="Remember Me" disabled />
+  <Radio
+    className="m-2"
+    label="Remember Me"
+    disabled
+  />
 </Paper>
 
 ```tsx
-import { Radio } from 'rizzui';
+import { Radio } from "rizzui";
 
 export default function App() {
-	return <Radio className="m-2" label="Remember Me" disabled />;
+  return (
+    <Radio
+      className="m-2"
+      label="Remember Me"
+      disabled
+    />
+  );
 }
 ```
 
@@ -197,26 +332,26 @@ export default function App() {
 You can add helper text to **Radio**.
 
 <Paper>
-	<Radio
-		className="m-2"
-		helperText="Hi! My name is John Doe."
-		label="John"
-		value="john"
-	/>
+  <Radio
+    className="m-2"
+    helperText="Hi! My name is John Doe."
+    label="John"
+    value="john"
+  />
 </Paper>
 
 ```tsx
-import { Radio } from 'rizzui';
+import { Radio } from "rizzui";
 
 export default function App() {
-	return (
-		<Radio
-			className="m-2"
-			helperText="Hi! My name is John Doe."
-			label="John"
-			value="john"
-		/>
-	);
+  return (
+    <Radio
+      className="m-2"
+      helperText="Hi! My name is John Doe."
+      label="John"
+      value="john"
+    />
+  );
 }
 ```
 
@@ -227,26 +362,26 @@ export default function App() {
 You can add error message as validation to **Radio**.
 
 <Paper>
-	<Radio
-		className="m-2"
-		error="This field is required"
-		label="Yes"
-		value="yes"
-	/>
+  <Radio
+    className="m-2"
+    error="This field is required"
+    label="Yes"
+    value="yes"
+  />
 </Paper>
 
 ```tsx
-import { Radio } from 'rizzui';
+import { Radio } from "rizzui";
 
 export default function App() {
-	return (
-		<Radio
-			className="m-2"
-			error="This field is required"
-			label="Yes"
-			value="yes"
-		/>
-	);
+  return (
+    <Radio
+      className="m-2"
+      error="This field is required"
+      label="Yes"
+      value="yes"
+    />
+  );
 }
 ```
 
@@ -257,24 +392,41 @@ export default function App() {
 You can make a group of multiple choices **Radio** with component **RadioGroup**.
 
 <Paper>
-	<RadioGroupDefault />
+  <RadioGroupDefault />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { Radio, RadioGroup } from 'rizzui';
+import { useState } from "react";
+import { Radio, RadioGroup } from "rizzui";
 
 export default function App() {
-	const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
-	return (
-		<RadioGroup value={value} setValue={setValue} className="flex gap-4">
-			<Radio label="Apple" value="apple" />
-			<Radio label="Pear" value="pear" />
-			<Radio label="Orange" value="orange" disabled />
-			<Radio label="Blueberry" value="blueberry" />
-		</RadioGroup>
-	);
+  return (
+    <RadioGroup
+      value={value}
+      setValue={setValue}
+      className="flex gap-4"
+    >
+      <Radio
+        label="Apple"
+        value="apple"
+      />
+      <Radio
+        label="Pear"
+        value="pear"
+      />
+      <Radio
+        label="Orange"
+        value="orange"
+        disabled
+      />
+      <Radio
+        label="Blueberry"
+        value="blueberry"
+      />
+    </RadioGroup>
+  );
 }
 ```
 
@@ -283,53 +435,53 @@ export default function App() {
 You can make clickable card **Radio** group with component **RadioGroup**.
 
 <Paper>
-	<RadioGroupStartLabel />
+  <RadioGroupStartLabel />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { Radio, RadioGroup } from 'rizzui';
+import { useState } from "react";
+import { Radio, RadioGroup } from "rizzui";
 
 export default function App() {
-	const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
-	return (
-		<RadioGroup
-			value={value}
-			setValue={setValue}
-			className="justify-center space-x-4 space-y-4"
-		>
-			<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
-				<Radio
-					name="column-label-start-group"
-					label="Default"
-					value="default"
-					className="p-2"
-					labelPlacement="start"
-					containerClassName="justify-between"
-					helperText="This project would be available to anyone who have the link"
-				/>
-				<Radio
-					name="column-label-start-group"
-					label="Primary"
-					value="primary"
-					className="p-2"
-					labelPlacement="start"
-					containerClassName="justify-between"
-					helperText="This project would be available to anyone who have the link"
-				/>
-				<Radio
-					name="column-label-start-group"
-					label="Secondary"
-					value="secondary"
-					className="p-2"
-					labelPlacement="start"
-					containerClassName="justify-between"
-					helperText="This project would be available to anyone who have the link"
-				/>
-			</div>
-		</RadioGroup>
-	);
+  return (
+    <RadioGroup
+      value={value}
+      setValue={setValue}
+      className="justify-center space-x-4 space-y-4"
+    >
+      <div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+        <Radio
+          name="column-label-start-group"
+          label="Default"
+          value="default"
+          className="p-2"
+          labelPlacement="start"
+          containerClassName="justify-between"
+          helperText="This project would be available to anyone who have the link"
+        />
+        <Radio
+          name="column-label-start-group"
+          label="Primary"
+          value="primary"
+          className="p-2"
+          labelPlacement="start"
+          containerClassName="justify-between"
+          helperText="This project would be available to anyone who have the link"
+        />
+        <Radio
+          name="column-label-start-group"
+          label="Secondary"
+          value="secondary"
+          className="p-2"
+          labelPlacement="start"
+          containerClassName="justify-between"
+          helperText="This project would be available to anyone who have the link"
+        />
+      </div>
+    </RadioGroup>
+  );
 }
 ```
 
@@ -338,53 +490,53 @@ export default function App() {
 You can make clickable card with **Radio** group left aligned.
 
 <Paper>
-	<RadioGroupEndLabel />
+  <RadioGroupEndLabel />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { Radio } from 'rizzui';
+import { useState } from "react";
+import { Radio } from "rizzui";
 
 export default function App() {
-	const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
-	return (
-		<RadioGroup
-			value={value}
-			setValue={setValue}
-			className="justify-center space-x-4 space-y-4"
-		>
-			<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
-				<Radio
-					name="column-label-end-group"
-					label="Warning"
-					value="warning"
-					className="p-2"
-					labelClassName="pl-2"
-					helperClassName="ml-8"
-					helperText="This project would be available to anyone who have the link"
-				/>
-				<Radio
-					name="column-label-end-group"
-					label="Success"
-					value="success"
-					className="p-2"
-					labelClassName="pl-2"
-					helperClassName="ml-8"
-					helperText="This project would be available to anyone who have the link"
-				/>
-				<Radio
-					name="column-label-end-group"
-					value="Info"
-					label="info"
-					className="p-2"
-					labelClassName="pl-2"
-					helperClassName="ml-8"
-					helperText="This project would be available to anyone who have the link"
-				/>
-			</div>
-		</RadioGroup>
-	);
+  return (
+    <RadioGroup
+      value={value}
+      setValue={setValue}
+      className="justify-center space-x-4 space-y-4"
+    >
+      <div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+        <Radio
+          name="column-label-end-group"
+          label="Warning"
+          value="warning"
+          className="p-2"
+          labelClassName="pl-2"
+          helperClassName="ml-8"
+          helperText="This project would be available to anyone who have the link"
+        />
+        <Radio
+          name="column-label-end-group"
+          label="Success"
+          value="success"
+          className="p-2"
+          labelClassName="pl-2"
+          helperClassName="ml-8"
+          helperText="This project would be available to anyone who have the link"
+        />
+        <Radio
+          name="column-label-end-group"
+          value="Info"
+          label="info"
+          className="p-2"
+          labelClassName="pl-2"
+          helperClassName="ml-8"
+          helperText="This project would be available to anyone who have the link"
+        />
+      </div>
+    </RadioGroup>
+  );
 }
 ```
 
@@ -438,7 +590,7 @@ Here is the API documentation of the RadioGroup component.
 ### Radio Variants
 
 ```ts
-type RadioVariants = 'flat' | 'outline' | 'active';
+type RadioVariants = "flat" | "outline" | "active";
 ```
 
 <div className="mb-10" />
@@ -446,7 +598,7 @@ type RadioVariants = 'flat' | 'outline' | 'active';
 ### Radio Sizes
 
 ```ts
-type RadioSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type RadioSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -454,12 +606,5 @@ type RadioSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### Radio Colors
 
 ```ts
-type RadioColors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+type RadioColors = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
 ```
