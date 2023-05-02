@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import React from 'react';
 import { cn, Input, InputProps } from 'rizzui';
 import ReactDatePicker from 'react-datepicker';
 import type { ReactDatePickerProps } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { CalendarIcon, ChevronDownIcon } from '@heroicons/react/outline';
-
+import { CalendarIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 const calendarContainerClasses = {
   base: '[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md',
   monthContainer: {
@@ -59,7 +58,7 @@ const DatePicker = ({
   calendarClassName,
   ...props
 }: DatePickerProps<boolean>) => {
-  const [isCalenderOpen, setIsCalenderOpen] = useState(false);
+  const [isCalenderOpen, setIsCalenderOpen] = React.useState(false);
 
   const handleCalenderOpen = () => setIsCalenderOpen(true);
   const handleCalenderClose = () => setIsCalenderOpen(false);
@@ -106,3 +105,140 @@ const DatePicker = ({
 
 DatePicker.displayName = 'DatePicker';
 export default DatePicker;
+
+export function DatePickerDefault() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        placeholderText="Select Date"
+      />
+    </div>
+  );
+}
+
+export function MonthPicker() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        placeholderText="Select Month from Dropdown"
+        showMonthDropdown
+      />
+    </div>
+  );
+}
+
+export function MonthDropdownPicker() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        placeholderText="Select Month from Dropdown"
+        showMonthDropdown
+      />
+    </div>
+  );
+}
+
+export function YearPicker() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="w-full h-72">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="yyyy"
+        placeholderText="Select Year"
+        showYearPicker
+      />
+    </div>
+  );
+}
+
+export function YearDropdownPicker() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        placeholderText="Select Year from Dropdown"
+        showYearDropdown
+        scrollableYearDropdown
+      />
+    </div>
+  );
+}
+
+export function CalendarWithTime() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="d MMMM yyyy, h:mm aa"
+        placeholderText="Select Date & Time"
+        showTimeSelect
+      />
+    </div>
+  );
+}
+
+export function TimePicker() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="h:mm aa"
+        placeholderText="Select Time"
+        showTimeSelect
+        showTimeSelectOnly
+      />
+    </div>
+  );
+}
+
+export function RangeDatePicker() {
+  const [starRangetDate, setStartRangeDate] = React.useState<Date | null>();
+
+  const [endRangeDate, setEndRangeDate] = React.useState<Date | null>();
+
+  const handleRangeChange = (dates: [Date | null, Date | null]) => {
+    const [start, end] = dates;
+
+    setStartRangeDate(start);
+
+    setEndRangeDate(end);
+  };
+
+  return (
+    <div className="w-full h-96">
+      <DatePicker
+        selected={starRangetDate}
+        onChange={handleRangeChange}
+        startDate={starRangetDate}
+        endDate={endRangeDate}
+        monthsShown={2}
+        placeholderText="Select Date in a Range"
+        selectsRange
+      />
+    </div>
+  );
+}

@@ -2,7 +2,16 @@
 sidebar_position: 1
 ---
 
-import DatePicker from '@site/src/components/date-picker';
+import DatePicker, {
+  DatePickerDefault,
+  MonthPicker,
+  YearPicker,
+  MonthDropdownPicker,
+  YearDropdownPicker,
+  CalendarWithTime,
+  TimePicker,
+  RangeDatePicker,
+} from '@site/src/components/date-picker';
 import Paper from '@site/src/components/paper';
 
 # Datepicker
@@ -31,7 +40,7 @@ import { cn, Input, InputProps } from 'rizzui';
 import ReactDatePicker from 'react-datepicker';
 import type { ReactDatePickerProps } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { CalendarIcon, ChevronDownIcon } from '@heroicons/react/outline';
+import { CalendarIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const calendarContainerClasses = {
   base: '[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md',
@@ -367,6 +376,8 @@ export default DatePicker;
 	}
 ```
 
+<div className="mt-20" />
+
 ## Usage
 
 <hr />
@@ -375,36 +386,239 @@ export default DatePicker;
 import { DatePicker } from 'your DataPicker component directory';
 ```
 
-<div className="mb-28" />
+<div className="mb-12" />
 
-## Simple Stepper
+### Default
 
-A simple stepper with component **Stepper** and **Step**.
+The default style of **DatePicker** component.
 
 <Paper>
-  <Stepper className="w-full">
-    <Step description="This is a description" title="Step 1" />
-    <Step description="This is a description" title="Step 2" />
-    <Step description="This is a description" title="Step 3" />
-  </Stepper>
+  <DatePickerDefault />
 </Paper>
 
 ```tsx
-import { Stepper, Step } from 'rizzui';
+import { DatePicker } from 'your DataPicker component directory';
 
 export default function App() {
+  const [startDate, setStartDate] = React.useState<Date>();
   return (
-    <Stepper>
-      <Step description="This is a description" title="Step 1" />
-      <Step description="This is a description" title="Step 2" />
-      <Step description="This is a description" title="Step 3" />
-    </Stepper>
+    <DatePicker
+      selected={startDate}
+      onChange={(date: Date) => setStartDate(date)}
+      placeholderText="Select Date"
+    />
   );
 }
 ```
 
 <div className="mb-16" />
 
-## With Outline Variant
+### Monthpicker
 
-You can use outline variant with **Stepper**.
+You can use the **DatePicker** component as a **Monthpicker**
+
+<Paper>
+  <MonthPicker />
+</Paper>
+
+```tsx
+import { DatePicker } from 'your DataPicker component directory';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-72 w-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="MMMM yyyy"
+        placeholderText="Select Month"
+        showMonthYearPicker
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+### Yearpicker
+
+You can use the **DatePicker** component as a **YearPicker**
+
+<Paper>
+  <YearPicker />
+</Paper>
+
+```tsx
+import { DatePicker } from 'your DataPicker component directory';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-72">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="yyyy"
+        placeholderText="Select Year"
+        showYearPicker
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+### Month Dropdown
+
+<Paper>
+  <MonthDropdownPicker />
+</Paper>
+
+```tsx
+import { DatePicker } from 'your DataPicker component directory';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        placeholderText="Select Month from Dropdown"
+        showMonthDropdown
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+### Year Dropdown
+
+<Paper>
+  <YearDropdownPicker />
+</Paper>
+
+```tsx
+import { DatePicker } from 'your DataPicker component directory';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        placeholderText="Select Year from Dropdown"
+        showYearDropdown
+        scrollableYearDropdown
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+### Calendar With Time
+
+<Paper>
+  <CalendarWithTime />
+</Paper>
+
+```tsx
+import { DatePicker } from 'your DataPicker component directory';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="d MMMM yyyy, h:mm aa"
+        placeholderText="Select Date & Time"
+        showTimeSelect
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+### Time Only
+
+<Paper>
+  <TimePicker />
+</Paper>
+
+```tsx
+import { DatePicker } from 'your DataPicker component directory';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="h:mm aa"
+        placeholderText="Select Time"
+        showTimeSelect
+        showTimeSelectOnly
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+### Range Datepicker
+
+<Paper>
+  <RangeDatePicker />
+</Paper>
+
+```tsx
+import { DatePicker } from 'your DataPicker component directory';
+
+export default function App() {
+  const [starRangetDate, setStartRangeDate] = React.useState<Date | null>();
+
+  const [endRangeDate, setEndRangeDate] = React.useState<Date | null>();
+
+  const handleRangeChange = (dates: [Date | null, Date | null]) => {
+    const [start, end] = dates;
+
+    setStartRangeDate(start);
+
+    setEndRangeDate(end);
+  };
+
+  return (
+    <div className="h-96">
+      <DatePicker
+        selected={starRangetDate}
+        onChange={handleRangeChange}
+        startDate={starRangetDate}
+        endDate={endRangeDate}
+        monthsShown={2}
+        placeholderText="Select Date in a Range"
+        selectsRange
+      />
+    </div>
+  );
+}
+```
