@@ -19,19 +19,19 @@ const inputIconClearClasses = {
   },
 };
 
-interface InputIconClearProps {
+export interface FieldClearButtonProps {
   hasSuffix?: boolean;
   size?: keyof typeof inputIconClearClasses.size;
   onClick?: (event: React.MouseEvent) => void;
   className?: string;
 }
 
-export default function InputIconOnClear({
+export default function FieldClearButton({
   size,
   onClick,
   hasSuffix,
   className,
-}: InputIconClearProps) {
+}: FieldClearButtonProps) {
   return (
     <button
       type="button"
@@ -58,3 +58,5 @@ export default function InputIconOnClear({
     </button>
   );
 }
+
+FieldClearButton.displayName = 'FieldClearButton';

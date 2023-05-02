@@ -3,7 +3,7 @@
 import React from 'react';
 import { cn } from '../lib/cn';
 
-const errorTextClasses = {
+const fieldErrorClasses = {
   base: 'text-red',
   size: {
     sm: 'text-[10px] mt-0.5',
@@ -13,27 +13,27 @@ const errorTextClasses = {
   },
 };
 
-interface ErrorTextProps
+interface FieldErrorProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   tag?: 'div' | 'span';
   error: string | null | undefined;
-  size?: keyof typeof errorTextClasses.size;
+  size?: keyof typeof fieldErrorClasses.size;
   className?: string;
 }
 
-export default function ErrorText({
+export default function FieldError({
   tag = 'div',
   error,
   size,
   className,
-}: ErrorTextProps) {
+}: FieldErrorProps) {
   const Component = tag;
   return (
     <Component
       role="alert"
       className={cn(
-        errorTextClasses.base,
-        size && errorTextClasses.size[size],
+        fieldErrorClasses.base,
+        size && fieldErrorClasses.size[size],
         className
       )}
     >
@@ -41,3 +41,5 @@ export default function ErrorText({
     </Component>
   );
 }
+
+FieldError.displayName = 'FieldError';
