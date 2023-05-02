@@ -1,14 +1,11 @@
-'use client';
-
 import React from 'react';
 import PhoneInput from 'react-phone-input-2';
 import type { PhoneInputProps } from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-
-import { cn } from '../../lib/cn';
-import FieldError from '../field-error-text';
-import FieldHelperText from '../field-helper-text';
-import InputIconOnClear from '../field-clear-button';
+import { cn } from 'rizzui';
+// import FieldError from '../field-error-text';
+// import FieldHelperText from '../field-helper-text';
+// import InputIconOnClear from '../field-clear-button';
 
 const labelClasses = {
   size: {
@@ -178,7 +175,7 @@ export interface PhoneNumberProps
   /** The variants of the component are: */
   variant?: keyof typeof inputClasses.variant;
   /** Change input color */
-  color?: keyof typeof inputClasses.variant['active']['color'];
+  color?: keyof (typeof inputClasses.variant)['active']['color'];
   /** add clearable option */
   clearable?: boolean;
   /** add search filed at the top of dropdown list */
@@ -237,7 +234,7 @@ const PhoneNumber = ({
         {label}
       </label>
     )}
-    <div className="group/phone-number relative">
+    <div className="relative group/phone-number">
       <PhoneInput
         inputClass={cn(
           inputClasses.base,
@@ -268,22 +265,22 @@ const PhoneNumber = ({
         disableSearchIcon
         {...props}
       />
-      {clearable && (
+      {/* {clearable && (
         <InputIconOnClear
           size={size}
           onClick={onClear}
           className={cn(clearIconClasses.base, clearIconClasses.position[size])}
         />
-      )}
+      )} */}
     </div>
-    {!error && helperText && (
+    {/* {!error && helperText && (
       <FieldHelperText size={size} className={helperClassName}>
         {helperText}
       </FieldHelperText>
     )}
     {error && (
       <FieldError size={size} error={error} className={errorClassName} />
-    )}
+    )} */}
   </div>
 );
 
