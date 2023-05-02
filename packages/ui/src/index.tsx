@@ -2,6 +2,15 @@
 export { default as cn } from './lib/cn';
 export { default as useCollapse } from './lib/use-collapse';
 
+export { default as FieldClearButton } from './components/field-clear-button';
+export * from './components/field-clear-button';
+
+export { default as FieldError } from './components/field-error-text';
+export * from './components/field-error-text';
+
+export { default as FieldHelperText } from './components/field-helper-text';
+export * from './components/field-helper-text';
+
 // Components
 export { default as ActionIcon } from './components/action-icon';
 export * from './components/action-icon';

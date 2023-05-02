@@ -877,7 +877,7 @@ export default function App() {
 
 ### NativeSelect Props
 
-Here is the API documentation of the Native Select component. And the rest of the props of Native Select are the same as the original html select tag. You can use props like `disabled`, `name` etc.
+Here is the API documentation of the Native Select component. And the rest of the props of Native Select are the same as the original html select tag. You can use props like **disabled**, **name** etc.
 
 |        Props        |                      Type                      |                                                             Description                                                             |           Default            |
 | :-----------------: | :--------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: | :--------------------------: |
@@ -888,9 +888,9 @@ Here is the API documentation of the Native Select component. And the rest of th
 |  setSelectedValue   |   `Dispatch<SetStateAction<OptionsType[]>>`    |                                                 Set newly selected value on change                                                  |            \_ \_             |
 |      multiple       |                   `boolean`                    |                                                         Set multiple values                                                         |           `false`            |
 |      disabled       |                   `boolean`                    |                                                   Whether the select is disabled                                                    |           `false`            |
+|       variant       | [NativeSelectVariants](#nativeselect-variants) |                                                 The variants of the component are:                                                  |         `"outline"`          |
 |        size         |    [NativeSelectSizes](#nativeselect-sizes)    |                          The size of the component. <br /> "sm" is equivalent to the dense select styling.                          |         `"DEFAULT"`          |
 |       rounded       |  [NativeSelectRounded](#nativeselect-rounded)  |                                                      The rounded variants are:                                                      |         `"DEFAULT"`          |
-|       variant       | [NativeSelectVariants](#nativeselect-variants) |                                                 The variants of the component are:                                                  |         `"outline"`          |
 |        color        |   [NativeSelectColors](#nativeselect-colors)   |                                                         Change input color                                                          |         `"DEFAULT"`          |
 |      clearable      |                   `boolean`                    |                                                        add clearable option                                                         |           `false`            |
 |    dropDownIcon     |                  `ReactNode`                   | The dropDownIcon is design for adding any icon on the Input field's end (it's left icon for the `ltr` and right icon for the `rtl`) |            \_ \_             |
@@ -912,6 +912,14 @@ Here is the API documentation of the Native Select component. And the rest of th
 
 <div className="mb-10" />
 
+### NativeSelect Variants
+
+```ts
+type NativeSelectVariants = "flat" | "outline" | "text" | "active";
+```
+
+<div className="mb-10" />
+
 ### NativeSelect Sizes
 
 ```ts
@@ -924,14 +932,6 @@ type NativeSelectSizes = "DEFAULT" | "sm" | "lg" | "xl";
 
 ```ts
 type NativeSelectRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
-```
-
-<div className="mb-10" />
-
-### NativeSelect Variants
-
-```ts
-type NativeSelectVariants = "flat" | "outline" | "text" | "active";
 ```
 
 <div className="mb-10" />

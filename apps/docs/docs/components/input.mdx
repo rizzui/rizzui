@@ -49,7 +49,7 @@ export default function App() {
 
 ## Types
 
-You can change the type of **Input** with property [**type**](#input-type).
+You can change the type of **Input** with property [**type**](#input-types).
 
 <Paper className="block">
   <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
@@ -171,7 +171,7 @@ export default function App() {
 
 ## Variants
 
-You can change the style of **Input** with property [**variant**](#input-variant).
+You can change the style of **Input** with property [**variant**](#input-variants).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
   <Input
@@ -231,7 +231,7 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **Input** with property [**size**](#input-size).
+You can change the style of **Input** with property [**size**](#input-sizes).
 
 <Paper className="gap-4 justify-start items-start text-gray-1000">
   <Input
@@ -367,7 +367,7 @@ export default function App() {
 
 ## Colors
 
-You can change the style of **Input** with property [**color**](#input-color).
+You can change the style of **Input** with property [**color**](#input-colors).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
   <Input
@@ -787,39 +787,39 @@ export default function App() {
 
 ### Input Props
 
-Here is the API documentation of the Input component. And the rest of the props are the same as the original html input field. You can use props like `value`, `disabled`, `placeholder`, `onChange`, `onFocus`, `onBlur` etc.
+Here is the API documentation of the Input component. And the rest of the props are the same as the original html input field. You can use props like **value**, **disabled**, **placeholder**, **onChange**, **onFocus**, **onBlur** etc.
 
-|      Props      |              Type              |                                                                Description                                                                |   Default   |
-| :-------------: | :----------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :---------: |
-|      label      |          `ReactNode`           |                                                              Set field label                                                              |    \_ \_    |
-|   placeholder   |            `string`            |                                                        Set input placeholder text                                                         |    \_ \_    |
-|      type       |    [InputType](#input-type)    |                                               This Input component only support these types                                               |  `"text"`   |
-|     variant     | [InputVariant](#input-variant) |                                                    The variants of the component are:                                                     | `"outline"` |
-|      size       |    [InputSize](#input-size)    |                                 The size of the component. "sm" is equivalent to the dense input styling.                                 | `"DEFAULT"` |
-|     rounded     | [InputRounded](#input-rounded) |                                                         The rounded variants are:                                                         | `"DEFAULT"` |
-|      color      |   [InputColor](#input-color)   |                                                            Change input color                                                             | `"DEFAULT"` |
-|    disabled     |           `boolean`            |                                                       Whether the input is disabled                                                       |    \_ \_    |
-|    clearable    |           `boolean`            |                                                           Add clearable option                                                            |    \_ \_    |
-|     onClear     | [InputOnclear](#input-onclear) |                                                                clear event                                                                |    \_ \_    |
-|     prefix      |          `ReactNode`           | The prefix is design for adding any icon or text on the Input field's start (it's a left icon for the `ltr` and right icon for the `rtl`) |    \_ \_    |
-|     suffix      |          `ReactNode`           |  The suffix is design for adding any icon or text on the Input field's end (it's a right icon for the `ltr` and left icon for the `rtl`)  |    \_ \_    |
-|   helperText    |          `ReactNode`           |                                         Add helper text. It could be string or a React component                                          |    \_ \_    |
-|      error      |            `string`            |                                                    Show error message using this prop                                                     |    \_ \_    |
-| labelClassName  |            `string`            |                                                    Override default CSS style of label                                                    |    \_ \_    |
-| inputClassName  |            `string`            |                                                    Override default CSS style of input                                                    |    \_ \_    |
-| prefixClassName |            `string`            |                                                   Override default CSS style of prefix                                                    |    \_ \_    |
-| suffixClassName |            `string`            |                                                   Override default CSS style of suffix                                                    |    \_ \_    |
-| helperClassName |            `string`            |                                                 Override default CSS style of helperText                                                  |    \_ \_    |
-| errorClassName  |            `string`            |                                                Override default CSS style of error message                                                |    \_ \_    |
-|       ref       |    `Ref<HTMLInputElement>`     |                                                                                                                                           |    \_ \_    |
-|       key       |          `key` `null`          |                                                                                                                                           |    \_ \_    |
+|      Props      |               Type               |                                                                Description                                                                |   Default   |
+| :-------------: | :------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :---------: |
+|      label      |           `ReactNode`            |                                                              Set field label                                                              |    \_ \_    |
+|   placeholder   |             `string`             |                                                        Set input placeholder text                                                         |    \_ \_    |
+|      type       |    [InputTypes](#input-types)    |                                               This Input component only support these types                                               |  `"text"`   |
+|     variant     | [InputVariants](#input-variants) |                                                    The variants of the component are:                                                     | `"outline"` |
+|      size       |    [InputSizes](#input-sizes)    |                                 The size of the component. "sm" is equivalent to the dense input styling.                                 | `"DEFAULT"` |
+|     rounded     |  [InputRounded](#input-rounded)  |                                                         The rounded variants are:                                                         | `"DEFAULT"` |
+|      color      |   [InputColors](#input-colors)   |                                                            Change input color                                                             | `"DEFAULT"` |
+|    disabled     |            `boolean`             |                                                       Whether the input is disabled                                                       |    \_ \_    |
+|    clearable    |            `boolean`             |                                                           Add clearable option                                                            |    \_ \_    |
+|     onClear     |  [InputOnclear](#input-onclear)  |                                                                clear event                                                                |    \_ \_    |
+|     prefix      |           `ReactNode`            | The prefix is design for adding any icon or text on the Input field's start (it's a left icon for the `ltr` and right icon for the `rtl`) |    \_ \_    |
+|     suffix      |           `ReactNode`            |  The suffix is design for adding any icon or text on the Input field's end (it's a right icon for the `ltr` and left icon for the `rtl`)  |    \_ \_    |
+|   helperText    |           `ReactNode`            |                                         Add helper text. It could be string or a React component                                          |    \_ \_    |
+|      error      |             `string`             |                                                    Show error message using this prop                                                     |    \_ \_    |
+| labelClassName  |             `string`             |                                                    Override default CSS style of label                                                    |    \_ \_    |
+| inputClassName  |             `string`             |                                                    Override default CSS style of input                                                    |    \_ \_    |
+| prefixClassName |             `string`             |                                                   Override default CSS style of prefix                                                    |    \_ \_    |
+| suffixClassName |             `string`             |                                                   Override default CSS style of suffix                                                    |    \_ \_    |
+| helperClassName |             `string`             |                                                 Override default CSS style of helperText                                                  |    \_ \_    |
+| errorClassName  |             `string`             |                                                Override default CSS style of error message                                                |    \_ \_    |
+|       ref       |     `Ref<HTMLInputElement>`      |                                                                                                                                           |    \_ \_    |
+|       key       |           `key` `null`           |                                                                                                                                           |    \_ \_    |
 
 <div className="mb-10" />
 
-### Input Type
+### Input Types
 
 ```ts
-type InputType =
+type InputTypes =
   | "text"
   | "number"
   | "email"
@@ -835,18 +835,18 @@ type InputType =
 
 <div className="mb-10" />
 
-### Input Variant
+### Input Variants
 
 ```ts
-type InputVariant = "flat" | "outline" | "text" | "active";
+type InputVariants = "flat" | "outline" | "text" | "active";
 ```
 
 <div className="mb-10" />
 
-### Input Size
+### Input Sizes
 
 ```ts
-type InputSize = "sm" | "DEFAULT" | "lg" | "xl";
+type InputSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -859,15 +859,15 @@ type InputRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
 
 <div className="mb-10" />
 
-### Input Color
+### Input Colors
 
 ```ts
-type InputColor = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type InputColors = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
 ```
 
 <div className="mb-10" />
 
-### Input Onclear
+### Input onClear
 
 ```ts
 type InputOnclear = (event: MouseEvent<Element, MouseEvent>) => void;
