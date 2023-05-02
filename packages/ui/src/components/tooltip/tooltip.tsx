@@ -44,8 +44,8 @@ const tooltipClasses = {
   },
   arrow: {
     color: {
-      DEFAULT: 'fill-gray-900',
-      invert: 'fill-gray-0',
+      DEFAULT: 'fill-gray-0 [&>path]:stroke-gray-300',
+      invert: 'fill-gray-900',
       primary: 'fill-primary',
       secondary: 'fill-secondary',
       danger: 'fill-red',
@@ -58,8 +58,8 @@ const tooltipClasses = {
     solid: {
       base: '',
       color: {
-        DEFAULT: 'text-gray-0 bg-gray-900',
-        invert: 'bg-gray-0 !text-gray-900 border border-gray-300',
+        DEFAULT: 'bg-gray-0 !text-gray-900 border border-gray-300',
+        invert: 'text-gray-0 bg-gray-900',
         primary: 'text-white bg-primary',
         secondary: 'text-white bg-secondary',
         danger: 'text-white bg-red',
@@ -105,8 +105,7 @@ export type TooltipProps = {
  * Here is the API documentation of the Tooltip component.
  * You can use the following props to create a demo of tooltip.
  */
-
-const Tooltip = ({
+export default function Tooltip({
   isOpen,
   setIsOpen,
   children,
@@ -120,7 +119,7 @@ const Tooltip = ({
   tooltipArrowClassName,
   showArrow = true,
   isPopconfirm = false,
-}: TooltipProps) => {
+}: TooltipProps) {
   const [open, setOpen] = useState(false);
   const arrowRef = useRef(null);
 
@@ -194,6 +193,7 @@ const Tooltip = ({
                   tooltipClasses.arrow.color[color],
                   tooltipArrowClassName
                 )}
+                style={{ strokeDasharray: '0,14, 5' }}
               />
             </>
           )}
@@ -201,7 +201,6 @@ const Tooltip = ({
       )}
     </>
   );
-};
+}
 
 Tooltip.displayName = 'Tooltip';
-export default Tooltip;
