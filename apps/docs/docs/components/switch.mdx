@@ -36,7 +36,7 @@ export default function App() {
 
 ## Variants
 
-You can change style of **Switch** with property [**variant**](#switch-variant).
+You can change style of **Switch** with property [**variant**](#switch-variants).
 
 <Paper className="flex-row justify-around gap-4">
   <Switch
@@ -80,7 +80,7 @@ export default function App() {
 
 ## Sizes
 
-You can change style of **Switch** with property [**size**](#switch-size).
+You can change style of **Switch** with property [**size**](#switch-sizes).
 
 <Paper className="flex-row justify-around gap-4">
   <Switch
@@ -180,7 +180,7 @@ export default function App() {
 
 ## Colors
 
-You can change style of **Switch** with property [**color**](#switch-color).
+You can change style of **Switch** with property [**color**](#switch-colors).
 
 <Paper className="grid grid-cols-4 gap-4">
   <Switch
@@ -426,44 +426,44 @@ export default function App() {
 
 ### Switch Props
 
-Here is the API documentation of the Switch component. And the rest of the props are the same as the original html checkbox input field. You can use props like `value`, `disabled`, `checked`, `onChange`, `onFocus`, `onBlur` etc.
+Here is the API documentation of the Switch component. And the rest of the props are the same as the original html checkbox input field. You can use props like **value**, **disabled**, **checked**, **onChange**, **onFocus**, **onBlur** etc.
 
-|      Props       |               Type               |                        Description                         |   Default   |
-| :--------------: | :------------------------------: | :--------------------------------------------------------: | :---------: |
-|      label       |           `ReactNode`            |                      Set field label                       |    \_ \_    |
-|  labelPlacement  |          `left` `right`          |                   Change label direction                   |  `"right"`  |
-|     variant      | [SwitchVariant](#switch-variant) |             The variants of the component are:             |  `"flat"`   |
-|       size       |    [SwitchSize](#switch-size)    |                 The size of the component.                 | `"DEFAULT"` |
-|     rounded      | [SwitchRounded](#switch-rounded) |                 The rounded variants are:                  |  `"pill"`   |
-|      color       |   [SwitchColor](#switch-color)   |                    Change Switch color                     | `"DEFAULT"` |
-|     disabled     |            `boolean`             |               Whether the switch is disabled               |   `false`   |
-|      onIcon      |           `ReactNode`            |           Set custom icon when the switch is on            |    \_ \_    |
-|     offIcon      |           `ReactNode`            |           Set custom icon when the switch is off           |    \_ \_    |
-|    helperText    |           `ReactNode`            |  Add helper text. It could be string or a React component  |    \_ \_    |
-|      error       |             `string`             |             Show error message using this prop             |    \_ \_    |
-|    className     |             `string`             |  Add custom classes of component wrapper for extra style   |    \_ \_    |
-|  labelClassName  |             `string`             |            Add custom classes for switch label             |    \_ \_    |
-| switchClassName  |             `string`             |    Add custom classes of switch wrapper for extra style    |    \_ \_    |
-| handlerClassName |             `string`             |    Add custom classes of switch handler for extra style    |    \_ \_    |
-|  errorClassName  |             `string`             | This prop allows you to customize the error message style  |    \_ \_    |
-| helperClassName  |             `string`             | This prop allows you to customize the helper message style |    \_ \_    |
-|       ref        |     `Ref<HTMLInputElement>`      |                                                            |    \_ \_    |
-|       key        |           `key` `null`           |                                                            |    \_ \_    |
+|      Props       |                Type                |                        Description                         |   Default   |
+| :--------------: | :--------------------------------: | :--------------------------------------------------------: | :---------: |
+|      label       |            `ReactNode`             |                      Set field label                       |    \_ \_    |
+|  labelPlacement  |           `left` `right`           |                   Change label direction                   |  `"right"`  |
+|     variant      | [SwitchVariants](#switch-variants) |             The variants of the component are:             |  `"flat"`   |
+|       size       |    [SwitchSizes](#switch-sizes)    |                 The size of the component.                 | `"DEFAULT"` |
+|     rounded      |  [SwitchRounded](#switch-rounded)  |                 The rounded variants are:                  |  `"pill"`   |
+|      color       |   [SwitchColors](#switch-colors)   |                    Change Switch color                     | `"DEFAULT"` |
+|     disabled     |             `boolean`              |               Whether the switch is disabled               |   `false`   |
+|      onIcon      |            `ReactNode`             |           Set custom icon when the switch is on            |    \_ \_    |
+|     offIcon      |            `ReactNode`             |           Set custom icon when the switch is off           |    \_ \_    |
+|    helperText    |            `ReactNode`             |  Add helper text. It could be string or a React component  |    \_ \_    |
+|      error       |              `string`              |             Show error message using this prop             |    \_ \_    |
+|    className     |              `string`              |  Add custom classes of component wrapper for extra style   |    \_ \_    |
+|  labelClassName  |              `string`              |            Add custom classes for switch label             |    \_ \_    |
+| switchClassName  |              `string`              |    Add custom classes of switch wrapper for extra style    |    \_ \_    |
+| handlerClassName |              `string`              |    Add custom classes of switch handler for extra style    |    \_ \_    |
+|  errorClassName  |              `string`              | This prop allows you to customize the error message style  |    \_ \_    |
+| helperClassName  |              `string`              | This prop allows you to customize the helper message style |    \_ \_    |
+|       ref        |      `Ref<HTMLInputElement>`       |                                                            |    \_ \_    |
+|       key        |            `key` `null`            |                                                            |    \_ \_    |
 
 <div className="mb-10" />
 
-### Switch Variant
+### Switch Variants
 
 ```ts
-type SwitchVariant = "flat" | "outline" | "active";
+type SwitchVariants = "flat" | "outline" | "active";
 ```
 
 <div className="mb-10" />
 
-### Switch Size
+### Switch Sizes
 
 ```ts
-type SwitchSize = "sm" | "DEFAULT" | "lg" | "XL";
+type SwitchSizes = "sm" | "DEFAULT" | "lg" | "XL";
 ```
 
 <div className="mb-10" />
@@ -476,8 +476,8 @@ type SwitchRounded = "sm" | "md" | "lg" | "none" | "pill";
 
 <div className="mb-10" />
 
-### Switch Color
+### Switch Colors
 
 ```ts
-type SwitchColor = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type SwitchColors = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
 ```
