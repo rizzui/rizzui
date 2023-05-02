@@ -12,19 +12,19 @@ const helperTextClasses = {
   },
 };
 
-export interface HelperTextProps
+export interface FieldHelperTextProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   tag?: 'div' | 'span';
   size?: keyof typeof helperTextClasses.size;
   className?: string;
 }
 
-export default function HelperText({
+export default function FieldHelperText({
   size,
   tag = 'div',
   children,
   className,
-}: React.PropsWithChildren<HelperTextProps>) {
+}: React.PropsWithChildren<FieldHelperTextProps>) {
   const Component = tag;
   return (
     <Component
@@ -35,3 +35,5 @@ export default function HelperText({
     </Component>
   );
 }
+
+FieldHelperText.displayName = 'FieldHelperText';
