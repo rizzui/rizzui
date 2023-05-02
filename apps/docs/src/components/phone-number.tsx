@@ -2,10 +2,7 @@ import React from 'react';
 import PhoneInput from 'react-phone-input-2';
 import type { PhoneInputProps } from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
-import { cn } from 'rizzui';
-// import FieldError from '../field-error-text';
-// import FieldHelperText from '../field-helper-text';
-// import InputIconOnClear from '../field-clear-button';
+import { cn, FieldError, FieldHelperText, FieldClearButton } from 'rizzui';
 
 const labelClasses = {
   size: {
@@ -265,22 +262,22 @@ const PhoneNumber = ({
         disableSearchIcon
         {...props}
       />
-      {/* {clearable && (
-        <InputIconOnClear
+      {clearable && (
+        <FieldClearButton
           size={size}
           onClick={onClear}
           className={cn(clearIconClasses.base, clearIconClasses.position[size])}
         />
-      )} */}
+      )}
     </div>
-    {/* {!error && helperText && (
+    {!error && helperText && (
       <FieldHelperText size={size} className={helperClassName}>
         {helperText}
       </FieldHelperText>
     )}
     {error && (
       <FieldError size={size} error={error} className={errorClassName} />
-    )} */}
+    )}
   </div>
 );
 
