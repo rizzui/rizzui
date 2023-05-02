@@ -53,7 +53,7 @@ export default function App() {
 
 ## Variants
 
-You can change style of **PinCode** with property [**variant**](#pincode-variant).
+You can change style of **PinCode** with property [**variant**](#pincode-variants).
 
 <Paper className="flex-row flex-wrap justify-between gap-4">
   <PinCode
@@ -97,7 +97,7 @@ export default function App() {
 
 ## Sizes
 
-You can change style of **PinCode** with property [**size**](#pincode-size).
+You can change style of **PinCode** with property [**size**](#pincode-sizes).
 
 <Paper className="gap-6 justify-start items-start">
   <PinCode
@@ -229,7 +229,7 @@ export default function App() {
 
 ## Colors
 
-You can change style of **PinCode** with property [**color**](#pincode-color).
+You can change style of **PinCode** with property [**color**](#pincode-colors).
 
 <Paper className="flex-row flex-wrap justify-between items-start gap-8">
   <PinCode
@@ -477,10 +477,10 @@ Here is the API documentation of the Pin Code component. And the rest of the pro
 |     length     |               `number`               |                             Set pin code length                             |     `4`     |
 |     center     |              `boolean`               |                      Make pin code horizontally center                      |   `true`    |
 |  placeholder   |               `string`               |                            Set placeholder text                             |    `"o"`    |
-|    variant     |  [PincodeVariant](#pincode-variant)  |                     The variants of the component are:                      | `"outline"` |
-|      size      |     [PincodeSize](#pincode-size)     | The size of the component. `"sm"` is equivalent to the dense input styling. | `"DEFAULT"` |
+|    variant     | [PincodeVariants](#pincode-variants) |                     The variants of the component are:                      | `"outline"` |
+|      size      |    [PincodeSizes](#pincode-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. | `"DEFAULT"` |
 |    rounded     |  [PincodeRounded](#pincode-rounded)  |                          The rounded variants are:                          | `"outlne"`  |
-|     color      |    [PincodeColor](#pincode-color)    |                             Change input color                              | `"DEFAULT"` |
+|     color      |   [PincodeColors](#pincode-colors)   |                             Change input color                              | `"DEFAULT"` |
 |     error      |               `string`               |                     Show error message using this prop                      |    \_ \_    |
 | inputClassName |               `string`               |             Add custom classes for the input filed extra style              |    \_ \_    |
 | errorClassName |               `string`               |          This prop allows you to customize the error message style          |    \_ \_    |
@@ -495,18 +495,18 @@ type PincodeSetvalue = Dispatch<SetStateAction<string | number | undefined>>;
 
 <div className="mb-10" />
 
-### Pincode Variant
+### Pincode Variants
 
 ```tsx
-type PincodeVariant = "flat" | "outline" | "active";
+type PincodeVariants = "flat" | "outline" | "active";
 ```
 
 <div className="mb-10" />
 
-### Pincode Size
+### Pincode Sizes
 
 ```tsx
-type PincodeSize = "sm" | "DEFAULT" | "lg" | "xl";
+type PincodeSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -519,8 +519,15 @@ type PincodeRounded = "sm" | "DEFAULT" | "lg" | "none" | "full";
 
 <div className="mb-10" />
 
-### Pincode Color
+### Pincode Colors
 
 ```ts
-type PincodeColor = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type PincodeColors =
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```

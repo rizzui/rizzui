@@ -67,7 +67,7 @@ export default function App() {
 
 ## Sizes
 
-You can change style of **Alert** with property [**size**](#alert-size).
+You can change style of **Alert** with property [**size**](#alert-sizes).
 
 <Paper className="gap-4 justify-start items-start text-gray-1000">
   <Alert
@@ -255,7 +255,7 @@ export default function App() {
 
 ## Colors & Icons
 
-You can change style of **Alert** with property [**color**](#alert-color).
+You can change style of **Alert** with property [**color**](#alert-colors).
 
 <Paper className="gap-4 grid grid-cols-1 text-gray-1000">
   <Alert
@@ -493,9 +493,9 @@ Here is the API documentation of the Alert component.
 
 |         Props          |              Type              |                    Description                    |   Default   |
 | :--------------------: | :----------------------------: | :-----------------------------------------------: | :---------: |
-|         color          |   [AlertColor](#alert-color)   |                Change input color                 |    \_ \_    |
+|         color          |  [AlertColors](#alert-colors)  |                Change input color                 |    \_ \_    |
 |        children        |          `ReactNode`           |          Pass alert message as children           |    \_ \_    |
-|          size          |    [AlertSize](#alert-size)    |            The size of the component.             | `"DEFAULT"` |
+|          size          |   [AlertSizes](#alert-sizes)   |            The size of the component.             | `"DEFAULT"` |
 |        rounded         | [AlertRounded](#alert-rounded) |             The rounded variants are:             | `"DEFAULT"` |
 |        variant         |        `flat` `outline`        |        The variants of the component are:         | `"outline"` |
 |          bar           |           `boolean`            |        Whether left bar should be visible         |  `"false"`  |
@@ -510,18 +510,18 @@ Here is the API documentation of the Alert component.
 
 <div className="mb-10" />
 
-### Alert Color
+### Alert Colors
 
 ```ts
-type AlertColor = "danger" | "info" | "success" | "warning";
+type AlertColors = "danger" | "info" | "success" | "warning";
 ```
 
 <div className="mb-10" />
 
-### Alert Size
+### Alert Sizes
 
 ```ts
-type AlertSize = "DEFAULT" | "sm" | "lg" | "xl";
+type AlertSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -534,7 +534,7 @@ type AlertRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
 
 <div className="mb-10" />
 
-### Alert Onclear
+### Alert onClear
 
 ```ts
 type AlertOnclear = (event: MouseEvent<Element, MouseEvent>) => void;

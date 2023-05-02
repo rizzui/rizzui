@@ -24,7 +24,10 @@ import { Checkbox } from "rizzui";
 The default style of **Checkbox** component.
 
 <Paper className="text-gray-1000">
-  <Checkbox label="Remember me" />
+  <Checkbox
+    label="Remember me"
+    labelClassName="font-medium"
+  />
 </Paper>
 
 ```tsx
@@ -41,7 +44,7 @@ export default function App() {
 
 You can change the style of **Checkbox** with property [**variant**](#checkbox-variants).
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-1000">
   <Checkbox
     className="m-2"
     label="Flat"
@@ -91,7 +94,7 @@ export default function App() {
 
 You can change the style of **Checkbox** with property [**size**](#checkbox-sizes).
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-1000">
   <Checkbox
     className="m-2"
     label="Small"
@@ -151,7 +154,7 @@ export default function App() {
 
 You can change the style of **Checkbox** with property [**rounded**](#checkbox-rounded).
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-1000">
   <Checkbox
     className="m-2"
     label="Rounded Small"
@@ -219,7 +222,7 @@ export default function App() {
 
 You can change the style of **Checkbox** with property [**color**](#checkbox-color).
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-1000">
   <Checkbox
     className="m-2"
     label="Default"
@@ -321,7 +324,7 @@ export default function App() {
 
 You can change style of **Checkbox** with property **labelPlacement**.
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-1000">
   <Checkbox
     className="m-2"
     label="Left Placement"
@@ -365,7 +368,7 @@ export default function App() {
 
 You can change style of **Checkbox** with property **disabled**.
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-1000">
   <Checkbox
     className="m-2"
     label="Disabled"
@@ -393,7 +396,7 @@ export default function App() {
 
 You can add helper text to **Checkbox** with property **helperText**.
 
-<Paper>
+<Paper className="text-gray-1000">
   <Checkbox
     className="m-2"
     label="John"
@@ -423,7 +426,7 @@ export default function App() {
 
 You can add error message to **Checkbox** with property **error**.
 
-<Paper>
+<Paper className="text-gray-1000">
   <Checkbox
     className="m-2"
     label="Yes"

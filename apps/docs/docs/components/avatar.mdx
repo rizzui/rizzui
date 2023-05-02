@@ -2,44 +2,44 @@
 sidebar_position: 3
 ---
 
-import { Avatar, Badge, ActionIcon } from 'rizzui';
-import { CheckIcon, PlusIcon } from '@heroicons/react/24/outline';
-import { ShoppingBagIcon } from '@heroicons/react/24/solid';
-import Paper from '@site/src/components/paper';
+import { Avatar, Badge, ActionIcon } from "rizzui";
+import { CheckIcon, PlusIcon } from "@heroicons/react/24/outline";
+import { ShoppingBagIcon } from "@heroicons/react/24/solid";
+import Paper from "@site/src/components/paper";
 
 # Avatar
 
 Avatar is a small UI item which represents user profile picture, or event that appears in relativity with the underlying object. We are using `react-avatar` package for this component. Please follow their documentation for any query -> https://www.npmjs.com/package/react-avatar
 
 ```tsx
-import { Avatar } from 'rizzui';
+import { Avatar } from "rizzui";
 ```
 
 <div className="mb-28" />
 
 ## Default
 
-The default style of the **Avatar**
+The default style of the **Avatar**.
 
 <Paper>
-	<Avatar
-		size="48px"
-		onClick={() => {}}
-		src="https://randomuser.me/api/portraits/women/40.jpg"
-	/>
+  <Avatar
+    size="48px"
+    onClick={() => {}}
+    src="https://randomuser.me/api/portraits/women/40.jpg"
+  />
 </Paper>
 
 ```tsx
-import { Avatar } from 'rizzui';
+import { Avatar } from "rizzui";
 
 export default function App() {
-	return (
-		<Avatar
-			size="48px"
-			onClick={() => {}}
-			src="https://randomuser.me/api/portraits/women/40.jpg"
-		/>
-	);
+  return (
+    <Avatar
+      size="48px"
+      onClick={() => {}}
+      src="https://randomuser.me/api/portraits/women/40.jpg"
+    />
+  );
 }
 ```
 
@@ -47,39 +47,47 @@ export default function App() {
 
 ## Variants
 
-You can add text or avatar icon to **Avatar** component with property **initials** or **src**
+You can add text or avatar icon to **Avatar** component with property **initials** or **src**.
 
 <Paper>
-	<div className="flex items-center gap-3 justify-around w-full">
-		<Avatar name="John Doe" initials="AB" size="48px" />
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/40.jpg"
-			size="48px"
-		/>
-		<Avatar
-			src="https://isomorphic-furyroad.vercel.app/_next/static/media/avatar-icon.ebad7416.png"
-			size="48px"
-		/>
-	</div>
+  <div className="flex items-center gap-3 justify-around w-full">
+    <Avatar
+      name="John Doe"
+      initials="AB"
+      size="48px"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/40.jpg"
+      size="48px"
+    />
+    <Avatar
+      src="https://isomorphic-furyroad.vercel.app/_next/static/media/avatar-icon.ebad7416.png"
+      size="48px"
+    />
+  </div>
 </Paper>
 
 ```tsx
-import { Avatar } from 'rizzui';
+import { Avatar } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Avatar name="John Doe" initials="AB" size="48px" />
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-				size="48px"
-			/>
-			<Avatar
-				src="https://isomorphic-furyroad.vercel.app/_next/static/media/avatar-icon.ebad7416.png"
-				size="48px"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Avatar
+        name="John Doe"
+        initials="AB"
+        size="48px"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/40.jpg"
+        size="48px"
+      />
+      <Avatar
+        src="https://isomorphic-furyroad.vercel.app/_next/static/media/avatar-icon.ebad7416.png"
+        size="48px"
+      />
+    </>
+  );
 }
 ```
 
@@ -87,38 +95,57 @@ export default function App() {
 
 ## Sizes
 
-You can change the size of the **Avatar** with property **size**
+You can change the size of the **Avatar** with property **size**.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Avatar name="John Doe" initials="SM" size="36px" />
-		<Avatar src="https://randomuser.me/api/portraits/men/40.jpg" size="48px" />
-		<Avatar name="John Doe" initials="L" size="64px" />
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/40.jpg"
-			size="80px"
-		/>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="36px"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/men/40.jpg"
+      size="48px"
+    />
+    <Avatar
+      name="John Doe"
+      initials="L"
+      size="64px"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/40.jpg"
+      size="80px"
+    />
+  </div>
 </Paper>
 
 ```tsx
-import { Avatar } from 'rizzui';
+import { Avatar } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Avatar name="John Doe" initials="SM" size="36px" />
-			<Avatar
-				src="https://randomuser.me/api/portraits/men/40.jpg"
-				size="48px"
-			/>
-			<Avatar name="John Doe" initials="L" size="64px" />
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-				size="80px"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="36px"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/men/40.jpg"
+        size="48px"
+      />
+      <Avatar
+        name="John Doe"
+        initials="L"
+        size="64px"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/40.jpg"
+        size="80px"
+      />
+    </>
+  );
 }
 ```
 
@@ -126,69 +153,69 @@ export default function App() {
 
 ## Rounded
 
-You can change the border radius of the **Avatar** with property **rounded**
+You can change the border radius of the **Avatar** with property [**rounded**](#avatar-rounded).
 
 <Paper>
-	<div className="mt-4 flex items-center justify-around gap-3 w-full">
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/40.jpg"
-			size="48px"
-			rounded="none"
-		/>
-		<Avatar
-			size="48px"
-			src="https://randomuser.me/api/portraits/women/41.jpg"
-			rounded="sm"
-		/>
-		<Avatar
-			rounded="md"
-			src="https://randomuser.me/api/portraits/women/42.jpg"
-			size="48px"
-		/>
-		<Avatar
-			rounded="lg"
-			src="https://randomuser.me/api/portraits/women/43.jpg"
-			size="48px"
-		/>
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/44.jpg"
-			size="48px"
-		/>
-	</div>
+  <div className="mt-4 flex items-center justify-around gap-3 w-full">
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/40.jpg"
+      size="48px"
+      rounded="none"
+    />
+    <Avatar
+      size="48px"
+      src="https://randomuser.me/api/portraits/women/41.jpg"
+      rounded="sm"
+    />
+    <Avatar
+      rounded="md"
+      src="https://randomuser.me/api/portraits/women/42.jpg"
+      size="48px"
+    />
+    <Avatar
+      rounded="lg"
+      src="https://randomuser.me/api/portraits/women/43.jpg"
+      size="48px"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/44.jpg"
+      size="48px"
+    />
+  </div>
 </Paper>
 
 ```tsx
-import { Avatar } from 'rizzui';
+import { Avatar } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-				size="48px"
-				rounded="none"
-			/>
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/41.jpg"
-				rounded="sm"
-			/>
-			<Avatar
-				rounded="md"
-				src="https://randomuser.me/api/portraits/women/42.jpg"
-				size="48px"
-			/>
-			<Avatar
-				rounded="lg"
-				src="https://randomuser.me/api/portraits/women/43.jpg"
-				size="48px"
-			/>
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/44.jpg"
-				size="48px"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/40.jpg"
+        size="48px"
+        rounded="none"
+      />
+      <Avatar
+        size="48px"
+        src="https://randomuser.me/api/portraits/women/41.jpg"
+        rounded="sm"
+      />
+      <Avatar
+        rounded="md"
+        src="https://randomuser.me/api/portraits/women/42.jpg"
+        size="48px"
+      />
+      <Avatar
+        rounded="lg"
+        src="https://randomuser.me/api/portraits/women/43.jpg"
+        size="48px"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/44.jpg"
+        size="48px"
+      />
+    </>
+  );
 }
 ```
 
@@ -196,37 +223,117 @@ export default function App() {
 
 ## Colors
 
-You can change the color of the **Avatar** with property **color**
+You can change the color of the **Avatar** with property **color**.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Avatar name="John Doe" initials="SM" size="48px" color="#111" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#7928ca" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#e00" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#f5a623" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#0070f3" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#11a849" />
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="48px"
+      color="#111"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="48px"
+      color="#4e36f5"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="48px"
+      color="#7928ca"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="48px"
+      color="#e00"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="48px"
+      color="#f5a623"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="48px"
+      color="#0070f3"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="48px"
+      color="#4e36f5"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="48px"
+      color="#11a849"
+    />
+  </div>
 </Paper>
 
 ```tsx
-import { Avatar } from 'rizzui';
+import { Avatar } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Avatar name="John Doe" initials="SM" size="48px" color="#111" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#7928ca" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#e00" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#f5a623" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#0070f3" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#11a849" />
-		</>
-	);
+  return (
+    <>
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="48px"
+        color="#111"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="48px"
+        color="#4e36f5"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="48px"
+        color="#7928ca"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="48px"
+        color="#e00"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="48px"
+        color="#f5a623"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="48px"
+        color="#0070f3"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="48px"
+        color="#4e36f5"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="48px"
+        color="#11a849"
+      />
+    </>
+  );
 }
 ```
 
@@ -237,88 +344,88 @@ export default function App() {
 You can add border to **Avatar** by adding extra className with property **className**.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/40.jpg"
-			size="48px"
-			className="ring-2 ring-gray-900 ring-offset-2"
-		/>
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/41.jpg"
-			size="48px"
-			className="ring-2 ring-primary ring-offset-2"
-		/>
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/42.jpg"
-			size="48px"
-			className="ring-2 ring-secondary ring-offset-2"
-		/>
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/43.jpg"
-			size="48px"
-			className="ring-2 ring-red ring-offset-2"
-		/>
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/44.jpg"
-			size="48px"
-			className="ring-2 ring-orange ring-offset-2"
-		/>
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/45.jpg"
-			size="48px"
-			className="ring-2 ring-green ring-offset-2"
-		/>
-		<Avatar
-			src="https://randomuser.me/api/portraits/women/46.jpg"
-			size="48px"
-			className="ring-2 ring-blue ring-offset-2"
-		/>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/40.jpg"
+      size="48px"
+      className="ring-2 ring-gray-900 ring-offset-2"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/41.jpg"
+      size="48px"
+      className="ring-2 ring-primary ring-offset-2"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/42.jpg"
+      size="48px"
+      className="ring-2 ring-secondary ring-offset-2"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/43.jpg"
+      size="48px"
+      className="ring-2 ring-red ring-offset-2"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/44.jpg"
+      size="48px"
+      className="ring-2 ring-orange ring-offset-2"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/45.jpg"
+      size="48px"
+      className="ring-2 ring-green ring-offset-2"
+    />
+    <Avatar
+      src="https://randomuser.me/api/portraits/women/46.jpg"
+      size="48px"
+      className="ring-2 ring-blue ring-offset-2"
+    />
+  </div>
 </Paper>
 
 ```tsx
-import { Avatar } from 'rizzui';
+import { Avatar } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-				size="48px"
-				className="ring-2 ring-gray-900 ring-offset-2"
-			/>
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/41.jpg"
-				size="48px"
-				className="ring-2 ring-primary ring-offset-2"
-			/>
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/42.jpg"
-				size="48px"
-				className="ring-2 ring-secondary ring-offset-2"
-			/>
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/43.jpg"
-				size="48px"
-				className="ring-2 ring-red ring-offset-2"
-			/>
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/44.jpg"
-				size="48px"
-				className="ring-2 ring-orange ring-offset-2"
-			/>
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/45.jpg"
-				size="48px"
-				className="ring-2 ring-green ring-offset-2"
-			/>
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/46.jpg"
-				size="48px"
-				className="ring-2 ring-blue ring-offset-2"
-			/>
-		</>
-	);
+  return (
+    <>
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/40.jpg"
+        size="48px"
+        className="ring-2 ring-gray-900 ring-offset-2"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/41.jpg"
+        size="48px"
+        className="ring-2 ring-primary ring-offset-2"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/42.jpg"
+        size="48px"
+        className="ring-2 ring-secondary ring-offset-2"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/43.jpg"
+        size="48px"
+        className="ring-2 ring-red ring-offset-2"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/44.jpg"
+        size="48px"
+        className="ring-2 ring-orange ring-offset-2"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/45.jpg"
+        size="48px"
+        className="ring-2 ring-green ring-offset-2"
+      />
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/46.jpg"
+        size="48px"
+        className="ring-2 ring-blue ring-offset-2"
+      />
+    </>
+  );
 }
 ```
 
@@ -329,96 +436,96 @@ export default function App() {
 You can use **Badge** with **Avatar** component for online status.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<div className="relative inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-			/>
-			<Badge
-				renderAsDot
-				color="success"
-				enableOutlineRing
-				size="lg"
-				className="absolute right-0 top-0 -translate-y-[25%]"
-			/>
-		</div>
-		<div className="relative ml-3 inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/43.jpg"
-			/>
-			<Badge
-				renderAsDot
-				color="danger"
-				enableOutlineRing
-				size="lg"
-				className="absolute right-0 top-0 -translate-y-[25%]"
-			/>
-		</div>
-		<div className="relative ml-3 inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/44.jpg"
-			/>
-			<Badge
-				renderAsDot
-				color="warning"
-				enableOutlineRing
-				size="lg"
-				className="absolute right-0 top-0 -translate-y-[30%]"
-			/>
-		</div>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <div className="relative inline-flex">
+      <Avatar
+        size="48px"
+        src="https://randomuser.me/api/portraits/women/40.jpg"
+      />
+      <Badge
+        renderAsDot
+        color="success"
+        enableOutlineRing
+        size="lg"
+        className="absolute right-0 top-0 -translate-y-[25%]"
+      />
+    </div>
+    <div className="relative ml-3 inline-flex">
+      <Avatar
+        size="48px"
+        src="https://randomuser.me/api/portraits/women/43.jpg"
+      />
+      <Badge
+        renderAsDot
+        color="danger"
+        enableOutlineRing
+        size="lg"
+        className="absolute right-0 top-0 -translate-y-[25%]"
+      />
+    </div>
+    <div className="relative ml-3 inline-flex">
+      <Avatar
+        size="48px"
+        src="https://randomuser.me/api/portraits/women/44.jpg"
+      />
+      <Badge
+        renderAsDot
+        color="warning"
+        enableOutlineRing
+        size="lg"
+        className="absolute right-0 top-0 -translate-y-[30%]"
+      />
+    </div>
+  </div>
 </Paper>
 
 ```tsx
-import { Avatar, Badge } from 'rizzui';
+import { Avatar, Badge } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<div className="relative inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/40.jpg"
-				/>
-				<Badge
-					renderAsDot
-					color="success"
-					enableOutlineRing
-					size="lg"
-					className="absolute right-0 top-0 -translate-y-[25%]"
-				/>
-			</div>
-			<div className="relative ml-3 inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/43.jpg"
-				/>
-				<Badge
-					renderAsDot
-					color="danger"
-					enableOutlineRing
-					size="lg"
-					className="absolute right-0 top-0 -translate-y-[25%]"
-				/>
-			</div>
-			<div className="relative ml-3 inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/44.jpg"
-				/>
-				<Badge
-					renderAsDot
-					color="warning"
-					enableOutlineRing
-					size="lg"
-					className="absolute right-0 top-0 -translate-y-[30%]"
-				/>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div className="relative inline-flex">
+        <Avatar
+          size="48px"
+          src="https://randomuser.me/api/portraits/women/40.jpg"
+        />
+        <Badge
+          renderAsDot
+          color="success"
+          enableOutlineRing
+          size="lg"
+          className="absolute right-0 top-0 -translate-y-[25%]"
+        />
+      </div>
+      <div className="relative ml-3 inline-flex">
+        <Avatar
+          size="48px"
+          src="https://randomuser.me/api/portraits/women/43.jpg"
+        />
+        <Badge
+          renderAsDot
+          color="danger"
+          enableOutlineRing
+          size="lg"
+          className="absolute right-0 top-0 -translate-y-[25%]"
+        />
+      </div>
+      <div className="relative ml-3 inline-flex">
+        <Avatar
+          size="48px"
+          src="https://randomuser.me/api/portraits/women/44.jpg"
+        />
+        <Badge
+          renderAsDot
+          color="warning"
+          enableOutlineRing
+          size="lg"
+          className="absolute right-0 top-0 -translate-y-[30%]"
+        />
+      </div>
+    </>
+  );
 }
 ```
 
@@ -429,108 +536,108 @@ export default function App() {
 You can use **ActionIcon** component with **Avatar** component.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
-		<div className="relative inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-			/>
-			<ActionIcon
-				size="sm"
-				rounded="full"
-				variant="solid"
-				color="warning"
-				className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-			>
-				<PlusIcon />
-			</ActionIcon>
-		</div>
-		<div className="relative inline-flex">
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/43.jpg"
-				size="48px"
-			/>
-			<ActionIcon
-				size="sm"
-				rounded="full"
-				variant="solid"
-				color="danger"
-				className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-			>
-				<ShoppingBagIcon className="w-4" />
-			</ActionIcon>
-		</div>
-		<div className="relative inline-flex">
-			<Avatar
-				src="https://randomuser.me/api/portraits/women/44.jpg"
-				size="48px"
-			/>
-			<ActionIcon
-				size="sm"
-				rounded="full"
-				variant="solid"
-				color="success"
-				className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-			>
-				<CheckIcon />
-			</ActionIcon>
-		</div>
-	</div>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <div className="relative inline-flex">
+      <Avatar
+        size="48px"
+        src="https://randomuser.me/api/portraits/women/40.jpg"
+      />
+      <ActionIcon
+        size="sm"
+        rounded="full"
+        variant="solid"
+        color="warning"
+        className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+      >
+        <PlusIcon />
+      </ActionIcon>
+    </div>
+    <div className="relative inline-flex">
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/43.jpg"
+        size="48px"
+      />
+      <ActionIcon
+        size="sm"
+        rounded="full"
+        variant="solid"
+        color="danger"
+        className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+      >
+        <ShoppingBagIcon className="w-4" />
+      </ActionIcon>
+    </div>
+    <div className="relative inline-flex">
+      <Avatar
+        src="https://randomuser.me/api/portraits/women/44.jpg"
+        size="48px"
+      />
+      <ActionIcon
+        size="sm"
+        rounded="full"
+        variant="solid"
+        color="success"
+        className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+      >
+        <CheckIcon />
+      </ActionIcon>
+    </div>
+  </div>
 </Paper>
 
 ```tsx
-import { Avatar, ActionIcon } from 'rizzui';
+import { Avatar, ActionIcon } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<div className="relative inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/40.jpg"
-				/>
-				<ActionIcon
-					size="sm"
-					rounded="full"
-					variant="solid"
-					color="warning"
-					className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-				>
-					<PlusIcon />
-				</ActionIcon>
-			</div>
-			<div className="relative inline-flex">
-				<Avatar
-					src="https://randomuser.me/api/portraits/women/43.jpg"
-					size="48px"
-				/>
-				<ActionIcon
-					size="sm"
-					rounded="full"
-					variant="solid"
-					color="danger"
-					className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-				>
-					<ShoppingBagIcon className="w-4" />
-				</ActionIcon>
-			</div>
-			<div className="relative inline-flex">
-				<Avatar
-					src="https://randomuser.me/api/portraits/women/44.jpg"
-					size="48px"
-				/>
-				<ActionIcon
-					size="sm"
-					rounded="full"
-					variant="solid"
-					color="success"
-					className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-				>
-					<CheckIcon />
-				</ActionIcon>
-			</div>
-		</>
-	);
+  return (
+    <>
+      <div className="relative inline-flex">
+        <Avatar
+          size="48px"
+          src="https://randomuser.me/api/portraits/women/40.jpg"
+        />
+        <ActionIcon
+          size="sm"
+          rounded="full"
+          variant="solid"
+          color="warning"
+          className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+        >
+          <PlusIcon />
+        </ActionIcon>
+      </div>
+      <div className="relative inline-flex">
+        <Avatar
+          src="https://randomuser.me/api/portraits/women/43.jpg"
+          size="48px"
+        />
+        <ActionIcon
+          size="sm"
+          rounded="full"
+          variant="solid"
+          color="danger"
+          className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+        >
+          <ShoppingBagIcon className="w-4" />
+        </ActionIcon>
+      </div>
+      <div className="relative inline-flex">
+        <Avatar
+          src="https://randomuser.me/api/portraits/women/44.jpg"
+          size="48px"
+        />
+        <ActionIcon
+          size="sm"
+          rounded="full"
+          variant="solid"
+          color="success"
+          className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+        >
+          <CheckIcon />
+        </ActionIcon>
+      </div>
+    </>
+  );
 }
 ```
 
@@ -541,74 +648,74 @@ export default function App() {
 You can use **Avatar** component to create a group of avatars.
 
 <Paper>
-	<div className="relative my-4 flex">
-		<Avatar
-			size="42"
-			src="https://randomuser.me/api/portraits/women/40.jpg"
-			className="relative inline-flex  object-cover"
-		/>
-		<Avatar
-			size="42"
-			src="https://randomuser.me/api/portraits/women/41.jpg"
-			className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
-		/>
-		<Avatar
-			size="42"
-			src="https://randomuser.me/api/portraits/women/42.jpg"
-			className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
-		/>
-		<Avatar
-			size="42"
-			src="https://randomuser.me/api/portraits/women/43.jpg"
-			className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
-		/>
-		<Avatar
-			size="42"
-			src="https://randomuser.me/api/portraits/women/44.jpg"
-			className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
-		/>
-		<div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[45px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
-			+5
-		</div>
-	</div>
+  <div className="relative my-4 flex">
+    <Avatar
+      size="42"
+      src="https://randomuser.me/api/portraits/women/40.jpg"
+      className="relative inline-flex  object-cover"
+    />
+    <Avatar
+      size="42"
+      src="https://randomuser.me/api/portraits/women/41.jpg"
+      className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
+    />
+    <Avatar
+      size="42"
+      src="https://randomuser.me/api/portraits/women/42.jpg"
+      className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
+    />
+    <Avatar
+      size="42"
+      src="https://randomuser.me/api/portraits/women/43.jpg"
+      className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
+    />
+    <Avatar
+      size="42"
+      src="https://randomuser.me/api/portraits/women/44.jpg"
+      className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
+    />
+    <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[45px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
+      +5
+    </div>
+  </div>
 </Paper>
 
 ```tsx
-import { Avatar } from 'rizzui';
+import { Avatar } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Avatar
-				size="42"
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-				className="relative inline-flex  object-cover"
-			/>
-			<Avatar
-				size="42"
-				src="https://randomuser.me/api/portraits/women/41.jpg"
-				className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
-			/>
-			<Avatar
-				size="42"
-				src="https://randomuser.me/api/portraits/women/42.jpg"
-				className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
-			/>
-			<Avatar
-				size="42"
-				src="https://randomuser.me/api/portraits/women/43.jpg"
-				className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
-			/>
-			<Avatar
-				size="42"
-				src="https://randomuser.me/api/portraits/women/44.jpg"
-				className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
-			/>
-			<div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[45px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
-				+5
-			</div>
-		</>
-	);
+  return (
+    <>
+      <Avatar
+        size="42"
+        src="https://randomuser.me/api/portraits/women/40.jpg"
+        className="relative inline-flex  object-cover"
+      />
+      <Avatar
+        size="42"
+        src="https://randomuser.me/api/portraits/women/41.jpg"
+        className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
+      />
+      <Avatar
+        size="42"
+        src="https://randomuser.me/api/portraits/women/42.jpg"
+        className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
+      />
+      <Avatar
+        size="42"
+        src="https://randomuser.me/api/portraits/women/43.jpg"
+        className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
+      />
+      <Avatar
+        size="42"
+        src="https://randomuser.me/api/portraits/women/44.jpg"
+        className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
+      />
+      <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[45px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
+        +5
+      </div>
+    </>
+  );
 }
 ```
 
@@ -658,7 +765,7 @@ Here is the API documentation of the Avatar component. You can use props like `i
 ### Avatar Initials
 
 ```ts
-type AvatarInitials = 'string' | ((name: string, props: any) => string);
+type AvatarInitials = "string" | ((name: string, props: any) => string);
 ```
 
 <div className="mb-10" />
@@ -666,7 +773,7 @@ type AvatarInitials = 'string' | ((name: string, props: any) => string);
 ### Avatar Alt
 
 ```ts
-type AvatarAlt = 'string' | 'boolean';
+type AvatarAlt = "string" | "boolean";
 ```
 
 <div className="mb-10" />
@@ -674,7 +781,7 @@ type AvatarAlt = 'string' | 'boolean';
 ### Avatar Title
 
 ```ts
-type AvatarTitle = 'string' | 'boolean';
+type AvatarTitle = "string" | "boolean";
 ```
 
 <div className="mb-10" />
@@ -682,12 +789,12 @@ type AvatarTitle = 'string' | 'boolean';
 ### Avatar Round
 
 ```ts
-type AvatarRound = 'string' | 'boolean';
+type AvatarRound = "string" | "boolean";
 ```
 
 <div className="mb-10" />
 
-### Avatar Onclick
+### Avatar onClick
 
 ```ts
 type AvatarOnclick = (e: SyntheticEvent<any, Event>) => any;
@@ -698,5 +805,5 @@ type AvatarOnclick = (e: SyntheticEvent<any, Event>) => any;
 ### Avatar Rounded
 
 ```ts
-type AvatarRounded = 'sm' | 'lg' | 'none' | 'full' | 'md';
+type AvatarRounded = "sm" | "lg" | "none" | "full" | "md";
 ```
