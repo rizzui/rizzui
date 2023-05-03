@@ -11,12 +11,15 @@ import DatePicker, {
   CalendarWithTime,
   TimePicker,
   RangeDatePicker,
-} from '@site/src/components/date-picker';
-import Paper from '@site/src/components/paper';
+  DatePickerCustomInput,
+} from "@site/src/components/date-picker";
+import Paper from "@site/src/components/paper";
 
 # Datepicker
 
-We are using `react-datepicker` package for **Datepicker** component. Please follow their documentation for any query -> https://www.npmjs.com/package/react-datepicker
+A simple and reusable Datepicker component. We are using **react-datepicker** package for **Datepicker** component. Please follow their [**Official documentation**](https://www.npmjs.com/package/react-datepicker) for any query.
+
+<div className="mb-16" />
 
 ## Installation
 
@@ -24,7 +27,7 @@ We are using `react-datepicker` package for **Datepicker** component. Please fol
 
 1. Install the `react-datepicker` package from https://www.npmjs.com/package/react-datepicker and `@types/react-datepicker` package from https://www.npmjs.com/package/@types/react-datepicker
 
-<div className="mb-3" />
+<div className="mb-4" />
 
 ```tsx
 yarn add react-datepicker
@@ -34,47 +37,45 @@ yarn add @types/react-datepicker -D
 
 2. Copy and paste the following code into your project.
 
-<div className="mb-3" />
+<div className="mb-4" />
 
 ```ts
-import { useState } from 'react';
-import { cn, Input, InputProps } from 'rizzui';
-import ReactDatePicker from 'react-datepicker';
-import type { ReactDatePickerProps } from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { CalendarIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import { useState } from "react";
+import { cn, Input, InputProps } from "rizzui";
+import ReactDatePicker from "react-datepicker";
+import type { ReactDatePickerProps } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { CalendarIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 const calendarContainerClasses = {
-  base: '[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md',
+  base: "[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md",
   monthContainer: {
-    padding: '[&.react-datepicker>div]:pt-5 [&.react-datepicker>div]:pb-3',
+    padding: "[&.react-datepicker>div]:pt-5 [&.react-datepicker>div]:pb-3",
   },
 };
 
 const prevNextButtonClasses = {
-  base: '[&.react-datepicker>button]:items-baseline [&.react-datepicker>button]:top-7',
+  base: "[&.react-datepicker>button]:items-baseline [&.react-datepicker>button]:top-7",
   border:
-    '[&.react-datepicker>button]:border [&.react-datepicker>button]:border-solid [&.react-datepicker>button]:border-gray-300 [&.react-datepicker>button]:rounded-md',
-  size: '[&.react-datepicker>button]:h-[22px] [&.react-datepicker>button]:w-[22px]',
+    "[&.react-datepicker>button]:border [&.react-datepicker>button]:border-solid [&.react-datepicker>button]:border-gray-300 [&.react-datepicker>button]:rounded-md",
+  size: "[&.react-datepicker>button]:h-[22px] [&.react-datepicker>button]:w-[22px]",
   children: {
-    position: '[&.react-datepicker>button>span]:top-0',
+    position: "[&.react-datepicker>button>span]:top-0",
     border:
-      '[&.react-datepicker>button>span]:before:border-t-[1.5px] [&.react-datepicker>button>span]:before:border-r-[1.5px] [&.react-datepicker>button>span]:before:border-gray-400',
-    size: '[&.react-datepicker>button>span]:before:h-[7px] [&.react-datepicker>button>span]:before:w-[7px]',
+      "[&.react-datepicker>button>span]:before:border-t-[1.5px] [&.react-datepicker>button>span]:before:border-r-[1.5px] [&.react-datepicker>button>span]:before:border-gray-400",
+    size: "[&.react-datepicker>button>span]:before:h-[7px] [&.react-datepicker>button>span]:before:w-[7px]",
   },
 };
 
 const timeOnlyClasses = {
-  base: '[&.react-datepicker--time-only>div]:pr-0 [&.react-datepicker--time-only>div]:w-28',
+  base: "[&.react-datepicker--time-only>div]:pr-0 [&.react-datepicker--time-only>div]:w-28",
 };
 
 export interface DatePickerProps<selectsRange extends boolean | undefined>
-  extends Omit<ReactDatePickerProps, 'selectsRange' | 'onChange'> {
+  extends Omit<ReactDatePickerProps, "selectsRange" | "onChange"> {
   /** Pass function in onChange prop to handle selecting value */
   onChange(
-    date: selectsRange extends false | undefined
-      ? Date | null
-      : [Date | null, Date | null],
+    date: selectsRange extends false | undefined ? Date | null : [Date | null, Date | null],
     event: React.SyntheticEvent<any> | undefined
   ): void;
   /** Whether range selecting is enabled */
@@ -90,7 +91,7 @@ export interface DatePickerProps<selectsRange extends boolean | undefined>
 const DatePicker = ({
   customInput,
   showPopperArrow = false,
-  dateFormat = 'd MMMM yyyy',
+  dateFormat = "d MMMM yyyy",
   selectsRange = false,
   onCalendarOpen,
   onCalendarClose,
@@ -111,10 +112,7 @@ const DatePicker = ({
             prefix={<CalendarIcon className="w-5 h-5 text-gray-500" />}
             suffix={
               <ChevronDownIcon
-                className={cn(
-                  'h-4 w-4 text-gray-500 transition',
-                  isCalenderOpen && 'rotate-180'
-                )}
+                className={cn("h-4 w-4 text-gray-500 transition", isCalenderOpen && "rotate-180")}
               />
             }
             {...inputProps}
@@ -143,12 +141,13 @@ const DatePicker = ({
   );
 };
 
-DatePicker.displayName = 'DatePicker';
+DatePicker.displayName = "DatePicker";
 export default DatePicker;
 ```
 
 3. Copy and paste the following CSS code into your project CSS file.
-   <div className="mb-3" />
+
+<div className="mb-4" />
 
 ```ts
 /* ?React Datepicker Styling */
@@ -378,28 +377,28 @@ export default DatePicker;
 	}
 ```
 
-<div className="mt-20" />
+<div className="mb-16" />
 
 ## Usage
 
 <hr />
 
 ```tsx
-import { DatePicker } from '@components/data-picker';
+import { DatePicker } from "@components/data-picker";
 ```
 
-<div className="mb-12" />
+<div className="mb-16" />
 
-### Default
+## Default
 
 The default style of **DatePicker** component.
 
-<Paper>
+<Paper className="block">
   <DatePickerDefault />
 </Paper>
 
 ```tsx
-import { DatePicker } from '@components/data-picker';
+import { DatePicker } from "@components/data-picker";
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date>();
@@ -415,16 +414,16 @@ export default function App() {
 
 <div className="mb-16" />
 
-### Monthpicker
+## Monthpicker
 
 You can use the **DatePicker** component as a **Monthpicker**
 
-<Paper>
+<Paper className="block">
   <MonthPicker />
 </Paper>
 
 ```tsx
-import { DatePicker } from '@components/data-picker';
+import { DatePicker } from "@components/data-picker";
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date>();
@@ -445,16 +444,16 @@ export default function App() {
 
 <div className="mb-16" />
 
-### Yearpicker
+## Yearpicker
 
 You can use the **DatePicker** component as a **YearPicker**
 
-<Paper>
+<Paper className="block">
   <YearPicker />
 </Paper>
 
 ```tsx
-import { DatePicker } from '@components/data-picker';
+import { DatePicker } from "@components/data-picker";
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date>();
@@ -475,14 +474,14 @@ export default function App() {
 
 <div className="mb-16" />
 
-### Month Dropdown
+## Month Dropdown
 
-<Paper>
+<Paper className="block">
   <MonthDropdownPicker />
 </Paper>
 
 ```tsx
-import { DatePicker } from '@components/data-picker';
+import { DatePicker } from "@components/data-picker";
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date>();
@@ -502,14 +501,14 @@ export default function App() {
 
 <div className="mb-16" />
 
-### Year Dropdown
+## Year Dropdown
 
-<Paper>
+<Paper className="block">
   <YearDropdownPicker />
 </Paper>
 
 ```tsx
-import { DatePicker } from '@components/data-picker';
+import { DatePicker } from "@components/data-picker";
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date>();
@@ -530,14 +529,14 @@ export default function App() {
 
 <div className="mb-16" />
 
-### Calendar With Time
+## Calendar With Time
 
-<Paper>
+<Paper className="block">
   <CalendarWithTime />
 </Paper>
 
 ```tsx
-import { DatePicker } from '@components/data-picker';
+import { DatePicker } from "@components/data-picker";
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date>();
@@ -558,14 +557,14 @@ export default function App() {
 
 <div className="mb-16" />
 
-### Time Only
+## Time Only
 
-<Paper>
+<Paper className="block">
   <TimePicker />
 </Paper>
 
 ```tsx
-import { DatePicker } from '@components/data-picker';
+import { DatePicker } from "@components/data-picker";
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date>();
@@ -587,25 +586,22 @@ export default function App() {
 
 <div className="mb-16" />
 
-### Range Datepicker
+## Range Datepicker
 
-<Paper>
+<Paper className="block">
   <RangeDatePicker />
 </Paper>
 
 ```tsx
-import { DatePicker } from '@components/data-picker';
+import { DatePicker } from "@components/data-picker";
 
 export default function App() {
   const [starRangetDate, setStartRangeDate] = React.useState<Date | null>();
-
   const [endRangeDate, setEndRangeDate] = React.useState<Date | null>();
 
   const handleRangeChange = (dates: [Date | null, Date | null]) => {
     const [start, end] = dates;
-
     setStartRangeDate(start);
-
     setEndRangeDate(end);
   };
 
@@ -619,6 +615,50 @@ export default function App() {
         monthsShown={2}
         placeholderText="Select Date in a Range"
         selectsRange
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Custom Input with prefix and suffix
+
+<Paper className="block">
+  <DatePickerCustomInput />
+</Paper>
+
+```tsx
+import React from "react";
+import { DatePicker } from "@components/data-picker";
+import { CalendarIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+
+export default function App() {
+  const [isCalenderOpen, setIsCalenderOpen] = React.useState(false);
+  const [startDate, setStartDate] = React.useState<Date>();
+
+  return (
+    <div className="w-full h-96">
+      <DatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        placeholderText="Select Date"
+        onCalendarOpen={() => setIsCalenderOpen(true)}
+        onCalendarClose={() => setIsCalenderOpen(false)}
+        customInput={
+          <Input
+            variant="flat"
+            color="primary"
+            placeholder="This is custom input"
+            prefix={<CalendarIcon className="w-5 h-5 text-gray-500" />}
+            suffix={
+              <ChevronDownIcon
+                className={cn("h-4 w-4 text-gray-500 transition", isCalenderOpen && "rotate-180")}
+              />
+            }
+          />
+        }
       />
     </div>
   );
