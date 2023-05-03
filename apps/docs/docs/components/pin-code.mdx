@@ -2,50 +2,38 @@
 sidebar_position: 8
 ---
 
-import { PinCode } from "rizzui";
-import Paper from "@site/src/components/paper";
+import { PinCode } from 'rizzui';
+import Paper from '@site/src/components/paper';
 
 # PinCode
 
 A basic widget for getting pin code for verifications.
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 ```
 
 <div className="mb-28" />
 
 ## Types
 
-You can change types of input of **PinCode** with property **type**.
+You can change types of input of **PinCode** using **type** property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <PinCode
-    type="number"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    type="text"
-    setValue={function noRefCheck() {}}
-  />
+	<PinCode type="number" setValue={function noRefCheck() {}} />
+	<PinCode type="text" setValue={function noRefCheck() {}} />
 </Paper>
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <PinCode
-        type="number"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        type="text"
-        setValue={function noRefCheck() {}}
-      />
-    </>
-  );
+	return (
+		<>
+			<PinCode type="number" setValue={function noRefCheck() {}} />
+			<PinCode type="text" setValue={function noRefCheck() {}} />
+		</>
+	);
 }
 ```
 
@@ -53,43 +41,25 @@ export default function App() {
 
 ## Variants
 
-You can change style of **PinCode** with property [**variant**](#pincode-variants).
+We have three diffrient style. You can select any of them using [**variant**](#pincode-variants) property.
 
 <Paper className="flex-row flex-wrap justify-between gap-4">
-  <PinCode
-    variant="flat"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="outline"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="active"
-    setValue={function noRefCheck() {}}
-  />
+	<PinCode variant="flat" setValue={function noRefCheck() {}} />
+	<PinCode variant="outline" setValue={function noRefCheck() {}} />
+	<PinCode variant="active" setValue={function noRefCheck() {}} />
 </Paper>
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <PinCode
-        variant="flat"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="outline"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="active"
-        setValue={function noRefCheck() {}}
-      />
-    </>
-  );
+	return (
+		<>
+			<PinCode variant="flat" setValue={function noRefCheck() {}} />
+			<PinCode variant="outline" setValue={function noRefCheck() {}} />
+			<PinCode variant="active" setValue={function noRefCheck() {}} />
+		</>
+	);
 }
 ```
 
@@ -97,63 +67,41 @@ export default function App() {
 
 ## Sizes
 
-You can change style of **PinCode** with property [**size**](#pincode-sizes).
+You can set diffrient sizes of the **PinCode** using [**size**](#pincode-sizes) property.
 
 <Paper className="gap-6 justify-start items-start">
-  <PinCode
-    size="sm"
-    variant="flat"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    color="primary"
-    variant="flat"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    size="lg"
-    variant="flat"
-    color="secondary"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    size="xl"
-    variant="flat"
-    color="info"
-    setValue={function noRefCheck() {}}
-  />
+	<PinCode size="sm" setValue={function noRefCheck() {}} />
+	<PinCode color="primary" setValue={function noRefCheck() {}} />
+	<PinCode size="lg" setValue={function noRefCheck() {}} />
+	<PinCode size="xl" setValue={function noRefCheck() {}} />
 </Paper>
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <PinCode
-        size="sm"
-        variant="flat"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        color="primary"
-        variant="flat"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        size="lg"
-        variant="flat"
-        color="secondary"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        size="xl"
-        variant="flat"
-        color="info"
-        setValue={function noRefCheck() {}}
-      />
-    </>
-  );
+	return (
+		<>
+			<PinCode size="sm" variant="flat" setValue={function noRefCheck() {}} />
+			<PinCode
+				color="primary"
+				variant="flat"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode
+				size="lg"
+				variant="flat"
+				color="secondary"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode
+				size="xl"
+				variant="flat"
+				color="info"
+				setValue={function noRefCheck() {}}
+			/>
+		</>
+	);
 }
 ```
 
@@ -161,67 +109,45 @@ export default function App() {
 
 ## Rounded
 
-You can change style of **PinCode** with property [**rounded**](#pincode-rounded).
+You can change border radius of the **PinCode** using [**rounded**](#pincode-rounded) property.
 
 <Paper className="flex-row flex-wrap justify-around items-start gap-8">
-  <PinCode
-    variant="active"
-    rounded="sm"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="active"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="active"
-    rounded="lg"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="active"
-    rounded="none"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="active"
-    rounded="full"
-    setValue={function noRefCheck() {}}
-  />
+	<PinCode rounded="none" setValue={function noRefCheck() {}} />
+	<PinCode rounded="sm" setValue={function noRefCheck() {}} />
+	<PinCode setValue={function noRefCheck() {}} />
+	<PinCode rounded="lg" setValue={function noRefCheck() {}} />
+	<PinCode rounded="full" setValue={function noRefCheck() {}} />
 </Paper>
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <PinCode
-        variant="active"
-        rounded="sm"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="active"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="active"
-        rounded="lg"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="active"
-        rounded="none"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="active"
-        rounded="full"
-        setValue={function noRefCheck() {}}
-      />
-    </>
-  );
+	return (
+		<>
+			<PinCode
+				variant="active"
+				rounded="none"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode
+				variant="active"
+				rounded="sm"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode variant="active" setValue={function noRefCheck() {}} />
+			<PinCode
+				variant="active"
+				rounded="lg"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode
+				variant="active"
+				rounded="full"
+				setValue={function noRefCheck() {}}
+			/>
+		</>
+	);
 }
 ```
 
@@ -229,113 +155,61 @@ export default function App() {
 
 ## Colors
 
-You can change style of **PinCode** with property [**color**](#pincode-colors).
+You can change color of our **PinCode** using [**color**](#pincode-colors) property.
 
 <Paper className="flex-row flex-wrap justify-between items-start gap-8">
-  <PinCode
-    variant="flat"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="flat"
-    color="primary"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="flat"
-    color="secondary"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="flat"
-    color="danger"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="flat"
-    color="info"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="flat"
-    color="success"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    variant="flat"
-    color="warning"
-    setValue={function noRefCheck() {}}
-  />
+	<PinCode variant="flat" setValue={function noRefCheck() {}} />
+	<PinCode variant="flat" color="primary" setValue={function noRefCheck() {}} />
+	<PinCode
+		variant="flat"
+		color="secondary"
+		setValue={function noRefCheck() {}}
+	/>
+	<PinCode variant="flat" color="danger" setValue={function noRefCheck() {}} />
+	<PinCode variant="flat" color="info" setValue={function noRefCheck() {}} />
+	<PinCode variant="flat" color="success" setValue={function noRefCheck() {}} />
+	<PinCode variant="flat" color="warning" setValue={function noRefCheck() {}} />
 </Paper>
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <PinCode
-        variant="flat"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="primary"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="secondary"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="danger"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="info"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="success"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="warning"
-        setValue={function noRefCheck() {}}
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Disabled
-
-You can disable **PinCode** with property **disabled**.
-
-<Paper>
-  <PinCode
-    disabled
-    setValue={function noRefCheck() {}}
-  />
-</Paper>
-
-```tsx
-import { PinCode } from "rizzui";
-
-export default function App() {
-  return (
-    <PinCode
-      disabled
-      setValue={function noRefCheck() {}}
-    />
-  );
+	return (
+		<>
+			<PinCode variant="flat" setValue={function noRefCheck() {}} />
+			<PinCode
+				variant="flat"
+				color="primary"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode
+				variant="flat"
+				color="secondary"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode
+				variant="flat"
+				color="danger"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode
+				variant="flat"
+				color="info"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode
+				variant="flat"
+				color="success"
+				setValue={function noRefCheck() {}}
+			/>
+			<PinCode
+				variant="flat"
+				color="warning"
+				setValue={function noRefCheck() {}}
+			/>
+		</>
+	);
 }
 ```
 
@@ -343,27 +217,27 @@ export default function App() {
 
 ## With Mask
 
-You can change style of **PinCode** with property **mask**.
+You can hide pin code value using **mask** property.
 
 <Paper>
-  <PinCode
-    mask={true}
-    defaultValue={1234}
-    setValue={function noRefCheck() {}}
-  />
+	<PinCode
+		mask={true}
+		defaultValue={1234}
+		setValue={function noRefCheck() {}}
+	/>
 </Paper>
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 
 export default function App() {
-  return (
-    <PinCode
-      mask={true}
-      defaultValue={1234}
-      setValue={function noRefCheck() {}}
-    />
-  );
+	return (
+		<PinCode
+			mask={true}
+			defaultValue={1234}
+			setValue={function noRefCheck() {}}
+		/>
+	);
 }
 ```
 
@@ -371,25 +245,17 @@ export default function App() {
 
 ## With Placeholder
 
-You can change style of **PinCode** with property **placeholder**.
+You can set custom placeholder using **placeholder** property.
 
 <Paper>
-  <PinCode
-    placeholder="😀"
-    setValue={function noRefCheck() {}}
-  />
+	<PinCode placeholder="😀" setValue={function noRefCheck() {}} />
 </Paper>
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 
 export default function App() {
-  return (
-    <PinCode
-      placeholder="😀"
-      setValue={function noRefCheck() {}}
-    />
-  );
+	return <PinCode placeholder="😀" setValue={function noRefCheck() {}} />;
 }
 ```
 
@@ -397,63 +263,69 @@ export default function App() {
 
 ## With Length
 
-You can change style of **PinCode** with property **length**.
+You can set custom length of the **PinCode** using **length** property.
 
 <Paper className="justify-around flex-row gap-8 flex-wrap">
-  <PinCode
-    length={4}
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode
-    length={5}
-    setValue={function noRefCheck() {}}
-  />
+	<PinCode length={4} setValue={function noRefCheck() {}} />
+	<PinCode length={5} setValue={function noRefCheck() {}} />
 </Paper>
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <PinCode
-        length={4}
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        length={5}
-        setValue={function noRefCheck() {}}
-      />
-    </>
-  );
+	return (
+		<>
+			<PinCode length={4} setValue={function noRefCheck() {}} />
+			<PinCode length={5} setValue={function noRefCheck() {}} />
+		</>
+	);
 }
 ```
 
 <div className="mb-16" />
 
-## With Error
+## Disabled
 
-You can set error message to **PinCode** with property **error**.
+You can disable the **PinCode** using **disabled** property.
 
 <Paper>
-  <PinCode
-    center={false}
-    error="This field is required"
-    setValue={function noRefCheck() {}}
-  />
+	<PinCode disabled setValue={function noRefCheck() {}} />
 </Paper>
 
 ```tsx
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui';
 
 export default function App() {
-  return (
-    <PinCode
-      center={false}
-      error="This field is required"
-      setValue={function noRefCheck() {}}
-    />
-  );
+	return <PinCode disabled setValue={function noRefCheck() {}} />;
+}
+```
+
+<div className="mb-16" />
+
+## With Error Message
+
+You can set error message to the **PinCode** using **error** property.
+
+<Paper>
+	<PinCode
+		center={false}
+		error="This field is required"
+		setValue={function noRefCheck() {}}
+	/>
+</Paper>
+
+```tsx
+import { PinCode } from 'rizzui';
+
+export default function App() {
+	return (
+		<PinCode
+			center={false}
+			error="This field is required"
+			setValue={function noRefCheck() {}}
+		/>
+	);
 }
 ```
 
@@ -498,7 +370,7 @@ type PincodeSetvalue = Dispatch<SetStateAction<string | number | undefined>>;
 ### Pincode Variants
 
 ```tsx
-type PincodeVariants = "flat" | "outline" | "active";
+type PincodeVariants = 'flat' | 'outline' | 'active';
 ```
 
 <div className="mb-10" />
@@ -506,7 +378,7 @@ type PincodeVariants = "flat" | "outline" | "active";
 ### Pincode Sizes
 
 ```tsx
-type PincodeSizes = "sm" | "DEFAULT" | "lg" | "xl";
+type PincodeSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 ```
 
 <div className="mb-10" />
@@ -514,7 +386,7 @@ type PincodeSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ### Pincode Rounded
 
 ```tsx
-type PincodeRounded = "sm" | "DEFAULT" | "lg" | "none" | "full";
+type PincodeRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'full';
 ```
 
 <div className="mb-10" />
@@ -523,11 +395,11 @@ type PincodeRounded = "sm" | "DEFAULT" | "lg" | "none" | "full";
 
 ```ts
 type PincodeColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
 ```

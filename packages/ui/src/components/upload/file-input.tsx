@@ -35,7 +35,7 @@ const fileInputClasses = {
   },
   variant: {
     active: {
-      base: 'border bg-gray-0 [&.is-focus]:ring-[0.6px] [&_input]:placeholder:opacity-70',
+      base: 'border bg-gray-0 [&.is-focus]:ring-[0.6px] [&_input::placeholder]:opacity-70',
       color: {
         DEFAULT:
           'border-gray-900 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000 text-gray-1000',
@@ -53,10 +53,10 @@ const fileInputClasses = {
       },
     },
     flat: {
-      base: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 [&_input]:placeholder:opacity-80',
+      base: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 [&_input::placeholder]:opacity-80',
       color: {
         DEFAULT:
-          'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-1000 [&_input]:placeholder:text-gray-600',
+          'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-1000 [&_input::placeholder]:text-gray-600',
         primary:
           'bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
         secondary:
@@ -70,7 +70,7 @@ const fileInputClasses = {
       },
     },
     outline: {
-      base: 'bg-transparent [&.is-focus]:ring-[0.6px] border border-gray-300 [&_input]:placeholder:text-gray-500',
+      base: 'bg-transparent [&.is-focus]:ring-[0.6px] border border-gray-300 [&_input::placeholder]:text-gray-500',
       color: {
         DEFAULT:
           'hover:border-gray-1000 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000',
@@ -88,10 +88,10 @@ const fileInputClasses = {
       },
     },
     text: {
-      base: 'border-0 [&.is-focus]:ring-2 bg-transparent [&_input]:placeholder:opacity-70',
+      base: 'border-0 [&.is-focus]:ring-2 bg-transparent [&_input::placeholder]:opacity-70',
       color: {
         DEFAULT:
-          'hover:text-gray-1000 [&.is-focus]:ring-gray-900/20 [&_input]:placeholder:text-gray-500',
+          'hover:text-gray-1000 [&.is-focus]:ring-gray-900/20 [&_input::placeholder]:text-gray-500',
         primary:
           'hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
         secondary:
@@ -155,7 +155,7 @@ export interface FileInputProps
   /** The rounded variants are: */
   rounded?: keyof typeof fileInputClasses.rounded;
   /** Change input color */
-  color?: keyof typeof fileInputClasses.variant['active']['color'];
+  color?: keyof (typeof fileInputClasses.variant)['active']['color'];
   /** Set input placeholder text */
   placeholder?: string;
   /** Whether the input is disabled */
@@ -281,6 +281,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
                 disabled && inputFieldClasses.disabled,
                 clearable && inputFieldClasses.clearable
               )}
+              style={{ fontSize: 'inherit' }}
               {...inputProps}
             />
             {clearable && <ClearButton size={size} onClick={handleOnClear} />}

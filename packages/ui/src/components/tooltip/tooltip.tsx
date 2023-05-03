@@ -44,8 +44,8 @@ const tooltipClasses = {
   },
   arrow: {
     color: {
-      DEFAULT: 'fill-gray-0 [&>path]:stroke-gray-300',
-      invert: 'fill-gray-900',
+      DEFAULT: 'fill-gray-900',
+      invert: 'fill-gray-0 [&>path]:stroke-gray-300',
       primary: 'fill-primary',
       secondary: 'fill-secondary',
       danger: 'fill-red',
@@ -58,8 +58,8 @@ const tooltipClasses = {
     solid: {
       base: '',
       color: {
-        DEFAULT: 'bg-gray-0 !text-gray-900 border border-gray-300',
-        invert: 'text-gray-0 bg-gray-900',
+        DEFAULT: 'text-gray-0 bg-gray-900',
+        invert: 'bg-gray-0 !text-gray-900 border border-gray-300',
         primary: 'text-white bg-primary',
         secondary: 'text-white bg-secondary',
         danger: 'text-white bg-red',

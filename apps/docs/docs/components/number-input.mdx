@@ -2,21 +2,21 @@
 sidebar_position: 15
 ---
 
-import Paper from "@site/src/components/paper";
+import Paper from '@site/src/components/paper';
 import NumberInputDefault, {
-  NumberInputCardExpiry,
-  NumberInputPhoneNumber,
-  NumberInputWithGap,
-  NumberInputClearable,
-  NumberInputWithNoGap,
-} from "@site/src/components/number-input";
+	NumberInputCardExpiry,
+	NumberInputPhoneNumber,
+	NumberInputWithGap,
+	NumberInputClearable,
+	NumberInputWithNoGap,
+} from '@site/src/components/number-input';
 
 # NumberInput
 
 A component for getting the user number input in a formatted way.
 
 ```tsx
-import { NumberInput } from "rizzui";
+import { NumberInput } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -26,25 +26,25 @@ import { NumberInput } from "rizzui";
 The default style of **NumberInput**.
 
 <Paper className="block">
-  <NumberInputDefault
-    label="NumberInput"
-    placeholder="Type your number"
-    formatType="numeric"
-  />
+	<NumberInputDefault
+		label="NumberInput"
+		placeholder="Type your number"
+		formatType="numeric"
+	/>
 </Paper>
 
 ```tsx
-import { NumberInput, Input } from "rizzui";
+import { NumberInput, Input } from 'rizzui';
 
 export default function App() {
-  return (
-    <NumberInput
-      label="NumberInput"
-      formatType="numeric"
-      placeholder="Type your number"
-      customInput={Input as React.ComponentType<unknown>}
-    />
-  );
+	return (
+		<NumberInput
+			label="NumberInput"
+			formatType="numeric"
+			placeholder="Type your number"
+			customInput={Input as React.ComponentType<unknown>}
+		/>
+	);
 }
 ```
 
@@ -55,31 +55,31 @@ export default function App() {
 You can change the style of **NumberInput** with property **prefix** & **suffix**.
 
 <Paper className="block">
-  <NumberInputDefault
-    label="Your Number"
-    formatType="numeric"
-    value="20000000"
-    suffix=".00"
-    prefix="$"
-    displayType="input"
-  />
+	<NumberInputDefault
+		label="Your Number"
+		formatType="numeric"
+		value="20000000"
+		suffix=".00"
+		prefix="$"
+		displayType="input"
+	/>
 </Paper>
 
 ```tsx
-import { NumberInput, Input } from "rizzui";
+import { NumberInput, Input } from 'rizzui';
 
 export default function App() {
-  return (
-    <NumberInput
-      label="Your Number"
-      formatType="numeric"
-      value="20000000"
-      suffix=".00"
-      prefix="$"
-      displayType="input"
-      customInput={Input as React.ComponentType<unknown>}
-    />
-  );
+	return (
+		<NumberInput
+			label="Your Number"
+			formatType="numeric"
+			value="20000000"
+			suffix=".00"
+			prefix="$"
+			displayType="input"
+			customInput={Input as React.ComponentType<unknown>}
+		/>
+	);
 }
 ```
 
@@ -90,29 +90,29 @@ export default function App() {
 You can change the style of **NumberInput** with property **thousandSeparator**.
 
 <Paper className="block">
-  <NumberInputDefault
-    label="Your Number"
-    formatType="numeric"
-    value="20000000"
-    displayType="input"
-    thousandSeparator=","
-  />
+	<NumberInputDefault
+		label="Your Number"
+		formatType="numeric"
+		value="20000000"
+		displayType="input"
+		thousandSeparator=","
+	/>
 </Paper>
 
 ```tsx
-import { NumberInput, Input } from "rizzui";
+import { NumberInput, Input } from 'rizzui';
 
 export default function App() {
-  return (
-    <NumberInput
-      label="Your Number"
-      formatType="numeric"
-      value="20000000"
-      displayType="input"
-      customInput={Input as React.ComponentType<unknown>}
-      thousandSeparator=","
-    />
-  );
+	return (
+		<NumberInput
+			label="Your Number"
+			formatType="numeric"
+			value="20000000"
+			displayType="input"
+			customInput={Input as React.ComponentType<unknown>}
+			thousandSeparator=","
+		/>
+	);
 }
 ```
 
@@ -123,84 +123,84 @@ export default function App() {
 You can change the style of **NumberInput** with property **thousandsGroupStyle**.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-  <NumberInputDefault
-    label="Your Number"
-    formatType="numeric"
-    value="20000000"
-    displayType="input"
-    thousandSeparator=","
-    thousandsGroupStyle="none"
-  />
-  <NumberInputDefault
-    label="Your Number"
-    formatType="numeric"
-    value="20000000"
-    displayType="input"
-    thousandSeparator=","
-    thousandsGroupStyle="thousand"
-  />
-  <NumberInputDefault
-    label="Your Number"
-    formatType="numeric"
-    value="20000000"
-    displayType="input"
-    thousandSeparator=","
-    thousandsGroupStyle="lakh"
-  />
-  <NumberInputDefault
-    label="Your Number"
-    formatType="numeric"
-    value="20000000"
-    displayType="input"
-    thousandSeparator=","
-    thousandsGroupStyle="wan"
-  />
+	<NumberInputDefault
+		label="Your Number"
+		formatType="numeric"
+		value="20000000"
+		displayType="input"
+		thousandSeparator=","
+		thousandsGroupStyle="none"
+	/>
+	<NumberInputDefault
+		label="Your Number"
+		formatType="numeric"
+		value="20000000"
+		displayType="input"
+		thousandSeparator=","
+		thousandsGroupStyle="thousand"
+	/>
+	<NumberInputDefault
+		label="Your Number"
+		formatType="numeric"
+		value="20000000"
+		displayType="input"
+		thousandSeparator=","
+		thousandsGroupStyle="lakh"
+	/>
+	<NumberInputDefault
+		label="Your Number"
+		formatType="numeric"
+		value="20000000"
+		displayType="input"
+		thousandSeparator=","
+		thousandsGroupStyle="wan"
+	/>
 </Paper>
 
 ```tsx
-import { NumberInput, Input } from "rizzui";
+import { NumberInput, Input } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <NumberInput
-        label="Your Number"
-        formatType="numeric"
-        value="20000000"
-        displayType="input"
-        thousandSeparator=","
-        thousandsGroupStyle="none"
-        customInput={Input as React.ComponentType<unknown>}
-      />
-      <NumberInput
-        label="Your Number"
-        formatType="numeric"
-        value="20000000"
-        displayType="input"
-        thousandSeparator=","
-        thousandsGroupStyle="thousand"
-        customInput={Input as React.ComponentType<unknown>}
-      />
-      <NumberInput
-        label="Your Number"
-        formatType="numeric"
-        value="20000000"
-        displayType="input"
-        thousandSeparator=","
-        thousandsGroupStyle="lakh"
-        customInput={Input as React.ComponentType<unknown>}
-      />
-      <NumberInput
-        label="Your Number"
-        formatType="numeric"
-        value="20000000"
-        displayType="input"
-        thousandSeparator=","
-        thousandsGroupStyle="wan"
-        customInput={Input as React.ComponentType<unknown>}
-      />
-    </>
-  );
+	return (
+		<>
+			<NumberInput
+				label="Your Number"
+				formatType="numeric"
+				value="20000000"
+				displayType="input"
+				thousandSeparator=","
+				thousandsGroupStyle="none"
+				customInput={Input as React.ComponentType<unknown>}
+			/>
+			<NumberInput
+				label="Your Number"
+				formatType="numeric"
+				value="20000000"
+				displayType="input"
+				thousandSeparator=","
+				thousandsGroupStyle="thousand"
+				customInput={Input as React.ComponentType<unknown>}
+			/>
+			<NumberInput
+				label="Your Number"
+				formatType="numeric"
+				value="20000000"
+				displayType="input"
+				thousandSeparator=","
+				thousandsGroupStyle="lakh"
+				customInput={Input as React.ComponentType<unknown>}
+			/>
+			<NumberInput
+				label="Your Number"
+				formatType="numeric"
+				value="20000000"
+				displayType="input"
+				thousandSeparator=","
+				thousandsGroupStyle="wan"
+				customInput={Input as React.ComponentType<unknown>}
+			/>
+		</>
+	);
 }
 ```
 
@@ -211,66 +211,61 @@ export default function App() {
 You can change the style of **NumberInput** with property **clearable** & **mask**.
 
 <Paper className="block">
-  <NumberInputClearable />
+	<NumberInputClearable />
 </Paper>
 
 ```tsx
-import React from "react";
-import { NumberInput, Input, usePatternFormat, NumberInputProps } from "rizzui";
+import React from 'react';
+import { NumberInput, Input, usePatternFormat, NumberInputProps } from 'rizzui';
 
 type CardExpiryType = NumberInputProps & {
-  isMask?: boolean;
+	isMask?: boolean;
 };
 
 function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
-  const { format } = usePatternFormat({
-    ...props,
-    format: "##/##",
-  });
+	const { format } = usePatternFormat({
+		...props,
+		format: '##/##',
+	});
 
-  const _format = (val: string) => {
-    let month = val.substring(0, 2);
-    const year = val.substring(2, 4);
+	const _format = (val: string) => {
+		let month = val.substring(0, 2);
+		const year = val.substring(2, 4);
 
-    if (month.length === 1 && parseInt(month[0]) > 1) {
-      month = `0${month[0]}`;
-    } else if (month.length === 2) {
-      if (Number(month) === 0) {
-        month = `01`;
-      } else if (Number(month) > 12) {
-        month = "12";
-      }
-    }
-    return isMask ? format(`${month}${year}`) : `${month}/${year}`;
-  };
+		if (month.length === 1 && parseInt(month[0]) > 1) {
+			month = `0${month[0]}`;
+		} else if (month.length === 2) {
+			if (Number(month) === 0) {
+				month = `01`;
+			} else if (Number(month) > 12) {
+				month = '12';
+			}
+		}
+		return isMask ? format(`${month}${year}`) : `${month}/${year}`;
+	};
 
-  return (
-    <NumberInput
-      {...props}
-      format={_format}
-    />
-  );
+	return <NumberInput {...props} format={_format} />;
 }
 
 export default function App() {
-  const [inputValue, setInputValue] = React.useState("");
+	const [inputValue, setInputValue] = React.useState('');
 
-  return (
-    <CardExpiry
-      isMask={true}
-      formatType="custom"
-      mask="_"
-      allowEmptyFormatting
-      customInput={Input as React.ComponentType<unknown>}
-      {...{
-        value: inputValue,
-        onChange: (e) => setInputValue(e.target.value),
-        clearable: true,
-        onClear: () => setInputValue(""),
-        label: "Clearable",
-      }}
-    />
-  );
+	return (
+		<CardExpiry
+			isMask={true}
+			formatType="custom"
+			mask="_"
+			allowEmptyFormatting
+			customInput={Input as React.ComponentType<unknown>}
+			{...{
+				value: inputValue,
+				onChange: (e) => setInputValue(e.target.value),
+				clearable: true,
+				onClear: () => setInputValue(''),
+				label: 'Clearable',
+			}}
+		/>
+	);
 }
 ```
 
@@ -281,46 +276,46 @@ export default function App() {
 You can change the style of **NumberInput** with property **mask**.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-  <NumberInputDefault
-    mask="~"
-    value="411111"
-    formatType="pattern"
-    label="Number Input"
-    format="#### #### #### ####"
-  />
-  <NumberInputDefault
-    mask="+"
-    value="411111"
-    formatType="pattern"
-    label="Number Input"
-    format="#### #### #### ####"
-  />
+	<NumberInputDefault
+		mask="~"
+		value="411111"
+		formatType="pattern"
+		label="Number Input"
+		format="#### #### #### ####"
+	/>
+	<NumberInputDefault
+		mask="+"
+		value="411111"
+		formatType="pattern"
+		label="Number Input"
+		format="#### #### #### ####"
+	/>
 </Paper>
 
 ```tsx
-import { NumberInput, Input } from "rizzui";
+import { NumberInput, Input } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <NumberInput
-        mask="~"
-        value="411111"
-        formatType="pattern"
-        label="Number Input"
-        format="#### #### #### ####"
-        customInput={Input as React.ComponentType<unknown>}
-      />
-      <NumberInput
-        mask="+"
-        value="411111"
-        formatType="pattern"
-        label="Number Input"
-        format="#### #### #### ####"
-        customInput={Input as React.ComponentType<unknown>}
-      />
-    </>
-  );
+	return (
+		<>
+			<NumberInput
+				mask="~"
+				value="411111"
+				formatType="pattern"
+				label="Number Input"
+				format="#### #### #### ####"
+				customInput={Input as React.ComponentType<unknown>}
+			/>
+			<NumberInput
+				mask="+"
+				value="411111"
+				formatType="pattern"
+				label="Number Input"
+				format="#### #### #### ####"
+				customInput={Input as React.ComponentType<unknown>}
+			/>
+		</>
+	);
 }
 ```
 
@@ -331,29 +326,29 @@ export default function App() {
 You can change the style of **NumberInput** with property **format** & **mask**.
 
 <Paper className="block">
-  <NumberInputDefault
-    mask="_"
-    value="411111"
-    formatType="pattern"
-    label="Credit Card Number"
-    format="#### #### #### ####"
-  />
+	<NumberInputDefault
+		mask="_"
+		value="411111"
+		formatType="pattern"
+		label="Credit Card Number"
+		format="#### #### #### ####"
+	/>
 </Paper>
 
 ```tsx
-import { NumberInput, Input } from "rizzui";
+import { NumberInput, Input } from 'rizzui';
 
 export default function App() {
-  return (
-    <NumberInput
-      mask="_"
-      value="411111"
-      formatType="pattern"
-      label="Credit Card Number"
-      format="#### #### #### ####"
-      customInput={Input as React.ComponentType<unknown>}
-    />
-  );
+	return (
+		<NumberInput
+			mask="_"
+			value="411111"
+			formatType="pattern"
+			label="Credit Card Number"
+			format="#### #### #### ####"
+			customInput={Input as React.ComponentType<unknown>}
+		/>
+	);
 }
 ```
 
@@ -364,23 +359,23 @@ export default function App() {
 You can change the style of **NumberInput** as phone number input.
 
 <Paper className="block">
-  <NumberInputPhoneNumber />
+	<NumberInputPhoneNumber />
 </Paper>
 
 ```tsx
-import { NumberInput, Input, usePatternFormat, NumberInputProps } from "rizzui";
+import { NumberInput, Input, usePatternFormat, NumberInputProps } from 'rizzui';
 
 export default function App() {
-  return (
-    <NumberInput
-      formatType="pattern"
-      format="+1 (###) ###-####"
-      allowEmptyFormatting
-      mask="_"
-      customInput={Input as React.ComponentType<unknown>}
-      {...{ label: "US Phone Number" }}
-    />
-  );
+	return (
+		<NumberInput
+			formatType="pattern"
+			format="+1 (###) ###-####"
+			allowEmptyFormatting
+			mask="_"
+			customInput={Input as React.ComponentType<unknown>}
+			{...{ label: 'US Phone Number' }}
+		/>
+	);
 }
 ```
 
@@ -391,76 +386,71 @@ export default function App() {
 You can use credit card input of **NumberInput** with gap.
 
 <Paper className="block">
-  <NumberInputWithGap />
+	<NumberInputWithGap />
 </Paper>
 
 ```tsx
-import { NumberInput, Input, usePatternFormat, NumberInputProps } from "rizzui";
+import { NumberInput, Input, usePatternFormat, NumberInputProps } from 'rizzui';
 
 type CardExpiryType = NumberInputProps & {
-  isMask?: boolean;
+	isMask?: boolean;
 };
 
 export default function App() {
-  function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
-    const { format } = usePatternFormat({
-      ...props,
-      format: "##/##",
-    });
-    const _format = (val: string) => {
-      let month = val.substring(0, 2);
-      const year = val.substring(2, 4);
+	function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
+		const { format } = usePatternFormat({
+			...props,
+			format: '##/##',
+		});
+		const _format = (val: string) => {
+			let month = val.substring(0, 2);
+			const year = val.substring(2, 4);
 
-      if (month.length === 1 && parseInt(month[0]) > 1) {
-        month = `0${month[0]}`;
-      } else if (month.length === 2) {
-        if (Number(month) === 0) {
-          month = "01";
-        } else if (Number(month) > 12) {
-          month = "12";
-        }
-      }
-      return isMask ? format(`${month}${year}`) : `${month}/${year}`;
-    };
-    return (
-      <NumberInput
-        {...props}
-        format={_format}
-      />
-    );
-  }
+			if (month.length === 1 && parseInt(month[0]) > 1) {
+				month = `0${month[0]}`;
+			} else if (month.length === 2) {
+				if (Number(month) === 0) {
+					month = '01';
+				} else if (Number(month) > 12) {
+					month = '12';
+				}
+			}
+			return isMask ? format(`${month}${year}`) : `${month}/${year}`;
+		};
+		return <NumberInput {...props} format={_format} />;
+	}
 
-  return (
-    <div className="flex flex-col gap-2">
-      <NumberInput
-        formatType="pattern"
-        format="#### #### #### ####"
-        value="411111"
-        mask="_"
-        customInput={Input as React.ComponentType<unknown>}
-        {...{ label: "Outline", variant: "outline" }}
-      />
-      <div className="grid grid-cols-2 gap-2">
-        <CardExpiry
-          isMask
-          formatType="custom"
-          placeholder="MM/YY"
-          mask={["M", "M", "Y", "Y"]}
-          allowEmptyFormatting
-          customInput={Input as React.ComponentType<unknown>}
-          {...{ variant: "outline" }}
-        />
-        <NumberInput
-          formatType="pattern"
-          format="###"
-          mask={["C", "V", "C"]}
-          allowEmptyFormatting
-          customInput={Input as React.ComponentType<unknown>}
-          {...{ variant: "outline" }}
-        />
-      </div>
-    </div>
-  );
+	return (
+		<div className="flex flex-col gap-2">
+			<NumberInput
+				formatType="pattern"
+				format="#### #### #### ####"
+				value="411111"
+				mask="_"
+				customInput={Input as React.ComponentType<unknown>}
+				{...{ label: 'Outline', variant: 'outline' }}
+			/>
+			<div className="grid grid-cols-2 gap-2">
+				<CardExpiry
+					isMask
+					formatType="custom"
+					placeholder="MM/YY"
+					mask={['M', 'M', 'Y', 'Y']}
+					allowEmptyFormatting
+					customInput={Input as React.ComponentType<unknown>}
+					{...{ variant: 'outline' }}
+				/>
+				<NumberInput
+					formatType="pattern"
+					format="###"
+					mask={['C', 'V', 'C']}
+					allowEmptyFormatting
+					customInput={Input as React.ComponentType<unknown>}
+					{...{ variant: 'outline' }}
+				/>
+			</div>
+		</div>
+	);
 }
 ```
 
@@ -471,89 +461,84 @@ export default function App() {
 You can use credit card input of **NumberInput** without gap.
 
 <Paper className="block">
-  <NumberInputWithNoGap />
+	<NumberInputWithNoGap />
 </Paper>
 
 ```tsx
-import { NumberInput, Input, usePatternFormat, NumberInputProps } from "rizzui";
+import { NumberInput, Input, usePatternFormat, NumberInputProps } from 'rizzui';
 
 type CardExpiryType = NumberInputProps & {
-  isMask?: boolean;
+	isMask?: boolean;
 };
 
 export default function App() {
-  function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
-    const { format } = usePatternFormat({
-      ...props,
-      format: "##/##",
-    });
-    const _format = (val: string) => {
-      let month = val.substring(0, 2);
-      const year = val.substring(2, 4);
+	function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
+		const { format } = usePatternFormat({
+			...props,
+			format: '##/##',
+		});
+		const _format = (val: string) => {
+			let month = val.substring(0, 2);
+			const year = val.substring(2, 4);
 
-      if (month.length === 1 && parseInt(month[0]) > 1) {
-        month = `0${month[0]}`;
-      } else if (month.length === 2) {
-        if (Number(month) === 0) {
-          month = "01";
-        } else if (Number(month) > 12) {
-          month = "12";
-        }
-      }
-      return isMask ? format(`${month}${year}`) : `${month}/${year}`;
-    };
-    return (
-      <NumberInput
-        {...props}
-        format={_format}
-      />
-    );
-  }
+			if (month.length === 1 && parseInt(month[0]) > 1) {
+				month = `0${month[0]}`;
+			} else if (month.length === 2) {
+				if (Number(month) === 0) {
+					month = '01';
+				} else if (Number(month) > 12) {
+					month = '12';
+				}
+			}
+			return isMask ? format(`${month}${year}`) : `${month}/${year}`;
+		};
+		return <NumberInput {...props} format={_format} />;
+	}
 
-  return (
-    <div className="flex flex-col">
-      <NumberInput
-        formatType="pattern"
-        format="#### #### #### ####"
-        value="411111"
-        mask="_"
-        customInput={Input as React.ComponentType<unknown>}
-        {...{
-          label: "Outline",
-          variant: "outline",
-          inputClassName:
-            "border-b-0 rounded-b-none hover:border-b hover:rounded-b focus:border-b focus:rounded-b",
-        }}
-      />
-      <div className="grid grid-cols-2">
-        <CardExpiry
-          isMask
-          formatType="custom"
-          placeholder="MM/YY"
-          mask={["M", "M", "Y", "Y"]}
-          allowEmptyFormatting
-          customInput={Input as React.ComponentType<unknown>}
-          {...{
-            variant: "outline",
-            inputClassName:
-              "rounded-t-none rounded-br-none hover:rounded-t hover:rounded-br focus:rounded-t focus:rounded-br",
-          }}
-        />
-        <NumberInput
-          formatType="pattern"
-          format="###"
-          mask={["C", "V", "C"]}
-          allowEmptyFormatting
-          customInput={Input as React.ComponentType<unknown>}
-          {...{
-            variant: "outline",
-            inputClassName:
-              "rounded-t-none rounded-bl-none border-l-0 hover:rounded-t hover:rounded-bl hover:border-l focus:rounded-t focus:rounded-bl focus:border-l",
-          }}
-        />
-      </div>
-    </div>
-  );
+	return (
+		<div className="flex flex-col">
+			<NumberInput
+				formatType="pattern"
+				format="#### #### #### ####"
+				value="411111"
+				mask="_"
+				customInput={Input as React.ComponentType<unknown>}
+				{...{
+					label: 'Outline',
+					variant: 'outline',
+					inputClassName:
+						'border-b-0 rounded-b-none hover:border-b hover:rounded-b focus:border-b focus:rounded-b',
+				}}
+			/>
+			<div className="grid grid-cols-2">
+				<CardExpiry
+					isMask
+					formatType="custom"
+					placeholder="MM/YY"
+					mask={['M', 'M', 'Y', 'Y']}
+					allowEmptyFormatting
+					customInput={Input as React.ComponentType<unknown>}
+					{...{
+						variant: 'outline',
+						inputClassName:
+							'rounded-t-none rounded-br-none hover:rounded-t hover:rounded-br focus:rounded-t focus:rounded-br',
+					}}
+				/>
+				<NumberInput
+					formatType="pattern"
+					format="###"
+					mask={['C', 'V', 'C']}
+					allowEmptyFormatting
+					customInput={Input as React.ComponentType<unknown>}
+					{...{
+						variant: 'outline',
+						inputClassName:
+							'rounded-t-none rounded-bl-none border-l-0 hover:rounded-t hover:rounded-bl hover:border-l focus:rounded-t focus:rounded-bl focus:border-l',
+					}}
+				/>
+			</div>
+		</div>
+	);
 }
 ```
 
@@ -568,8 +553,6 @@ export default function App() {
 ### NumberInput Props
 
 Here is the API documentation of the NumberInput component. We used **react-number-format** package to build the NumberInput component. See their [**official documentation**](https://s-yadav.github.io/react-number-format/docs/intro/) for more info.
-
-We used our **Input** component as input component of **NumberInput**. So you can use props like **variant**, **rounded**, **color** props to number input. You can follow the apis for more details.
 
 |          Props           |                                  Type                                   |                                              Description                                              |   Default   |
 | :----------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :---------: |
@@ -617,7 +600,7 @@ We used our **Input** component as input component of **NumberInput**. So you ca
 ### Number Input Types
 
 ```tsx
-type NumberInputTypes = "text" | "tel" | "password";
+type NumberInputTypes = 'text' | 'tel' | 'password';
 ```
 
 <div className="mb-10" />
@@ -625,7 +608,7 @@ type NumberInputTypes = "text" | "tel" | "password";
 ### Number Input Values
 
 ```tsx
-type NumberInputValues = "string" | "number" | "null";
+type NumberInputValues = 'string' | 'number' | 'null';
 ```
 
 <div className="mb-10" />
@@ -633,7 +616,7 @@ type NumberInputValues = "string" | "number" | "null";
 ### Number Input DefaultValues
 
 ```tsx
-type NumberInputDefaultValues = "string" | "number" | "null";
+type NumberInputDefaultValues = 'string' | 'number' | 'null';
 ```
 
 <div className="mb-10" />
@@ -641,7 +624,7 @@ type NumberInputDefaultValues = "string" | "number" | "null";
 ### Number Input Variants
 
 ```tsx
-type NumberInputVariants = "active" | "flat" | "outline" | "text";
+type NumberInputVariants = 'active' | 'flat' | 'outline' | 'text';
 ```
 
 <div className="mb-10" />
@@ -649,7 +632,7 @@ type NumberInputVariants = "active" | "flat" | "outline" | "text";
 ### Number Input Sizes
 
 ```tsx
-type NumberInputSizes = "sm" | "DEFAULT" | "lg" | "xl";
+type NumberInputSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 ```
 
 <div className="mb-10" />
@@ -657,7 +640,7 @@ type NumberInputSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ### Number Input Rounded
 
 ```tsx
-type NumberInputRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
+type NumberInputRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
 ```
 
 <div className="mb-10" />
@@ -666,13 +649,13 @@ type NumberInputRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
 
 ```tsx
 type NumberInputColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
 ```
 
 <div className="mb-10" />
@@ -681,14 +664,14 @@ type NumberInputColors =
 
 ```tsx
 type NumberInputModes =
-  | "text"
-  | "none"
-  | "email"
-  | "tel"
-  | "search"
-  | "url"
-  | "numeric"
-  | "decimal";
+	| 'text'
+	| 'none'
+	| 'email'
+	| 'tel'
+	| 'search'
+	| 'url'
+	| 'numeric'
+	| 'decimal';
 ```
 
 <div className="mb-10" />
@@ -697,8 +680,8 @@ type NumberInputModes =
 
 ```tsx
 type NumberInputRenderText = (
-  formattedValue: string,
-  otherProps: Partial<NumberFormatBase>
+	formattedValue: string,
+	otherProps: Partial<NumberFormatBase>
 ) => ReactNode;
 ```
 
@@ -715,7 +698,7 @@ type NumberInputGetinputref = Ref<any> | ((el: HTMLInputElement) => void);
 ### Number Input Thousands Group Styles
 
 ```tsx
-type NumberInputThousandsGroupStyle = "none" | "thousand" | "lakh" | "wan";
+type NumberInputThousandsGroupStyle = 'none' | 'thousand' | 'lakh' | 'wan';
 ```
 
 <div className="mb-10" />
@@ -723,5 +706,5 @@ type NumberInputThousandsGroupStyle = "none" | "thousand" | "lakh" | "wan";
 ### Number Input Format Types
 
 ```tsx
-type NumberInputFormatType = "pattern" | "numeric" | "custom";
+type NumberInputFormatType = 'pattern' | 'numeric' | 'custom';
 ```

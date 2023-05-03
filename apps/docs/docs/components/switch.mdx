@@ -2,16 +2,17 @@
 sidebar_position: 9
 ---
 
-import { Switch } from "rizzui";
-import Paper from "@site/src/components/paper";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
+import { Switch } from 'rizzui';
+import Paper from '@site/src/components/paper';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
 # Switch
 
-A basic widget for getting the user input of radio.
+A basic widget for getting the user input. It's a wonderfull interface for toggle a value betweeen two states. You can use **Switch**
+as an alternative of **Checkbox** component.
 
 ```tsx
-import { Switch } from "rizzui";
+import { Switch } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -21,14 +22,14 @@ import { Switch } from "rizzui";
 The default style of **Switch** component.
 
 <Paper className="text-gray-1000">
-  <Switch />
+	<Switch />
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui";
+import { Switch } from 'rizzui';
 
 export default function App() {
-  return <Switch />;
+	return <Switch />;
 }
 ```
 
@@ -36,43 +37,25 @@ export default function App() {
 
 ## Variants
 
-You can change style of **Switch** with property [**variant**](#switch-variants).
+You can change the style of **Switch** using [**variant**](#switch-variants) property.
 
 <Paper className="flex-row justify-around gap-4">
-  <Switch
-    variant="flat"
-    label="Flat"
-  />
-  <Switch
-    variant="outline"
-    label="Outline"
-  />
-  <Switch
-    variant="active"
-    label="Active"
-  />
+	<Switch variant="flat" label="Flat" />
+	<Switch variant="outline" label="Outline" />
+	<Switch variant="active" label="Active" />
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui";
+import { Switch } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Switch
-        variant="flat"
-        label="Flat"
-      />
-      <Switch
-        variant="outline"
-        label="Outline"
-      />
-      <Switch
-        variant="active"
-        label="Active"
-      />
-    </>
-  );
+	return (
+		<>
+			<Switch variant="flat" label="Flat" />
+			<Switch variant="outline" label="Outline" />
+			<Switch variant="active" label="Active" />
+		</>
+	);
 }
 ```
 
@@ -80,45 +63,27 @@ export default function App() {
 
 ## Sizes
 
-You can change style of **Switch** with property [**size**](#switch-sizes).
+You can set diffrient sizes of the **Switch** component using [**size**](#switch-sizes) property.
 
 <Paper className="flex-row justify-around gap-4">
-  <Switch
-    label="Small"
-    size="sm"
-  />
-  <Switch label="Default" />
-  <Switch
-    size="lg"
-    label="Large"
-  />
-  <Switch
-    size="xl"
-    label="Extra Large"
-  />
+	<Switch label="Small" size="sm" />
+	<Switch label="Default" />
+	<Switch size="lg" label="Large" />
+	<Switch size="xl" label="Extra Large" />
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui";
+import { Switch } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Switch
-        label="Small"
-        size="sm"
-      />
-      <Switch label="Default" />
-      <Switch
-        size="lg"
-        label="Large"
-      />
-      <Switch
-        size="xl"
-        label="Extra Large"
-      />
-    </>
-  );
+	return (
+		<>
+			<Switch label="Small" size="sm" />
+			<Switch label="Default" />
+			<Switch size="lg" label="Large" />
+			<Switch size="xl" label="Extra Large" />
+		</>
+	);
 }
 ```
 
@@ -126,53 +91,53 @@ export default function App() {
 
 ## Rounded
 
-You can change style of **Switch** with property [**rounded**](#switch-rounded).
+You can change the border radius of **Switch** using [**rounded**](#switch-rounded) property.
 
 <Paper className="flex-row justify-around gap-4">
-  <Switch label="Default" />
-  <Switch
-    label="None"
-    rounded="none"
-  />
-  <Switch
-    label="Small"
-    rounded="sm"
-  />
-  <Switch
-    label="Medium"
-    rounded="md"
-  />
-  <Switch
-    label="Large"
-    rounded="lg"
-  />
+	<Switch label="Default" />
+	<Switch label="None" rounded="none" />
+	<Switch label="Small" rounded="sm" />
+	<Switch label="Medium" rounded="md" />
+	<Switch label="Large" rounded="lg" />
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui";
+import { Switch } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Switch label="Default" />
-      <Switch
-        label="None"
-        rounded="none"
-      />
-      <Switch
-        label="Small"
-        rounded="sm"
-      />
-      <Switch
-        label="Medium"
-        rounded="md"
-      />
-      <Switch
-        label="Large"
-        rounded="lg"
-      />
-    </>
-  );
+	return (
+		<>
+			<Switch label="Default" />
+			<Switch label="None" rounded="none" />
+			<Switch label="Small" rounded="sm" />
+			<Switch label="Medium" rounded="md" />
+			<Switch label="Large" rounded="lg" />
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Label Placement
+
+You can set label on the two diffrient side using **labelPlacement** property.
+
+<Paper className="flex-row justify-around">
+	<Switch label="Left Placement" variant="active" labelPlacement="left" />
+	<Switch label="Right Placement" variant="active" labelPlacement="right" />
+</Paper>
+
+```tsx
+import { Switch } from 'rizzui';
+
+export default function App() {
+	return (
+		<>
+			<Switch label="Left Placement" variant="active" labelPlacement="left" />
+			<Switch label="Right Placement" variant="active" labelPlacement="right" />
+		</>
+	);
 }
 ```
 
@@ -180,128 +145,38 @@ export default function App() {
 
 ## Colors
 
-You can change style of **Switch** with property [**color**](#switch-colors).
+You can change the color of **Switch** using [**color**](#switch-colors) property.
 
 <Paper className="grid grid-cols-4 gap-4">
-  <Switch
-    variant="active"
-    label="Default"
-  />
-  <Switch
-    label="Primary"
-    color="primary"
-    switchClassName="mt-[1px]"
-    variant="active"
-  />
-  <Switch
-    label="Secondary"
-    color="secondary"
-    variant="active"
-  />
-  <Switch
-    label="Danger"
-    color="danger"
-    variant="active"
-  />
-  <Switch
-    label="Info"
-    color="info"
-    variant="active"
-  />
-  <Switch
-    label="Success"
-    color="success"
-    variant="active"
-  />
-  <Switch
-    label="Warning"
-    color="warning"
-    variant="active"
-  />
+	<Switch variant="active" label="Default" />
+	<Switch
+		label="Primary"
+		color="primary"
+		switchClassName="mt-[1px]"
+		variant="active"
+	/>
+	<Switch label="Secondary" color="secondary" variant="active" />
+	<Switch label="Danger" color="danger" variant="active" />
+	<Switch label="Info" color="info" variant="active" />
+	<Switch label="Success" color="success" variant="active" />
+	<Switch label="Warning" color="warning" variant="active" />
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui";
+import { Switch } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Switch
-        label="Default"
-        variant="active"
-      />
-      <Switch
-        label="Primary"
-        color="primary"
-        variant="active"
-      />
-      <Switch
-        label="Secondary"
-        color="secondary"
-        variant="active"
-      />
-      <Switch
-        label="Danger"
-        color="danger"
-        variant="active"
-      />
-      <Switch
-        label="Info"
-        color="info"
-        variant="active"
-      />
-      <Switch
-        label="Success"
-        color="success"
-        variant="active"
-      />
-      <Switch
-        label="Warning"
-        color="warning"
-        variant="active"
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## With Label Placement
-
-You can change style of **Switch** with property **labelPlacement**.
-
-<Paper className="flex-row justify-around">
-  <Switch
-    label="Left Placement"
-    variant="active"
-    labelPlacement="left"
-  />
-  <Switch
-    label="Right Placement"
-    variant="active"
-    labelPlacement="right"
-  />
-</Paper>
-
-```tsx
-import { Switch } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Switch
-        label="Left Placement"
-        variant="active"
-        labelPlacement="left"
-      />
-      <Switch
-        label="Right Placement"
-        variant="active"
-        labelPlacement="right"
-      />
-    </>
-  );
+	return (
+		<>
+			<Switch label="Default" variant="active" />
+			<Switch label="Primary" color="primary" variant="active" />
+			<Switch label="Secondary" color="secondary" variant="active" />
+			<Switch label="Danger" color="danger" variant="active" />
+			<Switch label="Info" color="info" variant="active" />
+			<Switch label="Success" color="success" variant="active" />
+			<Switch label="Warning" color="warning" variant="active" />
+		</>
+	);
 }
 ```
 
@@ -309,30 +184,30 @@ export default function App() {
 
 ## With Custom Icons
 
-You can change style of **Switch** with property **onIcon** & **offIcon**.
+You can set custom on, off icon of the **Switch** component using **onIcon** & **offIcon** property.
 
 <Paper>
-  <Switch
-    label="Change theme"
-    offIcon={<SunIcon className="h-3.5 w-3.5" />}
-    onIcon={<MoonIcon className="h-3 w-3" />}
-    variant="active"
-  />
+	<Switch
+		label="Change theme"
+		offIcon={<SunIcon className="h-3.5 w-3.5" />}
+		onIcon={<MoonIcon className="h-3 w-3" />}
+		variant="active"
+	/>
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
+import { Switch } from 'rizzui';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
-  return (
-    <Switch
-      label="Change theme"
-      offIcon={<SunIcon className="h-3.5 w-3.5" />}
-      onIcon={<MoonIcon className="h-3 w-3" />}
-      variant="active"
-    />
-  );
+	return (
+		<Switch
+			label="Change theme"
+			offIcon={<SunIcon className="h-3.5 w-3.5" />}
+			onIcon={<MoonIcon className="h-3 w-3" />}
+			variant="active"
+		/>
+	);
 }
 ```
 
@@ -340,79 +215,75 @@ export default function App() {
 
 ## Disabled
 
-You can change style of **Switch** with property **disabled**.
+The disabled style of the **Switch** component.
 
 <Paper>
-  <Switch
-    label="Disabled"
-    disabled
-  />
+	<Switch label="Disabled" disabled />
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui";
+import { Switch } from 'rizzui';
 
 export default function App() {
-  return (
-    <Switch
-      label="Disabled"
-      disabled
-    />
-  );
+	return <Switch label="Disabled" disabled />;
 }
 ```
 
 <div className="mb-16" />
 
-## With HelperText
+## With Helper Text
 
-You can add helperText to **Switch** with property **helperText**.
+You can add helperText to the **Switch** using **helperText** property.
 
 <Paper className="justify-start items-start">
-  <Switch
-    variant="outline"
-    label="Remember me"
-    helperText="Please turn on the switch"
-  />
+	<Switch
+		variant="outline"
+		label="Remember me"
+		labelClassName="font-medium"
+		helperText="Please turn on the switch"
+	/>
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui";
+import { Switch } from 'rizzui';
 
 export default function App() {
-  return (
-    <Switch
-      variant="outline"
-      label="Remember me"
-      helperText="Please turn on the switch"
-    />
-  );
+	return (
+		<Switch
+			variant="outline"
+			label="Remember me"
+			labelClassName="font-medium"
+			helperText="Please turn on the switch"
+		/>
+	);
 }
 ```
 
 <div className="mb-16" />
 
-## With Error
+## With Error Message
 
-You can add error message to **Switch** with property **error**.
+You can add error message to the **Switch** using **error** property.
 
 <Paper className="justify-start items-start">
-  <Switch
-    label="Remember me"
-    error="This field is required"
-  />
+	<Switch
+		label="Remember me"
+		labelClassName="font-medium"
+		error="This field is required"
+	/>
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui";
+import { Switch } from 'rizzui';
 
 export default function App() {
-  return (
-    <Switch
-      label="Remember me"
-      error="This field is required"
-    />
-  );
+	return (
+		<Switch
+			label="Remember me"
+			labelClassName="font-medium"
+			error="This field is required"
+		/>
+	);
 }
 ```
 
@@ -455,7 +326,7 @@ Here is the API documentation of the Switch component. And the rest of the props
 ### Switch Variants
 
 ```ts
-type SwitchVariants = "flat" | "outline" | "active";
+type SwitchVariants = 'flat' | 'outline' | 'active';
 ```
 
 <div className="mb-10" />
@@ -463,7 +334,7 @@ type SwitchVariants = "flat" | "outline" | "active";
 ### Switch Sizes
 
 ```ts
-type SwitchSizes = "sm" | "DEFAULT" | "lg" | "XL";
+type SwitchSizes = 'sm' | 'DEFAULT' | 'lg' | 'XL';
 ```
 
 <div className="mb-10" />
@@ -471,7 +342,7 @@ type SwitchSizes = "sm" | "DEFAULT" | "lg" | "XL";
 ### Switch Rounded
 
 ```ts
-type SwitchRounded = "sm" | "md" | "lg" | "none" | "pill";
+type SwitchRounded = 'sm' | 'md' | 'lg' | 'none' | 'pill';
 ```
 
 <div className="mb-10" />
@@ -479,5 +350,12 @@ type SwitchRounded = "sm" | "md" | "lg" | "none" | "pill";
 ### Switch Colors
 
 ```ts
-type SwitchColors = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type SwitchColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
 ```

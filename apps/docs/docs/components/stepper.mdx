@@ -2,16 +2,16 @@
 sidebar_position: 34
 ---
 
-import { Stepper, Step, Button } from "rizzui";
-import FunctionalStepper from "@site/src/components/stepper";
-import Paper from "@site/src/components/paper";
+import { Stepper, Step, Button } from 'rizzui';
+import FunctionalStepper from '@site/src/components/stepper';
+import Paper from '@site/src/components/paper';
 
 # Stepper
 
 Stepper tool is used to enlighten user regarding the progress of the task. **Stepper** component displays the progress of the task in a sequence of numbered steps through **Step** component.
 
 ```tsx
-import { Stepper, Step } from "rizzui";
+import { Stepper, Step } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -21,42 +21,24 @@ import { Stepper, Step } from "rizzui";
 A simple stepper with component **Stepper** and **Step**.
 
 <Paper>
-  <Stepper className="w-full">
-    <Step
-      description="This is a description"
-      title="Step 1"
-    />
-    <Step
-      description="This is a description"
-      title="Step 2"
-    />
-    <Step
-      description="This is a description"
-      title="Step 3"
-    />
-  </Stepper>
+	<Stepper className="w-full">
+		<Step description="This is a description" title="Step 1" />
+		<Step description="This is a description" title="Step 2" />
+		<Step description="This is a description" title="Step 3" />
+	</Stepper>
 </Paper>
 
 ```tsx
-import { Stepper, Step } from "rizzui";
+import { Stepper, Step } from 'rizzui';
 
 export default function App() {
-  return (
-    <Stepper>
-      <Step
-        description="This is a description"
-        title="Step 1"
-      />
-      <Step
-        description="This is a description"
-        title="Step 2"
-      />
-      <Step
-        description="This is a description"
-        title="Step 3"
-      />
-    </Stepper>
-  );
+	return (
+		<Stepper>
+			<Step description="This is a description" title="Step 1" />
+			<Step description="This is a description" title="Step 2" />
+			<Step description="This is a description" title="Step 3" />
+		</Stepper>
+	);
 }
 ```
 
@@ -91,36 +73,33 @@ You can use outline variant with **Stepper**.
 </Paper>
 
 ```tsx
-import { Stepper, Step } from "rizzui";
+import { Stepper, Step } from 'rizzui';
 
 export default function App() {
-  return (
-    <Stepper
-      dot
-      currentIndex={1}
-    >
-      <Step
-        variant="outline"
-        color="primary"
-        title="Step 1"
-        description="This is a description"
-      />
+	return (
+		<Stepper dot currentIndex={1}>
+			<Step
+				variant="outline"
+				color="primary"
+				title="Step 1"
+				description="This is a description"
+			/>
 
-      <Step
-        variant="outline"
-        color="primary"
-        title="Step 2"
-        description="This is a description"
-      />
+			<Step
+				variant="outline"
+				color="primary"
+				title="Step 2"
+				description="This is a description"
+			/>
 
-      <Step
-        variant="outline"
-        color="primary"
-        title="Step 3"
-        description="This is a description"
-      />
-    </Stepper>
-  );
+			<Step
+				variant="outline"
+				color="primary"
+				title="Step 3"
+				description="This is a description"
+			/>
+		</Stepper>
+	);
 }
 ```
 
@@ -131,184 +110,181 @@ export default function App() {
 You can use custom icon inside **Stepper** and **Step**.
 
 <Paper>
-  <Stepper
-    currentIndex={2}
-    className="w-full"
-  >
-    <Step
-      variant="outline"
-      title="Login"
-      icon={
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="h-5 w-5"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-          />
-        </svg>
-      }
-    />
-    <Step
-      variant="outline"
-      title="Verification"
-      icon={
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="h-5 w-5"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
-          />
-        </svg>
-      }
-    />
-    <Step
-      variant="outline"
-      title="Pay"
-      icon={
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="h-5 w-5"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
-          />
-        </svg>
-      }
-    />
-    <Step
-      variant="outline"
-      title="Done"
-      icon={
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="h-5 w-5"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"
-          />
-        </svg>
-      }
-    />
-  </Stepper>
+	<Stepper currentIndex={2} className="w-full">
+		<Step
+			variant="outline"
+			title="Login"
+			icon={
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth={1.5}
+					stroke="currentColor"
+					className="h-5 w-5"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+					/>
+				</svg>
+			}
+		/>
+		<Step
+			variant="outline"
+			title="Verification"
+			icon={
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth={1.5}
+					stroke="currentColor"
+					className="h-5 w-5"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
+					/>
+				</svg>
+			}
+		/>
+		<Step
+			variant="outline"
+			title="Pay"
+			icon={
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth={1.5}
+					stroke="currentColor"
+					className="h-5 w-5"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
+					/>
+				</svg>
+			}
+		/>
+		<Step
+			variant="outline"
+			title="Done"
+			icon={
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					strokeWidth={1.5}
+					stroke="currentColor"
+					className="h-5 w-5"
+				>
+					<path
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"
+					/>
+				</svg>
+			}
+		/>
+	</Stepper>
 </Paper>
 
 ```tsx
-import { Stepper, Step } from "rizzui";
+import { Stepper, Step } from 'rizzui';
 
 export default function App() {
-  return (
-    <Stepper currentIndex={2}>
-      <Step
-        variant="outline"
-        title="Login"
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-5 w-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-            />
-          </svg>
-        }
-      />
+	return (
+		<Stepper currentIndex={2}>
+			<Step
+				variant="outline"
+				title="Login"
+				icon={
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						strokeWidth={1.5}
+						stroke="currentColor"
+						className="h-5 w-5"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+						/>
+					</svg>
+				}
+			/>
 
-      <Step
-        variant="outline"
-        title="Verification"
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-5 w-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
-            />
-          </svg>
-        }
-      />
+			<Step
+				variant="outline"
+				title="Verification"
+				icon={
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						strokeWidth={1.5}
+						stroke="currentColor"
+						className="h-5 w-5"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
+						/>
+					</svg>
+				}
+			/>
 
-      <Step
-        variant="outline"
-        title="Pay"
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-5 w-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
-            />
-          </svg>
-        }
-      />
+			<Step
+				variant="outline"
+				title="Pay"
+				icon={
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						strokeWidth={1.5}
+						stroke="currentColor"
+						className="h-5 w-5"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
+						/>
+					</svg>
+				}
+			/>
 
-      <Step
-        variant="outline"
-        title="Done"
-        icon={
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-5 w-5"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"
-            />
-          </svg>
-        }
-      />
-    </Stepper>
-  );
+			<Step
+				variant="outline"
+				title="Done"
+				icon={
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						strokeWidth={1.5}
+						stroke="currentColor"
+						className="h-5 w-5"
+					>
+						<path
+							strokeLinecap="round"
+							strokeLinejoin="round"
+							d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"
+						/>
+					</svg>
+				}
+			/>
+		</Stepper>
+	);
 }
 ```
 
@@ -319,103 +295,64 @@ export default function App() {
 You can use colors with **Stepper**.
 
 <Paper>
-  <Stepper
-    currentIndex={1}
-    className="w-full"
-  >
-    <Step
-      color="primary"
-      title="Step 1"
-      description="This is a description"
-    />
-    <Step
-      color="primary"
-      title="Step 2"
-      description="This is a description"
-    />
-    <Step
-      color="primary"
-      title="Step 3"
-      description="This is a description"
-    />
-  </Stepper>
+	<Stepper currentIndex={1} className="w-full">
+		<Step color="primary" title="Step 1" description="This is a description" />
+		<Step color="primary" title="Step 2" description="This is a description" />
+		<Step color="primary" title="Step 3" description="This is a description" />
+	</Stepper>
 </Paper>
 
 ```tsx
-import { Stepper, Step } from "rizzui";
+import { Stepper, Step } from 'rizzui';
 
 export default function App() {
-  return (
-    <Stepper>
-      <Step
-        description="This is a description"
-        title="Step 1"
-      />
-      <Step
-        description="This is a description"
-        title="Step 2"
-      />
-      <Step
-        description="This is a description"
-        title="Step 3"
-      />
-    </Stepper>
-  );
+	return (
+		<Stepper>
+			<Step description="This is a description" title="Step 1" />
+			<Step description="This is a description" title="Step 2" />
+			<Step description="This is a description" title="Step 3" />
+		</Stepper>
+	);
 }
 ```
 
 <div className="mb-16" />
 
-## With Error Step
+## With Error Message Step
 
 You can use error step with **Step** component.
 
 <Paper>
-  <Stepper
-    currentIndex={1}
-    className="w-full"
-  >
-    <Step
-      title="Step 1"
-      description="This is a description"
-    />
-    <Step
-      status="error"
-      color="danger"
-      title="Step 2"
-      description="This is a description"
-    />
-    <Step
-      title="Step 3"
-      description="This is a description"
-    />
-  </Stepper>
+	<Stepper currentIndex={1} className="w-full">
+		<Step title="Step 1" description="This is a description" />
+		<Step
+			status="error"
+			color="danger"
+			title="Step 2"
+			description="This is a description"
+		/>
+		<Step title="Step 3" description="This is a description" />
+	</Stepper>
 </Paper>
 
 ```tsx
-import { Stepper, Step } from "rizzui";
+import { Stepper, Step } from 'rizzui';
 
 export default function App() {
-  return (
-    <Stepper currentIndex={1}>
-      <Step
-        title="Step 1"
-        description="This is a description"
-      />
+	return (
+		<Stepper currentIndex={1}>
+			<Step title="Step 1" description="This is a description" />
 
-      <Step
-        status="error"
-        color="danger"
-        title="Step 2"
-        description="This is a description"
-      />
+			<Step
+				status="error"
+				color="danger"
+				title="Step 2"
+				description="This is a description"
+			/>
 
-      <Step
-        title="Step 3"
-        description="This is a description"
-      />
-    </Stepper>
-  );
+			<Step title="Step 3" description="This is a description" />
+		</Stepper>
+	);
 }
 ```
 
@@ -426,44 +363,37 @@ export default function App() {
 You can use functional with **Stepper** and **Step**.
 
 <Paper>
-  <FunctionalStepper />
+	<FunctionalStepper />
 </Paper>
 
 ```tsx
-import React from "react";
-import { Stepper, Step, Button } from "rizzui";
+import React from 'react';
+import { Stepper, Step, Button } from 'rizzui';
 
 export default function App() {
-  const [currentStep, setCurrentStep] = React.useState(0);
-  return (
-    <>
-      <Stepper currentIndex={currentStep}>
-        <Step
-          title="Step 1"
-          description="This is a description"
-        />
-        <Step
-          title="Step 2"
-          description="This is a description"
-        />
-        <Step
-          title="Step 3"
-          description="This is a description"
-        />
-      </Stepper>
+	const [currentStep, setCurrentStep] = React.useState(0);
+	return (
+		<>
+			<Stepper currentIndex={currentStep}>
+				<Step title="Step 1" description="This is a description" />
+				<Step title="Step 2" description="This is a description" />
+				<Step title="Step 3" description="This is a description" />
+			</Stepper>
 
-      <div className="mt-7 flex space-x-4">
-        <Button
-          disabled={currentStep === 3}
-          onClick={() => setCurrentStep(currentStep + 1)}
-        >
-          Next
-        </Button>
+			<div className="mt-7 flex space-x-4">
+				<Button
+					disabled={currentStep === 3}
+					onClick={() => setCurrentStep(currentStep + 1)}
+				>
+					Next
+				</Button>
 
-        {currentStep === 3 && <Button onClick={() => setCurrentStep(0)}>Reset</Button>}
-      </div>
-    </>
-  );
+				{currentStep === 3 && (
+					<Button onClick={() => setCurrentStep(0)}>Reset</Button>
+				)}
+			</div>
+		</>
+	);
 }
 ```
 
@@ -492,7 +422,7 @@ Here is the API documentation of the Stepper component. You can use the followin
 ### Stepper Directions
 
 ```ts
-type StepperDirection = "vertical" | "horizontal";
+type StepperDirection = 'vertical' | 'horizontal';
 ```
 
 <div className="mb-10" />
@@ -500,7 +430,7 @@ type StepperDirection = "vertical" | "horizontal";
 ### Stepper Label Placements
 
 ```ts
-type StepperLabelPlacements = "vertical" | "horizontal";
+type StepperLabelPlacements = 'vertical' | 'horizontal';
 ```
 
 <div className="mb-20" />
@@ -529,7 +459,7 @@ Here is the API documentation of the Step component. You can use the following p
 ### Step Status
 
 ```ts
-type StepStatus = "error" | "waiting" | "in-progress" | "completed";
+type StepStatus = 'error' | 'waiting' | 'in-progress' | 'completed';
 ```
 
 <div className="mb-10" />
@@ -537,7 +467,7 @@ type StepStatus = "error" | "waiting" | "in-progress" | "completed";
 ### Step Sizes
 
 ```ts
-type StepSizes = "DEFAULT" | "sm" | "lg";
+type StepSizes = 'DEFAULT' | 'sm' | 'lg';
 ```
 
 <div className="mb-10" />
@@ -545,7 +475,7 @@ type StepSizes = "DEFAULT" | "sm" | "lg";
 ### Step Variants
 
 ```ts
-type StepVariants = "solid" | "outline";
+type StepVariants = 'solid' | 'outline';
 ```
 
 <div className="mb-10" />
@@ -553,5 +483,12 @@ type StepVariants = "solid" | "outline";
 ### Step Colors
 
 ```ts
-type StepColors = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type StepColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
 ```

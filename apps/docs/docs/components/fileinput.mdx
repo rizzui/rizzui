@@ -2,16 +2,16 @@
 sidebar_position: 29
 ---
 
-import { FileInput } from "rizzui";
-import Paper from "@site/src/components/paper";
-import FileInputClearable from "@site/src/components/file-input";
+import { FileInput } from 'rizzui';
+import Paper from '@site/src/components/paper';
+import FileInputClearable from '@site/src/components/file-input';
 
 # FileInput
 
 A basic widget for getting the user input.
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -21,14 +21,14 @@ import { FileInput } from "rizzui";
 The default style of **FileInput**.
 
 <Paper className="block">
-  <FileInput label="Upload File" />
+	<FileInput label="Upload File" />
 </Paper>
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  return <FileInput label="Upload File" />;
+	return <FileInput label="Upload File" />;
 }
 ```
 
@@ -39,48 +39,24 @@ export default function App() {
 You can change the style of **FileInput** with property [**variant**](#fileinput-variants).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-  <FileInput
-    label="Active Variant"
-    variant="active"
-  />
-  <FileInput
-    label="Flat Variant"
-    variant="flat"
-  />
-  <FileInput
-    label="Outline Variant"
-    variant="outline"
-  />
-  <FileInput
-    label="Text Variant"
-    variant="text"
-  />
+	<FileInput label="Active Variant" variant="active" />
+	<FileInput label="Flat Variant" variant="flat" />
+	<FileInput label="Outline Variant" variant="outline" />
+	<FileInput label="Text Variant" variant="text" />
 </Paper>
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <FileInput
-        label="Active Variant"
-        variant="active"
-      />
-      <FileInput
-        label="Flat Variant"
-        variant="flat"
-      />
-      <FileInput
-        label="Outline Variant"
-        variant="outline"
-      />
-      <FileInput
-        label="Text Variant"
-        variant="text"
-      />
-    </>
-  );
+	return (
+		<>
+			<FileInput label="Active Variant" variant="active" />
+			<FileInput label="Flat Variant" variant="flat" />
+			<FileInput label="Outline Variant" variant="outline" />
+			<FileInput label="Text Variant" variant="text" />
+		</>
+	);
 }
 ```
 
@@ -91,42 +67,24 @@ export default function App() {
 You can change the style of **FileInput** with property [**size**](#fileinput-sizes).
 
 <Paper className="justify-start items-start gap-6">
-  <FileInput
-    label="Small FileInput"
-    size="sm"
-  />
-  <FileInput label="Default FileInput" />
-  <FileInput
-    label="Large FileInput"
-    size="lg"
-  />
-  <FileInput
-    label="Extra Large FileInput"
-    size="xl"
-  />
+	<FileInput label="Small FileInput" size="sm" />
+	<FileInput label="Default FileInput" />
+	<FileInput label="Large FileInput" size="lg" />
+	<FileInput label="Extra Large FileInput" size="xl" />
 </Paper>
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <FileInput
-        label="Small FileInput"
-        size="sm"
-      />
-      <FileInput label="Default FileInput" />
-      <FileInput
-        label="Large FileInput"
-        size="lg"
-      />
-      <FileInput
-        label="Extra Large FileInput"
-        size="xl"
-      />
-    </>
-  );
+	return (
+		<>
+			<FileInput label="Small FileInput" size="sm" />
+			<FileInput label="Default FileInput" />
+			<FileInput label="Large FileInput" size="lg" />
+			<FileInput label="Extra Large FileInput" size="xl" />
+		</>
+	);
 }
 ```
 
@@ -137,64 +95,26 @@ export default function App() {
 You can change the style of **FileInput** with property [**rounded**](#fileinput-rounded).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <FileInput
-    label="Rounded Small"
-    rounded="sm"
-    variant="active"
-  />
-  <FileInput
-    label="Rounded Default"
-    variant="active"
-  />
-  <FileInput
-    label="Rounded Large"
-    rounded="lg"
-    variant="active"
-  />
-  <FileInput
-    label="Rounded None"
-    rounded="none"
-    variant="active"
-  />
-  <FileInput
-    label="Rounded Full"
-    rounded="pill"
-    variant="active"
-  />
+	<FileInput label="Rounded Small" rounded="sm" variant="active" />
+	<FileInput label="Rounded Default" variant="active" />
+	<FileInput label="Rounded Large" rounded="lg" variant="active" />
+	<FileInput label="Rounded None" rounded="none" variant="active" />
+	<FileInput label="Rounded Full" rounded="pill" variant="active" />
 </Paper>
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <FileInput
-        label="Rounded Small"
-        rounded="sm"
-        variant="active"
-      />
-      <FileInput
-        label="Rounded Default"
-        variant="active"
-      />
-      <FileInput
-        label="Rounded Large"
-        rounded="lg"
-        variant="active"
-      />
-      <FileInput
-        label="Rounded None"
-        rounded="none"
-        variant="active"
-      />
-      <FileInput
-        label="Rounded Full"
-        rounded="pill"
-        variant="active"
-      />
-    </>
-  );
+	return (
+		<>
+			<FileInput label="Rounded Small" rounded="sm" variant="active" />
+			<FileInput label="Rounded Default" variant="active" />
+			<FileInput label="Rounded Large" rounded="lg" variant="active" />
+			<FileInput label="Rounded None" rounded="none" variant="active" />
+			<FileInput label="Rounded Full" rounded="pill" variant="active" />
+		</>
+	);
 }
 ```
 
@@ -205,84 +125,30 @@ export default function App() {
 You can change the style of **FileInput** with property [**color**](#fileinput-colors).
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <FileInput
-    label="Upload File"
-    variant="flat"
-  />
-  <FileInput
-    label="Upload File"
-    variant="flat"
-    color="primary"
-  />
-  <FileInput
-    label="Upload File"
-    variant="flat"
-    color="secondary"
-  />
-  <FileInput
-    label="Upload File"
-    variant="flat"
-    color="danger"
-  />
-  <FileInput
-    label="Upload File"
-    variant="flat"
-    color="info"
-  />
-  <FileInput
-    label="Upload File"
-    variant="flat"
-    color="success"
-  />
-  <FileInput
-    label="Upload File"
-    variant="flat"
-    color="warning"
-  />
+	<FileInput label="Upload File" variant="flat" />
+	<FileInput label="Upload File" variant="flat" color="primary" />
+	<FileInput label="Upload File" variant="flat" color="secondary" />
+	<FileInput label="Upload File" variant="flat" color="danger" />
+	<FileInput label="Upload File" variant="flat" color="info" />
+	<FileInput label="Upload File" variant="flat" color="success" />
+	<FileInput label="Upload File" variant="flat" color="warning" />
 </Paper>
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <FileInput
-        label="Upload File"
-        variant="flat"
-      />
-      <FileInput
-        label="Upload File"
-        variant="flat"
-        color="primary"
-      />
-      <FileInput
-        label="Upload File"
-        variant="flat"
-        color="secondary"
-      />
-      <FileInput
-        label="Upload File"
-        variant="flat"
-        color="danger"
-      />
-      <FileInput
-        label="Upload File"
-        variant="flat"
-        color="info"
-      />
-      <FileInput
-        label="Upload File"
-        variant="flat"
-        color="success"
-      />
-      <FileInput
-        label="Upload File"
-        variant="flat"
-        color="warning"
-      />
-    </>
-  );
+	return (
+		<>
+			<FileInput label="Upload File" variant="flat" />
+			<FileInput label="Upload File" variant="flat" color="primary" />
+			<FileInput label="Upload File" variant="flat" color="secondary" />
+			<FileInput label="Upload File" variant="flat" color="danger" />
+			<FileInput label="Upload File" variant="flat" color="info" />
+			<FileInput label="Upload File" variant="flat" color="success" />
+			<FileInput label="Upload File" variant="flat" color="warning" />
+		</>
+	);
 }
 ```
 
@@ -293,22 +159,14 @@ export default function App() {
 You can change the style of **FileInput** with property **disabled**.
 
 <Paper className="block">
-  <FileInput
-    label="Upload File"
-    disabled
-  />
+	<FileInput label="Upload File" disabled />
 </Paper>
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  return (
-    <FileInput
-      label="Upload File"
-      disabled
-    />
-  );
+	return <FileInput label="Upload File" disabled />;
 }
 ```
 
@@ -319,26 +177,26 @@ export default function App() {
 You can change the style of **FileInput** with property **clearable**.
 
 <Paper className="block">
-  <FileInputClearable />
+	<FileInputClearable />
 </Paper>
 
 ```tsx
-import React from "react";
-import { FileInput } from "rizzui";
+import React from 'react';
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  const [state, setState] = React.useState<any>("");
+	const [state, setState] = React.useState<any>('');
 
-  return (
-    <FileInput
-      value={state}
-      onChange={(e) => setState(e.target.value)}
-      clearable={!!state}
-      onClear={() => {
-        setState("");
-      }}
-    />
-  );
+	return (
+		<FileInput
+			value={state}
+			onChange={(e) => setState(e.target.value)}
+			clearable={!!state}
+			onClear={() => {
+				setState('');
+			}}
+		/>
+	);
 }
 ```
 
@@ -349,22 +207,14 @@ export default function App() {
 You can change the style of **FileInput** with property **multiple**.
 
 <Paper className="block">
-  <FileInput
-    label="Upload Multiple Files"
-    multiple
-  />
+	<FileInput label="Upload Multiple Files" multiple />
 </Paper>
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  return (
-    <FileInput
-      label="Upload Multiple Files"
-      multiple
-    />
-  );
+	return <FileInput label="Upload Multiple Files" multiple />;
 }
 ```
 
@@ -375,48 +225,32 @@ export default function App() {
 You can change the style of **FileInput** with property **helperText**.
 
 <Paper className="block">
-  <FileInput
-    label="Upload Files"
-    helperText="This is helper text!"
-  />
+	<FileInput label="Upload Files" helperText="This is helper text!" />
 </Paper>
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  return (
-    <FileInput
-      label="Upload Files"
-      helperText="This is helper text!"
-    />
-  );
+	return <FileInput label="Upload Files" helperText="This is helper text!" />;
 }
 ```
 
 <div className="mb-16" />
 
-## With Error
+## With Error Message
 
 You can change the style of **FileInput** with property **error**.
 
 <Paper className="block">
-  <FileInput
-    label="Upload Files"
-    error="This is error message!"
-  />
+	<FileInput label="Upload Files" error="This is error message!" />
 </Paper>
 
 ```tsx
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui';
 
 export default function App() {
-  return (
-    <FileInput
-      label="Upload Files"
-      error="This is error message!"
-    />
-  );
+	return <FileInput label="Upload Files" error="This is error message!" />;
 }
 ```
 
@@ -457,7 +291,7 @@ Here is the API documentation of the Input component. And the rest of the props 
 ### Fileinput Variants
 
 ```ts
-type FileinputVariants = "active" | "flat" | "outline" | "text";
+type FileinputVariants = 'active' | 'flat' | 'outline' | 'text';
 ```
 
 <div className="mb-10" />
@@ -465,7 +299,7 @@ type FileinputVariants = "active" | "flat" | "outline" | "text";
 ### Fileinput Sizes
 
 ```ts
-type FileinputSizes = "sm" | "DEFAULT" | "lg" | "xl";
+type FileinputSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 ```
 
 <div className="mb-10" />
@@ -473,7 +307,7 @@ type FileinputSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ### Fileinput Rounded
 
 ```ts
-type FileinputRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
+type FileinputRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
 ```
 
 <div className="mb-10" />
@@ -482,13 +316,13 @@ type FileinputRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
 
 ```ts
 type FileinputColor =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
 ```
 
 <div className="mb-10" />
