@@ -1,4 +1,6 @@
-.next
+.turbo
 .vercel
 .husky
 .storybook
+dist
+coverage
