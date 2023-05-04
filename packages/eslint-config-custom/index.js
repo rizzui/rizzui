@@ -1,6 +1,16 @@
 module.exports = {
-  extends: ["next", "turbo", "prettier"],
-  rules: {
-    "@next/next/no-html-link-for-pages": "off",
+  env: {
+    browser: true,
+    es2021: true,
+    jest: true,
+  },
+  extends: ['turbo', 'prettier'],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
 };

@@ -1,0 +1,6 @@
+.turbo/*
+.storybook/*
+coverage/*
+dist/*
+*.config.js
+.DS_Store
