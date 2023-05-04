@@ -1,5 +1,5 @@
 ---
-sidebar_position: 14
+sidebar_position: 12
 ---
 
 import { Radio } from 'rizzui';
@@ -11,7 +11,7 @@ import RadioGroupDefault, {
 
 # Radio
 
-A basic widget for getting the user input of radio.
+A basic widget for getting the user input. used for selecting single value from a list of options.
 
 ```tsx
 import { Radio } from 'rizzui';
@@ -23,7 +23,7 @@ import { Radio } from 'rizzui';
 
 The default style of **Radio** component.
 
-<Paper className="text-gray-1000">
+<Paper className="text-gray-900">
 	<Radio label="Default" />
 </Paper>
 
@@ -39,9 +39,9 @@ export default function App() {
 
 ## Variants
 
-You can change style of **Radio** with property [**variant**](#radio-variants).
+You can change the style of **Radio** using [**variant**](#radio-variants) property.
 
-<Paper className="flex-row justify-around gap-4 flex-wrap">
+<Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
 	<Radio className="m-2" label="Flat" variant="flat" />
 	<Radio className="m-2" label="Outline" variant="outline" />
 	<Radio className="m-2" label="Active" variant="active" />
@@ -65,9 +65,9 @@ export default function App() {
 
 ## Sizes
 
-You can change style of **Radio** with property [**size**](#radio-sizes).
+You can change the sizes of **Radio** using [**size**](#radio-sizes) property.
 
-<Paper className="flex-row justify-around gap-4 flex-wrap">
+<Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
 	<Radio className="m-2" label="Small" variant="active" size="sm" />
 	<Radio className="m-2" label="Default" variant="active" />
 	<Radio className="m-2" label="Large" variant="active" size="lg" />
@@ -91,11 +91,35 @@ export default function App() {
 
 <div className="mb-16" />
 
+## Label Placement
+
+You can set label on the two diffrient side using **labelPlacement** property.
+
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
+	<Radio className="m-2" label="Left Placement" labelPlacement="start" />
+	<Radio className="m-2" label="Right Placement" labelPlacement="end" />
+</Paper>
+
+```tsx
+import { Radio } from 'rizzui';
+
+export default function App() {
+	return (
+		<>
+			<Radio className="m-2" label="Left Placement" labelPlacement="start" />
+			<Radio className="m-2" label="Right Placement" labelPlacement="end" />
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
 ## Colors
 
-You can change style of **Radio** with property [**color**](#radio-colors).
+You can change the color of **Radio** using [**color**](#radio-colors) property.
 
-<Paper className="flex-row justify-around gap-4 flex-wrap">
+<Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
 	<Radio className="m-2" label="Default" variant="flat" />
 	<Radio className="m-2" label="Primary" variant="flat" color="primary" />
 	<Radio className="m-2" label="Secondary" variant="flat" color="secondary" />
@@ -130,131 +154,9 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Label Placement
-
-You can change style of **Radio** with property **labelPlacement**.
-
-<Paper className="flex-row flex-wrap justify-around gap-4">
-	<Radio
-		className="m-2"
-		label="Left Placement"
-		variant="active"
-		labelPlacement="start"
-	/>
-	<Radio
-		className="m-2"
-		label="Right Placement"
-		variant="active"
-		labelPlacement="end"
-	/>
-</Paper>
-
-```tsx
-import { Radio } from 'rizzui';
-
-export default function App() {
-	return (
-		<>
-			<Radio
-				className="m-2"
-				label="Left Placement"
-				variant="active"
-				labelPlacement="start"
-			/>
-			<Radio
-				className="m-2"
-				label="Right Placement"
-				variant="active"
-				labelPlacement="end"
-			/>
-		</>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## Disabled
-
-You can change style of **Radio** with property **disabled**.
-
-<Paper>
-	<Radio className="m-2" label="Remember Me" disabled />
-</Paper>
-
-```tsx
-import { Radio } from 'rizzui';
-
-export default function App() {
-	return <Radio className="m-2" label="Remember Me" disabled />;
-}
-```
-
-<div className="mb-16" />
-
-## With Helper Text
-
-You can add helper text to **Radio**.
-
-<Paper>
-	<Radio
-		className="m-2"
-		helperText="Hi! My name is John Doe."
-		label="John"
-		value="john"
-	/>
-</Paper>
-
-```tsx
-import { Radio } from 'rizzui';
-
-export default function App() {
-	return (
-		<Radio
-			className="m-2"
-			helperText="Hi! My name is John Doe."
-			label="John"
-			value="john"
-		/>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## With Error
-
-You can add error message as validation to **Radio**.
-
-<Paper>
-	<Radio
-		className="m-2"
-		error="This field is required"
-		label="Yes"
-		value="yes"
-	/>
-</Paper>
-
-```tsx
-import { Radio } from 'rizzui';
-
-export default function App() {
-	return (
-		<Radio
-			className="m-2"
-			error="This field is required"
-			label="Yes"
-			value="yes"
-		/>
-	);
-}
-```
-
-<div className="mb-16" />
-
 ## Radio Group
 
-You can make a group of multiple choices **Radio** with component **RadioGroup**.
+You can make a radio group component using **RadioGroup**.
 
 <Paper>
 	<RadioGroupDefault />
@@ -265,7 +167,7 @@ import { useState } from 'react';
 import { Radio, RadioGroup } from 'rizzui';
 
 export default function App() {
-	const [value, setValue] = useState('');
+	const [value, setValue] = useState('apple');
 
 	return (
 		<RadioGroup value={value} setValue={setValue} className="flex gap-4">
@@ -278,64 +180,11 @@ export default function App() {
 }
 ```
 
-## Radio Group With Start Label
+<div className="mb-16" />
 
-You can make clickable card **Radio** group with component **RadioGroup**.
+## Radio Group List
 
-<Paper>
-	<RadioGroupStartLabel />
-</Paper>
-
-```tsx
-import { useState } from 'react';
-import { Radio, RadioGroup } from 'rizzui';
-
-export default function App() {
-	const [value, setValue] = useState('');
-
-	return (
-		<RadioGroup
-			value={value}
-			setValue={setValue}
-			className="justify-center space-x-4 space-y-4"
-		>
-			<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
-				<Radio
-					name="column-label-start-group"
-					label="Default"
-					value="default"
-					className="p-2"
-					labelPlacement="start"
-					containerClassName="justify-between"
-					helperText="This project would be available to anyone who have the link"
-				/>
-				<Radio
-					name="column-label-start-group"
-					label="Primary"
-					value="primary"
-					className="p-2"
-					labelPlacement="start"
-					containerClassName="justify-between"
-					helperText="This project would be available to anyone who have the link"
-				/>
-				<Radio
-					name="column-label-start-group"
-					label="Secondary"
-					value="secondary"
-					className="p-2"
-					labelPlacement="start"
-					containerClassName="justify-between"
-					helperText="This project would be available to anyone who have the link"
-				/>
-			</div>
-		</RadioGroup>
-	);
-}
-```
-
-## Radio Group With End Label
-
-You can make clickable card with **Radio** group left aligned.
+You can style any custom design using our **Radio** component.
 
 <Paper>
 	<RadioGroupEndLabel />
@@ -388,6 +237,88 @@ export default function App() {
 }
 ```
 
+<div className="mb-16" />
+
+## Disabled
+
+You can change style of **Radio** using **disabled** property.
+
+<Paper className="text-gray-900">
+	<Radio className="m-2" label="Remember Me" disabled />
+</Paper>
+
+```tsx
+import { Radio } from 'rizzui';
+
+export default function App() {
+	return <Radio className="m-2" label="Remember Me" disabled />;
+}
+```
+
+<div className="mb-16" />
+
+## With Helper Text
+
+You can add helper text to **Radio**.
+
+<Paper className="text-gray-900">
+	<Radio
+		className="m-2"
+		helperText="Hi! My name is John Doe."
+		label="John"
+		value="john"
+		labelClassName="font-medium"
+	/>
+</Paper>
+
+```tsx
+import { Radio } from 'rizzui';
+
+export default function App() {
+	return (
+		<Radio
+			className="m-2"
+			helperText="Hi! My name is John Doe."
+			label="John"
+			value="john"
+			labelClassName="font-medium"
+		/>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## With Error Message
+
+You can show the validation error message using **error** property.
+
+<Paper className="text-gray-900">
+	<Radio
+		className="m-2"
+		error="This field is required"
+		label="Yes"
+		value="yes"
+		labelClassName="font-medium"
+	/>
+</Paper>
+
+```tsx
+import { Radio } from 'rizzui';
+
+export default function App() {
+	return (
+		<Radio
+			className="m-2"
+			error="This field is required"
+			label="Yes"
+			value="yes"
+			labelClassName="font-medium"
+		/>
+	);
+}
+```
+
 <div className="mb-20" />
 
 ## APIs
@@ -398,7 +329,7 @@ export default function App() {
 
 ### Radio Props
 
-Here is the API documentation of the radio component. And the rest of the props of radio are the same as the original html input field. You can use props like `value`, `disabled`, `onChange`, `onFocus`, `onBlur` etc.
+Here is the API documentation of the radio component. And the rest of the props of radio are the same as the original html input field. You can use props like **value**, **disabled**, **onChange**, **onFocus**, **onBlur** etc.
 
 |       Props        |               Type               |                                       Description                                        |   Default   |
 | :----------------: | :------------------------------: | :--------------------------------------------------------------------------------------: | :---------: |

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 21
+sidebar_position: 18
 ---
 
 import { Rate } from 'rizzui';
@@ -9,7 +9,7 @@ import { emoji } from '@site/src/data/rate-data';
 
 # Rate
 
-We are using `rc-rate` package to build Rate component. See their [documentation](https://www.npmjs.com/package/rc-rate) for any query.
+A component for getting word of experience of the user.
 
 ```tsx
 import { Rate } from 'rizzui';
@@ -22,7 +22,7 @@ import { Rate } from 'rizzui';
 The default style of **Rate** component.
 
 <Paper>
-	<Rate className="[&_li]:!mt-0" />
+	<Rate className="[&_li]:!mt-0 [&_ul]:!pl-0" />
 </Paper>
 
 ```tsx
@@ -37,13 +37,13 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **Rate** with property [**size**](#rate-sizes).
+You can set diffirent sizes of the **Rate** component using [**size**](#rate-sizes) property.
 
-<Paper className="gap-4">
-	<Rate size="sm" className="[&_li]:!mt-0" />
-	<Rate className="[&_li]:!mt-0" />
-	<Rate size="lg" className="[&_li]:!mt-0" />
-	<Rate size="xl" className="[&_li]:!mt-0" />
+<Paper className="gap-4 items-start">
+	<Rate label="Small" size="sm" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
+	<Rate label="Default" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
+	<Rate label="Large" size="lg" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
+	<Rate label="Extra Large" size="xl" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
 </Paper>
 
 ```tsx
@@ -52,10 +52,10 @@ import { Rate } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Rate size="sm" />
-			<Rate />
-			<Rate size="lg" />
-			<Rate size="xl" />
+			<Rate size="sm" label="Small" />
+			<Rate label="Default" />
+			<Rate size="lg" label="Large" />
+			<Rate size="xl" label="Extra Large" />
 		</>
 	);
 }
@@ -63,33 +63,15 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Disabled
-
-You can change the style of **Rate** with property **disabled**.
-
-<Paper>
-	<Rate disabled size="lg" className="[&_li]:!mt-0" />
-</Paper>
-
-```tsx
-import { Rate } from 'rizzui';
-
-export default function App() {
-	return <Rate disabled size="lg" />;
-}
-```
-
-<div className="mb-16" />
-
 ## With Tooltips
 
-You can change the style of **Rate** with property **tooltips**.
+You can add tooltip to the **Rate** component using **tooltips** property.
 
 <Paper>
 	<Rate
 		size="lg"
 		defaultValue={3}
-		className="[&_li]:!mt-0"
+		className="[&_li]:!mt-0 [&_ul]:!pl-0"
 		tooltips={['terrible', 'bad', 'normal', 'good', 'wonderful']}
 	/>
 </Paper>
@@ -112,10 +94,15 @@ export default function App() {
 
 ## With Half Rate
 
-You can change the style of **Rate** with property **allowHalf**.
+User can select half star when you add **allowHalf** property to the **Rate** component.
 
 <Paper>
-	<Rate size="lg" allowHalf className="[&_li]:!mt-0" defaultValue={1.5} />
+	<Rate
+		size="lg"
+		allowHalf
+		className="[&_li]:!mt-0 [&_ul]:!pl-0"
+		defaultValue={1.5}
+	/>
 </Paper>
 
 ```tsx
@@ -130,13 +117,13 @@ export default function App() {
 
 ## With Custom Character
 
-You can change the style of **Rate** with property **character**.
+You can set custom charater to the **Rate** component using **character** property.
 
 <Paper>
 	<Rate
 		character={<HeartIcon className="w-7" />}
 		defaultValue={1.5}
-		className="[&_li]:!mt-0"
+		className="[&_li]:!mt-0 [&_ul]:!pl-0"
 		size="xl"
 	/>
 </Paper>
@@ -160,14 +147,14 @@ export default function App() {
 
 ## With Character Emoji
 
-You can change the style of **Rate** with property **character**.
+Use any custom characker emoji to the **Rate** component using **character** property.
 
 <Paper>
 	<Rate
 		character={emoji}
 		defaultValue={2}
 		size="xl"
-		className="[&_li]:!mt-0"
+		className="[&_li]:!mt-0 [&_ul]:!pl-0"
 		characterClassName="[&>svg]:mr-2"
 	/>
 </Paper>
@@ -335,14 +322,31 @@ export default function App() {
 
 <div className="mb-16" />
 
+## Disabled
+
+The disabled state of the **Rate** component.
+
+<Paper>
+	<Rate disabled className="[&_li]:!mt-0 [&_ul]:!pl-0" />{' '}
+</Paper>
+
+```tsx
+import { Rate } from 'rizzui';
+
+export default function App() {
+	return <Rate disabled />;
+}
+```
+
+<div className="mb-16" />
+
 ## With Helper Text
 
-You can change the style of **Rate** with property **helperText**.
+You can add helper text message to the **Rate** component using **helperText** property.
 
 <Paper>
 	<Rate
 		defaultValue={2}
-		size="xl"
 		className="[&_li]:!mt-0 [&_ul]:pl-0"
 		helperText="This is helperText."
 	/>
@@ -352,29 +356,25 @@ You can change the style of **Rate** with property **helperText**.
 import { Rate } from 'rizzui';
 
 export default function App() {
-	return <Rate defaultValue={2} size="xl" helperText="This is helperText." />;
+	return <Rate defaultValue={2} helperText="This is helperText." />;
 }
 ```
 
 <div className="mb-16" />
 
-## With Error
+## With Error Message
 
-You can change the style of **Rate** with property **error**.
+You can show the validation error message using **error** property.
 
 <Paper>
-	<Rate
-		size="xl"
-		className="[&_li]:!mt-0 [&_ul]:pl-0"
-		error="This field is required.."
-	/>
+	<Rate className="[&_li]:!mt-0 [&_ul]:pl-0" error="This field is required.." />
 </Paper>
 
 ```tsx
 import { Rate } from 'rizzui';
 
 export default function App() {
-	return <Rate size="xl" error="This field is required.." />;
+	return <Rate error="This field is required.." />;
 }
 ```
 
@@ -388,7 +388,7 @@ export default function App() {
 
 ### Rate Props
 
-Here is the API documentation of the Rate component.
+Here is the API documentation of the Rate component. We are using **rc-rate** package to build Rate component. See their [**Official documentation**](https://www.npmjs.com/package/rc-rate) for any query.
 
 |       Props        |                     Type                      |                                Description                                 |    Default     |
 | :----------------: | :-------------------------------------------: | :------------------------------------------------------------------------: | :------------: |

@@ -1,9 +1,13 @@
+---
+sidebar_position: 36
+---
+
 import { Empty, EmptyProductBoxIcon, SearchNotFoundIcon } from 'rizzui';
 import Paper from '@site/src/components/paper';
 
 # Empty
 
-Empty state component. Note: We are highly inspired by the Ant Design empty component -> [https://ant.design/components/empty](https://ant.design/components/empty)
+Empty state component. This component gives a message when some part or data is empty.
 
 ```tsx
 import { Empty } from 'rizzui';
@@ -13,7 +17,7 @@ import { Empty } from 'rizzui';
 
 ## Default
 
-The default style of the **Empty**
+The default style of the **Empty**.
 
 <Paper>
 	<Empty text="No Data" textClassName="mt-2" />
@@ -31,7 +35,7 @@ export default function App() {
 
 ## No Product
 
-You can use it if your product is **Empty**
+You can use it if your product is **Empty**.
 
 <Paper>
 	<Empty image={<EmptyProductBoxIcon />} text="No Product Available" />
@@ -49,7 +53,7 @@ export default function App() {
 
 ## No Result Found
 
-You can use it if your search is **Empty**
+You can use it if your search is **Empty**.
 
 <Paper>
 	<Empty image={<SearchNotFoundIcon />} text="No Result Found" />
@@ -87,6 +91,8 @@ Here is the API documentation of the Empty component.
 |        textTag        | [EmptyTextTags](#empty-text-tags)  |                 Here you can use your text tag                 |   `"p"`    |
 |       alignment       | [EmptyAlignment](#empty-alignment) |         Set custom text message of the Empty component         | `"center"` |
 |       className       |              `string`              |               Add custom classes for extra style               |   \_ \_    |
+
+_*Note: We are highly inspired by the Ant Design's empty component*_
 
 <div className="mb-10" />
 

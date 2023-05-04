@@ -16,7 +16,6 @@ import {
 	ArrowRightIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
-	AdjustmentsHorizontalIcon,
 } from '@heroicons/react/24/outline';
 
 const components = [
@@ -128,7 +127,7 @@ export default function ComponentBlock() {
 						tag="h2"
 						className="text-2xl sm:text-3xl lg:text-4xl leading-[1.35] sm:leading-[1.3]"
 					>
-						38+ Production Ready Components
+						32+ Production Ready Components
 					</Text>
 				</header>
 			</div>

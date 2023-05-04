@@ -1,5 +1,5 @@
 ---
-sidebar_position: 22
+sidebar_position: 19
 ---
 
 import { RangeSlider } from 'rizzui';
@@ -7,6 +7,8 @@ import Paper from '@site/src/components/paper';
 import RangeSliderCounter from '@site/src/components/range-slider';
 
 # RangeSlider
+
+A slider component enables user to pick any value from a range.
 
 ```jsx
 import { RangeSlider } from 'rizzui';
@@ -34,7 +36,7 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **RangeSlider** with property [**size**](#rangeslider-sizes).
+You can change the size of **RangeSlider** using [**size**](#rangeslider-sizes) property.
 
 <Paper className="gap-6">
 	<RangeSlider size="sm" defaultValue={20} />
@@ -62,16 +64,16 @@ export default function App() {
 
 ## Colors
 
-You can change the style of **RangeSlider** with property [**color**](#rangeslider-colors).
+You can change the color of **RangeSlider** using [**color**](#rangeslider-colors) property.
 
 <Paper className="gap-6">
-	<RangeSlider defaultValue={20} />
+	<RangeSlider defaultValue={15} />
 	<RangeSlider defaultValue={20} color="primary" />
-	<RangeSlider defaultValue={20} color="secondary" />
-	<RangeSlider defaultValue={20} color="danger" />
-	<RangeSlider defaultValue={20} color="info" />
-	<RangeSlider defaultValue={20} color="success" />
-	<RangeSlider defaultValue={20} color="warning" />
+	<RangeSlider defaultValue={25} color="secondary" />
+	<RangeSlider defaultValue={30} color="danger" />
+	<RangeSlider defaultValue={35} color="info" />
+	<RangeSlider defaultValue={40} color="success" />
+	<RangeSlider defaultValue={45} color="warning" />
 </Paper>
 
 ```jsx
@@ -80,13 +82,13 @@ import { RangeSlider } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<RangeSlider defaultValue={20} />
+			<RangeSlider defaultValue={15} />
 			<RangeSlider defaultValue={20} color="primary" />
-			<RangeSlider defaultValue={20} color="secondary" />
-			<RangeSlider defaultValue={20} color="danger" />
-			<RangeSlider defaultValue={20} color="info" />
-			<RangeSlider defaultValue={20} color="success" />
-			<RangeSlider defaultValue={20} color="warning" />
+			<RangeSlider defaultValue={25} color="secondary" />
+			<RangeSlider defaultValue={30} color="danger" />
+			<RangeSlider defaultValue={35} color="info" />
+			<RangeSlider defaultValue={40} color="success" />
+			<RangeSlider defaultValue={45} color="warning" />
 		</>
 	);
 }
@@ -96,7 +98,7 @@ export default function App() {
 
 ## With Range
 
-You can change the style of **RangeSlider** with property **range**.
+When **range** is true, display as dual thumb mode.
 
 <Paper>
 	<RangeSlider defaultValue={[20, 60]} range />
@@ -114,7 +116,7 @@ export default function App() {
 
 ## With Marks & Steps
 
-You can change the style of **RangeSlider** with property **marks** & **step**.
+You can set multiple marks and steps using **marks** & **step** property.
 
 <Paper>
 	<RangeSlider
@@ -156,7 +158,7 @@ export default function App() {
 
 ## With Marks & Steps in Range
 
-You can change the style of **RangeSlider** with property **marks** & **step**.
+Make multiple marks and steps with range using **marks**, **step**, & **range** property.
 
 <Paper>
 	<RangeSlider
@@ -200,7 +202,7 @@ export default function App() {
 
 ## With Range Counter
 
-You can create a custom **RangeSlider** counter.
+Customize your range slider according to your preference.
 
 <Paper className="block">
 	<RangeSliderCounter />
@@ -285,7 +287,7 @@ export default function App() {
 
 ### RangeSlider Props
 
-Here is the API documentation of the ActionIcon component.
+Here is the API documentation of the ActionIcon component. We used **rc-slider** package to create Slider component. See their [**Official documentation**](https://slider-react-component.vercel.app/) for more info.
 
 |              Props              |                           Type                            |         Description         |   Default   |
 | :-----------------------------: | :-------------------------------------------------------: | :-------------------------: | :---------: |
@@ -339,7 +341,7 @@ type RangesliderSize = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 
 <div className="mb-10" />
 
-### Rangeslider colors
+### Rangeslider Colors
 
 ```ts
 type Rangeslidercolors =
@@ -354,7 +356,7 @@ type Rangeslidercolors =
 
 <div className="mb-10" />
 
-### Range Slider Onchange
+### Range Slider onChange
 
 ```ts
 type RangeSliderOnchange = (value: number | number[]) => void;
@@ -362,7 +364,7 @@ type RangeSliderOnchange = (value: number | number[]) => void;
 
 <div className="mb-10" />
 
-### Range Slider Onbeforechange
+### Range Slider onBeforeChange
 
 ```ts
 type RangeSliderOnbeforechange = (value: number | number[]) => void;
@@ -370,7 +372,7 @@ type RangeSliderOnbeforechange = (value: number | number[]) => void;
 
 <div className="mb-10" />
 
-### Range Slider Onafterchange
+### Range Slider onAfterChange
 
 ```ts
 type RangeSliderOnafterchange = (value: number | number[]) => void;

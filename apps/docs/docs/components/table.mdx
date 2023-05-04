@@ -1,21 +1,17 @@
 ---
-sidebar_position: 29
+sidebar_position: 28
 ---
 
-import { Table } from 'rizzui';
-import Paper from '@site/src/components/paper';
-import TableDefault, {
-	TableModern,
-	TableElegant,
-	TableMinimal,
-} from '@site/src/components/table';
+import { Table } from "rizzui";
+import Paper from "@site/src/components/paper";
+import TableDefault, { TableModern, TableElegant, TableMinimal } from "@site/src/components/table";
 
 # Table
 
-React table component with useful functions. Under the hood we are using rc-table package, you can check their official documentation for more details -> https://www.npmjs.com/package/rc-table
+React table component with useful functions.
 
 ```tsx
-import { Table } from 'rizzui';
+import { Table } from "rizzui";
 ```
 
 <div className="mb-28" />
@@ -25,261 +21,290 @@ import { Table } from 'rizzui';
 The default style of **Table** component.
 
 <Paper className="block">
-	<TableDefault />
+  <TableDefault />
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
+import React from "react";
+import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from "rizzui";
 
 const initialData = [
-	{
-		id: '1',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '2',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '3',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '4',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '5',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '6',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
+  {
+    id: "1",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "2",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "3",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "4",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "5",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "6",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
 ];
 
 function getStatusBadge(status: string) {
-	switch (status.toLowerCase()) {
-		case 'pending':
-			return <Badge variant="flat">{status}</Badge>;
-		case 'active':
-			return (
-				<Badge variant="flat" color="success">
-					{status}
-				</Badge>
-			);
-		case 'warning':
-			return (
-				<Badge variant="flat" color="warning">
-					{status}
-				</Badge>
-			);
-		case 'danger':
-			return (
-				<Badge variant="flat" color="danger">
-					{status}
-				</Badge>
-			);
-		default:
-			return null;
-	}
+  switch (status.toLowerCase()) {
+    case "pending":
+      return <Badge variant="flat">{status}</Badge>;
+    case "active":
+      return (
+        <Badge
+          variant="flat"
+          color="success"
+        >
+          {status}
+        </Badge>
+      );
+    case "warning":
+      return (
+        <Badge
+          variant="flat"
+          color="warning"
+        >
+          {status}
+        </Badge>
+      );
+    case "danger":
+      return (
+        <Badge
+          variant="flat"
+          color="danger"
+        >
+          {status}
+        </Badge>
+      );
+    default:
+      return null;
+  }
 }
 
-const getColumns = (
-	order: string,
-	column: string,
-	onHeaderClick: (value: string) => any
-) => [
-	{
-		title: <></>,
-		dataIndex: 'checked',
-		key: 'checked',
-		width: 50,
-		render: () => (
-			<div className="inline-flex cursor-pointer">
-				<Checkbox variant="flat" />
-			</div>
-		),
-	},
-	{
-		title: (
-			<HeaderCell
-				title="Id"
-				sortable
-				ascending={order === 'asc' && column === 'id'}
-			/>
-		),
-		onHeaderCell: () => onHeaderClick('id'),
-		dataIndex: 'id',
-		key: 'id',
-		width: 50,
-	},
-	{
-		title: <HeaderCell title="Employee" />,
-		dataIndex: 'employee',
-		key: 'employee',
-		width: 250,
-		render: (employee: any) => (
-			<div className="flex items-center">
-				<Avatar src={employee.avatar} size="40" />
-				<div className="ml-3 rtl:ml-0 rtl:mr-3">
-					<Text tag="h6" className="mb-0.5 !text-sm font-medium">
-						{employee.name}
-					</Text>
-					<Text tag="p" className="text-xs text-gray-400">
-						{employee.userName}
-					</Text>
-				</div>
-			</div>
-		),
-	},
-	{
-		title: <HeaderCell title="Designation" />,
-		dataIndex: 'designation',
-		key: 'designation',
-		width: 320,
-		render: (designation: any) => (
-			<div>
-				<Text tag="h6" className="mb-0.5 !text-sm font-medium">
-					{designation.role}
-				</Text>
-				<Text tag="p" className="text-xs text-gray-400">
-					{designation.company}
-				</Text>
-			</div>
-		),
-	},
-	{
-		title: <HeaderCell title="Phone Number" />,
-		dataIndex: 'phoneNumber',
-		key: 'phoneNumber',
-		width: 200,
-	},
-	{
-		title: <HeaderCell title="Email" />,
-		dataIndex: 'email',
-		key: 'email',
-		width: 200,
-	},
-	{
-		title: <HeaderCell title="Status" />,
-		dataIndex: 'status',
-		key: 'status',
-		width: 120,
-		render: (value: string) => getStatusBadge(value),
-	},
-	{
-		title: <></>,
-		dataIndex: 'action',
-		key: 'action',
-		width: 120,
-		render: (_: string, row: any) => (
-			<div className="flex items-center gap-2">
-				<button
-					type="button"
-					className="text-primary underline"
-					onClick={() => alert(`Edit item #${row.id}`)}
-				>
-					Edit
-				</button>
-				<button type="button" className="underline">
-					View
-				</button>
-			</div>
-		),
-	},
+const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
+  {
+    title: <></>,
+    dataIndex: "checked",
+    key: "checked",
+    width: 50,
+    render: () => (
+      <div className="inline-flex cursor-pointer">
+        <Checkbox variant="flat" />
+      </div>
+    ),
+  },
+  {
+    title: (
+      <HeaderCell
+        title="Id"
+        sortable
+        ascending={order === "asc" && column === "id"}
+      />
+    ),
+    onHeaderCell: () => onHeaderClick("id"),
+    dataIndex: "id",
+    key: "id",
+    width: 50,
+  },
+  {
+    title: <HeaderCell title="Employee" />,
+    dataIndex: "employee",
+    key: "employee",
+    width: 250,
+    render: (employee: any) => (
+      <div className="flex items-center">
+        <Avatar
+          src={employee.avatar}
+          size="40"
+        />
+        <div className="ml-3 rtl:ml-0 rtl:mr-3">
+          <Text
+            tag="h6"
+            className="mb-0.5 !text-sm font-medium"
+          >
+            {employee.name}
+          </Text>
+          <Text
+            tag="p"
+            className="text-xs text-gray-400"
+          >
+            {employee.userName}
+          </Text>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="Designation" />,
+    dataIndex: "designation",
+    key: "designation",
+    width: 320,
+    render: (designation: any) => (
+      <div>
+        <Text
+          tag="h6"
+          className="mb-0.5 !text-sm font-medium"
+        >
+          {designation.role}
+        </Text>
+        <Text
+          tag="p"
+          className="text-xs text-gray-400"
+        >
+          {designation.company}
+        </Text>
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="Phone Number" />,
+    dataIndex: "phoneNumber",
+    key: "phoneNumber",
+    width: 200,
+  },
+  {
+    title: <HeaderCell title="Email" />,
+    dataIndex: "email",
+    key: "email",
+    width: 200,
+  },
+  {
+    title: <HeaderCell title="Status" />,
+    dataIndex: "status",
+    key: "status",
+    width: 120,
+    render: (value: string) => getStatusBadge(value),
+  },
+  {
+    title: <></>,
+    dataIndex: "action",
+    key: "action",
+    width: 120,
+    render: (_: string, row: any) => (
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          className="text-primary underline"
+          onClick={() => alert(`Edit item #${row.id}`)}
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          className="underline"
+        >
+          View
+        </button>
+      </div>
+    ),
+  },
 ];
 
 export default function App() {
-	const [order, setOrder] = React.useState<string>('desc');
-	const [column, setColumn] = React.useState<string>('');
-	const [data, setData] = React.useState<typeof initialData>(initialData);
-	const onHeaderClick = (value: string) => ({
-		onClick: () => {
-			setColumn(value);
-			setOrder(order === 'desc' ? 'asc' : 'desc');
-			if (order === 'desc') {
-				// @ts-ignore
-				setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
-			} else {
-				// @ts-ignore
-				setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
-			}
-		},
-	});
-	const columns: any = React.useMemo(
-		() => getColumns(order, column, onHeaderClick),
-		[order, column, onHeaderClick]
-	);
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
+  const [data, setData] = React.useState<typeof initialData>(initialData);
+  const onHeaderClick = (value: string) => ({
+    onClick: () => {
+      setColumn(value);
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
+        // @ts-ignore
+        setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
+      } else {
+        // @ts-ignore
+        setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
+      }
+    },
+  });
+  const columns: any = React.useMemo(
+    () => getColumns(order, column, onHeaderClick),
+    [order, column, onHeaderClick]
+  );
 
-	return <Table data={data} columns={columns} className="text-sm" />;
+  return (
+    <Table
+      data={data}
+      columns={columns}
+      className="text-sm"
+    />
+  );
 }
 ```
 
@@ -290,263 +315,291 @@ export default function App() {
 You can change the style of **Table** by changing property [**variant**](#table-variants).
 
 <Paper className="block">
-	<TableModern />
+  <TableModern />
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
+import React from "react";
+import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from "rizzui";
 
 const initialData = [
-	{
-		id: '1',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '2',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '3',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '4',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '5',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '6',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
+  {
+    id: "1",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "2",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "3",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "4",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "5",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "6",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
 ];
 
 function getStatusBadge(status: string) {
-	switch (status.toLowerCase()) {
-		case 'pending':
-			return <Badge variant="flat">{status}</Badge>;
-		case 'active':
-			return (
-				<Badge variant="flat" color="success">
-					{status}
-				</Badge>
-			);
-		case 'warning':
-			return (
-				<Badge variant="flat" color="warning">
-					{status}
-				</Badge>
-			);
-		case 'danger':
-			return (
-				<Badge variant="flat" color="danger">
-					{status}
-				</Badge>
-			);
-		default:
-			return null;
-	}
+  switch (status.toLowerCase()) {
+    case "pending":
+      return <Badge variant="flat">{status}</Badge>;
+    case "active":
+      return (
+        <Badge
+          variant="flat"
+          color="success"
+        >
+          {status}
+        </Badge>
+      );
+    case "warning":
+      return (
+        <Badge
+          variant="flat"
+          color="warning"
+        >
+          {status}
+        </Badge>
+      );
+    case "danger":
+      return (
+        <Badge
+          variant="flat"
+          color="danger"
+        >
+          {status}
+        </Badge>
+      );
+    default:
+      return null;
+  }
 }
 
-const getColumns = (
-	order: string,
-	column: string,
-	onHeaderClick: (value: string) => any
-) => [
-	{
-		title: <></>,
-		dataIndex: 'checked',
-		key: 'checked',
-		width: 50,
-		render: () => (
-			<div className="inline-flex cursor-pointer">
-				<Checkbox variant="flat" />
-			</div>
-		),
-	},
-	{
-		title: (
-			<HeaderCell
-				title="Id"
-				sortable
-				ascending={order === 'asc' && column === 'id'}
-			/>
-		),
-		onHeaderCell: () => onHeaderClick('id'),
-		dataIndex: 'id',
-		key: 'id',
-		width: 50,
-	},
-	{
-		title: <HeaderCell title="Employee" />,
-		dataIndex: 'employee',
-		key: 'employee',
-		width: 250,
-		render: (employee: any) => (
-			<div className="flex items-center">
-				<Avatar src={employee.avatar} size="40" />
-				<div className="ml-3 rtl:ml-0 rtl:mr-3">
-					<Text tag="h6" className="mb-0.5 !text-sm font-medium">
-						{employee.name}
-					</Text>
-					<Text tag="p" className="text-xs text-gray-400">
-						{employee.userName}
-					</Text>
-				</div>
-			</div>
-		),
-	},
-	{
-		title: <HeaderCell title="Designation" />,
-		dataIndex: 'designation',
-		key: 'designation',
-		width: 320,
-		render: (designation: any) => (
-			<div>
-				<Text tag="h6" className="mb-0.5 !text-sm font-medium">
-					{designation.role}
-				</Text>
-				<Text tag="p" className="text-xs text-gray-400">
-					{designation.company}
-				</Text>
-			</div>
-		),
-	},
-	{
-		title: <HeaderCell title="Phone Number" />,
-		dataIndex: 'phoneNumber',
-		key: 'phoneNumber',
-		width: 200,
-	},
-	{
-		title: <HeaderCell title="Email" />,
-		dataIndex: 'email',
-		key: 'email',
-		width: 200,
-	},
-	{
-		title: <HeaderCell title="Status" />,
-		dataIndex: 'status',
-		key: 'status',
-		width: 120,
-		render: (value: string) => getStatusBadge(value),
-	},
-	{
-		title: <></>,
-		dataIndex: 'action',
-		key: 'action',
-		width: 120,
-		render: (_: string, row: any) => (
-			<div className="flex items-center gap-2">
-				<button
-					type="button"
-					className="text-primary underline"
-					onClick={() => alert(`Edit item #${row.id}`)}
-				>
-					Edit
-				</button>
-				<button type="button" className="underline">
-					View
-				</button>
-			</div>
-		),
-	},
+const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
+  {
+    title: <></>,
+    dataIndex: "checked",
+    key: "checked",
+    width: 50,
+    render: () => (
+      <div className="inline-flex cursor-pointer">
+        <Checkbox variant="flat" />
+      </div>
+    ),
+  },
+  {
+    title: (
+      <HeaderCell
+        title="Id"
+        sortable
+        ascending={order === "asc" && column === "id"}
+      />
+    ),
+    onHeaderCell: () => onHeaderClick("id"),
+    dataIndex: "id",
+    key: "id",
+    width: 50,
+  },
+  {
+    title: <HeaderCell title="Employee" />,
+    dataIndex: "employee",
+    key: "employee",
+    width: 250,
+    render: (employee: any) => (
+      <div className="flex items-center">
+        <Avatar
+          src={employee.avatar}
+          size="40"
+        />
+        <div className="ml-3 rtl:ml-0 rtl:mr-3">
+          <Text
+            tag="h6"
+            className="mb-0.5 !text-sm font-medium"
+          >
+            {employee.name}
+          </Text>
+          <Text
+            tag="p"
+            className="text-xs text-gray-400"
+          >
+            {employee.userName}
+          </Text>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="Designation" />,
+    dataIndex: "designation",
+    key: "designation",
+    width: 320,
+    render: (designation: any) => (
+      <div>
+        <Text
+          tag="h6"
+          className="mb-0.5 !text-sm font-medium"
+        >
+          {designation.role}
+        </Text>
+        <Text
+          tag="p"
+          className="text-xs text-gray-400"
+        >
+          {designation.company}
+        </Text>
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="Phone Number" />,
+    dataIndex: "phoneNumber",
+    key: "phoneNumber",
+    width: 200,
+  },
+  {
+    title: <HeaderCell title="Email" />,
+    dataIndex: "email",
+    key: "email",
+    width: 200,
+  },
+  {
+    title: <HeaderCell title="Status" />,
+    dataIndex: "status",
+    key: "status",
+    width: 120,
+    render: (value: string) => getStatusBadge(value),
+  },
+  {
+    title: <></>,
+    dataIndex: "action",
+    key: "action",
+    width: 120,
+    render: (_: string, row: any) => (
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          className="text-primary underline"
+          onClick={() => alert(`Edit item #${row.id}`)}
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          className="underline"
+        >
+          View
+        </button>
+      </div>
+    ),
+  },
 ];
 
 export default function App() {
-	const [order, setOrder] = React.useState<string>('desc');
-	const [column, setColumn] = React.useState<string>('');
-	const [data, setData] = React.useState<typeof initialData>(initialData);
-	const onHeaderClick = (value: string) => ({
-		onClick: () => {
-			setColumn(value);
-			setOrder(order === 'desc' ? 'asc' : 'desc');
-			if (order === 'desc') {
-				// @ts-ignore
-				setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
-			} else {
-				// @ts-ignore
-				setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
-			}
-		},
-	});
-	const columns: any = React.useMemo(
-		() => getColumns(order, column, onHeaderClick),
-		[order, column, onHeaderClick]
-	);
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
+  const [data, setData] = React.useState<typeof initialData>(initialData);
+  const onHeaderClick = (value: string) => ({
+    onClick: () => {
+      setColumn(value);
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
+        // @ts-ignore
+        setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
+      } else {
+        // @ts-ignore
+        setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
+      }
+    },
+  });
+  const columns: any = React.useMemo(
+    () => getColumns(order, column, onHeaderClick),
+    [order, column, onHeaderClick]
+  );
 
-	return (
-		<Table data={data} columns={columns} className="text-sm" variant="modern" />
-	);
+  return (
+    <Table
+      data={data}
+      columns={columns}
+      className="text-sm"
+      variant="modern"
+    />
+  );
 }
 ```
 
@@ -557,268 +610,291 @@ export default function App() {
 You can change the style of **Table** by changing property [**variant**](#table-variants).
 
 <Paper className="block">
-	<TableElegant />
+  <TableElegant />
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
+import React from "react";
+import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from "rizzui";
 
 const initialData = [
-	{
-		id: '1',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '2',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '3',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '4',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '5',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '6',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
+  {
+    id: "1",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "2",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "3",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "4",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "5",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "6",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
 ];
 
 function getStatusBadge(status: string) {
-	switch (status.toLowerCase()) {
-		case 'pending':
-			return <Badge variant="flat">{status}</Badge>;
-		case 'active':
-			return (
-				<Badge variant="flat" color="success">
-					{status}
-				</Badge>
-			);
-		case 'warning':
-			return (
-				<Badge variant="flat" color="warning">
-					{status}
-				</Badge>
-			);
-		case 'danger':
-			return (
-				<Badge variant="flat" color="danger">
-					{status}
-				</Badge>
-			);
-		default:
-			return null;
-	}
+  switch (status.toLowerCase()) {
+    case "pending":
+      return <Badge variant="flat">{status}</Badge>;
+    case "active":
+      return (
+        <Badge
+          variant="flat"
+          color="success"
+        >
+          {status}
+        </Badge>
+      );
+    case "warning":
+      return (
+        <Badge
+          variant="flat"
+          color="warning"
+        >
+          {status}
+        </Badge>
+      );
+    case "danger":
+      return (
+        <Badge
+          variant="flat"
+          color="danger"
+        >
+          {status}
+        </Badge>
+      );
+    default:
+      return null;
+  }
 }
 
-const getColumns = (
-	order: string,
-	column: string,
-	onHeaderClick: (value: string) => any
-) => [
-	{
-		title: <></>,
-		dataIndex: 'checked',
-		key: 'checked',
-		width: 50,
-		render: () => (
-			<div className="inline-flex cursor-pointer">
-				<Checkbox variant="flat" />
-			</div>
-		),
-	},
-	{
-		title: (
-			<HeaderCell
-				title="Id"
-				sortable
-				ascending={order === 'asc' && column === 'id'}
-			/>
-		),
-		onHeaderCell: () => onHeaderClick('id'),
-		dataIndex: 'id',
-		key: 'id',
-		width: 50,
-	},
-	{
-		title: <HeaderCell title="Employee" />,
-		dataIndex: 'employee',
-		key: 'employee',
-		width: 250,
-		render: (employee: any) => (
-			<div className="flex items-center">
-				<Avatar src={employee.avatar} size="40" />
-				<div className="ml-3 rtl:ml-0 rtl:mr-3">
-					<Text tag="h6" className="mb-0.5 !text-sm font-medium">
-						{employee.name}
-					</Text>
-					<Text tag="p" className="text-xs text-gray-400">
-						{employee.userName}
-					</Text>
-				</div>
-			</div>
-		),
-	},
-	{
-		title: <HeaderCell title="Designation" />,
-		dataIndex: 'designation',
-		key: 'designation',
-		width: 320,
-		render: (designation: any) => (
-			<div>
-				<Text tag="h6" className="mb-0.5 !text-sm font-medium">
-					{designation.role}
-				</Text>
-				<Text tag="p" className="text-xs text-gray-400">
-					{designation.company}
-				</Text>
-			</div>
-		),
-	},
-	{
-		title: <HeaderCell title="Phone Number" />,
-		dataIndex: 'phoneNumber',
-		key: 'phoneNumber',
-		width: 200,
-	},
-	{
-		title: <HeaderCell title="Email" />,
-		dataIndex: 'email',
-		key: 'email',
-		width: 200,
-	},
-	{
-		title: <HeaderCell title="Status" />,
-		dataIndex: 'status',
-		key: 'status',
-		width: 120,
-		render: (value: string) => getStatusBadge(value),
-	},
-	{
-		title: <></>,
-		dataIndex: 'action',
-		key: 'action',
-		width: 120,
-		render: (_: string, row: any) => (
-			<div className="flex items-center gap-2">
-				<button
-					type="button"
-					className="text-primary underline"
-					onClick={() => alert(`Edit item #${row.id}`)}
-				>
-					Edit
-				</button>
-				<button type="button" className="underline">
-					View
-				</button>
-			</div>
-		),
-	},
+const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
+  {
+    title: <></>,
+    dataIndex: "checked",
+    key: "checked",
+    width: 50,
+    render: () => (
+      <div className="inline-flex cursor-pointer">
+        <Checkbox variant="flat" />
+      </div>
+    ),
+  },
+  {
+    title: (
+      <HeaderCell
+        title="Id"
+        sortable
+        ascending={order === "asc" && column === "id"}
+      />
+    ),
+    onHeaderCell: () => onHeaderClick("id"),
+    dataIndex: "id",
+    key: "id",
+    width: 50,
+  },
+  {
+    title: <HeaderCell title="Employee" />,
+    dataIndex: "employee",
+    key: "employee",
+    width: 250,
+    render: (employee: any) => (
+      <div className="flex items-center">
+        <Avatar
+          src={employee.avatar}
+          size="40"
+        />
+        <div className="ml-3 rtl:ml-0 rtl:mr-3">
+          <Text
+            tag="h6"
+            className="mb-0.5 !text-sm font-medium"
+          >
+            {employee.name}
+          </Text>
+          <Text
+            tag="p"
+            className="text-xs text-gray-400"
+          >
+            {employee.userName}
+          </Text>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="Designation" />,
+    dataIndex: "designation",
+    key: "designation",
+    width: 320,
+    render: (designation: any) => (
+      <div>
+        <Text
+          tag="h6"
+          className="mb-0.5 !text-sm font-medium"
+        >
+          {designation.role}
+        </Text>
+        <Text
+          tag="p"
+          className="text-xs text-gray-400"
+        >
+          {designation.company}
+        </Text>
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="Phone Number" />,
+    dataIndex: "phoneNumber",
+    key: "phoneNumber",
+    width: 200,
+  },
+  {
+    title: <HeaderCell title="Email" />,
+    dataIndex: "email",
+    key: "email",
+    width: 200,
+  },
+  {
+    title: <HeaderCell title="Status" />,
+    dataIndex: "status",
+    key: "status",
+    width: 120,
+    render: (value: string) => getStatusBadge(value),
+  },
+  {
+    title: <></>,
+    dataIndex: "action",
+    key: "action",
+    width: 120,
+    render: (_: string, row: any) => (
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          className="text-primary underline"
+          onClick={() => alert(`Edit item #${row.id}`)}
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          className="underline"
+        >
+          View
+        </button>
+      </div>
+    ),
+  },
 ];
 
 export default function App() {
-	const [order, setOrder] = React.useState<string>('desc');
-	const [column, setColumn] = React.useState<string>('');
-	const [data, setData] = React.useState<typeof initialData>(initialData);
-	const onHeaderClick = (value: string) => ({
-		onClick: () => {
-			setColumn(value);
-			setOrder(order === 'desc' ? 'asc' : 'desc');
-			if (order === 'desc') {
-				// @ts-ignore
-				setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
-			} else {
-				// @ts-ignore
-				setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
-			}
-		},
-	});
-	const columns: any = React.useMemo(
-		() => getColumns(order, column, onHeaderClick),
-		[order, column, onHeaderClick]
-	);
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
+  const [data, setData] = React.useState<typeof initialData>(initialData);
+  const onHeaderClick = (value: string) => ({
+    onClick: () => {
+      setColumn(value);
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
+        // @ts-ignore
+        setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
+      } else {
+        // @ts-ignore
+        setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
+      }
+    },
+  });
+  const columns: any = React.useMemo(
+    () => getColumns(order, column, onHeaderClick),
+    [order, column, onHeaderClick]
+  );
 
-	return (
-		<Table
-			data={data}
-			columns={columns}
-			className="text-sm"
-			variant="elegant"
-		/>
-	);
+  return (
+    <Table
+      data={data}
+      columns={columns}
+      className="text-sm"
+      variant="elegant"
+    />
+  );
 }
 ```
 
@@ -829,268 +905,291 @@ export default function App() {
 You can change the style of **Table** by changing property [**variant**](#table-variants).
 
 <Paper className="block">
-	<TableMinimal />
+  <TableMinimal />
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
+import React from "react";
+import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from "rizzui";
 
 const initialData = [
-	{
-		id: '1',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '2',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '3',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '4',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '5',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
-	{
-		id: '6',
-		employee: {
-			name: 'Jon Brown',
-			userName: '@fredchaparro',
-			avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
-		},
-		designation: {
-			role: 'Front-End Developer',
-			company: 'REDQ',
-		},
-		phoneNumber: '+880136987584',
-		email: 'jhondoe@aegonui.com',
-		status: 'Active',
-	},
+  {
+    id: "1",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "2",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "3",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "4",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "5",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
+  {
+    id: "6",
+    employee: {
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
+    },
+    designation: {
+      role: "Front-End Developer",
+      company: "REDQ",
+    },
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
+  },
 ];
 
 function getStatusBadge(status: string) {
-	switch (status.toLowerCase()) {
-		case 'pending':
-			return <Badge variant="flat">{status}</Badge>;
-		case 'active':
-			return (
-				<Badge variant="flat" color="success">
-					{status}
-				</Badge>
-			);
-		case 'warning':
-			return (
-				<Badge variant="flat" color="warning">
-					{status}
-				</Badge>
-			);
-		case 'danger':
-			return (
-				<Badge variant="flat" color="danger">
-					{status}
-				</Badge>
-			);
-		default:
-			return null;
-	}
+  switch (status.toLowerCase()) {
+    case "pending":
+      return <Badge variant="flat">{status}</Badge>;
+    case "active":
+      return (
+        <Badge
+          variant="flat"
+          color="success"
+        >
+          {status}
+        </Badge>
+      );
+    case "warning":
+      return (
+        <Badge
+          variant="flat"
+          color="warning"
+        >
+          {status}
+        </Badge>
+      );
+    case "danger":
+      return (
+        <Badge
+          variant="flat"
+          color="danger"
+        >
+          {status}
+        </Badge>
+      );
+    default:
+      return null;
+  }
 }
 
-const getColumns = (
-	order: string,
-	column: string,
-	onHeaderClick: (value: string) => any
-) => [
-	{
-		title: <></>,
-		dataIndex: 'checked',
-		key: 'checked',
-		width: 50,
-		render: () => (
-			<div className="inline-flex cursor-pointer">
-				<Checkbox variant="flat" />
-			</div>
-		),
-	},
-	{
-		title: (
-			<HeaderCell
-				title="Id"
-				sortable
-				ascending={order === 'asc' && column === 'id'}
-			/>
-		),
-		onHeaderCell: () => onHeaderClick('id'),
-		dataIndex: 'id',
-		key: 'id',
-		width: 50,
-	},
-	{
-		title: <HeaderCell title="Employee" />,
-		dataIndex: 'employee',
-		key: 'employee',
-		width: 250,
-		render: (employee: any) => (
-			<div className="flex items-center">
-				<Avatar src={employee.avatar} size="40" />
-				<div className="ml-3 rtl:ml-0 rtl:mr-3">
-					<Text tag="h6" className="mb-0.5 !text-sm font-medium">
-						{employee.name}
-					</Text>
-					<Text tag="p" className="text-xs text-gray-400">
-						{employee.userName}
-					</Text>
-				</div>
-			</div>
-		),
-	},
-	{
-		title: <HeaderCell title="Designation" />,
-		dataIndex: 'designation',
-		key: 'designation',
-		width: 320,
-		render: (designation: any) => (
-			<div>
-				<Text tag="h6" className="mb-0.5 !text-sm font-medium">
-					{designation.role}
-				</Text>
-				<Text tag="p" className="text-xs text-gray-400">
-					{designation.company}
-				</Text>
-			</div>
-		),
-	},
-	{
-		title: <HeaderCell title="Phone Number" />,
-		dataIndex: 'phoneNumber',
-		key: 'phoneNumber',
-		width: 200,
-	},
-	{
-		title: <HeaderCell title="Email" />,
-		dataIndex: 'email',
-		key: 'email',
-		width: 200,
-	},
-	{
-		title: <HeaderCell title="Status" />,
-		dataIndex: 'status',
-		key: 'status',
-		width: 120,
-		render: (value: string) => getStatusBadge(value),
-	},
-	{
-		title: <></>,
-		dataIndex: 'action',
-		key: 'action',
-		width: 120,
-		render: (_: string, row: any) => (
-			<div className="flex items-center gap-2">
-				<button
-					type="button"
-					className="text-primary underline"
-					onClick={() => alert(`Edit item #${row.id}`)}
-				>
-					Edit
-				</button>
-				<button type="button" className="underline">
-					View
-				</button>
-			</div>
-		),
-	},
+const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
+  {
+    title: <></>,
+    dataIndex: "checked",
+    key: "checked",
+    width: 50,
+    render: () => (
+      <div className="inline-flex cursor-pointer">
+        <Checkbox variant="flat" />
+      </div>
+    ),
+  },
+  {
+    title: (
+      <HeaderCell
+        title="Id"
+        sortable
+        ascending={order === "asc" && column === "id"}
+      />
+    ),
+    onHeaderCell: () => onHeaderClick("id"),
+    dataIndex: "id",
+    key: "id",
+    width: 50,
+  },
+  {
+    title: <HeaderCell title="Employee" />,
+    dataIndex: "employee",
+    key: "employee",
+    width: 250,
+    render: (employee: any) => (
+      <div className="flex items-center">
+        <Avatar
+          src={employee.avatar}
+          size="40"
+        />
+        <div className="ml-3 rtl:ml-0 rtl:mr-3">
+          <Text
+            tag="h6"
+            className="mb-0.5 !text-sm font-medium"
+          >
+            {employee.name}
+          </Text>
+          <Text
+            tag="p"
+            className="text-xs text-gray-400"
+          >
+            {employee.userName}
+          </Text>
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="Designation" />,
+    dataIndex: "designation",
+    key: "designation",
+    width: 320,
+    render: (designation: any) => (
+      <div>
+        <Text
+          tag="h6"
+          className="mb-0.5 !text-sm font-medium"
+        >
+          {designation.role}
+        </Text>
+        <Text
+          tag="p"
+          className="text-xs text-gray-400"
+        >
+          {designation.company}
+        </Text>
+      </div>
+    ),
+  },
+  {
+    title: <HeaderCell title="Phone Number" />,
+    dataIndex: "phoneNumber",
+    key: "phoneNumber",
+    width: 200,
+  },
+  {
+    title: <HeaderCell title="Email" />,
+    dataIndex: "email",
+    key: "email",
+    width: 200,
+  },
+  {
+    title: <HeaderCell title="Status" />,
+    dataIndex: "status",
+    key: "status",
+    width: 120,
+    render: (value: string) => getStatusBadge(value),
+  },
+  {
+    title: <></>,
+    dataIndex: "action",
+    key: "action",
+    width: 120,
+    render: (_: string, row: any) => (
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          className="text-primary underline"
+          onClick={() => alert(`Edit item #${row.id}`)}
+        >
+          Edit
+        </button>
+        <button
+          type="button"
+          className="underline"
+        >
+          View
+        </button>
+      </div>
+    ),
+  },
 ];
 
 export default function App() {
-	const [order, setOrder] = React.useState<string>('desc');
-	const [column, setColumn] = React.useState<string>('');
-	const [data, setData] = React.useState<typeof initialData>(initialData);
-	const onHeaderClick = (value: string) => ({
-		onClick: () => {
-			setColumn(value);
-			setOrder(order === 'desc' ? 'asc' : 'desc');
-			if (order === 'desc') {
-				// @ts-ignore
-				setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
-			} else {
-				// @ts-ignore
-				setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
-			}
-		},
-	});
-	const columns: any = React.useMemo(
-		() => getColumns(order, column, onHeaderClick),
-		[order, column, onHeaderClick]
-	);
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
+  const [data, setData] = React.useState<typeof initialData>(initialData);
+  const onHeaderClick = (value: string) => ({
+    onClick: () => {
+      setColumn(value);
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
+        // @ts-ignore
+        setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
+      } else {
+        // @ts-ignore
+        setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
+      }
+    },
+  });
+  const columns: any = React.useMemo(
+    () => getColumns(order, column, onHeaderClick),
+    [order, column, onHeaderClick]
+  );
 
-	return (
-		<Table
-			data={data}
-			columns={columns}
-			className="text-sm"
-			variant="minimal"
-		/>
-	);
+  return (
+    <Table
+      data={data}
+      columns={columns}
+      className="text-sm"
+      variant="minimal"
+    />
+  );
 }
 ```
 
@@ -1104,7 +1203,7 @@ export default function App() {
 
 ### Table Props
 
-Here is the API documentation of the Table component.
+Here is the API documentation of the Table component. Under the hood we are using rc-table package, you can check their [**Official documentation**](https://www.npmjs.com/package/rc-table) for more details.
 
 |         Props          |                             Type                              |                        Description                         |   Default   |
 | :--------------------: | :-----------------------------------------------------------: | :--------------------------------------------------------: | :---------: |
@@ -1153,7 +1252,7 @@ Here is the API documentation of the Table component.
 ### Table Variants
 
 ```ts
-type TableVariants = 'classic' | 'modern' | 'minimal' | 'elegant';
+type TableVariants = "classic" | "modern" | "minimal" | "elegant";
 ```
 
 <div className="mb-10" />
@@ -1161,9 +1260,7 @@ type TableVariants = 'classic' | 'modern' | 'minimal' | 'elegant';
 ### Table Scroll
 
 ```ts
-type TableScroll =
-	| { x?: string | number | true; y?: string | number }
-	| undefined;
+type TableScroll = { x?: string | number | true; y?: string | number } | undefined;
 ```
 
 <div className="mb-10" />
@@ -1172,6 +1269,6 @@ type TableScroll =
 
 ```ts
 type TableTransformColumns = (
-	columns: ColumnsType<DefaultRecordType>
+  columns: ColumnsType<DefaultRecordType>
 ) => ColumnsType<DefaultRecordType>;
 ```

@@ -1,10 +1,14 @@
+---
+sidebar_position: 30
+---
+
 import { Tooltip, Button } from 'rizzui';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 import Paper from '@site/src/components/paper';
 
 # Tooltip
 
-Tooltip displays informative text when users hover, focus, or click an element.
+Tooltip displays informative text when users **hover**, **focus**, or **click** an element.
 
 ```jsx
 import { Tooltip } from 'rizzui';
@@ -38,20 +42,20 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **Tooltip** with property [**size**](#tooltip-sizes).
+You can change the size of **Tooltip** using [**size**](#tooltip-sizes) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
 	<Tooltip size="sm" content="Small Tooltip!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Small</Button>
 	</Tooltip>
 	<Tooltip content="Default Tooltip!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Default</Button>
 	</Tooltip>
 	<Tooltip size="lg" content="Large Tooltip!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Large</Button>
 	</Tooltip>
 	<Tooltip size="xl" content="Extra Large Tooltip!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Extra Large</Button>
 	</Tooltip>
 </Paper>
 
@@ -62,16 +66,16 @@ export default function App() {
 	return (
 		<>
 			<Tooltip size="sm" content="Small Tooltip!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Small</Button>
 			</Tooltip>
 			<Tooltip content="Default Tooltip!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Default</Button>
 			</Tooltip>
 			<Tooltip size="lg" content="Large Tooltip!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Large</Button>
 			</Tooltip>
 			<Tooltip size="xl" content="Extra Large Tooltip!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Extra Large</Button>
 			</Tooltip>
 		</>
 	);
@@ -82,23 +86,23 @@ export default function App() {
 
 ## Rounded
 
-You can change the style of **Tooltip** with property [**rounded**](#tooltip-rounded).
+You can change the border radius of **Tooltip** using [**rounded**](#tooltip-rounded) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
+	<Tooltip rounded="none" content="Rounded None!">
+		<Button variant="outline">None</Button>
+	</Tooltip>
 	<Tooltip rounded="sm" content="Rounded Small!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Small</Button>
 	</Tooltip>
 	<Tooltip content="Rounded Default!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Default</Button>
 	</Tooltip>
 	<Tooltip rounded="lg" content="Rounded Large!">
-		<Button variant="outline">Hover Me!</Button>
-	</Tooltip>
-	<Tooltip rounded="none" content="Rounded None!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Large</Button>
 	</Tooltip>
 	<Tooltip rounded="pill" content="Rounded Full!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Full</Button>
 	</Tooltip>
 </Paper>
 
@@ -108,20 +112,20 @@ import { Tooltip, Button } from 'rizzui';
 export default function App() {
 	return (
 		<>
+			<Tooltip rounded="none" content="Rounded None!">
+				<Button variant="outline">None</Button>
+			</Tooltip>
 			<Tooltip rounded="sm" content="Rounded Small!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Small</Button>
 			</Tooltip>
 			<Tooltip content="Rounded Default!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Default</Button>
 			</Tooltip>
 			<Tooltip rounded="lg" content="Rounded Large!">
-				<Button variant="outline">Hover Me!</Button>
-			</Tooltip>
-			<Tooltip rounded="none" content="Rounded None!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Large</Button>
 			</Tooltip>
 			<Tooltip rounded="pill" content="Rounded Full!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Full</Button>
 			</Tooltip>
 		</>
 	);
@@ -132,40 +136,45 @@ export default function App() {
 
 ## Colors
 
-You can change the style of **Tooltip** with property [**color**](#tooltip-colors).
+You can change the color of **Tooltip** using [**color**](#tooltip-colors) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
 	<Tooltip content="Default Color!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Default</Button>
+	</Tooltip>
+	<Tooltip content="Invert Color!" color="invert">
+		<Button variant="outline" className="border-gray-900">
+			Invert
+		</Button>
 	</Tooltip>
 	<Tooltip content="Primary Color!" color="primary">
 		<Button color="primary" variant="outline">
-			Hover Me!
+			Primary
 		</Button>
 	</Tooltip>
 	<Tooltip content="Secondary Color!" color="secondary">
 		<Button color="secondary" variant="outline">
-			Hover Me!
+			Secondary
 		</Button>
 	</Tooltip>
 	<Tooltip content="Danger Color!" color="danger">
 		<Button color="danger" variant="outline">
-			Hover Me!
+			Danger
 		</Button>
 	</Tooltip>
 	<Tooltip content="Info Color!" color="info">
 		<Button color="info" variant="outline">
-			Hover Me!
+			Info
 		</Button>
 	</Tooltip>
 	<Tooltip content="Success Color!" color="success">
 		<Button color="success" variant="outline">
-			Hover Me!
+			Success
 		</Button>
 	</Tooltip>
 	<Tooltip content="Warning Color!" color="warning">
 		<Button color="warning" variant="outline">
-			Hover Me!
+			Warning
 		</Button>
 	</Tooltip>
 </Paper>
@@ -177,36 +186,41 @@ export default function App() {
 	return (
 		<>
 			<Tooltip content="Default Color!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Default</Button>
+			</Tooltip>
+			<Tooltip content="Invert Color!" color="invert">
+				<Button variant="outline" className="border-gray-900">
+					Invert
+				</Button>
 			</Tooltip>
 			<Tooltip content="Primary Color!" color="primary">
 				<Button color="primary" variant="outline">
-					Hover Me!
+					Primary
 				</Button>
 			</Tooltip>
 			<Tooltip content="Secondary Color!" color="secondary">
 				<Button color="secondary" variant="outline">
-					Hover Me!
+					Secondary
 				</Button>
 			</Tooltip>
 			<Tooltip content="Danger Color!" color="danger">
 				<Button color="danger" variant="outline">
-					Hover Me!
+					Danger
 				</Button>
 			</Tooltip>
 			<Tooltip content="Info Color!" color="info">
 				<Button color="info" variant="outline">
-					Hover Me!
+					Info
 				</Button>
 			</Tooltip>
 			<Tooltip content="Success Color!" color="success">
 				<Button color="success" variant="outline">
-					Hover Me!
+					Success
 				</Button>
 			</Tooltip>
 			<Tooltip content="Warning Color!" color="warning">
 				<Button color="warning" variant="outline">
-					Hover Me!
+					Warning
 				</Button>
 			</Tooltip>
 		</>
@@ -218,20 +232,20 @@ export default function App() {
 
 ## Shadows
 
-You can change the style of **Tooltip** with property [**shadow**](#tooltip-shadows).
+You can change the shadow style of **Tooltip** using [**shadow**](#tooltip-shadows) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
 	<Tooltip shadow="sm" content="Small Shadow!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Small</Button>
 	</Tooltip>
 	<Tooltip content="Default Shadow!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Default</Button>
 	</Tooltip>
 	<Tooltip shadow="lg" content="Large Shadow!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Large</Button>
 	</Tooltip>
 	<Tooltip shadow="xl" content="Extra Large Shadow!">
-		<Button variant="outline">Hover Me!</Button>
+		<Button variant="outline">Extra Large</Button>
 	</Tooltip>
 </Paper>
 
@@ -242,16 +256,16 @@ export default function App() {
 	return (
 		<>
 			<Tooltip shadow="sm" content="Small Shadow!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Small</Button>
 			</Tooltip>
 			<Tooltip content="Default Shadow!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Default</Button>
 			</Tooltip>
 			<Tooltip shadow="lg" content="Large Shadow!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Large</Button>
 			</Tooltip>
 			<Tooltip shadow="xl" content="Extra Large Shadow!">
-				<Button variant="outline">Hover Me!</Button>
+				<Button variant="outline">Extra Large</Button>
 			</Tooltip>
 		</>
 	);
@@ -311,9 +325,9 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Placement
+## With Placements
 
-You can change placement of the **Tooltip** using property **placement**
+You can change placement of the **Tooltip** using property [**placement**](#tooltip-placements).
 
 <Paper className="h-[560px]">
 	<div className="relative m-auto flex h-96 max-w-xl w-full flex-wrap justify-center gap-8">
@@ -530,6 +544,7 @@ type TooltipChildren = Element & { ref?: RefObject<any> | undefined };
 ```ts
 type TooltipColors =
 	| 'DEFAULT'
+	| 'invert'
 	| 'primary'
 	| 'secondary'
 	| 'danger'

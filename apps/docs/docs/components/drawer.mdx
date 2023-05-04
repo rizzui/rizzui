@@ -1,3 +1,7 @@
+---
+sidebar_position: 39
+---
+
 import { Drawer } from 'rizzui';
 import Paper from '@site/src/components/paper';
 import DrawerDefault, {
@@ -32,7 +36,6 @@ import { Drawer, Button } from 'rizzui';
 
 export default function App() {
 	const [drawerState, setDrawerState] = useState(false);
-
 	return (
 		<>
 			<Button onClick={() => setDrawerState(true)}>Open Drawer</Button>
@@ -63,7 +66,6 @@ export default function App() {
 		isOpen: false,
 		size: 'DEFAULT',
 	});
-
 	return (
 		<>
 			<div className="flex items-center justify-around">
@@ -169,7 +171,6 @@ export default function App() {
 		isOpen: false,
 		placement: 'left',
 	});
-
 	return (
 		<>
 			<div className="relative py-5">
@@ -263,7 +264,6 @@ import { Drawer, Button } from 'rizzui';
 
 export default function App() {
 	const [drawerState, setDrawerState] = useState(false);
-
 	return (
 		<>
 			<Button onClick={() => setDrawerState(true)}>Custom Size Drawer</Button>
@@ -295,7 +295,6 @@ import { Drawer, Button } from 'rizzui';
 
 export default function App() {
 	const [drawerState, setDrawerState] = useState(false);
-
 	return (
 		<>
 			<Button onClick={() => setDrawerState(true)}>Custom Style Drawer</Button>
@@ -316,7 +315,7 @@ export default function App() {
 
 ## With Shopping Cart
 
-You can use **Drawer** with different type of button or icons.
+You can render any thing you want. Here is an empty shpping cart drawer example.
 
 <Paper>
 	<DrawerIcons />
@@ -338,7 +337,6 @@ import {
 
 export default function App() {
 	const [drawerState, setDrawerState] = useState(false);
-
 	return (
 		<>
 			<div

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 11
 ---
 
 import { AdvancedCheckbox } from 'rizzui';
@@ -260,37 +260,42 @@ export default function App() {
 	return (
 		<CheckboxGroup values={values} setValues={setValues} className="flex gap-4">
 			<AdvancedCheckbox
-				value="Default"
-				className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
-				inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
+				value="any"
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
 			>
-				<div className="flex justify-between">
-					<span className="font-medium text-black">Single Payment</span>
-					<CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
-				</div>
-				<p className="text-gray-500">Charge a one-time fee.</p>
+				Any
 			</AdvancedCheckbox>
 			<AdvancedCheckbox
-				value="primary"
-				className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
-				inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
+				value="one"
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
 			>
-				<div className="flex justify-between">
-					<span className="font-medium text-black">Subscription</span>
-					<CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
-				</div>
-				<p className="text-gray-500">Charge an ongoing fee.</p>
+				1
 			</AdvancedCheckbox>
 			<AdvancedCheckbox
-				value="secondary"
-				className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
-				inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
+				value="two"
+				className="cursor-not-allowed rounded-full border border-gray-300 px-6 py-1.5 text-gray-300"
+				disabled
 			>
-				<div className="flex justify-between">
-					<span className="font-medium text-black">Lead Magnet</span>
-					<CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
-				</div>
-				<p className="text-gray-500">Allow access for free.</p>
+				2
+			</AdvancedCheckbox>
+			<AdvancedCheckbox
+				value="three"
+				defaultChecked
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+			>
+				3
+			</AdvancedCheckbox>
+			<AdvancedCheckbox
+				value="four"
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+			>
+				4
+			</AdvancedCheckbox>
+			<AdvancedCheckbox
+				value="five+"
+				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+			>
+				5+
 			</AdvancedCheckbox>
 		</CheckboxGroup>
 	);
@@ -312,7 +317,7 @@ import React from "react";
 import { AdvancedCheckbox, CheckboxGroup } from 'rizzui';
 
 export default function App() {
-	const [values, setValues] = React.useState<string[]>(["one"]);
+	const [values, setValues] = React.useState<string[]>(["single"]);
 
   return (
     <CheckboxGroup
@@ -372,7 +377,7 @@ export default function App() {
 
 ### AdvancedCheckbox Props
 
-Here is the API documentation of the AdvancedCheckbox component. And the rest of the props of AdvancedCheckbox are the same as the original html input field. You can use props like `value`, `name`, `disabled` etc.
+Here is the API documentation of the AdvancedCheckbox component. And the rest of the props of AdvancedCheckbox are the same as the original html input field. You can use props like **value**, **name**, **disabled** etc.
 
 |      Props      |          Type           |                        Description                         | Default |
 | :-------------: | :---------------------: | :--------------------------------------------------------: | :-----: |

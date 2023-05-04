@@ -1,3 +1,7 @@
+---
+sidebar_position: 38
+---
+
 import Paper from '@site/src/components/paper';
 import ModalDefault, {
 	ModalSizes,
@@ -16,9 +20,9 @@ import { Modal } from 'rizzui';
 
 <div className="mb-28" />
 
-## Simple Modal
+## Default
 
-A simple modal with component **Modal**.
+A simple sigun up modal example.
 
 <Paper>
 	<ModalDefault />
@@ -39,7 +43,6 @@ import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export default function App() {
 	const [modalState, setModalState] = useState(false);
-
 	return (
 		<>
 			<Button onClick={() => setModalState(true)}>Open Modal</Button>
@@ -108,7 +111,7 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **Modal** with property [**size**](#modal-sizes).
+You can change the size of **Modal** using [**size**](#modal-sizes) property.
 
 <Paper className="block">
 	<ModalSizes />
@@ -132,7 +135,6 @@ export default function App() {
 		isOpen: false,
 		size: 'DEFAULT',
 	});
-
 	return (
 		<>
 			<div className="flex items-center justify-around">
@@ -272,7 +274,7 @@ export default function App() {
 
 ## Rounded
 
-You can change the style of **Modal** with property [**rounded**](#modal-rounded).
+You can change rounded corner style of **Modal** using [**rounded**](#modal-rounded) property.
 
 <Paper className="block">
 	<ModalRounded />
@@ -296,7 +298,6 @@ export default function App() {
 		isOpen: false,
 		rounded: 'DEFAULT',
 	});
-
 	return (
 		<>
 			<div className="flex items-center justify-around">
@@ -436,7 +437,7 @@ export default function App() {
 
 ## With Custom Size
 
-You can use change the style of **Modal** with property **customSize**.
+You can use change the **Modal** size style using **customSize** property.
 
 <Paper>
 	<ModalCustomSize />
@@ -457,7 +458,6 @@ import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export default function App() {
 	const [modalState, setModalState] = useState(false);
-
 	return (
 		<>
 			<Button onClick={() => setModalState(true)}>Custom Size Modal</Button>
@@ -530,7 +530,7 @@ export default function App() {
 
 ## With Custom Style
 
-You can add custom style to **Modal**.
+The customization options are limitless, You can customize as per your preference.
 
 <Paper>
 	<ModalCustomStyle />
@@ -551,7 +551,6 @@ import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export default function App() {
 	const [modalState, setModalState] = useState(false);
-
 	return (
 		<>
 			<Button onClick={() => setModalState(true)}>Custom Style Modal</Button>

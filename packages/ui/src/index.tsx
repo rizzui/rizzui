@@ -2,6 +2,15 @@
 export { default as cn } from './lib/cn';
 export { default as useCollapse } from './lib/use-collapse';
 
+export { default as FieldClearButton } from './components/field-clear-button';
+export * from './components/field-clear-button';
+
+export { default as FieldError } from './components/field-error-text';
+export * from './components/field-error-text';
+
+export { default as FieldHelperText } from './components/field-helper-text';
+export * from './components/field-helper-text';
+
 // Components
 export { default as ActionIcon } from './components/action-icon';
 export * from './components/action-icon';
@@ -11,9 +20,6 @@ export * from './components/advanced-checkbox';
 
 export { default as AdvancedRadio } from './components/advanced-radio';
 export * from './components/advanced-radio';
-
-export { default as AdvancedSelect } from './components/advanced-select';
-export * from './components/advanced-select';
 
 export { default as Alert } from './components/alert';
 export * from './components/alert';
@@ -39,9 +45,6 @@ export * from './components/checkbox-group';
 export { default as Collapse } from './components/collapse';
 export * from './components/collapse';
 
-// export { default as DatePicker } from './components/date-picker';
-// export * from './components/date-picker';
-
 export { default as Drawer } from './components/drawer';
 export * from './components/drawer';
 
@@ -66,9 +69,6 @@ export * from './components/modal';
 export { default as NativeSelect } from './components/native-select';
 export * from './components/native-select';
 
-export { default as NotificationCard } from './components/notification-card';
-export * from './components/notification-card';
-
 export { default as NumberInput } from './components/number-input';
 export * from './components/number-input';
 
@@ -77,9 +77,6 @@ export * from './components/pagination';
 
 export { default as Password } from './components/password';
 export * from './components/password';
-
-export { default as PhoneNumber } from './components/phone-number';
-export * from './components/phone-number';
 
 export { default as PinCode } from './components/pin-code';
 export * from './components/pin-code';

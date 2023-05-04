@@ -2,14 +2,14 @@
 sidebar_position: 2
 ---
 
-import { Alert } from 'rizzui';
+import { Alert, Text } from 'rizzui';
 import Paper from '@site/src/components/paper';
 import AlertClearable from '@site/src/components/alert';
 import { EnvelopeIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 # Alert
 
-A simple alert component for showing alert message.
+A simple alert component for showing alert messages.
 
 ```jsx
 import { Alert } from 'rizzui';
@@ -19,44 +19,44 @@ import { Alert } from 'rizzui';
 
 ## Variants
 
-You can change style of **Alert** with property **variant**.
+You can change the style of **Alert** using the **variant** property.
 
 <Paper className="grid grid-cols-1 gap-4 text-gray-1000">
 	<Alert variant="flat" color="info">
-		<p className="font-semibold">Alert with flat variant</p>
-		<p>
+		<Text className="font-semibold">Flat variant</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 	<Alert variant="outline" color="info">
-		<p className="font-semibold">Alert with outline variant</p>
-		<p>
+		<Text className="font-semibold">Outline variant</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 </Paper>
 
 ```jsx
-import { Alert } from 'rizzui';
+import { Alert, Text } from 'rizzui';
 
 export default function App() {
 	return (
 		<>
 			<Alert variant="flat" color="info">
-				<p className="font-semibold">Alert with flat variant</p>
-				<p>
+				<Text className="font-semibold">Flat variant</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
-			<Alert variant="outline" color="info">
-				<p className="font-semibold">Alert with outline variant</p>
-				<p>
+			<Alert color="info">
+				<Text className="font-semibold">Outline variant</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 		</>
 	);
@@ -67,36 +67,36 @@ export default function App() {
 
 ## Sizes
 
-You can change style of **Alert** with property [**size**](#alert-size).
+You can set diffirent size of the **Alert** using [**size**](#alert-sizes) property.
 
 <Paper className="gap-4 justify-start items-start text-gray-1000">
-	<Alert size="sm" color="danger" variant="outline" className="w-3/4">
-		<p className="font-semibold">Alert Small</p>
-		<p>
+	<Alert size="sm" color="danger" className="w-3/4">
+		<Text className="font-semibold">Alert Small</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
-	<Alert color="danger" variant="outline" className="w-3/4">
-		<p className="font-semibold">Alert Default</p>
-		<p>
+	<Alert color="danger" className="w-3/4">
+		<Text className="font-semibold">Alert Default</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
-	<Alert size="lg" color="danger" variant="outline" className="w-3/4">
-		<p className="font-semibold">Alert Large</p>
-		<p>
+	<Alert size="lg" color="danger" className="w-3/4">
+		<Text className="font-semibold">Alert Large</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
-	<Alert size="xl" color="danger" variant="outline" className="w-3/4">
-		<p className="font-semibold">Alert Extra Large</p>
-		<p>
+	<Alert size="xl" color="danger" className="w-3/4">
+		<Text className="font-semibold">Alert Extra Large</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 </Paper>
 
@@ -106,33 +106,33 @@ import { Alert } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Alert size="sm" color="danger" variant="outline" className="w-3/4">
-				<p className="font-semibold">Alert Small</p>
-				<p>
+			<Alert size="sm" color="danger" className="w-3/4">
+				<Text className="font-semibold">Alert Small</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
-			<Alert color="danger" variant="outline" className="w-3/4">
-				<p className="font-semibold">Alert Default</p>
-				<p>
+			<Alert color="danger" className="w-3/4">
+				<Text className="font-semibold">Alert Default</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
-			<Alert size="lg" color="danger" variant="outline" className="w-3/4">
-				<p className="font-semibold">Alert Large</p>
-				<p>
+			<Alert size="lg" color="danger" className="w-3/4">
+				<Text className="font-semibold">Alert Large</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
-			<Alert size="xl" color="danger" variant="outline" className="w-3/4">
-				<p className="font-semibold">Alert Extra Large</p>
-				<p>
+			<Alert size="xl" color="danger" className="w-3/4">
+				<Text className="font-semibold">Alert Extra Large</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 		</>
 	);
@@ -143,43 +143,43 @@ export default function App() {
 
 ## Rounded
 
-You can change style of **Alert** with property [**rounded**](#alert-rounded).
+Change border radius of the **Alert** component using [**rounded**](#alert-rounded) property.
 
 <Paper className="gap-4 justify-start items-start text-gray-1000">
-	<Alert color="success" variant="outline" rounded="sm">
-		<p className="font-semibold">Alert Rounded Small</p>
-		<p>
+	<Alert color="success" rounded="none">
+		<Text className="font-semibold">Rounded None</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
-	<Alert color="success" variant="outline">
-		<p className="font-semibold">Alert Rounded Default</p>
-		<p>
+	<Alert color="success" rounded="sm">
+		<Text className="font-semibold">Rounded Small</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
-	<Alert color="success" variant="outline" rounded="lg">
-		<p className="font-semibold">Alert Rounded Large</p>
-		<p>
+	<Alert color="success">
+		<Text className="font-semibold">Rounded Default</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
-	<Alert color="success" variant="outline" rounded="xl">
-		<p className="font-semibold">Alert Rounded Extra Large</p>
-		<p>
+	<Alert color="success" rounded="lg">
+		<Text className="font-semibold">Rounded Large</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
-	<Alert color="success" variant="outline" rounded="none">
-		<p className="font-semibold">Alert Rounded None</p>
-		<p>
+	<Alert color="success" rounded="xl">
+		<Text className="font-semibold">Rounded Extra Large</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 </Paper>
 
@@ -189,40 +189,40 @@ import { Alert } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Alert color="success" variant="outline" rounded="sm">
-				<p className="font-semibold">Alert Rounded Small</p>
-				<p>
+			<Alert color="success" rounded="none">
+				<Text className="font-semibold">Alert Rounded None</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
-			<Alert color="success" variant="outline">
-				<p className="font-semibold">Alert Rounded Default</p>
-				<p>
+			<Alert color="success" rounded="sm">
+				<Text className="font-semibold">Alert Rounded Small</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
-			<Alert color="success" variant="outline" rounded="lg">
-				<p className="font-semibold">Alert Rounded Large</p>
-				<p>
+			<Alert color="success">
+				<Text className="font-semibold">Alert Rounded Default</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
-			<Alert color="success" variant="outline" rounded="xl">
-				<p className="font-semibold">Alert Rounded Extra Large</p>
-				<p>
+			<Alert color="success" rounded="lg">
+				<Text className="font-semibold">Alert Rounded Large</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
-			<Alert color="success" variant="outline" rounded="none">
-				<p className="font-semibold">Alert Rounded None</p>
-				<p>
+			<Alert color="success" rounded="xl">
+				<Text className="font-semibold">Alert Rounded Extra Large</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 		</>
 	);
@@ -231,38 +231,38 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Colors & Icons
+## Colors
 
-You can change style of **Alert** with property [**color**](#alert-color).
+You can set different states of **Alert** using [**color**](#alert-colors) property.
 
 <Paper className="gap-4 grid grid-cols-1 text-gray-1000">
 	<Alert color="danger" variant="flat">
-		<p className="font-semibold">Alert with danger</p>
-		<p>
+		<Text className="font-semibold">Danger Alert</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 	<Alert color="info" variant="flat">
-		<p className="font-semibold">Alert with info</p>
-		<p>
+		<Text className="font-semibold">Info Alert</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 	<Alert color="success" variant="flat">
-		<p className="font-semibold">Alert with success</p>
-		<p>
+		<Text className="font-semibold">Success Alert</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 	<Alert color="warning" variant="flat">
-		<p className="font-semibold">Alert with warning</p>
-		<p>
+		<Text className="font-semibold">Warning Alert</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 </Paper>
 
@@ -273,32 +273,32 @@ export default function App() {
 	return (
 		<>
 			<Alert color="danger" variant="flat">
-				<p className="font-semibold">Alert with danger</p>
-				<p>
+				<Text className="font-semibold">Danger Alert</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 			<Alert color="info" variant="flat">
-				<p className="font-semibold">Alert with info</p>
-				<p>
+				<Text className="font-semibold">Info Alert</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 			<Alert color="success" variant="flat">
-				<p className="font-semibold">Alert with success</p>
-				<p>
+				<Text className="font-semibold">Success Alert</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 			<Alert color="warning" variant="flat">
-				<p className="font-semibold">Alert with warning</p>
-				<p>
+				<Text className="font-semibold">Warning Alert</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 		</>
 	);
@@ -309,19 +309,19 @@ export default function App() {
 
 ## Custom Icons
 
-You can change style of **Alert** with property **startIcon**, **endIcon**.
+You can change style of **Alert** with property **icon**, **clearIcon**.
 
 <Paper className="text-gray-1000">
 	<Alert
 		color="info"
-		startIcon={<EnvelopeIcon className="w-6 text-blue-dark" />}
-		endIcon={<TrashIcon className="w-6 text-blue-dark" />}
+		icon={<EnvelopeIcon className="w-6 text-blue-dark" />}
+		clearIcon={<TrashIcon className="w-6 text-blue-dark" />}
 	>
-		<p className="font-semibold">Alert with info</p>
-		<p>
+		<Text className="font-semibold">Customizable icon Alert</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 </Paper>
 
@@ -333,14 +333,14 @@ export default function App() {
 	return (
 		<Alert
 			color="info"
-			startIcon={<EnvelopeIcon className="w-6 text-blue-dark" />}
-			endIcon={<TrashIcon className="w-6 text-blue-dark" />}
+			icon={<EnvelopeIcon className="w-6 text-blue-dark" />}
+			clearIcon={<TrashIcon className="w-6 text-blue-dark" />}
 		>
-			<p className="font-semibold">Alert with info</p>
-			<p>
+			<Text className="font-semibold">Customizable icon Alert</Text>
+			<Text>
 				Attention All! We are excited to announce the launch of our new
 				product/service.
-			</p>
+			</Text>
 		</Alert>
 	);
 }
@@ -350,36 +350,36 @@ export default function App() {
 
 ## With Bar
 
-You can change style of **Alert** with property **bar**.
+You can make a classic bar **Alert** by using **bar** property.
 
 <Paper className="grid grid-cols-1 gap-4 text-gray-1000">
 	<Alert color="danger" bar={true}>
-		<p className="font-semibold">Alert with danger</p>
-		<p>
+		<Text className="font-semibold">Danger Alert</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 	<Alert color="info" bar={true}>
-		<p className="font-semibold">Alert with danger</p>
-		<p>
+		<Text className="font-semibold">Info Alert</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 	<Alert color="success" bar={true}>
-		<p className="font-semibold">Alert with danger</p>
-		<p>
+		<Text className="font-semibold">Success Alert</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 	<Alert color="warning" bar={true}>
-		<p className="font-semibold">Alert with danger</p>
-		<p>
+		<Text className="font-semibold">Warning Alert</Text>
+		<Text>
 			Attention All! We are excited to announce the launch of our new
 			product/service.
-		</p>
+		</Text>
 	</Alert>
 </Paper>
 
@@ -390,32 +390,32 @@ export default function App() {
 	return (
 		<>
 			<Alert color="danger" bar={true}>
-				<p className="font-semibold">Alert with danger</p>
-				<p>
+				<Text className="font-semibold">Danger Alert</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 			<Alert color="info" bar={true}>
-				<p className="font-semibold">Alert with danger</p>
-				<p>
+				<Text className="font-semibold">Info Alert</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 			<Alert color="success" bar={true}>
-				<p className="font-semibold">Alert with danger</p>
-				<p>
+				<Text className="font-semibold">Success Alert</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 			<Alert color="warning" bar={true}>
-				<p className="font-semibold">Alert with danger</p>
-				<p>
+				<Text className="font-semibold">Warning Alert</Text>
+				<Text>
 					Attention All! We are excited to announce the launch of our new
 					product/service.
-				</p>
+				</Text>
 			</Alert>
 		</>
 	);
@@ -424,9 +424,9 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Clear Button
+## With Close Button
 
-You can create a clearable **Alert** with property **clearable**.
+You can make a closable **Alert** component using **closable** property.
 
 <Paper className="text-gray-1000 justify-start items-start gap-4">
 	<AlertClearable />
@@ -437,28 +437,28 @@ import React from 'react';
 import { Alert, Button } from 'rizzui';
 
 export default function App() {
-	const [state, setState] = React.useState(true);
+	const [isOpen, setIsOpen] = React.useState(true);
 	return (
 		<>
 			<Button
 				color="info"
-				onClick={() => setState(true)}
+				onClick={() => setIsOpen(true)}
 				className="tracking-wider"
 			>
 				Info Alert
 			</Button>
-			{state && (
+			{isOpen && (
 				<Alert
 					color="info"
 					variant="flat"
-					clearable
-					onClear={() => setState(false)}
+					closable
+					onClose={() => setIsOpen(false)}
 				>
-					<p className="font-semibold">Alert with info</p>
-					<p>
+					<Text className="font-semibold">Alert with info</Text>
+					<Text>
 						Attention All! We are excited to announce the launch of our new
 						product/service.
-					</p>
+					</Text>
 				</Alert>
 			)}
 		</>
@@ -476,20 +476,20 @@ export default function App() {
 
 ### Alert Props
 
-Here is the API documentation of the Alert component.
+Here is the API documentation of the Alert component. You can use these props to customize our **Alert** component.
 
 |         Props          |              Type              |                    Description                    |   Default   |
 | :--------------------: | :----------------------------: | :-----------------------------------------------: | :---------: |
-|         color          |   [AlertColor](#alert-color)   |                Change input color                 |    \_ \_    |
+|         color          |  [AlertColors](#alert-colors)  |                   Change color                    |    \_ \_    |
 |        children        |          `ReactNode`           |          Pass alert message as children           |    \_ \_    |
-|          size          |    [AlertSize](#alert-size)    |            The size of the component.             | `"DEFAULT"` |
+|          size          |   [AlertSizes](#alert-sizes)   |            The size of the component.             | `"DEFAULT"` |
 |        rounded         | [AlertRounded](#alert-rounded) |             The rounded variants are:             | `"DEFAULT"` |
 |        variant         |        `flat` `outline`        |        The variants of the component are:         | `"outline"` |
 |          bar           |           `boolean`            |        Whether left bar should be visible         |  `"false"`  |
-|       clearable        |           `boolean`            |               Add clearable option                |    \_ \_    |
-|        onClear         | [AlertOnclear](#alert-onclear) |       Pass onClick function to clear alert        |    \_ \_    |
-|       startIcon        |          `ReactNode`           | Customize start icon according to your preference |    \_ \_    |
-|        endIcon         |          `ReactNode`           | Customize right icon according to your preference |    \_ \_    |
+|        closable        |           `boolean`            |                Add closable option                |    \_ \_    |
+|        onClose         | [AlertOnClose](#alert-onclose) |       Pass onClose function to clear alert        |    \_ \_    |
+|          icon          |          `ReactNode`           | Customize alert icon according to your preference |    \_ \_    |
+|       closeIcon        |          `ReactNode`           | Customize close icon according to your preference |    \_ \_    |
 |       className        |            `string`            |       Add className to design the container       |    \_ \_    |
 |      barClassName      |            `string`            |      Add barClassName to design the left bar      |    \_ \_    |
 | iconContainerClassName |            `string`            | Add iconContainerClassName to position the icons  |    \_ \_    |
@@ -497,18 +497,18 @@ Here is the API documentation of the Alert component.
 
 <div className="mb-10" />
 
-### Alert Color
+### Alert Colors
 
 ```ts
-type AlertColor = 'danger' | 'info' | 'success' | 'warning';
+type AlertColors = 'danger' | 'info' | 'success' | 'warning';
 ```
 
 <div className="mb-10" />
 
-### Alert Size
+### Alert Sizes
 
 ```ts
-type AlertSize = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type AlertSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ```
 
 <div className="mb-10" />
@@ -521,8 +521,8 @@ type AlertRounded = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'none';
 
 <div className="mb-10" />
 
-### Alert Onclear
+### Alert onClose
 
 ```ts
-type AlertOnclear = (event: MouseEvent<Element, MouseEvent>) => void;
+type AlertOnClose = (event: MouseEvent<Element, MouseEvent>) => void;
 ```

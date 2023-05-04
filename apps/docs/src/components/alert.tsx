@@ -16,8 +16,8 @@ export default function AlertClearable() {
 				<Alert
 					color="info"
 					variant="flat"
-					clearable
-					onClear={() => setState(false)}
+					closable
+					onClose={() => setState(false)}
 				>
 					<p className="font-semibold">Alert with info</p>
 					<p>

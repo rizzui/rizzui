@@ -93,7 +93,7 @@ const iconClasses = {
     lg: 'h-5 w-5',
     xl: 'h-6 w-6',
   },
-  startIconColor: {
+  iconColor: {
     danger: 'bg-red text-white ',
     info: 'bg-blue text-white ',
     success: 'bg-green text-white ',
@@ -151,14 +151,14 @@ export type AlertProps = {
   bar?: boolean;
   /** Pass alert message as children */
   children: React.ReactNode;
-  /** Add clearable option */
-  clearable?: boolean;
+  /** Add closable option */
+  closable?: boolean;
   /** Pass onClick function to clear alert */
-  onClear?: (event: React.MouseEvent) => void;
+  onClose?: (event: React.MouseEvent) => void;
   /** Customize start icon according to your preference */
-  startIcon?: React.ReactNode;
-  /** Customize right icon according to your preference */
-  endIcon?: React.ReactNode;
+  icon?: React.ReactNode;
+  /** Customize close icon according to your preference */
+  closeIcon?: React.ReactNode;
   /** Add className to design the container */
   className?: string;
   /** Add barClassName to design the left bar */
@@ -169,107 +169,107 @@ export type AlertProps = {
   iconClassName?: string;
 };
 
-/** A simple alert component for showing alert message. Here is the API documentation of the Alert component.
+/**
+ * A simple alert component for showing alert message. Here is the API documentation of the Alert component.
  * You can use the following props to create a demo for alert.
  */
-
-const Alert = ({
+export default function Alert({
   size = 'DEFAULT',
   rounded = 'DEFAULT',
   variant = 'outline',
   color,
   bar = false,
   children,
-  clearable,
-  onClear,
-  startIcon,
-  endIcon,
+  closable,
+  onClose,
+  icon,
+  closeIcon,
   className,
   barClassName,
   iconContainerClassName,
   iconClassName,
-}: AlertProps) => (
-  <div
-    data-testid="alert-parent"
-    className={cn(
-      classes.base,
-      classes.size[size],
-      classes.rounded[rounded],
-      classes.variant[variant].base,
-      classes.variant[variant].color[color],
-      bar && variant !== 'outline' && '!border-0',
-      className
-    )}
-  >
-    {bar && (
-      <span
-        data-testid="alert-bar"
-        className={cn(
-          barClasses.base,
-          barClasses.rounded[rounded],
-          barClasses.color[color],
-          barClassName
-        )}
-      />
-    )}
+}: AlertProps) {
+  return (
     <div
-      data-testid="alert-content"
+      data-testid="alert-parent"
       className={cn(
-        iconContainerClasses.base,
-        iconContainerClasses.position.left[size],
-        iconContainerClassName
+        classes.base,
+        classes.size[size],
+        classes.rounded[rounded],
+        classes.variant[variant].base,
+        classes.variant[variant].color[color],
+        bar && variant !== 'outline' && '!border-0',
+        className
       )}
     >
-      {startIcon || (
+      {bar && (
         <span
+          data-testid="alert-bar"
           className={cn(
-            iconClasses.base,
-            iconClasses.rounded[rounded],
-            iconClasses.startIconColor[color],
-            iconClassName
+            barClasses.base,
+            barClasses.rounded[rounded],
+            barClasses.color[color],
+            barClassName
           )}
-        >
-          <AlertIcon size={size} color={color} />
-        </span>
+        />
       )}
-    </div>
-    <div
-      className={cn(
-        classes.leftPadding.size[size],
-        (endIcon || clearable) && classes.rightPadding.size[size]
-      )}
-    >
-      {children}
-    </div>
-    {(clearable || endIcon) && (
       <div
-        role="button"
-        tabIndex={0}
+        data-testid="alert-content"
         className={cn(
           iconContainerClasses.base,
-          iconContainerClasses.position.right[size]
+          iconContainerClasses.position.left[size],
+          iconContainerClassName
         )}
-        onClick={onClear}
       >
-        {endIcon || (
+        {icon || (
           <span
             className={cn(
               iconClasses.base,
               iconClasses.rounded[rounded],
-              iconClasses.variant[variant].base,
-              iconClasses.variant[variant].color[color]
+              iconClasses.iconColor[color],
+              iconClassName
             )}
           >
-            <XIcon
-              data-testid="alert-clear-icon"
-              className={cn('cursor-pointer', iconClasses.size[size])}
-            />
+            <AlertIcon size={size} color={color} />
           </span>
         )}
       </div>
-    )}
-  </div>
-);
-
+      <div
+        className={cn(
+          classes.leftPadding.size[size],
+          closable && classes.rightPadding.size[size]
+        )}
+      >
+        {children}
+      </div>
+      {(closable || closeIcon) && (
+        <div
+          role="button"
+          tabIndex={0}
+          className={cn(
+            iconContainerClasses.base,
+            iconContainerClasses.position.right[size]
+          )}
+          onClick={onClose}
+        >
+          {closeIcon || (
+            <span
+              className={cn(
+                iconClasses.base,
+                iconClasses.rounded[rounded],
+                iconClasses.variant[variant].base,
+                iconClasses.variant[variant].color[color]
+              )}
+            >
+              <XIcon
+                data-testid="alert-clear-icon"
+                className={cn('cursor-pointer', iconClasses.size[size])}
+              />
+            </span>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 Alert.displayName = 'Alert';
-export default Alert;

@@ -1,3 +1,7 @@
+---
+sidebar_position: 23
+---
+
 import { Tag, Avatar } from 'rizzui';
 import { MapPinIcon } from '@heroicons/react/24/outline';
 import Paper from '@site/src/components/paper';
@@ -32,7 +36,7 @@ export default function App() {
 
 ## Variants
 
-You can change the style of **Tag** with property [**variant**](#tag-variants).
+You can change the style of **Tag** using [**variant**](#tag-variants) property.
 
 <Paper className="flex-row justify-around gap-4">
 	<Tag variant="solid">Solid</Tag>
@@ -58,7 +62,7 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **Tag** with property [**size**](#tag-sizes).
+You can change the size of **Tag** using [**size**](#tag-sizes) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
 	<Tag size="sm">Small</Tag>
@@ -86,7 +90,7 @@ export default function App() {
 
 ## Rounded
 
-You can change the style of **Tag** with property [**rounded**](#tag-rounded).
+You can change the border radius of **Tag** using [**rounded**](#tag-rounded) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
 	<Tag variant="solid" rounded="sm">
@@ -132,7 +136,7 @@ export default function App() {
 
 ## Colors
 
-You can change the style of **Tag** with property [**color**](#tag-colors).
+You can change the color of **Tag** using [**color**](#tag-colors) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
 	<Tag>Default</Tag>
@@ -166,7 +170,7 @@ export default function App() {
 
 ## With Icon
 
-You can use icon with **Tag**.
+You can use icon in our **Tag** component.
 
 <Paper>
 	<Tag>
@@ -226,7 +230,7 @@ export default function App() {
 
 ## With Clear Button
 
-You make a clearable **Tag** with property **clearable**.
+You make a clearable **Tag** using **clearable** property.
 
 <Paper>
 	<Tag variant="outline" clearable>
@@ -314,7 +318,7 @@ type TagColors =
 
 <div className="mb-10" />
 
-### Tag Onclear
+### Tag onClear
 
 ```ts
 type TagOnclear = (e: MouseEvent<Element, MouseEvent>) => void;

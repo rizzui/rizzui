@@ -1,5 +1,5 @@
 ---
-sidebar_position: 25
+sidebar_position: 29
 ---
 
 import { Pagination } from 'rizzui';
@@ -11,7 +11,7 @@ import {
 
 # Pagination
 
-We used `rc-pagination` package to build pagination component. See their [official documentation](https://pagination-react-component.vercel.app/) for more info.
+The Pagination component enables the user to select a specific info from a range of infos.
 
 ```tsx
 import { Pagination } from 'rizzui';
@@ -39,7 +39,7 @@ export default function App() {
 
 ## Variants
 
-You can change the style of **Pagination** with property **variant**.
+You can change the style of **Pagination** using **variant** property.
 
 <Paper className="flex-row flex-wrap justify-between">
 	<Pagination
@@ -73,7 +73,7 @@ export default function App() {
 
 ## Rounded
 
-You can change the style of **Pagination** with property [**rounded**](#pagination-rounded).
+You can change the border radius of **Pagination** button / item using [**rounded**](#pagination-rounded) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-8">
 	<Pagination
@@ -123,7 +123,7 @@ export default function App() {
 
 ## Colors
 
-You can change the style of **Pagination** with property [**color**](#pagination-colors).
+You can change the color of **Pagination** using [**color**](#pagination-colors) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-8">
 	<Pagination total={25} defaultCurrent={1} className="[&_li]:!mt-0" />
@@ -187,7 +187,7 @@ export default function App() {
 
 ## Disabled
 
-You can change the style of **Pagination** with property **disabled**.
+You can make **Pagination** disabled using **disabled** property.
 
 <Paper>
 	<Pagination
@@ -210,7 +210,7 @@ export default function App() {
 
 ## With Outline
 
-You can change the style of **Pagination** with property **outline**.
+You can change the style of **Pagination** using **outline** property.
 
 <Paper>
 	<Pagination
@@ -233,7 +233,7 @@ export default function App() {
 
 ## With Custom Previous & Next
 
-You can change the style of **Pagination** with property **prevIcon** & **nextIcon**.
+You can change the style of **Pagination** using **prevIcon** & **nextIcon** property.
 
 <Paper>
 	<Pagination
@@ -268,7 +268,7 @@ export default function App() {
 
 ## With Custom Prev Next Jump
 
-You can change the style of **Pagination** with property **jumpPrevIcon** & **jumpNextIcon**.
+You can change the style of **Pagination** using **jumpPrevIcon** & **jumpNextIcon** property.
 
 <Paper>
 	<Pagination
@@ -311,7 +311,7 @@ export default function App() {
 
 ### Pagination Props
 
-Here is the API documentation of the Pagination component.
+Here is the API documentation of the Pagination component. We used **rc-pagination** package to build pagination component. See their [**Official documentation**](https://pagination-react-component.vercel.app/) for more info.
 
 |         Props         |                      Type                       |            Description            |   Default   |
 | :-------------------: | :---------------------------------------------: | :-------------------------------: | :---------: |

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 22
+sidebar_position: 30
 ---
 
 import { Progressbar } from 'rizzui';
@@ -33,13 +33,13 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Variant
+## Variants
 
-You can change the style of **Progressbar** with property **variant**.
+You can change the style of **Progressbar** using **variant** property.
 
 <Paper className="gap-6">
-	<Progressbar variant="flat" value={75} />
-	<Progressbar variant="solid" value={75} />
+	<Progressbar variant="flat" value={50} />
+	<Progressbar variant="solid" value={90} />
 </Paper>
 
 ```tsx
@@ -59,13 +59,13 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **Progressbar** with property [**size**](#progressbar-sizes).
+You can change the size of **Progressbar** using [**size**](#progressbar-sizes) property.
 
 <Paper className="gap-6">
-	<Progressbar value={75} size="sm" />
-	<Progressbar value={75} />
+	<Progressbar value={45} size="sm" />
+	<Progressbar value={65} />
 	<Progressbar value={75} size="lg" />
-	<Progressbar value={75} size="xl" />
+	<Progressbar value={85} size="xl" />
 </Paper>
 
 ```tsx
@@ -74,10 +74,10 @@ import { Progressbar } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Progressbar value={75} size="sm" />
-			<Progressbar value={75} />
+			<Progressbar value={45} size="sm" />
+			<Progressbar value={65} />
 			<Progressbar value={75} size="lg" />
-			<Progressbar value={75} size="xl" />
+			<Progressbar value={85} size="xl" />
 		</>
 	);
 }
@@ -87,14 +87,14 @@ export default function App() {
 
 ## Rounded
 
-You can change the style of **Progressbar** with property [**rounded**](#progressbar-rounded).
+You can change the border radius of **Progressbar** using [**rounded**](#progressbar-rounded) property.
 
 <Paper className="gap-6">
-	<Progressbar value={75} rounded="sm" />
-	<Progressbar value={75} />
+	<Progressbar value={45} rounded="sm" />
+	<Progressbar value={65} />
 	<Progressbar value={75} rounded="md" />
-	<Progressbar value={75} rounded="lg" />
-	<Progressbar value={75} rounded="none" />
+	<Progressbar value={85} rounded="lg" />
+	<Progressbar value={95} rounded="none" />
 </Paper>
 
 ```tsx
@@ -103,11 +103,11 @@ import { Progressbar } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Progressbar value={75} rounded="sm" />
-			<Progressbar value={75} />
+			<Progressbar value={45} rounded="sm" />
+			<Progressbar value={65} />
 			<Progressbar value={75} rounded="md" />
-			<Progressbar value={75} rounded="lg" />
-			<Progressbar value={75} rounded="none" />
+			<Progressbar value={85} rounded="lg" />
+			<Progressbar value={95} rounded="none" />
 		</>
 	);
 }
@@ -117,16 +117,16 @@ export default function App() {
 
 ## Colors
 
-You can change the style of **Progressbar** with property [**color**](#progressbar-colors).
+You can change the color of **Progressbar** using [**color**](#progressbar-colors) property.
 
 <Paper className="gap-6">
-	<Progressbar value={75} />
-	<Progressbar value={75} color="primary" />
-	<Progressbar value={75} color="secondary" />
-	<Progressbar value={75} color="danger" />
+	<Progressbar value={25} />
+	<Progressbar value={35} color="primary" />
+	<Progressbar value={45} color="secondary" />
+	<Progressbar value={65} color="danger" />
 	<Progressbar value={75} color="info" />
-	<Progressbar value={75} color="success" />
-	<Progressbar value={75} color="warning" />
+	<Progressbar value={85} color="success" />
+	<Progressbar value={95} color="warning" />
 </Paper>
 
 ```tsx
@@ -135,13 +135,13 @@ import { Progressbar } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Progressbar value={75} />
-			<Progressbar value={75} color="primary" />
-			<Progressbar value={75} color="secondary" />
-			<Progressbar value={75} color="danger" />
+			<Progressbar value={25} />
+			<Progressbar value={35} color="primary" />
+			<Progressbar value={45} color="secondary" />
+			<Progressbar value={65} color="danger" />
 			<Progressbar value={75} color="info" />
-			<Progressbar value={75} color="success" />
-			<Progressbar value={75} color="warning" />
+			<Progressbar value={85} color="success" />
+			<Progressbar value={95} color="warning" />
 		</>
 	);
 }
@@ -151,7 +151,7 @@ export default function App() {
 
 ## With Label
 
-You can change the style of **Progressbar** with property **label**.
+You can set label inside the **Progressbar** using **label** property. It will only work when **size="xl"**.
 
 <Paper>
 	<Progressbar value={75} size="xl" label="75%" />
@@ -177,24 +177,24 @@ export default function App() {
 
 Here is the API documentation of the Progressbar component.
 
-|     Props      |                    Type                    |               Description                |   Default   |
-| :------------: | :----------------------------------------: | :--------------------------------------: | :---------: |
-|     value      |                  `number`                  |         Percentage of filled bar         |    \_ \_    |
-|     label      |                  `string`                  | Pass label to show percentage inside bar |    `""`     |
-|    variant     |               `solid` `flat`               |   The variants of the components are:    | `"DEFAULT"` |
-|      size      |   [ProgressbarSize](#progressbar-sizes)    |        Size of the compoents are         | `"DEFAULT"` |
-|    rounded     | [ProgressbarRounded](#progressbar-rounded) |        The rounded variants are:         | `"DEFAULT"` |
-|     color      |  [ProgressbarColor](#progressbar-colors)   |          Pass color variations           | `"DEFAULT"` |
-|   className    |                  `string`                  |  To style entire progressbar component   |    \_\_     |
-|  barClassName  |                  `string`                  |      To style bar of the component       |    \_\_     |
-| labelClassName |                  `string`                  |              To style label              |    \_\_     |
+|     Props      |                    Type                    |                                  Description                                   |   Default   |
+| :------------: | :----------------------------------------: | :----------------------------------------------------------------------------: | :---------: |
+|     value      |                  `number`                  |                            Percentage of filled bar                            |    \_ \_    |
+|     label      |                  `string`                  | Pass label to show percentage inside bar. It will only work when **size="xl"** |    `""`     |
+|    variant     |               `solid` `flat`               |                      The variants of the components are:                       | `"DEFAULT"` |
+|      size      |   [ProgressbarSize](#progressbar-sizes)    |                           Size of the compoents are                            | `"DEFAULT"` |
+|    rounded     | [ProgressbarRounded](#progressbar-rounded) |                           The rounded variants are:                            | `"DEFAULT"` |
+|     color      |  [ProgressbarColor](#progressbar-colors)   |                             Pass color variations                              | `"DEFAULT"` |
+|   className    |                  `string`                  |                     To style entire progressbar component                      |    \_\_     |
+|  barClassName  |                  `string`                  |                         To style bar of the component                          |    \_\_     |
+| labelClassName |                  `string`                  |                                 To style label                                 |    \_\_     |
 
 <div className="mb-10" />
 
 ### Progressbar Sizes
 
 ```ts
-type ProgressbarSize = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+type ProgressbarSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 ```
 
 <div className="mb-10" />
@@ -210,7 +210,7 @@ type ProgressbarRounded = 'sm' | 'DEFAULT' | 'md' | 'lg' | 'none';
 ### Progressbar Colors
 
 ```ts
-type ProgressbarColor =
+type ProgressbarColors =
 	| 'DEFAULT'
 	| 'primary'
 	| 'secondary'

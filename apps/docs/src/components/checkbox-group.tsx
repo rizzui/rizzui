@@ -3,7 +3,7 @@ import { CheckboxGroup, Checkbox, AdvancedCheckbox } from 'rizzui';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 
 export default function CheckboxGroupDefault() {
-	const [values, setValues] = useState<string[]>([]);
+	const [values, setValues] = useState<string[]>(['apple']);
 	return (
 		<CheckboxGroup
 			values={values}
@@ -30,33 +30,33 @@ export function CheckboxGroupLabelStart() {
 				name="column-label-start-group"
 				label="Checked Item"
 				value="default"
-				className="p-2"
-				color="success"
-				variant="active"
+				className="p-2 py-4"
 				labelPlacement="start"
 				containerClassName="justify-between"
+				labelClassName="text-gray-1000 font-medium"
+				helperClassName="pr-8"
 				helperText="This project would be available to anyone who have the link"
 			/>
 			<Checkbox
 				name="column-label-start-group"
 				label="Checked Item"
 				value="primary"
-				className="p-2"
-				color="success"
-				variant="active"
+				className="p-2 py-4"
 				labelPlacement="start"
 				containerClassName="justify-between"
+				labelClassName="text-gray-1000 font-medium"
+				helperClassName="pr-8"
 				helperText="This project would be available to anyone who have the link"
 			/>
 			<Checkbox
 				name="column-label-start-group"
 				label="Checked Item"
 				value="secondary"
-				className="p-2"
-				color="success"
-				variant="active"
+				className="p-2 py-4"
 				labelPlacement="start"
+				labelClassName="text-gray-1000 font-medium"
 				helperText="This project would be available to anyone who have the link"
+				helperClassName="pr-8"
 				containerClassName="justify-between"
 			/>
 		</CheckboxGroup>
@@ -75,33 +75,27 @@ export function CheckboxGroupLabelEnd() {
 				name="column-label-end-group"
 				label="Checked Item"
 				value="default"
-				color="success"
-				variant="active"
 				helperText="This project would be available to anyone who have the link"
-				className="p-2"
-				labelClassName="pl-2"
+				className="p-2 py-4"
+				labelClassName="pl-2 font-medium text-gray-1000"
 				helperClassName="ml-8"
 			/>
 			<Checkbox
 				name="column-label-end-group"
 				label="Checked Item"
 				value="primary"
-				color="success"
-				variant="active"
 				helperText="This project would be available to anyone who have the link"
-				className="p-2"
-				labelClassName="pl-2"
+				className="p-2 py-4"
+				labelClassName="pl-2 font-medium text-gray-1000"
 				helperClassName="ml-8"
 			/>
 			<Checkbox
 				name="column-label-end-group"
 				label="Checked Item"
 				value="secondary"
-				color="success"
-				variant="active"
 				helperText="This project would be available to anyone who have the link"
-				className="p-2"
-				labelClassName="pl-2"
+				className="p-2 py-4"
+				labelClassName="pl-2 font-medium text-gray-1000"
 				helperClassName="ml-8"
 			/>
 		</CheckboxGroup>
@@ -155,7 +149,7 @@ export function CheckboxGroupAdvanced() {
 }
 
 export function CheckboxGroupWithCard() {
-	const [values, setValues] = React.useState<string[]>(['one']);
+	const [values, setValues] = React.useState<string[]>(['single']);
 
 	return (
 		<CheckboxGroup values={values} setValues={setValues} className="flex gap-4">

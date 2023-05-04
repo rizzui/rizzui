@@ -25,17 +25,17 @@ Default.args = {
   ),
 };
 
-export const ClearableWithBar = () => {
-  const [isCleared, setIsCleared] = React.useState(false);
+export const CloseableWithBar = () => {
+  const [isOpen, setIsOpen] = React.useState(true);
   return (
-    !isCleared && (
+    isOpen && (
       <Alert
         variant="flat"
         color="danger"
         iconContainerClassName="!items-start"
         iconClassName="mt-4"
-        onClear={() => setIsCleared(!isCleared)}
-        clearable
+        onClose={() => setIsOpen(!isOpen)}
+        closable
         bar
       >
         <>

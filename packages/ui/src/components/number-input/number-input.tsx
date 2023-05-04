@@ -17,10 +17,10 @@ export type NumberInputProps = (
   formatType: 'numeric' | 'pattern' | 'custom';
 };
 
-/** We used `react-number-format` package to build the NumberInput component.
+/**
+ * We used `react-number-format` package to build the NumberInput component.
  * See their [official documentation](https://s-yadav.github.io/react-number-format/docs/intro) for more info.
  */
-
 const NumberInput = ({ formatType, ...props }: NumberInputProps) => {
   if (formatType === 'custom') {
     return (

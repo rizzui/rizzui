@@ -63,7 +63,7 @@ test('Animation on opening tooltip', async () => {
   });
   await waitFor(() =>
     expect(tooltipElement).toHaveStyle(
-      'transition-property: opacity,transform; transition-duration: 300ms;'
+      'transition-property: opacity,transform; transition-duration: 200ms;'
     )
   );
 });

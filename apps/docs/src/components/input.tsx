@@ -51,16 +51,14 @@ export function InputCharacterCounter() {
 	);
 }
 
-export function InputClearable({ label, variant }) {
+export function InputClearable({ label }) {
 	const [state, setState] = React.useState('This is Jhon.');
 	return (
 		<Input
 			type="text"
 			label={label}
 			placeholder="clearable ..."
-			variant={variant}
 			value={state}
-			color="primary"
 			onChange={(e) => setState(e.target.value)}
 			onClear={() => setState('')}
 			clearable

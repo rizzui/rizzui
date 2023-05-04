@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 10
 ---
 
 import { Checkbox } from 'rizzui';
@@ -11,7 +11,7 @@ import CheckboxGroupDefault, {
 
 # Checkbox
 
-A basic widget for getting the user input of checkbox.
+A basic widget for getting the user input, used for selecting multiple values from several options.
 
 ```tsx
 import { Checkbox } from 'rizzui';
@@ -23,7 +23,7 @@ import { Checkbox } from 'rizzui';
 
 The default style of **Checkbox** component.
 
-<Paper className="text-gray-1000">
+<Paper className="text-gray-900">
 	<Checkbox label="Remember me" />
 </Paper>
 
@@ -39,9 +39,9 @@ export default function App() {
 
 ## Variants
 
-You can change the style of **Checkbox** with property [**variant**](#checkbox-variants).
+You can change the style of **Checkbox** using [**variant**](#checkbox-variants) property.
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
 	<Checkbox className="m-2" label="Flat" variant="flat" />
 	<Checkbox className="m-2" label="Outline" variant="outline" />
 	<Checkbox className="m-2" label="Active" variant="active" />
@@ -65,9 +65,9 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **Checkbox** with property [**size**](#checkbox-sizes).
+You can change the sizes of **Checkbox** using [**size**](#checkbox-sizes) property.
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
 	<Checkbox className="m-2" label="Small" size="sm" />
 	<Checkbox className="m-2" label="Default" size="DEFAULT" />
 	<Checkbox className="m-2" label="Large" size="lg" />
@@ -93,9 +93,9 @@ export default function App() {
 
 ## Rounded
 
-You can change the style of **Checkbox** with property [**rounded**](#checkbox-rounded).
+You can change the border radius of **Checkbox** using [**rounded**](#checkbox-rounded) property.
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
 	<Checkbox className="m-2" label="Rounded Small" rounded="sm" />
 	<Checkbox className="m-2" label="Rounded Default" />
 	<Checkbox className="m-2" label="Rounded Large" rounded="lg" />
@@ -121,11 +121,35 @@ export default function App() {
 
 <div className="mb-16" />
 
+## Label Placement
+
+You can set label on the two diffrient side using **labelPlacement** property.
+
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
+	<Checkbox className="m-2" label="Left Placement" labelPlacement="start" />
+	<Checkbox className="m-2" label="Right Placement" labelPlacement="end" />
+</Paper>
+
+```tsx
+import { Checkbox } from 'rizzui';
+
+export default function App() {
+	return (
+		<>
+			<Checkbox className="m-2" label="Left Placement" labelPlacement="start" />
+			<Checkbox className="m-2" label="Right Placement" labelPlacement="end" />
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
 ## Colors
 
-You can change the style of **Checkbox** with property [**color**](#checkbox-color).
+You can change the color of **Checkbox** using [**color**](#checkbox-color) property.
 
-<Paper className="flex-row flex-wrap justify-around gap-4">
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
 	<Checkbox className="m-2" label="Default" variant="flat" />
 	<Checkbox className="m-2" label="Primary" color="primary" variant="flat" />
 	<Checkbox
@@ -180,131 +204,9 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Label Placement
-
-You can change style of **Checkbox** with property **labelPlacement**.
-
-<Paper className="flex-row flex-wrap justify-around gap-4">
-	<Checkbox
-		className="m-2"
-		label="Left Placement"
-		variant="active"
-		labelPlacement="start"
-	/>
-	<Checkbox
-		className="m-2"
-		label="Right Placement"
-		variant="active"
-		labelPlacement="end"
-	/>
-</Paper>
-
-```tsx
-import { Checkbox } from 'rizzui';
-
-export default function App() {
-	return (
-		<>
-			<Checkbox
-				className="m-2"
-				label="Left Placement"
-				variant="active"
-				labelPlacement="start"
-			/>
-			<Checkbox
-				className="m-2"
-				label="Right Placement"
-				variant="active"
-				labelPlacement="end"
-			/>
-		</>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## Disabled
-
-You can change style of **Checkbox** with property **disabled**.
-
-<Paper className="flex-row flex-wrap justify-around gap-4">
-	<Checkbox className="m-2" label="Disabled" disabled />
-</Paper>
-
-```tsx
-import { Checkbox } from 'rizzui';
-
-export default function App() {
-	return <Checkbox className="m-2" label="Left Placement" disabled />;
-}
-```
-
-<div className="mb-16" />
-
-## With Helper Text
-
-You can add helper text to **Checkbox** with property **helperText**.
-
-<Paper>
-	<Checkbox
-		className="m-2"
-		label="John"
-		value="john"
-		helperText="Hi! My name is John Doe."
-	/>
-</Paper>
-
-```tsx
-import { Checkbox } from 'rizzui';
-
-export default function App() {
-	return (
-		<Checkbox
-			className="m-2"
-			label="John"
-			value="john"
-			helperText="Hi! My name is John Doe."
-		/>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## With Error
-
-You can add error message to **Checkbox** with property **error**.
-
-<Paper>
-	<Checkbox
-		className="m-2"
-		label="Yes"
-		value="yes"
-		error="This field is required"
-	/>
-</Paper>
-
-```tsx
-import { Checkbox } from 'rizzui';
-
-export default function App() {
-	return (
-		<Checkbox
-			className="m-2"
-			label="Yes"
-			value="yes"
-			error="This field is required"
-		/>
-	);
-}
-```
-
-<div className="mb-16" />
-
 ## Checkbox Group
 
-You can make a group of multiple choices **Checkbox** with component **CheckboxGroup**.
+You can make a group of multiple choices **Checkbox** using **CheckboxGroup** component.
 
 <Paper>
 	<CheckboxGroupDefault />
@@ -315,7 +217,7 @@ import { useState } from 'react';
 import { Checkbox, CheckboxGroup } from 'rizzui';
 
 export default function App() {
-	const [values, setValues] = useState([]);
+	const [values, setValues] = useState(['apple']);
 	return (
 		<CheckboxGroup
 			values={values}
@@ -333,70 +235,9 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Checkbox Group With Start Label
+## Checkbox Group List
 
-You can make clickable card with **Checkbox**.
-
-<Paper>
-	<CheckboxGroupLabelStart />
-</Paper>
-
-```tsx
-import { useState } from 'react';
-import { Checkbox, CheckboxGroup } from 'rizzui';
-
-export default function App() {
-	const [values, setValues] = useState<string[]>([]);
-
-	return (
-		<CheckboxGroup
-			values={values}
-			setValues={setValues}
-			className="flex flex-col divide-y"
-		>
-			<Checkbox
-				name="column-label-start-group"
-				label="Checked Item"
-				value="default"
-				className="p-2"
-				color="success"
-				variant="active"
-				labelPlacement="start"
-				containerClassName="justify-between"
-				helperText="This project would be available to anyone who have the link"
-			/>
-			<Checkbox
-				name="column-label-start-group"
-				label="Checked Item"
-				value="primary"
-				className="p-2"
-				color="success"
-				variant="active"
-				labelPlacement="start"
-				containerClassName="justify-between"
-				helperText="This project would be available to anyone who have the link"
-			/>
-			<Checkbox
-				name="column-label-start-group"
-				label="Checked Item"
-				value="secondary"
-				className="p-2"
-				color="success"
-				variant="active"
-				labelPlacement="start"
-				helperText="This project would be available to anyone who have the link"
-				containerClassName="justify-between"
-			/>
-		</CheckboxGroup>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## Checkbox Group With End Label
-
-You can make clickable card with **Checkbox**.
+You can style any custom design using our **Checkbox** component.
 
 <Paper>
 	<CheckboxGroupLabelEnd />
@@ -453,6 +294,88 @@ export default function App() {
 }
 ```
 
+<div className="mb-16" />
+
+## Disabled
+
+The disabled style of the **Checkbox** component.
+
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
+	<Checkbox className="m-2" label="Disabled" disabled />
+</Paper>
+
+```tsx
+import { Checkbox } from 'rizzui';
+
+export default function App() {
+	return <Checkbox className="m-2" label="Left Placement" disabled />;
+}
+```
+
+<div className="mb-16" />
+
+## With Helper Text
+
+You can add helper text to **Checkbox** using **helperText** property.
+
+<Paper className="text-gray-900">
+	<Checkbox
+		className="m-2"
+		label="John"
+		value="john"
+		labelClassName="font-medium"
+		helperText="Hi! My name is John Doe."
+	/>
+</Paper>
+
+```tsx
+import { Checkbox } from 'rizzui';
+
+export default function App() {
+	return (
+		<Checkbox
+			className="m-2"
+			label="John"
+			value="john"
+			labelClassName="font-medium"
+			helperText="Hi! My name is John Doe."
+		/>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## With Error Message
+
+You can show the validation error message using **error** property.
+
+<Paper className="text-gray-900">
+	<Checkbox
+		className="m-2"
+		label="Yes"
+		value="yes"
+		labelClassName="font-medium"
+		error="This field is required"
+	/>
+</Paper>
+
+```tsx
+import { Checkbox } from 'rizzui';
+
+export default function App() {
+	return (
+		<Checkbox
+			className="m-2"
+			label="Yes"
+			value="yes"
+			labelClassName="font-medium"
+			error="This field is required"
+		/>
+	);
+}
+```
+
 <div className="mb-20" />
 
 ## APIs
@@ -463,7 +386,7 @@ export default function App() {
 
 ### Checkbox Props
 
-Here is the API documentation of the Checkbox component. And the rest of the props of Checkbox are the same as the original html input field. You can use props like `value`, `disabled`, `onChange`, `onFocus`, `onBlur` etc.
+Here is the API documentation of the Checkbox component. And the rest of the props of Checkbox are the same as the original html input field. You can use props like **value**, **disabled**, **onChange**, **onFocus**, **onBlur** etc.
 
 |       Props        |                  Type                  |                                         Description                                         |   Default   |
 | :----------------: | :------------------------------------: | :-----------------------------------------------------------------------------------------: | :---------: |

@@ -3,8 +3,7 @@ import { RadioGroup, Radio, AdvancedRadio } from 'rizzui';
 import { CheckCircleIcon } from '@heroicons/react/20/solid';
 
 export default function RadioGroupDefault() {
-	const [value, setValue] = useState('');
-
+	const [value, setValue] = useState('apple');
 	return (
 		<RadioGroup
 			value={value}
@@ -20,7 +19,7 @@ export default function RadioGroupDefault() {
 }
 
 export function RadioGroupStartLabel() {
-	const [value, setValue] = useState('');
+	const [value, setValue] = useState('default');
 	return (
 		<RadioGroup
 			value={value}
@@ -32,27 +31,30 @@ export function RadioGroupStartLabel() {
 					name="column-label-start-group"
 					label="Default"
 					value="default"
-					className="p-2"
+					className="p-2 py-4"
 					labelPlacement="start"
 					containerClassName="justify-between"
+					labelClassName="text-gray-1000 font-medium"
 					helperText="This project would be available to anyone who have the link"
 				/>
 				<Radio
 					name="column-label-start-group"
 					label="Primary"
 					value="primary"
-					className="p-2"
+					className="p-2 py-4"
 					labelPlacement="start"
 					containerClassName="justify-between"
+					labelClassName="text-gray-1000 font-medium"
 					helperText="This project would be available to anyone who have the link"
 				/>
 				<Radio
 					name="column-label-start-group"
 					label="Secondary"
 					value="secondary"
-					className="p-2"
+					className="p-2 py-4"
 					labelPlacement="start"
 					containerClassName="justify-between"
+					labelClassName="text-gray-1000 font-medium"
 					helperText="This project would be available to anyone who have the link"
 				/>
 			</div>
@@ -61,8 +63,7 @@ export function RadioGroupStartLabel() {
 }
 
 export function RadioGroupEndLabel() {
-	const [value, setValue] = useState('');
-
+	const [value, setValue] = useState('warning');
 	return (
 		<RadioGroup
 			value={value}
@@ -74,27 +75,27 @@ export function RadioGroupEndLabel() {
 					name="column-label-end-group"
 					label="Warning"
 					value="warning"
-					className="p-2"
-					labelClassName="pl-2"
+					className="p-2 py-4"
 					helperClassName="ml-8"
+					labelClassName="pl-2 text-gray-1000 font-medium"
 					helperText="This project would be available to anyone who have the link"
 				/>
 				<Radio
 					name="column-label-end-group"
 					label="Success"
 					value="success"
-					className="p-2"
-					labelClassName="pl-2"
+					className="p-2 py-4"
 					helperClassName="ml-8"
+					labelClassName="pl-2 text-gray-1000 font-medium"
 					helperText="This project would be available to anyone who have the link"
 				/>
 				<Radio
 					name="column-label-end-group"
 					value="Info"
 					label="info"
-					className="p-2"
-					labelClassName="pl-2"
+					className="p-2 py-4"
 					helperClassName="ml-8"
+					labelClassName="pl-2 text-gray-1000 font-medium"
 					helperText="This project would be available to anyone who have the link"
 				/>
 			</div>
@@ -104,7 +105,6 @@ export function RadioGroupEndLabel() {
 
 export function RadioGroupAdvanced() {
 	const [value, setValue] = useState('one');
-
 	return (
 		<RadioGroup value={value} setValue={setValue} className="flex gap-4">
 			<AdvancedRadio
@@ -150,8 +150,7 @@ export function RadioGroupAdvanced() {
 }
 
 export function RadioGroupWithCard() {
-	const [value, setValue] = useState('one');
-
+	const [value, setValue] = useState('single');
 	return (
 		<RadioGroup value={value} setValue={setValue} className="flex gap-4">
 			<AdvancedRadio

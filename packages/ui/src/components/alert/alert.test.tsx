@@ -47,15 +47,15 @@ test('Renders alert component with bar', () => {
   expect(barElement).toBeInTheDocument();
 });
 
-test('Alert component with onClear functionality', async () => {
-  const onClear = jest.fn();
+test('Alert component with onClose functionality', async () => {
+  const onClose = jest.fn();
   render(
-    <Alert clearable onClear={onClear} color="danger">
-      Clearable
+    <Alert closable onClose={onClose} color="danger">
+      Closeable
     </Alert>
   );
   const alertClearIcon = screen.getByTestId('alert-clear-icon');
   expect(alertClearIcon).toBeInTheDocument();
   await user.click(alertClearIcon);
-  expect(onClear).toHaveBeenCalledTimes(1);
+  expect(onClose).toHaveBeenCalledTimes(1);
 });

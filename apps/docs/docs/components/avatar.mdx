@@ -9,7 +9,7 @@ import Paper from '@site/src/components/paper';
 
 # Avatar
 
-Avatar is a small UI item which represents user profile picture, or event that appears in relativity with the underlying object. We are using `react-avatar` package for this component. Please follow their documentation for any query -> https://www.npmjs.com/package/react-avatar
+Avatar is a small UI item which represents user profile picture, or event that appears in relativity with the underlying object.
 
 ```tsx
 import { Avatar } from 'rizzui';
@@ -19,7 +19,7 @@ import { Avatar } from 'rizzui';
 
 ## Default
 
-The default style of the **Avatar**
+The default style of the **Avatar**.
 
 <Paper>
 	<Avatar
@@ -47,7 +47,7 @@ export default function App() {
 
 ## Variants
 
-You can add text or avatar icon to **Avatar** component with property **initials** or **src**
+You can add text or avatar icon to **Avatar** component using **initials** or **src** property.
 
 <Paper>
 	<div className="flex items-center gap-3 justify-around w-full">
@@ -87,7 +87,7 @@ export default function App() {
 
 ## Sizes
 
-You can change the size of the **Avatar** with property **size**
+You can change the size of the **Avatar** using **size** property.
 
 <Paper>
 	<div className="flex items-center justify-around gap-3 w-full">
@@ -126,7 +126,7 @@ export default function App() {
 
 ## Rounded
 
-You can change the border radius of the **Avatar** with property **rounded**
+You can change the border radius of the **Avatar** using [**rounded**](#avatar-rounded) property.
 
 <Paper>
 	<div className="mt-4 flex items-center justify-around gap-3 w-full">
@@ -196,7 +196,7 @@ export default function App() {
 
 ## Colors
 
-You can change the color of the **Avatar** with property **color**
+You can change the color of the **Avatar** using **color** property.
 
 <Paper>
 	<div className="flex items-center justify-around gap-3 w-full">
@@ -234,7 +234,7 @@ export default function App() {
 
 ## Borders
 
-You can add border to **Avatar** by adding extra className with property **className**.
+You can add border to **Avatar** by adding extra className using **className** property.
 
 <Paper>
 	<div className="flex items-center justify-around gap-3 w-full">
@@ -622,7 +622,7 @@ export default function App() {
 
 ### Avatar Props
 
-Here is the API documentation of the Avatar component. You can use props like `id`, `title`, `onClick`, `onFocus`, `onBlur` etc.
+Here is the API documentation of the Avatar component. You can use props like **id**, **title**, **onClick**, **onFocus**, **onBlur** etc. We are using **react-avatar** package for this component. Please follow their [**official documentation**](https://www.npmjs.com/package/react-avatar) for any query.
 
 |      Props      |                Type                |                                                                                              Description                                                                                              | Default  |
 | :-------------: | :--------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------: |
@@ -687,7 +687,7 @@ type AvatarRound = 'string' | 'boolean';
 
 <div className="mb-10" />
 
-### Avatar Onclick
+### Avatar onClick
 
 ```ts
 type AvatarOnclick = (e: SyntheticEvent<any, Event>) => any;
