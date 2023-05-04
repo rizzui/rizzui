@@ -9,7 +9,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 # NativeSelect
 
-A basic widget for user selection of the options.
+A basic widget for selecting value from options.
 
 ```tsx
 import { NativeSelect } from 'rizzui';
@@ -45,7 +45,7 @@ export default function App() {
 
 ## Variants
 
-You can change the style of **NativeSelect** with property [**variant**](#nativeselect-variants).
+You can change the style of **NativeSelect** using [**variant**](#nativeselect-variants) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 	<NativeSelect
@@ -105,7 +105,7 @@ export default function App() {
 
 ## Sizes
 
-You can set diffirent size of the **NativeSelect** with property [**size**](#nativeselect-sizes).
+You can set diffirent size of the **NativeSelect** using [**size**](#nativeselect-sizes) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 	<NativeSelect
@@ -163,7 +163,7 @@ export default function App() {
 
 ## Rounded
 
-You can change border radius of the **NativeSelect** with property [**rounded**](#nativeselect-rounded).
+You can change border radius of the **NativeSelect** using [**rounded**](#nativeselect-rounded) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 	<NativeSelect
@@ -231,7 +231,7 @@ export default function App() {
 
 ## Colors
 
-You can change the color of **NativeSelect** with property [**color**](#nativeselect-colors).
+You can change the color of **NativeSelect** using [**color**](#nativeselect-colors) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
 	<NativeSelect
@@ -409,7 +409,7 @@ export default function App() {
 
 ## With Clear Button
 
-You can change the style of **NativeSelect** with property **clearable**.
+You can clear your selected options using **clearable** & **onClear** property.
 
 <Paper className="block">
 	<NativeSelectDefault label="Clearable" clearable />
@@ -515,7 +515,7 @@ export default function App() {
 
 ## Disabled
 
-You can change the style of **NativeSelect** with property **disabled**.
+The disable style of the component.
 
 <Paper className="block">
 	<NativeSelect
@@ -543,7 +543,7 @@ export default function App() {
 
 ## With Helper Text
 
-You can change the style of **NativeSelect** with property **helperText**.
+You can add helper text to the **NativeSelect** component using **helperText** property.
 
 <Paper className="block">
 	<NativeSelectDefault
@@ -608,7 +608,7 @@ export default function App() {
 
 ## With Error Message
 
-You can change the style of **NativeSelect** with property **error**.
+You can show the validation error message using **error** property.
 
 <Paper className="block">
 	<NativeSelectDefault label="Select Name" error="This field is required" />
@@ -678,36 +678,29 @@ export default function App() {
 
 Here is the API documentation of the Native Select component. And the rest of the props of Native Select are the same as the original html select tag. You can use props like **disabled**, **name** etc.
 
-|        Props        |                      Type                      |                                                             Description                                                             |           Default            |
-| :-----------------: | :--------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: | :--------------------------: |
-|       options       |                `OptionsType[]`                 |                                                         Options for select                                                          |            \_ \_             |
-|        label        |                  `ReactNode`                   |                                                           Set field label                                                           |            \_ \_             |
-|     placeholder     |                    `string`                    |                                                     Set input placeholder text                                                      | `"Select option from below"` |
-|    selectedValue    |                `OptionsType[]`                 |                                                      Currently selected value                                                       |            \_ \_             |
-|  setSelectedValue   |   `Dispatch<SetStateAction<OptionsType[]>>`    |                                                 Set newly selected value on change                                                  |            \_ \_             |
-|      multiple       |                   `boolean`                    |                                                         Set multiple values                                                         |           `false`            |
-|      disabled       |                   `boolean`                    |                                                   Whether the select is disabled                                                    |           `false`            |
-|       variant       | [NativeSelectVariants](#nativeselect-variants) |                                                 The variants of the component are:                                                  |         `"outline"`          |
-|        size         |    [NativeSelectSizes](#nativeselect-sizes)    |                          The size of the component. <br /> "sm" is equivalent to the dense select styling.                          |         `"DEFAULT"`          |
-|       rounded       |  [NativeSelectRounded](#nativeselect-rounded)  |                                                      The rounded variants are:                                                      |         `"DEFAULT"`          |
-|        color        |   [NativeSelectColors](#nativeselect-colors)   |                                                         Change input color                                                          |         `"DEFAULT"`          |
-|      clearable      |                   `boolean`                    |                                                        add clearable option                                                         |           `false`            |
-|    dropDownIcon     |                  `ReactNode`                   | The dropDownIcon is design for adding any icon on the Input field's end (it's left icon for the `ltr` and right icon for the `rtl`) |            \_ \_             |
-|        error        |                    `string`                    |                                                 Show error message using this prop                                                  |            \_ \_             |
-|     helperText      |                  `ReactNode`                   |                                      Add helper text. It could be string or a React component                                       |            \_ \_             |
-|      className      |                    `string`                    |                                                  Add custom classes for container                                                   |            \_ \_             |
-|   labelClassName    |                    `string`                    |                                Use labelClassName prop to do some addition style for the field label                                |            \_ \_             |
-|   selectClassName   |                    `string`                    |                                                    Add custom classes for select                                                    |            \_ \_             |
-|    iconClassName    |                    `string`                    |                                          This prop allows you to customize the icon style                                           |            \_ \_             |
-|   errorClassName    |                    `string`                    |                                      This prop allows you to customize the error message style                                      |            \_ \_             |
-| helperTextClassName |                    `string`                    |                                   This prop allows you to customize the helper text message style                                   |            \_ \_             |
-|      autoFocus      |                   `boolean`                    |                                                                                                                                     |            \_ \_             |
-|        form         |                    `string`                    |                                                                                                                                     |            \_ \_             |
-|        name         |                    `string`                    |                                                                                                                                     |            \_ \_             |
-|        value        |   [NativeSelectValues](#nativeselect-values)   |                                                                                                                                     |            \_ \_             |
-|      onChange       |    `ChangeEventHandler<HTMLSelectElement>`     |                                                                                                                                     |            \_ \_             |
-|    autoComplete     |                    `string`                    |                                                                                                                                     |            \_ \_             |
-|      required       |                   `boolean`                    |                                                                                                                                     |            \_ \_             |
+|      Props      |                      Type                      |                                                                   Description                                                                    |   Default   |
+| :-------------: | :--------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: | :---------: |
+|     options     |           `(string OR OptionType)[]`           |                                                                Options for select                                                                |    \_ \_    |
+|      label      |                  `ReactNode`                   |                                                                 Set field label                                                                  |    \_ \_    |
+|   placeholder   |                    `string`                    |                                                           Set select placeholder text                                                            |    \_ \_    |
+|     variant     | [NativeSelectVariants](#nativeselect-variants) |                                                        The variants of the component are:                                                        | `"outline"` |
+|      size       |    [NativeSelectSizes](#nativeselect-sizes)    |                                    The size of the component. "sm" is equivalent to the dense select styling.                                    | `"DEFAULT"` |
+|     rounded     |  [NativeSelectRounded](#nativeselect-rounded)  |                                                            The rounded variants are:                                                             | `"DEFAULT"` |
+|      color      |   [NativeSelectColors](#nativeselect-colors)   |                                                               Change select color                                                                | `"DEFAULT"` |
+|    disabled     |                   `boolean`                    |                                                          Whether the select is disabled                                                          |    \_ \_    |
+|    clearable    |                   `boolean`                    |                                                               Add clearable option                                                               |    \_ \_    |
+|     onClear     |  [NativeSelectOnclear](#nativeselect-onclear)  |                                                                   clear event                                                                    |    \_ \_    |
+|     prefix      |                  `ReactNode`                   | The prefix is design for adding any icon or text on the NativeSelect field's start (it's a left icon for the `ltr` and right icon for the `rtl`) |    \_ \_    |
+|     suffix      |                  `ReactNode`                   |  The suffix is design for adding any icon or text on the NativeSelect field's end (it's a right icon for the `ltr` and left icon for the `rtl`)  |    \_ \_    |
+|   helperText    |                  `ReactNode`                   |                                             Add helper text. It could be string or a React component                                             |    \_ \_    |
+|      error      |                    `string`                    |                                                        Show error message using this prop                                                        |    \_ \_    |
+| labelClassName  |                    `string`                    |                                                       Override default CSS style of label                                                        |    \_ \_    |
+| selectClassName |                    `string`                    |                                                       Override default CSS style of select                                                       |    \_ \_    |
+| prefixClassName |                    `string`                    |                                                       Override default CSS style of prefix                                                       |    \_ \_    |
+| suffixClassName |                    `string`                    |                                                       Override default CSS style of suffix                                                       |    \_ \_    |
+| helperClassName |                    `string`                    |                                                     Override default CSS style of helperText                                                     |    \_ \_    |
+| errorClassName  |                    `string`                    |                                                   Override default CSS style of error message                                                    |    \_ \_    |
+|       ref       |            `Ref<HTMLSelectElement>`            |                                                                                                                                                  |    \_ \_    |
 
 <div className="mb-10" />
 
@@ -746,12 +739,4 @@ type NativeSelectColors =
 	| 'info'
 	| 'success'
 	| 'warning';
-```
-
-<div className="mb-10" />
-
-### NativeSelect Values
-
-```ts
-type NativeSelectValues = 'string' | 'number' | 'readonly' | 'string[]';
 ```

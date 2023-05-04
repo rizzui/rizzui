@@ -1,17 +1,17 @@
 ---
-sidebar_position: 31
+sidebar_position: 30
 ---
 
-import { Tooltip, Button } from "rizzui";
-import { InformationCircleIcon } from "@heroicons/react/24/solid";
-import Paper from "@site/src/components/paper";
+import { Tooltip, Button } from 'rizzui';
+import { InformationCircleIcon } from '@heroicons/react/24/solid';
+import Paper from '@site/src/components/paper';
 
 # Tooltip
 
 Tooltip displays informative text when users **hover**, **focus**, or **click** an element.
 
 ```jsx
-import { Tooltip } from "rizzui";
+import { Tooltip } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -21,20 +21,20 @@ import { Tooltip } from "rizzui";
 The default style of the **Tooltip** component.
 
 <Paper>
-  <Tooltip content="I'm your tooltip">
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
+	<Tooltip content="I'm your tooltip">
+		<Button variant="outline">Hover Me!</Button>
+	</Tooltip>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from "rizzui";
+import { Tooltip, Button } from 'rizzui';
 
 export default function App() {
-  return (
-    <Tooltip content="I'm your tooltip">
-      <Button variant="outline">Hover Me!</Button>
-    </Tooltip>
-  );
+	return (
+		<Tooltip content="I'm your tooltip">
+			<Button variant="outline">Hover Me!</Button>
+		</Tooltip>
+	);
 }
 ```
 
@@ -42,61 +42,43 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **Tooltip** with property [**size**](#tooltip-sizes).
+You can change the size of **Tooltip** using [**size**](#tooltip-sizes) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip
-    size="sm"
-    content="Small Tooltip!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip content="Default Tooltip!">
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip
-    size="lg"
-    content="Large Tooltip!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip
-    size="xl"
-    content="Extra Large Tooltip!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
+	<Tooltip size="sm" content="Small Tooltip!">
+		<Button variant="outline">Small</Button>
+	</Tooltip>
+	<Tooltip content="Default Tooltip!">
+		<Button variant="outline">Default</Button>
+	</Tooltip>
+	<Tooltip size="lg" content="Large Tooltip!">
+		<Button variant="outline">Large</Button>
+	</Tooltip>
+	<Tooltip size="xl" content="Extra Large Tooltip!">
+		<Button variant="outline">Extra Large</Button>
+	</Tooltip>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from "rizzui";
+import { Tooltip, Button } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Tooltip
-        size="sm"
-        content="Small Tooltip!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip content="Default Tooltip!">
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip
-        size="lg"
-        content="Large Tooltip!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip
-        size="xl"
-        content="Extra Large Tooltip!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-    </>
-  );
+	return (
+		<>
+			<Tooltip size="sm" content="Small Tooltip!">
+				<Button variant="outline">Small</Button>
+			</Tooltip>
+			<Tooltip content="Default Tooltip!">
+				<Button variant="outline">Default</Button>
+			</Tooltip>
+			<Tooltip size="lg" content="Large Tooltip!">
+				<Button variant="outline">Large</Button>
+			</Tooltip>
+			<Tooltip size="xl" content="Extra Large Tooltip!">
+				<Button variant="outline">Extra Large</Button>
+			</Tooltip>
+		</>
+	);
 }
 ```
 
@@ -104,73 +86,49 @@ export default function App() {
 
 ## Rounded
 
-You can change the style of **Tooltip** with property [**rounded**](#tooltip-rounded).
+You can change the border radius of **Tooltip** using [**rounded**](#tooltip-rounded) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip
-    rounded="sm"
-    content="Rounded Small!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip content="Rounded Default!">
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip
-    rounded="lg"
-    content="Rounded Large!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip
-    rounded="none"
-    content="Rounded None!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip
-    rounded="pill"
-    content="Rounded Full!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
+	<Tooltip rounded="none" content="Rounded None!">
+		<Button variant="outline">None</Button>
+	</Tooltip>
+	<Tooltip rounded="sm" content="Rounded Small!">
+		<Button variant="outline">Small</Button>
+	</Tooltip>
+	<Tooltip content="Rounded Default!">
+		<Button variant="outline">Default</Button>
+	</Tooltip>
+	<Tooltip rounded="lg" content="Rounded Large!">
+		<Button variant="outline">Large</Button>
+	</Tooltip>
+	<Tooltip rounded="pill" content="Rounded Full!">
+		<Button variant="outline">Full</Button>
+	</Tooltip>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from "rizzui";
+import { Tooltip, Button } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Tooltip
-        rounded="sm"
-        content="Rounded Small!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip content="Rounded Default!">
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip
-        rounded="lg"
-        content="Rounded Large!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip
-        rounded="none"
-        content="Rounded None!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip
-        rounded="pill"
-        content="Rounded Full!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-    </>
-  );
+	return (
+		<>
+			<Tooltip rounded="none" content="Rounded None!">
+				<Button variant="outline">None</Button>
+			</Tooltip>
+			<Tooltip rounded="sm" content="Rounded Small!">
+				<Button variant="outline">Small</Button>
+			</Tooltip>
+			<Tooltip content="Rounded Default!">
+				<Button variant="outline">Default</Button>
+			</Tooltip>
+			<Tooltip rounded="lg" content="Rounded Large!">
+				<Button variant="outline">Large</Button>
+			</Tooltip>
+			<Tooltip rounded="pill" content="Rounded Full!">
+				<Button variant="outline">Full</Button>
+			</Tooltip>
+		</>
+	);
 }
 ```
 
@@ -178,157 +136,95 @@ export default function App() {
 
 ## Colors
 
-You can change the style of **Tooltip** with property [**color**](#tooltip-colors).
+You can change the color of **Tooltip** using [**color**](#tooltip-colors) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip content="Default Color!">
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip
-    content="Primary Color!"
-    color="primary"
-  >
-    <Button
-      color="primary"
-      variant="outline"
-    >
-      Hover Me!
-    </Button>
-  </Tooltip>
-  <Tooltip
-    content="Secondary Color!"
-    color="secondary"
-  >
-    <Button
-      color="secondary"
-      variant="outline"
-    >
-      Hover Me!
-    </Button>
-  </Tooltip>
-  <Tooltip
-    content="Danger Color!"
-    color="danger"
-  >
-    <Button
-      color="danger"
-      variant="outline"
-    >
-      Hover Me!
-    </Button>
-  </Tooltip>
-  <Tooltip
-    content="Info Color!"
-    color="info"
-  >
-    <Button
-      color="info"
-      variant="outline"
-    >
-      Hover Me!
-    </Button>
-  </Tooltip>
-  <Tooltip
-    content="Success Color!"
-    color="success"
-  >
-    <Button
-      color="success"
-      variant="outline"
-    >
-      Hover Me!
-    </Button>
-  </Tooltip>
-  <Tooltip
-    content="Warning Color!"
-    color="warning"
-  >
-    <Button
-      color="warning"
-      variant="outline"
-    >
-      Hover Me!
-    </Button>
-  </Tooltip>
+	<Tooltip content="Default Color!">
+		<Button variant="outline">Default</Button>
+	</Tooltip>
+	<Tooltip content="Invert Color!" color="invert">
+		<Button variant="outline" className="border-gray-900">
+			Invert
+		</Button>
+	</Tooltip>
+	<Tooltip content="Primary Color!" color="primary">
+		<Button color="primary" variant="outline">
+			Primary
+		</Button>
+	</Tooltip>
+	<Tooltip content="Secondary Color!" color="secondary">
+		<Button color="secondary" variant="outline">
+			Secondary
+		</Button>
+	</Tooltip>
+	<Tooltip content="Danger Color!" color="danger">
+		<Button color="danger" variant="outline">
+			Danger
+		</Button>
+	</Tooltip>
+	<Tooltip content="Info Color!" color="info">
+		<Button color="info" variant="outline">
+			Info
+		</Button>
+	</Tooltip>
+	<Tooltip content="Success Color!" color="success">
+		<Button color="success" variant="outline">
+			Success
+		</Button>
+	</Tooltip>
+	<Tooltip content="Warning Color!" color="warning">
+		<Button color="warning" variant="outline">
+			Warning
+		</Button>
+	</Tooltip>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from "rizzui";
+import { Tooltip, Button } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Tooltip content="Default Color!">
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip
-        content="Primary Color!"
-        color="primary"
-      >
-        <Button
-          color="primary"
-          variant="outline"
-        >
-          Hover Me!
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="Secondary Color!"
-        color="secondary"
-      >
-        <Button
-          color="secondary"
-          variant="outline"
-        >
-          Hover Me!
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="Danger Color!"
-        color="danger"
-      >
-        <Button
-          color="danger"
-          variant="outline"
-        >
-          Hover Me!
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="Info Color!"
-        color="info"
-      >
-        <Button
-          color="info"
-          variant="outline"
-        >
-          Hover Me!
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="Success Color!"
-        color="success"
-      >
-        <Button
-          color="success"
-          variant="outline"
-        >
-          Hover Me!
-        </Button>
-      </Tooltip>
-      <Tooltip
-        content="Warning Color!"
-        color="warning"
-      >
-        <Button
-          color="warning"
-          variant="outline"
-        >
-          Hover Me!
-        </Button>
-      </Tooltip>
-    </>
-  );
+	return (
+		<>
+			<Tooltip content="Default Color!">
+				<Button variant="outline">Default</Button>
+			</Tooltip>
+			<Tooltip content="Invert Color!" color="invert">
+				<Button variant="outline" className="border-gray-900">
+					Invert
+				</Button>
+			</Tooltip>
+			<Tooltip content="Primary Color!" color="primary">
+				<Button color="primary" variant="outline">
+					Primary
+				</Button>
+			</Tooltip>
+			<Tooltip content="Secondary Color!" color="secondary">
+				<Button color="secondary" variant="outline">
+					Secondary
+				</Button>
+			</Tooltip>
+			<Tooltip content="Danger Color!" color="danger">
+				<Button color="danger" variant="outline">
+					Danger
+				</Button>
+			</Tooltip>
+			<Tooltip content="Info Color!" color="info">
+				<Button color="info" variant="outline">
+					Info
+				</Button>
+			</Tooltip>
+			<Tooltip content="Success Color!" color="success">
+				<Button color="success" variant="outline">
+					Success
+				</Button>
+			</Tooltip>
+			<Tooltip content="Warning Color!" color="warning">
+				<Button color="warning" variant="outline">
+					Warning
+				</Button>
+			</Tooltip>
+		</>
+	);
 }
 ```
 
@@ -336,61 +232,43 @@ export default function App() {
 
 ## Shadows
 
-You can change the style of **Tooltip** with property [**shadow**](#tooltip-shadows).
+You can change the shadow style of **Tooltip** using [**shadow**](#tooltip-shadows) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip
-    shadow="sm"
-    content="Small Shadow!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip content="Default Shadow!">
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip
-    shadow="lg"
-    content="Large Shadow!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
-  <Tooltip
-    shadow="xl"
-    content="Extra Large Shadow!"
-  >
-    <Button variant="outline">Hover Me!</Button>
-  </Tooltip>
+	<Tooltip shadow="sm" content="Small Shadow!">
+		<Button variant="outline">Small</Button>
+	</Tooltip>
+	<Tooltip content="Default Shadow!">
+		<Button variant="outline">Default</Button>
+	</Tooltip>
+	<Tooltip shadow="lg" content="Large Shadow!">
+		<Button variant="outline">Large</Button>
+	</Tooltip>
+	<Tooltip shadow="xl" content="Extra Large Shadow!">
+		<Button variant="outline">Extra Large</Button>
+	</Tooltip>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from "rizzui";
+import { Tooltip, Button } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Tooltip
-        shadow="sm"
-        content="Small Shadow!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip content="Default Shadow!">
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip
-        shadow="lg"
-        content="Large Shadow!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-      <Tooltip
-        shadow="xl"
-        content="Extra Large Shadow!"
-      >
-        <Button variant="outline">Hover Me!</Button>
-      </Tooltip>
-    </>
-  );
+	return (
+		<>
+			<Tooltip shadow="sm" content="Small Shadow!">
+				<Button variant="outline">Small</Button>
+			</Tooltip>
+			<Tooltip content="Default Shadow!">
+				<Button variant="outline">Default</Button>
+			</Tooltip>
+			<Tooltip shadow="lg" content="Large Shadow!">
+				<Button variant="outline">Large</Button>
+			</Tooltip>
+			<Tooltip shadow="xl" content="Extra Large Shadow!">
+				<Button variant="outline">Extra Large</Button>
+			</Tooltip>
+		</>
+	);
 }
 ```
 
@@ -401,43 +279,47 @@ export default function App() {
 You can use custom content inside **Tooltip**
 
 <Paper>
-  <Tooltip
-    content={
-      <div className="w-40 text-start">
-        <span className="inline-flex items-center gap-2 text-base">
-          <InformationCircleIcon className="w-5 h-5" />
-          <p>Tooltip Title</p>
-        </span>
-        <p className="mt-2 text-sm">This is a tip to help you accomplish a task.</p>
-      </div>
-    }
-    placement="bottom-start"
-  >
-    <Button variant="outline">Custom Content</Button>
-  </Tooltip>
+	<Tooltip
+		content={
+			<div className="w-40 text-start">
+				<span className="inline-flex items-center gap-2 text-base">
+					<InformationCircleIcon className="w-5 h-5" />
+					<p>Tooltip Title</p>
+				</span>
+				<p className="mt-2 text-sm">
+					This is a tip to help you accomplish a task.
+				</p>
+			</div>
+		}
+		placement="bottom-start"
+	>
+		<Button variant="outline">Custom Content</Button>
+	</Tooltip>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from "rizzui";
-import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import { Tooltip, Button } from 'rizzui';
+import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
 export default function App() {
-  return (
-    <Tooltip
-      content={
-        <div className="w-40 text-start">
-          <span className="inline-flex items-center gap-2 text-base">
-            <InformationCircleIcon className="w-5 h-5" />
-            <p>Tooltip Title</p>
-          </span>
-          <p className="mt-2 text-sm">This is a tip to help you accomplish a task.</p>
-        </div>
-      }
-      placement="bottom-start"
-    >
-      <Button variant="outline">Custom Content</Button>
-    </Tooltip>
-  );
+	return (
+		<Tooltip
+			content={
+				<div className="w-40 text-start">
+					<span className="inline-flex items-center gap-2 text-base">
+						<InformationCircleIcon className="w-5 h-5" />
+						<p>Tooltip Title</p>
+					</span>
+					<p className="mt-2 text-sm">
+						This is a tip to help you accomplish a task.
+					</p>
+				</div>
+			}
+			placement="bottom-start"
+		>
+			<Button variant="outline">Custom Content</Button>
+		</Tooltip>
+	);
 }
 ```
 
@@ -448,284 +330,158 @@ export default function App() {
 You can change placement of the **Tooltip** using property [**placement**](#tooltip-placements).
 
 <Paper className="h-[560px]">
-  <div className="relative m-auto flex h-96 max-w-xl w-full flex-wrap justify-center gap-8">
-    <Tooltip
-      content="I'm your tooltip"
-      placement="left"
-    >
-      <Button
-        variant="outline"
-        className="absolute top-1/2 left-0"
-      >
-        Left
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="right"
-    >
-      <Button
-        variant="outline"
-        className="absolute top-1/2 right-0"
-      >
-        Right
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="top"
-    >
-      <Button
-        variant="outline"
-        className="absolute top-0"
-      >
-        Top
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="bottom"
-    >
-      <Button
-        variant="outline"
-        className="absolute -bottom-5"
-      >
-        Bottom
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="top-start"
-    >
-      <Button
-        variant="outline"
-        className="absolute left-10 xl:left-20 top-0"
-      >
-        Top Start
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="top-end"
-    >
-      <Button
-        variant="outline"
-        className="absolute top-0 right-10 xl:right-20"
-      >
-        Top End
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="bottom-start"
-    >
-      <Button
-        variant="outline"
-        className="absolute -bottom-5 left-10 xl:left-20"
-      >
-        Bottom Start
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="bottom-end"
-    >
-      <Button
-        variant="outline"
-        className="absolute -bottom-5 right-10 xl:right-20"
-      >
-        Bottom End
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="left-start"
-    >
-      <Button
-        variant="outline"
-        className="absolute left-8 top-24"
-      >
-        Left Start
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="left-end"
-    >
-      <Button
-        variant="outline"
-        className="absolute bottom-16 left-8"
-      >
-        Left End
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="right-start"
-    >
-      <Button
-        variant="outline"
-        className="absolute right-8 top-24"
-      >
-        Right Start
-      </Button>
-    </Tooltip>
-    <Tooltip
-      content="I'm your tooltip"
-      placement="right-end"
-    >
-      <Button
-        variant="outline"
-        className="absolute right-8 bottom-16"
-      >
-        Right End
-      </Button>
-    </Tooltip>
-  </div>
+	<div className="relative m-auto flex h-96 max-w-xl w-full flex-wrap justify-center gap-8">
+		<Tooltip content="I'm your tooltip" placement="left">
+			<Button variant="outline" className="absolute top-1/2 left-0">
+				Left
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="right">
+			<Button variant="outline" className="absolute top-1/2 right-0">
+				Right
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="top">
+			<Button variant="outline" className="absolute top-0">
+				Top
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="bottom">
+			<Button variant="outline" className="absolute -bottom-5">
+				Bottom
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="top-start">
+			<Button variant="outline" className="absolute left-10 xl:left-20 top-0">
+				Top Start
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="top-end">
+			<Button variant="outline" className="absolute top-0 right-10 xl:right-20">
+				Top End
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="bottom-start">
+			<Button
+				variant="outline"
+				className="absolute -bottom-5 left-10 xl:left-20"
+			>
+				Bottom Start
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="bottom-end">
+			<Button
+				variant="outline"
+				className="absolute -bottom-5 right-10 xl:right-20"
+			>
+				Bottom End
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="left-start">
+			<Button variant="outline" className="absolute left-8 top-24">
+				Left Start
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="left-end">
+			<Button variant="outline" className="absolute bottom-16 left-8">
+				Left End
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="right-start">
+			<Button variant="outline" className="absolute right-8 top-24">
+				Right Start
+			</Button>
+		</Tooltip>
+		<Tooltip content="I'm your tooltip" placement="right-end">
+			<Button variant="outline" className="absolute right-8 bottom-16">
+				Right End
+			</Button>
+		</Tooltip>
+	</div>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from "rizzui";
+import { Tooltip, Button } from 'rizzui';
 
 export default function App() {
-  return (
-    <div className="flex h-[560px] flex-col">
-      <div className="relative m-auto flex h-96 max-w-xl w-full flex-wrap justify-center gap-8">
-        <Tooltip
-          content="I'm your tooltip"
-          placement="left"
-        >
-          <Button
-            variant="outline"
-            className="absolute top-1/2 left-0"
-          >
-            Left
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="right"
-        >
-          <Button
-            variant="outline"
-            className="absolute top-1/2 right-0"
-          >
-            Right
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="top"
-        >
-          <Button
-            variant="outline"
-            className="absolute top-0"
-          >
-            Top
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="bottom"
-        >
-          <Button
-            variant="outline"
-            className="absolute -bottom-5"
-          >
-            Bottom
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="top-start"
-        >
-          <Button
-            variant="outline"
-            className="absolute left-10 xl:left-20 top-0"
-          >
-            Top Start
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="top-end"
-        >
-          <Button
-            variant="outline"
-            className="absolute top-0 right-10 xl:right-20"
-          >
-            Top End
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="bottom-start"
-        >
-          <Button
-            variant="outline"
-            className="absolute -bottom-5 left-10 xl:left-20"
-          >
-            Bottom Start
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="bottom-end"
-        >
-          <Button
-            variant="outline"
-            className="absolute -bottom-5 right-10 xl:right-20"
-          >
-            Bottom End
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="left-start"
-        >
-          <Button
-            variant="outline"
-            className="absolute left-8 top-24"
-          >
-            Left Start
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="left-end"
-        >
-          <Button
-            variant="outline"
-            className="absolute bottom-16 left-8"
-          >
-            Left End
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="right-start"
-        >
-          <Button
-            variant="outline"
-            className="absolute right-8 top-24"
-          >
-            Right Start
-          </Button>
-        </Tooltip>
-        <Tooltip
-          content="I'm your tooltip"
-          placement="right-end"
-        >
-          <Button
-            variant="outline"
-            className="absolute right-8 bottom-16"
-          >
-            Right End
-          </Button>
-        </Tooltip>
-      </div>
-    </div>
-  );
+	return (
+		<div className="flex h-[560px] flex-col">
+			<div className="relative m-auto flex h-96 max-w-xl w-full flex-wrap justify-center gap-8">
+				<Tooltip content="I'm your tooltip" placement="left">
+					<Button variant="outline" className="absolute top-1/2 left-0">
+						Left
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="right">
+					<Button variant="outline" className="absolute top-1/2 right-0">
+						Right
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="top">
+					<Button variant="outline" className="absolute top-0">
+						Top
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="bottom">
+					<Button variant="outline" className="absolute -bottom-5">
+						Bottom
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="top-start">
+					<Button
+						variant="outline"
+						className="absolute left-10 xl:left-20 top-0"
+					>
+						Top Start
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="top-end">
+					<Button
+						variant="outline"
+						className="absolute top-0 right-10 xl:right-20"
+					>
+						Top End
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="bottom-start">
+					<Button
+						variant="outline"
+						className="absolute -bottom-5 left-10 xl:left-20"
+					>
+						Bottom Start
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="bottom-end">
+					<Button
+						variant="outline"
+						className="absolute -bottom-5 right-10 xl:right-20"
+					>
+						Bottom End
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="left-start">
+					<Button variant="outline" className="absolute left-8 top-24">
+						Left Start
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="left-end">
+					<Button variant="outline" className="absolute bottom-16 left-8">
+						Left End
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="right-start">
+					<Button variant="outline" className="absolute right-8 top-24">
+						Right Start
+					</Button>
+				</Tooltip>
+				<Tooltip content="I'm your tooltip" placement="right-end">
+					<Button variant="outline" className="absolute right-8 bottom-16">
+						Right End
+					</Button>
+				</Tooltip>
+			</div>
+		</div>
+	);
 }
 ```
 
@@ -763,14 +519,14 @@ Here is the API documentation of the Tooltip component. You can use the followin
 
 ```ts
 type TooltipPlacements =
-  | "left"
-  | "right"
-  | "top"
-  | "bottom"
-  | "left-start"
-  | "left-end"
-  | "right-start"
-  | "right-end";
+	| 'left'
+	| 'right'
+	| 'top'
+	| 'bottom'
+	| 'left-start'
+	| 'left-end'
+	| 'right-start'
+	| 'right-end';
 ```
 
 <div className="mb-10" />
@@ -787,14 +543,15 @@ type TooltipChildren = Element & { ref?: RefObject<any> | undefined };
 
 ```ts
 type TooltipColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning"
-  | "invert";
+	| 'DEFAULT'
+	| 'invert'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning'
+	| 'invert';
 ```
 
 <div className="mb-10" />
@@ -802,7 +559,7 @@ type TooltipColors =
 ### Tooltip Sizes
 
 ```ts
-type TooltipSizes = "DEFAULT" | "sm" | "lg" | "xl";
+type TooltipSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ```
 
 <div className="mb-10" />
@@ -810,7 +567,7 @@ type TooltipSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ### Tooltip Rounded
 
 ```ts
-type TooltipRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
+type TooltipRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
 ```
 
 <div className="mb-10" />
@@ -818,5 +575,5 @@ type TooltipRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
 ### Tooltip Shadows
 
 ```ts
-type TooltipShadows = "DEFAULT" | "sm" | "lg" | "xl";
+type TooltipShadows = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ```

@@ -146,8 +146,6 @@ export interface NativeSelectProps
   > {
   /** Options for select */
   options: (string | OptionType)[];
-  /** Set multiple values */
-  multiple?: boolean;
   /** Whether the select is disabled */
   disabled?: boolean;
   /** Set field label */
@@ -170,8 +168,6 @@ export interface NativeSelectProps
   prefix?: React.ReactNode;
   /** The suffix is design for adding any icon or text on the select field's end (it's a right icon for the `ltr` and left icon for the `rtl`) */
   suffix?: React.ReactNode;
-  /** The dropDownIcon is design for adding any icon on the select field's end (it's left icon for the `ltr` and right icon for the `rtl`) */
-  dropDownIcon?: React.ReactNode;
   /** Show error message using this prop */
   error?: string;
   /** Add helper text. It could be string or a React component */

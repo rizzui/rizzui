@@ -11,7 +11,7 @@ import RadioGroupDefault, {
 
 # Radio
 
-A basic widget for getting the user input of radio.
+A basic widget for getting the user input. used for selecting single value from a list of options.
 
 ```tsx
 import { Radio } from 'rizzui';
@@ -39,7 +39,7 @@ export default function App() {
 
 ## Variants
 
-You can change style of **Radio** with property [**variant**](#radio-variants).
+You can change the style of **Radio** using [**variant**](#radio-variants) property.
 
 <Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
 	<Radio className="m-2" label="Flat" variant="flat" />
@@ -65,7 +65,7 @@ export default function App() {
 
 ## Sizes
 
-You can change style of **Radio** with property [**size**](#radio-sizes).
+You can change the sizes of **Radio** using [**size**](#radio-sizes) property.
 
 <Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
 	<Radio className="m-2" label="Small" variant="active" size="sm" />
@@ -93,7 +93,7 @@ export default function App() {
 
 ## Label Placement
 
-You can change style of **Radio** with property **labelPlacement**.
+You can set label on the two diffrient side using **labelPlacement** property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
 	<Radio className="m-2" label="Left Placement" labelPlacement="start" />
@@ -117,7 +117,7 @@ export default function App() {
 
 ## Colors
 
-You can change style of **Radio** with property [**color**](#radio-colors).
+You can change the color of **Radio** using [**color**](#radio-colors) property.
 
 <Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
 	<Radio className="m-2" label="Default" variant="flat" />
@@ -156,7 +156,7 @@ export default function App() {
 
 ## Radio Group
 
-You can make a group of multiple choices **Radio** with component **RadioGroup**.
+You can make a radio group component using **RadioGroup**.
 
 <Paper>
 	<RadioGroupDefault />
@@ -180,64 +180,11 @@ export default function App() {
 }
 ```
 
-## Radio Group With Start Label
+<div className="mb-16" />
 
-You can make clickable card **Radio** group with component **RadioGroup**.
+## Radio Group List
 
-<Paper>
-	<RadioGroupStartLabel />
-</Paper>
-
-```tsx
-import { useState } from 'react';
-import { Radio, RadioGroup } from 'rizzui';
-
-export default function App() {
-	const [value, setValue] = useState('');
-
-	return (
-		<RadioGroup
-			value={value}
-			setValue={setValue}
-			className="justify-center space-x-4 space-y-4"
-		>
-			<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
-				<Radio
-					name="column-label-start-group"
-					label="Default"
-					value="default"
-					className="p-2"
-					labelPlacement="start"
-					containerClassName="justify-between"
-					helperText="This project would be available to anyone who have the link"
-				/>
-				<Radio
-					name="column-label-start-group"
-					label="Primary"
-					value="primary"
-					className="p-2"
-					labelPlacement="start"
-					containerClassName="justify-between"
-					helperText="This project would be available to anyone who have the link"
-				/>
-				<Radio
-					name="column-label-start-group"
-					label="Secondary"
-					value="secondary"
-					className="p-2"
-					labelPlacement="start"
-					containerClassName="justify-between"
-					helperText="This project would be available to anyone who have the link"
-				/>
-			</div>
-		</RadioGroup>
-	);
-}
-```
-
-## Radio Group With End Label
-
-You can make clickable card with **Radio** group left aligned.
+You can style any custom design using our **Radio** component.
 
 <Paper>
 	<RadioGroupEndLabel />
@@ -294,7 +241,7 @@ export default function App() {
 
 ## Disabled
 
-You can change style of **Radio** with property **disabled**.
+You can change style of **Radio** using **disabled** property.
 
 <Paper className="text-gray-900">
 	<Radio className="m-2" label="Remember Me" disabled />
@@ -344,7 +291,7 @@ export default function App() {
 
 ## With Error Message
 
-You can add error message as validation to **Radio**.
+You can show the validation error message using **error** property.
 
 <Paper className="text-gray-900">
 	<Radio

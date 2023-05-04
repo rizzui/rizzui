@@ -13,7 +13,6 @@ import {
   useHover,
   useFocus,
   useClick,
-  useRole,
   useDismiss,
   arrow,
   useTransitionStyles,
@@ -139,7 +138,6 @@ export default function Tooltip({
   const { getReferenceProps, getFloatingProps } = useInteractions([
     useHover(context, { enabled: !isPopconfirm }),
     useFocus(context),
-    useRole(context, { role: 'tooltip' }),
     useDismiss(context),
     useClick(context, { enabled: isPopconfirm }),
   ]);
@@ -164,6 +162,7 @@ export default function Tooltip({
       )}
       {(isMounted || (isOpen ?? open)) && (
         <div
+          role="tooltip"
           ref={refs.setFloating}
           className={cn(
             tooltipClasses.base,

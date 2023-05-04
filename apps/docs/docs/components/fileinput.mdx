@@ -1,5 +1,5 @@
 ---
-sidebar_position: 29
+sidebar_position: 20
 ---
 
 import { FileInput } from 'rizzui';
@@ -8,7 +8,7 @@ import FileInputClearable from '@site/src/components/file-input';
 
 # FileInput
 
-A basic widget for getting the user input.
+A basic widget for getting the attachment file.
 
 ```tsx
 import { FileInput } from 'rizzui';
@@ -36,7 +36,7 @@ export default function App() {
 
 ## Variants
 
-You can change the style of **FileInput** with property [**variant**](#fileinput-variants).
+You can change the style of **FileInput** using [**variant**](#fileinput-variants) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 	<FileInput label="Active Variant" variant="active" />
@@ -64,7 +64,7 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **FileInput** with property [**size**](#fileinput-sizes).
+You can change the size of **FileInput** using [**size**](#fileinput-sizes) property.
 
 <Paper className="justify-start items-start gap-6">
 	<FileInput label="Small FileInput" size="sm" />
@@ -92,7 +92,7 @@ export default function App() {
 
 ## Rounded
 
-You can change the style of **FileInput** with property [**rounded**](#fileinput-rounded).
+You can change the border radius of **FileInput** using [**rounded**](#fileinput-rounded) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 	<FileInput label="Rounded Small" rounded="sm" variant="active" />
@@ -122,7 +122,7 @@ export default function App() {
 
 ## Colors
 
-You can change the style of **FileInput** with property [**color**](#fileinput-colors).
+You can change the color of **FileInput** using [**color**](#fileinput-colors) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 	<FileInput label="Upload File" variant="flat" />
@@ -154,27 +154,9 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Disabled
-
-You can change the style of **FileInput** with property **disabled**.
-
-<Paper className="block">
-	<FileInput label="Upload File" disabled />
-</Paper>
-
-```tsx
-import { FileInput } from 'rizzui';
-
-export default function App() {
-	return <FileInput label="Upload File" disabled />;
-}
-```
-
-<div className="mb-16" />
-
 ## With Clear Button
 
-You can change the style of **FileInput** with property **clearable**.
+You can clear value of the **FileInput** using **clearable** & **onClear** property.
 
 <Paper className="block">
 	<FileInputClearable />
@@ -204,7 +186,7 @@ export default function App() {
 
 ## With Multiple Files
 
-You can change the style of **FileInput** with property **multiple**.
+By enabling **multiple** property true, user can upload multiple files.
 
 <Paper className="block">
 	<FileInput label="Upload Multiple Files" multiple />
@@ -220,9 +202,27 @@ export default function App() {
 
 <div className="mb-16" />
 
+## Disabled
+
+The disabled state of the **FileInput** component.
+
+<Paper className="block">
+	<FileInput label="Upload File" disabled />
+</Paper>
+
+```tsx
+import { FileInput } from 'rizzui';
+
+export default function App() {
+	return <FileInput label="Upload File" disabled />;
+}
+```
+
+<div className="mb-16" />
+
 ## With Helper Text
 
-You can change the style of **FileInput** with property **helperText**.
+You can add helper text to the **FileInput** component using **helperText** property.
 
 <Paper className="block">
 	<FileInput label="Upload Files" helperText="This is helper text!" />
@@ -240,7 +240,7 @@ export default function App() {
 
 ## With Error Message
 
-You can change the style of **FileInput** with property **error**.
+You can show the validation error message using **error** property.
 
 <Paper className="block">
 	<FileInput label="Upload Files" error="This is error message!" />

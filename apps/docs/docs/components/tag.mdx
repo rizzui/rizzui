@@ -2,16 +2,16 @@
 sidebar_position: 23
 ---
 
-import { Tag, Avatar } from "rizzui";
-import { MapPinIcon } from "@heroicons/react/24/outline";
-import Paper from "@site/src/components/paper";
+import { Tag, Avatar } from 'rizzui';
+import { MapPinIcon } from '@heroicons/react/24/outline';
+import Paper from '@site/src/components/paper';
 
 # Tag
 
 Tag component is used to convey grouping information of elements. It is a standalone component which is commonly used for filtering or triggering some kind of action.
 
 ```tsx
-import { Tag } from "rizzui";
+import { Tag } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -21,14 +21,14 @@ import { Tag } from "rizzui";
 The default style of the **Tag** component.
 
 <Paper>
-  <Tag>Default Tag</Tag>
+	<Tag>Default Tag</Tag>
 </Paper>
 
 ```jsx
-import { Tag } from "rizzui";
+import { Tag } from 'rizzui';
 
 export default function App() {
-  return <Tag>Default Tag</Tag>;
+	return <Tag>Default Tag</Tag>;
 }
 ```
 
@@ -36,25 +36,25 @@ export default function App() {
 
 ## Variants
 
-You can change the style of **Tag** with property [**variant**](#tag-variants).
+You can change the style of **Tag** using [**variant**](#tag-variants) property.
 
 <Paper className="flex-row justify-around gap-4">
-  <Tag variant="solid">Solid</Tag>
-  <Tag variant="flat">Flat</Tag>
-  <Tag variant="outline">Outline</Tag>
+	<Tag variant="solid">Solid</Tag>
+	<Tag variant="flat">Flat</Tag>
+	<Tag variant="outline">Outline</Tag>
 </Paper>
 
 ```tsx
-import { Tag } from "rizzui";
+import { Tag } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Tag variant="solid">Solid</Tag>
-      <Tag variant="flat">Flat</Tag>
-      <Tag variant="outline">Outline</Tag>
-    </>
-  );
+	return (
+		<>
+			<Tag variant="solid">Solid</Tag>
+			<Tag variant="flat">Flat</Tag>
+			<Tag variant="outline">Outline</Tag>
+		</>
+	);
 }
 ```
 
@@ -62,27 +62,27 @@ export default function App() {
 
 ## Sizes
 
-You can change the style of **Tag** with property [**size**](#tag-sizes).
+You can change the size of **Tag** using [**size**](#tag-sizes) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tag size="sm">Small</Tag>
-  <Tag>Default</Tag>
-  <Tag size="lg">Large</Tag>
-  <Tag size="xl">Extra Large</Tag>
+	<Tag size="sm">Small</Tag>
+	<Tag>Default</Tag>
+	<Tag size="lg">Large</Tag>
+	<Tag size="xl">Extra Large</Tag>
 </Paper>
 
 ```tsx
-import { Tag } from "rizzui";
+import { Tag } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Tag size="sm">Small</Tag>
-      <Tag>Default</Tag>
-      <Tag size="lg">Large</Tag>
-      <Tag size="xl">Extra Large</Tag>
-    </>
-  );
+	return (
+		<>
+			<Tag size="sm">Small</Tag>
+			<Tag>Default</Tag>
+			<Tag size="lg">Large</Tag>
+			<Tag size="xl">Extra Large</Tag>
+		</>
+	);
 }
 ```
 
@@ -90,69 +90,45 @@ export default function App() {
 
 ## Rounded
 
-You can change the style of **Tag** with property [**rounded**](#tag-rounded).
+You can change the border radius of **Tag** using [**rounded**](#tag-rounded) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tag
-    variant="solid"
-    rounded="sm"
-  >
-    Rounded Small
-  </Tag>
-  <Tag variant="solid">Rounded Default</Tag>
-  <Tag
-    variant="solid"
-    rounded="lg"
-  >
-    Rounded Large
-  </Tag>
-  <Tag
-    variant="solid"
-    rounded="none"
-  >
-    Rounded None
-  </Tag>
-  <Tag
-    variant="solid"
-    rounded="pill"
-  >
-    Rounded Full
-  </Tag>
+	<Tag variant="solid" rounded="sm">
+		Rounded Small
+	</Tag>
+	<Tag variant="solid">Rounded Default</Tag>
+	<Tag variant="solid" rounded="lg">
+		Rounded Large
+	</Tag>
+	<Tag variant="solid" rounded="none">
+		Rounded None
+	</Tag>
+	<Tag variant="solid" rounded="pill">
+		Rounded Full
+	</Tag>
 </Paper>
 
 ```tsx
-import { Tag } from "rizzui";
+import { Tag } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Tag
-        variant="solid"
-        rounded="sm"
-      >
-        Rounded Small
-      </Tag>
-      <Tag variant="solid">Rounded Default</Tag>
-      <Tag
-        variant="solid"
-        rounded="lg"
-      >
-        Rounded Large
-      </Tag>
-      <Tag
-        variant="solid"
-        rounded="none"
-      >
-        Rounded None
-      </Tag>
-      <Tag
-        variant="solid"
-        rounded="pill"
-      >
-        Rounded Full
-      </Tag>
-    </>
-  );
+	return (
+		<>
+			<Tag variant="solid" rounded="sm">
+				Rounded Small
+			</Tag>
+			<Tag variant="solid">Rounded Default</Tag>
+			<Tag variant="solid" rounded="lg">
+				Rounded Large
+			</Tag>
+			<Tag variant="solid" rounded="none">
+				Rounded None
+			</Tag>
+			<Tag variant="solid" rounded="pill">
+				Rounded Full
+			</Tag>
+		</>
+	);
 }
 ```
 
@@ -160,33 +136,33 @@ export default function App() {
 
 ## Colors
 
-You can change the style of **Tag** with property [**color**](#tag-colors).
+You can change the color of **Tag** using [**color**](#tag-colors) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tag>Default</Tag>
-  <Tag color="primary">Primary</Tag>
-  <Tag color="secondary">Secondary</Tag>
-  <Tag color="danger">Danger</Tag>
-  <Tag color="info">Info</Tag>
-  <Tag color="success">Success</Tag>
-  <Tag color="warning">Warning</Tag>
+	<Tag>Default</Tag>
+	<Tag color="primary">Primary</Tag>
+	<Tag color="secondary">Secondary</Tag>
+	<Tag color="danger">Danger</Tag>
+	<Tag color="info">Info</Tag>
+	<Tag color="success">Success</Tag>
+	<Tag color="warning">Warning</Tag>
 </Paper>
 
 ```tsx
-import { Tag } from "rizzui";
+import { Tag } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Tag>Default</Tag>
-      <Tag color="primary">Primary</Tag>
-      <Tag color="secondary">Secondary</Tag>
-      <Tag color="danger">Danger</Tag>
-      <Tag color="info">Info</Tag>
-      <Tag color="success">Success</Tag>
-      <Tag color="warning">Warning</Tag>
-    </>
-  );
+	return (
+		<>
+			<Tag>Default</Tag>
+			<Tag color="primary">Primary</Tag>
+			<Tag color="secondary">Secondary</Tag>
+			<Tag color="danger">Danger</Tag>
+			<Tag color="info">Info</Tag>
+			<Tag color="success">Success</Tag>
+			<Tag color="warning">Warning</Tag>
+		</>
+	);
 }
 ```
 
@@ -194,25 +170,25 @@ export default function App() {
 
 ## With Icon
 
-You can use icon with **Tag**.
+You can use icon in our **Tag** component.
 
 <Paper>
-  <Tag>
-    <MapPinIcon className="mr-1 h-4 w-4 rtl:ml-1" />
-    With Icon
-  </Tag>
+	<Tag>
+		<MapPinIcon className="mr-1 h-4 w-4 rtl:ml-1" />
+		With Icon
+	</Tag>
 </Paper>
 
 ```tsx
-import { Tag } from "rizzui";
+import { Tag } from 'rizzui';
 
 export default function App() {
-  return (
-    <Tag>
-      <MapPinIcon className="mr-1 h-4 w-4 rtl:ml-1" />
-      With Icon
-    </Tag>
-  );
+	return (
+		<Tag>
+			<MapPinIcon className="mr-1 h-4 w-4 rtl:ml-1" />
+			With Icon
+		</Tag>
+	);
 }
 ```
 
@@ -223,30 +199,30 @@ export default function App() {
 You can use **Avatar** component inside **Tag**.
 
 <Paper>
-  <Tag>
-    <Avatar
-      className="mr-1.5 rtl:ml-1.5"
-      size="20px"
-      src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-    />
-    With Avatar
-  </Tag>
+	<Tag>
+		<Avatar
+			className="mr-1.5 rtl:ml-1.5"
+			size="20px"
+			src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+		/>
+		With Avatar
+	</Tag>
 </Paper>
 
 ```tsx
-import { Tag, Avatar } from "rizzui";
+import { Tag, Avatar } from 'rizzui';
 
 export default function App() {
-  return (
-    <Tag>
-      <Avatar
-        className="mr-1.5 rtl:ml-1.5"
-        size="20px"
-        src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-      />
-      With Avatar
-    </Tag>
-  );
+	return (
+		<Tag>
+			<Avatar
+				className="mr-1.5 rtl:ml-1.5"
+				size="20px"
+				src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+			/>
+			With Avatar
+		</Tag>
+	);
 }
 ```
 
@@ -254,31 +230,25 @@ export default function App() {
 
 ## With Clear Button
 
-You make a clearable **Tag** with property **clearable**.
+You make a clearable **Tag** using **clearable** property.
 
 <Paper>
-  <Tag
-    variant="outline"
-    clearable
-  >
-    Clearable
-  </Tag>
+	<Tag variant="outline" clearable>
+		Clearable
+	</Tag>
 </Paper>
 
 ```tsx
-import { Button } from "rizzui";
+import { Button } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Tag
-        variant="outline"
-        clearable
-      >
-        Clearable
-      </Tag>
-    </>
-  );
+	return (
+		<>
+			<Tag variant="outline" clearable>
+				Clearable
+			</Tag>
+		</>
+	);
 }
 ```
 
@@ -312,7 +282,7 @@ Here is the API documentation of the Tag component.
 ### Tag Variants
 
 ```ts
-type TagVariants = "solid" | "flat" | "outline";
+type TagVariants = 'solid' | 'flat' | 'outline';
 ```
 
 <div className="mb-10" />
@@ -320,7 +290,7 @@ type TagVariants = "solid" | "flat" | "outline";
 ### Tag Sizes
 
 ```ts
-type TagSizes = "DEFAULT" | "sm" | "lg" | "xl";
+type TagSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ```
 
 <div className="mb-10" />
@@ -328,7 +298,7 @@ type TagSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ### Tag Rounded
 
 ```ts
-type TagRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
+type TagRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
 ```
 
 <div className="mb-10" />
@@ -336,7 +306,14 @@ type TagRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
 ### Tag Colors
 
 ```ts
-type TagColors = "DEFAULT" | "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type TagColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
 ```
 
 <div className="mb-10" />

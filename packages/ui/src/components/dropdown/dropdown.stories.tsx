@@ -21,7 +21,7 @@ export default {
 
 export const Default = () => (
   <Dropdown
-    label={
+    trigger={
       <Button variant="outline">
         Settings{' '}
         <svg
@@ -76,7 +76,7 @@ export const Default = () => (
 
 export const WithIcons = () => (
   <Dropdown
-    label={
+    trigger={
       <ActionIcon variant="outline" rounded="full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ export const WithIcons = () => (
     className="h-96"
     dropdownClassName="w-48 mt-4 divide-y"
   >
-    <div className="mt-3 mb-2">
+    <div className="mb-2 mt-3">
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
           <span
@@ -262,7 +262,7 @@ export const WithIcons = () => (
       </DropdownItem>
     </div>
 
-    <div className="mt-2 mb-3 pt-2">
+    <div className="mb-3 mt-2 pt-2">
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
           <span
@@ -297,14 +297,14 @@ export const WithHeader = () => (
   <Dropdown
     className="h-80"
     dropdownClassName="w-56 mt-4 divide-y"
-    label={
+    trigger={
       <Avatar
         src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
         size="45"
       />
     }
   >
-    <DropdownItem className="mt-3 mb-2 px-5 py-2" activeClassName="bg-gray-100">
+    <DropdownItem className="mb-2 mt-3 px-5 py-2" activeClassName="bg-gray-100">
       {() => (
         <span className="flex text-gray-600">
           <Avatar
@@ -319,7 +319,7 @@ export const WithHeader = () => (
       )}
     </DropdownItem>
 
-    <div className="mt-3 mb-2 pt-2">
+    <div className="mb-2 mt-3 pt-2">
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
           <span className={cn('text-gray-600', active && '!text-gray-900')}>
@@ -343,7 +343,7 @@ export const WithHeader = () => (
       </DropdownItem>
     </div>
 
-    <div className="mt-2 mb-3 pt-2">
+    <div className="mb-3 mt-2 pt-2">
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
           <span className={cn('text-gray-600', active && '!text-gray-900')}>
@@ -368,7 +368,7 @@ export const Colored = () => (
       <Dropdown
         key={color}
         dropdownClassName="w-48 mt-4"
-        label={
+        trigger={
           <Button
             variant="flat"
             color={color.split('/')[0] as ButtonProps['color']}

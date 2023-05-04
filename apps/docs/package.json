@@ -1,7 +1,7 @@
 {
 	"name": "docs",
-	"version": "0.0.0",
 	"private": true,
+	"version": "0.5.0",
 	"scripts": {
 		"docusaurus": "docusaurus",
 		"dev": "docusaurus start",
@@ -10,7 +10,7 @@
 		"deploy": "docusaurus deploy",
 		"clear": "docusaurus clear",
 		"serve": "docusaurus serve",
-		"clean": "docusaurus clear && rm -rf node_modules",
+		"clean": "docusaurus clear && rm -rf node_modules && rm -rf .turbo",
 		"write-translations": "docusaurus write-translations",
 		"write-heading-ids": "docusaurus write-heading-ids",
 		"typecheck": "tsc"

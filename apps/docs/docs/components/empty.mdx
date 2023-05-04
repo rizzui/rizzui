@@ -2,15 +2,15 @@
 sidebar_position: 36
 ---
 
-import { Empty, EmptyProductBoxIcon, SearchNotFoundIcon } from "rizzui";
-import Paper from "@site/src/components/paper";
+import { Empty, EmptyProductBoxIcon, SearchNotFoundIcon } from 'rizzui';
+import Paper from '@site/src/components/paper';
 
 # Empty
 
 Empty state component. This component gives a message when some part or data is empty.
 
 ```tsx
-import { Empty } from "rizzui";
+import { Empty } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -20,22 +20,14 @@ import { Empty } from "rizzui";
 The default style of the **Empty**.
 
 <Paper>
-  <Empty
-    text="No Data"
-    textClassName="mt-2"
-  />
+	<Empty text="No Data" textClassName="mt-2" />
 </Paper>
 
 ```tsx
-import { Empty } from "rizzui";
+import { Empty } from 'rizzui';
 
 export default function App() {
-  return (
-    <Empty
-      text="No Data"
-      textClassName="mt-2"
-    />
-  );
+	return <Empty text="No Data" textClassName="mt-2" />;
 }
 ```
 
@@ -46,22 +38,14 @@ export default function App() {
 You can use it if your product is **Empty**.
 
 <Paper>
-  <Empty
-    image={<EmptyProductBoxIcon />}
-    text="No Product Available"
-  />
+	<Empty image={<EmptyProductBoxIcon />} text="No Product Available" />
 </Paper>
 
 ```tsx
-import { Empty, EmptyProductBoxIcon } from "rizzui";
+import { Empty, EmptyProductBoxIcon } from 'rizzui';
 
 export default function App() {
-  return (
-    <Empty
-      image={<EmptyProductBoxIcon />}
-      text="No Product Available"
-    />
-  );
+	return <Empty image={<EmptyProductBoxIcon />} text="No Product Available" />;
 }
 ```
 
@@ -72,22 +56,14 @@ export default function App() {
 You can use it if your search is **Empty**.
 
 <Paper>
-  <Empty
-    image={<SearchNotFoundIcon />}
-    text="No Result Found"
-  />
+	<Empty image={<SearchNotFoundIcon />} text="No Result Found" />
 </Paper>
 
 ```tsx
-import { Empty, SearchNotFoundIcon } from "rizzui";
+import { Empty, SearchNotFoundIcon } from 'rizzui';
 
 export default function App() {
-  return (
-    <Empty
-      image={<SearchNotFoundIcon />}
-      text="No Result Found"
-    />
-  );
+	return <Empty image={<SearchNotFoundIcon />} text="No Result Found" />;
 }
 ```
 
@@ -101,7 +77,7 @@ export default function App() {
 
 ### Empty Props
 
-Here is the API documentation of the Empty component. Note: We are highly inspired by the Ant Design empty component -> [https://ant.design/components/empty](https://ant.design/components/empty)
+Here is the API documentation of the Empty component.
 
 |         Props         |                Type                |                          Description                           |  Default   |
 | :-------------------: | :--------------------------------: | :------------------------------------------------------------: | :--------: |
@@ -116,12 +92,14 @@ Here is the API documentation of the Empty component. Note: We are highly inspir
 |       alignment       | [EmptyAlignment](#empty-alignment) |         Set custom text message of the Empty component         | `"center"` |
 |       className       |              `string`              |               Add custom classes for extra style               |   \_ \_    |
 
+_*Note: We are highly inspired by the Ant Design's empty component*_
+
 <div className="mb-10" />
 
 ### Empty Text Tags
 
 ```ts
-type EmptyTextTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+type EmptyTextTags = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 ```
 
 <div className="mb-10" />
@@ -129,5 +107,5 @@ type EmptyTextTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
 ### Empty Alignment
 
 ```ts
-type EmptyAlignment = "center" | "inlineStart" | "inlineEnd";
+type EmptyAlignment = 'center' | 'inlineStart' | 'inlineEnd';
 ```

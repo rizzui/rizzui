@@ -4,7 +4,6 @@ import { CheckCircleIcon } from '@heroicons/react/20/solid';
 
 export default function RadioGroupDefault() {
 	const [value, setValue] = useState('apple');
-
 	return (
 		<RadioGroup
 			value={value}
@@ -20,7 +19,7 @@ export default function RadioGroupDefault() {
 }
 
 export function RadioGroupStartLabel() {
-	const [value, setValue] = useState('');
+	const [value, setValue] = useState('default');
 	return (
 		<RadioGroup
 			value={value}
@@ -64,8 +63,7 @@ export function RadioGroupStartLabel() {
 }
 
 export function RadioGroupEndLabel() {
-	const [value, setValue] = useState('');
-
+	const [value, setValue] = useState('warning');
 	return (
 		<RadioGroup
 			value={value}
@@ -107,7 +105,6 @@ export function RadioGroupEndLabel() {
 
 export function RadioGroupAdvanced() {
 	const [value, setValue] = useState('one');
-
 	return (
 		<RadioGroup value={value} setValue={setValue} className="flex gap-4">
 			<AdvancedRadio
@@ -153,8 +150,7 @@ export function RadioGroupAdvanced() {
 }
 
 export function RadioGroupWithCard() {
-	const [value, setValue] = useState('one');
-
+	const [value, setValue] = useState('single');
 	return (
 		<RadioGroup value={value} setValue={setValue} className="flex gap-4">
 			<AdvancedRadio

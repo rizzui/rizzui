@@ -24,8 +24,8 @@ const dropdownClasses = {
 };
 
 export type DropdownProps = ExtractProps<typeof Menu> & {
-  /** Add label in dropdown button */
-  label: React.ReactNode;
+  /** Add trigger in dropdown button */
+  trigger: React.ReactNode;
   /** The rounded variants supported by this component are: */
   rounded?: keyof typeof dropdownClasses.rounded;
   /** The shadow variants supported by this component are: */
@@ -45,9 +45,8 @@ export type DropdownProps = ExtractProps<typeof Menu> & {
  * Here is the API documentation of the Dropdown component.
  * You can use the following props to create a dropdown.
  */
-
 const Dropdown = ({
-  label,
+  trigger,
   rounded = 'DEFAULT',
   shadow = 'DEFAULT',
   children,
@@ -57,7 +56,7 @@ const Dropdown = ({
 }: DropdownProps) => (
   <Menu as="div" className={cn('relative', className)}>
     <Menu.Button as="div" className={dropdownButtonClassName}>
-      {label}
+      {trigger}
     </Menu.Button>
     <Transition
       as={Fragment}

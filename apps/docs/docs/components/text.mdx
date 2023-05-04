@@ -2,15 +2,15 @@
 sidebar_position: 26
 ---
 
-import { Text } from "rizzui";
-import Paper from "@site/src/components/paper";
+import { Text } from 'rizzui';
+import Paper from '@site/src/components/paper';
 
 # Text
 
-Text component is the used to render text and paragraphs within an interface using well-defined typographic styles. It renders a `<p>` tag by default.
+Text component is the used to render text and paragraphs within an interface using well-defined typographic styles. It renders a **p** tag by default.
 
 ```jsx
-import { Text } from "rizzui";
+import { Text } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -20,14 +20,14 @@ import { Text } from "rizzui";
 The default style of the **Text**.
 
 <Paper>
-  <Text>The brown fox jumps over the lazy dog</Text>
+	<Text>The brown fox jumps over the lazy dog</Text>
 </Paper>
 
 ```jsx
-import { Text } from "rizzui";
+import { Text } from 'rizzui';
 
 export default function App() {
-  return <Text>The brown fox jumps over the lazy dog</Text>;
+	return <Text>The brown fox jumps over the lazy dog</Text>;
 }
 ```
 
@@ -38,581 +38,450 @@ export default function App() {
 You can change style by just changing **tag** property in **Text** component.
 
 <Paper>
-  <div className="grid gap-8 py-2">
-    <div>
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        h1
-      </Text>
-      <Text tag="h1">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        h2
-      </Text>
-      <Text tag="h2">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        h3
-      </Text>
-      <Text tag="h3">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        h4
-      </Text>
-      <Text tag="h4">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        h5
-      </Text>
-      <Text tag="h5">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        h6
-      </Text>
-      <Text tag="h6">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        p
-      </Text>
-      <Text tag="p">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        i
-      </Text>
-      <Text tag="i">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        del
-      </Text>
-      <Text tag="del">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        mark
-      </Text>
-      <Text tag="mark">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        b
-      </Text>
-      <Text tag="b">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        em
-      </Text>
-      <Text tag="em">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        strong
-      </Text>
-      <Text tag="strong">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        small
-      </Text>
-      <Text tag="small">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        abbr
-      </Text>
-      <Text
-        tag="abbr"
-        title="Hello World!"
-      >
-        HW
-      </Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        q
-      </Text>
-      <Text tag="q">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div className="grid gap-1">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        blockquote
-      </Text>
-      <Text tag="blockquote">
-        Before going to sleep every night, <br /> forgive everyone and sleep with a clean heart.
-      </Text>
-    </div>
-    <div>
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        kbd
-      </Text>
-      <div className="mt-2 grid gap-5">
-        <div className="flex items-end gap-1">
-          <Text tag="kbd">
-            <svg
-              className="h-4 w-4"
-              aria-hidden="true"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 256 512"
-            >
-              <path d="M137.4 406.6l-128-127.1C3.125 272.4 0 264.2 0 255.1s3.125-16.38 9.375-22.63l128-127.1c9.156-9.156 22.91-11.9 34.88-6.943S192 115.1 192 128v255.1c0 12.94-7.781 24.62-19.75 29.58S146.5 415.8 137.4 406.6z" />
-            </svg>
-            <span className="sr-only">Arrow key left</span>
-          </Text>
-          <div className="grid gap-1">
-            <Text tag="kbd">
-              <svg
-                className="h-4 w-4"
-                aria-hidden="true"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
-              >
-                <path d="M9.39 265.4l127.1-128C143.6 131.1 151.8 128 160 128s16.38 3.125 22.63 9.375l127.1 128c9.156 9.156 11.9 22.91 6.943 34.88S300.9 320 287.1 320H32.01c-12.94 0-24.62-7.781-29.58-19.75S.2333 274.5 9.39 265.4z" />
-              </svg>
-              <span className="sr-only">Arrow key up</span>
-            </Text>
-            <Text tag="kbd">
-              <svg
-                className="h-4 w-4"
-                aria-hidden="true"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 320 512"
-              >
-                <path d="M310.6 246.6l-127.1 128C176.4 380.9 168.2 384 160 384s-16.38-3.125-22.63-9.375l-127.1-128C.2244 237.5-2.516 223.7 2.438 211.8S19.07 192 32 192h255.1c12.94 0 24.62 7.781 29.58 19.75S319.8 237.5 310.6 246.6z" />
-              </svg>
-              <span className="sr-only">Arrow key down</span>
-            </Text>
-          </div>
-          <Text tag="kbd">
-            <svg
-              className="h-4 w-4"
-              aria-hidden="true"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 256 512"
-            >
-              <path d="M118.6 105.4l128 127.1C252.9 239.6 256 247.8 256 255.1s-3.125 16.38-9.375 22.63l-128 127.1c-9.156 9.156-22.91 11.9-34.88 6.943S64 396.9 64 383.1V128c0-12.94 7.781-24.62 19.75-29.58S109.5 96.23 118.6 105.4z" />
-            </svg>
-            <span className="sr-only">Arrow key right</span>
-          </Text>
-        </div>
-        <Text tag="p">
-          Please press <Text tag="kbd">Ctrl</Text> + <Text tag="kbd">Shift</Text> +{" "}
-          <Text tag="kbd">R</Text> to reload this page.
-        </Text>
-      </div>
-    </div>
-    <div>
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        sup
-      </Text>
-      <Text tag="p">
-        (a+b)<Text tag="sup">2</Text> = a<Text tag="sup">2</Text> + 2ab + b<Text tag="sup">2</Text>
-      </Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        sub
-      </Text>
-      <Text tag="em">
-        ∑𝐹 = ρ𝑄(𝓥<Text tag="sub">out</Text> &nbsp;-&nbsp; 𝓥
-        <Text tag="sub">in</Text>)
-      </Text>
-    </div>
-    <div>
-      <Text
-        tag="span"
-        className="mb-2 block tracking-wider text-gray-500"
-      >
-        code
-      </Text>
-      <Text tag="code">background-color: #000000</Text>
-    </div>
-    <div className="grid">
-      <Text
-        tag="span"
-        className="tracking-wider text-gray-500"
-      >
-        pre
-      </Text>
-      <Text tag="pre">
-        &lt;html&gt; <br />
-        &nbsp;&nbsp;&lt;head&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome to campuslife.&lt;/title&gt; <br />
-        &nbsp;&nbsp;&lt;/head&gt; <br />
-        &nbsp;&nbsp;&lt;body&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Campuslife Wesbite&lt;/h1&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;My first page.&lt;/h2&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Campuslife is a free learning source website for users.{" "}
-        <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
-        &nbsp;&nbsp;&lt;/body&gt; <br />
-        &lt;/html&gt;
-      </Text>
-    </div>
-  </div>
+	<div className="grid gap-8 py-2">
+		<div>
+			<Text tag="span" className="tracking-wider text-gray-500">
+				h1
+			</Text>
+			<Text tag="h1">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div>
+			<Text tag="span" className="tracking-wider text-gray-500">
+				h2
+			</Text>
+			<Text tag="h2">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div>
+			<Text tag="span" className="tracking-wider text-gray-500">
+				h3
+			</Text>
+			<Text tag="h3">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div>
+			<Text tag="span" className="tracking-wider text-gray-500">
+				h4
+			</Text>
+			<Text tag="h4">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div>
+			<Text tag="span" className="tracking-wider text-gray-500">
+				h5
+			</Text>
+			<Text tag="h5">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div>
+			<Text tag="span" className="tracking-wider text-gray-500">
+				h6
+			</Text>
+			<Text tag="h6">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div>
+			<Text tag="span" className="tracking-wider text-gray-500">
+				p
+			</Text>
+			<Text tag="p">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				i
+			</Text>
+			<Text tag="i">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				del
+			</Text>
+			<Text tag="del">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				mark
+			</Text>
+			<Text tag="mark">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				b
+			</Text>
+			<Text tag="b">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				em
+			</Text>
+			<Text tag="em">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				strong
+			</Text>
+			<Text tag="strong">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				small
+			</Text>
+			<Text tag="small">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				abbr
+			</Text>
+			<Text tag="abbr" title="Hello World!">
+				HW
+			</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				q
+			</Text>
+			<Text tag="q">The brown fox jumps over the lazy dog</Text>
+		</div>
+		<div className="grid gap-1">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				blockquote
+			</Text>
+			<Text tag="blockquote">
+				Before going to sleep every night, <br /> forgive everyone and sleep
+				with a clean heart.
+			</Text>
+		</div>
+		<div>
+			<Text tag="span" className="tracking-wider text-gray-500">
+				kbd
+			</Text>
+			<div className="mt-2 grid gap-5">
+				<div className="flex items-end gap-1">
+					<Text tag="kbd">
+						<svg
+							className="h-4 w-4"
+							aria-hidden="true"
+							fill="currentColor"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 256 512"
+						>
+							<path d="M137.4 406.6l-128-127.1C3.125 272.4 0 264.2 0 255.1s3.125-16.38 9.375-22.63l128-127.1c9.156-9.156 22.91-11.9 34.88-6.943S192 115.1 192 128v255.1c0 12.94-7.781 24.62-19.75 29.58S146.5 415.8 137.4 406.6z" />
+						</svg>
+						<span className="sr-only">Arrow key left</span>
+					</Text>
+					<div className="grid gap-1">
+						<Text tag="kbd">
+							<svg
+								className="h-4 w-4"
+								aria-hidden="true"
+								fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 320 512"
+							>
+								<path d="M9.39 265.4l127.1-128C143.6 131.1 151.8 128 160 128s16.38 3.125 22.63 9.375l127.1 128c9.156 9.156 11.9 22.91 6.943 34.88S300.9 320 287.1 320H32.01c-12.94 0-24.62-7.781-29.58-19.75S.2333 274.5 9.39 265.4z" />
+							</svg>
+							<span className="sr-only">Arrow key up</span>
+						</Text>
+						<Text tag="kbd">
+							<svg
+								className="h-4 w-4"
+								aria-hidden="true"
+								fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 320 512"
+							>
+								<path d="M310.6 246.6l-127.1 128C176.4 380.9 168.2 384 160 384s-16.38-3.125-22.63-9.375l-127.1-128C.2244 237.5-2.516 223.7 2.438 211.8S19.07 192 32 192h255.1c12.94 0 24.62 7.781 29.58 19.75S319.8 237.5 310.6 246.6z" />
+							</svg>
+							<span className="sr-only">Arrow key down</span>
+						</Text>
+					</div>
+					<Text tag="kbd">
+						<svg
+							className="h-4 w-4"
+							aria-hidden="true"
+							fill="currentColor"
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 256 512"
+						>
+							<path d="M118.6 105.4l128 127.1C252.9 239.6 256 247.8 256 255.1s-3.125 16.38-9.375 22.63l-128 127.1c-9.156 9.156-22.91 11.9-34.88 6.943S64 396.9 64 383.1V128c0-12.94 7.781-24.62 19.75-29.58S109.5 96.23 118.6 105.4z" />
+						</svg>
+						<span className="sr-only">Arrow key right</span>
+					</Text>
+				</div>
+				<Text tag="p">
+					Please press <Text tag="kbd">Ctrl</Text> +{' '}
+					<Text tag="kbd">Shift</Text> + <Text tag="kbd">R</Text> to reload this
+					page.
+				</Text>
+			</div>
+		</div>
+		<div>
+			<Text tag="span" className="tracking-wider text-gray-500">
+				sup
+			</Text>
+			<Text tag="p">
+				(a+b)<Text tag="sup">2</Text> = a<Text tag="sup">2</Text> + 2ab + b
+				<Text tag="sup">2</Text>
+			</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				sub
+			</Text>
+			<Text tag="em">
+				∑𝐹 = ρ𝑄(𝓥<Text tag="sub">out</Text> &nbsp;-&nbsp; 𝓥
+				<Text tag="sub">in</Text>)
+			</Text>
+		</div>
+		<div>
+			<Text tag="span" className="mb-2 block tracking-wider text-gray-500">
+				code
+			</Text>
+			<Text tag="code">background-color: #000000</Text>
+		</div>
+		<div className="grid">
+			<Text tag="span" className="tracking-wider text-gray-500">
+				pre
+			</Text>
+			<Text tag="pre">
+				&lt;html&gt; <br />
+				&nbsp;&nbsp;&lt;head&gt; <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome to
+				campuslife.&lt;/title&gt; <br />
+				&nbsp;&nbsp;&lt;/head&gt; <br />
+				&nbsp;&nbsp;&lt;body&gt; <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Campuslife Wesbite&lt;/h1&gt; <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;My first page.&lt;/h2&gt; <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Campuslife is a free learning source
+				website for users. <br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
+				&nbsp;&nbsp;&lt;/body&gt; <br />
+				&lt;/html&gt;
+			</Text>
+		</div>
+	</div>
 </Paper>
 
 ```jsx
-import { Text } from "rizzui";
+import { Text } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <div>
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          h1
-        </Text>
-        <Text tag="h1">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div>
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          h2
-        </Text>
-        <Text tag="h2">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div>
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          h3
-        </Text>
-        <Text tag="h3">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div>
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          h4
-        </Text>
-        <Text tag="h4">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div>
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          h5
-        </Text>
-        <Text tag="h5">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div>
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          h6
-        </Text>
-        <Text tag="h6">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div>
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          p
-        </Text>
-        <Text tag="p">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          i
-        </Text>
-        <Text tag="i">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          del
-        </Text>
-        <Text tag="del">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          mark
-        </Text>
-        <Text tag="mark">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          b
-        </Text>
-        <Text tag="b">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          em
-        </Text>
-        <Text tag="em">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          strong
-        </Text>
-        <Text tag="strong">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          small
-        </Text>
-        <Text tag="small">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          abbr
-        </Text>
-        <Text
-          tag="abbr"
-          title="Hello World!"
-        >
-          HW
-        </Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          q
-        </Text>
-        <Text tag="q">The brown fox jumps over the lazy dog</Text>
-      </div>
-      <div className="grid gap-1">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          blockquote
-        </Text>
-        <Text tag="blockquote">
-          Before going to sleep every night, <br /> forgive everyone and sleep with a clean heart.
-        </Text>
-      </div>
-      <div>
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          kbd
-        </Text>
-        <div className="mt-2 grid gap-5">
-          <div className="flex items-end gap-1">
-            <Text tag="kbd">
-              <svg
-                className="h-4 w-4"
-                aria-hidden="true"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 256 512"
-              >
-                <path d="M137.4 406.6l-128-127.1C3.125 272.4 0 264.2 0 255.1s3.125-16.38 9.375-22.63l128-127.1c9.156-9.156 22.91-11.9 34.88-6.943S192 115.1 192 128v255.1c0 12.94-7.781 24.62-19.75 29.58S146.5 415.8 137.4 406.6z" />
-              </svg>
-              <span className="sr-only">Arrow key left</span>
-            </Text>
-            <div className="grid gap-1">
-              <Text tag="kbd">
-                <svg
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 320 512"
-                >
-                  <path d="M9.39 265.4l127.1-128C143.6 131.1 151.8 128 160 128s16.38 3.125 22.63 9.375l127.1 128c9.156 9.156 11.9 22.91 6.943 34.88S300.9 320 287.1 320H32.01c-12.94 0-24.62-7.781-29.58-19.75S.2333 274.5 9.39 265.4z" />
-                </svg>
-                <span className="sr-only">Arrow key up</span>
-              </Text>
-              <Text tag="kbd">
-                <svg
-                  className="h-4 w-4"
-                  aria-hidden="true"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 320 512"
-                >
-                  <path d="M310.6 246.6l-127.1 128C176.4 380.9 168.2 384 160 384s-16.38-3.125-22.63-9.375l-127.1-128C.2244 237.5-2.516 223.7 2.438 211.8S19.07 192 32 192h255.1c12.94 0 24.62 7.781 29.58 19.75S319.8 237.5 310.6 246.6z" />
-                </svg>
-                <span className="sr-only">Arrow key down</span>
-              </Text>
-            </div>
-            <Text tag="kbd">
-              <svg
-                className="h-4 w-4"
-                aria-hidden="true"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 256 512"
-              >
-                <path d="M118.6 105.4l128 127.1C252.9 239.6 256 247.8 256 255.1s-3.125 16.38-9.375 22.63l-128 127.1c-9.156 9.156-22.91 11.9-34.88 6.943S64 396.9 64 383.1V128c0-12.94 7.781-24.62 19.75-29.58S109.5 96.23 118.6 105.4z" />
-              </svg>
-              <span className="sr-only">Arrow key right</span>
-            </Text>
-          </div>
-          <Text tag="p">
-            Please press <Text tag="kbd">Ctrl</Text> + <Text tag="kbd">Shift</Text> +{" "}
-            <Text tag="kbd">R</Text> to reload this page.
-          </Text>
-        </div>
-      </div>
-      <div>
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          sup
-        </Text>
-        <Text tag="p">
-          (a+b)<Text tag="sup">2</Text> = a<Text tag="sup">2</Text> + 2ab + b
-          <Text tag="sup">2</Text>
-        </Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          sub
-        </Text>
-        <Text tag="em">
-          ∑𝐹 = ρ𝑄(𝓥<Text tag="sub">out</Text> &nbsp;-&nbsp; 𝓥
-          <Text tag="sub">in</Text>)
-        </Text>
-      </div>
-      <div>
-        <Text
-          tag="span"
-          className="mb-2 block tracking-wider text-gray-500"
-        >
-          code
-        </Text>
-        <Text tag="code">background-color: #000000</Text>
-      </div>
-      <div className="grid">
-        <Text
-          tag="span"
-          className="tracking-wider text-gray-500"
-        >
-          pre
-        </Text>
-        <Text tag="pre">
-          &lt;html&gt; <br />
-          &nbsp;&nbsp;&lt;head&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome to campuslife.&lt;/title&gt; <br />
-          &nbsp;&nbsp;&lt;/head&gt; <br />
-          &nbsp;&nbsp;&lt;body&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Campuslife Wesbite&lt;/h1&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;My first page.&lt;/h2&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Campuslife is a free learning source website for
-          users. <br />
-          &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
-          &nbsp;&nbsp;&lt;/body&gt; <br />
-          &lt;/html&gt;
-        </Text>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div>
+				<Text tag="span" className="tracking-wider text-gray-500">
+					h1
+				</Text>
+				<Text tag="h1">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div>
+				<Text tag="span" className="tracking-wider text-gray-500">
+					h2
+				</Text>
+				<Text tag="h2">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div>
+				<Text tag="span" className="tracking-wider text-gray-500">
+					h3
+				</Text>
+				<Text tag="h3">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div>
+				<Text tag="span" className="tracking-wider text-gray-500">
+					h4
+				</Text>
+				<Text tag="h4">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div>
+				<Text tag="span" className="tracking-wider text-gray-500">
+					h5
+				</Text>
+				<Text tag="h5">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div>
+				<Text tag="span" className="tracking-wider text-gray-500">
+					h6
+				</Text>
+				<Text tag="h6">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div>
+				<Text tag="span" className="tracking-wider text-gray-500">
+					p
+				</Text>
+				<Text tag="p">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					i
+				</Text>
+				<Text tag="i">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					del
+				</Text>
+				<Text tag="del">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					mark
+				</Text>
+				<Text tag="mark">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					b
+				</Text>
+				<Text tag="b">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					em
+				</Text>
+				<Text tag="em">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					strong
+				</Text>
+				<Text tag="strong">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					small
+				</Text>
+				<Text tag="small">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					abbr
+				</Text>
+				<Text tag="abbr" title="Hello World!">
+					HW
+				</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					q
+				</Text>
+				<Text tag="q">The brown fox jumps over the lazy dog</Text>
+			</div>
+			<div className="grid gap-1">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					blockquote
+				</Text>
+				<Text tag="blockquote">
+					Before going to sleep every night, <br /> forgive everyone and sleep
+					with a clean heart.
+				</Text>
+			</div>
+			<div>
+				<Text tag="span" className="tracking-wider text-gray-500">
+					kbd
+				</Text>
+				<div className="mt-2 grid gap-5">
+					<div className="flex items-end gap-1">
+						<Text tag="kbd">
+							<svg
+								className="h-4 w-4"
+								aria-hidden="true"
+								fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 256 512"
+							>
+								<path d="M137.4 406.6l-128-127.1C3.125 272.4 0 264.2 0 255.1s3.125-16.38 9.375-22.63l128-127.1c9.156-9.156 22.91-11.9 34.88-6.943S192 115.1 192 128v255.1c0 12.94-7.781 24.62-19.75 29.58S146.5 415.8 137.4 406.6z" />
+							</svg>
+							<span className="sr-only">Arrow key left</span>
+						</Text>
+						<div className="grid gap-1">
+							<Text tag="kbd">
+								<svg
+									className="h-4 w-4"
+									aria-hidden="true"
+									fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 320 512"
+								>
+									<path d="M9.39 265.4l127.1-128C143.6 131.1 151.8 128 160 128s16.38 3.125 22.63 9.375l127.1 128c9.156 9.156 11.9 22.91 6.943 34.88S300.9 320 287.1 320H32.01c-12.94 0-24.62-7.781-29.58-19.75S.2333 274.5 9.39 265.4z" />
+								</svg>
+								<span className="sr-only">Arrow key up</span>
+							</Text>
+							<Text tag="kbd">
+								<svg
+									className="h-4 w-4"
+									aria-hidden="true"
+									fill="currentColor"
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 320 512"
+								>
+									<path d="M310.6 246.6l-127.1 128C176.4 380.9 168.2 384 160 384s-16.38-3.125-22.63-9.375l-127.1-128C.2244 237.5-2.516 223.7 2.438 211.8S19.07 192 32 192h255.1c12.94 0 24.62 7.781 29.58 19.75S319.8 237.5 310.6 246.6z" />
+								</svg>
+								<span className="sr-only">Arrow key down</span>
+							</Text>
+						</div>
+						<Text tag="kbd">
+							<svg
+								className="h-4 w-4"
+								aria-hidden="true"
+								fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg"
+								viewBox="0 0 256 512"
+							>
+								<path d="M118.6 105.4l128 127.1C252.9 239.6 256 247.8 256 255.1s-3.125 16.38-9.375 22.63l-128 127.1c-9.156 9.156-22.91 11.9-34.88 6.943S64 396.9 64 383.1V128c0-12.94 7.781-24.62 19.75-29.58S109.5 96.23 118.6 105.4z" />
+							</svg>
+							<span className="sr-only">Arrow key right</span>
+						</Text>
+					</div>
+					<Text tag="p">
+						Please press <Text tag="kbd">Ctrl</Text> +{' '}
+						<Text tag="kbd">Shift</Text> + <Text tag="kbd">R</Text> to reload
+						this page.
+					</Text>
+				</div>
+			</div>
+			<div>
+				<Text tag="span" className="tracking-wider text-gray-500">
+					sup
+				</Text>
+				<Text tag="p">
+					(a+b)<Text tag="sup">2</Text> = a<Text tag="sup">2</Text> + 2ab + b
+					<Text tag="sup">2</Text>
+				</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					sub
+				</Text>
+				<Text tag="em">
+					∑𝐹 = ρ𝑄(𝓥<Text tag="sub">out</Text> &nbsp;-&nbsp; 𝓥
+					<Text tag="sub">in</Text>)
+				</Text>
+			</div>
+			<div>
+				<Text tag="span" className="mb-2 block tracking-wider text-gray-500">
+					code
+				</Text>
+				<Text tag="code">background-color: #000000</Text>
+			</div>
+			<div className="grid">
+				<Text tag="span" className="tracking-wider text-gray-500">
+					pre
+				</Text>
+				<Text tag="pre">
+					&lt;html&gt; <br />
+					&nbsp;&nbsp;&lt;head&gt; <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome to
+					campuslife.&lt;/title&gt; <br />
+					&nbsp;&nbsp;&lt;/head&gt; <br />
+					&nbsp;&nbsp;&lt;body&gt; <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Campuslife Wesbite&lt;/h1&gt; <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;My first page.&lt;/h2&gt; <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Campuslife is a free learning
+					source website for users. <br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
+					&nbsp;&nbsp;&lt;/body&gt; <br />
+					&lt;/html&gt;
+				</Text>
+			</div>
+		</>
+	);
 }
 ```
 
@@ -640,27 +509,27 @@ Here is the API documentation of the Text component.
 
 ```ts
 type TextTags =
-  | "abbr"
-  | "b"
-  | "blockquote"
-  | "code"
-  | "del"
-  | "em"
-  | "h1"
-  | "h2"
-  | "h3"
-  | "h4"
-  | "h5"
-  | "h6"
-  | "i"
-  | "kbd"
-  | "mark"
-  | "p"
-  | "pre"
-  | "q"
-  | "small"
-  | "span"
-  | "strong"
-  | "sub"
-  | "sup";
+	| 'abbr'
+	| 'b'
+	| 'blockquote'
+	| 'code'
+	| 'del'
+	| 'em'
+	| 'h1'
+	| 'h2'
+	| 'h3'
+	| 'h4'
+	| 'h5'
+	| 'h6'
+	| 'i'
+	| 'kbd'
+	| 'mark'
+	| 'p'
+	| 'pre'
+	| 'q'
+	| 'small'
+	| 'span'
+	| 'strong'
+	| 'sub'
+	| 'sup';
 ```

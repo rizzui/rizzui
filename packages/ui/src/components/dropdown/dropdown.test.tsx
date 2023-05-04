@@ -9,7 +9,7 @@ import { cn } from '../../lib/cn';
 test('Renders dropdown button, container and items', async () => {
   render(
     <Dropdown
-      label={
+      trigger={
         <Button variant="outline">
           Settings{' '}
           <svg
