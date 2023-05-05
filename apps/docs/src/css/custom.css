@@ -1070,3 +1070,23 @@ button[class*="toggleButton"].clean-btn:hover {
 .react-datepicker .react-datepicker__year-text {
   @apply px-0;
 }
+
+[class*='dropdownMenu_'] [class*='suggestion_'] {
+  @apply bg-gray-0 !important;
+}
+
+[class*='dropdownMenu_'] [class*='suggestion_'][class*='cursor'] {
+  @apply bg-gray-900 !important;
+}
+
+#__docusaurus [class*='dropdownMenu_'] [class*='suggestion_'][class*='cursor'] * {
+  @apply text-gray-0 !important;
+}
+
+.navbar__search-input {
+  @apply text-gray-900 !important;
+}
+
+.navbar__search-input::placeholder{
+  @apply text-gray-500 !important;
+}
