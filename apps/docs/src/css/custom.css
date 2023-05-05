@@ -611,9 +611,17 @@ nav.navbar .navbar__inner {
   @apply mr-3;
 }
 
-.header-github-link {
+/* TODO: uncomment when dark mode color issue fixed */
+/* .header-github-link {
   @apply mr-4;
+} */
+
+/* TODO: removed wehn dark mode color issue fixed */
+[class*="colorModeToggle_"] {
+  @apply hidden !important;
 }
+
+/* --- End --- */
 
 .header-github-link:before {
   @apply w-[18px] h-[18px] flex;

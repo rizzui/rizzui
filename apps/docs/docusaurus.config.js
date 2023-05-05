@@ -187,6 +187,12 @@ const config = {
 				myFont: ['Inter', 'sans-serif'],
 				myOtherFont: ['-apple-system', 'system-ui', 'sans-serif'],
 			},
+			// TODO: fixed dark mode color issue and removed this colorMode object
+			colorMode: {
+				defaultMode: 'light',
+				disableSwitch: false,
+				respectPrefersColorScheme: false,
+			},
 			navbar: {
 				// hideOnScroll: true,
 				logo: {
