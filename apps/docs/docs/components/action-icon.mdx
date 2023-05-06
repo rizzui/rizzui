@@ -52,7 +52,7 @@ export default function App() {
 You can change the style of the **ActionIcon** using [**variant**](#actionicon-variants) property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-4 w-full">
+	<div className="flex items-center justify-around gap-4 w-full flex-wrap">
 		<ActionIcon variant="text">
 			<AdjustmentsHorizontalIcon className="w-5 h-5" />
 		</ActionIcon>
@@ -99,7 +99,7 @@ export default function App() {
 You can change the size of the **ActionIcon** using [**size**](#actionicon-sizes) property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-4 w-full">
+	<div className="flex items-center justify-around gap-4 w-full flex-wrap">
 		<ActionIcon size="sm">
 			<AdjustmentsHorizontalIcon className="w-4 h-4" />
 		</ActionIcon>
@@ -146,7 +146,7 @@ export default function App() {
 You can change the border radius of the **ActionIcon** using [**rounded**](#actionicon-rounded) property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-4 w-full">
+	<div className="flex items-center justify-around gap-4 w-full flex-wrap">
 		<ActionIcon rounded="none">
 			<BoltIcon className="w-5 h-5" />
 		</ActionIcon>
@@ -205,7 +205,7 @@ export default function App() {
 You can change the color of the **ActionIcon** using [**color**](#actionicon-colors) property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-4 w-full">
+	<div className="flex items-center justify-around gap-4 w-full flex-wrap">
 		<ActionIcon>
 			<AdjustmentsHorizontalIcon className="w-5 h-5" />
 		</ActionIcon>
@@ -270,7 +270,7 @@ export default function App() {
 You can set the loading state of the **ActionIcon** button using **isLoading** property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-4 w-full">
+	<div className="flex items-center justify-around gap-4 w-full flex-wrap">
 		<ActionIcon isLoading={true}>Default</ActionIcon>
 		<ActionIcon isLoading={true} color="primary">
 			<AdjustmentsHorizontalIcon className="w-5 h-5" />
@@ -363,6 +363,8 @@ export default function App() {
 
 Here is the API documentation of the ActionIcon component. And the rest of the props are the same as the original html button. You can use props like **id**, **title**, **onClick**, **onFocus**, **onBlur** etc.
 
+<div className="overflow-x-auto">
+
 |   Props   |                    Type                    |                                         Description                                         |   Default   |
 | :-------: | :----------------------------------------: | :-----------------------------------------------------------------------------------------: | :---------: |
 | children  |             `React.ReactNode`              |                                      Use any SVG icon                                       |    \_ \_    |
@@ -374,6 +376,8 @@ Here is the API documentation of the ActionIcon component. And the rest of the p
 | disabled  |                 `boolean`                  |                              Disabled state of the ActionIcon                               |    \_ \_    |
 |    ref    |          `Ref<HTMLButtonElement>`          |                                         forwardRef                                          |    \_ \_    |
 | className |                  `string`                  |                             Add custom classes for extra style                              |    \_ \_    |
+
+</div>
 
 <div className="mb-10" />
 

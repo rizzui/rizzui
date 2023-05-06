@@ -1098,3 +1098,7 @@ button[class*="toggleButton"].clean-btn:hover {
 .navbar__search-input::placeholder{
   @apply text-gray-500 !important;
 }
+
+input::-ms-clear, input::-ms-reveal {
+  display: none;
+}

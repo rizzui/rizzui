@@ -2,15 +2,15 @@
 sidebar_position: 33
 ---
 
-import { Loader } from "rizzui";
-import Paper from "@site/src/components/paper";
+import { Loader } from 'rizzui';
+import Paper from '@site/src/components/paper';
 
 # Loader
 
 A loader for displaying loading state of a page or a section.
 
 ```jsx
-import { Loader } from "rizzui";
+import { Loader } from 'rizzui';
 ```
 
 <div className="mb-28" />
@@ -20,14 +20,14 @@ import { Loader } from "rizzui";
 The default style of the **Loader** component.
 
 <Paper>
-  <Loader />
+	<Loader />
 </Paper>
 
 ```jsx
-import { Loader } from "rizzui";
+import { Loader } from 'rizzui';
 
 export default function App() {
-  return <Loader />;
+	return <Loader />;
 }
 ```
 
@@ -38,26 +38,26 @@ export default function App() {
 You can change the size of the **Loader** with property [**size**](#loader-sizes).
 
 <Paper>
-  <div className="flex items-center justify-around gap-3 w-full">
-    <Loader size="sm" />
-    <Loader />
-    <Loader size="lg" />
-    <Loader size="xl" />
-  </div>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<Loader size="sm" />
+		<Loader />
+		<Loader size="lg" />
+		<Loader size="xl" />
+	</div>
 </Paper>
 
 ```jsx
-import { Loader } from "rizzui";
+import { Loader } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Loader size="sm" />
-      <Loader />
-      <Loader size="lg" />
-      <Loader size="xl" />
-    </>
-  );
+	return (
+		<>
+			<Loader size="sm" />
+			<Loader />
+			<Loader size="lg" />
+			<Loader size="xl" />
+		</>
+	);
 }
 ```
 
@@ -68,32 +68,32 @@ export default function App() {
 You can change the color of the **Loader** with property [**color**](#loader-colors).
 
 <Paper>
-  <div className="flex items-center justify-around gap-3 w-full">
-    <Loader />
-    <Loader color="primary" />
-    <Loader color="secondary" />
-    <Loader color="info" />
-    <Loader color="warning" />
-    <Loader color="danger" />
-    <Loader color="success" />
-  </div>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<Loader />
+		<Loader color="primary" />
+		<Loader color="secondary" />
+		<Loader color="info" />
+		<Loader color="warning" />
+		<Loader color="danger" />
+		<Loader color="success" />
+	</div>
 </Paper>
 
 ```jsx
-import { Loader } from "rizzui";
+import { Loader } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Loader />
-      <Loader color="primary" />
-      <Loader color="secondary" />
-      <Loader color="info" />
-      <Loader color="warning" />
-      <Loader color="danger" />
-      <Loader color="success" />
-    </>
-  );
+	return (
+		<>
+			<Loader />
+			<Loader color="primary" />
+			<Loader color="secondary" />
+			<Loader color="info" />
+			<Loader color="warning" />
+			<Loader color="danger" />
+			<Loader color="success" />
+		</>
+	);
 }
 ```
 
@@ -104,34 +104,22 @@ export default function App() {
 You can change the animation of the **Loader** with property [**animation**](#loader-animations).
 
 <Paper>
-  <div className="flex items-center justify-around gap-3 w-full">
-    <Loader
-      size="xl"
-      animation="scaleUp"
-    />
-    <Loader
-      size="xl"
-      animation="blink"
-    />
-  </div>
+	<div className="flex items-center justify-around gap-3 w-full">
+		<Loader size="xl" animation="scaleUp" />
+		<Loader size="xl" animation="blink" />
+	</div>
 </Paper>
 
 ```jsx
-import { Loader } from "rizzui";
+import { Loader } from 'rizzui';
 
 export default function App() {
-  return (
-    <>
-      <Loader
-        size="xl"
-        animation="scaleUp"
-      />
-      <Loader
-        size="xl"
-        animation="blink"
-      />
-    </>
-  );
+	return (
+		<>
+			<Loader size="xl" animation="scaleUp" />
+			<Loader size="xl" animation="blink" />
+		</>
+	);
 }
 ```
 
@@ -147,6 +135,8 @@ export default function App() {
 
 Here is the API documentation of the Loader component.
 
+<div className="overflow-x-auto">
+
 |   Props   |                 Type                  |            Description             |   Default   |
 | :-------: | :-----------------------------------: | :--------------------------------: | :---------: |
 |    tag    |      [LoaderTags](#loader-tags)       |         HTML tag supports          |   `"div"`   |
@@ -155,12 +145,14 @@ Here is the API documentation of the Loader component.
 | animation | [LoaderAnimations](#loader-animation) |       Animation variants are       |  `"blink"`  |
 | className |               `string`                | Add custom classes for extra style |    \_ \_    |
 
+</div>
+
 <div className="mb-10" />
 
 ### Loader Tags
 
 ```ts
-type LoaderTags = "div" | "span";
+type LoaderTags = 'div' | 'span';
 ```
 
 <div className="mb-10" />
@@ -168,7 +160,7 @@ type LoaderTags = "div" | "span";
 ### Loader Sizes
 
 ```ts
-type LoaderSizes = "DEFAULT" | "sm" | "lg" | "xl";
+type LoaderSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ```
 
 <div className="mb-10" />
@@ -177,14 +169,14 @@ type LoaderSizes = "DEFAULT" | "sm" | "lg" | "xl";
 
 ```ts
 type LoaderColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning"
-  | "current";
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning'
+	| 'current';
 ```
 
 <div className="mb-10" />
@@ -192,5 +184,5 @@ type LoaderColors =
 ### Loader Animations
 
 ```ts
-type LoaderAnimations = "blink" | "scaleUp";
+type LoaderAnimations = 'blink' | 'scaleUp';
 ```

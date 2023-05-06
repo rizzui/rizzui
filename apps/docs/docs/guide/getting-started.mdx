@@ -8,17 +8,19 @@ Welcome to the RizzUI. A Modern and Minimal React UI Library built with Tailwind
 
 ## Installation
 
-We need to install TailwindCSS. First, go to your React / Next.js project directory, install RizzUI by running either of the following:
-
 ```bash title=Terminal
-yarn add -D tailwindCSS postcss autoprefixer @tailwindcss/forms
+yarn add rizzui
+or
+npm install rizzui
 ```
 
-```bash title=Terminal
-npm install -D tailwindCSS postcss autoprefixer @tailwindcss/forms
-```
+After installing our rizzui package, now need to install TailwindCSS. First, go to your React / Next.js project directory, install RizzUI by running either of the following:
 
-Follow their official guide to install [TailwindCSS](https://tailwindcss.com/docs/installation)
+```bash title=Terminal
+yarn add -D tailwindcss postcss autoprefixer @tailwindcss/forms
+or
+npm install -D tailwindcss postcss autoprefixer @tailwindcss/forms
+```
 
 ## Configure tailwind.config.js
 
@@ -33,7 +35,7 @@ module.exports = {
 	// The content section of your tailwind.config.js file is where you configure the paths to all of your HTML templates, JavaScript components, and any other source files that contain Tailwind class names
 	content: [
 		'./src/**/*.{js,ts,jsx,tsx}',
-		'../node_modules/rizzuiui/dist/*.{js,ts,jsx,tsx}', // must use this line to compile and generate our RizzUI components style
+		'./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}', // must use this line to compile and generate our RizzUI components style
 	],
 	theme: {
 		colors: {
