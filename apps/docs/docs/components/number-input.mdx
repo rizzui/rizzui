@@ -471,30 +471,30 @@ type CardExpiryType = NumberInputProps & {
 	isMask?: boolean;
 };
 
-export default function App() {
-	function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
-		const { format } = usePatternFormat({
-			...props,
-			format: '##/##',
-		});
-		const _format = (val: string) => {
-			let month = val.substring(0, 2);
-			const year = val.substring(2, 4);
+function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
+	const { format } = usePatternFormat({
+		...props,
+		format: '##/##',
+	});
+	const _format = (val: string) => {
+		let month = val.substring(0, 2);
+		const year = val.substring(2, 4);
 
-			if (month.length === 1 && parseInt(month[0]) > 1) {
-				month = `0${month[0]}`;
-			} else if (month.length === 2) {
-				if (Number(month) === 0) {
-					month = '01';
-				} else if (Number(month) > 12) {
-					month = '12';
-				}
+		if (month.length === 1 && parseInt(month[0]) > 1) {
+			month = `0${month[0]}`;
+		} else if (month.length === 2) {
+			if (Number(month) === 0) {
+				month = '01';
+			} else if (Number(month) > 12) {
+				month = '12';
 			}
-			return isMask ? format(`${month}${year}`) : `${month}/${year}`;
-		};
-		return <NumberInput {...props} format={_format} />;
-	}
+		}
+		return isMask ? format(`${month}${year}`) : `${month}/${year}`;
+	};
+	return <NumberInput {...props} format={_format} />;
+}
 
+export default function App() {
 	return (
 		<div className="flex flex-col">
 			<NumberInput
@@ -554,6 +554,8 @@ export default function App() {
 
 Here is the API documentation of the NumberInput component. We used **react-number-format** package to build the NumberInput component. See their [**official documentation**](https://s-yadav.github.io/react-number-format/docs/intro/) for more info.
 
+<div className="overflow-x-auto">
+
 |          Props           |                                  Type                                   |                                              Description                                              |   Default   |
 | :----------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :---------: |
 |           type           |                 [NumberInputTypes](#number-input-types)                 |                                                                                                       |    \_ \_    |
@@ -594,6 +596,8 @@ Here is the API documentation of the NumberInput component. We used **react-numb
 |     removeFormatting     |                       `RemoveFormattingFunction`                        |                                                                                                       |    \_ \_    |
 |     getCaretBoundary     |                 `(formattedValue: string) => boolean[]`                 |                                                                                                       |    \_ \_    |
 |  isValidInputCharacter   |                   `((character: string) => boolean)`                    |                                                                                                       |    \_ \_    |
+
+</div>
 
 <div className="mb-10" />
 
