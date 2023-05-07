@@ -143,7 +143,7 @@ export default function ComponentBlock() {
 					{components.map((item) => (
 						<div
 							key={'component-' + item.id}
-							className="snap-start snap-always mr-4 2xl:mr-5"
+							className="snap-start snap-always mr-5"
 						>
 							<div className="slide-item-center flex h-full flex-col rounded-2xl w-[420px] border border-gray-300 flex-shrink-0 relative">
 								<div className="flex h-full justify-center items-center px-6 py-4">

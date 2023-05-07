@@ -14,7 +14,7 @@ Badge is a small overlapped UI item which indicates a status, notification, or e
 import { Badge } from 'rizzui';
 ```
 
-<div className="mb-28" />
+<div className="mb-20 md:mb-28" />
 
 ## Default
 
@@ -39,7 +39,7 @@ export default function App() {
 You can change the style of the **Badge** using [**variant**](#badge-variants) property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<Badge variant="outline">Badge</Badge>
 		<Badge variant="flat">Badge</Badge>
 		<Badge>Badge</Badge>
@@ -67,7 +67,7 @@ export default function App() {
 You can change the size of the **Badge** using [**size**](#badge-sizes) property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<Badge size="sm">Badge</Badge>
 		<Badge>Badge</Badge>
 		<Badge size="lg">Badge</Badge>
@@ -97,7 +97,7 @@ export default function App() {
 You can change the border radius of the **Badge** using [**rounded**](#badge-rounded) property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<Badge rounded="none">Badge</Badge>
 		<Badge rounded="sm">Badge</Badge>
 		<Badge rounded="md">Badge</Badge>
@@ -129,7 +129,7 @@ export default function App() {
 You can change the color of the **Badge** using [**color**](#badge-colors) property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<Badge>Badge</Badge>
 		<Badge color="primary">Badge</Badge>
 		<Badge color="secondary">Badge</Badge>
@@ -243,7 +243,7 @@ export default function App() {
 You can use **Badge** to make a ecommerce cart counter component.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<div className="relative inline-flex">
 			<ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
 			<Badge
@@ -330,7 +330,7 @@ export default function App() {
 You can use the **Badge** with **Avatar** component to show the current state of user.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<div className="relative inline-flex">
 			<Avatar
 				size="48px"

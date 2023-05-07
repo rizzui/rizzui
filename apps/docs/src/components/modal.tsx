@@ -84,7 +84,7 @@ export function ModalSizes() {
 
 	return (
 		<>
-			<div className="flex items-center justify-around">
+			<div className="flex items-center justify-around gap-2 flex-wrap">
 				<Button
 					variant="outline"
 					onClick={() =>
@@ -224,7 +224,7 @@ export function ModalRounded() {
 
 	return (
 		<>
-			<div className="flex items-center justify-around">
+			<div className="flex items-center justify-around gap-2 flex-wrap">
 				<Button
 					variant="outline"
 					onClick={() =>

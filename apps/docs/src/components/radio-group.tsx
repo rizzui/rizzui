@@ -70,7 +70,7 @@ export function RadioGroupEndLabel() {
 			setValue={setValue}
 			className="justify-center space-x-4 space-y-4"
 		>
-			<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+			<div className="divide-slate-300 flex w-full md:w-[500px] flex-col divide-y">
 				<Radio
 					name="column-label-end-group"
 					label="Warning"
@@ -106,7 +106,11 @@ export function RadioGroupEndLabel() {
 export function RadioGroupAdvanced() {
 	const [value, setValue] = useState('one');
 	return (
-		<RadioGroup value={value} setValue={setValue} className="flex gap-4">
+		<RadioGroup
+			value={value}
+			setValue={setValue}
+			className="flex flex-wrap gap-4"
+		>
 			<AdvancedRadio
 				value="any"
 				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
@@ -152,7 +156,11 @@ export function RadioGroupAdvanced() {
 export function RadioGroupWithCard() {
 	const [value, setValue] = useState('single');
 	return (
-		<RadioGroup value={value} setValue={setValue} className="flex gap-4">
+		<RadioGroup
+			value={value}
+			setValue={setValue}
+			className="flex flex-wrap gap-4"
+		>
 			<AdvancedRadio
 				name="payment-secondary"
 				value="single"

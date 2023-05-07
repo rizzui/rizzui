@@ -17,7 +17,7 @@ A basic widget for getting the user input. used for selecting single value from 
 import { Radio } from 'rizzui';
 ```
 
-<div className="mb-28" />
+<div className="mb-20 md:mb-28" />
 
 ## Default
 
@@ -203,7 +203,7 @@ export default function App() {
 			setValue={setValue}
 			className="justify-center space-x-4 space-y-4"
 		>
-			<div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+			<div className="divide-slate-300 flex w-full md:w-[500px] flex-col divide-y">
 				<Radio
 					name="column-label-end-group"
 					label="Warning"
@@ -362,11 +362,15 @@ Here is the API documentation of the radio component. And the rest of the props 
 
 Here is the API documentation of the RadioGroup component.
 
+<div className="overflow-x-auto">
+
 |  Props   |                Type                |          Description          | Default |
 | :------: | :--------------------------------: | :---------------------------: | :-----: |
 |  value   |              `string`              |        Selected value         |  \_ \_  |
 | setValue | `Dispatch<SetStateAction<string>>` | Pass function to select value |  \_ \_  |
 | children |            `ReactNode`             |   Radio buttons as children   |  \_ \_  |
+
+</div>
 
 <div className="mb-10" />
 

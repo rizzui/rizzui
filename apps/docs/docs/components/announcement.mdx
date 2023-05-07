@@ -14,14 +14,18 @@ A component for new product announcement or news.
 import { Announcement } from 'rizzui';
 ```
 
-<div className="mb-28" />
+<div className="mb-20 md:mb-28" />
 
 ## Default
 
 The default style of **Announcement** component.
 
 <Paper>
-	<Announcement badgeText="Trending" highlightedText="25% discount">
+	<Announcement
+		className="flex-wrap"
+		badgeText="Trending"
+		highlightedText="25% discount"
+	>
 		on our new product
 	</Announcement>
 </Paper>
@@ -31,7 +35,11 @@ import { Announcement } from 'rizzui';
 
 export default function App() {
 	return (
-		<Announcement badgeText="Trending" highlightedText="25% discount">
+		<Announcement
+			className="flex-wrap"
+			badgeText="Trending"
+			highlightedText="25% discount"
+		>
 			on our new product
 		</Announcement>
 	);
@@ -45,16 +53,31 @@ export default function App() {
 You can change the size of **Announcement** using [**size**](#announcement-sizes) property.
 
 <Paper className="gap-4 justify-start items-start">
-	<Announcement size="sm" badgeText="Small" highlightedText="25% discount">
-		on our new product
-	</Announcement>
-	<Announcement badgeText="Default" highlightedText="25% discount">
-		on our new product
-	</Announcement>
-	<Announcement size="lg" badgeText="Large abc" highlightedText="25% discount">
+	<Announcement
+		className="flex-wrap"
+		size="sm"
+		badgeText="Small"
+		highlightedText="25% discount"
+	>
 		on our new product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
+		badgeText="Default"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement
+		className="flex-wrap"
+		size="lg"
+		badgeText="Large abc"
+		highlightedText="25% discount"
+	>
+		on our new product
+	</Announcement>
+	<Announcement
+		className="flex-wrap"
 		size="xl"
 		badgeText="Extra Large"
 		highlightedText="25% discount"
@@ -69,13 +92,23 @@ import { Announcement } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Announcement size="sm" badgeText="Small" highlightedText="25% discount">
-				on our new product
-			</Announcement>
-			<Announcement badgeText="Default" highlightedText="25% discount">
+			<Announcement
+				className="flex-wrap"
+				size="sm"
+				badgeText="Small"
+				highlightedText="25% discount"
+			>
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
+				badgeText="Default"
+				highlightedText="25% discount"
+			>
+				on our new product
+			</Announcement>
+			<Announcement
+				className="flex-wrap"
 				size="lg"
 				badgeText="Large abc"
 				highlightedText="25% discount"
@@ -83,6 +116,7 @@ export default function App() {
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				size="xl"
 				badgeText="Extra Large"
 				highlightedText="25% discount"
@@ -102,6 +136,7 @@ You can change the border radius of **Announcement** using [**rounded**](#announ
 
 <Paper className="gap-4 justify-start items-start">
 	<Announcement
+		className="flex-wrap"
 		rounded="sm"
 		badgeText="Rounded Small"
 		highlightedText="25% discount"
@@ -109,6 +144,7 @@ You can change the border radius of **Announcement** using [**rounded**](#announ
 		on our new product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		rounded="md"
 		badgeText="Rounded Medium"
 		highlightedText="25% discount"
@@ -116,6 +152,7 @@ You can change the border radius of **Announcement** using [**rounded**](#announ
 		on our new product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		rounded="lg"
 		badgeText="Rounded Large"
 		highlightedText="25% discount"
@@ -123,13 +160,18 @@ You can change the border radius of **Announcement** using [**rounded**](#announ
 		on our new product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		rounded="none"
 		badgeText="Rounded None"
 		highlightedText="25% discount"
 	>
 		on our new product
 	</Announcement>
-	<Announcement badgeText="Rounded Full" highlightedText="25% discount">
+	<Announcement
+		className="flex-wrap"
+		badgeText="Rounded Full"
+		highlightedText="25% discount"
+	>
 		on our new product
 	</Announcement>
 </Paper>
@@ -141,6 +183,7 @@ export default function App() {
 	return (
 		<>
 			<Announcement
+				className="flex-wrap"
 				rounded="sm"
 				badgeText="Rounded Small"
 				highlightedText="25% discount"
@@ -148,6 +191,7 @@ export default function App() {
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				rounded="md"
 				badgeText="Rounded Medium"
 				highlightedText="25% discount"
@@ -155,6 +199,7 @@ export default function App() {
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				rounded="lg"
 				badgeText="Rounded Large"
 				highlightedText="25% discount"
@@ -162,13 +207,18 @@ export default function App() {
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				rounded="none"
 				badgeText="Rounded None"
 				highlightedText="25% discount"
 			>
 				on our new product
 			</Announcement>
-			<Announcement badgeText="Rounded Full" highlightedText="25% discount">
+			<Announcement
+				className="flex-wrap"
+				badgeText="Rounded Full"
+				highlightedText="25% discount"
+			>
 				on our new product
 			</Announcement>
 		</>
@@ -183,10 +233,15 @@ export default function App() {
 You can change the color of **Announcement** using [**color**](#announcement-colors) property.
 
 <Paper className="grid grid-cols-1 gap-4">
-	<Announcement badgeText="Default" highlightedText="25% discount">
+	<Announcement
+		className="flex-wrap"
+		badgeText="Default"
+		highlightedText="25% discount"
+	>
 		on our new product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		color="primary"
 		badgeText="Primary"
 		highlightedText="25% discount"
@@ -194,6 +249,7 @@ You can change the color of **Announcement** using [**color**](#announcement-col
 		on our new product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		color="secondary"
 		badgeText="Secondary"
 		highlightedText="25% discount"
@@ -201,16 +257,23 @@ You can change the color of **Announcement** using [**color**](#announcement-col
 		on our new product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		color="danger"
 		badgeText="Danger"
 		highlightedText="25% discount"
 	>
 		on our new product
 	</Announcement>
-	<Announcement color="info" badgeText="Info" highlightedText="25% discount">
+	<Announcement
+		className="flex-wrap"
+		color="info"
+		badgeText="Info"
+		highlightedText="25% discount"
+	>
 		on our new product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		color="success"
 		badgeText="Success"
 		highlightedText="25% discount"
@@ -218,6 +281,7 @@ You can change the color of **Announcement** using [**color**](#announcement-col
 		on our new product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		color="warning"
 		badgeText="Warning"
 		highlightedText="25% discount"
@@ -232,10 +296,15 @@ import { Announcement } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Announcement badgeText="Default" highlightedText="25% discount">
+			<Announcement
+				className="flex-wrap"
+				badgeText="Default"
+				highlightedText="25% discount"
+			>
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				color="primary"
 				badgeText="Primary"
 				highlightedText="25% discount"
@@ -243,6 +312,7 @@ export default function App() {
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				color="secondary"
 				badgeText="Secondary"
 				highlightedText="25% discount"
@@ -250,6 +320,7 @@ export default function App() {
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				color="danger"
 				badgeText="Danger"
 				highlightedText="25% discount"
@@ -257,6 +328,7 @@ export default function App() {
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				color="info"
 				badgeText="Info"
 				highlightedText="25% discount"
@@ -264,6 +336,7 @@ export default function App() {
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				color="success"
 				badgeText="Success"
 				highlightedText="25% discount"
@@ -271,6 +344,7 @@ export default function App() {
 				on our new product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				color="warning"
 				badgeText="Warning"
 				highlightedText="25% discount"
@@ -290,6 +364,7 @@ You can change background color of **Announcement** using **bgColor** property.
 
 <Paper className="gap-4 justify-start items-start">
 	<Announcement
+		className="flex-wrap"
 		badgeText="White Background"
 		highlightedText="25% discount"
 		bgColor="white"
@@ -297,6 +372,7 @@ You can change background color of **Announcement** using **bgColor** property.
 		on our every product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		badgeText="Gray Background"
 		highlightedText="25% discount"
 		bgColor="gray"
@@ -312,6 +388,7 @@ export default function App() {
 	return (
 		<>
 			<Announcement
+				className="flex-wrap"
 				badgeText="White Background"
 				highlightedText="25% discount"
 				bgColor="white"
@@ -319,6 +396,7 @@ export default function App() {
 				on our every product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				badgeText="Gray Background"
 				highlightedText="25% discount"
 				bgColor="gray"
@@ -338,6 +416,7 @@ You can add icons to **Announcement** using **startIcon** & **endIcon** property
 
 <Paper className="gap-4 justify-start items-start">
 	<Announcement
+		className="flex-wrap"
 		highlightedText="25% discount"
 		color="primary"
 		startIcon={<MegaphoneIcon className="w-5 text-primary-dark" />}
@@ -345,6 +424,7 @@ You can add icons to **Announcement** using **startIcon** & **endIcon** property
 		on our every product
 	</Announcement>
 	<Announcement
+		className="flex-wrap"
 		badgeText="Trending"
 		highlightedText="25% discount"
 		color="danger"
@@ -362,6 +442,7 @@ export default function App() {
 	return (
 		<>
 			<Announcement
+				className="flex-wrap"
 				highlightedText="25% discount"
 				color="primary"
 				startIcon={<MegaphoneIcon className="w-5 text-primary-dark" />}
@@ -369,6 +450,7 @@ export default function App() {
 				on our every product
 			</Announcement>
 			<Announcement
+				className="flex-wrap"
 				badgeText="Trending"
 				highlightedText="25% discount"
 				color="danger"

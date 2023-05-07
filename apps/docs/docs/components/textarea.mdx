@@ -16,7 +16,7 @@ A basic widget for getting the user text or messages.
 import { Textarea } from 'rizzui';
 ```
 
-<div className="mb-28" />
+<div className="mb-20 md:mb-28" />
 
 ## Default
 
@@ -117,22 +117,30 @@ You can change the style of **Textarea** using [**rounded**](#textarea-rounded) 
 		label="Rounded Small"
 		placeholder="Enter your message"
 		rounded="sm"
+		className="w-full sm:w-auto"
 	/>
-	<Textarea label="Rounded Default" placeholder="Enter your message" />
+	<Textarea
+		label="Rounded Default"
+		placeholder="Enter your message"
+		className="w-full sm:w-auto"
+	/>
 	<Textarea
 		label="Rounded Large"
 		placeholder="Enter your message"
 		rounded="lg"
+		className="w-full sm:w-auto"
 	/>
 	<Textarea
 		label="Rounded Extra Large"
 		placeholder="Enter your message"
 		rounded="xl"
+		className="w-full sm:w-auto"
 	/>
 	<Textarea
 		label="Rounded None"
 		placeholder="Enter your message"
 		rounded="none"
+		className="w-full sm:w-auto"
 	/>
 </Paper>
 
@@ -175,42 +183,53 @@ export default function App() {
 You can change the style of **Textarea** using [**color**](#textarea-colors) property.
 
 <Paper className="gap-4 flex-row flex-wrap justify-start items-start">
-	<Textarea label="Default" variant="flat" placeholder="Enter your message" />
+	<Textarea
+		label="Default"
+		variant="flat"
+		placeholder="Enter your message"
+		className="w-full sm:w-auto"
+	/>
 	<Textarea
 		label="Primary"
 		variant="flat"
 		placeholder="Enter your message"
 		color="primary"
+		className="w-full sm:w-auto"
 	/>
 	<Textarea
 		label="Secondary"
 		variant="flat"
 		placeholder="Enter your message"
 		color="secondary"
+		className="w-full sm:w-auto"
 	/>
 	<Textarea
 		label="Danger"
 		variant="flat"
 		placeholder="Enter your message"
 		color="danger"
+		className="w-full sm:w-auto"
 	/>
 	<Textarea
 		label="Info"
 		variant="flat"
 		placeholder="Enter your message"
 		color="info"
+		className="w-full sm:w-auto"
 	/>
 	<Textarea
 		label="Success"
 		variant="flat"
 		placeholder="Enter your message"
 		color="success"
+		className="w-full sm:w-auto"
 	/>
 	<Textarea
 		label="Warning"
 		variant="flat"
 		placeholder="Enter your message"
 		color="warning"
+		className="w-full sm:w-auto"
 	/>
 </Paper>
 
@@ -278,7 +297,7 @@ You can change rows and cols of **Textarea** using **rows** & **cols** property.
 		cols={50}
 		label="Message"
 		placeholder="Enter your message"
-		textareaClassName="overflow-y-auto"
+		textareaClassName="overflow-y-auto w-full md:w-auto"
 	>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
 		architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius

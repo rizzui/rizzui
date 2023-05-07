@@ -279,6 +279,10 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
 	html {
 		@apply antialiased;
 	}
+	input::-ms-clear,
+	input::-ms-reveal {
+		@apply hidden;
+	}
 	input[type='search']::-webkit-search-cancel-button {
 		@apply hidden;
 	}
