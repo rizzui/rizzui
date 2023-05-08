@@ -215,56 +215,21 @@
     --ifm-navbar-shadow: 0 1px 0 0 #222222;
   }
 
+  input::-ms-clear, input::-ms-reveal {
+    @apply hidden;
+  }  
+
   input[type="search"]::-webkit-search-cancel-button {
-    display: none;
+    @apply hidden;
   }
 
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+    @apply m-0 appearance-none;
   }
 }
 
 @layer components {
-  /* width */
-  .scroller::-webkit-scrollbar {
-    width: var(--scroller-width);
-  }
-
-  /* Track */
-  .scroller::-webkit-scrollbar-track {
-    /* background: #f1f1f1; */
-    border-radius: 5px;
-    background: var(--trackColor);
-  }
-
-  /* Handle */
-  .scroller::-webkit-scrollbar-thumb {
-    /* background: #888; */
-    background: var(--handleColor);
-    border-radius: 5px;
-  }
-
-  /* Handle on hover */
-  .scroller::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
-  /* Progress Bar */
-  .circlePercentage {
-    background-image: conic-gradient(
-      var(--outerCirclePercentageColor) var(--progressPercentage),
-      var(--outerCircleColor) 0
-    );
-  }
-  .innerCircle {
-    width: calc(100% - 20%);
-    height: calc(100% - 20%);
-    color: var(--innerCircleTextColor);
-    background: var(--innerCircleColor);
-  }
-
   /* Password dot */
   .password-dot {
     -webkit-text-security: disc;
@@ -524,7 +489,7 @@ body {
 }
 
 h1 {
-  @apply text-h1 tracking-tight;
+  @apply text-[32px] leading-tight md:text-h1 tracking-tight;
   color: var(--ifm-color-gray-900);
   font-weight: 800 !important;
 }
@@ -669,17 +634,11 @@ svg[class*="lightToggleIcon"] {
 
 #__docusaurus .navbar__search-input {
   --ifm-navbar-search-input-background-color: var(--gray-0);
-  @apply ring-[1.5px] pl-3 ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900;
-}
-
-@media (max-width: 576px) {
-  #__docusaurus .navbar__search-input[aria-expanded="false"] {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E%0A");
-    background-position: center;
-    background-size: 16px;
-    background-repeat: no-repeat;
-    text-indent: 100px;
-  }
+  @apply ring-[1.5px] ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E%0A");
+  background-position: 12px;
+  background-size: 16px;
+  background-repeat: no-repeat;
 }
 
 #__docusaurus input[class*="searchQueryInput"] {
@@ -778,13 +737,7 @@ svg[class*="lightToggleIcon"] {
 
 @media (max-width: 1679px) {
   .slide-item-center {
-    transform: translateX(24px);
-  }
-}
-
-@media (max-width: 639px) {
-  .slide-item-center {
-    transform: translateX(16px);
+    transform: translateX(20px);
   }
 }
 
@@ -1099,6 +1052,14 @@ button[class*="toggleButton"].clean-btn:hover {
   @apply text-gray-500 !important;
 }
 
-input::-ms-clear, input::-ms-reveal {
-  display: none;
+article [class*="tocMobile_"] {
+  @apply mb-8;
+}
+
+.pagination-nav__link--prev .pagination-nav__label {
+  @apply before:hidden
+}
+
+.pagination-nav__link--next .pagination-nav__label {
+  @apply after:hidden
 }

@@ -8,7 +8,7 @@ export default function CheckboxGroupDefault() {
 		<CheckboxGroup
 			values={values}
 			setValues={setValues}
-			className="flex flex-row gap-4"
+			className="flex flex-row gap-4 flex-wrap"
 		>
 			<Checkbox label="Apple" value="apple" />
 			<Checkbox label="Pear" value="pear" />
@@ -105,7 +105,11 @@ export function CheckboxGroupLabelEnd() {
 export function CheckboxGroupAdvanced() {
 	const [values, setValues] = React.useState<string[]>(['one']);
 	return (
-		<CheckboxGroup values={values} setValues={setValues} className="flex gap-4">
+		<CheckboxGroup
+			values={values}
+			setValues={setValues}
+			className="flex flex-wrap gap-4"
+		>
 			<AdvancedCheckbox
 				value="any"
 				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
@@ -152,7 +156,11 @@ export function CheckboxGroupWithCard() {
 	const [values, setValues] = React.useState<string[]>(['single']);
 
 	return (
-		<CheckboxGroup values={values} setValues={setValues} className="flex gap-4">
+		<CheckboxGroup
+			values={values}
+			setValues={setValues}
+			className="flex flex-wrap gap-4"
+		>
 			<AdvancedCheckbox
 				name="payment-secondary"
 				value="single"

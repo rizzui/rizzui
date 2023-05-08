@@ -31,7 +31,7 @@ export function DrawerSizes() {
 
 	return (
 		<>
-			<div className="flex items-center justify-around">
+			<div className="flex items-center justify-around gap-2 flex-wrap">
 				<Button
 					variant="outline"
 					onClick={() =>

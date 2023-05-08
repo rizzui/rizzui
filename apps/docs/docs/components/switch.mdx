@@ -15,7 +15,7 @@ as an alternative of **Checkbox** component.
 import { Switch } from 'rizzui';
 ```
 
-<div className="mb-28" />
+<div className="mb-20 md:mb-28" />
 
 ## Default
 
@@ -39,7 +39,7 @@ export default function App() {
 
 You can change the style of **Switch** using [**variant**](#switch-variants) property.
 
-<Paper className="flex-row justify-around gap-4">
+<Paper className="flex-row justify-around gap-4 flex-wrap">
 	<Switch variant="flat" label="Flat" />
 	<Switch variant="outline" label="Outline" />
 	<Switch variant="active" label="Active" />
@@ -65,7 +65,7 @@ export default function App() {
 
 You can set diffrient sizes of the **Switch** component using [**size**](#switch-sizes) property.
 
-<Paper className="flex-row justify-around gap-4">
+<Paper className="flex-row justify-around gap-4 flex-wrap">
 	<Switch label="Small" size="sm" />
 	<Switch label="Default" />
 	<Switch size="lg" label="Large" />
@@ -93,7 +93,7 @@ export default function App() {
 
 You can change the border radius of **Switch** using [**rounded**](#switch-rounded) property.
 
-<Paper className="flex-row justify-around gap-4">
+<Paper className="flex-row justify-around gap-4 flex-wrap">
 	<Switch label="Default" />
 	<Switch label="None" rounded="none" />
 	<Switch label="Small" rounded="sm" />
@@ -123,7 +123,7 @@ export default function App() {
 
 You can set label on the two diffrient side using **labelPlacement** property.
 
-<Paper className="flex-row justify-around">
+<Paper className="sm:flex-row justify-around gap-2 flex-col">
 	<Switch label="Left Placement" variant="active" labelPlacement="left" />
 	<Switch label="Right Placement" variant="active" labelPlacement="right" />
 </Paper>
@@ -147,7 +147,7 @@ export default function App() {
 
 You can change the color of **Switch** using [**color**](#switch-colors) property.
 
-<Paper className="grid grid-cols-4 gap-4">
+<Paper className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
 	<Switch variant="active" label="Default" />
 	<Switch
 		label="Primary"

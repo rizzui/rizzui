@@ -15,7 +15,7 @@ Avatar is a small UI item which represents user profile picture, or event that a
 import { Avatar } from 'rizzui';
 ```
 
-<div className="mb-28" />
+<div className="mb-20 md:mb-28" />
 
 ## Default
 
@@ -90,7 +90,7 @@ export default function App() {
 You can change the size of the **Avatar** using **size** property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<Avatar name="John Doe" initials="SM" size="36px" />
 		<Avatar src="https://randomuser.me/api/portraits/men/40.jpg" size="48px" />
 		<Avatar name="John Doe" initials="L" size="64px" />
@@ -129,7 +129,7 @@ export default function App() {
 You can change the border radius of the **Avatar** using [**rounded**](#avatar-rounded) property.
 
 <Paper>
-	<div className="mt-4 flex items-center justify-around gap-3 w-full">
+	<div className="mt-4 flex items-center justify-around gap-3 w-full flex-wrap">
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/40.jpg"
 			size="48px"
@@ -199,7 +199,7 @@ export default function App() {
 You can change the color of the **Avatar** using **color** property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<Avatar name="John Doe" initials="SM" size="48px" color="#111" />
 		<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
 		<Avatar name="John Doe" initials="SM" size="48px" color="#7928ca" />
@@ -237,7 +237,7 @@ export default function App() {
 You can add border to **Avatar** by adding extra className using **className** property.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/40.jpg"
 			size="48px"
@@ -329,7 +329,7 @@ export default function App() {
 You can use **Badge** with **Avatar** component for online status.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<div className="relative inline-flex">
 			<Avatar
 				size="48px"
@@ -429,7 +429,7 @@ export default function App() {
 You can use **ActionIcon** component with **Avatar** component.
 
 <Paper>
-	<div className="flex items-center justify-around gap-3 w-full">
+	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<div className="relative inline-flex">
 			<Avatar
 				size="48px"

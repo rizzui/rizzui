@@ -24,14 +24,14 @@ A basic widget for getting the user input of radio with advanced design.
 import { AdvancedRadio } from 'rizzui';
 ```
 
-<div className="mb-28" />
+<div className="mb-20 md:mb-28" />
 
 ## Simple Advanced Radio
 
 You can change style of **AdvancedRadio**.
 
 <Paper>
-	<div className="flex space-x-4 rtl:space-x-reverse">
+	<div className="flex gap-4 flex-wrap">
 		<AdvancedRadio
 			name="numbers-default"
 			value="any"
@@ -139,7 +139,7 @@ export default function App() {
 You can give different style of **AdvancedRadio** as you need.
 
 <Paper>
-	<div className="flex space-x-4 rtl:space-x-reverse">
+	<div className="flex gap-4 flex-wrap">
 		<AdvancedRadio
 			name="currency-primary"
 			value="taka"
@@ -262,7 +262,11 @@ export default function App() {
 	const [value, setValue] = useState('one');
 
 	return (
-		<RadioGroup value={value} setValue={setValue} className="flex gap-4">
+		<RadioGroup
+			value={value}
+			setValue={setValue}
+			className="flex flex-wrap gap-4"
+		>
 			<AdvancedRadio
 				value="any"
 				className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
