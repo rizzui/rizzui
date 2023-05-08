@@ -52,10 +52,10 @@ const calcStatus = (activeIndex: number, currentIndex: number) => {
   return 'waiting';
 };
 
-/** Stepper tool is used to enlighten user regarding the progress of the task.
+/**
+ * Stepper tool is used to enlighten user regarding the progress of the task.
  * `Stepper` component displays the progress of the task in a sequence of numbered steps through `Step` component.
  */
-
 const Stepper = ({
   currentIndex = 0,
   children,

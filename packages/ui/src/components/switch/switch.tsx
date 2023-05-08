@@ -185,7 +185,7 @@ export interface SwitchProps
   /** The variants of the component are: */
   variant?: keyof typeof switchClasses.variant;
   /** Change Switch color */
-  color?: keyof typeof switchClasses.variant['flat']['color'];
+  color?: keyof (typeof switchClasses.variant)['flat']['color'];
   /** Set custom icon when the switch is on */
   onIcon?: React.ReactNode;
   /** Set custom icon when the switch is off */
@@ -255,7 +255,10 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             type="checkbox"
             disabled={disabled}
             className={cn(
-              'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span>.aegon-switch-knob]:bg-white [&:checked:enabled~span>.aegon-switch-knob]:text-gray-900 [&:checked:enabled~span>.aegon-switch-knob>.aegon-switch-on-icon]:opacity-100 [&:checked:enabled~span>.aegon-switch-knob>.aegon-switch-off-icon]:hidden',
+              'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span>.aegon-switch-knob>.aegon-switch-off-icon]:hidden [&:checked:enabled~span>.aegon-switch-knob>.aegon-switch-on-icon]:opacity-100 [&:checked:enabled~span>.aegon-switch-knob]:text-gray-900',
+              color === 'DEFAULT'
+                ? '[&:checked:enabled~span>.aegon-switch-knob]:bg-gray-0'
+                : '[&:checked:enabled~span>.aegon-switch-knob]:bg-white',
               handleClasses.translate.active[size]
             )}
             {...props}
