@@ -68,7 +68,7 @@ export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
   labelClassName?: string;
 }
 
-const Progressbar = ({
+export default function Progressbar({
   value,
   label = '',
   size = 'DEFAULT',
@@ -78,36 +78,39 @@ const Progressbar = ({
   className,
   barClassName,
   labelClassName,
-}: ProgressbarProps) => (
-  <div
-    className={cn(
-      'relative w-full bg-gray-200',
-      classes.size[size],
-      classes.rounded[rounded],
-      className
-    )}
-  >
+}: ProgressbarProps) {
+  return (
     <div
-      role="progressbar"
-      aria-valuemax={100}
-      aria-valuemin={0}
-      aria-valuenow={value}
-      aria-label={label}
       className={cn(
-        classes.base,
-        classes.variant[variant].base,
-        classes.variant[variant].color[color],
+        'relative w-full bg-gray-200',
+        classes.size[size],
         classes.rounded[rounded],
-        barClassName
+        className
       )}
-      style={{ width: `${value}%` }}
     >
-      {label && size === 'xl' && (
-        <Text className={cn('text-xs font-bold', labelClassName)}>{label}</Text>
-      )}
+      <div
+        role="progressbar"
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={value}
+        aria-label={label}
+        className={cn(
+          classes.base,
+          classes.variant[variant].base,
+          classes.variant[variant].color[color],
+          classes.rounded[rounded],
+          barClassName
+        )}
+        style={{ width: `${value}%` }}
+      >
+        {label && size === 'xl' && (
+          <Text className={cn('text-xs font-bold', labelClassName)}>
+            {label}
+          </Text>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 Progressbar.displayName = 'Progressbar';
-export default Progressbar;

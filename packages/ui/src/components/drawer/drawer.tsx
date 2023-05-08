@@ -7,7 +7,7 @@ import { cn } from '../../lib/cn';
 
 const drawerClasses = {
   overlay:
-    'fixed inset-0 cursor-pointer bg-gray-1000 bg-opacity-60 transition-opacity dark:bg-opacity-80',
+    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 transition-opacity dark:bg-opacity-80',
   placement: {
     top: '-translate-y-full',
     right: 'translate-x-full',

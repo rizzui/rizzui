@@ -23,17 +23,22 @@ export type AvatarProps = ExtractProps<typeof ReactAvatar> & {
  * Avatar is a small UI item which represents user profile picture, or event that appears in relativity with the underlying object.
  * We are using `react-avatar` package for this component. Please follow their documentation for any query -> https://www.npmjs.com/package/react-avatar
  */
-const Avatar = ({ className, rounded = 'full', ...props }: AvatarProps) => (
-  <ReactAvatar
-    className={cn(
-      className,
-      classes.base,
-      classes.rounded[rounded],
-      props.onClick && 'cursor-pointer'
-    )}
-    {...props}
-  />
-);
+export default function Avatar({
+  className,
+  rounded = 'full',
+  ...props
+}: AvatarProps) {
+  return (
+    <ReactAvatar
+      className={cn(
+        className,
+        classes.base,
+        classes.rounded[rounded],
+        props.onClick && 'cursor-pointer'
+      )}
+      {...props}
+    />
+  );
+}
 
 Avatar.displayName = 'Avatar';
-export default Avatar;

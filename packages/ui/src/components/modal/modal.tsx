@@ -7,7 +7,7 @@ import { cn } from '../../lib/cn';
 
 const modalClasses = {
   overlay:
-    'fixed inset-0 cursor-pointer bg-gray-1000 bg-opacity-60 dark:bg-opacity-80',
+    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80',
   size: {
     sm: 'max-w-sm',
     DEFAULT: 'max-w-lg',

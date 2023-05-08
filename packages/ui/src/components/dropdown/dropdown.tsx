@@ -45,7 +45,7 @@ export type DropdownProps = ExtractProps<typeof Menu> & {
  * Here is the API documentation of the Dropdown component.
  * You can use the following props to create a dropdown.
  */
-const Dropdown = ({
+export default function Dropdown({
   trigger,
   rounded = 'DEFAULT',
   shadow = 'DEFAULT',
@@ -53,34 +53,35 @@ const Dropdown = ({
   className,
   dropdownButtonClassName,
   dropdownClassName,
-}: DropdownProps) => (
-  <Menu as="div" className={cn('relative', className)}>
-    <Menu.Button as="div" className={dropdownButtonClassName}>
-      {trigger}
-    </Menu.Button>
-    <Transition
-      as={Fragment}
-      enter="transition ease-out duration-100"
-      enterFrom="transform opacity-0 scale-95"
-      enterTo="transform opacity-100 scale-100"
-      leave="transition ease-in duration-75"
-      leaveFrom="transform opacity-100 scale-100"
-      leaveTo="transform opacity-0 scale-95"
-    >
-      <Menu.Items
-        data-testid="dropdown-container"
-        className={cn(
-          'absolute z-10 mt-2 border border-gray-100 bg-white',
-          dropdownClasses.rounded[rounded],
-          dropdownClasses.shadow[shadow],
-          dropdownClassName
-        )}
+}: DropdownProps) {
+  return (
+    <Menu as="div" className={cn('relative', className)}>
+      <Menu.Button as="div" className={dropdownButtonClassName}>
+        {trigger}
+      </Menu.Button>
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
       >
-        {children}
-      </Menu.Items>
-    </Transition>
-  </Menu>
-);
+        <Menu.Items
+          data-testid="dropdown-container"
+          className={cn(
+            'absolute z-10 mt-2 border border-gray-100 bg-gray-0',
+            dropdownClasses.rounded[rounded],
+            dropdownClasses.shadow[shadow],
+            dropdownClassName
+          )}
+        >
+          {children}
+        </Menu.Items>
+      </Transition>
+    </Menu>
+  );
+}
 
 Dropdown.displayName = 'Dropdown';
-export default Dropdown;

@@ -67,7 +67,7 @@ const classes = {
 
 export type BadgeProps = {
   /** Change badge color */
-  color?: keyof typeof classes.variant['solid']['color'];
+  color?: keyof (typeof classes.variant)['solid']['color'];
   /** The variants of the component are: */
   variant?: keyof typeof classes.variant;
   /** The size of the component. `"sm"` is equivalent to the dense badge styling. */
@@ -85,7 +85,7 @@ export type BadgeProps = {
 /**
  * Badge is a small overlapped UI item which indicates a status, notification, or event that appears in relativity with the underlying object.
  */
-const Badge = ({
+export default function Badge({
   renderAsDot = false,
   size = 'DEFAULT',
   color = 'DEFAULT',
@@ -95,7 +95,7 @@ const Badge = ({
   children,
   className,
   ...props
-}: React.PropsWithChildren<BadgeProps>) => {
+}: React.PropsWithChildren<BadgeProps>) {
   const styles = classes.variant[variant];
   return (
     <span
@@ -114,7 +114,6 @@ const Badge = ({
       {!renderAsDot ? children : null}
     </span>
   );
-};
+}
 
 Badge.displayName = 'Badge';
-export default Badge;

@@ -10,11 +10,12 @@ export interface PopconfirmProps
  * Popconfirm is a simple dialog alert which can have details of the content.
  * It can either have a confirm, cancel button or any action that can be triggered by the user's decision.
  */
-const Popconfirm = ({ children, ...props }: PopconfirmProps) => (
-  <Tooltip isPopconfirm={true} color="invert" {...props}>
-    {children}
-  </Tooltip>
-);
+export default function Popconfirm({ children, ...props }: PopconfirmProps) {
+  return (
+    <Tooltip isPopconfirm={true} color="invert" {...props}>
+      {children}
+    </Tooltip>
+  );
+}
 
 Popconfirm.displayName = 'Popconfirm';
-export default Popconfirm;
