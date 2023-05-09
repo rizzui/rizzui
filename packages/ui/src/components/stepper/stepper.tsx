@@ -38,12 +38,18 @@ export interface StepperProps extends React.HTMLAttributes<HTMLDivElement> {
   currentIndex?: number;
   /** Direction of stepper */
   direction?: 'horizontal' | 'vertical';
-  /** Placing label either horizontally or vertically */
-  labelPlacement?: 'horizontal' | 'vertical';
   /** Whether to show dot */
   dot?: boolean;
   /** Pass Step Component as children */
   children: React.ReactNode;
+  /** Pass dotClassName to design the rounded disc */
+  dotClassName?: string;
+  /** Pass contentClassName to design the content area */
+  contentClassName?: string;
+  /** Pass titleClassName to design the label or title */
+  titleClassName?: string;
+  /** Pass descriptionClassName to design the description */
+  descriptionClassName?: string;
 }
 
 const calcStatus = (activeIndex: number, currentIndex: number) => {
@@ -56,54 +62,58 @@ const calcStatus = (activeIndex: number, currentIndex: number) => {
  * Stepper tool is used to enlighten user regarding the progress of the task.
  * `Stepper` component displays the progress of the task in a sequence of numbered steps through `Step` component.
  */
-const Stepper = ({
+export default function Stepper({
   currentIndex = 0,
   children,
   direction = 'horizontal',
-  labelPlacement = 'horizontal',
   dot = false,
   className,
-}: StepperProps) => (
-  <div
-    className={cn(
-      'flex justify-between',
-      direction === 'vertical' && 'flex-col space-x-0',
-      labelPlacement === 'horizontal' ? 'space-x-4 rtl:space-x-0' : 'mx-10',
-      className
-    )}
-  >
-    {React.Children.map(children, (child, index) => {
-      if (!React.isValidElement<StepProps>(child)) {
-        return child;
-      }
+  titleClassName,
+  dotClassName,
+  contentClassName,
+  descriptionClassName,
+}: StepperProps) {
+  return (
+    <div
+      className={cn(
+        'flex justify-between space-x-4 rtl:space-x-0',
+        direction === 'vertical' && 'flex-col space-x-0',
+        className
+      )}
+    >
+      {React.Children.map(children, (child, index) => {
+        if (!React.isValidElement<StepProps>(child)) {
+          return child;
+        }
 
-      const { status, size = 'DEFAULT' } = child.props;
+        const { status, size = 'DEFAULT' } = child.props;
 
-      return React.cloneElement(child, {
-        index,
-        dot,
-        status: status || calcStatus(currentIndex, index),
-        className: cn(
-          labelPlacement === 'vertical' && containerClasses.base,
-          labelPlacement === 'horizontal' &&
-            direction === 'horizontal' &&
-            containerClasses.line,
-          direction === 'vertical' && containerClasses.verticalLine.base,
-          direction === 'vertical' &&
-            (dot
-              ? containerClasses.verticalLine.left.dot[size]
-              : containerClasses.verticalLine.left.noDot[size])
-        ),
-        circleClassName: cn(dot && labelPlacement === 'horizontal' && 'mt-1.5'),
-        contentClassName: cn(
-          (labelPlacement === 'vertical' || direction === 'vertical') &&
-            contentClasses.base,
-          labelPlacement === 'vertical' && contentClasses.containerDesc
-        ),
-      });
-    })}
-  </div>
-);
+        return React.cloneElement(child, {
+          index,
+          dot,
+          status: status || calcStatus(currentIndex, index),
+          className: cn(
+            direction === 'horizontal' && containerClasses.line,
+            direction === 'vertical' && containerClasses.verticalLine.base,
+            direction === 'vertical' &&
+              (dot
+                ? containerClasses.verticalLine.left.dot[size]
+                : containerClasses.verticalLine.left.noDot[size])
+          ),
+          circleClassName: cn(
+            dot && direction === 'vertical' && 'mt-1.5',
+            dotClassName
+          ),
+          contentClassName: cn(
+            direction === 'vertical' && contentClasses.base,
+            contentClassName
+          ),
+          titleClassName,
+          descriptionClassName,
+        });
+      })}
+    </div>
+  );
+}
 
 Stepper.displayName = 'Stepper';
-export default Stepper;
