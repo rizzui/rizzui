@@ -102,8 +102,12 @@ export interface StepProps
   className?: string;
   /** Pass circleClassName to design the rounded disc */
   circleClassName?: string;
-  /** Pass contentClassName to design the content or label */
+  /** Pass contentClassName to design the content area */
   contentClassName?: string;
+  /** Pass titleClassName to design the label or title */
+  titleClassName?: string;
+  /** Pass descriptionClassName to design the description */
+  descriptionClassName?: string;
 }
 
 const renderIconText = (
@@ -117,7 +121,7 @@ const renderIconText = (
   return index + 1;
 };
 
-const Step = ({
+export default function Step({
   title,
   description,
   icon,
@@ -130,64 +134,69 @@ const Step = ({
   className,
   circleClassName,
   contentClassName,
-}: StepProps) => (
-  <div className={cn('group relative flex flex-1 last:flex-none', className)}>
-    <div
-      className={cn(
-        lineClasses.base,
-        dot ? lineClasses.top.dot[size] : lineClasses.top.noDot[size],
-        status === 'completed' ? lineClasses.color[color] : 'bg-gray-200'
-      )}
-    />
+  titleClassName,
+  descriptionClassName,
+}: StepProps) {
+  return (
+    <div className={cn('group relative flex flex-1 last:flex-none', className)}>
+      <div
+        className={cn(
+          lineClasses.base,
+          dot ? lineClasses.top.dot[size] : lineClasses.top.noDot[size],
+          status === 'completed' ? lineClasses.color[color] : 'bg-gray-200'
+        )}
+      />
 
-    <div
-      className={cn(
-        circleClasses.base,
-        dot && dotClasses.base,
-        dot ? dotClasses.size[size] : circleClasses.size[size],
-        status === 'waiting'
-          ? circleClasses.waiting
-          : cn(
-              circleClasses.variant[variant].base,
-              circleClasses.variant[variant].color[color]
-            ),
-        dot && status === 'waiting' && dotClasses.waiting,
-        circleClassName
-      )}
-    >
-      {(!dot && icon) || renderIconText(index, status, dot)}
-    </div>
+      <div
+        className={cn(
+          circleClasses.base,
+          dot && dotClasses.base,
+          dot ? dotClasses.size[size] : circleClasses.size[size],
+          status === 'waiting'
+            ? circleClasses.waiting
+            : cn(
+                circleClasses.variant[variant].base,
+                circleClasses.variant[variant].color[color]
+              ),
+          dot && status === 'waiting' && dotClasses.waiting,
+          circleClassName
+        )}
+      >
+        {(!dot && icon) || renderIconText(index, status, dot)}
+      </div>
 
-    <div className={cn('ml-3 mt-0.5 flex flex-1 flex-col', contentClassName)}>
-      <span className="aegon-step-title flex items-center justify-center group-last:inline-block">
-        <h2
-          className={cn(
-            'mr-2 !mb-0 text-base font-medium rtl:ml-2',
-            status === 'waiting' ? 'text-gray-500' : 'text-gray-900'
-          )}
-        >
-          {title}
-        </h2>
-        <span
-          className={cn(
-            lineClasses.titleLine,
-            status === 'completed' ? lineClasses.color[color] : 'bg-gray-200'
-          )}
-        />
-      </span>
-      {description && (
-        <span
-          className={cn(
-            'aegon-step-description',
-            status === 'in-progress' ? 'text-gray-900' : 'text-gray-500'
-          )}
-        >
-          {description}
+      <div className={cn('ml-3 mt-0.5 flex flex-1 flex-col', contentClassName)}>
+        <span className="aegon-step-title flex items-center justify-center group-last:inline-block">
+          <h2
+            className={cn(
+              '!mb-0 mr-2 text-base font-medium rtl:ml-2',
+              status === 'waiting' ? 'text-gray-500' : 'text-gray-900',
+              titleClassName
+            )}
+          >
+            {title}
+          </h2>
+          <span
+            className={cn(
+              lineClasses.titleLine,
+              status === 'completed' ? lineClasses.color[color] : 'bg-gray-200'
+            )}
+          />
         </span>
-      )}
+        {description && (
+          <span
+            className={cn(
+              'aegon-step-description',
+              status === 'in-progress' ? 'text-gray-900' : 'text-gray-500',
+              descriptionClassName
+            )}
+          >
+            {description}
+          </span>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 Step.displayName = 'Step';
-export default Step;
