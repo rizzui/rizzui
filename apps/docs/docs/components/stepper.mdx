@@ -411,13 +411,12 @@ Here is the API documentation of the Stepper component. You can use the followin
 
 <div className="overflow-x-auto">
 
-|     Props      |                        Type                         |                   Description                   |    Default     |
-| :------------: | :-------------------------------------------------: | :---------------------------------------------: | :------------: |
-|  currentIndex  |                      `number`                       |         Index of currently active step          |      `0`       |
-|   direction    |      [StepperDirections](#stepper-directions)       |              Direction of stepper               | `"horizontal"` |
-| labelPlacement | [StepperLabelPlacements](#stepper-label-placements) | Placing label either horizontally or vertically | `"horizontal"` |
-|      dot       |                      `boolean`                      |               Whether to show dot               |    `false`     |
-|    children    |                     `ReactNode`                     |         Pass Step Component as children         |     \_ \_      |
+|    Props     |                   Type                   |           Description           |    Default     |
+| :----------: | :--------------------------------------: | :-----------------------------: | :------------: |
+| currentIndex |                 `number`                 | Index of currently active step  |      `0`       |
+|  direction   | [StepperDirections](#stepper-directions) |      Direction of stepper       | `"horizontal"` |
+|     dot      |                `boolean`                 |       Whether to show dot       |    `false`     |
+|   children   |               `ReactNode`                | Pass Step Component as children |     \_ \_      |
 
 </div>
 
@@ -429,14 +428,6 @@ Here is the API documentation of the Stepper component. You can use the followin
 type StepperDirection = 'vertical' | 'horizontal';
 ```
 
-<div className="mb-10" />
-
-### Stepper Label Placements
-
-```ts
-type StepperLabelPlacements = 'vertical' | 'horizontal';
-```
-
 <div className="mb-20" />
 
 ### Step Props
@@ -445,20 +436,22 @@ Here is the API documentation of the Step component. You can use the following p
 
 <div className="overflow-x-auto">
 
-|      Props       |              Type              |                                Description                                 |   Default   |
-| :--------------: | :----------------------------: | :------------------------------------------------------------------------: | :---------: |
-|      title       |          `ReactNode`           |                         Give a title for the step                          |    \_ \_    |
-|   description    |          `ReactNode`           |                      Give a description for the step                       |    \_ \_    |
-|       icon       |          `ReactNode`           |                              Pass custom icon                              |    \_ \_    |
-|      index       |            `number`            | Index number for each component. Handled underneath by `Stepper` component |     `0`     |
-|      status      |   [StepStatus](#step-status)   |                            Status of each step                             |    \_ \_    |
-|       size       |    [StepSizes](#step-sizes)    |                           The size of each Step                            | `"DEFAULT"` |
-|     variant      | [StepVariants](#step-variants) |                       The variants of the component                        |  `"solid"`  |
-|      color       |   [StepColors](#step-colors)   |                             Change Step Color                              | `"DEFAULT"` |
-|       dot        |           `boolean`            |           Whether to show dot. Handled from `Stepper` component            |    \_ \_    |
-|    className     |            `string`            |                   Pass className to design the container                   |    \_ \_    |
-| circleClassName  |            `string`            |              Pass circleClassName to design the rounded disc               |    \_ \_    |
-| contentClassName |            `string`            |            Pass contentClassName to design the content or label            |    \_ \_    |
+|        Props         |              Type              |                                Description                                 |   Default   |
+| :------------------: | :----------------------------: | :------------------------------------------------------------------------: | :---------: |
+|        title         |          `ReactNode`           |                         Give a title for the step                          |    \_ \_    |
+|     description      |          `ReactNode`           |                      Give a description for the step                       |    \_ \_    |
+|         icon         |          `ReactNode`           |                              Pass custom icon                              |    \_ \_    |
+|        index         |            `number`            | Index number for each component. Handled underneath by `Stepper` component |     `0`     |
+|        status        |   [StepStatus](#step-status)   |                            Status of each step                             |    \_ \_    |
+|         size         |    [StepSizes](#step-sizes)    |                           The size of each Step                            | `"DEFAULT"` |
+|       variant        | [StepVariants](#step-variants) |                       The variants of the component                        |  `"solid"`  |
+|        color         |   [StepColors](#step-colors)   |                             Change Step Color                              | `"DEFAULT"` |
+|         dot          |           `boolean`            |           Whether to show dot. Handled from `Stepper` component            |    \_ \_    |
+|      className       |            `string`            |                   Pass className to design the container                   |    \_ \_    |
+|   circleClassName    |            `string`            |              Pass circleClassName to design the rounded disc               |    \_ \_    |
+|   contentClassName   |            `string`            |                Pass contentClassName to design the content                 |    \_ \_    |
+|    titleClassName    |            `string`            |        Pass titleClassName to design the label or title of the step        |    \_ \_    |
+| descriptionClassName |            `string`            |      Pass descriptionClassName to design the description of the step       |    \_ \_    |
 
 </div>
 
