@@ -27,8 +27,8 @@ export * from './components/alert';
 export { default as Announcement } from './components/announcement';
 export * from './components/announcement';
 
-export { default as Avatar } from './components/avatar';
-export * from './components/avatar';
+// export { default as Avatar } from './components/avatar';
+// export * from './components/avatar';
 
 export { default as Badge } from './components/badge';
 export * from './components/badge';
