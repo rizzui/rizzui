@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-import { Badge, Text, Avatar } from 'rizzui';
+import { Badge, Text } from 'rizzui';
 import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import Paper from '@site/src/components/paper';
 
@@ -317,106 +317,6 @@ export default function App() {
 				>
 					999+
 				</Badge>
-			</div>
-		</>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## With Avatar
-
-You can use the **Badge** with **Avatar** component to show the current state of user.
-
-<Paper>
-	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
-		<div className="relative inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-			/>
-			<Badge
-				size="lg"
-				renderAsDot
-				color="success"
-				enableOutlineRing
-				className="absolute right-0 top-0 -translate-y-[25%]"
-			/>
-		</div>
-		<div className="relative ml-3 inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/43.jpg"
-			/>
-			<Badge
-				size="lg"
-				renderAsDot
-				color="danger"
-				enableOutlineRing
-				className="absolute right-0 bottom-0 -translate-y-[25%]"
-			/>
-		</div>
-		<div className="relative ml-3 inline-flex">
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/44.jpg"
-			/>
-			<Badge
-				size="lg"
-				renderAsDot
-				color="warning"
-				enableOutlineRing
-				className="absolute right-0 top-0 -translate-y-[30%]"
-			/>
-		</div>
-	</div>
-</Paper>
-
-```tsx
-import { Badge, Avatar } from 'rizzui';
-
-export default function App() {
-	return (
-		<>
-			<div className="relative inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/40.jpg"
-				/>
-				<Badge
-					size="lg"
-					renderAsDot
-					color="success"
-					enableOutlineRing
-					className="absolute right-0 top-0 -translate-y-[25%]"
-				/>
-			</div>
-			<div className="relative ml-3 inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/43.jpg"
-				/>
-				<Badge
-					size="lg"
-					renderAsDot
-					color="danger"
-					enableOutlineRing
-					className="absolute right-0 bottom-0 -translate-y-[25%]"
-				/>
-			</div>
-			<div className="relative ml-3 inline-flex">
-				<Avatar
-					size="48px"
-					src="https://randomuser.me/api/portraits/women/44.jpg"
-				/>
-				<Badge
-					size="lg"
-					renderAsDot
-					color="warning"
-					enableOutlineRing
-					className="absolute right-0 top-0 -translate-y-[30%]"
-				/>
 			</div>
 		</>
 	);

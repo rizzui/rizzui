@@ -2,7 +2,7 @@
 sidebar_position: 23
 ---
 
-import { Tag, Avatar } from 'rizzui';
+import { Tag } from 'rizzui';
 import { MapPinIcon } from '@heroicons/react/24/outline';
 import Paper from '@site/src/components/paper';
 
@@ -187,40 +187,6 @@ export default function App() {
 		<Tag>
 			<MapPinIcon className="mr-1 h-4 w-4 rtl:ml-1" />
 			With Icon
-		</Tag>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## With Avatar
-
-You can use **Avatar** component inside **Tag**.
-
-<Paper>
-	<Tag>
-		<Avatar
-			className="mr-1.5 rtl:ml-1.5"
-			size="20px"
-			src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-		/>
-		With Avatar
-	</Tag>
-</Paper>
-
-```tsx
-import { Tag, Avatar } from 'rizzui';
-
-export default function App() {
-	return (
-		<Tag>
-			<Avatar
-				className="mr-1.5 rtl:ml-1.5"
-				size="20px"
-				src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-			/>
-			With Avatar
 		</Tag>
 	);
 }

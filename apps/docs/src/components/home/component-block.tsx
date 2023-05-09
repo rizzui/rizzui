@@ -6,7 +6,6 @@ import {
 	Rate,
 	Text,
 	PinCode,
-	Avatar,
 	Progressbar,
 	Pagination,
 	Switch,
@@ -19,18 +18,18 @@ import {
 } from '@heroicons/react/24/outline';
 
 const components = [
-	{
-		id: 1,
-		component: (
-			<Avatar
-				size="48px"
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-			/>
-		),
-		name: 'Avatar',
-		description:
-			'A reusable UI element that represents a user or entity with a profile image or icon',
-	},
+	// {
+	// 	id: 1,
+	// 	component: (
+	// 		<Avatar
+	// 			size="48px"
+	// 			src="https://randomuser.me/api/portraits/women/40.jpg"
+	// 		/>
+	// 	),
+	// 	name: 'Avatar',
+	// 	description:
+	// 		'A reusable UI element that represents a user or entity with a profile image or icon',
+	// },
 	{
 		id: 2,
 		component: <PinCode setValue={() => null} />,

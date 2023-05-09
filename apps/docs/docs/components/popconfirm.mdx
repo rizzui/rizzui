@@ -4,10 +4,7 @@ sidebar_position: 31
 
 import { Popconfirm, Button } from 'rizzui';
 import Paper from '@site/src/components/paper';
-import {
-	PopconfirmActionable,
-	PopconfirmAvatar,
-} from '@site/src/components/popconfirm';
+import { PopconfirmActionable } from '@site/src/components/popconfirm';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
 # Popconfirm
@@ -132,82 +129,6 @@ export default function App() {
 		>
 			<Button variant="outline">Click Me!</Button>
 		</Popconfirm>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## With Custom Content
-
-You can render any thing using our **Popconfirm** component.
-
-<Paper>
-	<PopconfirmAvatar />
-</Paper>
-
-```tsx
-import React from 'react';
-import { Popconfirm, Button, Avatar } from 'rizzui';
-
-export default function App() {
-	const [state, setState] = React.useState(false);
-	return (
-		<div className="h-44">
-			<Popconfirm
-				isOpen={state}
-				setIsOpen={setState}
-				content={
-					<>
-						<div className="mb-3 flex items-center gap-3">
-							<Avatar
-								src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-								className="ring-2 ring-blue ring-offset-2"
-								size="48px"
-							/>
-							<div className="text-left">
-								<h1 className="text-base font-medium text-gray-900">
-									Fred Chaparro
-								</h1>
-								<p className="text-sm font-light text-gray-500">
-									@fredchaparro
-								</p>
-							</div>
-						</div>
-						<div className="max-w-[240px] text-left text-sm">
-							<h2 className="text-gray-600">
-								Full-stack Developer, love to work with @redq. 🎉{' '}
-							</h2>
-							<span className="mt-3 inline-flex gap-3 text-gray-400">
-								<h2>
-									<span className="font-medium">8</span> Following
-								</h2>
-								<h2>
-									<span className="font-medium">10.5k</span> Followers
-								</h2>
-							</span>
-						</div>
-						<Button
-							className="mt-4 w-full"
-							variant="solid"
-							color="info"
-							size="sm"
-							onClick={() => setState(false)}
-						>
-							Follow
-						</Button>
-					</>
-				}
-				placement="bottom-start"
-			>
-				<div className="w-14 cursor-pointer">
-					<Avatar
-						src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-						size="48px"
-					/>
-				</div>
-			</Popconfirm>
-		</div>
 	);
 }
 ```

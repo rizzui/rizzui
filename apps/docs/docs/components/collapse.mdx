@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-import { Collapse, cn, Avatar } from 'rizzui';
+import { Collapse, cn } from 'rizzui';
 import Paper from '@site/src/components/paper';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import {
@@ -149,7 +149,6 @@ You can change the style of the **Collapse**.
 						className="flex w-full cursor-pointer items-center justify-between py-5 text-left rtl:text-right"
 					>
 						<div className="flex items-center gap-4">
-							{item.avatar}
 							<div className="grid gap-1">
 								<h3 className="text-xl font-semibold">{item.title}</h3>
 								<p className="text-sm font-light text-gray-500">
@@ -175,7 +174,7 @@ You can change the style of the **Collapse**.
 </Paper>
 
 ```tsx
-import { Collapse, Avatar } from 'rizzui';
+import { Collapse } from 'rizzui';
 import { SunIcon } from '@heroicons/react/20/solid';
 import { MoonIcon, LinkIcon } from '@heroicons/react/24/outline';
 
@@ -183,14 +182,6 @@ const data = [
 	{
 		title: 'Option A',
 		icon: <LinkIcon />,
-		avatar: (
-			<Avatar
-				size="44"
-				rounded="lg"
-				src="https://randomuser.me/api/portraits/men/3.jpg"
-				className="ring-2 ring-primary ring-offset-2"
-			/>
-		),
 		defaultOpen: true,
 		content: (
 			<>
@@ -205,14 +196,6 @@ const data = [
 	{
 		title: 'Option B',
 		icon: <MoonIcon />,
-		avatar: (
-			<Avatar
-				size="44"
-				rounded="lg"
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-				className="ring-2 ring-green ring-offset-2"
-			/>
-		),
 		defaultOpen: false,
 		content: (
 			<>
@@ -227,14 +210,6 @@ const data = [
 	{
 		title: 'Option C',
 		icon: <SunIcon />,
-		avatar: (
-			<Avatar
-				size="44"
-				rounded="lg"
-				src="https://randomuser.me/api/portraits/women/7.jpg"
-				className="ring-2 ring-red ring-offset-2"
-			/>
-		),
 		defaultOpen: false,
 		content: (
 			<>
@@ -264,7 +239,6 @@ export default function App() {
 							className="flex w-full cursor-pointer items-center justify-between py-5 text-left rtl:text-right"
 						>
 							<div className="flex items-center gap-4">
-								{item.avatar}
 								<div className="grid gap-1">
 									<h3 className="text-xl font-semibold">{item.title}</h3>
 									<p className="text-sm font-light text-gray-500">

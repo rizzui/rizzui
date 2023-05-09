@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
+import { Table, HeaderCell, Checkbox, Text, Badge } from 'rizzui';
 import { initialData } from '@site/src/data/table-data';
 
 function getStatusBadge(status: string) {
@@ -65,7 +65,12 @@ const getColumns = (
 		width: 250,
 		render: (employee: any) => (
 			<div className="flex items-center">
-				<Avatar src={employee.avatar} size="40" />
+				<img
+					src={employee.avatar}
+					width="40"
+					height="40"
+					className="object-cover rounded-full"
+				/>
 				<div className="ml-3 rtl:ml-0 rtl:mr-3">
 					<Text tag="h6" className="mb-0.5 !text-sm font-medium">
 						{employee.name}

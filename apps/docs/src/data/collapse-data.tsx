@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { SunIcon } from '@heroicons/react/20/solid';
 import { MoonIcon, LinkIcon } from '@heroicons/react/24/outline';
-import { Avatar } from 'rizzui';
 
 export const defaultCollapseData = [
 	{
@@ -46,14 +45,6 @@ export const customStyleCollapseData = [
 	{
 		title: 'Option A',
 		icon: <LinkIcon />,
-		avatar: (
-			<Avatar
-				size="44"
-				rounded="lg"
-				src="https://randomuser.me/api/portraits/men/3.jpg"
-				className="ring-2 ring-primary ring-offset-2"
-			/>
-		),
 		defaultOpen: true,
 		content: (
 			<Fragment>
@@ -68,14 +59,6 @@ export const customStyleCollapseData = [
 	{
 		title: 'Option B',
 		icon: <MoonIcon />,
-		avatar: (
-			<Avatar
-				size="44"
-				rounded="lg"
-				src="https://randomuser.me/api/portraits/women/40.jpg"
-				className="ring-2 ring-green ring-offset-2"
-			/>
-		),
 		defaultOpen: false,
 		content: (
 			<Fragment>
@@ -90,14 +73,6 @@ export const customStyleCollapseData = [
 	{
 		title: 'Option C',
 		icon: <SunIcon />,
-		avatar: (
-			<Avatar
-				size="44"
-				rounded="lg"
-				src="https://randomuser.me/api/portraits/women/7.jpg"
-				className="ring-2 ring-red ring-offset-2"
-			/>
-		),
 		defaultOpen: false,
 		content: (
 			<Fragment>

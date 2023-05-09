@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popconfirm, Button, Avatar } from 'rizzui';
+import { Popconfirm, Button } from 'rizzui';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
 export function PopconfirmActionable() {
@@ -34,59 +34,59 @@ export function PopconfirmActionable() {
 	);
 }
 
-export function PopconfirmAvatar() {
-	const [state, setState] = React.useState(false);
-	return (
-		<Popconfirm
-			isOpen={state}
-			setIsOpen={setState}
-			content={
-				<div className="py-3">
-					<div className="mb-3 flex items-center gap-3">
-						<Avatar
-							src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-							className="ring-2 ring-blue ring-offset-2"
-							size="48px"
-						/>
-						<div className="text-left">
-							<p className="text-base font-medium text-gray-900">
-								Fred Chaparro
-							</p>
-							<p className="text-sm font-light text-gray-500">@fredchaparro</p>
-						</div>
-					</div>
-					<div className="max-w-[240px] text-left text-sm">
-						<p className="text-gray-600">
-							Full-stack Developer, love to work with @redq. 🎉{' '}
-						</p>
-						<span className="mt-3 inline-flex gap-3 text-gray-400">
-							<p>
-								<span className="font-medium">8</span> Following
-							</p>
-							<p>
-								<span className="font-medium">10.5k</span> Followers
-							</p>
-						</span>
-					</div>
-					<Button
-						className="mt-4 w-full"
-						variant="solid"
-						color="info"
-						size="sm"
-						onClick={() => setState(false)}
-					>
-						Follow
-					</Button>
-				</div>
-			}
-			placement="bottom"
-		>
-			<div className="w-14 cursor-pointer">
-				<Avatar
-					src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-					size="48px"
-				/>
-			</div>
-		</Popconfirm>
-	);
-}
+// export function PopconfirmAvatar() {
+// 	const [state, setState] = React.useState(false);
+// 	return (
+// 		<Popconfirm
+// 			isOpen={state}
+// 			setIsOpen={setState}
+// 			content={
+// 				<div className="py-3">
+// 					<div className="mb-3 flex items-center gap-3">
+// 						<Avatar
+// 							src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
+// 							className="ring-2 ring-blue ring-offset-2"
+// 							size="48px"
+// 						/>
+// 						<div className="text-left">
+// 							<p className="text-base font-medium text-gray-900">
+// 								Fred Chaparro
+// 							</p>
+// 							<p className="text-sm font-light text-gray-500">@fredchaparro</p>
+// 						</div>
+// 					</div>
+// 					<div className="max-w-[240px] text-left text-sm">
+// 						<p className="text-gray-600">
+// 							Full-stack Developer, love to work with @redq. 🎉{' '}
+// 						</p>
+// 						<span className="mt-3 inline-flex gap-3 text-gray-400">
+// 							<p>
+// 								<span className="font-medium">8</span> Following
+// 							</p>
+// 							<p>
+// 								<span className="font-medium">10.5k</span> Followers
+// 							</p>
+// 						</span>
+// 					</div>
+// 					<Button
+// 						className="mt-4 w-full"
+// 						variant="solid"
+// 						color="info"
+// 						size="sm"
+// 						onClick={() => setState(false)}
+// 					>
+// 						Follow
+// 					</Button>
+// 				</div>
+// 			}
+// 			placement="bottom"
+// 		>
+// 			<div className="w-14 cursor-pointer">
+// 				<Avatar
+// 					src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
+// 					size="48px"
+// 				/>
+// 			</div>
+// 		</Popconfirm>
+// 	);
+// }

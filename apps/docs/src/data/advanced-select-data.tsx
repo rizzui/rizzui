@@ -1,5 +1,4 @@
 import React from 'react';
-import { Avatar } from 'rizzui';
 
 export const advancedSelectOptions = [
 	{
@@ -7,8 +6,10 @@ export const advancedSelectOptions = [
 		name: 'John',
 		label: (
 			<span className="inline-flex items-center gap-2">
-				<Avatar
-					size="24px"
+				<img
+					width={24}
+					height={24}
+					className=" object-cover rounded-full"
 					src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 				/>
 				John Doe
@@ -20,8 +21,10 @@ export const advancedSelectOptions = [
 		name: 'Emily',
 		label: (
 			<span className="inline-flex items-center gap-2">
-				<Avatar
-					size="24px"
+				<img
+					width={24}
+					height={24}
+					className=" object-cover rounded-full"
 					src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 				/>
 				Emily Josh
@@ -33,8 +36,10 @@ export const advancedSelectOptions = [
 		name: 'Miller',
 		label: (
 			<span className="inline-flex items-center gap-2">
-				<Avatar
-					size="24px"
+				<img
+					width={24}
+					height={24}
+					className=" object-cover rounded-full"
 					src="https://images.pexels.com/photos/1921168/pexels-photo-1921168.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 				/>
 				Miller Wills
@@ -47,8 +52,10 @@ export const advancedSelectOptions = [
 		disabled: true,
 		label: (
 			<span className="inline-flex items-center gap-2">
-				<Avatar
-					size="24px"
+				<img
+					width={24}
+					height={24}
+					className=" object-cover rounded-full"
 					src="https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 				/>
 				James Wan
@@ -60,8 +67,10 @@ export const advancedSelectOptions = [
 		name: 'Franky',
 		label: (
 			<span className="inline-flex items-center gap-2">
-				<Avatar
-					size="24px"
+				<img
+					width={24}
+					height={24}
+					className=" object-cover rounded-full"
 					src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 				/>
 				Franky Sam
