@@ -58,7 +58,7 @@ export default function HeroBlock() {
 						</Button>
 						<a
 							target="_blank"
-							href="https://github.com/RedQ/rizz"
+							href="https://github.com/rizzui/rizzui"
 							className="inline-flex items-center hover:no-underline"
 							rel="noreferrer noopener"
 						>

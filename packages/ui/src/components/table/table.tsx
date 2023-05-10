@@ -1,5 +1,3 @@
-'use client';
-
 import RcTable from 'rc-table';
 
 import Empty from '../empty';

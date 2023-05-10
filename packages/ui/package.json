@@ -1,8 +1,13 @@
 {
   "name": "rizzui",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "license": "MIT",
-  "author": "REDQ - https://redq.io/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rizzui/rizzui.git",
+    "directory": "packages/ui"
+  },
+  "homepage": "https://rizzui.com/",
   "keywords": [
     "Rizz UI",
     "components",
@@ -52,7 +57,6 @@
     "@floating-ui/react": "0.24.0",
     "@headlessui/react": "1.7.14",
     "clsx": "1.2.1",
-    "react-avatar": "5.0.3",
     "rc-pagination": "3.3.1",
     "rc-rate": "2.10.0",
     "rc-slider": "10.1.1",

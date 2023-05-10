@@ -79,7 +79,7 @@ const getColumns = (
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar src={employee.avatar} size="40" />
+        <Avatar src={employee.avatar} name="John Doe" />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
           <Text tag="h6" className="mb-0.5 !text-sm font-medium">
             {employee.name}

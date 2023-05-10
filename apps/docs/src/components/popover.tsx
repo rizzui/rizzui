@@ -1,11 +1,11 @@
 import React from 'react';
-import { Popconfirm, Button } from 'rizzui';
+import { Popover, Button } from 'rizzui';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
-export function PopconfirmActionable() {
+export function PopoverActionable() {
 	const [state, setState] = React.useState(false);
 	return (
-		<Popconfirm
+		<Popover
 			isOpen={state}
 			setIsOpen={setState}
 			content={
@@ -30,14 +30,14 @@ export function PopconfirmActionable() {
 			placement="bottom"
 		>
 			<Button variant="outline">Click Me!</Button>
-		</Popconfirm>
+		</Popover>
 	);
 }
 
-// export function PopconfirmAvatar() {
+// export function PopoverAvatar() {
 // 	const [state, setState] = React.useState(false);
 // 	return (
-// 		<Popconfirm
+// 		<Popover
 // 			isOpen={state}
 // 			setIsOpen={setState}
 // 			content={
@@ -87,6 +87,6 @@ export function PopconfirmActionable() {
 // 					size="48px"
 // 				/>
 // 			</div>
-// 		</Popconfirm>
+// 		</Popover>
 // 	);
 // }

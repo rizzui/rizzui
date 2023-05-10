@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useCallback } from 'react';
 
 export interface RadioGroupProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -18,11 +16,11 @@ interface RadioChildrenProps {
   children?: React.ReactNode;
 }
 
-/** RadioGroup is a wrapper component for multiple radio buttons which allows
+/**
+ * RadioGroup is a wrapper component for multiple radio buttons which allows
  * user to select any radio button easily either from a form or from a filter.
  * Here is the API documentation for RadioGroup component.
  */
-
 export default function RadioGroup({
   value,
   setValue,

@@ -14537,22 +14537,6 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rizzui@*:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/rizzui/-/rizzui-0.5.2.tgz#7778284f2cc44d5cc8b0a65c2715466300a59eb2"
-  integrity sha512-fu0g+/RALcxyNP2yZPRXAGcrV4EJXR2DSCrvpw1zKfn/1UngnZU+3ZWz4pmTO2SX+xdKdLNjbvEwrZQi2ZLuvw==
-  dependencies:
-    "@floating-ui/react" "0.24.0"
-    "@headlessui/react" "1.7.14"
-    clsx "1.2.1"
-    rc-pagination "3.3.1"
-    rc-rate "2.10.0"
-    rc-slider "10.1.1"
-    rc-table "7.31.1"
-    react-avatar "5.0.3"
-    react-number-format "5.1.4"
-    tailwind-merge "1.12.0"
-
 rollup@^3.2.5:
   version "3.20.0"
   resolved "https://registry.npmjs.org/rollup/-/rollup-3.20.0.tgz"

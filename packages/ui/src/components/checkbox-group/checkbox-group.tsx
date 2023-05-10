@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useCallback } from 'react';
 
 export interface CheckboxGroupProps
@@ -19,11 +17,11 @@ interface CheckboxChildrenProps {
   children?: React.ReactNode;
 }
 
-/** CheckboxGroup is a wrapper component for a set of checkbox which allows
+/**
+ * CheckboxGroup is a wrapper component for a set of checkbox which allows
  * user to select multiple checkbox values easily either from a form or from a filter.
  * Here is the API documentation for CheckboxGroup component.
  */
-
 export default function CheckboxGroup({
   values,
   setValues,

@@ -1,5 +1,3 @@
-'use client';
-
 import React, { cloneElement, RefObject, useRef, useState } from 'react';
 import {
   Placement,
@@ -14,6 +12,7 @@ import {
   useFocus,
   useClick,
   useDismiss,
+  useRole,
   arrow,
   useTransitionStyles,
 } from '@floating-ui/react';
@@ -95,8 +94,8 @@ export type TooltipProps = {
   tooltipArrowClassName?: string;
   /** Whether tooltip arrow should be shown or hidden */
   showArrow?: boolean;
-  /** Whether the tooltip is used as a pop-confirm component */
-  isPopconfirm?: boolean;
+  /** Whether the tooltip is used as a popover component or not */
+  isPopover?: boolean;
 };
 
 /**
@@ -117,7 +116,7 @@ export default function Tooltip({
   className,
   tooltipArrowClassName,
   showArrow = true,
-  isPopconfirm = false,
+  isPopover = false,
 }: TooltipProps) {
   const [open, setOpen] = useState(false);
   const arrowRef = useRef(null);
@@ -136,10 +135,11 @@ export default function Tooltip({
   });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
-    useHover(context, { enabled: !isPopconfirm }),
+    useHover(context, { enabled: !isPopover }),
     useFocus(context),
+    useRole(context, { role: 'tooltip' }),
     useDismiss(context),
-    useClick(context, { enabled: isPopconfirm }),
+    useClick(context, { enabled: isPopover }),
   ]);
 
   const { isMounted, styles } = useTransitionStyles(context, {

@@ -1,11 +1,21 @@
-'use client';
+import React from 'react';
 
-import ReactAvatar from 'react-avatar';
 import cn from '../../lib/cn';
-import { ExtractProps } from '../../lib/extract-props';
 
 const classes = {
-  base: 'object-cover',
+  base: 'inline-flex items-center justify-center flex-shrink-0',
+  size: {
+    sm: '32px',
+    DEFAULT: '40px',
+    lg: '48px',
+    xl: '56px',
+  },
+  fontSize: {
+    sm: 'text-xs',
+    DEFAULT: 'text-sm',
+    lg: 'text-base',
+    xl: 'text-lg',
+  },
   rounded: {
     none: 'rounded-none',
     sm: 'rounded',
@@ -13,31 +23,109 @@ const classes = {
     lg: 'rounded-2xl',
     full: 'rounded-full',
   },
+  color: {
+    DEFAULT: 'bg-gray-200 text-gray-900',
+    invert: 'bg-gray-900 text-gray-0',
+    primary: 'bg-primary text-white',
+    secondary: 'bg-secondary text-white',
+    success: 'bg-green text-white',
+    warning: 'bg-orange text-white',
+    danger: 'bg-red text-white',
+    info: 'bg-blue text-white',
+  },
 };
 
-export type AvatarProps = ExtractProps<typeof ReactAvatar> & {
+export type AvatarProps = {
+  src?: string;
+  name: string;
+  initials?: string;
+  size?: keyof typeof classes.size;
+  customSize?: string;
   rounded?: keyof typeof classes.rounded;
+  color?: keyof typeof classes.color;
+  onClick?: () => void;
+  className?: string;
 };
 
-/**
- * Avatar is a small UI item which represents user profile picture, or event that appears in relativity with the underlying object.
- * We are using `react-avatar` package for this component. Please follow their documentation for any query -> https://www.npmjs.com/package/react-avatar
- */
+const CHECK_VALID_CUSTOM_SIZE = /(\d*px)?/g;
+
+function getInitials(name: string) {
+  const words = name.split(' ');
+  const initials = words.map((word) => word[0]);
+  return initials.slice(0, 2).join('').toUpperCase();
+}
+
 export default function Avatar({
-  className,
+  src,
+  name,
+  size = 'DEFAULT',
+  initials,
+  customSize,
   rounded = 'full',
-  ...props
+  color = 'DEFAULT',
+  onClick,
+  className,
 }: AvatarProps) {
+  const [isError, setError] = React.useState(false);
+
+  // checking customSize value
+  if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
+    const checkedCustomSizeValue =
+      customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
+    if (checkedCustomSizeValue[0] === '') {
+      console.warn(
+        'customSize prop value is not valid. Please set customSize prop like -> customSize="50px"'
+      );
+    }
+  }
+
+  if (src && !isError) {
+    return (
+      <img
+        src={src}
+        alt={name}
+        title={name}
+        draggable={false}
+        width={customSize ?? classes.size[size]}
+        height={customSize ?? classes.size[size]}
+        onError={() => setError(() => true)}
+        className={cn(
+          classes.base,
+          classes.rounded[rounded],
+          classes.color[color],
+          'object-cover',
+          onClick && 'cursor-pointer',
+          className
+        )}
+        style={{
+          width: customSize ?? classes.size[size],
+          height: customSize ?? classes.size[size],
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
   return (
-    <ReactAvatar
+    <span
+      title={name}
       className={cn(
-        className,
         classes.base,
+        classes.fontSize[size],
         classes.rounded[rounded],
-        props.onClick && 'cursor-pointer'
+        classes.color[color],
+        'font-semibold',
+        onClick && 'cursor-pointer',
+        className
       )}
-      {...props}
-    />
+      style={{
+        width: customSize ?? classes.size[size],
+        height: customSize ?? classes.size[size],
+      }}
+      onClick={onClick}
+    >
+      {initials || getInitials(name)}
+    </span>
   );
 }
 

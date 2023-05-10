@@ -123,7 +123,8 @@ export const WithAvatar = () => (
   <div className="flex items-center justify-around gap-3">
     <div className="relative inline-flex">
       <Avatar
-        size="48px"
+        size="lg"
+        name="John Doe"
         src="https://randomuser.me/api/portraits/women/40.jpg"
       />
       <Badge
@@ -136,7 +137,8 @@ export const WithAvatar = () => (
     </div>
     <div className="relative ml-3 inline-flex">
       <Avatar
-        size="48px"
+        size="lg"
+        name="John Doe"
         src="https://randomuser.me/api/portraits/women/43.jpg"
       />
       <Badge
@@ -144,12 +146,13 @@ export const WithAvatar = () => (
         renderAsDot
         color="danger"
         enableOutlineRing
-        className="absolute right-0 bottom-0 -translate-y-[25%]"
+        className="absolute bottom-0 right-0 -translate-y-[25%]"
       />
     </div>
     <div className="relative ml-3 inline-flex">
       <Avatar
-        size="48px"
+        size="lg"
+        name="John Doe"
         src="https://randomuser.me/api/portraits/women/44.jpg"
       />
       <Badge

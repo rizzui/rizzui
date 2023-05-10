@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useRef } from 'react';
 
 import { cn } from '../../lib/cn';
@@ -109,7 +107,7 @@ export interface PinCodeProps
   /** The variants of the component are: */
   variant?: keyof typeof inputClasses.variant;
   /** Change input color */
-  color?: keyof typeof inputClasses.variant['active']['color'];
+  color?: keyof (typeof inputClasses.variant)['active']['color'];
   /** Show error message using this prop */
   error?: string;
   /** Add custom classes for the input filed extra style */

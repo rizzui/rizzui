@@ -1,5 +1,3 @@
-'use client';
-
 import React, { forwardRef, useState, useCallback } from 'react';
 
 import { cn } from '../../lib/cn';
@@ -140,7 +138,7 @@ export interface TextareaProps
   /** The variants of the component are: */
   variant?: keyof typeof textareaClasses.variant;
   /** Change textarea color */
-  color?: keyof typeof textareaClasses.variant['active']['color'];
+  color?: keyof (typeof textareaClasses.variant)['active']['color'];
   /** Set field label */
   label?: React.ReactNode;
   /** add clearable option */

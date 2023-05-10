@@ -1,5 +1,3 @@
-'use client';
-
 import React, { forwardRef, useState, useCallback } from 'react';
 
 import PasswordToggleIcon from './password-toggle-icon';
