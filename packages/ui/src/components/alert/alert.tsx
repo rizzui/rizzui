@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { XIcon } from '../../icons/x-mark';
 import cn from '../../lib/cn';

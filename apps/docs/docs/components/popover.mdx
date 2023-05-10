@@ -1,0 +1,216 @@
+---
+sidebar_position: 31
+---
+
+import { Popover, Button } from 'rizzui';
+import Paper from '@site/src/components/paper';
+import { PopoverActionable } from '@site/src/components/popover';
+import { InformationCircleIcon } from '@heroicons/react/24/solid';
+
+# Popover
+
+Popover is a simple dialog alert which can have details of the content. It can either have a confirm, cancel button or any action that can be triggered by the user's decision. We build this component on top of our **Tooltip** component, so all the style customization props are
+avaiable in this compoment too except the **color** prop.
+
+```tsx
+import { Popover } from 'rizzui';
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+A simple **Popover** component.
+
+<Paper>
+	<Popover
+		content={
+			<div className="w-56 text-start">
+				<span className="mt-2 inline-flex items-center gap-2 text-base">
+					<InformationCircleIcon className="h-5 w-5" />
+					<p className="font-medium">Delete the task</p>
+				</span>
+				<p className="mt-2 text-sm">
+					Are you sure you want to delete the task?
+				</p>
+				<div className="mt-3 mb-2 flex gap-3">
+					<Button size="sm">Yes</Button>
+					<Button size="sm" variant="outline">
+						No
+					</Button>
+				</div>
+			</div>
+		}
+		placement="bottom"
+	>
+		<Button variant="text" color="danger">
+			Delete
+		</Button>
+	</Popover>
+</Paper>
+
+```tsx
+import { Popover, Button } from 'rizzui';
+import { InformationCircleIcon } from '@heroicons/react/24/solid';
+
+export default function App() {
+	return (
+		<>
+			<Popover
+				content={
+					<div className="w-56 text-start">
+						<span className="mt-2 inline-flex items-center gap-2 text-base">
+							<InformationCircleIcon className="h-5 w-5" />
+							<h2 className="font-medium">Delete the task</h2>
+						</span>
+						<p className="mt-2 text-sm">
+							Are you sure you want to delete the task?
+						</p>
+						<div className="mt-3 mb-2 flex gap-3">
+							<Button size="sm">Yes</Button>
+							<Button size="sm" variant="outline">
+								No
+							</Button>
+						</div>
+					</div>
+				}
+				placement="bottom"
+			>
+				<Button variant="text" color="danger">
+					Delete
+				</Button>
+			</Popover>
+		</>
+	);
+}
+```
+
+<div className="mb-16" />
+
+## Actionable
+
+You can create actionable **Popover** using state.
+
+<Paper>
+	<PopoverActionable />
+</Paper>
+
+```tsx
+import React from 'react';
+import { Popover, Button } from 'rizzui';
+import { InformationCircleIcon } from '@heroicons/react/24/solid';
+
+export default function App() {
+	const [state, setState] = React.useState(false);
+	return (
+		<Popover
+			isOpen={state}
+			setIsOpen={setState}
+			content={
+				<div className="w-56 text-start">
+					<span className="mt-2 inline-flex items-center gap-2 text-base">
+						<InformationCircleIcon className="h-5 w-5" />
+						<p className="font-medium">Delete the task</p>
+					</span>
+					<p className="mt-2 text-sm">
+						Are you sure you want to delete the task?
+					</p>
+					<div className="mt-3 mb-2 flex gap-3">
+						<Button size="sm" onClick={() => setState(false)}>
+							Yes
+						</Button>
+						<Button size="sm" variant="outline" onClick={() => setState(false)}>
+							No
+						</Button>
+					</div>
+				</div>
+			}
+			placement="bottom"
+		>
+			<Button variant="outline">Click Me!</Button>
+		</Popover>
+	);
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### Popover Props
+
+Here is the API documentation of the Popover component.
+
+<div className="overflow-x-auto">
+
+|         Props         |                    Type                     |                     Description                     |   Default   |
+| :-------------------: | :-----------------------------------------: | :-------------------------------------------------: | :---------: |
+|       children        |   [PopoverChildren](#popconfirm-children)   |        Pass children which will have tooltip        |    \_ \_    |
+|         size          |      [PopoverSizes](#popconfirm-sizes)      |            Supported Tooltip sizes are:             | `"DEFAULT"` |
+|        rounded        |    [PopoverRounded](#popconfirm-rounded)    |              The rounded variants are:              | `"DEFAULT"` |
+|       placement       | [PopoverPlacements](#popconfirm-placements) |          Supported Tooltip Placements are:          |    \_ \_    |
+|        shadow         |    [PopoverShadow](#popconfirm-shadows)     |           Supported tooltip shadows are:            | `"DEFAULT"` |
+|       className       |                  `string`                   | Add custom classes for Tooltip container or content |    \_ \_    |
+|        isOpen         |                  `boolean`                  |    Pass open state to open the floating element     |    \_ \_    |
+|       setIsOpen       |     `Dispatch<SetStateAction<boolean>>`     |           Pass setOpen to set open value            |    \_ \_    |
+|        content        |                 `ReactNode`                 |                 Content for tooltip                 |    \_ \_    |
+| tooltipArrowClassName |                  `string`                   |        Add custom classes for Tooltip arrow         |    \_ \_    |
+|       showArrow       |                  `boolean`                  |   Whether tooltip arrow should be shown or hidden   |    \_ \_    |
+
+</div>
+
+<div className="mb-10" />
+
+### Popover Children
+
+```ts
+type PopoverChildren = Element & { ref?: RefObject<any> | undefined };
+```
+
+<div className="mb-10" />
+
+### Popover Sizes
+
+```ts
+type PopoverSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+```
+
+<div className="mb-10" />
+
+### Popover Rounded
+
+```ts
+type PopoverRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
+```
+
+<div className="mb-10" />
+
+### Popover Placements
+
+```ts
+type PopoverPlacements =
+	| 'left'
+	| 'right'
+	| 'top'
+	| 'bottom'
+	| 'left-start'
+	| 'left-end'
+	| 'right-start'
+	| 'right-end'
+	| 'top-start'
+	| 'top-end'
+	| 'bottom-start'
+	| 'bottom-end';
+```
+
+<div className="mb-10" />
+
+### Popover Shadows
+
+```ts
+type PopoverShadow = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+```

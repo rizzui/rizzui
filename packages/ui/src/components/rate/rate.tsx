@@ -1,5 +1,3 @@
-'use client';
-
 import React, { forwardRef } from 'react';
 import RcRate from 'rc-rate';
 import type { RateProps as RcRateProps } from 'rc-rate/lib/Rate';

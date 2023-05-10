@@ -1,21 +1,21 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Popconfirm from '.';
+import Popover from '.';
 import Button from '../button';
 import Avatar from '../avatar';
 
 export default {
-  title: 'Components/Popconfirm',
-  component: Popconfirm,
+  title: 'Components/Popover',
+  component: Popover,
   parameters: {
     viewMode: 'docs',
   },
-} as ComponentMeta<typeof Popconfirm>;
+} as ComponentMeta<typeof Popover>;
 
 export const Default = () => (
   <div className="h-44">
-    <Popconfirm
+    <Popover
       content={
         <div className="w-56 text-start">
           <span className="mt-2 inline-flex items-center gap-2 text-base">
@@ -36,7 +36,7 @@ export const Default = () => (
           <p className="mt-2 text-sm">
             Are you sure you want to delete the task?
           </p>
-          <div className="mt-3 mb-2 flex gap-3">
+          <div className="mb-2 mt-3 flex gap-3">
             <Button size="sm">Yes</Button>
             <Button size="sm" variant="outline">
               No
@@ -49,7 +49,7 @@ export const Default = () => (
       <Button variant="text" className="focus:!ring-0">
         Default
       </Button>
-    </Popconfirm>
+    </Popover>
   </div>
 );
 
@@ -58,7 +58,7 @@ export const Actionable = () => {
 
   return (
     <div className="h-44">
-      <Popconfirm
+      <Popover
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         content={
@@ -81,7 +81,7 @@ export const Actionable = () => {
             <p className="mt-2 text-sm">
               Are you sure you want to delete the task?
             </p>
-            <div className="mt-3 mb-2 flex gap-3">
+            <div className="mb-2 mt-3 flex gap-3">
               <Button size="sm" onClick={() => setIsOpen(false)}>
                 Yes
               </Button>
@@ -100,7 +100,7 @@ export const Actionable = () => {
         <Button variant="text" className="focus:!ring-0">
           Click on me
         </Button>
-      </Popconfirm>
+      </Popover>
     </div>
   );
 };
@@ -110,7 +110,7 @@ export const WithAvatar = () => {
 
   return (
     <div className="h-64">
-      <Popconfirm
+      <Popover
         isOpen={isOpen}
         setIsOpen={setIsOpen}
         content={
@@ -119,7 +119,8 @@ export const WithAvatar = () => {
               <Avatar
                 src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
                 className="ring-2 ring-blue ring-offset-2"
-                size="48px"
+                size="lg"
+                name="John Doe"
               />
               <div className="text-left">
                 <h1 className="text-base font-medium text-gray-900">
@@ -160,10 +161,11 @@ export const WithAvatar = () => {
         <div className="w-14 cursor-pointer">
           <Avatar
             src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
-            size="48px"
+            size="lg"
+            name="John Doe"
           />
         </div>
-      </Popconfirm>
+      </Popover>
     </div>
   );
 };

@@ -1,5 +1,3 @@
-'use client';
-
 import React, { forwardRef } from 'react';
 
 import { cn } from '../../lib/cn';
@@ -118,7 +116,7 @@ export interface CheckboxProps
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
   size?: keyof typeof inputClasses.size;
   /** Change input color */
-  color?: keyof typeof inputClasses.variant['outline']['color'];
+  color?: keyof (typeof inputClasses.variant)['outline']['color'];
   /** The rounded variants are: */
   rounded?: keyof typeof inputClasses.rounded;
   /** Available directions of the label are: */

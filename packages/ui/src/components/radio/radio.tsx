@@ -1,5 +1,3 @@
-'use client';
-
 import React, { forwardRef } from 'react';
 
 import { cn } from '../../lib/cn';
@@ -98,7 +96,7 @@ export interface RadioProps
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
   size?: keyof typeof inputClasses.size;
   /** Change radio button color */
-  color?: keyof typeof inputClasses.variant['outline']['color'];
+  color?: keyof (typeof inputClasses.variant)['outline']['color'];
   /** Available directions of the label are: */
   labelPlacement?: 'start' | 'end';
   /** Whether the input is disabled */

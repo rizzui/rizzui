@@ -1,5 +1,3 @@
-'use client';
-
 import Slider from 'rc-slider';
 import type { SliderProps } from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -39,26 +37,27 @@ export interface RangeSliderProps extends SliderProps {
   color?: keyof typeof classes.color;
 }
 
-/** A slider component enables user to pick any value from a range. We used `rc-slider` package to create Slider component.
+/**
+ * A slider component enables user to pick any value from a range. We used `rc-slider` package to create Slider component.
  * See their [documentation](https://slider-react-component.vercel.app/) for more info.
  */
-
-const RangeSlider = ({
+export default function RangeSlider({
   size = 'DEFAULT',
   color = 'DEFAULT',
   className,
   ...props
-}: RangeSliderProps) => (
-  <Slider
-    className={cn(
-      classes.base,
-      classes.size[size],
-      classes.color[color],
-      className
-    )}
-    {...props}
-  />
-);
+}: RangeSliderProps) {
+  return (
+    <Slider
+      className={cn(
+        classes.base,
+        classes.size[size],
+        classes.color[color],
+        className
+      )}
+      {...props}
+    />
+  );
+}
 
 RangeSlider.displayName = 'RangeSlider';
-export default RangeSlider;

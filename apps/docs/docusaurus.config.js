@@ -106,7 +106,7 @@ const config = {
 	favicon: 'img/rizz-favicon.svg',
 
 	// Set the production url of your site here
-	url: 'https://rizzui.vercel.app/',
+	url: 'https://rizzui.com/',
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: '/',
@@ -167,9 +167,7 @@ const config = {
 			({
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
-					// Please change this to your repo.
-					// Remove this to remove the "edit this page" links.
-					editUrl: 'https://github.com/RedQ/rizzui/tree/with-docs/apps/docs',
+					editUrl: 'https://github.com/rizzui/rizzui/apps/docs',
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
@@ -186,12 +184,6 @@ const config = {
 			fonts: {
 				myFont: ['Inter', 'sans-serif'],
 				myOtherFont: ['-apple-system', 'system-ui', 'sans-serif'],
-			},
-			// TODO: fixed dark mode color issue and removed this colorMode object
-			colorMode: {
-				defaultMode: 'light',
-				disableSwitch: false,
-				respectPrefersColorScheme: false,
 			},
 			navbar: {
 				// hideOnScroll: true,
@@ -213,7 +205,7 @@ const config = {
 						label: 'Components',
 					},
 					{
-						href: 'https://github.com/RedQ/rizzui',
+						href: 'https://github.com/rizzui/rizzui',
 						position: 'right',
 						className: 'header-github-link',
 						'aria-label': 'GitHub',

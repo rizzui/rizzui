@@ -53,7 +53,8 @@ WithAvatar.args = {
   children: (
     <>
       <Avatar
-        size="20px"
+        name="John Doe"
+        customSize="20px"
         className="mr-1.5 rtl:ml-1.5"
         src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       />

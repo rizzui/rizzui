@@ -93,8 +93,8 @@ export const WithCustomStyle = () => {
       icon: <LinkIcon />,
       avatar: (
         <Avatar
-          size="44"
           rounded="lg"
+          name="John Doe"
           src="https://randomuser.me/api/portraits/men/3.jpg"
           className="ring-2 ring-primary ring-offset-2"
         />
@@ -115,8 +115,8 @@ export const WithCustomStyle = () => {
       icon: <MoonIcon />,
       avatar: (
         <Avatar
-          size="44"
           rounded="lg"
+          name="John Doe"
           src="https://randomuser.me/api/portraits/women/40.jpg"
           className="ring-2 ring-green ring-offset-2"
         />
@@ -137,8 +137,8 @@ export const WithCustomStyle = () => {
       icon: <SunIcon />,
       avatar: (
         <Avatar
-          size="44"
           rounded="lg"
+          name="John Doe"
           src="https://randomuser.me/api/portraits/women/7.jpg"
           className="ring-2 ring-red ring-offset-2"
         />

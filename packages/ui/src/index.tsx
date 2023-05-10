@@ -27,8 +27,8 @@ export * from './components/alert';
 export { default as Announcement } from './components/announcement';
 export * from './components/announcement';
 
-// export { default as Avatar } from './components/avatar';
-// export * from './components/avatar';
+export { default as Avatar } from './components/avatar';
+export * from './components/avatar';
 
 export { default as Badge } from './components/badge';
 export * from './components/badge';
@@ -81,8 +81,8 @@ export * from './components/password';
 export { default as PinCode } from './components/pin-code';
 export * from './components/pin-code';
 
-export { default as Popconfirm } from './components/popconfirm';
-export * from './components/popconfirm';
+export { default as Popover } from './components/popover';
+export * from './components/popover';
 
 export { default as Progressbar } from './components/progressbar';
 export * from './components/progressbar';

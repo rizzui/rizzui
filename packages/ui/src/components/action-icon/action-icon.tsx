@@ -1,5 +1,3 @@
-'use client';
-
 import React, { forwardRef } from 'react';
 import cn from '../../lib/cn';
 import { SpinnerIcon } from '../../icons/spinner';
@@ -113,7 +111,7 @@ export interface ActionIconProps
   /** The rounded variants are: */
   rounded?: keyof typeof classes.rounded;
   /** Change button color */
-  color?: keyof typeof classes.variant['solid']['color'];
+  color?: keyof (typeof classes.variant)['solid']['color'];
   /** Add custom classes for extra style */
   className?: string;
 }

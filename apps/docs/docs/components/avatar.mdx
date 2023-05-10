@@ -23,8 +23,7 @@ The default style of the **Avatar**.
 
 <Paper>
 	<Avatar
-		size="48px"
-		onClick={() => {}}
+		name="Jane Doe"
 		src="https://randomuser.me/api/portraits/women/40.jpg"
 	/>
 </Paper>
@@ -35,8 +34,7 @@ import { Avatar } from 'rizzui';
 export default function App() {
 	return (
 		<Avatar
-			size="48px"
-			onClick={() => {}}
+			name="Jane Doe"
 			src="https://randomuser.me/api/portraits/women/40.jpg"
 		/>
 	);
@@ -51,14 +49,10 @@ You can add text or avatar icon to **Avatar** component using **initials** or **
 
 <Paper>
 	<div className="flex items-center gap-3 justify-around w-full">
-		<Avatar name="John Doe" initials="AB" size="48px" />
+		<Avatar name="John Doe" />
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/40.jpg"
-			size="48px"
-		/>
-		<Avatar
-			src="https://isomorphic-furyroad.vercel.app/_next/static/media/avatar-icon.ebad7416.png"
-			size="48px"
+			name="John Doe"
 		/>
 	</div>
 </Paper>
@@ -69,14 +63,10 @@ import { Avatar } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Avatar name="John Doe" initials="AB" size="48px" />
+			<Avatar name="John Doe" initials="AB" />
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/40.jpg"
-				size="48px"
-			/>
-			<Avatar
-				src="https://isomorphic-furyroad.vercel.app/_next/static/media/avatar-icon.ebad7416.png"
-				size="48px"
+				name="John Doe"
 			/>
 		</>
 	);
@@ -91,12 +81,16 @@ You can change the size of the **Avatar** using **size** property.
 
 <Paper>
 	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
-		<Avatar name="John Doe" initials="SM" size="36px" />
-		<Avatar src="https://randomuser.me/api/portraits/men/40.jpg" size="48px" />
-		<Avatar name="John Doe" initials="L" size="64px" />
+		<Avatar name="John Doe" initials="SM" size="sm" />
 		<Avatar
+			src="https://randomuser.me/api/portraits/men/40.jpg"
+			name="John Doe"
+		/>
+		<Avatar name="John Doe" initials="L" size="lg" />
+		<Avatar
+			name="John Doe"
 			src="https://randomuser.me/api/portraits/women/40.jpg"
-			size="80px"
+			size="xl"
 		/>
 	</div>
 </Paper>
@@ -107,15 +101,16 @@ import { Avatar } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Avatar name="John Doe" initials="SM" size="36px" />
+			<Avatar name="John Doe" initials="SM" size="sm" />
 			<Avatar
 				src="https://randomuser.me/api/portraits/men/40.jpg"
-				size="48px"
+				name="John Doe"
 			/>
-			<Avatar name="John Doe" initials="L" size="64px" />
+			<Avatar name="John Doe" initials="L" size="lg" />
 			<Avatar
+				name="John Doe"
 				src="https://randomuser.me/api/portraits/women/40.jpg"
-				size="80px"
+				size="xl"
 			/>
 		</>
 	);
@@ -132,27 +127,27 @@ You can change the border radius of the **Avatar** using [**rounded**](#avatar-r
 	<div className="mt-4 flex items-center justify-around gap-3 w-full flex-wrap">
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/40.jpg"
-			size="48px"
+			name="John Doe"
 			rounded="none"
 		/>
 		<Avatar
-			size="48px"
+			name="John Doe"
 			src="https://randomuser.me/api/portraits/women/41.jpg"
 			rounded="sm"
 		/>
 		<Avatar
 			rounded="md"
 			src="https://randomuser.me/api/portraits/women/42.jpg"
-			size="48px"
+			name="John Doe"
 		/>
 		<Avatar
 			rounded="lg"
 			src="https://randomuser.me/api/portraits/women/43.jpg"
-			size="48px"
+			name="John Doe"
 		/>
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/44.jpg"
-			size="48px"
+			name="John Doe"
 		/>
 	</div>
 </Paper>
@@ -165,27 +160,27 @@ export default function App() {
 		<>
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/40.jpg"
-				size="48px"
+				name="John Doe"
 				rounded="none"
 			/>
 			<Avatar
-				size="48px"
+				name="John Doe"
 				src="https://randomuser.me/api/portraits/women/41.jpg"
 				rounded="sm"
 			/>
 			<Avatar
 				rounded="md"
 				src="https://randomuser.me/api/portraits/women/42.jpg"
-				size="48px"
+				name="John Doe"
 			/>
 			<Avatar
 				rounded="lg"
 				src="https://randomuser.me/api/portraits/women/43.jpg"
-				size="48px"
+				name="John Doe"
 			/>
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/44.jpg"
-				size="48px"
+				name="John Doe"
 			/>
 		</>
 	);
@@ -200,14 +195,14 @@ You can change the color of the **Avatar** using **color** property.
 
 <Paper>
 	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
-		<Avatar name="John Doe" initials="SM" size="48px" color="#111" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#7928ca" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#e00" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#f5a623" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#0070f3" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-		<Avatar name="John Doe" initials="SM" size="48px" color="#11a849" />
+		<Avatar name="John Doe" initials="SM" />
+		<Avatar name="John Doe" initials="SM" color="invert" />
+		<Avatar name="John Doe" initials="SM" color="primary" />
+		<Avatar name="John Doe" initials="SM" color="secondary" />
+		<Avatar name="John Doe" initials="SM" color="danger" />
+		<Avatar name="John Doe" initials="SM" color="warning" />
+		<Avatar name="John Doe" initials="SM" color="success" />
+		<Avatar name="John Doe" initials="SM" color="info" />
 	</div>
 </Paper>
 
@@ -217,14 +212,14 @@ import { Avatar } from 'rizzui';
 export default function App() {
 	return (
 		<>
-			<Avatar name="John Doe" initials="SM" size="48px" color="#111" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#7928ca" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#e00" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#f5a623" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#0070f3" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-			<Avatar name="John Doe" initials="SM" size="48px" color="#11a849" />
+			<Avatar name="John Doe" initials="SM" />
+			<Avatar name="John Doe" initials="SM" color="invert" />
+			<Avatar name="John Doe" initials="SM" color="primary" />
+			<Avatar name="John Doe" initials="SM" color="secondary" />
+			<Avatar name="John Doe" initials="SM" color="danger" />
+			<Avatar name="John Doe" initials="SM" color="warning" />
+			<Avatar name="John Doe" initials="SM" color="success" />
+			<Avatar name="John Doe" initials="SM" color="info" />
 		</>
 	);
 }
@@ -240,37 +235,38 @@ You can add border to **Avatar** by adding extra className using **className** p
 	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/40.jpg"
-			size="48px"
+			name="John Doe"
 			className="ring-2 ring-gray-900 ring-offset-2"
 		/>
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/41.jpg"
-			size="48px"
+			name="John Doe"
 			className="ring-2 ring-primary ring-offset-2"
 		/>
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/42.jpg"
-			size="48px"
+			name="John Doe"
 			className="ring-2 ring-secondary ring-offset-2"
 		/>
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/43.jpg"
-			size="48px"
+			size="lg"
+			name="John Doe"
 			className="ring-2 ring-red ring-offset-2"
 		/>
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/44.jpg"
-			size="48px"
+			name="John Doe"
 			className="ring-2 ring-orange ring-offset-2"
 		/>
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/45.jpg"
-			size="48px"
+			name="John Doe"
 			className="ring-2 ring-green ring-offset-2"
 		/>
 		<Avatar
 			src="https://randomuser.me/api/portraits/women/46.jpg"
-			size="48px"
+			name="John Doe"
 			className="ring-2 ring-blue ring-offset-2"
 		/>
 	</div>
@@ -284,37 +280,37 @@ export default function App() {
 		<>
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/40.jpg"
-				size="48px"
+				name="John Doe"
 				className="ring-2 ring-gray-900 ring-offset-2"
 			/>
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/41.jpg"
-				size="48px"
+				name="John Doe"
 				className="ring-2 ring-primary ring-offset-2"
 			/>
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/42.jpg"
-				size="48px"
+				name="John Doe"
 				className="ring-2 ring-secondary ring-offset-2"
 			/>
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/43.jpg"
-				size="48px"
+				name="John Doe"
 				className="ring-2 ring-red ring-offset-2"
 			/>
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/44.jpg"
-				size="48px"
+				name="John Doe"
 				className="ring-2 ring-orange ring-offset-2"
 			/>
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/45.jpg"
-				size="48px"
+				name="John Doe"
 				className="ring-2 ring-green ring-offset-2"
 			/>
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/46.jpg"
-				size="48px"
+				name="John Doe"
 				className="ring-2 ring-blue ring-offset-2"
 			/>
 		</>
@@ -332,7 +328,7 @@ You can use **Badge** with **Avatar** component for online status.
 	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<div className="relative inline-flex">
 			<Avatar
-				size="48px"
+				name="John Doe"
 				src="https://randomuser.me/api/portraits/women/40.jpg"
 			/>
 			<Badge
@@ -345,7 +341,7 @@ You can use **Badge** with **Avatar** component for online status.
 		</div>
 		<div className="relative ml-3 inline-flex">
 			<Avatar
-				size="48px"
+				name="John Doe"
 				src="https://randomuser.me/api/portraits/women/43.jpg"
 			/>
 			<Badge
@@ -358,7 +354,7 @@ You can use **Badge** with **Avatar** component for online status.
 		</div>
 		<div className="relative ml-3 inline-flex">
 			<Avatar
-				size="48px"
+				name="John Doe"
 				src="https://randomuser.me/api/portraits/women/44.jpg"
 			/>
 			<Badge
@@ -380,7 +376,8 @@ export default function App() {
 		<>
 			<div className="relative inline-flex">
 				<Avatar
-					size="48px"
+					size="lg"
+					name="John Doe"
 					src="https://randomuser.me/api/portraits/women/40.jpg"
 				/>
 				<Badge
@@ -393,7 +390,8 @@ export default function App() {
 			</div>
 			<div className="relative ml-3 inline-flex">
 				<Avatar
-					size="48px"
+					size="lg"
+					name="John Doe"
 					src="https://randomuser.me/api/portraits/women/43.jpg"
 				/>
 				<Badge
@@ -406,7 +404,8 @@ export default function App() {
 			</div>
 			<div className="relative ml-3 inline-flex">
 				<Avatar
-					size="48px"
+					size="lg"
+					name="John Doe"
 					src="https://randomuser.me/api/portraits/women/44.jpg"
 				/>
 				<Badge
@@ -432,7 +431,8 @@ You can use **ActionIcon** component with **Avatar** component.
 	<div className="flex items-center justify-around gap-3 w-full flex-wrap">
 		<div className="relative inline-flex">
 			<Avatar
-				size="48px"
+				size="lg"
+				name="John Doe"
 				src="https://randomuser.me/api/portraits/women/40.jpg"
 			/>
 			<ActionIcon
@@ -448,7 +448,8 @@ You can use **ActionIcon** component with **Avatar** component.
 		<div className="relative inline-flex">
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/43.jpg"
-				size="48px"
+				size="lg"
+				name="John Doe"
 			/>
 			<ActionIcon
 				size="sm"
@@ -463,7 +464,8 @@ You can use **ActionIcon** component with **Avatar** component.
 		<div className="relative inline-flex">
 			<Avatar
 				src="https://randomuser.me/api/portraits/women/44.jpg"
-				size="48px"
+				size="lg"
+				name="John Doe"
 			/>
 			<ActionIcon
 				size="sm"
@@ -486,7 +488,8 @@ export default function App() {
 		<>
 			<div className="relative inline-flex">
 				<Avatar
-					size="48px"
+					size="lg"
+					name="John Doe"
 					src="https://randomuser.me/api/portraits/women/40.jpg"
 				/>
 				<ActionIcon
@@ -502,7 +505,8 @@ export default function App() {
 			<div className="relative inline-flex">
 				<Avatar
 					src="https://randomuser.me/api/portraits/women/43.jpg"
-					size="48px"
+					size="lg"
+					name="John Doe"
 				/>
 				<ActionIcon
 					size="sm"
@@ -517,7 +521,8 @@ export default function App() {
 			<div className="relative inline-flex">
 				<Avatar
 					src="https://randomuser.me/api/portraits/women/44.jpg"
-					size="48px"
+					size="lg"
+					name="John Doe"
 				/>
 				<ActionIcon
 					size="sm"
@@ -543,31 +548,31 @@ You can use **Avatar** component to create a group of avatars.
 <Paper>
 	<div className="relative my-4 flex">
 		<Avatar
-			size="42"
+			customSize="42px"
 			src="https://randomuser.me/api/portraits/women/40.jpg"
 			className="relative inline-flex  object-cover"
 		/>
 		<Avatar
-			size="42"
+			customSize="42px"
 			src="https://randomuser.me/api/portraits/women/41.jpg"
 			className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
 		/>
 		<Avatar
-			size="42"
+			customSize="42px"
 			src="https://randomuser.me/api/portraits/women/42.jpg"
 			className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
 		/>
 		<Avatar
-			size="42"
+			customSize="42px"
 			src="https://randomuser.me/api/portraits/women/43.jpg"
 			className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
 		/>
 		<Avatar
-			size="42"
+			customSize="42px"
 			src="https://randomuser.me/api/portraits/women/44.jpg"
 			className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
 		/>
-		<div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[45px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
+		<div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[25px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
 			+5
 		</div>
 	</div>
@@ -580,31 +585,31 @@ export default function App() {
 	return (
 		<>
 			<Avatar
-				size="42"
+				customSize="42px"
 				src="https://randomuser.me/api/portraits/women/40.jpg"
 				className="relative inline-flex  object-cover"
 			/>
 			<Avatar
-				size="42"
+				customSize="42px"
 				src="https://randomuser.me/api/portraits/women/41.jpg"
 				className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
 			/>
 			<Avatar
-				size="42"
+				customSize="42px"
 				src="https://randomuser.me/api/portraits/women/42.jpg"
 				className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
 			/>
 			<Avatar
-				size="42"
+				customSize="42px"
 				src="https://randomuser.me/api/portraits/women/43.jpg"
 				className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
 			/>
 			<Avatar
-				size="42"
+				customSize="42px"
 				src="https://randomuser.me/api/portraits/women/44.jpg"
 				className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
 			/>
-			<div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[45px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
+			<div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[25px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
 				+5
 			</div>
 		</>
@@ -622,71 +627,45 @@ export default function App() {
 
 ### Avatar Props
 
-Here is the API documentation of the Avatar component. You can use props like **id**, **title**, **onClick**, **onFocus**, **onBlur** etc. We are using **react-avatar** package for this component. Please follow their [**official documentation**](https://www.npmjs.com/package/react-avatar) for any query.
+Here is the API documentation of the Avatar component.
 
 <div className="overflow-x-auto">
 
-|      Props      |                Type                |                                                                                              Description                                                                                              | Default  |
-| :-------------: | :--------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------: |
-|      email      |              `string`              |                                                                               String of the email address of the user.                                                                                |  \_ \_   |
-|    md5Email     |              `string`              |                                                                         String of the MD5 hash of email address of the user.                                                                          |  \_ \_   |
-|   facebookId    |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
-|  twitterHandle  |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
-|    googleId     |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
-|   instagramId   |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
-|  githubHandle   |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
-|     skypeId     |              `string`              |                                                                                                                                                                                                       |  \_ \_   |
-|      name       |              `string`              |                                                                  Will be used to generate avatar based on the initials of the person                                                                  |  \_ \_   |
-|   maxInitials   |              `number`              |                                         Set max nr of characters used for the initials. If maxInitials=2 and the name is Foo Bar Var the initials will be FB                                          |  \_ \_   |
-|    initials     | [AvatarInitials](#avatar-initials) |                                                                      Initials to show or a method converting name into initials                                                                       |  \_ \_   |
-|      value      |              `string`              |                                                                                        Show a value as avatar                                                                                         |  \_ \_   |
-|       alt       |      [AvatarAlt](#avatar-alt)      |                                                   The alt attribute used on the avatar img tag. If not set we will fallback to either name or value                                                   |  \_ \_   |
-|      title      |    [AvatarTitle](#avatar-title)    |                                                  The title attribute used on the avatar img tag. If not set we will fallback to either name or value                                                  |  \_ \_   |
-|      color      |              `string`              |                                         Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example `#FF0000`                                          |  \_ \_   |
-|     fgColor     |              `string`              |                                         Used in combination with `name` and `value`. Give the background a fixed color with a hex like for example `#FF0000`                                          |  \_ \_   |
-|      size       |              `string`              |                                                                                          Size of the avatar                                                                                           |  \_ \_   |
-|  textSizeRatio  |              `number`              |                                                       For text based avatars the size of the text as a fragment of size (size / textSizeRatio)                                                        |  \_ \_   |
-| textMarginRatio |              `number`              | For text based avatars. The size of the minimum margin between the text and the avatar's edge, used to make sure the text will always fit inside the avatar. (calculated as `size * textMarginRatio`) |  \_ \_   |
-|      round      |    [AvatarRound](#avatar-round)    |                                                  The amount of `border-radius` to apply to the avatar corners, `true` shows the avatar in a circle.                                                   |  \_ \_   |
-|       src       |              `string`              |                                                                                         Fallback image to use                                                                                         |  \_ \_   |
-|      style      |               `any`                |                                                                            Style that will be applied on the root element                                                                             |  \_ \_   |
-|    unstyled     |             `boolean`              |                                                                                          Disable all styles                                                                                           |  \_ \_   |
-|     onClick     |  [AvatarOnclick](#avatar-onclick)  |                                                                                           Mouse click event                                                                                           |  \_ \_   |
-|     rounded     |  [AvatarRounded](#avatar-rounded)  |                                                                                                                                                                                                       | `"full"` |
-|    className    |              `string`              |                                                       Name of the CSS class you want to add to this component alongside the default sb-avatar.                                                        |  \_ \_   |
+|   Props    |               Type               |                                       Description                                        | Default  |
+| :--------: | :------------------------------: | :--------------------------------------------------------------------------------------: | :------: |
+|    name    |             `string`             | Will be used to generate avatar initials based on the person name when image is missing  |  \_ \_   |
+|  initials  |             `string`             |                        Display custom text when image is missing                         |  \_ \_   |
+|    src     |             `string`             |                              Image soruce (local or remote)                              |  \_ \_   |
+|   color    |  [AvatarColors](#avatar-colors)  |                                   Change avatar color                                    |  \_ \_   |
+|    size    |             `string`             |                                    Size of the avatar                                    |  \_ \_   |
+| customSize |             `string`             |                  customSize of the avatar, example -> customSize="62px"                  |  \_ \_   |
+|  rounded   | [AvatarRounded](#avatar-rounded) |                                    Set border radius                                     | `"full"` |
+|  onClick   | [AvatarOnclick](#avatar-onclick) |                                    Mouse click event                                     |  \_ \_   |
+| className  |             `string`             | Name of the CSS class you want to add to this component alongside the default sb-avatar. |  \_ \_   |
 
 </div>
 
 <div className="mb-10" />
 
-### Avatar Initials
+### Avatar Colors
 
 ```ts
-type AvatarInitials = 'string' | ((name: string, props: any) => string);
+type AvatarColors =
+	| 'DEFAULT'
+	| 'primary'
+	| 'secondary'
+	| 'danger'
+	| 'info'
+	| 'success'
+	| 'warning';
 ```
 
 <div className="mb-10" />
 
-### Avatar Alt
+### Avatar Rounded
 
 ```ts
-type AvatarAlt = 'string' | 'boolean';
-```
-
-<div className="mb-10" />
-
-### Avatar Title
-
-```ts
-type AvatarTitle = 'string' | 'boolean';
-```
-
-<div className="mb-10" />
-
-### Avatar Round
-
-```ts
-type AvatarRound = 'string' | 'boolean';
+type AvatarRounded = 'sm' | 'md' | 'lg' | 'full' | 'none';
 ```
 
 <div className="mb-10" />
@@ -695,12 +674,4 @@ type AvatarRound = 'string' | 'boolean';
 
 ```ts
 type AvatarOnclick = (e: SyntheticEvent<any, Event>) => any;
-```
-
-<div className="mb-10" />
-
-### Avatar Rounded
-
-```ts
-type AvatarRounded = 'sm' | 'lg' | 'none' | 'full' | 'md';
 ```

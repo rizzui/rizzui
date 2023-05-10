@@ -1,5 +1,3 @@
-'use client';
-
 import React, { useState } from 'react';
 import { Combobox as ComboBox, Transition } from '@headlessui/react';
 import type { TransitionClasses } from '@headlessui/react';
@@ -383,7 +381,7 @@ export default function AdvancedSelect({
       )}
 
       {multiple && (value as AdvancedSelectOptionDataTypes[])?.length > 0 && (
-        <div className="mt-1 mb-2.5 flex gap-2">
+        <div className="mb-2.5 mt-1 flex gap-2">
           {(value as AdvancedSelectOptionDataTypes[])?.map(
             (v: AdvancedSelectOptionDataTypes) => (
               <span

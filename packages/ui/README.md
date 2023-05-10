@@ -4,7 +4,7 @@ A Modern and Minimal React UI Library built with TailwindCSS. Designed to provid
 
 ## Getting Started
 
-Visit https://rizzui.vercel.app/docs/guide/getting-started to get started with RizzUI. 
+Visit -> https://rizzui.vercel.app/docs/guide/getting-started 
 
 
 ### Warning 

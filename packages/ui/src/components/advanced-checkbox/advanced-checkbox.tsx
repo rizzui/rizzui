@@ -1,5 +1,3 @@
-'use client';
-
 import React, { forwardRef } from 'react';
 import cn from '../../lib/cn';
 import FieldError from '../field-error-text';

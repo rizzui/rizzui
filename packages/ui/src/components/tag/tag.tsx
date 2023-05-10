@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 
 import { cn } from '../../lib/cn';
@@ -86,7 +84,7 @@ export interface TagProps extends React.HTMLAttributes<HTMLDivElement> {
   /** These are the variants we support */
   variant?: keyof typeof classes.variant;
   /** Choose color variations */
-  color?: keyof typeof classes.variant['flat']['color'];
+  color?: keyof (typeof classes.variant)['flat']['color'];
   /** Pass content of tag as children */
   children?: React.ReactNode;
   /** Whether to clear tag */
@@ -101,12 +99,12 @@ export interface TagProps extends React.HTMLAttributes<HTMLDivElement> {
   iconClassName?: string;
 }
 
-/** Tag component is used to convey grouping information of elements.
+/**
+ * Tag component is used to convey grouping information of elements.
  * It is a standalone component which is commonly used for filtering or triggering some kind of action.
  * Here is the API documentation of Tag component.
  */
-
-const Tag = ({
+export default function Tag({
   size = 'DEFAULT',
   rounded = 'DEFAULT',
   variant = 'flat',
@@ -117,28 +115,29 @@ const Tag = ({
   cancelIcon,
   className,
   iconClassName,
-}: TagProps) => (
-  <div
-    className={cn(
-      classes.base,
-      classes.size[size],
-      classes.rounded[rounded],
-      classes.variant[variant].base,
-      classes.variant[variant].color[color],
-      className
-    )}
-  >
-    {children}
-    {clearable &&
-      (cancelIcon || (
-        <XIcon
-          data-testid="tag-clear-icon"
-          onClick={onClear}
-          className={cn(iconClasses.size[size], iconClassName)}
-        />
-      ))}
-  </div>
-);
+}: TagProps) {
+  return (
+    <div
+      className={cn(
+        classes.base,
+        classes.size[size],
+        classes.rounded[rounded],
+        classes.variant[variant].base,
+        classes.variant[variant].color[color],
+        className
+      )}
+    >
+      {children}
+      {clearable &&
+        (cancelIcon || (
+          <XIcon
+            data-testid="tag-clear-icon"
+            onClick={onClear}
+            className={cn(iconClasses.size[size], iconClassName)}
+          />
+        ))}
+    </div>
+  );
+}
 
 Tag.displayName = 'Tag';
-export default Tag;

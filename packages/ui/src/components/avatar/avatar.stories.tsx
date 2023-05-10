@@ -16,9 +16,9 @@ export default {
 
 const Template: ComponentStory<typeof Avatar> = (args) => (
   <Avatar
-    size="48px"
     src="https://randomuser.me/api/portraits/women/40.jpg"
     {...args}
+    name="John Doe"
   />
 );
 
@@ -26,26 +26,26 @@ export const Default = Template.bind({});
 
 export const Variants = () => (
   <div className="flex items-center gap-6">
-    <Avatar name="John Doe" initials="AB" size="48px" />
+    <Avatar name="John Doe" initials="AB" />
     <Avatar
       src="https://randomuser.me/api/portraits/women/40.jpg"
-      size="48px"
-    />
-    <Avatar
-      src="https://isomorphic-furyroad.vercel.app/_next/static/media/avatar-icon.ebad7416.png"
-      size="48px"
+      name="John Doe"
     />
   </div>
 );
 
 export const Sizes = () => (
   <div className="flex items-center justify-around">
-    <Avatar name="John Doe" initials="SM" size="36px" />
-    <Avatar src="https://randomuser.me/api/portraits/men/40.jpg" size="48px" />
-    <Avatar name="John Doe" initials="L" size="64px" />
+    <Avatar name="John Doe" initials="SM" size="sm" />
     <Avatar
+      src="https://randomuser.me/api/portraits/men/40.jpg"
+      name="John Doe"
+    />
+    <Avatar name="John Doe" initials="L" size="lg" />
+    <Avatar
+      name="John Doe"
       src="https://randomuser.me/api/portraits/women/40.jpg"
-      size="80px"
+      size="xl"
     />
   </div>
 );
@@ -54,41 +54,41 @@ export const Rounded = () => (
   <div className="mt-4 flex items-center justify-around">
     <Avatar
       src="https://randomuser.me/api/portraits/women/40.jpg"
-      size="48px"
+      name="John Doe"
       rounded="none"
     />
     <Avatar
-      size="48px"
+      name="John Doe"
       src="https://randomuser.me/api/portraits/women/41.jpg"
       rounded="sm"
     />
     <Avatar
       rounded="md"
       src="https://randomuser.me/api/portraits/women/42.jpg"
-      size="48px"
+      name="John Doe"
     />
     <Avatar
       rounded="lg"
       src="https://randomuser.me/api/portraits/women/43.jpg"
-      size="48px"
+      name="John Doe"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/44.jpg"
-      size="48px"
+      name="John Doe"
     />
   </div>
 );
 
 export const Colors = () => (
   <div className="flex items-center justify-around">
-    <Avatar name="John Doe" initials="SM" size="48px" color="#111" />
-    <Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-    <Avatar name="John Doe" initials="SM" size="48px" color="#7928ca" />
-    <Avatar name="John Doe" initials="SM" size="48px" color="#e00" />
-    <Avatar name="John Doe" initials="SM" size="48px" color="#f5a623" />
-    <Avatar name="John Doe" initials="SM" size="48px" color="#0070f3" />
-    <Avatar name="John Doe" initials="SM" size="48px" color="#4e36f5" />
-    <Avatar name="John Doe" initials="SM" size="48px" color="#11a849" />
+    <Avatar name="John Doe" initials="SM" />
+    <Avatar name="John Doe" initials="SM" color="invert" />
+    <Avatar name="John Doe" initials="SM" color="primary" />
+    <Avatar name="John Doe" initials="SM" color="secondary" />
+    <Avatar name="John Doe" initials="SM" color="danger" />
+    <Avatar name="John Doe" initials="SM" color="warning" />
+    <Avatar name="John Doe" initials="SM" color="success" />
+    <Avatar name="John Doe" initials="SM" color="info" />
   </div>
 );
 
@@ -96,37 +96,37 @@ export const Borders = () => (
   <div className="flex items-center justify-around">
     <Avatar
       src="https://randomuser.me/api/portraits/women/40.jpg"
-      size="48px"
+      name="John Doe"
       className="ring-2 ring-gray-900 ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/41.jpg"
-      size="48px"
+      name="John Doe"
       className="ring-2 ring-primary ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/42.jpg"
-      size="48px"
+      name="John Doe"
       className="ring-2 ring-secondary ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/43.jpg"
-      size="48px"
+      name="John Doe"
       className="ring-2 ring-red ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/44.jpg"
-      size="48px"
+      name="John Doe"
       className="ring-2 ring-orange ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/45.jpg"
-      size="48px"
+      name="John Doe"
       className="ring-2 ring-green ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/46.jpg"
-      size="48px"
+      name="John Doe"
       className="ring-2 ring-blue ring-offset-2"
     />
   </div>
@@ -136,7 +136,7 @@ export const OnlineStatus = () => (
   <div className="flex items-center justify-around">
     <div className="relative inline-flex">
       <Avatar
-        size="48px"
+        name="John Doe"
         src="https://randomuser.me/api/portraits/women/40.jpg"
       />
       <Badge
@@ -149,7 +149,7 @@ export const OnlineStatus = () => (
     </div>
     <div className="relative ml-3 inline-flex">
       <Avatar
-        size="48px"
+        name="John Doe"
         src="https://randomuser.me/api/portraits/women/43.jpg"
       />
       <Badge
@@ -162,7 +162,7 @@ export const OnlineStatus = () => (
     </div>
     <div className="relative ml-3 inline-flex">
       <Avatar
-        size="48px"
+        name="John Doe"
         src="https://randomuser.me/api/portraits/women/44.jpg"
       />
       <Badge
@@ -180,7 +180,7 @@ export const WithIcons = () => (
   <div className="flex items-center justify-around">
     <div className="relative inline-flex">
       <Avatar
-        size="48px"
+        name="John Doe"
         src="https://randomuser.me/api/portraits/women/40.jpg"
       />
       <ActionIcon
@@ -188,7 +188,7 @@ export const WithIcons = () => (
         rounded="full"
         variant="solid"
         color="warning"
-        className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+        className="absolute bottom-0 right-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
       >
         <PlusIcon />
       </ActionIcon>
@@ -196,14 +196,14 @@ export const WithIcons = () => (
     <div className="relative inline-flex">
       <Avatar
         src="https://randomuser.me/api/portraits/women/43.jpg"
-        size="48px"
+        name="John Doe"
       />
       <ActionIcon
         size="sm"
         rounded="full"
         variant="solid"
         color="danger"
-        className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+        className="absolute bottom-0 right-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -222,14 +222,14 @@ export const WithIcons = () => (
     <div className="relative inline-flex">
       <Avatar
         src="https://randomuser.me/api/portraits/women/44.jpg"
-        size="48px"
+        name="John Doe"
       />
       <ActionIcon
         size="sm"
         rounded="full"
         variant="solid"
         color="success"
-        className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
+        className="absolute bottom-0 right-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
       >
         <CheckmarkIcon />
       </ActionIcon>
@@ -240,31 +240,36 @@ export const WithIcons = () => (
 export const Group = () => (
   <div className="relative my-4 flex">
     <Avatar
-      size="42"
+      customSize="42px"
+      name="John Doe"
       src="https://randomuser.me/api/portraits/women/40.jpg"
       className="relative inline-flex  object-cover"
     />
     <Avatar
-      size="42"
+      customSize="42px"
+      name="John Doe"
       src="https://randomuser.me/api/portraits/women/41.jpg"
       className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
     />
     <Avatar
-      size="42"
+      customSize="42px"
+      name="John Doe"
       src="https://randomuser.me/api/portraits/women/42.jpg"
       className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
     />
     <Avatar
-      size="42"
+      customSize="42px"
+      name="John Doe"
       src="https://randomuser.me/api/portraits/women/43.jpg"
       className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
     />
     <Avatar
-      size="42"
+      customSize="42px"
+      name="John Doe"
       src="https://randomuser.me/api/portraits/women/44.jpg"
       className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
     />
-    <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[45px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
+    <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[24px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
       +5
     </div>
   </div>

@@ -300,7 +300,7 @@ export const WithHeader = () => (
     trigger={
       <Avatar
         src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-        size="45"
+        name="John Doe"
       />
     }
   >
@@ -309,7 +309,7 @@ export const WithHeader = () => (
         <span className="flex text-gray-600">
           <Avatar
             src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-            size="40"
+            name="John Doe"
           />
           <span className="ml-2 text-start">
             <h2 className="!text-gray-900">Jhon Doe</h2>

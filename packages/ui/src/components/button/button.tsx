@@ -1,5 +1,3 @@
-'use client';
-
 import React, { forwardRef } from 'react';
 import Loader from '../loader';
 import cn from '../../lib/cn';
@@ -106,7 +104,7 @@ export interface ButtonProps
   /** The rounded variants are: */
   rounded?: keyof typeof buttonClasses.rounded;
   /** Change button color */
-  color?: keyof typeof buttonClasses.variant['solid']['color'];
+  color?: keyof (typeof buttonClasses.variant)['solid']['color'];
   /** Disable state */
   disabled?: boolean;
   /** Add custom classes for extra style */
