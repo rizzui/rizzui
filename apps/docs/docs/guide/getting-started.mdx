@@ -8,9 +8,15 @@ Welcome to the RizzUI. A Modern and Minimal React UI Library built with Tailwind
 
 ## Installation
 
+System Requirements:
+
+- Node.js 16.17.0 or later.
+
 ```bash title=Terminal
 npm install rizzui
 ```
+
+_*Note: Also, you can use other package managers Yarn(v1.21.1), PNPM etc.*_
 
 After installing our rizzui package, now need to install TailwindCSS. First, go to your React / Next.js project directory, install RizzUI by running either of the following:
 
@@ -345,7 +351,11 @@ You are good to go to use our components in your application
 
 ## Usage
 
+The "use client" directive must be defined at the top of a file before any imports.
+
 ```tsx
+'use client';
+
 import { Button } from 'rizzui';
 
 export default function App() {
