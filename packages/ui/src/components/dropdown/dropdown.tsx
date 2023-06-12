@@ -52,12 +52,15 @@ export default function Dropdown({
   dropdownButtonClassName,
   dropdownClassName,
 }: DropdownProps) {
+  const TransitionComponent: React.ElementType = Transition;
+  const MenuButton: React.ElementType = Menu.Button;
+  const MenuItems: React.ElementType = Menu.Items;
   return (
     <Menu as="div" className={cn('relative', className)}>
-      <Menu.Button as="div" className={dropdownButtonClassName}>
+      <MenuButton as="div" className={dropdownButtonClassName}>
         {trigger}
-      </Menu.Button>
-      <Transition
+      </MenuButton>
+      <TransitionComponent
         as={Fragment}
         enter="transition ease-out duration-100"
         enterFrom="transform opacity-0 scale-95"
@@ -66,7 +69,7 @@ export default function Dropdown({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items
+        <MenuItems
           data-testid="dropdown-container"
           className={cn(
             'absolute z-10 mt-2 border border-gray-100 bg-gray-0',
@@ -76,8 +79,8 @@ export default function Dropdown({
           )}
         >
           {children}
-        </Menu.Items>
-      </Transition>
+        </MenuItems>
+      </TransitionComponent>
     </Menu>
   );
 }

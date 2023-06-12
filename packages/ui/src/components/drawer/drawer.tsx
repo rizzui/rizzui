@@ -38,7 +38,7 @@ function isPlacementOnYAxis(placement: keyof typeof drawerClasses.placement) {
 
 export type DrawerSize = 'sm' | 'DEFAULT' | 'lg' | 'xl' | 'full';
 
-export interface DrawerProps {
+export type DrawerProps = {
   /** Whether the Drawer is open or not */
   isOpen: boolean;
   /** Called when drawer is closed (Escape key and click outside, depending on options) */
@@ -55,7 +55,7 @@ export interface DrawerProps {
   containerClassName?: string;
   /** Set custom style classes for the Drawer root element */
   className?: string;
-}
+};
 
 /**
  * Display overlay area at any side of the screen
@@ -71,6 +71,8 @@ export default function Drawer({
   className,
   children,
 }: React.PropsWithChildren<DrawerProps>) {
+  const TransitionComponent: React.ElementType = Transition;
+  const TransitionChild: React.ElementType = Transition.Child;
   // checking customSize value
   if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
     const checkedCustomSizeValue =
@@ -82,13 +84,13 @@ export default function Drawer({
     }
   }
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <TransitionComponent appear show={isOpen} as={Fragment}>
       <Dialog
         as="aside"
         onClose={onClose}
         className={cn('fixed inset-0 z-[999] overflow-hidden', className)}
       >
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="ease-in-out duration-300"
           enterFrom="opacity-0"
@@ -100,7 +102,7 @@ export default function Drawer({
           <Dialog.Overlay
             className={cn(drawerClasses.overlay, overlayClassName)}
           />
-        </Transition.Child>
+        </TransitionChild>
         {/*
           -> Please do not remove this Sr Only button.
           -> It's required this button to tackle the HeadlessUI's FocusTap Warnings
@@ -108,7 +110,7 @@ export default function Drawer({
         <button type="button" className="sr-only">
           Sr Only
         </button>
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="transform transition ease-in-out duration-300"
           enterFrom={drawerClasses.placement[placement]}
@@ -148,9 +150,9 @@ export default function Drawer({
           >
             {children}
           </div>
-        </Transition.Child>
+        </TransitionChild>
       </Dialog>
-    </Transition>
+    </TransitionComponent>
   );
 }
 

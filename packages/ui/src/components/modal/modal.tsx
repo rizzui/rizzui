@@ -27,7 +27,7 @@ const CHECK_VALID_CUSTOM_SIZE = /(\d*px)|(\d*%)?/g;
 
 export type ModalSize = 'sm' | 'DEFAULT' | 'lg' | 'xl' | 'full';
 
-export interface ModalProps {
+export type ModalProps = {
   /** Whether the Modal is open or not */
   isOpen: boolean;
   /** Called when modal is closed (Escape key and click outside, depending on options) */
@@ -46,7 +46,7 @@ export interface ModalProps {
   containerClassName?: string;
   /** Set custom style classes for the Modal root element */
   className?: string;
-}
+};
 
 /**
  * A fully-managed renderless Modal component. When requiring users to interact with the application, but without jumping to a new page and interrupting the user's workflow, you can use Modal to create a new floating layer over the current page to get user feedback or display information.
@@ -63,6 +63,8 @@ export default function Modal({
   className,
   children,
 }: React.PropsWithChildren<ModalProps>) {
+  const TransitionComponent: React.ElementType = Transition;
+  const TransitionChild: React.ElementType = Transition.Child;
   // checking customSize value
   if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
     const checkedCustomSizeValue =
@@ -74,7 +76,7 @@ export default function Modal({
     }
   }
   return (
-    <Transition appear show={isOpen} as={Fragment}>
+    <TransitionComponent appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
         onClose={onClose}
@@ -90,7 +92,7 @@ export default function Modal({
             size !== 'full' && [!noGutter && 'p-4 sm:p-5']
           )}
         >
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="ease-in-out duration-300"
             enterFrom="opacity-0"
@@ -102,7 +104,7 @@ export default function Modal({
             <Dialog.Overlay
               className={cn(modalClasses.overlay, overlayClassName)}
             />
-          </Transition.Child>
+          </TransitionChild>
           {/*
             -> Please do not remove this Sr Only button.
             -> It's required this button to tackle the HeadlessUI's FocusTap Warnings
@@ -110,7 +112,7 @@ export default function Modal({
           <button type="button" className="sr-only">
             Sr Only
           </button>
-          <Transition.Child
+          <TransitionChild
             as={Fragment}
             enter="ease-in-out duration-300"
             enterFrom="opacity-0 scale-95"
@@ -136,10 +138,10 @@ export default function Modal({
                 {children}
               </div>
             </div>
-          </Transition.Child>
+          </TransitionChild>
         </div>
       </Dialog>
-    </Transition>
+    </TransitionComponent>
   );
 }
 

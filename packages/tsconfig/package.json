@@ -1,10 +1,10 @@
 {
-	"name": "tsconfig",
-	"version": "0.5.2",
-	"private": true,
-	"files": [
-		"base.json",
-		"nextjs.json",
-		"react-library.json"
-	]
+  "name": "tsconfig",
+  "version": "0.5.6",
+  "private": true,
+  "files": [
+    "base.json",
+    "nextjs.json",
+    "react-library.json"
+  ]
 }

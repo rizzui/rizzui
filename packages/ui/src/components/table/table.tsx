@@ -28,7 +28,7 @@ type RCTableProps = ExtractProps<typeof RcTable>;
 export interface TableProps
   extends Omit<RCTableProps, 'className' | 'emptyText'> {
   /** Set empty text, it will only appear when table has no data */
-  emptyText?: React.ReactNode;
+  emptyText?: React.ReactElement;
   /** The variants of the component are: */
   variant?: keyof typeof classes.variants;
   /** Add striping style */
