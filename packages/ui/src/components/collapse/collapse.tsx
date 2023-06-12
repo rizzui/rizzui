@@ -46,6 +46,7 @@ export default function Collapse({
   const Component = tag;
   return (
     <Component
+      role=""
       data-testid="collapse-parent"
       className={cn('aegon-collapse', className)}
       aria-expanded={open}

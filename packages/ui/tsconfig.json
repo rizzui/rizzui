@@ -1,20 +1,18 @@
 {
-  "extends": "tsconfig/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-jsx",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
     "module": "esnext",
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "moduleResolution": "node",
-    "isolatedModules": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "strict": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"],
+  "include": ["src"],
+  "exclude": ["dist", "build", "node_modules"]
 }

@@ -1,18 +1,19 @@
 {
   "name": "rizzui",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rizzui/rizzui.git",
-    "directory": "packages/ui"
+    "url": "https://github.com/rizzui/rizzui.git"
   },
   "homepage": "https://rizzui.com/",
+  "author": "REDQ (https://redq.io/)",
   "keywords": [
-    "Rizz UI",
+    "RizzUI",
+    "rizzui",
     "components",
     "React Components",
-    "React UI"
+    "React & TailwindCSS Components"
   ],
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
@@ -24,24 +25,6 @@
     "test": "jest --coverage",
     "test:ci": "yarn test --ci",
     "test:watch": "jest --watch"
-  },
-  "tsup": {
-    "entry": [
-      "src/index.tsx"
-    ],
-    "treeshake": true,
-    "sourcemap": true,
-    "minify": true,
-    "clean": true,
-    "dts": true,
-    "splitting": false,
-    "format": [
-      "cjs",
-      "esm"
-    ],
-    "external": [
-      "react"
-    ]
   },
   "types": "./dist/index.d.ts",
   "exports": {

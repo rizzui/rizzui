@@ -2,8 +2,8 @@
 sidebar_position: 7
 ---
 
-import { Dropdown, Button, DropdownItem, cn, ActionIcon, Avatar } from 'rizzui';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { Dropdown, Button, DropdownItem, cn, ActionIcon, Avatar } from "rizzui";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import {
   AdjustmentsHorizontalIcon,
   PencilIcon,
@@ -13,15 +13,15 @@ import {
   ShareIcon,
   HeartIcon,
   TrashIcon,
-} from '@heroicons/react/24/outline';
-import Paper from '@site/src/components/paper';
+} from "@heroicons/react/24/outline";
+import Paper from "@site/src/components/paper";
 
 # Dropdown
 
 A floating container which will appear on clicking the dropdown button.
 
 ```tsx
-import { Dropdown } from 'rizzui';
+import { Dropdown, DropdownItem } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -41,28 +41,28 @@ A simple dropdown with component **Dropdown** and **DropdownItem**.
   >
     <DropdownItem className="mt-3 px-5 py-2" activeClassName="bg-gray-100">
       {({ active }) => (
-        <span className={cn('text-gray-600', active && '!text-gray-900')}>
+        <span className={cn("text-gray-600", active && "!text-gray-900")}>
           Account Settings
         </span>
       )}
     </DropdownItem>
     <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
       {({ active }) => (
-        <span className={cn('text-gray-600', active && '!text-gray-900')}>
+        <span className={cn("text-gray-600", active && "!text-gray-900")}>
           Support
         </span>
       )}
     </DropdownItem>
     <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
       {({ active }) => (
-        <span className={cn('text-gray-600', active && '!text-gray-900')}>
+        <span className={cn("text-gray-600", active && "!text-gray-900")}>
           License
         </span>
       )}
     </DropdownItem>
     <DropdownItem className="mb-3 px-5 py-2" activeClassName="bg-gray-100">
       {({ active }) => (
-        <span className={cn('text-gray-600', active && '!text-gray-900')}>
+        <span className={cn("text-gray-600", active && "!text-gray-900")}>
           Sign Out
         </span>
       )}
@@ -71,7 +71,7 @@ A simple dropdown with component **Dropdown** and **DropdownItem**.
 </Paper>
 
 ```tsx
-import { Dropdown, Button, DropdownItem } from 'rizzui';
+import { Dropdown, Button, DropdownItem } from "rizzui";
 
 export default function App() {
   return (
@@ -85,28 +85,28 @@ export default function App() {
     >
       <DropdownItem className="mt-3 px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
-          <span className={cn('text-gray-600', active && '!text-gray-900')}>
+          <span className={cn("text-gray-600", active && "!text-gray-900")}>
             Account Settings
           </span>
         )}
       </DropdownItem>
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
-          <span className={cn('text-gray-600', active && '!text-gray-900')}>
+          <span className={cn("text-gray-600", active && "!text-gray-900")}>
             Support
           </span>
         )}
       </DropdownItem>
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
-          <span className={cn('text-gray-600', active && '!text-gray-900')}>
+          <span className={cn("text-gray-600", active && "!text-gray-900")}>
             License
           </span>
         )}
       </DropdownItem>
       <DropdownItem className="mb-3 px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
-          <span className={cn('text-gray-600', active && '!text-gray-900')}>
+          <span className={cn("text-gray-600", active && "!text-gray-900")}>
             Sign Out
           </span>
         )}
@@ -124,11 +124,11 @@ You can change the border radius of **Dropdown** using [**rounded**](#dropdown-r
 
 <Paper className="flex-row justify-start flex-wrap gap-6">
   {[
-    ['sm', 'Small'],
-    ['DEFAULT', 'Default'],
-    ['lg', 'Large'],
-    ['xl', 'Extra Large'],
-    ['none', 'None'],
+    ["sm", "Small"],
+    ["DEFAULT", "Default"],
+    ["lg", "Large"],
+    ["xl", "Extra Large"],
+    ["none", "None"],
   ].map((item) => (
     <Dropdown
       key={item[0]}
@@ -140,7 +140,7 @@ You can change the border radius of **Dropdown** using [**rounded**](#dropdown-r
       rounded={item[0]}
       dropdownClassName="w-48 mt-4"
     >
-      {['Account Settings', 'Support', 'License', 'Sign Out'].map(
+      {["Account Settings", "Support", "License", "Sign Out"].map(
         (item, index) => (
           <DropdownItem
             key={item}
@@ -148,7 +148,7 @@ You can change the border radius of **Dropdown** using [**rounded**](#dropdown-r
             activeClassName="bg-gray-100"
           >
             {({ active }) => (
-              <span className={cn('text-gray-600', active && '!text-gray-900')}>
+              <span className={cn("text-gray-600", active && "!text-gray-900")}>
                 {item}
               </span>
             )}
@@ -160,18 +160,18 @@ You can change the border radius of **Dropdown** using [**rounded**](#dropdown-r
 </Paper>
 
 ```tsx
-import { Dropdown, Button, DropdownItem, cn } from 'rizzui';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { Dropdown, Button, DropdownItem, cn } from "rizzui";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 export default function App() {
   return (
     <>
       {[
-        ['sm', 'Small'],
-        ['DEFAULT', 'Default'],
-        ['lg', 'Large'],
-        ['xl', 'Extra Large'],
-        ['none', 'None'],
+        ["sm", "Small"],
+        ["DEFAULT", "Default"],
+        ["lg", "Large"],
+        ["xl", "Extra Large"],
+        ["none", "None"],
       ].map((item) => (
         <Dropdown
           key={item[0]}
@@ -183,7 +183,7 @@ export default function App() {
           rounded={item[0]}
           dropdownClassName="w-48 mt-4"
         >
-          {['Account Settings', 'Support', 'License', 'Sign Out'].map(
+          {["Account Settings", "Support", "License", "Sign Out"].map(
             (item, index) => (
               <DropdownItem
                 key={item}
@@ -192,7 +192,7 @@ export default function App() {
               >
                 {({ active }) => (
                   <span
-                    className={cn('text-gray-600', active && '!text-gray-900')}
+                    className={cn("text-gray-600", active && "!text-gray-900")}
                   >
                     {item}
                   </span>
@@ -215,11 +215,11 @@ You can change the drop shadow of **Dropdown** using [**shadow**](#dropdown-shad
 
 <Paper className="flex-row justify-start flex-wrap gap-6">
   {[
-    ['sm', 'Small'],
-    ['DEFAULT', 'Default'],
-    ['lg', 'Large'],
-    ['xl', 'Extra Large'],
-    ['none', 'None'],
+    ["sm", "Small"],
+    ["DEFAULT", "Default"],
+    ["lg", "Large"],
+    ["xl", "Extra Large"],
+    ["none", "None"],
   ].map((item) => (
     <Dropdown
       key={item[0]}
@@ -231,7 +231,7 @@ You can change the drop shadow of **Dropdown** using [**shadow**](#dropdown-shad
       shadow={item[0]}
       dropdownClassName="w-48 mt-4"
     >
-      {['Account Settings', 'Support', 'License', 'Sign Out'].map(
+      {["Account Settings", "Support", "License", "Sign Out"].map(
         (item, index) => (
           <DropdownItem
             key={item}
@@ -239,7 +239,7 @@ You can change the drop shadow of **Dropdown** using [**shadow**](#dropdown-shad
             activeClassName="bg-gray-100"
           >
             {({ active }) => (
-              <span className={cn('text-gray-600', active && '!text-gray-900')}>
+              <span className={cn("text-gray-600", active && "!text-gray-900")}>
                 {item}
               </span>
             )}
@@ -251,18 +251,18 @@ You can change the drop shadow of **Dropdown** using [**shadow**](#dropdown-shad
 </Paper>
 
 ```tsx
-import { Dropdown, Button, DropdownItem, cn } from 'rizzui';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { Dropdown, Button, DropdownItem, cn } from "rizzui";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 export default function App() {
   return (
     <>
       {[
-        ['sm', 'Small'],
-        ['DEFAULT', 'Default'],
-        ['lg', 'Large'],
-        ['xl', 'Extra Large'],
-        ['none', 'None'],
+        ["sm", "Small"],
+        ["DEFAULT", "Default"],
+        ["lg", "Large"],
+        ["xl", "Extra Large"],
+        ["none", "None"],
       ].map((item) => (
         <Dropdown
           key={item[0]}
@@ -274,7 +274,7 @@ export default function App() {
           shadow={item[0]}
           dropdownClassName="w-48 mt-4"
         >
-          {['Account Settings', 'Support', 'License', 'Sign Out'].map(
+          {["Account Settings", "Support", "License", "Sign Out"].map(
             (item, index) => (
               <DropdownItem
                 key={item}
@@ -283,7 +283,7 @@ export default function App() {
               >
                 {({ active }) => (
                   <span
-                    className={cn('text-gray-600', active && '!text-gray-900')}
+                    className={cn("text-gray-600", active && "!text-gray-900")}
                   >
                     {item}
                   </span>
@@ -319,8 +319,8 @@ You can use icon inside **Dropdown** and **DropdownItem**.
         {({ active }) => (
           <span
             className={cn(
-              'flex items-center text-gray-600',
-              active && '!text-gray-900'
+              "flex items-center text-gray-600",
+              active && "!text-gray-900"
             )}
           >
             <PencilIcon className="mr-2 h-4 w-4" />
@@ -332,8 +332,8 @@ You can use icon inside **Dropdown** and **DropdownItem**.
         {({ active }) => (
           <span
             className={cn(
-              'flex items-center text-gray-600',
-              active && '!text-gray-900'
+              "flex items-center text-gray-600",
+              active && "!text-gray-900"
             )}
           >
             <DocumentDuplicateIcon className="mr-2 h-4 w-4" />
@@ -347,8 +347,8 @@ You can use icon inside **Dropdown** and **DropdownItem**.
         {({ active }) => (
           <span
             className={cn(
-              'flex items-center text-gray-600',
-              active && '!text-gray-900'
+              "flex items-center text-gray-600",
+              active && "!text-gray-900"
             )}
           >
             <ArchiveBoxIcon className="mr-2 h-4 w-4" />
@@ -360,8 +360,8 @@ You can use icon inside **Dropdown** and **DropdownItem**.
         {({ active }) => (
           <span
             className={cn(
-              'flex items-center text-gray-600',
-              active && '!text-gray-900'
+              "flex items-center text-gray-600",
+              active && "!text-gray-900"
             )}
           >
             <ArrowRightCircleIcon className="mr-2 h-4 w-4" />
@@ -375,8 +375,8 @@ You can use icon inside **Dropdown** and **DropdownItem**.
         {({ active }) => (
           <span
             className={cn(
-              'flex items-center text-gray-600',
-              active && '!text-gray-900'
+              "flex items-center text-gray-600",
+              active && "!text-gray-900"
             )}
           >
             <ShareIcon className="mr-2 h-4 w-4" />
@@ -388,8 +388,8 @@ You can use icon inside **Dropdown** and **DropdownItem**.
         {({ active }) => (
           <span
             className={cn(
-              'flex items-center text-gray-600',
-              active && '!text-gray-900'
+              "flex items-center text-gray-600",
+              active && "!text-gray-900"
             )}
           >
             <HeartIcon className="mr-2 h-4 w-4" />
@@ -403,8 +403,8 @@ You can use icon inside **Dropdown** and **DropdownItem**.
         {({ active }) => (
           <span
             className={cn(
-              'flex items-center text-gray-600',
-              active && '!text-gray-900'
+              "flex items-center text-gray-600",
+              active && "!text-gray-900"
             )}
           >
             <TrashIcon className="mr-2 h-4 w-4" />
@@ -417,7 +417,7 @@ You can use icon inside **Dropdown** and **DropdownItem**.
 </Paper>
 
 ```tsx
-import { Dropdown, Button, DropdownItem, cn, ActionIcon } from 'rizzui';
+import { Dropdown, Button, DropdownItem, cn, ActionIcon } from "rizzui";
 import {
   AdjustmentsHorizontalIcon,
   PencilIcon,
@@ -427,7 +427,7 @@ import {
   ShareIcon,
   HeartIcon,
   TrashIcon,
-} from '@heroicons/react/24/outline';
+} from "@heroicons/react/24/outline";
 
 export default function App() {
   return (
@@ -445,8 +445,8 @@ export default function App() {
           {({ active }) => (
             <span
               className={cn(
-                'flex items-center text-gray-600',
-                active && '!text-gray-900'
+                "flex items-center text-gray-600",
+                active && "!text-gray-900"
               )}
             >
               <PencilIcon className="mr-2 h-4 w-4" />
@@ -458,8 +458,8 @@ export default function App() {
           {({ active }) => (
             <span
               className={cn(
-                'flex items-center text-gray-600',
-                active && '!text-gray-900'
+                "flex items-center text-gray-600",
+                active && "!text-gray-900"
               )}
             >
               <DocumentDuplicateIcon className="mr-2 h-4 w-4" />
@@ -473,8 +473,8 @@ export default function App() {
           {({ active }) => (
             <span
               className={cn(
-                'flex items-center text-gray-600',
-                active && '!text-gray-900'
+                "flex items-center text-gray-600",
+                active && "!text-gray-900"
               )}
             >
               <ArchiveBoxIcon className="mr-2 h-4 w-4" />
@@ -486,8 +486,8 @@ export default function App() {
           {({ active }) => (
             <span
               className={cn(
-                'flex items-center text-gray-600',
-                active && '!text-gray-900'
+                "flex items-center text-gray-600",
+                active && "!text-gray-900"
               )}
             >
               <ArrowRightCircleIcon className="mr-2 h-4 w-4" />
@@ -501,8 +501,8 @@ export default function App() {
           {({ active }) => (
             <span
               className={cn(
-                'flex items-center text-gray-600',
-                active && '!text-gray-900'
+                "flex items-center text-gray-600",
+                active && "!text-gray-900"
               )}
             >
               <ShareIcon className="mr-2 h-4 w-4" />
@@ -514,8 +514,8 @@ export default function App() {
           {({ active }) => (
             <span
               className={cn(
-                'flex items-center text-gray-600',
-                active && '!text-gray-900'
+                "flex items-center text-gray-600",
+                active && "!text-gray-900"
               )}
             >
               <HeartIcon className="mr-2 h-4 w-4" />
@@ -529,8 +529,8 @@ export default function App() {
           {({ active }) => (
             <span
               className={cn(
-                'flex items-center text-gray-600',
-                active && '!text-gray-900'
+                "flex items-center text-gray-600",
+                active && "!text-gray-900"
               )}
             >
               <TrashIcon className="mr-2 h-4 w-4" />
@@ -575,21 +575,21 @@ You can use custom header to **Dropdown**.
     <div className="mt-3 mb-2 pt-2">
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
-          <span className={cn('text-gray-600', active && '!text-gray-900')}>
+          <span className={cn("text-gray-600", active && "!text-gray-900")}>
             Account Settings
           </span>
         )}
       </DropdownItem>
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
-          <span className={cn('text-gray-600', active && '!text-gray-900')}>
+          <span className={cn("text-gray-600", active && "!text-gray-900")}>
             Support
           </span>
         )}
       </DropdownItem>
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
-          <span className={cn('text-gray-600', active && '!text-gray-900')}>
+          <span className={cn("text-gray-600", active && "!text-gray-900")}>
             License
           </span>
         )}
@@ -598,7 +598,7 @@ You can use custom header to **Dropdown**.
     <div className="mt-2 mb-3 pt-2">
       <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
         {({ active }) => (
-          <span className={cn('text-gray-600', active && '!text-gray-900')}>
+          <span className={cn("text-gray-600", active && "!text-gray-900")}>
             Sign Out
           </span>
         )}
@@ -608,7 +608,7 @@ You can use custom header to **Dropdown**.
 </Paper>
 
 ```tsx
-import { Dropdown, DropdownItem, Avatar } from 'rizzui';
+import { Dropdown, DropdownItem, Avatar } from "rizzui";
 
 export default function App() {
   return (
@@ -639,21 +639,21 @@ export default function App() {
       <div className="mt-3 mb-2 pt-2">
         <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
           {({ active }) => (
-            <span className={cn('text-gray-600', active && '!text-gray-900')}>
+            <span className={cn("text-gray-600", active && "!text-gray-900")}>
               Account Settings
             </span>
           )}
         </DropdownItem>
         <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
           {({ active }) => (
-            <span className={cn('text-gray-600', active && '!text-gray-900')}>
+            <span className={cn("text-gray-600", active && "!text-gray-900")}>
               Support
             </span>
           )}
         </DropdownItem>
         <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
           {({ active }) => (
-            <span className={cn('text-gray-600', active && '!text-gray-900')}>
+            <span className={cn("text-gray-600", active && "!text-gray-900")}>
               License
             </span>
           )}
@@ -662,7 +662,7 @@ export default function App() {
       <div className="mt-2 mb-3 pt-2">
         <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
           {({ active }) => (
-            <span className={cn('text-gray-600', active && '!text-gray-900')}>
+            <span className={cn("text-gray-600", active && "!text-gray-900")}>
               Sign Out
             </span>
           )}
@@ -681,33 +681,33 @@ You can use colors with **Dropdown**.
 
 <Paper className="flex-row flex-wrap gap-6">
   {[
-    'primary',
-    'secondary',
-    'danger/red',
-    'info/blue',
-    'success/green',
-    'warning/orange',
+    "primary",
+    "secondary",
+    "danger/red",
+    "info/blue",
+    "success/green",
+    "warning/orange",
   ].map((color) => (
     <Dropdown
       key={color}
       dropdownClassName="w-48 mt-4"
       trigger={
-        <Button variant="flat" color={color.split('/')[0]}>
-          {color.split('/')[0]}
+        <Button variant="flat" color={color.split("/")[0]}>
+          {color.split("/")[0]}
           <ChevronDownIcon className="ml-2 w-5" />
         </Button>
       }
     >
-      {['Account Settings', 'Support', 'License', 'Sign Out'].map(
+      {["Account Settings", "Support", "License", "Sign Out"].map(
         (item, index) => (
           <DropdownItem
             key={item}
-            className={cn('px-5 py-2 text-gray-600', {
-              'mt-3': index === 0,
-              'mb-3': index === 3,
+            className={cn("px-5 py-2 text-gray-600", {
+              "mt-3": index === 0,
+              "mb-3": index === 3,
             })}
-            activeClassName={`bg-${color.split('/')[1] || color}-lighter text-${
-              color.split('/')[1] || color
+            activeClassName={`bg-${color.split("/")[1] || color}-lighter text-${
+              color.split("/")[1] || color
             }-dark`}
           >
             {() => item}
@@ -719,40 +719,40 @@ You can use colors with **Dropdown**.
 </Paper>
 
 ```tsx
-import { Dropdown, Button, DropdownItem, cn } from 'rizzui';
+import { Dropdown, Button, DropdownItem, cn } from "rizzui";
 
 export default function App() {
   return (
     <div>
       {[
-        'primary',
-        'secondary',
-        'danger/red',
-        'info/blue',
-        'success/green',
-        'warning/orange',
+        "primary",
+        "secondary",
+        "danger/red",
+        "info/blue",
+        "success/green",
+        "warning/orange",
       ].map((color) => (
         <Dropdown
           key={color}
           dropdownClassName="w-48 mt-4"
           trigger={
-            <Button variant="flat" color={color.split('/')[0]}>
-              {color.split('/')[0]}
+            <Button variant="flat" color={color.split("/")[0]}>
+              {color.split("/")[0]}
               <ChevronDownIcon className="ml-2 w-5" />
             </Button>
           }
         >
-          {['Account Settings', 'Support', 'License', 'Sign Out'].map(
+          {["Account Settings", "Support", "License", "Sign Out"].map(
             (item, index) => (
               <DropdownItem
                 key={item}
-                className={cn('px-5 py-2 text-gray-600', {
-                  'mt-3': index === 0,
-                  'mb-3': index === 3,
+                className={cn("px-5 py-2 text-gray-600", {
+                  "mt-3": index === 0,
+                  "mb-3": index === 3,
                 })}
                 activeClassName={`bg-${
-                  color.split('/')[1] || color
-                }-lighter text-${color.split('/')[1] || color}-dark`}
+                  color.split("/")[1] || color
+                }-lighter text-${color.split("/")[1] || color}-dark`}
               >
                 {() => item}
               </DropdownItem>
@@ -807,7 +807,7 @@ type DropdownChildren = ((string | number | boolean | ReactElement<any, string |
 ### Dropdown Rounded
 
 ```ts
-type DropdownRounded = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'none';
+type DropdownRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
 ```
 
 <div className="mb-10" />
@@ -815,7 +815,7 @@ type DropdownRounded = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'none';
 ### Dropdown Shadows
 
 ```ts
-type DropdownShadows = 'DEFAULT' | 'sm' | 'lg' | 'xl' | 'none';
+type DropdownShadows = "DEFAULT" | "sm" | "lg" | "xl" | "none";
 ```
 
 <div className="mb-20" />
