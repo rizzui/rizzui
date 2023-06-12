@@ -4,10 +4,9 @@ A Modern and Minimal React UI Library built with TailwindCSS. Designed to provid
 
 ## Getting Started
 
-Visit -> https://rizzui.vercel.app/docs/guide/getting-started 
+Visit -> https://rizzui.com/docs/guide/getting-started
 
-
-### Warning 
+### Warning
 
 This project is still in development, it might have bugs and breaking changes so it is not recommended to use it in production. We hope to have a stable version soon 🚀.
 
