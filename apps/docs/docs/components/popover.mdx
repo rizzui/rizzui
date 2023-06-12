@@ -4,7 +4,7 @@ sidebar_position: 31
 
 import { Popover, Button } from 'rizzui';
 import Paper from '@site/src/components/paper';
-import { PopoverActionable } from '@site/src/components/popover';
+import { PopoverActionable, PopoverAvatar } from '@site/src/components/popover';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
 # Popover
@@ -23,30 +23,30 @@ import { Popover } from 'rizzui';
 A simple **Popover** component.
 
 <Paper>
-	<Popover
-		content={
-			<div className="w-56 text-start">
-				<span className="mt-2 inline-flex items-center gap-2 text-base">
-					<InformationCircleIcon className="h-5 w-5" />
-					<p className="font-medium">Delete the task</p>
-				</span>
-				<p className="mt-2 text-sm">
-					Are you sure you want to delete the task?
-				</p>
-				<div className="mt-3 mb-2 flex gap-3">
-					<Button size="sm">Yes</Button>
-					<Button size="sm" variant="outline">
-						No
-					</Button>
-				</div>
-			</div>
-		}
-		placement="bottom"
-	>
-		<Button variant="text" color="danger">
-			Delete
-		</Button>
-	</Popover>
+  <Popover
+    content={
+      <div className="w-56 text-start">
+        <span className="mt-2 inline-flex items-center gap-2 text-base">
+          <InformationCircleIcon className="h-5 w-5" />
+          <p className="font-medium">Delete the task</p>
+        </span>
+        <p className="mt-2 text-sm">
+          Are you sure you want to delete the task?
+        </p>
+        <div className="mt-3 mb-2 flex gap-3">
+          <Button size="sm">Yes</Button>
+          <Button size="sm" variant="outline">
+            No
+          </Button>
+        </div>
+      </div>
+    }
+    placement="bottom"
+  >
+    <Button variant="text" color="danger">
+      Delete
+    </Button>
+  </Popover>
 </Paper>
 
 ```tsx
@@ -54,34 +54,34 @@ import { Popover, Button } from 'rizzui';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
 export default function App() {
-	return (
-		<>
-			<Popover
-				content={
-					<div className="w-56 text-start">
-						<span className="mt-2 inline-flex items-center gap-2 text-base">
-							<InformationCircleIcon className="h-5 w-5" />
-							<h2 className="font-medium">Delete the task</h2>
-						</span>
-						<p className="mt-2 text-sm">
-							Are you sure you want to delete the task?
-						</p>
-						<div className="mt-3 mb-2 flex gap-3">
-							<Button size="sm">Yes</Button>
-							<Button size="sm" variant="outline">
-								No
-							</Button>
-						</div>
-					</div>
-				}
-				placement="bottom"
-			>
-				<Button variant="text" color="danger">
-					Delete
-				</Button>
-			</Popover>
-		</>
-	);
+  return (
+    <>
+      <Popover
+        content={
+          <div className="w-56 text-start">
+            <span className="mt-2 inline-flex items-center gap-2 text-base">
+              <InformationCircleIcon className="h-5 w-5" />
+              <h2 className="font-medium">Delete the task</h2>
+            </span>
+            <p className="mt-2 text-sm">
+              Are you sure you want to delete the task?
+            </p>
+            <div className="mt-3 mb-2 flex gap-3">
+              <Button size="sm">Yes</Button>
+              <Button size="sm" variant="outline">
+                No
+              </Button>
+            </div>
+          </div>
+        }
+        placement="bottom"
+      >
+        <Button variant="text" color="danger">
+          Delete
+        </Button>
+      </Popover>
+    </>
+  );
 }
 ```
 
@@ -92,7 +92,7 @@ export default function App() {
 You can create actionable **Popover** using state.
 
 <Paper>
-	<PopoverActionable />
+  <PopoverActionable />
 </Paper>
 
 ```tsx
@@ -101,35 +101,111 @@ import { Popover, Button } from 'rizzui';
 import { InformationCircleIcon } from '@heroicons/react/24/solid';
 
 export default function App() {
-	const [state, setState] = React.useState(false);
-	return (
-		<Popover
-			isOpen={state}
-			setIsOpen={setState}
-			content={
-				<div className="w-56 text-start">
-					<span className="mt-2 inline-flex items-center gap-2 text-base">
-						<InformationCircleIcon className="h-5 w-5" />
-						<p className="font-medium">Delete the task</p>
-					</span>
-					<p className="mt-2 text-sm">
-						Are you sure you want to delete the task?
-					</p>
-					<div className="mt-3 mb-2 flex gap-3">
-						<Button size="sm" onClick={() => setState(false)}>
-							Yes
-						</Button>
-						<Button size="sm" variant="outline" onClick={() => setState(false)}>
-							No
-						</Button>
-					</div>
-				</div>
-			}
-			placement="bottom"
-		>
-			<Button variant="outline">Click Me!</Button>
-		</Popover>
-	);
+  const [state, setState] = React.useState(false);
+  return (
+    <Popover
+      isOpen={state}
+      setIsOpen={setState}
+      content={
+        <div className="w-56 text-start">
+          <span className="mt-2 inline-flex items-center gap-2 text-base">
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="font-medium">Delete the task</p>
+          </span>
+          <p className="mt-2 text-sm">
+            Are you sure you want to delete the task?
+          </p>
+          <div className="mt-3 mb-2 flex gap-3">
+            <Button size="sm" onClick={() => setState(false)}>
+              Yes
+            </Button>
+            <Button size="sm" variant="outline" onClick={() => setState(false)}>
+              No
+            </Button>
+          </div>
+        </div>
+      }
+      placement="bottom"
+    >
+      <Button variant="outline">Click Me!</Button>
+    </Popover>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Custom Content
+
+You can render any thing using our **Popover** component.
+
+<Paper>
+  <PopoverAvatar />
+</Paper>
+
+```tsx
+import React from 'react';
+import { Popover, Button, Avatar } from 'rizzui';
+
+export default function App() {
+  const [state, setState] = React.useState(false);
+  return (
+    <div className="h-44">
+      <Popover
+        isOpen={state}
+        setIsOpen={setState}
+        content={
+          <>
+            <div className="mb-3 flex items-center gap-3">
+              <Avatar
+                src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
+                className="ring-2 ring-blue ring-offset-2"
+                size="lg"
+              />
+              <div className="text-left">
+                <h1 className="text-base font-medium text-gray-900">
+                  Fred Chaparro
+                </h1>
+                <p className="text-sm font-light text-gray-500">
+                  @fredchaparro
+                </p>
+              </div>
+            </div>
+            <div className="max-w-[240px] text-left text-sm">
+              <h2 className="text-gray-600">
+                Full-stack Developer, love to work with @redq. 🎉{' '}
+              </h2>
+              <span className="mt-3 inline-flex gap-3 text-gray-400">
+                <h2>
+                  <span className="font-medium">8</span> Following
+                </h2>
+                <h2>
+                  <span className="font-medium">10.5k</span> Followers
+                </h2>
+              </span>
+            </div>
+            <Button
+              className="mt-4 w-full"
+              variant="solid"
+              color="info"
+              size="sm"
+              onClick={() => setState(false)}
+            >
+              Follow
+            </Button>
+          </>
+        }
+        placement="bottom-start"
+      >
+        <div className="w-14 cursor-pointer">
+          <Avatar
+            src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
+            size="lg"
+          />
+        </div>
+      </Popover>
+    </div>
+  );
 }
 ```
 
@@ -147,19 +223,19 @@ Here is the API documentation of the Popover component.
 
 <div className="overflow-x-auto">
 
-|         Props         |                    Type                     |                     Description                     |   Default   |
-| :-------------------: | :-----------------------------------------: | :-------------------------------------------------: | :---------: |
-|       children        |   [PopoverChildren](#popconfirm-children)   |        Pass children which will have tooltip        |    \_ \_    |
-|         size          |      [PopoverSizes](#popconfirm-sizes)      |            Supported Tooltip sizes are:             | `"DEFAULT"` |
-|        rounded        |    [PopoverRounded](#popconfirm-rounded)    |              The rounded variants are:              | `"DEFAULT"` |
-|       placement       | [PopoverPlacements](#popconfirm-placements) |          Supported Tooltip Placements are:          |    \_ \_    |
-|        shadow         |    [PopoverShadow](#popconfirm-shadows)     |           Supported tooltip shadows are:            | `"DEFAULT"` |
-|       className       |                  `string`                   | Add custom classes for Tooltip container or content |    \_ \_    |
-|        isOpen         |                  `boolean`                  |    Pass open state to open the floating element     |    \_ \_    |
-|       setIsOpen       |     `Dispatch<SetStateAction<boolean>>`     |           Pass setOpen to set open value            |    \_ \_    |
-|        content        |                 `ReactNode`                 |                 Content for tooltip                 |    \_ \_    |
-| tooltipArrowClassName |                  `string`                   |        Add custom classes for Tooltip arrow         |    \_ \_    |
-|       showArrow       |                  `boolean`                  |   Whether tooltip arrow should be shown or hidden   |    \_ \_    |
+|         Props         |                   Type                   |                     Description                     |   Default   |
+| :-------------------: | :--------------------------------------: | :-------------------------------------------------: | :---------: |
+|       children        |   [PopoverChildren](#popover-children)   |        Pass children which will have tooltip        |    \_ \_    |
+|         size          |      [PopoverSizes](#popover-sizes)      |            Supported Tooltip sizes are:             | `"DEFAULT"` |
+|        rounded        |    [PopoverRounded](#popover-rounded)    |              The rounded variants are:              | `"DEFAULT"` |
+|       placement       | [PopoverPlacements](#popover-placements) |          Supported Tooltip Placements are:          |    \_ \_    |
+|        shadow         |    [PopoverShadow](#popover-shadows)     |           Supported tooltip shadows are:            | `"DEFAULT"` |
+|       className       |                 `string`                 | Add custom classes for Tooltip container or content |    \_ \_    |
+|        isOpen         |                `boolean`                 |    Pass open state to open the floating element     |    \_ \_    |
+|       setIsOpen       |   `Dispatch<SetStateAction<boolean>>`    |           Pass setOpen to set open value            |    \_ \_    |
+|        content        |               `ReactNode`                |                 Content for tooltip                 |    \_ \_    |
+| tooltipArrowClassName |                 `string`                 |        Add custom classes for Tooltip arrow         |    \_ \_    |
+|       showArrow       |                `boolean`                 |   Whether tooltip arrow should be shown or hidden   |    \_ \_    |
 
 </div>
 
@@ -193,18 +269,18 @@ type PopoverRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
 
 ```ts
 type PopoverPlacements =
-	| 'left'
-	| 'right'
-	| 'top'
-	| 'bottom'
-	| 'left-start'
-	| 'left-end'
-	| 'right-start'
-	| 'right-end'
-	| 'top-start'
-	| 'top-end'
-	| 'bottom-start'
-	| 'bottom-end';
+  | 'left'
+  | 'right'
+  | 'top'
+  | 'bottom'
+  | 'left-start'
+  | 'left-end'
+  | 'right-start'
+  | 'right-end'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom-start'
+  | 'bottom-end';
 ```
 
 <div className="mb-10" />
