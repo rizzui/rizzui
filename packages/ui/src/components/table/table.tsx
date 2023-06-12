@@ -1,4 +1,4 @@
-import RcTable from 'rc-table';
+import Table from 'rc-table';
 
 import Empty from '../empty';
 import { cn } from '../../lib/cn';
@@ -23,7 +23,7 @@ const classes = {
   striped: '[&_.rc-table-row:nth-child(2n)_.rc-table-cell]:bg-gray-100/50',
 };
 
-type RCTableProps = ExtractProps<typeof RcTable>;
+type RCTableProps = ExtractProps<typeof Table>;
 
 export interface TableProps
   extends Omit<RCTableProps, 'className' | 'emptyText'> {
@@ -41,7 +41,7 @@ export interface TableProps
  *  React table component with useful functions. Under the hood we are using `rc-table` package,
  * you can check their official documentation for more details -> https://www.npmjs.com/package/rc-table
  */
-export default function Table({
+export default function RcTable({
   striped,
   variant = 'classic',
   emptyText,
@@ -49,7 +49,7 @@ export default function Table({
   ...props
 }: TableProps) {
   return (
-    <RcTable
+    <Table
       className={cn(
         classes.table,
         classes.thead,
@@ -64,4 +64,4 @@ export default function Table({
   );
 }
 
-Table.displayName = 'Table';
+RcTable.displayName = 'Table';
