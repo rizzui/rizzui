@@ -1,5 +1,5 @@
 // file-input.stories.ts|tsx
-import React from 'react';
+import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import FileInput from './file-input';
 

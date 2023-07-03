@@ -1,4 +1,5 @@
 // advanced-radio.stories.ts|tsx
+import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
 import AdvancedRadio from './advanced-radio';

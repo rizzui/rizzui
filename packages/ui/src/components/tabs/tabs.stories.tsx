@@ -1,4 +1,5 @@
 // tabs.stories.ts|tsx
+import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
 import Tabs, { TabList, Tab, TabPanels, TabPanel } from './';
@@ -36,7 +37,7 @@ export const WithUnderline = () => (
             <h2>My Account</h2>
             <span
               className={cn(
-                'absolute left-0 -bottom-px h-0.5 w-full',
+                'absolute -bottom-px left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -58,7 +59,7 @@ export const WithUnderline = () => (
             <h2>Company</h2>
             <span
               className={cn(
-                'absolute left-0 -bottom-px h-0.5 w-full',
+                'absolute -bottom-px left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -80,7 +81,7 @@ export const WithUnderline = () => (
             <h2>Team Member</h2>
             <span
               className={cn(
-                'absolute left-0 -bottom-px h-0.5 w-full',
+                'absolute -bottom-px left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -102,7 +103,7 @@ export const WithUnderline = () => (
             <h2>Billing</h2>
             <span
               className={cn(
-                'absolute left-0 -bottom-px h-0.5 w-full',
+                'absolute -bottom-px left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -174,7 +175,7 @@ export const WithIconUnderline = () => (
             </div>
             <span
               className={cn(
-                'absolute left-0 -bottom-px h-0.5 w-full',
+                'absolute -bottom-px left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -212,7 +213,7 @@ export const WithIconUnderline = () => (
             </div>
             <span
               className={cn(
-                'absolute left-0 -bottom-px h-0.5 w-full',
+                'absolute -bottom-px left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -250,7 +251,7 @@ export const WithIconUnderline = () => (
             </div>
             <span
               className={cn(
-                'absolute left-0 -bottom-px h-0.5 w-full',
+                'absolute -bottom-px left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -288,7 +289,7 @@ export const WithIconUnderline = () => (
             </div>
             <span
               className={cn(
-                'absolute left-0 -bottom-px h-0.5 w-full',
+                'absolute -bottom-px left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -345,7 +346,7 @@ export const WithBadgeUndeline = () => (
               <h2>My Account</h2>
               <span
                 className={cn(
-                  'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
+                  'm-auto rounded-full px-1 py-0.5 text-xs leading-none',
                   selected
                     ? 'bg-gray-900 text-gray-0'
                     : 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
@@ -356,7 +357,7 @@ export const WithBadgeUndeline = () => (
             </div>
             <span
               className={cn(
-                'absolute left-0 -bottom-[7px] h-0.5 w-full',
+                'absolute -bottom-[7px] left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -379,7 +380,7 @@ export const WithBadgeUndeline = () => (
               <h2>Company</h2>
               <span
                 className={cn(
-                  'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
+                  'm-auto rounded-full px-1 py-0.5 text-xs leading-none',
                   selected
                     ? 'bg-gray-900 text-gray-0'
                     : 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
@@ -390,7 +391,7 @@ export const WithBadgeUndeline = () => (
             </div>
             <span
               className={cn(
-                'absolute left-0 -bottom-[7px] h-0.5 w-full',
+                'absolute -bottom-[7px] left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -413,7 +414,7 @@ export const WithBadgeUndeline = () => (
               <h2>Team Member</h2>
               <span
                 className={cn(
-                  'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
+                  'm-auto rounded-full px-1 py-0.5 text-xs leading-none',
                   selected
                     ? 'bg-gray-900 text-gray-0'
                     : 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
@@ -424,7 +425,7 @@ export const WithBadgeUndeline = () => (
             </div>
             <span
               className={cn(
-                'absolute left-0 -bottom-[7px] h-0.5 w-full',
+                'absolute -bottom-[7px] left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -447,7 +448,7 @@ export const WithBadgeUndeline = () => (
               <h2>Billing</h2>
               <span
                 className={cn(
-                  'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
+                  'm-auto rounded-full px-1 py-0.5 text-xs leading-none',
                   selected
                     ? 'bg-gray-900 text-gray-0'
                     : 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
@@ -458,7 +459,7 @@ export const WithBadgeUndeline = () => (
             </div>
             <span
               className={cn(
-                'absolute left-0 -bottom-[7px] h-0.5 w-full',
+                'absolute -bottom-[7px] left-0 h-0.5 w-full',
                 selected ? 'bg-gray-900' : 'bg-transparent'
               )}
             />
@@ -502,7 +503,7 @@ export const InPills = () => (
       <Tab
         className={({ selected }) =>
           cn(
-            'w-32 rounded py-2 px-3 text-sm outline-none',
+            'w-32 rounded px-3 py-2 text-sm outline-none',
             selected
               ? 'bg-gray-100 font-medium text-gray-900'
               : 'bg-gray-0 text-gray-500 hover:bg-gray-100'
@@ -514,7 +515,7 @@ export const InPills = () => (
       <Tab
         className={({ selected }) =>
           cn(
-            'w-32 rounded py-2 px-3 text-sm outline-none',
+            'w-32 rounded px-3 py-2 text-sm outline-none',
             selected
               ? 'bg-gray-100 font-medium text-gray-900'
               : 'bg-gray-0 text-gray-500 hover:bg-gray-100'
@@ -526,7 +527,7 @@ export const InPills = () => (
       <Tab
         className={({ selected }) =>
           cn(
-            'w-32 rounded py-2 px-3 text-sm outline-none',
+            'w-32 rounded px-3 py-2 text-sm outline-none',
             selected
               ? 'bg-gray-100 font-medium text-gray-900'
               : 'bg-gray-0 text-gray-500 hover:bg-gray-100'
@@ -538,7 +539,7 @@ export const InPills = () => (
       <Tab
         className={({ selected }) =>
           cn(
-            'w-32 rounded py-2 px-3 text-sm outline-none',
+            'w-32 rounded px-3 py-2 text-sm outline-none',
             selected
               ? 'bg-gray-100 font-medium text-gray-900'
               : 'bg-gray-0 text-gray-500 hover:bg-gray-100'
@@ -596,7 +597,7 @@ export const WithPrimaryUnderline = () => (
             <h2>My Account</h2>
             <span
               className={cn(
-                'absolute left-0 -bottom-[7px] h-0.5 w-full',
+                'absolute -bottom-[7px] left-0 h-0.5 w-full',
                 selected ? 'bg-primary' : 'bg-transparent'
               )}
             />
@@ -618,7 +619,7 @@ export const WithPrimaryUnderline = () => (
             <h2>Company</h2>
             <span
               className={cn(
-                'absolute left-0 -bottom-[7px] h-0.5 w-full',
+                'absolute -bottom-[7px] left-0 h-0.5 w-full',
                 selected ? 'bg-primary' : 'bg-transparent'
               )}
             />
@@ -640,7 +641,7 @@ export const WithPrimaryUnderline = () => (
             <h2>Team Member</h2>
             <span
               className={cn(
-                'absolute left-0 -bottom-[7px] h-0.5 w-full',
+                'absolute -bottom-[7px] left-0 h-0.5 w-full',
                 selected ? 'bg-primary' : 'bg-transparent'
               )}
             />
@@ -662,7 +663,7 @@ export const WithPrimaryUnderline = () => (
             <h2>Billing</h2>
             <span
               className={cn(
-                'absolute left-0 -bottom-[7px] h-0.5 w-full',
+                'absolute -bottom-[7px] left-0 h-0.5 w-full',
                 selected ? 'bg-primary' : 'bg-transparent'
               )}
             />

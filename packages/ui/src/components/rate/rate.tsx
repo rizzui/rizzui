@@ -92,7 +92,7 @@ const Rate = forwardRef<any, RateProps>(
         return node;
       }
       return (
-        <Tooltip content={tooltips[index as number]} placement="top">
+        <Tooltip content={() => tooltips[index as number]} placement="top">
           {node}
         </Tooltip>
       );

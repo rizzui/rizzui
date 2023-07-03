@@ -1,6 +1,8 @@
+// checkbox.stories.ts|tsx
+import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Checkbox from '.';
+import Checkbox from './checkbox';
 
 export default {
   title: 'Components/Checkbox',

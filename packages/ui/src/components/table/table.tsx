@@ -1,3 +1,4 @@
+import React from 'react';
 import Table from 'rc-table';
 
 import Empty from '../empty';
@@ -58,7 +59,7 @@ export default function RcTable({
         striped && classes.striped,
         className
       )}
-      emptyText={emptyText || <Empty />}
+      emptyText={emptyText ?? <Empty />}
       {...props}
     />
   );

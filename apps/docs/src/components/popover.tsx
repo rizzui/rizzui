@@ -1,14 +1,11 @@
-import React from 'react';
-import { Popover, Button, Avatar } from 'rizzui';
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
+import React from "react";
+import { Popover, Button, Avatar } from "rizzui";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 export function PopoverActionable() {
-  const [state, setState] = React.useState(false);
   return (
     <Popover
-      isOpen={state}
-      setIsOpen={setState}
-      content={
+      content={({ setOpen }) => (
         <div className="w-56 text-start">
           <span className="inline-flex items-center gap-2 mt-2 text-base">
             <InformationCircleIcon className="w-5 h-5" />
@@ -18,15 +15,15 @@ export function PopoverActionable() {
             Are you sure you want to delete the task?
           </p>
           <div className="flex gap-3 mt-3 mb-2">
-            <Button size="sm" onClick={() => setState(false)}>
+            <Button size="sm" onClick={() => setOpen(false)}>
               Yes
             </Button>
-            <Button size="sm" variant="outline" onClick={() => setState(false)}>
+            <Button size="sm" variant="outline" onClick={() => setOpen(false)}>
               No
             </Button>
           </div>
         </div>
-      }
+      )}
       placement="bottom"
     >
       <Button variant="outline">Click Me!</Button>
@@ -35,15 +32,13 @@ export function PopoverActionable() {
 }
 
 export function PopoverAvatar() {
-  const [state, setState] = React.useState(false);
   return (
     <Popover
-      isOpen={state}
-      setIsOpen={setState}
-      content={
+      content={({ setOpen }) => (
         <div className="py-3">
           <div className="flex items-center gap-3 mb-3">
             <Avatar
+              name="John Doe"
               src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
               className="ring-2 ring-blue ring-offset-2"
               size="lg"
@@ -57,7 +52,7 @@ export function PopoverAvatar() {
           </div>
           <div className="max-w-[240px] text-left text-sm">
             <p className="text-gray-600">
-              Full-stack Developer, love to work with @redq. 🎉{' '}
+              Full-stack Developer, love to work with @redq. 🎉{" "}
             </p>
             <span className="inline-flex gap-3 mt-3 text-gray-400">
               <p>
@@ -73,16 +68,17 @@ export function PopoverAvatar() {
             variant="solid"
             color="info"
             size="sm"
-            onClick={() => setState(false)}
+            onClick={() => setOpen(false)}
           >
             Follow
           </Button>
         </div>
-      }
+      )}
       placement="bottom"
     >
       <div className="cursor-pointer w-14">
         <Avatar
+          name="John Doe"
           src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
           size="lg"
         />

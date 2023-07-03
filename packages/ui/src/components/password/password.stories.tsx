@@ -1,3 +1,4 @@
+// password.stories.ts|tsx
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 

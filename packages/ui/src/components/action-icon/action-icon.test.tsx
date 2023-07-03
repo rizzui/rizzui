@@ -1,8 +1,9 @@
+import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import ActionIcon from '.';
+import ActionIcon from './action-icon';
 
 function FilterIcon({ className = 'h-auto w-5' }: { className?: string }) {
   return (

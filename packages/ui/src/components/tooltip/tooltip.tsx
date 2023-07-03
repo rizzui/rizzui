@@ -69,15 +69,47 @@ const tooltipClasses = {
   },
 };
 
+const tooltipAnimation = {
+  fadeIn: {
+    initial: {
+      opacity: 0,
+    },
+    close: {
+      opacity: 0,
+    },
+  },
+  zoomIn: {
+    initial: {
+      opacity: 0,
+      transform: 'scale(0.96)',
+    },
+    close: {
+      opacity: 0,
+      transform: 'scale(0.96)',
+    },
+  },
+  slideIn: {
+    initial: {
+      opacity: 0,
+      transform: 'translateY(4px)',
+    },
+    close: {
+      opacity: 0,
+      transform: 'translateY(4px)',
+    },
+  },
+};
+
+type Content = {
+  open?: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
 export type TooltipProps = {
-  /** Pass open state to open the floating element */
-  isOpen?: boolean;
-  /** Pass setOpen to set open value */
-  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   /** Pass children which will have tooltip */
   children: JSX.Element & { ref?: RefObject<any> };
   /** Content for tooltip */
-  content: React.ReactNode;
+  content: ({ open, setOpen }: Content) => React.ReactNode;
   /** Change Tooltip color */
   color?: keyof typeof tooltipClasses.variant.solid.color;
   /** Supported Tooltip sizes are: */
@@ -88,6 +120,10 @@ export type TooltipProps = {
   shadow?: keyof typeof tooltipClasses.shadow;
   /** Supported Tooltip Placements are: */
   placement?: Placement;
+  /** Set custom offset default is 8 */
+  gap?: number;
+  /** Supported Animations are: */
+  animation?: keyof typeof tooltipAnimation;
   /** Add custom classes for Tooltip container or content */
   className?: string;
   /** Add custom classes for Tooltip arrow */
@@ -104,10 +140,10 @@ export type TooltipProps = {
  * You can use the following props to create a demo of tooltip.
  */
 export default function Tooltip({
-  isOpen,
-  setIsOpen,
   children,
-  content = 'This is a tooltip',
+  content,
+  gap = 8,
+  animation = 'zoomIn',
   placement = 'bottom',
   size = 'DEFAULT',
   rounded = 'DEFAULT',
@@ -123,11 +159,11 @@ export default function Tooltip({
 
   const { x, y, refs, strategy, context } = useFloating({
     placement,
-    open: isOpen ?? open,
-    onOpenChange: setIsOpen ?? setOpen,
+    open: open,
+    onOpenChange: setOpen,
     middleware: [
       arrow({ element: arrowRef }),
-      offset(8),
+      offset(gap),
       flip(),
       shift({ padding: 8 }),
     ],
@@ -143,15 +179,8 @@ export default function Tooltip({
   ]);
 
   const { isMounted, styles } = useTransitionStyles(context, {
-    duration: { open: 200, close: 200 },
-    initial: {
-      opacity: 0,
-      transform: 'scale(0.96)',
-    },
-    close: {
-      opacity: 0,
-      transform: 'scale(0.96)',
-    },
+    duration: { open: 150, close: 150 },
+    ...tooltipAnimation[animation],
   });
 
   return (
@@ -160,7 +189,7 @@ export default function Tooltip({
         children,
         getReferenceProps({ ref: refs.setReference, ...children.props })
       )}
-      {(isMounted || (isOpen ?? open)) && (
+      {(isMounted || open) && (
         <div
           role="tooltip"
           ref={refs.setFloating}
@@ -181,7 +210,7 @@ export default function Tooltip({
           }}
           {...getFloatingProps()}
         >
-          {content}
+          {content({ open, setOpen })}
           {showArrow && (
             <>
               <FloatingArrow

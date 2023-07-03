@@ -1,4 +1,5 @@
 // button.stories.ts|tsx
+import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Button from './button';
 

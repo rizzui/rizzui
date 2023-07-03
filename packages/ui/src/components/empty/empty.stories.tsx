@@ -1,3 +1,5 @@
+// empty.stories.ts|tsx
+import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Empty from '.';
 import { EmptyProductBoxIcon, SearchNotFoundIcon } from './empty-icons';

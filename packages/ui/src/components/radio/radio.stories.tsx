@@ -1,4 +1,5 @@
 // radio.stories.tsx
+import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import Radio from '.';

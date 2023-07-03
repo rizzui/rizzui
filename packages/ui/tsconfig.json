@@ -1,18 +1,32 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "react-jsx",
+    "strictNullChecks": true,
     "module": "esnext",
-    "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "strict": true,
-    "isolatedModules": true,
-    "noEmit": true
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "jsxFactory": "React.createElement",
+    "jsxFragmentFactory": "React.Fragment",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "target": "es6",
+    "lib": ["dom", "es2017"],
+    "skipLibCheck": true,
+    "stripInternal": true
   },
   "include": ["src"],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules",
+    "storybook-static",
+    "coverage",
+    "jest.config.js",
+    "**/*.test.tsx",
+    "**/*.stories.mdx",
+    "**/*.stories.@(js|jsx|ts|tsx)"
+  ]
 }

@@ -1,7 +1,8 @@
 // tooltip.stories.ts|tsx
+import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Tooltip from '.';
+import Tooltip from './tooltip';
 import Button from '../button';
 
 export default {
@@ -20,7 +21,7 @@ const Template: ComponentStory<typeof Tooltip> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  content: "I'm your tooltip",
+  content: () => "I'm your tooltip",
   placement: 'bottom',
   children: <Button variant="outline">Default</Button>,
 };
@@ -28,7 +29,7 @@ Default.args = {
 export const WithCustomContent = Template.bind({});
 WithCustomContent.args = {
   children: <Button variant="outline">Custom Content</Button>,
-  content: (
+  content: () => (
     <div className="w-40 text-start">
       <span className="inline-flex items-center gap-2 text-base">
         <svg
@@ -57,66 +58,66 @@ WithCustomContent.args = {
 export const WithPlacement = () => (
   <div className="flex h-[560px] flex-col">
     <div className="relative m-auto flex h-96 w-3/5 flex-wrap justify-center gap-8">
-      <Tooltip content="I'm your tooltip" placement="left">
-        <Button variant="outline" className="absolute top-1/2 left-0">
+      <Tooltip content={() => "I'm your tooltip"} placement="left">
+        <Button variant="outline" className="absolute left-0 top-1/2">
           Left
         </Button>
       </Tooltip>
-      <Tooltip content="I'm your tooltip" placement="right">
-        <Button variant="outline" className="absolute top-1/2 right-0">
+      <Tooltip content={() => "I'm your tooltip"} placement="right">
+        <Button variant="outline" className="absolute right-0 top-1/2">
           Right
         </Button>
       </Tooltip>
-      <Tooltip content="I'm your tooltip" placement="top">
+      <Tooltip content={() => "I'm your tooltip"} placement="top">
         <Button variant="outline" className="absolute top-0">
           Top
         </Button>
       </Tooltip>
-      <Tooltip content="I'm your tooltip" placement="bottom">
+      <Tooltip content={() => "I'm your tooltip"} placement="bottom">
         <Button variant="outline" className="absolute -bottom-5">
           Bottom
         </Button>
       </Tooltip>
-      <Tooltip content="I'm your tooltip" placement="top-start">
+      <Tooltip content={() => "I'm your tooltip"} placement="top-start">
         <Button variant="outline" className="absolute left-20 top-0">
           Top Start
         </Button>
       </Tooltip>
-      <Tooltip content="I'm your tooltip" placement="top-end">
-        <Button variant="outline" className="absolute top-0 right-20">
+      <Tooltip content={() => "I'm your tooltip"} placement="top-end">
+        <Button variant="outline" className="absolute right-20 top-0">
           Top End
         </Button>
       </Tooltip>
 
-      <Tooltip content="I'm your tooltip" placement="bottom-start">
+      <Tooltip content={() => "I'm your tooltip"} placement="bottom-start">
         <Button variant="outline" className="absolute -bottom-5 left-20">
           Bottom Start
         </Button>
       </Tooltip>
-      <Tooltip content="I'm your tooltip" placement="bottom-end">
+      <Tooltip content={() => "I'm your tooltip"} placement="bottom-end">
         <Button variant="outline" className="absolute -bottom-5 right-20">
           Bottom End
         </Button>
       </Tooltip>
 
-      <Tooltip content="I'm your tooltip" placement="left-start">
+      <Tooltip content={() => "I'm your tooltip"} placement="left-start">
         <Button variant="outline" className="absolute left-8 top-24">
           Left Start
         </Button>
       </Tooltip>
-      <Tooltip content="I'm your tooltip" placement="left-end">
+      <Tooltip content={() => "I'm your tooltip"} placement="left-end">
         <Button variant="outline" className="absolute bottom-16 left-8">
           Left End
         </Button>
       </Tooltip>
 
-      <Tooltip content="I'm your tooltip" placement="right-start">
+      <Tooltip content={() => "I'm your tooltip"} placement="right-start">
         <Button variant="outline" className="absolute right-8 top-24">
           Right Start
         </Button>
       </Tooltip>
-      <Tooltip content="I'm your tooltip" placement="right-end">
-        <Button variant="outline" className="absolute right-8 bottom-16">
+      <Tooltip content={() => "I'm your tooltip"} placement="right-end">
+        <Button variant="outline" className="absolute bottom-16 right-8">
           Right End
         </Button>
       </Tooltip>

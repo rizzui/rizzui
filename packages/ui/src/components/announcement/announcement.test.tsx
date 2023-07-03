@@ -1,7 +1,8 @@
+import * as React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import Announcement from '.';
+import Announcement from './announcement';
 
 test('Renders announcement component with text', () => {
   render(

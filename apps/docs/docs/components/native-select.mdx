@@ -2,17 +2,17 @@
 sidebar_position: 16
 ---
 
-import { NativeSelect } from 'rizzui';
-import Paper from '@site/src/components/paper';
-import NativeSelectDefault from '@site/src/components/native-select';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { NativeSelect } from "rizzui";
+import Paper from "@site/src/components/paper";
+import NativeSelectDefault from "@site/src/components/native-select";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 # NativeSelect
 
 A basic widget for selecting value from options.
 
 ```tsx
-import { NativeSelect } from 'rizzui';
+import { NativeSelect } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -22,22 +22,22 @@ import { NativeSelect } from 'rizzui';
 The default style of **NativeSelect** component.
 
 <Paper className="block text-gray-1000">
-	<NativeSelect
-		label="Select Person"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
+  <NativeSelect
+    label="Select Person"
+    options={["John", "Miller", "James", "Franky"]}
+  />
 </Paper>
 
 ```tsx
-import { NativeSelect } from 'rizzui';
+import { NativeSelect } from "rizzui";
 
 export default function App() {
-	return (
-		<NativeSelect
-			label="Select Person"
-			options={['John', 'Miller', 'James', 'Franky']}
-		/>
-	);
+  return (
+    <NativeSelect
+      label="Select Person"
+      options={["John", "Miller", "James", "Franky"]}
+    />
+  );
 }
 ```
 
@@ -48,56 +48,56 @@ export default function App() {
 You can change the style of **NativeSelect** using [**variant**](#nativeselect-variants) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-	<NativeSelect
-		label="Active"
-		variant="active"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Flat"
-		variant="flat"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Outline"
-		variant="outline"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Text"
-		variant="text"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
+  <NativeSelect
+    label="Active"
+    variant="active"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Flat"
+    variant="flat"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Outline"
+    variant="outline"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Text"
+    variant="text"
+    options={["John", "Miller", "James", "Franky"]}
+  />
 </Paper>
 
 ```tsx
-import { NativeSelect } from 'rizzui';
+import { NativeSelect } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<NativeSelect
-				label="Active"
-				variant="active"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Flat"
-				variant="flat"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Outline"
-				variant="outline"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Text"
-				variant="text"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-		</>
-	);
+  return (
+    <>
+      <NativeSelect
+        label="Active"
+        variant="active"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Flat"
+        variant="flat"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Outline"
+        variant="outline"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Text"
+        variant="text"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+    </>
+  );
 }
 ```
 
@@ -108,54 +108,54 @@ export default function App() {
 You can set diffirent size of the **NativeSelect** using [**size**](#nativeselect-sizes) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-	<NativeSelect
-		label="Small"
-		size="sm"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Default"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Large"
-		size="lg"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Extra Large"
-		size="xl"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
+  <NativeSelect
+    label="Small"
+    size="sm"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Default"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Large"
+    size="lg"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Extra Large"
+    size="xl"
+    options={["John", "Miller", "James", "Franky"]}
+  />
 </Paper>
 
 ```tsx
-import { NativeSelect } from 'rizzui';
+import { NativeSelect } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<NativeSelect
-				label="Small"
-				size="sm"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Default"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Large"
-				size="lg"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Extra Large"
-				size="xl"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-		</>
-	);
+  return (
+    <>
+      <NativeSelect
+        label="Small"
+        size="sm"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Default"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Large"
+        size="lg"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Extra Large"
+        size="xl"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+    </>
+  );
 }
 ```
 
@@ -166,64 +166,64 @@ export default function App() {
 You can change border radius of the **NativeSelect** using [**rounded**](#nativeselect-rounded) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-	<NativeSelect
-		label="Rounded None"
-		rounded="none"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Rounded Small"
-		rounded="sm"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Rounded Default"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Rounded Large"
-		rounded="lg"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
-	<NativeSelect
-		label="Rounded Full"
-		rounded="pill"
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
+  <NativeSelect
+    label="Rounded None"
+    rounded="none"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Rounded Small"
+    rounded="sm"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Rounded Default"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Rounded Large"
+    rounded="lg"
+    options={["John", "Miller", "James", "Franky"]}
+  />
+  <NativeSelect
+    label="Rounded Full"
+    rounded="pill"
+    options={["John", "Miller", "James", "Franky"]}
+  />
 </Paper>
 
 ```tsx
-import { NativeSelect } from 'rizzui';
+import { NativeSelect } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<NativeSelect
-				label="Rounded None"
-				rounded="none"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Rounded Small"
-				rounded="sm"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Rounded Default"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Rounded Large"
-				rounded="lg"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Rounded Full"
-				rounded="pill"
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-		</>
-	);
+  return (
+    <>
+      <NativeSelect
+        label="Rounded None"
+        rounded="none"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Rounded Small"
+        rounded="sm"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Rounded Default"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Rounded Large"
+        rounded="lg"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Rounded Full"
+        rounded="pill"
+        options={["John", "Miller", "James", "Franky"]}
+      />
+    </>
+  );
 }
 ```
 
@@ -234,112 +234,112 @@ export default function App() {
 You can change the color of **NativeSelect** using [**color**](#nativeselect-colors) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-	<NativeSelect
-		label="Default"
-		variant="flat"
-		options={['John', 'Miller', 'James', 'Franky']}
-		placeholder="Choose option..."
-	/>
-	<NativeSelect
-		label="Primary"
-		variant="flat"
-		color="primary"
-		options={['John', 'Miller', 'James', 'Franky']}
-		placeholder="Choose option..."
-	/>
-	<NativeSelect
-		label="Secondary"
-		variant="flat"
-		color="secondary"
-		options={['John', 'Miller', 'James', 'Franky']}
-		placeholder="Choose option..."
-	/>
-	<NativeSelect
-		label="Danger"
-		variant="flat"
-		color="danger"
-		options={['John', 'Miller', 'James', 'Franky']}
-		placeholder="Choose option..."
-	/>
-	<NativeSelect
-		label="Info"
-		variant="flat"
-		color="info"
-		options={['John', 'Miller', 'James', 'Franky']}
-		placeholder="Choose option..."
-	/>
-	<NativeSelect
-		label="Success"
-		variant="flat"
-		color="success"
-		options={['John', 'Miller', 'James', 'Franky']}
-		placeholder="Choose option..."
-	/>
-	<NativeSelect
-		label="Warning"
-		variant="flat"
-		color="warning"
-		options={['John', 'Miller', 'James', 'Franky']}
-		placeholder="Choose option..."
-	/>
+  <NativeSelect
+    label="Default"
+    variant="flat"
+    options={["John", "Miller", "James", "Franky"]}
+    placeholder="Choose option..."
+  />
+  <NativeSelect
+    label="Primary"
+    variant="flat"
+    color="primary"
+    options={["John", "Miller", "James", "Franky"]}
+    placeholder="Choose option..."
+  />
+  <NativeSelect
+    label="Secondary"
+    variant="flat"
+    color="secondary"
+    options={["John", "Miller", "James", "Franky"]}
+    placeholder="Choose option..."
+  />
+  <NativeSelect
+    label="Danger"
+    variant="flat"
+    color="danger"
+    options={["John", "Miller", "James", "Franky"]}
+    placeholder="Choose option..."
+  />
+  <NativeSelect
+    label="Info"
+    variant="flat"
+    color="info"
+    options={["John", "Miller", "James", "Franky"]}
+    placeholder="Choose option..."
+  />
+  <NativeSelect
+    label="Success"
+    variant="flat"
+    color="success"
+    options={["John", "Miller", "James", "Franky"]}
+    placeholder="Choose option..."
+  />
+  <NativeSelect
+    label="Warning"
+    variant="flat"
+    color="warning"
+    options={["John", "Miller", "James", "Franky"]}
+    placeholder="Choose option..."
+  />
 </Paper>
 
 ```tsx
-import { NativeSelect } from 'rizzui';
+import { NativeSelect } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<NativeSelect
-				label="Default"
-				variant="flat"
-				placeholder="Choose option..."
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Primary"
-				variant="flat"
-				color="primary"
-				placeholder="Choose option..."
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Secondary"
-				variant="flat"
-				color="secondary"
-				placeholder="Choose option..."
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Danger"
-				variant="flat"
-				color="danger"
-				placeholder="Choose option..."
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Info"
-				variant="flat"
-				color="info"
-				placeholder="Choose option..."
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Success"
-				variant="flat"
-				color="success"
-				placeholder="Choose option..."
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-			<NativeSelect
-				label="Warning"
-				variant="flat"
-				color="warning"
-				placeholder="Choose option..."
-				options={['John', 'Miller', 'James', 'Franky']}
-			/>
-		</>
-	);
+  return (
+    <>
+      <NativeSelect
+        label="Default"
+        variant="flat"
+        placeholder="Choose option..."
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Primary"
+        variant="flat"
+        color="primary"
+        placeholder="Choose option..."
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Secondary"
+        variant="flat"
+        color="secondary"
+        placeholder="Choose option..."
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Danger"
+        variant="flat"
+        color="danger"
+        placeholder="Choose option..."
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Info"
+        variant="flat"
+        color="info"
+        placeholder="Choose option..."
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Success"
+        variant="flat"
+        color="success"
+        placeholder="Choose option..."
+        options={["John", "Miller", "James", "Franky"]}
+      />
+      <NativeSelect
+        label="Warning"
+        variant="flat"
+        color="warning"
+        placeholder="Choose option..."
+        options={["John", "Miller", "James", "Franky"]}
+      />
+    </>
+  );
 }
 ```
 
@@ -350,58 +350,58 @@ export default function App() {
 You can add any text or icon to the **NativeSelect** component using **prefix**, **suffix** props.
 
 <Paper className="block">
-	<NativeSelect
-		label="Currency"
-		options={['USD', 'BDT', 'GBP', 'CNY']}
-		prefix={
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				strokeWidth={1.6}
-				stroke="currentColor"
-				className="w-5 h-5"
-			>
-				<path
-					strokeLinecap="round"
-					strokeLinejoin="round"
-					d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
-				/>
-			</svg>
-		}
-		suffix={<ChevronDownIcon strokeWidth={2} className="w-4 h-4" />}
-	/>
+  <NativeSelect
+    label="Currency"
+    options={["USD", "BDT", "GBP", "CNY"]}
+    prefix={
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.6}
+        stroke="currentColor"
+        className="w-5 h-5"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
+        />
+      </svg>
+    }
+    suffix={<ChevronDownIcon strokeWidth={2} className="w-4 h-4" />}
+  />
 </Paper>
 
 ```tsx
-import { NativeSelect } from 'rizzui';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { NativeSelect } from "rizzui";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 export default function App() {
-	return (
-		<NativeSelect
-			label="Name"
-			options={['John', 'Miller', 'James', 'Franky']}
-			prefix={
-				// Heroricon -> banknotes svg
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					strokeWidth={1.6}
-					stroke="currentColor"
-					className="w-5 h-5"
-				>
-					<path
-						strokeLinecap="round"
-						strokeLinejoin="round"
-						d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
-					/>
-				</svg>
-			}
-			suffix={<ChevronDownIcon strokeWidth={2} className="w-4 h-4" />}
-		/>
-	);
+  return (
+    <NativeSelect
+      label="Name"
+      options={["John", "Miller", "James", "Franky"]}
+      prefix={
+        // Heroricon -> banknotes svg
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.6}
+          stroke="currentColor"
+          className="w-5 h-5"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
+          />
+        </svg>
+      }
+      suffix={<ChevronDownIcon strokeWidth={2} className="w-4 h-4" />}
+    />
+  );
 }
 ```
 
@@ -412,25 +412,25 @@ export default function App() {
 You can clear your selected options using **clearable** & **onClear** property.
 
 <Paper className="block">
-	<NativeSelectDefault label="Clearable" clearable />
+  <NativeSelectDefault label="Clearable" clearable />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { NativeSelect } from 'rizzui';
+import { useState } from "react";
+import { NativeSelect } from "rizzui";
 
 export default function App() {
-	const [state, setState] = React.useState('John');
-	return (
-		<NativeSelect
-			label="Name"
-			value={state}
-			options={['John', 'Miller', 'James', 'Franky']}
-			onChange={(e) => setState(e.target.value)}
-			clearable={!!state}
-			onClear={() => setState('')}
-		/>
-	);
+  const [state, setState] = React.useState("John");
+  return (
+    <NativeSelect
+      label="Name"
+      value={state}
+      options={["John", "Miller", "James", "Franky"]}
+      onChange={(e) => setState(e.target.value)}
+      clearable={!!state}
+      onClear={() => setState("")}
+    />
+  );
 }
 ```
 
@@ -441,73 +441,73 @@ export default function App() {
 You can disable any individual option
 
 <Paper className="block">
-	<NativeSelect
-		label="Name"
-		options={[
-			{
-				id: 1,
-				label: 'John',
-				value: 'John',
-			},
-			{
-				id: 2,
-				label: 'Doe',
-				value: 'Doe',
-			},
-			{
-				id: 3,
-				label: 'Miller',
-				value: 'Miller',
-				disabled: true,
-			},
-			{
-				id: 4,
-				label: 'James',
-				value: 'James',
-			},
-			{
-				id: 5,
-				label: 'Franky',
-				value: 'Franky',
-			},
-		]}
-	/>
+  <NativeSelect
+    label="Name"
+    options={[
+      {
+        id: 1,
+        label: "John",
+        value: "John",
+      },
+      {
+        id: 2,
+        label: "Doe",
+        value: "Doe",
+      },
+      {
+        id: 3,
+        label: "Miller",
+        value: "Miller",
+        disabled: true,
+      },
+      {
+        id: 4,
+        label: "James",
+        value: "James",
+      },
+      {
+        id: 5,
+        label: "Franky",
+        value: "Franky",
+      },
+    ]}
+  />
 </Paper>
 
 ```tsx
-import { NativeSelect } from 'rizzui';
+import { NativeSelect } from "rizzui";
 
 const options = [
-	{
-		id: 1,
-		label: 'John',
-		value: 'John',
-	},
-	{
-		id: 2,
-		label: 'Doe',
-		value: 'Doe',
-	},
-	{
-		id: 3,
-		label: 'Miller',
-		value: 'Miller',
-		disabled: true,
-	},
-	{
-		id: 4,
-		label: 'James',
-		value: 'James',
-	},
-	{
-		id: 5,
-		label: 'Franky',
-		value: 'Franky',
-	},
+  {
+    id: 1,
+    label: "John",
+    value: "John",
+  },
+  {
+    id: 2,
+    label: "Doe",
+    value: "Doe",
+  },
+  {
+    id: 3,
+    label: "Miller",
+    value: "Miller",
+    disabled: true,
+  },
+  {
+    id: 4,
+    label: "James",
+    value: "James",
+  },
+  {
+    id: 5,
+    label: "Franky",
+    value: "Franky",
+  },
 ];
 
 export default function App() {
-	return <NativeSelect label="Name" options={options} />;
+  return <NativeSelect label="Name" options={options} />;
 }
 ```
 
@@ -518,24 +518,24 @@ export default function App() {
 The disable style of the component.
 
 <Paper className="block">
-	<NativeSelect
-		label="Disabled"
-		disabled
-		options={['John', 'Miller', 'James', 'Franky']}
-	/>
+  <NativeSelect
+    label="Disabled"
+    disabled
+    options={["John", "Miller", "James", "Franky"]}
+  />
 </Paper>
 
 ```tsx
-import { NativeSelect } from 'rizzui';
+import { NativeSelect } from "rizzui";
 
 export default function App() {
-	return (
-		<NativeSelect
-			label="Disabled"
-			disabled
-			options={['John', 'Miller', 'James', 'Franky']}
-		/>
-	);
+  return (
+    <NativeSelect
+      label="Disabled"
+      disabled
+      options={["John", "Miller", "James", "Franky"]}
+    />
+  );
 }
 ```
 
@@ -546,61 +546,61 @@ export default function App() {
 You can add helper text to the **NativeSelect** component using **helperText** property.
 
 <Paper className="block">
-	<NativeSelectDefault
-		label="Select Name"
-		helperText="Please enter your full name"
-	/>
+  <NativeSelectDefault
+    label="Select Name"
+    helperText="Please enter your full name"
+  />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { NativeSelect } from 'rizzui';
+import { useState } from "react";
+import { NativeSelect } from "rizzui";
 
 const options = [
-	{
-		id: 1,
-		name: 'John',
-		value: 'John',
-	},
-	{
-		age: 20,
-		id: 2,
-		name: 'Doe',
-		value: 'Doe',
-	},
-	{
-		class: 12,
-		id: 3,
-		name: 'Miller',
-		value: 'Miller',
-	},
-	{
-		id: 4,
-		name: 'James',
-		value: 'James',
-	},
-	{
-		disabled: true,
-		id: 5,
-		name: 'Franky',
-		value: 'Franky',
-	},
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
 ];
 
 export default function App() {
-	const [value, setValue] = useState([]);
+  const [value, setValue] = useState([]);
 
-	return (
-		<NativeSelect
-			label="Select Name"
-			options={options}
-			selectedValue={value}
-			setSelectedValue={setValue}
-			placeholder="Choose option from below"
-			helperText="Please enter your full name"
-			dropDownIcon={<ChevronDownIcon className="w-6" />}
-		/>
-	);
+  return (
+    <NativeSelect
+      label="Select Name"
+      options={options}
+      selectedValue={value}
+      setSelectedValue={setValue}
+      placeholder="Choose option from below"
+      helperText="Please enter your full name"
+      dropDownIcon={<ChevronDownIcon className="w-6" />}
+    />
+  );
 }
 ```
 
@@ -611,58 +611,58 @@ export default function App() {
 You can show the validation error message using **error** property.
 
 <Paper className="block">
-	<NativeSelectDefault label="Select Name" error="This field is required" />
+  <NativeSelectDefault label="Select Name" error="This field is required" />
 </Paper>
 
 ```tsx
-import { useState } from 'react';
-import { NativeSelect } from 'rizzui';
+import { useState } from "react";
+import { NativeSelect } from "rizzui";
 
 const options = [
-	{
-		id: 1,
-		name: 'John',
-		value: 'John',
-	},
-	{
-		age: 20,
-		id: 2,
-		name: 'Doe',
-		value: 'Doe',
-	},
-	{
-		class: 12,
-		id: 3,
-		name: 'Miller',
-		value: 'Miller',
-	},
-	{
-		id: 4,
-		name: 'James',
-		value: 'James',
-	},
-	{
-		disabled: true,
-		id: 5,
-		name: 'Franky',
-		value: 'Franky',
-	},
+  {
+    id: 1,
+    name: "John",
+    value: "John",
+  },
+  {
+    age: 20,
+    id: 2,
+    name: "Doe",
+    value: "Doe",
+  },
+  {
+    class: 12,
+    id: 3,
+    name: "Miller",
+    value: "Miller",
+  },
+  {
+    id: 4,
+    name: "James",
+    value: "James",
+  },
+  {
+    disabled: true,
+    id: 5,
+    name: "Franky",
+    value: "Franky",
+  },
 ];
 
 export default function App() {
-	const [value, setValue] = useState([]);
+  const [value, setValue] = useState([]);
 
-	return (
-		<NativeSelect
-			label="Select Name"
-			options={options}
-			selectedValue={value}
-			setSelectedValue={setValue}
-			error="This field is required"
-			placeholder="Choose option from below"
-			dropDownIcon={<ChevronDownIcon className="w-6" />}
-		/>
-	);
+  return (
+    <NativeSelect
+      label="Select Name"
+      options={options}
+      selectedValue={value}
+      setSelectedValue={setValue}
+      error="This field is required"
+      placeholder="Choose option from below"
+      dropDownIcon={<ChevronDownIcon className="w-6" />}
+    />
+  );
 }
 ```
 
@@ -682,7 +682,7 @@ Here is the API documentation of the Native Select component. And the rest of th
 
 |      Props      |                      Type                      |                                                                   Description                                                                    |   Default   |
 | :-------------: | :--------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------: | :---------: |
-|     options     |           `(string OR OptionType)[]`           |                                                                Options for select                                                                |    \_ \_    |
+|     options     |   [`(string OR OptionType)[]`](#optiontype)    |                                                                Options for select                                                                |    \_ \_    |
 |      label      |                  `ReactNode`                   |                                                                 Set field label                                                                  |    \_ \_    |
 |   placeholder   |                    `string`                    |                                                           Set select placeholder text                                                            |    \_ \_    |
 |     variant     | [NativeSelectVariants](#nativeselect-variants) |                                                        The variants of the component are:                                                        | `"outline"` |
@@ -711,7 +711,7 @@ Here is the API documentation of the Native Select component. And the rest of th
 ### NativeSelect Variants
 
 ```ts
-type NativeSelectVariants = 'flat' | 'outline' | 'text' | 'active';
+type NativeSelectVariants = "flat" | "outline" | "text" | "active";
 ```
 
 <div className="mb-10" />
@@ -719,7 +719,7 @@ type NativeSelectVariants = 'flat' | 'outline' | 'text' | 'active';
 ### NativeSelect Sizes
 
 ```ts
-type NativeSelectSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type NativeSelectSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -727,7 +727,7 @@ type NativeSelectSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### NativeSelect Rounded
 
 ```ts
-type NativeSelectRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
+type NativeSelectRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -736,11 +736,25 @@ type NativeSelectRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
 
 ```ts
 type NativeSelectColors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
+```
+
+<div className="mb-10" />
+
+### OptionType
+
+```ts
+type OptionType = {
+  value: string;
+  label?: string;
+  selected?: boolean;
+  disabled?: boolean;
+  [key: string]: any;
+};
 ```

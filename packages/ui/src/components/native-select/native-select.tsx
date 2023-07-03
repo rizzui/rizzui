@@ -295,7 +295,7 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               style={{ fontSize: 'inherit' }}
               {...selectProps}
             >
-              <option value="" disabled selected hidden>
+              <option value="" disabled hidden>
                 {placeholder}
               </option>
               {formattedOptions.map((item) => (

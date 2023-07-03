@@ -1,3 +1,4 @@
+// drawer.stories.ts|tsx
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
@@ -31,7 +32,7 @@ export const Default = () => {
     <>
       <Button onClick={() => setDrawerState(true)}>Open Drawer</Button>
       <Drawer isOpen={drawerState} onClose={() => setDrawerState(false)}>
-        <div className="py-4 px-5">Default Drawer</div>
+        <div className="px-5 py-4">Default Drawer</div>
       </Drawer>
     </>
   );
@@ -113,7 +114,7 @@ export const Sizes = () => {
           setDrawerState((prevState) => ({ ...prevState, isOpen: false }))
         }
       >
-        <div className="py-4 px-5">
+        <div className="px-5 py-4">
           This is{' '}
           <Text tag="strong">
             &quot;
@@ -195,7 +196,7 @@ export const WithPlacement = () => {
           setDrawerState((prevState) => ({ ...prevState, isOpen: false }))
         }
       >
-        <div className="py-4 px-5">
+        <div className="px-5 py-4">
           The drawer placement on the{' '}
           <Text tag="strong">
             &quot;
@@ -218,7 +219,7 @@ export const WithCustomSize = () => {
         onClose={() => setDrawerState(false)}
         customSize="600px"
       >
-        <div className="py-4 px-5">Custom Size = 600px</div>
+        <div className="px-5 py-4">Custom Size = 600px</div>
       </Drawer>
     </>
   );
@@ -235,7 +236,7 @@ export const WithCustomStyle = () => {
         overlayClassName="backdrop-blur"
         containerClassName="!max-w-[calc(100%-480px)] !shadow-2xl"
       >
-        <div className="py-4 px-5">Custom Style</div>
+        <div className="px-5 py-4">Custom Style</div>
       </Drawer>
     </>
   );
@@ -261,7 +262,7 @@ export const WithShoppingCart = () => {
         </Badge>
       </div>
       <Drawer isOpen={drawerState} onClose={() => setDrawerState(false)}>
-        <div className="flex min-h-full flex-col py-4 px-5">
+        <div className="flex min-h-full flex-col px-5 py-4">
           <header className="flex items-center justify-between">
             <Text tag="h4">Shopping Cart</Text>
             <ActionIcon
