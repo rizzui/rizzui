@@ -9,8 +9,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof Button>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});

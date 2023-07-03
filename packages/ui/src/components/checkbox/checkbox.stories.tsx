@@ -10,8 +10,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof Checkbox>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Checkbox> = (args) => (
   <Checkbox {...args} />
 );

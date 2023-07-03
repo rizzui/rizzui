@@ -9,8 +9,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof FileInput>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof FileInput> = (args) => (
   <FileInput {...args} />
 );

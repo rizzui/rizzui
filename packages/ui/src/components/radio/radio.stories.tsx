@@ -10,8 +10,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof Radio>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Radio> = (args) => <Radio {...args} />;
 
 export const Default = Template.bind({});

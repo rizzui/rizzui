@@ -10,6 +10,7 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof AdvancedRadio>;
 
 export const NumbersInDefaultColor = () => (

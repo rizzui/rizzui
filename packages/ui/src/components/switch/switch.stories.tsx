@@ -9,8 +9,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof Switch>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Switch> = (args) => <Switch {...args} />;
 
 export const Default = Template.bind({});

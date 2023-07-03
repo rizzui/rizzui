@@ -10,8 +10,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof Input>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Default = Template.bind({});

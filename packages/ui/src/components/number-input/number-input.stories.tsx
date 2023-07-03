@@ -21,7 +21,7 @@ export const Currency = () => (
     allowLeadingZeros
     thousandSeparator=","
     displayType="input"
-    customInput={Input as React.ComponentType<unknown>}
+    customInput={Input as any}
   />
 );
 
@@ -31,7 +31,7 @@ export const CreditCardNumber = () => (
     format="#### #### #### ####"
     value="411111"
     mask="_"
-    customInput={Input as React.ComponentType<unknown>}
+    customInput={Input as any}
   />
 );
 
@@ -71,7 +71,7 @@ export const CardExpiry = () => {
       formatType="custom"
       mask="_"
       allowEmptyFormatting
-      customInput={Input as React.ComponentType<unknown>}
+      customInput={Input as any}
       {...{
         value: inputValue,
         onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -90,7 +90,7 @@ export const PhoneNumber = () => (
     format="+1 (###) ###-####"
     allowEmptyFormatting
     mask="_"
-    customInput={Input as React.ComponentType<unknown>}
+    customInput={Input as any}
     {...{ label: 'US Phone Number' }}
   />
 );
@@ -130,7 +130,7 @@ export const CreditCardInputWithGap = () => {
         format="#### #### #### ####"
         value="411111"
         mask="_"
-        customInput={Input as React.ComponentType<unknown>}
+        customInput={Input as any}
         {...{ label: 'Outline', variant: 'outline' }}
       />
       <div className="grid grid-cols-2 gap-2">
@@ -140,7 +140,7 @@ export const CreditCardInputWithGap = () => {
           placeholder="MM/YY"
           mask={['M', 'M', 'Y', 'Y']}
           allowEmptyFormatting
-          customInput={Input as React.ComponentType<unknown>}
+          customInput={Input as any}
           {...{ variant: 'outline' }}
         />
         <NumberInput
@@ -148,7 +148,7 @@ export const CreditCardInputWithGap = () => {
           format="###"
           mask={['C', 'V', 'C']}
           allowEmptyFormatting
-          customInput={Input as React.ComponentType<unknown>}
+          customInput={Input as any}
           {...{ variant: 'outline' }}
         />
       </div>
@@ -191,7 +191,7 @@ export const CreditCardInputWithNoGap = () => {
         format="#### #### #### ####"
         value="411111"
         mask="_"
-        customInput={Input as React.ComponentType<unknown>}
+        customInput={Input as any}
         {...{
           label: 'Outline',
           variant: 'outline',
@@ -206,7 +206,7 @@ export const CreditCardInputWithNoGap = () => {
           placeholder="MM/YY"
           mask={['M', 'M', 'Y', 'Y']}
           allowEmptyFormatting
-          customInput={Input as React.ComponentType<unknown>}
+          customInput={Input as any}
           {...{
             variant: 'outline',
             inputClassName:
@@ -218,7 +218,7 @@ export const CreditCardInputWithNoGap = () => {
           format="###"
           mask={['C', 'V', 'C']}
           allowEmptyFormatting
-          customInput={Input as React.ComponentType<unknown>}
+          customInput={Input as any}
           {...{
             variant: 'outline',
             inputClassName:

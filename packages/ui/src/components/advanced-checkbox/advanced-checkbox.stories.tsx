@@ -10,6 +10,7 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof AdvancedCheckbox>;
 
 export const NumbersInDefaultColor = () => (

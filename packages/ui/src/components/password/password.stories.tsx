@@ -10,8 +10,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof Password>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Password> = (args) => (
   <Password {...args} />
 );
