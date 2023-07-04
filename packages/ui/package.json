@@ -1,6 +1,6 @@
 {
   "name": "rizzui",
-  "version": "0.5.8",
+  "version": "0.5.9",
   "license": "MIT",
   "description": "🎉 A Modern and Minimal React UI Library built with TailwindCSS. Designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application.",
   "homepage": "https://rizzui.com/",
@@ -32,6 +32,25 @@
     "test": "jest --coverage",
     "test:ci": "yarn test --ci",
     "test:watch": "jest --watch"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.tsx"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "outDir": "dist",
+    "dts": true,
+    "treeshake": true,
+    "sourcemap": false,
+    "minify": true,
+    "splitting": false,
+    "clean": true,
+    "external": [
+      "react"
+    ]
   },
   "types": "./dist/index.d.ts",
   "exports": {
