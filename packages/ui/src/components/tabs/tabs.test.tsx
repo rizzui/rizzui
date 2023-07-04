@@ -1,3 +1,4 @@
+import * as React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
@@ -25,7 +26,7 @@ test('Render tab items and tab panels', async () => {
               <h2>My Account</h2>
               <span
                 className={cn(
-                  'absolute left-0 -bottom-px h-0.5 w-full',
+                  'absolute -bottom-px left-0 h-0.5 w-full',
                   selected ? 'bg-gray-900' : 'bg-transparent'
                 )}
               />
@@ -48,7 +49,7 @@ test('Render tab items and tab panels', async () => {
               <h2>Company</h2>
               <span
                 className={cn(
-                  'absolute left-0 -bottom-px h-0.5 w-full',
+                  'absolute -bottom-px left-0 h-0.5 w-full',
                   selected ? 'bg-gray-900' : 'bg-transparent'
                 )}
               />

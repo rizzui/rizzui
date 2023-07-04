@@ -98,8 +98,8 @@ const classes = {
   },
 };
 
-export interface ActionIconProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export type ActionIconProps = {
+  tag?: 'button' | 'span';
   /** Use SVG icon as a children */
   children: React.ReactNode;
   /** Set the loading status of button */
@@ -114,7 +114,8 @@ export interface ActionIconProps
   color?: keyof (typeof classes.variant)['solid']['color'];
   /** Add custom classes for extra style */
   className?: string;
-}
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.HTMLAttributes<HTMLSpanElement>;
 
 /**
  * Primary action icon button to trigger an operation. Here is the API documentation of the ActionIcon component.
@@ -124,6 +125,7 @@ export interface ActionIconProps
 const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
   (
     {
+      tag = 'button',
       children,
       className,
       isLoading,
@@ -136,9 +138,10 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
     },
     ref
   ) => {
+    const Component = tag;
     const variantStyle = classes.variant[variant];
     return (
-      <button
+      <Component
         ref={ref}
         type={'button'}
         disabled={disabled}
@@ -162,7 +165,7 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
         ) : (
           <>{children}</>
         )}
-      </button>
+      </Component>
     );
   }
 );

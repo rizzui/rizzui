@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface EmptySVGIconProps {
   width?: string | number;
   height?: string | number;

@@ -1,3 +1,4 @@
+// password.stories.ts|tsx
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
@@ -9,8 +10,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof Password>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Password> = (args) => (
   <Password {...args} />
 );

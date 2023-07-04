@@ -1,5 +1,5 @@
 // file-input.stories.ts|tsx
-import React from 'react';
+import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import FileInput from './file-input';
 
@@ -9,8 +9,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof FileInput>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof FileInput> = (args) => (
   <FileInput {...args} />
 );

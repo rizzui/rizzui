@@ -1,4 +1,5 @@
 // switch.stories.ts|tsx
+import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import Text from './text';
 

@@ -1,6 +1,8 @@
+// checkbox.stories.ts|tsx
+import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Checkbox from '.';
+import Checkbox from './checkbox';
 
 export default {
   title: 'Components/Checkbox',
@@ -8,8 +10,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof Checkbox>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Checkbox> = (args) => (
   <Checkbox {...args} />
 );

@@ -1,4 +1,5 @@
 // advanced-checkbox.stories.ts|tsx
+import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
 import AdvancedCheckbox from './advanced-checkbox';
@@ -9,6 +10,7 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof AdvancedCheckbox>;
 
 export const NumbersInDefaultColor = () => (

@@ -1,3 +1,4 @@
+import React from 'react';
 import { CheckmarkIcon } from '../../icons/checkmark';
 import { QuestionMarkCircleIcon } from '../../icons/question-mark-circle';
 import { XIcon } from '../../icons/x-mark';

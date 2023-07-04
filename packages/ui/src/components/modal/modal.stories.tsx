@@ -1,3 +1,4 @@
+// modal.stories.ts|tsx
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
@@ -30,7 +31,7 @@ export const Default = () => {
     <>
       <Button onClick={() => setModalState(true)}>Open Modal</Button>
       <Modal isOpen={modalState} onClose={() => setModalState(false)}>
-        <div className="m-auto px-7 pt-6 pb-8">
+        <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
             <Text tag="h3">Welcome to AegonUI</Text>
             <ActionIcon
@@ -41,7 +42,7 @@ export const Default = () => {
               <XIcon className="h-auto w-6" strokeWidth={1.8} />
             </ActionIcon>
           </div>
-          <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-6 [&_label>span]:font-medium">
             <Input label="First Name *" inputClassName="border-2" size="lg" />
             <Input label="Last Name *" inputClassName="border-2" size="lg" />
             <Input
@@ -165,7 +166,7 @@ export const Sizes = () => {
           setModalState((prevState) => ({ ...prevState, isOpen: false }))
         }
       >
-        <div className="m-auto px-7 pt-6 pb-8">
+        <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
             <Text tag="h3">Welcome to AegonUI</Text>
             <ActionIcon
@@ -178,7 +179,7 @@ export const Sizes = () => {
               <XIcon className="h-auto w-6" strokeWidth={1.8} />
             </ActionIcon>
           </div>
-          <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-6 [&_label>span]:font-medium">
             <Input label="First Name *" inputClassName="border-2" size="lg" />
             <Input label="Last Name *" inputClassName="border-2" size="lg" />
             <Input
@@ -304,7 +305,7 @@ export const Rounded = () => {
           setModalState((prevState) => ({ ...prevState, isOpen: false }))
         }
       >
-        <div className="m-auto px-7 pt-6 pb-8">
+        <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
             <Text tag="h3">Welcome to AegonUI</Text>
             <ActionIcon
@@ -317,7 +318,7 @@ export const Rounded = () => {
               <XIcon className="h-auto w-6" strokeWidth={1.8} />
             </ActionIcon>
           </div>
-          <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-6 [&_label>span]:font-medium">
             <Input label="First Name *" inputClassName="border-2" size="lg" />
             <Input label="Last Name *" inputClassName="border-2" size="lg" />
             <Input
@@ -377,7 +378,7 @@ export const WithCustomSize = () => {
         onClose={() => setModalState(false)}
         customSize="1080px"
       >
-        <div className="m-auto px-7 pt-6 pb-8">
+        <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
             <Text tag="h3">Welcome to AegonUI</Text>
             <ActionIcon
@@ -388,7 +389,7 @@ export const WithCustomSize = () => {
               <XIcon className="h-auto w-6" strokeWidth={1.8} />
             </ActionIcon>
           </div>
-          <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-6 [&_label>span]:font-medium">
             <Input label="First Name *" inputClassName="border-2" size="lg" />
             <Input label="Last Name *" inputClassName="border-2" size="lg" />
             <Input
@@ -447,7 +448,7 @@ export const WithCustomStyle = () => {
         overlayClassName="backdrop-blur"
         containerClassName="!max-w-4xl !shadow-2xl"
       >
-        <div className="m-auto px-7 pt-6 pb-8">
+        <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
             <Text tag="h3">Welcome to AegonUI</Text>
             <ActionIcon
@@ -458,7 +459,7 @@ export const WithCustomStyle = () => {
               <XIcon className="h-auto w-6" strokeWidth={1.8} />
             </ActionIcon>
           </div>
-          <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-6 [&_label>span]:font-medium">
             <Input label="First Name *" inputClassName="border-2" size="lg" />
             <Input label="Last Name *" inputClassName="border-2" size="lg" />
             <Input

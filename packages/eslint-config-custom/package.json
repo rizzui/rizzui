@@ -1,16 +1,16 @@
 {
-	"name": "eslint-config-custom",
-	"version": "0.5.2",
-	"private": true,
-	"main": "index.js",
-	"dependencies": {
-		"eslint": "latest",
-		"eslint-config-prettier": "latest",
-		"eslint-plugin-react": "latest",
-		"eslint-config-turbo": "latest",
-		"@typescript-eslint/parser": "5.48.0"
-	},
-	"devDependencies": {
-		"typescript": "4.9.5"
-	}
+  "name": "eslint-config-custom",
+  "version": "0.5.8",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "eslint-plugin-react": "latest",
+    "eslint-config-turbo": "latest",
+    "@typescript-eslint/parser": "5.48.0"
+  },
+  "devDependencies": {
+    "typescript": "4.9.5"
+  }
 }

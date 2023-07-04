@@ -1,10 +1,13 @@
 {
   "name": "rizzui",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "license": "MIT",
   "description": "🎉 A Modern and Minimal React UI Library built with TailwindCSS. Designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application.",
   "homepage": "https://rizzui.com/",
-  "author": "REDQ (https://redq.io/)",
+  "author": {
+    "name": "REDQ",
+    "url": "https://redq.io/"
+  },
   "bugs": {
     "url": "https://github.com/rizzui/rizzui/issues"
   },
@@ -17,7 +20,7 @@
     "rizzui",
     "components",
     "React Components",
-    "React TailwindCSS Components"
+    "React & TailwindCSS Components"
   ],
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",

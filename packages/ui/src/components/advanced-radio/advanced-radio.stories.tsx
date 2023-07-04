@@ -1,4 +1,5 @@
 // advanced-radio.stories.ts|tsx
+import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
 import AdvancedRadio from './advanced-radio';
@@ -9,6 +10,7 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof AdvancedRadio>;
 
 export const NumbersInDefaultColor = () => (

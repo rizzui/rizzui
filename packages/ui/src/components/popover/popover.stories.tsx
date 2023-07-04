@@ -1,7 +1,8 @@
+// popover.stories.ts|tsx
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Popover from '.';
+import Popover from './popover';
 import Button from '../button';
 import Avatar from '../avatar';
 
@@ -16,7 +17,7 @@ export default {
 export const Default = () => (
   <div className="h-44">
     <Popover
-      content={
+      content={({ setOpen }) => (
         <div className="w-56 text-start">
           <span className="mt-2 inline-flex items-center gap-2 text-base">
             <svg
@@ -36,84 +37,30 @@ export const Default = () => (
           <p className="mt-2 text-sm">
             Are you sure you want to delete the task?
           </p>
-          <div className="mb-2 mt-3 flex gap-3">
-            <Button size="sm">Yes</Button>
-            <Button size="sm" variant="outline">
+          <div className="mb-2 mt-3 flex gap-2">
+            <Button size="sm" onClick={() => setOpen(false)}>
+              Yes
+            </Button>
+            <Button size="sm" variant="outline" onClick={() => setOpen(false)}>
               No
             </Button>
           </div>
         </div>
-      }
+      )}
       placement="bottom-start"
     >
       <Button variant="text" className="focus:!ring-0">
-        Default
+        Click on me
       </Button>
     </Popover>
   </div>
 );
 
-export const Actionable = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  return (
-    <div className="h-44">
-      <Popover
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        content={
-          <div className="w-56 text-start">
-            <span className="mt-2 inline-flex items-center gap-2 text-base">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-5 w-5"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <h2 className="font-medium">Delete the task</h2>
-            </span>
-            <p className="mt-2 text-sm">
-              Are you sure you want to delete the task?
-            </p>
-            <div className="mb-2 mt-3 flex gap-3">
-              <Button size="sm" onClick={() => setIsOpen(false)}>
-                Yes
-              </Button>
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={() => setIsOpen(false)}
-              >
-                No
-              </Button>
-            </div>
-          </div>
-        }
-        placement="bottom-start"
-      >
-        <Button variant="text" className="focus:!ring-0">
-          Click on me
-        </Button>
-      </Popover>
-    </div>
-  );
-};
-
 export const WithAvatar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
   return (
     <div className="h-64">
       <Popover
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        content={
+        content={({ setOpen }) => (
           <>
             <div className="mb-3 flex items-center gap-3">
               <Avatar
@@ -149,12 +96,12 @@ export const WithAvatar = () => {
               variant="solid"
               color="info"
               size="sm"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setOpen(false)}
             >
               Follow
             </Button>
           </>
-        }
+        )}
         placement="bottom-start"
         className="!top-24 !p-5"
       >

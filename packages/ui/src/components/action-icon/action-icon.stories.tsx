@@ -1,5 +1,7 @@
 // action-icon.stories.ts|tsx
+import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import ActionIcon from './action-icon';
 
 export default {
@@ -8,6 +10,7 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof ActionIcon>;
 
 function FilterIcon({ className = 'h-auto w-5' }: { className?: string }) {
@@ -29,7 +32,9 @@ function FilterIcon({ className = 'h-auto w-5' }: { className?: string }) {
   );
 }
 
+// @ts-ignore
 const Template: ComponentStory<typeof ActionIcon> = (args) => (
+  // @ts-ignore
   <ActionIcon {...args} />
 );
 

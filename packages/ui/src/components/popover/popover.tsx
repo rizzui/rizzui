@@ -1,8 +1,8 @@
+import React from 'react';
 import Tooltip from '../tooltip';
 import { TooltipProps } from '../tooltip';
 
-export interface PopoverProps
-  extends Omit<TooltipProps, 'isPopover' | 'color'> {}
+export type PopoverProps = Omit<TooltipProps, 'isPopover' | 'color'>;
 
 /**
  * Popover is a simple dialog alert which can have details of the content.

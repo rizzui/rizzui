@@ -1,6 +1,8 @@
+// dropdown.stories.ts|tsx
+import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Dropdown, { DropdownItem } from '.';
+import Dropdown, { DropdownItem } from './';
 import { cn } from '../../lib/cn';
 import Avatar from '../avatar';
 import Button, { ButtonProps } from '../button';

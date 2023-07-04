@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tab } from '@headlessui/react';
 import cn from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';

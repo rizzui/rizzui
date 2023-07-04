@@ -2,16 +2,16 @@
 sidebar_position: 30
 ---
 
-import { Tooltip, Button } from 'rizzui';
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
-import Paper from '@site/src/components/paper';
+import { Tooltip, Button } from "rizzui";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import Paper from "@site/src/components/paper";
 
 # Tooltip
 
 Tooltip displays informative text when users **hover**, **focus**, or **click** an element.
 
 ```jsx
-import { Tooltip } from 'rizzui';
+import { Tooltip } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -21,17 +21,17 @@ import { Tooltip } from 'rizzui';
 The default style of the **Tooltip** component.
 
 <Paper>
-  <Tooltip content="I'm your tooltip">
+  <Tooltip content={() => "I'm your tooltip"}>
     <Button variant="outline">Hover Me!</Button>
   </Tooltip>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from 'rizzui';
+import { Tooltip, Button } from "rizzui";
 
 export default function App() {
   return (
-    <Tooltip content="I'm your tooltip">
+    <Tooltip content={() => "I'm your tooltip"}>
       <Button variant="outline">Hover Me!</Button>
     </Tooltip>
   );
@@ -45,36 +45,36 @@ export default function App() {
 You can change the size of **Tooltip** using [**size**](#tooltip-sizes) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip size="sm" content="Small Tooltip!">
+  <Tooltip size="sm" content={() => "Small Tooltip!"}>
     <Button variant="outline">Small</Button>
   </Tooltip>
-  <Tooltip content="Default Tooltip!">
+  <Tooltip content={() => "Default Tooltip!"}>
     <Button variant="outline">Default</Button>
   </Tooltip>
-  <Tooltip size="lg" content="Large Tooltip!">
+  <Tooltip size="lg" content={() => "Large Tooltip!"}>
     <Button variant="outline">Large</Button>
   </Tooltip>
-  <Tooltip size="xl" content="Extra Large Tooltip!">
+  <Tooltip size="xl" content={() => "Extra Large Tooltip!"}>
     <Button variant="outline">Extra Large</Button>
   </Tooltip>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from 'rizzui';
+import { Tooltip, Button } from "rizzui";
 
 export default function App() {
   return (
     <>
-      <Tooltip size="sm" content="Small Tooltip!">
+      <Tooltip size="sm" content={() => "Small Tooltip!"}>
         <Button variant="outline">Small</Button>
       </Tooltip>
-      <Tooltip content="Default Tooltip!">
+      <Tooltip content={() => "Default Tooltip!"}>
         <Button variant="outline">Default</Button>
       </Tooltip>
-      <Tooltip size="lg" content="Large Tooltip!">
+      <Tooltip size="lg" content={() => "Large Tooltip!"}>
         <Button variant="outline">Large</Button>
       </Tooltip>
-      <Tooltip size="xl" content="Extra Large Tooltip!">
+      <Tooltip size="xl" content={() => "Extra Large Tooltip!"}>
         <Button variant="outline">Extra Large</Button>
       </Tooltip>
     </>
@@ -89,42 +89,42 @@ export default function App() {
 You can change the border radius of **Tooltip** using [**rounded**](#tooltip-rounded) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip rounded="none" content="Rounded None!">
+  <Tooltip rounded="none" content={() => "Rounded None!"}>
     <Button variant="outline">None</Button>
   </Tooltip>
-  <Tooltip rounded="sm" content="Rounded Small!">
+  <Tooltip rounded="sm" content={() => "Rounded Small!"}>
     <Button variant="outline">Small</Button>
   </Tooltip>
-  <Tooltip content="Rounded Default!">
+  <Tooltip content={() => "Rounded Default!"}>
     <Button variant="outline">Default</Button>
   </Tooltip>
-  <Tooltip rounded="lg" content="Rounded Large!">
+  <Tooltip rounded="lg" content={() => "Rounded Large!"}>
     <Button variant="outline">Large</Button>
   </Tooltip>
-  <Tooltip rounded="pill" content="Rounded Full!">
+  <Tooltip rounded="pill" content={() => "Rounded Full!"}>
     <Button variant="outline">Full</Button>
   </Tooltip>
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from 'rizzui';
+import { Tooltip, Button } from "rizzui";
 
 export default function App() {
   return (
     <>
-      <Tooltip rounded="none" content="Rounded None!">
+      <Tooltip rounded="none" content={() => "Rounded None!"}>
         <Button variant="outline">None</Button>
       </Tooltip>
-      <Tooltip rounded="sm" content="Rounded Small!">
+      <Tooltip rounded="sm" content={() => "Rounded Small!"}>
         <Button variant="outline">Small</Button>
       </Tooltip>
-      <Tooltip content="Rounded Default!">
+      <Tooltip content={() => "Rounded Default!"}>
         <Button variant="outline">Default</Button>
       </Tooltip>
-      <Tooltip rounded="lg" content="Rounded Large!">
+      <Tooltip rounded="lg" content={() => "Rounded Large!"}>
         <Button variant="outline">Large</Button>
       </Tooltip>
-      <Tooltip rounded="pill" content="Rounded Full!">
+      <Tooltip rounded="pill" content={() => "Rounded Full!"}>
         <Button variant="outline">Full</Button>
       </Tooltip>
     </>
@@ -180,7 +180,7 @@ You can change the color of **Tooltip** using [**color**](#tooltip-colors) prope
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from 'rizzui';
+import { Tooltip, Button } from "rizzui";
 
 export default function App() {
   return (
@@ -250,7 +250,7 @@ You can change the shadow style of **Tooltip** using [**shadow**](#tooltip-shado
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from 'rizzui';
+import { Tooltip, Button } from "rizzui";
 
 export default function App() {
   return (
@@ -298,8 +298,8 @@ You can use custom content inside **Tooltip**
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from 'rizzui';
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
+import { Tooltip, Button } from "rizzui";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 export default function App() {
   return (
@@ -401,7 +401,7 @@ You can change placement of the **Tooltip** using property [**placement**](#tool
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from 'rizzui';
+import { Tooltip, Button } from "rizzui";
 
 export default function App() {
   return (
@@ -523,14 +523,14 @@ Here is the API documentation of the Tooltip component. You can use the followin
 
 ```ts
 type TooltipPlacements =
-  | 'left'
-  | 'right'
-  | 'top'
-  | 'bottom'
-  | 'left-start'
-  | 'left-end'
-  | 'right-start'
-  | 'right-end';
+  | "left"
+  | "right"
+  | "top"
+  | "bottom"
+  | "left-start"
+  | "left-end"
+  | "right-start"
+  | "right-end";
 ```
 
 <div className="mb-10" />
@@ -547,15 +547,15 @@ type TooltipChildren = Element & { ref?: RefObject<any> | undefined };
 
 ```ts
 type TooltipColors =
-  | 'DEFAULT'
-  | 'invert'
-  | 'primary'
-  | 'secondary'
-  | 'danger'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'invert';
+  | "DEFAULT"
+  | "invert"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning"
+  | "invert";
 ```
 
 <div className="mb-10" />
@@ -563,7 +563,7 @@ type TooltipColors =
 ### Tooltip Sizes
 
 ```ts
-type TooltipSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type TooltipSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -571,7 +571,7 @@ type TooltipSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### Tooltip Rounded
 
 ```ts
-type TooltipRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
+type TooltipRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -579,5 +579,5 @@ type TooltipRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
 ### Tooltip Shadows
 
 ```ts
-type TooltipShadows = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type TooltipShadows = "DEFAULT" | "sm" | "lg" | "xl";
 ```

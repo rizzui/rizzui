@@ -1,3 +1,4 @@
+// input.stories.ts|tsx
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
@@ -9,8 +10,10 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
+  // @ts-ignore
 } as ComponentMeta<typeof Input>;
 
+// @ts-ignore
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Default = Template.bind({});
@@ -34,7 +37,7 @@ export const WithQuantityNumber = () => {
           <div className="-mr-3.5 grid gap-[2px] p-0.5 rtl:-ml-3.5 rtl:-mr-0">
             <button
               type="button"
-              className="rounded-[3px] bg-gray-100 py-0.5 px-1.5 hover:bg-gray-200 focus:bg-gray-200"
+              className="rounded-[3px] bg-gray-100 px-1.5 py-0.5 hover:bg-gray-200 focus:bg-gray-200"
               onClick={() => setState((prevState) => prevState + 1)}
             >
               <svg
@@ -50,7 +53,7 @@ export const WithQuantityNumber = () => {
             </button>
             <button
               type="button"
-              className="rounded-[3px]  bg-gray-100 py-0.5 px-1.5 hover:bg-gray-200 focus:bg-gray-200"
+              className="rounded-[3px]  bg-gray-100 px-1.5 py-0.5 hover:bg-gray-200 focus:bg-gray-200"
               onClick={() => setState((prevState) => prevState - 1)}
             >
               <svg

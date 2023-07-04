@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const UploadIcon: React.FC<React.SVGAttributes<{}>> = (props) => {
   return (
     <svg

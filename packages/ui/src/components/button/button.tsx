@@ -91,8 +91,8 @@ const buttonClasses = {
   },
 };
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export type ButtonProps = {
+  tag?: 'button' | 'span';
   /** Set the loading status of button */
   isLoading?: boolean;
   /** Set the original html type of button */
@@ -109,7 +109,8 @@ export interface ButtonProps
   disabled?: boolean;
   /** Add custom classes for extra style */
   className?: string;
-}
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.HTMLAttributes<HTMLSpanElement>;
 
 /**
  * Primary action button to trigger an operation. Here is the API documentation of the Button component.
@@ -122,6 +123,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       className,
       isLoading,
+      tag = 'button',
       type = 'button',
       variant = 'solid',
       size = 'DEFAULT',
@@ -132,9 +134,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    const Component = tag;
     const variantStyle = buttonClasses.variant[variant];
     return (
-      <button
+      <Component
         ref={ref}
         type={type}
         disabled={disabled}
@@ -167,7 +170,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ) : (
           <>{children}</>
         )}
-      </button>
+      </Component>
     );
   }
 );
