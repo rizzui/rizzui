@@ -2,15 +2,15 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-jsx",
-    "skipLibCheck": true,
     "module": "esnext",
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "strict": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
     "allowJs": true,
+    "strict": true,
+    "isolatedModules": true,
     "noEmit": true
   },
   "include": ["src"],
