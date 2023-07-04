@@ -33,6 +33,25 @@
     "test:ci": "yarn test --ci",
     "test:watch": "jest --watch"
   },
+  "tsup": {
+    "entry": [
+      "src/index.tsx"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "outDir": "dist",
+    "dts": true,
+    "treeshake": true,
+    "sourcemap": false,
+    "minify": true,
+    "splitting": false,
+    "clean": true,
+    "external": [
+      "react"
+    ]
+  },
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
