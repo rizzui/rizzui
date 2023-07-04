@@ -21,7 +21,8 @@
     "eslint-config-custom": "*",
     "prettier": "latest",
     "turbo": "latest",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "tsup": "6.7.0"
   },
   "engines": {
     "node": ">=16.0.0"
