@@ -19,20 +19,20 @@ module.exports = {
   typescript: {
     check: false,
     checkOptions: {},
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop) => {
-        return prop.parent
-          ? prop.parent.name !== 'DOMAttributes' &&
-              prop.parent.name !== 'HTMLAttributes' &&
-              prop.parent.name !== 'AriaAttributes' &&
-              prop.parent.name !== 'InputHTMLAttributes' &&
-              prop.parent.name !== 'ButtonHTMLAttributes'
-          : true;
-      },
-    },
+    reactDocgen: 'react-docgen-typescript-plugin',
+    // reactDocgenTypescriptOptions: {
+    //   shouldExtractLiteralValuesFromEnum: true,
+    //   shouldRemoveUndefinedFromOptional: true,
+    //   propFilter: (prop) => {
+    //     return prop.parent
+    //       ? prop.parent.name !== 'DOMAttributes' &&
+    //           prop.parent.name !== 'HTMLAttributes' &&
+    //           prop.parent.name !== 'AriaAttributes' &&
+    //           prop.parent.name !== 'InputHTMLAttributes' &&
+    //           prop.parent.name !== 'ButtonHTMLAttributes'
+    //       : true;
+    //   },
+    // },
   },
   framework: '@storybook/react',
   core: {

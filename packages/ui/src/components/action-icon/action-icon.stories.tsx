@@ -10,7 +10,6 @@ export default {
   parameters: {
     viewMode: 'docs',
   },
-  // @ts-ignore
 } as ComponentMeta<typeof ActionIcon>;
 
 function FilterIcon({ className = 'h-auto w-5' }: { className?: string }) {

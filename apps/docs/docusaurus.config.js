@@ -135,6 +135,7 @@ const config = {
     },
   ],
 
+
   plugins: [
     async function myPlugin(context, options) {
       return {
@@ -175,6 +176,8 @@ const config = {
       }),
     ],
   ],
+
+  
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

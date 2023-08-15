@@ -132,14 +132,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       ...buttonProps
     },
-    ref
+    ref,
   ) => {
     const Component = tag;
     const variantStyle = buttonClasses.variant[variant];
     return (
       <Component
         ref={ref}
-        type={type}
         disabled={disabled}
         className={cn(
           buttonClasses.base,
@@ -150,8 +149,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           isLoading && 'pointer-events-none relative',
           disabled &&
             'cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400',
-          className
+          className,
         )}
+        {...(tag && tag !== 'span' && { type })}
         {...buttonProps}
       >
         {isLoading ? (
@@ -172,7 +172,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </Component>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

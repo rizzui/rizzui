@@ -15,6 +15,7 @@ import {
   useRole,
   arrow,
   useTransitionStyles,
+  FloatingPortal,
 } from '@floating-ui/react';
 
 import { cn } from '../../lib/cn';
@@ -101,11 +102,15 @@ const tooltipAnimation = {
 };
 
 type Content = {
-  open?: boolean;
+  open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type TooltipProps = {
+  /** Pass open state to open the floating element */
+  isOpen?: boolean;
+  /** Pass setOpen to set open value */
+  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   /** Pass children which will have tooltip */
   children: JSX.Element & { ref?: RefObject<any> };
   /** Content for tooltip */
@@ -140,6 +145,8 @@ export type TooltipProps = {
  * You can use the following props to create a demo of tooltip.
  */
 export default function Tooltip({
+  isOpen,
+  setIsOpen,
   children,
   content,
   gap = 8,
@@ -159,8 +166,8 @@ export default function Tooltip({
 
   const { x, y, refs, strategy, context } = useFloating({
     placement,
-    open: open,
-    onOpenChange: setOpen,
+    open: isOpen ?? open,
+    onOpenChange: setIsOpen ?? setOpen,
     middleware: [
       arrow({ element: arrowRef }),
       offset(gap),
@@ -187,45 +194,53 @@ export default function Tooltip({
     <>
       {cloneElement(
         children,
-        getReferenceProps({ ref: refs.setReference, ...children.props })
+        getReferenceProps({ ref: refs.setReference, ...children.props }),
       )}
       {(isMounted || open) && (
-        <div
-          role="tooltip"
-          ref={refs.setFloating}
-          className={cn(
-            tooltipClasses.base,
-            tooltipClasses.size[size],
-            tooltipClasses.rounded[rounded],
-            tooltipClasses.variant.solid.base,
-            tooltipClasses.variant.solid.color[color],
-            tooltipClasses.shadow[shadow],
-            className
-          )}
-          style={{
-            position: strategy,
-            top: y ?? 0,
-            left: x ?? 0,
-            ...styles,
-          }}
-          {...getFloatingProps()}
-        >
-          {content({ open, setOpen })}
-          {showArrow && (
-            <>
-              <FloatingArrow
-                ref={arrowRef}
-                context={context}
-                data-testid="tooltip-arrow"
-                className={cn(
-                  tooltipClasses.arrow.color[color],
-                  tooltipArrowClassName
-                )}
-                style={{ strokeDasharray: '0,14, 5' }}
-              />
-            </>
-          )}
-        </div>
+        <FloatingPortal>
+          <div
+            role="tooltip"
+            ref={refs.setFloating}
+            className={cn(
+              tooltipClasses.base,
+              tooltipClasses.size[size],
+              tooltipClasses.rounded[rounded],
+              tooltipClasses.variant.solid.base,
+              tooltipClasses.variant.solid.color[color],
+              tooltipClasses.shadow[shadow],
+              className,
+            )}
+            style={{
+              position: strategy,
+              top: y ?? 0,
+              left: x ?? 0,
+              ...styles,
+            }}
+            {...getFloatingProps()}
+          >
+            {isOpen ? (
+              // @ts-ignore
+              <>{content({ isOpen, setIsOpen })}</>
+            ) : (
+              <>{content({ open, setOpen })}</>
+            )}
+
+            {showArrow && (
+              <>
+                <FloatingArrow
+                  ref={arrowRef}
+                  context={context}
+                  data-testid="tooltip-arrow"
+                  className={cn(
+                    tooltipClasses.arrow.color[color],
+                    tooltipArrowClassName,
+                  )}
+                  style={{ strokeDasharray: '0,14, 5' }}
+                />
+              </>
+            )}
+          </div>
+        </FloatingPortal>
       )}
     </>
   );

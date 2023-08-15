@@ -41,12 +41,11 @@ export default function Collapse({
 }: React.PropsWithChildren<CollapseProps>) {
   const { open, openTargetEl, targetEl, toggle } = useCollapse(
     duration,
-    defaultOpen
+    defaultOpen,
   );
   const Component = tag;
   return (
     <Component
-      role=""
       data-testid="collapse-parent"
       className={cn('aegon-collapse', className)}
       aria-expanded={open}

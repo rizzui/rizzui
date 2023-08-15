@@ -2,10 +2,10 @@
 sidebar_position: 31
 ---
 
-import { Popover, Button } from 'rizzui';
-import Paper from '@site/src/components/paper';
-import { PopoverActionable, PopoverAvatar } from '@site/src/components/popover';
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
+import { Popover, Button } from "rizzui";
+import Paper from "@site/src/components/paper";
+import { PopoverActionable, PopoverAvatar } from "@site/src/components/popover";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 # Popover
 
@@ -13,7 +13,7 @@ Popover is a simple dialog alert which can have details of the content. It can e
 avaiable in this compoment too except the **color** prop.
 
 ```tsx
-import { Popover } from 'rizzui';
+import { Popover } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -24,7 +24,7 @@ A simple **Popover** component.
 
 <Paper>
   <Popover
-    content={
+    content={() => (
       <div className="w-56 text-start">
         <span className="mt-2 inline-flex items-center gap-2 text-base">
           <InformationCircleIcon className="h-5 w-5" />
@@ -40,7 +40,7 @@ A simple **Popover** component.
           </Button>
         </div>
       </div>
-    }
+    )}
     placement="bottom"
   >
     <Button variant="text" color="danger">
@@ -50,14 +50,14 @@ A simple **Popover** component.
 </Paper>
 
 ```tsx
-import { Popover, Button } from 'rizzui';
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
+import { Popover, Button } from "rizzui";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 export default function App() {
   return (
     <>
       <Popover
-        content={
+        content={() => (
           <div className="w-56 text-start">
             <span className="mt-2 inline-flex items-center gap-2 text-base">
               <InformationCircleIcon className="h-5 w-5" />
@@ -73,7 +73,7 @@ export default function App() {
               </Button>
             </div>
           </div>
-        }
+        )}
         placement="bottom"
       >
         <Button variant="text" color="danger">
@@ -96,17 +96,14 @@ You can create actionable **Popover** using state.
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Popover, Button } from 'rizzui';
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
+import React from "react";
+import { Popover, Button } from "rizzui";
+import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 export default function App() {
-  const [state, setState] = React.useState(false);
   return (
     <Popover
-      isOpen={state}
-      setIsOpen={setState}
-      content={
+      content={({ setOpen }) => (
         <div className="w-56 text-start">
           <span className="mt-2 inline-flex items-center gap-2 text-base">
             <InformationCircleIcon className="h-5 w-5" />
@@ -116,15 +113,15 @@ export default function App() {
             Are you sure you want to delete the task?
           </p>
           <div className="mt-3 mb-2 flex gap-3">
-            <Button size="sm" onClick={() => setState(false)}>
+            <Button size="sm" onClick={() => setOpen(false)}>
               Yes
             </Button>
-            <Button size="sm" variant="outline" onClick={() => setState(false)}>
+            <Button size="sm" variant="outline" onClick={() => setOpen(false)}>
               No
             </Button>
           </div>
         </div>
-      }
+      )}
       placement="bottom"
     >
       <Button variant="outline">Click Me!</Button>
@@ -144,17 +141,14 @@ You can render any thing using our **Popover** component.
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Popover, Button, Avatar } from 'rizzui';
+import React from "react";
+import { Popover, Button, Avatar } from "rizzui";
 
 export default function App() {
-  const [state, setState] = React.useState(false);
   return (
     <div className="h-44">
       <Popover
-        isOpen={state}
-        setIsOpen={setState}
-        content={
+        content={({ setOpen }) => (
           <>
             <div className="mb-3 flex items-center gap-3">
               <Avatar
@@ -173,7 +167,7 @@ export default function App() {
             </div>
             <div className="max-w-[240px] text-left text-sm">
               <h2 className="text-gray-600">
-                Full-stack Developer, love to work with @redq. 🎉{' '}
+                Full-stack Developer, love to work with @redq. 🎉{" "}
               </h2>
               <span className="mt-3 inline-flex gap-3 text-gray-400">
                 <h2>
@@ -189,12 +183,12 @@ export default function App() {
               variant="solid"
               color="info"
               size="sm"
-              onClick={() => setState(false)}
+              onClick={() => setOpen(false)}
             >
               Follow
             </Button>
           </>
-        }
+        )}
         placement="bottom-start"
       >
         <div className="w-14 cursor-pointer">
@@ -252,7 +246,7 @@ type PopoverChildren = Element & { ref?: RefObject<any> | undefined };
 ### Popover Sizes
 
 ```ts
-type PopoverSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+type PopoverSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -260,7 +254,7 @@ type PopoverSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 ### Popover Rounded
 
 ```ts
-type PopoverRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
+type PopoverRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -269,18 +263,18 @@ type PopoverRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
 
 ```ts
 type PopoverPlacements =
-  | 'left'
-  | 'right'
-  | 'top'
-  | 'bottom'
-  | 'left-start'
-  | 'left-end'
-  | 'right-start'
-  | 'right-end'
-  | 'top-start'
-  | 'top-end'
-  | 'bottom-start'
-  | 'bottom-end';
+  | "left"
+  | "right"
+  | "top"
+  | "bottom"
+  | "left-start"
+  | "left-end"
+  | "right-start"
+  | "right-end"
+  | "top-start"
+  | "top-end"
+  | "bottom-start"
+  | "bottom-end";
 ```
 
 <div className="mb-10" />
@@ -288,5 +282,5 @@ type PopoverPlacements =
 ### Popover Shadows
 
 ```ts
-type PopoverShadow = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+type PopoverShadow = "sm" | "DEFAULT" | "lg" | "xl";
 ```
