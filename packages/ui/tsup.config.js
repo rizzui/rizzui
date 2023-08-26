@@ -7,11 +7,11 @@ export default defineConfig({
   clean: true,
   minify: true,
   sourcemap: false,
-  treeshake: true,
   splitting: true,
+  treeshake: true,
   bundle: true,
   external: ['react'],
-  // does not support with treeshake and splitting tsup v:7.2.0
+  // does not support with splitting tsup v:7.2.0
   // esbuildOptions(options) {
   //   options.banner = {
   //     js: '"use client"',
