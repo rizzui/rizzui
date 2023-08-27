@@ -100,6 +100,8 @@ const classes = {
 
 export type ActionIconProps = {
   tag?: 'button' | 'span';
+  /** Set the original html type of button */
+  type?: 'button' | 'submit' | 'reset';
   /** Use SVG icon as a children */
   children: React.ReactNode;
   /** Set the loading status of button */
@@ -126,6 +128,7 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
   (
     {
       tag = 'button',
+      type = 'button',
       children,
       className,
       isLoading,
@@ -136,14 +139,13 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
       disabled,
       ...buttonProps
     },
-    ref
+    ref,
   ) => {
     const Component = tag;
     const variantStyle = classes.variant[variant];
     return (
       <Component
         ref={ref}
-        type={'button'}
         disabled={disabled}
         className={cn(
           classes.base,
@@ -154,8 +156,9 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
           isLoading && 'pointer-events-none relative',
           disabled &&
             'cursor-not-allowed !border-gray-200 !bg-gray-100 !text-gray-400',
-          className
+          className,
         )}
+        {...(tag && tag !== 'span' && { type })}
         {...buttonProps}
       >
         {isLoading ? (
@@ -167,7 +170,7 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
         )}
       </Component>
     );
-  }
+  },
 );
 
 ActionIcon.displayName = 'ActionIcon';

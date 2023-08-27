@@ -202,7 +202,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       renderCharacterCount,
       ...textareaProps
     },
-    ref
+    ref,
   ) => {
     const variantStyle = textareaClasses.variant[variant];
     const [isFocus, setIsFocus] = useState(false);
@@ -213,7 +213,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         setIsFocus((prevState) => !prevState);
         onFocus && onFocus(e);
       },
-      [readOnly, onFocus]
+      [readOnly, onFocus],
     );
 
     const handleOnBlur = useCallback(
@@ -222,7 +222,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         setIsFocus(() => false);
         onBlur && onBlur(e);
       },
-      [readOnly, onBlur]
+      [readOnly, onBlur],
     );
 
     return (
@@ -236,7 +236,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             </span>
           )}
 
-          <div className="relative">
+          <span className="block relative">
             <textarea
               ref={ref}
               rows={rows}
@@ -262,7 +262,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 readOnly && 'focus:ring-0',
                 disabled && textareaClasses.disabled,
                 error && textareaClasses.error,
-                textareaClassName
+                textareaClassName,
               )}
               {...textareaProps}
             />
@@ -272,7 +272,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 onClick={onClear}
                 className={cn(
                   clearButtonSpacing.base,
-                  clearButtonSpacing.size[size]
+                  clearButtonSpacing.size[size],
                 )}
               />
             )}
@@ -281,7 +281,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 characterCount: String(textareaProps?.value).length,
                 maxLength,
               })}
-          </div>
+          </span>
         </label>
 
         {!error && helperText && (
@@ -295,7 +295,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Textarea.displayName = 'Textarea';
