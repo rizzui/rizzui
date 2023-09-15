@@ -1,6 +1,6 @@
 {
   "name": "rizzui",
-  "version": "0.5.10",
+  "version": "0.6.0",
   "license": "MIT",
   "description": "🎉 A Modern and Minimal React UI Library built with TailwindCSS. Designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application.",
   "homepage": "https://rizzui.com/",
@@ -49,8 +49,8 @@
     "dist/**"
   ],
   "dependencies": {
-    "@floating-ui/react": "0.25.0",
-    "@headlessui/react": "1.7.16",
+    "@floating-ui/react": "0.25.4",
+    "@headlessui/react": "1.7.17",
     "clsx": "1.2.1",
     "rc-pagination": "3.3.1",
     "rc-rate": "2.10.0",

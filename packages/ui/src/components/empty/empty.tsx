@@ -20,10 +20,6 @@ export interface EmptyProps {
   image?: React.ReactNode;
   /** Add custom classes on to the image or icon component's wrapper */
   imageClassName?: string;
-  /** Set custom width of the default image / icon */
-  defaultImageWidth?: string | number;
-  /** Set custom height of the default image / icon */
-  defaultImageHeight?: string | number;
   /** Set custom className of the default image / icon */
   defaultImageClassName?: string;
   /** Set custom text message of the Empty component */
@@ -49,8 +45,6 @@ export default function Empty({
   imageClassName,
   textClassName,
   alignment = 'center',
-  defaultImageWidth = 184,
-  defaultImageHeight = 152,
   defaultImageClassName,
   children,
 }: React.PropsWithChildren<EmptyProps>) {
@@ -60,13 +54,7 @@ export default function Empty({
       className={cn(classes.base, classes.alignment[alignment], className)}
     >
       <div className={cn(imageClassName)}>
-        {image || (
-          <DefaultIcon
-            width={defaultImageWidth}
-            height={defaultImageHeight}
-            className={defaultImageClassName}
-          />
-        )}
+        {image || <DefaultIcon className={defaultImageClassName} />}
       </div>
       {text ? (
         <Text tag={textTag} className={cn(textClassName)}>

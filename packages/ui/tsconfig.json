@@ -10,7 +10,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "outDir": "dist",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowJs": true,
     "strict": true,
     "resolveJsonModule": true,

@@ -1,24 +1,24 @@
-import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
-import { initialData } from '@site/src/data/table-data';
+import React from "react";
+import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from "rizzui";
+import { initialData } from "@site/src/data/table-data";
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case "pending":
       return <Badge variant="flat">{status}</Badge>;
-    case 'active':
+    case "active":
       return (
         <Badge variant="flat" color="success">
           {status}
         </Badge>
       );
-    case 'warning':
+    case "warning":
       return (
         <Badge variant="flat" color="warning">
           {status}
         </Badge>
       );
-    case 'danger':
+    case "danger":
       return (
         <Badge variant="flat" color="danger">
           {status}
@@ -36,8 +36,8 @@ const getColumns = (
 ) => [
   {
     title: <></>,
-    dataIndex: 'checked',
-    key: 'checked',
+    dataIndex: "checked",
+    key: "checked",
     width: 50,
     render: () => (
       <div className="inline-flex cursor-pointer">
@@ -50,22 +50,22 @@ const getColumns = (
       <HeaderCell
         title="Id"
         sortable
-        ascending={order === 'asc' && column === 'id'}
+        ascending={order === "asc" && column === "id"}
       />
     ),
-    onHeaderCell: () => onHeaderClick('id'),
-    dataIndex: 'id',
-    key: 'id',
+    onHeaderCell: () => onHeaderClick("id"),
+    dataIndex: "id",
+    key: "id",
     width: 50,
   },
   {
     title: <HeaderCell title="Employee" />,
-    dataIndex: 'employee',
-    key: 'employee',
+    dataIndex: "employee",
+    key: "employee",
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar src={employee.avatar} />
+        <Avatar name="John Doe" src={employee.avatar} />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
           <Text tag="h6" className="mb-0.5 !text-sm font-medium">
             {employee.name}
@@ -79,8 +79,8 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Designation" />,
-    dataIndex: 'designation',
-    key: 'designation',
+    dataIndex: "designation",
+    key: "designation",
     width: 320,
     render: (designation: any) => (
       <div>
@@ -95,27 +95,27 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Phone Number" />,
-    dataIndex: 'phoneNumber',
-    key: 'phoneNumber',
+    dataIndex: "phoneNumber",
+    key: "phoneNumber",
     width: 200,
   },
   {
     title: <HeaderCell title="Email" />,
-    dataIndex: 'email',
-    key: 'email',
+    dataIndex: "email",
+    key: "email",
     width: 200,
   },
   {
     title: <HeaderCell title="Status" />,
-    dataIndex: 'status',
-    key: 'status',
+    dataIndex: "status",
+    key: "status",
     width: 120,
     render: (value: string) => getStatusBadge(value),
   },
   {
     title: <></>,
-    dataIndex: 'action',
-    key: 'action',
+    dataIndex: "action",
+    key: "action",
     width: 120,
     render: (_: string, row: any) => (
       <div className="flex items-center gap-2">
@@ -135,14 +135,14 @@ const getColumns = (
 ];
 
 export default function TableDefault() {
-  const [order, setOrder] = React.useState<string>('desc');
-  const [column, setColumn] = React.useState<string>('');
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
-      setOrder(order === 'desc' ? 'asc' : 'desc');
-      if (order === 'desc') {
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
         // @ts-ignore
         setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
       } else {
@@ -166,14 +166,14 @@ export default function TableDefault() {
 }
 
 export function TableModern() {
-  const [order, setOrder] = React.useState<string>('desc');
-  const [column, setColumn] = React.useState<string>('');
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
-      setOrder(order === 'desc' ? 'asc' : 'desc');
-      if (order === 'desc') {
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
         // @ts-ignore
         setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
       } else {
@@ -197,14 +197,14 @@ export function TableModern() {
 }
 
 export function TableElegant() {
-  const [order, setOrder] = React.useState<string>('desc');
-  const [column, setColumn] = React.useState<string>('');
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
-      setOrder(order === 'desc' ? 'asc' : 'desc');
-      if (order === 'desc') {
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
         // @ts-ignore
         setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
       } else {
@@ -228,14 +228,14 @@ export function TableElegant() {
 }
 
 export function TableMinimal() {
-  const [order, setOrder] = React.useState<string>('desc');
-  const [column, setColumn] = React.useState<string>('');
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
-      setOrder(order === 'desc' ? 'asc' : 'desc');
-      if (order === 'desc') {
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
         // @ts-ignore
         setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
       } else {

@@ -5,10 +5,10 @@ import cn from '../../lib/cn';
 const classes = {
   base: 'inline-flex items-center justify-center flex-shrink-0',
   size: {
-    sm: '32px',
-    DEFAULT: '40px',
-    lg: '48px',
-    xl: '56px',
+    sm: '32',
+    DEFAULT: '40',
+    lg: '48',
+    xl: '56',
   },
   fontSize: {
     sm: 'text-xs',
@@ -47,7 +47,30 @@ export type AvatarProps = {
   className?: string;
 };
 
-const CHECK_VALID_CUSTOM_SIZE = /(\d*px)?/g;
+const letterWithColors = [
+  { string: ['a', 'n'], color: '#FF9F47' },
+  { string: ['b', 'o'], color: '#A347FF' },
+  { string: ['c', 'p'], color: '#726D76' },
+  { string: ['d', 'q'], color: '#FF6847' },
+  { string: ['e', 'r'], color: '#47A7FF' },
+  { string: ['f', 's'], color: '#22BCA0' },
+  { string: ['g', 't'], color: '#FF4794' },
+  { string: ['h', 'u'], color: '#4770FF' },
+  { string: ['i', 'v'], color: '#40DFEF' },
+  { string: ['j', 'w'], color: '#AB46D2' },
+  { string: ['k', 'x'], color: '#83BD75' },
+  { string: ['l', 'y'], color: '#FF008E' },
+  { string: ['m', 'z'], color: '#ef4444' },
+];
+
+function backgroundColor(signature: string) {
+  const currObj = letterWithColors.filter((obj) =>
+    obj.string.includes(signature?.charAt(0).toLowerCase()),
+  );
+  return currObj[0]?.color ?? '#FF6847';
+}
+
+const CHECK_VALID_CUSTOM_SIZE = /(\d)?/g;
 
 function getInitials(name: string) {
   const words = name.split(' ');
@@ -62,7 +85,7 @@ export default function Avatar({
   initials,
   customSize,
   rounded = 'full',
-  color = 'DEFAULT',
+  color,
   onClick,
   className,
 }: AvatarProps) {
@@ -74,10 +97,13 @@ export default function Avatar({
       customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
     if (checkedCustomSizeValue[0] === '') {
       console.warn(
-        'customSize prop value is not valid. Please set customSize prop like -> customSize="50px"'
+        'customSize prop value is not valid. Please set customSize prop like -> customSize="50"',
       );
     }
   }
+
+  let signature = initials || getInitials(name);
+  let avatarSize = customSize ?? classes.size[size];
 
   if (src && !isError) {
     return (
@@ -86,21 +112,22 @@ export default function Avatar({
         alt={name}
         title={name}
         draggable={false}
-        width={customSize ?? classes.size[size]}
-        height={customSize ?? classes.size[size]}
+        loading="lazy"
+        width={avatarSize}
+        height={avatarSize}
         onError={() => setError(() => true)}
         className={cn(
           classes.base,
           classes.rounded[rounded],
-          classes.color[color],
+          color && classes.color[color],
           'object-cover',
+          // !customSize && avatarSize,
           onClick && 'cursor-pointer',
-          className
+          className,
         )}
-        style={{
-          width: customSize ?? classes.size[size],
-          height: customSize ?? classes.size[size],
-        }}
+        {...(!color && {
+          style: { backgroundColor: backgroundColor(signature) },
+        })}
         onClick={onClick}
       />
     );
@@ -113,18 +140,20 @@ export default function Avatar({
         classes.base,
         classes.fontSize[size],
         classes.rounded[rounded],
-        classes.color[color],
+        color && classes.color[color],
         'font-semibold',
         onClick && 'cursor-pointer',
-        className
+        // !customSize && avatarSize,
+        className,
       )}
       style={{
-        width: customSize ?? classes.size[size],
-        height: customSize ?? classes.size[size],
+        width: avatarSize + 'px',
+        height: avatarSize + 'px',
+        ...(!color && { backgroundColor: backgroundColor(signature) }),
       }}
       onClick={onClick}
     >
-      {initials || getInitials(name)}
+      {signature}
     </span>
   );
 }
