@@ -1,7 +1,7 @@
 import React from "react";
 import { RangeSlider, cn } from "rizzui";
 
-export default function RangeSliderCounter() {
+export function RangeSliderCounter() {
   const [state, setState] = React.useState({
     min: 200,
     max: 600,

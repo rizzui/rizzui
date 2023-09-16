@@ -40,7 +40,7 @@ export type AvatarProps = {
   name: string;
   initials?: string;
   size?: keyof typeof classes.size;
-  customSize?: string;
+  customSize?: string | number;
   rounded?: keyof typeof classes.rounded;
   color?: keyof typeof classes.color;
   onClick?: () => void;
@@ -92,12 +92,12 @@ export default function Avatar({
   const [isError, setError] = React.useState(false);
 
   // checking customSize value
-  if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
+  if (String(customSize)?.match(CHECK_VALID_CUSTOM_SIZE)) {
     const checkedCustomSizeValue =
-      customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
+      String(customSize)?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
     if (checkedCustomSizeValue[0] === '') {
       console.warn(
-        'customSize prop value is not valid. Please set customSize prop like -> customSize="50"',
+        'customSize prop value is not valid. Please set customSize prop like -> customSize="50" or customSize={50}',
       );
     }
   }
@@ -120,14 +120,15 @@ export default function Avatar({
           classes.base,
           classes.rounded[rounded],
           color && classes.color[color],
-          'object-cover',
-          // !customSize && avatarSize,
           onClick && 'cursor-pointer',
+          'object-cover',
           className,
         )}
-        {...(!color && {
-          style: { backgroundColor: backgroundColor(signature) },
-        })}
+        style={{
+          width: avatarSize + 'px',
+          height: avatarSize + 'px',
+          ...(!color && { backgroundColor: backgroundColor(signature) }),
+        }}
         onClick={onClick}
       />
     );
@@ -143,7 +144,6 @@ export default function Avatar({
         color && classes.color[color],
         'font-semibold',
         onClick && 'cursor-pointer',
-        // !customSize && avatarSize,
         className,
       )}
       style={{

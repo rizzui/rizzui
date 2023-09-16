@@ -17,7 +17,7 @@ export default {
 
 const Template: ComponentStory<typeof Avatar> = (args) => (
   <Avatar
-    src="https://randomuser.me/api/portraits/women/40.jpg"
+    src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80"
     {...args}
     name="John Doe"
   />
@@ -83,13 +83,13 @@ export const Rounded = () => (
 export const Colors = () => (
   <div className="flex items-center justify-around">
     <Avatar name="John Doe" initials="SM" />
-    <Avatar name="John Doe" initials="SM" color="invert" />
-    <Avatar name="John Doe" initials="SM" color="primary" />
-    <Avatar name="John Doe" initials="SM" color="secondary" />
-    <Avatar name="John Doe" initials="SM" color="danger" />
-    <Avatar name="John Doe" initials="SM" color="warning" />
-    <Avatar name="John Doe" initials="SM" color="success" />
-    <Avatar name="John Doe" initials="SM" color="info" />
+    <Avatar name="John Doe" initials="KM" color="invert" />
+    <Avatar name="John Doe" initials="LM" color="primary" />
+    <Avatar name="John Doe" initials="NM" color="secondary" />
+    <Avatar name="John Doe" initials="AM" color="danger" />
+    <Avatar name="John Doe" initials="DM" color="warning" />
+    <Avatar name="John Doe" initials="FM" color="success" />
+    <Avatar name="John Doe" initials="GM" color="info" />
   </div>
 );
 
