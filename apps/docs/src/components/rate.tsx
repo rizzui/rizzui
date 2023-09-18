@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import RcRate from "rc-rate";
 import type { RateProps as RcRateProps } from "rc-rate/lib/Rate";
 import type { StarProps as RcStarProps } from "rc-rate/lib/Star";
-import { StarIcon, HeartIcon } from "@heroicons/react/24/outline";
+import { StarIcon } from "@heroicons/react/24/outline";
 import { cn, FieldError, FieldHelperText, Tooltip } from "rizzui";
 
 const labelClasses = {

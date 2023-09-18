@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "ES6",
-    "module": "ESNext",
+    "target": "esnext",
+    "module": "esnext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
     "esModuleInterop": true,

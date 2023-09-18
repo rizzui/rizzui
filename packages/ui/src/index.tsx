@@ -72,9 +72,6 @@ export * from './components/native-select';
 export { default as NumberInput } from './components/number-input';
 export * from './components/number-input';
 
-export { default as Pagination } from './components/pagination';
-export * from './components/pagination';
-
 export { default as Password } from './components/password';
 export * from './components/password';
 
@@ -93,20 +90,11 @@ export * from './components/radio';
 export { default as RadioGroup } from './components/radio-group';
 export * from './components/radio-group';
 
-export { default as RangeSlider } from './components/range-slider';
-export * from './components/range-slider';
-
-export { default as Rate } from './components/rate';
-export * from './components/rate';
-
 export { default as Stepper } from './components/stepper';
 export * from './components/stepper';
 
 export { default as Switch } from './components/switch';
 export * from './components/switch';
-
-export { default as Table } from './components/table';
-export * from './components/table';
 
 export { default as Tabs } from './components/tabs';
 export * from './components/tabs';

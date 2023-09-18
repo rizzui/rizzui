@@ -10,7 +10,7 @@ export default defineConfig({
   splitting: true,
   treeshake: true,
   bundle: true,
-  external: ['react'],
+  external: ['react', 'react-dom'],
   // does not support with splitting tsup v:7.2.0
   // esbuildOptions(options) {
   //   options.banner = {

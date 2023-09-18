@@ -70,8 +70,6 @@ function backgroundColor(signature: string) {
   return currObj[0]?.color ?? '#FF6847';
 }
 
-const CHECK_VALID_CUSTOM_SIZE = /(\d)?/g;
-
 function getInitials(name: string) {
   const words = name.split(' ');
   const initials = words.map((word) => word[0]);
@@ -90,17 +88,6 @@ export default function Avatar({
   className,
 }: AvatarProps) {
   const [isError, setError] = React.useState(false);
-
-  // checking customSize value
-  if (String(customSize)?.match(CHECK_VALID_CUSTOM_SIZE)) {
-    const checkedCustomSizeValue =
-      String(customSize)?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
-    if (checkedCustomSizeValue[0] === '') {
-      console.warn(
-        'customSize prop value is not valid. Please set customSize prop like -> customSize="50" or customSize={50}',
-      );
-    }
-  }
 
   let signature = initials || getInitials(name);
   let avatarSize = customSize ?? classes.size[size];

@@ -33,7 +33,7 @@
     "test:ci": "yarn test --ci",
     "test:watch": "jest --watch"
   },
-  "main": "./dist/index.ts",
+  "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -52,10 +52,6 @@
     "@floating-ui/react": "0.25.4",
     "@headlessui/react": "1.7.17",
     "clsx": "1.2.1",
-    "rc-pagination": "3.3.1",
-    "rc-rate": "2.10.0",
-    "rc-slider": "10.1.1",
-    "rc-table": "7.31.1",
     "react-number-format": "5.1.4",
     "tailwind-merge": "1.14.0"
   },
