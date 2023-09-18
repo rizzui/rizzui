@@ -56,7 +56,8 @@
     "tailwind-merge": "1.14.0"
   },
   "peerDependencies": {
-    "react": ">=18"
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
