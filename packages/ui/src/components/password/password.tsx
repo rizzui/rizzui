@@ -209,7 +209,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
       onBlur,
       ...inputProps
     },
-    ref
+    ref,
   ) => {
     const variantStyle = inputClasses.variant[variant];
     const [isFocus, setIsFocus] = useState(false);
@@ -221,7 +221,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
         setIsFocus((prevState) => !prevState);
         onFocus && onFocus(e);
       },
-      [readOnly, onFocus]
+      [readOnly, onFocus],
     );
 
     const handleOnBlur = useCallback(
@@ -230,7 +230,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
         setIsFocus(() => false);
         onBlur && onBlur(e);
       },
-      [readOnly, onBlur]
+      [readOnly, onBlur],
     );
 
     return (
@@ -244,7 +244,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
             </span>
           )}
 
-          <div
+          <span
             className={cn(
               inputClasses.base,
               inputClasses.size[size],
@@ -254,18 +254,18 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
               isFocus && 'is-focus', // must have is-focus class based on onFocus event
               disabled && inputClasses.disabled,
               error && inputClasses.error,
-              inputClassName
+              inputClassName,
             )}
           >
             {prefix && (
-              <div
+              <span
                 className={cn(
                   'whitespace-nowrap leading-normal',
-                  prefixClassName
+                  prefixClassName,
                 )}
               >
                 {prefix}
-              </div>
+              </span>
             )}
             <input
               ref={ref}
@@ -285,7 +285,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
                 clearable && inputFieldClasses.clearable,
                 prefix && inputFieldClasses.prefixStartPadding.size[size],
                 visibilityToggleIcon &&
-                  inputFieldClasses.suffixEndPadding.size[size]
+                  inputFieldClasses.suffixEndPadding.size[size],
               )}
               style={{ fontSize: 'inherit' }}
               {...inputProps}
@@ -293,13 +293,13 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
             {clearable && (
               <ClearButton size={size} onClick={onClear} hasSuffix />
             )}
-            <div
+            <span
               role="button"
               tabIndex={0}
               className={cn(
                 'whitespace-nowrap leading-normal',
                 disabled && 'text-gray-400',
-                visibilityToggleIconClassName
+                visibilityToggleIconClassName,
               )}
               onClick={() => {
                 if (disabled) return false;
@@ -311,8 +311,8 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
               ) : (
                 <PasswordToggleIcon isVisible={visible} iconSize={size} />
               )}
-            </div>
-          </div>
+            </span>
+          </span>
         </label>
 
         {!error && helperText && (
@@ -326,7 +326,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Password.displayName = 'Password';

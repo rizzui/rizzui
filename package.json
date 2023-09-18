@@ -1,6 +1,6 @@
 {
   "name": "redq-ui",
-  "version": "0.5.8",
+  "version": "0.6.0",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "eslint-config-custom": "*",
-    "prettier": "latest",
+    "prettier": "3.0.1",
     "turbo": "latest",
     "husky": "^8.0.0",
     "tsup": "6.7.0"

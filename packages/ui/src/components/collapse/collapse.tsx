@@ -41,24 +41,24 @@ export default function Collapse({
 }: React.PropsWithChildren<CollapseProps>) {
   const { open, openTargetEl, targetEl, toggle } = useCollapse(
     duration,
-    defaultOpen
+    defaultOpen,
   );
   const Component = tag;
+  const Children = tag !== 'div' ? 'li' : 'div';
   return (
     <Component
-      role=""
       data-testid="collapse-parent"
-      className={cn('aegon-collapse', className)}
+      className={cn('rizzui-collapse', className)}
       aria-expanded={open}
     >
       {header({ open, toggle })}
-      <Component
+      <Children
         ref={targetEl}
         className={cn(panelClassName)}
         style={!openTargetEl ? { display: 'none' } : { display: 'block' }}
       >
         {children}
-      </Component>
+      </Children>
     </Component>
   );
 }

@@ -76,6 +76,7 @@ export default function Progressbar({
   className,
   barClassName,
   labelClassName,
+  ...props
 }: ProgressbarProps) {
   return (
     <div
@@ -83,7 +84,7 @@ export default function Progressbar({
         'relative w-full bg-gray-200',
         classes.size[size],
         classes.rounded[rounded],
-        className
+        className,
       )}
     >
       <div
@@ -97,9 +98,10 @@ export default function Progressbar({
           classes.variant[variant].base,
           classes.variant[variant].color[color],
           classes.rounded[rounded],
-          barClassName
+          barClassName,
         )}
         style={{ width: `${value}%` }}
+        {...props}
       >
         {label && size === 'xl' && (
           <Text className={cn('text-xs font-bold', labelClassName)}>

@@ -3,15 +3,15 @@ import { useHistory } from "@docusaurus/router";
 import {
   Button,
   ActionIcon,
-  Rate,
   Text,
   PinCode,
   Progressbar,
-  Pagination,
   Switch,
   Badge,
   Avatar,
 } from "rizzui";
+import Rate from "@site/src/components/rate";
+import Pagination from "@site/src/components/pagination";
 import {
   ArrowRightIcon,
   ChevronLeftIcon,
@@ -168,7 +168,7 @@ export default function ComponentBlock() {
                   <Text className="mb-3">See more components in the docs</Text>
                   <Button
                     variant="flat"
-                    onClick={() => history.push("/docs/components/avatar")}
+                    onClick={() => history.push("/docs/components/action-icon")}
                   >
                     View more <ArrowRightIcon className="w-4 h-4 ml-1.5" />
                   </Button>

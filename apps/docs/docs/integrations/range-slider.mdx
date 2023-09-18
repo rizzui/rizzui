@@ -1,17 +1,101 @@
 ---
-sidebar_position: 19
+sidebar_position: 2
 ---
 
-import { RangeSlider } from 'rizzui';
-import Paper from '@site/src/components/paper';
-import RangeSliderCounter from '@site/src/components/range-slider';
+import Paper from "@site/src/components/paper";
+import RangeSlider, {
+  RangeSliderCounter,
+} from "@site/src/components/range-slider";
 
-# RangeSlider
+# Rc Slider
 
 A slider component enables user to pick any value from a range.
 
-```jsx
-import { RangeSlider } from 'rizzui';
+<div className="mb-16" />
+
+## Installation
+
+<hr />
+
+1.  Install the **rc-slider** package.
+
+<div className="mb-4" />
+
+```bash
+npm install rc-slider
+```
+
+<div className="mb-4" />
+
+2. Create a file called **range-slider.tsx** inside your components directory. And then copy and paste the following code into that file.
+
+<div className="mb-4" />
+
+```ts
+import React from "react";
+import Slider from "rc-slider";
+import type { SliderProps } from "rc-slider";
+import "rc-slider/assets/index.css";
+
+import { cn } from "../../lib/cn";
+
+const classes = {
+  base: "[&>.rc-slider-rail]:bg-gray-200 [&>.rc-slider-handle]:opacity-100 [&>.rc-slider-handle-dragging]:!shadow-none [&>.rc-slider-handle-dragging]:ring-4",
+  size: {
+    sm: "[&>.rc-slider-rail]:h-0.5 [&>.rc-slider-track]:h-0.5 [&>.rc-slider-handle]:h-3 [&>.rc-slider-handle]:w-3 [&>.rc-slider-handle]:border-[3px]",
+    DEFAULT:
+      "[&>.rc-slider-rail]:h-1 [&>.rc-slider-track]:h-1 [&>.rc-slider-handle]:h-4 [&>.rc-slider-handle]:w-4 [&>.rc-slider-handle]:border-4 [&>.rc-slider-handle]:-mt-1.5",
+    lg: "[&>.rc-slider-rail]:h-2 [&>.rc-slider-track]:h-2 [&>.rc-slider-handle]:h-5 [&>.rc-slider-handle]:w-5 [&>.rc-slider-handle]:border-[5px] [&>.rc-slider-handle]:-mt-1.5",
+    xl: "[&>.rc-slider-rail]:h-3 [&>.rc-slider-track]:h-3 [&>.rc-slider-handle]:h-6 [&>.rc-slider-handle]:w-6 [&>.rc-slider-handle]:border-[6px] [&>.rc-slider-handle]:-mt-1.5",
+  },
+  color: {
+    DEFAULT:
+      "[&>.rc-slider-track]:bg-gray-900 [&>.rc-slider-handle]:border-gray-1000 [&>.rc-slider-handle]:hover:border-gray-1000 [&>.rc-slider-handle-dragging]:!border-gray-1000 [&>.rc-slider-handle-dragging]:ring-gray-400/60 [&>.rc-slider-step>.rc-slider-dot-active]:border-gray-1000",
+    primary:
+      "[&>.rc-slider-track]:bg-primary [&>.rc-slider-handle]:border-primary-dark [&>.rc-slider-handle]:hover:border-primary-dark [&>.rc-slider-handle-dragging]:!border-primary-dark [&>.rc-slider-handle-dragging]:ring-primary-light/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-primary-dark",
+    secondary:
+      "[&>.rc-slider-track]:bg-secondary [&>.rc-slider-handle]:border-secondary-dark [&>.rc-slider-handle]:hover:border-secondary-dark [&>.rc-slider-handle-dragging]:!border-secondary-dark [&>.rc-slider-handle-dragging]:ring-secondary-light/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-secondary-dark",
+    danger:
+      "[&>.rc-slider-track]:bg-red [&>.rc-slider-handle]:border-red-dark [&>.rc-slider-handle]:hover:border-red-dark [&>.rc-slider-handle-dragging]:!border-red-dark [&>.rc-slider-handle-dragging]:ring-red-light/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-red-dark",
+    info: "[&>.rc-slider-track]:bg-blue [&>.rc-slider-handle]:border-blue-dark [&>.rc-slider-handle]:hover:border-blue-dark [&>.rc-slider-handle-dragging]:!border-blue-dark [&>.rc-slider-handle-dragging]:ring-blue-light/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-blue-dark",
+    success:
+      "[&>.rc-slider-track]:bg-green [&>.rc-slider-handle]:border-green-dark [&>.rc-slider-handle]:hover:border-green-dark [&>.rc-slider-handle-dragging]:!border-green-dark [&>.rc-slider-handle-dragging]:ring-green-light/50 [&>.rc-slider-step>.rc-slider-dot-active]:border-green-dark",
+    warning:
+      "[&>.rc-slider-track]:bg-orange [&>.rc-slider-handle]:border-orange-dark [&>.rc-slider-handle]:hover:border-orange-dark [&>.rc-slider-handle-dragging]:!border-orange-dark [&>.rc-slider-handle-dragging]:ring-orange-light/60 [&>.rc-slider-step>.rc-slider-dot-active]:border-orange-dark",
+  },
+};
+
+export interface RangeSliderProps extends SliderProps {
+  /** Sizes of the component are: */
+  size?: keyof typeof classes.size;
+  /** Change slider color */
+  color?: keyof typeof classes.color;
+}
+
+/**
+ * A slider component enables user to pick any value from a range. We used `rc-slider` package to create Slider component.
+ * See their [documentation](https://slider-react-component.vercel.app/) for more info.
+ */
+export default function RangeSlider({
+  size = "DEFAULT",
+  color = "DEFAULT",
+  className,
+  ...props
+}: RangeSliderProps) {
+  return (
+    <Slider
+      className={cn(
+        classes.base,
+        classes.size[size],
+        classes.color[color],
+        className
+      )}
+      {...props}
+    />
+  );
+}
+
+RangeSlider.displayName = "RangeSlider";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -21,14 +105,14 @@ import { RangeSlider } from 'rizzui';
 The default style of **RangeSlider** component.
 
 <Paper>
-	<RangeSlider defaultValue={20} />
+  <RangeSlider defaultValue={20} />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return <RangeSlider defaultValue={20} />;
+  return <RangeSlider defaultValue={20} />;
 }
 ```
 
@@ -39,24 +123,24 @@ export default function App() {
 You can change the size of **RangeSlider** using [**size**](#rangeslider-sizes) property.
 
 <Paper className="gap-6">
-	<RangeSlider size="sm" defaultValue={20} />
-	<RangeSlider defaultValue={25} />
-	<RangeSlider size="lg" defaultValue={30} />
-	<RangeSlider size="xl" defaultValue={35} />
+  <RangeSlider size="sm" defaultValue={20} />
+  <RangeSlider defaultValue={25} />
+  <RangeSlider size="lg" defaultValue={30} />
+  <RangeSlider size="xl" defaultValue={35} />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<RangeSlider size="sm" defaultValue={20} />
-			<RangeSlider defaultValue={25} />
-			<RangeSlider size="lg" defaultValue={30} />
-			<RangeSlider size="xl" defaultValue={35} />
-		</>
-	);
+  return (
+    <>
+      <RangeSlider size="sm" defaultValue={20} />
+      <RangeSlider defaultValue={25} />
+      <RangeSlider size="lg" defaultValue={30} />
+      <RangeSlider size="xl" defaultValue={35} />
+    </>
+  );
 }
 ```
 
@@ -67,30 +151,30 @@ export default function App() {
 You can change the color of **RangeSlider** using [**color**](#rangeslider-colors) property.
 
 <Paper className="gap-6">
-	<RangeSlider defaultValue={15} />
-	<RangeSlider defaultValue={20} color="primary" />
-	<RangeSlider defaultValue={25} color="secondary" />
-	<RangeSlider defaultValue={30} color="danger" />
-	<RangeSlider defaultValue={35} color="info" />
-	<RangeSlider defaultValue={40} color="success" />
-	<RangeSlider defaultValue={45} color="warning" />
+  <RangeSlider defaultValue={15} />
+  <RangeSlider defaultValue={20} color="primary" />
+  <RangeSlider defaultValue={25} color="secondary" />
+  <RangeSlider defaultValue={30} color="danger" />
+  <RangeSlider defaultValue={35} color="info" />
+  <RangeSlider defaultValue={40} color="success" />
+  <RangeSlider defaultValue={45} color="warning" />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<RangeSlider defaultValue={15} />
-			<RangeSlider defaultValue={20} color="primary" />
-			<RangeSlider defaultValue={25} color="secondary" />
-			<RangeSlider defaultValue={30} color="danger" />
-			<RangeSlider defaultValue={35} color="info" />
-			<RangeSlider defaultValue={40} color="success" />
-			<RangeSlider defaultValue={45} color="warning" />
-		</>
-	);
+  return (
+    <>
+      <RangeSlider defaultValue={15} />
+      <RangeSlider defaultValue={20} color="primary" />
+      <RangeSlider defaultValue={25} color="secondary" />
+      <RangeSlider defaultValue={30} color="danger" />
+      <RangeSlider defaultValue={35} color="info" />
+      <RangeSlider defaultValue={40} color="success" />
+      <RangeSlider defaultValue={45} color="warning" />
+    </>
+  );
 }
 ```
 
@@ -101,14 +185,14 @@ export default function App() {
 When **range** is true, display as dual thumb mode.
 
 <Paper>
-	<RangeSlider defaultValue={[20, 60]} range />
+  <RangeSlider defaultValue={[20, 60]} range />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return <RangeSlider defaultValue={[20, 60]} range />;
+  return <RangeSlider defaultValue={[20, 60]} range />;
 }
 ```
 
@@ -119,38 +203,38 @@ export default function App() {
 You can set multiple marks and steps using **marks** & **step** property.
 
 <Paper>
-	<RangeSlider
-		marks={{
-			0: '0',
-			20: '2000',
-			40: '4000',
-			60: '6000',
-			80: '8000',
-			100: '10000',
-		}}
-		step={20}
-		defaultValue={40}
-	/>
+  <RangeSlider
+    marks={{
+      0: "0",
+      20: "2000",
+      40: "4000",
+      60: "6000",
+      80: "8000",
+      100: "10000",
+    }}
+    step={20}
+    defaultValue={40}
+  />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return (
-		<RangeSlider
-			marks={{
-				0: '0',
-				20: '2000',
-				40: '4000',
-				60: '6000',
-				80: '8000',
-				100: '10000',
-			}}
-			step={20}
-			defaultValue={40}
-		/>
-	);
+  return (
+    <RangeSlider
+      marks={{
+        0: "0",
+        20: "2000",
+        40: "4000",
+        60: "6000",
+        80: "8000",
+        100: "10000",
+      }}
+      step={20}
+      defaultValue={40}
+    />
+  );
 }
 ```
 
@@ -161,40 +245,40 @@ export default function App() {
 Make multiple marks and steps with range using **marks**, **step**, & **range** property.
 
 <Paper>
-	<RangeSlider
-		range
-		marks={{
-			0: '0',
-			20: '2000',
-			40: '4000',
-			60: '6000',
-			80: '8000',
-			100: '10000',
-		}}
-		step={20}
-		defaultValue={[20, 60]}
-	/>
+  <RangeSlider
+    range
+    marks={{
+      0: "0",
+      20: "2000",
+      40: "4000",
+      60: "6000",
+      80: "8000",
+      100: "10000",
+    }}
+    step={20}
+    defaultValue={[20, 60]}
+  />
 </Paper>
 
 ```jsx
-import { RangeSlider } from 'rizzui';
+import { RangeSlider } from "rizzui";
 
 export default function App() {
-	return (
-		<RangeSlider
-			range
-			marks={{
-				0: '0',
-				20: '2000',
-				40: '4000',
-				60: '6000',
-				80: '8000',
-				100: '10000',
-			}}
-			step={20}
-			defaultValue={[20, 60]}
-		/>
-	);
+  return (
+    <RangeSlider
+      range
+      marks={{
+        0: "0",
+        20: "2000",
+        40: "4000",
+        60: "6000",
+        80: "8000",
+        100: "10000",
+      }}
+      step={20}
+      defaultValue={[20, 60]}
+    />
+  );
 }
 ```
 
@@ -205,7 +289,7 @@ export default function App() {
 Customize your range slider according to your preference.
 
 <Paper className="block">
-	<RangeSliderCounter />
+  <RangeSliderCounter />
 </Paper>
 
 ```jsx
@@ -340,7 +424,7 @@ Here is the API documentation of the ActionIcon component. We used **rc-slider**
 ### Rangeslider Sizes
 
 ```tsx
-type RangesliderSize = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+type RangesliderSize = "sm" | "DEFAULT" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -349,13 +433,13 @@ type RangesliderSize = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 
 ```ts
 type Rangeslidercolors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```
 
 <div className="mb-10" />

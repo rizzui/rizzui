@@ -2,16 +2,16 @@
 sidebar_position: 6
 ---
 
-import { Badge, Text, Avatar } from 'rizzui';
-import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
-import Paper from '@site/src/components/paper';
+import { Badge, Text, Avatar } from "rizzui";
+import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import Paper from "@site/src/components/paper";
 
 # Badge
 
 Badge is a small overlapped UI item which indicates a status, notification, or event that appears in relativity with the underlying object.
 
 ```tsx
-import { Badge } from 'rizzui';
+import { Badge } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -25,7 +25,7 @@ The default style of **Badge** component.
 </Paper>
 
 ```tsx
-import { Badge } from 'rizzui';
+import { Badge } from "rizzui";
 
 export default function App() {
   return <Badge>Badge</Badge>;
@@ -47,7 +47,7 @@ You can change the style of the **Badge** using [**variant**](#badge-variants) p
 </Paper>
 
 ```tsx
-import { Badge } from 'rizzui';
+import { Badge } from "rizzui";
 
 export default function App() {
   return (
@@ -76,7 +76,7 @@ You can change the size of the **Badge** using [**size**](#badge-sizes) property
 </Paper>
 
 ```tsx
-import { Badge } from 'rizzui';
+import { Badge } from "rizzui";
 
 export default function App() {
   return (
@@ -107,7 +107,7 @@ You can change the border radius of the **Badge** using [**rounded**](#badge-rou
 </Paper>
 
 ```tsx
-import { Badge } from 'rizzui';
+import { Badge } from "rizzui";
 
 export default function App() {
   return (
@@ -141,7 +141,7 @@ You can change the color of the **Badge** using [**color**](#badge-colors) prope
 </Paper>
 
 ```tsx
-import { Badge } from 'rizzui';
+import { Badge } from "rizzui";
 
 export default function App() {
   return (
@@ -198,7 +198,7 @@ You can render **Badge** as dot using **renderAsDot** property.
 </Paper>
 
 ```tsx
-import { Badge, Text } from 'rizzui';
+import { Badge, Text } from "rizzui";
 
 export default function App() {
   return (
@@ -280,8 +280,8 @@ You can use **Badge** to make a ecommerce cart counter component.
 </Paper>
 
 ```tsx
-import { Badge } from 'rizzui';
-import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { Badge } from "rizzui";
+import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 export default function App() {
   return (
@@ -333,6 +333,7 @@ You can use the **Badge** with **Avatar** component to show the current state of
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
     <div className="relative inline-flex">
       <Avatar
+        name="John Doe"
         size="lg"
         src="https://randomuser.me/api/portraits/women/40.jpg"
       />
@@ -346,6 +347,7 @@ You can use the **Badge** with **Avatar** component to show the current state of
     </div>
     <div className="relative ml-3 inline-flex">
       <Avatar
+        name="John Doe"
         size="lg"
         src="https://randomuser.me/api/portraits/women/43.jpg"
       />
@@ -359,6 +361,7 @@ You can use the **Badge** with **Avatar** component to show the current state of
     </div>
     <div className="relative ml-3 inline-flex">
       <Avatar
+        name="John Doe"
         size="lg"
         src="https://randomuser.me/api/portraits/women/44.jpg"
       />
@@ -374,13 +377,14 @@ You can use the **Badge** with **Avatar** component to show the current state of
 </Paper>
 
 ```tsx
-import { Badge, Avatar } from 'rizzui';
+import { Badge, Avatar } from "rizzui";
 
 export default function App() {
   return (
     <>
       <div className="relative inline-flex">
         <Avatar
+          name="John Doe"
           size="lg"
           src="https://randomuser.me/api/portraits/women/40.jpg"
         />
@@ -394,6 +398,7 @@ export default function App() {
       </div>
       <div className="relative ml-3 inline-flex">
         <Avatar
+          name="John Doe"
           size="lg"
           src="https://randomuser.me/api/portraits/women/43.jpg"
         />
@@ -407,6 +412,7 @@ export default function App() {
       </div>
       <div className="relative ml-3 inline-flex">
         <Avatar
+          name="John Doe"
           size="lg"
           src="https://randomuser.me/api/portraits/women/44.jpg"
         />
@@ -455,7 +461,7 @@ Here is the API documentation of the Badge component. You can use props like **i
 ### Badge Variants
 
 ```ts
-type BadgeVariants = 'solid' | 'flat' | 'outline';
+type BadgeVariants = "solid" | "flat" | "outline";
 ```
 
 <div className="mb-10" />
@@ -463,7 +469,7 @@ type BadgeVariants = 'solid' | 'flat' | 'outline';
 ### Badge Sizes
 
 ```ts
-type BadgeSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type BadgeSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -471,7 +477,7 @@ type BadgeSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### Badge Rounded
 
 ```ts
-type BadgeRounded = 'DEFAULT' | 'none' | 'sm' | 'md' | 'lg';
+type BadgeRounded = "DEFAULT" | "none" | "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
@@ -480,11 +486,11 @@ type BadgeRounded = 'DEFAULT' | 'none' | 'sm' | 'md' | 'lg';
 
 ```ts
 type BadgeColors =
-  | 'DEFAULT'
-  | 'primary'
-  | 'secondary'
-  | 'danger'
-  | 'info'
-  | 'success'
-  | 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```

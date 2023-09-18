@@ -19,10 +19,3 @@ test('Renders text of empty', () => {
   expect(emptyStateElement).toBeInTheDocument();
   expect(emptyStateElement).toHaveTextContent('No data');
 });
-
-test('Default height and width of default svg icon', () => {
-  render(<Empty />);
-  const emptyDefaultIcon = screen.getByTestId('empty-default-icon');
-  expect(emptyDefaultIcon).toHaveAttribute('width', '184');
-  expect(emptyDefaultIcon).toHaveAttribute('height', '152');
-});

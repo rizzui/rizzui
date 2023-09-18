@@ -1,22 +1,15 @@
 import React from 'react';
 
 interface EmptySVGIconProps {
-  width?: string | number;
-  height?: string | number;
   className?: string;
 }
 
-export function DefaultIcon({
-  width = 184,
-  height = 152,
-  className,
-}: EmptySVGIconProps) {
+export function DefaultIcon({ className = 'w-44 h-auto' }: EmptySVGIconProps) {
   return (
     <svg
       data-testid="empty-default-icon"
-      width={width}
-      height={height}
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 184 152"
       {...(className && { className })}
     >
       <g fill="none" fillRule="evenodd">
@@ -59,17 +52,12 @@ export function DefaultIcon({
   );
 }
 
-export function EmptyBoxIcon({
-  width = 103,
-  height = 64,
-  className,
-}: EmptySVGIconProps) {
+export function EmptyBoxIcon({ className = 'h-16 w-auto' }: EmptySVGIconProps) {
   return (
     <svg
-      width={width}
-      height={height}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 103 64"
       {...(className && { className })}
     >
       <path
@@ -89,19 +77,16 @@ export function EmptyBoxIcon({
 }
 
 export function EmptyProductBoxIcon({
-  width = 350,
-  height = 351,
-  className,
+  className = 'w-80 h-auto',
 }: EmptySVGIconProps) {
   return (
     <svg
-      width={width}
-      height={height}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 350 351"
       {...(className && { className })}
     >
-      <g clipPath="url(#a)">
+      <g>
         <path
           d="M90.268 325.768C82.864 324.177-6.228 309.927.346 204.744 6.886 99.561 15.12 67.948 49.753 56.361 84.386 44.774 168.53-9.98 234.579 42.11c66.049 52.09 137.322 98.749 109.02 181.899-28.267 83.115-32.903 110.855-106.667 106.601-73.765-4.255-111.443 2.663-146.664-4.843Z"
           className="fill-gray-50"
@@ -199,26 +184,18 @@ export function EmptyProductBoxIcon({
           className="fill-gray-500"
         />
       </g>
-      <defs>
-        <clipPath id="a">
-          <path className="fill-gray-0" d="M0 0h350v351H0z" />
-        </clipPath>
-      </defs>
     </svg>
   );
 }
 
 export function SearchNotFoundIcon({
-  width = 350,
-  height = 350,
-  className,
+  className = 'w-80 h-auto',
 }: EmptySVGIconProps) {
   return (
     <svg
-      width={width}
-      height={height}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 350 350"
       {...(className && { className })}
     >
       <path

@@ -1,21 +1,205 @@
 ---
-sidebar_position: 28
+sidebar_position: 3
 ---
 
-import { Table } from 'rizzui';
-import Paper from '@site/src/components/paper';
+import Table from "@site/src/components/rc-table";
+import Paper from "@site/src/components/paper";
 import TableDefault, {
   TableModern,
   TableElegant,
   TableMinimal,
-} from '@site/src/components/table';
+} from "@site/src/components/table";
 
-# Table
+# Rc Table
 
 React table component with useful functions.
 
-```tsx
-import { Table } from 'rizzui';
+<div className="mb-16" />
+
+## Installation
+
+<hr />
+
+1.  Install the **rc-table** package.
+
+<div className="mb-4" />
+
+```bash
+npm install rc-table
+```
+
+<div className="mb-4" />
+
+2. Create a file called **table.tsx** inside your components directory. And then copy and paste the following code into that file.
+
+<div className="mb-4" />
+
+```ts
+import React from "react";
+import Table from "rc-table";
+import { Empty, cn } from "rizzui";
+
+export type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T;
+
+const classes = {
+  table:
+    "[&_.rc-table-content]:overflow-x-auto [&_table]:w-full [&_.rc-table-row:hover]:bg-gray-50",
+  thead:
+    "[&_thead]:text-left [&_thead]:rtl:text-right [&_th.rc-table-cell]:uppercase [&_th.rc-table-cell]:text-xs [&_th.rc-table-cell]:font-medium [&_th.rc-table-cell]:tracking-wide",
+  tCell:
+    "[&_.rc-table-cell]:px-3 [&_th.rc-table-cell]:py-3 [&_td.rc-table-cell]:py-4",
+  variants: {
+    classic:
+      "[&_thead]:bg-gray-100 [&_.rc-table-container]:border-x [&_.rc-table-container]:border-gray-300 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-gray-300 [&_thead]:border-y [&_thead]:border-gray-300",
+    modern:
+      "[&_thead]:bg-gray-100 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-gray-300",
+    minimal: "[&_thead]:bg-gray-100",
+    elegant:
+      "[&_thead]:border-y [&_thead]:border-gray-300 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-gray-300",
+  },
+  striped: "[&_.rc-table-row:nth-child(2n)_.rc-table-cell]:bg-gray-100/50",
+};
+
+type RCTableProps = ExtractProps<typeof Table>;
+
+export interface TableProps
+  extends Omit<RCTableProps, "className" | "emptyText"> {
+  /** Set empty text, it will only appear when table has no data */
+  emptyText?: React.ReactElement;
+  /** The variants of the component are: */
+  variant?: keyof typeof classes.variants;
+  /** Add striping style */
+  striped?: boolean;
+  /** Add custom classes for extra style */
+  className?: string;
+}
+
+export default function RcTable({
+  striped,
+  variant = "classic",
+  emptyText,
+  className,
+  ...props
+}: TableProps) {
+  return (
+    <Table
+      className={cn(
+        classes.table,
+        classes.thead,
+        classes.tCell,
+        classes.variants[variant],
+        striped && classes.striped,
+        className
+      )}
+      emptyText={emptyText ?? <Empty />}
+      {...props}
+    />
+  );
+}
+
+RcTable.displayName = "Table";
+```
+
+3. You need to create one more component for the table header cell
+
+<div className="mb-4" />
+
+```ts
+import React from "react";
+import { cn } from "rizzui";
+
+type TextAlign = "left" | "center" | "right";
+
+export interface HeaderCellProps {
+  title: React.ReactNode;
+  width?: number;
+  /** Set table header cell text alignment */
+  align?: TextAlign;
+  /** Make header cell text ellipsis, you need to set width prop too */
+  ellipsis?: boolean;
+  /** Make sortable column, it's also required ascending prop too. Check our example for more details. */
+  sortable?: boolean;
+  /** Make ascending column, it's also required sortable prop too. Check our example for more details. */
+  ascending?: boolean;
+  /** Add custom classes to the sort icon for extra style */
+  iconClassName?: string;
+  /** Add custom classes for extra style */
+  className?: string;
+}
+
+// A util func
+function handleTextAlignment(align: TextAlign) {
+  if (align === "center") return "justify-center";
+  if (align === "right") return "justify-end rtl:justify-start";
+  return "";
+}
+
+/**
+ *  Table HeaderCell component.
+ */
+export default function HeaderCell({
+  title,
+  align = "left",
+  width,
+  ellipsis,
+  sortable,
+  ascending,
+  iconClassName,
+  className,
+}: HeaderCellProps) {
+  if (ellipsis && width === undefined) {
+    console.warn(
+      "When ellipsis is true make sure you are using the same column width in HeaderCell component too."
+    );
+  }
+  if (width !== undefined && ellipsis !== true) {
+    console.warn(
+      "width prop without ellipsis won't work, please set ellipsis prop true."
+    );
+  }
+  return (
+    <div
+      className={cn(
+        "flex items-center gap-1",
+        sortable && "cursor-pointer",
+        handleTextAlignment(align),
+        className
+      )}
+    >
+      <div
+        {...(ellipsis && { className: "truncate" })}
+        {...(ellipsis && width && { style: { width } })}
+      >
+        {title}
+      </div>
+      {sortable && (
+        <div className="inline-flex">
+          {ascending ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              className={cn("h-auto w-3", iconClassName)}
+              viewBox="0 0 16 16"
+            >
+              <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              className={cn("h-auto w-3", iconClassName)}
+              viewBox="0 0 16 16"
+            >
+              <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+            </svg>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+HeaderCell.displayName = "HeaderCell";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -29,119 +213,121 @@ The default style of **Table** component.
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
+import React from "react";
+import Table from "@components/table";
+import HeaderCell from "@components/header-cell";
+import { Checkbox, Avatar, Text, Badge } from "rizzui";
 
 const initialData = [
   {
-    id: '1',
+    id: "1",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '2',
+    id: "2",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '3',
+    id: "3",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '4',
+    id: "4",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '5',
+    id: "5",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '6',
+    id: "6",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
 ];
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case "pending":
       return <Badge variant="flat">{status}</Badge>;
-    case 'active':
+    case "active":
       return (
         <Badge variant="flat" color="success">
           {status}
         </Badge>
       );
-    case 'warning':
+    case "warning":
       return (
         <Badge variant="flat" color="warning">
           {status}
         </Badge>
       );
-    case 'danger':
+    case "danger":
       return (
         <Badge variant="flat" color="danger">
           {status}
@@ -159,8 +345,8 @@ const getColumns = (
 ) => [
   {
     title: <></>,
-    dataIndex: 'checked',
-    key: 'checked',
+    dataIndex: "checked",
+    key: "checked",
     width: 50,
     render: () => (
       <div className="inline-flex cursor-pointer">
@@ -173,22 +359,22 @@ const getColumns = (
       <HeaderCell
         title="Id"
         sortable
-        ascending={order === 'asc' && column === 'id'}
+        ascending={order === "asc" && column === "id"}
       />
     ),
-    onHeaderCell: () => onHeaderClick('id'),
-    dataIndex: 'id',
-    key: 'id',
+    onHeaderCell: () => onHeaderClick("id"),
+    dataIndex: "id",
+    key: "id",
     width: 50,
   },
   {
     title: <HeaderCell title="Employee" />,
-    dataIndex: 'employee',
-    key: 'employee',
+    dataIndex: "employee",
+    key: "employee",
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar src={employee.avatar} />
+        <Avatar name="John Doe" src={employee.avatar} />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
           <Text tag="h6" className="mb-0.5 !text-sm font-medium">
             {employee.name}
@@ -202,8 +388,8 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Designation" />,
-    dataIndex: 'designation',
-    key: 'designation',
+    dataIndex: "designation",
+    key: "designation",
     width: 320,
     render: (designation: any) => (
       <div>
@@ -218,27 +404,27 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Phone Number" />,
-    dataIndex: 'phoneNumber',
-    key: 'phoneNumber',
+    dataIndex: "phoneNumber",
+    key: "phoneNumber",
     width: 200,
   },
   {
     title: <HeaderCell title="Email" />,
-    dataIndex: 'email',
-    key: 'email',
+    dataIndex: "email",
+    key: "email",
     width: 200,
   },
   {
     title: <HeaderCell title="Status" />,
-    dataIndex: 'status',
-    key: 'status',
+    dataIndex: "status",
+    key: "status",
     width: 120,
     render: (value: string) => getStatusBadge(value),
   },
   {
     title: <></>,
-    dataIndex: 'action',
-    key: 'action',
+    dataIndex: "action",
+    key: "action",
     width: 120,
     render: (_: string, row: any) => (
       <div className="flex items-center gap-2">
@@ -258,14 +444,14 @@ const getColumns = (
 ];
 
 export default function App() {
-  const [order, setOrder] = React.useState<string>('desc');
-  const [column, setColumn] = React.useState<string>('');
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
-      setOrder(order === 'desc' ? 'asc' : 'desc');
-      if (order === 'desc') {
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
         // @ts-ignore
         setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
       } else {
@@ -294,119 +480,121 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
+import React from "react";
+import Table from "@components/table";
+import HeaderCell from "@components/header-cell";
+import { Checkbox, Avatar, Text, Badge } from "rizzui";
 
 const initialData = [
   {
-    id: '1',
+    id: "1",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '2',
+    id: "2",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '3',
+    id: "3",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '4',
+    id: "4",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '5',
+    id: "5",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '6',
+    id: "6",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
 ];
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case "pending":
       return <Badge variant="flat">{status}</Badge>;
-    case 'active':
+    case "active":
       return (
         <Badge variant="flat" color="success">
           {status}
         </Badge>
       );
-    case 'warning':
+    case "warning":
       return (
         <Badge variant="flat" color="warning">
           {status}
         </Badge>
       );
-    case 'danger':
+    case "danger":
       return (
         <Badge variant="flat" color="danger">
           {status}
@@ -424,8 +612,8 @@ const getColumns = (
 ) => [
   {
     title: <></>,
-    dataIndex: 'checked',
-    key: 'checked',
+    dataIndex: "checked",
+    key: "checked",
     width: 50,
     render: () => (
       <div className="inline-flex cursor-pointer">
@@ -438,22 +626,22 @@ const getColumns = (
       <HeaderCell
         title="Id"
         sortable
-        ascending={order === 'asc' && column === 'id'}
+        ascending={order === "asc" && column === "id"}
       />
     ),
-    onHeaderCell: () => onHeaderClick('id'),
-    dataIndex: 'id',
-    key: 'id',
+    onHeaderCell: () => onHeaderClick("id"),
+    dataIndex: "id",
+    key: "id",
     width: 50,
   },
   {
     title: <HeaderCell title="Employee" />,
-    dataIndex: 'employee',
-    key: 'employee',
+    dataIndex: "employee",
+    key: "employee",
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar src={employee.avatar} />
+        <Avatar name="John Doe" src={employee.avatar} />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
           <Text tag="h6" className="mb-0.5 !text-sm font-medium">
             {employee.name}
@@ -467,8 +655,8 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Designation" />,
-    dataIndex: 'designation',
-    key: 'designation',
+    dataIndex: "designation",
+    key: "designation",
     width: 320,
     render: (designation: any) => (
       <div>
@@ -483,27 +671,27 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Phone Number" />,
-    dataIndex: 'phoneNumber',
-    key: 'phoneNumber',
+    dataIndex: "phoneNumber",
+    key: "phoneNumber",
     width: 200,
   },
   {
     title: <HeaderCell title="Email" />,
-    dataIndex: 'email',
-    key: 'email',
+    dataIndex: "email",
+    key: "email",
     width: 200,
   },
   {
     title: <HeaderCell title="Status" />,
-    dataIndex: 'status',
-    key: 'status',
+    dataIndex: "status",
+    key: "status",
     width: 120,
     render: (value: string) => getStatusBadge(value),
   },
   {
     title: <></>,
-    dataIndex: 'action',
-    key: 'action',
+    dataIndex: "action",
+    key: "action",
     width: 120,
     render: (_: string, row: any) => (
       <div className="flex items-center gap-2">
@@ -523,14 +711,14 @@ const getColumns = (
 ];
 
 export default function App() {
-  const [order, setOrder] = React.useState<string>('desc');
-  const [column, setColumn] = React.useState<string>('');
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
-      setOrder(order === 'desc' ? 'asc' : 'desc');
-      if (order === 'desc') {
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
         // @ts-ignore
         setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
       } else {
@@ -561,119 +749,121 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
+import React from "react";
+import Table from "@components/table";
+import HeaderCell from "@components/header-cell";
+import { Checkbox, Avatar, Text, Badge } from "rizzui";
 
 const initialData = [
   {
-    id: '1',
+    id: "1",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '2',
+    id: "2",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '3',
+    id: "3",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '4',
+    id: "4",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '5',
+    id: "5",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '6',
+    id: "6",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
 ];
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case "pending":
       return <Badge variant="flat">{status}</Badge>;
-    case 'active':
+    case "active":
       return (
         <Badge variant="flat" color="success">
           {status}
         </Badge>
       );
-    case 'warning':
+    case "warning":
       return (
         <Badge variant="flat" color="warning">
           {status}
         </Badge>
       );
-    case 'danger':
+    case "danger":
       return (
         <Badge variant="flat" color="danger">
           {status}
@@ -691,8 +881,8 @@ const getColumns = (
 ) => [
   {
     title: <></>,
-    dataIndex: 'checked',
-    key: 'checked',
+    dataIndex: "checked",
+    key: "checked",
     width: 50,
     render: () => (
       <div className="inline-flex cursor-pointer">
@@ -705,22 +895,22 @@ const getColumns = (
       <HeaderCell
         title="Id"
         sortable
-        ascending={order === 'asc' && column === 'id'}
+        ascending={order === "asc" && column === "id"}
       />
     ),
-    onHeaderCell: () => onHeaderClick('id'),
-    dataIndex: 'id',
-    key: 'id',
+    onHeaderCell: () => onHeaderClick("id"),
+    dataIndex: "id",
+    key: "id",
     width: 50,
   },
   {
     title: <HeaderCell title="Employee" />,
-    dataIndex: 'employee',
-    key: 'employee',
+    dataIndex: "employee",
+    key: "employee",
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar src={employee.avatar} />
+        <Avatar name="John Doe" src={employee.avatar} />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
           <Text tag="h6" className="mb-0.5 !text-sm font-medium">
             {employee.name}
@@ -734,8 +924,8 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Designation" />,
-    dataIndex: 'designation',
-    key: 'designation',
+    dataIndex: "designation",
+    key: "designation",
     width: 320,
     render: (designation: any) => (
       <div>
@@ -750,27 +940,27 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Phone Number" />,
-    dataIndex: 'phoneNumber',
-    key: 'phoneNumber',
+    dataIndex: "phoneNumber",
+    key: "phoneNumber",
     width: 200,
   },
   {
     title: <HeaderCell title="Email" />,
-    dataIndex: 'email',
-    key: 'email',
+    dataIndex: "email",
+    key: "email",
     width: 200,
   },
   {
     title: <HeaderCell title="Status" />,
-    dataIndex: 'status',
-    key: 'status',
+    dataIndex: "status",
+    key: "status",
     width: 120,
     render: (value: string) => getStatusBadge(value),
   },
   {
     title: <></>,
-    dataIndex: 'action',
-    key: 'action',
+    dataIndex: "action",
+    key: "action",
     width: 120,
     render: (_: string, row: any) => (
       <div className="flex items-center gap-2">
@@ -790,14 +980,14 @@ const getColumns = (
 ];
 
 export default function App() {
-  const [order, setOrder] = React.useState<string>('desc');
-  const [column, setColumn] = React.useState<string>('');
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
-      setOrder(order === 'desc' ? 'asc' : 'desc');
-      if (order === 'desc') {
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
         // @ts-ignore
         setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
       } else {
@@ -833,119 +1023,121 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import React from 'react';
-import { Table, HeaderCell, Checkbox, Avatar, Text, Badge } from 'rizzui';
+import React from "react";
+import Table from "@components/table";
+import HeaderCell from "@components/header-cell";
+import { Checkbox, Avatar, Text, Badge } from "rizzui";
 
 const initialData = [
   {
-    id: '1',
+    id: "1",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/1.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '2',
+    id: "2",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/2.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '3',
+    id: "3",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/3.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '4',
+    id: "4",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '5',
+    id: "5",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/5.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
   {
-    id: '6',
+    id: "6",
     employee: {
-      name: 'Jon Brown',
-      userName: '@fredchaparro',
-      avatar: 'https://randomuser.me/api/portraits/men/6.jpg',
+      name: "Jon Brown",
+      userName: "@fredchaparro",
+      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
     },
     designation: {
-      role: 'Front-End Developer',
-      company: 'REDQ',
+      role: "Front-End Developer",
+      company: "REDQ",
     },
-    phoneNumber: '+880136987584',
-    email: 'jhondoe@aegonui.com',
-    status: 'Active',
+    phoneNumber: "+880136987584",
+    email: "jhondoe@aegonui.com",
+    status: "Active",
   },
 ];
 
 function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
-    case 'pending':
+    case "pending":
       return <Badge variant="flat">{status}</Badge>;
-    case 'active':
+    case "active":
       return (
         <Badge variant="flat" color="success">
           {status}
         </Badge>
       );
-    case 'warning':
+    case "warning":
       return (
         <Badge variant="flat" color="warning">
           {status}
         </Badge>
       );
-    case 'danger':
+    case "danger":
       return (
         <Badge variant="flat" color="danger">
           {status}
@@ -963,8 +1155,8 @@ const getColumns = (
 ) => [
   {
     title: <></>,
-    dataIndex: 'checked',
-    key: 'checked',
+    dataIndex: "checked",
+    key: "checked",
     width: 50,
     render: () => (
       <div className="inline-flex cursor-pointer">
@@ -977,22 +1169,22 @@ const getColumns = (
       <HeaderCell
         title="Id"
         sortable
-        ascending={order === 'asc' && column === 'id'}
+        ascending={order === "asc" && column === "id"}
       />
     ),
-    onHeaderCell: () => onHeaderClick('id'),
-    dataIndex: 'id',
-    key: 'id',
+    onHeaderCell: () => onHeaderClick("id"),
+    dataIndex: "id",
+    key: "id",
     width: 50,
   },
   {
     title: <HeaderCell title="Employee" />,
-    dataIndex: 'employee',
-    key: 'employee',
+    dataIndex: "employee",
+    key: "employee",
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar src={employee.avatar} />
+        <Avatar name="John Doe" src={employee.avatar} />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
           <Text tag="h6" className="mb-0.5 !text-sm font-medium">
             {employee.name}
@@ -1006,8 +1198,8 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Designation" />,
-    dataIndex: 'designation',
-    key: 'designation',
+    dataIndex: "designation",
+    key: "designation",
     width: 320,
     render: (designation: any) => (
       <div>
@@ -1022,27 +1214,27 @@ const getColumns = (
   },
   {
     title: <HeaderCell title="Phone Number" />,
-    dataIndex: 'phoneNumber',
-    key: 'phoneNumber',
+    dataIndex: "phoneNumber",
+    key: "phoneNumber",
     width: 200,
   },
   {
     title: <HeaderCell title="Email" />,
-    dataIndex: 'email',
-    key: 'email',
+    dataIndex: "email",
+    key: "email",
     width: 200,
   },
   {
     title: <HeaderCell title="Status" />,
-    dataIndex: 'status',
-    key: 'status',
+    dataIndex: "status",
+    key: "status",
     width: 120,
     render: (value: string) => getStatusBadge(value),
   },
   {
     title: <></>,
-    dataIndex: 'action',
-    key: 'action',
+    dataIndex: "action",
+    key: "action",
     width: 120,
     render: (_: string, row: any) => (
       <div className="flex items-center gap-2">
@@ -1062,14 +1254,14 @@ const getColumns = (
 ];
 
 export default function App() {
-  const [order, setOrder] = React.useState<string>('desc');
-  const [column, setColumn] = React.useState<string>('');
+  const [order, setOrder] = React.useState<string>("desc");
+  const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
-      setOrder(order === 'desc' ? 'asc' : 'desc');
-      if (order === 'desc') {
+      setOrder(order === "desc" ? "asc" : "desc");
+      if (order === "desc") {
         // @ts-ignore
         setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
       } else {
@@ -1157,7 +1349,7 @@ Here is the API documentation of the Table component. Under the hood we are usin
 ### Table Variants
 
 ```ts
-type TableVariants = 'classic' | 'modern' | 'minimal' | 'elegant';
+type TableVariants = "classic" | "modern" | "minimal" | "elegant";
 ```
 
 <div className="mb-10" />

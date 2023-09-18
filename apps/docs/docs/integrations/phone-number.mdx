@@ -1,15 +1,15 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 ---
 
 import PhoneNumber, {
   PhoneNumberDefault,
-} from '@site/src/components/phone-number';
-import Paper from '@site/src/components/paper';
+} from "@site/src/components/phone-number";
+import Paper from "@site/src/components/paper";
 
 # PhoneNumber
 
-A Highly customizable phone input component with auto formatting. We are using **react-phone-input-2** package for **PhoneNumber** component. Please follow their [**Official documentation**](https://www.npmjs.com/package/react-phone-input-2) for any query.
+A Highly customizable phone input component with auto formatting. We are using **react-phone-input-2** package. Please follow their [**Official documentation**](https://www.npmjs.com/package/react-phone-input-2) for more details.
 
 <div className="mb-16" />
 
@@ -21,7 +21,7 @@ A Highly customizable phone input component with auto formatting. We are using *
 
 <div className="mb-4" />
 
-```ts
+```bash
 npm install react-phone-input-2
 ```
 
@@ -30,168 +30,168 @@ npm install react-phone-input-2
 <div className="mb-4" />
 
 ```tsx
-import React from 'react';
-import PhoneInput from 'react-phone-input-2';
-import type { PhoneInputProps } from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css';
-import { cn, FieldError, FieldHelperText, FieldClearButton } from 'rizzui';
+import React from "react";
+import PhoneInput from "react-phone-input-2";
+import type { PhoneInputProps } from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { cn, FieldError, FieldHelperText, FieldClearButton } from "rizzui";
 
 const labelClasses = {
   size: {
-    sm: 'text-xs mb-1',
-    DEFAULT: 'text-sm mb-1.5',
-    lg: 'text-sm mb-1.5',
-    xl: 'text-base mb-2',
+    sm: "text-xs mb-1",
+    DEFAULT: "text-sm mb-1.5",
+    lg: "text-sm mb-1.5",
+    xl: "text-base mb-2",
   },
 };
 
 const inputClasses = {
-  base: 'block peer !w-full focus:outline-none transition duration-200 disabled:!bg-gray-100 disabled:!text-gray-500 disabled:placeholder:!text-gray-400 disabled:!cursor-not-allowed disabled:!border-gray-200',
+  base: "block peer !w-full focus:outline-none transition duration-200 disabled:!bg-gray-100 disabled:!text-gray-500 disabled:placeholder:!text-gray-400 disabled:!cursor-not-allowed disabled:!border-gray-200",
   error:
-    '!border-red not-read-only:hover:enabled:!border-red not-read-only:focus:enabled:!border-red not-read-only:focus:!ring-red',
+    "!border-red not-read-only:hover:enabled:!border-red not-read-only:focus:enabled:!border-red not-read-only:focus:!ring-red",
   size: {
-    sm: 'py-1 !text-xs !h-8 !leading-[32px]',
-    DEFAULT: 'py-2 !text-sm !h-10 !leading-[40px]',
-    lg: 'py-2 !text-base !h-12 !leading-[48px]',
-    xl: 'py-2.5 !text-base !h-14 !leading-[56px]',
+    sm: "py-1 !text-xs !h-8 !leading-[32px]",
+    DEFAULT: "py-2 !text-sm !h-10 !leading-[40px]",
+    lg: "py-2 !text-base !h-12 !leading-[48px]",
+    xl: "py-2.5 !text-base !h-14 !leading-[56px]",
   },
   rounded: {
-    none: '!rounded-none',
-    sm: '!rounded-sm',
-    DEFAULT: '!rounded-md',
-    lg: '!rounded-lg',
-    pill: '!rounded-full',
+    none: "!rounded-none",
+    sm: "!rounded-sm",
+    DEFAULT: "!rounded-md",
+    lg: "!rounded-lg",
+    pill: "!rounded-full",
   },
   variant: {
     active: {
-      base: '!border focus:ring-[0.6px] !bg-gray-0 placeholder:!opacity-80 read-only:focus:!ring-0',
+      base: "!border focus:ring-[0.6px] !bg-gray-0 placeholder:!opacity-80 read-only:focus:!ring-0",
       color: {
         DEFAULT:
-          '!border-gray-900 focus:enabled:!border-gray-1000 focus:!ring-gray-1000 !text-gray-1000',
+          "!border-gray-900 focus:enabled:!border-gray-1000 focus:!ring-gray-1000 !text-gray-1000",
         primary:
-          '!border-primary focus:enabled:!border-primary focus:!ring-primary !text-primary-dark',
+          "!border-primary focus:enabled:!border-primary focus:!ring-primary !text-primary-dark",
         secondary:
-          '!border-secondary focus:enabled:!border-secondary focus:!ring-secondary !text-secondary-dark',
+          "!border-secondary focus:enabled:!border-secondary focus:!ring-secondary !text-secondary-dark",
         danger:
-          '!border-red focus:enabled:!border-red focus:!ring-red !text-red-dark',
-        info: '!border-blue focus:enabled:!border-blue focus:!ring-blue !text-blue-dark',
+          "!border-red focus:enabled:!border-red focus:!ring-red !text-red-dark",
+        info: "!border-blue focus:enabled:!border-blue focus:!ring-blue !text-blue-dark",
         success:
-          '!border-green focus:enabled:!border-green focus:!ring-green !text-green-dark',
+          "!border-green focus:enabled:!border-green focus:!ring-green !text-green-dark",
         warning:
-          '!border-orange focus:enabled:!border-orange-dark focus:!ring-orange-dark !text-orange-dark',
+          "!border-orange focus:enabled:!border-orange-dark focus:!ring-orange-dark !text-orange-dark",
       },
     },
     flat: {
-      base: '!border-0 focus:ring-2 placeholder:!opacity-90 read-only:focus:!ring-0',
+      base: "!border-0 focus:ring-2 placeholder:!opacity-90 read-only:focus:!ring-0",
       color: {
         DEFAULT:
-          '!bg-gray-200/70 hover:enabled:!bg-gray-200/90 focus:!ring-gray-900/20 !text-gray-1000 placeholder:!text-gray-600',
+          "!bg-gray-200/70 hover:enabled:!bg-gray-200/90 focus:!ring-gray-900/20 !text-gray-1000 placeholder:!text-gray-600",
         primary:
-          '!bg-primary-lighter/70 hover:enabled:!bg-primary-lighter/90 focus:!ring-primary/30 !text-primary-dark',
+          "!bg-primary-lighter/70 hover:enabled:!bg-primary-lighter/90 focus:!ring-primary/30 !text-primary-dark",
         secondary:
-          '!bg-secondary-lighter/70 hover:enabled:!bg-secondary-lighter/90 focus:!ring-secondary/30 !text-secondary-dark',
+          "!bg-secondary-lighter/70 hover:enabled:!bg-secondary-lighter/90 focus:!ring-secondary/30 !text-secondary-dark",
         danger:
-          '!bg-red-lighter/70 hover:enabled:!bg-red-lighter/90 focus:!ring-red/30 !text-red-dark',
-        info: '!bg-blue-lighter/70 hover:enabled:!bg-blue-lighter/90 focus:!ring-blue/30 !text-blue-dark',
+          "!bg-red-lighter/70 hover:enabled:!bg-red-lighter/90 focus:!ring-red/30 !text-red-dark",
+        info: "!bg-blue-lighter/70 hover:enabled:!bg-blue-lighter/90 focus:!ring-blue/30 !text-blue-dark",
         success:
-          '!bg-green-lighter/70 hover:enabled:!bg-green-lighter/90 focus:!ring-green/30 !text-green-dark',
+          "!bg-green-lighter/70 hover:enabled:!bg-green-lighter/90 focus:!ring-green/30 !text-green-dark",
         warning:
-          '!bg-orange-lighter/80 hover:enabled:!bg-orange-lighter/90 focus:!ring-orange/30 !text-orange-dark',
+          "!bg-orange-lighter/80 hover:enabled:!bg-orange-lighter/90 focus:!ring-orange/30 !text-orange-dark",
       },
     },
     outline: {
-      base: '!bg-transparent focus:ring-[0.6px] !border !border-gray-300 read-only:!border-gray-300 read-only:focus:!ring-0 placeholder:!text-gray-500',
+      base: "!bg-transparent focus:ring-[0.6px] !border !border-gray-300 read-only:!border-gray-300 read-only:focus:!ring-0 placeholder:!text-gray-500",
       color: {
         DEFAULT:
-          'hover:!border-gray-1000 focus:!border-gray-1000 focus:!ring-gray-1000',
+          "hover:!border-gray-1000 focus:!border-gray-1000 focus:!ring-gray-1000",
         primary:
-          'hover:!border-primary focus:!border-primary focus:!ring-primary',
+          "hover:!border-primary focus:!border-primary focus:!ring-primary",
         secondary:
-          'hover:!border-secondary focus:!border-secondary focus:!ring-secondary',
-        danger: 'hover:!border-red focus:!border-red focus:!ring-red',
-        info: 'hover:!border-blue focus:!border-blue focus:!ring-blue',
-        success: 'hover:!border-green focus:!border-green focus:!ring-green',
-        warning: 'hover:!border-orange focus:!border-orange focus:!ring-orange',
+          "hover:!border-secondary focus:!border-secondary focus:!ring-secondary",
+        danger: "hover:!border-red focus:!border-red focus:!ring-red",
+        info: "hover:!border-blue focus:!border-blue focus:!ring-blue",
+        success: "hover:!border-green focus:!border-green focus:!ring-green",
+        warning: "hover:!border-orange focus:!border-orange focus:!ring-orange",
       },
     },
     text: {
-      base: '!border-0 focus:ring-2 !bg-transparent',
+      base: "!border-0 focus:ring-2 !bg-transparent",
       color: {
         DEFAULT:
-          'hover:!text-gray-1000 focus:!ring-gray-900/20 placeholder:!text-gray-500',
+          "hover:!text-gray-1000 focus:!ring-gray-900/20 placeholder:!text-gray-500",
         primary:
-          'hover:!text-primary-dark focus:!ring-primary/30 !text-primary',
+          "hover:!text-primary-dark focus:!ring-primary/30 !text-primary",
         secondary:
-          'hover:!text-secondary-dark focus:!ring-secondary/30 !text-secondary',
-        danger: 'hover:!text-red-600 focus:!ring-red/30 !text-red',
-        info: 'hover:!text-blue-dark focus:!ring-blue/30 !text-blue',
+          "hover:!text-secondary-dark focus:!ring-secondary/30 !text-secondary",
+        danger: "hover:!text-red-600 focus:!ring-red/30 !text-red",
+        info: "hover:!text-blue-dark focus:!ring-blue/30 !text-blue",
         success:
-          'hover:!text-green-dark focus:!ring-green/30 !text-green placeholder:!opacity-100',
+          "hover:!text-green-dark focus:!ring-green/30 !text-green placeholder:!opacity-100",
         warning:
-          'hover:!text-orange-dark focus:!ring-orange/30 !text-orange placeholder:!opacity-100',
+          "hover:!text-orange-dark focus:!ring-orange/30 !text-orange placeholder:!opacity-100",
       },
     },
   },
 };
 
 const buttonClasses = {
-  base: '!border-0 !bg-transparent !static [&>.selected-flag]:!absolute [&>.selected-flag]:!top-[1px] [&>.selected-flag]:!bottom-[1px] [&>.selected-flag]:!left-[1px] [&>.selected-flag.open]:!bg-transparent [&>.selected-flag:hover]:!bg-transparent [&>.selected-flag:focus]:!bg-transparent',
+  base: "!border-0 !bg-transparent !static [&>.selected-flag]:!absolute [&>.selected-flag]:!top-[1px] [&>.selected-flag]:!bottom-[1px] [&>.selected-flag]:!left-[1px] [&>.selected-flag.open]:!bg-transparent [&>.selected-flag:hover]:!bg-transparent [&>.selected-flag:focus]:!bg-transparent",
   size: {
-    sm: '[&>.selected-flag]:!h-[30px]',
-    DEFAULT: '[&>.selected-flag]:!h-[38px]',
-    lg: '[&>.selected-flag]:!h-[46px]',
-    xl: '[&>.selected-flag]:!h-[54px]',
+    sm: "[&>.selected-flag]:!h-[30px]",
+    DEFAULT: "[&>.selected-flag]:!h-[38px]",
+    lg: "[&>.selected-flag]:!h-[46px]",
+    xl: "[&>.selected-flag]:!h-[54px]",
   },
 };
 
 const dropdownClasses = {
-  base: '!shadow-xl !text-sm !max-h-[216px] !w-full !my-1.5 !bg-gray-0 [&>.no-entries-message]:!text-center [&>.divider]:!border-gray-300',
+  base: "!shadow-xl !text-sm !max-h-[216px] !w-full !my-1.5 !bg-gray-0 [&>.no-entries-message]:!text-center [&>.divider]:!border-gray-300",
   rounded: {
-    none: '!rounded-sm',
-    sm: '!rounded',
-    DEFAULT: '!rounded-md',
-    lg: '!rounded-lg',
-    pill: '!rounded-xl',
+    none: "!rounded-sm",
+    sm: "!rounded",
+    DEFAULT: "!rounded-md",
+    lg: "!rounded-lg",
+    pill: "!rounded-xl",
   },
   searchBox:
-    '!pr-2.5 !bg-gray-0 [&>.search-box]:!w-full [&>.search-box]:!m-0 [&>.search-box]:!px-3 [&>.search-box]:!py-1 [&>.search-box]:!text-sm [&>.search-box]:!capitalize [&>.search-box]:!h-9 [&>.search-box]:!leading-[36px] [&>.search-box]:!rounded-md [&>.search-box]:!bg-transparent [&>.search-box]:!border-gray-300 [&>.search-box:focus]:!border-gray-400/70 [&>.search-box:focus]:!ring-0 [&>.search-box]:placeholder:!text-gray-500',
+    "!pr-2.5 !bg-gray-0 [&>.search-box]:!w-full [&>.search-box]:!m-0 [&>.search-box]:!px-3 [&>.search-box]:!py-1 [&>.search-box]:!text-sm [&>.search-box]:!capitalize [&>.search-box]:!h-9 [&>.search-box]:!leading-[36px] [&>.search-box]:!rounded-md [&>.search-box]:!bg-transparent [&>.search-box]:!border-gray-300 [&>.search-box:focus]:!border-gray-400/70 [&>.search-box:focus]:!ring-0 [&>.search-box]:placeholder:!text-gray-500",
   highlightListColor: {
     DEFAULT:
-      '[&>li.country.highlight]:!bg-gray-100 [&>li.country:hover]:!bg-gray-100',
+      "[&>li.country.highlight]:!bg-gray-100 [&>li.country:hover]:!bg-gray-100",
     primary:
-      '[&>li.country.highlight]:!bg-primary-lighter/70 [&>li.country:hover]:!bg-primary-lighter/70',
+      "[&>li.country.highlight]:!bg-primary-lighter/70 [&>li.country:hover]:!bg-primary-lighter/70",
     secondary:
-      '[&>li.country.highlight]:!bg-secondary-lighter/70 [&>li.country:hover]:!bg-secondary-lighter/70',
+      "[&>li.country.highlight]:!bg-secondary-lighter/70 [&>li.country:hover]:!bg-secondary-lighter/70",
     danger:
-      '[&>li.country.highlight]:!bg-red-lighter/70 [&>li.country:hover]:!bg-red-lighter/70',
-    info: '[&>li.country.highlight]:!bg-blue-lighter/70 [&>li.country:hover]:!bg-blue-lighter/70',
+      "[&>li.country.highlight]:!bg-red-lighter/70 [&>li.country:hover]:!bg-red-lighter/70",
+    info: "[&>li.country.highlight]:!bg-blue-lighter/70 [&>li.country:hover]:!bg-blue-lighter/70",
     success:
-      '[&>li.country.highlight]:!bg-green-lighter/70 [&>li.country:hover]:!bg-green-lighter/70',
+      "[&>li.country.highlight]:!bg-green-lighter/70 [&>li.country:hover]:!bg-green-lighter/70",
     warning:
-      '[&>li.country.highlight]:!bg-red-lighter/80 [&>li.country:hover]:!bg-red-lighter/80',
+      "[&>li.country.highlight]:!bg-red-lighter/80 [&>li.country:hover]:!bg-red-lighter/80",
   },
 };
 
 const clearIconClasses = {
-  base: 'absolute right-2 group-hover/phone-number:visible group-hover/phone-number:translate-x-0 group-hover/phone-number:opacity-100',
+  base: "absolute right-2 group-hover/phone-number:visible group-hover/phone-number:translate-x-0 group-hover/phone-number:opacity-100",
   position: {
-    sm: 'top-[9px]',
-    DEFAULT: 'top-3',
-    lg: 'top-4',
-    xl: 'top-5',
+    sm: "top-[9px]",
+    DEFAULT: "top-3",
+    lg: "top-4",
+    xl: "top-5",
   },
 };
 
 export interface PhoneNumberProps
   extends Omit<
     PhoneInputProps,
-    | 'inputClass'
-    | 'buttonClass'
-    | 'containerClass'
-    | 'dropdownClass'
-    | 'searchClass'
-    | 'enableSearch'
-    | 'disableSearchIcon'
+    | "inputClass"
+    | "buttonClass"
+    | "containerClass"
+    | "dropdownClass"
+    | "searchClass"
+    | "enableSearch"
+    | "disableSearchIcon"
   > {
   /** Set field label */
   label?: React.ReactNode;
@@ -204,7 +204,7 @@ export interface PhoneNumberProps
   /** The variants of the component are: */
   variant?: keyof typeof inputClasses.variant;
   /** Change input color */
-  color?: keyof (typeof inputClasses.variant)['active']['color'];
+  color?: keyof (typeof inputClasses.variant)["active"]["color"];
   /** add clearable option */
   clearable?: boolean;
   /** add search filed at the top of dropdown list */
@@ -232,10 +232,10 @@ export interface PhoneNumberProps
 }
 
 const PhoneNumber = ({
-  size = 'DEFAULT',
-  rounded = 'DEFAULT',
-  variant = 'outline',
-  color = 'DEFAULT',
+  size = "DEFAULT",
+  rounded = "DEFAULT",
+  variant = "outline",
+  color = "DEFAULT",
   label,
   helperText,
   error,
@@ -252,9 +252,9 @@ const PhoneNumber = ({
   className,
   ...props
 }: PhoneNumberProps) => (
-  <div className={cn('rizzui-phone-number', className)}>
+  <div className={cn("rizzui-phone-number", className)}>
     {label && (
-      <label className={cn('block', labelClasses.size[size], labelClassName)}>
+      <label className={cn("block", labelClasses.size[size], labelClassName)}>
         {label}
       </label>
     )}
@@ -273,9 +273,9 @@ const PhoneNumber = ({
           buttonClasses.base,
           buttonClasses.size[size],
           // @ts-ignore
-          props.inputProps?.disabled && 'pointer-events-none',
+          props.inputProps?.disabled && "pointer-events-none",
           // @ts-ignore
-          props.inputProps?.readOnly && 'pointer-events-none',
+          props.inputProps?.readOnly && "pointer-events-none",
           buttonClassName
         )}
         dropdownClass={cn(
@@ -308,7 +308,7 @@ const PhoneNumber = ({
   </div>
 );
 
-PhoneNumber.displayName = 'PhoneNumber';
+PhoneNumber.displayName = "PhoneNumber";
 export default PhoneNumber;
 ```
 
@@ -326,20 +326,20 @@ The default style of **PhoneNumber** component.
   <PhoneNumber
     label="Phone Number"
     country="us"
-    preferredCountries={['us']}
+    preferredCountries={["us"]}
     className="[&_li]:!my-0"
   />
 </Paper>
 
 ```tsx
-import PhoneNumber from '@components/phone-number';
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
     <PhoneNumber
       label="Phone Number"
       country="us"
-      preferredCountries={['us']}
+      preferredCountries={["us"]}
     />
   );
 }
@@ -379,7 +379,7 @@ You can change the style of **PhoneNumber** with property **variant**.
 </Paper>
 
 ```tsx
-import PhoneNumber from '@components/phone-number';
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -430,7 +430,7 @@ You can change the style of **PhoneNumber** with property **size**.
 </Paper>
 
 ```tsx
-import PhoneNumber from '@components/phone-number';
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -488,7 +488,7 @@ You can change the style of **PhoneNumber** with property **rounded**.
 </Paper>
 
 ```tsx
-import PhoneNumber from '@components/phone-number';
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -581,7 +581,7 @@ You can change the style of **PhoneNumber** with property **color**.
 </Paper>
 
 ```tsx
-import PhoneNumber from '@components/phone-number';
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -639,21 +639,21 @@ You can change the style of **PhoneNumber** with property **clearable**.
 </Paper>
 
 ```tsx
-import React from 'react';
-import PhoneNumber from '@components/phone-number';
+import React from "react";
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
-  const [state, setState] = React.useState('');
+  const [state, setState] = React.useState("");
   return (
     <PhoneNumber
       value={state}
       country="us"
       label="Phone Number"
-      preferredCountries={['us']}
+      preferredCountries={["us"]}
       onChange={(value: string) => setState(value)}
       clearable={!!state}
       onClear={() => {
-        setState('');
+        setState("");
       }}
     />
   );
@@ -676,7 +676,7 @@ You can change the style of **PhoneNumber** with property **disabled**.
 </Paper>
 
 ```tsx
-import PhoneNumber from '@components/phone-number';
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return <PhoneNumber label="Phone Number" country="us" disabled />;
@@ -699,7 +699,7 @@ You can change the style of **PhoneNumber** with property **helperText**.
 </Paper>
 
 ```tsx
-import PhoneNumber from '@components/phone-number';
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -727,7 +727,7 @@ You can show the validation error message using **error** property.
 </Paper>
 
 ```tsx
-import PhoneNumber from '@components/phone-number';
+import PhoneNumber from "@components/phone-number";
 
 export default function App() {
   return (
@@ -780,7 +780,7 @@ You can also use all the other props from [**phone-number-input-2**](https://www
 ### PhoneNumber Variants
 
 ```ts
-type PhoneNumberVariants = 'active' | 'flat' | 'outline' | 'text';
+type PhoneNumberVariants = "active" | "flat" | "outline" | "text";
 ```
 
 <div className="mb-10" />
@@ -788,7 +788,7 @@ type PhoneNumberVariants = 'active' | 'flat' | 'outline' | 'text';
 ### PhoneNumber Sizes
 
 ```ts
-type PhoneNumberSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
+type PhoneNumberSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -796,7 +796,7 @@ type PhoneNumberSizes = 'sm' | 'DEFAULT' | 'lg' | 'xl';
 ### PhoneNumber Rounded
 
 ```ts
-type PhoneNumberRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
+type PhoneNumberRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -805,11 +805,11 @@ type PhoneNumberRounded = 'sm' | 'DEFAULT' | 'lg' | 'none' | 'pill';
 
 ```ts
 type PhoneNumberColors =
-  | 'DEFAULT'
-  | 'primary'
-  | 'secondary'
-  | 'danger'
-  | 'info'
-  | 'success'
-  | 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```

@@ -2,20 +2,20 @@
 sidebar_position: 6
 ---
 
-import { Collapse, cn, Avatar } from 'rizzui';
-import Paper from '@site/src/components/paper';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { Collapse, cn, Avatar } from "rizzui";
+import Paper from "@site/src/components/paper";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import {
   defaultCollapseData,
   customStyleCollapseData,
-} from '@site/src/data/collapse-data';
+} from "@site/src/data/collapse-data";
 
 # Collapse
 
 A content area which can be collapsed and expanded. Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.
 
 ```tsx
-import { Collapse } from 'rizzui';
+import { Collapse } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -40,8 +40,8 @@ A simple style of **Collapse**.
             {item.title}
             <ChevronDownIcon
               className={cn(
-                'h-5 w-5 -rotate-90 transform transition-transform duration-300',
-                open && '-rotate-0'
+                "h-5 w-5 -rotate-90 transform transition-transform duration-300",
+                open && "-rotate-0"
               )}
             />
           </button>
@@ -54,12 +54,12 @@ A simple style of **Collapse**.
 </Paper>
 
 ```tsx
-import { Collapse } from 'rizzui';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { Collapse } from "rizzui";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 const data = [
   {
-    title: 'Option A',
+    title: "Option A",
     content: (
       <>
         If you are unhappy with your purchase for any reason, email us within 90
@@ -71,7 +71,7 @@ const data = [
     ),
   },
   {
-    title: 'Option B',
+    title: "Option B",
     content: (
       <>
         If you are unhappy with your purchase for any reason, email us within 90
@@ -83,7 +83,7 @@ const data = [
     ),
   },
   {
-    title: 'Option C',
+    title: "Option C",
     content: (
       <>
         If you are unhappy with your purchase for any reason, email us within 90
@@ -113,8 +113,8 @@ export default function App() {
               {item.title}
               <ChevronDownIcon
                 className={cn(
-                  'h-5 w-5 -rotate-90 transform transition-transform duration-300',
-                  open && '-rotate-0'
+                  "h-5 w-5 -rotate-90 transform transition-transform duration-300",
+                  open && "-rotate-0"
                 )}
               />
             </button>
@@ -159,8 +159,8 @@ You can change the style of the **Collapse**.
             </div>
             <div
               className={cn(
-                'h-5 w-5 transform transition-transform duration-300',
-                open && '-rotate-90'
+                "h-5 w-5 transform transition-transform duration-300",
+                open && "-rotate-90"
               )}
             >
               {item.icon}
@@ -175,16 +175,17 @@ You can change the style of the **Collapse**.
 </Paper>
 
 ```tsx
-import { Collapse, Avatar } from 'rizzui';
-import { SunIcon } from '@heroicons/react/20/solid';
-import { MoonIcon, LinkIcon } from '@heroicons/react/24/outline';
+import { Collapse, Avatar } from "rizzui";
+import { SunIcon } from "@heroicons/react/20/solid";
+import { MoonIcon, LinkIcon } from "@heroicons/react/24/outline";
 
 const data = [
   {
-    title: 'Option A',
+    title: "Option A",
     icon: <LinkIcon />,
     avatar: (
       <Avatar
+        name="John Doe"
         size="lg"
         rounded="lg"
         src="https://randomuser.me/api/portraits/men/3.jpg"
@@ -203,10 +204,11 @@ const data = [
     ),
   },
   {
-    title: 'Option B',
+    title: "Option B",
     icon: <MoonIcon />,
     avatar: (
       <Avatar
+        name="John Doe"
         size="lg"
         rounded="lg"
         src="https://randomuser.me/api/portraits/women/40.jpg"
@@ -225,10 +227,11 @@ const data = [
     ),
   },
   {
-    title: 'Option C',
+    title: "Option C",
     icon: <SunIcon />,
     avatar: (
       <Avatar
+        name="John Doe"
         size="lg"
         rounded="lg"
         src="https://randomuser.me/api/portraits/women/7.jpg"
@@ -274,8 +277,8 @@ export default function App() {
               </div>
               <div
                 className={cn(
-                  'h-5 w-5 transform transition-transform duration-300',
-                  open && '-rotate-90'
+                  "h-5 w-5 transform transition-transform duration-300",
+                  open && "-rotate-90"
                 )}
               >
                 {item.icon}
@@ -307,7 +310,7 @@ Here is the API documentation of the Collapse component.
 
 |     Props      |                Type                |                         Description                          | Default |
 | :------------: | :--------------------------------: | :----------------------------------------------------------: | :-----: |
-|      tag       |            ` div``ul `             | Set HTML tag of the Collapse component. Either `div` Or `ul` | `"div"` |
+|      tag       |             `div``ul`              | Set HTML tag of the Collapse component. Either `div` Or `ul` | `"div"` |
 |     header     | [CollapseHeader](#collapse-header) |               Header component of the Collapse               |  \_ \_  |
 |    duration    |              `number`              |                   Set transition duration                    |  \_ \_  |
 |  defaultOpen   |             `boolean`              |                     Initial active panel                     | `false` |

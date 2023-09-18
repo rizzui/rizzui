@@ -57,10 +57,13 @@ export const Default = () => (
 );
 
 export const WithAvatar = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <div className="h-64">
       <Popover
-        content={({ setOpen }) => (
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        content={() => (
           <>
             <div className="mb-3 flex items-center gap-3">
               <Avatar
@@ -96,14 +99,14 @@ export const WithAvatar = () => {
               variant="solid"
               color="info"
               size="sm"
-              onClick={() => setOpen(false)}
+              onClick={() => setIsOpen(false)}
             >
               Follow
             </Button>
           </>
         )}
         placement="bottom-start"
-        className="!top-24 !p-5"
+        className="!p-5"
       >
         <div className="w-14 cursor-pointer">
           <Avatar

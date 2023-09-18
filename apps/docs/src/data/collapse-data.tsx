@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import { SunIcon } from '@heroicons/react/20/solid';
-import { MoonIcon, LinkIcon } from '@heroicons/react/24/outline';
-import { Avatar } from 'rizzui';
+import React, { Fragment } from "react";
+import { SunIcon } from "@heroicons/react/20/solid";
+import { MoonIcon, LinkIcon } from "@heroicons/react/24/outline";
+import { Avatar } from "rizzui";
 
 export const defaultCollapseData = [
   {
-    title: 'Option A',
+    title: "Option A",
     content: (
       <Fragment>
         If you are unhappy with your purchase for any reason, email us within 90
@@ -17,7 +17,7 @@ export const defaultCollapseData = [
     ),
   },
   {
-    title: 'Option B',
+    title: "Option B",
     content: (
       <Fragment>
         If you are unhappy with your purchase for any reason, email us within 90
@@ -29,7 +29,7 @@ export const defaultCollapseData = [
     ),
   },
   {
-    title: 'Option C',
+    title: "Option C",
     content: (
       <Fragment>
         If you are unhappy with your purchase for any reason, email us within 90
@@ -44,10 +44,11 @@ export const defaultCollapseData = [
 
 export const customStyleCollapseData = [
   {
-    title: 'Option A',
+    title: "Option A",
     icon: <LinkIcon />,
     avatar: (
       <Avatar
+        name="John Doe"
         size="lg"
         rounded="lg"
         src="https://randomuser.me/api/portraits/men/3.jpg"
@@ -66,10 +67,11 @@ export const customStyleCollapseData = [
     ),
   },
   {
-    title: 'Option B',
+    title: "Option B",
     icon: <MoonIcon />,
     avatar: (
       <Avatar
+        name="John Doe"
         size="lg"
         rounded="lg"
         src="https://randomuser.me/api/portraits/women/40.jpg"
@@ -88,10 +90,11 @@ export const customStyleCollapseData = [
     ),
   },
   {
-    title: 'Option C',
+    title: "Option C",
     icon: <SunIcon />,
     avatar: (
       <Avatar
+        name="John Doe"
         size="lg"
         rounded="lg"
         src="https://randomuser.me/api/portraits/women/7.jpg"

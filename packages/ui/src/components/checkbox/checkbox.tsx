@@ -175,17 +175,17 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       helperClassName,
       ...checkboxProps
     },
-    ref
+    ref,
   ) => (
     <div className={cn('flex flex-col', className, activeClassName)}>
       <label
         className={cn(
           'flex flex-row items-center',
           disabled && 'cursor-not-allowed',
-          containerClassName
+          containerClassName,
         )}
       >
-        <div className="relative leading-none">
+        <span className="relative leading-none">
           <input
             type="checkbox"
             ref={ref}
@@ -196,7 +196,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               inputClasses.rounded[rounded],
               inputClasses.variant[variant].base,
               inputClasses.variant[variant].color[color],
-              inputClassName
+              inputClassName,
             )}
             {...checkboxProps}
           />
@@ -206,10 +206,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               inputClasses.size[size],
               size === 'sm' && 'top-0.5',
               variant === 'active' && iconClasses.color[color],
-              iconClassName
+              iconClassName,
             )}
           />
-        </div>
+        </span>
 
         {label && (
           <span
@@ -217,7 +217,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               labelClasses.size.text[size],
               labelClasses.size.margin[labelPlacement][size],
               labelPlacement === 'start' && 'order-first',
-              labelClassName
+              labelClassName,
             )}
           >
             {label}
@@ -234,7 +234,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <FieldError size={size} error={error} className={errorClassName} />
       )}
     </div>
-  )
+  ),
 );
 
 Checkbox.displayName = 'Checkbox';

@@ -222,7 +222,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       onBlur,
       ...inputProps
     },
-    ref
+    ref,
   ) => {
     const variantStyle = inputClasses.variant[variant];
     const [isFocus, setIsFocus] = useState(false);
@@ -233,7 +233,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         setIsFocus((prevState) => !prevState);
         onFocus && onFocus(e); // eslint-disable-line no-unused-expressions
       },
-      [readOnly, onFocus]
+      [readOnly, onFocus],
     );
 
     const handleOnBlur = useCallback(
@@ -242,7 +242,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         setIsFocus(() => false);
         onBlur && onBlur(e); // eslint-disable-line no-unused-expressions
       },
-      [readOnly, onBlur]
+      [readOnly, onBlur],
     );
 
     return (
@@ -256,7 +256,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             </span>
           )}
 
-          <div
+          <span
             className={cn(
               inputClasses.base,
               inputClasses.size[size],
@@ -266,18 +266,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               isFocus && 'is-focus', // must have is-focus class based on onFocus event
               disabled && inputClasses.disabled,
               error && inputClasses.error,
-              inputClassName
+              inputClassName,
             )}
           >
             {prefix && (
-              <div
+              <span
                 className={cn(
                   'whitespace-nowrap leading-normal',
-                  prefixClassName
+                  prefixClassName,
                 )}
               >
                 {prefix}
-              </div>
+              </span>
             )}
             <input
               ref={ref}
@@ -296,7 +296,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
                 disabled && inputFieldClasses.disabled,
                 clearable && inputFieldClasses.clearable,
                 prefix && inputFieldClasses.prefixStartPadding.size[size],
-                suffix && inputFieldClasses.suffixEndPadding.size[size]
+                suffix && inputFieldClasses.suffixEndPadding.size[size],
               )}
               style={{ fontSize: 'inherit' }}
               {...inputProps}
@@ -309,16 +309,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               />
             )}
             {suffix && (
-              <div
+              <span
                 className={cn(
                   'whitespace-nowrap leading-normal',
-                  suffixClassName
+                  suffixClassName,
                 )}
               >
                 {suffix}
-              </div>
+              </span>
             )}
-          </div>
+          </span>
         </label>
 
         {!error && helperText && (
@@ -332,7 +332,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = 'Input';

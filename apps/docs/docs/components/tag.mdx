@@ -2,16 +2,16 @@
 sidebar_position: 23
 ---
 
-import { Tag, Avatar } from 'rizzui';
-import { MapPinIcon } from '@heroicons/react/24/outline';
-import Paper from '@site/src/components/paper';
+import { Tag, Avatar } from "rizzui";
+import { MapPinIcon } from "@heroicons/react/24/outline";
+import Paper from "@site/src/components/paper";
 
 # Tag
 
 Tag component is used to convey grouping information of elements. It is a standalone component which is commonly used for filtering or triggering some kind of action.
 
 ```tsx
-import { Tag } from 'rizzui';
+import { Tag } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -25,7 +25,7 @@ The default style of the **Tag** component.
 </Paper>
 
 ```jsx
-import { Tag } from 'rizzui';
+import { Tag } from "rizzui";
 
 export default function App() {
   return <Tag>Default Tag</Tag>;
@@ -45,7 +45,7 @@ You can change the style of **Tag** using [**variant**](#tag-variants) property.
 </Paper>
 
 ```tsx
-import { Tag } from 'rizzui';
+import { Tag } from "rizzui";
 
 export default function App() {
   return (
@@ -72,7 +72,7 @@ You can change the size of **Tag** using [**size**](#tag-sizes) property.
 </Paper>
 
 ```tsx
-import { Tag } from 'rizzui';
+import { Tag } from "rizzui";
 
 export default function App() {
   return (
@@ -109,7 +109,7 @@ You can change the border radius of **Tag** using [**rounded**](#tag-rounded) pr
 </Paper>
 
 ```tsx
-import { Tag } from 'rizzui';
+import { Tag } from "rizzui";
 
 export default function App() {
   return (
@@ -149,7 +149,7 @@ You can change the color of **Tag** using [**color**](#tag-colors) property.
 </Paper>
 
 ```tsx
-import { Tag } from 'rizzui';
+import { Tag } from "rizzui";
 
 export default function App() {
   return (
@@ -180,7 +180,7 @@ You can use icon in our **Tag** component.
 </Paper>
 
 ```tsx
-import { Tag } from 'rizzui';
+import { Tag } from "rizzui";
 
 export default function App() {
   return (
@@ -201,8 +201,9 @@ You can use **Avatar** component inside **Tag**.
 <Paper>
   <Tag>
     <Avatar
+      name="John Doe"
       className="mr-1.5 rtl:ml-1.5"
-      customSize="20px"
+      customSize="20"
       src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
     />
     With Avatar
@@ -210,14 +211,15 @@ You can use **Avatar** component inside **Tag**.
 </Paper>
 
 ```tsx
-import { Tag, Avatar } from 'rizzui';
+import { Tag, Avatar } from "rizzui";
 
 export default function App() {
   return (
     <Tag>
       <Avatar
+        name="John Doe"
         className="mr-1.5 rtl:ml-1.5"
-        customSize="20px"
+        customSize="20"
         src="https://images.pexels.com/photos/670720/pexels-photo-670720.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
       />
       With Avatar
@@ -239,7 +241,7 @@ You make a clearable **Tag** using **clearable** property.
 </Paper>
 
 ```tsx
-import { Button } from 'rizzui';
+import { Button } from "rizzui";
 
 export default function App() {
   return (
@@ -286,7 +288,7 @@ Here is the API documentation of the Tag component.
 ### Tag Variants
 
 ```ts
-type TagVariants = 'solid' | 'flat' | 'outline';
+type TagVariants = "solid" | "flat" | "outline";
 ```
 
 <div className="mb-10" />
@@ -294,7 +296,7 @@ type TagVariants = 'solid' | 'flat' | 'outline';
 ### Tag Sizes
 
 ```ts
-type TagSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type TagSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -302,7 +304,7 @@ type TagSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### Tag Rounded
 
 ```ts
-type TagRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
+type TagRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -311,13 +313,13 @@ type TagRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'pill';
 
 ```ts
 type TagColors =
-  | 'DEFAULT'
-  | 'primary'
-  | 'secondary'
-  | 'danger'
-  | 'info'
-  | 'success'
-  | 'warning';
+  | "DEFAULT"
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```
 
 <div className="mb-10" />
