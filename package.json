@@ -18,11 +18,10 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
     "prettier": "3.0.1",
     "turbo": "latest",
     "husky": "^8.0.0",
-    "tsup": "6.7.0"
+    "tsup": "7.2.0"
   },
   "engines": {
     "node": ">=16.0.0"
