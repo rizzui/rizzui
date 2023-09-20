@@ -1,5 +1,3 @@
-'use client';
-
 import React, { forwardRef, useState, useCallback } from 'react';
 
 import { cn } from '../../lib/cn';
@@ -209,7 +207,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       onBlur,
       ...inputProps
     },
-    ref
+    ref,
   ) => {
     const variantStyle = fileInputClasses.variant[variant];
     const [isFocus, setIsFocus] = useState(false);
@@ -220,7 +218,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         setIsFocus((prevState) => !prevState);
         onFocus && onFocus(e);
       },
-      [readOnly, onFocus]
+      [readOnly, onFocus],
     );
 
     const handleOnBlur = useCallback(
@@ -229,7 +227,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         setIsFocus(() => false);
         onBlur && onBlur(e);
       },
-      [readOnly, onBlur]
+      [readOnly, onBlur],
     );
 
     const handleOnClear = useCallback(
@@ -237,7 +235,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         e.preventDefault();
         onClear && onClear(e);
       },
-      [onClear]
+      [onClear],
     );
 
     return (
@@ -261,7 +259,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
               isFocus && 'is-focus', // must have is-focus class based on onFocus event
               disabled && fileInputClasses.disabled,
               error && fileInputClasses.error,
-              inputClassName
+              inputClassName,
             )}
           >
             <input
@@ -279,7 +277,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
                 fileButtonClasses.color[color],
                 fileButtonClasses.rounded[rounded],
                 disabled && inputFieldClasses.disabled,
-                clearable && inputFieldClasses.clearable
+                clearable && inputFieldClasses.clearable,
               )}
               style={{ fontSize: 'inherit' }}
               {...inputProps}
@@ -299,7 +297,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 FileInput.displayName = 'FileInput';

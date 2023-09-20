@@ -10,7 +10,7 @@
     "declaration": true,
     "declarationDir": "dist",
     "outDir": "dist",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowJs": true,
     "strict": true,
     "resolveJsonModule": true,
@@ -27,8 +27,7 @@
     "storybook-static",
     "coverage",
     "jest.config.js",
-    "**/*.test.tsx",
-    "**/*.stories.mdx",
-    "**/*.stories.@(js|jsx|ts|tsx)"
+    "stories",
+    "test"
   ]
 }
