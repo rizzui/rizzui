@@ -28,6 +28,6 @@
     "coverage",
     "jest.config.js",
     "stories",
-    "test"
+    "tests"
   ]
 }

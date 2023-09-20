@@ -47,9 +47,10 @@ export default function Collapse({
   const Children = tag !== 'div' ? 'li' : 'div';
   return (
     <Component
+      role="collapse"
+      aria-expanded={open}
       data-testid="collapse-parent"
       className={cn('rizzui-collapse', className)}
-      aria-expanded={open}
     >
       {header({ open, toggle })}
       <Children

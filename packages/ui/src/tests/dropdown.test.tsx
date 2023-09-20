@@ -1,7 +1,7 @@
 // dropdown.stories.ts|tsx
 import * as React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, waitFor, act } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import Dropdown, { DropdownItem } from '../components/dropdown';
@@ -57,13 +57,17 @@ test('Renders dropdown button, container and items', async () => {
   );
   const dropdownButton = screen.getByRole('button', { name: 'Settings' });
   expect(dropdownButton).toBeInTheDocument();
+  await act(async () => {
+    await user.click(dropdownButton);
+  });
 
-  await user.click(dropdownButton);
   const dropdownContainer = screen.getByTestId('dropdown-container');
   await waitFor(() => expect(dropdownContainer).toBeVisible());
 
   const dropdownItem = screen.getByTestId('item-1');
   expect(dropdownItem).toBeInTheDocument();
-  await user.click(dropdownItem);
+  await act(async () => {
+    await user.click(dropdownItem);
+  });
   await waitFor(() => expect(dropdownContainer).not.toBeVisible());
 });

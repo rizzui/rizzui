@@ -3,38 +3,35 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
-import { dts } from 'rollup-plugin-dts';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 export default defineConfig([
   {
     input: './src/index.tsx',
     output: [
       {
-        // file: './dist/index.cjs',
         dir: 'dist',
         format: 'cjs',
+        entryFileNames: '[name].js',
+        entryFileNames: 'index.js',
       },
       {
-        // file: './dist/index.js',
         dir: 'dist',
         format: 'esm',
+        entryFileNames: '[name].js',
+        entryFileNames: 'index.mjs',
       },
     ],
     plugins: [
+      peerDepsExternal(),
       resolve(),
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
-        exclude: ['**/stories/**', '**/tests/**', '**/styles**'],
+        exclude: ['**/stories/**', '**/tests/**', '**/styles/**'],
       }),
       terser(),
     ],
     external: ['react', 'react-dom'],
-  },
-  {
-    input: './dist/index.d.ts',
-    output: [{ file: './dist/index.d.ts', format: 'esm' }],
-    plugins: [dts()],
-    external: [/\.css$/],
   },
 ]);
