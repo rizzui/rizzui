@@ -9,7 +9,7 @@ export default defineConfig({
   minify: true,
   splitting: true,
   treeshake: true,
-  outDir: './dist',
+  bundle: true,
   external: ['react', 'react-dom'],
   // does not support with splitting tsup v:7.2.0
   // esbuildOptions(options) {
