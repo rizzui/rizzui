@@ -156,7 +156,6 @@ export default function ComponentBlock() {
                   </Text>
                   <Text>{item.description}</Text>
                 </div>
-                <div className="w-2/3 h-2/3 absolute bottom-5 right-0 bg-primary opacity-[0.07] -z-[1] filter blur-3xl" />
               </div>
             </div>
           ))}
@@ -174,7 +173,6 @@ export default function ComponentBlock() {
                   </Button>
                 </div>
               </div>
-              <div className="w-2/3 h-2/3 absolute bottom-5 right-0 bg-primary opacity-[0.07] -z-[1] filter blur-3xl" />
             </div>
           </div>
         </div>

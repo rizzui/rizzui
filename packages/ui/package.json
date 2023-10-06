@@ -52,12 +52,12 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@floating-ui/react": "0.25.4",
     "clsx": "1.2.1",
     "react-number-format": "5.1.4",
     "tailwind-merge": "1.14.0"
   },
   "peerDependencies": {
+    "@floating-ui/react": ">=0.25.4",
     "@headlessui/react": ">=1.7.0",
     "react": ">=18",
     "react-dom": ">=18"
