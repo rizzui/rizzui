@@ -8,22 +8,22 @@ function AnnouncementText() {
     <Announcement
       badgeText="Beta"
       endIcon={<CopyButton value="npm install rizzui" />}
-      className="mx-auto mb-5 md:mb-7 text-sm md:text-[15px] pr-4 pl-2"
+      className="mx-auto mb-5 md:mb-7 text-sm md:text-[15px] pr-4 pl-2 border border-gray-200"
     >
       npm install rizzui
     </Announcement>
   );
 }
 
-function BlurBGPattern() {
-  return (
-    <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
-      <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.07] transform rotate-12 scale-95" />
-      <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.07] transform rotate-12 scale-105 hidden sm:flex" />
-      <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.07] transform rotate-12 scale-95 hidden md:flex" />
-    </div>
-  );
-}
+// function BlurBGPattern() {
+//   return (
+//     <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
+//       <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.07] transform rotate-12 scale-95" />
+//       <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.07] transform rotate-12 scale-105 hidden sm:flex" />
+//       <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.07] transform rotate-12 scale-95 hidden md:flex" />
+//     </div>
+//   );
+// }
 
 export default function HeroBlock() {
   const history = useHistory();
@@ -80,7 +80,6 @@ export default function HeroBlock() {
           </div>
         </header>
       </div>
-      <BlurBGPattern />
     </section>
   );
 }

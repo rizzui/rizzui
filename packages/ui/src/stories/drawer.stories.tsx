@@ -1,44 +1,58 @@
-import React, { useState } from "react";
-import {
-  Button,
-  Drawer,
-  Text,
-  ActionIcon,
-  Badge,
-  Empty,
-  EmptyProductBoxIcon,
-} from "rizzui";
-import { ShoppingBagIcon } from "@heroicons/react/24/outline";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+// drawer.stories.ts|tsx
+import * as React from 'react';
+import { ComponentMeta } from '@storybook/react';
 
-export default function DrawerDefault() {
-  const [drawerState, setDrawerState] = useState(false);
+import Drawer, { DrawerSize } from '../components/drawer';
+import Button from '../components/button';
+import Badge from '../components/badge';
+import ActionIcon from '../components/action-icon';
+import Text from '../components/text';
+import Empty from '../components/empty';
+import { EmptyProductBoxIcon } from '../components/empty/empty-icons';
+import { ShoppingBagIcon } from '../icons/shopping-bag';
+import { XIcon } from '../icons/x-mark';
+
+export default {
+  title: 'Components/Drawer',
+  component: Drawer,
+  parameters: {
+    viewMode: 'docs',
+  },
+} as ComponentMeta<typeof Drawer>;
+
+type DrawerPropsType = {
+  isOpen: boolean;
+  size?: DrawerSize;
+  placement?: 'top' | 'right' | 'bottom' | 'left';
+};
+
+export const Default = () => {
+  const [drawerState, setDrawerState] = React.useState(false);
   return (
     <>
       <Button onClick={() => setDrawerState(true)}>Open Drawer</Button>
       <Drawer isOpen={drawerState} onClose={() => setDrawerState(false)}>
-        <div className="py-4 px-5">Default Drawer</div>
+        <div className="px-5 py-4">Default Drawer</div>
       </Drawer>
     </>
   );
-}
+};
 
-export function DrawerSizes() {
-  const [drawerSate, setDrawerState] = useState<any>({
+export const Sizes = () => {
+  const [drawerSate, setDrawerState] = React.useState<DrawerPropsType>({
     isOpen: false,
-    size: "DEFAULT",
+    size: 'DEFAULT',
   });
-
   return (
     <>
-      <div className="flex items-center justify-around gap-2 flex-wrap">
+      <div className="flex items-center justify-around">
         <Button
           variant="outline"
           onClick={() =>
             setDrawerState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "sm",
+              size: 'sm',
             }))
           }
         >
@@ -50,7 +64,7 @@ export function DrawerSizes() {
             setDrawerState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "DEFAULT",
+              size: 'DEFAULT',
             }))
           }
         >
@@ -62,7 +76,7 @@ export function DrawerSizes() {
             setDrawerState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "lg",
+              size: 'lg',
             }))
           }
         >
@@ -74,7 +88,7 @@ export function DrawerSizes() {
             setDrawerState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "xl",
+              size: 'xl',
             }))
           }
         >
@@ -86,7 +100,7 @@ export function DrawerSizes() {
             setDrawerState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "full",
+              size: 'full',
             }))
           }
         >
@@ -100,26 +114,25 @@ export function DrawerSizes() {
           setDrawerState((prevState) => ({ ...prevState, isOpen: false }))
         }
       >
-        <div className="py-4 px-5">
-          This is{" "}
+        <div className="px-5 py-4">
+          This is{' '}
           <Text tag="strong">
             &quot;
             {drawerSate.size}
             &quot;
-          </Text>{" "}
+          </Text>{' '}
           size Drawer
         </div>
       </Drawer>
     </>
   );
-}
+};
 
-export function DrawerPlacement() {
-  const [drawerSate, setDrawerState] = useState<any>({
+export const WithPlacement = () => {
+  const [drawerSate, setDrawerState] = React.useState<DrawerPropsType>({
     isOpen: false,
-    placement: "left",
+    placement: 'left',
   });
-
   return (
     <>
       <div className="relative py-5">
@@ -130,7 +143,7 @@ export function DrawerPlacement() {
               setDrawerState((prevState) => ({
                 ...prevState,
                 isOpen: true,
-                placement: "top",
+                placement: 'top',
               }))
             }
           >
@@ -142,7 +155,7 @@ export function DrawerPlacement() {
               setDrawerState((prevState) => ({
                 ...prevState,
                 isOpen: true,
-                placement: "bottom",
+                placement: 'bottom',
               }))
             }
           >
@@ -156,7 +169,7 @@ export function DrawerPlacement() {
               setDrawerState((prevState) => ({
                 ...prevState,
                 isOpen: true,
-                placement: "left",
+                placement: 'left',
               }))
             }
           >
@@ -168,7 +181,7 @@ export function DrawerPlacement() {
               setDrawerState((prevState) => ({
                 ...prevState,
                 isOpen: true,
-                placement: "right",
+                placement: 'right',
               }))
             }
           >
@@ -183,8 +196,8 @@ export function DrawerPlacement() {
           setDrawerState((prevState) => ({ ...prevState, isOpen: false }))
         }
       >
-        <div className="py-4 px-5">
-          The drawer placement on the{" "}
+        <div className="px-5 py-4">
+          The drawer placement on the{' '}
           <Text tag="strong">
             &quot;
             {drawerSate.placement}
@@ -194,10 +207,10 @@ export function DrawerPlacement() {
       </Drawer>
     </>
   );
-}
+};
 
-export function DrawerCustomSize() {
-  const [drawerState, setDrawerState] = useState(false);
+export const WithCustomSize = () => {
+  const [drawerState, setDrawerState] = React.useState(false);
   return (
     <>
       <Button onClick={() => setDrawerState(true)}>Custom Size Drawer</Button>
@@ -206,15 +219,14 @@ export function DrawerCustomSize() {
         onClose={() => setDrawerState(false)}
         customSize="600px"
       >
-        <div className="py-4 px-5">Custom Size = 600px</div>
+        <div className="px-5 py-4">Custom Size = 600px</div>
       </Drawer>
     </>
   );
-}
+};
 
-export function DrawerCustomStyle() {
-  const [drawerState, setDrawerState] = useState(false);
-
+export const WithCustomStyle = () => {
+  const [drawerState, setDrawerState] = React.useState(false);
   return (
     <>
       <Button onClick={() => setDrawerState(true)}>Custom Style Drawer</Button>
@@ -224,15 +236,14 @@ export function DrawerCustomStyle() {
         overlayClassName="backdrop-blur"
         containerClassName="!max-w-[calc(100%-480px)] !shadow-2xl"
       >
-        <div className="py-4 px-5">Custom Style</div>
+        <div className="px-5 py-4">Custom Style</div>
       </Drawer>
     </>
   );
-}
+};
 
-export function DrawerIcons() {
-  const [drawerState, setDrawerState] = useState(false);
-
+export const WithShoppingCart = () => {
+  const [drawerState, setDrawerState] = React.useState(false);
   return (
     <>
       <div
@@ -251,7 +262,7 @@ export function DrawerIcons() {
         </Badge>
       </div>
       <Drawer isOpen={drawerState} onClose={() => setDrawerState(false)}>
-        <div className="flex min-h-full flex-col py-4 px-5">
+        <div className="flex min-h-full flex-col px-5 py-4">
           <header className="flex items-center justify-between">
             <Text tag="h4">Shopping Cart</Text>
             <ActionIcon
@@ -260,7 +271,7 @@ export function DrawerIcons() {
               rounded="DEFAULT"
               onClick={() => setDrawerState(false)}
             >
-              <XMarkIcon className="h-auto w-5" strokeWidth={1.5} />
+              <XIcon className="h-auto w-5" strokeWidth={1.5} />
             </ActionIcon>
           </header>
           {/* End of drawer header */}
@@ -280,4 +291,4 @@ export function DrawerIcons() {
       </Drawer>
     </>
   );
-}
+};
