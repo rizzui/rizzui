@@ -493,13 +493,11 @@
 /* ------------------------------------- */
 html,
 body {
-  color: var(--ifm-color-gray-700);
+  @apply text-[var(--ifm-color-gray-700)];
 }
 
 h1 {
-  @apply text-[32px] leading-tight md:text-h1 tracking-tight;
-  color: var(--ifm-color-gray-900);
-  font-weight: 800 !important;
+  @apply text-[28px] leading-tight xl:text-[34px] font-bold tracking-tight text-[var(--ifm-color-gray-900)];
 }
 
 h2 {
@@ -519,7 +517,7 @@ h5 {
 }
 
 h6 {
-  @apply text-sm font-bold;
+  @apply text-sm;
 }
 
 h2,
@@ -527,9 +525,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply tracking-tight;
-  color: var(--ifm-color-gray-900);
-  margin-bottom: 12px !important;
+  @apply tracking-tight !mb-3 text-[var(--ifm-color-gray-900)];
 }
 
 #__docusaurus {
@@ -539,15 +535,15 @@ h6 {
 #__docusaurus a,
 #__docusaurus strong,
 #__docusaurus b {
-  color: var(--ifm-color-gray-900);
+  @apply text-[var(--ifm-color-gray-900)];
 }
 
 #__docusaurus .navbar__link {
-  color: var(--ifm-color-gray-600);
+  @apply text-[var(--ifm-color-gray-600)];
 }
 
 #__docusaurus .navbar__link--active {
-  color: var(--ifm-color-gray-900);
+  @apply text-[var(--ifm-color-gray-900)] !font-medium;
 }
 
 .navbar__items .navbar__toggle svg {
@@ -577,7 +573,7 @@ nav.navbar {
 }
 
 nav.navbar .navbar__inner {
-  @apply mx-auto max-w-[1632px];
+  @apply mx-auto w-full;
 }
 
 .navbar__toggle {
@@ -704,11 +700,11 @@ svg[class*="lightToggleIcon"] {
 }
 
 .main-wrapper > div[class*="docPage"] {
-  @apply mx-auto max-w-[1680px];
+  @apply mx-auto w-full;
 }
 
 .container {
-  @apply px-4 sm:px-6 max-w-[1680px];
+  @apply px-4 sm:px-6 w-full;
 }
 
 @media (max-width: 1023px) {
@@ -753,24 +749,17 @@ svg[class*="lightToggleIcon"] {
   }
 }
 
-/* @media (min-width: 1728px) {
-  .container {
-    @apply px-0;
-  }  
-} */
-
 .theme-doc-sidebar-container {
-  @apply fixed h-full overflow-y-auto overflow-x-hidden;
-  border-color: var(--ifm-color-gray-300) !important;
+  @apply fixed h-full overflow-y-auto overflow-x-hidden !border-[var(--ifm-color-gray-300)];
 }
 
 .theme-doc-sidebar-container nav.menu {
-  @apply pt-4 pl-6 pr-[1.1rem];
+  @apply pt-6 pl-6 pr-[1.1rem];
 }
 
 #__docusaurus .navbar__link,
 #__docusaurus .menu__list {
-  @apply text-sm;
+  @apply text-sm font-normal;
 }
 
 #__docusaurus .menu__list {
@@ -778,16 +767,15 @@ svg[class*="lightToggleIcon"] {
 }
 
 #__docusaurus li > .menu__link {
-  @apply py-2 px-5;
-  color: var(--ifm-color-gray-600);
+  @apply py-2 px-5 text-[var(--ifm-color-gray-600)];
 }
 
 #__docusaurus li > .menu__link--active {
-  color: var(--ifm-color-gray-900);
+  @apply !font-medium text-[var(--ifm-color-gray-900)];
 }
 
 #__docusaurus li > .menu__link--active:not(.menu__link--sublist) {
-  background-color: var(--ifm-color-gray-100);
+  @apply bg-[var(--ifm-color-gray-100)];
 }
 
 .menu__list-item-collapsible {
@@ -795,8 +783,7 @@ svg[class*="lightToggleIcon"] {
 }
 
 .menu__list-item-collapsible > a {
-  @apply text-sm font-semibold flex-row-reverse justify-end px-0 -mx-1;
-  color: var(--ifm-color-gray-900);
+  @apply text-sm font-semibold flex-row-reverse justify-end px-0 -mx-1 text-[var(--ifm-color-gray-900)];
 }
 
 .menu__list-item-collapsible > a::after {
@@ -806,6 +793,35 @@ svg[class*="lightToggleIcon"] {
 
 #__docusaurus .menu__list li:last-of-type {
   @apply pb-6;
+}
+
+#__docusaurus
+  .theme-doc-sidebar-item-category-level-2
+  .menu__list-item-collapsible
+  > a {
+  @apply border-l-2 rounded-none mx-0 font-normal !bg-gray-100 !text-sm px-5;
+}
+
+.theme-doc-sidebar-item-category-level-2
+  .menu__list-item-collapsible
+  > a::after {
+  @apply hidden;
+}
+
+#__docusaurus .theme-doc-sidebar-item-category-level-2 .menu__list {
+  @apply mt-0;
+}
+
+#__docusaurus li.theme-doc-sidebar-item-link-level-3 > a {
+  @apply border-l-2 rounded-none;
+}
+
+#__docusaurus li.theme-doc-sidebar-item-link-level-3 > .menu__link--active {
+  @apply border-gray-900 bg-transparent;
+}
+
+.theme-doc-sidebar-item-link-level-3.menu__list-item:not(:first-child) {
+  @apply mt-0;
 }
 
 .table-of-contents {
@@ -864,6 +880,10 @@ ul.table-of-contents.table-of-contents__left-border::before {
 
 #__docusaurus div[class*="codeBlockTitle_"] {
   @apply font-normal text-[#a7aebe] bg-[#0f172a] border-b-0;
+}
+
+#__docusaurus .prism-code + div[class*="buttonGroup_"] button {
+  @apply opacity-60;
 }
 
 .markdown menu,
@@ -1080,4 +1100,10 @@ article [class*="tocMobile_"] {
 
 .pagination-nav__link--next .pagination-nav__label {
   @apply after:hidden;
+}
+
+.grid-box {
+  background-size: 6rem 4rem;
+  background-image: linear-gradient(90deg, #f0f0f0 1px, transparent 0),
+    linear-gradient(180deg, #f0f0f0 1px, transparent 0);
 }

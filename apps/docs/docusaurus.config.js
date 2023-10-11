@@ -2,6 +2,7 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
+// const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 
 const prismTheme = {
   plain: {
@@ -147,6 +148,19 @@ const config = {
         },
       };
     },
+
+    // async function myWebpackPlugin(context, options) {
+    //   return {
+    //     name: "custom-webpack-config",
+    //     configureWebpack(config) {
+    //       config.resolve.fallback = {
+    //         fs: false,
+    //       };
+    //       config.plugins = [new NodePolyfillPlugin()];
+    //       return config;
+    //     },
+    //   };
+    // },
   ],
 
   themes: [
@@ -200,7 +214,7 @@ const config = {
             label: "Documentation",
           },
           {
-            to: "docs/components/action-icon",
+            to: "docs/buttons/action-icon",
             position: "left",
             label: "Components",
           },

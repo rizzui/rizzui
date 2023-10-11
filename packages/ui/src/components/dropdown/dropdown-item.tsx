@@ -1,7 +1,7 @@
 import React from 'react';
 import { Menu } from '@headlessui/react';
-
 import { cn } from '../../lib/cn';
+import { makeClassName } from '../../lib/make-class-name';
 
 export type DropdownItemRenderProps = {
   /** Whether or not the item is the active/focused in the list. */
@@ -26,7 +26,7 @@ export type DropdownItemProps = {
  * Here is the API Documentation for DropdownItem Component.
  */
 
-const DropdownItem = ({
+export const DropdownItem = ({
   className,
   children,
   activeClassName,
@@ -37,10 +37,11 @@ const DropdownItem = ({
       <button
         type="button"
         className={cn(
+          makeClassName(`dropdown-item`),
           'flex w-full text-sm',
           active && activeClassName,
           disabled && disabledClassName,
-          className
+          className,
         )}
       >
         {children({ active, disabled })}
@@ -50,4 +51,3 @@ const DropdownItem = ({
 );
 
 DropdownItem.displayName = 'DropdownItem';
-export default DropdownItem;

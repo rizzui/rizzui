@@ -3,7 +3,7 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}', './src/stories/*.tsx'],
   theme: {
     colors: {
       white: '#ffffff',
@@ -63,48 +63,6 @@ module.exports = {
     },
     extend: {
       fontSize: {
-        h1: [
-          '2.25rem',
-          {
-            lineHeight: '2.5rem',
-            fontWeight: '700',
-          },
-        ],
-        h2: [
-          '1.875rem',
-          {
-            lineHeight: '2.25rem',
-            fontWeight: '700',
-          },
-        ],
-        h3: [
-          '1.5rem',
-          {
-            lineHeight: '2rem',
-            fontWeight: '700',
-          },
-        ],
-        h4: [
-          '1.25rem',
-          {
-            lineHeight: '1.75rem',
-            fontWeight: '700',
-          },
-        ],
-        h5: [
-          '1.125rem',
-          {
-            lineHeight: '1.75rem',
-            fontWeight: '700',
-          },
-        ],
-        h6: [
-          '1rem',
-          {
-            lineHeight: '1.5rem',
-            fontWeight: '700',
-          },
-        ],
         quote: [
           '1.125rem',
           {

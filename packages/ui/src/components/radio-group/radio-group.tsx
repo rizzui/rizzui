@@ -21,7 +21,7 @@ interface RadioChildrenProps {
  * user to select any radio button easily either from a form or from a filter.
  * Here is the API documentation for RadioGroup component.
  */
-export default function RadioGroup({
+export function RadioGroup({
   value,
   setValue,
   children,
@@ -29,7 +29,7 @@ export default function RadioGroup({
 }: RadioGroupProps) {
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value),
-    [value, setValue]
+    [value, setValue],
   );
 
   return (

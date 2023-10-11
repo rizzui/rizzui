@@ -1,66 +1,65 @@
 import React from 'react';
-
 import { cn } from '../../lib/cn';
-import Text from '../text';
 import { DefaultIcon } from './empty-icons';
+import { makeClassName } from '../../lib/make-class-name';
 
-const classes = {
-  base: 'flex flex-col',
+const emptyStyles = {
+  base: 'flex flex-col items-start',
   alignment: {
-    inlineStart: '',
-    center: 'items-center text-center',
-    inlineEnd: '',
+    start: 'items-start',
+    center: 'items-center',
+    end: 'items-end',
   },
 };
 
-type EmptyTextTagProps = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+type EmptyTextTagProps = 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 
 export interface EmptyProps {
-  /** Add custom image or icon component */
   image?: React.ReactNode;
-  /** Add custom classes on to the image or icon component's wrapper */
   imageClassName?: string;
-  /** Set custom className of the default image / icon */
   defaultImageClassName?: string;
-  /** Set custom text message of the Empty component */
   text?: string;
-  /** Here you can use your text tag */
-  textTag?: EmptyTextTagProps;
-  /** Set custom classes for text style */
+  textAs?: EmptyTextTagProps;
   textClassName?: string;
-  /** Set custom text message of the Empty component */
-  alignment?: keyof typeof classes.alignment;
-  /** Add custom classes for extra style */
+  alignment?: keyof typeof emptyStyles.alignment;
   className?: string;
 }
 
-/**
- * Empty state component. Note: We are highly inspired by the Ant Design empty component -> https://ant.design/components/empty
- */
-export default function Empty({
+export function Empty({
   image,
   className,
   text,
-  textTag = 'p',
+  textAs = 'p',
   imageClassName,
   textClassName,
   alignment = 'center',
   defaultImageClassName,
   children,
 }: React.PropsWithChildren<EmptyProps>) {
+  let Component = textAs;
   return (
     <div
       data-testid="empty-state"
-      className={cn(classes.base, classes.alignment[alignment], className)}
+      className={cn(
+        makeClassName('empty-root'),
+        emptyStyles.base,
+        emptyStyles.alignment[alignment],
+        className,
+      )}
     >
-      <div className={cn(imageClassName)}>
-        {image || <DefaultIcon className={defaultImageClassName} />}
+      <div className="text-center">
+        <div className={cn(makeClassName('empty-icon'), imageClassName)}>
+          {image || <DefaultIcon className={defaultImageClassName} />}
+        </div>
+        {text ? (
+          <Component
+            role="heading"
+            className={cn(makeClassName('empty-text'), textClassName)}
+          >
+            {text}
+          </Component>
+        ) : null}
       </div>
-      {text ? (
-        <Text tag={textTag} className={cn(textClassName)}>
-          {text}
-        </Text>
-      ) : null}
       {children}
     </div>
   );

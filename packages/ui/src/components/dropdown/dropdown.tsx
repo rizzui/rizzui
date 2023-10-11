@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
+import { makeClassName } from '../../lib/make-class-name';
 
 const dropdownClasses = {
   rounded: {
@@ -43,7 +43,7 @@ export type DropdownProps = ExtractProps<typeof Menu> & {
  * Here is the API documentation of the Dropdown component.
  * You can use the following props to create a dropdown.
  */
-export default function Dropdown({
+export function Dropdown({
   trigger,
   rounded = 'DEFAULT',
   shadow = 'DEFAULT',
@@ -55,11 +55,22 @@ export default function Dropdown({
   const TransitionComponent: React.ElementType = Transition;
   const MenuButton: React.ElementType = Menu.Button;
   const MenuItems: React.ElementType = Menu.Items;
+
   return (
-    <Menu as="div" className={cn('relative', className)}>
-      <MenuButton as="div" className={dropdownButtonClassName}>
+    <Menu
+      as="div"
+      className={cn(makeClassName(`dropdown-root`), 'relative', className)}
+    >
+      <MenuButton
+        as="div"
+        className={cn(
+          makeClassName(`dropdown-trigger`),
+          dropdownButtonClassName,
+        )}
+      >
         {trigger}
       </MenuButton>
+
       <TransitionComponent
         as={Fragment}
         enter="transition ease-out duration-100"
@@ -72,10 +83,11 @@ export default function Dropdown({
         <MenuItems
           data-testid="dropdown-container"
           className={cn(
+            makeClassName(`dropdown-container`),
             'absolute z-10 mt-2 border border-gray-100 bg-gray-0',
             dropdownClasses.rounded[rounded],
             dropdownClasses.shadow[shadow],
-            dropdownClassName
+            dropdownClassName,
           )}
         >
           {children}

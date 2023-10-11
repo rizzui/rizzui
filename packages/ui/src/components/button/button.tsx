@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
-import Loader from '../loader';
-import cn from '../../lib/cn';
+import { Loader } from '../loader';
+import { cn } from '../../lib/cn';
+import { makeClassName } from '../../lib/make-class-name';
 
 const buttonClasses = {
   base: 'inline-flex font-medium items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 transition-colors duration-200',
@@ -117,7 +118,7 @@ export type ButtonProps = {
  * And the rest of the props of Button are the same as the original html button.
  * You can use props like `id`, `title`, `onClick`, `onFocus`, `onBlur`, `children` etc.
  */
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
@@ -141,6 +142,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         disabled={disabled}
         className={cn(
+          makeClassName(`button`),
           buttonClasses.base,
           buttonClasses.size[size],
           buttonClasses.rounded[rounded],
@@ -158,7 +160,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           <>
             {/* trick to have exact button width when button is loading */}
             <span className="invisible opacity-0">{children}</span>
-            <span className="absolute inset-0 flex h-full w-full items-center justify-center">
+            <span
+              className={cn(
+                makeClassName(`button-loader`),
+                'absolute inset-0 flex h-full w-full items-center justify-center',
+              )}
+            >
               <Loader
                 tag="span"
                 color="current"
@@ -176,4 +183,3 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = 'Button';
-export default Button;

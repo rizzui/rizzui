@@ -1,10 +1,10 @@
 import React, { forwardRef, useState, useCallback } from 'react';
-
 import { cn } from '../../lib/cn';
-import ErrorText from '../field-error-text';
-import HelperText from '../field-helper-text';
-import ClearButton from '../field-clear-button';
+import { FieldError } from '../field-error-text';
+import { FieldHelperText } from '../field-helper-text';
+import { FieldClearButton } from '../field-clear-button';
 import { ChevronUpDownIcon } from '../../icons/chevron-up-down';
+import { makeClassName } from '../../lib/make-class-name';
 
 const labelClasses = {
   size: {
@@ -191,7 +191,7 @@ export interface NativeSelectProps
  * And the rest of the props of Native Select are the same as the original html select tag.
  * You can use props like `disabled`, `name` etc.
  */
-const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
+export const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
   (
     {
       options,
@@ -219,7 +219,7 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
       onBlur,
       ...selectProps
     },
-    ref
+    ref,
   ) => {
     const variantStyle = selectClasses.variant[variant];
     const [isFocus, setIsFocus] = useState(false);
@@ -229,7 +229,7 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         setIsFocus((prevState) => !prevState);
         onFocus && onFocus(e);
       },
-      [onFocus]
+      [onFocus],
     );
 
     const handleOnBlur = useCallback(
@@ -237,19 +237,30 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         setIsFocus(() => false);
         onBlur && onBlur(e);
       },
-      [onBlur]
+      [onBlur],
     );
 
     const formattedOptions = options.map((item) =>
-      typeof item === 'string' ? { label: item, value: item } : item
+      typeof item === 'string' ? { label: item, value: item } : item,
     );
 
     return (
-      <div className={cn('flex flex-col', className)}>
+      <div
+        className={cn(
+          makeClassName(`native-select-root`),
+          'flex flex-col',
+          className,
+        )}
+      >
         <label className="block">
           {label && (
             <span
-              className={cn('block', labelClasses.size[size], labelClassName)}
+              className={cn(
+                makeClassName(`native-select-label`),
+                'block',
+                labelClasses.size[size],
+                labelClassName,
+              )}
             >
               {label}
             </span>
@@ -257,6 +268,7 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
 
           <div
             className={cn(
+              makeClassName(`native-select-container`),
               selectClasses.base,
               selectClasses.size[size],
               selectClasses.rounded[rounded],
@@ -265,14 +277,15 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               isFocus && 'is-focus', // must have is-focus class based on onFocus event
               disabled && selectClasses.disabled,
               error && selectClasses.error,
-              selectClassName
+              selectClassName,
             )}
           >
             {prefix && (
               <div
                 className={cn(
+                  makeClassName(`native-select-prefix`),
                   'whitespace-nowrap leading-normal',
-                  prefixClassName
+                  prefixClassName,
                 )}
               >
                 {prefix}
@@ -286,11 +299,12 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
               onBlur={handleOnBlur}
               onFocus={handleOnFocus}
               className={cn(
+                makeClassName(`native-select-field`),
                 selectFieldClasses.base,
                 disabled && selectFieldClasses.disabled,
                 clearable && selectFieldClasses.clearable,
                 prefix && selectFieldClasses.prefixStartPadding.size[size],
-                suffix && selectFieldClasses.suffixEndPadding.size[size]
+                suffix && selectFieldClasses.suffixEndPadding.size[size],
               )}
               style={{ fontSize: 'inherit' }}
               {...selectProps}
@@ -310,17 +324,19 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
             </select>
 
             {clearable && (
-              <ClearButton
+              <FieldClearButton
                 size={size}
                 onClick={onClear}
                 hasSuffix={Boolean(suffix)}
               />
             )}
+
             {suffix && (
               <div
                 className={cn(
+                  makeClassName(`native-select-suffix`),
                   'whitespace-nowrap leading-normal',
-                  suffixClassName
+                  suffixClassName,
                 )}
               >
                 {suffix}
@@ -330,18 +346,30 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>(
         </label>
 
         {!error && helperText && (
-          <HelperText size={size} className={helperClassName}>
+          <FieldHelperText
+            size={size}
+            className={cn(
+              makeClassName(`native-select-helper-text`),
+              helperClassName,
+            )}
+          >
             {helperText}
-          </HelperText>
+          </FieldHelperText>
         )}
 
         {error && (
-          <ErrorText size={size} error={error} className={errorClassName} />
+          <FieldError
+            size={size}
+            error={error}
+            className={cn(
+              makeClassName(`native-select-error-text`),
+              errorClassName,
+            )}
+          />
         )}
       </div>
     );
-  }
+  },
 );
 
 NativeSelect.displayName = 'NativeSelect';
-export default NativeSelect;

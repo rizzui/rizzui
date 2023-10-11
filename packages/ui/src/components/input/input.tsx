@@ -1,9 +1,9 @@
 import React, { forwardRef, useState, useCallback } from 'react';
-
 import { cn } from '../../lib/cn';
-import ErrorText from '../field-error-text';
-import HelperText from '../field-helper-text';
-import ClearButton from '../field-clear-button';
+import { FieldError } from '../field-error-text';
+import { FieldHelperText } from '../field-helper-text';
+import { FieldClearButton } from '../field-clear-button';
+import { makeClassName } from '../../lib/make-class-name';
 
 const labelClasses = {
   size: {
@@ -193,7 +193,7 @@ export interface InputProps
  * And the rest of the props are the same as the original html input field.
  * You can use props like `value`, `disabled`, `placeholder`, `onChange`, `onFocus`, `onBlur` etc.
  */
-const Input = forwardRef<HTMLInputElement, InputProps>(
+export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
@@ -246,11 +246,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     );
 
     return (
-      <div className={cn('flex flex-col', className)}>
+      <div
+        className={cn(makeClassName(`input-root`), 'flex flex-col', className)}
+      >
         <label className="block">
           {label && (
             <span
-              className={cn('block', labelClasses.size[size], labelClassName)}
+              className={cn(
+                makeClassName(`input-label`),
+                'block',
+                labelClasses.size[size],
+                labelClassName,
+              )}
             >
               {label}
             </span>
@@ -258,6 +265,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
           <span
             className={cn(
+              makeClassName(`input-container`),
               inputClasses.base,
               inputClasses.size[size],
               inputClasses.rounded[rounded],
@@ -272,6 +280,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {prefix && (
               <span
                 className={cn(
+                  makeClassName(`input-prefix`),
                   'whitespace-nowrap leading-normal',
                   prefixClassName,
                 )}
@@ -290,6 +299,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               // placeholder is a required prop for the clearable input component even if the user does not set any
               placeholder={placeholder || 'Screen reader only'}
               className={cn(
+                makeClassName(`input-field`),
                 inputFieldClasses.base,
                 // it's important we are using placeholder-shown pseudo class to control input clear icon btn
                 !placeholder && 'placeholder:opacity-0',
@@ -301,16 +311,19 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               style={{ fontSize: 'inherit' }}
               {...inputProps}
             />
+
             {clearable && (
-              <ClearButton
+              <FieldClearButton
                 size={size}
                 onClick={onClear}
                 hasSuffix={Boolean(suffix)}
               />
             )}
+
             {suffix && (
               <span
                 className={cn(
+                  makeClassName(`input-suffix`),
                   'whitespace-nowrap leading-normal',
                   suffixClassName,
                 )}
@@ -322,13 +335,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         </label>
 
         {!error && helperText && (
-          <HelperText size={size} className={helperClassName}>
+          <FieldHelperText
+            size={size}
+            className={cn(makeClassName(`input-helper-text`), helperClassName)}
+          >
             {helperText}
-          </HelperText>
+          </FieldHelperText>
         )}
 
         {error && (
-          <ErrorText size={size} error={error} className={errorClassName} />
+          <FieldError
+            size={size}
+            error={error}
+            className={cn(makeClassName(`input-error-text`), errorClassName)}
+          />
         )}
       </div>
     );
@@ -336,4 +356,3 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 );
 
 Input.displayName = 'Input';
-export default Input;

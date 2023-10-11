@@ -17,8 +17,8 @@ import {
   useTransitionStyles,
   FloatingPortal,
 } from '@floating-ui/react';
-
 import { cn } from '../../lib/cn';
+import { makeClassName } from '../../lib/make-class-name';
 
 const tooltipClasses = {
   base: 'text-center z-40 min-w-max',
@@ -144,7 +144,7 @@ export type TooltipProps = {
  * Here is the API documentation of the Tooltip component.
  * You can use the following props to create a demo of tooltip.
  */
-export default function Tooltip({
+export function Tooltip({
   isOpen,
   setIsOpen,
   children,
@@ -202,6 +202,7 @@ export default function Tooltip({
             role="tooltip"
             ref={refs.setFloating}
             className={cn(
+              makeClassName(`tooltip-root`),
               tooltipClasses.base,
               tooltipClasses.size[size],
               tooltipClasses.rounded[rounded],
@@ -232,6 +233,7 @@ export default function Tooltip({
                   context={context}
                   data-testid="tooltip-arrow"
                   className={cn(
+                    makeClassName(`tooltip-arrow`),
                     tooltipClasses.arrow.color[color],
                     tooltipArrowClassName,
                   )}

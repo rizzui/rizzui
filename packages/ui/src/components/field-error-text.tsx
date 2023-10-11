@@ -19,7 +19,7 @@ interface FieldErrorProps
   className?: string;
 }
 
-export default function FieldError({
+export function FieldError({
   tag = 'div',
   error,
   size,
@@ -32,7 +32,7 @@ export default function FieldError({
       className={cn(
         fieldErrorClasses.base,
         size && fieldErrorClasses.size[size],
-        className
+        className,
       )}
     >
       {error}
