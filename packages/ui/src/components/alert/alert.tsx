@@ -1,7 +1,8 @@
 import React from 'react';
 import { XIcon } from '../../icons/x-mark';
-import cn from '../../lib/cn';
-import AlertIcon from './icons';
+import { cn } from '../../lib/cn';
+import { AlertIcon } from './icons';
+import { makeClassName } from '../../lib/make-class-name';
 
 const classes = {
   base: 'relative block w-full bg-transparent break-all',
@@ -171,7 +172,7 @@ export type AlertProps = {
  * A simple alert component for showing alert message. Here is the API documentation of the Alert component.
  * You can use the following props to create a demo for alert.
  */
-export default function Alert({
+export function Alert({
   size = 'DEFAULT',
   rounded = 'DEFAULT',
   variant = 'outline',
@@ -191,41 +192,45 @@ export default function Alert({
     <div
       data-testid="alert-parent"
       className={cn(
+        makeClassName(`alert-root`),
         classes.base,
         classes.size[size],
         classes.rounded[rounded],
         classes.variant[variant].base,
         classes.variant[variant].color[color],
         bar && variant !== 'outline' && '!border-0',
-        className
+        className,
       )}
     >
       {bar && (
         <span
           data-testid="alert-bar"
           className={cn(
+            makeClassName(`alert-bar`),
             barClasses.base,
             barClasses.rounded[rounded],
             barClasses.color[color],
-            barClassName
+            barClassName,
           )}
         />
       )}
       <div
         data-testid="alert-content"
         className={cn(
+          makeClassName(`alert-content`),
           iconContainerClasses.base,
           iconContainerClasses.position.left[size],
-          iconContainerClassName
+          iconContainerClassName,
         )}
       >
         {icon || (
           <span
             className={cn(
+              makeClassName(`alert-icon`),
               iconClasses.base,
               iconClasses.rounded[rounded],
               iconClasses.iconColor[color],
-              iconClassName
+              iconClassName,
             )}
           >
             <AlertIcon size={size} color={color} />
@@ -234,8 +239,9 @@ export default function Alert({
       </div>
       <div
         className={cn(
+          makeClassName(`alert-content`),
           classes.leftPadding.size[size],
-          closable && classes.rightPadding.size[size]
+          closable && classes.rightPadding.size[size],
         )}
       >
         {children}
@@ -245,8 +251,9 @@ export default function Alert({
           role="button"
           tabIndex={0}
           className={cn(
+            makeClassName(`alert-close`),
             iconContainerClasses.base,
-            iconContainerClasses.position.right[size]
+            iconContainerClasses.position.right[size],
           )}
           onClick={onClose}
         >
@@ -256,7 +263,7 @@ export default function Alert({
                 iconClasses.base,
                 iconClasses.rounded[rounded],
                 iconClasses.variant[variant].base,
-                iconClasses.variant[variant].color[color]
+                iconClasses.variant[variant].color[color],
               )}
             >
               <XIcon

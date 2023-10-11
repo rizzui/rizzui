@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
-
 import { cn } from '../../lib/cn';
-import FieldError from '../field-error-text';
-import FieldHelperText from '../field-helper-text';
+import { FieldError } from '../field-error-text';
+import { FieldHelperText } from '../field-helper-text';
+import { makeClassName } from '../../lib/make-class-name';
 
 const labelClasses = {
   size: {
@@ -88,21 +88,21 @@ const switchClasses = {
 // only for outline inactive switch knob
 const outlineInactiveSwitchKnob = {
   disabled:
-    '[&:hover_.aegon-switch-knob]:!bg-gray-300 [&:hover_.aegon-switch-knob]:!text-gray-400',
+    '[&:hover_.rizzui-switch-knob]:!bg-gray-300 [&:hover_.rizzui-switch-knob]:!text-gray-400',
   color: {
     DEFAULT:
-      '[&:hover_.aegon-switch-knob]:bg-gray-900 [&:hover_.aegon-switch-knob]:text-white',
+      '[&:hover_.rizzui-switch-knob]:bg-gray-900 [&:hover_.rizzui-switch-knob]:text-white',
     primary:
-      '[&:hover_.aegon-switch-knob]:bg-primary [&:hover_.aegon-switch-knob]:text-white',
+      '[&:hover_.rizzui-switch-knob]:bg-primary [&:hover_.rizzui-switch-knob]:text-white',
     secondary:
-      '[&:hover_.aegon-switch-knob]:bg-secondary [&:hover_.aegon-switch-knob]:text-white',
+      '[&:hover_.rizzui-switch-knob]:bg-secondary [&:hover_.rizzui-switch-knob]:text-white',
     danger:
-      '[&:hover_.aegon-switch-knob]:bg-red [&:hover_.aegon-switch-knob]:text-white',
-    info: '[&:hover_.aegon-switch-knob]:bg-blue [&:hover_.aegon-switch-knob]:text-white',
+      '[&:hover_.rizzui-switch-knob]:bg-red [&:hover_.rizzui-switch-knob]:text-white',
+    info: '[&:hover_.rizzui-switch-knob]:bg-blue [&:hover_.rizzui-switch-knob]:text-white',
     success:
-      '[&:hover_.aegon-switch-knob]:bg-green [&:hover_.aegon-switch-knob]:text-white',
+      '[&:hover_.rizzui-switch-knob]:bg-green [&:hover_.rizzui-switch-knob]:text-white',
     warning:
-      '[&:hover_.aegon-switch-knob]:bg-orange [&:hover_.aegon-switch-knob]:text-white',
+      '[&:hover_.rizzui-switch-knob]:bg-orange [&:hover_.rizzui-switch-knob]:text-white',
   },
 };
 
@@ -149,11 +149,11 @@ const handleClasses = {
   },
   translate: {
     active: {
-      sm: '[&:checked+span>.aegon-switch-knob]:translate-x-[.88rem] rtl:[&:checked+span>.aegon-switch-knob]:-translate-x-[.88rem]',
+      sm: '[&:checked+span>.rizzui-switch-knob]:translate-x-[.88rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[.88rem]',
       DEFAULT:
-        '[&:checked+span>.aegon-switch-knob]:translate-x-[1.14rem] rtl:[&:checked+span>.aegon-switch-knob]:-translate-x-[1.14rem]',
-      lg: '[&:checked+span>.aegon-switch-knob]:translate-x-[1.36rem] rtl:[&:checked+span>.aegon-switch-knob]:-translate-x-[1.36rem]',
-      xl: '[&:checked+span>.aegon-switch-knob]:translate-x-[1.6rem] rtl:[&:checked+span>.aegon-switch-knob]:-translate-x-[1.6rem]',
+        '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.14rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.14rem]',
+      lg: '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.36rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.36rem]',
+      xl: '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.6rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.6rem]',
     },
     inactive: 'translate-x-[2.5px] rtl:-translate-x-[2.5px]',
   },
@@ -211,7 +211,7 @@ export interface SwitchProps
  * And the rest of the props are the same as the original html checkbox input field.
  * You can use props like `value`, `disabled`, `checked`, `onChange`, `onFocus`, `onBlur` etc.
  */
-const Switch = forwardRef<HTMLInputElement, SwitchProps>(
+export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (
     {
       label,
@@ -233,11 +233,11 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       helperClassName,
       ...props
     },
-    ref
+    ref,
   ) => {
     const variantStyle = switchClasses.variant[variant];
     return (
-      <div className={cn('aegon-switch', className)}>
+      <div className={cn('rizzui-switch', className)}>
         <label
           className={cn(
             'group/switch my-2 inline-flex items-center',
@@ -245,7 +245,7 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             variant === 'outline' && [
               outlineInactiveSwitchKnob.color[color],
               disabled && outlineInactiveSwitchKnob.disabled,
-            ]
+            ],
           )}
         >
           <input
@@ -253,11 +253,11 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             type="checkbox"
             disabled={disabled}
             className={cn(
-              'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span>.aegon-switch-knob>.aegon-switch-off-icon]:hidden [&:checked:enabled~span>.aegon-switch-knob>.aegon-switch-on-icon]:opacity-100 [&:checked:enabled~span>.aegon-switch-knob]:text-gray-900',
+              'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span>.rizzui-switch-knob>.rizzui-switch-off-icon]:hidden [&:checked:enabled~span>.rizzui-switch-knob>.rizzui-switch-on-icon]:opacity-100 [&:checked:enabled~span>.rizzui-switch-knob]:text-gray-900',
               color === 'DEFAULT'
-                ? '[&:checked:enabled~span>.aegon-switch-knob]:bg-gray-0'
-                : '[&:checked:enabled~span>.aegon-switch-knob]:bg-white',
-              handleClasses.translate.active[size]
+                ? '[&:checked:enabled~span>.rizzui-switch-knob]:bg-gray-0'
+                : '[&:checked:enabled~span>.rizzui-switch-knob]:bg-white',
+              handleClasses.translate.active[size],
             )}
             {...props}
           />
@@ -270,12 +270,12 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
               variantStyle.color[color],
               switchActiveClasses.color[color],
               disabled && switchClasses.disabled,
-              switchClassName
+              switchClassName,
             )}
           >
             <span
               className={cn(
-                'aegon-switch-knob relative',
+                'rizzui-switch-knob relative',
                 handleClasses.base,
                 handleClasses.size[size],
                 handleClasses.rounded[rounded],
@@ -284,13 +284,13 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                 variant === 'active' && 'text-white',
                 variant === 'flat' && 'bg-white text-gray-900 shadow-sm',
                 variant === 'outline' && 'bg-gray-300 text-gray-900',
-                handlerClassName
+                handlerClassName,
               )}
             >
-              <span className="aegon-switch-off-icon inline-flex items-center">
+              <span className="rizzui-switch-off-icon inline-flex items-center">
                 {offIcon}
               </span>
-              <span className="aegon-switch-on-icon absolute inset-0 inline-flex items-center justify-center opacity-0">
+              <span className="rizzui-switch-on-icon absolute inset-0 inline-flex items-center justify-center opacity-0">
                 {onIcon || (
                   // HeroIcon: check
                   <svg
@@ -309,32 +309,43 @@ const Switch = forwardRef<HTMLInputElement, SwitchProps>(
               </span>
             </span>
           </span>
+
           {label && (
             <span
               className={cn(
+                makeClassName(`switch-label`),
                 labelClasses.size[size],
                 labelClasses.margin[labelPlacement][size],
                 disabled ? 'cursor-not-allowed' : 'cursor-pointer',
                 labelPlacement === 'right' && 'order-last',
-                labelClassName
+                labelClassName,
               )}
             >
               {label}
             </span>
           )}
         </label>
+
         {!error && helperText && (
-          <FieldHelperText tag="div" size={size} className={helperClassName}>
+          <FieldHelperText
+            tag="div"
+            size={size}
+            className={cn(makeClassName(`switch-helper-text`), helperClassName)}
+          >
             {helperText}
           </FieldHelperText>
         )}
+
         {error && (
-          <FieldError size={size} error={error} className={errorClassName} />
+          <FieldError
+            size={size}
+            error={error}
+            className={cn(makeClassName(`switch-error-text`), errorClassName)}
+          />
         )}
       </div>
     );
-  }
+  },
 );
 
 Switch.displayName = 'Switch';
-export default Switch;

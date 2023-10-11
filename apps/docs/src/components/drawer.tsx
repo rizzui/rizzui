@@ -102,7 +102,7 @@ export function DrawerSizes() {
       >
         <div className="py-4 px-5">
           This is{" "}
-          <Text tag="strong">
+          <Text as="strong">
             &quot;
             {drawerSate.size}
             &quot;
@@ -185,7 +185,7 @@ export function DrawerPlacement() {
       >
         <div className="py-4 px-5">
           The drawer placement on the{" "}
-          <Text tag="strong">
+          <Text as="strong">
             &quot;
             {drawerSate.placement}
             &quot;
@@ -253,7 +253,7 @@ export function DrawerIcons() {
       <Drawer isOpen={drawerState} onClose={() => setDrawerState(false)}>
         <div className="flex min-h-full flex-col py-4 px-5">
           <header className="flex items-center justify-between">
-            <Text tag="h4">Shopping Cart</Text>
+            <Text as="h4">Shopping Cart</Text>
             <ActionIcon
               size="sm"
               variant="outline"

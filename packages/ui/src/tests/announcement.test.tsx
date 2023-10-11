@@ -2,7 +2,7 @@ import * as React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import Announcement from '../components/announcement/announcement';
+import { Announcement } from '../components/announcement';
 
 test('Renders announcement component with text', () => {
   render(

@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
-
 import { cn } from '../../lib/cn';
 import { CheckmarkIcon } from '../../icons/checkmark';
-import FieldError from '../field-error-text';
-import FieldHelperText from '../field-helper-text';
+import { FieldError } from '../field-error-text';
+import { FieldHelperText } from '../field-helper-text';
+import { makeClassName } from '../../lib/make-class-name';
 
 const inputClasses = {
   base: 'peer disabled:bg-gray-50 disabled:border-gray-200',
@@ -153,7 +153,7 @@ export interface CheckboxProps
  * You can use props like `value`, `disabled`, `onChange`, `onFocus`, `onBlur` etc.
  */
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       variant = 'outline',
@@ -177,9 +177,17 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref,
   ) => (
-    <div className={cn('flex flex-col', className, activeClassName)}>
+    <div
+      className={cn(
+        makeClassName(`checkbox-root`),
+        'flex flex-col',
+        className,
+        activeClassName,
+      )}
+    >
       <label
         className={cn(
+          makeClassName(`checkbox-container`),
           'flex flex-row items-center',
           disabled && 'cursor-not-allowed',
           containerClassName,
@@ -191,6 +199,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             ref={ref}
             disabled={disabled}
             className={cn(
+              makeClassName(`checkbox-input`),
               inputClasses.base,
               inputClasses.size[size],
               inputClasses.rounded[rounded],
@@ -202,6 +211,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           />
           <CheckmarkIcon
             className={cn(
+              makeClassName(`checkbox-icon`),
               iconClasses.base,
               inputClasses.size[size],
               size === 'sm' && 'top-0.5',
@@ -214,6 +224,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         {label && (
           <span
             className={cn(
+              makeClassName(`checkbox-label`),
               labelClasses.size.text[size],
               labelClasses.size.margin[labelPlacement][size],
               labelPlacement === 'start' && 'order-first',
@@ -226,16 +237,23 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       </label>
 
       {!error && helperText && (
-        <FieldHelperText size={size} className={helperClassName}>
+        <FieldHelperText
+          size={size}
+          className={cn(makeClassName(`checkbox-helper-text`), helperClassName)}
+        >
           {helperText}
         </FieldHelperText>
       )}
+
       {error && (
-        <FieldError size={size} error={error} className={errorClassName} />
+        <FieldError
+          size={size}
+          error={error}
+          className={cn(makeClassName(`checkbox-error-text`), errorClassName)}
+        />
       )}
     </div>
   ),
 );
 
 Checkbox.displayName = 'Checkbox';
-export default Checkbox;

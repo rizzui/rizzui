@@ -1,6 +1,7 @@
 import React from 'react';
-import cn from '../../lib/cn';
-import Badge from '../badge';
+import { cn } from '../../lib/cn';
+import { Badge } from '../badge';
+import { makeClassName } from '../../lib/make-class-name';
 
 const classes = {
   base: 'flex items-center text-gray-600 w-fit',
@@ -12,7 +13,7 @@ const classes = {
     sm: 'text-xs pr-6 rtl:pl-6 pl-0.5 rtl:pr-0.5 py-0.5',
     DEFAULT: 'text-sm pr-7 rtl:pl-7 pl-1 rtl:pr-1 py-1',
     lg: 'text-base pr-8 rtl:pl-8 pl-1 rtl:pr-1 py-1',
-    xl: 'text-lg pr-9 rtl:pr-9 pl-1 rtl:pr-1 py-1',
+    xl: 'text-lg pr-9 rtl:pl-9 pl-1 rtl:pr-1 py-1',
   },
   rounded: {
     none: 'rounded-none',
@@ -57,7 +58,7 @@ export interface AnnouncementProps {
   highlightedTextClassName?: string;
 }
 
-const Announcement = ({
+export const Announcement = ({
   size = 'DEFAULT',
   rounded = 'DEFAULT',
   color = 'DEFAULT',
@@ -73,43 +74,51 @@ const Announcement = ({
 }: React.PropsWithChildren<AnnouncementProps>) => (
   <div
     className={cn(
+      makeClassName(`announcement-root`),
       classes.base,
       classes.size[size],
       classes.rounded[rounded],
       classes.bgColor[bgColor],
-      className
+      className,
     )}
   >
     {startIcon}
+
     {badgeText && (
       <Badge
         size={size}
         rounded={rounded}
         color={color}
-        className={badgeClassName}
+        className={cn(makeClassName(`announcement-badge`), badgeClassName)}
       >
         {badgeText}
       </Badge>
     )}
+
     {highlightedText && (
       <span
         className={cn(
+          makeClassName(`announcement-highlighted-text`),
           'ml-2.5 font-medium rtl:mr-2.5',
           classes.color[color],
-          highlightedTextClassName
+          highlightedTextClassName,
         )}
       >
         {highlightedText}
       </span>
     )}
+
     <span
-      className={cn(!highlightedText ? 'ml-2.5 rtl:mr-2.5' : 'ml-1 rtl:mr-1')}
+      className={cn(
+        makeClassName(`announcement-text`),
+        !highlightedText ? 'ml-2.5 rtl:mr-2.5' : 'ml-1 rtl:mr-1',
+      )}
     >
       {children}
     </span>
+
     {endIcon}
   </div>
 );
 
 Announcement.displayName = 'Announcement';
-export default Announcement;

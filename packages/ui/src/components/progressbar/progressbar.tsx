@@ -1,6 +1,7 @@
 import React from 'react';
 import { cn } from '../../lib/cn';
-import Text from '../text';
+import { Text } from '../typography';
+import { makeClassName } from '../../lib/make-class-name';
 
 const classes = {
   base: 'absolute top-0 bottom-0 left-0 h-full flex items-center justify-center',
@@ -66,7 +67,7 @@ export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
   labelClassName?: string;
 }
 
-export default function Progressbar({
+export function Progressbar({
   value,
   label = '',
   size = 'DEFAULT',
@@ -81,6 +82,7 @@ export default function Progressbar({
   return (
     <div
       className={cn(
+        makeClassName(`progressbar-root`),
         'relative w-full bg-gray-200',
         classes.size[size],
         classes.rounded[rounded],
@@ -88,12 +90,13 @@ export default function Progressbar({
       )}
     >
       <div
-        role="progressbar"
+        role={'progressbar'}
         aria-valuemax={100}
         aria-valuemin={0}
         aria-valuenow={value}
         aria-label={label}
         className={cn(
+          makeClassName(`progressbar`),
           classes.base,
           classes.variant[variant].base,
           classes.variant[variant].color[color],
@@ -104,7 +107,13 @@ export default function Progressbar({
         {...props}
       >
         {label && size === 'xl' && (
-          <Text className={cn('text-xs font-bold', labelClassName)}>
+          <Text
+            className={cn(
+              makeClassName(`progressbar-label`),
+              'text-xs font-bold',
+              labelClassName,
+            )}
+          >
             {label}
           </Text>
         )}

@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Stepper, { Step } from '../components/stepper';
-import Button from '../components/button';
+import { Stepper, Step } from '../components/stepper';
+import { Button } from '../components/button';
 
 export default {
   title: 'Components/Stepper',

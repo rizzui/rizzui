@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Tag from '../components/tag';
-import Avatar from '../components/avatar';
+import { Tag } from '../components/tag';
+import { Avatar } from '../components/avatar';
 
 export default {
   title: 'Components/Tag',

@@ -1,9 +1,9 @@
 import React, { forwardRef, useState, useCallback } from 'react';
-
 import { cn } from '../../lib/cn';
-import ErrorText from '../field-error-text';
-import HelperText from '../field-helper-text';
-import ClearButton from '../field-clear-button';
+import { FieldError } from '../field-error-text';
+import { FieldHelperText } from '../field-helper-text';
+import { FieldClearButton } from '../field-clear-button';
+import { makeClassName } from '../../lib/make-class-name';
 
 const labelClasses = {
   size: {
@@ -183,7 +183,7 @@ export interface FileInputProps
  * And the rest of the props are the same as the original html input field.
  * You can use props like `value`, `disabled`, `placeholder`, `onChange`, `onFocus`, `onBlur` etc.
  */
-const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
+export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   (
     {
       className,
@@ -239,11 +239,22 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     );
 
     return (
-      <div className={cn('flex flex-col', className)}>
+      <div
+        className={cn(
+          makeClassName(`file-input-root`),
+          'flex flex-col',
+          className,
+        )}
+      >
         <label className="block">
           {label && (
             <span
-              className={cn('block', labelClasses.size[size], labelClassName)}
+              className={cn(
+                makeClassName(`file-input-label`),
+                'block',
+                labelClasses.size[size],
+                labelClassName,
+              )}
             >
               {label}
             </span>
@@ -251,6 +262,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 
           <div
             className={cn(
+              makeClassName(`file-input-container`),
               fileInputClasses.base,
               fileInputClasses.size[size],
               fileInputClasses.rounded[rounded],
@@ -271,6 +283,7 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
               readOnly={readOnly}
               spellCheck="false"
               className={cn(
+                makeClassName(`file-input-field`),
                 inputFieldClasses.base,
                 fileButtonClasses.base,
                 fileButtonClasses.size[size],
@@ -282,18 +295,34 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
               style={{ fontSize: 'inherit' }}
               {...inputProps}
             />
-            {clearable && <ClearButton size={size} onClick={handleOnClear} />}
+
+            {clearable && (
+              <FieldClearButton size={size} onClick={handleOnClear} />
+            )}
           </div>
         </label>
 
         {!error && helperText && (
-          <HelperText size={size} className={helperClassName}>
+          <FieldHelperText
+            size={size}
+            className={cn(
+              makeClassName(`file-input-helper-text`),
+              helperClassName,
+            )}
+          >
             {helperText}
-          </HelperText>
+          </FieldHelperText>
         )}
 
         {error && (
-          <ErrorText size={size} error={error} className={errorClassName} />
+          <FieldError
+            size={size}
+            error={error}
+            className={cn(
+              makeClassName(`file-input-error-text`),
+              errorClassName,
+            )}
+          />
         )}
       </div>
     );
@@ -301,4 +330,3 @@ const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 );
 
 FileInput.displayName = 'FileInput';
-export default FileInput;

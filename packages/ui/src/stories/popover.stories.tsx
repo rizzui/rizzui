@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Popover from '../components/popover/popover';
-import Button from '../components/button';
-import Avatar from '../components/avatar';
+import { Popover } from '../components/popover';
+import { Button } from '../components/button';
+import { Avatar } from '../components/avatar';
 
 export default {
   title: 'Components/Popover',

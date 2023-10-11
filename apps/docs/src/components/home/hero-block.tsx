@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "@docusaurus/router";
-import { Button, Text, Announcement, cn } from "rizzui";
+import { Button, Title, Text, Announcement, cn } from "rizzui";
 import { CopyButton } from "../copy-button";
 
 function AnnouncementText() {
@@ -15,32 +15,32 @@ function AnnouncementText() {
   );
 }
 
-// function BlurBGPattern() {
-//   return (
-//     <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
-//       <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.07] transform rotate-12 scale-95" />
-//       <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.07] transform rotate-12 scale-105 hidden sm:flex" />
-//       <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.07] transform rotate-12 scale-95 hidden md:flex" />
-//     </div>
-//   );
-// }
+function BlurBGPattern() {
+  return (
+    <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
+      <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.05] transform rotate-12 scale-95" />
+      <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.05] transform rotate-12 scale-105 hidden sm:flex" />
+      <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.05] transform rotate-12 scale-95 hidden md:flex" />
+    </div>
+  );
+}
 
 export default function HeroBlock() {
   const history = useHistory();
   return (
-    <section className="py-16 md:py-20 lg:py-32 relative">
+    <section className="py-16 md:py-20 lg:py-32 relative grid-box">
       <div className="container relative mx-auto">
         <header className="text-center">
           <AnnouncementText />
-          <Text
-            tag="h1"
+          <Title
+            as="h1"
             className={cn(
-              "text-3xl sm:text-4xl xl:text-5xl 2xl:text-6xl leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] font-extrabold drop-shadow-sm mb-6 md:mb-10"
+              "text-3xl sm:text-4xl xl:text-5xl 2xl:text-6xl leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-10"
             )}
           >
             A Modern and Minimal React UI Library{" "}
             <br className="hidden md:inline-block" /> built with TailwindCSS
-          </Text>
+          </Title>
           <Text className="text-[15px] md:text-base lg:text-lg leading-[1.9] md:leading-[1.9] lg:leading-[1.9] max-w-5xl mx-auto mb-8 md:mb-12 text-gray-600">
             designed to provide you with a simple and intuitive set of UI
             components that are easy to use, customize and integrate into your
@@ -80,6 +80,8 @@ export default function HeroBlock() {
           </div>
         </header>
       </div>
+
+      <BlurBGPattern />
     </section>
   );
 }

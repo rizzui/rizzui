@@ -1,5 +1,6 @@
 import React from 'react';
-import cn from '../../lib/cn';
+import { cn } from '../../lib/cn';
+import { makeClassName } from '../../lib/make-class-name';
 
 const classes = {
   base: 'inline-flex items-center justify-center font-semibold leading-none',
@@ -85,7 +86,7 @@ export type BadgeProps = {
 /**
  * Badge is a small overlapped UI item which indicates a status, notification, or event that appears in relativity with the underlying object.
  */
-export default function Badge({
+export function Badge({
   renderAsDot = false,
   size = 'DEFAULT',
   color = 'DEFAULT',
@@ -97,9 +98,11 @@ export default function Badge({
   ...props
 }: React.PropsWithChildren<BadgeProps>) {
   const styles = classes.variant[variant];
+
   return (
     <span
       className={cn(
+        makeClassName(`badge`),
         classes.base,
         classes.variant[variant],
         renderAsDot ? classes.dot.size[size] : classes.size[size],
@@ -108,7 +111,7 @@ export default function Badge({
         classes.rounded[rounded],
         enableOutlineRing && classes.outlineRing,
         className,
-        { ...props }
+        { ...props },
       )}
     >
       {!renderAsDot ? children : null}

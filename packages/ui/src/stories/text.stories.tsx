@@ -1,7 +1,7 @@
 // switch.stories.ts|tsx
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import Text from '../components/text/text';
+import { Text } from '../components/typography/text';
 
 export default {
   title: 'Components/Text',
@@ -16,119 +16,83 @@ export const Default = () => <Text>The brown fox jumps over the lazy dog</Text>;
 export const Typography = () => (
   <div className="grid gap-8 py-2">
     <div>
-      <Text tag="span" className="tracking-wider text-gray-500">
-        h1
-      </Text>
-      <Text tag="h1">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text tag="span" className="tracking-wider text-gray-500">
-        h2
-      </Text>
-      <Text tag="h2">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text tag="span" className="tracking-wider text-gray-500">
-        h3
-      </Text>
-      <Text tag="h3">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text tag="span" className="tracking-wider text-gray-500">
-        h4
-      </Text>
-      <Text tag="h4">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text tag="span" className="tracking-wider text-gray-500">
-        h5
-      </Text>
-      <Text tag="h5">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text tag="span" className="tracking-wider text-gray-500">
-        h6
-      </Text>
-      <Text tag="h6">The brown fox jumps over the lazy dog</Text>
-    </div>
-    <div>
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         p
       </Text>
-      <Text tag="p">The brown fox jumps over the lazy dog</Text>
+      <Text as="p">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         i
       </Text>
-      <Text tag="i">The brown fox jumps over the lazy dog</Text>
+      <Text as="i">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         del
       </Text>
-      <Text tag="del">The brown fox jumps over the lazy dog</Text>
+      <Text as="del">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         mark
       </Text>
-      <Text tag="mark">The brown fox jumps over the lazy dog</Text>
+      <Text as="mark">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         b
       </Text>
-      <Text tag="b">The brown fox jumps over the lazy dog</Text>
+      <Text as="b">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         em
       </Text>
-      <Text tag="em">The brown fox jumps over the lazy dog</Text>
+      <Text as="em">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         strong
       </Text>
-      <Text tag="strong">The brown fox jumps over the lazy dog</Text>
+      <Text as="strong">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         small
       </Text>
-      <Text tag="small">The brown fox jumps over the lazy dog</Text>
+      <Text as="small">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         abbr
       </Text>
-      <Text tag="abbr" title="Hello World!">
+      <Text as="abbr" title="Hello World!">
         HW
       </Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         q
       </Text>
-      <Text tag="q">The brown fox jumps over the lazy dog</Text>
+      <Text as="q">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid gap-1">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         blockquote
       </Text>
-      <Text tag="blockquote">
+      <Text as="blockquote">
         Before going to sleep every night, <br /> forgive everyone and sleep
         with a clean heart.
       </Text>
     </div>
     <div>
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         kbd
       </Text>
       <div className="mt-2 grid gap-5">
         <div className="flex items-end gap-1">
-          <Text tag="kbd">
+          <Text as="kbd">
             <svg
               className="h-4 w-4"
               aria-hidden="true"
@@ -141,7 +105,7 @@ export const Typography = () => (
             <span className="sr-only">Arrow key left</span>
           </Text>
           <div className="grid gap-1">
-            <Text tag="kbd">
+            <Text as="kbd">
               <svg
                 className="h-4 w-4"
                 aria-hidden="true"
@@ -153,7 +117,7 @@ export const Typography = () => (
               </svg>
               <span className="sr-only">Arrow key up</span>
             </Text>
-            <Text tag="kbd">
+            <Text as="kbd">
               <svg
                 className="h-4 w-4"
                 aria-hidden="true"
@@ -166,7 +130,7 @@ export const Typography = () => (
               <span className="sr-only">Arrow key down</span>
             </Text>
           </div>
-          <Text tag="kbd">
+          <Text as="kbd">
             <svg
               className="h-4 w-4"
               aria-hidden="true"
@@ -179,44 +143,43 @@ export const Typography = () => (
             <span className="sr-only">Arrow key right</span>
           </Text>
         </div>
-        <Text tag="p">
-          Please press <Text tag="kbd">Ctrl</Text> +{' '}
-          <Text tag="kbd">Shift</Text> +<Text tag="kbd">R</Text> to reload this
-          page.
+        <Text as="p">
+          Please press <Text as="kbd">Ctrl</Text> + <Text as="kbd">Shift</Text>{' '}
+          +<Text as="kbd">R</Text> to reload this page.
         </Text>
       </div>
     </div>
     <div>
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         sup
       </Text>
-      <Text tag="p">
+      <Text as="p">
         (a+b)
-        <Text tag="sup">2</Text> = a<Text tag="sup">2</Text> + 2ab + b
-        <Text tag="sup">2</Text>
+        <Text as="sup">2</Text> = a<Text as="sup">2</Text> + 2ab + b
+        <Text as="sup">2</Text>
       </Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         sub
       </Text>
-      <Text tag="em">
+      <Text as="em">
         ∑𝐹 = ρ𝑄(𝓥
-        <Text tag="sub">out</Text> &nbsp;-&nbsp; 𝓥
-        <Text tag="sub">in</Text>)
+        <Text as="sub">out</Text> &nbsp;-&nbsp; 𝓥
+        <Text as="sub">in</Text>)
       </Text>
     </div>
     <div>
-      <Text tag="span" className="mb-2 block tracking-wider text-gray-500">
+      <Text as="span" className="mb-2 block tracking-wider text-gray-500">
         code
       </Text>
-      <Text tag="code">background-color: #000000</Text>
+      <Text as="code">background-color: #000000</Text>
     </div>
     <div className="grid">
-      <Text tag="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider text-gray-500">
         pre
       </Text>
-      <Text tag="pre">
+      <Text as="pre">
         &lt;html&gt; <br />
         &nbsp;&nbsp;&lt;head&gt; <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome to

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import NativeSelect from '../components/native-select/native-select';
+import { NativeSelect } from '../components/native-select';
 
 const options = ['John', 'Miller', 'James', 'Franky'];
 

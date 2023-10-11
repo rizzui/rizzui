@@ -2,11 +2,12 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import NumberInput, {
-  NumberInputProps,
+import {
+  NumberInput,
   usePatternFormat,
+  type NumberInputProps,
 } from '../components/number-input';
-import Input from '../components/input';
+import { Input } from '../components/input';
 
 export default {
   title: 'Components/NumberInput',

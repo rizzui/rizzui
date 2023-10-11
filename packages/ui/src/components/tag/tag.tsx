@@ -1,7 +1,7 @@
 import React from 'react';
-
 import { cn } from '../../lib/cn';
 import { XIcon } from '../../icons/x-mark';
+import { makeClassName } from '../../lib/make-class-name';
 
 const classes = {
   base: 'flex items-center cursor-pointer w-fit',
@@ -104,7 +104,7 @@ export interface TagProps extends React.HTMLAttributes<HTMLDivElement> {
  * It is a standalone component which is commonly used for filtering or triggering some kind of action.
  * Here is the API documentation of Tag component.
  */
-export default function Tag({
+export function Tag({
   size = 'DEFAULT',
   rounded = 'DEFAULT',
   variant = 'flat',
@@ -119,12 +119,13 @@ export default function Tag({
   return (
     <div
       className={cn(
+        makeClassName(`tag`),
         classes.base,
         classes.size[size],
         classes.rounded[rounded],
         classes.variant[variant].base,
         classes.variant[variant].color[color],
-        className
+        className,
       )}
     >
       {children}
@@ -133,7 +134,11 @@ export default function Tag({
           <XIcon
             data-testid="tag-clear-icon"
             onClick={onClear}
-            className={cn(iconClasses.size[size], iconClassName)}
+            className={cn(
+              makeClassName(`tag-clear-icon`),
+              iconClasses.size[size],
+              iconClassName,
+            )}
           />
         ))}
     </div>

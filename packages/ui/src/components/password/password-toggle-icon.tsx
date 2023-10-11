@@ -14,7 +14,7 @@ interface PasswordToggleIconProps {
   iconSize?: keyof typeof passwordToggleIconClasses.size;
 }
 
-export default function PasswordToggleIcon({
+export function PasswordToggleIcon({
   iconSize,
   isVisible,
 }: PasswordToggleIconProps) {

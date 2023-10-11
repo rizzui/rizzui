@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-
 import { cn } from '../../lib/cn';
+import { makeClassName } from '../../lib/make-class-name';
 
 const modalClasses = {
   overlay:
@@ -51,7 +51,7 @@ export type ModalProps = {
 /**
  * A fully-managed renderless Modal component. When requiring users to interact with the application, but without jumping to a new page and interrupting the user's workflow, you can use Modal to create a new floating layer over the current page to get user feedback or display information.
  */
-export default function Modal({
+export function Modal({
   isOpen,
   onClose,
   size = 'DEFAULT',
@@ -71,7 +71,7 @@ export default function Modal({
       customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
     if (checkedCustomSizeValue[0] === '') {
       console.warn(
-        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"'
+        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"',
       );
     }
   }
@@ -81,15 +81,16 @@ export default function Modal({
         as="div"
         onClose={onClose}
         className={cn(
+          makeClassName(`modal-root`),
           'fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden',
-          className
+          className,
         )}
       >
         {/* -> required min-h-screen div to have the overflow y scrollbar when modal content is extra large */}
         <div
           className={cn(
             'flex min-h-screen flex-col items-center justify-center',
-            size !== 'full' && [!noGutter && 'p-4 sm:p-5']
+            size !== 'full' && [!noGutter && 'p-4 sm:p-5'],
           )}
         >
           <TransitionChild
@@ -102,7 +103,11 @@ export default function Modal({
             leaveTo="opacity-0"
           >
             <Dialog.Overlay
-              className={cn(modalClasses.overlay, overlayClassName)}
+              className={cn(
+                makeClassName(`modal-overlay`),
+                modalClasses.overlay,
+                overlayClassName,
+              )}
             />
           </TransitionChild>
           {/*
@@ -124,10 +129,11 @@ export default function Modal({
             <div className="pointer-events-none relative w-full transform overflow-hidden transition-all">
               <div
                 className={cn(
+                  makeClassName(`modal-container`),
                   'pointer-events-auto m-auto w-full break-words bg-gray-0 shadow-xl',
                   size !== 'full' && modalClasses.rounded[rounded],
                   !customSize && modalClasses.size[size],
-                  containerClassName
+                  containerClassName,
                 )}
                 {...(customSize && {
                   style: {

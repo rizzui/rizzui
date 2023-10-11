@@ -1,7 +1,8 @@
 import React, { forwardRef } from 'react';
-import cn from '../../lib/cn';
-import FieldError from '../field-error-text';
-import FieldHelperText from '../field-helper-text';
+import { cn } from '../../lib/cn';
+import { FieldError } from '../field-error-text';
+import { FieldHelperText } from '../field-helper-text';
+import { makeClassName } from '../../lib/make-class-name';
 
 export interface AdvancedCheckboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -27,7 +28,10 @@ export interface AdvancedCheckboxProps
  * And the rest of the props of AdvancedCheckbox are the same as the original html input field.
  * You can use props like `value`, `name`, `disabled` etc.
  */
-const AdvancedCheckbox = forwardRef<HTMLInputElement, AdvancedCheckboxProps>(
+export const AdvancedCheckbox = forwardRef<
+  HTMLInputElement,
+  AdvancedCheckboxProps
+>(
   (
     {
       children,
@@ -39,9 +43,9 @@ const AdvancedCheckbox = forwardRef<HTMLInputElement, AdvancedCheckboxProps>(
       errorClassName,
       ...props
     },
-    ref
+    ref,
   ) => (
-    <div className="aegon-advanced-checkbox">
+    <div className={cn(makeClassName(`advanced-checkbox-root`))}>
       <label className="relative flex items-center">
         <input
           type="checkbox"
@@ -49,19 +53,38 @@ const AdvancedCheckbox = forwardRef<HTMLInputElement, AdvancedCheckboxProps>(
           className={cn('peer absolute -z-[1] opacity-0', inputClassName)}
           {...props}
         />
-        <span className={cn('block', className)}>{children}</span>
+        <span
+          className={cn('block', makeClassName(`advanced-checkbox`), className)}
+        >
+          {children}
+        </span>
       </label>
+
       {!error && helperText && (
-        <FieldHelperText tag="div" size="DEFAULT" className={helperClassName}>
+        <FieldHelperText
+          tag="div"
+          size="DEFAULT"
+          className={cn(
+            makeClassName(`advanced-checkbox-helper-text`),
+            helperClassName,
+          )}
+        >
           {helperText}
         </FieldHelperText>
       )}
+
       {error && (
-        <FieldError size="DEFAULT" error={error} className={errorClassName} />
+        <FieldError
+          size="DEFAULT"
+          error={error}
+          className={cn(
+            makeClassName(`advanced-checkbox-error-text`),
+            errorClassName,
+          )}
+        />
       )}
     </div>
-  )
+  ),
 );
 
 AdvancedCheckbox.displayName = 'AdvancedCheckbox';
-export default AdvancedCheckbox;

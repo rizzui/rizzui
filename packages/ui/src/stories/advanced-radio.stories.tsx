@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import AdvancedRadio from '../components/advanced-radio/advanced-radio';
+import { AdvancedRadio } from '../components/advanced-radio';
 
 export default {
   title: 'Components/AdvancedRadio',

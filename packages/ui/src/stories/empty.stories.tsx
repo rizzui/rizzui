@@ -1,7 +1,7 @@
 // empty.stories.ts|tsx
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Empty from '../components/empty';
+import { Empty } from '../components/empty';
 import {
   EmptyProductBoxIcon,
   SearchNotFoundIcon,
@@ -20,6 +20,7 @@ const Template: ComponentStory<typeof Empty> = (args) => <Empty {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   text: 'No Data',
+  alignment: 'center',
   textClassName: 'mt-2',
 };
 

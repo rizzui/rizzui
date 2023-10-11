@@ -2,12 +2,12 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Drawer, { DrawerSize } from '../components/drawer';
-import Button from '../components/button';
-import Badge from '../components/badge';
-import ActionIcon from '../components/action-icon';
-import Text from '../components/text';
-import Empty from '../components/empty';
+import { Drawer, type DrawerSize } from '../components/drawer';
+import { Button } from '../components/button';
+import { Badge } from '../components/badge';
+import { ActionIcon } from '../components/action-icon';
+import { Title, Text } from '../components/typography';
+import { Empty } from '../components/empty';
 import { EmptyProductBoxIcon } from '../components/empty/empty-icons';
 import { ShoppingBagIcon } from '../icons/shopping-bag';
 import { XIcon } from '../icons/x-mark';
@@ -116,7 +116,7 @@ export const Sizes = () => {
       >
         <div className="px-5 py-4">
           This is{' '}
-          <Text tag="strong">
+          <Text as="strong">
             &quot;
             {drawerSate.size}
             &quot;
@@ -198,7 +198,7 @@ export const WithPlacement = () => {
       >
         <div className="px-5 py-4">
           The drawer placement on the{' '}
-          <Text tag="strong">
+          <Text as="strong">
             &quot;
             {drawerSate.placement}
             &quot;
@@ -264,7 +264,7 @@ export const WithShoppingCart = () => {
       <Drawer isOpen={drawerState} onClose={() => setDrawerState(false)}>
         <div className="flex min-h-full flex-col px-5 py-4">
           <header className="flex items-center justify-between">
-            <Text tag="h4">Shopping Cart</Text>
+            <Title as="h4">Shopping Cart</Title>
             <ActionIcon
               size="sm"
               variant="outline"

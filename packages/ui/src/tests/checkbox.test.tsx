@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import Checkbox from '../components/checkbox';
+import { Checkbox } from '../components/checkbox';
 
 test('Checkbox element and functionality', async () => {
   render(

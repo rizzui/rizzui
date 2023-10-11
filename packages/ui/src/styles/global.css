@@ -3,24 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply antialiased;
-  }
-
-  input[type='search']::-webkit-search-cancel-button {
-    display: none;
-  }
-
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  input[type='checkbox']:checked {
-    background-image: none;
-  }
-
   /* default theme */
   :root {
     /* 
@@ -155,6 +137,58 @@
     --gray-1000: 255 255 255;
 
     /* here you can customize other colors for dark theme if design required */
+  }
+
+  /* Base styles */
+  html {
+    @apply antialiased;
+  }
+
+  input[type='search']::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='checkbox']:checked {
+    background-image: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-gray-900 dark:text-gray-700;
+  }
+
+  h1 {
+    @apply text-3xl dark:text-gray-800 2xl:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl dark:text-gray-800 2xl:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl 2xl:text-2xl;
+  }
+
+  h4 {
+    @apply text-lg 2xl:xl:text-xl;
+  }
+
+  h5 {
+    @apply text-base 2xl:text-lg;
+  }
+
+  h6 {
+    @apply text-sm 2xl:text-base;
   }
 }
 

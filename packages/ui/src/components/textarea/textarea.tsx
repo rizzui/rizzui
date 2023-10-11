@@ -1,9 +1,9 @@
 import React, { forwardRef, useState, useCallback } from 'react';
-
 import { cn } from '../../lib/cn';
-import HelperText from '../field-helper-text';
-import ErrorText from '../field-error-text';
-import ClearButton from '../field-clear-button';
+import { FieldHelperText } from '../field-helper-text';
+import { FieldError } from '../field-error-text';
+import { FieldClearButton } from '../field-clear-button';
+import { makeClassName } from '../../lib/make-class-name';
 
 const labelClasses = {
   size: {
@@ -174,7 +174,7 @@ export interface TextareaProps
  * And the rest of the props are the same as the original html textarea field.
  * You can use props like `disabled`, `placeholder`, `rows`, `cols`, `maxLength` etc.
  */
-const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
       variant = 'outline',
@@ -226,11 +226,22 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
 
     return (
-      <div className={cn('flex flex-col', className)}>
+      <div
+        className={cn(
+          makeClassName(`textarea-root`),
+          'flex flex-col',
+          className,
+        )}
+      >
         <label className="block">
           {label && (
             <span
-              className={cn('block', labelClasses.size[size], labelClassName)}
+              className={cn(
+                makeClassName(`textarea-label`),
+                'block',
+                labelClasses.size[size],
+                labelClassName,
+              )}
             >
               {label}
             </span>
@@ -249,6 +260,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               // placeholder is a required prop for the clearable input component even if the user does not set any
               placeholder={placeholder || 'Screen reader only'}
               className={cn(
+                makeClassName(`textarea-field`),
                 textareaClasses.base,
                 textareaClasses.size[size],
                 textareaClasses.rounded[rounded],
@@ -266,8 +278,9 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               )}
               {...textareaProps}
             />
+
             {clearable && (
-              <ClearButton
+              <FieldClearButton
                 size={size}
                 onClick={onClear}
                 className={cn(
@@ -276,6 +289,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 )}
               />
             )}
+
             {renderCharacterCount &&
               renderCharacterCount({
                 characterCount: String(textareaProps?.value).length,
@@ -285,13 +299,23 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         </label>
 
         {!error && helperText && (
-          <HelperText size={size} className={helperClassName}>
+          <FieldHelperText
+            size={size}
+            className={cn(
+              makeClassName(`textarea-helper-text`),
+              helperClassName,
+            )}
+          >
             {helperText}
-          </HelperText>
+          </FieldHelperText>
         )}
 
         {error && (
-          <ErrorText size={size} error={error} className={errorClassName} />
+          <FieldError
+            size={size}
+            error={error}
+            className={cn(makeClassName(`textarea-error-text`), errorClassName)}
+          />
         )}
       </div>
     );
@@ -299,4 +323,3 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 );
 
 Textarea.displayName = 'Textarea';
-export default Textarea;

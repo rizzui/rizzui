@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import AdvancedCheckbox from '../components/advanced-checkbox/advanced-checkbox';
+import { AdvancedCheckbox } from '../components/advanced-checkbox';
 
 export default {
   title: 'Components/AdvancedCheckbox',

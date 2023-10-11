@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn } from '../lib/cn';
+import { makeClassName } from '../lib/make-class-name';
 
 const inputIconClearClasses = {
   base: 'inline-flex shrink-0 transform items-center justify-center rounded-full bg-gray-1000/30 backdrop-blur p-[1px] text-gray-0 transition-all duration-200 ease-in-out hover:bg-gray-1000',
@@ -24,7 +25,7 @@ export interface FieldClearButtonProps {
   className?: string;
 }
 
-export default function FieldClearButton({
+export function FieldClearButton({
   size,
   onClick,
   hasSuffix,
@@ -35,13 +36,14 @@ export default function FieldClearButton({
       type="button"
       onClick={onClick}
       className={cn(
+        makeClassName(`input-clear-btn`),
         'input-clear-btn', // must contain this CSS class in this component
         inputIconClearClasses.base,
         size && [
           inputIconClearClasses.size[size],
           hasSuffix && inputIconClearClasses.hasSuffix[size],
         ],
-        className
+        className,
       )}
     >
       {/* HeroIcon: x-mark */}

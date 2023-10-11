@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import CheckboxGroup from '../components/checkbox-group';
-import Checkbox from '../components/checkbox';
-import AdvancedCheckbox from '../components/advanced-checkbox';
+import { CheckboxGroup } from '../components/checkbox-group';
+import { Checkbox } from '../components/checkbox';
+import { AdvancedCheckbox } from '../components/advanced-checkbox';
 
 export default {
   title: 'Components/CheckboxGroup',

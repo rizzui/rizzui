@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-
 import { cn } from '../../lib/cn';
-import FieldError from '../field-error-text';
+import { FieldError } from '../field-error-text';
+import { makeClassName } from '../../lib/make-class-name';
 
 const containerClasses = {
   base: 'flex flex-row',
@@ -121,7 +121,7 @@ export interface PinCodeProps
  * And the rest of the props of PinCode are the same as the original html input field.
  * You can use props like `disabled`, `placeholder`, `defaultValue` etc.
  */
-export default function PinCode({
+export function PinCode({
   type = 'text',
   defaultValue,
   mask = false,
@@ -153,7 +153,7 @@ export default function PinCode({
 
   function handleChange(
     event: React.ChangeEvent<HTMLInputElement>,
-    index: number
+    index: number,
   ) {
     const inputValues = event.target.value.split('');
     inputRefs.current[index].value = inputValues[inputValues.length - 1];
@@ -186,7 +186,7 @@ export default function PinCode({
 
   function handlePaste(
     event: React.ClipboardEvent<HTMLInputElement>,
-    index: number
+    index: number,
   ) {
     const copiedValue = event.clipboardData.getData('text').split('');
     for (let i = 0; i < length - index; i += 1) {
@@ -202,12 +202,13 @@ export default function PinCode({
   }
 
   return (
-    <div className="flex flex-col">
+    <div className={cn(makeClassName(`pin-code-root`), 'flex flex-col')}>
       <div
         className={cn(
+          makeClassName(`pin-code-container`),
           containerClasses.base,
           center && containerClasses.center,
-          className
+          className,
         )}
       >
         {Array.from({ length }, (_, index) => (
@@ -227,6 +228,7 @@ export default function PinCode({
             onKeyDown={(event) => handleKeyDown(event, index)}
             onPaste={(event) => handlePaste(event, index)}
             className={cn(
+              makeClassName(`pin-code-field`),
               inputClasses.base,
               inputClasses.size[size],
               inputClasses.rounded[rounded],
@@ -234,7 +236,7 @@ export default function PinCode({
               inputClasses.variant[variant].color[color],
               error && inputClasses.error,
               mask && 'password-dot',
-              inputClassName
+              inputClassName,
             )}
             {...props}
           />
@@ -245,7 +247,11 @@ export default function PinCode({
         <FieldError
           size={size}
           error={error}
-          className={cn(center && 'flex justify-center', errorClassName)}
+          className={cn(
+            makeClassName(`pin-code-error-text`),
+            center && 'flex justify-center',
+            errorClassName,
+          )}
         />
       )}
     </div>

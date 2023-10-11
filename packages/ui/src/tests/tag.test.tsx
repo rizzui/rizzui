@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import Tag from '../components/tag';
+import { Tag } from '../components/tag';
 
 test('Render tag component with text', () => {
   render(<Tag>Default</Tag>);

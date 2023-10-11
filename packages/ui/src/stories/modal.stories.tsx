@@ -2,13 +2,13 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Modal, { ModalSize } from '../components/modal';
-import Button from '../components/button';
-import Text from '../components/text';
-import ActionIcon from '../components/action-icon';
-import Input from '../components/input';
+import { Modal, type ModalSize } from '../components/modal';
+import { Button } from '../components/button';
+import { Title, Text } from '../components/typography';
+import { ActionIcon } from '../components/action-icon';
+import { Input } from '../components/input';
 import Password from '../components/password';
-import Checkbox from '../components/checkbox';
+import { Checkbox } from '../components/checkbox';
 import { XIcon } from '../icons/x-mark';
 
 export default {
@@ -33,7 +33,7 @@ export const Default = () => {
       <Modal isOpen={modalState} onClose={() => setModalState(false)}>
         <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
-            <Text tag="h3">Welcome to AegonUI</Text>
+            <Title as="h3">Welcome to AegonUI</Title>
             <ActionIcon
               size="sm"
               variant="text"
@@ -168,7 +168,7 @@ export const Sizes = () => {
       >
         <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
-            <Text tag="h3">Welcome to AegonUI</Text>
+            <Title as="h3">Welcome to AegonUI</Title>
             <ActionIcon
               size="sm"
               variant="text"
@@ -307,7 +307,7 @@ export const Rounded = () => {
       >
         <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
-            <Text tag="h3">Welcome to AegonUI</Text>
+            <Title as="h3">Welcome to AegonUI</Title>
             <ActionIcon
               size="sm"
               variant="text"
@@ -380,7 +380,7 @@ export const WithCustomSize = () => {
       >
         <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
-            <Text tag="h3">Welcome to AegonUI</Text>
+            <Title as="h3">Welcome to AegonUI</Title>
             <ActionIcon
               size="sm"
               variant="text"
@@ -450,7 +450,7 @@ export const WithCustomStyle = () => {
       >
         <div className="m-auto px-7 pb-8 pt-6">
           <div className="mb-7 flex items-center justify-between">
-            <Text tag="h3">Welcome to AegonUI</Text>
+            <Title as="h3">Welcome to AegonUI</Title>
             <ActionIcon
               size="sm"
               variant="text"

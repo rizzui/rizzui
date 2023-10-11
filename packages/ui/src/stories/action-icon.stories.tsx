@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import ActionIcon from '../components/action-icon/action-icon';
+import { ActionIcon } from '../components/action-icon';
 
 export default {
   title: 'Components/ActionIcon',

@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import ActionIcon from '../components/action-icon/action-icon';
+import { ActionIcon } from '../components/action-icon';
 
 function FilterIcon({ className = 'h-auto w-5' }: { className?: string }) {
   return (

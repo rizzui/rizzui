@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react';
-
 import { cn } from '../../lib/cn';
-import FieldError from '../field-error-text';
-import FieldHelperText from '../field-helper-text';
+import { FieldError } from '../field-error-text';
+import { FieldHelperText } from '../field-helper-text';
+import { makeClassName } from '../../lib/make-class-name';
 
 const inputClasses = {
   base: 'disabled:bg-gray-50 disabled:border-gray-200',
@@ -129,7 +129,7 @@ export interface RadioProps
  * You can use props like `value`, `disabled`, `onChange`, `onFocus`, `onBlur` etc.
  */
 
-const Radio = forwardRef<HTMLInputElement, RadioProps>(
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
       variant = 'outline',
@@ -149,14 +149,22 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
       helperClassName,
       ...radioProps
     },
-    ref
+    ref,
   ) => (
-    <div className={cn('flex flex-col', className, activeClassName)}>
+    <div
+      className={cn(
+        makeClassName(`radio-root`),
+        'flex flex-col',
+        className,
+        activeClassName,
+      )}
+    >
       <label
         className={cn(
+          makeClassName(`radio-container`),
           'flex flex-row items-center',
           disabled && 'cursor-not-allowed',
-          containerClassName
+          containerClassName,
         )}
       >
         <input
@@ -164,11 +172,12 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
           ref={ref}
           disabled={disabled}
           className={cn(
+            makeClassName(`radio-field`),
             inputClasses.base,
             inputClasses.size[size],
             inputClasses.variant[variant].base,
             inputClasses.variant[variant].color[color],
-            inputClassName
+            inputClassName,
           )}
           {...radioProps}
         />
@@ -176,10 +185,11 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
         {label && (
           <span
             className={cn(
+              makeClassName(`radio-label`),
               labelClasses.size.text[size],
               labelClasses.size.margin[labelPlacement][size],
               labelPlacement === 'start' && 'order-first',
-              labelClassName
+              labelClassName,
             )}
           >
             {label}
@@ -188,16 +198,23 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(
       </label>
 
       {!error && helperText && (
-        <FieldHelperText size={size} className={helperClassName}>
+        <FieldHelperText
+          size={size}
+          className={cn(makeClassName(`radio-helper-text`), helperClassName)}
+        >
           {helperText}
         </FieldHelperText>
       )}
+
       {error && (
-        <FieldError size={size} error={error} className={errorClassName} />
+        <FieldError
+          size={size}
+          error={error}
+          className={cn(makeClassName(`radio-error-text`), errorClassName)}
+        />
       )}
     </div>
-  )
+  ),
 );
 
 Radio.displayName = 'Radio';
-export default Radio;

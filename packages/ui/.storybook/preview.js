@@ -44,6 +44,7 @@ export const parameters = {
           'Tag',
           'Progressbar',
           'Dropdown',
+          'Title',
           'Text',
           'Tabs',
           'Table',

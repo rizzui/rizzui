@@ -754,7 +754,7 @@ svg[class*="lightToggleIcon"] {
 }
 
 .theme-doc-sidebar-container nav.menu {
-  @apply pt-4 pl-6 pr-[1.1rem];
+  @apply pt-6 pl-6 pr-[1.1rem];
 }
 
 #__docusaurus .navbar__link,
@@ -793,6 +793,35 @@ svg[class*="lightToggleIcon"] {
 
 #__docusaurus .menu__list li:last-of-type {
   @apply pb-6;
+}
+
+#__docusaurus
+  .theme-doc-sidebar-item-category-level-2
+  .menu__list-item-collapsible
+  > a {
+  @apply border-l-2 rounded-none mx-0 font-normal !bg-gray-100 !text-sm px-5;
+}
+
+.theme-doc-sidebar-item-category-level-2
+  .menu__list-item-collapsible
+  > a::after {
+  @apply hidden;
+}
+
+#__docusaurus .theme-doc-sidebar-item-category-level-2 .menu__list {
+  @apply mt-0;
+}
+
+#__docusaurus li.theme-doc-sidebar-item-link-level-3 > a {
+  @apply border-l-2 rounded-none;
+}
+
+#__docusaurus li.theme-doc-sidebar-item-link-level-3 > .menu__link--active {
+  @apply border-gray-900 bg-transparent;
+}
+
+.theme-doc-sidebar-item-link-level-3.menu__list-item:not(:first-child) {
+  @apply mt-0;
 }
 
 .table-of-contents {
@@ -851,6 +880,10 @@ ul.table-of-contents.table-of-contents__left-border::before {
 
 #__docusaurus div[class*="codeBlockTitle_"] {
   @apply font-normal text-[#a7aebe] bg-[#0f172a] border-b-0;
+}
+
+#__docusaurus .prism-code + div[class*="buttonGroup_"] button {
+  @apply opacity-60;
 }
 
 .markdown menu,
@@ -1067,4 +1100,10 @@ article [class*="tocMobile_"] {
 
 .pagination-nav__link--next .pagination-nav__label {
   @apply after:hidden;
+}
+
+.grid-box {
+  background-size: 6rem 4rem;
+  background-image: linear-gradient(90deg, #f0f0f0 1px, transparent 0),
+    linear-gradient(180deg, #f0f0f0 1px, transparent 0);
 }

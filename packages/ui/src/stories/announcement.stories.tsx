@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Announcement from '../components/announcement/announcement';
+import { Announcement } from '../components/announcement';
 
 export default {
   title: 'Components/Announcement',

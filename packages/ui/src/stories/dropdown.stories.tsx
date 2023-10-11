@@ -2,11 +2,11 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Dropdown, { DropdownItem } from '../components/dropdown';
+import { Dropdown, DropdownItem } from '../components/dropdown';
 import { cn } from '../lib/cn';
-import Avatar from '../components/avatar';
-import Button, { ButtonProps } from '../components/button';
-import ActionIcon from '../components/action-icon';
+import { Avatar } from '../components/avatar';
+import { Button, type ButtonProps } from '../components/button';
+import { ActionIcon } from '../components/action-icon';
 
 export default {
   title: 'Components/Dropdown',

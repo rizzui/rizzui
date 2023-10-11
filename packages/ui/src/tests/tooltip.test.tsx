@@ -3,8 +3,8 @@ import '@testing-library/jest-dom';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import Tooltip from '../components/tooltip/tooltip';
-import Button from '../components/button';
+import { Tooltip } from '../components/tooltip';
+import { Button } from '../components/button';
 
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),

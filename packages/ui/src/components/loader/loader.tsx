@@ -1,5 +1,6 @@
 import React from 'react';
-import cn from '../../lib/cn';
+import { cn } from '../../lib/cn';
+import { makeClassName } from '../../lib/make-class-name';
 
 const animations = {
   blink: 'animate-blink',
@@ -51,7 +52,7 @@ export interface LoaderTypes
 /**
  * A loader for displaying loading state of a page or a section.
  */
-export default function Loader({
+export function Loader({
   tag = 'div',
   size = 'DEFAULT',
   color = 'DEFAULT',
@@ -59,36 +60,45 @@ export default function Loader({
   className,
 }: LoaderTypes) {
   let Component = tag;
+
   return (
     <Component
       data-testid="loader"
-      className={cn('flex items-center', gapBasedOnSize[size], className)}
+      className={cn(
+        makeClassName(`loader-root`),
+        'flex items-center',
+        gapBasedOnSize[size],
+        className,
+      )}
     >
       <span
         data-testid="first-dot"
         className={cn(
+          makeClassName(`loader-dot-1`),
           'rounded-full',
           sizes[size],
           colors[color],
-          animations[animation]
+          animations[animation],
         )}
       />
       <span
         data-testid="second-dot"
         className={cn(
+          makeClassName(`loader-dot-2`),
           'animation-delay-200 rounded-full',
           sizes[size],
           colors[color],
-          animations[animation]
+          animations[animation],
         )}
       />
       <span
         data-testid="third-dot"
         className={cn(
+          makeClassName(`loader-dot-3`),
           'animation-delay-500 rounded-full',
           sizes[size],
           colors[color],
-          animations[animation]
+          animations[animation],
         )}
       />
     </Component>

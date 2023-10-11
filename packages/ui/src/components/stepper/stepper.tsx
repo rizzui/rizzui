@@ -1,8 +1,7 @@
 import React from 'react';
-
+import { type StepProps } from './step';
 import { cn } from '../../lib/cn';
-
-import { StepProps } from './step';
+import { makeClassName } from '../../lib/make-class-name';
 
 const containerClasses = {
   base: 'flex-col space-y-2',
@@ -60,7 +59,7 @@ const calcStatus = (activeIndex: number, currentIndex: number) => {
  * Stepper tool is used to enlighten user regarding the progress of the task.
  * `Stepper` component displays the progress of the task in a sequence of numbered steps through `Step` component.
  */
-export default function Stepper({
+export function Stepper({
   currentIndex = 0,
   children,
   direction = 'horizontal',
@@ -74,9 +73,10 @@ export default function Stepper({
   return (
     <div
       className={cn(
+        makeClassName(`stepper-root`),
         'flex justify-between space-x-4 rtl:space-x-0',
         direction === 'vertical' && 'flex-col space-x-0',
-        className
+        className,
       )}
     >
       {React.Children.map(children, (child, index) => {
@@ -96,15 +96,15 @@ export default function Stepper({
             direction === 'vertical' &&
               (dot
                 ? containerClasses.verticalLine.left.dot[size]
-                : containerClasses.verticalLine.left.noDot[size])
+                : containerClasses.verticalLine.left.noDot[size]),
           ),
           circleClassName: cn(
             dot && direction === 'vertical' && 'mt-1.5',
-            dotClassName
+            dotClassName,
           ),
           contentClassName: cn(
             direction === 'vertical' && contentClasses.base,
-            contentClassName
+            contentClassName,
           ),
           titleClassName,
           descriptionClassName,
