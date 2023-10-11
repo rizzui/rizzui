@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Password from '../components/password';
+import { Password } from '../components/password';
 
 export default {
   title: 'Components/Password',

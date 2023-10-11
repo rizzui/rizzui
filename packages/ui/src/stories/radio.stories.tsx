@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Radio from '../components/radio';
+import { Radio } from '../components/radio';
 
 export default {
   title: 'Components/Radio',

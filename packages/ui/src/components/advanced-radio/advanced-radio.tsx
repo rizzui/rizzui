@@ -1,5 +1,8 @@
 import React, { forwardRef } from 'react';
-import cn from '../../lib/cn';
+import { cn } from '../../lib/cn';
+import { FieldError } from '../field-error-text';
+import { FieldHelperText } from '../field-helper-text';
+import { makeClassName } from '../../lib/make-class-name';
 
 export interface AdvancedRadioProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -9,6 +12,14 @@ export interface AdvancedRadioProps
   inputClassName?: string;
   /** Pass content as children */
   children: React.ReactNode;
+  /** Add helper text. It could be string or a React component */
+  helperText?: React.ReactNode;
+  /** Show error message using this prop */
+  error?: string;
+  /** This prop allows you to customize the error message style */
+  errorClassName?: string;
+  /** This prop allows you to customize the helper message style */
+  helperClassName?: string;
 }
 
 /**
@@ -18,19 +29,60 @@ export interface AdvancedRadioProps
  * You can use props like `value`, `name`, `disabled` etc.
  */
 
-const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
-  ({ children, className, inputClassName, ...props }, ref) => (
-    <label>
-      <input
-        type="radio"
-        ref={ref}
-        className={cn('peer hidden', inputClassName)}
-        {...props}
-      />
-      <span className={cn('block', className)}>{children}</span>
-    </label>
-  )
+export const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
+  (
+    {
+      children,
+      className,
+      inputClassName,
+      error,
+      helperText,
+      helperClassName,
+      errorClassName,
+      ...props
+    },
+    ref,
+  ) => (
+    <div className={cn(makeClassName(`advanced-radio-root`))}>
+      <label>
+        <input
+          type="radio"
+          ref={ref}
+          className={cn('peer hidden', inputClassName)}
+          {...props}
+        />
+        <span
+          className={cn('block', makeClassName(`advanced-radio`), className)}
+        >
+          {children}
+        </span>
+      </label>
+
+      {!error && helperText && (
+        <FieldHelperText
+          tag="div"
+          size="DEFAULT"
+          className={cn(
+            makeClassName(`advanced-radio-helper-text`),
+            helperClassName,
+          )}
+        >
+          {helperText}
+        </FieldHelperText>
+      )}
+
+      {error && (
+        <FieldError
+          size="DEFAULT"
+          error={error}
+          className={cn(
+            makeClassName(`advanced-radio-error-text`),
+            errorClassName,
+          )}
+        />
+      )}
+    </div>
+  ),
 );
 
 AdvancedRadio.displayName = 'AdvancedRadio';
-export default AdvancedRadio;

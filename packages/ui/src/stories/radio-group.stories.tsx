@@ -2,9 +2,9 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import RadioGroup from '../components/radio-group';
-import Radio from '../components/radio';
-import AdvancedRadio from '../components/advanced-radio';
+import { RadioGroup } from '../components/radio-group';
+import { Radio } from '../components/radio';
+import { AdvancedRadio } from '../components/advanced-radio';
 
 export default {
   title: 'Components/RadioGroup',

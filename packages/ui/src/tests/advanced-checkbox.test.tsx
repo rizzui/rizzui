@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import AdvancedCheckbox from '../components/advanced-checkbox';
+import { AdvancedCheckbox } from '../components/advanced-checkbox';
 
 test('Renders advanced checkbox and functionality', async () => {
   render(

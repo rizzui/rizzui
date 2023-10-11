@@ -2,7 +2,7 @@ import * as React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import Progressbar from '../components/progressbar';
+import { Progressbar } from '../components/progressbar';
 
 test('Renders progressbar component', () => {
   render(<Progressbar />);

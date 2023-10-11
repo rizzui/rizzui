@@ -1,7 +1,7 @@
 // switch.stories.ts|tsx
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Switch from '../components/switch/switch';
+import { Switch } from '../components/switch';
 
 export default {
   title: 'Components/Switch',

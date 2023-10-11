@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import Collapse from '../components/collapse';
+import { Collapse } from '../components/collapse';
 
 test('Renders collapse component with content', async () => {
   render(

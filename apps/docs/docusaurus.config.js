@@ -214,7 +214,7 @@ const config = {
             label: "Documentation",
           },
           {
-            to: "docs/components/action-icon",
+            to: "docs/buttons/action-icon",
             position: "left",
             label: "Components",
           },

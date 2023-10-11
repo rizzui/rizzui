@@ -2,13 +2,13 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Collapse from '../components/collapse';
+import { Collapse } from '../components/collapse';
 import { ChevronDownIcon } from '../icons/chevron-down';
 import { LinkIcon } from '../icons/link';
 import { MoonIcon } from '../icons/moon';
 import { SunIcon } from '../icons/sun';
 import { cn } from '../lib/cn';
-import Avatar from '../components/avatar';
+import { Avatar } from '../components/avatar';
 
 export default {
   title: 'Components/Collapse',

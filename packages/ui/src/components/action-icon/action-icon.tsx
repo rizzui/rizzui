@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
-import cn from '../../lib/cn';
+import { cn } from '../../lib/cn';
+import { makeClassName } from '../../lib/make-class-name';
 import { SpinnerIcon } from '../../icons/spinner';
 
 const spinnerSize = {
@@ -124,7 +125,7 @@ export type ActionIconProps = {
  * And the rest of the props are the same as the original html button.
  * You can use props like `id`, `title`, `onClick`, `onFocus`, `onBlur` etc.
  */
-const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
+export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
   (
     {
       tag = 'button',
@@ -148,6 +149,7 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
         ref={ref}
         disabled={disabled}
         className={cn(
+          makeClassName(`action-icon-root`),
           classes.base,
           classes.size[size],
           classes.rounded[rounded],
@@ -163,7 +165,11 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
       >
         {isLoading ? (
           <SpinnerIcon
-            className={cn('h-auto animate-spin', spinnerSize[size])}
+            className={cn(
+              makeClassName(`action-icon-spinner`),
+              'h-auto animate-spin',
+              spinnerSize[size],
+            )}
           />
         ) : (
           <>{children}</>
@@ -174,4 +180,3 @@ const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
 );
 
 ActionIcon.displayName = 'ActionIcon';
-export default ActionIcon;

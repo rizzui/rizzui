@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-
 import { cn } from '../../lib/cn';
+import { makeClassName } from '../../lib/make-class-name';
 
 const drawerClasses = {
   overlay:
@@ -60,7 +60,7 @@ export type DrawerProps = {
 /**
  * Display overlay area at any side of the screen
  */
-export default function Drawer({
+export function Drawer({
   isOpen,
   onClose,
   size = 'DEFAULT',
@@ -79,7 +79,7 @@ export default function Drawer({
       customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
     if (checkedCustomSizeValue[0] === '') {
       console.warn(
-        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"'
+        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"',
       );
     }
   }
@@ -88,7 +88,11 @@ export default function Drawer({
       <Dialog
         as="aside"
         onClose={onClose}
-        className={cn('fixed inset-0 z-[999] overflow-hidden', className)}
+        className={cn(
+          makeClassName(`drawer-root`),
+          'fixed inset-0 z-[999] overflow-hidden',
+          className,
+        )}
       >
         <TransitionChild
           as={Fragment}
@@ -100,7 +104,11 @@ export default function Drawer({
           leaveTo="opacity-0"
         >
           <Dialog.Overlay
-            className={cn(drawerClasses.overlay, overlayClassName)}
+            className={cn(
+              makeClassName(`drawer-overlay`),
+              drawerClasses.overlay,
+              overlayClassName,
+            )}
           />
         </TransitionChild>
         {/*
@@ -125,6 +133,7 @@ export default function Drawer({
         >
           <div
             className={cn(
+              makeClassName(`drawer-container`),
               'fixed h-full w-full break-words bg-gray-0 shadow-xl',
               placement === 'top' && 'top-0',
               placement === 'right' && 'inset-y-0 right-0',
@@ -135,7 +144,7 @@ export default function Drawer({
                   ? drawerClasses.sizeOfYAxisDrawer[size]
                   : drawerClasses.sizeOfXAxisDrawer[size],
               ],
-              containerClassName
+              containerClassName,
             )}
             {...(customSize && {
               style: {

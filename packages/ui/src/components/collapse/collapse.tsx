@@ -1,7 +1,7 @@
 import React from 'react';
-
 import { cn } from '../../lib/cn';
-import useCollapse from '../../lib/use-collapse';
+import { useCollapse } from '../../lib/use-collapse';
+import { makeClassName } from '../../lib/make-class-name';
 
 export interface CollapseHeader {
   /** Whether or not the `Collapse` is open. */
@@ -30,7 +30,7 @@ export interface CollapseProps {
  * Completely unstyled, fully accessible UI components,
  * designed to integrate beautifully with Tailwind CSS.
  */
-export default function Collapse({
+export function Collapse({
   tag = 'div',
   header,
   duration,
@@ -50,12 +50,12 @@ export default function Collapse({
       role="collapse"
       aria-expanded={open}
       data-testid="collapse-parent"
-      className={cn('rizzui-collapse', className)}
+      className={cn(makeClassName(`collapse-root`), className)}
     >
       {header({ open, toggle })}
       <Children
         ref={targetEl}
-        className={cn(panelClassName)}
+        className={cn(makeClassName(`collapse-panel`), panelClassName)}
         style={!openTargetEl ? { display: 'none' } : { display: 'block' }}
       >
         {children}

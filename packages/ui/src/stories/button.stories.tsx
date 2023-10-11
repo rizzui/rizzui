@@ -1,7 +1,7 @@
 // button.stories.ts|tsx
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Button from '../components/button/button';
+import { Button } from '../components/button';
 
 export default {
   title: 'Components/Button',

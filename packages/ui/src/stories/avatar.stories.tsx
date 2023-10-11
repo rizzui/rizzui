@@ -1,9 +1,9 @@
 // avatar.stories.ts|tsx
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Avatar from '../components/avatar/avatar';
-import Badge from '../components/badge';
-import ActionIcon from '../components/action-icon';
+import { Avatar } from '../components/avatar';
+import { Badge } from '../components/badge';
+import { ActionIcon } from '../components/action-icon';
 import { CheckmarkIcon } from '../icons/checkmark';
 import { PlusIcon } from '../icons/plus';
 

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import PinCode from '../components/pin-code';
+import { PinCode } from '../components/pin-code';
 
 export default {
   title: 'Components/PinCode',

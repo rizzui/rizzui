@@ -3,6 +3,7 @@ import { useHistory } from "@docusaurus/router";
 import {
   Button,
   ActionIcon,
+  Title,
   Text,
   PinCode,
   Progressbar,
@@ -118,18 +119,15 @@ export default function ComponentBlock() {
     <section className="pt-10 md:pt-16 pb-14 md:pb-20 group">
       <div className="container mx-auto">
         <header className="text-center mb-8 sm:mb-10 md:mb-12">
-          <Text
-            tag="h6"
-            className="!mb-3 sm:!mb-5 !text-[11px] sm:!text-xs lg:!text-sm font-semibold tracking-[4px] uppercase text-gray-500"
-          >
+          <Text className="!mb-3 sm:!mb-5 !text-[11px] sm:!text-xs lg:!text-sm font-medium tracking-[4px] uppercase text-gray-500">
             Beautifully Crafted
           </Text>
-          <Text
-            tag="h2"
+          <Title
+            as="h2"
             className="text-2xl sm:text-3xl lg:text-4xl leading-[1.35] sm:leading-[1.3]"
           >
             35+ Production Ready Components
-          </Text>
+          </Title>
         </header>
       </div>
 
@@ -151,9 +149,9 @@ export default function ComponentBlock() {
                   {item.component}
                 </div>
                 <div className="py-5 px-6">
-                  <Text tag="h5" className="font-semibold !mb-1.5">
+                  <Title as="h5" className="font-semibold !mb-1.5">
                     {item.name}
-                  </Text>
+                  </Title>
                   <Text>{item.description}</Text>
                 </div>
               </div>

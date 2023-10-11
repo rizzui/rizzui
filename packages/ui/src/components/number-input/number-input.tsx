@@ -20,7 +20,7 @@ export type NumberInputProps = (
  * We used `react-number-format` package to build the NumberInput component.
  * See their [official documentation](https://s-yadav.github.io/react-number-format/docs/intro) for more info.
  */
-const NumberInput = ({ formatType, ...props }: NumberInputProps) => {
+export const NumberInput = ({ formatType, ...props }: NumberInputProps) => {
   if (formatType === 'custom') {
     return (
       <NumberFormatBase {...(props as ExtractProps<typeof NumberFormatBase>)} />
@@ -33,4 +33,3 @@ const NumberInput = ({ formatType, ...props }: NumberInputProps) => {
 };
 
 NumberInput.displayName = 'NumberInput';
-export default NumberInput;

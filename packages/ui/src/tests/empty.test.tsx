@@ -2,7 +2,7 @@ import * as React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 
-import Empty from '../components/empty';
+import { Empty } from '../components/empty';
 
 test('Renders empty component', () => {
   render(<Empty />);
@@ -14,7 +14,7 @@ test('Renders empty component', () => {
 });
 
 test('Renders text of empty', () => {
-  render(<Empty text="No data" textTag="h2" />);
+  render(<Empty text="No data" />);
   const emptyStateElement = screen.getByRole('heading');
   expect(emptyStateElement).toBeInTheDocument();
   expect(emptyStateElement).toHaveTextContent('No data');

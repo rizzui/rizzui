@@ -1,10 +1,10 @@
 import React, { forwardRef, useState, useCallback } from 'react';
-
-import PasswordToggleIcon from './password-toggle-icon';
+import { PasswordToggleIcon } from './password-toggle-icon';
 import { cn } from '../../lib/cn';
-import ErrorText from '../field-error-text';
-import HelperText from '../field-helper-text';
-import ClearButton from '../field-clear-button';
+import { FieldError } from '../field-error-text';
+import { FieldHelperText } from '../field-helper-text';
+import { FieldClearButton } from '../field-clear-button';
+import { makeClassName } from '../../lib/make-class-name';
 
 const labelClasses = {
   size: {
@@ -181,7 +181,7 @@ export interface PasswordProps
  * And the rest of the props are the same as the original html input field type password.
  * You can use props like `value`, `disabled`, `placeholder`, `onChange`, `onFocus`, `onBlur` etc.
  */
-const Password = forwardRef<HTMLInputElement, PasswordProps>(
+export const Password = forwardRef<HTMLInputElement, PasswordProps>(
   (
     {
       className,
@@ -234,11 +234,22 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
     );
 
     return (
-      <div className={cn('flex flex-col', className)}>
+      <div
+        className={cn(
+          makeClassName(`password-root`),
+          'flex flex-col',
+          className,
+        )}
+      >
         <label className="block">
           {label && (
             <span
-              className={cn('block', labelClasses.size[size], labelClassName)}
+              className={cn(
+                makeClassName(`password-label`),
+                'block',
+                labelClasses.size[size],
+                labelClassName,
+              )}
             >
               {label}
             </span>
@@ -246,6 +257,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
 
           <span
             className={cn(
+              makeClassName(`password-container`),
               inputClasses.base,
               inputClasses.size[size],
               inputClasses.rounded[rounded],
@@ -260,6 +272,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
             {prefix && (
               <span
                 className={cn(
+                  makeClassName(`password-prefix`),
                   'whitespace-nowrap leading-normal',
                   prefixClassName,
                 )}
@@ -278,6 +291,7 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
               // placeholder is a required prop for the clearable input component even if the user does not set any
               placeholder={placeholder || 'Screen reader only'}
               className={cn(
+                makeClassName(`password-field`),
                 inputFieldClasses.base,
                 // it's important we are using placeholder-shown pseudo class to control input clear icon btn
                 !placeholder && 'placeholder:opacity-0',
@@ -290,13 +304,16 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
               style={{ fontSize: 'inherit' }}
               {...inputProps}
             />
+
             {clearable && (
-              <ClearButton size={size} onClick={onClear} hasSuffix />
+              <FieldClearButton size={size} onClick={onClear} hasSuffix />
             )}
+
             <span
               role="button"
               tabIndex={0}
               className={cn(
+                makeClassName(`password-toggle-icon`),
                 'whitespace-nowrap leading-normal',
                 disabled && 'text-gray-400',
                 visibilityToggleIconClassName,
@@ -316,13 +333,23 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
         </label>
 
         {!error && helperText && (
-          <HelperText size={size} className={helperClassName}>
+          <FieldHelperText
+            size={size}
+            className={cn(
+              makeClassName(`password-helper-text`),
+              helperClassName,
+            )}
+          >
             {helperText}
-          </HelperText>
+          </FieldHelperText>
         )}
 
         {error && (
-          <ErrorText size={size} error={error} className={errorClassName} />
+          <FieldError
+            size={size}
+            error={error}
+            className={cn(makeClassName(`password-error-text`), errorClassName)}
+          />
         )}
       </div>
     );
@@ -330,4 +357,3 @@ const Password = forwardRef<HTMLInputElement, PasswordProps>(
 );
 
 Password.displayName = 'Password';
-export default Password;

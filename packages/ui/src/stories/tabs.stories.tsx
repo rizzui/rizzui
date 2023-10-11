@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 
-import Tabs, { TabList, Tab, TabPanels, TabPanel } from '../components/tabs';
-import cn from '../lib/cn';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '../components/tabs';
+import { cn } from '../lib/cn';
 
 export default {
   title: 'Components/Tabs',

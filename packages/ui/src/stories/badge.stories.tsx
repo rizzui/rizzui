@@ -2,11 +2,11 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Badge from '../components/badge/badge';
+import { Badge } from '../components/badge';
 import { ShoppingBagIcon } from '../icons/shopping-bag';
 import { ShoppingCartIcon } from '../icons/shopping-cart';
-import Avatar from '../components/avatar';
-import Text from '../components/text';
+import { Avatar } from '../components/avatar';
+import { Text } from '../components/typography';
 
 export default {
   title: 'Components/Badge',

@@ -1,0 +1,288 @@
+---
+sidebar_position: 2
+---
+
+import { Text } from "rizzui";
+import Paper from "@site/src/components/paper";
+
+# Text
+
+Text component is the used to render text and paragraphs within an interface using well-defined typographic styles. It renders a **p** tag by default.
+
+```jsx
+import { Text } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+The default style of the **Text**.
+
+<Paper>
+  <Text>The brown fox jumps over the lazy dog</Text>
+</Paper>
+
+```jsx
+import { Text } from "rizzui";
+
+export default function App() {
+  return <Text>The brown fox jumps over the lazy dog</Text>;
+}
+```
+
+<div className="mb-16" />
+
+## Typography
+
+You can change style by just changing **tag** property in **Text** component.
+
+<Paper>
+  <div className="grid gap-8 py-2">
+    <div>
+      <Text as="span" className="tracking-wider text-gray-500">
+        p
+      </Text>
+      <Text as="p">The brown fox jumps over the lazy dog</Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        i
+      </Text>
+      <Text as="i">The brown fox jumps over the lazy dog</Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        del
+      </Text>
+      <Text as="del">The brown fox jumps over the lazy dog</Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        mark
+      </Text>
+      <Text as="mark">The brown fox jumps over the lazy dog</Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        b
+      </Text>
+      <Text as="b">The brown fox jumps over the lazy dog</Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        em
+      </Text>
+      <Text as="em">The brown fox jumps over the lazy dog</Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        strong
+      </Text>
+      <Text as="strong">The brown fox jumps over the lazy dog</Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        small
+      </Text>
+      <Text as="small">The brown fox jumps over the lazy dog</Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        abbr
+      </Text>
+      <Text as="abbr" title="Hello World!">
+        HW
+      </Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        q
+      </Text>
+      <Text as="q">The brown fox jumps over the lazy dog</Text>
+    </div>
+    <div className="grid gap-1">
+      <Text as="span" className="tracking-wider text-gray-500">
+        blockquote
+      </Text>
+      <Text as="blockquote">
+        Before going to sleep every night, <br /> forgive everyone and sleep
+        with a clean heart.
+      </Text>
+    </div>
+    <div>
+      <Text as="span" className="tracking-wider text-gray-500">
+        kbd
+      </Text>
+      <div className="mt-2 grid gap-5">
+        <Text as="p">
+          Please press <Text as="kbd">Ctrl</Text> + <Text as="kbd">Shift</Text>{" "}
+          + <Text as="kbd">R</Text> to reload this page.
+        </Text>
+      </div>
+    </div>
+    <div>
+      <Text as="span" className="tracking-wider text-gray-500">
+        sup
+      </Text>
+      <Text as="p">
+        (a+b)<Text as="sup">2</Text> = a<Text as="sup">2</Text> + 2ab + b
+        <Text as="sup">2</Text>
+      </Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        sub
+      </Text>
+      <Text as="em">
+        ∑𝐹 = ρ𝑄(𝓥<Text as="sub">out</Text> &nbsp;-&nbsp; 𝓥
+        <Text as="sub">in</Text>)
+      </Text>
+    </div>
+    <div>
+      <Text as="span" className="mb-2 block tracking-wider text-gray-500">
+        code
+      </Text>
+      <Text as="code">background-color: #000000</Text>
+    </div>
+    <div className="grid">
+      <Text as="span" className="tracking-wider text-gray-500">
+        pre
+      </Text>
+      <Text as="pre">
+        &lt;html&gt; <br />
+        &nbsp;&nbsp;&lt;head&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome to
+        campuslife.&lt;/title&gt; <br />
+        &nbsp;&nbsp;&lt;/head&gt; <br />
+        &nbsp;&nbsp;&lt;body&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Campuslife Wesbite&lt;/h1&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;My first page.&lt;/h2&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Campuslife is a free learning source
+        website for users. <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
+        &nbsp;&nbsp;&lt;/body&gt; <br />
+        &lt;/html&gt;
+      </Text>
+    </div>
+  </div>
+</Paper>
+
+```jsx
+import { Text } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Text as="p">The brown fox jumps over the lazy dog</Text>
+
+      <Text as="i">The brown fox jumps over the lazy dog</Text>
+
+      <Text as="del">The brown fox jumps over the lazy dog</Text>
+
+      <Text as="mark">The brown fox jumps over the lazy dog</Text>
+
+      <Text as="b">The brown fox jumps over the lazy dog</Text>
+
+      <Text as="em">The brown fox jumps over the lazy dog</Text>
+
+      <Text as="strong">The brown fox jumps over the lazy dog</Text>
+
+      <Text as="small">The brown fox jumps over the lazy dog</Text>
+
+      <Text as="abbr" title="Hello World!">
+        HW - abbr
+      </Text>
+
+      <Text as="q">The brown fox jumps over the lazy dog</Text>
+
+      <Text as="blockquote">
+        Before going to sleep every night, <br /> forgive everyone and sleep
+        with a clean heart.
+      </Text>
+
+      <Text as="p">
+        Please press <Text as="kbd">Ctrl</Text> + <Text as="kbd">Shift</Text> +{" "}
+        <Text as="kbd">R</Text> to reload this page.
+      </Text>
+
+      <Text as="p">
+        (a+b)<Text as="sup">2</Text> = a<Text as="sup">2</Text> + 2ab + b
+        <Text as="sup">2</Text>
+      </Text>
+
+      <Text as="em">
+        ∑𝐹 = ρ𝑄(𝓥<Text as="sub">out</Text> &nbsp;-&nbsp; 𝓥
+        <Text as="sub">in</Text>)
+      </Text>
+
+      <Text as="code">background-color: #000000</Text>
+
+      <Text as="pre">
+        &lt;html&gt; <br />
+        &nbsp;&nbsp;&lt;head&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome to
+        campuslife.&lt;/title&gt; <br />
+        &nbsp;&nbsp;&lt;/head&gt; <br />
+        &nbsp;&nbsp;&lt;body&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Campuslife Wesbite&lt;/h1&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;My first page.&lt;/h2&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Campuslife is a free learning source
+        website for users. <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
+        &nbsp;&nbsp;&lt;/body&gt; <br />
+        &lt;/html&gt;
+      </Text>
+    </>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## APIs
+
+<hr />
+
+<div className="mb-10" />
+
+### Text Props
+
+Here is the API documentation of the Text component.
+
+<div className="overflow-x-auto">
+
+|   Props   |          Type          |               Description               | Default |
+| :-------: | :--------------------: | :-------------------------------------: | :-----: |
+|    as     | [TextTags](#text-tags) |                                         |  `"p"`  |
+|   title   |    `abbr` `string`     | title attribute only appear when tag is |  \_ \_  |
+| className |        `string`        |   Add custom classes for extra style    |  \_ \_  |
+
+</div>
+
+<div className="mb-10" />
+
+### Text Tags
+
+```ts
+type TextTags =
+  | "p"
+  | "b"
+  | "span"
+  | "strong"
+  | "abbr"
+  | "q"
+  | "blockquote"
+  | "code"
+  | "del"
+  | "em"
+  | "i"
+  | "kbd"
+  | "mark"
+  | "pre"
+  | "small"
+  | "sub"
+  | "sup";
+```

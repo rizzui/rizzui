@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import Tabs, { TabList, Tab, TabPanels, TabPanel } from '../components/tabs';
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '../components/tabs';
 import { cn } from '../lib/cn';
 
 test('Render tab items and tab panels', async () => {

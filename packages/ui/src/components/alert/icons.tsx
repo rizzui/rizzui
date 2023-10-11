@@ -17,7 +17,7 @@ export type IconProps = {
   color: 'danger' | 'info' | 'success' | 'warning';
 };
 
-const AlertIcon = ({ size, color }: IconProps) => {
+export const AlertIcon = ({ size, color }: IconProps) => {
   if (color === 'danger') {
     return <XIcon data-testid="alert-xicon" className={classes.size[size]} />;
   }
@@ -53,5 +53,3 @@ const AlertIcon = ({ size, color }: IconProps) => {
     </svg>
   );
 };
-
-export default AlertIcon;

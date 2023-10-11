@@ -4,8 +4,8 @@ import '@testing-library/jest-dom';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import Dropdown, { DropdownItem } from '../components/dropdown';
-import Button from '../components/button';
+import { Dropdown, DropdownItem } from '../components/dropdown';
+import { Button } from '../components/button';
 import { cn } from '../lib/cn';
 
 test('Renders dropdown button, container and items', async () => {

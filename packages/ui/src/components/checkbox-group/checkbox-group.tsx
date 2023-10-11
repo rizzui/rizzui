@@ -22,7 +22,7 @@ interface CheckboxChildrenProps {
  * user to select multiple checkbox values easily either from a form or from a filter.
  * Here is the API documentation for CheckboxGroup component.
  */
-export default function CheckboxGroup({
+export function CheckboxGroup({
   values,
   setValues,
   children,
@@ -36,7 +36,7 @@ export default function CheckboxGroup({
         : [...values, value];
       setValues(newValues);
     },
-    [values, setValues]
+    [values, setValues],
   );
 
   return (

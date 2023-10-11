@@ -1,6 +1,6 @@
 import React from 'react';
-
-import cn from '../../lib/cn';
+import { cn } from '../../lib/cn';
+import { makeClassName } from '../../lib/make-class-name';
 
 const classes = {
   base: 'inline-flex items-center justify-center flex-shrink-0',
@@ -76,7 +76,7 @@ function getInitials(name: string) {
   return initials.slice(0, 2).join('').toUpperCase();
 }
 
-export default function Avatar({
+export function Avatar({
   src,
   name,
   size = 'DEFAULT',
@@ -104,6 +104,7 @@ export default function Avatar({
         height={avatarSize}
         onError={() => setError(() => true)}
         className={cn(
+          makeClassName(`avatar-img`),
           classes.base,
           classes.rounded[rounded],
           color && classes.color[color],
@@ -125,6 +126,7 @@ export default function Avatar({
     <span
       title={name}
       className={cn(
+        makeClassName(`avatar-initials`),
         classes.base,
         classes.fontSize[size],
         classes.rounded[rounded],

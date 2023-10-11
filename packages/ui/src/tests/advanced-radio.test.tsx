@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
-import AdvancedRadio from '../components/advanced-radio';
+import { AdvancedRadio } from '../components/advanced-radio';
 
 test('Renders advanced radio buttons and functionality', async () => {
   render(

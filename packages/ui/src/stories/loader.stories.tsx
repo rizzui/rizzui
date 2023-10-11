@@ -1,7 +1,7 @@
 // loader.stories.ts|tsx
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import Loader from '../components/loader/loader';
+import { Loader } from '../components/loader';
 
 export default {
   title: 'Components/Loader',
