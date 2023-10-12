@@ -7,7 +7,7 @@ import { Button } from '../components/button';
 import { Title, Text } from '../components/typography';
 import { ActionIcon } from '../components/action-icon';
 import { Input } from '../components/input';
-import Password from '../components/password';
+import { Password } from '../components/password';
 import { Checkbox } from '../components/checkbox';
 import { XIcon } from '../icons/x-mark';
 
