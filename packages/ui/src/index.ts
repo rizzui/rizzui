@@ -110,3 +110,6 @@ export * from './components/tooltip';
 
 // Typography
 export * from './components/typography';
+
+// Data display
+export * from './components/accordion';
