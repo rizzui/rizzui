@@ -220,24 +220,14 @@ export default function App() {
 You can hide pin code value using **mask** property.
 
 <Paper>
-  <PinCode
-    mask={true}
-    defaultValue={1234}
-    setValue={function noRefCheck() {}}
-  />
+  <PinCode mask={true} setValue={function noRefCheck() {}} />
 </Paper>
 
 ```tsx
 import { PinCode } from "rizzui";
 
 export default function App() {
-  return (
-    <PinCode
-      mask={true}
-      defaultValue={1234}
-      setValue={function noRefCheck() {}}
-    />
-  );
+  return <PinCode mask={true} setValue={function noRefCheck() {}} />;
 }
 ```
 

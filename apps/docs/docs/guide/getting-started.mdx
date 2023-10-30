@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Getting Started
 
-Welcome to the RizzUI. A Modern and Minimal React UI Library built with TailwindCSS. designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application. We have carefully crafted each component to ensure that they are responsive, accessible and consistent across different devices and browsers.
+Explore RizzUI: Modern, Minimal, TailwindCSS-based React UI Library. Intuitively crafted, easy-to-customize components for seamless integration. Responsive, accessible, and consistent across devices and browsers.
 
 ## Installation
 
@@ -13,15 +13,15 @@ System Requirements:
 - Node.js 16.17.0 or later.
 
 ```bash title=Terminal
-npm install rizzui @headlessui/react @floating-ui/react
+npm i rizzui @headlessui/react @floating-ui/react
 ```
 
-_*Note: Also, you can use other package managers `Yarn(v1.21.1)`, `PNPM` etc.*_
+_*Note: Also, you can use other package managers like - **bun**, **PNPM** and **Yarn**.*_
 
 After installing our rizzui package, now need to install TailwindCSS. First, go to your React / Next.js project directory, install RizzUI by running either of the following:
 
 ```bash title=Terminal
-npm install -D tailwindcss postcss autoprefixer @tailwindcss/forms
+npm i -D tailwindcss postcss autoprefixer @tailwindcss/forms
 ```
 
 ## Configure tailwind.config.js
@@ -324,25 +324,6 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
   }
   q {
     @apply text-lg;
-  }
-}
-
-@layer utilities {
-  /* animation delay required for the Loader component */
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-  .animation-delay-500 {
-    animation-delay: 500ms;
-  }
-  .animation-delay-700 {
-    animation-delay: 700ms;
-  }
-  /* this utilitie class required for the PinCode component */
-  .password-dot {
-    -webkit-text-security: disc;
-    -moz-text-security: circle;
-    text-security: circle;
   }
 }
 ```

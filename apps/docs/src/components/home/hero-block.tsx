@@ -7,10 +7,10 @@ function AnnouncementText() {
   return (
     <Announcement
       badgeText="Beta"
-      endIcon={<CopyButton value="npm install rizzui" />}
+      endIcon={<CopyButton value="npm i rizzui" />}
       className="mx-auto mb-5 md:mb-7 text-sm md:text-[15px] pr-4 pl-2 border border-gray-200"
     >
-      npm install rizzui
+      npm i rizzui
     </Announcement>
   );
 }
