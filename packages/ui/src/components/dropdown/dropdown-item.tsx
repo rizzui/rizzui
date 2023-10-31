@@ -49,7 +49,7 @@ export const DropdownItem = React.forwardRef<
             {...(Component === 'button' && { type: 'button' })}
             className={cn(
               makeClassName(`dropdown-item`),
-              'flex items-center w-full px-3.5 py-1',
+              'flex items-center w-full px-3.5 py-1.5',
               rounded && dropdownItemStyles.rounded[rounded],
               active && ['bg-gray-100', activeClassName],
               disabled && disabledClassName,

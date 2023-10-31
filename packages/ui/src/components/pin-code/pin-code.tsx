@@ -235,7 +235,8 @@ export function PinCode({
               inputClasses.variant[variant].base,
               inputClasses.variant[variant].color[color],
               error && inputClasses.error,
-              mask && 'password-dot',
+              mask &&
+                '[-webkit-text-security:disc] [-moz-text-security:circle] [text-security:circle]',
               inputClassName,
             )}
             {...props}

@@ -85,7 +85,7 @@ export function Loader({
         data-testid="second-dot"
         className={cn(
           makeClassName(`loader-dot-2`),
-          'animation-delay-200 rounded-full',
+          '[animation-delay:200ms] rounded-full',
           sizes[size],
           colors[color],
           animations[animation],
@@ -95,7 +95,7 @@ export function Loader({
         data-testid="third-dot"
         className={cn(
           makeClassName(`loader-dot-3`),
-          'animation-delay-500 rounded-full',
+          '[animation-delay:500ms] rounded-full',
           sizes[size],
           colors[color],
           animations[animation],

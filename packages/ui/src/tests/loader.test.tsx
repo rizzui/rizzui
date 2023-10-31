@@ -21,10 +21,10 @@ describe('Animation Testing', () => {
     expect(firstDot).toHaveClass('animate-blink');
 
     expect(secondDot).toBeInTheDocument();
-    expect(secondDot).toHaveClass('animate-blink animation-delay-200');
+    expect(secondDot).toHaveClass('animate-blink [animation-delay:200ms]');
 
     expect(thirdDot).toBeInTheDocument();
-    expect(thirdDot).toHaveClass('animate-blink animation-delay-500');
+    expect(thirdDot).toHaveClass('animate-blink [animation-delay:500ms]');
   });
 
   test('animation scale up of three dots of loader', () => {
@@ -33,7 +33,7 @@ describe('Animation Testing', () => {
     const secondDot = screen.getByTestId('second-dot');
     const thirdDot = screen.getByTestId('third-dot');
     expect(firstDot).toHaveClass('animate-scale-up');
-    expect(secondDot).toHaveClass('animate-scale-up animation-delay-200');
-    expect(thirdDot).toHaveClass('animate-scale-up animation-delay-500');
+    expect(secondDot).toHaveClass('animate-scale-up [animation-delay:200ms]');
+    expect(thirdDot).toHaveClass('animate-scale-up [animation-delay:500ms]');
   });
 });

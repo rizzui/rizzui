@@ -56,7 +56,7 @@ export function Dropdown({
       >
         {React.Children.map(children, (child) => {
           if (React.isValidElement(child) && child.type === DropdownTrigger) {
-            return React.cloneElement(child);
+            return child;
           }
           if (React.isValidElement(child) && child.type === DropdownMenu) {
             return child;
