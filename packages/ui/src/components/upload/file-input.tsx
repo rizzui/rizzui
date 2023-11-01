@@ -33,10 +33,10 @@ const fileInputClasses = {
   },
   variant: {
     active: {
-      base: 'border bg-gray-0 [&.is-focus]:ring-[0.6px] [&_input::placeholder]:opacity-70',
+      base: 'border bg-gray-50 [&.is-focus]:ring-[0.6px] [&_input::placeholder]:opacity-70',
       color: {
         DEFAULT:
-          'border-gray-900 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000 text-gray-1000',
+          'border-gray-900 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950 text-gray-950',
         primary:
           'border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-primary-dark',
         secondary:
@@ -54,7 +54,7 @@ const fileInputClasses = {
       base: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 [&_input::placeholder]:opacity-80',
       color: {
         DEFAULT:
-          'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-1000 [&_input::placeholder]:text-gray-600',
+          'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-950 [&_input::placeholder]:text-gray-600',
         primary:
           'bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
         secondary:
@@ -71,7 +71,7 @@ const fileInputClasses = {
       base: 'bg-transparent [&.is-focus]:ring-[0.6px] border border-gray-300 [&_input::placeholder]:text-gray-500',
       color: {
         DEFAULT:
-          'hover:border-gray-1000 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000',
+          'hover:border-gray-950 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950',
         primary:
           'hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
         secondary:
@@ -89,7 +89,7 @@ const fileInputClasses = {
       base: 'border-0 [&.is-focus]:ring-2 bg-transparent [&_input::placeholder]:opacity-70',
       color: {
         DEFAULT:
-          'hover:text-gray-1000 [&.is-focus]:ring-gray-900/20 [&_input::placeholder]:text-gray-500',
+          'hover:text-gray-950 [&.is-focus]:ring-gray-900/20 [&_input::placeholder]:text-gray-500',
         primary:
           'hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
         secondary:
@@ -121,7 +121,7 @@ const fileButtonClasses = {
   },
   color: {
     DEFAULT:
-      '[&::file-selector-button]:bg-gray-900 [&::file-selector-button]:hover:bg-gray-800 [&::file-selector-button]:active:enabled:bg-gray-1000 [&::file-selector-button]:focus-visible:ring-gray-900/30 [&::file-selector-button]:text-gray-0',
+      '[&::file-selector-button]:bg-gray-900 [&::file-selector-button]:hover:bg-gray-800 [&::file-selector-button]:active:enabled:bg-gray-950 [&::file-selector-button]:focus-visible:ring-gray-900/30 [&::file-selector-button]:text-gray-50',
     primary:
       '[&::file-selector-button]:bg-primary [&::file-selector-button]:hover:enabled:bg-primary-dark [&::file-selector-button]:focus-visible:ring-primary/30 [&::file-selector-button]:text-white',
     secondary:

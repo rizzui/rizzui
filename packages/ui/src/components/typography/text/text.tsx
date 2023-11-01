@@ -6,7 +6,7 @@ const classes = {
   p: '',
   i: '',
   b: '',
-  q: '',
+  q: 'text-lg font-semibold',
   em: '',
   strong: '',
   small: '',
@@ -17,7 +17,7 @@ const classes = {
   pre: 'border-2 border-gray-300 py-3 px-4 rounded-xl bg-gray-100',
   code: 'border border-gray-300 py-2 px-3 rounded-md shadow',
   kbd: 'bg-gray-100 border border-gray-300 text-gray-900 rounded-lg leading-none inline-flex items-center justify-center text-sm py-1.5 px-2',
-  blockquote: 'border-l-4 border-gray-200 text-quote py-3 px-4',
+  blockquote: 'border-l-4 border-gray-200 text-lg py-3 px-4',
   sub: '',
   sup: '',
 };

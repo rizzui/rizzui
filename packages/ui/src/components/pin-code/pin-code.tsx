@@ -27,10 +27,10 @@ const inputClasses = {
   },
   variant: {
     active: {
-      base: 'border focus:ring-[0.6px] bg-gray-0 placeholder:opacity-80',
+      base: 'border focus:ring-[0.6px] bg-gray-50 placeholder:opacity-80',
       color: {
         DEFAULT:
-          'border-gray-900 not-read-only:focus:enabled:border-gray-1000 focus:ring-gray-1000 text-gray-1000',
+          'border-gray-900 not-read-only:focus:enabled:border-gray-950 focus:ring-gray-950 text-gray-950',
         primary:
           'border-primary not-read-only:focus:enabled:border-primary focus:ring-primary text-primary-dark',
         secondary:
@@ -48,7 +48,7 @@ const inputClasses = {
       base: 'border focus:ring-2 border-0 placeholder:opacity-90',
       color: {
         DEFAULT:
-          'bg-gray-200/70 not-read-only:hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 text-gray-1000 placeholder:text-gray-600',
+          'bg-gray-200/70 not-read-only:hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 text-gray-950 placeholder:text-gray-600',
         primary:
           'bg-primary-lighter/70 not-read-only:hover:enabled:bg-primary-lighter/90 focus:ring-primary/30 text-primary-dark',
         secondary:
@@ -66,7 +66,7 @@ const inputClasses = {
       base: 'bg-transparent focus:ring-[0.6px] border border-gray-300 placeholder:text-gray-500',
       color: {
         DEFAULT:
-          'not-read-only:hover:enabled:border-gray-1000 not-read-only:focus:enabled:border-gray-1000 focus:ring-gray-1000',
+          'not-read-only:hover:enabled:border-gray-950 not-read-only:focus:enabled:border-gray-950 focus:ring-gray-950',
         primary:
           'not-read-only:hover:enabled:border-primary not-read-only:focus:enabled:border-primary focus:ring-primary',
         secondary:

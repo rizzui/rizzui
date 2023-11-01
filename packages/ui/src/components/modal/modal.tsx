@@ -130,7 +130,7 @@ export function Modal({
               <div
                 className={cn(
                   makeClassName(`modal-container`),
-                  'pointer-events-auto m-auto w-full break-words bg-gray-0 shadow-xl',
+                  'pointer-events-auto m-auto w-full break-words bg-gray-50 shadow-xl',
                   size !== 'full' && modalClasses.rounded[rounded],
                   !customSize && modalClasses.size[size],
                   containerClassName,

@@ -20,7 +20,7 @@ const classes = {
   },
   variant: {
     solid: {
-      base: 'text-gray-0',
+      base: 'text-gray-50',
       color: {
         DEFAULT: 'bg-gray-900',
         primary: 'bg-primary',
@@ -35,12 +35,12 @@ const classes = {
       base: '',
       color: {
         DEFAULT: 'bg-gray-400/50',
-        primary: 'bg-primary-light/40 text-primary-dark',
-        secondary: 'bg-secondary-light/40 text-secondary-dark',
-        danger: 'bg-red-light/40 text-red-dark',
-        info: 'bg-blue-light/40 text-blue-dark',
-        success: 'bg-green-light/40 text-green-dark',
-        warning: 'bg-orange-light/40 text-orange-dark',
+        primary: 'bg-primary/40 text-primary-dark',
+        secondary: 'bg-secondary/40 text-secondary-dark',
+        danger: 'bg-red/40 text-red-dark',
+        info: 'bg-blue/40 text-blue-dark',
+        success: 'bg-green/40 text-green-dark',
+        warning: 'bg-orange/40 text-orange-dark',
       },
     },
   },

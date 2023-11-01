@@ -4,7 +4,7 @@ import { makeClassName } from '../../lib/make-class-name';
 
 const classes = {
   base: 'inline-flex items-center justify-center font-semibold leading-none',
-  outlineRing: 'ring-2 ring-gray-0',
+  outlineRing: 'ring-2 ring-gray-50',
   size: {
     sm: 'px-1.5 py-1 text-[10px] leading-[1.1]',
     DEFAULT: 'px-2.5 py-1.5 text-xs',
@@ -30,7 +30,7 @@ const classes = {
     solid: {
       base: '',
       color: {
-        DEFAULT: 'bg-gray-900 text-gray-0',
+        DEFAULT: 'bg-gray-900 text-gray-50',
         primary: 'bg-primary text-white',
         secondary: 'bg-secondary text-white',
         success: 'bg-green text-white',

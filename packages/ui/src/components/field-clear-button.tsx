@@ -3,7 +3,7 @@ import { cn } from '../lib/cn';
 import { makeClassName } from '../lib/make-class-name';
 
 const inputIconClearClasses = {
-  base: 'inline-flex shrink-0 transform items-center justify-center rounded-full bg-gray-1000/30 backdrop-blur p-[1px] text-gray-0 transition-all duration-200 ease-in-out hover:bg-gray-1000',
+  base: 'inline-flex shrink-0 transform items-center justify-center rounded-full bg-gray-950/30 backdrop-blur p-[1px] text-gray-50 transition-all duration-200 ease-in-out hover:bg-gray-950',
   size: {
     sm: 'h-3.5 w-3.5',
     DEFAULT: 'h-4 w-4',

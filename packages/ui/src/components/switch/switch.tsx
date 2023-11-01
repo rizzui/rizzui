@@ -61,13 +61,12 @@ const switchClasses = {
       base: 'border border-transparent',
       color: {
         DEFAULT: 'bg-gray-200 group-hover/switch:bg-gray-400/40',
-        primary: 'bg-primary-light/40 group-hover/switch:bg-primary-light/50',
-        secondary:
-          'bg-secondary-light/40 group-hover/switch:bg-secondary-light/50',
-        danger: 'bg-red-light/40 group-hover/switch:bg-red-light/50',
-        info: 'bg-blue-light/40 group-hover/switch:bg-blue-light/50',
-        success: 'bg-green-light/50 group-hover/switch:bg-green-light/70',
-        warning: 'bg-orange-light/50 group-hover/switch:bg-orange-light/60',
+        primary: 'bg-primary/40 group-hover/switch:bg-primary/50',
+        secondary: 'bg-secondary/40 group-hover/switch:bg-secondary/50',
+        danger: 'bg-red/40 group-hover/switch:bg-red/50',
+        info: 'bg-blue/40 group-hover/switch:bg-blue/50',
+        success: 'bg-green/50 group-hover/switch:bg-green/70',
+        warning: 'bg-orange/50 group-hover/switch:bg-orange/60',
       },
     },
     outline: {
@@ -255,7 +254,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             className={cn(
               'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span>.rizzui-switch-knob>.rizzui-switch-off-icon]:hidden [&:checked:enabled~span>.rizzui-switch-knob>.rizzui-switch-on-icon]:opacity-100 [&:checked:enabled~span>.rizzui-switch-knob]:text-gray-900',
               color === 'DEFAULT'
-                ? '[&:checked:enabled~span>.rizzui-switch-knob]:bg-gray-0'
+                ? '[&:checked:enabled~span>.rizzui-switch-knob]:bg-gray-50'
                 : '[&:checked:enabled~span>.rizzui-switch-knob]:bg-white',
               handleClasses.translate.active[size],
             )}

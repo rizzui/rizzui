@@ -6,7 +6,7 @@ import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
 
 const inputClasses = {
-  base: 'peer disabled:bg-gray-50 disabled:border-gray-200',
+  base: 'peer disabled:bg-gray-50 disabled:border-gray-200 checked:bg-none',
   size: {
     sm: 'h-4 w-4',
     DEFAULT: 'h-5 w-5',
@@ -22,9 +22,9 @@ const inputClasses = {
   },
   variant: {
     outline: {
-      base: 'bg-transparent border border-gray-300 checked:!bg-gray-1000 focus:ring-gray-900/30 checked:!border-gray-1000',
+      base: 'bg-transparent border border-gray-300 checked:!bg-gray-950 focus:ring-gray-900/30 checked:!border-gray-950',
       color: {
-        DEFAULT: 'hover:enabled:border-gray-1000',
+        DEFAULT: 'hover:enabled:border-gray-950',
         primary: 'hover:enabled:border-primary',
         secondary: 'hover:enabled:border-secondary',
         danger: 'hover:enabled:border-red',
@@ -37,7 +37,7 @@ const inputClasses = {
       base: 'border-0',
       color: {
         DEFAULT:
-          'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 checked:!bg-gray-1000',
+          'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 checked:!bg-gray-950',
         primary:
           'bg-primary-lighter/70 hover:enabled:bg-primary-lighter/90 focus:ring-primary/30 checked:!bg-primary-dark',
         secondary:
@@ -52,10 +52,10 @@ const inputClasses = {
       },
     },
     active: {
-      base: 'border !bg-gray-0',
+      base: 'border !bg-gray-50',
       color: {
         DEFAULT:
-          'border-gray-900 checked:enabled:border-gray-1000 focus:ring-gray-900/30',
+          'border-gray-900 checked:enabled:border-gray-950 focus:ring-gray-900/30',
         primary:
           'border-primary checked:enabled:border-primary focus:ring-primary/30',
         secondary:
@@ -74,7 +74,7 @@ const inputClasses = {
 const iconClasses = {
   base: 'peer-checked:opacity-100 absolute opacity-0 text-white top-0 left-0',
   color: {
-    DEFAULT: 'text-gray-1000',
+    DEFAULT: 'text-gray-950',
     primary: 'text-primary-dark',
     secondary: 'text-secondary-dark',
     danger: 'text-red-dark',

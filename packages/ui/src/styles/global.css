@@ -9,8 +9,6 @@
     - gray/natural colors for texts, borders and disabled elements. 
     - If required we can use as background too. 
     */
-    /* For rgb(255 255 255 / <alpha-value>) = #ffffff */
-    --gray-0: 255 255 255;
     /* For rgb(250 250 250 / <alpha-value>) = #fafafa */
     --gray-50: 250 250 250;
     /* For rgb(241 241 241 / <alpha-value>) = #f1f1f1 */
@@ -32,14 +30,12 @@
     /* For rgb(17 17 17 / <alpha-value>) = #111111 */
     --gray-900: 17 17 17;
     /* For rgb(0 0 0 / <alpha-value>) = #000000 */
-    --gray-1000: 0 0 0;
+    --gray-950: 0 0 0;
 
     /* primary/brand colors */
     /* ----------------------------------- */
     /* For rgb(221 227 255 / <alpha-value>) = #dde3ff */
     --primary-lighter: 221 227 255;
-    /* For rgb(99 91 255 / <alpha-value>) = #635bff */
-    --primary-light: 99 91 255;
     /* For rgb(78 54 245 / <alpha-value>) = #4e36f5 */
     --primary-default: 78 54 245;
     /* For rgb(67 42 216 / <alpha-value>) = #432ad8 */
@@ -49,8 +45,6 @@
     /* ----------------------------------- */
     /* For rgb(227 215 252 / <alpha-value>) = #e3d7fc */
     --secondary-lighter: 227 215 252;
-    /* For rgb(138 99 210 / <alpha-value>) = #8a63d2 */
-    --secondary-light: 138 99 210;
     /* For rgb(121 40 202 / <alpha-value>) = #7928ca */
     --secondary-default: 121 40 202;
     /* For rgb(76 40 137 / <alpha-value>) = #4c2889 */
@@ -60,8 +54,6 @@
     /* ----------------------------------- */
     /* For rgb(247 212 214 / <alpha-value>) = #f7d4d6 */
     --red-lighter: 247 212 214;
-    /* For rgb(255 26 26 / <alpha-value>) = #ff1a1a */
-    --red-light: 255 26 26;
     /* For rgb(238 0 0 / <alpha-value>) = #e00 */
     --red-default: 238 0 0;
     /* For rgb(197 0 0 / <alpha-value>) = #c50000 */
@@ -71,8 +63,6 @@
     /* ----------------------------------- */
     /* For rgb(255 239 207 / <alpha-value>) = #ffefcf */
     --orange-lighter: 255 239 207;
-    /* For rgb(247 185 85 / <alpha-value>) = #f7b955 */
-    --orange-light: 247 185 85;
     /* For rgb(245 166 35 / <alpha-value>) = #f5a623 */
     --orange-default: 245 166 35;
     /* For rgb(171 87 10 / <alpha-value>) = #ab570a */
@@ -82,8 +72,6 @@
     /* ----------------------------------- */
     /* For rgb(211 229 255 / <alpha-value>) = #d3e5ff */
     --blue-lighter: 211 229 255;
-    /* For rgb(50 145 255 / <alpha-value>) = #3291ff */
-    --blue-light: 50 145 255;
     /* For rgb(0 112 243 / <alpha-value>) = #0070f3 */
     --blue-default: 0 112 243;
     /* For rgb(7 97 209 / <alpha-value>) = #0761d1 */
@@ -93,16 +81,10 @@
     /* ----------------------------------- */
     /* For rgb(185 249 207 / <alpha-value>) = #b9f9cf */
     --green-lighter: 185 249 207;
-    /* For rgb(28 203 92 / <alpha-value>) = #1ccb5c */
-    --green-light: 28 203 92;
     /* For rgb(17 168 73 / <alpha-value>) = #11a849 */
     --green-default: 17 168 73;
     /* For rgb(17 132 60 / <alpha-value>) = #11843c */
     --green-dark: 17 132 60;
-
-    /* write here box shadow variation */
-    /* --card-shadow-100: 0 0 0 1px rgb(35 38 59 / 5%), 0 1px 3px 0 rgb(35 38 59 / 15%);
-    --card-shadow-500: 0 0 0 1px rgb(35 38 59 / 5%), 0 20px 32px -8px rgb(35 38 59 / 25%); */
   }
 
   /* dark theme */
@@ -111,8 +93,6 @@
     - gray/natural color shades for texts, borders and disabled elements. 
     - If required we can use as background too. 
     */
-    /* For rgb(0 0 0 / <alpha-value>) = #000000 */
-    --gray-0: 0 0 0;
     /* For rgb(17 17 17 / <alpha-value>) = #111111 */
     --gray-50: 17 17 17;
     /* For rgb(34 34 34 / <alpha-value>) = #222222 */
@@ -134,110 +114,13 @@
     /* For rgb(250 250 250 / <alpha-value>) = #fafafa */
     --gray-900: 250 250 250;
     /* For rgb(255 255 255 / <alpha-value>) = #ffffff */
-    --gray-1000: 255 255 255;
+    --gray-950: 255 255 255;
 
     /* here you can customize other colors for dark theme if design required */
-  }
-
-  /* Base styles */
-  html {
-    @apply antialiased;
-  }
-
-  input[type='search']::-webkit-search-cancel-button {
-    display: none;
-  }
-
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  input[type='checkbox']:checked {
-    background-image: none;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold text-gray-900 dark:text-gray-700;
-  }
-
-  h1 {
-    @apply text-3xl dark:text-gray-800 2xl:text-4xl;
-  }
-
-  h2 {
-    @apply text-2xl dark:text-gray-800 2xl:text-3xl;
-  }
-
-  h3 {
-    @apply text-xl 2xl:text-2xl;
-  }
-
-  h4 {
-    @apply text-lg 2xl:xl:text-xl;
-  }
-
-  h5 {
-    @apply text-base 2xl:text-lg;
-  }
-
-  h6 {
-    @apply text-sm 2xl:text-base;
   }
 }
 
 @layer components {
-  /* width */
-  .scroller::-webkit-scrollbar {
-    width: var(--scroller-width);
-  }
-
-  /* Track */
-  .scroller::-webkit-scrollbar-track {
-    /* background: #f1f1f1; */
-    border-radius: 5px;
-    background: var(--trackColor);
-  }
-
-  /* Handle */
-  .scroller::-webkit-scrollbar-thumb {
-    /* background: #888; */
-    background: var(--handleColor);
-    border-radius: 5px;
-  }
-
-  /* Handle on hover */
-  .scroller::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
-  /* Progress Bar */
-  .circlePercentage {
-    background-image: conic-gradient(
-      var(--outerCirclePercentageColor) var(--progressPercentage),
-      var(--outerCircleColor) 0
-    );
-  }
-  .innerCircle {
-    width: calc(100% - 20%);
-    height: calc(100% - 20%);
-    color: var(--innerCircleTextColor);
-    background: var(--innerCircleColor);
-  }
-
-  /* Password dot */
-  .password-dot {
-    -webkit-text-security: disc;
-    -moz-text-security: circle;
-    text-security: circle;
-  }
-
   /* ?React Datepicker Styling */
 
   /* month container */
@@ -252,7 +135,7 @@
 
   /* header */
   .react-datepicker .react-datepicker__header {
-    @apply bg-gray-0 border-b-gray-0;
+    @apply bg-gray-50 border-b-gray-50;
   }
 
   /* current month name in header */
@@ -298,13 +181,13 @@
 
   /* keyboard selected */
   .react-datepicker .react-datepicker__day--keyboard-selected {
-    @apply bg-gray-0;
+    @apply bg-gray-50;
   }
 
   /* today */
   .react-datepicker .react-datepicker__day--today {
-    @apply border border-gray-300 rounded-full bg-gray-0 leading-[26px] text-gray-900;
-    @apply hover:border-gray-600 hover:bg-gray-0;
+    @apply border border-gray-300 rounded-full bg-gray-50 leading-[26px] text-gray-900;
+    @apply hover:border-gray-600 hover:bg-gray-50;
   }
 
   /* while selecting */
@@ -321,8 +204,8 @@
   .react-datepicker .react-datepicker__day--range-start,
   .react-datepicker .react-datepicker__day--range-end,
   .react-datepicker .react-datepicker__day--selected {
-    @apply bg-gray-900 text-gray-0 rounded-full border-none leading-7 font-normal;
-    @apply hover:bg-gray-900/80 hover:text-gray-0;
+    @apply bg-gray-900 text-gray-50 rounded-full border-none leading-7 font-normal;
+    @apply hover:bg-gray-900/80 hover:text-gray-50;
   }
 
   /* time list */
@@ -379,7 +262,7 @@
   .react-datepicker .react-datepicker__month--range-start,
   .react-datepicker .react-datepicker__month--range-end,
   .react-datepicker .react-datepicker__month--selected {
-    @apply bg-gray-900 text-gray-0 font-normal;
+    @apply bg-gray-900 text-gray-50 font-normal;
   }
 
   /* hover on selected range start and end month */
@@ -389,7 +272,7 @@
     .react-datepicker__month-text.react-datepicker__month--range-start:hover,
   .react-datepicker
     .react-datepicker__month-text.react-datepicker__month--range-end:hover {
-    @apply bg-gray-900/80 text-gray-0;
+    @apply bg-gray-900/80 text-gray-50;
   }
 
   /* year wrapper in year picker */
@@ -411,8 +294,8 @@
   /* selected year in year picker */
   .react-datepicker
     .react-datepicker__year-text.react-datepicker__year-text--selected {
-    @apply bg-gray-900 text-gray-0;
-    @apply hover:bg-gray-900/80 hover:text-gray-0;
+    @apply bg-gray-900 text-gray-50;
+    @apply hover:bg-gray-900/80 hover:text-gray-50;
   }
 
   /* year and month dropdown arrow */
@@ -437,7 +320,7 @@
   /* month and year dropdown */
   .react-datepicker .react-datepicker__year-dropdown,
   .react-datepicker .react-datepicker__month-dropdown {
-    @apply bg-gray-0 border border-gray-100 shadow-md w-2/5 top-auto;
+    @apply bg-gray-50 border border-gray-100 shadow-md w-2/5 top-auto;
   }
 
   /* year dropdown */
@@ -468,7 +351,7 @@
   /* selected month and year in dropdown */
   .react-datepicker .react-datepicker__month-option--selected_month,
   .react-datepicker .react-datepicker__year-option--selected_year {
-    @apply bg-gray-100 text-gray-1000;
+    @apply bg-gray-100 text-gray-950;
     @apply [&>span]:hidden;
   }
 }

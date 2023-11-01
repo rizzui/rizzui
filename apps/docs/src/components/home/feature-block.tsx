@@ -60,7 +60,7 @@ export default function FeatureBlock() {
               key={feature.title + feature.id}
               className="border border-gray-200 shadow-sm rounded-lg pt-8 pb-7 px-6"
             >
-              <div className="h-11 w-11 rounded-md bg-gray-900 mb-6 text-gray-0 flex items-center justify-center">
+              <div className="h-11 w-11 rounded-md bg-gray-900 mb-6 text-gray-50 flex items-center justify-center">
                 {feature.icon}
               </div>
               <Title as="h5" className="font-semibold">

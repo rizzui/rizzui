@@ -36,10 +36,10 @@ const textareaClasses = {
   },
   variant: {
     active: {
-      base: 'border bg-gray-0 [&.is-focus]:ring-[0.6px] placeholder:opacity-70',
+      base: 'border bg-gray-50 [&.is-focus]:ring-[0.6px] placeholder:opacity-70',
       color: {
         DEFAULT:
-          'border-gray-900 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000 text-gray-1000',
+          'border-gray-900 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950 text-gray-950',
         primary:
           'border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-primary-dark',
         secondary:
@@ -57,7 +57,7 @@ const textareaClasses = {
       base: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 placeholder:opacity-80',
       color: {
         DEFAULT:
-          'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-1000 placeholder:text-gray-600',
+          'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-950 placeholder:text-gray-600',
         primary:
           'bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
         secondary:
@@ -74,7 +74,7 @@ const textareaClasses = {
       base: 'bg-transparent [&.is-focus]:ring-[0.6px] border border-gray-300 placeholder:text-gray-500',
       color: {
         DEFAULT:
-          'hover:border-gray-1000 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000',
+          'hover:border-gray-950 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950',
         primary:
           'hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
         secondary:
@@ -92,7 +92,7 @@ const textareaClasses = {
       base: 'border-0 [&.is-focus]:ring-2 bg-transparent placeholder:opacity-70',
       color: {
         DEFAULT:
-          'hover:text-gray-1000 [&.is-focus]:ring-gray-900/20 placeholder:text-gray-500',
+          'hover:text-gray-950 [&.is-focus]:ring-gray-900/20 placeholder:text-gray-500',
         primary:
           'hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
         secondary:

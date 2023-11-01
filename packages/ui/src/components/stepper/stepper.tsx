@@ -1,5 +1,5 @@
 import React from 'react';
-import { type StepProps } from './step';
+import { Step, type StepProps } from './step';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
@@ -113,5 +113,7 @@ export function Stepper({
     </div>
   );
 }
+
+Stepper.Step = Step;
 
 Stepper.displayName = 'Stepper';

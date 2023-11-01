@@ -6,7 +6,7 @@ import { makeClassName } from '../../lib/make-class-name';
 const classes = {
   base: 'flex items-center text-gray-600 w-fit',
   bgColor: {
-    white: 'bg-gray-0',
+    white: 'bg-gray-50',
     gray: 'bg-gray-200/60',
   },
   size: {
@@ -23,7 +23,7 @@ const classes = {
     DEFAULT: 'rounded-full',
   },
   color: {
-    DEFAULT: '!text-gray-1000',
+    DEFAULT: '!text-gray-950',
     primary: 'text-primary',
     secondary: 'text-secondary',
     danger: 'text-red',

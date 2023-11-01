@@ -14,8 +14,6 @@
     - gray/natural colors for texts, borders and disabled elements. 
     - If required we can use as background too. 
     */
-    /* For rgb(255 255 255 / <alpha-value>) = #ffffff */
-    --gray-0: 255 255 255;
     /* For rgb(250 250 250 / <alpha-value>) = #fafafa */
     --gray-50: 250 250 250;
     /* For rgb(241 241 241 / <alpha-value>) = #f1f1f1 */
@@ -37,7 +35,7 @@
     /* For rgb(17 17 17 / <alpha-value>) = #111111 */
     --gray-900: 17 17 17;
     /* For rgb(0 0 0 / <alpha-value>) = #000000 */
-    --gray-1000: 0 0 0;
+    --gray-950: 0 0 0;
 
     /* primary/brand colors */
     /* ----------------------------------- */
@@ -160,8 +158,6 @@
     - gray/natural color shades for texts, borders and disabled elements. 
     - If required we can use as background too. 
     */
-    /* For rgb(0 0 0 / <alpha-value>) = #000000 */
-    --gray-0: 0 0 0;
     /* For rgb(17 17 17 / <alpha-value>) = #111111 */
     --gray-50: 17 17 17;
     /* For rgb(34 34 34 / <alpha-value>) = #222222 */
@@ -183,7 +179,7 @@
     /* For rgb(250 250 250 / <alpha-value>) = #fafafa */
     --gray-900: 250 250 250;
     /* For rgb(255 255 255 / <alpha-value>) = #ffffff */
-    --gray-1000: 255 255 255;
+    --gray-950: 255 255 255;
 
     /* docusaurus dark theme */
     --ifm-background-color: #08090e;
@@ -254,7 +250,7 @@
 
   /* header */
   .react-datepicker .react-datepicker__header {
-    @apply bg-gray-0 border-b-gray-0;
+    @apply bg-gray-50 border-b-gray-50;
   }
 
   /* current month name in header */
@@ -300,13 +296,13 @@
 
   /* keyboard selected */
   .react-datepicker .react-datepicker__day--keyboard-selected {
-    @apply bg-gray-0;
+    @apply bg-gray-50;
   }
 
   /* today */
   .react-datepicker .react-datepicker__day--today {
-    @apply border border-gray-300 rounded-full bg-gray-0 leading-[26px] text-gray-900;
-    @apply hover:border-gray-600 hover:bg-gray-0;
+    @apply border border-gray-300 rounded-full bg-gray-50 leading-[26px] text-gray-900;
+    @apply hover:border-gray-600 hover:bg-gray-50;
   }
 
   /* while selecting */
@@ -323,8 +319,8 @@
   .react-datepicker .react-datepicker__day--range-start,
   .react-datepicker .react-datepicker__day--range-end,
   .react-datepicker .react-datepicker__day--selected {
-    @apply bg-gray-900 text-gray-0 rounded-full border-none leading-7 font-normal;
-    @apply hover:bg-gray-900/80 hover:text-gray-0;
+    @apply bg-gray-900 text-gray-50 rounded-full border-none leading-7 font-normal;
+    @apply hover:bg-gray-900/80 hover:text-gray-50;
   }
 
   /* time list */
@@ -381,7 +377,7 @@
   .react-datepicker .react-datepicker__month--range-start,
   .react-datepicker .react-datepicker__month--range-end,
   .react-datepicker .react-datepicker__month--selected {
-    @apply bg-gray-900 text-gray-0 font-normal;
+    @apply bg-gray-900 text-gray-50 font-normal;
   }
 
   /* hover on selected range start and end month */
@@ -391,7 +387,7 @@
     .react-datepicker__month-text.react-datepicker__month--range-start:hover,
   .react-datepicker
     .react-datepicker__month-text.react-datepicker__month--range-end:hover {
-    @apply bg-gray-900/80 text-gray-0;
+    @apply bg-gray-900/80 text-gray-50;
   }
 
   /* year wrapper in year picker */
@@ -413,8 +409,8 @@
   /* selected year in year picker */
   .react-datepicker
     .react-datepicker__year-text.react-datepicker__year-text--selected {
-    @apply bg-gray-900 text-gray-0;
-    @apply hover:bg-gray-900/80 hover:text-gray-0;
+    @apply bg-gray-900 text-gray-50;
+    @apply hover:bg-gray-900/80 hover:text-gray-50;
   }
 
   /* year and month dropdown arrow */
@@ -439,7 +435,7 @@
   /* month and year dropdown */
   .react-datepicker .react-datepicker__year-dropdown,
   .react-datepicker .react-datepicker__month-dropdown {
-    @apply bg-gray-0 border border-gray-100 shadow-md w-2/5 top-auto;
+    @apply bg-gray-50 border border-gray-100 shadow-md w-2/5 top-auto;
   }
 
   /* year dropdown */
@@ -470,7 +466,7 @@
   /* selected month and year in dropdown */
   .react-datepicker .react-datepicker__month-option--selected_month,
   .react-datepicker .react-datepicker__year-option--selected_year {
-    @apply bg-gray-100 text-gray-1000;
+    @apply bg-gray-100 text-gray-950;
     @apply [&>span]:hidden;
   }
 }
@@ -641,7 +637,7 @@ svg[class*="lightToggleIcon"] {
 }
 
 #__docusaurus .navbar__search-input {
-  --ifm-navbar-search-input-background-color: var(--gray-0);
+  --ifm-navbar-search-input-background-color: var(--gray-50);
   @apply ring-[1.5px] ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 md:w-full;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E%0A");
   background-position: 12px;
@@ -986,7 +982,7 @@ ul.table-of-contents.table-of-contents__left-border::before {
 }
 
 #__docusaurus .rc-pagination-item-active a {
-  @apply text-gray-0;
+  @apply text-gray-50;
 }
 
 .custom-not-found-wrapper {
@@ -1050,7 +1046,7 @@ button[class*="toggleButton"].clean-btn:hover {
 }
 
 [data-theme="dark"] #__docusaurus .rc-pagination-item a {
-  @apply text-gray-0;
+  @apply text-gray-50;
 }
 
 [data-theme="dark"] #__docusaurus .rc-pagination-item {
@@ -1068,7 +1064,7 @@ button[class*="toggleButton"].clean-btn:hover {
 }
 
 [class*="dropdownMenu_"] [class*="suggestion_"] {
-  @apply bg-gray-0 !important;
+  @apply bg-gray-50 !important;
 }
 
 [class*="dropdownMenu_"] [class*="suggestion_"][class*="cursor"] {
@@ -1079,7 +1075,7 @@ button[class*="toggleButton"].clean-btn:hover {
   [class*="dropdownMenu_"]
   [class*="suggestion_"][class*="cursor"]
   * {
-  @apply text-gray-0 !important;
+  @apply text-gray-50 !important;
 }
 
 .navbar__search-input {

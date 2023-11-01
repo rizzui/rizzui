@@ -48,7 +48,7 @@ const classes = {
       },
     },
     outline: {
-      base: 'border bg-gray-0',
+      base: 'border bg-transparent',
       color: {
         danger: 'border-red',
         info: 'border-blue',

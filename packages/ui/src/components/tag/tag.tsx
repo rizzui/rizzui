@@ -36,7 +36,7 @@ const classes = {
       },
     },
     outline: {
-      base: 'bg-gray-0 border',
+      base: 'bg-white dark:bg-gray-50 border',
       color: {
         DEFAULT:
           'border-gray-300 text-gray-600 hover:border-gray-900 hover:text-gray-900',
@@ -55,7 +55,7 @@ const classes = {
     solid: {
       base: 'border border-transparent',
       color: {
-        DEFAULT: 'bg-gray-900 hover:bg-gray-1000 text-gray-0',
+        DEFAULT: 'bg-gray-900 hover:bg-gray-950 text-gray-50',
         primary: 'bg-primary hover:bg-primary-dark text-white',
         secondary: 'bg-secondary hover:bg-secondary-dark text-white',
         danger: 'bg-red hover:bg-red-dark text-white',

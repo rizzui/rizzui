@@ -22,7 +22,7 @@ const gapBasedOnSize = {
 };
 
 const colors = {
-  DEFAULT: 'bg-gray-1000',
+  DEFAULT: 'bg-gray-950',
   primary: 'bg-primary',
   secondary: 'bg-secondary',
   danger: 'bg-red',

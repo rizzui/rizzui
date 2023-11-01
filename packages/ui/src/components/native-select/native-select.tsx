@@ -34,10 +34,10 @@ const selectClasses = {
   },
   variant: {
     active: {
-      base: 'border bg-gray-0 [&.is-focus]:ring-[0.6px]',
+      base: 'border bg-gray-50 [&.is-focus]:ring-[0.6px]',
       color: {
         DEFAULT:
-          'border-gray-900 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000 text-gray-1000',
+          'border-gray-900 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950 text-gray-950',
         primary:
           'border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-primary-dark',
         secondary:
@@ -54,7 +54,7 @@ const selectClasses = {
     flat: {
       base: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0',
       color: {
-        DEFAULT: 'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-1000',
+        DEFAULT: 'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-950',
         primary:
           'bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
         secondary:
@@ -71,7 +71,7 @@ const selectClasses = {
       base: 'bg-transparent [&.is-focus]:ring-[0.6px] border border-gray-300',
       color: {
         DEFAULT:
-          'hover:border-gray-1000 [&.is-focus]:border-gray-1000 [&.is-focus]:ring-gray-1000',
+          'hover:border-gray-950 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950',
         primary:
           'hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
         secondary:
@@ -88,7 +88,7 @@ const selectClasses = {
     text: {
       base: 'border-0 [&.is-focus]:ring-2 bg-transparent',
       color: {
-        DEFAULT: 'hover:text-gray-1000 [&.is-focus]:ring-gray-900/20',
+        DEFAULT: 'hover:text-gray-950 [&.is-focus]:ring-gray-900/20',
         primary:
           'hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
         secondary:

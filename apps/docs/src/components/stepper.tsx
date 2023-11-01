@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, Step, Stepper } from 'rizzui';
+import React from "react";
+import { Button, Stepper } from "rizzui";
 
 export default function FunctionalStepper() {
   const [currentStep, setCurrentStep] = React.useState(0);
@@ -7,9 +7,9 @@ export default function FunctionalStepper() {
   return (
     <>
       <Stepper currentIndex={currentStep} className="w-full">
-        <Step title="Step 1" description="This is a description" />
-        <Step title="Step 2" description="This is a description" />
-        <Step title="Step 3" description="This is a description" />
+        <Stepper.Step title="Step 1" description="This is a description" />
+        <Stepper.Step title="Step 2" description="This is a description" />
+        <Stepper.Step title="Step 3" description="This is a description" />
       </Stepper>
 
       <div className="flex space-x-4 mt-7">

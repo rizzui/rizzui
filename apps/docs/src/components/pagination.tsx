@@ -27,7 +27,7 @@ const classes = {
   },
   variant: {
     solid: {
-      base: "[&>.rc-pagination-item-active>a]:!text-gray-0 [&>.rc-pagination-item-active>a]:hover:text-gray-0",
+      base: "[&>.rc-pagination-item-active>a]:!text-gray-50 [&>.rc-pagination-item-active>a]:hover:text-gray-50",
       color: {
         DEFAULT:
           "[&>.rc-pagination-item-active]:bg-gray-900 [&>li.rc-pagination-item-active]:border-gray-900 [&>.rc-pagination-item-active]:hover:border-gray-900 [&>.rc-pagination-item-active]:focus:border-gray-900 dark:[&>.rc-pagination-item-active]:bg-gray-200 dark:[&>.rc-pagination-item-active>a]:!text-gray-700 dark:[&>.rc-pagination-item-active>a]:hover:text-gray-700 dark:[&>li.rc-pagination-item-active]:border-gray-200 dark:[&>.rc-pagination-item-active]:hover:border-gray-200 dark:[&>.rc-pagination-item-active]:focus:border-gray-200",

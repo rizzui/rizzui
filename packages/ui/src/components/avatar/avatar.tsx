@@ -25,7 +25,7 @@ const classes = {
   },
   color: {
     DEFAULT: 'bg-gray-200 text-gray-900',
-    invert: 'bg-gray-900 text-gray-0',
+    invert: 'bg-gray-900 text-gray-50',
     primary: 'bg-primary text-white',
     secondary: 'bg-secondary text-white',
     success: 'bg-green text-white',

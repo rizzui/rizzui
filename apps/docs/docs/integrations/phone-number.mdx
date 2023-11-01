@@ -64,10 +64,10 @@ const inputClasses = {
   },
   variant: {
     active: {
-      base: "!border focus:ring-[0.6px] !bg-gray-0 placeholder:!opacity-80 read-only:focus:!ring-0",
+      base: "!border focus:ring-[0.6px] !bg-gray-50 placeholder:!opacity-80 read-only:focus:!ring-0",
       color: {
         DEFAULT:
-          "!border-gray-900 focus:enabled:!border-gray-1000 focus:!ring-gray-1000 !text-gray-1000",
+          "!border-gray-900 focus:enabled:!border-gray-950 focus:!ring-gray-950 !text-gray-950",
         primary:
           "!border-primary focus:enabled:!border-primary focus:!ring-primary !text-primary-dark",
         secondary:
@@ -85,7 +85,7 @@ const inputClasses = {
       base: "!border-0 focus:ring-2 placeholder:!opacity-90 read-only:focus:!ring-0",
       color: {
         DEFAULT:
-          "!bg-gray-200/70 hover:enabled:!bg-gray-200/90 focus:!ring-gray-900/20 !text-gray-1000 placeholder:!text-gray-600",
+          "!bg-gray-200/70 hover:enabled:!bg-gray-200/90 focus:!ring-gray-900/20 !text-gray-950 placeholder:!text-gray-600",
         primary:
           "!bg-primary-lighter/70 hover:enabled:!bg-primary-lighter/90 focus:!ring-primary/30 !text-primary-dark",
         secondary:
@@ -103,7 +103,7 @@ const inputClasses = {
       base: "!bg-transparent focus:ring-[0.6px] !border !border-gray-300 read-only:!border-gray-300 read-only:focus:!ring-0 placeholder:!text-gray-500",
       color: {
         DEFAULT:
-          "hover:!border-gray-1000 focus:!border-gray-1000 focus:!ring-gray-1000",
+          "hover:!border-gray-950 focus:!border-gray-950 focus:!ring-gray-950",
         primary:
           "hover:!border-primary focus:!border-primary focus:!ring-primary",
         secondary:
@@ -118,7 +118,7 @@ const inputClasses = {
       base: "!border-0 focus:ring-2 !bg-transparent",
       color: {
         DEFAULT:
-          "hover:!text-gray-1000 focus:!ring-gray-900/20 placeholder:!text-gray-500",
+          "hover:!text-gray-950 focus:!ring-gray-900/20 placeholder:!text-gray-500",
         primary:
           "hover:!text-primary-dark focus:!ring-primary/30 !text-primary",
         secondary:
@@ -145,7 +145,7 @@ const buttonClasses = {
 };
 
 const dropdownClasses = {
-  base: "!shadow-xl !text-sm !max-h-[216px] !w-full !my-1.5 !bg-gray-0 [&>.no-entries-message]:!text-center [&>.divider]:!border-gray-300",
+  base: "!shadow-xl !text-sm !max-h-[216px] !w-full !my-1.5 !bg-gray-50 [&>.no-entries-message]:!text-center [&>.divider]:!border-gray-300",
   rounded: {
     none: "!rounded-sm",
     sm: "!rounded",
@@ -154,7 +154,7 @@ const dropdownClasses = {
     pill: "!rounded-xl",
   },
   searchBox:
-    "!pr-2.5 !bg-gray-0 [&>.search-box]:!w-full [&>.search-box]:!m-0 [&>.search-box]:!px-3 [&>.search-box]:!py-1 [&>.search-box]:!text-sm [&>.search-box]:!capitalize [&>.search-box]:!h-9 [&>.search-box]:!leading-[36px] [&>.search-box]:!rounded-md [&>.search-box]:!bg-transparent [&>.search-box]:!border-gray-300 [&>.search-box:focus]:!border-gray-400/70 [&>.search-box:focus]:!ring-0 [&>.search-box]:placeholder:!text-gray-500",
+    "!pr-2.5 !bg-gray-50 [&>.search-box]:!w-full [&>.search-box]:!m-0 [&>.search-box]:!px-3 [&>.search-box]:!py-1 [&>.search-box]:!text-sm [&>.search-box]:!capitalize [&>.search-box]:!h-9 [&>.search-box]:!leading-[36px] [&>.search-box]:!rounded-md [&>.search-box]:!bg-transparent [&>.search-box]:!border-gray-300 [&>.search-box:focus]:!border-gray-400/70 [&>.search-box:focus]:!ring-0 [&>.search-box]:placeholder:!text-gray-500",
   highlightListColor: {
     DEFAULT:
       "[&>li.country.highlight]:!bg-gray-100 [&>li.country:hover]:!bg-gray-100",

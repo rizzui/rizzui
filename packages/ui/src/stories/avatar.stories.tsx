@@ -250,25 +250,25 @@ export const Group = () => (
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/41.jpg"
-      className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
+      className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-50"
     />
     <Avatar
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/42.jpg"
-      className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
+      className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-50"
     />
     <Avatar
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/43.jpg"
-      className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
+      className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-50"
     />
     <Avatar
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/44.jpg"
-      className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
+      className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-50"
     />
     <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[24px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
       +5

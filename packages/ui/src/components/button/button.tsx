@@ -23,7 +23,7 @@ const buttonClasses = {
       base: 'border border-transparent focus-visible:ring-offset-2',
       color: {
         DEFAULT:
-          'bg-gray-900 hover:enabled::bg-gray-800 active:enabled:bg-gray-1000 focus-visible:ring-gray-900/30 text-gray-0',
+          'bg-gray-900 hover:enabled::bg-gray-800 active:enabled:bg-gray-950 focus-visible:ring-gray-900/30 text-gray-50',
         primary:
           'bg-primary hover:enabled:bg-primary-dark focus-visible:ring-primary/30 text-white',
         secondary:
@@ -41,7 +41,7 @@ const buttonClasses = {
       base: 'border-transparent focus-visible:ring-offset-2',
       color: {
         DEFAULT:
-          'bg-gray-200 hover:enabled:bg-gray-300 focus-visible:ring-gray-900/30 text-gray-1000',
+          'bg-gray-200 hover:enabled:bg-gray-300 focus-visible:ring-gray-900/30 text-gray-950',
         primary:
           'bg-primary-lighter hover:enabled:bg-primary-dark/20 focus-visible:ring-primary/30 text-primary-dark',
         secondary:
@@ -59,7 +59,7 @@ const buttonClasses = {
       base: 'bg-transparent border focus-visible:ring-offset-2',
       color: {
         DEFAULT:
-          'border-gray-300 hover:enabled:border-gray-1000 focus-visible:enabled:border-gray-1000 focus-visible:ring-gray-900/30',
+          'border-gray-300 hover:enabled:border-gray-950 focus-visible:enabled:border-gray-950 focus-visible:ring-gray-900/30',
         primary:
           'hover:enabled:bg-primary-lighter/40 focus-visible:ring-primary/30 text-primary-dark border-primary hover:enabled:border-primary-dark',
         secondary:
@@ -76,7 +76,7 @@ const buttonClasses = {
     text: {
       base: '',
       color: {
-        DEFAULT: 'hover:enabled:text-gray-1000 focus-visible:ring-gray-900/30',
+        DEFAULT: 'hover:enabled:text-gray-950 focus-visible:ring-gray-900/30',
         primary:
           'hover:enabled:text-primary-dark focus-visible:ring-primary/30 text-primary',
         secondary:

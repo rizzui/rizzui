@@ -14,9 +14,9 @@ const inputClasses = {
   },
   variant: {
     outline: {
-      base: 'bg-transparent border border-gray-300 checked:!bg-gray-1000 focus:ring-gray-900/30 checked:!border-gray-1000',
+      base: 'bg-transparent border border-gray-300 checked:!bg-gray-950 focus:ring-gray-900/30 checked:!border-gray-950',
       color: {
-        DEFAULT: 'hover:enabled:border-gray-1000',
+        DEFAULT: 'hover:enabled:border-gray-950',
         primary: 'hover:enabled:border-primary',
         secondary: 'hover:enabled:border-secondary',
         danger: 'hover:enabled:border-red',
@@ -29,7 +29,7 @@ const inputClasses = {
       base: 'border-0',
       color: {
         DEFAULT:
-          'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 checked:!bg-gray-1000',
+          'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 checked:!bg-gray-950',
         primary:
           'bg-primary-lighter/70 hover:enabled:bg-primary-lighter/90 focus:ring-primary/30 checked:!bg-primary-dark',
         secondary:
@@ -47,7 +47,7 @@ const inputClasses = {
       base: 'border',
       color: {
         DEFAULT:
-          'border-gray-900 checked:enabled:border-gray-1000 focus:ring-gray-900/30 checked:!bg-gray-1000',
+          'border-gray-900 checked:enabled:border-gray-950 focus:ring-gray-900/30 checked:!bg-gray-950',
         primary:
           'border-primary checked:enabled:border-primary focus:ring-primary/30 checked:!bg-primary-dark',
         secondary:

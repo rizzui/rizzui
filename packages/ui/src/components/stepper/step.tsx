@@ -37,10 +37,10 @@ const circleClasses = {
     DEFAULT: 'h-8 w-8',
     lg: 'h-9 w-9',
   },
-  waiting: 'border border-gray-300 bg-gray-0 text-gray-500',
+  waiting: 'border border-gray-300 bg-white dark:bg-gray-50 text-gray-500',
   variant: {
     solid: {
-      base: 'text-gray-0 shadow-lg',
+      base: 'text-gray-50 shadow-lg',
       color: {
         DEFAULT: 'bg-gray-900',
         primary: 'bg-primary',
@@ -52,7 +52,7 @@ const circleClasses = {
       },
     },
     outline: {
-      base: 'border bg-gray-0 shadow-lg',
+      base: 'border dark:bg-gray-50 bg-white shadow-lg',
       color: {
         DEFAULT: 'text-gray-900 border-gray-900',
         primary: 'text-primary border-primary',
@@ -67,7 +67,7 @@ const circleClasses = {
 };
 
 const dotClasses = {
-  base: 'indent-[-9999px] overflow-hidden',
+  base: 'indent-[-9999px] overflow-hidden mt-1.5',
   waiting: 'bg-gray-300',
   size: {
     sm: 'h-3 w-3 !mt-2',
