@@ -62,7 +62,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        inter: ["Inter", "system-ui", "sans-serif"],
+        geist: ["Geist", "system-ui", "sans-serif"],
       },
       fontSize: {
         h1: [

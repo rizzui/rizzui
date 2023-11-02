@@ -18,9 +18,9 @@ function AnnouncementText() {
 function BlurBGPattern() {
   return (
     <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
-      <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.05] transform rotate-12 scale-95" />
-      <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.05] transform rotate-12 scale-105 hidden sm:flex" />
-      <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.05] transform rotate-12 scale-95 hidden md:flex" />
+      <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.035] transform rotate-12 scale-95" />
+      <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.035] transform rotate-12 scale-105 hidden sm:flex" />
+      <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.035] transform rotate-12 scale-95 hidden md:flex" />
     </div>
   );
 }
@@ -38,7 +38,7 @@ export default function HeroBlock() {
               "text-3xl sm:text-4xl xl:text-5xl 2xl:text-6xl leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-10"
             )}
           >
-            A Modern and Minimal React UI Library{" "}
+            A Modern & Minimal React UI Library{" "}
             <br className="hidden md:inline-block" /> built with TailwindCSS
           </Title>
           <Text className="text-[15px] md:text-base lg:text-lg leading-[1.9] md:leading-[1.9] lg:leading-[1.9] max-w-5xl mx-auto mb-8 md:mb-12 text-gray-600">

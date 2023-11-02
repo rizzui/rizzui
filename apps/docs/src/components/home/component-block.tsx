@@ -2,7 +2,6 @@ import React from "react";
 import { useHistory } from "@docusaurus/router";
 import {
   Button,
-  ActionIcon,
   Title,
   Text,
   PinCode,
@@ -13,11 +12,6 @@ import {
 } from "rizzui";
 import Rate from "@site/src/components/rate";
 import Pagination from "@site/src/components/pagination";
-import {
-  ArrowRightIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "@heroicons/react/24/outline";
 
 const components = [
   {
@@ -35,7 +29,9 @@ const components = [
   },
   {
     id: 2,
-    component: <PinCode setValue={() => null} />,
+    component: (
+      <PinCode setValue={() => null} className="bg-white dark:bg-gray-50" />
+    ),
     name: "PinCode",
     description:
       "It provides a simple and intuitive way for users to enter a numeric code, such as a PIN or password",
@@ -87,38 +83,13 @@ const components = [
   },
 ];
 
-const slideWidth = 320;
-const slideMargin = 20;
-
-const scrollToSlide = (slider: HTMLDivElement | null, slideIndex: number) => {
-  if (!slider) return;
-  slider.scrollTo({
-    left: slideIndex * (slideWidth + slideMargin),
-    behavior: "smooth",
-  });
-};
-
 export default function ComponentBlock() {
   const history = useHistory();
-  const sliderRef = React.useRef<HTMLDivElement | null>(null);
-  const [sliderPosition, setSliderPosition] = React.useState(0);
-
-  const currentSlide = React.useMemo(() => {
-    return Math.floor(sliderPosition / (slideWidth + slideMargin));
-  }, [sliderPosition]);
-
-  const goToNextSlide = React.useCallback(() => {
-    scrollToSlide(sliderRef.current, currentSlide + 1);
-  }, [currentSlide]);
-
-  const goToPreviousSlide = React.useCallback(() => {
-    scrollToSlide(sliderRef.current, currentSlide - 1);
-  }, [currentSlide]);
 
   return (
     <section className="pt-10 md:pt-16 pb-14 md:pb-20 group">
-      <div className="container mx-auto">
-        <header className="text-center mb-8 sm:mb-10 md:mb-12">
+      <header className="text-center mb-8 sm:mb-10 md:mb-12">
+        <div className="container mx-auto">
           <Text className="!mb-3 sm:!mb-5 !text-[11px] sm:!text-xs lg:!text-sm font-medium tracking-[4px] uppercase text-gray-500">
             Beautifully Crafted
           </Text>
@@ -128,70 +99,41 @@ export default function ComponentBlock() {
           >
             35+ Production Ready Components
           </Title>
-        </header>
-      </div>
+        </div>
+      </header>
 
-      <div className="h-[520px] overflow-hidden relative">
-        <div
-          ref={sliderRef}
-          onScroll={(event) =>
-            setSliderPosition(event.currentTarget.scrollLeft)
-          }
-          className="flex overflow-x-auto h-[560px] pb-10 pr-[8vw] snap-x snap-mandatory"
-        >
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {components.map((item) => (
             <div
               key={"component-" + item.id}
-              className="snap-start snap-always mr-5"
+              className="flex flex-col rounded-xl border border-gray-200 flex-shrink-0 relative shadow-sm overflow-hidden"
             >
-              <div className="slide-item-center flex h-full flex-col rounded-2xl w-[320px] border border-gray-300 flex-shrink-0 relative">
-                <div className="flex h-full justify-center items-center px-6 py-4">
-                  {item.component}
-                </div>
-                <div className="py-5 px-6">
-                  <Title as="h5" className="font-semibold !mb-1.5">
-                    {item.name}
-                  </Title>
-                  <Text>{item.description}</Text>
-                </div>
+              <div className="flex h-full justify-center items-center px-6 py-12 min-h-[256px] border-b border-gray-200 before:h-1/2 before:absolute relative before:bg-gradient-to-t before:from-gray-200/20 before:bottom-0 before:w-full">
+                <span className="grid-box absolute inset-0 -z-[1] opacity-70" />
+                {item.component}
+              </div>
+              <div className="p-6">
+                <Title as="h5" className="font-semibold !mb-1.5">
+                  {item.name}
+                </Title>
+                <Text className="text-gray-500">5 components</Text>
+                {/* <Text className="text-gray-500">{item.description}</Text> */}
               </div>
             </div>
           ))}
-
-          <div className="snap-start snap-always">
-            <div className="slide-item-center flex h-full flex-col rounded-2xl w-[320px] border border-gray-300 flex-shrink-0 relative">
-              <div className="flex h-full justify-center items-center">
-                <div className="text-center">
-                  <Text className="mb-3">See more components in the docs</Text>
-                  <Button
-                    variant="flat"
-                    onClick={() => history.push("/docs/components/action-icon")}
-                  >
-                    View more <ArrowRightIcon className="w-4 h-4 ml-1.5" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {currentSlide !== 0 && (
-          <ActionIcon
-            rounded="full"
-            onClick={goToPreviousSlide}
-            className="absolute top-1/2 -mt-[20px] left-5 z-10 bg-opacity-25 opacity-0 group-hover:opacity-100"
+        <div className="mt-8 flex items-center justify-center">
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={() => history.push("/docs/buttons/action-icon")}
+            className="min-w-[180px]"
           >
-            <ChevronLeftIcon className="w-5 h-5" strokeWidth={2.3} />
-          </ActionIcon>
-        )}
-
-        <ActionIcon
-          rounded="full"
-          onClick={goToNextSlide}
-          className="absolute top-1/2 -mt-[20px] right-5 z-10 bg-opacity-25 opacity-0 group-hover:opacity-100"
-        >
-          <ChevronRightIcon className="w-5 h-5" strokeWidth={2.3} />
-        </ActionIcon>
+            Explore More
+          </Button>
+        </div>
       </div>
     </section>
   );
