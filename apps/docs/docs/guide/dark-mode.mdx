@@ -1,108 +1,12 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Getting Started
+# Dark Mode
 
 Explore RizzUI: Modern, Minimal, TailwindCSS-based React UI Library. Intuitively crafted, easy-to-customize components for seamless integration. Responsive, accessible, and consistent across devices and browsers.
 
-## Installation
-
-System Requirements:
-
-- Node.js 16.17.0 or later.
-
-```bash title=Terminal
-npm i rizzui @headlessui/react @floating-ui/react
-```
-
-_*Note: Also, you can use other package managers like - **bun**, **PNPM** and **Yarn**.*_
-
-After installing our rizzui package, now need to install TailwindCSS.
-
-```bash title=Terminal
-npm i -D tailwindcss postcss autoprefixer @tailwindcss/forms
-```
-
-## Configure tailwind.config.js
-
-Now, we need to configure tailwind. We are using css variable for theming. You need to copy and paste the following tailwind configuration in your tailwind.config.js file-
-
-```js title=tailwind.config.js
-/** @type {import('tailwindcss').Config} */
-
-const plugin = require("tailwindcss/plugin");
-const colors = require("tailwindcss/colors");
-
-module.exports = {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}", // requried this line to compile RizzUI style
-  ],
-  theme: {
-    extend: {
-      colors: {
-        gray: colors.gray, // use one of theme -> gray | slate | zinc | neutral | stone
-        primary: {
-          lighter: colors.indigo[100],
-          DEFAULT: colors.indigo[500],
-          dark: colors.indigo[700],
-        },
-        secondary: {
-          lighter: colors.purple[100],
-          DEFAULT: colors.purple[500],
-          dark: colors.purple[700],
-        },
-        red: {
-          lighter: colors.rose[100],
-          DEFAULT: colors.rose[500],
-          dark: colors.rose[700],
-        },
-        orange: {
-          lighter: colors.amber[100],
-          DEFAULT: colors.amber[500],
-          dark: colors.amber[700],
-        },
-        blue: {
-          lighter: colors.sky[100],
-          DEFAULT: colors.sky[500],
-          dark: colors.sky[700],
-        },
-        green: {
-          lighter: colors.emerald[100],
-          DEFAULT: colors.emerald[500],
-          dark: colors.emerald[700],
-        },
-      },
-      // requried these animations for the Loader component
-      animation: {
-        blink: "blink 1.4s infinite both;",
-        "scale-up": "scaleUp 500ms infinite alternate",
-      },
-      keyframes: {
-        blink: {
-          "0%": { opacity: 0.2 },
-          "20%": { opacity: 1 },
-          "100%": { opacity: 0.2 },
-        },
-        scaleUp: {
-          "0%": { transform: "scale(0)" },
-          "100%": { transform: "scale(1)" },
-        },
-      },
-    },
-  },
-  plugins: [
-    require("@tailwindcss/forms"),
-    plugin(function ({ addVariant }) {
-      // required this to prevent any style on readOnly input elements
-      addVariant("not-read-only", "&:not(:read-only)");
-    }),
-  ],
-};
-```
-
-## Configure main.css
+## Configure CSS variables
 
 Only our tailwind.config.js file is not enough for styeling, you need to use our main.css file as well. Please copy and paste bellow TailwindCSS styles file's code and use it in your style file
 
@@ -240,24 +144,70 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
 }
 ```
 
-You are good to go to use our components in your application
+## Configure tailwind.config.js
 
-## Usage
+Now, we need to configure tailwind. We are using css variable for theming. You need to copy and paste the following tailwind configuration in your tailwind.config.js file-
 
-The **"use client"** directive must be defined at the top of a file before any imports if you are using nextjs 13 app routing approach.
+```js title=tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 
-```tsx
-"use client";
+const plugin = require("tailwindcss/plugin");
 
-import { Button } from "rizzui";
-
-export default function App() {
-  return <Button>Default</Button>;
-}
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        /*
+         * you can use hex code color value unless you want light and dark mode color scheme,
+         * we are using css variables for light and dark mode color scheme
+         */
+        gray: {
+          50: "rgb(var(--gray-50) / <alpha-value>)",
+          100: "rgb(var(--gray-100) / <alpha-value>)",
+          200: "rgb(var(--gray-200) / <alpha-value>)",
+          300: "rgb(var(--gray-300) / <alpha-value>)",
+          400: "rgb(var(--gray-400) / <alpha-value>)",
+          500: "rgb(var(--gray-500) / <alpha-value>)",
+          600: "rgb(var(--gray-600) / <alpha-value>)",
+          700: "rgb(var(--gray-700) / <alpha-value>)",
+          800: "rgb(var(--gray-800) / <alpha-value>)",
+          900: "rgb(var(--gray-900) / <alpha-value>)",
+          950: "rgb(var(--gray-950) / <alpha-value>)",
+        },
+        primary: {
+          lighter: "rgb(var(--primary-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--primary-default) / <alpha-value>)",
+          dark: "rgb(var(--primary-dark) / <alpha-value>)",
+        },
+        secondary: {
+          lighter: "rgb(var(--secondary-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--secondary-default) / <alpha-value>)",
+          dark: "rgb(var(--secondary-dark) / <alpha-value>)",
+        },
+        red: {
+          lighter: "rgb(var(--red-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--red-default) / <alpha-value>)",
+          dark: "rgb(var(--red-dark) / <alpha-value>)",
+        },
+        orange: {
+          lighter: "rgb(var(--orange-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--orange-default) / <alpha-value>)",
+          dark: "rgb(var(--orange-dark) / <alpha-value>)",
+        },
+        blue: {
+          lighter: "rgb(var(--blue-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--blue-default) / <alpha-value>)",
+          dark: "rgb(var(--blue-dark) / <alpha-value>)",
+        },
+        green: {
+          lighter: "rgb(var(--green-lighter) / <alpha-value>)",
+          DEFAULT: "rgb(var(--green-default) / <alpha-value>)",
+          dark: "rgb(var(--green-dark) / <alpha-value>)",
+        },
+      },
+      // requried these animations for the Loader component
+      ...
+    },
+  },
+};
 ```
-
-:::warning Warning
-
-This project is still in development, it might have bugs and breaking changes so it is not recommended to use it in production. We hope to have a stable version soon 🚀.
-
-:::

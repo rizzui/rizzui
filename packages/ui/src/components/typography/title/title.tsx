@@ -24,13 +24,14 @@ export type TitleProps = {
   as?: keyof typeof titleStyles.as;
   fontWeight?: keyof typeof titleStyles.fontWeight;
   className?: string;
-};
+} & React.HTMLAttributes<HTMLHeadingElement>;
 
 export function Title({
   as = 'h2',
   fontWeight = 'bold',
   children,
   className,
+  ...props
 }: React.PropsWithChildren<TitleProps>) {
   const Component = as;
 
@@ -42,6 +43,7 @@ export function Title({
         titleStyles.fontWeight[fontWeight],
         className,
       )}
+      {...props}
     >
       {children}
     </Component>

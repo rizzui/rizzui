@@ -8,15 +8,17 @@ const classes = {
 
 export type BlockquoteProps = {
   className?: string;
-};
+} & React.HTMLAttributes<HTMLQuoteElement>;
 
 export function Blockquote({
   children,
   className,
+  ...props
 }: React.PropsWithChildren<BlockquoteProps>) {
   return (
     <blockquote
       className={cn(makeClassName(`blockquote`), classes.blockquote, className)}
+      {...props}
     >
       {children}
     </blockquote>

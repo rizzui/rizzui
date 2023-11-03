@@ -26,13 +26,14 @@ export type TextProps = {
   as?: keyof typeof classes;
   title?: string;
   className?: string;
-};
+} & React.HTMLAttributes<any>;
 
 export function Text({
   as = 'p',
   title,
   children,
   className,
+  ...props
 }: React.PropsWithChildren<TextProps>) {
   const Component = as;
   if (as === 'abbr' && title === undefined) {
@@ -42,6 +43,7 @@ export function Text({
     <Component
       {...(title && { title })}
       className={cn(makeClassName(`text-${as}`), classes[as], className)}
+      {...props}
     >
       {children}
     </Component>
