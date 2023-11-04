@@ -6,11 +6,11 @@ sidebar_position: 2
 
 Explore RizzUI: Modern, Minimal, TailwindCSS-based React UI Library. Intuitively crafted, easy-to-customize components for seamless integration. Responsive, accessible, and consistent across devices and browsers.
 
-## Configure CSS variables
+## Configure globals.css
 
-Only our tailwind.config.js file is not enough for styeling, you need to use our main.css file as well. Please copy and paste bellow TailwindCSS styles file's code and use it in your style file
+Only our tailwind.config.js file is not enough for styeling, you need to use our globals.css file as well. Please copy and paste bellow TailwindCSS styles file's code and use it in your style file
 
-```css title=main.css
+```css title=globals.css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,126 +18,82 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
 @layer base {
   /* default theme */
   :root {
-    /* 
-      - gray/natural colors for texts, borders and disabled elements. 
-      - If required we can use as background too. 
-    */
-    /* For rgb(255 255 255 / <alpha-value>) = #ffffff */
-    --gray-50: 255 255 255;
-    /* For rgb(250 250 250 / <alpha-value>) = #fafafa */
-    --gray-50: 250 250 250;
-    /* For rgb(241 241 241 / <alpha-value>) = #f1f1f1 */
-    --gray-100: 241 241 241;
-    /* For rgb(227 227 227 / <alpha-value>) = #e3e3e3 */
-    --gray-200: 227 227 227;
-    /* For rgb(223 223 223 / <alpha-value>) = #dfdfdf */
-    --gray-300: 223 223 223;
-    /* For rgb(146 146 146 / <alpha-value>) = #929292 */
-    --gray-400: 146 146 146;
-    /* For rgb(102 102 102 / <alpha-value>) = #666666 */
-    --gray-500: 102 102 102;
-    /* For rgb(72 72 72 / <alpha-value>) = #484848 */
-    --gray-600: 72 72 72;
-    /* For rgb(51 51 51 / <alpha-value>) = #333333 */
-    --gray-700: 51 51 51;
-    /* For rgb(34 34 34 / <alpha-value>) = #222222 */
-    --gray-800: 34 34 34;
-    /* For rgb(17 17 17 / <alpha-value>) = #111111 */
-    --gray-900: 17 17 17;
-    /* For rgb(0 0 0 / <alpha-value>) = #000000 */
-    --gray-950: 0 0 0;
+    /* ----------------------------------- */
+    /* gray colors */
+    /* ----------------------------------- */
+    --gray-50: 255 255 255; /* #ffffff */
+    --gray-50: 250 250 250; /* #fafafa */
+    --gray-100: 241 241 241; /* #f1f1f1 */
+    --gray-200: 227 227 227; /* #e3e3e3 */
+    --gray-300: 223 223 223; /* #dfdfdf */
+    --gray-400: 146 146 146; /* #929292 */
+    --gray-500: 102 102 102; /* #666666 */
+    --gray-600: 72 72 72; /* #484848 */
+    --gray-700: 51 51 51; /* #333333 */
+    --gray-800: 34 34 34; /* #222222 */
+    --gray-900: 17 17 17; /* #111111 */
+    --gray-950: 0 0 0; /* #000000 */
 
     /* ----------------------------------- */
     /* primary/brand colors */
     /* ----------------------------------- */
-    /* For rgb(221 227 255 / <alpha-value>) = #dde3ff */
-    --primary-lighter: 221 227 255;
-    /* For rgb(78 54 245 / <alpha-value>) = #4e36f5 */
-    --primary-default: 78 54 245;
-    /* For rgb(67 42 216 / <alpha-value>) = #432ad8 */
-    --primary-dark: 67 42 216;
+    --primary-lighter: 221 227 255; /* #dde3ff */
+    --primary-default: 78 54 245; /* #4e36f5 */
+    --primary-dark: 67 42 216; /* #432ad8 */
 
     /* ----------------------------------- */
     /* secondary colors */
     /* ----------------------------------- */
-    /* For rgb(227 215 252 / <alpha-value>) = #e3d7fc */
-    --secondary-lighter: 227 215 252;
-    /* For rgb(121 40 202 / <alpha-value>) = #7928ca */
-    --secondary-default: 121 40 202;
-    /* For rgb(76 40 137 / <alpha-value>) = #4c2889 */
-    --secondary-dark: 76 40 137;
+    --secondary-lighter: 227 215 252; /* #e3d7fc */
+    --secondary-default: 121 40 202; /* #7928ca */
+    --secondary-dark: 76 40 137; /* #4c2889 */
 
     /* ----------------------------------- */
     /* red/error colors */
     /* ----------------------------------- */
-    /* For rgb(247 212 214 / <alpha-value>) = #f7d4d6 */
-    --red-lighter: 247 212 214;
-    /* For rgb(238 0 0 / <alpha-value>) = #e00 */
-    --red-default: 238 0 0;
-    /* For rgb(197 0 0 / <alpha-value>) = #c50000 */
-    --red-dark: 197 0 0;
+    --red-lighter: 247 212 214; /* #f7d4d6 */
+    --red-default: 238 0 0; /* #e00 */
+    --red-dark: 197 0 0; /* #c50000 */
 
     /* ----------------------------------- */
     /* orange/warning colors */
     /* ----------------------------------- */
-    /* For rgb(255 239 207 / <alpha-value>) = #ffefcf */
-    --orange-lighter: 255 239 207;
-    /* For rgb(245 166 35 / <alpha-value>) = #f5a623 */
-    --orange-default: 245 166 35;
-    /* For rgb(171 87 10 / <alpha-value>) = #ab570a */
-    --orange-dark: 171 87 10;
+    --orange-lighter: 255 239 207; /* #ffefcf */
+    --orange-default: 245 166 35; /* #f5a623 */
+    --orange-dark: 171 87 10; /* #ab570a */
 
     /* ----------------------------------- */
     /* blue/info colors */
     /* ----------------------------------- */
-    /* For rgb(211 229 255 / <alpha-value>) = #d3e5ff */
-    --blue-lighter: 211 229 255;
-    /* For rgb(0 112 243 / <alpha-value>) = #0070f3 */
-    --blue-default: 0 112 243;
-    /* For rgb(7 97 209 / <alpha-value>) = #0761d1 */
-    --blue-dark: 7 97 209;
+    --blue-lighter: 211 229 255; /* #d3e5ff */
+    --blue-default: 0 112 243; /* #0070f3 */
+    --blue-dark: 7 97 209; /* #0761d1 */
 
     /* ----------------------------------- */
     /* green/success colors */
     /* ----------------------------------- */
-    /* For rgb(185 249 207 / <alpha-value>) = #b9f9cf */
-    --green-lighter: 185 249 207;
-    /* For rgb(17 168 73 / <alpha-value>) = #11a849 */
-    --green-default: 17 168 73;
-    /* For rgb(17 132 60 / <alpha-value>) = #11843c */
-    --green-dark: 17 132 60;
+    --green-lighter: 185 249 207; /* #b9f9cf */
+    --green-default: 17 168 73; /* #11a849 */
+    --green-dark: 17 132 60; /* #11843c */
   }
 
   /* dark theme */
   [data-theme="dark"] {
-    /* 
-      - gray/natural color shades for texts, borders and disabled elements. 
-      - If required we can use as background too. 
-    */
-    /* For rgb(0 0 0 / <alpha-value>) = #000000 */
-    --gray-50: 0 0 0;
-    /* For rgb(17 17 17 / <alpha-value>) = #111111 */
-    --gray-50: 17 17 17;
-    /* For rgb(34 34 34 / <alpha-value>) = #222222 */
-    --gray-100: 34 34 34;
-    /* For rgb(51 51 51 / <alpha-value>) = #333333 */
-    --gray-200: 51 51 51;
-    /* For rgb(72 72 72 / <alpha-value>) = #484848 */
-    --gray-300: 72 72 72;
-    /* For rgb(102 102 102 / <alpha-value>) = #666666 */
-    --gray-400: 102 102 102;
-    /* For rgb(146 146 146 / <alpha-value>) = #929292 */
-    --gray-500: 146 146 146;
-    /* For rgb(223 223 223 / <alpha-value>) = #dfdfdf */
-    --gray-600: 223 223 223;
-    /* For rgb(227 227 227 / <alpha-value>) = #e3e3e3 */
-    --gray-700: 227 227 227;
-    /* For rgb(241 241 241 / <alpha-value>) = #f1f1f1 */
-    --gray-800: 241 241 241;
-    /* For rgb(250 250 250 / <alpha-value>) = #fafafa */
-    --gray-900: 250 250 250;
-    /* For rgb(255 255 255 / <alpha-value>) = #ffffff */
-    --gray-950: 255 255 255;
+    /* ----------------------------------- */
+    /* gray/natural colors */
+    /* ----------------------------------- */
+    --gray-50: 0 0 0; /* #000000 */
+    --gray-50: 17 17 17; /* #111111 */
+    --gray-100: 34 34 34; /* #222222 */
+    --gray-200: 51 51 51; /* #333333 */
+    --gray-300: 72 72 72; /* #484848 */
+    --gray-400: 102 102 102; /* #666666 */
+    --gray-500: 146 146 146; /* #929292 */
+    --gray-600: 223 223 223; /* #dfdfdf */
+    --gray-700: 227 227 227; /* #e3e3e3 */
+    --gray-800: 241 241 241; /* #f1f1f1 */
+    --gray-900: 250 250 250; /* #fafafa */
+    --gray-950: 255 255 255; /* #ffffff */
 
     /* here you can customize other colors for dark theme if design required */
   }
@@ -146,7 +102,7 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
 
 ## Configure tailwind.config.js
 
-Now, we need to configure tailwind. We are using css variable for theming. You need to copy and paste the following tailwind configuration in your tailwind.config.js file-
+Now, we need to configure tailwind. We are using css variable for theming. You need to copy and paste the following tailwind configuration colors in your tailwind.config.js file-
 
 ```js title=tailwind.config.js
 /** @type {import('tailwindcss').Config} */
@@ -157,10 +113,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        /*
-         * you can use hex code color value unless you want light and dark mode color scheme,
-         * we are using css variables for light and dark mode color scheme
-         */
         gray: {
           50: "rgb(var(--gray-50) / <alpha-value>)",
           100: "rgb(var(--gray-100) / <alpha-value>)",
@@ -205,8 +157,7 @@ module.exports = {
           dark: "rgb(var(--green-dark) / <alpha-value>)",
         },
       },
-      // requried these animations for the Loader component
-      ...
+      ... // other config
     },
   },
 };

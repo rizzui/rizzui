@@ -33,13 +33,13 @@ const config = {
     locales: ["en"],
   },
 
-  // custom external stylesheets
-  stylesheets: [
-    {
-      href: "fonts/geist-font.css",
-      type: "text/css",
-    },
-  ],
+  // // custom external stylesheets
+  // stylesheets: [
+  //   {
+  //     href: "fonts/geist-font.css",
+  //     type: "text/css",
+  //   },
+  // ],
 
   plugins: [
     async function myPlugin(context, options) {
