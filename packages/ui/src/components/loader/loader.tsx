@@ -1,107 +1,67 @@
 import React from 'react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
+import { BarsSpinner } from './bars-spinner';
+import { PulseLoader } from './pulse-loader';
+import { Spinner } from './spinner';
+import { ThreeDotScale } from './three-dot-scale';
 
-const animations = {
-  blink: 'animate-blink',
-  scaleUp: 'animate-scale-up',
+const loaderStyles = {
+  base: 'h-auto',
+  sizes: {
+    sm: 'w-5',
+    DEFAULT: 'w-[22px]',
+    lg: 'w-7',
+    xl: 'w-9',
+  },
+  colors: {
+    DEFAULT: 'text-current',
+    primary: 'text-primary',
+    secondary: 'text-secondary',
+    danger: 'text-red',
+    info: 'text-blue',
+    success: 'text-green',
+    warning: 'text-orange',
+  },
 };
 
-const sizes = {
-  sm: 'w-1 h-1',
-  DEFAULT: 'w-1.5 h-1.5',
-  lg: 'w-2 h-2',
-  xl: 'w-2.5 h-2.5',
+const Components = {
+  bars: BarsSpinner,
+  pulse: PulseLoader,
+  spinner: Spinner,
+  threeDot: ThreeDotScale,
 };
 
-const gapBasedOnSize = {
-  sm: 'gap-1',
-  DEFAULT: 'gap-1.5',
-  lg: 'gap-1.5',
-  xl: 'gap-2',
-};
-
-const colors = {
-  DEFAULT: 'bg-gray-950',
-  primary: 'bg-primary',
-  secondary: 'bg-secondary',
-  danger: 'bg-red',
-  info: 'bg-blue',
-  success: 'bg-green',
-  warning: 'bg-orange',
-  current: 'bg-current',
-};
-
-export type LoaderSizeTypes = keyof typeof sizes;
-export type LoaderColorTypes = keyof typeof colors;
-export type LoaderAnimationTypes = keyof typeof animations;
-export interface LoaderTypes
-  extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
-  /** HTML tag supports */
-  tag?: 'div' | 'span';
-  /** Set loader size */
+export type LoaderSizeTypes = keyof typeof loaderStyles.sizes;
+export type LoaderColorTypes = keyof typeof loaderStyles.colors;
+export interface LoaderTypes extends React.SVGProps<SVGSVGElement> {
   size?: LoaderSizeTypes;
-  /** Change loader color */
+  variant?: keyof typeof Components;
   color?: LoaderColorTypes;
-  /** Animation variants are */
-  animation?: LoaderAnimationTypes;
-  /** Add custom classes for extra style */
   className?: string;
 }
 
-/**
- * A loader for displaying loading state of a page or a section.
- */
 export function Loader({
-  tag = 'div',
   size = 'DEFAULT',
   color = 'DEFAULT',
-  animation = 'blink',
+  variant = 'bars',
   className,
+  ...props
 }: LoaderTypes) {
-  let Component = tag;
+  const SVGComponent = Components[variant];
 
   return (
-    <Component
+    <SVGComponent
       data-testid="loader"
       className={cn(
-        makeClassName(`loader-root`),
-        'flex items-center',
-        gapBasedOnSize[size],
+        makeClassName(`loader-${variant}`),
+        loaderStyles.base,
+        loaderStyles.sizes[size],
+        loaderStyles.colors[color],
         className,
       )}
-    >
-      <span
-        data-testid="first-dot"
-        className={cn(
-          makeClassName(`loader-dot-1`),
-          'rounded-full',
-          sizes[size],
-          colors[color],
-          animations[animation],
-        )}
-      />
-      <span
-        data-testid="second-dot"
-        className={cn(
-          makeClassName(`loader-dot-2`),
-          '[animation-delay:200ms] rounded-full',
-          sizes[size],
-          colors[color],
-          animations[animation],
-        )}
-      />
-      <span
-        data-testid="third-dot"
-        className={cn(
-          makeClassName(`loader-dot-3`),
-          '[animation-delay:500ms] rounded-full',
-          sizes[size],
-          colors[color],
-          animations[animation],
-        )}
-      />
-    </Component>
+      {...props}
+    />
   );
 }
 
