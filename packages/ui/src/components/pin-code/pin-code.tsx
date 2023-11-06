@@ -30,54 +30,54 @@ const inputClasses = {
       base: 'border focus:ring-[0.6px] bg-gray-50 placeholder:opacity-80',
       color: {
         DEFAULT:
-          'border-gray-900 not-read-only:focus:enabled:border-gray-950 focus:ring-gray-950 text-gray-950',
+          'border-gray-900 focus:enabled:border-gray-950 focus:ring-gray-950 text-gray-950',
         primary:
-          'border-primary not-read-only:focus:enabled:border-primary focus:ring-primary text-primary-dark',
+          'border-primary focus:enabled:border-primary focus:ring-primary text-primary-dark',
         secondary:
-          'border-secondary not-read-only:focus:enabled:border-secondary focus:ring-secondary text-secondary-dark',
+          'border-secondary focus:enabled:border-secondary focus:ring-secondary text-secondary-dark',
         danger:
-          'border-red not-read-only:focus:enabled:border-red focus:ring-red text-red-dark',
-        info: 'border-blue not-read-only:focus:enabled:border-blue focus:ring-blue text-info-dark',
+          'border-red focus:enabled:border-red focus:ring-red text-red-dark',
+        info: 'border-blue focus:enabled:border-blue focus:ring-blue text-info-dark',
         success:
-          'border-green not-read-only:focus:enabled:border-green focus:ring-green text-green-dark',
+          'border-green focus:enabled:border-green focus:ring-green text-green-dark',
         warning:
-          'border-orange not-read-only:focus:enabled:border-orange-dark focus:ring-orange-dark text-orange-dark',
+          'border-orange focus:enabled:border-orange-dark focus:ring-orange-dark text-orange-dark',
       },
     },
     flat: {
       base: 'border focus:ring-2 border-0 placeholder:opacity-90',
       color: {
         DEFAULT:
-          'bg-gray-200/70 not-read-only:hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 text-gray-950 placeholder:text-gray-600',
+          'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 text-gray-950 placeholder:text-gray-600',
         primary:
-          'bg-primary-lighter/70 not-read-only:hover:enabled:bg-primary-lighter/90 focus:ring-primary/30 text-primary-dark',
+          'bg-primary-lighter/70 hover:enabled:bg-primary-lighter/90 focus:ring-primary/30 text-primary-dark',
         secondary:
-          'bg-secondary-lighter/70 not-read-only:hover:enabled:bg-secondary-lighter/90 focus:ring-secondary/30 text-secondary-dark',
+          'bg-secondary-lighter/70 hover:enabled:bg-secondary-lighter/90 focus:ring-secondary/30 text-secondary-dark',
         danger:
-          'bg-red-lighter/70 not-read-only:hover:enabled:bg-red-lighter/90 focus:ring-red/30 text-red-dark',
-        info: 'bg-blue-lighter/70 not-read-only:hover:enabled:bg-blue-lighter/90 focus:ring-blue/30 text-blue-dark',
+          'bg-red-lighter/70 hover:enabled:bg-red-lighter/90 focus:ring-red/30 text-red-dark',
+        info: 'bg-blue-lighter/70 hover:enabled:bg-blue-lighter/90 focus:ring-blue/30 text-blue-dark',
         success:
-          'bg-green-lighter/70 not-read-only:hover:enabled:bg-green-lighter/90 focus:ring-green/30 text-green-dark',
+          'bg-green-lighter/70 hover:enabled:bg-green-lighter/90 focus:ring-green/30 text-green-dark',
         warning:
-          'bg-orange-lighter/90 not-read-only:hover:enabled:bg-orange-lighter focus:ring-orange/30 text-orange-dark',
+          'bg-orange-lighter/90 hover:enabled:bg-orange-lighter focus:ring-orange/30 text-orange-dark',
       },
     },
     outline: {
       base: 'bg-transparent focus:ring-[0.6px] border border-gray-300 placeholder:text-gray-500',
       color: {
         DEFAULT:
-          'not-read-only:hover:enabled:border-gray-950 not-read-only:focus:enabled:border-gray-950 focus:ring-gray-950',
+          'hover:enabled:border-gray-950 focus:enabled:border-gray-950 focus:ring-gray-950',
         primary:
-          'not-read-only:hover:enabled:border-primary not-read-only:focus:enabled:border-primary focus:ring-primary',
+          'hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
         secondary:
-          'not-read-only:hover:enabled:border-secondary not-read-only:focus:enabled:border-secondary focus:ring-secondary',
+          'hover:enabled:border-secondary focus:enabled:border-secondary focus:ring-secondary',
         danger:
-          'not-read-only:hover:enabled:border-red not-read-only:focus:enabled:border-red focus:ring-red',
-        info: 'not-read-only:hover:enabled:border-blue not-read-only:focus:enabled:border-blue focus:ring-blue',
+          'hover:enabled:border-red focus:enabled:border-red focus:ring-red',
+        info: 'hover:enabled:border-blue focus:enabled:border-blue focus:ring-blue',
         success:
-          'not-read-only:hover:enabled:border-green not-read-only:focus:enabled:border-green focus:ring-green',
+          'hover:enabled:border-green focus:enabled:border-green focus:ring-green',
         warning:
-          'not-read-only:hover:enabled:border-orange not-read-only:focus:enabled:border-orange focus:ring-orange',
+          'hover:enabled:border-orange focus:enabled:border-orange focus:ring-orange',
       },
     },
   },

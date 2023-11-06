@@ -21,7 +21,6 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
     /* ----------------------------------- */
     /* gray colors */
     /* ----------------------------------- */
-    --gray-50: 255 255 255; /* #ffffff */
     --gray-50: 250 250 250; /* #fafafa */
     --gray-100: 241 241 241; /* #f1f1f1 */
     --gray-200: 227 227 227; /* #e3e3e3 */
@@ -82,7 +81,6 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
     /* ----------------------------------- */
     /* gray/natural colors */
     /* ----------------------------------- */
-    --gray-50: 0 0 0; /* #000000 */
     --gray-50: 17 17 17; /* #111111 */
     --gray-100: 34 34 34; /* #222222 */
     --gray-200: 51 51 51; /* #333333 */
@@ -107,10 +105,13 @@ Now, we need to configure tailwind. We are using css variable for theming. You n
 ```js title=tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 
-const plugin = require("tailwindcss/plugin");
-
 module.exports = {
+  content: [
+    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}", // Required this line to compile RizzUI style
+    ... // configure your app paths
+  ],
   theme: {
+    darkMode: ["class", '[data-theme="dark"]'], // Required this line for dark mode implementation
     extend: {
       colors: {
         gray: {

@@ -30,14 +30,12 @@ Now, we need to configure tailwind. We are using css variable for theming. You n
 
 ```js title=tailwind.config.js
 /** @type {import('tailwindcss').Config} */
-
-const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}", // Required: This line is necessary to compile RizzUI style.
+    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}", // Required this line to compile RizzUI style.
+    ...// configure your app paths
   ],
   theme: {
     extend: {
@@ -76,13 +74,7 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/forms"),
-    plugin(function ({ addVariant }) {
-      // required this to prevent any style on readOnly input elements
-      addVariant("not-read-only", "&:not(:read-only)");
-    }),
-  ],
+  plugins: [require("@tailwindcss/forms")],
 };
 ```
 

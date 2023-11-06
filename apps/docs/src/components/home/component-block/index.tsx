@@ -1,79 +1,71 @@
 import React from "react";
 import { useHistory } from "@docusaurus/router";
-import {
-  Button,
-  Title,
-  Text,
-  PinCode,
-  Progressbar,
-  Switch,
-  Badge,
-  Avatar,
-} from "rizzui";
-import Rate from "@site/src/components/rate";
-import Pagination from "@site/src/components/pagination";
+import { Button, Title, Text } from "rizzui";
+import ButtonBlock from "./button-block";
+import TypographyBlock from "./typography-block";
+import TabBlock from "./tab-block";
+import FeedbackBlock from "./feedback-block";
+import DataDisplayBlock from "./data-display-block";
+import OverlayBlock from "./overlay-block";
+import InputBlock from "./input-block";
+import IntegrationBlock from "./integration-block";
 
 const components = [
   {
     id: 1,
-    component: (
-      <Avatar
-        size="lg"
-        src="https://randomuser.me/api/portraits/women/40.jpg"
-        name="Jane Doe"
-      />
-    ),
+    component: <ButtonBlock />,
     name: "Buttons",
     count: 2,
+    path: "/docs/buttons/action-icon",
   },
   {
     id: 2,
-    component: (
-      <PinCode setValue={() => null} className="bg-white dark:bg-gray-50" />
-    ),
+    component: <InputBlock />,
     name: "Inputs",
     count: 12,
+    path: "/docs/inputs/input",
   },
   {
     id: 3,
-    component: (
-      <Rate
-        defaultValue={3}
-        tooltips={["Terrible", "Bad", "Normal", "Good", "Wonderful"]}
-      />
-    ),
+    component: <TabBlock />,
     name: "Navigation",
     count: 3,
+    path: "/docs/navigation/dropdown",
   },
   {
     id: 4,
-    component: <Pagination defaultCurrent={1} total={25} />,
+    component: <FeedbackBlock />,
     name: "Feedback",
     count: 3,
+    path: "/docs/feedback/alert",
   },
   {
     id: 5,
-    component: <Badge>Badge</Badge>,
+    component: <OverlayBlock />,
     name: "Overlays",
     count: 4,
+    path: "/docs/overlays/tooltip",
   },
   {
     id: 6,
-    component: <Progressbar value={75} size="xl" label="75%" />,
+    component: <DataDisplayBlock />,
     name: "Data Display",
     count: 6,
+    path: "/docs/data-display/accordion",
   },
   {
     id: 7,
-    component: <Button>Button</Button>,
+    component: <TypographyBlock />,
     name: "Typography",
-    count: 2,
+    count: 4,
+    path: "/docs/typography/title",
   },
   {
     id: 8,
-    component: <Switch size="lg" />,
+    component: <IntegrationBlock />,
     name: "Integrations",
-    count: 3,
+    count: 6,
+    path: "/docs/Integrations/rate",
   },
 ];
 
@@ -101,14 +93,15 @@ export default function ComponentBlock() {
           {components.map((item) => (
             <div
               key={"component-" + item.name + item.id}
-              className="flex flex-col rounded-xl border border-gray-200 flex-shrink-0 relative shadow-sm overflow-hidden"
+              onClick={() => history.push(item.path)}
+              className="flex flex-col rounded-xl border border-gray-200 flex-shrink-0 relative shadow-sm overflow-hidden group/card cursor-pointer"
             >
-              <div className="flex h-full justify-center items-center px-6 py-12 min-h-[256px] border-b border-gray-200/80 before:h-1/2 before:absolute relative before:bg-gradient-to-t before:from-gray-50/60 before:bottom-0 before:w-full">
-                <span className="grid-box ![background-size:4.22rem_4rem] absolute inset-2 -z-[1] opacity-70" />
+              <div className="flex h-full justify-center items-center px-6 py-12 min-h-[256px] border-b border-gray-200/80 before:h-1/2 before:absolute relative before:bg-gradient-to-t before:from-gray-50/70 before:-z-[1] before:bottom-0 before:w-full">
+                <span className="grid-box ![background-size:4.22rem_4rem] absolute inset-2 -z-[2] opacity-70" />
                 {item.component}
               </div>
               <div className="p-6">
-                <Title as="h5" className="font-semibold !mb-1.5">
+                <Title as="h5" className="font-semibold !mb-1">
                   {item.name}
                 </Title>
                 <Text className="text-gray-500">{item.count} components</Text>
@@ -122,7 +115,7 @@ export default function ComponentBlock() {
             size="lg"
             variant="outline"
             onClick={() => history.push("/docs/buttons/action-icon")}
-            className="min-w-[180px] shadow-sm"
+            className="min-w-[180px] shadow-sm hover:ring-[0.5px] hover:ring-gray-900"
           >
             Explore More
           </Button>
