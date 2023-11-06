@@ -36,12 +36,3 @@ export const Sizes = () => (
     <Loader size="xl" />
   </div>
 );
-
-export const Animation = () => (
-  <div className="flex items-center justify-around gap-3">
-    <Loader size="sm" animation="scaleUp" />
-    <Loader animation="scaleUp" />
-    <Loader size="lg" animation="scaleUp" />
-    <Loader size="xl" animation="scaleUp" />
-  </div>
-);

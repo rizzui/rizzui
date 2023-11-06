@@ -20,7 +20,12 @@ import { PinCode } from "rizzui";
 You can change types of input of **PinCode** using **type** property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <PinCode type="number" setValue={function noRefCheck() {}} />
+  <PinCode
+    type="number"
+    defaultValue={1234}
+    readOnly
+    setValue={function noRefCheck() {}}
+  />
   <PinCode type="text" setValue={function noRefCheck() {}} />
 </Paper>
 

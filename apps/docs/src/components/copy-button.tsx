@@ -21,7 +21,11 @@ export function CopyButton({ value, src, ...props }: CopyButtonProps) {
     }, 2000);
   }, [hasCopied]);
   return (
-    <Tooltip content={() => (hasCopied ? "Copied" : "Copy")} placement="top">
+    <Tooltip
+      color="invert"
+      content={() => (hasCopied ? "Copied" : "Copy")}
+      placement="bottom"
+    >
       <ActionIcon
         variant="text"
         onClick={() => {

@@ -166,12 +166,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 'absolute inset-0 flex h-full w-full items-center justify-center',
               )}
             >
-              <Loader
-                tag="span"
-                color="current"
-                size={size}
-                animation="scaleUp"
-              />
+              <Loader size={size} className="scale-95" />
             </span>
           </>
         ) : (

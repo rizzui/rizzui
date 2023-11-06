@@ -8,14 +8,18 @@ const classes = {
 
 export type CodeProps = {
   className?: string;
-};
+} & React.HTMLAttributes<HTMLPreElement>;
 
 export function Code({
   children,
   className,
+  ...props
 }: React.PropsWithChildren<CodeProps>) {
   return (
-    <pre className={cn(makeClassName(`code`), classes.pre, className)}>
+    <pre
+      className={cn(makeClassName(`code`), classes.pre, className)}
+      {...props}
+    >
       <code className="p-0 bg-transparent border-none shadow-none">
         {children}
       </code>

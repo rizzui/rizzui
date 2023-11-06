@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-const plugin = require("tailwindcss/plugin");
-
 module.exports = {
   content: [
     "./docs/**/*.{md,mdx}",
@@ -62,7 +60,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        inter: ["Inter", "system-ui", "sans-serif"],
+        geist: ["Geist", "system-ui", "sans-serif"],
       },
       fontSize: {
         h1: [
@@ -115,28 +113,7 @@ module.exports = {
           },
         ],
       },
-      animation: {
-        blink: "blink 1.4s infinite both;",
-        "scale-up": "scaleUp 500ms infinite alternate",
-      },
-      keyframes: {
-        blink: {
-          "0%": { opacity: 0.2 },
-          "20%": { opacity: 1 },
-          "100%": { opacity: 0.2 },
-        },
-        scaleUp: {
-          "0%": { transform: "scale(0)" },
-          "100%": { transform: "scale(1)" },
-        },
-      },
     },
   },
-  plugins: [
-    require("@tailwindcss/forms"),
-    plugin(function ({ addVariant }) {
-      // required this to prevent any style on readOnly input elements
-      addVariant("not-read-only", "&:not(:read-only)");
-    }),
-  ],
+  plugins: [require("@tailwindcss/forms")],
 };

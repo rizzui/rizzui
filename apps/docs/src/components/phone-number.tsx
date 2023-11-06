@@ -16,7 +16,7 @@ const labelClasses = {
 const inputClasses = {
   base: "block peer !w-full focus:outline-none transition duration-200 disabled:!bg-gray-100 disabled:!text-gray-500 disabled:placeholder:!text-gray-400 disabled:!cursor-not-allowed disabled:!border-gray-200",
   error:
-    "!border-red not-read-only:hover:enabled:!border-red not-read-only:focus:enabled:!border-red not-read-only:focus:!ring-red",
+    "!border-red hover:enabled:!border-red focus:enabled:!border-red focus:!ring-red",
   size: {
     sm: "py-1 !text-xs !h-8 !leading-[32px]",
     DEFAULT: "py-2 !text-sm !h-10 !leading-[40px]",

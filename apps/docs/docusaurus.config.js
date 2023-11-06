@@ -1,109 +1,14 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+const myTheme = require("./prism-theme");
 const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
-// const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
-
-const prismTheme = {
-  plain: {
-    color: "#e2e2e2",
-    backgroundColor: "#0f2937",
-  },
-  styles: [
-    {
-      types: ["comment"],
-      style: {
-        color: "#7f848e",
-        fontStyle: "italic",
-      },
-    },
-    {
-      types: ["string", "inserted"],
-      style: {
-        color: "#e6db74",
-      },
-    },
-    {
-      types: ["number"],
-      style: {
-        color: "rgb(247, 140, 108)",
-      },
-    },
-    {
-      types: ["builtin", "char", "constant", "function"],
-      style: {
-        color: "#e6db74",
-      },
-    },
-    {
-      types: ["punctuation", "selector"],
-      style: {
-        color: "rgb(199, 146, 234)",
-      },
-    },
-    {
-      types: ["variable"],
-      style: {
-        color: "rgb(191, 199, 213)",
-      },
-    },
-    {
-      types: ["class-name", "attr-name"],
-      style: {
-        color: "#e5c07b",
-      },
-    },
-    {
-      types: ["tag", "deleted"],
-      style: {
-        color: "#e06c75",
-      },
-    },
-    {
-      types: ["operator"],
-      style: {
-        color: "rgb(137, 221, 255)",
-      },
-    },
-    {
-      types: ["boolean"],
-      style: {
-        color: "rgb(255, 88, 116)",
-      },
-    },
-    {
-      types: ["keyword"],
-      style: {
-        color: "#c678dd",
-      },
-    },
-    {
-      types: ["doctype"],
-      style: {
-        color: "rgb(199, 146, 234)",
-        fontStyle: "italic",
-      },
-    },
-    {
-      types: ["namespace"],
-      style: {
-        color: "rgb(178, 204, 214)",
-      },
-    },
-    {
-      types: ["url"],
-      style: {
-        color: "#f2f2f8",
-      },
-    },
-  ],
-};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "RizzUI",
   tagline:
-    "🎉 A Modern and Minimal React UI Library built with TailwindCSS. Designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application. We have carefully crafted each component to ensure that they are responsive, accessible and consistent across different devices and browsers.",
+    "A Modern, Minimal, TailwindCSS-based React UI Library. Intuitively crafted, easy-to-customize components for seamless integration. Responsive, accessible, and consistent across devices and browsers.",
   favicon: "img/rizz-favicon.svg",
 
   // Set the production url of your site here
@@ -128,13 +33,13 @@ const config = {
     locales: ["en"],
   },
 
-  // custom external stylesheets
-  stylesheets: [
-    {
-      href: "fonts/inter-font.css",
-      type: "text/css",
-    },
-  ],
+  // // custom external stylesheets
+  // stylesheets: [
+  //   {
+  //     href: "fonts/geist-font.css",
+  //     type: "text/css",
+  //   },
+  // ],
 
   plugins: [
     async function myPlugin(context, options) {
@@ -148,19 +53,6 @@ const config = {
         },
       };
     },
-
-    // async function myWebpackPlugin(context, options) {
-    //   return {
-    //     name: "custom-webpack-config",
-    //     configureWebpack(config) {
-    //       config.resolve.fallback = {
-    //         fs: false,
-    //       };
-    //       config.plugins = [new NodePolyfillPlugin()];
-    //       return config;
-    //     },
-    //   };
-    // },
   ],
 
   themes: [
@@ -227,7 +119,8 @@ const config = {
         ],
       },
       prism: {
-        theme: prismTheme,
+        theme: myTheme,
+        // theme: prismTheme,
         darkTheme: darkCodeTheme,
       },
     }),

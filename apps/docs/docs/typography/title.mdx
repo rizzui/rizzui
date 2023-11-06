@@ -114,10 +114,11 @@ Here is the API documentation of the Title component.
 
 <div className="overflow-x-auto">
 
-|   Props   |           Type           |            Description             | Default |
-| :-------: | :----------------------: | :--------------------------------: | :-----: |
-|    as     | [TitleTags](#title-tags) |                                    | `"h2"`  |
-| className |         `string`         | Add custom classes for extra style |  \_ \_  |
+|   Props    |              Type              |            Description             | Default  |
+| :--------: | :----------------------------: | :--------------------------------: | :------: |
+|     as     |    [TitleTags](#title-tags)    |                                    |  `"h2"`  |
+| fontWeight | [TitleWeights](#title-weights) | Add custom classes for extra style | `"bold"` |
+| className  |            `string`            | Add custom classes for extra style |  \_ \_   |
 
 </div>
 
@@ -126,5 +127,11 @@ Here is the API documentation of the Title component.
 ### Title Tags
 
 ```ts
-type TextTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+type TitleTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+```
+
+### Title Weights
+
+```ts
+type TitleWeights = "bold" | "normal" | "medium" | "semiBold" | "extraBold";
 ```
