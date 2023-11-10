@@ -9,6 +9,7 @@ import DataDisplayBlock from "./data-display-block";
 import OverlayBlock from "./overlay-block";
 import InputBlock from "./input-block";
 import IntegrationBlock from "./integration-block";
+import ComponentCard from "./component-card";
 
 const components = [
   {
@@ -90,23 +91,8 @@ export default function ComponentBlock() {
 
       <div className="container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
-          {components.map((item) => (
-            <div
-              key={"component-" + item.name + item.id}
-              onClick={() => history.push(item.path)}
-              className="flex flex-col rounded-xl border border-gray-200 flex-shrink-0 relative shadow-sm overflow-hidden group/card cursor-pointer"
-            >
-              <div className="flex h-full justify-center items-center px-6 py-12 min-h-[256px] border-b border-gray-200/80 before:h-1/2 before:absolute relative before:bg-gradient-to-t before:from-gray-50/70 before:-z-[1] before:bottom-0 before:w-full">
-                <span className="grid-box ![background-size:4.22rem_4rem] absolute inset-2 -z-[2] opacity-70" />
-                {item.component}
-              </div>
-              <div className="p-6">
-                <Title as="h5" className="font-semibold !mb-1">
-                  {item.name}
-                </Title>
-                <Text className="text-gray-500">{item.count} components</Text>
-              </div>
-            </div>
+          {components.map((item, idx) => (
+            <ComponentCard key={`${item.name}-${idx}`} item={item} />
           ))}
         </div>
 

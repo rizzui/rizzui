@@ -113,7 +113,7 @@ const config = {
           {
             href: "https://github.com/rizzui/rizzui",
             position: "right",
-            className: "header-github-link",
+            className: "header-github-link order-3 ml-3 -mr-3",
             "aria-label": "GitHub",
           },
         ],
