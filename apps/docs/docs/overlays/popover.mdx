@@ -2,15 +2,13 @@
 sidebar_position: 31
 ---
 
-import { Popover, Button } from "rizzui";
+import { Popover, Title, Text, Button, ActionIcon, Avatar } from "rizzui";
 import Paper from "@site/src/components/paper";
-import { PopoverActionable, PopoverAvatar } from "@site/src/components/popover";
-import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 # Popover
 
-Popover is a simple dialog alert which can have details of the content. It can either have a confirm, cancel button or any action that can be triggered by the user's decision. We build this component on top of our **Tooltip** component, so all the style customization props are
-avaiable in this compoment too except the **color** prop.
+Popover is a simple dialog alert which can have details of the content. It can either have a confirm, cancel button or any action that can be triggered by the user's decision.
 
 ```tsx
 import { Popover } from "rizzui";
@@ -23,62 +21,33 @@ import { Popover } from "rizzui";
 A simple **Popover** component.
 
 <Paper>
-  <Popover
-    content={() => (
-      <div className="w-56 text-start">
-        <span className="mt-2 inline-flex items-center gap-2 text-base">
-          <InformationCircleIcon className="h-5 w-5" />
-          <p className="font-medium">Delete the task</p>
-        </span>
-        <p className="mt-2 text-sm">
-          Are you sure you want to delete the task?
-        </p>
-        <div className="mt-3 mb-2 flex gap-3">
-          <Button size="sm">Yes</Button>
-          <Button size="sm" variant="outline">
-            No
-          </Button>
-        </div>
-      </div>
-    )}
-    placement="bottom"
-  >
-    <Button variant="text" color="danger">
-      Delete
-    </Button>
+  <Popover>
+    <Popover.Trigger>
+      <Button variant="outline">Open Popover</Button>
+    </Popover.Trigger>
+    <Popover.Content>
+      <Title as="h6" className="!mb-0 font-semibold">
+        This is a default popover
+      </Title>
+      <Text>It is opened when button is clicked. </Text>
+    </Popover.Content>
   </Popover>
 </Paper>
 
 ```tsx
-import { Popover, Button } from "rizzui";
-import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import { Popover, Title, Text, Button } from "rizzui";
 
 export default function App() {
   return (
     <>
-      <Popover
-        content={() => (
-          <div className="w-56 text-start">
-            <span className="mt-2 inline-flex items-center gap-2 text-base">
-              <InformationCircleIcon className="h-5 w-5" />
-              <h2 className="font-medium">Delete the task</h2>
-            </span>
-            <p className="mt-2 text-sm">
-              Are you sure you want to delete the task?
-            </p>
-            <div className="mt-3 mb-2 flex gap-3">
-              <Button size="sm">Yes</Button>
-              <Button size="sm" variant="outline">
-                No
-              </Button>
-            </div>
-          </div>
-        )}
-        placement="bottom"
-      >
-        <Button variant="text" color="danger">
-          Delete
-        </Button>
+      <Popover>
+        <Popover.Trigger>
+          <Button variant="outline">Open Popover</Button>
+        </Popover.Trigger>
+        <Popover.Content>
+          <Title as="h6">This is a default popover</Title>
+          <Text>It is opened when button is clicked. </Text>
+        </Popover.Content>
       </Popover>
     </>
   );
@@ -92,39 +61,64 @@ export default function App() {
 You can create actionable **Popover** using state.
 
 <Paper>
-  <PopoverActionable />
-</Paper>
-
-```tsx
-import React from "react";
-import { Popover, Button } from "rizzui";
-import { InformationCircleIcon } from "@heroicons/react/24/solid";
-
-export default function App() {
-  return (
-    <Popover
-      content={({ setOpen }) => (
-        <div className="w-56 text-start">
-          <span className="mt-2 inline-flex items-center gap-2 text-base">
-            <InformationCircleIcon className="h-5 w-5" />
-            <p className="font-medium">Delete the task</p>
-          </span>
-          <p className="mt-2 text-sm">
+  <Popover>
+    <Popover.Trigger>
+      <ActionIcon variant="outline" color="danger">
+        <TrashIcon className="w-5 h-auto" />
+      </ActionIcon>
+    </Popover.Trigger>
+    <Popover.Content>
+      {({ setOpen }) => (
+        <div className="w-56 py-1">
+          <Text as="b" className="font-medium mb-1">
+            Delete the task
+          </Text>
+          <Text className="mb-1 text-sm">
             Are you sure you want to delete the task?
-          </p>
-          <div className="mt-3 mb-2 flex gap-3">
+          </Text>
+          <div className="flex justify-end gap-3 mb-1">
+            <Button size="sm" variant="outline">
+              No
+            </Button>
             <Button size="sm" onClick={() => setOpen(false)}>
               Yes
-            </Button>
-            <Button size="sm" variant="outline" onClick={() => setOpen(false)}>
-              No
             </Button>
           </div>
         </div>
       )}
-      placement="bottom"
-    >
-      <Button variant="outline">Click Me!</Button>
+    </Popover.Content>
+  </Popover>
+</Paper>
+
+```tsx
+import React from "react";
+import { Popover, Title, Text, Button } from "rizzui";
+import { TrashIcon } from "@heroicons/react/24/solid";
+
+export default function App() {
+  return (
+    <Popover>
+      <Popover.Trigger>
+        <Button variant="outline" color="danger">
+          <TrashIcon className="w-5 h-auto" />
+        </Button>
+      </Popover.Trigger>
+      <Popover.Content>
+        {({ setOpen }) => (
+          <div className="w-56 py-1">
+            <Title as="h6">Delete the task</Title>
+            <Text>Are you sure you want to delete the task?</Text>
+            <div className="flex justify-end gap-3 mb-1">
+              <Button size="sm" variant="outline">
+                No
+              </Button>
+              <Button size="sm" onClick={() => setOpen(false)}>
+                Yes
+              </Button>
+            </div>
+          </div>
+        )}
+      </Popover.Content>
     </Popover>
   );
 }
@@ -137,7 +131,59 @@ export default function App() {
 You can render any thing using our **Popover** component.
 
 <Paper>
-  <PopoverAvatar />
+  <Popover enableOverlay>
+    <Popover.Trigger>
+      <div className="w-12 cursor-pointer">
+        <Avatar
+          name="Jane Doe"
+          src="https://randomuser.me/api/portraits/women/40.jpg"
+          size="lg"
+        />
+      </div>
+    </Popover.Trigger>
+    <Popover.Content>
+      {({ setOpen }) => (
+        <>
+          <div className="mb-3 flex items-center gap-3">
+            <Avatar
+              name="John Doe"
+              src="https://randomuser.me/api/portraits/women/40.jpg"
+              className="ring-2 ring-blue ring-offset-2"
+              size="lg"
+            />
+            <div className="text-left">
+              <h1 className="text-base font-medium text-gray-900">
+                Fred Chaparro
+              </h1>
+              <p className="text-sm font-light text-gray-500">@fredchaparro</p>
+            </div>
+          </div>
+          <div className="max-w-[240px] text-left text-sm">
+            <h2 className="text-gray-600">
+              Full-stack Developer, love to work with @redq. 🎉{" "}
+            </h2>
+            <span className="mt-3 inline-flex gap-3 text-gray-400">
+              <h2>
+                <span className="font-medium">8</span> Following
+              </h2>
+              <h2>
+                <span className="font-medium">10.5k</span> Followers
+              </h2>
+            </span>
+          </div>
+          <Button
+            className="mt-4 w-full"
+            variant="solid"
+            color="info"
+            size="sm"
+            onClick={() => setOpen(false)}
+          >
+            Follow
+          </Button>
+        </>
+      )}
+    </Popover.Content>
+  </Popover>
 </Paper>
 
 ```tsx
@@ -207,7 +253,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 

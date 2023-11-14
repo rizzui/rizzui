@@ -18,7 +18,6 @@ export function Accordion({
   duration,
   className,
   children,
-  ...props
 }: React.PropsWithChildren<AccordionProps>) {
   let Component = as;
 

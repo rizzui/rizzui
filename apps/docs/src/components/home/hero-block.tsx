@@ -15,9 +15,9 @@ const data = {
 function BlurBGPattern() {
   return (
     <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
-      <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.02] transform rotate-12 scale-95" />
-      <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.02] transform rotate-12 scale-105 hidden sm:flex" />
-      <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.02] transform rotate-12 scale-95 hidden md:flex" />
+      <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-95" />
+      <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-105 hidden sm:flex" />
+      <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-95 hidden md:flex" />
     </div>
   );
 }
@@ -74,7 +74,7 @@ export default function HeroBlock() {
       </div>
 
       <BlurBGPattern />
-      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.45]" />
+      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.4]" />
     </section>
   );
 }

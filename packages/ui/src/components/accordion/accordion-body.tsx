@@ -6,12 +6,13 @@ import { cn } from '../../lib/cn';
 type AccordionBodyProps = {
   as?: 'div' | 'ul';
   className?: string;
-};
+} & React.HTMLAttributes<HTMLDivElement> &
+  React.HTMLAttributes<HTMLUListElement>;
 
 export const AccordionBody = React.forwardRef<
   any,
   React.PropsWithChildren<AccordionBodyProps>
->(({ as = 'div', className, children }, ref) => {
+>(({ as = 'div', className, children, ...props }, ref) => {
   let Component = as;
   const { targetEl, openTargetEl } = useAccordion();
   useImperativeHandle(ref, () => targetEl);
@@ -21,6 +22,7 @@ export const AccordionBody = React.forwardRef<
       ref={targetEl}
       style={!openTargetEl ? { display: 'none' } : { display: 'block' }}
       className={cn(makeClassName(`accordion-panel`), className)}
+      {...props}
     >
       {children}
     </Component>
