@@ -68,16 +68,16 @@ const classes = {
         DEFAULT:
           'border-gray-300 hover:enabled:border-gray-950 focus-visible:enabled:border-gray-950 focus-visible:ring-gray-900/30',
         primary:
-          'hover:enabled:bg-primary-lighter/40 focus-visible:ring-primary/30 text-primary-dark border-primary hover:enabled:border-primary-dark',
+          'focus-visible:ring-primary/30 text-primary-dark border-primary hover:enabled:border-primary-dark',
         secondary:
-          'hover:enabled:bg-secondary-lighter/40 focus-visible:ring-secondary/30 text-secondary-dark border-secondary hover:enabled:border-secondary-dark',
+          'focus-visible:ring-secondary/30 text-secondary-dark border-secondary hover:enabled:border-secondary-dark',
         danger:
-          'hover:enabled:bg-red-lighter/40 focus-visible:ring-red/30 text-red-dark border-red hover:enabled:border-red-dark ',
-        info: 'hover:enabled:bg-blue-lighter/40 focus-visible:ring-blue/30 text-blue-dark border-blue hover:enabled:border-blue-dark',
+          'focus-visible:ring-red/30 text-red-dark border-red hover:enabled:border-red-dark ',
+        info: 'focus-visible:ring-blue/30 text-blue-dark border-blue hover:enabled:border-blue-dark',
         success:
-          'hover:enabled:bg-green-lighter/40 focus-visible:ring-green/30 text-green-dark border-green hover:enabled:border-green-dark',
+          'focus-visible:ring-green/30 text-green-dark border-green hover:enabled:border-green-dark',
         warning:
-          'hover:enabled:bg-orange-lighter/40 focus-visible:ring-orange/30 text-orange-dark border-orange hover:enabled:border-orange-dark',
+          'focus-visible:ring-orange/30 text-orange-dark border-orange hover:enabled:border-orange-dark',
       },
     },
     text: {

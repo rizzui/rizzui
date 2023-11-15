@@ -8,12 +8,12 @@ type AccordionHeaderProps = {
   children:
     | React.ReactNode
     | (({ open }: { open: boolean }) => React.ReactNode);
-};
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const AccordionHeader = React.forwardRef<
   HTMLButtonElement,
   AccordionHeaderProps
->(({ children, className }, ref) => {
+>(({ children, className, ...props }, ref) => {
   const { isOpen, toggle } = useAccordion();
   const isChildrenFunction = typeof children === 'function';
 
@@ -26,6 +26,7 @@ export const AccordionHeader = React.forwardRef<
         'block w-full',
         className,
       )}
+      {...props}
     >
       {isChildrenFunction ? children({ open: isOpen }) : children}
     </button>

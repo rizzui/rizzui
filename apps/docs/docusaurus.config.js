@@ -96,8 +96,6 @@ const config = {
         logo: {
           alt: "RizzUI",
           src: "img/rizz-logo.svg",
-          width: "96px",
-          height: "auto",
         },
         items: [
           {
@@ -113,7 +111,7 @@ const config = {
           {
             href: "https://github.com/rizzui/rizzui",
             position: "right",
-            className: "header-github-link",
+            className: "header-github-link order-3 ml-3 -mr-3",
             "aria-label": "GitHub",
           },
         ],

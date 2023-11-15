@@ -14,7 +14,7 @@ var theme = {
       },
     },
     {
-      types: ["string", "inserted", "tag", "attr-name"],
+      types: ["string", "inserted", "attr-name"],
       style: {
         color: "#e2d775",
       },
@@ -45,7 +45,7 @@ var theme = {
       },
     },
     {
-      types: ["class-name", "deleted"],
+      types: ["class-name", "deleted", "tag"],
       style: {
         color: "#e06c75",
       },

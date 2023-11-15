@@ -33,6 +33,36 @@ export default function App() {
 
 <div className="mb-16" />
 
+## Variants
+
+You can use different variants of our **Loader** component.
+
+<Paper>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Loader className="w-7 h-auto" />
+    <Loader variant="spinner" className="w-7 h-auto" />
+    <Loader variant="pulse" className="w-7 h-auto" />
+    <Loader variant="threeDot" className="w-7 h-auto" />
+  </div>
+</Paper>
+
+```jsx
+import { Loader } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Loader />
+      <Loader variant="spinner" />
+      <Loader variant="pulse" />
+      <Loader variant="threeDot" />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
 ## Sizes
 
 You can change the size of the **Loader** with property [**size**](#loader-sizes).
@@ -99,7 +129,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 

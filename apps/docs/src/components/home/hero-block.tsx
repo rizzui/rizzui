@@ -15,9 +15,9 @@ const data = {
 function BlurBGPattern() {
   return (
     <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
-      <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.02] transform rotate-12 scale-95" />
-      <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.02] transform rotate-12 scale-105 hidden sm:flex" />
-      <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.02] transform rotate-12 scale-95 hidden md:flex" />
+      <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-95" />
+      <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-105 hidden sm:flex" />
+      <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-95 hidden md:flex" />
     </div>
   );
 }
@@ -25,7 +25,7 @@ function BlurBGPattern() {
 export default function HeroBlock() {
   const history = useHistory();
   return (
-    <section className="py-16 md:py-20 lg:py-32 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full border-b border-gray-100/70">
+    <section className="py-16 md:py-20 lg:py-32 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full border-b border-gray-100/90">
       <div className="container relative mx-auto">
         <header className="text-center">
           <Title
@@ -74,7 +74,7 @@ export default function HeroBlock() {
       </div>
 
       <BlurBGPattern />
-      <span className="grid-box absolute inset-0 -z-[1] opacity-70" />
+      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.4]" />
     </section>
   );
 }
