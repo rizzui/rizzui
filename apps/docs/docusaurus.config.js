@@ -96,8 +96,6 @@ const config = {
         logo: {
           alt: "RizzUI",
           src: "img/rizz-logo.svg",
-          width: "96px",
-          height: "auto",
         },
         items: [
           {

@@ -41,12 +41,12 @@ export default function FeatureBlock() {
     <section className="py-16 lg:py-20">
       <div className="container mx-auto">
         <header className="text-center mb-8 sm:mb-10 md:mb-12">
-          <Text className="!mb-3 sm:!mb-5 !text-[11px] sm:!text-xs lg:!text-sm tracking-[4px] uppercase text-gray-500">
+          <Text className="!mb-3 lg:!mb-4 !text-[11px] sm:!text-xs lg:!text-sm tracking-[4px] uppercase text-gray-500">
             Why RizzUI?
           </Text>
           <Title
             as="h2"
-            className="text-2xl sm:text-3xl lg:text-4xl leading-[1.35] sm:leading-[1.3] lg:leading-[1.3] font-semibold"
+            className="text-2xl lg:text-3xl leading-[1.35] lg:leading-[1.3] font-semibold"
           >
             A Next Gen UI Library with <br className="hidden sm:inline-block" />{" "}
             Limitless Customization Options

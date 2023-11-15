@@ -75,6 +75,9 @@
     --ifm-color-primary-lightest: #3cad6e;
     --ifm-code-font-size: 95%;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    --ifm-scrollbar-track-background-color: transparent;
+    --ifm-scrollbar-thumb-background-color: rgba(0, 0, 0, 0.18);
+    --ifm-scrollbar-size: 6px;
 
     /* lists */
     --ifm-list-left-padding: 1rem;
@@ -101,7 +104,7 @@
     --ifm-hr-background-color: var(--ifm-color-gray-300);
 
     /* border radius */
-    --ifm-global-radius: 0.5rem;
+    --ifm-global-radius: 0.25rem;
     --ifm-toc-border-color: #e3e3e3;
 
     /* shadow */
@@ -469,7 +472,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply tracking-tight !mb-3 text-[var(--ifm-color-gray-900)];
+  @apply tracking-tight !mb-2 text-[var(--ifm-color-gray-900)];
 }
 
 #__docusaurus {
@@ -513,7 +516,10 @@ hr {
 
 /* navbar style */
 nav.navbar {
-  @apply bg-white/[0.925] backdrop-blur;
+  @apply bg-white/[0.7] backdrop-blur-lg;
+  box-shadow:
+    0px 1.5px 0 rgba(0, 0, 0, 0.04),
+    0px 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 nav.navbar .navbar__inner {
@@ -534,7 +540,10 @@ nav.navbar .navbar__inner {
   @apply hidden !important;
 }
 
-/* --- End --- */
+#__docusaurus .navbar__logo {
+  /* @apply h-9; */
+  @apply h-[22px];
+}
 
 .header-github-link:before {
   @apply w-[18px] h-[18px] flex;
@@ -543,8 +552,12 @@ nav.navbar .navbar__inner {
   content: "";
 }
 
+.navbar-sidebar__item .header-github-link {
+  @apply ml-0;
+}
+
 .plugin-pages #__docusaurus .navbar__inner {
-  @apply container mx-auto;
+  @apply container mx-auto !px-0;
 }
 
 svg[class*="lightToggleIcon"] {
@@ -554,6 +567,10 @@ svg[class*="lightToggleIcon"] {
 .navbar-sidebar,
 .navbar-sidebar__backdrop {
   @apply min-h-screen;
+}
+
+.navbar-sidebar__brand button[class*="toggleButton"] {
+  @apply hidden;
 }
 
 .navbar-sidebar__item {
@@ -590,7 +607,7 @@ svg[class*="lightToggleIcon"] {
 
 #__docusaurus .navbar__search-input {
   --ifm-navbar-search-input-background-color: var(--gray-50);
-  @apply ring-[1.5px] ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 md:w-full rounded-md;
+  @apply ring-[1.5px] ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 md:w-full rounded;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E%0A");
   background-position: 12px;
   background-size: 16px;
@@ -613,12 +630,16 @@ svg[class*="lightToggleIcon"] {
   @apply px-5 py-4 border border-gray-300 shadow my-4 rounded-lg;
 }
 
+#__docusaurus div[class*="tocCollapsible_"] {
+  @apply bg-transparent border rounded-md mb-6;
+}
+
 #__docusaurus div[class*="tocCollapsible"] .table-of-contents {
-  @apply before:hidden pt-1;
+  @apply before:hidden pt-1 border-b-0 border-x-0;
 }
 
 #__docusaurus button[class*="tocCollapsibleButton_"] {
-  @apply text-gray-900 font-semibold text-sm capitalize;
+  @apply text-gray-900 font-medium text-sm capitalize py-2;
 }
 
 #__docusaurus button[class*="tocCollapsibleButton_"]::after {
@@ -633,19 +654,16 @@ svg[class*="lightToggleIcon"] {
     @apply mr-8;
   }
   #__docusaurus .theme-doc-sidebar-container {
-    --doc-sidebar-width: 260px;
+    --doc-sidebar-width: 270px;
+  }
+  .theme-doc-sidebar-container ~ main {
+    @apply ml-[270px] max-w-[calc(100%-270px)];
   }
   #__docusaurus div[class*="docItemCol_"] {
     @apply !max-w-full;
   }
   #__docusaurus .theme-doc-toc-mobile {
     @apply block;
-  }
-  #__docusaurus .table-of-contents {
-    @apply hidden;
-  }
-  .theme-doc-sidebar-container ~ main {
-    @apply ml-[260px];
   }
   .container div[class*="docItemContainer_"] {
     @apply flex flex-col min-h-[calc(100vh-112px)] py-6 pl-[1.5rem] pr-0;
@@ -682,17 +700,20 @@ svg[class*="lightToggleIcon"] {
 }
 
 @media (min-width: 1536px) {
-  #__docusaurus .theme-doc-sidebar-container {
-    --doc-sidebar-width: 300px;
-  }
-  .theme-doc-sidebar-container ~ main {
-    @apply ml-[300px];
-  }
   .theme-doc-sidebar-container ~ main > .container {
-    @apply max-w-screen-xl px-0;
+    @apply mx-0 max-w-full;
   }
+
+  #__docusaurus div[class*="docItemCol_"] {
+    max-width: calc(100% - 320px) !important;
+  }
+
   .container div[class*="docItemContainer_"] {
-    @apply pl-[2.4rem] pr-[0.875rem];
+    @apply max-w-[960px] mx-auto;
+  }
+
+  .theme-doc-sidebar-container ~ main > .container .col.col--3 {
+    @apply w-80 fixed right-0 bg-white dark:bg-gray-50;
   }
 }
 
@@ -729,11 +750,15 @@ svg[class*="lightToggleIcon"] {
 }
 
 #__docusaurus li > .menu__link {
-  @apply py-2 px-5 text-[var(--ifm-color-gray-600)];
+  @apply py-2 px-0 text-[var(--ifm-color-gray-600)];
+}
+
+#__docusaurus .theme-doc-sidebar-menu li > .menu__link {
+  @apply px-5 relative before:block before:w-4 before:h-[20%] before:absolute before:-left-[1px] before:top-[11px] before:bg-transparent before:rounded-bl-2xl before:border-b before:border-l;
 }
 
 #__docusaurus li > .menu__link:hover {
-  @apply bg-transparent text-[var(--ifm-color-gray-900)];
+  @apply bg-transparent text-[var(--ifm-color-gray-900)] font-medium;
 }
 
 #__docusaurus li > .menu__link--active {
@@ -741,7 +766,7 @@ svg[class*="lightToggleIcon"] {
 }
 
 #__docusaurus li > .menu__link--active:not(.menu__link--sublist) {
-  @apply bg-transparent rounded-none border-l-[2.5px] border-gray-950 -ml-[1px] pl-[18px];
+  @apply bg-transparent rounded-none border-l-[2px] border-gray-950 -ml-[1px] pl-[18px] before:left-0 before:w-[13px];
 }
 
 .menu__list-item-collapsible {
@@ -833,11 +858,11 @@ ul.table-of-contents.table-of-contents__left-border::before {
 }
 
 #__docusaurus code {
-  @apply inline-block m-0.5 py-[0.1rem] px-1.5 text-[13px] bg-gray-100 text-[#293548] shadow-sm;
+  @apply inline-block m-0.5 py-[0.1rem] px-1.5 text-[12px] text-[#293548] bg-transparent font-semibold;
 }
 
 #__docusaurus pre code {
-  @apply bg-transparent m-0 p-[var(--ifm-pre-padding)] text-sm;
+  @apply bg-transparent m-0 p-[var(--ifm-pre-padding)] text-sm font-normal;
 }
 
 #__docusaurus .alert {
@@ -867,15 +892,15 @@ ul.table-of-contents.table-of-contents__left-border::before {
 }
 
 .pagination-nav__link {
-  @apply border-[var(--ifm-color-gray-300)] hover:shadow-[0_0_0_0.6px_currentColor];
+  @apply border-[var(--ifm-color-gray-200)] hover:shadow-[0_0_0_0.6px_currentColor];
 }
 
 .pagination-nav__sublabel {
-  @apply text-xs uppercase tracking-[2px] text-gray-500 mb-1.5;
+  @apply text-[11px] uppercase tracking-[2px] text-[var(--ifm-color-gray-400)] mb-1.5;
 }
 
 .pagination-nav__label {
-  @apply text-[15px];
+  @apply text-[15px] font-medium;
 }
 
 .pagination-nav__link--prev .pagination-nav__label::before {
@@ -888,15 +913,15 @@ ul.table-of-contents.table-of-contents__left-border::before {
 
 /* props table */
 .markdown table {
-  @apply font-geist border-0 border-spacing-0 text-sm table w-full;
+  @apply font-geist border border-spacing-0 shadow text-sm table w-full;
 }
 
 .markdown table thead {
-  @apply bg-transparent;
+  @apply bg-transparent border-y;
 }
 
 .markdown table th {
-  @apply bg-[var(--ifm-color-gray-100)] font-bold tracking-widest uppercase text-xs leading-[18px];
+  @apply font-medium text-[var(--ifm-color-gray-500)];
 }
 
 .markdown table th:first-child {
@@ -1056,10 +1081,6 @@ button[class*="toggleButton"].clean-btn:hover {
   @apply text-gray-500 !important;
 }
 
-article [class*="tocMobile_"] {
-  @apply mb-8;
-}
-
 .pagination-nav__link--prev .pagination-nav__label {
   @apply before:hidden;
 }
@@ -1110,4 +1131,9 @@ article [class*="tocMobile_"] {
   100% {
     background-position: 0% 50%;
   }
+}
+
+/* for firefox */
+#__docusaurus .theme-doc-sidebar-container {
+  scrollbar-color: rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0);
 }

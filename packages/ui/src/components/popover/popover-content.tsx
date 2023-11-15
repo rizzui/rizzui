@@ -80,6 +80,7 @@ export function PopoverContent({
           {enableOverlay ? (
             <div
               className={cn(
+                makeClassName(`popover-overlay`),
                 'fixed inset-0 z-[998] cursor-pointer bg-black bg-opacity-60 transition-opacity duration-200',
                 open ? 'bg-opacity-60 dark:bg-opacity-80' : 'opacity-0',
                 overlayClassName,
@@ -93,7 +94,7 @@ export function PopoverContent({
             role="popover"
             ref={refs.setFloating}
             className={cn(
-              makeClassName(`tooltip-root`),
+              makeClassName(`popover-content`),
               tooltipStyle.base,
               size && tooltipStyle.size[size],
               rounded && tooltipStyle.rounded[rounded],
