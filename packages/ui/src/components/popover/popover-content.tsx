@@ -43,16 +43,9 @@ type PopoverContentProps = {
         setOpen: React.Dispatch<React.SetStateAction<boolean>>;
       }) => React.ReactNode);
   className?: string;
-  arrowClassName?: string;
-  overlayClassName?: string;
 };
 
-export function PopoverContent({
-  children,
-  className,
-  arrowClassName,
-  overlayClassName,
-}: PopoverContentProps) {
+export function PopoverContent({ children, className }: PopoverContentProps) {
   const {
     open,
     setOpen,
@@ -70,6 +63,8 @@ export function PopoverContent({
     size,
     shadow,
     rounded,
+    arrowClassName,
+    overlayClassName,
   } = usePopover();
   const isChildrenFunction = typeof children === 'function';
 
