@@ -8,7 +8,7 @@ import Paper from "@site/src/components/paper";
 
 # Tooltip
 
-Tooltip displays informative text when users **hover**, **focus**, or **click** an element.
+Tooltip displays informative text when users **hover** or **focus** an element.
 
 ```jsx
 import { Tooltip } from "rizzui";
@@ -21,7 +21,7 @@ import { Tooltip } from "rizzui";
 The default style of the **Tooltip** component.
 
 <Paper>
-  <Tooltip content={() => "I'm your tooltip"}>
+  <Tooltip content={"I'm your tooltip"}>
     <Button variant="outline">Hover Me!</Button>
   </Tooltip>
 </Paper>
@@ -31,7 +31,7 @@ import { Tooltip, Button } from "rizzui";
 
 export default function App() {
   return (
-    <Tooltip content={() => "I'm your tooltip"}>
+    <Tooltip content={"I'm your tooltip"}>
       <Button variant="outline">Hover Me!</Button>
     </Tooltip>
   );
@@ -45,16 +45,16 @@ export default function App() {
 You can change the size of **Tooltip** using [**size**](#tooltip-sizes) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip size="sm" content={() => "Small Tooltip!"}>
+  <Tooltip size="sm" content={"Small Tooltip!"}>
     <Button variant="outline">Small</Button>
   </Tooltip>
-  <Tooltip content={() => "Default Tooltip!"}>
+  <Tooltip content={"Default Tooltip!"}>
     <Button variant="outline">Default</Button>
   </Tooltip>
-  <Tooltip size="lg" content={() => "Large Tooltip!"}>
+  <Tooltip size="lg" content={"Large Tooltip!"}>
     <Button variant="outline">Large</Button>
   </Tooltip>
-  <Tooltip size="xl" content={() => "Extra Large Tooltip!"}>
+  <Tooltip size="xl" content={"Extra Large Tooltip!"}>
     <Button variant="outline">Extra Large</Button>
   </Tooltip>
 </Paper>
@@ -65,16 +65,16 @@ import { Tooltip, Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Tooltip size="sm" content={() => "Small Tooltip!"}>
+      <Tooltip size="sm" content={"Small Tooltip!"}>
         <Button variant="outline">Small</Button>
       </Tooltip>
-      <Tooltip content={() => "Default Tooltip!"}>
+      <Tooltip content={"Default Tooltip!"}>
         <Button variant="outline">Default</Button>
       </Tooltip>
-      <Tooltip size="lg" content={() => "Large Tooltip!"}>
+      <Tooltip size="lg" content={"Large Tooltip!"}>
         <Button variant="outline">Large</Button>
       </Tooltip>
-      <Tooltip size="xl" content={() => "Extra Large Tooltip!"}>
+      <Tooltip size="xl" content={"Extra Large Tooltip!"}>
         <Button variant="outline">Extra Large</Button>
       </Tooltip>
     </>
@@ -89,19 +89,19 @@ export default function App() {
 You can change the border radius of **Tooltip** using [**rounded**](#tooltip-rounded) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip rounded="none" content={() => "Rounded None!"}>
+  <Tooltip rounded="none" content={"Rounded None!"}>
     <Button variant="outline">None</Button>
   </Tooltip>
-  <Tooltip rounded="sm" content={() => "Rounded Small!"}>
+  <Tooltip rounded="sm" content={"Rounded Small!"}>
     <Button variant="outline">Small</Button>
   </Tooltip>
-  <Tooltip content={() => "Rounded Default!"}>
+  <Tooltip content={"Rounded Default!"}>
     <Button variant="outline">Default</Button>
   </Tooltip>
-  <Tooltip rounded="lg" content={() => "Rounded Large!"}>
+  <Tooltip rounded="lg" content={"Rounded Large!"}>
     <Button variant="outline">Large</Button>
   </Tooltip>
-  <Tooltip rounded="pill" content={() => "Rounded Full!"}>
+  <Tooltip rounded="pill" content={"Rounded Full!"}>
     <Button variant="outline">Full</Button>
   </Tooltip>
 </Paper>
@@ -112,19 +112,19 @@ import { Tooltip, Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Tooltip rounded="none" content={() => "Rounded None!"}>
+      <Tooltip rounded="none" content={"Rounded None!"}>
         <Button variant="outline">None</Button>
       </Tooltip>
-      <Tooltip rounded="sm" content={() => "Rounded Small!"}>
+      <Tooltip rounded="sm" content={"Rounded Small!"}>
         <Button variant="outline">Small</Button>
       </Tooltip>
-      <Tooltip content={() => "Rounded Default!"}>
+      <Tooltip content={"Rounded Default!"}>
         <Button variant="outline">Default</Button>
       </Tooltip>
-      <Tooltip rounded="lg" content={() => "Rounded Large!"}>
+      <Tooltip rounded="lg" content={"Rounded Large!"}>
         <Button variant="outline">Large</Button>
       </Tooltip>
-      <Tooltip rounded="pill" content={() => "Rounded Full!"}>
+      <Tooltip rounded="pill" content={"Rounded Full!"}>
         <Button variant="outline">Full</Button>
       </Tooltip>
     </>
@@ -139,40 +139,40 @@ export default function App() {
 You can change the color of **Tooltip** using [**color**](#tooltip-colors) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip content={() => "Default Color!"}>
+  <Tooltip content={"Default Color!"}>
     <Button variant="outline">Default</Button>
   </Tooltip>
-  <Tooltip content={() => "Invert Color!"} color="invert">
+  <Tooltip content={"Invert Color!"} color="invert">
     <Button variant="outline" className="border-gray-900">
       Invert
     </Button>
   </Tooltip>
-  <Tooltip content={() => "Primary Color!"} color="primary">
+  <Tooltip content={"Primary Color!"} color="primary">
     <Button color="primary" variant="outline">
       Primary
     </Button>
   </Tooltip>
-  <Tooltip content={() => "Secondary Color!"} color="secondary">
+  <Tooltip content={"Secondary Color!"} color="secondary">
     <Button color="secondary" variant="outline">
       Secondary
     </Button>
   </Tooltip>
-  <Tooltip content={() => "Danger Color!"} color="danger">
+  <Tooltip content={"Danger Color!"} color="danger">
     <Button color="danger" variant="outline">
       Danger
     </Button>
   </Tooltip>
-  <Tooltip content={() => "Info Color!"} color="info">
+  <Tooltip content={"Info Color!"} color="info">
     <Button color="info" variant="outline">
       Info
     </Button>
   </Tooltip>
-  <Tooltip content={() => "Success Color!"} color="success">
+  <Tooltip content={"Success Color!"} color="success">
     <Button color="success" variant="outline">
       Success
     </Button>
   </Tooltip>
-  <Tooltip content={() => "Warning Color!"} color="warning">
+  <Tooltip content={"Warning Color!"} color="warning">
     <Button color="warning" variant="outline">
       Warning
     </Button>
@@ -185,40 +185,40 @@ import { Tooltip, Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Tooltip content={() => "Default Color!"}>
+      <Tooltip content={"Default Color!"}>
         <Button variant="outline">Default</Button>
       </Tooltip>
-      <Tooltip content={() => "Invert Color!"} color="invert">
+      <Tooltip content={"Invert Color!"} color="invert">
         <Button variant="outline" className="border-gray-900">
           Invert
         </Button>
       </Tooltip>
-      <Tooltip content={() => "Primary Color!"} color="primary">
+      <Tooltip content={"Primary Color!"} color="primary">
         <Button color="primary" variant="outline">
           Primary
         </Button>
       </Tooltip>
-      <Tooltip content={() => "Secondary Color!"} color="secondary">
+      <Tooltip content={"Secondary Color!"} color="secondary">
         <Button color="secondary" variant="outline">
           Secondary
         </Button>
       </Tooltip>
-      <Tooltip content={() => "Danger Color!"} color="danger">
+      <Tooltip content={"Danger Color!"} color="danger">
         <Button color="danger" variant="outline">
           Danger
         </Button>
       </Tooltip>
-      <Tooltip content={() => "Info Color!"} color="info">
+      <Tooltip content={"Info Color!"} color="info">
         <Button color="info" variant="outline">
           Info
         </Button>
       </Tooltip>
-      <Tooltip content={() => "Success Color!"} color="success">
+      <Tooltip content={"Success Color!"} color="success">
         <Button color="success" variant="outline">
           Success
         </Button>
       </Tooltip>
-      <Tooltip content={() => "Warning Color!"} color="warning">
+      <Tooltip content={"Warning Color!"} color="warning">
         <Button color="warning" variant="outline">
           Warning
         </Button>
@@ -235,16 +235,16 @@ export default function App() {
 You can change the shadow style of **Tooltip** using [**shadow**](#tooltip-shadows) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip shadow="sm" content={() => "Small Shadow!"}>
+  <Tooltip shadow="sm" content={"Small Shadow!"}>
     <Button variant="outline">Small</Button>
   </Tooltip>
-  <Tooltip content={() => "Default Shadow!"}>
+  <Tooltip content={"Default Shadow!"}>
     <Button variant="outline">Default</Button>
   </Tooltip>
-  <Tooltip shadow="lg" content={() => "Large Shadow!"}>
+  <Tooltip shadow="lg" content={"Large Shadow!"}>
     <Button variant="outline">Large</Button>
   </Tooltip>
-  <Tooltip shadow="xl" content={() => "Extra Large Shadow!"}>
+  <Tooltip shadow="xl" content={"Extra Large Shadow!"}>
     <Button variant="outline">Extra Large</Button>
   </Tooltip>
 </Paper>
@@ -255,16 +255,16 @@ import { Tooltip, Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Tooltip shadow="sm" content={() => "Small Shadow!"}>
+      <Tooltip shadow="sm" content={"Small Shadow!"}>
         <Button variant="outline">Small</Button>
       </Tooltip>
-      <Tooltip content={() => "Default Shadow!"}>
+      <Tooltip content={"Default Shadow!"}>
         <Button variant="outline">Default</Button>
       </Tooltip>
-      <Tooltip shadow="lg" content={() => "Large Shadow!"}>
+      <Tooltip shadow="lg" content={"Large Shadow!"}>
         <Button variant="outline">Large</Button>
       </Tooltip>
-      <Tooltip shadow="xl" content={() => "Extra Large Shadow!"}>
+      <Tooltip shadow="xl" content={"Extra Large Shadow!"}>
         <Button variant="outline">Extra Large</Button>
       </Tooltip>
     </>
@@ -280,7 +280,7 @@ You can use custom content inside **Tooltip**
 
 <Paper>
   <Tooltip
-    content={() => (
+    content={
       <div className="w-40 text-start">
         <span className="inline-flex items-center gap-2 text-base">
           <InformationCircleIcon className="w-5 h-5" />
@@ -290,7 +290,7 @@ You can use custom content inside **Tooltip**
           This is a tip to help you accomplish a task.
         </p>
       </div>
-    )}
+    }
     placement="bottom-start"
   >
     <Button variant="outline">Custom Content</Button>
@@ -304,7 +304,7 @@ import { InformationCircleIcon } from "@heroicons/react/24/solid";
 export default function App() {
   return (
     <Tooltip
-      content={() => (
+      content={
         <div className="w-40 text-start">
           <span className="inline-flex items-center gap-2 text-base">
             <InformationCircleIcon className="w-5 h-5" />
@@ -314,7 +314,7 @@ export default function App() {
             This is a tip to help you accomplish a task.
           </p>
         </div>
-      )}
+      }
       placement="bottom-start"
     >
       <Button variant="outline">Custom Content</Button>
@@ -331,37 +331,37 @@ You can change placement of the **Tooltip** using property [**placement**](#tool
 
 <Paper className="h-[560px]">
   <div className="relative m-auto flex h-96 max-w-xl w-full flex-wrap justify-center gap-8">
-    <Tooltip content={() => "Left"} placement="left">
+    <Tooltip content={"Left"} placement="left">
       <Button variant="outline" className="absolute top-1/2 left-0">
         L
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Right"} placement="right">
+    <Tooltip content={"Right"} placement="right">
       <Button variant="outline" className="absolute top-1/2 right-0">
         R
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Top"} placement="top">
+    <Tooltip content={"Top"} placement="top">
       <Button variant="outline" className="absolute top-0">
         T
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Bottom"} placement="bottom">
+    <Tooltip content={"Bottom"} placement="bottom">
       <Button variant="outline" className="absolute -bottom-5">
         B
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Top Start"} placement="top-start">
+    <Tooltip content={"Top Start"} placement="top-start">
       <Button variant="outline" className="absolute left-10 xl:left-20 top-0">
         TS
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Top End"} placement="top-end">
+    <Tooltip content={"Top End"} placement="top-end">
       <Button variant="outline" className="absolute top-0 right-10 xl:right-20">
         TE
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Bottom Start"} placement="bottom-start">
+    <Tooltip content={"Bottom Start"} placement="bottom-start">
       <Button
         variant="outline"
         className="absolute -bottom-5 left-10 xl:left-20"
@@ -369,7 +369,7 @@ You can change placement of the **Tooltip** using property [**placement**](#tool
         BS
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Bottom End"} placement="bottom-end">
+    <Tooltip content={"Bottom End"} placement="bottom-end">
       <Button
         variant="outline"
         className="absolute -bottom-5 right-10 xl:right-20"
@@ -377,22 +377,22 @@ You can change placement of the **Tooltip** using property [**placement**](#tool
         BE
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Left Start"} placement="left-start">
+    <Tooltip content={"Left Start"} placement="left-start">
       <Button variant="outline" className="absolute left-8 top-24">
         LS
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Left End"} placement="left-end">
+    <Tooltip content={"Left End"} placement="left-end">
       <Button variant="outline" className="absolute bottom-16 left-8">
         LE
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Right Start"} placement="right-start">
+    <Tooltip content={"Right Start"} placement="right-start">
       <Button variant="outline" className="absolute right-8 top-24">
         RS
       </Button>
     </Tooltip>
-    <Tooltip content={() => "Right End"} placement="right-end">
+    <Tooltip content={"Right End"} placement="right-end">
       <Button variant="outline" className="absolute right-8 bottom-16">
         RE
       </Button>
@@ -407,27 +407,27 @@ export default function App() {
   return (
     <div className="flex h-[560px] flex-col">
       <div className="relative m-auto flex h-96 max-w-xl w-full flex-wrap justify-center gap-8">
-        <Tooltip content={() => "Left"} placement="left">
+        <Tooltip content={"Left"} placement="left">
           <Button variant="outline" className="absolute top-1/2 left-0">
             L
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Right"} placement="right">
+        <Tooltip content={"Right"} placement="right">
           <Button variant="outline" className="absolute top-1/2 right-0">
             R
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Top"} placement="top">
+        <Tooltip content={"Top"} placement="top">
           <Button variant="outline" className="absolute top-0">
             T
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Bottom"} placement="bottom">
+        <Tooltip content={"Bottom"} placement="bottom">
           <Button variant="outline" className="absolute -bottom-5">
             B
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Top Start"} placement="top-start">
+        <Tooltip content={"Top Start"} placement="top-start">
           <Button
             variant="outline"
             className="absolute left-10 xl:left-20 top-0"
@@ -435,7 +435,7 @@ export default function App() {
             TS
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Top End"} placement="top-end">
+        <Tooltip content={"Top End"} placement="top-end">
           <Button
             variant="outline"
             className="absolute top-0 right-10 xl:right-20"
@@ -443,7 +443,7 @@ export default function App() {
             TE
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Bottom Start"} placement="bottom-start">
+        <Tooltip content={"Bottom Start"} placement="bottom-start">
           <Button
             variant="outline"
             className="absolute -bottom-5 left-10 xl:left-20"
@@ -451,7 +451,7 @@ export default function App() {
             BS
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Bottom End"} placement="bottom-end">
+        <Tooltip content={"Bottom End"} placement="bottom-end">
           <Button
             variant="outline"
             className="absolute -bottom-5 right-10 xl:right-20"
@@ -459,22 +459,22 @@ export default function App() {
             BE
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Left Start"} placement="left-start">
+        <Tooltip content={"Left Start"} placement="left-start">
           <Button variant="outline" className="absolute left-8 top-24">
             LS
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Left End"} placement="left-end">
+        <Tooltip content={"Left End"} placement="left-end">
           <Button variant="outline" className="absolute bottom-16 left-8">
             LE
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Right Start"} placement="right-start">
+        <Tooltip content={"Right Start"} placement="right-start">
           <Button variant="outline" className="absolute right-8 top-24">
             RS
           </Button>
         </Tooltip>
-        <Tooltip content={() => "Right End"} placement="right-end">
+        <Tooltip content={"Right End"} placement="right-end">
           <Button variant="outline" className="absolute right-8 bottom-16">
             RE
           </Button>
@@ -499,21 +499,18 @@ Here is the API documentation of the Tooltip component. You can use the followin
 
 <div className="overflow-x-auto">
 
-|         Props         |                   Type                   |                      Description                      |       Default       |
-| :-------------------: | :--------------------------------------: | :---------------------------------------------------: | :-----------------: |
-|        content        |               `ReactNode`                |                  Content for tooltip                  | `This is a tooltip` |
-|       placement       | [TooltipPlacements](#tooltip-placements) |           Supported Tooltip Placements are:           |      `bottom`       |
-|       children        |   [TooltipChildren](#tooltip-children)   |         Pass children which will have tooltip         |        \_ \_        |
-|        isOpen         |                `boolean`                 |     Pass open state to open the floating element      |        \_ \_        |
-|       setIsOpen       |   `Dispatch<SetStateAction<boolean>>`    |            Pass setOpen to set open value             |        \_ \_        |
-|         color         |     [TooltipColors](#tooltip-colors)     |                 Change Tooltip color                  |     `"DEFAULT"`     |
-|         size          |      [TooltipSizes](#tooltip-sizes)      |             Supported Tooltip sizes are:              |     `"DEFAULT"`     |
-|        rounded        |    [TooltipRounded](#tooltip-rounded)    |               The rounded variants are:               |     `"DEFAULT"`     |
-|        shadow         |    [TooltipShadows](#tooltip-shadows)    |            Supported tooltip shadows are:             |     `"DEFAULT"`     |
-|       className       |                 `string`                 |  Add custom classes for Tooltip container or content  |        \_ \_        |
-| tooltipArrowClassName |                 `string`                 |         Add custom classes for Tooltip arrow          |        \_ \_        |
-|       showArrow       |                `boolean`                 |    Whether tooltip arrow should be shown or hidden    |       `true`        |
-|       isPopover       |                `boolean`                 | Whether the tooltip is used as a pop-confirm componen |       `false`       |
+|     Props      |                   Type                   |                   Description                   |       Default       |
+| :------------: | :--------------------------------------: | :---------------------------------------------: | :-----------------: |
+|    content     |               `ReactNode`                |               Content for tooltip               | `This is a tooltip` |
+|   placement    | [TooltipPlacements](#tooltip-placements) |        Supported Tooltip Placements are:        |      `bottom`       |
+|    children    |   [TooltipChildren](#tooltip-children)   |      Pass children which will have tooltip      |        \_ \_        |
+|     color      |     [TooltipColors](#tooltip-colors)     |              Change Tooltip color               |     `"DEFAULT"`     |
+|      size      |      [TooltipSizes](#tooltip-sizes)      |          Supported Tooltip sizes are:           |     `"DEFAULT"`     |
+|    rounded     |    [TooltipRounded](#tooltip-rounded)    |            The rounded variants are:            |     `"DEFAULT"`     |
+|     shadow     |    [TooltipShadows](#tooltip-shadows)    |         Supported tooltip shadows are:          |     `"DEFAULT"`     |
+|   className    |                 `string`                 |   Add custom classes to the tooltip container   |        \_ \_        |
+|   showArrow    |                `boolean`                 | Whether tooltip arrow should be shown or hidden |       `true`        |
+| arrowClassName |                 `string`                 |     Add custom classes to the tooltip arrow     |        \_ \_        |
 
 </div>
 

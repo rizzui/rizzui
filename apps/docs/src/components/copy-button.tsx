@@ -23,7 +23,7 @@ export function CopyButton({ value, src, ...props }: CopyButtonProps) {
   return (
     <Tooltip
       color="invert"
-      content={() => (hasCopied ? "Copied" : "Copy")}
+      content={hasCopied ? "Copied" : "Copy"}
       placement="bottom"
     >
       <ActionIcon

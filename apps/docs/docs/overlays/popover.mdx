@@ -124,6 +124,48 @@ export default function App() {
 
 <div className="mb-16" />
 
+## Controlled
+
+You can control Popover state with **isOepn** and **setIsOpen** props:
+
+<Paper>
+  <Popover>
+    <Popover.Trigger>
+      <Button variant="outline">Open Popover</Button>
+    </Popover.Trigger>
+    <Popover.Content>
+      <Title as="h6" className="!mb-0 font-semibold">
+        This is a default popover
+      </Title>
+      <Text>It is opened when button is clicked. </Text>
+    </Popover.Content>
+  </Popover>
+</Paper>
+
+```tsx
+import React, { useState } from "react";
+import { Popover, Title, Text, Button } from "rizzui";
+
+export default function App() {
+  const [isOpen, setIsOpen] = useState();
+  return (
+    <Popover isOepn={isOepn} setIsOpen={setIsOpen}>
+      <Popover.Trigger>
+        <Button variant="outline">Open Popover</Button>
+      </Popover.Trigger>
+      <Popover.Content>
+        <Title as="h6" className="!mb-0 font-semibold">
+          This is a default popover
+        </Title>
+        <Text>It is opened when button is clicked. </Text>
+      </Popover.Content>
+    </Popover>
+  );
+}
+```
+
+<div className="mb-16" />
+
 ## With Backdrop Overlay
 
 You can render any thing using our **Popover** component.
@@ -273,29 +315,23 @@ Here is the API documentation of the Popover component.
 
 <div className="overflow-x-auto">
 
-|         Props         |                   Type                   |                     Description                     |   Default   |
-| :-------------------: | :--------------------------------------: | :-------------------------------------------------: | :---------: |
-|       children        |   [PopoverChildren](#popover-children)   |        Pass children which will have tooltip        |    \_ \_    |
-|         size          |      [PopoverSizes](#popover-sizes)      |            Supported Tooltip sizes are:             | `"DEFAULT"` |
-|        rounded        |    [PopoverRounded](#popover-rounded)    |              The rounded variants are:              | `"DEFAULT"` |
-|       placement       | [PopoverPlacements](#popover-placements) |          Supported Tooltip Placements are:          |    \_ \_    |
-|        shadow         |    [PopoverShadow](#popover-shadows)     |           Supported tooltip shadows are:            | `"DEFAULT"` |
-|       className       |                 `string`                 | Add custom classes for Tooltip container or content |    \_ \_    |
-|        isOpen         |                `boolean`                 |    Pass open state to open the floating element     |    \_ \_    |
-|       setIsOpen       |   `Dispatch<SetStateAction<boolean>>`    |           Pass setOpen to set open value            |    \_ \_    |
-|        content        |               `ReactNode`                |                 Content for tooltip                 |    \_ \_    |
-| tooltipArrowClassName |                 `string`                 |        Add custom classes for Tooltip arrow         |    \_ \_    |
-|       showArrow       |                `boolean`                 |   Whether tooltip arrow should be shown or hidden   |    \_ \_    |
+|      Props       |                   Type                   |                             Description                              |   Default   |
+| :--------------: | :--------------------------------------: | :------------------------------------------------------------------: | :---------: |
+|     children     |                  \_ \_                   |      Use **Popover.Trigger** & **Popover.Content** as childrens      |    \_ \_    |
+|       gap        |                 `number`                 | Set the offset value from **Popover.Trigger** to **Popover.Content** |    `"8"`    |
+|      isOpen      |                `boolean`                 |         Pass **isOpen** state to toggle the popover content          |    \_ \_    |
+|    setIsOpen     |   `Dispatch<SetStateAction<boolean>>`    |                 Pass **setIsOpen** to set open value                 |    \_ \_    |
+|       size       |      [PopoverSizes](#popover-sizes)      |                     Supported popover sizes are:                     | `"DEFAULT"` |
+|     rounded      |    [PopoverRounded](#popover-rounded)    |                      The rounded variants are:                       | `"DEFAULT"` |
+|    placement     | [PopoverPlacements](#popover-placements) |                  Supported popover placements are:                   | `"bottom"`  |
+|      shadow      |    [PopoverShadow](#popover-shadows)     |                    Supported popover shadows are:                    | `"DEFAULT"` |
+|    animation     | [PopoverAnimation](#popover-animations)  |                  Supported popover animations are:                   | `"zoomIn"`  |
+|    showArrow     |                `boolean`                 |           Whether popover arrow should be shown or hidden            |  `"true"`   |
+|  arrowClassName  |                 `string`                 |                   Add custom classes to the arrow                    |    \_ \_    |
+|  enableOverlay   |                `boolean`                 |      Whether popover backdrop overlay should be shown or hidden      |  `"false"`  |
+| overlayClassName |                 `string`                 |                  Add custom classes to the overlay                   |    \_ \_    |
 
 </div>
-
-<div className="mb-10" />
-
-### Popover Children
-
-```ts
-type PopoverChildren = Element & { ref?: RefObject<any> | undefined };
-```
 
 <div className="mb-10" />
 
@@ -339,4 +375,10 @@ type PopoverPlacements =
 
 ```ts
 type PopoverShadow = "sm" | "DEFAULT" | "lg" | "xl";
+```
+
+### Popover Animations
+
+```ts
+type PopoverAnimation = "fadeIn" | "zoomIn" | "slideIn";
 ```

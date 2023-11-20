@@ -1,13 +1,9 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 import { Radio } from "rizzui";
 import Paper from "@site/src/components/paper";
-import RadioGroupDefault, {
-  RadioGroupStartLabel,
-  RadioGroupEndLabel,
-} from "@site/src/components/radio-group";
 
 # Radio
 
@@ -154,91 +150,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Radio Group
-
-You can make a radio group component using **RadioGroup**.
-
-<Paper>
-  <RadioGroupDefault />
-</Paper>
-
-```tsx
-import { useState } from "react";
-import { Radio, RadioGroup } from "rizzui";
-
-export default function App() {
-  const [value, setValue] = useState("apple");
-
-  return (
-    <RadioGroup value={value} setValue={setValue} className="flex gap-4">
-      <Radio label="Apple" value="apple" />
-      <Radio label="Pear" value="pear" />
-      <Radio label="Orange" value="orange" disabled />
-      <Radio label="Blueberry" value="blueberry" />
-    </RadioGroup>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Radio Group List
-
-You can style any custom design using our **Radio** component.
-
-<Paper>
-  <RadioGroupEndLabel />
-</Paper>
-
-```tsx
-import { useState } from "react";
-import { Radio } from "rizzui";
-
-export default function App() {
-  const [value, setValue] = useState("");
-
-  return (
-    <RadioGroup
-      value={value}
-      setValue={setValue}
-      className="justify-center space-x-4 space-y-4"
-    >
-      <div className="divide-slate-300 flex w-full md:w-[500px] flex-col divide-y">
-        <Radio
-          name="column-label-end-group"
-          label="Warning"
-          value="warning"
-          className="p-2"
-          labelClassName="pl-2"
-          helperClassName="ml-8"
-          helperText="This project would be available to anyone who have the link"
-        />
-        <Radio
-          name="column-label-end-group"
-          label="Success"
-          value="success"
-          className="p-2"
-          labelClassName="pl-2"
-          helperClassName="ml-8"
-          helperText="This project would be available to anyone who have the link"
-        />
-        <Radio
-          name="column-label-end-group"
-          value="Info"
-          label="info"
-          className="p-2"
-          labelClassName="pl-2"
-          helperClassName="ml-8"
-          helperText="This project would be available to anyone who have the link"
-        />
-      </div>
-    </RadioGroup>
-  );
-}
-```
-
-<div className="mb-16" />
-
 ## Disabled
 
 You can change style of **Radio** using **disabled** property.
@@ -353,22 +264,6 @@ Here is the API documentation of the radio component. And the rest of the props 
 |  helperClassName   |             `string`             |                This prop allows you to customize the helper message style                |    \_ \_    |
 |        ref         |     `Ref<HTMLInputElement>`      |                                                                                          |    \_ \_    |
 |        key         |           `kye``null`            |                                                                                          |    \_ \_    |
-
-</div>
-
-<div className="mb-10" />
-
-### RadioGroup Props
-
-Here is the API documentation of the RadioGroup component.
-
-<div className="overflow-x-auto">
-
-|  Props   |                Type                |          Description          | Default |
-| :------: | :--------------------------------: | :---------------------------: | :-----: |
-|  value   |              `string`              |        Selected value         |  \_ \_  |
-| setValue | `Dispatch<SetStateAction<string>>` | Pass function to select value |  \_ \_  |
-| children |            `ReactNode`             |   Radio buttons as children   |  \_ \_  |
 
 </div>
 

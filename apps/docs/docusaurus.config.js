@@ -88,7 +88,7 @@ const config = {
       // Replace with your project's social card
       image: "img/rizz-social-card.jpg",
       fonts: {
-        myFont: ["Inter", "sans-serif"],
+        myFont: ["Geist", "sans-serif"],
         myOtherFont: ["-apple-system", "system-ui", "sans-serif"],
       },
       navbar: {

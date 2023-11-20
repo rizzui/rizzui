@@ -4,10 +4,7 @@ sidebar_position: 5
 
 import { Checkbox } from "rizzui";
 import Paper from "@site/src/components/paper";
-import CheckboxGroupDefault, {
-  CheckboxGroupLabelStart,
-  CheckboxGroupLabelEnd,
-} from "@site/src/components/checkbox-group";
+import { CheckboxGroupLabelEnd } from "@site/src/components/checkbox-group";
 
 # Checkbox
 
@@ -204,98 +201,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Checkbox Group
-
-You can make a group of multiple choices **Checkbox** using **CheckboxGroup** component.
-
-<Paper>
-  <CheckboxGroupDefault />
-</Paper>
-
-```tsx
-import { useState } from "react";
-import { Checkbox, CheckboxGroup } from "rizzui";
-
-export default function App() {
-  const [values, setValues] = useState(["apple"]);
-  return (
-    <CheckboxGroup
-      values={values}
-      setValues={setValues}
-      className="flex flex-row gap-4"
-    >
-      <Checkbox label="Apple" value="apple" />
-      <Checkbox label="Pear" value="pear" />
-      <Checkbox label="Orange" value="orange" disabled />
-      <Checkbox label="Blueberry" value="blueberry" />
-    </CheckboxGroup>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Checkbox Group List
-
-You can style any custom design using our **Checkbox** component.
-
-<Paper>
-  <CheckboxGroupLabelEnd />
-</Paper>
-
-```tsx
-import { useState } from "react";
-import { Checkbox, CheckboxGroup } from "rizzui";
-
-export default function App() {
-  const [values, setValues] = useState<string[]>([]);
-
-  return (
-    <CheckboxGroup
-      values={values}
-      setValues={setValues}
-      className="flex flex-col divide-y"
-    >
-      <Checkbox
-        name="column-label-end-group"
-        label="Checked Item"
-        value="default"
-        color="success"
-        variant="active"
-        className="p-2"
-        labelClassName="pl-2"
-        helperClassName="ml-8"
-        helperText="This project would be available to anyone who have the link"
-      />
-      <Checkbox
-        name="column-label-end-group"
-        label="Checked Item"
-        value="primary"
-        color="success"
-        variant="active"
-        className="p-2"
-        labelClassName="pl-2"
-        helperClassName="ml-8"
-        helperText="This project would be available to anyone who have the link"
-      />
-      <Checkbox
-        name="column-label-end-group"
-        label="Checked Item"
-        value="secondary"
-        color="success"
-        variant="active"
-        className="p-2"
-        labelClassName="pl-2"
-        helperClassName="ml-8"
-        helperText="This project would be available to anyone who have the link"
-      />
-    </CheckboxGroup>
-  );
-}
-```
-
-<div className="mb-16" />
-
 ## Disabled
 
 The disabled style of the **Checkbox** component.
@@ -412,22 +317,6 @@ Here is the API documentation of the Checkbox component. And the rest of the pro
 |  helperClassName   |                `string`                |                 This prop allows you to customize the helper message style                  |    \_ \_    |
 |        ref         |        `Ref<HTMLInputElement>`         |                                                                                             |    \_ \_    |
 |        key         |              `kye``null`               |                                                                                             |    \_ \_    |
-
-</div>
-
-<div className="mb-10" />
-
-### CheckboxGroup Props
-
-Here is the API documentation of the CheckboxGroup component.
-
-<div className="overflow-x-auto">
-
-|   Props   |                 Type                 |          Description          | Default |
-| :-------: | :----------------------------------: | :---------------------------: | :-----: |
-|  values   |              `string[]`              |        Selected value         |  \_ \_  |
-| setValues | `Dispatch<SetStateAction<string[]>>` | Pass function to select value |  \_ \_  |
-| children  |             `ReactNode`              |   Radio buttons as children   |  \_ \_  |
 
 </div>
 
