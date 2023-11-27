@@ -757,6 +757,10 @@ svg[class*="lightToggleIcon"] {
   @apply px-5 relative before:block before:w-4 before:h-[20%] before:absolute before:-left-[1px] before:top-[11px] before:bg-transparent before:rounded-bl-2xl before:border-b before:border-l;
 }
 
+#__docusaurus .theme-doc-sidebar-menu li:last-child > .menu__link {
+  @apply after:block after:w-[3.5px] after:h-5 after:bg-white dark:after:bg-gray-50 after:absolute after:top-[14px] after:-left-[3.5px] after:rounded-tl-3xl;
+}
+
 #__docusaurus li > .menu__link:hover {
   @apply bg-transparent text-[var(--ifm-color-gray-900)] font-medium;
 }

@@ -61,7 +61,7 @@ var theme = {
     {
       types: ["keyword", "plain", "rule"],
       style: {
-        color: "#c678dd",
+        color: "rgb(199, 146, 234)",
       },
     },
     {

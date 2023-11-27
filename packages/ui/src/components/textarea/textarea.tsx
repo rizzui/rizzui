@@ -1,21 +1,17 @@
-import React, { forwardRef, useState, useCallback } from 'react';
+import React, { forwardRef } from 'react';
 import { cn } from '../../lib/cn';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldError } from '../field-error-text';
 import { FieldClearButton } from '../field-clear-button';
 import { makeClassName } from '../../lib/make-class-name';
+import { roundedStyles } from '../../lib/rounded';
+import { labelStyles } from '../../lib/label-size';
+import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
-const labelClasses = {
-  size: {
-    sm: 'text-xs mb-1',
-    DEFAULT: 'text-sm mb-1.5',
-    lg: 'text-sm mb-1.5',
-    xl: 'text-base mb-2',
-  },
-};
-
-const textareaClasses = {
-  base: 'block focus:outline-none bg-transparent transition duration-200',
+const textareaStyles = {
+  base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] [&.is-focus]:ring-[0.8px] [&.is-focus]:ring-primary [&.is-hover]:border-primary [&.is-focus]:border-primary',
+  scrollBar:
+    '[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb:hover]:bg-gray-400 [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
   disabled:
     '!bg-gray-100 cursor-not-allowed !border-gray-200 placeholder:text-gray-400',
   clearable:
@@ -23,98 +19,26 @@ const textareaClasses = {
   error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
   size: {
     sm: 'px-2.5 py-1 text-xs',
-    DEFAULT: 'px-4 py-2 text-sm',
-    lg: 'px-5 py-2 text-base',
-    xl: 'px-6 py-2.5 text-base',
+    md: 'px-3 py-2 text-sm',
+    lg: 'px-4 py-2 text-base',
+    xl: 'px-4 py-2.5 text-base',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    DEFAULT: 'rounded-md',
-    lg: 'rounded-lg',
-    xl: 'rounded-xl',
-  },
+  rounded: roundedStyles,
   variant: {
-    active: {
-      base: 'border bg-gray-50 [&.is-focus]:ring-[0.6px] placeholder:opacity-70',
-      color: {
-        DEFAULT:
-          'border-gray-900 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950 text-gray-950',
-        primary:
-          'border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-primary-dark',
-        secondary:
-          'border-secondary [&.is-focus]:border-secondary [&.is-focus]:ring-secondary text-secondary-dark',
-        danger:
-          'border-red [&.is-focus]:border-red [&.is-focus]:ring-red text-red-dark',
-        info: 'border-blue [&.is-focus]:border-blue [&.is-focus]:ring-blue text-blue-dark',
-        success:
-          'border-green [&.is-focus]:border-green [&.is-focus]:ring-green text-green-dark',
-        warning:
-          'border-orange [&.is-focus]:border-orange-dark [&.is-focus]:ring-orange-dark text-orange-dark',
-      },
-    },
-    flat: {
-      base: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 placeholder:opacity-80',
-      color: {
-        DEFAULT:
-          'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-950 placeholder:text-gray-600',
-        primary:
-          'bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
-        secondary:
-          'bg-secondary-lighter/70 [&.is-focus]:ring-secondary/30 text-secondary-dark',
-        danger: 'bg-red-lighter/70 [&.is-focus]:ring-red/30 text-red-dark',
-        info: 'bg-blue-lighter/70 [&.is-focus]:ring-blue/30 text-blue-dark',
-        success:
-          'bg-green-lighter/70 [&.is-focus]:ring-green/30 text-green-dark',
-        warning:
-          'bg-orange-lighter/80 [&.is-focus]:ring-orange/30 text-orange-dark',
-      },
-    },
-    outline: {
-      base: 'bg-transparent [&.is-focus]:ring-[0.6px] border border-gray-300 placeholder:text-gray-500',
-      color: {
-        DEFAULT:
-          'hover:border-gray-950 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950',
-        primary:
-          'hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
-        secondary:
-          'hover:border-secondary [&.is-focus]:border-secondary [&.is-focus]:ring-secondary',
-        danger:
-          'hover:border-red [&.is-focus]:border-red [&.is-focus]:ring-red',
-        info: 'hover:border-blue [&.is-focus]:border-blue [&.is-focus]:ring-blue',
-        success:
-          'hover:border-green [&.is-focus]:border-green [&.is-focus]:ring-green',
-        warning:
-          'hover:border-orange [&.is-focus]:border-orange [&.is-focus]:ring-orange',
-      },
-    },
-    text: {
-      base: 'border-0 [&.is-focus]:ring-2 bg-transparent placeholder:opacity-70',
-      color: {
-        DEFAULT:
-          'hover:text-gray-950 [&.is-focus]:ring-gray-900/20 placeholder:text-gray-500',
-        primary:
-          'hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
-        secondary:
-          'hover:text-secondary-dark [&.is-focus]:ring-secondary/30 text-secondary',
-        danger: 'hover:text-red-600 [&.is-focus]:ring-red/30 text-red',
-        info: 'hover:text-blue-dark [&.is-focus]:ring-blue/30 text-blue',
-        success: 'hover:text-green-dark [&.is-focus]:ring-green/30 text-green',
-        warning:
-          'hover:text-orange-dark [&.is-focus]:ring-orange/30 text-orange',
-      },
-    },
+    text: 'border-transparent ring-transparent bg-transparent',
+    flat: 'border-0 ring-gray-200/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-gray-200/70',
+    outline: 'bg-transparent ring-gray-200 border border-gray-200',
   },
 };
 
 // clear button spacing based on size
 const clearButtonSpacing = {
-  base: 'absolute rtl:right-[inherit]',
+  base: 'absolute',
   size: {
-    sm: 'right-2.5 top-1',
-    DEFAULT: 'right-4 top-2',
-    lg: 'right-5 top-2',
-    xl: 'right-6 top-2.5',
+    sm: 'end-2.5 top-1',
+    md: 'end-4 top-2',
+    lg: 'end-5 top-2',
+    xl: 'end-6 top-2.5',
   },
 };
 
@@ -134,19 +58,19 @@ export interface TextareaProps
   /** Default value in textarea */
   children?: React.ReactNode;
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof labelClasses.size;
+  size?: keyof typeof textareaStyles.size;
   /** The variants of the component are: */
-  variant?: keyof typeof textareaClasses.variant;
-  /** Change textarea color */
-  color?: keyof (typeof textareaClasses.variant)['active']['color'];
+  variant?: keyof typeof textareaStyles.variant;
   /** Set field label */
   label?: React.ReactNode;
+  /** Set font weight for label */
+  labelWeight?: keyof typeof labelStyles.weight;
   /** add clearable option */
   clearable?: boolean;
   /** clear event */
   onClear?: (event: React.MouseEvent) => void;
   /** The rounded variants are: */
-  rounded?: keyof typeof textareaClasses.rounded;
+  rounded?: keyof typeof textareaStyles.rounded;
   /** It is the password visibility toggle icon.  */
   renderCharacterCount?({
     characterCount,
@@ -155,6 +79,8 @@ export interface TextareaProps
     characterCount?: number;
     maxLength?: number;
   }): React.ReactNode;
+  /** Add helper text. It could be string or a React component */
+  helperText?: React.ReactNode;
   /** Show error message using this prop */
   error?: string;
   /** Use labelClassName prop to do some addition style for the field label */
@@ -165,8 +91,8 @@ export interface TextareaProps
   helperClassName?: string;
   /** This prop allows you to customize the error message style */
   errorClassName?: string;
-  /** Add helper text. It could be string or a React component */
-  helperText?: React.ReactNode;
+  /** Add custom classes to the root of the component */
+  className?: string;
 }
 
 /**
@@ -178,9 +104,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
       variant = 'outline',
-      size = 'DEFAULT',
-      rounded = 'DEFAULT',
-      color = 'DEFAULT',
+      size = 'md',
+      rounded = 'md',
+      labelWeight = 'medium',
       cols,
       rows = 5,
       label,
@@ -200,30 +126,26 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       maxLength,
       placeholder,
       renderCharacterCount,
+      onMouseEnter,
+      onMouseLeave,
       ...textareaProps
     },
     ref,
   ) => {
-    const variantStyle = textareaClasses.variant[variant];
-    const [isFocus, setIsFocus] = useState(false);
-
-    const handleOnFocus = useCallback(
-      (e: React.FocusEvent<HTMLTextAreaElement>) => {
-        if (readOnly === true) return false;
-        setIsFocus((prevState) => !prevState);
-        onFocus && onFocus(e);
-      },
-      [readOnly, onFocus],
-    );
-
-    const handleOnBlur = useCallback(
-      (e: React.FocusEvent<HTMLTextAreaElement>) => {
-        if (readOnly === true) return false;
-        setIsFocus(() => false);
-        onBlur && onBlur(e);
-      },
-      [readOnly, onBlur],
-    );
+    const {
+      isFocus,
+      isHover,
+      handleOnBlur,
+      handleOnFocus,
+      handleOnMouseEnter,
+      handleOnMouseLeave,
+    } = useInteractiveEvent({
+      readOnly,
+      onBlur,
+      onFocus,
+      onMouseEnter,
+      onMouseLeave,
+    });
 
     return (
       <div
@@ -234,18 +156,19 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
       >
         <label className="block">
-          {label && (
+          {label ? (
             <span
               className={cn(
                 makeClassName(`textarea-label`),
                 'block',
-                labelClasses.size[size],
+                labelStyles.size[size],
+                labelStyles.weight[labelWeight],
                 labelClassName,
               )}
             >
               {label}
             </span>
-          )}
+          ) : null}
 
           <span className="block relative">
             <textarea
@@ -256,30 +179,33 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               onFocus={handleOnFocus}
               readOnly={readOnly}
               maxLength={maxLength}
+              onMouseEnter={handleOnMouseEnter}
+              onMouseLeave={handleOnMouseLeave}
               {...(cols && { cols })}
               // placeholder is a required prop for the clearable input component even if the user does not set any
               placeholder={placeholder || 'Screen reader only'}
               className={cn(
                 makeClassName(`textarea-field`),
-                textareaClasses.base,
-                textareaClasses.size[size],
-                textareaClasses.rounded[rounded],
-                variantStyle.base,
-                variantStyle.color[color],
-                clearable && textareaClasses.clearable,
+                textareaStyles.base,
+                textareaStyles.scrollBar,
+                textareaStyles.size[size],
+                textareaStyles.rounded[rounded],
+                textareaStyles.variant[variant],
+                clearable && textareaStyles.clearable,
                 // it's important we are using placeholder-shown pseudo class to control input clear icon btn
                 !placeholder && 'placeholder:opacity-0',
+                isHover && 'is-hover', // must have is-focus class based on mouse enter
                 isFocus && 'is-focus', // must have is-focus class based on onFocus event
                 !cols && 'w-full',
                 readOnly && 'focus:ring-0',
-                disabled && textareaClasses.disabled,
-                error && textareaClasses.error,
+                disabled && textareaStyles.disabled,
+                error && textareaStyles.error,
                 textareaClassName,
               )}
               {...textareaProps}
             />
 
-            {clearable && (
+            {clearable ? (
               <FieldClearButton
                 size={size}
                 onClick={onClear}
@@ -288,7 +214,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                   clearButtonSpacing.size[size],
                 )}
               />
-            )}
+            ) : null}
 
             {renderCharacterCount &&
               renderCharacterCount({
@@ -298,7 +224,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           </span>
         </label>
 
-        {!error && helperText && (
+        {!error && helperText ? (
           <FieldHelperText
             size={size}
             className={cn(
@@ -308,15 +234,15 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           >
             {helperText}
           </FieldHelperText>
-        )}
+        ) : null}
 
-        {error && (
+        {error ? (
           <FieldError
             size={size}
             error={error}
             className={cn(makeClassName(`textarea-error-text`), errorClassName)}
           />
-        )}
+        ) : null}
       </div>
     );
   },

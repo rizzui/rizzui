@@ -63,7 +63,7 @@ const inputClasses = {
       },
     },
     outline: {
-      base: 'bg-transparent focus:ring-[0.6px] border border-gray-300 placeholder:text-gray-500',
+      base: 'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-gray-200 border border-gray-200 placeholder:text-gray-500',
       color: {
         DEFAULT:
           'hover:enabled:border-gray-950 focus:enabled:border-gray-950 focus:ring-gray-950',

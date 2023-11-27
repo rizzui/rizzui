@@ -68,7 +68,7 @@ const fileInputClasses = {
       },
     },
     outline: {
-      base: 'bg-transparent [&.is-focus]:ring-[0.6px] border border-gray-300 [&_input::placeholder]:text-gray-500',
+      base: 'bg-transparent [&.is-focus]:ring-[0.8px] ring-[0.6px] ring-gray-200 border border-gray-200 [&_input::placeholder]:text-gray-500',
       color: {
         DEFAULT:
           'hover:border-gray-950 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950',

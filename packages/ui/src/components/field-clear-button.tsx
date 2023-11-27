@@ -6,15 +6,17 @@ const inputIconClearClasses = {
   base: 'inline-flex shrink-0 transform items-center justify-center rounded-full bg-gray-950/30 backdrop-blur p-[1px] text-gray-50 transition-all duration-200 ease-in-out hover:bg-gray-950',
   size: {
     sm: 'h-3.5 w-3.5',
+    md: 'h-4 w-4',
     DEFAULT: 'h-4 w-4',
     lg: 'h-4 w-4',
     xl: 'h-[18px] w-[18px]',
   },
   hasSuffix: {
-    sm: 'mr-1.5 rtl:ml-1.5 rtl:mr-[inherit]',
-    DEFAULT: 'mr-2 rtl:ml-2 rtl:mr-[inherit]',
-    lg: 'mr-2.5 rtl:ml-2.5 rtl:mr-[inherit]',
-    xl: 'mr-2.5 rtl:ml-2.5 rtl:mr-[inherit]',
+    sm: 'me-1.5',
+    md: 'me-2',
+    DEFAULT: 'me-2',
+    lg: 'me-2.5',
+    xl: 'me-2.5',
   },
 };
 

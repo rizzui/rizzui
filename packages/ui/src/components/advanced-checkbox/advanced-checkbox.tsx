@@ -60,7 +60,7 @@ export const AdvancedCheckbox = forwardRef<
         </span>
       </label>
 
-      {!error && helperText && (
+      {!error && helperText ? (
         <FieldHelperText
           tag="div"
           size="DEFAULT"
@@ -71,9 +71,9 @@ export const AdvancedCheckbox = forwardRef<
         >
           {helperText}
         </FieldHelperText>
-      )}
+      ) : null}
 
-      {error && (
+      {error ? (
         <FieldError
           size="DEFAULT"
           error={error}
@@ -82,7 +82,7 @@ export const AdvancedCheckbox = forwardRef<
             errorClassName,
           )}
         />
-      )}
+      ) : null}
     </div>
   ),
 );

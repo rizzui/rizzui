@@ -4,123 +4,63 @@ import { CheckmarkIcon } from '../../icons/checkmark';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
+import { labelStyles } from '../../lib/label-size';
 
-const inputClasses = {
-  base: 'peer disabled:bg-gray-50 disabled:border-gray-200 checked:bg-none',
+const checkboxLabelStyles = {
+  weight: labelStyles.weight,
+  size: labelStyles.size,
+  margin: {
+    left: {
+      sm: 'me-1.5',
+      md: 'me-2',
+      lg: 'me-2.5',
+      xl: 'me-3',
+    },
+    right: {
+      sm: 'ms-1.5',
+      md: 'ms-2',
+      lg: 'ms-2.5',
+      xl: 'ms-3',
+    },
+  },
+};
+
+const checkboxStyles = {
+  base: 'peer disabled:bg-gray-100 disabled:border-gray-200 checked:bg-none transition duration-200 ease-in-out',
   size: {
-    sm: 'h-4 w-4',
-    DEFAULT: 'h-5 w-5',
-    lg: 'h-6 w-6',
-    xl: 'h-7 w-7',
+    sm: 'h-5 w-5',
+    md: 'h-6 w-6',
+    lg: 'h-7 w-7',
+    xl: 'h-8 w-8',
   },
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
-    DEFAULT: 'rounded',
+    md: 'rounded',
     lg: 'rounded-md',
     circle: 'rounded-full',
   },
+  activeIcon:
+    'peer-checked:opacity-100 absolute opacity-0 top-0 left-0 text-white',
   variant: {
-    outline: {
-      base: 'bg-transparent border border-gray-300 checked:!bg-gray-950 focus:ring-gray-900/30 checked:!border-gray-950',
-      color: {
-        DEFAULT: 'hover:enabled:border-gray-950',
-        primary: 'hover:enabled:border-primary',
-        secondary: 'hover:enabled:border-secondary',
-        danger: 'hover:enabled:border-red',
-        info: 'hover:enabled:border-blue',
-        success: 'hover:enabled:border-green',
-        warning: 'hover:enabled:border-orange',
-      },
-    },
-    flat: {
-      base: 'border-0',
-      color: {
-        DEFAULT:
-          'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 checked:!bg-gray-950',
-        primary:
-          'bg-primary-lighter/70 hover:enabled:bg-primary-lighter/90 focus:ring-primary/30 checked:!bg-primary-dark',
-        secondary:
-          'bg-secondary-lighter/70 hover:enabled:bg-secondary-lighter/90 focus:ring-secondary/30 checked:!bg-secondary-dark',
-        danger:
-          'bg-red-lighter/70 hover:enabled:bg-red-lighter/90 focus:ring-red/30 checked:!bg-red-dark',
-        info: 'bg-blue-lighter/70 hover:enabled:bg-blue-lighter/90 focus:ring-blue/30 checked:!bg-blue-dark',
-        success:
-          'bg-green-lighter/70 hover:enabled:bg-green-lighter/90 focus:ring-green/30 checked:!bg-green-dark',
-        warning:
-          'bg-orange-lighter/80 hover:enabled:bg-orange-lighter/90 focus:ring-orange/30 checked:!bg-orange-dark',
-      },
-    },
-    active: {
-      base: 'border !bg-gray-50',
-      color: {
-        DEFAULT:
-          'border-gray-900 checked:enabled:border-gray-950 focus:ring-gray-900/30',
-        primary:
-          'border-primary checked:enabled:border-primary focus:ring-primary/30',
-        secondary:
-          'border-secondary checked:enabled:border-secondary focus:ring-secondary/30',
-        danger: 'border-red checked:enabled:border-red focus:ring-red/30',
-        info: 'border-blue checked:enabled:border-blue focus:ring-blue/30',
-        success:
-          'border-green checked:enabled:border-green focus:ring-green/30',
-        warning:
-          'border-orange checked:enabled:border-orange-dark/70 focus:ring-orange/30',
-      },
-    },
-  },
-};
-
-const iconClasses = {
-  base: 'peer-checked:opacity-100 absolute opacity-0 text-white top-0 left-0',
-  color: {
-    DEFAULT: 'text-gray-950',
-    primary: 'text-primary-dark',
-    secondary: 'text-secondary-dark',
-    danger: 'text-red-dark',
-    info: 'text-blue-dark',
-    success: 'text-green-dark',
-    warning: 'text-orange-dark',
-  },
-};
-
-const labelClasses = {
-  size: {
-    text: {
-      sm: 'text-xs',
-      DEFAULT: 'text-sm',
-      lg: 'text-base',
-      xl: 'text-lg',
-    },
-    margin: {
-      start: {
-        sm: 'mr-1 rtl:ml-1',
-        DEFAULT: 'mr-1.5 rtl:ml-1.5',
-        lg: 'mr-2 rtl:ml-2',
-        xl: 'mr-2 rtl:ml-2',
-      },
-      end: {
-        sm: 'ml-1 rtl:mr-1',
-        DEFAULT: 'ml-1.5 rtl:mr-1.5',
-        lg: 'ml-2 rtl:mr-2',
-        xl: 'ml-2 rtl:mr-2',
-      },
-    },
+    outline:
+      'bg-transparent border border-gray-200 ring-[0.6px] ring-gray-200 focus:ring-gray-200 checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
+    flat: 'border-0 bg-gray-200 hover:enabled:bg-gray-200/90 focus:ring-gray-200 checked:!bg-primary',
   },
 };
 
 export interface CheckboxProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The variants of the component are: */
-  variant?: keyof typeof inputClasses.variant;
+  variant?: keyof typeof checkboxStyles.variant;
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof inputClasses.size;
-  /** Change input color */
-  color?: keyof (typeof inputClasses.variant)['outline']['color'];
+  size?: keyof typeof checkboxStyles.size;
+  /** Set font weight for label */
+  labelWeight?: keyof typeof labelStyles.weight;
   /** The rounded variants are: */
-  rounded?: keyof typeof inputClasses.rounded;
+  rounded?: keyof typeof checkboxStyles.rounded;
   /** Available directions of the label are: */
-  labelPlacement?: 'start' | 'end';
+  labelPlacement?: keyof typeof checkboxLabelStyles.margin;
   /** Whether the input is disabled */
   disabled?: boolean;
   /** Set field label */
@@ -129,12 +69,6 @@ export interface CheckboxProps
   error?: string;
   /** Add helper text. It could be string or a React component */
   helperText?: React.ReactNode;
-  /** Use className prop to apply style for entire component */
-  className?: string;
-  /** Use activeClassName prop to apply style on active component from checkboxGroup */
-  activeClassName?: string;
-  /** Use containerClassName prop to apply some additional style for label and checkbox container */
-  containerClassName?: string;
   /** Use iconClassName prop to apply some additonal style for check mark icon */
   iconClassName?: string;
   /** Use labelClassName prop to apply some addition style for the field label */
@@ -145,6 +79,8 @@ export interface CheckboxProps
   errorClassName?: string;
   /** This prop allows you to customize the helper message style */
   helperClassName?: string;
+  /** Add custom classes to the root of the component */
+  className?: string;
 }
 
 /**
@@ -152,45 +88,36 @@ export interface CheckboxProps
  * And the rest of the props of Checkbox are the same as the original html input field.
  * You can use props like `value`, `disabled`, `onChange`, `onFocus`, `onBlur` etc.
  */
-
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       variant = 'outline',
-      size = 'DEFAULT',
-      rounded = 'DEFAULT',
-      color = 'DEFAULT',
-      labelPlacement = 'end',
+      size = 'md',
+      rounded = 'md',
+      labelPlacement = 'right',
+      labelWeight = 'medium',
       label,
       disabled,
       error,
       helperText,
-      className,
-      activeClassName,
-      containerClassName,
       iconClassName,
       labelClassName,
       inputClassName,
       errorClassName,
       helperClassName,
+      className,
       ...checkboxProps
     },
     ref,
   ) => (
     <div
-      className={cn(
-        makeClassName(`checkbox-root`),
-        'flex flex-col',
-        className,
-        activeClassName,
-      )}
+      className={cn(makeClassName(`checkbox-root`), 'flex flex-col', className)}
     >
       <label
         className={cn(
           makeClassName(`checkbox-container`),
-          'flex flex-row items-center',
+          'flex flex-row items-center cursor-pointer',
           disabled && 'cursor-not-allowed',
-          containerClassName,
         )}
       >
         <span className="relative leading-none">
@@ -200,11 +127,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             disabled={disabled}
             className={cn(
               makeClassName(`checkbox-input`),
-              inputClasses.base,
-              inputClasses.size[size],
-              inputClasses.rounded[rounded],
-              inputClasses.variant[variant].base,
-              inputClasses.variant[variant].color[color],
+              checkboxStyles.base,
+              checkboxStyles.size[size],
+              checkboxStyles.rounded[rounded],
+              checkboxStyles.variant[variant],
               inputClassName,
             )}
             {...checkboxProps}
@@ -212,46 +138,47 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           <CheckmarkIcon
             className={cn(
               makeClassName(`checkbox-icon`),
-              iconClasses.base,
-              inputClasses.size[size],
+              checkboxStyles.activeIcon,
+              checkboxStyles.size[size],
               size === 'sm' && 'top-0.5',
-              variant === 'active' && iconClasses.color[color],
               iconClassName,
             )}
           />
         </span>
 
-        {label && (
+        {label ? (
           <span
             className={cn(
               makeClassName(`checkbox-label`),
-              labelClasses.size.text[size],
-              labelClasses.size.margin[labelPlacement][size],
-              labelPlacement === 'start' && 'order-first',
+              checkboxLabelStyles.size[size],
+              checkboxLabelStyles.weight[labelWeight],
+              checkboxLabelStyles.margin[labelPlacement][size],
+              labelPlacement === 'left' && 'order-first',
+              'mb-0',
               labelClassName,
             )}
           >
             {label}
           </span>
-        )}
+        ) : null}
       </label>
 
-      {!error && helperText && (
+      {!error && helperText ? (
         <FieldHelperText
           size={size}
           className={cn(makeClassName(`checkbox-helper-text`), helperClassName)}
         >
           {helperText}
         </FieldHelperText>
-      )}
+      ) : null}
 
-      {error && (
+      {error ? (
         <FieldError
           size={size}
           error={error}
           className={cn(makeClassName(`checkbox-error-text`), errorClassName)}
         />
-      )}
+      ) : null}
     </div>
   ),
 );

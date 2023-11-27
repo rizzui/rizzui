@@ -162,7 +162,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       <label
         className={cn(
           makeClassName(`radio-container`),
-          'flex flex-row items-center',
+          'flex flex-row items-center cursor-pointer',
           disabled && 'cursor-not-allowed',
           containerClassName,
         )}

@@ -1,6 +1,12 @@
 import React from 'react';
 import { cn } from '../../../lib/cn';
 import { makeClassName } from '../../../lib/make-class-name';
+import { fontWeightStyles } from '../../../lib/font-weight';
+
+const fontWeight = {
+  ...fontWeightStyles,
+  extraBold: 'font-extrabold',
+} as const;
 
 const titleStyles = {
   as: {
@@ -11,13 +17,7 @@ const titleStyles = {
     h5: 'text-lg',
     h6: 'text-base',
   },
-  fontWeight: {
-    normal: 'font-normal',
-    medium: 'font-medium',
-    semiBold: 'font-semibold',
-    bold: 'font-bold',
-    extraBold: 'font-extrabold',
-  },
+  fontWeight,
 };
 
 export type TitleProps = {
