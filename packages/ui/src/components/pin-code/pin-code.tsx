@@ -8,78 +8,29 @@ const containerClasses = {
   center: 'justify-center align-center',
 };
 
-const inputClasses = {
-  base: 'block peer text-center bg-transparent mr-2 focus:placeholder:opacity-0 focus:outline-none transition duration-200 disabled:bg-gray-50 disabled:placeholder:text-gray-400 disabled:cursor-not-allowed disabled:border-gray-200',
+const pinCodeStyles = {
+  base: 'block peer text-center bg-transparent mr-2 focus:placeholder:opacity-0 focus:outline-none transition duration-200',
+  disabled:
+    'disabled:bg-gray-50 disabled:placeholder:text-gray-400 disabled:cursor-not-allowed disabled:border-gray-200',
   error:
     'border-red hover:enabled:!border-red focus:enabled:!border-red focus:!ring-red',
   size: {
     sm: 'px-1 py-1 text-sm h-8 w-8',
-    DEFAULT: 'px-2 py-2 text-sm h-10 w-10',
+    md: 'px-2 py-2 text-sm h-10 w-10',
     lg: 'px-2 py-2 text-base h-12 w-12',
     xl: 'px-2.5 py-2.5 text-lg h-14 w-14',
   },
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
-    DEFAULT: 'rounded-md',
+    md: 'rounded-md',
     lg: 'rounded-lg',
     full: 'rounded-full',
   },
   variant: {
-    active: {
-      base: 'border focus:ring-[0.6px] bg-gray-50 placeholder:opacity-80',
-      color: {
-        DEFAULT:
-          'border-gray-900 focus:enabled:border-gray-950 focus:ring-gray-950 text-gray-950',
-        primary:
-          'border-primary focus:enabled:border-primary focus:ring-primary text-primary-dark',
-        secondary:
-          'border-secondary focus:enabled:border-secondary focus:ring-secondary text-secondary-dark',
-        danger:
-          'border-red focus:enabled:border-red focus:ring-red text-red-dark',
-        info: 'border-blue focus:enabled:border-blue focus:ring-blue text-info-dark',
-        success:
-          'border-green focus:enabled:border-green focus:ring-green text-green-dark',
-        warning:
-          'border-orange focus:enabled:border-orange-dark focus:ring-orange-dark text-orange-dark',
-      },
-    },
-    flat: {
-      base: 'border focus:ring-2 border-0 placeholder:opacity-90',
-      color: {
-        DEFAULT:
-          'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 text-gray-950 placeholder:text-gray-600',
-        primary:
-          'bg-primary-lighter/70 hover:enabled:bg-primary-lighter/90 focus:ring-primary/30 text-primary-dark',
-        secondary:
-          'bg-secondary-lighter/70 hover:enabled:bg-secondary-lighter/90 focus:ring-secondary/30 text-secondary-dark',
-        danger:
-          'bg-red-lighter/70 hover:enabled:bg-red-lighter/90 focus:ring-red/30 text-red-dark',
-        info: 'bg-blue-lighter/70 hover:enabled:bg-blue-lighter/90 focus:ring-blue/30 text-blue-dark',
-        success:
-          'bg-green-lighter/70 hover:enabled:bg-green-lighter/90 focus:ring-green/30 text-green-dark',
-        warning:
-          'bg-orange-lighter/90 hover:enabled:bg-orange-lighter focus:ring-orange/30 text-orange-dark',
-      },
-    },
-    outline: {
-      base: 'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-gray-200 border border-gray-200 placeholder:text-gray-500',
-      color: {
-        DEFAULT:
-          'hover:enabled:border-gray-950 focus:enabled:border-gray-950 focus:ring-gray-950',
-        primary:
-          'hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
-        secondary:
-          'hover:enabled:border-secondary focus:enabled:border-secondary focus:ring-secondary',
-        danger:
-          'hover:enabled:border-red focus:enabled:border-red focus:ring-red',
-        info: 'hover:enabled:border-blue focus:enabled:border-blue focus:ring-blue',
-        success:
-          'hover:enabled:border-green focus:enabled:border-green focus:ring-green',
-        warning:
-          'hover:enabled:border-orange focus:enabled:border-orange focus:ring-orange',
-      },
-    },
+    flat: 'focus:ring-[1.8px] border-0 placeholder:opacity-90 bg-gray-200/70 focus:ring-primary focus:enabled:bg-transparent',
+    outline:
+      'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-gray-200 border border-gray-200 placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
   },
 };
 
@@ -89,7 +40,7 @@ export interface PinCodeProps
     'size' | 'type' | 'value'
   > {
   /** Pass setState to get back the pin code value */
-  setValue: React.Dispatch<React.SetStateAction<string | number | undefined>>;
+  setValue?: React.Dispatch<React.SetStateAction<string | number | undefined>>;
   /** This Pin Code component only support these two types */
   type?: 'text' | 'number';
   /** Mask and unmask to hide and show pin code */
@@ -101,13 +52,11 @@ export interface PinCodeProps
   /** Set placeholder text */
   placeholder?: string;
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof inputClasses.size;
+  size?: keyof typeof pinCodeStyles.size;
   /** The rounded variants are: */
-  rounded?: keyof typeof inputClasses.rounded;
+  rounded?: keyof typeof pinCodeStyles.rounded;
   /** The variants of the component are: */
-  variant?: keyof typeof inputClasses.variant;
-  /** Change input color */
-  color?: keyof (typeof inputClasses.variant)['active']['color'];
+  variant?: keyof typeof pinCodeStyles.variant;
   /** Show error message using this prop */
   error?: string;
   /** Add custom classes for the input filed extra style */
@@ -128,10 +77,9 @@ export function PinCode({
   length = 4,
   setValue,
   center = true,
-  size = 'DEFAULT',
-  rounded = 'DEFAULT',
+  size = 'md',
+  rounded = 'md',
   variant = 'outline',
-  color = 'DEFAULT',
   placeholder = '○',
   error,
   className,
@@ -148,7 +96,7 @@ export function PinCode({
   }
 
   function setPinValue() {
-    setValue(inputRefs.current.map((node) => node.value).join(''));
+    setValue && setValue(inputRefs.current.map((node) => node.value).join(''));
   }
 
   function handleChange(
@@ -202,13 +150,14 @@ export function PinCode({
   }
 
   return (
-    <div className={cn(makeClassName(`pin-code-root`), 'flex flex-col')}>
+    <div
+      className={cn(makeClassName(`pin-code-root`), 'flex flex-col', className)}
+    >
       <div
         className={cn(
           makeClassName(`pin-code-container`),
           containerClasses.base,
           center && containerClasses.center,
-          className,
         )}
       >
         {Array.from({ length }, (_, index) => (
@@ -229,12 +178,12 @@ export function PinCode({
             onPaste={(event) => handlePaste(event, index)}
             className={cn(
               makeClassName(`pin-code-field`),
-              inputClasses.base,
-              inputClasses.size[size],
-              inputClasses.rounded[rounded],
-              inputClasses.variant[variant].base,
-              inputClasses.variant[variant].color[color],
-              error && inputClasses.error,
+              pinCodeStyles.base,
+              pinCodeStyles.disabled,
+              pinCodeStyles.size[size],
+              pinCodeStyles.rounded[rounded],
+              pinCodeStyles.variant[variant],
+              error && pinCodeStyles.error,
               mask &&
                 '[-webkit-text-security:disc] [-moz-text-security:circle] [text-security:circle]',
               inputClassName,
@@ -244,7 +193,7 @@ export function PinCode({
         ))}
       </div>
 
-      {error && (
+      {error ? (
         <FieldError
           size={size}
           error={error}
@@ -254,7 +203,7 @@ export function PinCode({
             errorClassName,
           )}
         />
-      )}
+      ) : null}
     </div>
   );
 }

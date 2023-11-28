@@ -26,7 +26,8 @@ const checkboxLabelStyles = {
 };
 
 const checkboxStyles = {
-  base: 'peer disabled:bg-gray-100 disabled:border-gray-200 checked:bg-none transition duration-200 ease-in-out',
+  base: 'peer checked:bg-none transition duration-200 ease-in-out',
+  disabled: 'disabled:bg-gray-100 disabled:border-gray-200',
   size: {
     sm: 'h-5 w-5',
     md: 'h-6 w-6',
@@ -45,7 +46,7 @@ const checkboxStyles = {
   variant: {
     outline:
       'bg-transparent border border-gray-200 ring-[0.6px] ring-gray-200 focus:ring-gray-200 checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
-    flat: 'border-0 bg-gray-200 hover:enabled:bg-gray-200/90 focus:ring-gray-200 checked:!bg-primary',
+    flat: 'border-0 bg-gray-200/70 hover:enabled:bg-gray-200 focus:ring-gray-200 checked:!bg-primary',
   },
 };
 
@@ -128,6 +129,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             className={cn(
               makeClassName(`checkbox-input`),
               checkboxStyles.base,
+              checkboxStyles.disabled,
               checkboxStyles.size[size],
               checkboxStyles.rounded[rounded],
               checkboxStyles.variant[variant],

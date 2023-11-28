@@ -51,7 +51,7 @@ const switchStyles = {
     },
   },
   variant: {
-    flat: 'border border-transparent bg-gray-200 group-hover/switch:bg-gray-200/90',
+    flat: 'border border-transparent bg-gray-200/70 group-hover/switch:bg-gray-200',
     outline:
       'border border-gray-200 ring-[0.6px] ring-gray-200 group-hover/switch:border-primary',
   },

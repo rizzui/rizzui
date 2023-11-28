@@ -3,102 +3,52 @@ import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
+import { labelStyles } from '../../lib/label-size';
 
-const inputClasses = {
-  base: 'disabled:bg-gray-50 disabled:border-gray-200',
-  size: {
-    sm: 'h-4 w-4',
-    DEFAULT: 'h-5 w-5',
-    lg: 'h-6 w-6',
-    xl: 'h-7 w-7',
-  },
-  variant: {
-    outline: {
-      base: 'bg-transparent border border-gray-300 checked:!bg-gray-950 focus:ring-gray-900/30 checked:!border-gray-950',
-      color: {
-        DEFAULT: 'hover:enabled:border-gray-950',
-        primary: 'hover:enabled:border-primary',
-        secondary: 'hover:enabled:border-secondary',
-        danger: 'hover:enabled:border-red',
-        info: 'hover:enabled:border-blue',
-        success: 'hover:enabled:border-green',
-        warning: 'hover:enabled:border-orange',
-      },
+const radioLabelStyles = {
+  weight: labelStyles.weight,
+  size: labelStyles.size,
+  margin: {
+    left: {
+      sm: 'me-1.5',
+      md: 'me-2',
+      lg: 'me-2.5',
+      xl: 'me-3',
     },
-    flat: {
-      base: 'border-0',
-      color: {
-        DEFAULT:
-          'bg-gray-200/70 hover:enabled:bg-gray-200/90 focus:ring-gray-900/30 checked:!bg-gray-950',
-        primary:
-          'bg-primary-lighter/70 hover:enabled:bg-primary-lighter/90 focus:ring-primary/30 checked:!bg-primary-dark',
-        secondary:
-          'bg-secondary-lighter/70 hover:enabled:bg-secondary-lighter/90 focus:ring-secondary/30 checked:!bg-secondary-dark',
-        danger:
-          'bg-red-lighter/70 hover:enabled:bg-red-lighter/90 focus:ring-red/30 checked:!bg-red-dark',
-        info: 'bg-blue-lighter/70 hover:enabled:bg-blue-lighter/90 focus:ring-blue/30 checked:!bg-blue-dark',
-        success:
-          'bg-green-lighter/70 hover:enabled:bg-green-lighter/90 focus:ring-green/30 checked:!bg-green-dark',
-        warning:
-          'bg-orange-lighter/80 hover:enabled:bg-orange-lighter/90 focus:ring-orange/30 checked:!bg-orange-dark',
-      },
-    },
-    active: {
-      base: 'border',
-      color: {
-        DEFAULT:
-          'border-gray-900 checked:enabled:border-gray-950 focus:ring-gray-900/30 checked:!bg-gray-950',
-        primary:
-          'border-primary checked:enabled:border-primary focus:ring-primary/30 checked:!bg-primary-dark',
-        secondary:
-          'border-secondary checked:enabled:border-secondary focus:ring-secondary/30 checked:!bg-secondary-dark',
-        danger:
-          'border-red checked:enabled:border-red focus:ring-red/30 checked:!bg-red-dark',
-        info: 'border-blue checked:enabled:border-blue focus:ring-blue/30 checked:!bg-blue-dark',
-        success:
-          'border-green checked:enabled:border-green focus:ring-green/30 checked:!bg-green-dark',
-        warning:
-          'border-orange checked:enabled:border-orange-dark/70 focus:ring-orange/30 checked:!bg-orange-dark',
-      },
+    right: {
+      sm: 'ms-1.5',
+      md: 'ms-2',
+      lg: 'ms-2.5',
+      xl: 'ms-3',
     },
   },
 };
 
-const labelClasses = {
+const radioStyles = {
+  base: 'disabled:bg-gray-50 disabled:border-gray-200 ring-[0.6px] focus:ring-gray-200',
   size: {
-    text: {
-      sm: 'text-xs',
-      DEFAULT: 'text-sm',
-      lg: 'text-base',
-      xl: 'text-lg',
-    },
-    margin: {
-      start: {
-        sm: 'mr-1 rtl:ml-1',
-        DEFAULT: 'mr-1.5 rtl:ml-1.5',
-        lg: 'mr-2 rtl:ml-2',
-        xl: 'mr-2 rlt:ml-2',
-      },
-      end: {
-        sm: 'ml-1 rtl:mr-1',
-        DEFAULT: 'ml-1.5 rtl:mr-1.5',
-        lg: 'ml-2 rtl:mr-2',
-        xl: 'ml-2 rtl:mr-2',
-      },
-    },
+    sm: 'h-5 w-5',
+    md: 'h-6 w-6',
+    lg: 'h-7 w-7',
+    xl: 'h-8 w-8',
+  },
+  variant: {
+    outline:
+      'bg-transparent border border-gray-200 ring-gray-200 checked:!bg-gray-primary checked:!border-primary hover:enabled:border-primary',
+    flat: 'border-0 bg-gray-200/70 ring-gray-200/70 hover:enabled:bg-gray-200/90 checked:!bg-primary',
   },
 };
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The variants of the component are: */
-  variant?: keyof typeof inputClasses.variant;
+  variant?: keyof typeof radioStyles.variant;
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof inputClasses.size;
-  /** Change radio button color */
-  color?: keyof (typeof inputClasses.variant)['outline']['color'];
+  size?: keyof typeof radioStyles.size;
   /** Available directions of the label are: */
-  labelPlacement?: 'start' | 'end';
+  labelPlacement?: keyof typeof radioLabelStyles.margin;
+  /** Set font weight for label */
+  labelWeight?: keyof typeof labelStyles.weight;
   /** Whether the input is disabled */
   disabled?: boolean;
   /** Set field label */
@@ -109,10 +59,6 @@ export interface RadioProps
   helperText?: React.ReactNode;
   /** Use className prop to apply style for entire component */
   className?: string;
-  /** Use activeClassName prop to apply style on active component from radioGroup */
-  activeClassName?: string;
-  /** Use containerClassName prop to apply some additional style for label and radio container */
-  containerClassName?: string;
   /** Use labelClassName prop to apply some addition style for the field label */
   labelClassName?: string;
   /** Add custom classes for the input filed extra style */
@@ -133,16 +79,14 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
       variant = 'outline',
-      size = 'DEFAULT',
-      color = 'DEFAULT',
-      labelPlacement = 'end',
+      size = 'md',
+      labelPlacement = 'right',
+      labelWeight = 'medium',
       label,
       disabled,
       error,
       helperText,
       className,
-      activeClassName,
-      containerClassName,
       labelClassName,
       inputClassName,
       errorClassName,
@@ -152,19 +96,13 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     ref,
   ) => (
     <div
-      className={cn(
-        makeClassName(`radio-root`),
-        'flex flex-col',
-        className,
-        activeClassName,
-      )}
+      className={cn(makeClassName(`radio-root`), 'flex flex-col', className)}
     >
       <label
         className={cn(
           makeClassName(`radio-container`),
           'flex flex-row items-center cursor-pointer',
           disabled && 'cursor-not-allowed',
-          containerClassName,
         )}
       >
         <input
@@ -173,46 +111,47 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           disabled={disabled}
           className={cn(
             makeClassName(`radio-field`),
-            inputClasses.base,
-            inputClasses.size[size],
-            inputClasses.variant[variant].base,
-            inputClasses.variant[variant].color[color],
+            radioStyles.base,
+            radioStyles.size[size],
+            radioStyles.variant[variant],
             inputClassName,
           )}
           {...radioProps}
         />
 
-        {label && (
+        {label ? (
           <span
             className={cn(
               makeClassName(`radio-label`),
-              labelClasses.size.text[size],
-              labelClasses.size.margin[labelPlacement][size],
-              labelPlacement === 'start' && 'order-first',
+              radioLabelStyles.size[size],
+              radioLabelStyles.weight[labelWeight],
+              radioLabelStyles.margin[labelPlacement][size],
+              labelPlacement === 'left' && 'order-first',
+              'mb-0',
               labelClassName,
             )}
           >
             {label}
           </span>
-        )}
+        ) : null}
       </label>
 
-      {!error && helperText && (
+      {!error && helperText ? (
         <FieldHelperText
           size={size}
           className={cn(makeClassName(`radio-helper-text`), helperClassName)}
         >
           {helperText}
         </FieldHelperText>
-      )}
+      ) : null}
 
-      {error && (
+      {error ? (
         <FieldError
           size={size}
           error={error}
           className={cn(makeClassName(`radio-error-text`), errorClassName)}
         />
-      )}
+      ) : null}
     </div>
   ),
 );

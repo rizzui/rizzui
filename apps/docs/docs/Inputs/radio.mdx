@@ -38,9 +38,8 @@ export default function App() {
 You can change the style of **Radio** using [**variant**](#radio-variants) property.
 
 <Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
+  <Radio className="m-2" label="Outline" />
   <Radio className="m-2" label="Flat" variant="flat" />
-  <Radio className="m-2" label="Outline" variant="outline" />
-  <Radio className="m-2" label="Active" variant="active" />
 </Paper>
 
 ```tsx
@@ -49,9 +48,8 @@ import { Radio } from "rizzui";
 export default function App() {
   return (
     <>
+      <Radio className="m-2" label="Outline" />
       <Radio className="m-2" label="Flat" variant="flat" />
-      <Radio className="m-2" label="Outline" variant="outline" />
-      <Radio className="m-2" label="Active" variant="active" />
     </>
   );
 }
@@ -64,10 +62,10 @@ export default function App() {
 You can change the sizes of **Radio** using [**size**](#radio-sizes) property.
 
 <Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
-  <Radio className="m-2" label="Small" variant="active" size="sm" />
-  <Radio className="m-2" label="Default" variant="active" />
-  <Radio className="m-2" label="Large" variant="active" size="lg" />
-  <Radio className="m-2" label="Extra Large" variant="active" size="xl" />
+  <Radio className="m-2" label="Small" size="sm" />
+  <Radio className="m-2" label="Default" />
+  <Radio className="m-2" label="Large" size="lg" />
+  <Radio className="m-2" label="Extra Large" size="xl" />
 </Paper>
 
 ```tsx
@@ -76,10 +74,10 @@ import { Radio } from "rizzui";
 export default function App() {
   return (
     <>
-      <Radio className="m-2" label="Small" variant="active" size="sm" />
-      <Radio className="m-2" label="Default" variant="active" />
-      <Radio className="m-2" label="Large" variant="active" size="lg" />
-      <Radio className="m-2" label="Extra Large" variant="active" size="xl" />
+      <Radio className="m-2" label="Small" size="sm" />
+      <Radio className="m-2" label="Default" />
+      <Radio className="m-2" label="Large" size="lg" />
+      <Radio className="m-2" label="Extra Large" size="xl" />
     </>
   );
 }
@@ -92,8 +90,8 @@ export default function App() {
 You can set label on the two diffrient side using **labelPlacement** property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
-  <Radio className="m-2" label="Left Placement" labelPlacement="start" />
-  <Radio className="m-2" label="Right Placement" labelPlacement="end" />
+  <Radio className="m-2" label="Left Placement" labelPlacement="left" />
+  <Radio className="m-2" label="Right Placement" labelPlacement="right" />
 </Paper>
 
 ```tsx
@@ -102,47 +100,8 @@ import { Radio } from "rizzui";
 export default function App() {
   return (
     <>
-      <Radio className="m-2" label="Left Placement" labelPlacement="start" />
-      <Radio className="m-2" label="Right Placement" labelPlacement="end" />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Colors
-
-You can change the color of **Radio** using [**color**](#radio-colors) property.
-
-<Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
-  <Radio className="m-2" label="Default" variant="flat" />
-  <Radio className="m-2" label="Primary" variant="flat" color="primary" />
-  <Radio className="m-2" label="Secondary" variant="flat" color="secondary" />
-  <Radio className="m-2" label="Danger" variant="flat" color="danger" />
-  <Radio className="m-2" label="Info" variant="flat" color="info" />
-  <Radio className="m-2" label="Success" variant="flat" color="success" />
-  <Radio className="m-2" label="Warning" variant="flat" color="warning" />
-</Paper>
-
-```tsx
-import { Radio } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Radio className="m-2" label="Default" variant="flat" />
-      <Radio className="m-2" label="Primary" variant="flat" color="primary" />
-      <Radio
-        className="m-2"
-        label="Secondary"
-        variant="flat"
-        color="secondary"
-      />
-      <Radio className="m-2" label="Danger" variant="flat" color="danger" />
-      <Radio className="m-2" label="Info" variant="flat" color="info" />
-      <Radio className="m-2" label="Success" variant="flat" color="success" />
-      <Radio className="m-2" label="Warning" variant="flat" color="warning" />
+      <Radio className="m-2" label="Left Placement" labelPlacement="left" />
+      <Radio className="m-2" label="Right Placement" labelPlacement="right" />
     </>
   );
 }
@@ -178,7 +137,6 @@ You can add helper text to **Radio**.
     helperText="Hi! My name is John Doe."
     label="John"
     value="john"
-    labelClassName="font-medium"
   />
 </Paper>
 
@@ -192,7 +150,6 @@ export default function App() {
       helperText="Hi! My name is John Doe."
       label="John"
       value="john"
-      labelClassName="font-medium"
     />
   );
 }
@@ -210,7 +167,6 @@ You can show the validation error message using **error** property.
     error="This field is required"
     label="Yes"
     value="yes"
-    labelClassName="font-medium"
   />
 </Paper>
 
@@ -224,7 +180,6 @@ export default function App() {
       error="This field is required"
       label="Yes"
       value="yes"
-      labelClassName="font-medium"
     />
   );
 }
@@ -240,30 +195,27 @@ export default function App() {
 
 ### Radio Props
 
-Here is the API documentation of the radio component. And the rest of the props of radio are the same as the original html input field. You can use props like **value**, **disabled**, **onChange**, **onFocus**, **onBlur** etc.
+Here is the API documentation of the radio component. And the rest of the props of radio are the same as the original html input field.
 
 <div className="overflow-x-auto">
 
-|       Props        |               Type               |                                       Description                                        |   Default   |
-| :----------------: | :------------------------------: | :--------------------------------------------------------------------------------------: | :---------: |
-|       label        |           `ReactNode`            |                                     Set field label                                      |    \_ \_    |
-|       value        |                                  |                                                                                          |    \_ \_    |
-|     className      |             `string`             |                  Use className prop to apply style for entire component                  |    \_ \_    |
-|      variant       | [RadioVariants](#radio-variants) |                            The variants of the component are:                            | `"outline"` |
-|        size        |    [RadioSizes](#radio-sizes)    |     The size of the component. <br /> "sm" is equivalent to the dense input styling.     | `"DEFAULT"` |
-|       color        |   [RadioColors](#radio-colors)   |                                Change radio button color                                 | `"DEFAULT"` |
-|   labelPlacement   |          `start` `end`           |                          Available directions of the label are:                          |   `"end"`   |
-|      disabled      |            `boolean`             |                              Whether the input is disabled                               |    \_ \_    |
-|       error        |             `string`             |                            Show error message using this prop                            |    \_ \_    |
-|     helperText     |           `ReactNode`            |                 Add helper text. It could be string or a React component                 |    \_ \_    |
-|  activeClassName   |             `string`             |       Use activeClassName prop to apply style on active component from radioGroup        |    \_ \_    |
-| containerClassName |             `string`             | Use containerClassName prop to apply some additional style for label and radio container |    \_ \_    |
-|   labelClassName   |             `string`             |         Use labelClassName prop to apply some addition style for the field label         |    \_ \_    |
-|   inputClassName   |             `string`             |                    Add custom classes for the input filed extra style                    |    \_ \_    |
-|   errorClassName   |             `string`             |                This prop allows you to customize the error message style                 |    \_ \_    |
-|  helperClassName   |             `string`             |                This prop allows you to customize the helper message style                |    \_ \_    |
-|        ref         |     `Ref<HTMLInputElement>`      |                                                                                          |    \_ \_    |
-|        key         |           `kye``null`            |                                                                                          |    \_ \_    |
+|      Props      |               Type               |                                   Description                                    |   Default   |
+| :-------------: | :------------------------------: | :------------------------------------------------------------------------------: | :---------: |
+|      label      |           `ReactNode`            |                                 Set field label                                  |    \_ \_    |
+|   labelWeight   |   [LabelWeight](#label-weight)   |                              Set label font weight                               | `"medium"`  |
+| labelPlacement  |          `left` `right`          |                      Available directions of the label are:                      |  `"right"`  |
+|     variant     | [RadioVariants](#radio-variants) |                        The variants of the component are:                        | `"outline"` |
+|      size       |    [RadioSizes](#radio-sizes)    | The size of the component. <br /> "sm" is equivalent to the dense radio styling. |   `"md"`    |
+|    disabled     |            `boolean`             |                          Whether the radio is disabled                           |    \_ \_    |
+|      error      |             `string`             |                        Show error message using this prop                        |    \_ \_    |
+|   helperText    |           `ReactNode`            |             Add helper text. It could be string or a React component             |    \_ \_    |
+| labelClassName  |             `string`             |     Use labelClassName prop to apply some addition style for the field label     |    \_ \_    |
+| inputClassName  |             `string`             |                Add custom classes for the input filed extra style                |    \_ \_    |
+| helperClassName |             `string`             |            This prop allows you to customize the helper message style            |    \_ \_    |
+| errorClassName  |             `string`             |            This prop allows you to customize the error message style             |    \_ \_    |
+|    className    |             `string`             |                 Add custom classes to the root of the component                  |    \_ \_    |
+|       ref       |     `Ref<HTMLInputElement>`      |                                                                                  |    \_ \_    |
+|       ...       |      `InputHTMLAttributes`       |      native props like **value**, **onChange**, **onFocus**, **onBlur** ...      |    \_ \_    |
 
 </div>
 
@@ -272,7 +224,15 @@ Here is the API documentation of the radio component. And the rest of the props 
 ### Radio Variants
 
 ```ts
-type RadioVariants = "flat" | "outline" | "active";
+type RadioVariants = "outline" | "flat";
+```
+
+<div className="mb-10" />
+
+### Label Weight
+
+```ts
+type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ```
 
 <div className="mb-10" />
@@ -280,20 +240,5 @@ type RadioVariants = "flat" | "outline" | "active";
 ### Radio Sizes
 
 ```ts
-type RadioSizes = "DEFAULT" | "sm" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Radio Colors
-
-```ts
-type RadioColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+type RadioSizes = "sm" | "md" | "lg" | "xl";
 ```
