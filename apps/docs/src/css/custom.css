@@ -26,16 +26,16 @@
     /* ----------------------------------- */
     /* primary/brand colors */
     /* ----------------------------------- */
-    --primary-lighter: 221 227 255; /* #dde3ff */
-    --primary-default: 78 54 245; /* #4e36f5 */
-    --primary-dark: 67 42 216; /* #432ad8 */
+    --primary-lighter: 227 227 227; /* #e3e3e3 */
+    --primary-default: 34 34 34; /* #222222 */
+    --primary-dark: 0 0 0; /* #000000 */
 
     /* ----------------------------------- */
     /* secondary colors */
     /* ----------------------------------- */
-    --secondary-lighter: 227 215 252; /* #e3d7fc */
-    --secondary-default: 121 40 202; /* #7928ca */
-    --secondary-dark: 76 40 137; /* #4c2889 */
+    --secondary-lighter: 221 227 255; /* #dde3ff */
+    --secondary-default: 78 54 245; /* #4e36f5 */
+    --secondary-dark: 67 42 216; /* #432ad8 */
 
     /* ----------------------------------- */
     /* red/error colors */
@@ -130,6 +130,13 @@
     --gray-800: 241 241 241; /* #f1f1f1 */
     --gray-900: 250 250 250; /* #fafafa */
     --gray-950: 255 255 255; /* #ffffff */
+
+    /* ----------------------------------- */
+    /* primary/brand colors */
+    /* ----------------------------------- */
+    --primary-lighter: 34 34 34; /* #222222 */
+    --primary-default: 241 241 241; /* #f1f1f1 */
+    --primary-dark: 255 255 255; /* #ffffff */
     /* here you can customize other colors for dark theme if design required */
 
     /* docusaurus dark theme */
@@ -538,6 +545,8 @@ nav.navbar .navbar__inner {
 /* TODO: removed wehn dark mode color issue fixed */
 [class*="colorModeToggle_"] {
   @apply hidden !important;
+  /* order: 2; */
+  /* @apply ms-4; */
 }
 
 #__docusaurus .navbar__logo {
@@ -713,7 +722,15 @@ svg[class*="lightToggleIcon"] {
   }
 
   .theme-doc-sidebar-container ~ main > .container .col.col--3 {
-    @apply w-80 fixed right-0 bg-white dark:bg-gray-50;
+    @apply w-80 fixed right-0 bg-white;
+  }
+
+  [data-theme="dark"]
+    .theme-doc-sidebar-container
+    ~ main
+    > .container
+    .col.col--3 {
+    @apply bg-[#08090e];
   }
 }
 
@@ -758,7 +775,15 @@ svg[class*="lightToggleIcon"] {
 }
 
 #__docusaurus .theme-doc-sidebar-menu li:last-child > .menu__link {
-  @apply after:block after:w-[3.5px] after:h-5 after:bg-white dark:after:bg-gray-50 after:absolute after:top-[14px] after:-left-[3.5px] after:rounded-tl-3xl;
+  @apply after:block after:w-[3.5px] after:h-5 after:bg-white after:absolute after:top-[14px] after:-left-[3.5px] after:rounded-tl-3xl;
+}
+
+html[data-theme="dark"]
+  #__docusaurus
+  .theme-doc-sidebar-menu
+  li:last-child
+  > .menu__link::after {
+  background-color: #08090e;
 }
 
 #__docusaurus li > .menu__link:hover {
@@ -999,11 +1024,11 @@ button[class*="toggleButton"].clean-btn:hover {
 /* ------------------------------------- */
 /* dark style adjustment */
 /* ------------------------------------- */
-[data-theme="dark"] body::before {
+/* [data-theme="dark"] body::before {
   content: "";
   background-image: linear-gradient(192deg, #191515, transparent);
   @apply block fixed inset-0 -z-[1];
-}
+} */
 
 [data-theme="dark"] nav.navbar {
   @apply bg-black/[0.01];

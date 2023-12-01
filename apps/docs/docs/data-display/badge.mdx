@@ -131,7 +131,6 @@ You can change the color of the **Badge** using [**color**](#badge-colors) prope
 <Paper>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
     <Badge>Badge</Badge>
-    <Badge color="primary">Badge</Badge>
     <Badge color="secondary">Badge</Badge>
     <Badge color="info">Badge</Badge>
     <Badge color="warning">Badge</Badge>
@@ -147,7 +146,6 @@ export default function App() {
   return (
     <>
       <Badge>Badge</Badge>
-      <Badge color="primary">Badge</Badge>
       <Badge color="secondary">Badge</Badge>
       <Badge color="info">Badge</Badge>
       <Badge color="warning">Badge</Badge>
@@ -168,10 +166,6 @@ You can render **Badge** as dot using **renderAsDot** property.
   <div className="flex flex-col gap-6 text-sm">
     <div className="flex items-center gap-2">
       <Badge renderAsDot />
-      <Text>Default</Text>
-    </div>
-    <div className="flex items-center gap-2">
-      <Badge renderAsDot color="primary" />
       <Text>Primary</Text>
     </div>
     <div className="flex items-center gap-2">
@@ -205,10 +199,6 @@ export default function App() {
     <>
       <div className="flex items-center gap-2">
         <Badge renderAsDot />
-        <Text>Default</Text>
-      </div>
-      <div className="flex items-center gap-2">
-        <Badge renderAsDot color="primary" />
         <Text>Primary</Text>
       </div>
       <div className="flex items-center gap-2">
@@ -447,9 +437,9 @@ Here is the API documentation of the Badge component. You can use props like **i
 | :---------------: | :------------------------------: | :------------------------------------------------------------------------------------: | :---------: |
 |     children      |        `React.ReactNode`         |                          Accepts everything React can render                           |    \_ \_    |
 |      variant      | [BadgeVariants](#badge-variants) |                                 Set the Badge variants                                 |  `"solid"`  |
-|       size        |    [BadgeSizes](#badge-sizes)    | Set the size of the component. <br /> `"sm"` is equivalent to the dense Badge styling. | `"DEFAULT"` |
-|      rounded      |  [BadgeRounded](#badge-rounded)  |                        Set border radius of the Badge component                        | `"DEFAULT"` |
-|       color       |   [BadgeColors](#badge-colors)   |                                   Change Badge color                                   | `"DEFAULT"` |
+|       size        |    [BadgeSizes](#badge-sizes)    | Set the size of the component. <br /> `"sm"` is equivalent to the dense Badge styling. |   `"md"`    |
+|      rounded      |  [BadgeRounded](#badge-rounded)  |                        Set border radius of the Badge component                        |  `"full"`   |
+|       color       |   [BadgeColors](#badge-colors)   |                                   Change Badge color                                   | `"primary"` |
 | enableOutlineRing |            `boolean`             |                Set a outline ring. It is useful for the overlapping UI.                |    \_ \_    |
 |    renderAsDot    |            `boolean`             |                                 Render badge as a dot                                  |    \_ \_    |
 |     className     |             `string`             |                           Add custom classes for extra style                           |    \_ \_    |
@@ -469,7 +459,7 @@ type BadgeVariants = "solid" | "flat" | "outline";
 ### Badge Sizes
 
 ```ts
-type BadgeSizes = "DEFAULT" | "sm" | "lg" | "xl";
+type BadgeSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -477,7 +467,7 @@ type BadgeSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ### Badge Rounded
 
 ```ts
-type BadgeRounded = "DEFAULT" | "none" | "sm" | "md" | "lg";
+type BadgeRounded = "none" | "sm" | "md" | "lg" | "full";
 ```
 
 <div className="mb-10" />
@@ -486,7 +476,6 @@ type BadgeRounded = "DEFAULT" | "none" | "sm" | "md" | "lg";
 
 ```ts
 type BadgeColors =
-  | "DEFAULT"
   | "primary"
   | "secondary"
   | "danger"

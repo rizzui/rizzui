@@ -39,7 +39,7 @@ const checkboxStyles = {
     sm: 'rounded-sm',
     md: 'rounded',
     lg: 'rounded-md',
-    circle: 'rounded-full',
+    full: 'rounded-full',
   },
   activeIcon:
     'peer-checked:opacity-100 absolute opacity-0 top-0 left-0 text-white',

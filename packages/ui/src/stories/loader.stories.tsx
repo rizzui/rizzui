@@ -19,7 +19,6 @@ Default.args = {};
 export const Colors = () => (
   <div className="flex items-center justify-around gap-3">
     <Loader />
-    <Loader color="primary" />
     <Loader color="secondary" />
     <Loader color="info" />
     <Loader color="warning" />

@@ -6,13 +6,13 @@ const classes = {
   base: 'inline-flex items-center justify-center flex-shrink-0',
   size: {
     sm: '32',
-    DEFAULT: '40',
+    md: '40',
     lg: '48',
     xl: '56',
   },
   fontSize: {
     sm: 'text-xs',
-    DEFAULT: 'text-sm',
+    md: 'text-sm',
     lg: 'text-base',
     xl: 'text-lg',
   },
@@ -24,7 +24,6 @@ const classes = {
     full: 'rounded-full',
   },
   color: {
-    DEFAULT: 'bg-gray-200 text-gray-900',
     invert: 'bg-gray-900 text-gray-50',
     primary: 'bg-primary text-white',
     secondary: 'bg-secondary text-white',
@@ -79,7 +78,7 @@ function getInitials(name: string) {
 export function Avatar({
   src,
   name,
-  size = 'DEFAULT',
+  size = 'md',
   initials,
   customSize,
   rounded = 'full',

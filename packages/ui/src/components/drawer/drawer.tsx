@@ -15,7 +15,7 @@ const drawerClasses = {
   // -> when placement is set to top | bottom
   sizeOfYAxisDrawer: {
     sm: 'max-h-[30%]',
-    DEFAULT: 'max-h-[35%]',
+    md: 'max-h-[35%]',
     lg: 'max-h-[60%]',
     xl: 'max-h-[80%]',
     full: 'max-h-full',
@@ -23,7 +23,7 @@ const drawerClasses = {
   // -> when placement is set to left | right
   sizeOfXAxisDrawer: {
     sm: 'max-w-sm',
-    DEFAULT: 'max-w-md',
+    md: 'max-w-md',
     lg: 'max-w-2xl',
     xl: 'max-w-[60%]',
     full: 'max-w-full',
@@ -36,7 +36,7 @@ function isPlacementOnYAxis(placement: keyof typeof drawerClasses.placement) {
   return ['top', 'bottom'].indexOf(placement) !== -1;
 }
 
-export type DrawerSize = 'sm' | 'DEFAULT' | 'lg' | 'xl' | 'full';
+export type DrawerSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
 
 export type DrawerProps = {
   /** Whether the Drawer is open or not */
@@ -45,7 +45,7 @@ export type DrawerProps = {
   onClose(): void;
   /** Drawer can be placed on left (default), top, right and bottom. Control drawer position with placement prop: */
   placement?: keyof typeof drawerClasses.placement;
-  /** Preset size of drawer is sm, DEFAULT, lg, xl, full */
+  /** Preset size of drawer is sm, md, lg, xl, full */
   size?: DrawerSize;
   /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" */
   customSize?: string;
@@ -63,7 +63,7 @@ export type DrawerProps = {
 export function Drawer({
   isOpen,
   onClose,
-  size = 'DEFAULT',
+  size = 'md',
   placement = 'right',
   customSize,
   overlayClassName,

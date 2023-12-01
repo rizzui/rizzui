@@ -10,12 +10,12 @@ const loaderStyles = {
   base: 'h-auto',
   sizes: {
     sm: 'w-5',
-    DEFAULT: 'w-[22px]',
+    md: 'w-[22px]',
     lg: 'w-7',
     xl: 'w-9',
   },
   colors: {
-    DEFAULT: 'text-current',
+    current: 'text-current',
     primary: 'text-primary',
     secondary: 'text-secondary',
     danger: 'text-red',
@@ -42,8 +42,8 @@ export interface LoaderTypes extends React.SVGProps<SVGSVGElement> {
 }
 
 export function Loader({
-  size = 'DEFAULT',
-  color = 'DEFAULT',
+  size = 'md',
+  color = 'current',
   variant = 'bars',
   className,
   ...props

@@ -6,7 +6,7 @@ import { useTab } from './tab-context';
 import { makeClassName } from '../../lib/make-class-name';
 
 const tabListItemStyles = {
-  base: 'relative py-2.5 px-3 flex items-center text-gray-600 hover:text-gray-900 gap-1 [&>*]:pointer-events-none outline-none before:absolute before:bg-gray-900 before:opacity-0 before:transition-all before:duration-200',
+  base: 'relative py-2.5 px-3 flex items-center text-gray-600 hover:text-gray-900 gap-1 [&>*]:pointer-events-none outline-none before:absolute before:bg-primary before:opacity-0 before:transition-all before:duration-200',
   active: 'before:opacity-100 text-gray-900',
   vertical: 'before:h-full before:w-0.5 before:-end-[13px] before:bottom-0',
   horizontal: 'before:w-full before:h-0.5 before:start-0 before:-bottom-[1px]',

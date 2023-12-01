@@ -94,7 +94,7 @@ You can change the border radius of **Checkbox** using [**rounded**](#checkbox-r
   <Checkbox className="m-2" label="Rounded Default" />
   <Checkbox className="m-2" label="Rounded Large" rounded="lg" />
   <Checkbox className="m-2" label="Rounded None" rounded="none" />
-  <Checkbox className="m-2" label="Rounded Circle" rounded="circle" />
+  <Checkbox className="m-2" label="Rounded Circle" rounded="full" />
 </Paper>
 
 ```tsx
@@ -107,7 +107,7 @@ export default function App() {
       <Checkbox className="m-2" label="Rounded Default" />
       <Checkbox className="m-2" label="Rounded Large" rounded="lg" />
       <Checkbox className="m-2" label="Rounded None" rounded="none" />
-      <Checkbox className="m-2" label="Rounded Circle" rounded="circle" />
+      <Checkbox className="m-2" label="Rounded Circle" rounded="full" />
     </>
   );
 }
@@ -284,5 +284,5 @@ type CheckboxSizes = "sm" | "md" | "lg" | "xl";
 ### Checkbox Rounded
 
 ```ts
-type CheckboxRounded = "sm" | "md" | "lg" | "circle" | "none";
+type CheckboxRounded = "sm" | "md" | "lg" | "full" | "none";
 ```

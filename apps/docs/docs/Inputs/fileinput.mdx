@@ -39,9 +39,8 @@ export default function App() {
 You can change the style of **FileInput** using [**variant**](#fileinput-variants) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-  <FileInput label="Active Variant" variant="active" />
-  <FileInput label="Flat Variant" variant="flat" />
   <FileInput label="Outline Variant" variant="outline" />
+  <FileInput label="Flat Variant" variant="flat" />
   <FileInput label="Text Variant" variant="text" />
 </Paper>
 
@@ -51,9 +50,8 @@ import { FileInput } from "rizzui";
 export default function App() {
   return (
     <>
-      <FileInput label="Active Variant" variant="active" />
-      <FileInput label="Flat Variant" variant="flat" />
       <FileInput label="Outline Variant" variant="outline" />
+      <FileInput label="Flat Variant" variant="flat" />
       <FileInput label="Text Variant" variant="text" />
     </>
   );
@@ -95,11 +93,11 @@ export default function App() {
 You can change the border radius of **FileInput** using [**rounded**](#fileinput-rounded) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <FileInput label="Rounded Small" rounded="sm" variant="active" />
-  <FileInput label="Rounded Default" variant="active" />
-  <FileInput label="Rounded Large" rounded="lg" variant="active" />
-  <FileInput label="Rounded None" rounded="none" variant="active" />
-  <FileInput label="Rounded Full" rounded="pill" variant="active" />
+  <FileInput label="Rounded Small" rounded="sm" />
+  <FileInput label="Rounded Default" />
+  <FileInput label="Rounded Large" rounded="lg" />
+  <FileInput label="Rounded None" rounded="none" />
+  <FileInput label="Rounded Full" rounded="pill" />
 </Paper>
 
 ```tsx
@@ -108,45 +106,11 @@ import { FileInput } from "rizzui";
 export default function App() {
   return (
     <>
-      <FileInput label="Rounded Small" rounded="sm" variant="active" />
-      <FileInput label="Rounded Default" variant="active" />
-      <FileInput label="Rounded Large" rounded="lg" variant="active" />
-      <FileInput label="Rounded None" rounded="none" variant="active" />
-      <FileInput label="Rounded Full" rounded="pill" variant="active" />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Colors
-
-You can change the color of **FileInput** using [**color**](#fileinput-colors) property.
-
-<Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <FileInput label="Upload File" variant="flat" />
-  <FileInput label="Upload File" variant="flat" color="primary" />
-  <FileInput label="Upload File" variant="flat" color="secondary" />
-  <FileInput label="Upload File" variant="flat" color="danger" />
-  <FileInput label="Upload File" variant="flat" color="info" />
-  <FileInput label="Upload File" variant="flat" color="success" />
-  <FileInput label="Upload File" variant="flat" color="warning" />
-</Paper>
-
-```tsx
-import { FileInput } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <FileInput label="Upload File" variant="flat" />
-      <FileInput label="Upload File" variant="flat" color="primary" />
-      <FileInput label="Upload File" variant="flat" color="secondary" />
-      <FileInput label="Upload File" variant="flat" color="danger" />
-      <FileInput label="Upload File" variant="flat" color="info" />
-      <FileInput label="Upload File" variant="flat" color="success" />
-      <FileInput label="Upload File" variant="flat" color="warning" />
+      <FileInput label="Rounded Small" rounded="sm" />
+      <FileInput label="Rounded Default" />
+      <FileInput label="Rounded Large" rounded="lg" />
+      <FileInput label="Rounded None" rounded="none" />
+      <FileInput label="Rounded Full" rounded="pill" />
     </>
   );
 }
@@ -264,17 +228,17 @@ export default function App() {
 
 ### FileInput Props
 
-Here is the API documentation of the Input component. And the rest of the props are the same as the original html input field. You can use props like **value**, **disabled**, **placeholder**, **onChange**, **onFocus**, **onBlur** etc.
+Here is the API documentation of the Input component. And the rest of the props are the same as the original html input field.
 
 <div className="overflow-x-auto">
 
 |      Props      |                   Type                   |                                 Description                                 |   Default   |
 | :-------------: | :--------------------------------------: | :-------------------------------------------------------------------------: | :---------: |
 |      label      |               `ReactNode`                |                               Set field label                               |    \_ \_    |
+|   labelWeight   |       [LabelWeight](#label-weight)       |                            Set label font weight                            | `"medium"`  |
 |     variant     | [FileinputVariants](#fileinput-variants) |                     The variants of the component are:                      | `"outline"` |
-|      size       |    [FileinputSizes](#fileinput-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. | `"DEFAULT"` |
-|     rounded     |  [FileinputRounded](#fileinput-rounded)  |                          The rounded variants are:                          | `"DEFAULT"` |
-|      color      |   [FileinputColors](#fileinput-colors)   |                             Change input color                              | `"DEFAULT"` |
+|      size       |    [FileinputSizes](#fileinput-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. |   `"md"`    |
+|     rounded     |  [FileinputRounded](#fileinput-rounded)  |                          The rounded variants are:                          |   `"md"`    |
 |   placeholder   |                 `string`                 |                         Set input placeholder text                          |    \_ \_    |
 |    disabled     |                `boolean`                 |                    Whether the input is disabled or not                     |    \_ \_    |
 |    clearable    |                `boolean`                 |                            add clearable option                             |    \_ \_    |
@@ -285,8 +249,9 @@ Here is the API documentation of the Input component. And the rest of the props 
 | inputClassName  |                 `string`                 |                     Override default CSS style of input                     |    \_ \_    |
 | helperClassName |                 `string`                 |                  Override default CSS style of helperText                   |    \_ \_    |
 | errorClassName  |                 `string`                 |                 Override default CSS style of error message                 |    \_ \_    |
+|    className    |                 `string`                 |               Add custom classes to the root of the component               |    \_ \_    |
 |       ref       |         `Ref<HTMLInputElement>`          |                                                                             |    \_ \_    |
-|       key       |               `key` `null`               |                                                                             |    \_ \_    |
+|       ...       |          `InputHTMLAttributes`           |   native props like **value**, **onChange**, **onFocus**, **onBlur** ...    |    \_ \_    |
 
 </div>
 
@@ -295,7 +260,15 @@ Here is the API documentation of the Input component. And the rest of the props 
 ### Fileinput Variants
 
 ```ts
-type FileinputVariants = "active" | "flat" | "outline" | "text";
+type FileinputVariants = "outline" | "flat" | "text";
+```
+
+<div className="mb-10" />
+
+### Label Weight
+
+```ts
+type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ```
 
 <div className="mb-10" />
@@ -303,7 +276,7 @@ type FileinputVariants = "active" | "flat" | "outline" | "text";
 ### Fileinput Sizes
 
 ```ts
-type FileinputSizes = "sm" | "DEFAULT" | "lg" | "xl";
+type FileinputSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -311,22 +284,7 @@ type FileinputSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ### Fileinput Rounded
 
 ```ts
-type FileinputRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
-```
-
-<div className="mb-10" />
-
-### Fileinput Colors
-
-```ts
-type FileinputColor =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+type FileinputRounded = "sm" | "md" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />

@@ -74,7 +74,7 @@ export default function HeroBlock() {
       </div>
 
       <BlurBGPattern />
-      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.4]" />
+      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.4] dark:opacity-[0.1]" />
     </section>
   );
 }

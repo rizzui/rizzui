@@ -24,16 +24,16 @@
     /* ----------------------------------- */
     /* primary/brand colors */
     /* ----------------------------------- */
-    --primary-lighter: 221 227 255; /* #dde3ff */
-    --primary-default: 78 54 245; /* #4e36f5 */
-    --primary-dark: 67 42 216; /* #432ad8 */
+    --primary-lighter: 227 227 227; /* #e3e3e3 */
+    --primary-default: 34 34 34; /* #222222 */
+    --primary-dark: 0 0 0; /* #000000 */
 
     /* ----------------------------------- */
     /* secondary colors */
     /* ----------------------------------- */
-    --secondary-lighter: 227 215 252; /* #e3d7fc */
-    --secondary-default: 121 40 202; /* #7928ca */
-    --secondary-dark: 76 40 137; /* #4c2889 */
+    --secondary-lighter: 221 227 255; /* #dde3ff */
+    --secondary-default: 78 54 245; /* #4e36f5 */
+    --secondary-dark: 67 42 216; /* #432ad8 */
 
     /* ----------------------------------- */
     /* red/error colors */

@@ -132,13 +132,9 @@ You can change the color of the **Button** using [**color**](#button-colors) pro
 
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <Button>Default</Button>
-    <Button color="primary">Primary</Button>
+    <Button>Primary</Button>
     <Button color="secondary">Secondary</Button>
-    <Button color="info">Info</Button>
-    <Button color="warning">Warning</Button>
     <Button color="danger">Danger</Button>
-    <Button color="success">Success</Button>
   </div>
 </Paper>
 
@@ -148,13 +144,9 @@ import { Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Button>Default</Button>
-      <Button color="primary">Primary</Button>
+      <Button>Primary</Button>
       <Button color="secondary">Secondary</Button>
-      <Button color="info">Info</Button>
-      <Button color="warning">Warning</Button>
       <Button color="danger">Danger</Button>
-      <Button color="success">Success</Button>
     </>
   );
 }
@@ -168,24 +160,12 @@ You can set the loading state of the **Button** component using **isLoading** pr
 
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <Button isLoading={true}>Default</Button>
-    <Button isLoading={true} color="primary">
-      Primary
-    </Button>
+    <Button isLoading={true}>Primary</Button>
     <Button isLoading={true} color="secondary">
       Secondary
     </Button>
-    <Button isLoading={true} color="info">
-      Info
-    </Button>
-    <Button isLoading={true} color="warning">
-      Warning
-    </Button>
     <Button isLoading={true} color="danger">
       Danger
-    </Button>
-    <Button isLoading={true} color="success">
-      Success
     </Button>
   </div>
 </Paper>
@@ -196,24 +176,12 @@ import { Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Button isLoading={true}>Default</Button>
-      <Button isLoading={true} color="primary">
-        Primary
-      </Button>
+      <Button isLoading={true}>Primary</Button>
       <Button isLoading={true} color="secondary">
         Secondary
       </Button>
-      <Button isLoading={true} color="info">
-        Info
-      </Button>
-      <Button isLoading={true} color="warning">
-        Warning
-      </Button>
       <Button isLoading={true} color="danger">
         Danger
-      </Button>
-      <Button isLoading={true} color="success">
-        Success
       </Button>
     </>
   );
@@ -284,9 +252,9 @@ Here is the API documentation of the Button component. And the rest of the props
 | children  |         `React.ReactNode`          |                           Accepts everything React can render                           |    \_ \_    |
 |   type    |    [ButtonTypes](#button-types)    |                          Set the original HTML type of button                           | `"button"`  |
 |  variant  | [ButtonVariants](#button-variants) |                                 Set the button variants                                 |  `"solid"`  |
-|   size    |    [ButtonSizes](#button-sizes)    | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. | `"DEFAULT"` |
-|  rounded  |  [ButtonRounded](#button-rounded)  |                        Set border radius of the button component                        | `"DEFAULT"` |
-|   color   |   [ButtonColors](#button-colors)   |                                   Change button color                                   | `"DEFAULT"` |
+|   size    |    [ButtonSizes](#button-sizes)    | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. |   `"md"`    |
+|  rounded  |  [ButtonRounded](#button-rounded)  |                        Set border radius of the button component                        |   `"md"`    |
+|   color   |   [ButtonColors](#button-colors)   |                                   Change button color                                   | `"primary"` |
 | isLoading |             `boolean`              |                            Set the loading status of button                             |    \_ \_    |
 | disabled  |             `boolean`              |                              Disabled state of the button                               |    \_ \_    |
 |    ref    |      `Ref<HTMLButtonElement>`      |                                       forwardRef                                        |    \_ \_    |
@@ -315,7 +283,7 @@ type ButtonVariants = "solid" | "flat" | "outline" | "text";
 ### Button Sizes
 
 ```ts
-type ButtonSizes = "solid" | "flat" | "outline" | "text";
+type ButtonSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -323,7 +291,7 @@ type ButtonSizes = "solid" | "flat" | "outline" | "text";
 ### Button Rounded
 
 ```ts
-type ButtonRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
+type ButtonRounded = "sm" | "md" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -331,12 +299,5 @@ type ButtonRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
 ### Button Colors
 
 ```ts
-type ButtonColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+type ButtonColors = "primary" | "secondary" | "danger";
 ```

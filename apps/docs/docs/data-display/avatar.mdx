@@ -197,7 +197,6 @@ You can change the color of the **Avatar** using **color** property.
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
     <Avatar name="John Doe" initials="SM" />
     <Avatar name="John Doe" initials="SM" color="invert" />
-    <Avatar name="John Doe" initials="SM" color="primary" />
     <Avatar name="John Doe" initials="SM" color="secondary" />
     <Avatar name="John Doe" initials="SM" color="danger" />
     <Avatar name="John Doe" initials="SM" color="warning" />
@@ -214,7 +213,6 @@ export default function App() {
     <>
       <Avatar name="John Doe" initials="SM" />
       <Avatar name="John Doe" initials="SM" color="invert" />
-      <Avatar name="John Doe" initials="SM" color="primary" />
       <Avatar name="John Doe" initials="SM" color="secondary" />
       <Avatar name="John Doe" initials="SM" color="danger" />
       <Avatar name="John Doe" initials="SM" color="warning" />
@@ -423,124 +421,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Icons
-
-You can use **ActionIcon** component with **Avatar** component.
-
-<Paper>
-  <div className="flex items-center justify-around gap-3 w-full flex-wrap">
-    <div className="relative inline-flex">
-      <Avatar
-        size="lg"
-        name="John Doe"
-        src="https://randomuser.me/api/portraits/women/40.jpg"
-      />
-      <ActionIcon
-        size="sm"
-        rounded="full"
-        variant="solid"
-        color="warning"
-        className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-      >
-        <PlusIcon />
-      </ActionIcon>
-    </div>
-    <div className="relative inline-flex">
-      <Avatar
-        src="https://randomuser.me/api/portraits/women/43.jpg"
-        size="lg"
-        name="John Doe"
-      />
-      <ActionIcon
-        size="sm"
-        rounded="full"
-        variant="solid"
-        color="danger"
-        className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-      >
-        <ShoppingBagIcon className="w-4" />
-      </ActionIcon>
-    </div>
-    <div className="relative inline-flex">
-      <Avatar
-        src="https://randomuser.me/api/portraits/women/44.jpg"
-        size="lg"
-        name="John Doe"
-      />
-      <ActionIcon
-        size="sm"
-        rounded="full"
-        variant="solid"
-        color="success"
-        className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-      >
-        <CheckIcon />
-      </ActionIcon>
-    </div>
-  </div>
-</Paper>
-
-```tsx
-import { Avatar, ActionIcon } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <div className="relative inline-flex">
-        <Avatar
-          size="lg"
-          name="John Doe"
-          src="https://randomuser.me/api/portraits/women/40.jpg"
-        />
-        <ActionIcon
-          size="sm"
-          rounded="full"
-          variant="solid"
-          color="warning"
-          className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-        >
-          <PlusIcon />
-        </ActionIcon>
-      </div>
-      <div className="relative inline-flex">
-        <Avatar
-          src="https://randomuser.me/api/portraits/women/43.jpg"
-          size="lg"
-          name="John Doe"
-        />
-        <ActionIcon
-          size="sm"
-          rounded="full"
-          variant="solid"
-          color="danger"
-          className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-        >
-          <ShoppingBagIcon className="w-4" />
-        </ActionIcon>
-      </div>
-      <div className="relative inline-flex">
-        <Avatar
-          src="https://randomuser.me/api/portraits/women/44.jpg"
-          size="lg"
-          name="John Doe"
-        />
-        <ActionIcon
-          size="sm"
-          rounded="full"
-          variant="solid"
-          color="success"
-          className="absolute right-0 bottom-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-        >
-          <CheckIcon />
-        </ActionIcon>
-      </div>
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
 ## Group
 
 You can use **Avatar** component to create a group of avatars.
@@ -661,7 +541,7 @@ Here is the API documentation of the Avatar component.
 
 ```ts
 type AvatarColors =
-  | "DEFAULT"
+  | "invert"
   | "primary"
   | "secondary"
   | "danger"

@@ -1,143 +1,53 @@
-import React, { forwardRef, useState, useCallback } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
 import { makeClassName } from '../../lib/make-class-name';
+import { roundedStyles } from '../../lib/rounded';
+import { labelStyles } from '../../lib/label-size';
+import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
-const labelClasses = {
-  size: {
-    sm: 'text-xs mb-1',
-    DEFAULT: 'text-sm mb-1.5',
-    lg: 'text-sm mb-1.5',
-    xl: 'text-base mb-2',
-  },
-};
-
-const fileInputClasses = {
+const fileInputStyles = {
   base: 'flex items-center peer w-full transition duration-200',
   disabled: '!bg-gray-100 cursor-not-allowed !border-gray-200',
   error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
   size: {
     sm: 'pr-2 py-1 text-xs h-8 leading-[32px] pl-[1px]',
-    DEFAULT: 'pr-3.5 py-2 text-sm h-10 leading-[40px] pl-[1px]',
+    md: 'pr-3.5 py-2 text-sm h-10 leading-[40px] pl-[1px]',
     lg: 'pr-4 py-2 text-base h-12 leading-[48px] pl-[1px]',
     xl: 'pr-5 py-2.5 text-base h-14 leading-[56px] pl-0.5',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    DEFAULT: 'rounded-md',
-    lg: 'rounded-lg',
-    pill: 'rounded-full',
-  },
+  rounded: roundedStyles,
   variant: {
-    active: {
-      base: 'border bg-gray-50 [&.is-focus]:ring-[0.6px] [&_input::placeholder]:opacity-70',
-      color: {
-        DEFAULT:
-          'border-gray-900 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950 text-gray-950',
-        primary:
-          'border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-primary-dark',
-        secondary:
-          'border-secondary [&.is-focus]:border-secondary [&.is-focus]:ring-secondary text-secondary-dark',
-        danger:
-          'border-red [&.is-focus]:border-red [&.is-focus]:ring-red text-red-dark',
-        info: 'border-blue [&.is-focus]:border-blue [&.is-focus]:ring-blue text-blue-dark',
-        success:
-          'border-green [&.is-focus]:border-green [&.is-focus]:ring-green text-green-dark',
-        warning:
-          'border-orange [&.is-focus]:border-orange-dark [&.is-focus]:ring-orange-dark text-orange-dark',
-      },
-    },
-    flat: {
-      base: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 [&_input::placeholder]:opacity-80',
-      color: {
-        DEFAULT:
-          'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-950 [&_input::placeholder]:text-gray-600',
-        primary:
-          'bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
-        secondary:
-          'bg-secondary-lighter/70 [&.is-focus]:ring-secondary/30 text-secondary-dark',
-        danger: 'bg-red-lighter/70 [&.is-focus]:ring-red/30 text-red-dark',
-        info: 'bg-blue-lighter/70 [&.is-focus]:ring-blue/30 text-blue-dark',
-        success:
-          'bg-green-lighter/70 [&.is-focus]:ring-green/30 text-green-dark',
-        warning:
-          'bg-orange-lighter/80 [&.is-focus]:ring-orange/30 text-orange-dark',
-      },
-    },
-    outline: {
-      base: 'bg-transparent [&.is-focus]:ring-[0.8px] ring-[0.6px] ring-gray-200 border border-gray-200 [&_input::placeholder]:text-gray-500',
-      color: {
-        DEFAULT:
-          'hover:border-gray-950 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950',
-        primary:
-          'hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
-        secondary:
-          'hover:border-secondary [&.is-focus]:border-secondary [&.is-focus]:ring-secondary',
-        danger:
-          'hover:border-red [&.is-focus]:border-red [&.is-focus]:ring-red',
-        info: 'hover:border-blue [&.is-focus]:border-blue [&.is-focus]:ring-blue',
-        success:
-          'hover:border-green [&.is-focus]:border-green [&.is-focus]:ring-green',
-        warning:
-          'hover:border-orange [&.is-focus]:border-orange [&.is-focus]:ring-orange',
-      },
-    },
-    text: {
-      base: 'border-0 [&.is-focus]:ring-2 bg-transparent [&_input::placeholder]:opacity-70',
-      color: {
-        DEFAULT:
-          'hover:text-gray-950 [&.is-focus]:ring-gray-900/20 [&_input::placeholder]:text-gray-500',
-        primary:
-          'hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
-        secondary:
-          'hover:text-secondary-dark [&.is-focus]:ring-secondary/30 text-secondary',
-        danger: 'hover:text-red-600 [&.is-focus]:ring-red/30 text-red',
-        info: 'hover:text-blue-dark [&.is-focus]:ring-blue/30 text-blue',
-        success: 'hover:text-green-dark [&.is-focus]:ring-green/30 text-green',
-        warning:
-          'hover:text-orange-dark [&.is-focus]:ring-orange/30 text-orange',
-      },
-    },
+    flat: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 [&_input::placeholder]:opacity-80 bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
+    outline:
+      'bg-transparent [&.is-focus]:ring-[0.8px] ring-[0.6px] ring-gray-200 border border-gray-200 [&_input::placeholder]:text-gray-500 hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
+    text: 'border-0 [&.is-focus]:ring-2 bg-transparent [&_input::placeholder]:opacity-70 hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
   },
 };
 
-const fileButtonClasses = {
+const fileButtonStyles = {
   base: '[&::file-selector-button]:inline-flex [&::file-selector-button]:font-medium [&::file-selector-button]:leading-none [&::file-selector-button]:items-center [&::file-selector-button]:justify-center [&::file-selector-button]:border-0 [&::file-selector-button]:focus-visible:ring-2 [&::file-selector-button]:focus-visible:ring-opacity-50',
   size: {
     sm: '[&::file-selector-button]:h-7 [&::file-selector-button]:px-2.5',
-    DEFAULT: '[&::file-selector-button]:h-9 [&::file-selector-button]:px-3.5',
+    md: '[&::file-selector-button]:h-9 [&::file-selector-button]:px-3.5',
     lg: '[&::file-selector-button]:h-11 [&::file-selector-button]:px-4',
     xl: '[&::file-selector-button]:h-12 [&::file-selector-button]:px-5',
   },
   rounded: {
     none: '',
     sm: '[&::file-selector-button]:rounded-sm',
-    DEFAULT: '[&::file-selector-button]:rounded',
+    md: '[&::file-selector-button]:rounded',
     lg: '[&::file-selector-button]:rounded-md',
     pill: '[&::file-selector-button]:rounded-full',
   },
-  color: {
-    DEFAULT:
-      '[&::file-selector-button]:bg-gray-900 [&::file-selector-button]:hover:bg-gray-800 [&::file-selector-button]:active:enabled:bg-gray-950 [&::file-selector-button]:focus-visible:ring-gray-900/30 [&::file-selector-button]:text-gray-50',
-    primary:
-      '[&::file-selector-button]:bg-primary [&::file-selector-button]:hover:enabled:bg-primary-dark [&::file-selector-button]:focus-visible:ring-primary/30 [&::file-selector-button]:text-white',
-    secondary:
-      '[&::file-selector-button]:bg-secondary [&::file-selector-button]:hover:enabled:bg-secondary-dark [&::file-selector-button]:focus-visible:ring-secondary/30 [&::file-selector-button]:text-white',
-    danger:
-      '[&::file-selector-button]:bg-red [&::file-selector-button]:hover:enabled:bg-red-dark [&::file-selector-button]:focus-visible:ring-red/30 [&::file-selector-button]:text-white',
-    info: '[&::file-selector-button]:bg-blue [&::file-selector-button]:hover:enabled:bg-blue-dark [&::file-selector-button]:focus-visible:ring-blue/30 [&::file-selector-button]:text-white',
-    success:
-      '[&::file-selector-button]:bg-green [&::file-selector-button]:hover:enabled:bg-green-dark [&::file-selector-button]:focus-visible:ring-green/30 [&::file-selector-button]:text-white',
-    warning:
-      '[&::file-selector-button]:bg-orange [&::file-selector-button]:hover:enabled:bg-orange-dark [&::file-selector-button]:focus-visible:ring-orange/30 [&::file-selector-button]:text-white',
-  },
+  color:
+    '[&::file-selector-button]:bg-primary [&::file-selector-button]:hover:enabled:bg-primary-dark [&::file-selector-button]:focus-visible:ring-primary/30 [&::file-selector-button]:text-white',
 };
 
 // actual input field styles
-const inputFieldClasses = {
+const inputFieldStyles = {
   base: 'w-full border-0 bg-transparent p-0 focus:outline-none focus:ring-0',
   disabled: 'cursor-not-allowed placeholder:text-gray-400',
   clearable:
@@ -147,19 +57,19 @@ const inputFieldClasses = {
 export interface FileInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
   /** The variants of the component are: */
-  variant?: keyof typeof fileInputClasses.variant;
+  variant?: keyof typeof fileInputStyles.variant;
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof fileInputClasses.size;
+  size?: keyof typeof fileInputStyles.size;
   /** The rounded variants are: */
-  rounded?: keyof typeof fileInputClasses.rounded;
-  /** Change input color */
-  color?: keyof (typeof fileInputClasses.variant)['active']['color'];
+  rounded?: keyof typeof fileInputStyles.rounded;
   /** Set input placeholder text */
   placeholder?: string;
   /** Whether the input is disabled */
   disabled?: boolean;
   /** Set field label */
   label?: React.ReactNode;
+  /** Set font weight for label */
+  labelWeight?: keyof typeof labelStyles.weight;
   /** add clearable option */
   clearable?: boolean;
   /** clear event */
@@ -188,12 +98,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     {
       className,
       variant = 'outline',
-      size = 'DEFAULT',
-      rounded = 'DEFAULT',
-      color = 'DEFAULT',
+      size = 'md',
+      rounded = 'md',
       disabled,
       placeholder,
       label,
+      labelWeight = 'medium',
       error,
       clearable,
       onClear,
@@ -209,26 +119,18 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     },
     ref,
   ) => {
-    const variantStyle = fileInputClasses.variant[variant];
-    const [isFocus, setIsFocus] = useState(false);
-
-    const handleOnFocus = useCallback(
-      (e: React.FocusEvent<HTMLInputElement>) => {
-        if (readOnly === true) return false;
-        setIsFocus((prevState) => !prevState);
-        onFocus && onFocus(e);
-      },
-      [readOnly, onFocus],
-    );
-
-    const handleOnBlur = useCallback(
-      (e: React.FocusEvent<HTMLInputElement>) => {
-        if (readOnly === true) return false;
-        setIsFocus(() => false);
-        onBlur && onBlur(e);
-      },
-      [readOnly, onBlur],
-    );
+    const {
+      isFocus,
+      isHover,
+      handleOnBlur,
+      handleOnFocus,
+      handleOnMouseEnter,
+      handleOnMouseLeave,
+    } = useInteractiveEvent({
+      readOnly,
+      onBlur,
+      onFocus,
+    });
 
     const handleOnClear = useCallback(
       (e: any) => {
@@ -247,32 +149,36 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         )}
       >
         <label className="block">
-          {label && (
+          {label ? (
             <span
               className={cn(
                 makeClassName(`file-input-label`),
                 'block',
-                labelClasses.size[size],
+                labelStyles.size[size],
+                labelStyles.weight[labelWeight],
                 labelClassName,
               )}
             >
               {label}
             </span>
-          )}
+          ) : null}
 
-          <div
+          <span
             className={cn(
               makeClassName(`file-input-container`),
-              fileInputClasses.base,
-              fileInputClasses.size[size],
-              fileInputClasses.rounded[rounded],
-              variantStyle.base,
-              variantStyle.color[color],
+              fileInputStyles.base,
+              fileInputStyles.size[size],
+              fileInputStyles.rounded[rounded],
+              fileInputStyles.variant[variant],
               isFocus && 'is-focus', // must have is-focus class based on onFocus event
-              disabled && fileInputClasses.disabled,
-              error && fileInputClasses.error,
+              disabled && fileInputStyles.disabled,
+              error && fileInputStyles.error,
               inputClassName,
             )}
+            data-focus={isFocus}
+            data-hover={isHover}
+            onMouseEnter={handleOnMouseEnter}
+            onMouseLeave={handleOnMouseLeave}
           >
             <input
               ref={ref}
@@ -284,13 +190,13 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
               spellCheck="false"
               className={cn(
                 makeClassName(`file-input-field`),
-                inputFieldClasses.base,
-                fileButtonClasses.base,
-                fileButtonClasses.size[size],
-                fileButtonClasses.color[color],
-                fileButtonClasses.rounded[rounded],
-                disabled && inputFieldClasses.disabled,
-                clearable && inputFieldClasses.clearable,
+                inputFieldStyles.base,
+                fileButtonStyles.base,
+                fileButtonStyles.color,
+                fileButtonStyles.size[size],
+                fileButtonStyles.rounded[rounded],
+                disabled && inputFieldStyles.disabled,
+                clearable && inputFieldStyles.clearable,
               )}
               style={{ fontSize: 'inherit' }}
               {...inputProps}
@@ -299,10 +205,10 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
             {clearable && (
               <FieldClearButton size={size} onClick={handleOnClear} />
             )}
-          </div>
+          </span>
         </label>
 
-        {!error && helperText && (
+        {!error && helperText ? (
           <FieldHelperText
             size={size}
             className={cn(
@@ -312,9 +218,9 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
           >
             {helperText}
           </FieldHelperText>
-        )}
+        ) : null}
 
-        {error && (
+        {error ? (
           <FieldError
             size={size}
             error={error}
@@ -323,7 +229,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
               errorClassName,
             )}
           />
-        )}
+        ) : null}
       </div>
     );
   },

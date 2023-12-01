@@ -51,7 +51,7 @@ const components = [
     id: 6,
     component: <DataDisplayBlock />,
     name: "Data Display",
-    count: 6,
+    count: 5,
     path: "/docs/data-display/accordion",
   },
   {

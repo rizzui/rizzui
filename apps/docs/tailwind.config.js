@@ -8,6 +8,7 @@ module.exports = {
     "../../node_modules/rizzui/dist/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    darkMode: ["class", '[data-theme="dark"]'],
     extend: {
       colors: {
         gray: {
@@ -25,37 +26,31 @@ module.exports = {
         },
         primary: {
           lighter: "rgb(var(--primary-lighter) / <alpha-value>)",
-          light: "rgb(var(--primary-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--primary-default) / <alpha-value>)",
           dark: "rgb(var(--primary-dark) / <alpha-value>)",
         },
         secondary: {
           lighter: "rgb(var(--secondary-lighter) / <alpha-value>)",
-          light: "rgb(var(--secondary-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--secondary-default) / <alpha-value>)",
           dark: "rgb(var(--secondary-dark) / <alpha-value>)",
         },
         red: {
           lighter: "rgb(var(--red-lighter) / <alpha-value>)",
-          light: "rgb(var(--red-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--red-default) / <alpha-value>)",
           dark: "rgb(var(--red-dark) / <alpha-value>)",
         },
         orange: {
           lighter: "rgb(var(--orange-lighter) / <alpha-value>)",
-          light: "rgb(var(--orange-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--orange-default) / <alpha-value>)",
           dark: "rgb(var(--orange-dark) / <alpha-value>)",
         },
         blue: {
           lighter: "rgb(var(--blue-lighter) / <alpha-value>)",
-          light: "rgb(var(--blue-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--blue-default) / <alpha-value>)",
           dark: "rgb(var(--blue-dark) / <alpha-value>)",
         },
         green: {
           lighter: "rgb(var(--green-lighter) / <alpha-value>)",
-          light: "rgb(var(--green-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--green-default) / <alpha-value>)",
           dark: "rgb(var(--green-dark) / <alpha-value>)",
         },
