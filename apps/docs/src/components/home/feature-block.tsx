@@ -64,7 +64,7 @@ export default function FeatureBlock() {
               <Title as="h5" className="font-semibold">
                 {feature.title}
               </Title>
-              <Text className="leading-loose text-gray-600">
+              <Text className="leading-loose text-gray-600 dark:text-gray-500">
                 {feature.description}
               </Text>
             </div>

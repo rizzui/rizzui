@@ -7,8 +7,8 @@ module.exports = {
     "./docusaurus.config.js",
     "../../node_modules/rizzui/dist/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: ["class", '[data-theme="dark"]'],
   theme: {
-    darkMode: ["class", '[data-theme="dark"]'],
     extend: {
       colors: {
         gray: {

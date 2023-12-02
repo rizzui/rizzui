@@ -2,7 +2,6 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 const myTheme = require("./prism-theme");
-const darkCodeTheme = require("prism-react-renderer/themes/vsDark");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -32,14 +31,6 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-
-  // // custom external stylesheets
-  // stylesheets: [
-  //   {
-  //     href: "fonts/geist-font.css",
-  //     type: "text/css",
-  //   },
-  // ],
 
   plugins: [
     async function myPlugin(context, options) {
@@ -116,10 +107,12 @@ const config = {
           },
         ],
       },
+      colorMode: {
+        defaultMode: "light",
+      },
       prism: {
         theme: myTheme,
-        // theme: prismTheme,
-        darkTheme: darkCodeTheme,
+        darkTheme: myTheme,
       },
     }),
 };

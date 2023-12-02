@@ -447,7 +447,7 @@
 /* ------------------------------------- */
 html,
 body {
-  @apply text-[var(--ifm-color-gray-700)];
+  @apply text-[var(--ifm-color-gray-700)] dark:text-[var(--ifm-color-gray-600)];
 }
 
 h1 {
@@ -544,9 +544,9 @@ nav.navbar .navbar__inner {
 
 /* TODO: removed wehn dark mode color issue fixed */
 [class*="colorModeToggle_"] {
-  @apply hidden !important;
-  /* order: 2; */
-  /* @apply ms-4; */
+  /* @apply hidden !important; */
+  order: 2;
+  @apply ms-4;
 }
 
 #__docusaurus .navbar__logo {
@@ -621,6 +621,10 @@ svg[class*="lightToggleIcon"] {
   background-position: 12px;
   background-size: 16px;
   background-repeat: no-repeat;
+}
+
+[data-theme="dark"] #__docusaurus .navbar__search-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23777' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E%0A");
 }
 
 #__docusaurus div[class*="searchHintContainer"] {
@@ -898,8 +902,12 @@ ul.table-of-contents.table-of-contents__left-border::before {
   @apply bg-transparent shadow-none border-[1.5px] border-b-4;
 }
 
+[data-theme="dark"] #__docusaurus .prism-code {
+  --prism-background-color: #14171d;
+}
+
 #__docusaurus div[class*="codeBlockTitle_"] {
-  @apply font-normal text-[#90a1ba] bg-[#293548] border-b-[#3a485d] py-2;
+  @apply font-normal text-[#90a1ba] bg-[#293548] dark:!bg-[#181f28] border-b-[#3a485d] dark:!border-b-[#232c39] py-2;
 }
 
 #__docusaurus .prism-code + div[class*="buttonGroup_"] button {
@@ -950,7 +958,7 @@ ul.table-of-contents.table-of-contents__left-border::before {
 }
 
 .markdown table th {
-  @apply font-medium text-[var(--ifm-color-gray-500)];
+  @apply font-medium text-gray-500;
 }
 
 .markdown table th:first-child {
@@ -969,11 +977,11 @@ ul.table-of-contents.table-of-contents__left-border::before {
 }
 
 .markdown table td {
-  @apply text-[var(--ifm-color-gray-900)];
+  @apply text-gray-600 dark:text-gray-500;
 }
 
 .markdown table td:nth-child(4n + 1) {
-  @apply font-semibold;
+  @apply font-semibold text-gray-600;
 }
 
 .markdown table th:nth-child(4n),
@@ -1018,20 +1026,14 @@ ul.table-of-contents.table-of-contents__left-border::before {
 }
 
 button[class*="toggleButton"].clean-btn:hover {
-  @apply bg-transparent !important;
+  @apply !bg-transparent dark:text-white;
 }
 
 /* ------------------------------------- */
 /* dark style adjustment */
 /* ------------------------------------- */
-/* [data-theme="dark"] body::before {
-  content: "";
-  background-image: linear-gradient(192deg, #191515, transparent);
-  @apply block fixed inset-0 -z-[1];
-} */
-
 [data-theme="dark"] nav.navbar {
-  @apply bg-black/[0.01];
+  @apply bg-black/[0.01] border-b border-b-gray-100;
 }
 
 [data-theme="dark"] nav.navbar .navbar__logo img {
@@ -1044,21 +1046,22 @@ button[class*="toggleButton"].clean-btn:hover {
 
 [data-theme="dark"] .header-github-link:before {
   filter: invert(100);
+  @apply opacity-60 hover:opacity-100;
 }
 
 [data-theme="dark"]
   #__docusaurus
   li
   > .menu__link--active:not(.menu__link--sublist) {
-  @apply bg-[var(--ifm-color-gray-200)];
+  @apply bg-transparent;
 }
 
 [data-theme="dark"] #__docusaurus code {
-  @apply bg-[var(--ifm-color-gray-200)];
+  @apply bg-[var(--ifm-color-gray-200)] text-gray-600;
 }
 
 [data-theme="dark"] #__docusaurus pre code {
-  @apply bg-transparent;
+  @apply bg-transparent text-current;
 }
 
 [data-theme="dark"] .markdown table th {
@@ -1124,7 +1127,7 @@ button[class*="toggleButton"].clean-btn:hover {
     linear-gradient(180deg, #f0f0f0 1px, transparent 0);
 }
 
-.gradient-border:after {
+/* .gradient-border:after {
   --borderWidth: 4px;
   content: "";
   position: absolute;
@@ -1160,7 +1163,7 @@ button[class*="toggleButton"].clean-btn:hover {
   100% {
     background-position: 0% 50%;
   }
-}
+} */
 
 /* for firefox */
 #__docusaurus .theme-doc-sidebar-container {
