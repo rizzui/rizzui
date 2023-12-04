@@ -22,14 +22,14 @@ export const buttonVariantStyles = {
     },
   },
   outline: {
-    base: 'bg-transparent border',
+    base: 'bg-transparent border dark:backdrop-blur',
     color: {
       primary:
-        'hover:enabled:bg-primary-lighter/20 focus-visible:ring-gray-200 text-primary hover:enabled:text-primary-dark border-gray-200 hover:enabled:border-primary',
+        'focus-visible:ring-gray-200 text-primary hover:enabled:text-primary-dark border-gray-200 hover:enabled:border-primary-dark',
       secondary:
-        'hover:enabled:bg-secondary-lighter/20 focus-visible:ring-secondary/30 text-secondary hover:enabled:text-secondary-dark border-secondary hover:enabled:border-secondary-dark',
+        'focus-visible:ring-secondary/30 text-secondary hover:enabled:text-secondary-dark border-secondary hover:enabled:border-secondary-dark',
       danger:
-        'hover:enabled:bg-red-lighter/20 focus-visible:ring-red/30 text-red hover:enabled:text-red-dark border-red hover:enabled:border-red-dark ',
+        'focus-visible:ring-red/30 text-red hover:enabled:text-red-dark border-red hover:enabled:border-red-dark ',
     },
   },
   text: {

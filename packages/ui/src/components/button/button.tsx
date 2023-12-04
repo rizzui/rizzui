@@ -3,6 +3,7 @@ import { Loader } from '../loader';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 import { buttonVariantStyles } from '../../lib/button-variant';
+import { roundedStyles } from '../../lib/rounded';
 
 const buttonStyles = {
   base: 'inline-flex font-medium items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
@@ -12,13 +13,7 @@ const buttonStyles = {
     lg: 'px-5 py-2 text-base h-12',
     xl: 'px-8 py-2.5 text-base h-14',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    pill: 'rounded-full',
-  },
+  rounded: roundedStyles,
   variant: buttonVariantStyles,
 };
 
@@ -63,7 +58,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       ...buttonProps
     },
-    ref,
+    ref
   ) => {
     const Component = tag;
     const variantStyle = buttonStyles.variant[variant];
@@ -81,7 +76,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           isLoading && 'pointer-events-none relative',
           disabled &&
             'cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400',
-          className,
+          className
         )}
         {...(tag && tag !== 'span' && { type })}
         {...buttonProps}
@@ -93,7 +88,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             <span
               className={cn(
                 makeClassName(`button-loader`),
-                'absolute inset-0 flex h-full w-full items-center justify-center',
+                'absolute inset-0 flex h-full w-full items-center justify-center'
               )}
             >
               <Loader size={size} className="scale-95" />
@@ -104,7 +99,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
       </Component>
     );
-  },
+  }
 );
 
 Button.displayName = 'Button';

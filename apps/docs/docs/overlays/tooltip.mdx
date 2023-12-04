@@ -2,7 +2,7 @@
 sidebar_position: 30
 ---
 
-import { Tooltip, Button } from "rizzui";
+import { Tooltip, Text, Button } from "rizzui";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 import Paper from "@site/src/components/paper";
 
@@ -139,43 +139,26 @@ export default function App() {
 You can change the color of **Tooltip** using [**color**](#tooltip-colors) property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip content={"Default Color!"}>
-    <Button variant="outline">Default</Button>
+  <Tooltip content={"Primary Color!"}>
+    <Button variant="outline">Primary</Button>
   </Tooltip>
   <Tooltip content={"Invert Color!"} color="invert">
-    <Button variant="outline" className="border-gray-900">
-      Invert
-    </Button>
-  </Tooltip>
-  <Tooltip content={"Primary Color!"} color="primary">
-    <Button color="primary" variant="outline">
-      Primary
-    </Button>
+    <Button variant="outline">Invert</Button>
   </Tooltip>
   <Tooltip content={"Secondary Color!"} color="secondary">
-    <Button color="secondary" variant="outline">
-      Secondary
-    </Button>
+    <Button variant="outline">Secondary</Button>
   </Tooltip>
   <Tooltip content={"Danger Color!"} color="danger">
-    <Button color="danger" variant="outline">
-      Danger
-    </Button>
+    <Button variant="outline">Danger</Button>
   </Tooltip>
   <Tooltip content={"Info Color!"} color="info">
-    <Button color="info" variant="outline">
-      Info
-    </Button>
+    <Button variant="outline">Info</Button>
   </Tooltip>
   <Tooltip content={"Success Color!"} color="success">
-    <Button color="success" variant="outline">
-      Success
-    </Button>
+    <Button variant="outline">Success</Button>
   </Tooltip>
   <Tooltip content={"Warning Color!"} color="warning">
-    <Button color="warning" variant="outline">
-      Warning
-    </Button>
+    <Button variant="outline">Warning</Button>
   </Tooltip>
 </Paper>
 
@@ -185,43 +168,28 @@ import { Tooltip, Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Tooltip content={"Default Color!"}>
-        <Button variant="outline">Default</Button>
+      <Tooltip content={"Primary Color!"}>
+        <Button variant="outline">Primary</Button>
       </Tooltip>
       <Tooltip content={"Invert Color!"} color="invert">
         <Button variant="outline" className="border-gray-900">
           Invert
         </Button>
       </Tooltip>
-      <Tooltip content={"Primary Color!"} color="primary">
-        <Button color="primary" variant="outline">
-          Primary
-        </Button>
-      </Tooltip>
       <Tooltip content={"Secondary Color!"} color="secondary">
-        <Button color="secondary" variant="outline">
-          Secondary
-        </Button>
+        <Button variant="outline">Secondary</Button>
       </Tooltip>
       <Tooltip content={"Danger Color!"} color="danger">
-        <Button color="danger" variant="outline">
-          Danger
-        </Button>
+        <Button variant="outline">Danger</Button>
       </Tooltip>
       <Tooltip content={"Info Color!"} color="info">
-        <Button color="info" variant="outline">
-          Info
-        </Button>
+        <Button variant="outline">Info</Button>
       </Tooltip>
       <Tooltip content={"Success Color!"} color="success">
-        <Button color="success" variant="outline">
-          Success
-        </Button>
+        <Button variant="outline">Success</Button>
       </Tooltip>
       <Tooltip content={"Warning Color!"} color="warning">
-        <Button color="warning" variant="outline">
-          Warning
-        </Button>
+        <Button variant="outline">Warning</Button>
       </Tooltip>
     </>
   );
@@ -282,13 +250,13 @@ You can use custom content inside **Tooltip**
   <Tooltip
     content={
       <div className="w-40 text-start">
-        <span className="inline-flex items-center gap-2 text-base">
+        <div className="inline-flex items-center gap-2 text-base mb-1.5">
           <InformationCircleIcon className="w-5 h-5" />
-          <p>Tooltip Title</p>
-        </span>
-        <p className="mt-2 text-sm">
+          <Text fontWeight="medium">Tooltip Title</Text>
+        </div>
+        <Text className="text-sm text-gray-200">
           This is a tip to help you accomplish a task.
-        </p>
+        </Text>
       </div>
     }
     placement="bottom-start"
@@ -298,25 +266,26 @@ You can use custom content inside **Tooltip**
 </Paper>
 
 ```tsx
-import { Tooltip, Button } from "rizzui";
+import { Tooltip, Text, Button } from "rizzui";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
+
+function CustomContent() {
+  return (
+    <div className="w-40 text-start">
+      <div className="inline-flex items-center gap-2 text-base mb-1.5">
+        <InformationCircleIcon className="w-5 h-5" />
+        <Text fontWeight="medium">Tooltip Title</Text>
+      </div>
+      <Text className="text-sm text-gray-600">
+        This is a tip to help you accomplish a task.
+      </Text>
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <Tooltip
-      content={
-        <div className="w-40 text-start">
-          <span className="inline-flex items-center gap-2 text-base">
-            <InformationCircleIcon className="w-5 h-5" />
-            <p>Tooltip Title</p>
-          </span>
-          <p className="mt-2 text-sm">
-            This is a tip to help you accomplish a task.
-          </p>
-        </div>
-      }
-      placement="bottom-start"
-    >
+    <Tooltip content={<CustomContent />} placement="bottom-start">
       <Button variant="outline">Custom Content</Button>
     </Tooltip>
   );
@@ -499,18 +468,18 @@ Here is the API documentation of the Tooltip component. You can use the followin
 
 <div className="overflow-x-auto">
 
-|     Props      |                   Type                   |                   Description                   |       Default       |
-| :------------: | :--------------------------------------: | :---------------------------------------------: | :-----------------: |
-|    content     |               `ReactNode`                |               Content for tooltip               | `This is a tooltip` |
-|   placement    | [TooltipPlacements](#tooltip-placements) |        Supported Tooltip Placements are:        |      `bottom`       |
-|    children    |   [TooltipChildren](#tooltip-children)   |      Pass children which will have tooltip      |        \_\_         |
-|     color      |     [TooltipColors](#tooltip-colors)     |              Change Tooltip color               |     `"DEFAULT"`     |
-|      size      |      [TooltipSizes](#tooltip-sizes)      |          Supported Tooltip sizes are:           |     `"DEFAULT"`     |
-|    rounded     |    [TooltipRounded](#tooltip-rounded)    |            The rounded variants are:            |     `"DEFAULT"`     |
-|     shadow     |    [TooltipShadows](#tooltip-shadows)    |         Supported tooltip shadows are:          |     `"DEFAULT"`     |
-|   className    |                 `string`                 |   Add custom classes to the tooltip container   |        \_\_         |
-|   showArrow    |                `boolean`                 | Whether tooltip arrow should be shown or hidden |       `true`        |
-| arrowClassName |                 `string`                 |     Add custom classes to the tooltip arrow     |        \_\_         |
+|     Props      |                   Type                   |                   Description                   |   Default   |
+| :------------: | :--------------------------------------: | :---------------------------------------------: | :---------: |
+|    content     |               `ReactNode`                |               Content for tooltip               |    \_\_     |
+|   placement    | [TooltipPlacements](#tooltip-placements) |        Supported Tooltip Placements are:        |  `bottom`   |
+|    children    |   [TooltipChildren](#tooltip-children)   |      Pass children which will have tooltip      |    \_\_     |
+|     color      |     [TooltipColors](#tooltip-colors)     |              Change Tooltip color               | `"primary"` |
+|      size      |      [TooltipSizes](#tooltip-sizes)      |          Supported Tooltip sizes are:           |   `"md"`    |
+|    rounded     |    [TooltipRounded](#tooltip-rounded)    |            The rounded variants are:            |   `"md"`    |
+|     shadow     |    [TooltipShadows](#tooltip-shadows)    |         Supported tooltip shadows are:          |   `"md"`    |
+|   className    |                 `string`                 |   Add custom classes to the tooltip container   |    \_\_     |
+|   showArrow    |                `boolean`                 | Whether tooltip arrow should be shown or hidden |   `true`    |
+| arrowClassName |                 `string`                 |     Add custom classes to the tooltip arrow     |    \_\_     |
 
 </div>
 
@@ -544,9 +513,8 @@ type TooltipChildren = Element & { ref?: RefObject<any> | undefined };
 
 ```ts
 type TooltipColors =
-  | "DEFAULT"
-  | "invert"
   | "primary"
+  | "invert"
   | "secondary"
   | "danger"
   | "info"
@@ -560,7 +528,7 @@ type TooltipColors =
 ### Tooltip Sizes
 
 ```ts
-type TooltipSizes = "DEFAULT" | "sm" | "lg" | "xl";
+type TooltipSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -568,7 +536,7 @@ type TooltipSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ### Tooltip Rounded
 
 ```ts
-type TooltipRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
+type TooltipRounded = "sm" | "md" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -576,5 +544,5 @@ type TooltipRounded = "DEFAULT" | "sm" | "lg" | "none" | "pill";
 ### Tooltip Shadows
 
 ```ts
-type TooltipShadows = "DEFAULT" | "sm" | "lg" | "xl";
+type TooltipShadows = "sm" | "md" | "lg" | "xl";
 ```

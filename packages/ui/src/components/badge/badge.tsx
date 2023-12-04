@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
-const classes = {
+const badgeStyles = {
   base: 'inline-flex items-center justify-center font-semibold leading-none',
   outlineRing: 'ring-2 ring-gray-50',
   size: {
@@ -30,8 +30,8 @@ const classes = {
     solid: {
       base: '',
       color: {
-        primary: 'bg-primary text-white',
-        secondary: 'bg-secondary text-white',
+        primary: 'bg-primary text-primary-foreground',
+        secondary: 'bg-secondary text-secondary-foreground',
         success: 'bg-green text-white',
         warning: 'bg-orange text-white',
         danger: 'bg-red text-white',
@@ -65,17 +65,17 @@ const classes = {
 
 export type BadgeProps = {
   /** Change badge color */
-  color?: keyof (typeof classes.variant)['solid']['color'];
+  color?: keyof (typeof badgeStyles.variant)['solid']['color'];
   /** The variants of the component are: */
-  variant?: keyof typeof classes.variant;
+  variant?: keyof typeof badgeStyles.variant;
   /** The size of the component. `"sm"` is equivalent to the dense badge styling. */
-  size?: keyof typeof classes.size;
+  size?: keyof typeof badgeStyles.size;
   /** Render badge as a dot */
   renderAsDot?: boolean;
   /** Set a outline ring. It is useful for the overlapping UI. */
   enableOutlineRing?: boolean;
   /** The rounded variants are: */
-  rounded?: keyof typeof classes.rounded;
+  rounded?: keyof typeof badgeStyles.rounded;
   /** Add custom classes for extra style */
   className?: string;
 };
@@ -94,21 +94,21 @@ export function Badge({
   className,
   ...props
 }: React.PropsWithChildren<BadgeProps>) {
-  const styles = classes.variant[variant];
+  const styles = badgeStyles.variant[variant];
 
   return (
     <span
       className={cn(
         makeClassName(`badge`),
-        classes.base,
-        classes.variant[variant],
-        renderAsDot ? classes.dot.size[size] : classes.size[size],
+        badgeStyles.base,
+        badgeStyles.variant[variant],
+        renderAsDot ? badgeStyles.dot.size[size] : badgeStyles.size[size],
         styles.color[color],
         styles.base,
-        classes.rounded[rounded],
-        enableOutlineRing && classes.outlineRing,
+        badgeStyles.rounded[rounded],
+        enableOutlineRing && badgeStyles.outlineRing,
         className,
-        { ...props },
+        { ...props }
       )}
     >
       {!renderAsDot ? children : null}

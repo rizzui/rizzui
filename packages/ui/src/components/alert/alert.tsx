@@ -39,10 +39,10 @@ const classes = {
     flat: {
       base: 'border text-gray-900',
       color: {
-        danger: 'bg-red-lighter/70 dark:bg-red/10 border-red-dark',
-        info: 'bg-blue-lighter/70 dark:bg-blue/10 border-blue-dark',
-        success: 'bg-green-lighter/70 dark:bg-green/10 border-green-dark',
-        warning: 'bg-orange-lighter/80 dark:bg-orange/10 border-orange-dark',
+        danger: 'bg-red/20 dark:bg-red/10 border-red-dark',
+        info: 'bg-blue/20 dark:bg-blue/10 border-blue-dark',
+        success: 'bg-green/20 dark:bg-green/10 border-green-dark',
+        warning: 'bg-orange/20 dark:bg-orange/10 border-orange-dark',
       },
     },
     outline: {
@@ -197,7 +197,7 @@ export function Alert({
         classes.variant[variant].base,
         classes.variant[variant].color[color],
         bar && variant !== 'outline' && '!border-0',
-        className,
+        className
       )}
     >
       {bar && (
@@ -208,7 +208,7 @@ export function Alert({
             barClasses.base,
             barClasses.rounded[rounded],
             barClasses.color[color],
-            barClassName,
+            barClassName
           )}
         />
       )}
@@ -218,7 +218,7 @@ export function Alert({
           makeClassName(`alert-content`),
           iconContainerClasses.base,
           iconContainerClasses.position.left[size],
-          iconContainerClassName,
+          iconContainerClassName
         )}
       >
         {icon || (
@@ -228,7 +228,7 @@ export function Alert({
               iconClasses.base,
               iconClasses.rounded[rounded],
               iconClasses.iconColor[color],
-              iconClassName,
+              iconClassName
             )}
           >
             <AlertIcon size={size} color={color} />
@@ -239,7 +239,7 @@ export function Alert({
         className={cn(
           makeClassName(`alert-content`),
           classes.leftPadding.size[size],
-          closable && classes.rightPadding.size[size],
+          closable && classes.rightPadding.size[size]
         )}
       >
         {children}
@@ -251,7 +251,7 @@ export function Alert({
           className={cn(
             makeClassName(`alert-close`),
             iconContainerClasses.base,
-            iconContainerClasses.position.right[size],
+            iconContainerClasses.position.right[size]
           )}
           onClick={onClose}
         >
@@ -261,7 +261,7 @@ export function Alert({
                 iconClasses.base,
                 iconClasses.rounded[rounded],
                 iconClasses.variant[variant].base,
-                iconClasses.variant[variant].color[color],
+                iconClasses.variant[variant].color[color]
               )}
             >
               <XIcon

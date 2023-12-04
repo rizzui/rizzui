@@ -10,7 +10,6 @@ import {
   useInteractions,
   useHover,
   useFocus,
-  useClick,
   useDismiss,
   useRole,
   arrow,
@@ -20,32 +19,31 @@ import {
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
-const tooltipClasses = {
+const tooltipStyles = {
   base: 'text-center z-40 min-w-max',
   shadow: {
     sm: 'drop-shadow-md',
-    DEFAULT: 'drop-shadow-lg',
+    md: 'drop-shadow-lg',
     lg: 'drop-shadow-xl',
     xl: 'drop-shadow-2xl',
   },
   size: {
     sm: 'px-2.5 py-1 text-xs',
-    DEFAULT: 'px-4 py-2 text-sm',
+    md: 'px-4 py-2 text-sm',
     lg: 'px-5 py-2 text-base',
     xl: 'px-6 py-2.5 text-lg',
   },
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-md',
-    DEFAULT: 'rounded-xl',
+    md: 'rounded-xl',
     lg: 'rounded-2xl',
     pill: 'rounded-full',
   },
   arrow: {
     color: {
-      DEFAULT: 'fill-gray-900',
-      invert: 'fill-gray-50 [&>path]:stroke-gray-300',
       primary: 'fill-primary',
+      invert: 'fill-gray-50 [&>path]:stroke-gray-300',
       secondary: 'fill-secondary',
       danger: 'fill-red',
       info: 'fill-blue',
@@ -57,11 +55,10 @@ const tooltipClasses = {
     solid: {
       base: '',
       color: {
-        DEFAULT: 'text-gray-50 bg-gray-900',
+        primary: 'text-primary-foreground bg-primary',
         invert:
           'bg-white dark:bg-gray-50 !text-gray-900 border border-gray-300',
-        primary: 'text-white bg-primary',
-        secondary: 'text-white bg-secondary',
+        secondary: 'text-secondary-foreground bg-secondary',
         danger: 'text-white bg-red',
         info: 'text-white bg-blue',
         success: 'text-white bg-green',
@@ -102,29 +99,20 @@ const tooltipAnimation = {
   },
 };
 
-type Content = {
-  open: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
 export type TooltipProps = {
-  /** Pass open state to open the floating element */
-  // isOpen?: boolean;
-  /** Pass setOpen to set open value */
-  // setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   /** Pass children which will have tooltip */
   children: JSX.Element & { ref?: RefObject<any> };
   /** Content for tooltip */
   // content: ({ open, setOpen }: Content) => React.ReactNode;
   content: React.ReactNode;
   /** Change Tooltip color */
-  color?: keyof typeof tooltipClasses.variant.solid.color;
+  color?: keyof typeof tooltipStyles.variant.solid.color;
   /** Supported Tooltip sizes are: */
-  size?: keyof typeof tooltipClasses.size;
+  size?: keyof typeof tooltipStyles.size;
   /** The rounded variants are: */
-  rounded?: keyof typeof tooltipClasses.rounded;
+  rounded?: keyof typeof tooltipStyles.rounded;
   /** Supported tooltip shadows are: */
-  shadow?: keyof typeof tooltipClasses.shadow;
+  shadow?: keyof typeof tooltipStyles.shadow;
   /** Supported Tooltip Placements are: */
   placement?: Placement;
   /** Set custom offset default is 8 */
@@ -152,10 +140,10 @@ export function Tooltip({
   gap = 8,
   animation = 'zoomIn',
   placement = 'bottom',
-  size = 'DEFAULT',
-  rounded = 'DEFAULT',
-  shadow = 'DEFAULT',
-  color = 'DEFAULT',
+  size = 'md',
+  rounded = 'md',
+  shadow = 'md',
+  color = 'primary',
   className,
   arrowClassName,
   showArrow = true,
@@ -192,7 +180,7 @@ export function Tooltip({
     <>
       {cloneElement(
         children,
-        getReferenceProps({ ref: refs.setReference, ...children.props }),
+        getReferenceProps({ ref: refs.setReference, ...children.props })
       )}
 
       {(isMounted || open) && (
@@ -202,13 +190,13 @@ export function Tooltip({
             ref={refs.setFloating}
             className={cn(
               makeClassName(`tooltip-content`),
-              tooltipClasses.base,
-              tooltipClasses.size[size],
-              tooltipClasses.rounded[rounded],
-              tooltipClasses.variant.solid.base,
-              tooltipClasses.variant.solid.color[color],
-              tooltipClasses.shadow[shadow],
-              className,
+              tooltipStyles.base,
+              tooltipStyles.size[size],
+              tooltipStyles.rounded[rounded],
+              tooltipStyles.variant.solid.base,
+              tooltipStyles.variant.solid.color[color],
+              tooltipStyles.shadow[shadow],
+              className
             )}
             style={{
               position: strategy,
@@ -228,8 +216,8 @@ export function Tooltip({
                   data-testid="tooltip-arrow"
                   className={cn(
                     makeClassName(`tooltip-arrow`),
-                    tooltipClasses.arrow.color[color],
-                    arrowClassName,
+                    tooltipStyles.arrow.color[color],
+                    arrowClassName
                   )}
                   style={{ strokeDasharray: '0,14, 5' }}
                 />
