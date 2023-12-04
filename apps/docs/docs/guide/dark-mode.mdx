@@ -18,6 +18,9 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
 @layer base {
   /* default theme */
   :root {
+    --background: 255 255 255; /* #ffffff */
+    --foreground: 72 72 72; /* #484848 */
+
     /* ----------------------------------- */
     /* gray colors */
     /* ----------------------------------- */
@@ -36,16 +39,18 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
     /* ----------------------------------- */
     /* primary/brand colors */
     /* ----------------------------------- */
-    --primary-lighter: 221 227 255; /* #dde3ff */
-    --primary-default: 78 54 245; /* #4e36f5 */
-    --primary-dark: 67 42 216; /* #432ad8 */
+    --primary-lighter: 227 227 227; /* #e3e3e3 */
+    --primary-default: 34 34 34; /* #222222 */
+    --primary-dark: 0 0 0; /* #000000 */
+    --primary-foreground: 255 255 255; /* #ffffff */
 
     /* ----------------------------------- */
     /* secondary colors */
     /* ----------------------------------- */
-    --secondary-lighter: 227 215 252; /* #e3d7fc */
-    --secondary-default: 121 40 202; /* #7928ca */
-    --secondary-dark: 76 40 137; /* #4c2889 */
+    --secondary-lighter: 221 227 255; /* #dde3ff */
+    --secondary-default: 78 54 245; /* #4e36f5 */
+    --secondary-dark: 67 42 216; /* #432ad8 */
+    --secondary-foreground: 255 255 255; /* #ffffff */
 
     /* ----------------------------------- */
     /* red/error colors */
@@ -78,6 +83,9 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
 
   /* dark theme */
   [data-theme="dark"] {
+    --background: 8 9 14; /* #08090e */
+    --foreground: 223 223 223; /* #dfdfdf */
+
     /* ----------------------------------- */
     /* gray/natural colors */
     /* ----------------------------------- */
@@ -92,6 +100,14 @@ Only our tailwind.config.js file is not enough for styeling, you need to use our
     --gray-800: 241 241 241; /* #f1f1f1 */
     --gray-900: 250 250 250; /* #fafafa */
     --gray-950: 255 255 255; /* #ffffff */
+
+    /* ----------------------------------- */
+    /* primary/brand colors */
+    /* ----------------------------------- */
+    --primary-lighter: 34 34 34; /* #222222 */
+    --primary-default: 241 241 241; /* #f1f1f1 */
+    --primary-dark: 255 255 255; /* #ffffff */
+    --primary-foreground: 0 0 0; /* #000000 */
 
     /* here you can customize other colors for dark theme if design required */
   }
@@ -114,6 +130,8 @@ module.exports = {
     darkMode: ["class", '[data-theme="dark"]'], // Required this line for dark mode implementation
     extend: {
       colors: {
+        background: 'rgb(var(--background) / <alpha-value>)',
+        foreground: 'rgb(var(--foreground) / <alpha-value>)',
         gray: {
           50: "rgb(var(--gray-50) / <alpha-value>)",
           100: "rgb(var(--gray-100) / <alpha-value>)",
@@ -131,11 +149,13 @@ module.exports = {
           lighter: "rgb(var(--primary-lighter) / <alpha-value>)",
           DEFAULT: "rgb(var(--primary-default) / <alpha-value>)",
           dark: "rgb(var(--primary-dark) / <alpha-value>)",
+          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
         },
         secondary: {
           lighter: "rgb(var(--secondary-lighter) / <alpha-value>)",
           DEFAULT: "rgb(var(--secondary-default) / <alpha-value>)",
           dark: "rgb(var(--secondary-dark) / <alpha-value>)",
+          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
         },
         red: {
           lighter: "rgb(var(--red-lighter) / <alpha-value>)",

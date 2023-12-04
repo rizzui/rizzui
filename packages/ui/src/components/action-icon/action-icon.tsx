@@ -5,7 +5,7 @@ import { SpinnerIcon } from '../../icons/spinner';
 import { buttonVariantStyles } from '../../lib/button-variant';
 
 const actionIconStyles = {
-  base: 'inline-flex items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 transition-colors duration-200',
+  base: 'inline-flex items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
   size: {
     sm: 'p-0.5 w-7 h-7',
     md: 'p-1 w-9 h-9',

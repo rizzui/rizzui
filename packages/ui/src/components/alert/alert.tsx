@@ -5,46 +5,44 @@ import { AlertIcon } from './icons';
 import { makeClassName } from '../../lib/make-class-name';
 
 const classes = {
-  base: 'relative block w-full bg-transparent break-all',
+  base: 'relative block w-full bg-transparent break-all dark:backdrop-blur',
   size: {
     sm: 'px-2.5 py-2 text-xs leading-5',
-    DEFAULT: 'px-4 py-3 text-sm leading-6',
+    md: 'px-4 py-3 text-sm leading-6',
     lg: 'px-4 py-4 text-base leading-7',
     xl: 'px-5 py-5 text-base leading-7',
   },
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
-    DEFAULT: 'rounded-md',
+    md: 'rounded-md',
     lg: 'rounded-lg',
     xl: 'rounded-xl',
   },
   leftPadding: {
-    base: 'rtl:pl-[inherit]',
     size: {
-      sm: 'pl-8 rtl:pr-8',
-      DEFAULT: 'pl-10 rtl:pr-10',
-      lg: 'pl-11 rtl:pr-11',
-      xl: 'pl-12 rtl:pr-12',
+      sm: 'ps-8',
+      md: 'ps-10',
+      lg: 'ps-11',
+      xl: 'ps-12',
     },
   },
   rightPadding: {
-    base: 'rtl:pr-[inherit]',
     size: {
-      sm: 'pr-8 rtl:pl-8',
-      DEFAULT: 'pr-10 rtl:pl-10',
-      lg: 'pr-11 rtl:pl-11',
-      xl: 'pr-12 rtl:pl-12',
+      sm: 'pe-8',
+      md: 'pe-10',
+      lg: 'pe-11',
+      xl: 'pe-12',
     },
   },
   variant: {
     flat: {
       base: 'border text-gray-900',
       color: {
-        danger: 'bg-red-lighter/70 border-red-dark',
-        info: 'bg-blue-lighter/70 border-blue-dark',
-        success: 'bg-green-lighter/70 border-green-dark',
-        warning: 'bg-orange-lighter/80 border-orange-dark',
+        danger: 'bg-red-lighter/70 dark:bg-red/10 border-red-dark',
+        info: 'bg-blue-lighter/70 dark:bg-blue/10 border-blue-dark',
+        success: 'bg-green-lighter/70 dark:bg-green/10 border-green-dark',
+        warning: 'bg-orange-lighter/80 dark:bg-orange/10 border-orange-dark',
       },
     },
     outline: {
@@ -63,16 +61,16 @@ const iconContainerClasses = {
   base: 'absolute top-0 h-full flex items-center justify-center',
   position: {
     left: {
-      sm: 'left-2.5 rtl:right-2.5 rtl:left-auto',
-      DEFAULT: 'left-4 rtl:right-4 rtl:left-auto',
-      lg: 'left-4 rtl:right-4 rtl:left-auto',
-      xl: 'left-5 rtl:right-5 rtl:left-auto',
+      sm: 'start-2.5',
+      md: 'start-4',
+      lg: 'start-4',
+      xl: 'start-5',
     },
     right: {
-      sm: 'right-2.5 rtl:left-2.5 rtl:right-auto',
-      DEFAULT: 'right-4 rtl:left-4 rtl:right-auto',
-      lg: 'right-4 rtl:left-4 rtl:right-auto',
-      xl: 'right-5 rtl:left-5 rtl:right-auto',
+      sm: 'end-2.5',
+      md: 'end-4',
+      lg: 'end-4',
+      xl: 'end-5',
     },
   },
 };
@@ -82,13 +80,13 @@ const iconClasses = {
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
-    DEFAULT: 'rounded',
+    md: 'rounded',
     lg: 'rounded-md',
     xl: 'rounded-lg',
   },
   size: {
     sm: 'h-3 w-3',
-    DEFAULT: 'h-4 w-4',
+    md: 'h-4 w-4',
     lg: 'h-5 w-5',
     xl: 'h-6 w-6',
   },
@@ -125,7 +123,7 @@ const barClasses = {
   rounded: {
     none: 'rounded-tl-none rounded-bl-none',
     sm: 'rounded-tl-sm rounded-bl-sm',
-    DEFAULT: 'rounded-tl-md rounded-bl-md',
+    md: 'rounded-tl-md rounded-bl-md',
     lg: 'rounded-tl-lg rounded-bl-lg',
     xl: 'rounded-tl-xl rounded-bl-xl',
   },
@@ -173,8 +171,8 @@ export type AlertProps = {
  * You can use the following props to create a demo for alert.
  */
 export function Alert({
-  size = 'DEFAULT',
-  rounded = 'DEFAULT',
+  size = 'md',
+  rounded = 'md',
   variant = 'outline',
   color,
   bar = false,

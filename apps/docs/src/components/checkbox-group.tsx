@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { CheckboxGroup, Checkbox, AdvancedCheckbox } from "rizzui";
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 
 export default function CheckboxGroupDefault() {
-  const [values, setValues] = useState<string[]>(["apple"]);
+  const [values, setValues] = React.useState<string[]>(["apple"]);
   return (
     <CheckboxGroup
       values={values}

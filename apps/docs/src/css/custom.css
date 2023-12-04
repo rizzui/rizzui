@@ -7,6 +7,9 @@
 
 @layer base {
   :root {
+    --background: 255 255 255; /* #ffffff */
+    --foreground: 72 72 72; /* #484848 */
+
     /* ----------------------------------- */
     /* gray colors */
     /* ----------------------------------- */
@@ -29,6 +32,7 @@
     --primary-lighter: 227 227 227; /* #e3e3e3 */
     --primary-default: 34 34 34; /* #222222 */
     --primary-dark: 0 0 0; /* #000000 */
+    --primary-foreground: 255 255 255; /* #ffffff */
 
     /* ----------------------------------- */
     /* secondary colors */
@@ -36,6 +40,7 @@
     --secondary-lighter: 221 227 255; /* #dde3ff */
     --secondary-default: 78 54 245; /* #4e36f5 */
     --secondary-dark: 67 42 216; /* #432ad8 */
+    --secondary-foreground: 255 255 255; /* #ffffff */
 
     /* ----------------------------------- */
     /* red/error colors */
@@ -115,6 +120,9 @@
 
   /* dark theme */
   html[data-theme="dark"] {
+    --background: 8 9 14; /* #08090e */
+    --foreground: 223 223 223; /* #dfdfdf */
+
     /* ----------------------------------- */
     /* gray/natural colors */
     /* ----------------------------------- */
@@ -137,6 +145,7 @@
     --primary-lighter: 34 34 34; /* #222222 */
     --primary-default: 241 241 241; /* #f1f1f1 */
     --primary-dark: 255 255 255; /* #ffffff */
+    --primary-foreground: 0 0 0; /* #000000 */
     /* here you can customize other colors for dark theme if design required */
 
     /* docusaurus dark theme */

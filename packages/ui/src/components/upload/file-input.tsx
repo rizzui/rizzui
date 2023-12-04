@@ -43,7 +43,7 @@ const fileButtonStyles = {
     pill: '[&::file-selector-button]:rounded-full',
   },
   color:
-    '[&::file-selector-button]:bg-primary [&::file-selector-button]:hover:enabled:bg-primary-dark [&::file-selector-button]:focus-visible:ring-primary/30 [&::file-selector-button]:text-white',
+    '[&::file-selector-button]:bg-primary [&::file-selector-button]:hover:enabled:bg-primary-dark [&::file-selector-button]:focus-visible:ring-primary/30 [&::file-selector-button]:text-primary-foreground',
 };
 
 // actual input field styles

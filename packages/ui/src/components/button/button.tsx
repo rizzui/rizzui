@@ -5,7 +5,7 @@ import { makeClassName } from '../../lib/make-class-name';
 import { buttonVariantStyles } from '../../lib/button-variant';
 
 const buttonStyles = {
-  base: 'inline-flex font-medium items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 transition-colors duration-200',
+  base: 'inline-flex font-medium items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
   size: {
     sm: 'px-2.5 py-1 text-xs h-8',
     md: 'px-4 py-2 text-sm h-10',

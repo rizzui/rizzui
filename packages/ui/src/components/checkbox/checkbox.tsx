@@ -26,7 +26,7 @@ const checkboxLabelStyles = {
 };
 
 const checkboxStyles = {
-  base: 'peer checked:bg-none transition duration-200 ease-in-out',
+  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out',
   disabled: 'disabled:bg-gray-100 disabled:border-gray-200',
   size: {
     sm: 'h-5 w-5',
@@ -42,7 +42,7 @@ const checkboxStyles = {
     full: 'rounded-full',
   },
   activeIcon:
-    'peer-checked:opacity-100 absolute opacity-0 top-0 left-0 text-white',
+    'peer-checked:opacity-100 absolute opacity-0 top-0 left-0 text-primary-foreground',
   variant: {
     outline:
       'bg-transparent border border-gray-200 ring-[0.6px] ring-gray-200 focus:ring-gray-200 checked:!bg-primary checked:!border-primary hover:enabled:border-primary',

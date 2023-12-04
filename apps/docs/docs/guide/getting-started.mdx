@@ -40,16 +40,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        background: colors.white, // body background & ring-offset-color
+        foreground: colors.gray[600], // body text color
         gray: colors.gray, // use one of them -> gray | slate | zinc | neutral | stone
         primary: {
           lighter: colors.indigo[200],
           DEFAULT: colors.indigo[500],
           dark: colors.indigo[700],
+          foreground: colors.white,
         },
         secondary: {
           lighter: colors.purple[200],
           DEFAULT: colors.purple[500],
           dark: colors.purple[700],
+          foreground: colors.white,
         },
         red: {
           lighter: colors.rose[200],

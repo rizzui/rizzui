@@ -4,6 +4,7 @@ import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
+import { roundedStyles } from '../../lib/rounded';
 
 const switchLabelStyles = {
   weight: labelStyles.weight,
@@ -25,17 +26,11 @@ const switchLabelStyles = {
 };
 
 const switchStyles = {
-  base: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-gray-200 ring-transparent',
+  base: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-gray-200 ring-transparent ring-offset-background',
   active: 'peer-checked/switch:bg-primary peer-checked/switch:border-primary',
   disabled:
     'cursor-not-allowed peer-disabled/switch:border-gray-200 peer-disabled/switch:bg-gray-100',
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    pill: 'rounded-full',
-  },
+  rounded: roundedStyles,
   size: {
     sm: 'w-8 h-5',
     md: 'w-10 h-6',
@@ -77,7 +72,7 @@ const switchKnobStyles = {
   },
   color: 'bg-primary',
   outlineInactiveColor:
-    '[&:hover_.rizzui-switch-knob]:bg-primary [&:hover_.rizzui-switch-knob]:text-white',
+    '[&:hover_.rizzui-switch-knob]:bg-primary [&:hover_.rizzui-switch-knob]:text-primary-foreground',
   translate: {
     active: {
       sm: '[&:checked+span>.rizzui-switch-knob]:translate-x-[.88rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[.88rem]',
@@ -173,8 +168,9 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             type="checkbox"
             disabled={disabled}
             className={cn(
-              'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span>.rizzui-switch-knob>.rizzui-switch-off-icon]:hidden [&:checked:enabled~span>.rizzui-switch-knob>.rizzui-switch-on-icon]:opacity-100 [&:checked:enabled~span>.rizzui-switch-knob]:text-gray-900',
-              '[&:checked:enabled~span>.rizzui-switch-knob]:bg-white',
+              'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span_.rizzui-switch-off-icon]:hidden [&:checked:enabled~span_.rizzui-switch-on-icon]:opacity-100',
+              '[&:checked:enabled~span>.rizzui-switch-knob]:bg-white [&:checked:enabled~span>.rizzui-switch-knob]:text-black',
+              '[&:checked:enabled~span>.rizzui-switch-knob]:dark:bg-black [&:checked:enabled~span>.rizzui-switch-knob]:dark:text-white',
               switchKnobStyles.translate.active[size],
             )}
             {...props}
@@ -200,7 +196,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                 switchKnobStyles.color,
                 switchKnobStyles.translate.inactive,
                 variant === 'flat' && 'bg-white text-gray-900 shadow-sm',
-                variant === 'outline' && 'bg-gray-300 text-gray-900',
+                variant === 'outline' && 'bg-gray-200 text-gray-900',
                 switchKnobClassName,
               )}
             >

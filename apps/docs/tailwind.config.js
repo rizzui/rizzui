@@ -11,6 +11,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
         gray: {
           50: "rgb(var(--gray-50) / <alpha-value>)",
           100: "rgb(var(--gray-100) / <alpha-value>)",
@@ -28,11 +30,13 @@ module.exports = {
           lighter: "rgb(var(--primary-lighter) / <alpha-value>)",
           DEFAULT: "rgb(var(--primary-default) / <alpha-value>)",
           dark: "rgb(var(--primary-dark) / <alpha-value>)",
+          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
         },
         secondary: {
           lighter: "rgb(var(--secondary-lighter) / <alpha-value>)",
           DEFAULT: "rgb(var(--secondary-default) / <alpha-value>)",
           dark: "rgb(var(--secondary-dark) / <alpha-value>)",
+          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
         },
         red: {
           lighter: "rgb(var(--red-lighter) / <alpha-value>)",

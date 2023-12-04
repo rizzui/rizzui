@@ -25,7 +25,7 @@ const radioLabelStyles = {
 };
 
 const radioStyles = {
-  base: 'disabled:bg-gray-50 disabled:border-gray-200 ring-[0.6px] focus:ring-gray-200',
+  base: 'disabled:bg-gray-50 disabled:border-gray-200 ring-[0.6px] focus:ring-gray-200 focus:ring-offset-background text-primary dark:text-primary-foreground',
   size: {
     sm: 'h-5 w-5',
     md: 'h-6 w-6',

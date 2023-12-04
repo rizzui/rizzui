@@ -61,42 +61,43 @@ export default function App() {
   const [value, setValue] = useState("single");
 
   return (
-    <RadioGroup value={value} setValue={setValue} className="flex gap-4">
+    <RadioGroup
+      value={value}
+      setValue={setValue}
+      className="grid grid-cols-1 sm:grid-cols-3 max-w-2xl mx-auto gap-4"
+    >
       <AdvancedRadio
-        name="payment-secondary"
+        name="payment"
         value="single"
-        className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
-        inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
+        inputClassName="[&:checked~span_.icon]:block"
       >
-        <div className="flex justify-between">
+        <span className="flex justify-between">
           <span className="font-medium text-black">Single Payment</span>
-          <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
-        </div>
+          <CheckCircleIcon className="icon hidden h-5 w-5 text-primary" />
+        </span>
         <p className="text-gray-500">Charge a one-time fee.</p>
       </AdvancedRadio>
       <AdvancedRadio
-        name="payment-secondary"
+        name="payment"
         value="subscription"
-        className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
-        inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
+        inputClassName="[&:checked~span_.icon]:block"
       >
-        <div className="flex justify-between">
+        <span className="flex justify-between">
           <span className="font-medium text-black">Subscription</span>
-          <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
-        </div>
+          <CheckCircleIcon className="icon hidden h-5 w-5 text-primary" />
+        </span>
         <p className="text-gray-500">Charge an ongoing fee.</p>
       </AdvancedRadio>
       <AdvancedRadio
-        name="payment-secondary"
+        name="payment"
         value="lead"
         defaultChecked
-        className="flex w-52 flex-col space-y-2 rounded-xl border border-secondary-lighter p-5 text-sm hover:cursor-pointer hover:border-secondary"
-        inputClassName="[&:checked~span>div>.icon]:block [&:checked~span]:ring-1 [&:checked~span]:ring-offset-0 [&:checked~span]:ring-secondary [&:checked~span]:!border-secondary"
+        inputClassName="[&:checked~span_.icon]:block"
       >
-        <div className="flex justify-between">
+        <span className="flex justify-between">
           <span className="font-medium text-black">Lead Magnet</span>
-          <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
-        </div>
+          <CheckCircleIcon className="icon hidden h-5 w-5 text-primary" />
+        </span>
         <p className="text-gray-500">Allow access for free.</p>
       </AdvancedRadio>
     </RadioGroup>
@@ -120,8 +121,8 @@ Here is the API documentation of the RadioGroup component.
 
 |  Props   |                Type                |          Description          | Default |
 | :------: | :--------------------------------: | :---------------------------: | :-----: |
-|  value   |              `string`              |        Selected value         |  \_ \_  |
-| setValue | `Dispatch<SetStateAction<string>>` | Pass function to select value |  \_ \_  |
-| children |            `ReactNode`             |   Radio buttons as children   |  \_ \_  |
+|  value   |              `string`              |        Selected value         |  \_\_   |
+| setValue | `Dispatch<SetStateAction<string>>` | Pass function to select value |  \_\_   |
+| children |            `ReactNode`             |   Radio buttons as children   |  \_\_   |
 
 </div>

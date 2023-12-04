@@ -3,9 +3,9 @@ export const buttonVariantStyles = {
     base: 'border border-transparent',
     color: {
       primary:
-        'bg-primary hover:enabled:bg-primary-dark focus-visible:ring-gray-200 text-white',
+        'bg-primary hover:enabled:bg-primary-dark focus-visible:ring-gray-200 text-primary-foreground',
       secondary:
-        'bg-secondary hover:enabled:bg-secondary-dark focus-visible:ring-secondary/30 text-white',
+        'bg-secondary hover:enabled:bg-secondary-dark focus-visible:ring-secondary/30 text-secondary-foreground',
       danger:
         'bg-red hover:enabled:bg-red-dark focus-visible:ring-red/30 text-white',
     },
