@@ -2,12 +2,13 @@ import React from 'react';
 import { cn } from '../../lib/cn';
 import { Badge } from '../badge';
 import { makeClassName } from '../../lib/make-class-name';
+import { roundedStyles } from '../../lib/rounded';
 
 const announcementStyles = {
   base: 'flex items-center text-gray-600 w-fit',
   bgColor: {
-    white: 'bg-white dark:bg-gray-50',
-    gray: 'bg-gray-100',
+    white: 'bg-background',
+    gray: 'bg-muted/60',
   },
   size: {
     sm: 'text-xs pr-6 rtl:pl-6 pl-0.5 rtl:pr-0.5 py-0.5',
@@ -15,13 +16,7 @@ const announcementStyles = {
     lg: 'text-base pr-8 rtl:pl-8 pl-1 rtl:pr-1 py-1',
     xl: 'text-lg pr-9 rtl:pl-9 pl-1 rtl:pr-1 py-1',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    full: 'rounded-full',
-  },
+  rounded: roundedStyles,
   color: {
     primary: 'text-primary',
     secondary: 'text-secondary',
@@ -78,7 +73,7 @@ export const Announcement = ({
       announcementStyles.size[size],
       announcementStyles.rounded[rounded],
       announcementStyles.bgColor[bgColor],
-      className,
+      className
     )}
   >
     {startIcon}
@@ -100,7 +95,7 @@ export const Announcement = ({
           makeClassName(`announcement-highlighted-text`),
           'ml-2.5 font-medium rtl:mr-2.5',
           announcementStyles.color[color],
-          highlightedTextClassName,
+          highlightedTextClassName
         )}
       >
         {highlightedText}
@@ -110,7 +105,7 @@ export const Announcement = ({
     <span
       className={cn(
         makeClassName(`announcement-text`),
-        !highlightedText ? 'ml-2.5 rtl:mr-2.5' : 'ml-1 rtl:mr-1',
+        !highlightedText ? 'ml-2.5 rtl:mr-2.5' : 'ml-1 rtl:mr-1'
       )}
     >
       {children}

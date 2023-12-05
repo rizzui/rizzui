@@ -3,6 +3,7 @@ import {
   Modal,
   Button,
   Text,
+  Title,
   ActionIcon,
   Input,
   Password,
@@ -19,7 +20,7 @@ export default function ModalDefault() {
       <Modal isOpen={modalState} onClose={() => setModalState(false)}>
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">
-            <Text as="h3">Welcome to RizzUI</Text>
+            <Title as="h3">Welcome to RizzUI</Title>
             <ActionIcon
               size="sm"
               variant="text"
@@ -29,29 +30,17 @@ export default function ModalDefault() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" inputClassName="border-2" size="lg" />
-            <Input label="Last Name *" inputClassName="border-2" size="lg" />
-            <Input
-              label="Email *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
-            <Password
-              label="Password *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
+            <Input label="First Name *" size="lg" />
+            <Input label="Last Name *" size="lg" />
+            <Input label="Email *" size="lg" className="col-span-2" />
+            <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"
-              inputClassName="border-2"
               size="lg"
               className="col-span-2"
             />
             <Checkbox
               size="lg"
-              inputClassName="border-2"
               className="col-span-2"
               label={
                 <Text className="text-sm">
@@ -79,7 +68,7 @@ export default function ModalDefault() {
 export function ModalSizes() {
   const [modalState, setModalState] = useState({
     isOpen: false,
-    size: "DEFAULT",
+    size: "md",
   });
 
   return (
@@ -103,7 +92,7 @@ export function ModalSizes() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "DEFAULT",
+              size: "md",
             }))
           }
         >
@@ -155,7 +144,7 @@ export function ModalSizes() {
       >
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">
-            <Text as="h3">Welcome to RizzUI</Text>
+            <Title as="h3">Welcome to RizzUI</Title>
             <ActionIcon
               size="sm"
               variant="text"
@@ -167,29 +156,17 @@ export function ModalSizes() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" inputClassName="border-2" size="lg" />
-            <Input label="Last Name *" inputClassName="border-2" size="lg" />
-            <Input
-              label="Email *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
-            <Password
-              label="Password *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
+            <Input label="First Name *" size="lg" />
+            <Input label="Last Name *" size="lg" />
+            <Input label="Email *" size="lg" className="col-span-2" />
+            <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"
-              inputClassName="border-2"
               size="lg"
               className="col-span-2"
             />
             <Checkbox
               size="lg"
-              inputClassName="border-2"
               className="col-span-2"
               label={
                 <Text className="text-sm">
@@ -219,7 +196,7 @@ export function ModalSizes() {
 export function ModalRounded() {
   const [modalState, setModalState] = useState({
     isOpen: false,
-    rounded: "DEFAULT",
+    rounded: "md",
   });
 
   return (
@@ -255,7 +232,7 @@ export function ModalRounded() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              rounded: "DEFAULT",
+              rounded: "md",
             }))
           }
         >
@@ -307,29 +284,17 @@ export function ModalRounded() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" inputClassName="border-2" size="lg" />
-            <Input label="Last Name *" inputClassName="border-2" size="lg" />
-            <Input
-              label="Email *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
-            <Password
-              label="Password *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
+            <Input label="First Name *" size="lg" />
+            <Input label="Last Name *" size="lg" />
+            <Input label="Email *" size="lg" className="col-span-2" />
+            <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"
-              inputClassName="border-2"
               size="lg"
               className="col-span-2"
             />
             <Checkbox
               size="lg"
-              inputClassName="border-2"
               className="col-span-2"
               label={
                 <Text className="text-sm">
@@ -369,7 +334,7 @@ export function ModalCustomSize() {
       >
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">
-            <Text as="h3">Welcome to RizzUI</Text>
+            <Title as="h3">Welcome to RizzUI</Title>
             <ActionIcon
               size="sm"
               variant="text"
@@ -379,29 +344,17 @@ export function ModalCustomSize() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" inputClassName="border-2" size="lg" />
-            <Input label="Last Name *" inputClassName="border-2" size="lg" />
-            <Input
-              label="Email *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
-            <Password
-              label="Password *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
+            <Input label="First Name *" size="lg" />
+            <Input label="Last Name *" size="lg" />
+            <Input label="Email *" size="lg" className="col-span-2" />
+            <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"
-              inputClassName="border-2"
               size="lg"
               className="col-span-2"
             />
             <Checkbox
               size="lg"
-              inputClassName="border-2"
               className="col-span-2"
               label={
                 <Text className="text-sm">
@@ -440,7 +393,7 @@ export function ModalCustomStyle() {
       >
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">
-            <Text as="h3">Welcome to RizzUI</Text>
+            <Title as="h3">Welcome to RizzUI</Title>
             <ActionIcon
               size="sm"
               variant="text"
@@ -450,29 +403,17 @@ export function ModalCustomStyle() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" inputClassName="border-2" size="lg" />
-            <Input label="Last Name *" inputClassName="border-2" size="lg" />
-            <Input
-              label="Email *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
-            <Password
-              label="Password *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
+            <Input label="First Name *" size="lg" />
+            <Input label="Last Name *" size="lg" />
+            <Input label="Email *" size="lg" className="col-span-2" />
+            <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"
-              inputClassName="border-2"
               size="lg"
               className="col-span-2"
             />
             <Checkbox
               size="lg"
-              inputClassName="border-2"
               className="col-span-2"
               label={
                 <Text className="text-sm">

@@ -37,7 +37,7 @@ export const DropdownItem = React.forwardRef<
       disabledClassName,
       ...props
     },
-    ref: React.ForwardedRef<any>,
+    ref: React.ForwardedRef<any>
   ) => {
     const { rounded } = useDropdown();
     let Component = as;
@@ -49,11 +49,11 @@ export const DropdownItem = React.forwardRef<
             {...(Component === 'button' && { type: 'button' })}
             className={cn(
               makeClassName(`dropdown-item`),
-              'flex items-center w-full px-3.5 py-1.5',
+              'flex w-full items-center px-3.5 py-1.5',
               rounded && dropdownItemStyles.rounded[rounded],
-              active && ['bg-gray-100', activeClassName],
+              active && ['bg-muted/70', activeClassName],
               disabled && disabledClassName,
-              className,
+              className
             )}
             {...props}
           >
@@ -62,7 +62,7 @@ export const DropdownItem = React.forwardRef<
         )}
       </Menu.Item>
     );
-  },
+  }
 );
 
 DropdownItem.displayName = 'DropdownItem';

@@ -2,19 +2,17 @@ import React from 'react';
 import { cn } from '../lib/cn';
 import { makeClassName } from '../lib/make-class-name';
 
-const inputIconClearClasses = {
+const clearBtnStyles = {
   base: 'inline-flex shrink-0 transform items-center justify-center rounded-full bg-gray-950/30 backdrop-blur p-[1px] text-gray-50 transition-all duration-200 ease-in-out hover:bg-gray-950',
   size: {
     sm: 'h-3.5 w-3.5',
     md: 'h-4 w-4',
-    DEFAULT: 'h-4 w-4',
     lg: 'h-4 w-4',
     xl: 'h-[18px] w-[18px]',
   },
   hasSuffix: {
     sm: 'me-1.5',
     md: 'me-2',
-    DEFAULT: 'me-2',
     lg: 'me-2.5',
     xl: 'me-2.5',
   },
@@ -22,7 +20,7 @@ const inputIconClearClasses = {
 
 export interface FieldClearButtonProps {
   hasSuffix?: boolean;
-  size?: keyof typeof inputIconClearClasses.size;
+  size?: keyof typeof clearBtnStyles.size;
   onClick?: (event: React.MouseEvent) => void;
   className?: string;
 }
@@ -40,12 +38,12 @@ export function FieldClearButton({
       className={cn(
         makeClassName(`input-clear-btn`),
         'input-clear-btn', // must contain this CSS class in this component
-        inputIconClearClasses.base,
+        clearBtnStyles.base,
         size && [
-          inputIconClearClasses.size[size],
-          hasSuffix && inputIconClearClasses.hasSuffix[size],
+          clearBtnStyles.size[size],
+          hasSuffix && clearBtnStyles.hasSuffix[size],
         ],
-        className,
+        className
       )}
     >
       {/* HeroIcon: x-mark */}

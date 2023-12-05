@@ -79,7 +79,7 @@ export function Drawer({
       customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
     if (checkedCustomSizeValue[0] === '') {
       console.warn(
-        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"',
+        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"'
       );
     }
   }
@@ -91,7 +91,7 @@ export function Drawer({
         className={cn(
           makeClassName(`drawer-root`),
           'fixed inset-0 z-[999] overflow-hidden',
-          className,
+          className
         )}
       >
         <TransitionChild
@@ -107,7 +107,7 @@ export function Drawer({
             className={cn(
               makeClassName(`drawer-overlay`),
               drawerClasses.overlay,
-              overlayClassName,
+              overlayClassName
             )}
           />
         </TransitionChild>
@@ -144,7 +144,7 @@ export function Drawer({
                   ? drawerClasses.sizeOfYAxisDrawer[size]
                   : drawerClasses.sizeOfXAxisDrawer[size],
               ],
-              containerClassName,
+              containerClassName
             )}
             {...(customSize && {
               style: {

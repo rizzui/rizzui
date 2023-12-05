@@ -10,7 +10,7 @@ import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
 const fileInputStyles = {
   base: 'flex items-center peer w-full transition duration-200',
-  disabled: '!bg-gray-100 cursor-not-allowed !border-gray-200',
+  disabled: '!bg-muted/70 cursor-not-allowed !border-muted',
   error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
   size: {
     sm: 'pr-2 py-1 text-xs h-8 leading-[32px] pl-[1px]',
@@ -22,7 +22,7 @@ const fileInputStyles = {
   variant: {
     flat: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 [&_input::placeholder]:opacity-80 bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
     outline:
-      'bg-transparent [&.is-focus]:ring-[0.8px] ring-[0.6px] ring-gray-200 border border-gray-200 [&_input::placeholder]:text-gray-500 hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
+      'bg-transparent [&.is-focus]:ring-[0.8px] ring-[0.6px] ring-muted border border-muted [&_input::placeholder]:text-gray-500 hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
     text: 'border-0 [&.is-focus]:ring-2 bg-transparent [&_input::placeholder]:opacity-70 hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
   },
 };
@@ -117,7 +117,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       onBlur,
       ...inputProps
     },
-    ref,
+    ref
   ) => {
     const {
       isFocus,
@@ -137,7 +137,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         e.preventDefault();
         onClear && onClear(e);
       },
-      [onClear],
+      [onClear]
     );
 
     return (
@@ -145,7 +145,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         className={cn(
           makeClassName(`file-input-root`),
           'flex flex-col',
-          className,
+          className
         )}
       >
         <label className="block">
@@ -156,7 +156,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
-                labelClassName,
+                labelClassName
               )}
             >
               {label}
@@ -173,7 +173,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
               isFocus && 'is-focus', // must have is-focus class based on onFocus event
               disabled && fileInputStyles.disabled,
               error && fileInputStyles.error,
-              inputClassName,
+              inputClassName
             )}
             data-focus={isFocus}
             data-hover={isHover}
@@ -196,7 +196,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
                 fileButtonStyles.size[size],
                 fileButtonStyles.rounded[rounded],
                 disabled && inputFieldStyles.disabled,
-                clearable && inputFieldStyles.clearable,
+                clearable && inputFieldStyles.clearable
               )}
               style={{ fontSize: 'inherit' }}
               {...inputProps}
@@ -213,7 +213,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
             size={size}
             className={cn(
               makeClassName(`file-input-helper-text`),
-              helperClassName,
+              helperClassName
             )}
           >
             {helperText}
@@ -226,13 +226,13 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
             error={error}
             className={cn(
               makeClassName(`file-input-error-text`),
-              errorClassName,
+              errorClassName
             )}
           />
         ) : null}
       </div>
     );
-  },
+  }
 );
 
 FileInput.displayName = 'FileInput';

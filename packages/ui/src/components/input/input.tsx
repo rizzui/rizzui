@@ -10,7 +10,7 @@ import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
 const inputStyles = {
   base: 'flex items-center peer w-full transition duration-200 border [&.is-focus]:ring-[0.8px] ring-[0.6px] [&.is-hover]:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary [&_input::placeholder]:opacity-60',
-  disabled: '!bg-gray-100 cursor-not-allowed !border-gray-200',
+  disabled: '!bg-muted/70 cursor-not-allowed !border-muted',
   error:
     '!border-red [&.is-hover]:!border-red [&.is-focus]:!border-red [&.is-focus]:!ring-red !bg-transparent',
   size: {
@@ -22,8 +22,8 @@ const inputStyles = {
   rounded: roundedStyles,
   variant: {
     text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-gray-200/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-gray-200/70',
-    outline: 'border border-gray-200 ring-gray-200 bg-transparent',
+    flat: 'border-0 ring-muted/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-muted/70',
+    outline: 'border border-muted ring-muted bg-transparent',
   },
 };
 
@@ -147,7 +147,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       onBlur,
       ...inputProps
     },
-    ref,
+    ref
   ) => {
     const {
       isFocus,
@@ -174,7 +174,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
-                labelClassName,
+                labelClassName
               )}
             >
               {label}
@@ -192,7 +192,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               isFocus && 'is-focus', // must have is-focus class based on onFocus event
               disabled && inputStyles.disabled,
               error && inputStyles.error,
-              inputClassName,
+              inputClassName
             )}
             data-focus={isFocus}
             data-hover={isHover}
@@ -204,7 +204,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 className={cn(
                   makeClassName(`input-prefix`),
                   'whitespace-nowrap leading-normal',
-                  prefixClassName,
+                  prefixClassName
                 )}
               >
                 {prefix}
@@ -230,7 +230,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 disabled && inputFieldStyles.disabled,
                 clearable && inputFieldStyles.clearable,
                 prefix && inputFieldStyles.prefix.size[size],
-                suffix && inputFieldStyles.suffix.size[size],
+                suffix && inputFieldStyles.suffix.size[size]
               )}
               style={{ fontSize: 'inherit' }}
               {...inputProps}
@@ -249,7 +249,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 className={cn(
                   makeClassName(`input-suffix`),
                   'whitespace-nowrap leading-normal',
-                  suffixClassName,
+                  suffixClassName
                 )}
               >
                 {suffix}
@@ -276,7 +276,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         ) : null}
       </div>
     );
-  },
+  }
 );
 
 Input.displayName = 'Input';

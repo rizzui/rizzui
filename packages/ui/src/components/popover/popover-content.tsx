@@ -5,7 +5,7 @@ import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 const tooltipStyle = {
-  base: 'z-[999] min-w-max bg-white dark:bg-gray-50 !text-gray-900 border border-gray-200',
+  base: 'z-[999] min-w-max bg-white dark:bg-gray-50 !text-gray-900 border border-muted',
   arrow: 'fill-white dark:fill-gray-50 [&>path]:stroke-gray-200',
   shadow: {
     sm: 'drop-shadow-md',
@@ -78,7 +78,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
                 makeClassName(`popover-overlay`),
                 'fixed inset-0 z-[998] cursor-pointer bg-black bg-opacity-60 transition-opacity duration-200',
                 open ? 'bg-opacity-60 dark:bg-opacity-80' : 'opacity-0',
-                overlayClassName,
+                overlayClassName
               )}
             >
               <span className="sr-only">popover overlay</span>
@@ -94,7 +94,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
               size && tooltipStyle.size[size],
               rounded && tooltipStyle.rounded[rounded],
               shadow && tooltipStyle.shadow[shadow],
-              className,
+              className
             )}
             style={{
               position: strategy,
@@ -116,7 +116,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
                 className={cn(
                   makeClassName(`popover-arrow`),
                   tooltipStyle.arrow,
-                  arrowClassName,
+                  arrowClassName
                 )}
                 style={{ strokeDasharray: '0,14, 5' }}
               />

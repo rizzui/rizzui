@@ -16,10 +16,10 @@ const textStyles = {
     del: '',
     mark: '',
     abbr: 'cursor-help',
-    pre: 'border-2 border-gray-300 py-3 px-4 rounded-xl bg-gray-100',
-    code: 'border border-gray-300 py-2 px-3 rounded-md shadow',
-    kbd: 'bg-gray-100 border border-gray-300 text-gray-900 rounded-lg leading-none inline-flex items-center justify-center text-sm py-1.5 px-2',
-    blockquote: 'border-l-4 border-gray-200 text-lg py-3 px-4',
+    pre: 'border-2 border-muted py-3 px-4 rounded-xl bg-muted/70',
+    code: 'border border-muted py-2 px-3 rounded-md shadow',
+    kbd: 'bg-muted/70 border border-muted text-gray-900 rounded-lg leading-none inline-flex items-center justify-center text-sm py-1.5 px-2',
+    blockquote: 'border-l-4 border-muted text-lg py-3 px-4',
     sub: '',
     sup: '',
   },
@@ -65,7 +65,7 @@ export function Text({
         makeClassName(`text-${as}`),
         textStyles.as[as],
         textStyles.fontWeight[fontWeight],
-        className,
+        className
       )}
       {...props}
     >

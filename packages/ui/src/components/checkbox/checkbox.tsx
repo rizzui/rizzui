@@ -27,7 +27,7 @@ const checkboxLabelStyles = {
 
 const checkboxStyles = {
   base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out',
-  disabled: 'disabled:bg-gray-100 disabled:border-gray-200',
+  disabled: 'disabled:bg-muted/70 disabled:border-muted',
   size: {
     sm: 'h-5 w-5',
     md: 'h-6 w-6',
@@ -45,8 +45,8 @@ const checkboxStyles = {
     'peer-checked:opacity-100 absolute opacity-0 top-0 left-0 text-primary-foreground',
   variant: {
     outline:
-      'bg-transparent border border-gray-200 ring-[0.6px] ring-gray-200 focus:ring-gray-200 checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
-    flat: 'border-0 bg-gray-200/70 hover:enabled:bg-gray-200 focus:ring-gray-200 checked:!bg-primary',
+      'bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
+    flat: 'border-0 bg-muted/70 hover:enabled:bg-muted focus:ring-muted checked:!bg-primary',
   },
 };
 
@@ -109,7 +109,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       className,
       ...checkboxProps
     },
-    ref,
+    ref
   ) => (
     <div
       className={cn(makeClassName(`checkbox-root`), 'flex flex-col', className)}
@@ -117,8 +117,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <label
         className={cn(
           makeClassName(`checkbox-container`),
-          'flex flex-row items-center cursor-pointer',
-          disabled && 'cursor-not-allowed',
+          'flex cursor-pointer flex-row items-center',
+          disabled && 'cursor-not-allowed'
         )}
       >
         <span className="relative leading-none">
@@ -133,7 +133,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               checkboxStyles.size[size],
               checkboxStyles.rounded[rounded],
               checkboxStyles.variant[variant],
-              inputClassName,
+              inputClassName
             )}
             {...checkboxProps}
           />
@@ -143,7 +143,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               checkboxStyles.activeIcon,
               checkboxStyles.size[size],
               size === 'sm' && 'top-0.5',
-              iconClassName,
+              iconClassName
             )}
           />
         </span>
@@ -157,7 +157,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               checkboxLabelStyles.margin[labelPlacement][size],
               labelPlacement === 'left' && 'order-first',
               'mb-0',
-              labelClassName,
+              labelClassName
             )}
           >
             {label}
@@ -182,7 +182,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         />
       ) : null}
     </div>
-  ),
+  )
 );
 
 Checkbox.displayName = 'Checkbox';

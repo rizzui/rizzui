@@ -4,7 +4,7 @@ import { cn } from '../../lib/cn';
 import { AlertIcon } from './icons';
 import { makeClassName } from '../../lib/make-class-name';
 
-const classes = {
+const alertStyles = {
   base: 'relative block w-full bg-transparent break-all dark:backdrop-blur',
   size: {
     sm: 'px-2.5 py-2 text-xs leading-5',
@@ -39,25 +39,25 @@ const classes = {
     flat: {
       base: 'border text-gray-900',
       color: {
-        danger: 'bg-red/20 dark:bg-red/10 border-red-dark',
-        info: 'bg-blue/20 dark:bg-blue/10 border-blue-dark',
-        success: 'bg-green/20 dark:bg-green/10 border-green-dark',
-        warning: 'bg-orange/20 dark:bg-orange/10 border-orange-dark',
+        danger: 'bg-red-lighter/70 border-red dark:border-red/70',
+        info: 'bg-blue-lighter/70 border-blue dark:border-blue/70',
+        success: 'bg-green-lighter/70 border-green dark:border-green/70',
+        warning: 'bg-orange-lighter/70 border-orange dark:border-orange/70',
       },
     },
     outline: {
       base: 'border bg-transparent',
       color: {
-        danger: 'border-red',
-        info: 'border-blue',
-        success: 'border-green',
-        warning: 'border-orange',
+        danger: 'border-red dark:border-red/70',
+        info: 'border-blue dark:border-blue/70',
+        success: 'border-green dark:border-green/70',
+        warning: 'border-orange dark:border-orange/70',
       },
     },
   },
 };
 
-const iconContainerClasses = {
+const iconWrapperStyles = {
   base: 'absolute top-0 h-full flex items-center justify-center',
   position: {
     left: {
@@ -75,7 +75,7 @@ const iconContainerClasses = {
   },
 };
 
-const iconClasses = {
+const iconStyles = {
   base: 'flex justify-center items-center p-1',
   rounded: {
     none: 'rounded-none',
@@ -118,7 +118,7 @@ const iconClasses = {
   },
 };
 
-const barClasses = {
+const barStyles = {
   base: 'absolute left-0 top-0 h-full p-0.5 rtl:right-0 rtl:left-auto',
   rounded: {
     none: 'rounded-tl-none rounded-bl-none',
@@ -137,13 +137,13 @@ const barClasses = {
 
 export type AlertProps = {
   /** The size of the component. */
-  size?: keyof typeof classes.size;
+  size?: keyof typeof alertStyles.size;
   /** The rounded variants are: */
-  rounded?: keyof typeof classes.rounded;
+  rounded?: keyof typeof alertStyles.rounded;
   /** The variants of the component are: */
-  variant?: keyof typeof classes.variant;
+  variant?: keyof typeof alertStyles.variant;
   /** Change input color */
-  color: keyof typeof classes.variant.flat.color;
+  color: keyof typeof alertStyles.variant.flat.color;
   /** Whether left bar should be visible */
   bar?: boolean;
   /** Pass alert message as children */
@@ -191,11 +191,11 @@ export function Alert({
       data-testid="alert-parent"
       className={cn(
         makeClassName(`alert-root`),
-        classes.base,
-        classes.size[size],
-        classes.rounded[rounded],
-        classes.variant[variant].base,
-        classes.variant[variant].color[color],
+        alertStyles.base,
+        alertStyles.size[size],
+        alertStyles.rounded[rounded],
+        alertStyles.variant[variant].base,
+        alertStyles.variant[variant].color[color],
         bar && variant !== 'outline' && '!border-0',
         className
       )}
@@ -205,9 +205,9 @@ export function Alert({
           data-testid="alert-bar"
           className={cn(
             makeClassName(`alert-bar`),
-            barClasses.base,
-            barClasses.rounded[rounded],
-            barClasses.color[color],
+            barStyles.base,
+            barStyles.rounded[rounded],
+            barStyles.color[color],
             barClassName
           )}
         />
@@ -216,8 +216,8 @@ export function Alert({
         data-testid="alert-content"
         className={cn(
           makeClassName(`alert-content`),
-          iconContainerClasses.base,
-          iconContainerClasses.position.left[size],
+          iconWrapperStyles.base,
+          iconWrapperStyles.position.left[size],
           iconContainerClassName
         )}
       >
@@ -225,9 +225,9 @@ export function Alert({
           <span
             className={cn(
               makeClassName(`alert-icon`),
-              iconClasses.base,
-              iconClasses.rounded[rounded],
-              iconClasses.iconColor[color],
+              iconStyles.base,
+              iconStyles.rounded[rounded],
+              iconStyles.iconColor[color],
               iconClassName
             )}
           >
@@ -238,8 +238,8 @@ export function Alert({
       <div
         className={cn(
           makeClassName(`alert-content`),
-          classes.leftPadding.size[size],
-          closable && classes.rightPadding.size[size]
+          alertStyles.leftPadding.size[size],
+          closable && alertStyles.rightPadding.size[size]
         )}
       >
         {children}
@@ -250,23 +250,23 @@ export function Alert({
           tabIndex={0}
           className={cn(
             makeClassName(`alert-close`),
-            iconContainerClasses.base,
-            iconContainerClasses.position.right[size]
+            iconWrapperStyles.base,
+            iconWrapperStyles.position.right[size]
           )}
           onClick={onClose}
         >
           {closeIcon || (
             <span
               className={cn(
-                iconClasses.base,
-                iconClasses.rounded[rounded],
-                iconClasses.variant[variant].base,
-                iconClasses.variant[variant].color[color]
+                iconStyles.base,
+                iconStyles.rounded[rounded],
+                iconStyles.variant[variant].base,
+                iconStyles.variant[variant].color[color]
               )}
             >
               <XIcon
                 data-testid="alert-clear-icon"
-                className={cn('cursor-pointer', iconClasses.size[size])}
+                className={cn('cursor-pointer', iconStyles.size[size])}
               />
             </span>
           )}

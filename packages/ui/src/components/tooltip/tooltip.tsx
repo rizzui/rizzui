@@ -56,8 +56,7 @@ const tooltipStyles = {
       base: '',
       color: {
         primary: 'text-primary-foreground bg-primary',
-        invert:
-          'bg-white dark:bg-gray-50 !text-gray-900 border border-gray-300',
+        invert: 'bg-white dark:bg-gray-50 !text-gray-900 border border-muted',
         secondary: 'text-secondary-foreground bg-secondary',
         danger: 'text-white bg-red',
         info: 'text-white bg-blue',

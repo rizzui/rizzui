@@ -22,7 +22,7 @@ export default {
 type ModalPropsType = {
   isOpen: boolean;
   size?: ModalSize;
-  rounded?: 'none' | 'sm' | 'DEFAULT' | 'lg' | 'xl';
+  rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
 export const Default = () => {
@@ -93,7 +93,7 @@ export const Default = () => {
 export const Sizes = () => {
   const [modalState, setModalState] = React.useState<ModalPropsType>({
     isOpen: false,
-    size: 'DEFAULT',
+    size: 'md',
   });
   return (
     <>
@@ -116,7 +116,7 @@ export const Sizes = () => {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: 'DEFAULT',
+              size: 'md',
             }))
           }
         >
@@ -232,7 +232,7 @@ export const Sizes = () => {
 export const Rounded = () => {
   const [modalState, setModalState] = React.useState<ModalPropsType>({
     isOpen: false,
-    rounded: 'DEFAULT',
+    rounded: 'md',
   });
   return (
     <>
@@ -267,7 +267,7 @@ export const Rounded = () => {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              rounded: 'DEFAULT',
+              rounded: 'md',
             }))
           }
         >

@@ -154,7 +154,7 @@ You can change the color of the **Button** using [**color**](#button-colors) pro
       Danger
     </Button>
   </div>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
+  <div className="flex items-center justify-around gap-4 w-full flex-wrap">
     <Button variant="text">Primary</Button>
     <Button variant="text" color="secondary">
       Secondary
@@ -171,9 +171,42 @@ import { Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Button>Primary</Button>
-      <Button color="secondary">Secondary</Button>
-      <Button color="danger">Danger</Button>
+      {/* variant solid / default */}
+      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
+        <Button>Primary</Button>
+        <Button color="secondary">Secondary</Button>
+        <Button color="danger">Danger</Button>
+      </div>
+      {/* variant flat */}
+      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
+        <Button variant="flat">Primary</Button>
+        <Button variant="flat" color="secondary">
+          Secondary
+        </Button>
+        <Button variant="flat" color="danger">
+          Danger
+        </Button>
+      </div>
+      {/* variant outline */}
+      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
+        <Button variant="outline">Primary</Button>
+        <Button variant="outline" color="secondary">
+          Secondary
+        </Button>
+        <Button variant="outline" color="danger">
+          Danger
+        </Button>
+      </div>
+      {/* variant text */}
+      <div className="flex items-center justify-around gap-4 w-full flex-wrap">
+        <Button variant="text">Primary</Button>
+        <Button variant="text" color="secondary">
+          Secondary
+        </Button>
+        <Button variant="text" color="danger">
+          Danger
+        </Button>
+      </div>
     </>
   );
 }
@@ -274,18 +307,19 @@ Here is the API documentation of the Button component. And the rest of the props
 
 <div className="overflow-x-auto">
 
-|   Props   |                Type                |                                       Description                                       |   Default   |
-| :-------: | :--------------------------------: | :-------------------------------------------------------------------------------------: | :---------: |
-| children  |         `React.ReactNode`          |                           Accepts everything React can render                           |    \_\_     |
-|   type    |    [ButtonTypes](#button-types)    |                          Set the original HTML type of button                           | `"button"`  |
-|  variant  | [ButtonVariants](#button-variants) |                                 Set the button variants                                 |  `"solid"`  |
-|   size    |    [ButtonSizes](#button-sizes)    | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. |   `"md"`    |
-|  rounded  |  [ButtonRounded](#button-rounded)  |                        Set border radius of the button component                        |   `"md"`    |
-|   color   |   [ButtonColors](#button-colors)   |                                   Change button color                                   | `"primary"` |
-| isLoading |             `boolean`              |                            Set the loading status of button                             |    \_\_     |
-| disabled  |             `boolean`              |                              Disabled state of the button                               |    \_\_     |
-|    ref    |      `Ref<HTMLButtonElement>`      |                                       forwardRef                                        |    \_\_     |
-| className |              `string`              |                           Add custom classes for extra style                            |    \_\_     |
+|   Props   |                    Type                    |                                       Description                                       |   Default   |
+| :-------: | :----------------------------------------: | :-------------------------------------------------------------------------------------: | :---------: |
+| children  |             `React.ReactNode`              |                           Accepts everything React can render                           |    \_\_     |
+|   type    |        [ButtonTypes](#button-types)        |                          Set the original HTML type of button                           | `"button"`  |
+|  variant  |     [ButtonVariants](#button-variants)     |                                 Set the button variants                                 |  `"solid"`  |
+|   size    |        [ButtonSizes](#button-sizes)        | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. |   `"md"`    |
+|  rounded  |      [ButtonRounded](#button-rounded)      |                        Set border radius of the button component                        |   `"md"`    |
+|   color   |       [ButtonColors](#button-colors)       |                                   Change button color                                   | `"primary"` |
+| isLoading |                 `boolean`                  |                            Set the loading status of button                             |    \_\_     |
+| disabled  |                 `boolean`                  |                              Disabled state of the button                               |    \_\_     |
+| className |                  `string`                  |                           Add custom classes for extra style                            |    \_\_     |
+|    ref    |          `Ref<HTMLButtonElement>`          |                                       forwardRef                                        |    \_\_     |
+|    ...    | `ButtonHTMLAttributes` or `HTMLAttributes` |              native props like **onClick**, **title**, **aria-label** ...               |    \_\_     |
 
 </div>
 

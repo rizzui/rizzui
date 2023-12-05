@@ -53,10 +53,10 @@ export function DropdownMenu({
           data-testid="dropdown-menu"
           className={cn(
             makeClassName(`dropdown-menu`),
-            'z-30 w-48 p-1.5 border border-gray-200 bg-white dark:bg-gray-50 focus-visible:outline-none',
+            'z-30 w-48 border border-muted bg-white p-1.5 focus-visible:outline-none dark:bg-gray-50',
             rounded && dropdownStyles.rounded[rounded],
             shadow && dropdownStyles.shadow[shadow],
-            className,
+            className
           )}
           style={{
             position: strategy,

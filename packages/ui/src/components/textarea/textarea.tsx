@@ -11,9 +11,9 @@ import { useInteractiveEvent } from '../../lib/use-interactive-event';
 const textareaStyles = {
   base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] [&.is-focus]:ring-[0.8px] [&.is-focus]:ring-primary [&.is-hover]:border-primary [&.is-focus]:border-primary',
   scrollBar:
-    '[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-gray-200 [&::-webkit-scrollbar-thumb:hover]:bg-gray-400 [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
+    '[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-gray-400 [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
   disabled:
-    '!bg-gray-100 cursor-not-allowed !border-gray-200 placeholder:text-gray-400',
+    '!bg-muted/70 cursor-not-allowed !border-muted placeholder:text-gray-400',
   clearable:
     '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
   error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
@@ -26,8 +26,8 @@ const textareaStyles = {
   rounded: roundedStyles,
   variant: {
     text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-gray-200/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-gray-200/70',
-    outline: 'bg-transparent ring-gray-200 border border-gray-200',
+    flat: 'border-0 ring-muted/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-muted/70',
+    outline: 'bg-transparent ring-muted border border-muted',
   },
 };
 
@@ -130,7 +130,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       onMouseLeave,
       ...textareaProps
     },
-    ref,
+    ref
   ) => {
     const {
       isFocus,
@@ -152,7 +152,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         className={cn(
           makeClassName(`textarea-root`),
           'flex flex-col',
-          className,
+          className
         )}
       >
         <label className="block">
@@ -163,14 +163,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
-                labelClassName,
+                labelClassName
               )}
             >
               {label}
             </span>
           ) : null}
 
-          <span className="block relative">
+          <span className="relative block">
             <textarea
               ref={ref}
               rows={rows}
@@ -200,7 +200,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 readOnly && 'focus:ring-0',
                 disabled && textareaStyles.disabled,
                 error && textareaStyles.error,
-                textareaClassName,
+                textareaClassName
               )}
               {...textareaProps}
             />
@@ -211,7 +211,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 onClick={onClear}
                 className={cn(
                   clearButtonSpacing.base,
-                  clearButtonSpacing.size[size],
+                  clearButtonSpacing.size[size]
                 )}
               />
             ) : null}
@@ -229,7 +229,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             size={size}
             className={cn(
               makeClassName(`textarea-helper-text`),
-              helperClassName,
+              helperClassName
             )}
           >
             {helperText}
@@ -245,7 +245,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         ) : null}
       </div>
     );
-  },
+  }
 );
 
 Textarea.displayName = 'Textarea';

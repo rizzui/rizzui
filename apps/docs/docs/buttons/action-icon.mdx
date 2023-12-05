@@ -205,7 +205,7 @@ export default function App() {
 You can change the color of the **ActionIcon** using [**color**](#actionicon-colors) property.
 
 <Paper>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap">
+  <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
     <ActionIcon>
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
@@ -213,6 +213,28 @@ You can change the color of the **ActionIcon** using [**color**](#actionicon-col
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
     <ActionIcon color="danger">
+      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    </ActionIcon>
+  </div>
+  <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
+    <ActionIcon variant="flat">
+      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    </ActionIcon>
+    <ActionIcon variant="flat" color="secondary">
+      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    </ActionIcon>
+    <ActionIcon variant="flat" color="danger">
+      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    </ActionIcon>
+  </div>
+  <div className="flex items-center justify-around gap-4 w-full flex-wrap">
+    <ActionIcon variant="text">
+      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    </ActionIcon>
+    <ActionIcon variant="text" color="secondary">
+      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    </ActionIcon>
+    <ActionIcon variant="text" color="danger">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
   </div>
@@ -225,15 +247,42 @@ import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 export default function App() {
   return (
     <>
-      <ActionIcon>
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
-      </ActionIcon>
-      <ActionIcon color="secondary">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
-      </ActionIcon>
-      <ActionIcon color="danger">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
-      </ActionIcon>
+      {/* variant solid / default */}
+      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
+        <ActionIcon>
+          <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        </ActionIcon>
+        <ActionIcon color="secondary">
+          <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        </ActionIcon>
+        <ActionIcon color="danger">
+          <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        </ActionIcon>
+      </div>
+      {/* variant flat */}
+      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
+        <ActionIcon variant="flat">
+          <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        </ActionIcon>
+        <ActionIcon variant="flat" color="secondary">
+          <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        </ActionIcon>
+        <ActionIcon variant="flat" color="danger">
+          <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        </ActionIcon>
+      </div>
+      {/* variant text */}
+      <div className="flex items-center justify-around gap-4 w-full flex-wrap">
+        <ActionIcon variant="text">
+          <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        </ActionIcon>
+        <ActionIcon variant="text" color="secondary">
+          <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        </ActionIcon>
+        <ActionIcon variant="text" color="danger">
+          <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        </ActionIcon>
+      </div>
     </>
   );
 }
@@ -326,8 +375,9 @@ Here is the API documentation of the ActionIcon component. And the rest of the p
 |   color   |   [ActionIconColors](#actionicon-colors)   |                                   Change ActionIcon color                                   | `"primary"` |
 | isLoading |                 `boolean`                  |                            Set the loading status of ActionIcon                             |    \_\_     |
 | disabled  |                 `boolean`                  |                              Disabled state of the ActionIcon                               |    \_\_     |
-|    ref    |          `Ref<HTMLButtonElement>`          |                                         forwardRef                                          |    \_\_     |
 | className |                  `string`                  |                             Add custom classes for extra style                              |    \_\_     |
+|    ref    |          `Ref<HTMLButtonElement>`          |                                         forwardRef                                          |    \_\_     |
+|    ...    | `ButtonHTMLAttributes` or `HTMLAttributes` |                native props like **onClick**, **title**, **aria-label** ...                 |    \_\_     |
 
 </div>
 

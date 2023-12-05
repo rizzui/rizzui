@@ -2,8 +2,8 @@ import React from 'react';
 import { cn } from '../../../lib/cn';
 import { makeClassName } from '../../../lib/make-class-name';
 
-const classes = {
-  blockquote: 'border-l-4 border-gray-300 text-quote py-3 px-4',
+const blockquoteStyles = {
+  blockquote: 'border-l-4 border-mute text-quote py-3 px-4',
 };
 
 export type BlockquoteProps = {
@@ -17,7 +17,11 @@ export function Blockquote({
 }: React.PropsWithChildren<BlockquoteProps>) {
   return (
     <blockquote
-      className={cn(makeClassName(`blockquote`), classes.blockquote, className)}
+      className={cn(
+        makeClassName(`blockquote`),
+        blockquoteStyles.blockquote,
+        className
+      )}
       {...props}
     >
       {children}

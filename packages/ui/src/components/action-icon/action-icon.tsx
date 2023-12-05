@@ -69,7 +69,7 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
       disabled,
       ...actionIconProps
     },
-    ref,
+    ref
   ) => {
     const Component = as;
     const variantStyle = actionIconStyles.variant[variant];
@@ -86,8 +86,8 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
           variantStyle.color[color],
           isLoading && 'pointer-events-none relative',
           disabled &&
-            'cursor-not-allowed !border-gray-200 !bg-gray-100 !text-gray-400',
-          className,
+            'cursor-not-allowed !border-muted !bg-muted/70 !text-gray-400',
+          className
         )}
         {...(as && as !== 'span' && { type })}
         {...actionIconProps}
@@ -97,7 +97,7 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
             className={cn(
               makeClassName(`action-icon-spinner`),
               'h-auto animate-spin',
-              actionIconStyles.spinnerSize[size],
+              actionIconStyles.spinnerSize[size]
             )}
           />
         ) : (
@@ -105,7 +105,7 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
         )}
       </Component>
     );
-  },
+  }
 );
 
 ActionIcon.displayName = 'ActionIcon';

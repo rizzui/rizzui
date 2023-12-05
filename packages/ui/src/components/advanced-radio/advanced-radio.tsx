@@ -4,11 +4,11 @@ import { makeClassName } from '../../lib/make-class-name';
 import { roundedStyles } from '../../lib/rounded';
 
 const advancedRadioStyles = {
-  base: 'border border-gray-200 hover:border-primary ring-[0.6px] ring-gray-200 cursor-pointer transition duration-200 ease-in-out',
+  base: 'border border-muted hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out',
   active:
     'peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px]',
   disabled:
-    'peer-disabled:bg-gray-100 peer-disabled:border-gray-200 peer-disabled:ring-gray-200 peer-disabled:cursor-not-allowed',
+    'peer-disabled:bg-muted/70 peer-disabled:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed',
   alignment: {
     left: '',
     center: 'text-center [&>*]:mx-auto',
@@ -58,13 +58,13 @@ export const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
       className,
       ...props
     },
-    ref,
+    ref
   ) => (
     <label
       className={cn(
         makeClassName(`advanced-checkbox-root`),
-        'block relative',
-        className,
+        'relative block',
+        className
       )}
     >
       <input
@@ -83,13 +83,13 @@ export const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
           advancedRadioStyles.size[size],
           advancedRadioStyles.rounded[rounded],
           advancedRadioStyles.alignment[alignment],
-          contentClassName,
+          contentClassName
         )}
       >
         {children}
       </span>
     </label>
-  ),
+  )
 );
 
 AdvancedRadio.displayName = 'AdvancedRadio';

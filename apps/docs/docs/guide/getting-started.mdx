@@ -10,7 +10,7 @@ Explore RizzUI: Modern, Minimal, TailwindCSS-based React UI Library. Intuitively
 
 System Requirements:
 
-- Node.js 16.17.0 or later.
+- Node.js 18.17.0 or later.
 
 ```bash title=Terminal
 npm i rizzui @headlessui/react @floating-ui/react
@@ -43,6 +43,7 @@ module.exports = {
         background: colors.white, // body background & ring-offset-color
         foreground: colors.gray[600], // body text color
         gray: colors.gray, // use one of them -> gray | slate | zinc | neutral | stone
+        muted: colors.gray[200], // border color & default flat bg color for input components
         primary: {
           lighter: colors.indigo[200],
           DEFAULT: colors.indigo[500],

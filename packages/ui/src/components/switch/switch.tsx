@@ -26,10 +26,10 @@ const switchLabelStyles = {
 };
 
 const switchStyles = {
-  base: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-gray-200 ring-transparent ring-offset-background',
+  base: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-muted ring-transparent ring-offset-background',
   active: 'peer-checked/switch:bg-primary peer-checked/switch:border-primary',
   disabled:
-    'cursor-not-allowed peer-disabled/switch:border-gray-200 peer-disabled/switch:bg-gray-100',
+    'cursor-not-allowed peer-disabled/switch:border-muted peer-disabled/switch:bg-muted/70',
   rounded: roundedStyles,
   size: {
     sm: 'w-8 h-5',
@@ -46,9 +46,9 @@ const switchStyles = {
     },
   },
   variant: {
-    flat: 'border border-transparent bg-gray-200/70 group-hover/switch:bg-gray-200',
+    flat: 'border border-transparent bg-muted/70 group-hover/switch:bg-muted',
     outline:
-      'border border-gray-200 ring-[0.6px] ring-gray-200 group-hover/switch:border-primary',
+      'border border-muted ring-[0.6px] ring-muted group-hover/switch:border-primary',
   },
 };
 
@@ -149,7 +149,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       helperClassName,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <div className={cn('rizzui-switch', className)}>
@@ -160,7 +160,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             variant === 'outline' && [
               switchKnobStyles.outlineInactiveColor,
               disabled && switchKnobStyles.outlineInactiveDisabled,
-            ],
+            ]
           )}
         >
           <input
@@ -171,7 +171,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
               'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span_.rizzui-switch-off-icon]:hidden [&:checked:enabled~span_.rizzui-switch-on-icon]:opacity-100',
               '[&:checked:enabled~span>.rizzui-switch-knob]:bg-white [&:checked:enabled~span>.rizzui-switch-knob]:text-black',
               '[&:checked:enabled~span>.rizzui-switch-knob]:dark:bg-black [&:checked:enabled~span>.rizzui-switch-knob]:dark:text-white',
-              switchKnobStyles.translate.active[size],
+              switchKnobStyles.translate.active[size]
             )}
             {...props}
           />
@@ -184,7 +184,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
               switchStyles.variant[variant],
               switchStyles.active,
               disabled && switchStyles.disabled,
-              switchClassName,
+              switchClassName
             )}
           >
             <span
@@ -196,8 +196,8 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                 switchKnobStyles.color,
                 switchKnobStyles.translate.inactive,
                 variant === 'flat' && 'bg-white text-gray-900 shadow-sm',
-                variant === 'outline' && 'bg-gray-200 text-gray-900',
-                switchKnobClassName,
+                variant === 'outline' && 'bg-muted text-gray-900',
+                switchKnobClassName
               )}
             >
               <span className="rizzui-switch-off-icon inline-flex items-center">
@@ -233,7 +233,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                 disabled ? 'cursor-not-allowed' : 'cursor-pointer',
                 labelPlacement === 'right' && 'order-last',
                 'mb-0',
-                labelClassName,
+                labelClassName
               )}
             >
               {label}
@@ -260,7 +260,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         ) : null}
       </div>
     );
-  },
+  }
 );
 
 Switch.displayName = 'Switch';

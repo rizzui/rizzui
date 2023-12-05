@@ -11,7 +11,7 @@ const containerClasses = {
 const pinCodeStyles = {
   base: 'block peer text-center bg-transparent mr-2 focus:placeholder:opacity-0 focus:outline-none transition duration-200',
   disabled:
-    'disabled:bg-gray-50 disabled:placeholder:text-gray-400 disabled:cursor-not-allowed disabled:border-gray-200',
+    'disabled:bg-gray-50 disabled:placeholder:text-gray-400 disabled:cursor-not-allowed disabled:border-muted',
   error:
     'border-red hover:enabled:!border-red focus:enabled:!border-red focus:!ring-red',
   size: {
@@ -28,9 +28,9 @@ const pinCodeStyles = {
     full: 'rounded-full',
   },
   variant: {
-    flat: 'focus:ring-[1.8px] border-0 placeholder:opacity-90 bg-gray-200/70 focus:ring-primary focus:enabled:bg-transparent',
+    flat: 'focus:ring-[1.8px] border-0 placeholder:opacity-90 bg-muted/70 focus:ring-primary focus:enabled:bg-transparent',
     outline:
-      'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-gray-200 border border-gray-200 placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
+      'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-muted border border-muted placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
   },
 };
 
@@ -101,7 +101,7 @@ export function PinCode({
 
   function handleChange(
     event: React.ChangeEvent<HTMLInputElement>,
-    index: number,
+    index: number
   ) {
     const inputValues = event.target.value.split('');
     inputRefs.current[index].value = inputValues[inputValues.length - 1];
@@ -134,7 +134,7 @@ export function PinCode({
 
   function handlePaste(
     event: React.ClipboardEvent<HTMLInputElement>,
-    index: number,
+    index: number
   ) {
     const copiedValue = event.clipboardData.getData('text').split('');
     for (let i = 0; i < length - index; i += 1) {
@@ -157,7 +157,7 @@ export function PinCode({
         className={cn(
           makeClassName(`pin-code-container`),
           containerClasses.base,
-          center && containerClasses.center,
+          center && containerClasses.center
         )}
       >
         {Array.from({ length }, (_, index) => (
@@ -185,8 +185,8 @@ export function PinCode({
               pinCodeStyles.variant[variant],
               error && pinCodeStyles.error,
               mask &&
-                '[-webkit-text-security:disc] [-moz-text-security:circle] [text-security:circle]',
-              inputClassName,
+                '[-moz-text-security:circle] [-webkit-text-security:disc] [text-security:circle]',
+              inputClassName
             )}
             {...props}
           />
@@ -200,7 +200,7 @@ export function PinCode({
           className={cn(
             makeClassName(`pin-code-error-text`),
             center && 'flex justify-center',
-            errorClassName,
+            errorClassName
           )}
         />
       ) : null}

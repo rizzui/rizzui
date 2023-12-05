@@ -25,7 +25,7 @@ const radioLabelStyles = {
 };
 
 const radioStyles = {
-  base: 'disabled:bg-gray-50 disabled:border-gray-200 ring-[0.6px] focus:ring-gray-200 focus:ring-offset-background text-primary dark:text-primary-foreground',
+  base: 'disabled:bg-gray-50 disabled:border-muted ring-[0.6px] focus:ring-muted focus:ring-offset-background text-primary dark:text-primary-foreground',
   size: {
     sm: 'h-5 w-5',
     md: 'h-6 w-6',
@@ -34,8 +34,8 @@ const radioStyles = {
   },
   variant: {
     outline:
-      'bg-transparent border border-gray-200 ring-gray-200 checked:!bg-gray-primary checked:!border-primary hover:enabled:border-primary',
-    flat: 'border-0 bg-gray-200/70 ring-gray-200/70 hover:enabled:bg-gray-200/90 checked:!bg-primary',
+      'bg-transparent border border-muted ring-muted checked:!bg-gray-primary checked:!border-primary hover:enabled:border-primary',
+    flat: 'border-0 bg-muted/70 ring-muted/70 hover:enabled:bg-muted/90 checked:!bg-primary',
   },
 };
 
@@ -93,7 +93,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       helperClassName,
       ...radioProps
     },
-    ref,
+    ref
   ) => (
     <div
       className={cn(makeClassName(`radio-root`), 'flex flex-col', className)}
@@ -101,8 +101,8 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       <label
         className={cn(
           makeClassName(`radio-container`),
-          'flex flex-row items-center cursor-pointer',
-          disabled && 'cursor-not-allowed',
+          'flex cursor-pointer flex-row items-center',
+          disabled && 'cursor-not-allowed'
         )}
       >
         <input
@@ -114,7 +114,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
             radioStyles.base,
             radioStyles.size[size],
             radioStyles.variant[variant],
-            inputClassName,
+            inputClassName
           )}
           {...radioProps}
         />
@@ -128,7 +128,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
               radioLabelStyles.margin[labelPlacement][size],
               labelPlacement === 'left' && 'order-first',
               'mb-0',
-              labelClassName,
+              labelClassName
             )}
           >
             {label}
@@ -153,7 +153,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         />
       ) : null}
     </div>
-  ),
+  )
 );
 
 Radio.displayName = 'Radio';

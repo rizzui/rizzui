@@ -9,7 +9,7 @@ import { useRePositioningActiveTab } from './tab-lib';
 import { makeClassName } from '../../lib/make-class-name';
 
 const tabListStyles = {
-  base: 'relative flex border-gray-200',
+  base: 'relative flex border-muted',
   vertical: 'flex-col border-e pe-3',
   horizontal:
     'justify-start border-b gap-4 pb-[1px] overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden',
@@ -38,7 +38,7 @@ export function TabList({ children, className, ...props }: TabListProps) {
         makeClassName(`tab-list`),
         tabListStyles.base,
         vertical ? tabListStyles.vertical : tabListStyles.horizontal,
-        className,
+        className
       )}
       {...props}
     >

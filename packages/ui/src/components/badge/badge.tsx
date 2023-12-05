@@ -1,6 +1,7 @@
 import React from 'react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
+import { roundedStyles } from '../../lib/rounded';
 
 const badgeStyles = {
   base: 'inline-flex items-center justify-center font-semibold leading-none',
@@ -19,13 +20,7 @@ const badgeStyles = {
       xl: 'w-3.5 h-3.5',
     },
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    full: 'rounded-full',
-  },
+  rounded: roundedStyles,
   variant: {
     solid: {
       base: '',
@@ -88,7 +83,7 @@ export function Badge({
   size = 'md',
   color = 'primary',
   variant = 'solid',
-  rounded = 'full',
+  rounded = 'pill',
   enableOutlineRing,
   children,
   className,
