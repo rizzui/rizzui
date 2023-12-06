@@ -11,14 +11,13 @@ type Rect = {
 
 type TabContextProps = {
   ref: React.MutableRefObject<HTMLDivElement | null>;
-  rounded?: 'none' | 'sm' | 'DEFAULT' | 'lg' | 'xl';
   rect: Rect;
   setRect: (
     eventOrRef:
       | React.MouseEvent<HTMLElement>
       | React.FocusEvent<HTMLElement>
       | React.MutableRefObject<HTMLElement | null>,
-    getContainer?: () => HTMLElement | null,
+    getContainer?: () => HTMLElement | null
   ) => void;
   vertical?: boolean;
   hideHoverAnimation?: boolean;

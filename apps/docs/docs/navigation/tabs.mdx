@@ -187,16 +187,18 @@ import { Tab } from "rizzui";
 
 export default function App() {
   return (
-    <Tab vertical>
+    <Tab>
       <Tab.List>
-        <Tab.ListItem>Recent</Tab.ListItem>
-        <Tab.ListItem>Popular</Tab.ListItem>
-        <Tab.ListItem>Trending</Tab.ListItem>
+        <Tab.ListItem>Home</Tab.ListItem>
+        <Tab.ListItem>Explore</Tab.ListItem>
+        <Tab.ListItem>Products</Tab.ListItem>
+        ...
       </Tab.List>
       <Tab.Panels>
-        <Tab.Panel>Recent panel</Tab.Panel>
-        <Tab.Panel>Popular panel</Tab.Panel>
-        <Tab.Panel>Trending panel</Tab.Panel>
+        <Tab.Panel>Home</Tab.Panel>
+        <Tab.Panel>Explore</Tab.Panel>
+        <Tab.Panel>Products</Tab.Panel>
+        ...
       </Tab.Panels>
     </Tab>
   );

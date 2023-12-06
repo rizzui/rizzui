@@ -26,8 +26,8 @@ export type DropdownProps = ExtractProps<typeof Menu> & {
 
 export function Dropdown({
   placement = 'bottom-start',
-  rounded = 'DEFAULT',
-  shadow = 'DEFAULT',
+  rounded = 'md',
+  shadow = 'md',
   children,
   className,
 }: DropdownProps) {
@@ -51,7 +51,7 @@ export function Dropdown({
         className={cn(
           makeClassName(`dropdown-root inline-block`),
           'relative',
-          className,
+          className
         )}
       >
         {React.Children.map(children, (child) => {

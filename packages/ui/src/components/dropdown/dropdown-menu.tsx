@@ -9,14 +9,14 @@ export const dropdownStyles = {
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
-    DEFAULT: 'rounded-md',
+    md: 'rounded-md',
     lg: 'rounded-lg',
     xl: 'rounded-xl',
   },
   shadow: {
     none: 'shadow-none',
     sm: 'drop-shadow-sm',
-    DEFAULT: 'drop-shadow',
+    md: 'drop-shadow',
     lg: 'drop-shadow-md',
     xl: 'drop-shadow-lg',
   },

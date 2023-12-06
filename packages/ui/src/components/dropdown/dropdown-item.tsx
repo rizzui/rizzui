@@ -8,7 +8,7 @@ export const dropdownItemStyles = {
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
-    DEFAULT: 'rounded-[4px]',
+    md: 'rounded-[4px]',
     lg: 'rounded-md',
     xl: 'rounded-lg',
   },
@@ -41,6 +41,7 @@ export const DropdownItem = React.forwardRef<
   ) => {
     const { rounded } = useDropdown();
     let Component = as;
+
     return (
       <Menu.Item disabled={disabled}>
         {({ active, disabled }) => (

@@ -14,7 +14,6 @@
     /* ----------------------------------- */
     /* gray colors */
     /* ----------------------------------- */
-    --gray-50: 255 255 255; /* #ffffff */
     --gray-50: 250 250 250; /* #fafafa */
     --gray-100: 241 241 241; /* #f1f1f1 */
     --gray-200: 227 227 227; /* #e3e3e3 */
@@ -128,7 +127,6 @@
     /* ----------------------------------- */
     /* gray/natural colors */
     /* ----------------------------------- */
-    --gray-50: 0 0 0; /* #000000 */
     --gray-50: 17 17 17; /* #111111 */
     --gray-100: 34 34 34; /* #222222 */
     --gray-200: 51 51 51; /* #333333 */
@@ -545,6 +543,10 @@ h6 {
   @apply w-6 h-auto sm:w-7;
 }
 
+.pagination-nav {
+  @apply content-start;
+}
+
 .pagination-nav__label {
   @apply font-medium;
 }
@@ -905,6 +907,10 @@ html[data-theme="dark"]
   @apply text-[var(--ifm-color-gray-600)] py-1;
 }
 
+#__docusaurus .table-of-contents__link a {
+  @apply lg:inline-flex;
+}
+
 #__docusaurus .table-of-contents__link--active {
   @apply font-medium text-[var(--ifm-color-gray-900)];
 }
@@ -967,6 +973,11 @@ ul.table-of-contents.table-of-contents__left-border::before {
 
 .markdown ol {
   @apply list-decimal pl-[calc(var(--ifm-list-left-padding)+0.25rem)];
+}
+
+.markdown p a,
+.markdown li a {
+  @apply text-gray-900 font-medium underline;
 }
 
 .pagination-nav__link {

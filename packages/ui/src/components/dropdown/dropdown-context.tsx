@@ -2,8 +2,8 @@ import React, { createContext, useContext } from 'react';
 import { type Strategy } from '@floating-ui/react';
 
 type DropdownContextProps = {
-  rounded?: 'none' | 'sm' | 'DEFAULT' | 'lg' | 'xl';
-  shadow?: 'none' | 'sm' | 'DEFAULT' | 'lg' | 'xl';
+  rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
+  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   refs?: any;
   x?: number;
   y?: number;

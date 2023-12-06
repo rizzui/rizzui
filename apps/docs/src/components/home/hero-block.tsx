@@ -5,7 +5,7 @@ import { Button, Title, Text, cn } from "rizzui";
 const data = {
   title: `A Modern & Minimal React UI Library
   <br className="hidden md:inline-block" /> built with TailwindCSS`,
-  description: `designed to provide you with a simple and intuitive set of UI
+  description: `Designed to provide you with a simple and intuitive set of UI
   components that are easy to use, customize and integrate into your
   React application. We have carefully crafted each component to
   ensure that they are responsive, accessible and consistent across
