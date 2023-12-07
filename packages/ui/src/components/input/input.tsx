@@ -32,7 +32,7 @@ const inputFieldStyles = {
   base: 'w-full border-0 bg-transparent p-0 focus:outline-none focus:ring-0',
   reset:
     '[&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
-  disabled: 'cursor-not-allowed placeholder:text-gray-400',
+  disabled: 'cursor-not-allowed placeholder:text-muted-foreground',
   clearable:
     '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
   prefix: {
@@ -113,11 +113,6 @@ export interface InputProps
   className?: string;
 }
 
-/**
- * A basic widget for getting the user input. Here is the API documentation of the Input component.
- * And the rest of the props are the same as the original html input field.
- * You can use props like `value`, `disabled`, `placeholder`, `onChange`, `onFocus`, `onBlur` etc.
- */
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -174,6 +169,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
+                disabled && 'text-muted-foreground',
                 labelClassName
               )}
             >
@@ -261,7 +257,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {!error && helperText ? (
           <FieldHelperText
             size={size}
-            className={cn(makeClassName(`input-helper-text`), helperClassName)}
+            className={cn(
+              makeClassName(`input-helper-text`),
+              disabled && 'text-muted-foreground',
+              helperClassName
+            )}
           >
             {helperText}
           </FieldHelperText>

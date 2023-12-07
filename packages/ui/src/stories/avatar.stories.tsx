@@ -80,7 +80,7 @@ export const Rounded = () => (
 export const Colors = () => (
   <div className="flex items-center justify-around">
     <Avatar name="John Doe" initials="SM" />
-    <Avatar name="John Doe" initials="KM" color="invert" />
+    <Avatar name="John Doe" initials="KM" color="primary" />
     <Avatar name="John Doe" initials="NM" color="secondary" />
     <Avatar name="John Doe" initials="AM" color="danger" />
     <Avatar name="John Doe" initials="DM" color="warning" />
@@ -91,11 +91,6 @@ export const Colors = () => (
 
 export const Borders = () => (
   <div className="flex items-center justify-around">
-    <Avatar
-      src="https://randomuser.me/api/portraits/women/40.jpg"
-      name="John Doe"
-      className="ring-2 ring-gray-900 ring-offset-2"
-    />
     <Avatar
       src="https://randomuser.me/api/portraits/women/41.jpg"
       name="John Doe"
@@ -185,27 +180,27 @@ export const Group = () => (
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/41.jpg"
-      className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-50"
+      className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-background"
     />
     <Avatar
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/42.jpg"
-      className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-50"
+      className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-background"
     />
     <Avatar
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/43.jpg"
-      className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-50"
+      className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-background"
     />
     <Avatar
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/44.jpg"
-      className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-50"
+      className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-background"
     />
-    <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[24px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
+    <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[24px] items-center justify-center rounded-full object-cover text-sm font-medium">
       +5
     </div>
   </div>

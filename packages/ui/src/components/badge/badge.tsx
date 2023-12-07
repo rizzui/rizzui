@@ -5,7 +5,7 @@ import { roundedStyles } from '../../lib/rounded';
 
 const badgeStyles = {
   base: 'inline-flex items-center justify-center font-semibold leading-none',
-  outlineRing: 'ring-2 ring-gray-50',
+  outlineRing: 'ring-2 ring-background',
   size: {
     sm: 'px-1.5 py-1 text-[10px] leading-[1.1]',
     md: 'px-2.5 py-1.5 text-xs',

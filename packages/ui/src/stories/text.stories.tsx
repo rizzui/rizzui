@@ -16,55 +16,55 @@ export const Default = () => <Text>The brown fox jumps over the lazy dog</Text>;
 export const Typography = () => (
   <div className="grid gap-8 py-2">
     <div>
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         p
       </Text>
       <Text as="p">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         i
       </Text>
       <Text as="i">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         del
       </Text>
       <Text as="del">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         mark
       </Text>
       <Text as="mark">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         b
       </Text>
       <Text as="b">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         em
       </Text>
       <Text as="em">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         strong
       </Text>
       <Text as="strong">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         small
       </Text>
       <Text as="small">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         abbr
       </Text>
       <Text as="abbr" title="Hello World!">
@@ -72,13 +72,13 @@ export const Typography = () => (
       </Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         q
       </Text>
       <Text as="q">The brown fox jumps over the lazy dog</Text>
     </div>
     <div>
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         kbd
       </Text>
       <div className="mt-2 grid gap-5">
@@ -89,7 +89,7 @@ export const Typography = () => (
       </div>
     </div>
     <div>
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         sup
       </Text>
       <Text as="p">
@@ -98,7 +98,7 @@ export const Typography = () => (
       </Text>
     </div>
     <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         sub
       </Text>
       <Text as="em">

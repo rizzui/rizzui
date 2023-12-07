@@ -366,20 +366,30 @@ Here is the API documentation of the ActionIcon component. And the rest of the p
 
 <div className="overflow-x-auto">
 
-|   Props   |                    Type                    |                                         Description                                         |   Default   |
-| :-------: | :----------------------------------------: | :-----------------------------------------------------------------------------------------: | :---------: |
-| children  |             `React.ReactNode`              |                                      Use any SVG icon                                       |    \_\_     |
-|  variant  | [ActionIconVariants](#actionicon-variants) |                                 Set the ActionIcon variants                                 |  `"solid"`  |
-|   size    |    [ActionIconSizes](#actionicon-sizes)    | Set the size of the component. <br /> `"sm"` is equivalent to the dense ActionIcon styling. |   `"md"`    |
-|  rounded  |  [ActionIconRounded](#actionicon-rounded)  |                        Set border radius of the ActionIcon component                        |   `"md"`    |
-|   color   |   [ActionIconColors](#actionicon-colors)   |                                   Change ActionIcon color                                   | `"primary"` |
-| isLoading |                 `boolean`                  |                            Set the loading status of ActionIcon                             |    \_\_     |
-| disabled  |                 `boolean`                  |                              Disabled state of the ActionIcon                               |    \_\_     |
-| className |                  `string`                  |                             Add custom classes for extra style                              |    \_\_     |
-|    ref    |          `Ref<HTMLButtonElement>`          |                                         forwardRef                                          |    \_\_     |
-|    ...    | `ButtonHTMLAttributes` or `HTMLAttributes` |                native props like **onClick**, **title**, **aria-label** ...                 |    \_\_     |
+|   Props   |                        Type                        |                                         Description                                         |   Default   |
+| :-------: | :------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :---------: |
+|    as     |                 `button` or `span`                 |                                          Render as                                          | `"button"`  |
+| children  |                 `React.ReactNode`                  |                                      Use any SVG icon                                       |    \_\_     |
+|   type    | [ActionIconButtonTypes](#action-icon-button-types) |                            Set the original HTML type of button                             | `"button"`  |
+|  variant  |     [ActionIconVariants](#actionicon-variants)     |                                 Set the ActionIcon variants                                 |  `"solid"`  |
+|   size    |        [ActionIconSizes](#actionicon-sizes)        | Set the size of the component. <br /> `"sm"` is equivalent to the dense ActionIcon styling. |   `"md"`    |
+|  rounded  |      [ActionIconRounded](#actionicon-rounded)      |                        Set border radius of the ActionIcon component                        |   `"md"`    |
+|   color   |       [ActionIconColors](#actionicon-colors)       |                                   Change ActionIcon color                                   | `"primary"` |
+| isLoading |                     `boolean`                      |                            Set the loading status of ActionIcon                             |    \_\_     |
+| disabled  |                     `boolean`                      |                              Disabled state of the ActionIcon                               |    \_\_     |
+| className |                      `string`                      |                             Add custom classes for extra style                              |    \_\_     |
+|    ref    |              `Ref<HTMLButtonElement>`              |                                         forwardRef                                          |    \_\_     |
+|    ...    |     `ButtonHTMLAttributes` or `HTMLAttributes`     |                native props like **onClick**, **title**, **aria-label** ...                 |    \_\_     |
 
 </div>
+
+<div className="mb-10" />
+
+### Action Icon Button Types
+
+```ts
+type ActionIconButtonTypes = "button" | "submit" | "reset";
+```
 
 <div className="mb-10" />
 

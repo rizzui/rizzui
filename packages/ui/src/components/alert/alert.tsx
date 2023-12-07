@@ -37,7 +37,7 @@ const alertStyles = {
   },
   variant: {
     flat: {
-      base: 'border text-gray-900',
+      base: 'border',
       color: {
         danger: 'bg-red-lighter/70 border-red dark:border-red/70',
         info: 'bg-blue-lighter/70 border-blue dark:border-blue/70',

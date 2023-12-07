@@ -2,172 +2,134 @@ export const tokens = [
   {
     name: "--background",
     hex: "#ffffff",
-    description: "body background & ring-offset-color",
+    description:
+      "Define background color for body, drawer, modal, dropdown, popover. And set ring-offset-color.",
   },
   {
     name: "--foreground",
     hex: "#484848",
-    description: "body text color",
+    description: "The global text color.",
   },
   {
     name: "--muted",
     hex: "#e3e3e3",
     description:
-      "border, default flat bg color for input components, tab & dropdown hover color",
+      "Use for border, default flat background color, tab, and dropdown hover color.",
   },
-  // {
-  //   name: "--gray-50",
-  //   hex: "#fafafa",
-  //   description: "gray 50",
-  // },
-  // {
-  //   name: "--gray-100",
-  //   hex: "#f1f1f1",
-  //   description: "gray 100",
-  // },
-  // {
-  //   name: "--gray-200",
-  //   hex: "#e3e3e3",
-  //   description: "gray 200",
-  // },
-  // {
-  //   name: "--gray-300",
-  //   hex: "#dfdfdf",
-  //   description: "gray 300",
-  // },
-  // {
-  //   name: "--gray-400",
-  //   hex: "#929292",
-  //   description: "gray 400",
-  // },
-  // {
-  //   name: "--gray-500",
-  //   hex: "#666666",
-  //   description: "gray 500",
-  // },
-  // {
-  //   name: "--gray-600",
-  //   hex: "#555555",
-  //   description: "gray 600",
-  // },
-  // {
-  //   name: "--gray-700",
-  //   hex: "#444444",
-  //   description: "gray 700",
-  // },
-  // {
-  //   name: "--gray-800",
-  //   hex: "#333333",
-  //   description: "gray 800",
-  // },
-  // {
-  //   name: "--gray-900",
-  //   hex: "#222222",
-  //   description: "gray 900",
-  // },
-  // {
-  //   name: "--gray-950",
-  //   hex: "#111111",
-  //   description: "gray 950",
-  // },
+  {
+    name: "--muted-foreground",
+    hex: "#929292",
+    description: "The disable text color",
+  },
   {
     name: "--primary-lighter",
     hex: "#e3e3e3",
-    description: "--",
+    description:
+      "Use for the primary flat variant background color for buttons and badges.",
   },
   {
     name: "--primary-default",
     hex: "#222222",
-    description: "--",
+    description:
+      "Use for the primary background color for avatar, buttons, badges, inputs hover & focus, Tab active color",
   },
   {
     name: "--primary-dark",
     hex: "#000000",
-    description: "--",
+    description: "Use for the primary buttons hover & focus color",
   },
   {
     name: "--primary-foreground",
     hex: "#ffffff",
-    description: "--",
+    description: "Use for the primary avatar, button & badge text color",
   },
   {
     name: "--secondary-lighter",
     hex: "#dde3ff",
-    description: "--",
+    description:
+      "Use for the secondary flat variant background color for buttons and badges.",
   },
   {
     name: "--secondary-default",
     hex: "#4e36f5",
-    description: "--",
+    description:
+      "Use for the secondary solid variant background color for avatar, buttons and badges.",
   },
   {
     name: "--secondary-dark",
     hex: "#432ad8",
-    description: "--",
+    description: "Use for the secondary buttons hover & focus color",
   },
   {
     name: "--secondary-foreground",
     hex: "#ffffff",
-    description: "--",
+    description: "Use for the secondary avatar, button & badge text color",
   },
   {
     name: "--red-lighter",
     hex: "#f7d4d6",
-    description: "--",
+    description:
+      "Use for the danger flat variant background color for alert, buttons and badges.",
   },
   {
     name: "--red-default",
     hex: "#e00",
-    description: "--",
+    description:
+      "Use for the danger solid variant background & outline border color for alert, avatar, buttons and badges.",
   },
   {
     name: "--red-dark",
     hex: "#c50000",
-    description: "--",
+    description: "Use for the danger buttons hover, flat badge text color",
   },
   {
     name: "--orange-lighter",
     hex: "#ffefcf",
-    description: "--",
+    description:
+      "Use for the warning flat variant background color for alert and badges.",
   },
   {
     name: "--orange-default",
     hex: "#f5a623",
-    description: "--",
+    description:
+      "Use for the warning solid variant background & outline border color for alert, avatar and badges.",
   },
   {
     name: "--orange-dark",
     hex: "#ab570a",
-    description: "--",
+    description: "Use for the flat badge text color",
   },
   {
     name: "--blue-lighter",
     hex: "#d3e5ff",
-    description: "--",
+    description:
+      "Use for the info flat variant background color for alert and badges.",
   },
   {
     name: "--blue-default",
     hex: "#0070f3",
-    description: "--",
+    description:
+      "Use for the info solid variant color for alert, avatar, loader, progressbar, tooltip, step and badges.",
   },
   {
     name: "--blue-dark",
     hex: "#0761d1",
-    description: "--",
+    description: "Use for the badge & progress bar text color",
   },
   {
     name: "--green-lighter",
     hex: "#b9f9cf",
-    description: "--",
+    description: "Use for success flat color for alert & badges",
   },
   {
     name: "--green-default",
     hex: "#11a849",
-    description: "--",
+    description:
+      "Use for the success solid variant color for alert, avatar, loader, progressbar, tooltip, step and badges.",
   },
   {
     name: "--green-dark",
     hex: "#11843c",
-    description: "--",
+    description: "Use for the badge & progress bar text color",
   },
 ];

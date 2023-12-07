@@ -194,7 +194,7 @@ You can change the color of the **Avatar** using **color** property.
 <Paper>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
     <Avatar name="John Doe" initials="SM" />
-    <Avatar name="John Doe" initials="SM" color="invert" />
+    <Avatar name="John Doe" initials="SM" color="primary" />
     <Avatar name="John Doe" initials="SM" color="secondary" />
     <Avatar name="John Doe" initials="SM" color="danger" />
     <Avatar name="John Doe" initials="SM" color="warning" />
@@ -210,7 +210,7 @@ export default function App() {
   return (
     <>
       <Avatar name="John Doe" initials="SM" />
-      <Avatar name="John Doe" initials="SM" color="invert" />
+      <Avatar name="John Doe" initials="SM" color="primary" />
       <Avatar name="John Doe" initials="SM" color="secondary" />
       <Avatar name="John Doe" initials="SM" color="danger" />
       <Avatar name="John Doe" initials="SM" color="warning" />
@@ -230,40 +230,35 @@ You can add border to **Avatar** by adding extra className using **className** p
 <Paper>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
     <Avatar
-      src="https://randomuser.me/api/portraits/women/40.jpg"
-      name="John Doe"
-      className="ring-2 ring-gray-900 ring-offset-2"
-    />
-    <Avatar
       src="https://randomuser.me/api/portraits/women/41.jpg"
       name="John Doe"
-      className="ring-2 ring-primary ring-offset-2"
+      className="ring-2 ring-primary ring-offset-background ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/42.jpg"
       name="John Doe"
-      className="ring-2 ring-secondary ring-offset-2"
+      className="ring-2 ring-secondary ring-offset-background ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/43.jpg"
       size="lg"
       name="John Doe"
-      className="ring-2 ring-red ring-offset-2"
+      className="ring-2 ring-red  ring-offset-background ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/44.jpg"
       name="John Doe"
-      className="ring-2 ring-orange ring-offset-2"
+      className="ring-2 ring-orange ring-offset-background ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/45.jpg"
       name="John Doe"
-      className="ring-2 ring-green ring-offset-2"
+      className="ring-2 ring-green ring-offset-background ring-offset-2"
     />
     <Avatar
       src="https://randomuser.me/api/portraits/women/46.jpg"
       name="John Doe"
-      className="ring-2 ring-blue ring-offset-2"
+      className="ring-2 ring-blue ring-offset-background ring-offset-2"
     />
   </div>
 </Paper>
@@ -275,39 +270,34 @@ export default function App() {
   return (
     <>
       <Avatar
-        src="https://randomuser.me/api/portraits/women/40.jpg"
-        name="John Doe"
-        className="ring-2 ring-gray-900 ring-offset-2"
-      />
-      <Avatar
         src="https://randomuser.me/api/portraits/women/41.jpg"
         name="John Doe"
-        className="ring-2 ring-primary ring-offset-2"
+        className="ring-2 ring-primary ring-offset-background ring-offset-2"
       />
       <Avatar
         src="https://randomuser.me/api/portraits/women/42.jpg"
         name="John Doe"
-        className="ring-2 ring-secondary ring-offset-2"
+        className="ring-2 ring-secondary ring-offset-background ring-offset-2"
       />
       <Avatar
         src="https://randomuser.me/api/portraits/women/43.jpg"
         name="John Doe"
-        className="ring-2 ring-red ring-offset-2"
+        className="ring-2 ring-red ring-offset-background ring-offset-2"
       />
       <Avatar
         src="https://randomuser.me/api/portraits/women/44.jpg"
         name="John Doe"
-        className="ring-2 ring-orange ring-offset-2"
+        className="ring-2 ring-orange ring-offset-background ring-offset-2"
       />
       <Avatar
         src="https://randomuser.me/api/portraits/women/45.jpg"
         name="John Doe"
-        className="ring-2 ring-green ring-offset-2"
+        className="ring-2 ring-green ring-offset-background ring-offset-2"
       />
       <Avatar
         src="https://randomuser.me/api/portraits/women/46.jpg"
         name="John Doe"
-        className="ring-2 ring-blue ring-offset-2"
+        className="ring-2 ring-blue ring-offset-background ring-offset-2"
       />
     </>
   );
@@ -435,25 +425,25 @@ You can use **Avatar** component to create a group of avatars.
       customSize="42"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/41.jpg"
-      className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-50"
+      className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-background"
     />
     <Avatar
       customSize="42"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/42.jpg"
-      className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-50"
+      className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-background"
     />
     <Avatar
       customSize="42"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/43.jpg"
-      className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-50"
+      className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-background"
     />
     <Avatar
       customSize="42"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/44.jpg"
-      className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-50"
+      className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-background"
     />
     <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[25px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
       +5
@@ -477,25 +467,25 @@ export default function App() {
         customSize="42"
         name="John Doe"
         src="https://randomuser.me/api/portraits/women/41.jpg"
-        className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-50"
+        className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-background"
       />
       <Avatar
         customSize="42"
         name="John Doe"
         src="https://randomuser.me/api/portraits/women/42.jpg"
-        className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-50"
+        className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-background"
       />
       <Avatar
         customSize="42"
         name="John Doe"
         src="https://randomuser.me/api/portraits/women/43.jpg"
-        className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-50"
+        className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-background"
       />
       <Avatar
         customSize="42"
         name="John Doe"
         src="https://randomuser.me/api/portraits/women/44.jpg"
-        className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-50"
+        className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-background"
       />
       <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[25px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
         +5
@@ -524,7 +514,7 @@ Here is the API documentation of the Avatar component.
 |    name    |             `string`             | Will be used to generate avatar initials based on the person name when image is missing  |   \_\_   |
 |  initials  |             `string`             |                        Display custom text when image is missing                         |   \_\_   |
 |    src     |             `string`             |                              Image soruce (local or remote)                              |   \_\_   |
-|   color    |  [AvatarColors](#avatar-colors)  |                                   Change avatar color                                    |   \_\_   |
+|   color    |  [AvatarColors](#avatar-colors)  |         Modify avatar color; by default, avatars have randomly generated colors.         |   \_\_   |
 |    size    |             `string`             |                                    Size of the avatar                                    |   \_\_   |
 | customSize |             `string`             |                  customSize of the avatar, example -> customSize="62px"                  |   \_\_   |
 |  rounded   | [AvatarRounded](#avatar-rounded) |                                    Set border radius                                     | `"full"` |
@@ -539,7 +529,6 @@ Here is the API documentation of the Avatar component.
 
 ```ts
 type AvatarColors =
-  | "invert"
   | "primary"
   | "secondary"
   | "danger"

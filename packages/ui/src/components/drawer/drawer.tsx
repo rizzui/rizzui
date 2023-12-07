@@ -134,7 +134,7 @@ export function Drawer({
           <div
             className={cn(
               makeClassName(`drawer-container`),
-              'fixed h-full w-full break-words bg-gray-50 shadow-xl',
+              'fixed h-full w-full break-words bg-background shadow-xl',
               placement === 'top' && 'top-0',
               placement === 'right' && 'inset-y-0 right-0',
               placement === 'bottom' && 'bottom-0',

@@ -11,9 +11,9 @@ import { useInteractiveEvent } from '../../lib/use-interactive-event';
 const textareaStyles = {
   base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] [&.is-focus]:ring-[0.8px] [&.is-focus]:ring-primary [&.is-hover]:border-primary [&.is-focus]:border-primary',
   scrollBar:
-    '[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-gray-400 [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
+    '[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
   disabled:
-    '!bg-muted/70 cursor-not-allowed !border-muted placeholder:text-gray-400',
+    '!bg-muted/70 cursor-not-allowed !border-muted placeholder:text-muted-foreground',
   clearable:
     '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
   error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
@@ -95,11 +95,6 @@ export interface TextareaProps
   className?: string;
 }
 
-/**
- * A basic widget for getting the user textarea. Here is the API documentation of the Textarea component.
- * And the rest of the props are the same as the original html textarea field.
- * You can use props like `disabled`, `placeholder`, `rows`, `cols`, `maxLength` etc.
- */
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
@@ -163,6 +158,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
+                disabled && 'text-muted-foreground',
                 labelClassName
               )}
             >
@@ -229,6 +225,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             size={size}
             className={cn(
               makeClassName(`textarea-helper-text`),
+              disabled && 'text-muted-foreground',
               helperClassName
             )}
           >

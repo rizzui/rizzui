@@ -11,7 +11,7 @@ const containerClasses = {
 const pinCodeStyles = {
   base: 'block peer text-center bg-transparent mr-2 focus:placeholder:opacity-0 focus:outline-none transition duration-200',
   disabled:
-    'disabled:bg-gray-50 disabled:placeholder:text-gray-400 disabled:cursor-not-allowed disabled:border-muted',
+    'disabled:bg-muted/70 disabled:placeholder:text-muted-foreground disabled:text-muted-foreground disabled:cursor-not-allowed disabled:border-muted',
   error:
     'border-red hover:enabled:!border-red focus:enabled:!border-red focus:!ring-red',
   size: {
@@ -65,11 +65,6 @@ export interface PinCodeProps
   errorClassName?: string;
 }
 
-/**
- * A basic widget for getting pin code. Here is the API documentation of the Pin Code component.
- * And the rest of the props of PinCode are the same as the original html input field.
- * You can use props like `disabled`, `placeholder`, `defaultValue` etc.
- */
 export function PinCode({
   type = 'text',
   defaultValue,

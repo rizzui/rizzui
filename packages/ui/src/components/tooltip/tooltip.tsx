@@ -18,6 +18,7 @@ import {
 } from '@floating-ui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
+import { roundedStyles } from '../../lib/rounded';
 
 const tooltipStyles = {
   base: 'text-center z-40 min-w-max',
@@ -29,21 +30,15 @@ const tooltipStyles = {
   },
   size: {
     sm: 'px-2.5 py-1 text-xs',
-    md: 'px-4 py-2 text-sm',
-    lg: 'px-5 py-2 text-base',
-    xl: 'px-6 py-2.5 text-lg',
+    md: 'px-3 py-1.5 text-sm',
+    lg: 'px-3.5 py-2 text-base',
+    xl: 'px-4 py-2.5 text-base',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-md',
-    md: 'rounded-xl',
-    lg: 'rounded-2xl',
-    pill: 'rounded-full',
-  },
+  rounded: roundedStyles,
   arrow: {
     color: {
       primary: 'fill-primary',
-      invert: 'fill-gray-50 [&>path]:stroke-gray-300',
+      invert: 'fill-background dark:fill-muted/90 [&>path]:stroke-muted',
       secondary: 'fill-secondary',
       danger: 'fill-red',
       info: 'fill-blue',
@@ -56,7 +51,8 @@ const tooltipStyles = {
       base: '',
       color: {
         primary: 'text-primary-foreground bg-primary',
-        invert: 'bg-white dark:bg-gray-50 !text-gray-900 border border-muted',
+        invert:
+          'bg-background dark:bg-muted/30 dark:backdrop-blur-3xl border border-muted',
         secondary: 'text-secondary-foreground bg-secondary',
         danger: 'text-white bg-red',
         info: 'text-white bg-blue',

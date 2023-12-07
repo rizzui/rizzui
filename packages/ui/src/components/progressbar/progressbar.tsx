@@ -15,7 +15,7 @@ const progressBarStyles = {
   rounded: roundedStyles,
   variant: {
     solid: {
-      base: 'text-gray-50',
+      base: 'text-background',
       color: {
         primary: 'bg-primary',
         secondary: 'bg-secondary',

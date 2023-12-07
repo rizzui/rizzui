@@ -24,9 +24,8 @@ const classes = {
     full: 'rounded-full',
   },
   color: {
-    invert: 'bg-gray-900 text-gray-50',
-    primary: 'bg-primary text-white',
-    secondary: 'bg-secondary text-white',
+    primary: 'bg-primary text-primary-foreground',
+    secondary: 'bg-secondary text-secondary-foreground',
     success: 'bg-green text-white',
     warning: 'bg-orange text-white',
     danger: 'bg-red text-white',
@@ -64,7 +63,7 @@ const letterWithColors = [
 
 function backgroundColor(signature: string) {
   const currObj = letterWithColors.filter((obj) =>
-    obj.string.includes(signature?.charAt(0).toLowerCase()),
+    obj.string.includes(signature?.charAt(0).toLowerCase())
   );
   return currObj[0]?.color ?? '#FF6847';
 }
@@ -109,7 +108,7 @@ export function Avatar({
           color && classes.color[color],
           onClick && 'cursor-pointer',
           'object-cover',
-          className,
+          className
         )}
         style={{
           width: avatarSize + 'px',
@@ -132,7 +131,7 @@ export function Avatar({
         color && classes.color[color],
         'font-semibold',
         onClick && 'cursor-pointer',
-        className,
+        className
       )}
       style={{
         width: avatarSize + 'px',

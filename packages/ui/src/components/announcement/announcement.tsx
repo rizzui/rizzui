@@ -5,16 +5,16 @@ import { makeClassName } from '../../lib/make-class-name';
 import { roundedStyles } from '../../lib/rounded';
 
 const announcementStyles = {
-  base: 'flex items-center text-gray-600 w-fit',
+  base: 'flex items-center w-fit',
   bgColor: {
-    white: 'bg-background',
-    gray: 'bg-muted/60',
+    background: 'bg-background',
+    muted: 'bg-muted/60',
   },
   size: {
-    sm: 'text-xs pr-6 rtl:pl-6 pl-0.5 rtl:pr-0.5 py-0.5',
-    md: 'text-sm pr-7 rtl:pl-7 pl-1 rtl:pr-1 py-1',
-    lg: 'text-base pr-8 rtl:pl-8 pl-1 rtl:pr-1 py-1',
-    xl: 'text-lg pr-9 rtl:pl-9 pl-1 rtl:pr-1 py-1',
+    sm: 'text-xs pe-6 ps-0.5 py-0.5',
+    md: 'text-sm pe-7 ps-1 py-1',
+    lg: 'text-base pe-8 ps-1 py-1',
+    xl: 'text-lg pe-9 ps-1 py-1',
   },
   rounded: roundedStyles,
   color: {
@@ -56,7 +56,7 @@ export const Announcement = ({
   size = 'md',
   rounded = 'md',
   color = 'primary',
-  bgColor = 'white',
+  bgColor = 'background',
   badgeText,
   highlightedText,
   children,

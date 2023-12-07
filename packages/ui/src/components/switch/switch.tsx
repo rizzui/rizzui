@@ -54,9 +54,9 @@ const switchStyles = {
 
 const switchKnobStyles = {
   base: 'flex justify-center items-center transform ring-0 transition duration-200 ease-in-out',
-  disabled: 'peer-disabled/switch:bg-gray-300 peer-disabled/switch:shadow-none',
+  disabled: 'peer-disabled/switch:bg-muted peer-disabled/switch:shadow-none',
   outlineInactiveDisabled:
-    '[&:hover_.rizzui-switch-knob]:!bg-gray-300 [&:hover_.rizzui-switch-knob]:!text-gray-400',
+    '[&:hover_.rizzui-switch-knob]:!bg-muted [&:hover_.rizzui-switch-knob]:!text-muted-foreground',
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
@@ -122,11 +122,6 @@ export interface SwitchProps
   className?: string;
 }
 
-/**
- * A basic widget for getting the user input. Here is the API documentation of the Switch component.
- * And the rest of the props are the same as the original html checkbox input field.
- * You can use props like `value`, `disabled`, `checked`, `onChange`, `onFocus`, `onBlur` etc.
- */
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (
     {
@@ -195,8 +190,11 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                 switchKnobStyles.rounded[rounded],
                 switchKnobStyles.color,
                 switchKnobStyles.translate.inactive,
-                variant === 'flat' && 'bg-white text-gray-900 shadow-sm',
-                variant === 'outline' && 'bg-muted text-gray-900',
+                variant === 'flat' && [
+                  'bg-white text-foreground shadow-sm dark:text-primary-foreground',
+                  disabled && 'dark:bg-muted-foreground',
+                ],
+                variant === 'outline' && 'bg-muted text-foreground',
                 switchKnobClassName
               )}
             >
@@ -230,7 +228,9 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                 switchLabelStyles.size[size],
                 switchLabelStyles.weight[labelWeight],
                 switchLabelStyles.margin[labelPlacement][size],
-                disabled ? 'cursor-not-allowed' : 'cursor-pointer',
+                disabled
+                  ? 'cursor-not-allowed text-muted-foreground'
+                  : 'cursor-pointer',
                 labelPlacement === 'right' && 'order-last',
                 'mb-0',
                 labelClassName
@@ -245,7 +245,11 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
           <FieldHelperText
             tag="div"
             size={size}
-            className={cn(makeClassName(`switch-helper-text`), helperClassName)}
+            className={cn(
+              makeClassName(`switch-helper-text`),
+              disabled && 'text-muted-foreground',
+              helperClassName
+            )}
           >
             {helperText}
           </FieldHelperText>

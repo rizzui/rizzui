@@ -84,11 +84,6 @@ export interface CheckboxProps
   className?: string;
 }
 
-/**
- * A basic widget for getting the user input of checkbox. Here is the API documentation of the Checkbox component.
- * And the rest of the props of Checkbox are the same as the original html input field.
- * You can use props like `value`, `disabled`, `onChange`, `onFocus`, `onBlur` etc.
- */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
@@ -155,6 +150,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               checkboxLabelStyles.size[size],
               checkboxLabelStyles.weight[labelWeight],
               checkboxLabelStyles.margin[labelPlacement][size],
+              disabled && 'text-muted-foreground',
               labelPlacement === 'left' && 'order-first',
               'mb-0',
               labelClassName
@@ -168,7 +164,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       {!error && helperText ? (
         <FieldHelperText
           size={size}
-          className={cn(makeClassName(`checkbox-helper-text`), helperClassName)}
+          className={cn(
+            makeClassName(`checkbox-helper-text`),
+            disabled && 'text-muted-foreground',
+            helperClassName
+          )}
         >
           {helperText}
         </FieldHelperText>

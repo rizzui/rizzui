@@ -353,7 +353,6 @@ You can change background color of **Announcement** using **bgColor** property.
     className="flex-wrap"
     badgeText="White Background"
     highlightedText="25% discount"
-    bgColor="white"
   >
     on our every product
   </Announcement>
@@ -361,7 +360,7 @@ You can change background color of **Announcement** using **bgColor** property.
     className="flex-wrap"
     badgeText="Gray Background"
     highlightedText="25% discount"
-    bgColor="gray"
+    bgColor="muted"
   >
     on our every product
   </Announcement>
@@ -377,7 +376,6 @@ export default function App() {
         className="flex-wrap"
         badgeText="White Background"
         highlightedText="25% discount"
-        bgColor="white"
       >
         on our every product
       </Announcement>
@@ -385,7 +383,7 @@ export default function App() {
         className="flex-wrap"
         badgeText="Gray Background"
         highlightedText="25% discount"
-        bgColor="gray"
+        bgColor="muted"
       >
         on our every product
       </Announcement>
@@ -463,20 +461,20 @@ Here is the API documentation of the Announcement component.
 
 <div className="overflow-x-auto">
 
-|          Props           |                     Type                     |                       Description                        |   Default   |
-| :----------------------: | :------------------------------------------: | :------------------------------------------------------: | :---------: |
-|        badgeText         |                   `string`                   |      Pass badge text to have badge at the beginning      |    \_\_     |
-|     highlightedText      |                   `string`                   |          Pass highlighted text at the beginning          |    \_\_     |
-|         children         |                                              |                                                          |    \_\_     |
-|           size           |   [AnnouncementSizes](#announcement-sizes)   |                The size of the component.                |   `"md"`    |
-|         rounded          | [AnnouncementRounded](#announcement-rounded) |                The rounded variants are:                 |  `"full"`   |
-|          color           |  [AnnouncementColors](#announcement-colors)  |                 Choose color variations                  | `"primary"` |
-|         bgColor          |                `white` `gray`                |            Background color of the component             |  `"white"`  |
-|        className         |                   `string`                   |     Pass className to customize announcement design      |    \_\_     |
-|        startIcon         |                 `ReactNode`                  |               Place icon at the beginning                |    \_\_     |
-|         endIcon          |                 `ReactNode`                  |                  Place icon at the end                   |    \_\_     |
-|      badgeClassName      |                   `string`                   |            Pass badgeClassName to style badge            |    \_\_     |
-| highlightedTextClassName |                   `string`                   | Pass hightlightedTextClassName to style highlighted text |    \_\_     |
+|          Props           |                     Type                     |                       Description                        |    Default     |
+| :----------------------: | :------------------------------------------: | :------------------------------------------------------: | :------------: |
+|        badgeText         |                   `string`                   |      Pass badge text to have badge at the beginning      |      \_\_      |
+|     highlightedText      |                   `string`                   |          Pass highlighted text at the beginning          |      \_\_      |
+|         children         |                                              |                                                          |      \_\_      |
+|           size           |   [AnnouncementSizes](#announcement-sizes)   |                The size of the component.                |     `"md"`     |
+|         rounded          | [AnnouncementRounded](#announcement-rounded) |                The rounded variants are:                 |    `"full"`    |
+|          color           |  [AnnouncementColors](#announcement-colors)  |                 Choose color variations                  |  `"primary"`   |
+|         bgColor          |             `background` `muted`             |            Background color of the component             | `"background"` |
+|        className         |                   `string`                   |     Pass className to customize announcement design      |      \_\_      |
+|        startIcon         |                 `ReactNode`                  |               Place icon at the beginning                |      \_\_      |
+|         endIcon          |                 `ReactNode`                  |                  Place icon at the end                   |      \_\_      |
+|      badgeClassName      |                   `string`                   |            Pass badgeClassName to style badge            |      \_\_      |
+| highlightedTextClassName |                   `string`                   | Pass hightlightedTextClassName to style highlighted text |      \_\_      |
 
 </div>
 

@@ -75,7 +75,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           variantStyle.color[color],
           isLoading && 'pointer-events-none relative',
           disabled &&
-            'cursor-not-allowed border-muted bg-muted/70 text-gray-400',
+            'cursor-not-allowed border-muted bg-muted/70 text-muted-foreground',
           className
         )}
         {...(tag && tag !== 'span' && { type })}

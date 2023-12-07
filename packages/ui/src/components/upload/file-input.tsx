@@ -10,7 +10,8 @@ import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
 const fileInputStyles = {
   base: 'flex items-center peer w-full transition duration-200',
-  disabled: '!bg-muted/70 cursor-not-allowed !border-muted',
+  disabled:
+    '!bg-muted/70 cursor-not-allowed !border-muted !text-muted-foreground',
   error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
   size: {
     sm: 'pr-2 py-1 text-xs h-8 leading-[32px] pl-[1px]',
@@ -29,6 +30,8 @@ const fileInputStyles = {
 
 const fileButtonStyles = {
   base: '[&::file-selector-button]:inline-flex [&::file-selector-button]:font-medium [&::file-selector-button]:leading-none [&::file-selector-button]:items-center [&::file-selector-button]:justify-center [&::file-selector-button]:border-0 [&::file-selector-button]:focus-visible:ring-2 [&::file-selector-button]:focus-visible:ring-opacity-50',
+  disabled:
+    '[&::file-selector-button]:bg-muted-foreground [&::file-selector-button]:text-foreground [&::file-selector-button]:dark:text-muted',
   size: {
     sm: '[&::file-selector-button]:h-7 [&::file-selector-button]:px-2.5',
     md: '[&::file-selector-button]:h-9 [&::file-selector-button]:px-3.5',
@@ -49,7 +52,7 @@ const fileButtonStyles = {
 // actual input field styles
 const inputFieldStyles = {
   base: 'w-full border-0 bg-transparent p-0 focus:outline-none focus:ring-0',
-  disabled: 'cursor-not-allowed placeholder:text-gray-400',
+  disabled: 'cursor-not-allowed placeholder:text-muted-foreground',
   clearable:
     '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
 };
@@ -88,11 +91,6 @@ export interface FileInputProps
   errorClassName?: string;
 }
 
-/**
- * A basic widget for getting the user input. Here is the API documentation of the Input component.
- * And the rest of the props are the same as the original html input field.
- * You can use props like `value`, `disabled`, `placeholder`, `onChange`, `onFocus`, `onBlur` etc.
- */
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   (
     {
@@ -156,6 +154,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
+                disabled && 'text-muted-foreground',
                 labelClassName
               )}
             >
@@ -195,7 +194,10 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
                 fileButtonStyles.color,
                 fileButtonStyles.size[size],
                 fileButtonStyles.rounded[rounded],
-                disabled && inputFieldStyles.disabled,
+                disabled && [
+                  fileButtonStyles.disabled,
+                  inputFieldStyles.disabled,
+                ],
                 clearable && inputFieldStyles.clearable
               )}
               style={{ fontSize: 'inherit' }}
@@ -213,6 +215,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
             size={size}
             className={cn(
               makeClassName(`file-input-helper-text`),
+              disabled && 'text-muted-foreground',
               helperClassName
             )}
           >

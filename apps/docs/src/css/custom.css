@@ -10,6 +10,7 @@
     --background: 255 255 255; /* #ffffff */
     --foreground: 72 72 72; /* #484848 */
     --muted: 227 227 227; /* #e3e3e3 */
+    --muted-foreground: 146 146 146; /* #929292 */
 
     /* ----------------------------------- */
     /* gray colors */
@@ -123,6 +124,7 @@
     --background: 8 9 14; /* #08090e */
     --foreground: 223 223 223; /* #dfdfdf */
     --muted: 51 51 51; /* #333333 */
+    --muted-foreground: 102 102 102; /* #666666 */
 
     /* ----------------------------------- */
     /* gray/natural colors */
@@ -721,6 +723,9 @@ svg[class*="lightToggleIcon"] {
   #__docusaurus .theme-doc-toc-mobile {
     @apply block;
   }
+  .theme-doc-sidebar-container ~ main > .container .col.col--3 {
+    @apply hidden;
+  }
   .container div[class*="docItemContainer_"] {
     @apply flex flex-col min-h-[calc(100vh-112px)] py-6 pl-[1.5rem] pr-0;
   }
@@ -743,14 +748,14 @@ svg[class*="lightToggleIcon"] {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   #__docusaurus .theme-doc-toc-mobile {
     @apply hidden;
   }
   #__docusaurus div[class*="docItemCol_"] {
     @apply !max-w-[75%];
   }
-  #__docusaurus .table-of-contents {
+  .theme-doc-sidebar-container ~ main > .container .col.col--3 {
     @apply block;
   }
 }

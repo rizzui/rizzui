@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useCallback } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { PasswordToggleIcon } from './password-toggle-icon';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
@@ -33,7 +33,7 @@ const inputFieldStyles = {
   base: 'w-full border-0 bg-transparent p-0 focus:outline-none focus:ring-0',
   reset:
     '[&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
-  disabled: 'cursor-not-allowed placeholder:text-gray-400',
+  disabled: 'cursor-not-allowed placeholder:text-muted-foreground',
   clearable:
     '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
   prefix: {
@@ -101,11 +101,6 @@ export interface PasswordProps
   className?: string;
 }
 
-/**
- * A basic widget for getting the user input. Here is the API documentation of the Password component.
- * And the rest of the props are the same as the original html input field type password.
- * You can use props like `value`, `disabled`, `placeholder`, `onChange`, `onFocus`, `onBlur` etc.
- */
 export const Password = forwardRef<HTMLInputElement, PasswordProps>(
   (
     {
@@ -166,6 +161,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
+                disabled && 'text-muted-foreground',
                 labelClassName
               )}
             >
@@ -238,7 +234,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
               className={cn(
                 makeClassName(`password-toggle-icon`),
                 'whitespace-nowrap leading-normal',
-                disabled && 'text-gray-400',
+                disabled && 'text-muted-foreground',
                 visibilityToggleIconClassName
               )}
               onClick={() => {
@@ -260,6 +256,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
             size={size}
             className={cn(
               makeClassName(`password-helper-text`),
+              disabled && 'text-muted-foreground',
               helperClassName
             )}
           >

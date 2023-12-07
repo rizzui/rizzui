@@ -8,7 +8,7 @@ const advancedCheckboxStyles = {
   active:
     'peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px]',
   disabled:
-    'peer-disabled:bg-muted/70 peer-disabled:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed',
+    'peer-disabled:bg-muted/70 peer-disabled:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed peer-disabled:text-muted-foreground',
   alignment: {
     left: '',
     center: 'text-center [&>*]:mx-auto',
@@ -40,12 +40,6 @@ export interface AdvancedCheckboxProps
   className?: string;
 }
 
-/**
- * A basic widget for getting the user input of checkbox with advanced design.
- * Here is the API documentation of the AdvancedCheckbox component.
- * And the rest of the props of AdvancedCheckbox are the same as the original html input field.
- * You can use props like `value`, `name`, `disabled` etc.
- */
 export const AdvancedCheckbox = forwardRef<
   HTMLInputElement,
   AdvancedCheckboxProps

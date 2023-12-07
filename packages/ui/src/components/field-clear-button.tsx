@@ -3,7 +3,7 @@ import { cn } from '../lib/cn';
 import { makeClassName } from '../lib/make-class-name';
 
 const clearBtnStyles = {
-  base: 'inline-flex shrink-0 transform items-center justify-center rounded-full bg-gray-950/30 backdrop-blur p-[1px] text-gray-50 transition-all duration-200 ease-in-out hover:bg-gray-950',
+  base: 'inline-flex shrink-0 transform items-center justify-center rounded-full bg-muted text-foreground/90 transition-all duration-200 ease-in-out hover:bg-primary hover:text-primary-foreground',
   size: {
     sm: 'h-3.5 w-3.5',
     md: 'h-4 w-4',

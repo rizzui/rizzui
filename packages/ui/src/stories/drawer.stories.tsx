@@ -278,7 +278,7 @@ export const WithShoppingCart = () => {
             <Empty
               image={<EmptyProductBoxIcon />}
               text="No Product Available"
-              textClassName="mt-1 text-gray-500"
+              textClassName="mt-1"
             />
           </div>
           {/* End of drawer body */}

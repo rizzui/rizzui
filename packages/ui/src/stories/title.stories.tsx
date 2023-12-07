@@ -18,37 +18,37 @@ export const Default = () => (
 export const Titles = () => (
   <div className="grid gap-8 py-2">
     <div>
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         h1
       </Text>
       <Title as="h1">The brown fox jumps over the lazy dog</Title>
     </div>
     <div>
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         h2
       </Text>
       <Title as="h2">The brown fox jumps over the lazy dog</Title>
     </div>
     <div>
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         h3
       </Text>
       <Title as="h3">The brown fox jumps over the lazy dog</Title>
     </div>
     <div>
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         h4
       </Text>
       <Title as="h4">The brown fox jumps over the lazy dog</Title>
     </div>
     <div>
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         h5
       </Text>
       <Title as="h5">The brown fox jumps over the lazy dog</Title>
     </div>
     <div>
-      <Text as="span" className="tracking-wider text-gray-500">
+      <Text as="span" className="tracking-wider">
         h6
       </Text>
       <Title as="h6">The brown fox jumps over the lazy dog</Title>

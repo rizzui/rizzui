@@ -26,8 +26,8 @@ A simple **Popover** component.
       <Button variant="outline">Open Popover</Button>
     </Popover.Trigger>
     <Popover.Content>
-      <Title as="h6" className="!mb-0 font-semibold">
-        This is a default popover
+      <Title as="h6" fontWeight="medium" className="!mb-0">
+        Default popover
       </Title>
       <Text>It is opened when button is clicked. </Text>
     </Popover.Content>
@@ -44,7 +44,9 @@ export default function App() {
         <Button variant="outline">Open Popover</Button>
       </Popover.Trigger>
       <Popover.Content>
-        <Title as="h6">This is a default popover</Title>
+        <Title as="h6" fontWeight="medium">
+          Default popover
+        </Title>
         <Text>It is opened when button is clicked. </Text>
       </Popover.Content>
     </Popover>
@@ -135,7 +137,7 @@ You can control Popover state with **isOepn** and **setIsOpen** props:
     </Popover.Trigger>
     <Popover.Content>
       <Title as="h6" className="!mb-0 font-semibold">
-        This is a default popover
+        Controlled popover
       </Title>
       <Text>It is opened when button is clicked. </Text>
     </Popover.Content>
@@ -155,7 +157,7 @@ export default function App() {
       </Popover.Trigger>
       <Popover.Content>
         <Title as="h6" className="!mb-0 font-semibold">
-          This is a default popover
+          Controlled popover
         </Title>
         <Text>It is opened when button is clicked. </Text>
       </Popover.Content>
@@ -219,8 +221,6 @@ You can render any thing using our **Popover** component.
           </div>
           <Button
             className="mt-4 w-full"
-            variant="solid"
-            color="info"
             size="sm"
             onClick={() => setOpen(false)}
           >
@@ -286,8 +286,6 @@ export default function App() {
             </div>
             <Button
               className="mt-4 w-full"
-              variant="solid"
-              color="info"
               size="sm"
               onClick={() => setOpen(false)}
             >
@@ -315,21 +313,21 @@ Here is the API documentation of the Popover component.
 
 <div className="overflow-x-auto">
 
-|      Props       |                   Type                   |                             Description                              |   Default   |
-| :--------------: | :--------------------------------------: | :------------------------------------------------------------------: | :---------: |
-|     children     |                   \_\_                   |      Use **Popover.Trigger** & **Popover.Content** as childrens      |    \_\_     |
-|       gap        |                 `number`                 | Set the offset value from **Popover.Trigger** to **Popover.Content** |    `"8"`    |
-|      isOpen      |                `boolean`                 |         Pass **isOpen** state to toggle the popover content          |    \_\_     |
-|    setIsOpen     |   `Dispatch<SetStateAction<boolean>>`    |                 Pass **setIsOpen** to set open value                 |    \_\_     |
-|       size       |      [PopoverSizes](#popover-sizes)      |                     Supported popover sizes are:                     | `"DEFAULT"` |
-|     rounded      |    [PopoverRounded](#popover-rounded)    |                      The rounded variants are:                       | `"DEFAULT"` |
-|    placement     | [PopoverPlacements](#popover-placements) |                  Supported popover placements are:                   | `"bottom"`  |
-|      shadow      |    [PopoverShadow](#popover-shadows)     |                    Supported popover shadows are:                    | `"DEFAULT"` |
-|    animation     | [PopoverAnimation](#popover-animations)  |                  Supported popover animations are:                   | `"zoomIn"`  |
-|    showArrow     |                `boolean`                 |           Whether popover arrow should be shown or hidden            |  `"true"`   |
-|  arrowClassName  |                 `string`                 |                   Add custom classes to the arrow                    |    \_\_     |
-|  enableOverlay   |                `boolean`                 |      Whether popover backdrop overlay should be shown or hidden      |  `"false"`  |
-| overlayClassName |                 `string`                 |                  Add custom classes to the overlay                   |    \_\_     |
+|      Props       |                   Type                   |                             Description                              |  Default   |
+| :--------------: | :--------------------------------------: | :------------------------------------------------------------------: | :--------: |
+|     children     |                   \_\_                   |      Use **Popover.Trigger** & **Popover.Content** as childrens      |    \_\_    |
+|       gap        |                 `number`                 | Set the offset value from **Popover.Trigger** to **Popover.Content** |   `"8"`    |
+|      isOpen      |                `boolean`                 |         Pass **isOpen** state to toggle the popover content          |    \_\_    |
+|    setIsOpen     |   `Dispatch<SetStateAction<boolean>>`    |                 Pass **setIsOpen** to set open value                 |    \_\_    |
+|       size       |      [PopoverSizes](#popover-sizes)      |                     Supported popover sizes are:                     |   `"md"`   |
+|     rounded      |    [PopoverRounded](#popover-rounded)    |                      The rounded variants are:                       |   `"md"`   |
+|    placement     | [PopoverPlacements](#popover-placements) |                  Supported popover placements are:                   | `"bottom"` |
+|      shadow      |    [PopoverShadow](#popover-shadows)     |                    Supported popover shadows are:                    |   `"md"`   |
+|    animation     | [PopoverAnimation](#popover-animations)  |                  Supported popover animations are:                   | `"zoomIn"` |
+|    showArrow     |                `boolean`                 |           Whether popover arrow should be shown or hidden            |  `"true"`  |
+|  arrowClassName  |                 `string`                 |                   Add custom classes to the arrow                    |    \_\_    |
+|  enableOverlay   |                `boolean`                 |      Whether popover backdrop overlay should be shown or hidden      | `"false"`  |
+| overlayClassName |                 `string`                 |                  Add custom classes to the overlay                   |    \_\_    |
 
 </div>
 
@@ -338,7 +336,7 @@ Here is the API documentation of the Popover component.
 ### Popover Sizes
 
 ```ts
-type PopoverSizes = "sm" | "DEFAULT" | "lg" | "xl";
+type PopoverSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -346,7 +344,7 @@ type PopoverSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ### Popover Rounded
 
 ```ts
-type PopoverRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
+type PopoverRounded = "sm" | "md" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -374,7 +372,7 @@ type PopoverPlacements =
 ### Popover Shadows
 
 ```ts
-type PopoverShadow = "sm" | "DEFAULT" | "lg" | "xl";
+type PopoverShadow = "sm" | "md" | "lg" | "xl";
 ```
 
 ### Popover Animations

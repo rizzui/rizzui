@@ -25,7 +25,7 @@ const radioLabelStyles = {
 };
 
 const radioStyles = {
-  base: 'disabled:bg-gray-50 disabled:border-muted ring-[0.6px] focus:ring-muted focus:ring-offset-background text-primary dark:text-primary-foreground',
+  base: 'disabled:bg-muted/70 disabled:border-muted ring-[0.6px] focus:ring-muted focus:ring-offset-background text-primary dark:text-primary-foreground',
   size: {
     sm: 'h-5 w-5',
     md: 'h-6 w-6',
@@ -34,7 +34,7 @@ const radioStyles = {
   },
   variant: {
     outline:
-      'bg-transparent border border-muted ring-muted checked:!bg-gray-primary checked:!border-primary hover:enabled:border-primary',
+      'bg-transparent border border-muted ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
     flat: 'border-0 bg-muted/70 ring-muted/70 hover:enabled:bg-muted/90 checked:!bg-primary',
   },
 };
@@ -69,12 +69,6 @@ export interface RadioProps
   helperClassName?: string;
 }
 
-/**
- * A basic widget for getting the user input of radio. Here is the API documentation of the Radio component.
- * And the rest of the props of Checkbox are the same as the original html input field.
- * You can use props like `value`, `disabled`, `onChange`, `onFocus`, `onBlur` etc.
- */
-
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
@@ -102,7 +96,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         className={cn(
           makeClassName(`radio-container`),
           'flex cursor-pointer flex-row items-center',
-          disabled && 'cursor-not-allowed'
+          disabled && 'cursor-not-allowed text-foreground/70'
         )}
       >
         <input
@@ -126,6 +120,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
               radioLabelStyles.size[size],
               radioLabelStyles.weight[labelWeight],
               radioLabelStyles.margin[labelPlacement][size],
+              disabled && 'text-muted-foreground',
               labelPlacement === 'left' && 'order-first',
               'mb-0',
               labelClassName
@@ -139,7 +134,11 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       {!error && helperText ? (
         <FieldHelperText
           size={size}
-          className={cn(makeClassName(`radio-helper-text`), helperClassName)}
+          className={cn(
+            makeClassName(`radio-helper-text`),
+            disabled && 'text-muted-foreground',
+            helperClassName
+          )}
         >
           {helperText}
         </FieldHelperText>

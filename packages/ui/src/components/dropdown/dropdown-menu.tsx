@@ -53,7 +53,7 @@ export function DropdownMenu({
           data-testid="dropdown-menu"
           className={cn(
             makeClassName(`dropdown-menu`),
-            'z-30 w-48 border border-muted bg-white p-1.5 focus-visible:outline-none dark:bg-gray-50',
+            'z-30 w-48 border border-muted bg-background p-1.5 focus-visible:outline-none dark:bg-muted/30 dark:backdrop-blur-3xl',
             rounded && dropdownStyles.rounded[rounded],
             shadow && dropdownStyles.shadow[shadow],
             className
