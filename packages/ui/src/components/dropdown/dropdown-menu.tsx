@@ -9,14 +9,14 @@ export const dropdownStyles = {
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
-    DEFAULT: 'rounded-md',
+    md: 'rounded-md',
     lg: 'rounded-lg',
     xl: 'rounded-xl',
   },
   shadow: {
     none: 'shadow-none',
     sm: 'drop-shadow-sm',
-    DEFAULT: 'drop-shadow',
+    md: 'drop-shadow',
     lg: 'drop-shadow-md',
     xl: 'drop-shadow-lg',
   },
@@ -53,10 +53,10 @@ export function DropdownMenu({
           data-testid="dropdown-menu"
           className={cn(
             makeClassName(`dropdown-menu`),
-            'z-30 w-48 p-1.5 border border-gray-200 bg-white dark:bg-gray-50 focus-visible:outline-none',
+            'z-30 w-48 border border-muted bg-background p-1.5 focus-visible:outline-none dark:bg-muted/30 dark:backdrop-blur-3xl',
             rounded && dropdownStyles.rounded[rounded],
             shadow && dropdownStyles.shadow[shadow],
-            className,
+            className
           )}
           style={{
             position: strategy,

@@ -7,10 +7,14 @@
 
 @layer base {
   :root {
+    --background: 255 255 255; /* #ffffff */
+    --foreground: 72 72 72; /* #484848 */
+    --muted: 227 227 227; /* #e3e3e3 */
+    --muted-foreground: 146 146 146; /* #929292 */
+
     /* ----------------------------------- */
     /* gray colors */
     /* ----------------------------------- */
-    --gray-50: 255 255 255; /* #ffffff */
     --gray-50: 250 250 250; /* #fafafa */
     --gray-100: 241 241 241; /* #f1f1f1 */
     --gray-200: 227 227 227; /* #e3e3e3 */
@@ -26,16 +30,18 @@
     /* ----------------------------------- */
     /* primary/brand colors */
     /* ----------------------------------- */
-    --primary-lighter: 221 227 255; /* #dde3ff */
-    --primary-default: 78 54 245; /* #4e36f5 */
-    --primary-dark: 67 42 216; /* #432ad8 */
+    --primary-lighter: 227 227 227; /* #e3e3e3 */
+    --primary-default: 34 34 34; /* #222222 */
+    --primary-dark: 0 0 0; /* #000000 */
+    --primary-foreground: 255 255 255; /* #ffffff */
 
     /* ----------------------------------- */
     /* secondary colors */
     /* ----------------------------------- */
-    --secondary-lighter: 227 215 252; /* #e3d7fc */
-    --secondary-default: 121 40 202; /* #7928ca */
-    --secondary-dark: 76 40 137; /* #4c2889 */
+    --secondary-lighter: 221 227 255; /* #dde3ff */
+    --secondary-default: 78 54 245; /* #4e36f5 */
+    --secondary-dark: 67 42 216; /* #432ad8 */
+    --secondary-foreground: 255 255 255; /* #ffffff */
 
     /* ----------------------------------- */
     /* red/error colors */
@@ -115,10 +121,14 @@
 
   /* dark theme */
   html[data-theme="dark"] {
+    --background: 8 9 14; /* #08090e */
+    --foreground: 223 223 223; /* #dfdfdf */
+    --muted: 51 51 51; /* #333333 */
+    --muted-foreground: 102 102 102; /* #666666 */
+
     /* ----------------------------------- */
     /* gray/natural colors */
     /* ----------------------------------- */
-    --gray-50: 0 0 0; /* #000000 */
     --gray-50: 17 17 17; /* #111111 */
     --gray-100: 34 34 34; /* #222222 */
     --gray-200: 51 51 51; /* #333333 */
@@ -130,6 +140,44 @@
     --gray-800: 241 241 241; /* #f1f1f1 */
     --gray-900: 250 250 250; /* #fafafa */
     --gray-950: 255 255 255; /* #ffffff */
+
+    /* ----------------------------------- */
+    /* primary/brand colors */
+    /* ----------------------------------- */
+    --primary-lighter: 34 34 34; /* #222222 */
+    --primary-default: 241 241 241; /* #f1f1f1 */
+    --primary-dark: 255 255 255; /* #ffffff */
+    --primary-foreground: 0 0 0; /* #000000 */
+
+    /* ----------------------------------- */
+    /* secondary colors */
+    /* ----------------------------------- */
+    --secondary-lighter: 31 22 90; /* #1f165a */
+    --secondary-dark: 193 203 255; /* #c1cbff */
+
+    /* ----------------------------------- */
+    /* red/error colors */
+    /* ----------------------------------- */
+    --red-lighter: 80 0 0; /* #500000 */
+    --red-dark: 255 193 193; /* #ffc1c1 */
+
+    /* ----------------------------------- */
+    /* orange/warning colors */
+    /* ----------------------------------- */
+    --orange-lighter: 68 29 4; /* #441d04 */
+    --orange-dark: 252 234 139; /* #fcea8b */
+
+    /* ----------------------------------- */
+    /* blue/info colors */
+    /* ----------------------------------- */
+    --blue-lighter: 13 51 94; /* #0d335e */
+    --blue-dark: 181 233 255; /* #b5e9ff */
+
+    /* ----------------------------------- */
+    /* green/success colors */
+    /* ----------------------------------- */
+    --green-lighter: 3 48 22; /* #033016 */
+    --green-dark: 185 249 207; /* #b9f9cf */
     /* here you can customize other colors for dark theme if design required */
 
     /* docusaurus dark theme */
@@ -440,7 +488,7 @@
 /* ------------------------------------- */
 html,
 body {
-  @apply text-[var(--ifm-color-gray-700)];
+  @apply text-[var(--ifm-color-gray-700)] dark:text-[var(--ifm-color-gray-600)];
 }
 
 h1 {
@@ -497,6 +545,10 @@ h6 {
   @apply w-6 h-auto sm:w-7;
 }
 
+.pagination-nav {
+  @apply content-start;
+}
+
 .pagination-nav__label {
   @apply font-medium;
 }
@@ -537,7 +589,9 @@ nav.navbar .navbar__inner {
 
 /* TODO: removed wehn dark mode color issue fixed */
 [class*="colorModeToggle_"] {
-  @apply hidden !important;
+  /* @apply hidden !important; */
+  order: 2;
+  @apply ms-4;
 }
 
 #__docusaurus .navbar__logo {
@@ -614,6 +668,10 @@ svg[class*="lightToggleIcon"] {
   background-repeat: no-repeat;
 }
 
+[data-theme="dark"] #__docusaurus .navbar__search-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23777' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E%0A");
+}
+
 #__docusaurus div[class*="searchHintContainer"] {
   @apply right-3 gap-[3px];
 }
@@ -665,6 +723,9 @@ svg[class*="lightToggleIcon"] {
   #__docusaurus .theme-doc-toc-mobile {
     @apply block;
   }
+  .theme-doc-sidebar-container ~ main > .container .col.col--3 {
+    @apply hidden;
+  }
   .container div[class*="docItemContainer_"] {
     @apply flex flex-col min-h-[calc(100vh-112px)] py-6 pl-[1.5rem] pr-0;
   }
@@ -687,14 +748,14 @@ svg[class*="lightToggleIcon"] {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1280px) {
   #__docusaurus .theme-doc-toc-mobile {
     @apply hidden;
   }
   #__docusaurus div[class*="docItemCol_"] {
     @apply !max-w-[75%];
   }
-  #__docusaurus .table-of-contents {
+  .theme-doc-sidebar-container ~ main > .container .col.col--3 {
     @apply block;
   }
 }
@@ -713,7 +774,15 @@ svg[class*="lightToggleIcon"] {
   }
 
   .theme-doc-sidebar-container ~ main > .container .col.col--3 {
-    @apply w-80 fixed right-0 bg-white dark:bg-gray-50;
+    @apply w-80 fixed right-0 bg-white;
+  }
+
+  [data-theme="dark"]
+    .theme-doc-sidebar-container
+    ~ main
+    > .container
+    .col.col--3 {
+    @apply bg-[#08090e];
   }
 }
 
@@ -755,6 +824,18 @@ svg[class*="lightToggleIcon"] {
 
 #__docusaurus .theme-doc-sidebar-menu li > .menu__link {
   @apply px-5 relative before:block before:w-4 before:h-[20%] before:absolute before:-left-[1px] before:top-[11px] before:bg-transparent before:rounded-bl-2xl before:border-b before:border-l;
+}
+
+#__docusaurus .theme-doc-sidebar-menu li:last-child > .menu__link {
+  @apply after:block after:w-[3.5px] after:h-5 after:bg-white after:absolute after:top-[14px] after:-left-[3.5px] after:rounded-tl-3xl;
+}
+
+html[data-theme="dark"]
+  #__docusaurus
+  .theme-doc-sidebar-menu
+  li:last-child
+  > .menu__link::after {
+  background-color: #08090e;
 }
 
 #__docusaurus li > .menu__link:hover {
@@ -831,6 +912,10 @@ svg[class*="lightToggleIcon"] {
   @apply text-[var(--ifm-color-gray-600)] py-1;
 }
 
+#__docusaurus .table-of-contents__link a {
+  @apply lg:inline-flex;
+}
+
 #__docusaurus .table-of-contents__link--active {
   @apply font-medium text-[var(--ifm-color-gray-900)];
 }
@@ -869,8 +954,12 @@ ul.table-of-contents.table-of-contents__left-border::before {
   @apply bg-transparent shadow-none border-[1.5px] border-b-4;
 }
 
+[data-theme="dark"] #__docusaurus .prism-code {
+  --prism-background-color: #14171d;
+}
+
 #__docusaurus div[class*="codeBlockTitle_"] {
-  @apply font-normal text-[#90a1ba] bg-[#293548] border-b-[#3a485d] py-2;
+  @apply font-normal text-[#90a1ba] bg-[#293548] dark:!bg-[#181f28] border-b-[#3a485d] dark:!border-b-[#232c39] py-2;
 }
 
 #__docusaurus .prism-code + div[class*="buttonGroup_"] button {
@@ -889,6 +978,11 @@ ul.table-of-contents.table-of-contents__left-border::before {
 
 .markdown ol {
   @apply list-decimal pl-[calc(var(--ifm-list-left-padding)+0.25rem)];
+}
+
+.markdown p a,
+.markdown li a {
+  @apply text-gray-900 font-medium underline;
 }
 
 .pagination-nav__link {
@@ -921,7 +1015,7 @@ ul.table-of-contents.table-of-contents__left-border::before {
 }
 
 .markdown table th {
-  @apply font-medium text-[var(--ifm-color-gray-500)];
+  @apply font-medium text-gray-500;
 }
 
 .markdown table th:first-child {
@@ -940,11 +1034,11 @@ ul.table-of-contents.table-of-contents__left-border::before {
 }
 
 .markdown table td {
-  @apply text-[var(--ifm-color-gray-900)];
+  @apply text-gray-600 dark:text-gray-500;
 }
 
 .markdown table td:nth-child(4n + 1) {
-  @apply font-semibold;
+  @apply font-semibold text-gray-600;
 }
 
 .markdown table th:nth-child(4n),
@@ -989,20 +1083,14 @@ ul.table-of-contents.table-of-contents__left-border::before {
 }
 
 button[class*="toggleButton"].clean-btn:hover {
-  @apply bg-transparent !important;
+  @apply !bg-transparent dark:text-white;
 }
 
 /* ------------------------------------- */
 /* dark style adjustment */
 /* ------------------------------------- */
-[data-theme="dark"] body::before {
-  content: "";
-  background-image: linear-gradient(192deg, #191515, transparent);
-  @apply block fixed inset-0 -z-[1];
-}
-
 [data-theme="dark"] nav.navbar {
-  @apply bg-black/[0.01];
+  @apply bg-black/[0.01] border-b border-b-gray-100;
 }
 
 [data-theme="dark"] nav.navbar .navbar__logo img {
@@ -1015,21 +1103,22 @@ button[class*="toggleButton"].clean-btn:hover {
 
 [data-theme="dark"] .header-github-link:before {
   filter: invert(100);
+  @apply opacity-60 hover:opacity-100;
 }
 
 [data-theme="dark"]
   #__docusaurus
   li
   > .menu__link--active:not(.menu__link--sublist) {
-  @apply bg-[var(--ifm-color-gray-200)];
+  @apply bg-transparent;
 }
 
 [data-theme="dark"] #__docusaurus code {
-  @apply bg-[var(--ifm-color-gray-200)];
+  @apply bg-[var(--ifm-color-gray-200)] text-gray-600;
 }
 
 [data-theme="dark"] #__docusaurus pre code {
-  @apply bg-transparent;
+  @apply bg-transparent text-current;
 }
 
 [data-theme="dark"] .markdown table th {
@@ -1095,7 +1184,7 @@ button[class*="toggleButton"].clean-btn:hover {
     linear-gradient(180deg, #f0f0f0 1px, transparent 0);
 }
 
-.gradient-border:after {
+/* .gradient-border:after {
   --borderWidth: 4px;
   content: "";
   position: absolute;
@@ -1131,7 +1220,7 @@ button[class*="toggleButton"].clean-btn:hover {
   100% {
     background-position: 0% 50%;
   }
-}
+} */
 
 /* for firefox */
 #__docusaurus .theme-doc-sidebar-container {

@@ -187,16 +187,18 @@ import { Tab } from "rizzui";
 
 export default function App() {
   return (
-    <Tab vertical>
+    <Tab>
       <Tab.List>
-        <Tab.ListItem>Recent</Tab.ListItem>
-        <Tab.ListItem>Popular</Tab.ListItem>
-        <Tab.ListItem>Trending</Tab.ListItem>
+        <Tab.ListItem>Home</Tab.ListItem>
+        <Tab.ListItem>Explore</Tab.ListItem>
+        <Tab.ListItem>Products</Tab.ListItem>
+        ...
       </Tab.List>
       <Tab.Panels>
-        <Tab.Panel>Recent panel</Tab.Panel>
-        <Tab.Panel>Popular panel</Tab.Panel>
-        <Tab.Panel>Trending panel</Tab.Panel>
+        <Tab.Panel>Home</Tab.Panel>
+        <Tab.Panel>Explore</Tab.Panel>
+        <Tab.Panel>Products</Tab.Panel>
+        ...
       </Tab.Panels>
     </Tab>
   );
@@ -219,12 +221,12 @@ Here is the API documentation of the **Tab** component.
 
 |       Props        |            Type             |                                                Description                                                | Default |
 | :----------------: | :-------------------------: | :-------------------------------------------------------------------------------------------------------: | :-----: |
-|      vertical      |          `boolean`          | When true, the orientation of the **Tab.List** will be **vertical**, otherwise it will be **horizontal**. |  \_ \_  |
-|   selectedIndex    |          `number`           |            The selected index if you want to use the Tab component as a controlled component.             |  \_ \_  |
-|      onChange      | `((index: number) => void)` |                            A function called whenever the active tab changes.                             |  \_ \_  |
+|      vertical      |          `boolean`          | When true, the orientation of the **Tab.List** will be **vertical**, otherwise it will be **horizontal**. |  \_\_   |
+|   selectedIndex    |          `number`           |            The selected index if you want to use the Tab component as a controlled component.             |  \_\_   |
+|      onChange      | `((index: number) => void)` |                            A function called whenever the active tab changes.                             |  \_\_   |
 | hideHoverAnimation |          `boolean`          |                                   Use this prop to hide hover animation                                   |  false  |
-|      children      |       `ReactElement`        |                          Only allow **Tab.List** and **Tab.Panels** as children                           |  \_ \_  |
-|     className      |          `string`           |                             Add classes to the main wrapper of this component                             |  \_ \_  |
+|      children      |       `ReactElement`        |                          Only allow **Tab.List** and **Tab.Panels** as children                           |  \_\_   |
+|     className      |          `string`           |                             Add classes to the main wrapper of this component                             |  \_\_   |
 
 </div>
 
@@ -238,8 +240,8 @@ Here is the API documentation of the **Tab.List** component.
 
 |   Props   |      Type      |                    Description                    | Default |
 | :-------: | :------------: | :-----------------------------------------------: | :-----: |
-| children  | `ReactElement` |      Only allow **Tab.ListItem** as children      |  \_ \_  |
-| className |    `string`    | Add classes to the **Tab.List** of this component |  \_ \_  |
+| children  | `ReactElement` |      Only allow **Tab.ListItem** as children      |  \_\_   |
+| className |    `string`    | Add classes to the **Tab.List** of this component |  \_\_   |
 
 </div>
 
@@ -253,8 +255,8 @@ Here is the API documentation of the **Tab.ListItem** component.
 
 |   Props   |    Type     |                      Description                      | Default |
 | :-------: | :---------: | :---------------------------------------------------: | :-----: |
-| children  | `ReactNode` |         Use any valid React element or string         |  \_ \_  |
-| className |  `string`   | Add classes to the **Tab.ListItem** of this component |  \_ \_  |
+| children  | `ReactNode` |         Use any valid React element or string         |  \_\_   |
+| className |  `string`   | Add classes to the **Tab.ListItem** of this component |  \_\_   |
 
 </div>
 
@@ -268,8 +270,8 @@ Here is the API documentation of the **Tab.Panels** component.
 
 |   Props   |      Type      |                     Description                     | Default |
 | :-------: | :------------: | :-------------------------------------------------: | :-----: |
-| children  | `ReactElement` |        Only allow **Tab.Panel** as children         |  \_ \_  |
-| className |    `string`    | Add classes to the **Tab.Panels** of this component |  \_ \_  |
+| children  | `ReactElement` |        Only allow **Tab.Panel** as children         |  \_\_   |
+| className |    `string`    | Add classes to the **Tab.Panels** of this component |  \_\_   |
 
 </div>
 
@@ -283,7 +285,7 @@ Here is the API documentation of the **Tab.Panel** component.
 
 |   Props   |    Type     |                    Description                     | Default |
 | :-------: | :---------: | :------------------------------------------------: | :-----: |
-| children  | `ReactNode` |       Use any valid React element or string        |  \_ \_  |
-| className |  `string`   | Add classes to the **Tab.Panel** of this component |  \_ \_  |
+| children  | `ReactNode` |       Use any valid React element or string        |  \_\_   |
+| className |  `string`   | Add classes to the **Tab.Panel** of this component |  \_\_   |
 
 </div>

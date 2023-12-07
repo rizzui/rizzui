@@ -3,12 +3,12 @@ import { Dialog, Transition } from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
-const modalClasses = {
+const modalStyles = {
   overlay:
     'fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80',
   size: {
     sm: 'max-w-sm',
-    DEFAULT: 'max-w-lg',
+    md: 'max-w-lg',
     lg: 'max-w-2xl',
     xl: 'max-w-[60%]',
     full: 'max-w-full min-h-screen',
@@ -17,7 +17,7 @@ const modalClasses = {
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-lg',
-    DEFAULT: 'rounded-xl',
+    md: 'rounded-xl',
     lg: 'rounded-2xl',
     xl: 'rounded-3xl',
   },
@@ -25,7 +25,7 @@ const modalClasses = {
 
 const CHECK_VALID_CUSTOM_SIZE = /(\d*px)|(\d*%)?/g;
 
-export type ModalSize = 'sm' | 'DEFAULT' | 'lg' | 'xl' | 'full';
+export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
 
 export type ModalProps = {
   /** Whether the Modal is open or not */
@@ -35,7 +35,7 @@ export type ModalProps = {
   /** Preset size of modal is sm, DEFAULT, lg, xl, full */
   size?: ModalSize;
   /** The rounded variants are: */
-  rounded?: keyof typeof modalClasses.rounded;
+  rounded?: keyof typeof modalStyles.rounded;
   /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" */
   customSize?: string;
   /** This prop will remove extra padding spacing from screen */
@@ -54,8 +54,8 @@ export type ModalProps = {
 export function Modal({
   isOpen,
   onClose,
-  size = 'DEFAULT',
-  rounded = 'DEFAULT',
+  size = 'md',
+  rounded = 'md',
   noGutter,
   customSize,
   overlayClassName,
@@ -71,7 +71,7 @@ export function Modal({
       customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
     if (checkedCustomSizeValue[0] === '') {
       console.warn(
-        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"',
+        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"'
       );
     }
   }
@@ -83,14 +83,14 @@ export function Modal({
         className={cn(
           makeClassName(`modal-root`),
           'fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden',
-          className,
+          className
         )}
       >
         {/* -> required min-h-screen div to have the overflow y scrollbar when modal content is extra large */}
         <div
           className={cn(
             'flex min-h-screen flex-col items-center justify-center',
-            size !== 'full' && [!noGutter && 'p-4 sm:p-5'],
+            size !== 'full' && [!noGutter && 'p-4 sm:p-5']
           )}
         >
           <TransitionChild
@@ -105,8 +105,8 @@ export function Modal({
             <Dialog.Overlay
               className={cn(
                 makeClassName(`modal-overlay`),
-                modalClasses.overlay,
-                overlayClassName,
+                modalStyles.overlay,
+                overlayClassName
               )}
             />
           </TransitionChild>
@@ -130,10 +130,10 @@ export function Modal({
               <div
                 className={cn(
                   makeClassName(`modal-container`),
-                  'pointer-events-auto m-auto w-full break-words bg-gray-50 shadow-xl',
-                  size !== 'full' && modalClasses.rounded[rounded],
-                  !customSize && modalClasses.size[size],
-                  containerClassName,
+                  'pointer-events-auto m-auto w-full break-words bg-background shadow-xl',
+                  size !== 'full' && modalStyles.rounded[rounded],
+                  !customSize && modalStyles.size[size],
+                  containerClassName
                 )}
                 {...(customSize && {
                   style: {

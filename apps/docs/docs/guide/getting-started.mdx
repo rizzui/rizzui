@@ -4,29 +4,31 @@ sidebar_position: 1
 
 # Getting Started
 
-Explore RizzUI: Modern, Minimal, TailwindCSS-based React UI Library. Intuitively crafted, easy-to-customize components for seamless integration. Responsive, accessible, and consistent across devices and browsers.
+RizzUI - A Modern, Minimal, TailwindCSS-based React Open Source UI Library. Intuitively crafted, easy-to-customize components for seamless integration with React application. Responsive, accessible, and consistent across devices and browsers.
 
 ## Installation
 
 System Requirements:
 
-- Node.js 16.17.0 or later.
+- Node.js 18.17.0 or [later](https://nodejs.org/en).
+
+Go to your React / Next.js project directory & install RizzUI by running the following command:
 
 ```bash title=Terminal
 npm i rizzui @headlessui/react @floating-ui/react
 ```
 
-_*Note: Also, you can use other package managers like - **bun**, **PNPM** and **Yarn**.*_
+_* **Note:** You have the flexibility to use alternative package managers such as **bun**, **pnpm**, and **yarn**.*_
 
-Install and configure TailwindCSS to apply the style.
+Now Install and configure TailwindCSS to have the style.
 
 ```bash title=Terminal
 npm i -D tailwindcss postcss autoprefixer @tailwindcss/forms
 ```
 
-## Configure tailwind.config.js
+## Tailwind Configuration
 
-Now, we need to configure tailwind. We are using css variable for theming. You need to copy and paste the following tailwind configuration in your tailwind.config.js file-
+If you don't plan to use dark mode in your application, the current configuration is good to go. However, if you wish to implement both light and dark modes, please refer to our [dark mode documentation.](/docs/guide/dark-mode)
 
 ```js title=tailwind.config.js
 /** @type {import('tailwindcss').Config} */
@@ -34,55 +36,100 @@ const colors = require("tailwindcss/colors");
 
 module.exports = {
   content: [
-    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}", // Required this line to compile RizzUI style.
-    ...// configure your app paths
+    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}", // ⚠️ Required this line to compile RizzUI style.
+    ...// 💡​ configure your components, and any other source files path that contain Tailwind class names.
   ],
   theme: {
     extend: {
       colors: {
-        gray: colors.gray, // use one of theme -> gray | slate | zinc | neutral | stone
+        /*
+        * body, modal, drawer background & ring-offset-color
+        */
+        background: colors.white,
+
+        /*
+        * body text color
+        */
+        foreground: colors.gray[600],
+
+        /*
+        * border, default flat bg color for input components, tab & dropdown hover color
+        */
+        muted: colors.gray[200],
+
+        /*
+        * gray shade from 50 to 950. use one of them -> gray | slate | zinc | neutral | stone
+        */
+        gray: colors.gray,
+
+        /*
+        * primary colors
+        */
         primary: {
           lighter: colors.indigo[200],
           DEFAULT: colors.indigo[500],
           dark: colors.indigo[700],
+          foreground: colors.white,
         },
+
+        /*
+        * secondary colors
+        */
         secondary: {
           lighter: colors.purple[200],
           DEFAULT: colors.purple[500],
           dark: colors.purple[700],
+          foreground: colors.white,
         },
+
+        /*
+        * danger colors
+        */
         red: {
           lighter: colors.rose[200],
           DEFAULT: colors.rose[500],
           dark: colors.rose[700],
         },
+
+        /*
+        * warning colors
+        */
         orange: {
           lighter: colors.amber[200],
           DEFAULT: colors.amber[500],
           dark: colors.amber[700],
         },
+
+        /*
+        * info colors
+        */
         blue: {
           lighter: colors.sky[200],
           DEFAULT: colors.sky[500],
           dark: colors.sky[700],
         },
+
+        /*
+        * success colors
+        */
         green: {
           lighter: colors.emerald[200],
           DEFAULT: colors.emerald[500],
           dark: colors.emerald[700],
         },
       },
+      ... // here goes your additional configuration
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [require("@tailwindcss/forms")], // ⚠️ Required @tailwindcss/forms plugin.
 };
 ```
 
-You are good to go to use our components in your application
+​🎉​ You are all set to use our components in your application.
 
 ## Usage
 
-The **"use client"** directive must be defined at the top of a file before any imports if you are using nextjs 13 app routing approach.
+For Next.js 13 app routing, ensure the **"use client"** directive is defined at the top of a file before any **rizzui** imports.
 
 ```tsx
 "use client";

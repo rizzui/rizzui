@@ -61,16 +61,6 @@ export const Colors = () => (
       <Progressbar value={75} size="xl" label="75%" variant="flat" />
     </div>
     <div className="grid grid-cols-2 gap-4">
-      <Progressbar value={75} size="xl" label="75%" color="primary" />
-      <Progressbar
-        value={75}
-        size="xl"
-        label="75%"
-        variant="flat"
-        color="primary"
-      />
-    </div>
-    <div className="grid grid-cols-2 gap-4">
       <Progressbar value={75} size="xl" label="75%" color="secondary" />
       <Progressbar
         value={75}

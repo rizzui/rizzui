@@ -24,7 +24,6 @@ export const Variants = () => (
   <div className="flex items-center justify-around gap-3">
     <Switch label="Default" />
     <Switch variant="outline" label="Outline" />
-    <Switch variant="active" label="Active" />
   </div>
 );
 
@@ -47,51 +46,10 @@ export const Rounded = () => (
   </div>
 );
 
-export const Colors = () => (
-  <div className="grid gap-5">
-    <div className="flex items-center justify-around gap-3">
-      <Switch variant="outline" />
-      <Switch variant="outline" color="primary" />
-      <Switch variant="outline" color="secondary" />
-      <Switch variant="outline" color="info" />
-      <Switch variant="outline" color="warning" />
-      <Switch variant="outline" color="danger" />
-      <Switch variant="outline" color="success" />
-    </div>
-    <div className="flex items-center justify-around gap-3">
-      <Switch variant="active" />
-      <Switch variant="active" color="primary" />
-      <Switch variant="active" color="secondary" />
-      <Switch variant="active" color="info" />
-      <Switch variant="active" color="warning" />
-      <Switch variant="active" color="danger" />
-      <Switch variant="active" color="success" />
-    </div>
-    <div className="flex items-center justify-around gap-3">
-      <Switch />
-      <Switch color="primary" />
-      <Switch color="secondary" />
-      <Switch color="info" />
-      <Switch color="warning" />
-      <Switch color="danger" />
-      <Switch color="success" />
-    </div>
-    <div className="flex items-center justify-around gap-3 text-sm">
-      <span>Default</span>
-      <span>Primary</span>
-      <span>Secondary</span>
-      <span>Info</span>
-      <span>Warning</span>
-      <span>Danger</span>
-      <span>Success</span>
-    </div>
-  </div>
-);
-
 export const WithIcon = Template.bind({});
 WithIcon.args = {
   ...Default.args,
-  variant: 'active',
+  variant: 'outline',
   label: 'Change theme',
   onIcon: (
     // HeroIcon: Moon

@@ -2,30 +2,25 @@ import React from 'react';
 import { usePopover } from './popover-context';
 import { FloatingArrow, FloatingPortal } from '@floating-ui/react';
 import { makeClassName } from '../../lib/make-class-name';
+import { roundedStyles } from '../../lib/rounded';
 import { cn } from '../../lib/cn';
 
 const tooltipStyle = {
-  base: 'z-[999] min-w-max bg-white dark:bg-gray-50 !text-gray-900 border border-gray-200',
-  arrow: 'fill-white dark:fill-gray-50 [&>path]:stroke-gray-200',
+  base: 'z-[999] min-w-max bg-background dark:bg-muted/30 dark:backdrop-blur-3xl border border-muted',
+  arrow: 'fill-background dark:fill-muted/30 [&>path]:stroke-muted',
   shadow: {
     sm: 'drop-shadow-md',
-    DEFAULT: 'drop-shadow-lg',
+    md: 'drop-shadow-lg',
     lg: 'drop-shadow-xl',
     xl: 'drop-shadow-2xl',
   },
   size: {
     sm: 'p-2.5',
-    DEFAULT: 'p-4',
+    md: 'p-4',
     lg: 'p-5',
     xl: 'p-6',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-md',
-    DEFAULT: 'rounded-lg',
-    lg: 'rounded-xl',
-    pill: 'rounded-full',
-  },
+  rounded: roundedStyles,
 };
 
 export type Shadow = keyof typeof tooltipStyle.shadow;
@@ -43,16 +38,9 @@ type PopoverContentProps = {
         setOpen: React.Dispatch<React.SetStateAction<boolean>>;
       }) => React.ReactNode);
   className?: string;
-  arrowClassName?: string;
-  overlayClassName?: string;
 };
 
-export function PopoverContent({
-  children,
-  className,
-  arrowClassName,
-  overlayClassName,
-}: PopoverContentProps) {
+export function PopoverContent({ children, className }: PopoverContentProps) {
   const {
     open,
     setOpen,
@@ -70,6 +58,8 @@ export function PopoverContent({
     size,
     shadow,
     rounded,
+    arrowClassName,
+    overlayClassName,
   } = usePopover();
   const isChildrenFunction = typeof children === 'function';
 
@@ -83,7 +73,7 @@ export function PopoverContent({
                 makeClassName(`popover-overlay`),
                 'fixed inset-0 z-[998] cursor-pointer bg-black bg-opacity-60 transition-opacity duration-200',
                 open ? 'bg-opacity-60 dark:bg-opacity-80' : 'opacity-0',
-                overlayClassName,
+                overlayClassName
               )}
             >
               <span className="sr-only">popover overlay</span>
@@ -99,7 +89,7 @@ export function PopoverContent({
               size && tooltipStyle.size[size],
               rounded && tooltipStyle.rounded[rounded],
               shadow && tooltipStyle.shadow[shadow],
-              className,
+              className
             )}
             style={{
               position: strategy,
@@ -121,7 +111,7 @@ export function PopoverContent({
                 className={cn(
                   makeClassName(`popover-arrow`),
                   tooltipStyle.arrow,
-                  arrowClassName,
+                  arrowClassName
                 )}
                 style={{ strokeDasharray: '0,14, 5' }}
               />

@@ -78,7 +78,7 @@ You can use **placement** and icon.
   <Dropdown placement="bottom-end">
     <Dropdown.Trigger>
       <ActionIcon variant="outline" rounded="full">
-        <AdjustmentsHorizontalIcon className="h-5 w-5 text-gray-500" />
+        <AdjustmentsHorizontalIcon className="h-5 w-5" />
       </ActionIcon>
     </Dropdown.Trigger>
     <Dropdown.Menu className="divide-y text-sm font-inter">
@@ -140,7 +140,7 @@ export default function App() {
     <Dropdown placement="bottom-end">
       <Dropdown.Trigger>
         <ActionIcon variant="outline" rounded="full">
-          <AdjustmentsHorizontalIcon className="h-5 w-5 text-gray-500" />
+          <AdjustmentsHorizontalIcon className="h-5 w-5" />
         </ActionIcon>
       </Dropdown.Trigger>
       <Dropdown.Menu className="divide-y">
@@ -297,13 +297,13 @@ Here is the API documentation of the Dropdown component. You can use the followi
 
 <div className="overflow-x-auto">
 
-|   Props   |                   Type                   |                             Description                             |     Default      |
-| :-------: | :--------------------------------------: | :-----------------------------------------------------------------: | :--------------: |
-| children  |                  \_ \_                   | Use **Dropdown.Trigger** & Dropdown.Menu as a children for dropdown |      \_ \_       |
-|  rounded  |   [DropdownRounded](#dropdown-rounded)   |        The rounded variants supported by this component are:        |   `"DEFAULT"`    |
-|  shadow   |   [DropdownShadows](#dropdown-shadows)   |        The shadow variants supported by this component are:         |   `"DEFAULT"`    |
-| placement | [DropdownPlacement](#dropdown-placement) |                    The dropdown menu placements:                    | `"bottom-start"` |
-| className |                 `string`                 |          Add classes to the main wrapper of this component          |      \_ \_       |
+|   Props   |                   Type                   |                        Description                        |     Default      |
+| :-------: | :--------------------------------------: | :-------------------------------------------------------: | :--------------: |
+| children  |                   \_\_                   | Use **Dropdown.Trigger** & **Dropdown.Menu** as childrens |       \_\_       |
+|  rounded  |   [DropdownRounded](#dropdown-rounded)   |   The rounded variants supported by this component are:   |      `"md"`      |
+|  shadow   |   [DropdownShadows](#dropdown-shadows)   |   The shadow variants supported by this component are:    |      `"md"`      |
+| placement | [DropdownPlacement](#dropdown-placement) |               The dropdown menu placements:               | `"bottom-start"` |
+| className |                 `string`                 |     Add classes to the main wrapper of this component     |       \_\_       |
 
 </div>
 
@@ -313,12 +313,13 @@ Here is the API documentation of the Dropdown component. You can use the followi
 
 <div className="overflow-x-auto">
 
-|   Props   |       Type        |                                    Description                                    | Default |
-| :-------: | :---------------: | :-------------------------------------------------------------------------------: | :-----: |
-|    as     | `div` or `button` | Use `as` to convert **Dropdown.Trigger** component to render as `div` or `button` |  `div`  |
-|    ref    |       \_ \_       |             Use ref prop to access DOM nodes of **Dropdown.Trigger**              |  \_ \_  |
-| children  |    `ReactNode`    |                       Use any valid React element or string                       |  \_ \_  |
-| className |     `string`      |                  Add classes to the **Dropdown.Trigger** wrapper                  |  \_ \_  |
+|   Props   |                    Type                    |                                    Description                                    | Default |
+| :-------: | :----------------------------------------: | :-------------------------------------------------------------------------------: | :-----: |
+|    as     |             `div` or `button`              | Use `as` to convert **Dropdown.Trigger** component to render as `div` or `button` |  `div`  |
+|    ref    |                    \_\_                    |             Use ref prop to access DOM nodes of **Dropdown.Trigger**              |  \_\_   |
+| children  |                `ReactNode`                 |                       Use any valid React element or string                       |  \_\_   |
+| className |                  `string`                  |                  Add classes to the **Dropdown.Trigger** wrapper                  |  \_\_   |
+|    ...    | `ButtonHTMLAttributes` or `HTMLAttributes` |           native props like **onClick**, **title**, **aria-label** ...            |  \_\_   |
 
 </div>
 
@@ -331,8 +332,8 @@ Here is the API documentation of the Dropdown component. You can use the followi
 |   Props   |     Type      |                                Description                                 | Default |
 | :-------: | :-----------: | :------------------------------------------------------------------------: | :-----: |
 |    as     | `div` or `ul` | Use `as` to convert **Dropdown.Menu** component to render as `div` or `ul` |  `div`  |
-| children  |  `ReactNode`  |               Use Dropdown.Item and any valid React element                |  \_ \_  |
-| className |   `string`    |                Add classes to the **Dropdown.Menu** wrapper                |  \_ \_  |
+| children  |  `ReactNode`  |               Use Dropdown.Item and any valid React element                |  \_\_   |
+| className |   `string`    |                Add classes to the **Dropdown.Menu** wrapper                |  \_\_   |
 
 </div>
 
@@ -342,14 +343,15 @@ Here is the API documentation of the Dropdown component. You can use the followi
 
 <div className="overflow-x-auto">
 
-|       Props       |       Type       |                                  Description                                  | Default  |
-| :---------------: | :--------------: | :---------------------------------------------------------------------------: | :------: |
-|        as         | `button` or `li` | Use `as` to convert **Dropdown.Item** component to render as `button` or `li` | `button` |
-|     children      |   `ReactNode`    |                     Use any valid React element or sting                      |  \_ \_   |
-|     disabled      |    `boolean`     |               This item will be skipped by keyboard navigation                | `false`  |
-|  activeClassName  |     `string`     |                To style active state of the **Dropdown.Item**                 |  \_ \_   |
-| disabledClassName |     `string`     |                To style disbale state of the **Dropdown.Item**                |  \_ \_   |
-|     className     |     `string`     |                     Add classes to the **Dropdown.Item**                      |  \_ \_   |
+|       Props       |                    Type                    |                                  Description                                  | Default  |
+| :---------------: | :----------------------------------------: | :---------------------------------------------------------------------------: | :------: |
+|        as         |              `button` or `li`              | Use `as` to convert **Dropdown.Item** component to render as `button` or `li` | `button` |
+|     children      |                `ReactNode`                 |                     Use any valid React element or sting                      |   \_\_   |
+|     disabled      |                 `boolean`                  |               This item will be skipped by keyboard navigation                | `false`  |
+|  activeClassName  |                  `string`                  |                To style active state of the **Dropdown.Item**                 |   \_\_   |
+| disabledClassName |                  `string`                  |                To style disbale state of the **Dropdown.Item**                |   \_\_   |
+|     className     |                  `string`                  |                     Add classes to the **Dropdown.Item**                      |   \_\_   |
+|        ...        | `ButtonHTMLAttributes` or `HTMLAttributes` |         native props like **onClick**, **title**, **aria-label** ...          |   \_\_   |
 
 </div>
 
@@ -358,7 +360,7 @@ Here is the API documentation of the Dropdown component. You can use the followi
 ### Dropdown Rounded
 
 ```ts
-type DropdownRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
+type DropdownRounded = "sm" | "md" | "lg" | "xl" | "none";
 ```
 
 <div className="mb-10" />
@@ -366,7 +368,7 @@ type DropdownRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
 ### Dropdown Shadows
 
 ```ts
-type DropdownShadows = "DEFAULT" | "sm" | "lg" | "xl" | "none";
+type DropdownShadows = "sm" | "md" | "lg" | "xl" | "none";
 ```
 
 <div className="mb-10" />

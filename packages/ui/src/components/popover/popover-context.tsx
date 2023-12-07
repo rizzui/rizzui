@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useRef, useState } from "react";
+import React, { createContext, useContext, useRef, useState } from 'react';
 import {
   Placement,
   offset,
@@ -13,8 +13,8 @@ import {
   arrow,
   useTransitionStyles,
   Strategy,
-} from "@floating-ui/react";
-import { type Size, type Shadow, type Rounded } from "./popover-content";
+} from '@floating-ui/react';
+import { type Size, type Shadow, type Rounded } from './popover-content';
 
 const tooltipAnimation = {
   fadeIn: {
@@ -28,21 +28,21 @@ const tooltipAnimation = {
   zoomIn: {
     initial: {
       opacity: 0,
-      transform: "scale(0.96)",
+      transform: 'scale(0.96)',
     },
     close: {
       opacity: 0,
-      transform: "scale(0.96)",
+      transform: 'scale(0.96)',
     },
   },
   slideIn: {
     initial: {
       opacity: 0,
-      transform: "translateY(4px)",
+      transform: 'translateY(4px)',
     },
     close: {
       opacity: 0,
-      transform: "translateY(4px)",
+      transform: 'translateY(4px)',
     },
   },
 };
@@ -53,6 +53,8 @@ type CommonTypes = {
   size?: Size;
   shadow?: Shadow;
   rounded?: Rounded;
+  arrowClassName?: string;
+  overlayClassName?: string;
 };
 
 type PopoverContextProps = {
@@ -61,10 +63,10 @@ type PopoverContextProps = {
   isMounted: boolean;
   styles: React.CSSProperties;
   getReferenceProps: (
-    userProps?: React.HTMLProps<Element> | undefined
+    userProps?: React.HTMLProps<Element> | undefined,
   ) => Record<string, unknown>;
   getFloatingProps: (
-    userProps?: React.HTMLProps<HTMLElement> | undefined
+    userProps?: React.HTMLProps<HTMLElement> | undefined,
   ) => Record<string, unknown>;
   refs: any;
   x: number;
@@ -88,18 +90,7 @@ export function PopoverProvider({
   value,
   children,
 }: React.PropsWithChildren<{ value: PopoverProviderProps }>) {
-  const {
-    isOpen,
-    setIsOpen,
-    gap = 8,
-    animation = "zoomIn",
-    placement = "bottom",
-    enableOverlay = false,
-    showArrow = true,
-    size = "DEFAULT",
-    shadow = "DEFAULT",
-    rounded = "DEFAULT",
-  } = value;
+  const { isOpen, setIsOpen, gap, animation, placement } = value;
   const arrowRef = useRef(null);
   const [open, setOpen] = useState(false);
 
@@ -117,15 +108,18 @@ export function PopoverProvider({
   });
 
   const { getReferenceProps, getFloatingProps } = useInteractions([
-    useRole(context, { role: "tooltip" }),
+    useRole(context, { role: 'tooltip' }),
     useDismiss(context),
     useClick(context, { enabled: true }),
   ]);
 
-  const { isMounted, styles } = useTransitionStyles(context, {
-    duration: { open: 150, close: 150 },
-    ...tooltipAnimation[animation],
-  });
+  const { isMounted, styles } = useTransitionStyles(
+    context,
+    animation && {
+      duration: { open: 150, close: 150 },
+      ...tooltipAnimation[animation],
+    },
+  );
 
   return (
     <AccordionContext.Provider
@@ -142,11 +136,7 @@ export function PopoverProvider({
         strategy,
         arrowRef,
         context,
-        enableOverlay,
-        showArrow,
-        size,
-        shadow,
-        rounded,
+        ...value,
       }}
     >
       {children}
@@ -157,7 +147,7 @@ export function PopoverProvider({
 export const usePopover = (): PopoverContextProps => {
   const context = useContext(AccordionContext);
   if (!context) {
-    throw new Error("usePopover must be used within a PopoverProvider");
+    throw new Error('usePopover must be used within a PopoverProvider');
   }
   return context;
 };

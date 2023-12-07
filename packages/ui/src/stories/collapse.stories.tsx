@@ -74,7 +74,7 @@ export const Default = () => {
               <ChevronDownIcon
                 className={cn(
                   'h-5 w-5 -rotate-90 transform transition-transform duration-300',
-                  open && '-rotate-0',
+                  open && '-rotate-0'
                 )}
               />
             </button>
@@ -174,15 +174,13 @@ export const WithCustomStyle = () => {
                 {item.avatar}
                 <div className="grid gap-1">
                   <h3 className="text-xl font-semibold">{item.title}</h3>
-                  <p className="text-sm font-light text-gray-500">
-                    6 unread messages
-                  </p>
+                  <p className="text-sm font-light">6 unread messages</p>
                 </div>
               </div>
               <div
                 className={cn(
                   'h-5 w-5 transform transition-transform duration-300',
-                  open && '-rotate-90',
+                  open && '-rotate-90'
                 )}
               >
                 {item.icon}

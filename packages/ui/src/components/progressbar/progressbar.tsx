@@ -2,27 +2,21 @@ import React from 'react';
 import { cn } from '../../lib/cn';
 import { Text } from '../typography';
 import { makeClassName } from '../../lib/make-class-name';
+import { roundedStyles } from '../../lib/rounded';
 
-const classes = {
+const progressBarStyles = {
   base: 'absolute top-0 bottom-0 left-0 h-full flex items-center justify-center',
   size: {
     sm: 'h-1.5',
-    DEFAULT: 'h-2',
+    md: 'h-2',
     lg: 'h-3',
     xl: 'h-4',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    DEFAULT: 'rounded-full',
-  },
+  rounded: roundedStyles,
   variant: {
     solid: {
-      base: 'text-gray-50',
+      base: 'text-background',
       color: {
-        DEFAULT: 'bg-gray-900',
         primary: 'bg-primary',
         secondary: 'bg-secondary',
         danger: 'bg-red',
@@ -34,7 +28,6 @@ const classes = {
     flat: {
       base: '',
       color: {
-        DEFAULT: 'bg-gray-400/50',
         primary: 'bg-primary/40 text-primary-dark',
         secondary: 'bg-secondary/40 text-secondary-dark',
         danger: 'bg-red/40 text-red-dark',
@@ -52,13 +45,13 @@ export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Pass label to show percentage inside bar */
   label?: string;
   /** Size of the compoents are: */
-  size?: keyof typeof classes.size;
+  size?: keyof typeof progressBarStyles.size;
   /** The rounded variants are: */
-  rounded?: keyof typeof classes.rounded;
+  rounded?: keyof typeof progressBarStyles.rounded;
   /** Pass color variations */
-  color?: keyof typeof classes.variant.flat.color;
+  color?: keyof typeof progressBarStyles.variant.flat.color;
   /** The variants of the components are: */
-  variant?: keyof typeof classes.variant;
+  variant?: keyof typeof progressBarStyles.variant;
   /** To style entire progressbar component */
   className?: string;
   /** To style bar of the component */
@@ -70,9 +63,9 @@ export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Progressbar({
   value,
   label = '',
-  size = 'DEFAULT',
-  rounded = 'DEFAULT',
-  color = 'DEFAULT',
+  size = 'md',
+  rounded = 'pill',
+  color = 'primary',
   variant = 'solid',
   className,
   barClassName,
@@ -83,10 +76,10 @@ export function Progressbar({
     <div
       className={cn(
         makeClassName(`progressbar-root`),
-        'relative w-full bg-gray-200',
-        classes.size[size],
-        classes.rounded[rounded],
-        className,
+        'relative w-full bg-muted',
+        progressBarStyles.size[size],
+        progressBarStyles.rounded[rounded],
+        className
       )}
     >
       <div
@@ -97,11 +90,11 @@ export function Progressbar({
         aria-label={label}
         className={cn(
           makeClassName(`progressbar`),
-          classes.base,
-          classes.variant[variant].base,
-          classes.variant[variant].color[color],
-          classes.rounded[rounded],
-          barClassName,
+          progressBarStyles.base,
+          progressBarStyles.variant[variant].base,
+          progressBarStyles.variant[variant].color[color],
+          progressBarStyles.rounded[rounded],
+          barClassName
         )}
         style={{ width: `${value}%` }}
         {...props}
@@ -111,7 +104,7 @@ export function Progressbar({
             className={cn(
               makeClassName(`progressbar-label`),
               'text-xs font-bold',
-              labelClassName,
+              labelClassName
             )}
           >
             {label}

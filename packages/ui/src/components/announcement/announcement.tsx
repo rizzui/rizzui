@@ -2,28 +2,22 @@ import React from 'react';
 import { cn } from '../../lib/cn';
 import { Badge } from '../badge';
 import { makeClassName } from '../../lib/make-class-name';
+import { roundedStyles } from '../../lib/rounded';
 
-const classes = {
-  base: 'flex items-center text-gray-600 w-fit',
+const announcementStyles = {
+  base: 'flex items-center w-fit',
   bgColor: {
-    white: 'bg-gray-50',
-    gray: 'bg-gray-200/60',
+    background: 'bg-background',
+    muted: 'bg-muted/60',
   },
   size: {
-    sm: 'text-xs pr-6 rtl:pl-6 pl-0.5 rtl:pr-0.5 py-0.5',
-    DEFAULT: 'text-sm pr-7 rtl:pl-7 pl-1 rtl:pr-1 py-1',
-    lg: 'text-base pr-8 rtl:pl-8 pl-1 rtl:pr-1 py-1',
-    xl: 'text-lg pr-9 rtl:pl-9 pl-1 rtl:pr-1 py-1',
+    sm: 'text-xs pe-6 ps-0.5 py-0.5',
+    md: 'text-sm pe-7 ps-1 py-1',
+    lg: 'text-base pe-8 ps-1 py-1',
+    xl: 'text-lg pe-9 ps-1 py-1',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    DEFAULT: 'rounded-full',
-  },
+  rounded: roundedStyles,
   color: {
-    DEFAULT: '!text-gray-950',
     primary: 'text-primary',
     secondary: 'text-secondary',
     danger: 'text-red',
@@ -35,13 +29,13 @@ const classes = {
 
 export interface AnnouncementProps {
   /** Size of the component */
-  size?: keyof typeof classes.size;
+  size?: keyof typeof announcementStyles.size;
   /** The rounded variants are: */
-  rounded?: keyof typeof classes.rounded;
+  rounded?: keyof typeof announcementStyles.rounded;
   /** Choose color variations */
-  color?: keyof typeof classes.color;
+  color?: keyof typeof announcementStyles.color;
   /** Background color of the component */
-  bgColor?: keyof typeof classes.bgColor;
+  bgColor?: keyof typeof announcementStyles.bgColor;
   /** Pass badge text to have badge at the beginning */
   badgeText?: string;
   /** Pass highlighted text at the beginning */
@@ -59,10 +53,10 @@ export interface AnnouncementProps {
 }
 
 export const Announcement = ({
-  size = 'DEFAULT',
-  rounded = 'DEFAULT',
-  color = 'DEFAULT',
-  bgColor = 'white',
+  size = 'md',
+  rounded = 'md',
+  color = 'primary',
+  bgColor = 'background',
   badgeText,
   highlightedText,
   children,
@@ -75,16 +69,16 @@ export const Announcement = ({
   <div
     className={cn(
       makeClassName(`announcement-root`),
-      classes.base,
-      classes.size[size],
-      classes.rounded[rounded],
-      classes.bgColor[bgColor],
-      className,
+      announcementStyles.base,
+      announcementStyles.size[size],
+      announcementStyles.rounded[rounded],
+      announcementStyles.bgColor[bgColor],
+      className
     )}
   >
     {startIcon}
 
-    {badgeText && (
+    {badgeText ? (
       <Badge
         size={size}
         rounded={rounded}
@@ -93,15 +87,15 @@ export const Announcement = ({
       >
         {badgeText}
       </Badge>
-    )}
+    ) : null}
 
     {highlightedText && (
       <span
         className={cn(
           makeClassName(`announcement-highlighted-text`),
           'ml-2.5 font-medium rtl:mr-2.5',
-          classes.color[color],
-          highlightedTextClassName,
+          announcementStyles.color[color],
+          highlightedTextClassName
         )}
       >
         {highlightedText}
@@ -111,7 +105,7 @@ export const Announcement = ({
     <span
       className={cn(
         makeClassName(`announcement-text`),
-        !highlightedText ? 'ml-2.5 rtl:mr-2.5' : 'ml-1 rtl:mr-1',
+        !highlightedText ? 'ml-2.5 rtl:mr-2.5' : 'ml-1 rtl:mr-1'
       )}
     >
       {children}

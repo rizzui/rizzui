@@ -6,7 +6,7 @@ import { XIcon } from '../../icons/x-mark';
 const classes = {
   size: {
     sm: 'h-3 w-3',
-    DEFAULT: 'h-4 w-4',
+    md: 'h-4 w-4',
     lg: 'h-5 w-5',
     xl: 'h-6 w-6',
   },

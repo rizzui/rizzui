@@ -14,13 +14,13 @@ var theme = {
       },
     },
     {
-      types: ["string", "inserted", "attr-name"],
+      types: ["string", "inserted", "attr-value"],
       style: {
         color: "#e2d775",
       },
     },
     {
-      types: ["number", "boolean", "attr-value"],
+      types: ["number", "boolean"],
       style: {
         color: "rgb(247, 140, 108)",
       },
@@ -33,21 +33,23 @@ var theme = {
         "function",
         "variable",
         "property-access",
+        "class-name",
+        "tag",
       ],
       style: {
         color: "#38bdf8",
       },
     },
     {
-      types: ["punctuation", "selector"],
+      types: ["punctuation", "selector", "attr-name"],
       style: {
         color: "rgb(199, 146, 234)",
       },
     },
     {
-      types: ["class-name", "deleted", "tag"],
+      types: ["deleted"],
       style: {
-        color: "#e06c75",
+        color: "#db2777",
       },
     },
     {
@@ -59,7 +61,7 @@ var theme = {
     {
       types: ["keyword", "plain", "rule"],
       style: {
-        color: "#c678dd",
+        color: "rgb(199, 146, 234)",
       },
     },
     {

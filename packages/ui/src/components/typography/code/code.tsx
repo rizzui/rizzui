@@ -2,8 +2,8 @@ import React from 'react';
 import { cn } from '../../../lib/cn';
 import { makeClassName } from '../../../lib/make-class-name';
 
-const classes = {
-  pre: 'border ring-[0.5px] ring-gray-200 border-gray-200 py-3 px-4 rounded-lg bg-gray-100/50',
+const codeStyles = {
+  pre: 'border ring-[0.5px] ring-muted border-muted py-3 px-4 rounded-lg bg-muted/70/50',
 };
 
 export type CodeProps = {
@@ -17,10 +17,10 @@ export function Code({
 }: React.PropsWithChildren<CodeProps>) {
   return (
     <pre
-      className={cn(makeClassName(`code`), classes.pre, className)}
+      className={cn(makeClassName(`code`), codeStyles.pre, className)}
       {...props}
     >
-      <code className="p-0 bg-transparent border-none shadow-none">
+      <code className="border-none bg-transparent p-0 shadow-none">
         {children}
       </code>
     </pre>

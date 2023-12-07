@@ -3,7 +3,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HeroBlock from "@site/src/components/home/hero-block";
 import FeatureBlock from "@site/src/components/home/feature-block";
-import ComponentBlock from "../components/home/component-block";
+import ComponentBlock from "@site/src/components/home/component-block";
 import Footer from "@site/src/components/home/footer";
 
 export default function Home(): React.JSX.Element {

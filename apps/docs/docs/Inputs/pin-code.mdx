@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 11
 ---
 
 import { PinCode } from "rizzui";
@@ -15,18 +15,12 @@ import { PinCode } from "rizzui";
 
 <div className="mb-20 md:mb-28" />
 
-## Types
+## Default
 
-You can change types of input of **PinCode** using **type** property.
+The default style of **PinCode** component.
 
-<Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <PinCode
-    type="number"
-    defaultValue={1234}
-    readOnly
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode type="text" setValue={function noRefCheck() {}} />
+<Paper>
+  <PinCode />
 </Paper>
 
 ```tsx
@@ -35,8 +29,7 @@ import { PinCode } from "rizzui";
 export default function App() {
   return (
     <>
-      <PinCode type="number" setValue={function noRefCheck() {}} />
-      <PinCode type="text" setValue={function noRefCheck() {}} />
+      <PinCode />
     </>
   );
 }
@@ -48,10 +41,9 @@ export default function App() {
 
 We have three diffrient style. You can select any of them using [**variant**](#pincode-variants) property.
 
-<Paper className="flex-row flex-wrap justify-between gap-4">
-  <PinCode variant="flat" setValue={function noRefCheck() {}} />
-  <PinCode variant="outline" setValue={function noRefCheck() {}} />
-  <PinCode variant="active" setValue={function noRefCheck() {}} />
+<Paper className="flex-row flex-wrap gap-4">
+  <PinCode variant="outline" />
+  <PinCode variant="flat" />
 </Paper>
 
 ```tsx
@@ -60,9 +52,8 @@ import { PinCode } from "rizzui";
 export default function App() {
   return (
     <>
-      <PinCode variant="flat" setValue={function noRefCheck() {}} />
-      <PinCode variant="outline" setValue={function noRefCheck() {}} />
-      <PinCode variant="active" setValue={function noRefCheck() {}} />
+      <PinCode variant="flat" />
+      <PinCode variant="outline" />
     </>
   );
 }
@@ -75,10 +66,10 @@ export default function App() {
 You can set diffrient sizes of the **PinCode** using [**size**](#pincode-sizes) property.
 
 <Paper className="gap-6 justify-start items-start">
-  <PinCode size="sm" setValue={function noRefCheck() {}} />
-  <PinCode color="primary" setValue={function noRefCheck() {}} />
-  <PinCode size="lg" setValue={function noRefCheck() {}} />
-  <PinCode size="xl" setValue={function noRefCheck() {}} />
+  <PinCode size="sm" />
+  <PinCode />
+  <PinCode size="lg" />
+  <PinCode size="xl" />
 </Paper>
 
 ```tsx
@@ -87,24 +78,10 @@ import { PinCode } from "rizzui";
 export default function App() {
   return (
     <>
-      <PinCode size="sm" variant="flat" setValue={function noRefCheck() {}} />
-      <PinCode
-        color="primary"
-        variant="flat"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        size="lg"
-        variant="flat"
-        color="secondary"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        size="xl"
-        variant="flat"
-        color="info"
-        setValue={function noRefCheck() {}}
-      />
+      <PinCode size="sm" />
+      <PinCode />
+      <PinCode size="lg" />
+      <PinCode size="xl" />
     </>
   );
 }
@@ -117,11 +94,11 @@ export default function App() {
 You can change border radius of the **PinCode** using [**rounded**](#pincode-rounded) property.
 
 <Paper className="flex-row flex-wrap justify-around items-start gap-8">
-  <PinCode rounded="none" setValue={function noRefCheck() {}} />
-  <PinCode rounded="sm" setValue={function noRefCheck() {}} />
-  <PinCode setValue={function noRefCheck() {}} />
-  <PinCode rounded="lg" setValue={function noRefCheck() {}} />
-  <PinCode rounded="full" setValue={function noRefCheck() {}} />
+  <PinCode rounded="none" />
+  <PinCode rounded="sm" />
+  <PinCode />
+  <PinCode rounded="lg" />
+  <PinCode rounded="full" />
 </Paper>
 
 ```tsx
@@ -130,89 +107,11 @@ import { PinCode } from "rizzui";
 export default function App() {
   return (
     <>
-      <PinCode
-        variant="active"
-        rounded="none"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="active"
-        rounded="sm"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode variant="active" setValue={function noRefCheck() {}} />
-      <PinCode
-        variant="active"
-        rounded="lg"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="active"
-        rounded="full"
-        setValue={function noRefCheck() {}}
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Colors
-
-You can change color of our **PinCode** using [**color**](#pincode-colors) property.
-
-<Paper className="flex-row flex-wrap justify-between items-start gap-8">
-  <PinCode variant="flat" setValue={function noRefCheck() {}} />
-  <PinCode variant="flat" color="primary" setValue={function noRefCheck() {}} />
-  <PinCode
-    variant="flat"
-    color="secondary"
-    setValue={function noRefCheck() {}}
-  />
-  <PinCode variant="flat" color="danger" setValue={function noRefCheck() {}} />
-  <PinCode variant="flat" color="info" setValue={function noRefCheck() {}} />
-  <PinCode variant="flat" color="success" setValue={function noRefCheck() {}} />
-  <PinCode variant="flat" color="warning" setValue={function noRefCheck() {}} />
-</Paper>
-
-```tsx
-import { PinCode } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <PinCode variant="flat" setValue={function noRefCheck() {}} />
-      <PinCode
-        variant="flat"
-        color="primary"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="secondary"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="danger"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="info"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="success"
-        setValue={function noRefCheck() {}}
-      />
-      <PinCode
-        variant="flat"
-        color="warning"
-        setValue={function noRefCheck() {}}
-      />
+      <PinCode rounded="none" />
+      <PinCode rounded="sm" />
+      <PinCode />
+      <PinCode rounded="lg" />
+      <PinCode rounded="full" />
     </>
   );
 }
@@ -225,14 +124,14 @@ export default function App() {
 You can hide pin code value using **mask** property.
 
 <Paper>
-  <PinCode mask={true} setValue={function noRefCheck() {}} />
+  <PinCode mask={true} />
 </Paper>
 
 ```tsx
 import { PinCode } from "rizzui";
 
 export default function App() {
-  return <PinCode mask={true} setValue={function noRefCheck() {}} />;
+  return <PinCode mask={true} />;
 }
 ```
 
@@ -243,14 +142,14 @@ export default function App() {
 You can set custom placeholder using **placeholder** property.
 
 <Paper>
-  <PinCode placeholder="😀" setValue={function noRefCheck() {}} />
+  <PinCode placeholder="😀" />
 </Paper>
 
 ```tsx
 import { PinCode } from "rizzui";
 
 export default function App() {
-  return <PinCode placeholder="😀" setValue={function noRefCheck() {}} />;
+  return <PinCode placeholder="😀" />;
 }
 ```
 
@@ -261,8 +160,8 @@ export default function App() {
 You can set custom length of the **PinCode** using **length** property.
 
 <Paper className="justify-around flex-row gap-8 flex-wrap">
-  <PinCode length={4} setValue={function noRefCheck() {}} />
-  <PinCode length={5} setValue={function noRefCheck() {}} />
+  <PinCode length={4} />
+  <PinCode length={5} />
 </Paper>
 
 ```tsx
@@ -271,8 +170,8 @@ import { PinCode } from "rizzui";
 export default function App() {
   return (
     <>
-      <PinCode length={4} setValue={function noRefCheck() {}} />
-      <PinCode length={5} setValue={function noRefCheck() {}} />
+      <PinCode length={4} />
+      <PinCode length={5} />
     </>
   );
 }
@@ -285,14 +184,14 @@ export default function App() {
 You can disable the **PinCode** using **disabled** property.
 
 <Paper>
-  <PinCode disabled setValue={function noRefCheck() {}} />
+  <PinCode disabled />
 </Paper>
 
 ```tsx
 import { PinCode } from "rizzui";
 
 export default function App() {
-  return <PinCode disabled setValue={function noRefCheck() {}} />;
+  return <PinCode disabled />;
 }
 ```
 
@@ -303,24 +202,14 @@ export default function App() {
 You can show the validation error message using **error** property.
 
 <Paper>
-  <PinCode
-    center={false}
-    error="This field is required"
-    setValue={function noRefCheck() {}}
-  />
+  <PinCode center={false} error="This field is required" />
 </Paper>
 
 ```tsx
 import { PinCode } from "rizzui";
 
 export default function App() {
-  return (
-    <PinCode
-      center={false}
-      error="This field is required"
-      setValue={function noRefCheck() {}}
-    />
-  );
+  return <PinCode center={false} error="This field is required" />;
 }
 ```
 
@@ -334,25 +223,25 @@ export default function App() {
 
 ### PinCode Props
 
-Here is the API documentation of the Pin Code component. And the rest of the props of PinCode are the same as the original html input field. You can use props like **disabled**, **placeholder**, **defaultValue** etc.
+Here is the API documentation of the Pin Code component.
 
 <div className="overflow-x-auto">
 
 |     Props      |                 Type                 |                                 Description                                 |   Default   |
 | :------------: | :----------------------------------: | :-------------------------------------------------------------------------: | :---------: |
-|    setValue    | [PincodeSetvalue](#pincode-setvalue) |                Pass setState to get back the pin code value                 |    \_ \_    |
+|    setValue    | [PincodeSetvalue](#pincode-setvalue) |                Pass setState to get back the pin code value                 |    \_\_     |
 |      type      |           `number` `text`            |            This Pin Code component only support these two types             |  `"text"`   |
 |      mask      |              `boolean`               |                  Mask and unmask to hide and show pin code                  |   `false`   |
 |     length     |               `number`               |                             Set pin code length                             |     `4`     |
 |     center     |              `boolean`               |                      Make pin code horizontally center                      |   `true`    |
 |  placeholder   |               `string`               |                            Set placeholder text                             |    `"o"`    |
 |    variant     | [PincodeVariants](#pincode-variants) |                     The variants of the component are:                      | `"outline"` |
-|      size      |    [PincodeSizes](#pincode-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. | `"DEFAULT"` |
-|    rounded     |  [PincodeRounded](#pincode-rounded)  |                          The rounded variants are:                          | `"outlne"`  |
-|     color      |   [PincodeColors](#pincode-colors)   |                             Change input color                              | `"DEFAULT"` |
-|     error      |               `string`               |                     Show error message using this prop                      |    \_ \_    |
-| inputClassName |               `string`               |             Add custom classes for the input filed extra style              |    \_ \_    |
-| errorClassName |               `string`               |          This prop allows you to customize the error message style          |    \_ \_    |
+|      size      |    [PincodeSizes](#pincode-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. |   `"md"`    |
+|    rounded     |  [PincodeRounded](#pincode-rounded)  |                          The rounded variants are:                          |   `"md"`    |
+|     error      |               `string`               |                     Show error message using this prop                      |    \_\_     |
+| inputClassName |               `string`               |             Add custom classes for the input filed extra style              |    \_\_     |
+| errorClassName |               `string`               |          This prop allows you to customize the error message style          |    \_\_     |
+|   className    |               `string`               |               Add custom classes to the root of the component               |    \_\_     |
 
 </div>
 
@@ -369,7 +258,7 @@ type PincodeSetvalue = Dispatch<SetStateAction<string | number | undefined>>;
 ### Pincode Variants
 
 ```tsx
-type PincodeVariants = "flat" | "outline" | "active";
+type PincodeVariants = "outline" | "flat";
 ```
 
 <div className="mb-10" />
@@ -377,7 +266,7 @@ type PincodeVariants = "flat" | "outline" | "active";
 ### Pincode Sizes
 
 ```tsx
-type PincodeSizes = "sm" | "DEFAULT" | "lg" | "xl";
+type PincodeSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -385,20 +274,5 @@ type PincodeSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ### Pincode Rounded
 
 ```tsx
-type PincodeRounded = "sm" | "DEFAULT" | "lg" | "none" | "full";
-```
-
-<div className="mb-10" />
-
-### Pincode Colors
-
-```ts
-type PincodeColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+type PincodeRounded = "sm" | "md" | "lg" | "none" | "full";
 ```

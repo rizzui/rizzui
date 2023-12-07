@@ -8,14 +8,16 @@ export type PopoverProps = {} & PopoverProviderProps;
 export function Popover({
   isOpen,
   setIsOpen,
-  gap,
-  animation,
-  placement,
-  enableOverlay,
-  showArrow,
-  size,
-  shadow,
-  rounded,
+  gap = 8,
+  animation = 'zoomIn',
+  placement = 'bottom',
+  enableOverlay = false,
+  showArrow = true,
+  size = 'md',
+  shadow = 'md',
+  rounded = 'md',
+  arrowClassName,
+  overlayClassName,
   children,
 }: React.PropsWithChildren<PopoverProps>) {
   return (
@@ -31,6 +33,8 @@ export function Popover({
         size,
         shadow,
         rounded,
+        arrowClassName,
+        overlayClassName,
       }}
     >
       <>

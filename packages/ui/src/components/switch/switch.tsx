@@ -3,127 +3,60 @@ import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
+import { labelStyles } from '../../lib/label-size';
+import { roundedStyles } from '../../lib/rounded';
 
-const labelClasses = {
-  size: {
-    sm: 'text-xs',
-    DEFAULT: 'text-sm',
-    lg: 'text-sm',
-    xl: 'text-base',
-  },
+const switchLabelStyles = {
+  weight: labelStyles.weight,
+  size: labelStyles.size,
   margin: {
     left: {
-      sm: 'mr-1.5 rtl:mr-0 rtl:ml-1.5',
-      DEFAULT: 'mr-2 rtl:mr-0 rtl:ml-2',
-      lg: 'mr-2.5 rtl:mr-0 rtl:ml-2.5',
-      xl: 'mr-3 rtl:mr-0 rtl:ml-3',
+      sm: 'me-1.5',
+      md: 'me-2',
+      lg: 'me-2.5',
+      xl: 'me-3',
     },
     right: {
-      sm: 'ml-1.5 rtl:ml-0 rtl:mr-1.5',
-      DEFAULT: 'ml-2 rtl:ml-0 rtl:mr-2',
-      lg: 'ml-2.5 rtl:ml-0 rtl:mr-2.5',
-      xl: 'ml-3 rtl:ml-0 rtl:mr-3',
+      sm: 'ms-1.5',
+      md: 'ms-2',
+      lg: 'ms-2.5',
+      xl: 'ms-3',
     },
   },
 };
 
-const switchClasses = {
-  base: 'flex items-center cursor-pointer transition duration-200 ease-in-out ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-gray-900/20 ring-transparent',
+const switchStyles = {
+  base: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-muted ring-transparent ring-offset-background',
+  active: 'peer-checked/switch:bg-primary peer-checked/switch:border-primary',
   disabled:
-    'cursor-not-allowed peer-disabled/switch:border-gray-200 peer-disabled/switch:bg-gray-100',
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    pill: 'rounded-full',
-  },
+    'cursor-not-allowed peer-disabled/switch:border-muted peer-disabled/switch:bg-muted/70',
+  rounded: roundedStyles,
   size: {
     sm: 'w-8 h-5',
-    DEFAULT: 'w-10 h-6',
+    md: 'w-10 h-6',
     lg: 'w-12 h-7',
     xl: 'w-14 h-8',
   },
+  icon: {
+    size: {
+      sm: 'h-3 w-3',
+      md: 'h-3.5 w-3.5',
+      lg: 'w-4 h-4',
+      xl: 'w-5 h-5',
+    },
+  },
   variant: {
-    active: {
-      base: 'border',
-      color: {
-        DEFAULT: 'border-gray-900',
-        primary: 'border-primary',
-        secondary: 'border-secondary',
-        danger: 'border-red',
-        info: 'border-blue',
-        success: 'border-green',
-        warning: 'border-orange',
-      },
-    },
-    flat: {
-      base: 'border border-transparent',
-      color: {
-        DEFAULT: 'bg-gray-200 group-hover/switch:bg-gray-400/40',
-        primary: 'bg-primary/40 group-hover/switch:bg-primary/50',
-        secondary: 'bg-secondary/40 group-hover/switch:bg-secondary/50',
-        danger: 'bg-red/40 group-hover/switch:bg-red/50',
-        info: 'bg-blue/40 group-hover/switch:bg-blue/50',
-        success: 'bg-green/50 group-hover/switch:bg-green/70',
-        warning: 'bg-orange/50 group-hover/switch:bg-orange/60',
-      },
-    },
-    outline: {
-      base: 'border border-gray-300',
-      color: {
-        DEFAULT: 'group-hover/switch:border-gray-900',
-        primary: 'group-hover/switch:border-primary',
-        secondary: 'group-hover/switch:border-secondary',
-        danger: 'group-hover/switch:border-red',
-        info: 'group-hover/switch:border-blue',
-        success: 'group-hover/switch:border-green',
-        warning: 'group-hover/switch:border-orange',
-      },
-    },
+    flat: 'border border-transparent bg-muted/70 group-hover/switch:bg-muted',
+    outline:
+      'border border-muted ring-[0.6px] ring-muted group-hover/switch:border-primary',
   },
 };
 
-// only for outline inactive switch knob
-const outlineInactiveSwitchKnob = {
-  disabled:
-    '[&:hover_.rizzui-switch-knob]:!bg-gray-300 [&:hover_.rizzui-switch-knob]:!text-gray-400',
-  color: {
-    DEFAULT:
-      '[&:hover_.rizzui-switch-knob]:bg-gray-900 [&:hover_.rizzui-switch-knob]:text-white',
-    primary:
-      '[&:hover_.rizzui-switch-knob]:bg-primary [&:hover_.rizzui-switch-knob]:text-white',
-    secondary:
-      '[&:hover_.rizzui-switch-knob]:bg-secondary [&:hover_.rizzui-switch-knob]:text-white',
-    danger:
-      '[&:hover_.rizzui-switch-knob]:bg-red [&:hover_.rizzui-switch-knob]:text-white',
-    info: '[&:hover_.rizzui-switch-knob]:bg-blue [&:hover_.rizzui-switch-knob]:text-white',
-    success:
-      '[&:hover_.rizzui-switch-knob]:bg-green [&:hover_.rizzui-switch-knob]:text-white',
-    warning:
-      '[&:hover_.rizzui-switch-knob]:bg-orange [&:hover_.rizzui-switch-knob]:text-white',
-  },
-};
-
-// apply when switch on
-const switchActiveClasses = {
-  color: {
-    DEFAULT:
-      'peer-checked/switch:bg-gray-900 peer-checked/switch:border-gray-900',
-    primary:
-      'peer-checked/switch:bg-primary peer-checked/switch:border-primary',
-    secondary:
-      'peer-checked/switch:bg-secondary peer-checked/switch:border-secondary',
-    danger: 'peer-checked/switch:bg-red peer-checked/switch:border-red',
-    info: 'peer-checked/switch:bg-blue peer-checked/switch:border-blue',
-    success: 'peer-checked/switch:bg-green peer-checked/switch:border-green',
-    warning: 'peer-checked/switch:bg-orange peer-checked/switch:border-orange',
-  },
-};
-
-const handleClasses = {
+const switchKnobStyles = {
   base: 'flex justify-center items-center transform ring-0 transition duration-200 ease-in-out',
-  disabled: 'peer-disabled/switch:bg-gray-300 peer-disabled/switch:shadow-none',
+  disabled: 'peer-disabled/switch:bg-muted peer-disabled/switch:shadow-none',
+  outlineInactiveDisabled:
+    '[&:hover_.rizzui-switch-knob]:!bg-muted [&:hover_.rizzui-switch-knob]:!text-muted-foreground',
   rounded: {
     none: 'rounded-none',
     sm: 'rounded-sm',
@@ -133,37 +66,21 @@ const handleClasses = {
   },
   size: {
     sm: 'w-3.5 h-3.5',
-    DEFAULT: 'w-[1.13rem] h-[1.13rem]',
+    md: 'w-[1.13rem] h-[1.13rem]',
     lg: 'w-[1.38rem] h-[1.38rem]',
     xl: 'w-[1.63rem] h-[1.63rem]',
   },
-  color: {
-    DEFAULT: 'bg-gray-900',
-    primary: 'bg-primary',
-    secondary: 'bg-secondary',
-    danger: 'bg-red',
-    info: 'bg-blue',
-    success: 'bg-green',
-    warning: 'bg-orange',
-  },
+  color: 'bg-primary',
+  outlineInactiveColor:
+    '[&:hover_.rizzui-switch-knob]:bg-primary [&:hover_.rizzui-switch-knob]:text-primary-foreground',
   translate: {
     active: {
       sm: '[&:checked+span>.rizzui-switch-knob]:translate-x-[.88rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[.88rem]',
-      DEFAULT:
-        '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.14rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.14rem]',
+      md: '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.14rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.14rem]',
       lg: '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.36rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.36rem]',
       xl: '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.6rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.6rem]',
     },
     inactive: 'translate-x-[2.5px] rtl:-translate-x-[2.5px]',
-  },
-};
-
-const iconClasses = {
-  size: {
-    sm: 'h-3 w-3',
-    DEFAULT: 'h-3.5 w-3.5',
-    lg: 'w-4 h-4',
-    xl: 'w-5 h-5',
   },
 };
 
@@ -172,17 +89,17 @@ export interface SwitchProps
   /** Set field label */
   label?: React.ReactNode;
   /** Change label direction */
-  labelPlacement?: keyof typeof labelClasses.margin;
+  labelPlacement?: keyof typeof switchLabelStyles.margin;
+  /** Set font weight for label */
+  labelWeight?: keyof typeof labelStyles.weight;
   /** The rounded variants are: */
-  rounded?: keyof typeof switchClasses.rounded;
+  rounded?: keyof typeof switchStyles.rounded;
   /** The size of the component. */
-  size?: keyof typeof labelClasses.size;
+  size?: keyof typeof switchLabelStyles.size;
   /** Whether the switch is disabled */
   disabled?: boolean;
   /** The variants of the component are: */
-  variant?: keyof typeof switchClasses.variant;
-  /** Change Switch color */
-  color?: keyof (typeof switchClasses.variant)['flat']['color'];
+  variant?: keyof typeof switchStyles.variant;
   /** Set custom icon when the switch is on */
   onIcon?: React.ReactNode;
   /** Set custom icon when the switch is off */
@@ -191,34 +108,29 @@ export interface SwitchProps
   helperText?: React.ReactNode;
   /** Show error message using this prop */
   error?: string;
-  /** Add custom classes of component wrapper for extra style */
-  className?: string;
   /** Add custom classes for switch label */
   labelClassName?: string;
   /** Add custom classes of switch wrapper for extra style */
   switchClassName?: string;
   /** Add custom classes of switch handler for extra style */
-  handlerClassName?: string;
+  switchKnobClassName?: string;
   /** This prop allows you to customize the error message style */
   errorClassName?: string;
   /** This prop allows you to customize the helper message style */
   helperClassName?: string;
+  /** Add custom classes to the root of the component */
+  className?: string;
 }
 
-/**
- * A basic widget for getting the user input. Here is the API documentation of the Switch component.
- * And the rest of the props are the same as the original html checkbox input field.
- * You can use props like `value`, `disabled`, `checked`, `onChange`, `onFocus`, `onBlur` etc.
- */
 export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
   (
     {
       label,
       labelPlacement = 'right',
+      labelWeight = 'medium',
       rounded = 'pill',
-      size = 'DEFAULT',
+      size = 'md',
       variant = 'flat',
-      color = 'DEFAULT',
       disabled = false,
       onIcon,
       offIcon,
@@ -227,14 +139,13 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
       className,
       labelClassName,
       switchClassName,
-      handlerClassName,
+      switchKnobClassName,
       errorClassName,
       helperClassName,
       ...props
     },
-    ref,
+    ref
   ) => {
-    const variantStyle = switchClasses.variant[variant];
     return (
       <div className={cn('rizzui-switch', className)}>
         <label
@@ -242,9 +153,9 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             'group/switch my-2 inline-flex items-center',
             labelPlacement === 'left' && 'flex-row-reverse',
             variant === 'outline' && [
-              outlineInactiveSwitchKnob.color[color],
-              disabled && outlineInactiveSwitchKnob.disabled,
-            ],
+              switchKnobStyles.outlineInactiveColor,
+              disabled && switchKnobStyles.outlineInactiveDisabled,
+            ]
           )}
         >
           <input
@@ -252,38 +163,39 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             type="checkbox"
             disabled={disabled}
             className={cn(
-              'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span>.rizzui-switch-knob>.rizzui-switch-off-icon]:hidden [&:checked:enabled~span>.rizzui-switch-knob>.rizzui-switch-on-icon]:opacity-100 [&:checked:enabled~span>.rizzui-switch-knob]:text-gray-900',
-              color === 'DEFAULT'
-                ? '[&:checked:enabled~span>.rizzui-switch-knob]:bg-gray-50'
-                : '[&:checked:enabled~span>.rizzui-switch-knob]:bg-white',
-              handleClasses.translate.active[size],
+              'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span_.rizzui-switch-off-icon]:hidden [&:checked:enabled~span_.rizzui-switch-on-icon]:opacity-100',
+              '[&:checked:enabled~span>.rizzui-switch-knob]:bg-white [&:checked:enabled~span>.rizzui-switch-knob]:text-black',
+              '[&:checked:enabled~span>.rizzui-switch-knob]:dark:bg-black [&:checked:enabled~span>.rizzui-switch-knob]:dark:text-white',
+              switchKnobStyles.translate.active[size]
             )}
             {...props}
           />
+
           <span
             className={cn(
-              switchClasses.base,
-              switchClasses.size[size],
-              switchClasses.rounded[rounded],
-              variantStyle.base,
-              variantStyle.color[color],
-              switchActiveClasses.color[color],
-              disabled && switchClasses.disabled,
-              switchClassName,
+              switchStyles.base,
+              switchStyles.size[size],
+              switchStyles.rounded[rounded],
+              switchStyles.variant[variant],
+              switchStyles.active,
+              disabled && switchStyles.disabled,
+              switchClassName
             )}
           >
             <span
               className={cn(
                 'rizzui-switch-knob relative',
-                handleClasses.base,
-                handleClasses.size[size],
-                handleClasses.rounded[rounded],
-                handleClasses.color[color],
-                handleClasses.translate.inactive,
-                variant === 'active' && 'text-white',
-                variant === 'flat' && 'bg-white text-gray-900 shadow-sm',
-                variant === 'outline' && 'bg-gray-300 text-gray-900',
-                handlerClassName,
+                switchKnobStyles.base,
+                switchKnobStyles.size[size],
+                switchKnobStyles.rounded[rounded],
+                switchKnobStyles.color,
+                switchKnobStyles.translate.inactive,
+                variant === 'flat' && [
+                  'bg-white text-foreground shadow-sm dark:text-primary-foreground',
+                  disabled && 'dark:bg-muted-foreground',
+                ],
+                variant === 'outline' && 'bg-muted text-foreground',
+                switchKnobClassName
               )}
             >
               <span className="rizzui-switch-off-icon inline-flex items-center">
@@ -296,7 +208,7 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
                     fill="currentColor"
-                    className={cn(iconClasses.size[size])}
+                    className={cn(switchStyles.icon.size[size])}
                   >
                     <path
                       fillRule="evenodd"
@@ -309,42 +221,50 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
             </span>
           </span>
 
-          {label && (
+          {label ? (
             <span
               className={cn(
                 makeClassName(`switch-label`),
-                labelClasses.size[size],
-                labelClasses.margin[labelPlacement][size],
-                disabled ? 'cursor-not-allowed' : 'cursor-pointer',
+                switchLabelStyles.size[size],
+                switchLabelStyles.weight[labelWeight],
+                switchLabelStyles.margin[labelPlacement][size],
+                disabled
+                  ? 'cursor-not-allowed text-muted-foreground'
+                  : 'cursor-pointer',
                 labelPlacement === 'right' && 'order-last',
-                labelClassName,
+                'mb-0',
+                labelClassName
               )}
             >
               {label}
             </span>
-          )}
+          ) : null}
         </label>
 
-        {!error && helperText && (
+        {!error && helperText ? (
           <FieldHelperText
             tag="div"
             size={size}
-            className={cn(makeClassName(`switch-helper-text`), helperClassName)}
+            className={cn(
+              makeClassName(`switch-helper-text`),
+              disabled && 'text-muted-foreground',
+              helperClassName
+            )}
           >
             {helperText}
           </FieldHelperText>
-        )}
+        ) : null}
 
-        {error && (
+        {error ? (
           <FieldError
             size={size}
             error={error}
             className={cn(makeClassName(`switch-error-text`), errorClassName)}
           />
-        )}
+        ) : null}
       </div>
     );
-  },
+  }
 );
 
 Switch.displayName = 'Switch';

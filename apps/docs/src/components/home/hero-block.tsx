@@ -5,7 +5,7 @@ import { Button, Title, Text, cn } from "rizzui";
 const data = {
   title: `A Modern & Minimal React UI Library
   <br className="hidden md:inline-block" /> built with TailwindCSS`,
-  description: `designed to provide you with a simple and intuitive set of UI
+  description: `Designed to provide you with a simple and intuitive set of UI
   components that are easy to use, customize and integrate into your
   React application. We have carefully crafted each component to
   ensure that they are responsive, accessible and consistent across
@@ -35,7 +35,7 @@ export default function HeroBlock() {
               "text-3xl sm:text-4xl xl:text-5xl 2xl:text-[54px] leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-10 font-semibold"
             )}
           />
-          <Text className="text-[15px] md:text-base lg:text-lg leading-[1.9] md:leading-[1.9] lg:leading-[1.9] max-w-5xl mx-auto mb-8 md:mb-12 text-gray-600">
+          <Text className="text-[15px] md:text-base lg:text-lg leading-[1.9] md:leading-[1.9] lg:leading-[1.9] max-w-5xl mx-auto mb-8 md:mb-12 text-gray-600 dark:text-gray-500">
             {data.description}
           </Text>
 
@@ -74,7 +74,7 @@ export default function HeroBlock() {
       </div>
 
       <BlurBGPattern />
-      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.4]" />
+      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.4] dark:opacity-[0.03]" />
     </section>
   );
 }

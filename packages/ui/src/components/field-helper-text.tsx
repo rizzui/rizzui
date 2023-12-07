@@ -1,10 +1,10 @@
 import React from 'react';
 import { cn } from '../lib/cn';
 
-const helperTextClasses = {
+const helperTextStyles = {
   size: {
     sm: 'text-[11px] mt-0.5',
-    DEFAULT: 'text-[13px] mt-0.5',
+    md: 'text-[13px] mt-0.5',
     lg: 'text-[13px] mt-1',
     xl: 'text-sm mt-1',
   },
@@ -13,7 +13,7 @@ const helperTextClasses = {
 export interface FieldHelperTextProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   tag?: 'div' | 'span';
-  size?: keyof typeof helperTextClasses.size;
+  size?: keyof typeof helperTextStyles.size;
   className?: string;
 }
 
@@ -27,7 +27,7 @@ export function FieldHelperText({
   return (
     <Component
       role="alert"
-      className={cn(size && helperTextClasses.size[size], className)}
+      className={cn(size && helperTextStyles.size[size], className)}
     >
       {children}
     </Component>

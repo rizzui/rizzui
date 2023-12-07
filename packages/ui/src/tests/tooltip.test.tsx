@@ -14,7 +14,7 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
 
 test('Renders tooltip component with button and content', async () => {
   render(
-    <Tooltip content={() => "I'm your tooltip"}>
+    <Tooltip content={"I'm your tooltip"}>
       <Button>Default</Button>
     </Tooltip>,
   );
@@ -39,7 +39,7 @@ test('Renders tooltip component with button and content', async () => {
 
 test('No arrow when show arrow is false', async () => {
   render(
-    <Tooltip content={() => "I'm your tooltip"} showArrow={false}>
+    <Tooltip content={"I'm your tooltip"} showArrow={false}>
       <Button>Default</Button>
     </Tooltip>,
   );

@@ -41,7 +41,7 @@ export const Default = () => {
 export const Sizes = () => {
   const [drawerSate, setDrawerState] = React.useState<DrawerPropsType>({
     isOpen: false,
-    size: 'DEFAULT',
+    size: 'md',
   });
   return (
     <>
@@ -64,7 +64,7 @@ export const Sizes = () => {
             setDrawerState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: 'DEFAULT',
+              size: 'md',
             }))
           }
         >
@@ -268,7 +268,6 @@ export const WithShoppingCart = () => {
             <ActionIcon
               size="sm"
               variant="outline"
-              rounded="DEFAULT"
               onClick={() => setDrawerState(false)}
             >
               <XIcon className="h-auto w-5" strokeWidth={1.5} />
@@ -279,7 +278,7 @@ export const WithShoppingCart = () => {
             <Empty
               image={<EmptyProductBoxIcon />}
               text="No Product Available"
-              textClassName="mt-1 text-gray-500"
+              textClassName="mt-1"
             />
           </div>
           {/* End of drawer body */}

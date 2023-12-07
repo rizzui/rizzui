@@ -1,11 +1,11 @@
 import React from 'react';
 import { cn } from '../lib/cn';
 
-const fieldErrorClasses = {
+const errorStyles = {
   base: 'text-red',
   size: {
     sm: 'text-[10px] mt-0.5',
-    DEFAULT: 'text-xs mt-0.5',
+    md: 'text-xs mt-0.5',
     lg: 'text-xs mt-1',
     xl: 'text-sm mt-1',
   },
@@ -15,7 +15,7 @@ interface FieldErrorProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   tag?: 'div' | 'span';
   error: string | null | undefined;
-  size?: keyof typeof fieldErrorClasses.size;
+  size?: keyof typeof errorStyles.size;
   className?: string;
 }
 
@@ -30,9 +30,9 @@ export function FieldError({
     <Component
       role="alert"
       className={cn(
-        fieldErrorClasses.base,
-        size && fieldErrorClasses.size[size],
-        className,
+        errorStyles.base,
+        size && errorStyles.size[size],
+        className
       )}
     >
       {error}

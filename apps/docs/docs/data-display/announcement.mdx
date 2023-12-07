@@ -71,7 +71,7 @@ You can change the size of **Announcement** using [**size**](#announcement-sizes
   <Announcement
     className="flex-wrap"
     size="lg"
-    badgeText="Large abc"
+    badgeText="Large"
     highlightedText="25% discount"
   >
     on our new product
@@ -110,7 +110,7 @@ export default function App() {
       <Announcement
         className="flex-wrap"
         size="lg"
-        badgeText="Large abc"
+        badgeText="Large"
         highlightedText="25% discount"
       >
         on our new product
@@ -235,13 +235,6 @@ You can change the color of **Announcement** using [**color**](#announcement-col
 <Paper className="grid grid-cols-1 gap-4">
   <Announcement
     className="flex-wrap"
-    badgeText="Default"
-    highlightedText="25% discount"
-  >
-    on our new product
-  </Announcement>
-  <Announcement
-    className="flex-wrap"
     color="primary"
     badgeText="Primary"
     highlightedText="25% discount"
@@ -296,13 +289,6 @@ import { Announcement } from "rizzui";
 export default function App() {
   return (
     <>
-      <Announcement
-        className="flex-wrap"
-        badgeText="Default"
-        highlightedText="25% discount"
-      >
-        on our new product
-      </Announcement>
       <Announcement
         className="flex-wrap"
         color="primary"
@@ -367,7 +353,6 @@ You can change background color of **Announcement** using **bgColor** property.
     className="flex-wrap"
     badgeText="White Background"
     highlightedText="25% discount"
-    bgColor="white"
   >
     on our every product
   </Announcement>
@@ -375,7 +360,7 @@ You can change background color of **Announcement** using **bgColor** property.
     className="flex-wrap"
     badgeText="Gray Background"
     highlightedText="25% discount"
-    bgColor="gray"
+    bgColor="muted"
   >
     on our every product
   </Announcement>
@@ -391,7 +376,6 @@ export default function App() {
         className="flex-wrap"
         badgeText="White Background"
         highlightedText="25% discount"
-        bgColor="white"
       >
         on our every product
       </Announcement>
@@ -399,7 +383,7 @@ export default function App() {
         className="flex-wrap"
         badgeText="Gray Background"
         highlightedText="25% discount"
-        bgColor="gray"
+        bgColor="muted"
       >
         on our every product
       </Announcement>
@@ -477,20 +461,20 @@ Here is the API documentation of the Announcement component.
 
 <div className="overflow-x-auto">
 
-|          Props           |                     Type                     |                       Description                        |   Default   |
-| :----------------------: | :------------------------------------------: | :------------------------------------------------------: | :---------: |
-|        badgeText         |                   `string`                   |      Pass badge text to have badge at the beginning      |    \_ \_    |
-|     highlightedText      |                   `string`                   |          Pass highlighted text at the beginning          |    \_ \_    |
-|         children         |                                              |                                                          |    \_ \_    |
-|           size           |   [AnnouncementSizes](#announcement-sizes)   |                The size of the component.                | `"DEFAULT"` |
-|         rounded          | [AnnouncementRounded](#announcement-rounded) |                The rounded variants are:                 | `"DEFAULT"` |
-|          color           |  [AnnouncementColors](#announcement-colors)  |                 Choose color variations                  | `"DEFAULT"` |
-|         bgColor          |                `white` `gray`                |            Background color of the component             |  `"white"`  |
-|        className         |                   `string`                   |     Pass className to customize announcement design      |    \_ \_    |
-|        startIcon         |                 `ReactNode`                  |               Place icon at the beginning                |    \_ \_    |
-|         endIcon          |                 `ReactNode`                  |                  Place icon at the end                   |    \_ \_    |
-|      badgeClassName      |                   `string`                   |            Pass badgeClassName to style badge            |    \_ \_    |
-| highlightedTextClassName |                   `string`                   | Pass hightlightedTextClassName to style highlighted text |    \_ \_    |
+|          Props           |                     Type                     |                       Description                        |    Default     |
+| :----------------------: | :------------------------------------------: | :------------------------------------------------------: | :------------: |
+|        badgeText         |                   `string`                   |      Pass badge text to have badge at the beginning      |      \_\_      |
+|     highlightedText      |                   `string`                   |          Pass highlighted text at the beginning          |      \_\_      |
+|         children         |                                              |                                                          |      \_\_      |
+|           size           |   [AnnouncementSizes](#announcement-sizes)   |                The size of the component.                |     `"md"`     |
+|         rounded          | [AnnouncementRounded](#announcement-rounded) |                The rounded variants are:                 |    `"full"`    |
+|          color           |  [AnnouncementColors](#announcement-colors)  |                 Choose color variations                  |  `"primary"`   |
+|         bgColor          |             `background` `muted`             |            Background color of the component             | `"background"` |
+|        className         |                   `string`                   |     Pass className to customize announcement design      |      \_\_      |
+|        startIcon         |                 `ReactNode`                  |               Place icon at the beginning                |      \_\_      |
+|         endIcon          |                 `ReactNode`                  |                  Place icon at the end                   |      \_\_      |
+|      badgeClassName      |                   `string`                   |            Pass badgeClassName to style badge            |      \_\_      |
+| highlightedTextClassName |                   `string`                   | Pass hightlightedTextClassName to style highlighted text |      \_\_      |
 
 </div>
 
@@ -499,7 +483,7 @@ Here is the API documentation of the Announcement component.
 ### Announcement Sizes
 
 ```ts
-type AnnouncementSizes = "DEFAULT" | "sm" | "lg" | "xl";
+type AnnouncementSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -507,7 +491,7 @@ type AnnouncementSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ### Announcement Rounded
 
 ```ts
-type AnnouncementRounded = "DEFAULT" | "sm" | "lg" | "none" | "md";
+type AnnouncementRounded = "pill" | "sm" | "lg" | "none" | "md";
 ```
 
 <div className="mb-10" />
@@ -516,7 +500,6 @@ type AnnouncementRounded = "DEFAULT" | "sm" | "lg" | "none" | "md";
 
 ```ts
 type AnnouncementColors =
-  | "DEFAULT"
   | "primary"
   | "secondary"
   | "danger"

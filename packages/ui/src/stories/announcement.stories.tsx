@@ -24,7 +24,7 @@ Default.args = {
 };
 
 export const Compound = () => (
-  <div className="h-full bg-gray-200/70 p-5">
+  <div className="h-full bg-muted/70 p-5">
     <Announcement
       badgeText="New"
       highlightedText="25% discount"

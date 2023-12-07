@@ -1,131 +1,54 @@
-import React, { forwardRef, useState, useCallback } from 'react';
+import React, { forwardRef } from 'react';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
 import { makeClassName } from '../../lib/make-class-name';
+import { roundedStyles } from '../../lib/rounded';
+import { labelStyles } from '../../lib/label-size';
+import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
-const labelClasses = {
-  size: {
-    sm: 'text-xs mb-1',
-    DEFAULT: 'text-sm mb-1.5',
-    lg: 'text-sm mb-1.5',
-    xl: 'text-base mb-2',
-  },
-};
-
-const inputClasses = {
-  base: 'flex items-center peer w-full transition duration-200 ',
-  disabled: '!bg-gray-100 cursor-not-allowed !border-gray-200',
-  error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
+const inputStyles = {
+  base: 'flex items-center peer w-full transition duration-200 border [&.is-focus]:ring-[0.8px] ring-[0.6px] [&.is-hover]:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary [&_input::placeholder]:opacity-60',
+  disabled: '!bg-muted/70 cursor-not-allowed !border-muted',
+  error:
+    '!border-red [&.is-hover]:!border-red [&.is-focus]:!border-red [&.is-focus]:!ring-red !bg-transparent',
   size: {
     sm: 'px-2 py-1 text-xs h-8 leading-[32px]',
-    DEFAULT: 'px-3.5 py-2 text-sm h-10 leading-[40px]',
+    md: 'px-3.5 py-2 text-sm h-10 leading-[40px]',
     lg: 'px-4 py-2 text-base h-12 leading-[48px]',
     xl: 'px-5 py-2.5 text-base h-14 leading-[56px]',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    DEFAULT: 'rounded-md',
-    lg: 'rounded-lg',
-    pill: 'rounded-full',
-  },
+  rounded: roundedStyles,
   variant: {
-    active: {
-      base: 'border bg-gray-50 [&.is-focus]:ring-[0.6px] [&_input::placeholder]:opacity-70',
-      color: {
-        DEFAULT:
-          'border-gray-900 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950 text-gray-950',
-        primary:
-          'border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary text-primary-dark',
-        secondary:
-          'border-secondary [&.is-focus]:border-secondary [&.is-focus]:ring-secondary text-secondary-dark',
-        danger:
-          'border-red [&.is-focus]:border-red [&.is-focus]:ring-red text-red-dark',
-        info: 'border-blue [&.is-focus]:border-blue [&.is-focus]:ring-blue text-blue-dark',
-        success:
-          'border-green [&.is-focus]:border-green [&.is-focus]:ring-green text-green-dark',
-        warning:
-          'border-orange [&.is-focus]:border-orange-dark [&.is-focus]:ring-orange-dark text-orange-dark',
-      },
-    },
-    flat: {
-      base: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 [&_input::placeholder]:opacity-80',
-      color: {
-        DEFAULT:
-          'bg-gray-200/70 [&.is-focus]:ring-gray-900/20 text-gray-950 [&_input::placeholder]:text-gray-600',
-        primary:
-          'bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
-        secondary:
-          'bg-secondary-lighter/70 [&.is-focus]:ring-secondary/30 text-secondary-dark',
-        danger: 'bg-red-lighter/70 [&.is-focus]:ring-red/30 text-red-dark',
-        info: 'bg-blue-lighter/70 [&.is-focus]:ring-blue/30 text-blue-dark',
-        success:
-          'bg-green-lighter/70 [&.is-focus]:ring-green/30 text-green-dark',
-        warning:
-          'bg-orange-lighter/80 [&.is-focus]:ring-orange/30 text-orange-dark',
-      },
-    },
-    outline: {
-      base: 'bg-transparent [&.is-focus]:ring-[0.6px] border border-gray-300 [&_input::placeholder]:text-gray-500',
-      color: {
-        DEFAULT:
-          'hover:border-gray-950 [&.is-focus]:border-gray-950 [&.is-focus]:ring-gray-950',
-        primary:
-          'hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
-        secondary:
-          'hover:border-secondary [&.is-focus]:border-secondary [&.is-focus]:ring-secondary',
-        danger:
-          'hover:border-red [&.is-focus]:border-red [&.is-focus]:ring-red',
-        info: 'hover:border-blue [&.is-focus]:border-blue [&.is-focus]:ring-blue',
-        success:
-          'hover:border-green [&.is-focus]:border-green [&.is-focus]:ring-green',
-        warning:
-          'hover:border-orange [&.is-focus]:border-orange [&.is-focus]:ring-orange',
-      },
-    },
-    text: {
-      base: 'border-0 [&.is-focus]:ring-2 bg-transparent [&_input::placeholder]:opacity-70',
-      color: {
-        DEFAULT:
-          'hover:text-gray-950 [&.is-focus]:ring-gray-900/20 [&_input::placeholder]:text-gray-500',
-        primary:
-          'hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
-        secondary:
-          'hover:text-secondary-dark [&.is-focus]:ring-secondary/30 text-secondary',
-        danger: 'hover:text-red-600 [&.is-focus]:ring-red/30 text-red',
-        info: 'hover:text-blue-dark [&.is-focus]:ring-blue/30 text-blue',
-        success: 'hover:text-green-dark [&.is-focus]:ring-green/30 text-green',
-        warning:
-          'hover:text-orange-dark [&.is-focus]:ring-orange/30 text-orange',
-      },
-    },
+    text: 'border-transparent ring-transparent bg-transparent',
+    flat: 'border-0 ring-muted/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-muted/70',
+    outline: 'border border-muted ring-muted bg-transparent',
   },
 };
 
 // actual input field styles
-const inputFieldClasses = {
-  base: 'w-full border-0 bg-transparent p-0 focus:outline-none focus:ring-0 [&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
-  disabled: 'cursor-not-allowed placeholder:text-gray-400',
+const inputFieldStyles = {
+  base: 'w-full border-0 bg-transparent p-0 focus:outline-none focus:ring-0',
+  reset:
+    '[&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
+  disabled: 'cursor-not-allowed placeholder:text-muted-foreground',
   clearable:
     '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
-  prefixStartPadding: {
-    base: 'rtl:pl-[inherit]',
+  prefix: {
     size: {
-      sm: 'pl-1.5 rtl:pr-1.5',
-      DEFAULT: 'pl-2.5 rtl:pr-2.5',
-      lg: 'pl-3.5 rtl:pr-3.5',
-      xl: 'pl-4 rtl:pr-4',
+      sm: 'ps-1.5',
+      md: 'ps-2.5',
+      lg: 'ps-3.5',
+      xl: 'ps-4',
     },
   },
-  suffixEndPadding: {
-    base: 'rtl:pr-[inherit]',
+  suffix: {
     size: {
-      sm: 'pr-1.5 rtl:pl-1.5',
-      DEFAULT: 'pr-2.5 rtl:pl-2.5',
-      lg: 'pr-3.5 rtl:pl-3.5',
-      xl: 'pr-4 rtl:pl-4',
+      sm: 'pe-1.5',
+      md: 'pe-2.5',
+      lg: 'pe-3.5',
+      xl: 'pe-4',
     },
   },
 };
@@ -149,19 +72,19 @@ export interface InputProps
     | 'month'
     | 'datetime-local';
   /** The variants of the component are: */
-  variant?: keyof typeof inputClasses.variant;
+  variant?: keyof typeof inputStyles.variant;
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof inputClasses.size;
+  size?: keyof typeof inputStyles.size;
   /** The rounded variants are: */
-  rounded?: keyof typeof inputClasses.rounded;
-  /** Change input color */
-  color?: keyof (typeof inputClasses.variant)['active']['color'];
+  rounded?: keyof typeof inputStyles.rounded;
   /** Set input placeholder text */
   placeholder?: string;
   /** Whether the input is disabled */
   disabled?: boolean;
   /** Set field label */
   label?: React.ReactNode;
+  /** Set font weight for label */
+  labelWeight?: keyof typeof labelStyles.weight;
   /** add clearable option */
   clearable?: boolean;
   /** clear event */
@@ -186,25 +109,22 @@ export interface InputProps
   helperClassName?: string;
   /** Override default CSS style of error message */
   errorClassName?: string;
+  /** Add custom classes to the root of the component */
+  className?: string;
 }
 
-/**
- * A basic widget for getting the user input. Here is the API documentation of the Input component.
- * And the rest of the props are the same as the original html input field.
- * You can use props like `value`, `disabled`, `placeholder`, `onChange`, `onFocus`, `onBlur` etc.
- */
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
       type = 'text',
       variant = 'outline',
-      size = 'DEFAULT',
-      rounded = 'DEFAULT',
-      color = 'DEFAULT',
+      size = 'md',
+      rounded = 'md',
       disabled,
       placeholder,
       label,
+      labelWeight = 'medium',
       error,
       clearable,
       onClear,
@@ -222,72 +142,71 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       onBlur,
       ...inputProps
     },
-    ref,
+    ref
   ) => {
-    const variantStyle = inputClasses.variant[variant];
-    const [isFocus, setIsFocus] = useState(false);
-
-    const handleOnFocus = useCallback(
-      (e: React.FocusEvent<HTMLInputElement>) => {
-        if (readOnly === true) return false;
-        setIsFocus((prevState) => !prevState);
-        onFocus && onFocus(e); // eslint-disable-line no-unused-expressions
-      },
-      [readOnly, onFocus],
-    );
-
-    const handleOnBlur = useCallback(
-      (e: React.FocusEvent<HTMLInputElement>) => {
-        if (readOnly === true) return false;
-        setIsFocus(() => false);
-        onBlur && onBlur(e); // eslint-disable-line no-unused-expressions
-      },
-      [readOnly, onBlur],
-    );
+    const {
+      isFocus,
+      isHover,
+      handleOnBlur,
+      handleOnFocus,
+      handleOnMouseEnter,
+      handleOnMouseLeave,
+    } = useInteractiveEvent({
+      readOnly,
+      onBlur,
+      onFocus,
+    });
 
     return (
       <div
         className={cn(makeClassName(`input-root`), 'flex flex-col', className)}
       >
         <label className="block">
-          {label && (
+          {label ? (
             <span
               className={cn(
                 makeClassName(`input-label`),
                 'block',
-                labelClasses.size[size],
-                labelClassName,
+                labelStyles.size[size],
+                labelStyles.weight[labelWeight],
+                disabled && 'text-muted-foreground',
+                labelClassName
               )}
             >
               {label}
             </span>
-          )}
+          ) : null}
 
           <span
             className={cn(
               makeClassName(`input-container`),
-              inputClasses.base,
-              inputClasses.size[size],
-              inputClasses.rounded[rounded],
-              variantStyle.base,
-              variantStyle.color[color],
+              inputStyles.base,
+              inputStyles.size[size],
+              inputStyles.rounded[rounded],
+              inputStyles.variant[variant],
+              isHover && 'is-hover', // must have is-hover class based on mouse enter
               isFocus && 'is-focus', // must have is-focus class based on onFocus event
-              disabled && inputClasses.disabled,
-              error && inputClasses.error,
-              inputClassName,
+              disabled && inputStyles.disabled,
+              error && inputStyles.error,
+              inputClassName
             )}
+            data-focus={isFocus}
+            data-hover={isHover}
+            onMouseEnter={handleOnMouseEnter}
+            onMouseLeave={handleOnMouseLeave}
           >
-            {prefix && (
+            {prefix ? (
               <span
                 className={cn(
                   makeClassName(`input-prefix`),
                   'whitespace-nowrap leading-normal',
-                  prefixClassName,
+                  prefixClassName
                 )}
               >
                 {prefix}
               </span>
-            )}
+            ) : null}
+
             <input
               ref={ref}
               type={type}
@@ -300,59 +219,64 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               placeholder={placeholder || 'Screen reader only'}
               className={cn(
                 makeClassName(`input-field`),
-                inputFieldClasses.base,
+                inputFieldStyles.base,
+                inputFieldStyles.reset,
                 // it's important we are using placeholder-shown pseudo class to control input clear icon btn
                 !placeholder && 'placeholder:opacity-0',
-                disabled && inputFieldClasses.disabled,
-                clearable && inputFieldClasses.clearable,
-                prefix && inputFieldClasses.prefixStartPadding.size[size],
-                suffix && inputFieldClasses.suffixEndPadding.size[size],
+                disabled && inputFieldStyles.disabled,
+                clearable && inputFieldStyles.clearable,
+                prefix && inputFieldStyles.prefix.size[size],
+                suffix && inputFieldStyles.suffix.size[size]
               )}
               style={{ fontSize: 'inherit' }}
               {...inputProps}
             />
 
-            {clearable && (
+            {clearable ? (
               <FieldClearButton
                 size={size}
                 onClick={onClear}
                 hasSuffix={Boolean(suffix)}
               />
-            )}
+            ) : null}
 
-            {suffix && (
+            {suffix ? (
               <span
                 className={cn(
                   makeClassName(`input-suffix`),
                   'whitespace-nowrap leading-normal',
-                  suffixClassName,
+                  suffixClassName
                 )}
               >
                 {suffix}
               </span>
-            )}
+            ) : null}
           </span>
         </label>
 
-        {!error && helperText && (
+        {!error && helperText ? (
           <FieldHelperText
             size={size}
-            className={cn(makeClassName(`input-helper-text`), helperClassName)}
+            className={cn(
+              makeClassName(`input-helper-text`),
+              disabled && 'text-muted-foreground',
+              helperClassName
+            )}
           >
             {helperText}
           </FieldHelperText>
-        )}
+        ) : null}
 
-        {error && (
+        {error ? (
           <FieldError
             size={size}
             error={error}
             className={cn(makeClassName(`input-error-text`), errorClassName)}
           />
-        )}
+        ) : null}
       </div>
     );
-  },
+  }
 );
 
 Input.displayName = 'Input';

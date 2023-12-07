@@ -5,7 +5,7 @@ import { ExtractProps } from '../../lib/extract-props';
 import { TabList } from './tab-list';
 import { TabListItem } from './tab-list-item';
 import { TabPanels } from './tab-panels';
-import { TabPanel } from './tabl-panel';
+import { TabPanel } from './tab-panel';
 import { TabProvider } from './tab-context';
 import { useRect } from '../../lib/use-rect';
 import { makeClassName } from '../../lib/make-class-name';

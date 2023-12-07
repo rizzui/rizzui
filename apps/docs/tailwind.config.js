@@ -7,9 +7,14 @@ module.exports = {
     "./docusaurus.config.js",
     "../../node_modules/rizzui/dist/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
       colors: {
+        background: "rgb(var(--background) / <alpha-value>)",
+        foreground: "rgb(var(--foreground) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        "muted-foreground": "rgb(var(--muted-foreground) / <alpha-value>)",
         gray: {
           50: "rgb(var(--gray-50) / <alpha-value>)",
           100: "rgb(var(--gray-100) / <alpha-value>)",
@@ -25,37 +30,33 @@ module.exports = {
         },
         primary: {
           lighter: "rgb(var(--primary-lighter) / <alpha-value>)",
-          light: "rgb(var(--primary-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--primary-default) / <alpha-value>)",
           dark: "rgb(var(--primary-dark) / <alpha-value>)",
+          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
         },
         secondary: {
           lighter: "rgb(var(--secondary-lighter) / <alpha-value>)",
-          light: "rgb(var(--secondary-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--secondary-default) / <alpha-value>)",
           dark: "rgb(var(--secondary-dark) / <alpha-value>)",
+          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
         },
         red: {
           lighter: "rgb(var(--red-lighter) / <alpha-value>)",
-          light: "rgb(var(--red-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--red-default) / <alpha-value>)",
           dark: "rgb(var(--red-dark) / <alpha-value>)",
         },
         orange: {
           lighter: "rgb(var(--orange-lighter) / <alpha-value>)",
-          light: "rgb(var(--orange-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--orange-default) / <alpha-value>)",
           dark: "rgb(var(--orange-dark) / <alpha-value>)",
         },
         blue: {
           lighter: "rgb(var(--blue-lighter) / <alpha-value>)",
-          light: "rgb(var(--blue-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--blue-default) / <alpha-value>)",
           dark: "rgb(var(--blue-dark) / <alpha-value>)",
         },
         green: {
           lighter: "rgb(var(--green-lighter) / <alpha-value>)",
-          light: "rgb(var(--green-light) / <alpha-value>)",
           DEFAULT: "rgb(var(--green-default) / <alpha-value>)",
           dark: "rgb(var(--green-dark) / <alpha-value>)",
         },
@@ -116,5 +117,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/container-queries"),
+  ],
 };

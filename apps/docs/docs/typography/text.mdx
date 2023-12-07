@@ -194,11 +194,12 @@ Here is the API documentation of the Text component.
 
 <div className="overflow-x-auto">
 
-|   Props   |          Type          |               Description               | Default |
-| :-------: | :--------------------: | :-------------------------------------: | :-----: |
-|    as     | [TextTags](#text-tags) |                                         |  `"p"`  |
-|   title   |    `abbr` `string`     | title attribute only appear when tag is |  \_ \_  |
-| className |        `string`        |   Add custom classes for extra style    |  \_ \_  |
+|   Props    |              Type              |                               Description                                | Default  |
+| :--------: | :----------------------------: | :----------------------------------------------------------------------: | :------: |
+|     as     |     [TextTags](#text-tags)     |                                                                          |  `"p"`   |
+|   title    |        `abbr` `string`         |                 title attribute only appear when tag is                  |   \_\_   |
+| fontWeight | [TitleWeights](#title-weights) | Add font-weight, fontWeight='normal' won't work with b, strong and q tag | `"bold"` |
+| className  |            `string`            |                    Add custom classes for extra style                    |   \_\_   |
 
 </div>
 
@@ -222,4 +223,12 @@ type TextTags =
   | "small"
   | "sub"
   | "sup";
+```
+
+<div className="mb-10" />
+
+### Title Weights
+
+```ts
+type TitleWeights = "bold" | "normal" | "medium" | "semibold";
 ```
