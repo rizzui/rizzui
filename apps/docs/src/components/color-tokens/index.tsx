@@ -3,13 +3,44 @@ import { cn, Tab } from "rizzui";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { hexToRgb } from "@site/src/utils/hext-to-rgb";
 import { CopyButton } from "../copy-button";
-import { tokens } from "./tokens";
+import { tokens, darkThemeTokens } from "./tokens";
 
 type TokenTypes = {
   name: string;
   hex: string;
   description: string;
 };
+
+function useLightTheme() {
+  const rizzTheme = tokens.map((token) => {
+    const tokenName = token.name;
+    const tokenValue = hexToRgb(token.hex);
+
+    return {
+      name: tokenName,
+      value: tokenValue,
+    };
+  });
+
+  const [theme, setTheme] = React.useState(rizzTheme);
+
+  function updateTheme(name: string, value: string) {
+    const newTheme = theme.map((token) => {
+      if (token.name === name) {
+        token.value = hexToRgb(value);
+      }
+      return token;
+    });
+
+    setTheme(newTheme);
+  }
+
+  return {
+    theme,
+    setTheme,
+    updateTheme,
+  };
+}
 
 export default function ColorTokens() {
   return (
@@ -20,15 +51,20 @@ export default function ColorTokens() {
       </Tab.List>
       <Tab.Panels>
         <Tab.Panel>
-          <LightModeTokens />
+          <TokensTable tokens={tokens} />
         </Tab.Panel>
-        <Tab.Panel>dark</Tab.Panel>
+        <Tab.Panel>
+          <TokensTable tokens={darkThemeTokens} />
+        </Tab.Panel>
       </Tab.Panels>
     </Tab>
   );
 }
 
-function LightModeTokens() {
+function TokensTable({ tokens }: { tokens: TokenTypes[] }) {
+  const { theme } = useLightTheme();
+  console.log("rizzTheme", theme);
+
   return (
     <div className="@container">
       <table className="!block !border-0 !shadow-none @3xl:!table @3xl:!border @3xl:!shadow-sm">
@@ -55,11 +91,26 @@ function LightModeTokens() {
 function TokenRow({ token }: { token: TokenTypes }) {
   const [hex, setHex] = React.useState(token.hex);
   const [isChange, setIsChange] = React.useState(false);
+  const { updateTheme } = useLightTheme();
 
-  const { r, g, b } = hexToRgb(hex);
-  const rgb = `${r} ${g} ${b}`;
+  const rgb = hexToRgb(hex);
   const cssVariable = `${token.name}: ${rgb}; /* ${hex} */`;
   const isContainLighter = token.name.includes("lighter");
+
+  function handleOnChange(e) {
+    const tokenName = e.target.name;
+    const tokenValue = e.target.value;
+
+    setHex(tokenValue);
+    setIsChange(() => true);
+    updateTheme(tokenName, tokenValue);
+  }
+
+  function handleOnReset() {
+    setHex(token.hex);
+    setIsChange(() => false);
+    updateTheme(token.name, hexToRgb(token.hex));
+  }
 
   return (
     <tr
@@ -73,15 +124,10 @@ function TokenRow({ token }: { token: TokenTypes }) {
       <td>
         <TokenColor
           hex={hex}
+          name={token.name}
           isChange={isChange}
-          onChange={(e) => {
-            setHex(e.target.value);
-            setIsChange(() => true);
-          }}
-          onReset={() => {
-            setHex(token.hex);
-            setIsChange(() => false);
-          }}
+          onChange={(e) => handleOnChange(e)}
+          onReset={() => handleOnReset()}
         />
       </td>
       <td className="!pt-0 @3xl:!pt-3">
@@ -98,7 +144,7 @@ function TokenRow({ token }: { token: TokenTypes }) {
 }
 
 const TokenColor = React.forwardRef<HTMLInputElement, any>(
-  ({ hex, isChange, onReset, ...inputProps }) => {
+  ({ hex, name, isChange, onReset, ...inputProps }) => {
     return (
       <div className="flex items-center gap-2 relative">
         <label className="relative flex-1">
@@ -112,6 +158,7 @@ const TokenColor = React.forwardRef<HTMLInputElement, any>(
           />
           <input
             type="color"
+            name={name}
             value={hex}
             className="opacity-0 invisible absolute inset-0"
             {...inputProps}

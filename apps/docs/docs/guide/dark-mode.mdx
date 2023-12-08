@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Dark Mode
@@ -102,7 +102,7 @@ export function ThemeSwitcher() {
 
 ## Configure globals.css
 
-We are using rgb formated CSS variables to define our light & dark mode [theme colors](/docs/guide/theming). Why we are not using hex code directly? Because opacity modifiers won't work according to the [TailwindCSS documentation](https://tailwindcss.com/docs/customizing-colors#using-css-variables). Please copy and paste this code in to your app style file.
+We are using rgb formated CSS variables to define our light & dark mode theme. Why we are not using hex code directly? Because opacity modifiers won't work according to the [TailwindCSS documentation](https://tailwindcss.com/docs/customizing-colors#using-css-variables). Please copy and paste this code in to your app style file.
 
 ```css title=globals.css
 @tailwind base;
@@ -110,7 +110,9 @@ We are using rgb formated CSS variables to define our light & dark mode [theme c
 @tailwind utilities;
 
 @layer base {
-  /* default theme */
+  /* --------------------------------- */
+  /* light theme */
+  /* --------------------------------- */
   :root {
     --background: 255 255 255; /* #ffffff */
     --foreground: 72 72 72; /* #484848 */
@@ -162,7 +164,9 @@ We are using rgb formated CSS variables to define our light & dark mode [theme c
     --green-dark: 17 132 60; /* #11843c */
   }
 
+  /* --------------------------------- */
   /* dark theme */
+  /* --------------------------------- */
   [data-theme="dark"] {
     --background: 8 9 14; /* #08090e */
     --foreground: 223 223 223; /* #dfdfdf */

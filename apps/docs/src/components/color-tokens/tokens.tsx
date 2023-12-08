@@ -133,3 +133,104 @@ export const tokens = [
     description: "Use for the badge & progress bar text color",
   },
 ];
+
+export const darkThemeTokens = [
+  {
+    name: "--background",
+    hex: "#08090e",
+    description:
+      "Define background color for body, drawer, modal, dropdown, popover. And set ring-offset-color.",
+  },
+  {
+    name: "--foreground",
+    hex: "#dfdfdf",
+    description: "The global text color.",
+  },
+  {
+    name: "--muted",
+    hex: "#333333",
+    description:
+      "Use for border, default flat background color, tab, and dropdown hover color.",
+  },
+  {
+    name: "--muted-foreground",
+    hex: "#666666",
+    description: "The disable text color",
+  },
+  {
+    name: "--primary-lighter",
+    hex: "#222222",
+    description:
+      "Use for the primary flat variant background color for buttons and badges.",
+  },
+  {
+    name: "--primary-default",
+    hex: "#f1f1f1",
+    description:
+      "Use for the primary background color for avatar, buttons, badges, inputs hover & focus, Tab active color",
+  },
+  {
+    name: "--primary-dark",
+    hex: "#ffffff",
+    description: "Use for the primary buttons hover & focus color",
+  },
+  {
+    name: "--primary-foreground",
+    hex: "#000000",
+    description: "Use for the primary avatar, button & badge text color",
+  },
+  {
+    name: "--secondary-lighter",
+    hex: "#1f165a",
+    description:
+      "Use for the secondary flat variant background color for buttons and badges.",
+  },
+  {
+    name: "--secondary-dark",
+    hex: "#c1cbff",
+    description: "Use for the secondary buttons hover & focus color",
+  },
+  {
+    name: "--red-lighter",
+    hex: "#500000",
+    description:
+      "Use for the danger flat variant background color for alert, buttons and badges.",
+  },
+  {
+    name: "--red-dark",
+    hex: "#ffc1c1",
+    description: "Use for the danger buttons hover, flat badge text color",
+  },
+  {
+    name: "--orange-lighter",
+    hex: "#441d04",
+    description:
+      "Use for the warning flat variant background color for alert and badges.",
+  },
+  {
+    name: "--orange-dark",
+    hex: "#fcea8b",
+    description: "Use for the flat badge text color",
+  },
+  {
+    name: "--blue-lighter",
+    hex: "#0d335e",
+    description:
+      "Use for the info flat variant background color for alert and badges.",
+  },
+  {
+    name: "--blue-dark",
+    hex: "#b5e9ff",
+    description: "Use for the badge & progress bar text color",
+  },
+  {
+    name: "--green-lighter",
+    hex: "#033016",
+    description: "Use for success flat color for alert & badges",
+  },
+  {
+    name: "--green-dark",
+    hex: "#b9f9cf",
+    description: "Use for the badge & progress bar text color",
+  },
+];
