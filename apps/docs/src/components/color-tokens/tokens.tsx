@@ -186,6 +186,12 @@ export const darkThemeTokens = [
       "Use for the secondary flat variant background color for buttons and badges.",
   },
   {
+    name: "--secondary-default",
+    hex: "#4e36f5",
+    description:
+      "Use for the secondary solid variant background color for avatar, buttons and badges.",
+  },
+  {
     name: "--secondary-dark",
     hex: "#c1cbff",
     description: "Use for the secondary buttons hover & focus color",
@@ -195,6 +201,12 @@ export const darkThemeTokens = [
     hex: "#500000",
     description:
       "Use for the danger flat variant background color for alert, buttons and badges.",
+  },
+  {
+    name: "--red-default",
+    hex: "#e00",
+    description:
+      "Use for the danger solid variant background & outline border color for alert, avatar, buttons and badges.",
   },
   {
     name: "--red-dark",
@@ -208,6 +220,12 @@ export const darkThemeTokens = [
       "Use for the warning flat variant background color for alert and badges.",
   },
   {
+    name: "--orange-default",
+    hex: "#f5a623",
+    description:
+      "Use for the warning solid variant background & outline border color for alert, avatar and badges.",
+  },
+  {
     name: "--orange-dark",
     hex: "#fcea8b",
     description: "Use for the flat badge text color",
@@ -219,6 +237,12 @@ export const darkThemeTokens = [
       "Use for the info flat variant background color for alert and badges.",
   },
   {
+    name: "--blue-default",
+    hex: "#0070f3",
+    description:
+      "Use for the info solid variant color for alert, avatar, loader, progressbar, tooltip, step and badges.",
+  },
+  {
     name: "--blue-dark",
     hex: "#b5e9ff",
     description: "Use for the badge & progress bar text color",
@@ -227,6 +251,12 @@ export const darkThemeTokens = [
     name: "--green-lighter",
     hex: "#033016",
     description: "Use for success flat color for alert & badges",
+  },
+  {
+    name: "--green-default",
+    hex: "#11a849",
+    description:
+      "Use for the success solid variant color for alert, avatar, loader, progressbar, tooltip, step and badges.",
   },
   {
     name: "--green-dark",

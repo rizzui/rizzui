@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 type StarParticlesProps = {
   limit?: number;
@@ -19,18 +19,19 @@ export default function StarParticles({
   color = "white",
   className = "absolute top-0 left-0 -z-[1]",
 }: StarParticlesProps) {
-  const canvasRef = useRef(null);
-  let particles = [];
+  const canvasRef = React.useRef(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
+    let particles = [];
 
     const resizeCanvas = () => {
       const parent = canvas.parentElement;
       canvas.width = parent.clientWidth;
       canvas.height = parent.clientHeight;
       initializeParticles();
+      drawParticles();
     };
 
     const createParticle = () => {

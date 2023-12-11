@@ -1,5 +1,6 @@
 import React from "react";
 import { cn, Tab } from "rizzui";
+import { useColorMode } from "@docusaurus/theme-common";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { hexToRgb } from "@site/src/utils/hext-to-rgb";
 import { CopyButton } from "../copy-button";
@@ -11,40 +12,20 @@ type TokenTypes = {
   description: string;
 };
 
-function useLightTheme() {
-  const rizzTheme = tokens.map((token) => {
-    const tokenName = token.name;
-    const tokenValue = hexToRgb(token.hex);
-
-    return {
-      name: tokenName,
-      value: tokenValue,
-    };
-  });
-
-  const [theme, setTheme] = React.useState(rizzTheme);
-
-  function updateTheme(name: string, value: string) {
-    const newTheme = theme.map((token) => {
-      if (token.name === name) {
-        token.value = hexToRgb(value);
-      }
-      return token;
-    });
-
-    setTheme(newTheme);
-  }
-
-  return {
-    theme,
-    setTheme,
-    updateTheme,
-  };
-}
-
 export default function ColorTokens() {
+  const { colorMode } = useColorMode();
+  const [tabIndex, setTabIndex] = React.useState(0);
+  React.useEffect(() => {
+    if (colorMode === "dark") {
+      setTabIndex(1);
+    }
+    if (colorMode !== "dark") {
+      setTabIndex(0);
+    }
+  }, [colorMode]);
+
   return (
-    <Tab>
+    <Tab selectedIndex={tabIndex} onChange={setTabIndex}>
       <Tab.List>
         <Tab.ListItem>Light Theme</Tab.ListItem>
         <Tab.ListItem>Dark Theme</Tab.ListItem>
@@ -62,9 +43,6 @@ export default function ColorTokens() {
 }
 
 function TokensTable({ tokens }: { tokens: TokenTypes[] }) {
-  const { theme } = useLightTheme();
-  console.log("rizzTheme", theme);
-
   return (
     <div className="@container">
       <table className="!block !border-0 !shadow-none @3xl:!table @3xl:!border @3xl:!shadow-sm">
@@ -91,25 +69,20 @@ function TokensTable({ tokens }: { tokens: TokenTypes[] }) {
 function TokenRow({ token }: { token: TokenTypes }) {
   const [hex, setHex] = React.useState(token.hex);
   const [isChange, setIsChange] = React.useState(false);
-  const { updateTheme } = useLightTheme();
 
   const rgb = hexToRgb(hex);
   const cssVariable = `${token.name}: ${rgb}; /* ${hex} */`;
   const isContainLighter = token.name.includes("lighter");
 
   function handleOnChange(e) {
-    const tokenName = e.target.name;
     const tokenValue = e.target.value;
-
     setHex(tokenValue);
     setIsChange(() => true);
-    updateTheme(tokenName, tokenValue);
   }
 
   function handleOnReset() {
     setHex(token.hex);
     setIsChange(() => false);
-    updateTheme(token.name, hexToRgb(token.hex));
   }
 
   return (
@@ -145,6 +118,8 @@ function TokenRow({ token }: { token: TokenTypes }) {
 
 const TokenColor = React.forwardRef<HTMLInputElement, any>(
   ({ hex, name, isChange, onReset, ...inputProps }) => {
+    const { colorMode } = useColorMode();
+
     return (
       <div className="flex items-center gap-2 relative">
         <label className="relative flex-1">
@@ -152,7 +127,10 @@ const TokenColor = React.forwardRef<HTMLInputElement, any>(
             className={cn(
               "inline-flex w-full h-10 rounded shadow-md cursor-pointer",
               hex === "#ffffff" && "border border-muted/50",
-              hex === "#000000" && "dark:border dark:border-muted/50"
+              hex === "#000000" && "dark:border dark:border-muted/50",
+              colorMode === "dark" && [
+                name === "--background" && "dark:border dark:border-muted/50",
+              ]
             )}
             style={{ backgroundColor: hex }}
           />
