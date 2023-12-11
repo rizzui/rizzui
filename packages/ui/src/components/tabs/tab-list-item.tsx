@@ -7,7 +7,7 @@ import { makeClassName } from '../../lib/make-class-name';
 
 const tabListItemStyles = {
   base: 'relative py-2.5 px-3 flex items-center hover:text-primary gap-1 [&>*]:pointer-events-none outline-none before:absolute before:bg-primary before:opacity-0 before:transition-all before:duration-200',
-  active: 'before:opacity-100 text-primary',
+  active: 'before:opacity-100 text-primary hover:text-primary-dark',
   vertical: 'before:h-full before:w-0.5 before:-end-[13px] before:bottom-0',
   horizontal: 'before:w-full before:h-0.5 before:start-0 before:-bottom-[1px]',
 };

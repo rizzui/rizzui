@@ -28,7 +28,7 @@ npm i -D tailwindcss postcss autoprefixer @tailwindcss/forms
 
 ## Tailwind Configuration
 
-If you don't plan to use dark mode in your application, the current configuration is good to go. However, if you wish to implement both light and dark modes, please refer to our [dark mode documentation.](/docs/guide/dark-mode)
+If you don't plan to use dark mode in your application, then the current configuration is good to go. However, if you wish to implement both light and dark modes, please refer to our [dark mode documentation.](/docs/guide/dark-mode)
 
 ```js title=tailwind.config.js
 /** @type {import('tailwindcss').Config} */
@@ -56,11 +56,6 @@ module.exports = {
         * border, default flat bg color for input components, tab & dropdown hover color
         */
         muted: colors.gray[200],
-
-        /*
-        * gray shade from 50 to 950. use one of them -> gray | slate | zinc | neutral | stone
-        */
-        gray: colors.gray,
 
         /*
         * primary colors

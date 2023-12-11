@@ -1,12 +1,20 @@
-import React, { useState, PropsWithChildren } from "react";
+import React, { useState } from "react";
 import { Button, cn } from "rizzui";
+
+type PaperProps = {
+  className?: string;
+  disableShowCodeBtn?: boolean;
+  isOpen?: boolean;
+};
 
 export default function Paper({
   className,
   children,
+  isOpen = false,
   disableShowCodeBtn,
-}: PropsWithChildren<{ className?: string; disableShowCodeBtn?: boolean }>) {
-  const [toggleCode, setToggleCode] = useState(false);
+}: React.PropsWithChildren<PaperProps>) {
+  const [toggleCode, setToggleCode] = useState(isOpen);
+
   return (
     <div
       className={cn(

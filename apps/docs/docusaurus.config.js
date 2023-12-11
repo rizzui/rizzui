@@ -109,6 +109,7 @@ const config = {
       },
       colorMode: {
         defaultMode: "light",
+        respectPrefersColorScheme: true,
       },
       prism: {
         theme: myTheme,
