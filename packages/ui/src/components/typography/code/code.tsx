@@ -3,7 +3,7 @@ import { cn } from '../../../lib/cn';
 import { makeClassName } from '../../../lib/make-class-name';
 
 const codeStyles = {
-  pre: 'border ring-[0.5px] ring-muted border-muted py-3 px-4 rounded-lg bg-muted/70/50',
+  pre: 'border ring-[0.5px] ring-muted border-muted py-3 px-4 rounded-lg bg-muted/70 backdrop-blur',
 };
 
 export type CodeProps = {

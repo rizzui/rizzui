@@ -13,10 +13,10 @@ const textareaStyles = {
   scrollBar:
     '[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
   disabled:
-    '!bg-muted/70 cursor-not-allowed !border-muted placeholder:text-muted-foreground',
+    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted placeholder:text-muted-foreground',
   clearable:
     '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
-  error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
+  error: '!border-red hover:!border-red focus:!border-red !ring-red',
   size: {
     sm: 'px-2.5 py-1 text-xs',
     md: 'px-3 py-2 text-sm',
@@ -26,7 +26,7 @@ const textareaStyles = {
   rounded: roundedStyles,
   variant: {
     text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-muted/70',
+    flat: 'border-0 ring-muted/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-muted/70 backdrop-blur',
     outline: 'bg-transparent ring-muted border border-muted',
   },
 };

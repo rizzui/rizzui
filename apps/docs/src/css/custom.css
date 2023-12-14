@@ -31,7 +31,7 @@
     /* primary/brand colors */
     /* ----------------------------------- */
     --primary-lighter: 227 227 227; /* #e3e3e3 */
-    --primary-default: 34 34 34; /* #222222 */
+    --primary-default: 17 17 17; /* #111111 */
     --primary-dark: 0 0 0; /* #000000 */
     --primary-foreground: 255 255 255; /* #ffffff */
 
@@ -596,7 +596,7 @@ nav.navbar .navbar__inner {
 
 #__docusaurus .navbar__logo {
   /* @apply h-9; */
-  @apply h-[22px];
+  @apply h-6;
 }
 
 .header-github-link:before {

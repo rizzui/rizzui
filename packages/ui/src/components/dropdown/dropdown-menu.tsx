@@ -3,24 +3,8 @@ import { Menu, Transition } from '@headlessui/react';
 import { FloatingPortal } from '@floating-ui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
+import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { useDropdown } from './dropdown-context';
-
-export const dropdownStyles = {
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    xl: 'rounded-xl',
-  },
-  shadow: {
-    none: 'shadow-none',
-    sm: 'drop-shadow-sm',
-    md: 'drop-shadow',
-    lg: 'drop-shadow-md',
-    xl: 'drop-shadow-lg',
-  },
-};
 
 type DropdownMenuProps = {
   as?: 'ul' | 'div';
@@ -53,7 +37,8 @@ export function DropdownMenu({
           data-testid="dropdown-menu"
           className={cn(
             makeClassName(`dropdown-menu`),
-            'z-30 w-48 border border-muted bg-background p-1.5 focus-visible:outline-none dark:bg-muted/30 dark:backdrop-blur-3xl',
+            'w-48',
+            dropdownStyles.base,
             rounded && dropdownStyles.rounded[rounded],
             shadow && dropdownStyles.shadow[shadow],
             className

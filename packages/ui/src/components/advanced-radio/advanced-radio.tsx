@@ -8,7 +8,7 @@ const advancedRadioStyles = {
   active:
     'peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px]',
   disabled:
-    'peer-disabled:bg-muted/70 peer-disabled:text-muted-foreground peer-disabled:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed',
+    'peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:text-muted-foreground peer-disabled:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed',
   alignment: {
     left: '',
     center: 'text-center [&>*]:mx-auto',

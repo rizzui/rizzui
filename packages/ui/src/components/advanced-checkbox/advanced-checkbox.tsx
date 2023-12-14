@@ -8,7 +8,7 @@ const advancedCheckboxStyles = {
   active:
     'peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px]',
   disabled:
-    'peer-disabled:bg-muted/70 peer-disabled:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed peer-disabled:text-muted-foreground',
+    'peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed peer-disabled:text-muted-foreground',
   alignment: {
     left: '',
     center: 'text-center [&>*]:mx-auto',

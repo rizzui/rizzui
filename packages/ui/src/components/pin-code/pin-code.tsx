@@ -11,9 +11,9 @@ const containerClasses = {
 const pinCodeStyles = {
   base: 'block peer text-center bg-transparent mr-2 focus:placeholder:opacity-0 focus:outline-none transition duration-200',
   disabled:
-    'disabled:bg-muted/70 disabled:placeholder:text-muted-foreground disabled:text-muted-foreground disabled:cursor-not-allowed disabled:border-muted',
+    'disabled:bg-muted/70 disabled:backdrop-blur disabled:placeholder:text-muted-foreground disabled:text-muted-foreground disabled:cursor-not-allowed disabled:border-muted',
   error:
-    'border-red hover:enabled:!border-red focus:enabled:!border-red focus:!ring-red',
+    'border-red hover:enabled:!border-red focus:enabled:!border-red !ring-red',
   size: {
     sm: 'px-1 py-1 text-sm h-8 w-8',
     md: 'px-2 py-2 text-sm h-10 w-10',
@@ -28,7 +28,7 @@ const pinCodeStyles = {
     full: 'rounded-full',
   },
   variant: {
-    flat: 'focus:ring-[1.8px] border-0 placeholder:opacity-90 bg-muted/70 focus:ring-primary focus:enabled:bg-transparent',
+    flat: 'focus:ring-[1.8px] border-0 placeholder:opacity-90 bg-muted/70 backdrop-blur focus:ring-primary focus:enabled:bg-transparent',
     outline:
       'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-muted border border-muted placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
   },

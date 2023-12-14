@@ -11,7 +11,7 @@ export const buttonVariantStyles = {
     },
   },
   flat: {
-    base: 'border-transparent',
+    base: 'border-transparent backdrop-blur',
     color: {
       primary:
         'bg-primary-lighter hover:enabled:bg-primary/20 focus-visible:ring-primary-lighter text-primary-dark',

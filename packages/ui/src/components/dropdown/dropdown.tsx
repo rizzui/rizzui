@@ -11,8 +11,9 @@ import {
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
 import { makeClassName } from '../../lib/make-class-name';
+import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { DropdownTrigger } from './dropdown-trigger';
-import { DropdownMenu, dropdownStyles } from './dropdown-menu';
+import { DropdownMenu } from './dropdown-menu';
 import { DropdownItem } from './dropdown-item';
 import { DropdownProvider } from './dropdown-context';
 
