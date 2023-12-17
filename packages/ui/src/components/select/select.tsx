@@ -6,6 +6,7 @@ import {
   offset,
   autoUpdate,
   useFloating,
+  FloatingPortal,
 } from '@floating-ui/react';
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
@@ -17,6 +18,7 @@ import { ChevronDownIcon } from '../../icons/chevron-down';
 import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
+import { makeClassName } from '../../lib/make-class-name';
 import {
   displayValueFn,
   getOptionDisplayValueFn,
@@ -24,6 +26,7 @@ import {
   isEmpty,
   isNumber,
 } from './select.lib';
+import { Fragment } from 'react';
 
 const selectStyles = {
   base: 'flex items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
@@ -61,7 +64,7 @@ const selectStyles = {
 };
 
 const optionListStyles = {
-  base: `${dropdownStyles.base} max-h-[265px] w-full overflow-auto [&>ul]:outline-none [&>ul]:ring-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
+  base: `${dropdownStyles.base} max-h-[265px] w-full overflow-auto [&>ul]:!outline-none [&>ul]:!ring-0 [&>ul]:!p-0 [&>ul]:!m-0 [&>ul>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
   shadow: dropdownStyles.shadow,
   rounded: {
     none: 'rounded-none',
@@ -88,11 +91,10 @@ const optionListStyles = {
 };
 
 export type SelectOption = {
-  id?: string | number;
   value: string | number;
-  label: React.ReactNode;
+  label: string;
   disabled?: boolean;
-  [key: string]: unknown;
+  [key: string]: any;
 };
 
 export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
@@ -146,11 +148,23 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   helperClassName?: string;
   /** This prop allows you to customize the Options Wrapper style */
   dropdownClassName?: string;
-  /** Define whether label or value you want to display */
+  /**
+   * A function to determine the display value of the selected item.
+   * @param value - The value of the selected item.
+   * @returns React node to display for the selected item.
+   */
   displayValue?(value: ExtractProps<typeof Listbox>['value']): React.ReactNode;
-  /** Use this when you want to display other than displayValue*/
+  /**
+   * Use this function when you want to display something other than the default displayValue.
+   * @param option - The SelectOption for which to get the display value.
+   * @returns React node to display for the specified option.
+   */
   getOptionDisplayValue?(option: SelectOption): React.ReactNode;
-  /** Select whether label or value you want get on onChange method */
+  /**
+   * Select whether the label or value should be returned in the onChange method.
+   * @param option - The SelectOption for which to get the value.
+   * @returns The selected value from the specified option.
+   */
   getOptionValue?: (
     option: SelectOption
   ) => SelectOption[keyof SelectOption] | SelectOption;
@@ -204,13 +218,21 @@ export function Select<OptionType extends SelectOption>({
   const emptyValue = !isNumber(value) && isEmpty(value);
 
   return (
-    <div ref={refs.setReference} className={cn('grid grid-cols-1', className)}>
+    <div
+      ref={refs.setReference}
+      className={cn(
+        makeClassName(`select-root`),
+        'grid w-full grid-cols-1',
+        className
+      )}
+    >
       <Listbox value={value} disabled={disabled} {...props}>
         {({ open }) => (
           <>
             {label && (
               <Listbox.Label
                 className={cn(
+                  makeClassName(`select-label`),
                   'block',
                   labelStyles.size[size],
                   labelStyles.weight[labelWeight],
@@ -225,6 +247,7 @@ export function Select<OptionType extends SelectOption>({
             <div ref={ref} className={cn('h-full')}>
               <Listbox.Button
                 className={cn(
+                  makeClassName(`select-button`),
                   selectStyles.base,
                   selectStyles.variant[variant],
                   selectStyles.size[size],
@@ -239,6 +262,7 @@ export function Select<OptionType extends SelectOption>({
                 {prefix ? (
                   <span
                     className={cn(
+                      makeClassName(`select-prefix`),
                       'block whitespace-nowrap leading-normal',
                       prefixClassName
                     )}
@@ -249,6 +273,7 @@ export function Select<OptionType extends SelectOption>({
 
                 <span
                   className={cn(
+                    makeClassName(`select-value`),
                     'block w-full truncate text-left rtl:text-right',
                     emptyValue && 'text-muted-foreground',
                     prefix && selectStyles.prefix.size[size],
@@ -272,6 +297,7 @@ export function Select<OptionType extends SelectOption>({
                 {suffix ? (
                   <span
                     className={cn(
+                      makeClassName(`select-suffix`),
                       'whitespace-nowrap leading-normal transition-transform duration-200',
                       open && 'rotate-180',
                       suffixClassName
@@ -282,56 +308,64 @@ export function Select<OptionType extends SelectOption>({
                 ) : null}
               </Listbox.Button>
 
-              <Transition
-                ref={refs.setFloating}
-                leave="transition ease-in duration-100"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-                className={cn(
-                  optionListStyles.base,
-                  optionListStyles.shadow[shadow],
-                  optionListStyles.rounded[rounded],
-                  dropdownClassName
-                )}
-                style={{
-                  width,
-                  position: strategy,
-                  top: y ?? 0,
-                  left: x ?? 0,
-                }}
-              >
-                <Listbox.Options>
-                  {options.map((option) => (
-                    <Listbox.Option
-                      key={option.value}
-                      {...(option?.disabled && {
-                        disabled: option?.disabled,
-                      })}
-                      className={({ active }) =>
-                        cn(
-                          'flex w-full items-center px-3 py-1.5',
-                          active && 'bg-muted/70',
-                          rounded && optionListStyles.item.rounded[rounded],
-                          size && optionListStyles.item.size[size],
-                          !option?.disabled && 'cursor-pointer',
-                          optionClassName
-                        )
-                      }
-                      value={getOptionValue(option)}
-                    >
-                      {({ selected }) => (
-                        <span
-                          className={cn(
-                            selected ? 'font-medium' : 'text-foreground'
-                          )}
-                        >
-                          {getOptionDisplayValue(option)}
-                        </span>
-                      )}
-                    </Listbox.Option>
-                  ))}
-                </Listbox.Options>
-              </Transition>
+              <FloatingPortal>
+                <Transition
+                  as={Fragment}
+                  leave="transition ease-in duration-100"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <Listbox.Options
+                    ref={refs.setFloating}
+                    className={cn(
+                      makeClassName(`select-options`),
+                      optionListStyles.base,
+                      optionListStyles.shadow[shadow],
+                      optionListStyles.rounded[rounded],
+                      dropdownClassName
+                    )}
+                    style={{
+                      width,
+                      position: strategy,
+                      top: y ?? 0,
+                      left: x ?? 0,
+                    }}
+                  >
+                    {options.map((option) => (
+                      <Listbox.Option
+                        key={option.value}
+                        {...(option?.disabled && {
+                          disabled: option?.disabled,
+                        })}
+                        className={({ active }) =>
+                          cn(
+                            makeClassName(`select-option`),
+                            'flex w-full items-center px-3 py-1.5',
+                            active && 'bg-muted/70',
+                            rounded && optionListStyles.item.rounded[rounded],
+                            size && optionListStyles.item.size[size],
+                            !option?.disabled && 'cursor-pointer',
+                            optionClassName
+                          )
+                        }
+                        value={getOptionValue(option)}
+                      >
+                        {({ selected }) => (
+                          <div
+                            className={cn(
+                              selected ? 'font-medium' : 'text-foreground'
+                            )}
+                          >
+                            {getOptionDisplayValue(option)}
+                          </div>
+                        )}
+                      </Listbox.Option>
+                    ))}
+                  </Listbox.Options>
+                </Transition>
+
+                <span className="sr-only">rizzui - select</span>
+              </FloatingPortal>
             </div>
           </>
         )}

@@ -1,56 +1,160 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 ---
 
-import { Tab } from "rizzui";
+import Paper from "@site/src/components/paper";
+import SelectBox, {
+  SelectBoxClearable,
+  CustomOptionSelectBox,
+} from "@site/src/components/select";
 
 # Select
 
 The Tabs Component allows the content author to organize page content within multiple tabs.
 
 ```tsx
-import { Tab } from "rizzui";
+import { Select } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
 
-## Simple Tabs
+## Default
 
-A simple style of **Tabs**.
+The default style of **Select** component.
 
 <Paper>
-  <Tab>
-    <Tab.List>
-      <Tab.ListItem>Recent</Tab.ListItem>
-      <Tab.ListItem>Popular</Tab.ListItem>
-      <Tab.ListItem>Trending</Tab.ListItem>
-    </Tab.List>
-    <Tab.Panels>
-      <Tab.Panel>Recent panel</Tab.Panel>
-      <Tab.Panel>Popular panel</Tab.Panel>
-      <Tab.Panel>Trending panel</Tab.Panel>
-    </Tab.Panels>
-  </Tab>
+  <SelectBox className="w-full max-w-md" />
 </Paper>
 
 ```tsx
-import { Tab } from "rizzui";
+import { useState } from 'react'
+import { Select } from "rizzui";
+
+const options = [
+  { label: 'Apple 🍎', value: 'apple' },
+  { label: 'Banana 🍌', value: 'banana' },
+  { label: 'Cherry 🍒', value: 'cherry' },
+  ...
+];
 
 export default function App() {
+  const [value, setValue] = useState(null);
   return (
-    <Tab>
-      <Tab.List>
-        <Tab.ListItem>Recent</Tab.ListItem>
-        <Tab.ListItem>Popular</Tab.ListItem>
-        <Tab.ListItem>Trending</Tab.ListItem>
-      </Tab.List>
-      <Tab.Panels>
-        <Tab.Panel>Recent panel</Tab.Panel>
-        <Tab.Panel>Popular panel</Tab.Panel>
-        <Tab.Panel>Trending panel</Tab.Panel>
-      </Tab.Panels>
-    </Tab>
+    <Select
+      label="Select"
+      options={options}
+      value={value}
+      onChange={setValue}
+    />
   );
+}
+```
+
+<div className="mb-20" />
+
+## With Clearable Button
+
+You can clear **Select** value using clearable property.
+
+<Paper>
+  <SelectBoxClearable clearable className="w-full max-w-md" />
+</Paper>
+
+```tsx
+import { useState } from 'react'
+import { Select } from "rizzui";
+
+const options = [
+  { label: 'Apple 🍎', value: 'apple' },
+  { label: 'Banana 🍌', value: 'banana' },
+  { label: 'Cherry 🍒', value: 'cherry' },
+  ...
+];
+
+export default function App() {
+  const [value, setValue] = useState(options[0]);
+  return (
+    <Select
+      label="Select"
+      options={options}
+      value={value}
+      onChange={setValue}
+      clearable={value !== null}
+      onClear={() => setValue(null)}
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With Custom Option
+
+Here is the custom option **Select** example.
+
+<Paper>
+  <CustomOptionSelectBox className="w-full max-w-md" />
+</Paper>
+
+```tsx
+import { useState } from 'react'
+import { Select, type SelectOption } from "rizzui";
+
+const options = [
+  {
+    label: "Wolverine",
+    value: "wolverine@rizzui.io",
+    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
+  },
+  {
+    label: "MessiJr",
+    value: "messijr@rizzui.io",
+    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+  },
+  ...
+];
+
+export default function App() {
+  const [value, setValue] = useState(null);
+  return (
+    <Select
+      label={label}
+      options={customOptions}
+      value={value}
+      onChange={setValue}
+      displayValue={(value) => renderDisplayValue(value)}
+      getOptionDisplayValue={(option) => renderOptionDisplayValue(option)}
+    />
+  );
+}
+
+function renderDisplayValue(value: SelectOption) {
+  return (
+    <span className="flex items-center gap-2">
+      <img
+        src={value.avatar}
+        alt={value.label}
+        className="w-7 h-7 object-cover rounded-full"
+      />
+      <Text>{value.label}</Text>
+    </span>
+  )
+}
+
+function renderOptionDisplayValue(option: SelectOption) {
+  return (
+    <div className="flex items-center gap-3">
+      <img
+        src={option.avatar}
+        alt={option.label}
+        className="w-9 h-9 object-cover rounded"
+      />
+      <div>
+        <Text fontWeight="medium">{option.label}</Text>
+        <Text>{option.value}</Text>
+      </div>
+    </div>
+  )
 }
 ```
 
@@ -62,79 +166,94 @@ export default function App() {
 
 <div className="mb-10" />
 
-### Tab Props
+### Select Props
 
 Here is the API documentation of the **Tab** component.
 
 <div className="overflow-x-auto">
 
-|       Props        |            Type             |                                                Description                                                | Default |
-| :----------------: | :-------------------------: | :-------------------------------------------------------------------------------------------------------: | :-----: |
-|      vertical      |          `boolean`          | When true, the orientation of the **Tab.List** will be **vertical**, otherwise it will be **horizontal**. |  \_\_   |
-|   selectedIndex    |          `number`           |            The selected index if you want to use the Tab component as a controlled component.             |  \_\_   |
-|      onChange      | `((index: number) => void)` |                            A function called whenever the active tab changes.                             |  \_\_   |
-| hideHoverAnimation |          `boolean`          |                                   Use this prop to hide hover animation                                   |  false  |
-|      children      |       `ReactElement`        |                          Only allow **Tab.List** and **Tab.Panels** as children                           |  \_\_   |
-|     className      |          `string`           |                             Add classes to the main wrapper of this component                             |  \_\_   |
+|         Props         |                  Type                   |                                                                                                          Description                                                                                                           |    Default    |
+| :-------------------: | :-------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
+|        options        | [`SelectOption[]`](#select-option-type) |                                                                                Add options data using this prop. **options** prop is requried.                                                                                 |     \_\_      |
+|         value         |                   `T`                   |                                                                                        The selected value. **value** prop is requried.                                                                                         |     \_\_      |
+|       onChange        |          `(value: T) => void`           |                                                                      The function to call when a new option is selected.. **onChange** prop is requried.                                                                       |     \_\_      |
+|         label         |               `ReactNode`               |                                                                                                        Set field label                                                                                                         |     \_\_      |
+|      labelWeight      |      [LabelWeight](#label-weight)       |                                                                                                     Set label font weight                                                                                                      |  `"medium"`   |
+|        variant        |   [SelectVariants](#select-variants)    |                                                                                               The variants of the component are:                                                                                               |  `"outline"`  |
+|         size          |      [SelectSizes](#select-sizes)       |                                                                           The size of the component. "sm" is equivalent to the dense select styling.                                                                           |    `"md"`     |
+|        rounded        |    [SelectRounded](#select-rounded)     |                                                                                                   The rounded variants are:                                                                                                    |    `"md"`     |
+|      placeholder      |                `string`                 |                                                                                                  Set select placeholder text                                                                                                   | `"Select..."` |
+|       disabled        |                `boolean`                |                                                                                             Whether the select is disabled or not                                                                                              |     \_\_      |
+|       clearable       |                `boolean`                |                                                                                                      Add clearable option                                                                                                      |     \_\_      |
+|        onClear        |    [SelectOnclear](#select-onclear)     |                                                                                                          clear event                                                                                                           |     \_\_      |
+|        prefix         |               `ReactNode`               |                                           The prefix is design for adding any icon or text on the Select field's start (it's a left icon for the `ltr` and right icon for the `rtl`)                                           |     \_\_      |
+|        suffix         |               `ReactNode`               |                                            The suffix is design for adding any icon or text on the Select field's end (it's a right icon for the `ltr` and left icon for the `rtl`)                                            |     \_\_      |
+|      helperText       |               `ReactNode`               |                                                                                    Add helper text. It could be string or a React component                                                                                    |     \_\_      |
+|         error         |                `string`                 |                                                                                               Show error message using this prop                                                                                               |     \_\_      |
+|     displayValue      |               `function`                |                          A function to determine the display value of the selected item. **@param value** - The value of the selected item, **@returns ReactNode** to display for the selected item.                           |     \_\_      |
+| getOptionDisplayValue |               `function`                | Use this function when you want to display something other than the default displayValue. **@param option** - The SelectOption for which to get the display value, **@returns ReactNode** to display for the specified option. |     \_\_      |
+|    getOptionValue     |               `function`                |            Select whether the label or value should be returned in the onChange method. **@param option** - The SelectOption for which to get the value, **@returns** The selected value from the specified option.            |     \_\_      |
+|    labelClassName     |                `string`                 |                                                                                              Override default CSS style of label                                                                                               |     \_\_      |
+|    selectClassName    |                `string`                 |                                                                                          Override default CSS style of select button                                                                                           |     \_\_      |
+|   dropdownClassName   |                `string`                 |                                                                                         Override default CSS style of select dropdown                                                                                          |     \_\_      |
+|    optionClassName    |                `string`                 |                                                                                          Override default CSS style of select option                                                                                           |     \_\_      |
+|    prefixClassName    |                `string`                 |                                                                                              Override default CSS style of prefix                                                                                              |     \_\_      |
+|    suffixClassName    |                `string`                 |                                                                                              Override default CSS style of suffix                                                                                              |     \_\_      |
+|    helperClassName    |                `string`                 |                                                                                            Override default CSS style of helperText                                                                                            |     \_\_      |
+|    errorClassName     |                `string`                 |                                                                                          Override default CSS style of error message                                                                                           |     \_\_      |
+|       className       |                `string`                 |                                                                                        Add custom classes to the root of the component                                                                                         |     \_\_      |
 
 </div>
 
 <div className="mb-10" />
 
-### Tab.List Props
+### Select Option type
 
-Here is the API documentation of the **Tab.List** component.
-
-<div className="overflow-x-auto">
-
-|   Props   |      Type      |                    Description                    | Default |
-| :-------: | :------------: | :-----------------------------------------------: | :-----: |
-| children  | `ReactElement` |      Only allow **Tab.ListItem** as children      |  \_\_   |
-| className |    `string`    | Add classes to the **Tab.List** of this component |  \_\_   |
-
-</div>
+```ts
+type SelectOption = {
+  value: string | number;
+  label: string;
+  disabled?: boolean;
+  [key: string]: any;
+};
+```
 
 <div className="mb-10" />
 
-### Tab.ListItem Props
+### Label Weight
 
-Here is the API documentation of the **Tab.ListItem** component.
-
-<div className="overflow-x-auto">
-
-|   Props   |    Type     |                      Description                      | Default |
-| :-------: | :---------: | :---------------------------------------------------: | :-----: |
-| children  | `ReactNode` |         Use any valid React element or string         |  \_\_   |
-| className |  `string`   | Add classes to the **Tab.ListItem** of this component |  \_\_   |
-
-</div>
+```ts
+type LabelWeight = "normal" | "medium" | "semibold" | "bold";
+```
 
 <div className="mb-10" />
 
-### Tab.Panels Props
+### Select Variants
 
-Here is the API documentation of the **Tab.Panels** component.
-
-<div className="overflow-x-auto">
-
-|   Props   |      Type      |                     Description                     | Default |
-| :-------: | :------------: | :-------------------------------------------------: | :-----: |
-| children  | `ReactElement` |        Only allow **Tab.Panel** as children         |  \_\_   |
-| className |    `string`    | Add classes to the **Tab.Panels** of this component |  \_\_   |
-
-</div>
+```ts
+type SelectVariants = "outline" | "flat" | "text";
+```
 
 <div className="mb-10" />
 
-### Tab.Panel Props
+### Select Sizes
 
-Here is the API documentation of the **Tab.Panel** component.
+```ts
+type SelectSizes = "sm" | "md" | "lg" | "xl";
+```
 
-<div className="overflow-x-auto">
+<div className="mb-10" />
 
-|   Props   |    Type     |                    Description                     | Default |
-| :-------: | :---------: | :------------------------------------------------: | :-----: |
-| children  | `ReactNode` |       Use any valid React element or string        |  \_\_   |
-| className |  `string`   | Add classes to the **Tab.Panel** of this component |  \_\_   |
+### Select Rounded
 
-</div>
+```ts
+type SelectRounded = "sm" | "md" | "lg" | "none" | "pill";
+```
+
+<div className="mb-10" />
+
+### Select onClear
+
+```ts
+type InputOnclear = (event) => void;
+```

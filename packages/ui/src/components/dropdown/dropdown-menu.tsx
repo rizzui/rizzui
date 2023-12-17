@@ -52,7 +52,7 @@ export function DropdownMenu({
           {children}
         </MenuItems>
       </TransitionComponent>
-      <span className="sr-only">rizzui</span>
+      <span className="sr-only">rizzui - dropdown</span>
     </FloatingPortal>
   );
 }

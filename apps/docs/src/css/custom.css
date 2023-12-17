@@ -568,7 +568,7 @@ hr {
 
 /* navbar style */
 nav.navbar {
-  @apply bg-white/[0.7] backdrop-blur-lg;
+  @apply bg-white/[0.7] backdrop-blur-lg z-[9999];
   box-shadow:
     0px 1.5px 0 rgba(0, 0, 0, 0.04),
     0px 2px 6px rgba(0, 0, 0, 0.05);

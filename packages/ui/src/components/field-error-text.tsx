@@ -4,9 +4,9 @@ import { cn } from '../lib/cn';
 const errorStyles = {
   base: 'text-red',
   size: {
-    sm: 'text-[10px] mt-0.5',
-    md: 'text-xs mt-0.5',
-    lg: 'text-xs mt-1',
+    sm: 'text-[11px] mt-0.5',
+    md: 'text-[13px] mt-0.5',
+    lg: 'text-[13px] mt-1',
     xl: 'text-sm mt-1',
   },
 };
