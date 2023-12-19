@@ -25,7 +25,7 @@ const radioLabelStyles = {
 };
 
 const radioStyles = {
-  base: 'disabled:bg-muted/70 disabled:border-muted ring-[0.6px] focus:ring-muted focus:ring-offset-background text-primary dark:text-primary-foreground',
+  base: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted ring-[0.6px] focus:ring-muted focus:ring-offset-background text-primary dark:text-primary-foreground',
   size: {
     sm: 'h-5 w-5',
     md: 'h-6 w-6',
@@ -35,7 +35,7 @@ const radioStyles = {
   variant: {
     outline:
       'bg-transparent border border-muted ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
-    flat: 'border-0 bg-muted/70 ring-muted/70 hover:enabled:bg-muted/90 checked:!bg-primary',
+    flat: 'border-0 bg-muted/70 backdrop-blur ring-muted/70 hover:enabled:bg-muted/90 checked:!bg-primary',
   },
 };
 

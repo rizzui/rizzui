@@ -86,7 +86,7 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
           variantStyle.color[color],
           isLoading && 'pointer-events-none relative',
           disabled &&
-            'cursor-not-allowed border-muted bg-muted/70 text-muted-foreground',
+            'cursor-not-allowed border-muted bg-muted/70 text-muted-foreground backdrop-blur',
           className
         )}
         {...(as && as !== 'span' && { type })}

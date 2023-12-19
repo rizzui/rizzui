@@ -72,3 +72,5 @@ export * from './components/tooltip';
 export * from './components/typography';
 
 export * from './components/accordion';
+
+export * from './components/select';

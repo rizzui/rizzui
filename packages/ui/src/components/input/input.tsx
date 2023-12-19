@@ -10,9 +10,9 @@ import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
 const inputStyles = {
   base: 'flex items-center peer w-full transition duration-200 border [&.is-focus]:ring-[0.8px] ring-[0.6px] [&.is-hover]:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary [&_input::placeholder]:opacity-60',
-  disabled: '!bg-muted/70 cursor-not-allowed !border-muted',
+  disabled: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted',
   error:
-    '!border-red [&.is-hover]:!border-red [&.is-focus]:!border-red [&.is-focus]:!ring-red !bg-transparent',
+    '!border-red [&.is-hover]:!border-red [&.is-focus]:!border-red !ring-red !bg-transparent',
   size: {
     sm: 'px-2 py-1 text-xs h-8 leading-[32px]',
     md: 'px-3.5 py-2 text-sm h-10 leading-[40px]',
@@ -22,7 +22,7 @@ const inputStyles = {
   rounded: roundedStyles,
   variant: {
     text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-muted/70',
+    flat: 'border-0 ring-muted/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-muted/70 backdrop-blur',
     outline: 'border border-muted ring-muted bg-transparent',
   },
 };

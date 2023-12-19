@@ -9,7 +9,7 @@ export default function ComponentCard({ item }: any) {
     <div
       onClick={() => history.push(item.path)}
       className={cn(
-        "flex flex-col rounded-xl border border-gray-200 flex-shrink-0 relative shadow-sm overflow-hidden group/card cursor-pointer transition-all [perspective:500px]"
+        "flex flex-col rounded-xl border border-muted flex-shrink-0 relative shadow-sm overflow-hidden group/card cursor-pointer transition-all hover:[box-shadow:0_12px_28px_-8px_rgba(0,0,0,0.1)] dark:hover:[box-shadow:0_12px_28px_-8px_rgba(255,255,255,0.05)]"
       )}
     >
       <div className="flex h-full justify-center items-center px-6 py-12 min-h-[256px] border-b border-gray-200/80 before:h-1/2 before:absolute relative before:bg-gradient-to-t before:from-gray-50/70 before:-z-[1] before:bottom-0 before:w-full">

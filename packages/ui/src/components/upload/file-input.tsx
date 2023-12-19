@@ -11,8 +11,8 @@ import { useInteractiveEvent } from '../../lib/use-interactive-event';
 const fileInputStyles = {
   base: 'flex items-center peer w-full transition duration-200',
   disabled:
-    '!bg-muted/70 cursor-not-allowed !border-muted !text-muted-foreground',
-  error: '!border-red hover:!border-red focus:!border-red focus:!ring-red',
+    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted !text-muted-foreground',
+  error: '!border-red hover:!border-red focus:!border-red !ring-red',
   size: {
     sm: 'pr-2 py-1 text-xs h-8 leading-[32px] pl-[1px]',
     md: 'pr-3.5 py-2 text-sm h-10 leading-[40px] pl-[1px]',

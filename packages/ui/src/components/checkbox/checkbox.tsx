@@ -27,7 +27,7 @@ const checkboxLabelStyles = {
 
 const checkboxStyles = {
   base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out',
-  disabled: 'disabled:bg-muted/70 disabled:border-muted',
+  disabled: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted',
   size: {
     sm: 'h-5 w-5',
     md: 'h-6 w-6',
@@ -46,7 +46,7 @@ const checkboxStyles = {
   variant: {
     outline:
       'bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
-    flat: 'border-0 bg-muted/70 hover:enabled:bg-muted focus:ring-muted checked:!bg-primary',
+    flat: 'border-0 bg-muted/70 backdrop-blur hover:enabled:bg-muted focus:ring-muted checked:!bg-primary',
   },
 };
 

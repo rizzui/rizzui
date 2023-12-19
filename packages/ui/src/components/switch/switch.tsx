@@ -29,7 +29,7 @@ const switchStyles = {
   base: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-muted ring-transparent ring-offset-background',
   active: 'peer-checked/switch:bg-primary peer-checked/switch:border-primary',
   disabled:
-    'cursor-not-allowed peer-disabled/switch:border-muted peer-disabled/switch:bg-muted/70',
+    'cursor-not-allowed peer-disabled/switch:border-muted peer-disabled/switch:bg-muted/70 peer-disabled:backdrop-blur',
   rounded: roundedStyles,
   size: {
     sm: 'w-8 h-5',
@@ -46,7 +46,7 @@ const switchStyles = {
     },
   },
   variant: {
-    flat: 'border border-transparent bg-muted/70 group-hover/switch:bg-muted',
+    flat: 'border border-transparent bg-muted/70 backdrop-blur group-hover/switch:bg-muted',
     outline:
       'border border-muted ring-[0.6px] ring-muted group-hover/switch:border-primary',
   },
