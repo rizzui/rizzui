@@ -34,42 +34,27 @@ export const WithAdvancedCheckbox = () => {
   const [values, setValues] = React.useState<string[]>(['one']);
   return (
     <CheckboxGroup values={values} setValues={setValues} className="flex gap-4">
-      <AdvancedCheckbox
-        value="any"
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-      >
+      <AdvancedCheckbox name="age" value="any" alignment="center">
         Any
       </AdvancedCheckbox>
       <AdvancedCheckbox
+        name="age"
         value="one"
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
+        defaultChecked
+        alignment="center"
       >
         1
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        value="two"
-        className="cursor-not-allowed rounded-full border border-gray-300 px-6 py-1.5 text-gray-300"
-        disabled
-      >
+      <AdvancedCheckbox name="age" value="two" alignment="center">
         2
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        value="three"
-        defaultChecked
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-      >
+      <AdvancedCheckbox name="age" value="three" disabled alignment="center">
         3
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        value="four"
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-      >
+      <AdvancedCheckbox name="age" value="four" alignment="center">
         4
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        value="five+"
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-      >
+      <AdvancedCheckbox name="age" value="five+" alignment="center">
         5+
       </AdvancedCheckbox>
     </CheckboxGroup>

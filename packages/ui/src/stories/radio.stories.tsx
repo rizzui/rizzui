@@ -78,28 +78,28 @@ export const ColumnGroupWithStartLabel = () => (
         name="column-label-start-group"
         label="default"
         helperText="This project would be available to anyone who have the link"
-        labelPlacement="start"
+        labelPlacement="left"
         value="default"
         className="p-2"
-        containerClassName="justify-between"
+        // containerClassName="justify-between"
       />
       <Radio
         name="column-label-start-group"
         label="primary"
         helperText="This project would be available to anyone who have the link"
-        labelPlacement="start"
+        labelPlacement="left"
         value="primary"
         className="p-2"
-        containerClassName="justify-between"
+        // containerClassName="justify-between"
       />
       <Radio
         name="column-label-start-group"
         label="secondary"
         helperText="This project would be available to anyone who have the link"
-        labelPlacement="start"
+        labelPlacement="left"
         value="secondary"
         className="p-2"
-        containerClassName="justify-between"
+        // containerClassName="justify-between"
       />
     </div>
   </div>

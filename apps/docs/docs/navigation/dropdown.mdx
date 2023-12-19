@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-import { Dropdown, Button, DropdownItem, cn, ActionIcon, Avatar } from "rizzui";
+import { Dropdown, Button, Text, ActionIcon, Avatar, cn } from "rizzui";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import {
   AdjustmentsHorizontalIcon,
@@ -21,279 +21,49 @@ import Paper from "@site/src/components/paper";
 A floating container which will appear on clicking the dropdown button.
 
 ```tsx
-import { Dropdown, DropdownItem } from "rizzui";
+import { Dropdown } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
 
-## Simple Dropdown
+## Default
 
-A simple dropdown with component **Dropdown** and **DropdownItem**.
+A simple dropdown with component **Dropdown**.
 
 <Paper>
-  <Dropdown
-    trigger={
+  <Dropdown>
+    <Dropdown.Trigger>
       <Button variant="outline">
         Settings <ChevronDownIcon className="ml-2 w-5" />
       </Button>
-    }
-    dropdownClassName="w-48 mt-4"
-  >
-    <DropdownItem className="mt-3 px-5 py-2" activeClassName="bg-gray-100">
-      {({ active }) => (
-        <span className={cn("text-gray-600", active && "!text-gray-900")}>
-          Account Settings
-        </span>
-      )}
-    </DropdownItem>
-    <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-      {({ active }) => (
-        <span className={cn("text-gray-600", active && "!text-gray-900")}>
-          Support
-        </span>
-      )}
-    </DropdownItem>
-    <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-      {({ active }) => (
-        <span className={cn("text-gray-600", active && "!text-gray-900")}>
-          License
-        </span>
-      )}
-    </DropdownItem>
-    <DropdownItem className="mb-3 px-5 py-2" activeClassName="bg-gray-100">
-      {({ active }) => (
-        <span className={cn("text-gray-600", active && "!text-gray-900")}>
-          Sign Out
-        </span>
-      )}
-    </DropdownItem>
+    </Dropdown.Trigger>
+    <Dropdown.Menu className="text-sm font-inter">
+      <Dropdown.Item>Account Settings</Dropdown.Item>
+      <Dropdown.Item>Support</Dropdown.Item>
+      <Dropdown.Item>License</Dropdown.Item>
+      <Dropdown.Item>Sign Out</Dropdown.Item>
+    </Dropdown.Menu>
   </Dropdown>
 </Paper>
 
 ```tsx
-import { Dropdown, Button, DropdownItem } from "rizzui";
+import { Dropdown, Button } from "rizzui";
 
 export default function App() {
   return (
-    <Dropdown
-      trigger={
+    <Dropdown>
+      <Dropdown.Trigger>
         <Button variant="outline">
           Settings <ChevronDownIcon className="ml-2 w-5" />
         </Button>
-      }
-      dropdownClassName="w-48 mt-4"
-    >
-      <DropdownItem className="mt-3 px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span className={cn("text-gray-600", active && "!text-gray-900")}>
-            Account Settings
-          </span>
-        )}
-      </DropdownItem>
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span className={cn("text-gray-600", active && "!text-gray-900")}>
-            Support
-          </span>
-        )}
-      </DropdownItem>
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span className={cn("text-gray-600", active && "!text-gray-900")}>
-            License
-          </span>
-        )}
-      </DropdownItem>
-      <DropdownItem className="mb-3 px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span className={cn("text-gray-600", active && "!text-gray-900")}>
-            Sign Out
-          </span>
-        )}
-      </DropdownItem>
+      </Dropdown.Trigger>
+      <Dropdown.Menu>
+        <Dropdown.Item>Account Settings</Dropdown.Item>
+        <Dropdown.Item>Support</Dropdown.Item>
+        <Dropdown.Item>License</Dropdown.Item>
+        <Dropdown.Item>Sign Out</Dropdown.Item>
+      </Dropdown.Menu>
     </Dropdown>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of **Dropdown** using [**rounded**](#dropdown-rounded) property.
-
-<Paper className="flex-row justify-start flex-wrap gap-6">
-  {[
-    ["sm", "Small"],
-    ["DEFAULT", "Default"],
-    ["lg", "Large"],
-    ["xl", "Extra Large"],
-    ["none", "None"],
-  ].map((item) => (
-    <Dropdown
-      key={item[0]}
-      trigger={
-        <Button variant="outline">
-          Rounded {item[1]} <ChevronDownIcon className="ml-2 w-5" />
-        </Button>
-      }
-      rounded={item[0]}
-      dropdownClassName="w-48 mt-4"
-    >
-      {["Account Settings", "Support", "License", "Sign Out"].map(
-        (item, index) => (
-          <DropdownItem
-            key={item}
-            className="px-5 py-2 first:mt-2 last:mb-2"
-            activeClassName="bg-gray-100"
-          >
-            {({ active }) => (
-              <span className={cn("text-gray-600", active && "!text-gray-900")}>
-                {item}
-              </span>
-            )}
-          </DropdownItem>
-        )
-      )}
-    </Dropdown>
-  ))}
-</Paper>
-
-```tsx
-import { Dropdown, Button, DropdownItem, cn } from "rizzui";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
-export default function App() {
-  return (
-    <>
-      {[
-        ["sm", "Small"],
-        ["DEFAULT", "Default"],
-        ["lg", "Large"],
-        ["xl", "Extra Large"],
-        ["none", "None"],
-      ].map((item) => (
-        <Dropdown
-          key={item[0]}
-          trigger={
-            <Button variant="outline">
-              Rounded {item[1]} <ChevronDownIcon className="ml-2 w-5" />
-            </Button>
-          }
-          rounded={item[0]}
-          dropdownClassName="w-48 mt-4"
-        >
-          {["Account Settings", "Support", "License", "Sign Out"].map(
-            (item, index) => (
-              <DropdownItem
-                key={item}
-                className="px-5 py-2 first:mt-2 last:mb-2"
-                activeClassName="bg-gray-100"
-              >
-                {({ active }) => (
-                  <span
-                    className={cn("text-gray-600", active && "!text-gray-900")}
-                  >
-                    {item}
-                  </span>
-                )}
-              </DropdownItem>
-            )
-          )}
-        </Dropdown>
-      ))}
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Shadows
-
-You can change the drop shadow of **Dropdown** using [**shadow**](#dropdown-shadows) property.
-
-<Paper className="flex-row justify-start flex-wrap gap-6">
-  {[
-    ["sm", "Small"],
-    ["DEFAULT", "Default"],
-    ["lg", "Large"],
-    ["xl", "Extra Large"],
-    ["none", "None"],
-  ].map((item) => (
-    <Dropdown
-      key={item[0]}
-      trigger={
-        <Button variant="outline">
-          Shadow {item[1]} <ChevronDownIcon className="ml-2 w-5" />
-        </Button>
-      }
-      shadow={item[0]}
-      dropdownClassName="w-48 mt-4"
-    >
-      {["Account Settings", "Support", "License", "Sign Out"].map(
-        (item, index) => (
-          <DropdownItem
-            key={item}
-            className="px-5 py-2 first:mt-2 last:mb-2"
-            activeClassName="bg-gray-100"
-          >
-            {({ active }) => (
-              <span className={cn("text-gray-600", active && "!text-gray-900")}>
-                {item}
-              </span>
-            )}
-          </DropdownItem>
-        )
-      )}
-    </Dropdown>
-  ))}
-</Paper>
-
-```tsx
-import { Dropdown, Button, DropdownItem, cn } from "rizzui";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-
-export default function App() {
-  return (
-    <>
-      {[
-        ["sm", "Small"],
-        ["DEFAULT", "Default"],
-        ["lg", "Large"],
-        ["xl", "Extra Large"],
-        ["none", "None"],
-      ].map((item) => (
-        <Dropdown
-          key={item[0]}
-          trigger={
-            <Button variant="outline">
-              Shadow {item[1]} <ChevronDownIcon className="ml-2 w-5" />
-            </Button>
-          }
-          shadow={item[0]}
-          dropdownClassName="w-48 mt-4"
-        >
-          {["Account Settings", "Support", "License", "Sign Out"].map(
-            (item, index) => (
-              <DropdownItem
-                key={item}
-                className="px-5 py-2 first:mt-2 last:mb-2"
-                activeClassName="bg-gray-100"
-              >
-                {({ active }) => (
-                  <span
-                    className={cn("text-gray-600", active && "!text-gray-900")}
-                  >
-                    {item}
-                  </span>
-                )}
-              </DropdownItem>
-            )
-          )}
-        </Dropdown>
-      ))}
-    </>
   );
 }
 ```
@@ -302,122 +72,58 @@ export default function App() {
 
 ## With Icons
 
-You can use icon inside **Dropdown** and **DropdownItem**.
+You can use **placement** and icon.
 
 <Paper>
-  <Dropdown
-    trigger={
+  <Dropdown placement="bottom-end">
+    <Dropdown.Trigger>
       <ActionIcon variant="outline" rounded="full">
-        <AdjustmentsHorizontalIcon className="h-5 w-5 text-gray-500" />
+        <AdjustmentsHorizontalIcon className="h-5 w-5" />
       </ActionIcon>
-    }
-    className="h-96"
-    dropdownClassName="w-48 mt-4 divide-y"
-  >
-    <div className="mt-3 mb-2">
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span
-            className={cn(
-              "flex items-center text-gray-600",
-              active && "!text-gray-900"
-            )}
-          >
-            <PencilIcon className="mr-2 h-4 w-4" />
-            Edit
-          </span>
-        )}
-      </DropdownItem>
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span
-            className={cn(
-              "flex items-center text-gray-600",
-              active && "!text-gray-900"
-            )}
-          >
-            <DocumentDuplicateIcon className="mr-2 h-4 w-4" />
-            Duplicate
-          </span>
-        )}
-      </DropdownItem>
-    </div>
-    <div className="mb-2 pt-2">
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span
-            className={cn(
-              "flex items-center text-gray-600",
-              active && "!text-gray-900"
-            )}
-          >
-            <ArchiveBoxIcon className="mr-2 h-4 w-4" />
-            Archive
-          </span>
-        )}
-      </DropdownItem>
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span
-            className={cn(
-              "flex items-center text-gray-600",
-              active && "!text-gray-900"
-            )}
-          >
-            <ArrowRightCircleIcon className="mr-2 h-4 w-4" />
-            Move
-          </span>
-        )}
-      </DropdownItem>
-    </div>
-    <div className="mb-2 pt-2">
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span
-            className={cn(
-              "flex items-center text-gray-600",
-              active && "!text-gray-900"
-            )}
-          >
-            <ShareIcon className="mr-2 h-4 w-4" />
-            Share
-          </span>
-        )}
-      </DropdownItem>
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span
-            className={cn(
-              "flex items-center text-gray-600",
-              active && "!text-gray-900"
-            )}
-          >
-            <HeartIcon className="mr-2 h-4 w-4" />
-            Add to Favourite
-          </span>
-        )}
-      </DropdownItem>
-    </div>
-    <div className="mt-2 mb-3 pt-2">
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span
-            className={cn(
-              "flex items-center text-gray-600",
-              active && "!text-gray-900"
-            )}
-          >
-            <TrashIcon className="mr-2 h-4 w-4" />
-            Delete
-          </span>
-        )}
-      </DropdownItem>
-    </div>
+    </Dropdown.Trigger>
+    <Dropdown.Menu className="divide-y text-sm font-inter">
+      <div className="mb-2">
+        <Dropdown.Item>
+          <PencilIcon className="mr-2 h-4 w-4" />
+          Edit
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <DocumentDuplicateIcon className="mr-2 h-4 w-4" />
+          Duplicate
+        </Dropdown.Item>
+      </div>
+      <div className="mb-2 pt-2">
+        <Dropdown.Item>
+          <ArchiveBoxIcon className="mr-2 h-4 w-4" />
+          Archive
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <ArrowRightCircleIcon className="mr-2 h-4 w-4" />
+          Move
+        </Dropdown.Item>
+      </div>
+      <div className="mb-2 pt-2">
+        <Dropdown.Item>
+          <ShareIcon className="mr-2 h-4 w-4" />
+          Share
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <HeartIcon className="mr-2 h-4 w-4" />
+          Add to Favourite
+        </Dropdown.Item>
+      </div>
+      <div className="mt-2 pt-2">
+        <Dropdown.Item>
+          <TrashIcon className="mr-2 h-4 w-4" />
+          Delete
+        </Dropdown.Item>
+      </div>
+    </Dropdown.Menu>
   </Dropdown>
 </Paper>
 
 ```tsx
-import { Dropdown, Button, DropdownItem, cn, ActionIcon } from "rizzui";
+import { Dropdown, Button, cn, ActionIcon } from "rizzui";
 import {
   AdjustmentsHorizontalIcon,
   PencilIcon,
@@ -431,114 +137,50 @@ import {
 
 export default function App() {
   return (
-    <Dropdown
-      trigger={
+    <Dropdown placement="bottom-end">
+      <Dropdown.Trigger>
         <ActionIcon variant="outline" rounded="full">
-          <AdjustmentsHorizontalIcon className="h-5 w-5 text-gray-500" />
+          <AdjustmentsHorizontalIcon className="h-5 w-5" />
         </ActionIcon>
-      }
-      className="h-96"
-      dropdownClassName="w-48 mt-4 divide-y"
-    >
-      <div className="mt-3 mb-2">
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span
-              className={cn(
-                "flex items-center text-gray-600",
-                active && "!text-gray-900"
-              )}
-            >
-              <PencilIcon className="mr-2 h-4 w-4" />
-              Edit
-            </span>
-          )}
-        </DropdownItem>
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span
-              className={cn(
-                "flex items-center text-gray-600",
-                active && "!text-gray-900"
-              )}
-            >
-              <DocumentDuplicateIcon className="mr-2 h-4 w-4" />
-              Duplicate
-            </span>
-          )}
-        </DropdownItem>
-      </div>
-      <div className="mb-2 pt-2">
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span
-              className={cn(
-                "flex items-center text-gray-600",
-                active && "!text-gray-900"
-              )}
-            >
-              <ArchiveBoxIcon className="mr-2 h-4 w-4" />
-              Archive
-            </span>
-          )}
-        </DropdownItem>
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span
-              className={cn(
-                "flex items-center text-gray-600",
-                active && "!text-gray-900"
-              )}
-            >
-              <ArrowRightCircleIcon className="mr-2 h-4 w-4" />
-              Move
-            </span>
-          )}
-        </DropdownItem>
-      </div>
-      <div className="mb-2 pt-2">
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span
-              className={cn(
-                "flex items-center text-gray-600",
-                active && "!text-gray-900"
-              )}
-            >
-              <ShareIcon className="mr-2 h-4 w-4" />
-              Share
-            </span>
-          )}
-        </DropdownItem>
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span
-              className={cn(
-                "flex items-center text-gray-600",
-                active && "!text-gray-900"
-              )}
-            >
-              <HeartIcon className="mr-2 h-4 w-4" />
-              Add to Favourite
-            </span>
-          )}
-        </DropdownItem>
-      </div>
-      <div className="mt-2 mb-3 pt-2">
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span
-              className={cn(
-                "flex items-center text-gray-600",
-                active && "!text-gray-900"
-              )}
-            >
-              <TrashIcon className="mr-2 h-4 w-4" />
-              Delete
-            </span>
-          )}
-        </DropdownItem>
-      </div>
+      </Dropdown.Trigger>
+      <Dropdown.Menu className="divide-y">
+        <div className="mb-2">
+          <Dropdown.Item>
+            <PencilIcon className="mr-2 h-4 w-4" />
+            Edit
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <DocumentDuplicateIcon className="mr-2 h-4 w-4" />
+            Duplicate
+          </Dropdown.Item>
+        </div>
+        <div className="mb-2 pt-2">
+          <Dropdown.Item>
+            <ArchiveBoxIcon className="mr-2 h-4 w-4" />
+            Archive
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <ArrowRightCircleIcon className="mr-2 h-4 w-4" />
+            Move
+          </Dropdown.Item>
+        </div>
+        <div className="mb-2 pt-2">
+          <Dropdown.Item>
+            <ShareIcon className="mr-2 h-4 w-4" />
+            Share
+          </Dropdown.Item>
+          <Dropdown.Item>
+            <HeartIcon className="mr-2 h-4 w-4" />
+            Add to Favourite
+          </Dropdown.Item>
+        </div>
+        <div className="mt-2 pt-2">
+          <Dropdown.Item>
+            <TrashIcon className="mr-2 h-4 w-4" />
+            Delete
+          </Dropdown.Item>
+        </div>
+      </Dropdown.Menu>
     </Dropdown>
   );
 }
@@ -546,236 +188,104 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Header
+## With Avatar
 
-You can use custom header to **Dropdown**.
+The variation is limitless. You can style your **Dropdown** as you want to do.
 
 <Paper>
-  <Dropdown
-    className="h-80"
-    dropdownClassName="w-56 mt-4 divide-y"
-    trigger={
+  <Dropdown placement="bottom-end">
+    <Dropdown.Trigger>
       <Avatar
-        name="John Doe"
-        src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
         size="lg"
+        name="John Doe"
+        src="https://randomuser.me/api/portraits/women/40.jpg"
+        className="cursor-pointer"
       />
-    }
-  >
-    <DropdownItem className="mt-3 mb-2 px-5 py-2" activeClassName="bg-gray-100">
-      {() => (
-        <span className="flex text-gray-600">
-          <Avatar
-            name="John Doe"
-            src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-          />
-          <span className="ml-2 text-start">
-            <p className="!text-gray-900">Jhon Doe</p>
-            <p>jhondoe@gmail.com</p>
-          </span>
+    </Dropdown.Trigger>
+    <Dropdown.Menu className="w-56 divide-y text-sm font-inter text-gray-600">
+      <Dropdown.Item className="hover:bg-transparent">
+        <Avatar
+          name="John Doe"
+          src="https://randomuser.me/api/portraits/women/40.jpg"
+        />
+        <span className="ml-2 text-start">
+          <Text className="text-gray-900 font-medium leading-tight">
+            Mary Hoops
+          </Text>
+          <Text>maryhe@demo.io</Text>
         </span>
-      )}
-    </DropdownItem>
-    <div className="mt-3 mb-2 pt-2">
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span className={cn("text-gray-600", active && "!text-gray-900")}>
-            Account Settings
-          </span>
-        )}
-      </DropdownItem>
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span className={cn("text-gray-600", active && "!text-gray-900")}>
-            Support
-          </span>
-        )}
-      </DropdownItem>
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span className={cn("text-gray-600", active && "!text-gray-900")}>
-            License
-          </span>
-        )}
-      </DropdownItem>
-    </div>
-    <div className="mt-2 mb-3 pt-2">
-      <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-        {({ active }) => (
-          <span className={cn("text-gray-600", active && "!text-gray-900")}>
-            Sign Out
-          </span>
-        )}
-      </DropdownItem>
-    </div>
+      </Dropdown.Item>
+      <div className="mt-3 mb-2 pt-2">
+        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
+          Account Settings
+        </Dropdown.Item>
+        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
+          Support
+        </Dropdown.Item>
+        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
+          License
+        </Dropdown.Item>
+      </div>
+      <div className="mt-2 pt-2">
+        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
+          Sign Out
+        </Dropdown.Item>
+      </div>
+    </Dropdown.Menu>
   </Dropdown>
 </Paper>
 
 ```tsx
-import { Dropdown, DropdownItem, Avatar } from "rizzui";
+import { Dropdown, Text, Avatar } from "rizzui";
 
 export default function App() {
   return (
-    <Dropdown
-      className="h-80"
-      dropdownClassName="w-56 mt-4 divide-y"
-      trigger={
+    <Dropdown placement="bottom-end">
+      <Dropdown.Trigger>
         <Avatar
           name="John Doe"
-          src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-          size="lg"
+          src="https://randomuser.me/api/portraits/women/40.jpg"
+          className="cursor-pointer"
         />
-      }
-    >
-      <DropdownItem
-        className="mt-3 mb-2 px-5 py-2"
-        activeClassName="bg-gray-100"
-      >
-        {() => (
-          <span className="flex text-gray-600">
-            <Avatar
-              name="John Doe"
-              src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
-            />
-            <span className="ml-2 text-start">
-              <p className="!text-gray-900">Jhon Doe</p>
-              <p>jhondoe@gmail.com</p>
-            </span>
+      </Dropdown.Trigger>
+      <Dropdown.Menu className="w-56 divide-y text-gray-600">
+        <Dropdown.Item className="hover:bg-transparent">
+          <Avatar
+            name="John Doe"
+            src="https://randomuser.me/api/portraits/women/40.jpg"
+          />
+          <span className="ml-2 text-start">
+            <Text className="text-gray-900 font-medium leading-tight">
+              Mary Hoops
+            </Text>
+            <Text>maryhe@demo.io</Text>
           </span>
-        )}
-      </DropdownItem>
-      <div className="mt-3 mb-2 pt-2">
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span className={cn("text-gray-600", active && "!text-gray-900")}>
-              Account Settings
-            </span>
-          )}
-        </DropdownItem>
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span className={cn("text-gray-600", active && "!text-gray-900")}>
-              Support
-            </span>
-          )}
-        </DropdownItem>
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span className={cn("text-gray-600", active && "!text-gray-900")}>
-              License
-            </span>
-          )}
-        </DropdownItem>
-      </div>
-      <div className="mt-2 mb-3 pt-2">
-        <DropdownItem className="px-5 py-2" activeClassName="bg-gray-100">
-          {({ active }) => (
-            <span className={cn("text-gray-600", active && "!text-gray-900")}>
-              Sign Out
-            </span>
-          )}
-        </DropdownItem>
-      </div>
+        </Dropdown.Item>
+        <div className="mt-3 mb-2 pt-2">
+          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
+            Account Settings
+          </Dropdown.Item>
+          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
+            Support
+          </Dropdown.Item>
+          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
+            License
+          </Dropdown.Item>
+        </div>
+        <div className="mt-2 pt-2">
+          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
+            Sign Out
+          </Dropdown.Item>
+        </div>
+      </Dropdown.Menu>
     </Dropdown>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Colors
-
-You can use colors with **Dropdown**.
-
-<Paper className="flex-row flex-wrap gap-6">
-  {[
-    "primary",
-    "secondary",
-    "danger/red",
-    "info/blue",
-    "success/green",
-    "warning/orange",
-  ].map((color) => (
-    <Dropdown
-      key={color}
-      dropdownClassName="w-48 mt-4"
-      trigger={
-        <Button variant="flat" color={color.split("/")[0]}>
-          {color.split("/")[0]}
-          <ChevronDownIcon className="ml-2 w-5" />
-        </Button>
-      }
-    >
-      {["Account Settings", "Support", "License", "Sign Out"].map(
-        (item, index) => (
-          <DropdownItem
-            key={item}
-            className={cn("px-5 py-2 text-gray-600", {
-              "mt-3": index === 0,
-              "mb-3": index === 3,
-            })}
-            activeClassName={`bg-${color.split("/")[1] || color}-lighter text-${
-              color.split("/")[1] || color
-            }-dark`}
-          >
-            {() => item}
-          </DropdownItem>
-        )
-      )}
-    </Dropdown>
-  ))}
-</Paper>
-
-```tsx
-import { Dropdown, Button, DropdownItem, cn } from "rizzui";
-
-export default function App() {
-  return (
-    <div>
-      {[
-        "primary",
-        "secondary",
-        "danger/red",
-        "info/blue",
-        "success/green",
-        "warning/orange",
-      ].map((color) => (
-        <Dropdown
-          key={color}
-          dropdownClassName="w-48 mt-4"
-          trigger={
-            <Button variant="flat" color={color.split("/")[0]}>
-              {color.split("/")[0]}
-              <ChevronDownIcon className="ml-2 w-5" />
-            </Button>
-          }
-        >
-          {["Account Settings", "Support", "License", "Sign Out"].map(
-            (item, index) => (
-              <DropdownItem
-                key={item}
-                className={cn("px-5 py-2 text-gray-600", {
-                  "mt-3": index === 0,
-                  "mb-3": index === 3,
-                })}
-                activeClassName={`bg-${
-                  color.split("/")[1] || color
-                }-lighter text-${color.split("/")[1] || color}-dark`}
-              >
-                {() => item}
-              </DropdownItem>
-            )
-          )}
-        </Dropdown>
-      ))}
-    </div>
   );
 }
 ```
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -787,35 +297,70 @@ Here is the API documentation of the Dropdown component. You can use the followi
 
 <div className="overflow-x-auto">
 
-|          Props          |                  Type                  |                                 Description                                  |   Default   |
-| :---------------------: | :------------------------------------: | :--------------------------------------------------------------------------: | :---------: |
-|           as            |           `ElementType<any>`           |                                                                              |    \_ \_    |
-|        children         | [DropdownChildren](#dropdown-children) |                          Dropdown item as children                           |    \_ \_    |
-|         refName         |                `string`                |                                                                              |    \_ \_    |
-|        className        |                 `any`                  | Add className to customize design for container of dropdown button and items |    \_ \_    |
-|         trigger         |              `ReactNode`               |                           Add trigger in dropdown                            |    \_ \_    |
-|         rounded         |  [DropdownRounded](#dropdown-rounded)  |            The rounded variants supported by this component are:             | `"DEFAULT"` |
-|         shadow          |  [DropdownShadows](#dropdown-shadows)  |             The shadow variants supported by this component are:             | `"DEFAULT"` |
-| dropdownButtonClassName |                `string`                |            Add dropdownButtonClassName to design dropdown button             |    \_ \_    |
-|    dropdownClassName    |                `string`                |         Add dropdownClassName to design container for dropdown items         |    \_ \_    |
-|          value          |                   \_                   |                                                                              |    \_ \_    |
+|   Props   |                   Type                   |                        Description                        |     Default      |
+| :-------: | :--------------------------------------: | :-------------------------------------------------------: | :--------------: |
+| children  |                   \_\_                   | Use **Dropdown.Trigger** & **Dropdown.Menu** as childrens |       \_\_       |
+|  rounded  |   [DropdownRounded](#dropdown-rounded)   |   The rounded variants supported by this component are:   |      `"md"`      |
+|  shadow   |   [DropdownShadows](#dropdown-shadows)   |   The shadow variants supported by this component are:    |      `"md"`      |
+| placement | [DropdownPlacement](#dropdown-placement) |               The dropdown menu placements:               | `"bottom-start"` |
+| className |                 `string`                 |     Add classes to the main wrapper of this component     |       \_\_       |
 
 </div>
 
 <div className="mb-10" />
 
-### Dropdown Children
+### Dropdown.Trigger
 
-```ts
-type DropdownChildren = ((string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | ((bag: MenuRenderPropArg) => ReactElement<...>)) & (string | ... 4 more ... | ReactPortal)) | null;
-```
+<div className="overflow-x-auto">
+
+|   Props   |                    Type                    |                                    Description                                    | Default |
+| :-------: | :----------------------------------------: | :-------------------------------------------------------------------------------: | :-----: |
+|    as     |             `div` or `button`              | Use `as` to convert **Dropdown.Trigger** component to render as `div` or `button` |  `div`  |
+|    ref    |                    \_\_                    |             Use ref prop to access DOM nodes of **Dropdown.Trigger**              |  \_\_   |
+| children  |                `ReactNode`                 |                       Use any valid React element or string                       |  \_\_   |
+| className |                  `string`                  |                  Add classes to the **Dropdown.Trigger** wrapper                  |  \_\_   |
+|    ...    | `ButtonHTMLAttributes` or `HTMLAttributes` |           native props like **onClick**, **title**, **aria-label** ...            |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Dropdown.Menu
+
+<div className="overflow-x-auto">
+
+|   Props   |     Type      |                                Description                                 | Default |
+| :-------: | :-----------: | :------------------------------------------------------------------------: | :-----: |
+|    as     | `div` or `ul` | Use `as` to convert **Dropdown.Menu** component to render as `div` or `ul` |  `div`  |
+| children  |  `ReactNode`  |               Use Dropdown.Item and any valid React element                |  \_\_   |
+| className |   `string`    |                Add classes to the **Dropdown.Menu** wrapper                |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Dropdown.Item
+
+<div className="overflow-x-auto">
+
+|       Props       |                    Type                    |                                  Description                                  | Default  |
+| :---------------: | :----------------------------------------: | :---------------------------------------------------------------------------: | :------: |
+|        as         |              `button` or `li`              | Use `as` to convert **Dropdown.Item** component to render as `button` or `li` | `button` |
+|     children      |                `ReactNode`                 |                     Use any valid React element or sting                      |   \_\_   |
+|     disabled      |                 `boolean`                  |               This item will be skipped by keyboard navigation                | `false`  |
+|  activeClassName  |                  `string`                  |                To style active state of the **Dropdown.Item**                 |   \_\_   |
+| disabledClassName |                  `string`                  |                To style disbale state of the **Dropdown.Item**                |   \_\_   |
+|     className     |                  `string`                  |                     Add classes to the **Dropdown.Item**                      |   \_\_   |
+|        ...        | `ButtonHTMLAttributes` or `HTMLAttributes` |         native props like **onClick**, **title**, **aria-label** ...          |   \_\_   |
+
+</div>
 
 <div className="mb-10" />
 
 ### Dropdown Rounded
 
 ```ts
-type DropdownRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
+type DropdownRounded = "sm" | "md" | "lg" | "xl" | "none";
 ```
 
 <div className="mb-10" />
@@ -823,33 +368,25 @@ type DropdownRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
 ### Dropdown Shadows
 
 ```ts
-type DropdownShadows = "DEFAULT" | "sm" | "lg" | "xl" | "none";
+type DropdownShadows = "sm" | "md" | "lg" | "xl" | "none";
 ```
-
-<div className="mb-20" />
-
-### DropdownItem Props
-
-Here is the API documentation of the DropdownItem component. You can use the following props to create a DropdownItem.
-
-<div className="overflow-x-auto">
-
-|       Props       |                      Type                      |                       Description                       | Default |
-| :---------------: | :--------------------------------------------: | :-----------------------------------------------------: | :-----: |
-|     children      | [DropdownItemChildren](#dropdownitem-children) |            Pass children for dropdown items             |  \_ \_  |
-|     className     |                    `string`                    |    Add className to design each item in the dropdown    |  \_ \_  |
-|  activeClassName  |                    `string`                    | Add activeClassName to design the currently active item |  \_ \_  |
-| disabledClassName |                    `string`                    |    Add disabledClassName to design the disabled item    |  \_ \_  |
-
-</div>
 
 <div className="mb-10" />
 
-### DropdownItem Children
+### Dropdown Placement
 
 ```ts
-type DropdownItemChildren = ({
-  active,
-  disabled,
-}: DropdownItemRenderProps) => ReactNode;
+type DropdownPlacements =
+  | "left"
+  | "right"
+  | "top"
+  | "bottom"
+  | "left-start"
+  | "left-end"
+  | "right-start"
+  | "right-end"
+  | "top-start"
+  | "top-end"
+  | "bottom-start"
+  | "bottom-end";
 ```

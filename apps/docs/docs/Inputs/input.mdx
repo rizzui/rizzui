@@ -28,7 +28,7 @@ import { Input } from "rizzui";
 
 The default style of **Input** component.
 
-<Paper className="text-gray-1000 block">
+<Paper className="text-gray-950 block">
   <Input label="Name" placeholder="Enter your name" />
 </Paper>
 
@@ -47,7 +47,7 @@ export default function App() {
 You can change the type of **Input** using [**type**](#input-types) property.
 
 <Paper className="block">
-  <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
+  <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-950">
     <Input type="number" label="Number" placeholder="1234567890" />
     <Input type="text" label="Name" placeholder="Enter your Name" />
     <Input type="email" label="Email" placeholder="Your email" />
@@ -90,11 +90,10 @@ export default function App() {
 
 You can change the style of **Input** using [**variant**](#input-variants) property.
 
-<Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
-  <Input label="Name" placeholder="Enter your name" variant="active" />
-  <Input label="Name" placeholder="Enter your name" variant="flat" />
-  <Input label="Name" placeholder="Enter your name" variant="outline" />
-  <Input label="Name" placeholder="Enter your name" variant="text" />
+<Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4 text-gray-950">
+  <Input label="Outline" placeholder="Enter your name" variant="outline" />
+  <Input label="Flat" placeholder="Enter your name" variant="flat" />
+  <Input label="Text" placeholder="Enter your name" variant="text" />
 </Paper>
 
 ```tsx
@@ -103,10 +102,9 @@ import { Input } from "rizzui";
 export default function App() {
   return (
     <>
-      <Input label="Name" placeholder="Enter your name" variant="active" />
-      <Input label="Name" placeholder="Enter your name" variant="flat" />
-      <Input label="Name" placeholder="Enter your name" variant="outline" />
-      <Input label="Name" placeholder="Enter your name" variant="text" />
+      <Input label="Outline" placeholder="Enter your name" variant="outline" />
+      <Input label="Flat" placeholder="Enter your name" variant="flat" />
+      <Input label="Text" placeholder="Enter your name" variant="text" />
     </>
   );
 }
@@ -118,11 +116,16 @@ export default function App() {
 
 You can change the sizes of **Input** using [**size**](#input-sizes) property.
 
-<Paper className="gap-4 justify-start items-start text-gray-1000">
-  <Input label="Email" placeholder="Your mail" size="sm" />
-  <Input label="Email" placeholder="Your mail" />
-  <Input label="Email" placeholder="Your mail" size="lg" />
-  <Input label="Email" placeholder="Your mail" size="xl" />
+<Paper className="gap-4 justify-start items-start text-gray-950">
+  <Input type="email" size="sm" label="Small" placeholder="Enter your email" />
+  <Input type="email" label="Default" placeholder="Enter your email" />
+  <Input type="email" size="lg" label="Large" placeholder="Enter your email" />
+  <Input
+    type="email"
+    size="xl"
+    label="Extra Large"
+    placeholder="Enter your email"
+  />
 </Paper>
 
 ```tsx
@@ -131,10 +134,25 @@ import { Input } from "rizzui";
 export default function App() {
   return (
     <>
-      <Input label="Email" placeholder="Your mail" size="sm" />
-      <Input label="Email" placeholder="Your mail" />
-      <Input label="Email" placeholder="Your mail" size="lg" />
-      <Input label="Email" placeholder="Your mail" size="xl" />
+      <Input
+        type="email"
+        size="sm"
+        label="Small"
+        placeholder="Enter your email"
+      />
+      <Input type="email" label="Default" placeholder="Enter your email" />
+      <Input
+        type="email"
+        size="lg"
+        label="Large"
+        placeholder="Enter your email"
+      />
+      <Input
+        type="email"
+        size="xl"
+        label="Extra Large"
+        placeholder="Enter your email"
+      />
     </>
   );
 }
@@ -146,7 +164,7 @@ export default function App() {
 
 You can change the border radius of **Input** using [**rounded**](#input-rounded) property.
 
-<Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
+<Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-950">
   <Input label="Rounded None" placeholder="Enter your name" rounded="none" />
   <Input label="Rounded Small" placeholder="Enter your name" rounded="sm" />
   <Input label="Rounded Default" placeholder="Enter your name" />
@@ -196,105 +214,11 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Colors
-
-You can change the color of **Input** using [**color**](#input-colors) property.
-
-<Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-1000">
-  <Input label="Default" placeholder="Enter your name" variant="flat" />
-  <Input
-    label="Primary"
-    placeholder="Enter your name"
-    variant="flat"
-    color="primary"
-  />
-  <Input
-    label="Secondary"
-    placeholder="Enter your name"
-    variant="flat"
-    color="secondary"
-  />
-  <Input
-    label="Danger"
-    placeholder="Enter your name"
-    variant="flat"
-    color="danger"
-  />
-  <Input
-    label="Info"
-    placeholder="Enter your name"
-    variant="flat"
-    color="info"
-  />
-  <Input
-    label="Success"
-    placeholder="Enter your name"
-    variant="flat"
-    color="success"
-  />
-  <Input
-    label="Warning"
-    placeholder="Enter your name"
-    variant="flat"
-    color="warning"
-  />
-</Paper>
-
-```tsx
-import { Input } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Input label="Default" placeholder="Enter your name" variant="flat" />
-      <Input
-        label="Primary"
-        placeholder="Enter your name"
-        variant="flat"
-        color="primary"
-      />
-      <Input
-        label="Secondary"
-        placeholder="Enter your name"
-        variant="flat"
-        color="secondary"
-      />
-      <Input
-        label="Danger"
-        placeholder="Enter your name"
-        variant="flat"
-        color="danger"
-      />
-      <Input
-        label="Info"
-        placeholder="Enter your name"
-        variant="flat"
-        color="info"
-      />
-      <Input
-        label="Success"
-        placeholder="Enter your name"
-        variant="flat"
-        color="success"
-      />
-      <Input
-        label="Warning"
-        placeholder="Enter your name"
-        variant="flat"
-        color="warning"
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
 ## Prefix & Suffix
 
 You can add any text or icon to the **Input** component using **prefix**, **suffix** props.
 
-<Paper className="grid grid-cols-1 gap-4 text-gray-1000">
+<Paper className="grid grid-cols-1 gap-4 text-gray-950">
   <Input label="Url" prefix="https://" suffix=".com" placeholder="mysite" />
   <Input
     type="number"
@@ -347,7 +271,7 @@ export default function App() {
 
 You can create quantity counter with **Input**.
 
-<Paper className="block text-gray-1000">
+<Paper className="block text-gray-950">
   <InputCounter />
 </Paper>
 
@@ -378,7 +302,7 @@ export default function App() {
           </button>
           <button
             type="button"
-            className="rounded-[3px]  bg-gray-100 py-0.5 px-1.5 hover:bg-gray-200 focus:bg-gray-200"
+            className="rounded-[3px] bg-gray-100 py-0.5 px-1.5 hover:bg-gray-200 focus:bg-gray-200"
             onClick={() => setState((prevState) => prevState - 1)}
           >
             <ChevronDownIcon className="h-3 w-3" />
@@ -396,7 +320,7 @@ export default function App() {
 
 You can create character counter with **Input**.
 
-<Paper className="block text-gray-1000">
+<Paper className="block text-gray-950">
   <InputCharacterCounter />
 </Paper>
 
@@ -423,11 +347,11 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Clear Button
+## With Clearable Button
 
 You can create clearable **Input** using **clearable** property.
 
-<Paper className="block text-gray-1000">
+<Paper className="block text-gray-950">
   <InputClearable label="Name" variant="active" />
 </Paper>
 
@@ -458,7 +382,7 @@ export default function App() {
 
 You can make disable **Input** using **disabled** property.
 
-<Paper className="block text-gray-1000">
+<Paper className="block text-gray-950">
   <Input type="text" label="Name" placeholder="Enter your name" disabled />
 </Paper>
 
@@ -478,12 +402,12 @@ export default function App() {
 
 You can show field helper message to the **Input** using **helperText** property.
 
-<Paper className="block text-gray-1000">
+<Paper className="block text-gray-950">
   <Input
     type="email"
     label="Email"
     placeholder="Your email"
-    helperText="This is helper text."
+    helperText="Example: john@doe.io"
   />
 </Paper>
 
@@ -495,8 +419,8 @@ export default function App() {
     <Input
       type="email"
       label="Email"
-      placeholder="Your email"
-      helperText="This is helper text."
+      placeholder="Enter your email"
+      helperText="Example: john@doe.io"
     />
   );
 }
@@ -508,8 +432,8 @@ export default function App() {
 
 You can show the validation error message using **error** property.
 
-<Paper className="block text-gray-1000">
-  <Input label="Name" placeholder="Your Name" error="This error message." />
+<Paper className="block text-gray-950">
+  <Input label="Name" placeholder="Your Name" error="This field is required" />
 </Paper>
 
 ```tsx
@@ -517,14 +441,18 @@ import { Input } from "rizzui";
 
 export default function App() {
   return (
-    <Input label="Name" placeholder="Your Name" error="This error message." />
+    <Input
+      label="Name"
+      placeholder="Your Name"
+      error="This field is required"
+    />
   );
 }
 ```
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -532,33 +460,35 @@ export default function App() {
 
 ### Input Props
 
-Here is the API documentation of the Input component. And the rest of the props are the same as the original html input field. You can use props like **value**, **disabled**, **placeholder**, **onChange**, **onFocus**, **onBlur** etc.
+Here is the API documentation of the Input component. And the rest of the props are the same as the original html input field.
 
 <div className="overflow-x-auto">
 
 |      Props      |               Type               |                                                                Description                                                                |   Default   |
 | :-------------: | :------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :---------: |
-|      label      |           `ReactNode`            |                                                              Set field label                                                              |    \_ \_    |
-|   placeholder   |             `string`             |                                                        Set input placeholder text                                                         |    \_ \_    |
 |      type       |    [InputTypes](#input-types)    |                                               This Input component only support these types                                               |  `"text"`   |
+|      label      |           `ReactNode`            |                                                              Set field label                                                              |    \_\_     |
+|   labelWeight   |   [LabelWeight](#label-weight)   |                                                           Set label font weight                                                           | `"medium"`  |
 |     variant     | [InputVariants](#input-variants) |                                                    The variants of the component are:                                                     | `"outline"` |
-|      size       |    [InputSizes](#input-sizes)    |                                 The size of the component. "sm" is equivalent to the dense input styling.                                 | `"DEFAULT"` |
-|     rounded     |  [InputRounded](#input-rounded)  |                                                         The rounded variants are:                                                         | `"DEFAULT"` |
-|      color      |   [InputColors](#input-colors)   |                                                            Change input color                                                             | `"DEFAULT"` |
-|    disabled     |            `boolean`             |                                                       Whether the input is disabled                                                       |    \_ \_    |
-|    clearable    |            `boolean`             |                                                           Add clearable option                                                            |    \_ \_    |
-|     onClear     |  [InputOnclear](#input-onclear)  |                                                                clear event                                                                |    \_ \_    |
-|     prefix      |           `ReactNode`            | The prefix is design for adding any icon or text on the Input field's start (it's a left icon for the `ltr` and right icon for the `rtl`) |    \_ \_    |
-|     suffix      |           `ReactNode`            |  The suffix is design for adding any icon or text on the Input field's end (it's a right icon for the `ltr` and left icon for the `rtl`)  |    \_ \_    |
-|   helperText    |           `ReactNode`            |                                         Add helper text. It could be string or a React component                                          |    \_ \_    |
-|      error      |             `string`             |                                                    Show error message using this prop                                                     |    \_ \_    |
-| labelClassName  |             `string`             |                                                    Override default CSS style of label                                                    |    \_ \_    |
-| inputClassName  |             `string`             |                                                    Override default CSS style of input                                                    |    \_ \_    |
-| prefixClassName |             `string`             |                                                   Override default CSS style of prefix                                                    |    \_ \_    |
-| suffixClassName |             `string`             |                                                   Override default CSS style of suffix                                                    |    \_ \_    |
-| helperClassName |             `string`             |                                                 Override default CSS style of helperText                                                  |    \_ \_    |
-| errorClassName  |             `string`             |                                                Override default CSS style of error message                                                |    \_ \_    |
-|       ref       |     `Ref<HTMLInputElement>`      |                                                                                                                                           |    \_ \_    |
+|      size       |    [InputSizes](#input-sizes)    |                                 The size of the component. "sm" is equivalent to the dense input styling.                                 |   `"md"`    |
+|     rounded     |  [InputRounded](#input-rounded)  |                                                         The rounded variants are:                                                         |   `"md"`    |
+|   placeholder   |             `string`             |                                                        Set input placeholder text                                                         |    \_\_     |
+|    disabled     |            `boolean`             |                                                   Whether the input is disabled or not                                                    |    \_\_     |
+|    clearable    |            `boolean`             |                                                           Add clearable option                                                            |    \_\_     |
+|     onClear     |  [InputOnclear](#input-onclear)  |                                                                clear event                                                                |    \_\_     |
+|     prefix      |           `ReactNode`            | The prefix is design for adding any icon or text on the Input field's start (it's a left icon for the `ltr` and right icon for the `rtl`) |    \_\_     |
+|     suffix      |           `ReactNode`            |  The suffix is design for adding any icon or text on the Input field's end (it's a right icon for the `ltr` and left icon for the `rtl`)  |    \_\_     |
+|   helperText    |           `ReactNode`            |                                         Add helper text. It could be string or a React component                                          |    \_\_     |
+|      error      |             `string`             |                                                    Show error message using this prop                                                     |    \_\_     |
+| labelClassName  |             `string`             |                                                    Override default CSS style of label                                                    |    \_\_     |
+| inputClassName  |             `string`             |                                                    Override default CSS style of input                                                    |    \_\_     |
+| prefixClassName |             `string`             |                                                   Override default CSS style of prefix                                                    |    \_\_     |
+| suffixClassName |             `string`             |                                                   Override default CSS style of suffix                                                    |    \_\_     |
+| helperClassName |             `string`             |                                                 Override default CSS style of helperText                                                  |    \_\_     |
+| errorClassName  |             `string`             |                                                Override default CSS style of error message                                                |    \_\_     |
+|    className    |             `string`             |                                              Add custom classes to the root of the component                                              |    \_\_     |
+|       ref       |     `Ref<HTMLInputElement>`      |                                                                                                                                           |    \_\_     |
+|       ...       |      `InputHTMLAttributes`       |                                  native props like **value**, **onChange**, **onFocus**, **onBlur** ...                                   |    \_\_     |
 
 </div>
 
@@ -583,10 +513,18 @@ type InputTypes =
 
 <div className="mb-10" />
 
+### Label Weight
+
+```ts
+type LabelWeight = "normal" | "medium" | "semibold" | "bold";
+```
+
+<div className="mb-10" />
+
 ### Input Variants
 
 ```ts
-type InputVariants = "flat" | "outline" | "text" | "active";
+type InputVariants = "outline" | "flat" | "text";
 ```
 
 <div className="mb-10" />
@@ -594,7 +532,7 @@ type InputVariants = "flat" | "outline" | "text" | "active";
 ### Input Sizes
 
 ```ts
-type InputSizes = "sm" | "DEFAULT" | "lg" | "xl";
+type InputSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -602,22 +540,7 @@ type InputSizes = "sm" | "DEFAULT" | "lg" | "xl";
 ### Input Rounded
 
 ```ts
-type InputRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
-```
-
-<div className="mb-10" />
-
-### Input Colors
-
-```ts
-type InputColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+type InputRounded = "sm" | "md" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />
@@ -625,5 +548,5 @@ type InputColors =
 ### Input onClear
 
 ```ts
-type InputOnclear = (event: MouseEvent<Element, MouseEvent>) => void;
+type InputOnclear = (event) => void;
 ```

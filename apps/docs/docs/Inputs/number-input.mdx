@@ -1,10 +1,9 @@
 ---
-sidebar_position: 10
+sidebar_position: 12
 ---
 
 import Paper from "@site/src/components/paper";
 import NumberInputDefault, {
-  NumberInputCardExpiry,
   NumberInputPhoneNumber,
   NumberInputWithGap,
   NumberInputClearable,
@@ -544,7 +543,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -556,56 +555,35 @@ Here is the API documentation of the NumberInput component. We used **react-numb
 
 <div className="overflow-x-auto">
 
-|          Props           |                                  Type                                   |                                              Description                                              |   Default   |
-| :----------------------: | :---------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------: | :---------: |
-|           type           |                 [NumberInputTypes](#number-input-types)                 |                                                                                                       |    \_ \_    |
-|          value           |                [NumberInputValues](#number-input-values)                |                                                                                                       |    \_ \_    |
-|       defaultValue       |        [NumberInputDefaultValues](#number-input-default-values)         |                                                                                                       |    \_ \_    |
-|         variant          |              [NumberInputVariants](#number-input-variants)              |                                       Change NumberInput color                                        | `"outline"` |
-|           size           |                 [NumberInputSizes](#number-input-sizes)                 |                                   Supported NumberInput sizes are:                                    | `"DEFAULT"` |
-|         rounded          |               [NumberInputRounded](#number-input-rounded)               |                                       The rounded variants are:                                       | `"DEFAULT"` |
-|          color           |                [NumberInputColors](#number-input-colors)                |                                       Change NumberInput color                                        | `"DEFAULT"` |
-|        inputMode         |                 [NumberInputModes](#number-input-modes)                 | Hints at the type of data that might be entered by the user while editing the element or its contents |    \_ \_    |
-|         onFocus          |                  `FocusEventHandler<HTMLInputElement>`                  |                                                                                                       |    \_ \_    |
-|          onBlur          |                  `FocusEventHandler<HTMLInputElement>`                  |                                                                                                       |    \_ \_    |
-|         onChange         |                 `ChangeEventHandler<HTMLInputElement>`                  |                                                                                                       |    \_ \_    |
-|        onKeyDown         |                `KeyboardEventHandler<HTMLInputElement>`                 |                                                                                                       |    \_ \_    |
-|        onMouseUp         |                  `MouseEventHandler<HTMLInputElement>`                  |                                                                                                       |    \_ \_    |
-|       displayType        |                           `"text"` `"input"`                            |                                                                                                       |    \_ \_    |
-|        renderText        |           [NumberInputRenderText](#number-input-render-text)            |                                                                                                       |    \_ \_    |
-|       getInputRef        |           [NumberInputGetinputref](#number-input-getinputref)           |                                                                                                       |    \_ \_    |
-|   valueIsNumericString   |                                `boolean`                                |                                                                                                       |    \_ \_    |
-|      onValueChange       |                             `onValueChange`                             |                                                                                                       |    \_ \_    |
-|        isAllowed         |               `((values: NumberFormatValues) => boolean)`               |                                                                                                       |    \_ \_    |
-|    thousandSeparator     |                           `string` `boolean`                            |                                                                                                       |    \_ \_    |
-|     decimalSeparator     |                                `string`                                 |                                                                                                       |    \_ \_    |
-| allowedDecimalSeparators |                               `string[]`                                |                                                                                                       |    \_ \_    |
-|   thousandsGroupStyle    | [NumberInputThousandsGroupStyles](#number-input-thousands-group-styles) |                                                                                                       |    \_ \_    |
-|       decimalScale       |                                `boolean`                                |                                                                                                       |    \_ \_    |
-|    fixedDecimalScale     |                                `boolean`                                |                                                                                                       |    \_ \_    |
-|      allowNegative       |                                `boolean`                                |                                                                                                       |    \_ \_    |
-|    allowLeadingZeros     |                                `boolean`                                |                                                                                                       |    \_ \_    |
-|          suffix          |                                `string`                                 |                                                                                                       |    \_ \_    |
-|          prefix          |                                `string`                                 |                                                                                                       |    \_ \_    |
-|       customInput        |                        `ComponentType<unknown>`                         |                                                                                                       |    \_ \_    |
-|        formatType        |          [NumberInputFormatTypes](#number-input-format-types)           |                              These are the format types of the component                              |    \_ \_    |
-|          format          |                   `string` `FormatInputValueFunction`                   |                                                                                                       |    \_ \_    |
-|           mask           |                           `string` `string[]`                           |                                                                                                       |    \_ \_    |
-|   allowEmptyFormatting   |                                `boolean`                                |                                                                                                       |    \_ \_    |
-|       patternChar        |                                `string`                                 |                                                                                                       |    \_ \_    |
-|     removeFormatting     |                       `RemoveFormattingFunction`                        |                                                                                                       |    \_ \_    |
-|     getCaretBoundary     |                 `(formattedValue: string) => boolean[]`                 |                                                                                                       |    \_ \_    |
-|  isValidInputCharacter   |                   `((character: string) => boolean)`                    |                                                                                                       |    \_ \_    |
+|          Props           |                                  Type                                   |                                 Description                                 | Default |
+| :----------------------: | :---------------------------------------------------------------------: | :-------------------------------------------------------------------------: | :-----: |
+|           mask           |                           `string` `string[]`                           |                                                                             |  \_\_   |
+|          format          |                   `string` `FormatInputValueFunction`                   |                                                                             |  \_\_   |
+|        formatType        |          [NumberInputFormatTypes](#number-input-format-types)           |                 These are the format types of the component                 |  \_\_   |
+|      onValueChange       |                             `onValueChange`                             |                                                                             |  \_\_   |
+|  value \| defaultValue   |                [NumberInputValues](#number-input-values)                |                                                                             |  \_\_   |
+|    thousandSeparator     |                           `string` `boolean`                            |                                                                             |  \_\_   |
+|       decimalScale       |                                `boolean`                                |                                                                             |  \_\_   |
+|     decimalSeparator     |                                `string`                                 |                                                                             |  \_\_   |
+| allowedDecimalSeparators |                               `string[]`                                |                                                                             |  \_\_   |
+|    fixedDecimalScale     |                                `boolean`                                |                                                                             |  \_\_   |
+|       displayType        |                           `"text"` `"input"`                            |                                                                             |  \_\_   |
+|   valueIsNumericString   |                                `boolean`                                |                                                                             |  \_\_   |
+|   thousandsGroupStyle    | [NumberInputThousandsGroupStyles](#number-input-thousands-group-styles) |                                                                             |  \_\_   |
+|        isAllowed         |               `((values: NumberFormatValues) => boolean)`               |                                                                             |  \_\_   |
+|        renderText        |           [NumberInputRenderText](#number-input-render-text)            |                                                                             |  \_\_   |
+|       getInputRef        |           [NumberInputGetinputref](#number-input-getinputref)           |                                                                             |  \_\_   |
+|      allowNegative       |                                `boolean`                                |                                                                             |  \_\_   |
+|    allowLeadingZeros     |                                `boolean`                                |                                                                             |  \_\_   |
+|       customInput        |                        `ComponentType<unknown>`                         |                                                                             |  \_\_   |
+|   allowEmptyFormatting   |                                `boolean`                                |                                                                             |  \_\_   |
+|       patternChar        |                                `string`                                 |                                                                             |  \_\_   |
+|     removeFormatting     |                       `RemoveFormattingFunction`                        |                                                                             |  \_\_   |
+|     getCaretBoundary     |                 `(formattedValue: string) => boolean[]`                 |                                                                             |  \_\_   |
+|  isValidInputCharacter   |                   `((character: string) => boolean)`                    |                                                                             |  \_\_   |
+|        Input ...         |                              `InputProps`                               | Support input props like **variant**, **size**, **rounded** , **error** ... |  \_\_   |
 
 </div>
-
-<div className="mb-10" />
-
-### Number Input Types
-
-```tsx
-type NumberInputTypes = "text" | "tel" | "password";
-```
 
 <div className="mb-10" />
 
@@ -617,65 +595,18 @@ type NumberInputValues = "string" | "number" | "null";
 
 <div className="mb-10" />
 
-### Number Input DefaultValues
+### Number Input Format Types
 
 ```tsx
-type NumberInputDefaultValues = "string" | "number" | "null";
+type NumberInputFormatType = "pattern" | "numeric" | "custom";
 ```
 
 <div className="mb-10" />
 
-### Number Input Variants
+### Number Input Thousands Group Styles
 
 ```tsx
-type NumberInputVariants = "active" | "flat" | "outline" | "text";
-```
-
-<div className="mb-10" />
-
-### Number Input Sizes
-
-```tsx
-type NumberInputSizes = "sm" | "DEFAULT" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Number Input Rounded
-
-```tsx
-type NumberInputRounded = "sm" | "DEFAULT" | "lg" | "none" | "pill";
-```
-
-<div className="mb-10" />
-
-### Number Input Colors
-
-```tsx
-type NumberInputColors =
-  | "DEFAULT"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
-```
-
-<div className="mb-10" />
-
-### Number Input Modes
-
-```tsx
-type NumberInputModes =
-  | "text"
-  | "none"
-  | "email"
-  | "tel"
-  | "search"
-  | "url"
-  | "numeric"
-  | "decimal";
+type NumberInputThousandsGroupStyle = "none" | "thousand" | "lakh" | "wan";
 ```
 
 <div className="mb-10" />
@@ -695,20 +626,4 @@ type NumberInputRenderText = (
 
 ```tsx
 type NumberInputGetinputref = Ref<any> | ((el: HTMLInputElement) => void);
-```
-
-<div className="mb-10" />
-
-### Number Input Thousands Group Styles
-
-```tsx
-type NumberInputThousandsGroupStyle = "none" | "thousand" | "lakh" | "wan";
-```
-
-<div className="mb-10" />
-
-### Number Input Format Types
-
-```tsx
-type NumberInputFormatType = "pattern" | "numeric" | "custom";
 ```

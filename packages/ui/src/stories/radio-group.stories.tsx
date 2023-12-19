@@ -30,42 +30,22 @@ export const WithAdvancedRadio = () => {
   const [value, setValue] = React.useState('two');
   return (
     <RadioGroup value={value} setValue={setValue} className="flex gap-4">
-      <AdvancedRadio
-        value="any"
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-      >
+      <AdvancedRadio name="age" value="any" alignment="center">
         Any
       </AdvancedRadio>
-      <AdvancedRadio
-        value="one"
-        className="cursor-not-allowed rounded-full border border-gray-300 px-6 py-1.5 text-gray-300"
-        disabled
-      >
+      <AdvancedRadio name="age" value="one" defaultChecked alignment="center">
         1
       </AdvancedRadio>
-      <AdvancedRadio
-        value="two"
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-      >
+      <AdvancedRadio name="age" value="two" alignment="center">
         2
       </AdvancedRadio>
-      <AdvancedRadio
-        value="three"
-        defaultChecked
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-      >
+      <AdvancedRadio name="age" value="three" disabled alignment="center">
         3
       </AdvancedRadio>
-      <AdvancedRadio
-        value="four"
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-      >
+      <AdvancedRadio name="age" value="four" alignment="center">
         4
       </AdvancedRadio>
-      <AdvancedRadio
-        value="five+"
-        className="rounded-full border border-gray-300 px-6 py-1.5 hover:cursor-pointer hover:border-gray-900 peer-checked:border-gray-900 peer-checked:bg-gray-900 peer-checked:text-gray-0"
-      >
+      <AdvancedRadio name="age" value="five+" alignment="center">
         5+
       </AdvancedRadio>
     </RadioGroup>

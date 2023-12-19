@@ -6,13 +6,13 @@ const classes = {
   base: 'inline-flex items-center justify-center flex-shrink-0',
   size: {
     sm: '32',
-    DEFAULT: '40',
+    md: '40',
     lg: '48',
     xl: '56',
   },
   fontSize: {
     sm: 'text-xs',
-    DEFAULT: 'text-sm',
+    md: 'text-sm',
     lg: 'text-base',
     xl: 'text-lg',
   },
@@ -24,10 +24,8 @@ const classes = {
     full: 'rounded-full',
   },
   color: {
-    DEFAULT: 'bg-gray-200 text-gray-900',
-    invert: 'bg-gray-900 text-gray-0',
-    primary: 'bg-primary text-white',
-    secondary: 'bg-secondary text-white',
+    primary: 'bg-primary text-primary-foreground',
+    secondary: 'bg-secondary text-secondary-foreground',
     success: 'bg-green text-white',
     warning: 'bg-orange text-white',
     danger: 'bg-red text-white',
@@ -65,7 +63,7 @@ const letterWithColors = [
 
 function backgroundColor(signature: string) {
   const currObj = letterWithColors.filter((obj) =>
-    obj.string.includes(signature?.charAt(0).toLowerCase()),
+    obj.string.includes(signature?.charAt(0).toLowerCase())
   );
   return currObj[0]?.color ?? '#FF6847';
 }
@@ -79,7 +77,7 @@ function getInitials(name: string) {
 export function Avatar({
   src,
   name,
-  size = 'DEFAULT',
+  size = 'md',
   initials,
   customSize,
   rounded = 'full',
@@ -110,7 +108,7 @@ export function Avatar({
           color && classes.color[color],
           onClick && 'cursor-pointer',
           'object-cover',
-          className,
+          className
         )}
         style={{
           width: avatarSize + 'px',
@@ -133,7 +131,7 @@ export function Avatar({
         color && classes.color[color],
         'font-semibold',
         onClick && 'cursor-pointer',
-        className,
+        className
       )}
       style={{
         width: avatarSize + 'px',

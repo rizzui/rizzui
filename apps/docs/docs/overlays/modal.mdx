@@ -622,7 +622,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -634,17 +634,17 @@ Here is the API documentation of the Modal component.
 
 <div className="overflow-x-auto">
 
-|       Props        |              Type              |                                                                 Description                                                                  |   Default   |
-| :----------------: | :----------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :---------: |
-|       isOpen       |           `boolean`            |                                                       Whether the Modal is open or not                                                       |    \_ \_    |
-|      onClose       |          `() => void`          |                               Called when modal is closed (Escape key and click outside, depending on options)                               |    \_ \_    |
-|        size        |   [ModalSizes](#modal-sizes)   |                                              Preset size of modal is sm, DEFAULT, lg, xl, full                                               | `"DEFAULT"` |
-|      rounded       | [ModalRounded](#modal-rounded) |                                                          The rounded variants are:                                                           | `"DEFAULT"` |
-|     customSize     |            `string`            | Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" |    \_ \_    |
-|      noGutter      |           `boolean`            |                                           This prop will remove extra padding spacing from screen                                            |    \_ \_    |
-|  overlayClassName  |            `string`            |                                                Override default CSS style of Modal's overlay                                                 |    \_ \_    |
-| containerClassName |            `string`            |            Set custom style classes for the Modal container, where you can set custom Modal size and padding and background color            |    \_ \_    |
-|     className      |            `string`            |                                             Set custom style classes for the Modal root element                                              |    \_ \_    |
+|       Props        |              Type              |                                                                 Description                                                                  | Default |
+| :----------------: | :----------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :-----: |
+|       isOpen       |           `boolean`            |                                                       Whether the Modal is open or not                                                       |  \_\_   |
+|      onClose       |          `() => void`          |                               Called when modal is closed (Escape key and click outside, depending on options)                               |  \_\_   |
+|        size        |   [ModalSizes](#modal-sizes)   |                                              Preset size of modal is sm, DEFAULT, lg, xl, full                                               | `"md"`  |
+|      rounded       | [ModalRounded](#modal-rounded) |                                                          The rounded variants are:                                                           | `"md"`  |
+|     customSize     |            `string`            | Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" |  \_\_   |
+|      noGutter      |           `boolean`            |                                           This prop will remove extra padding spacing from screen                                            |  \_\_   |
+|  overlayClassName  |            `string`            |                                                Override default CSS style of Modal's overlay                                                 |  \_\_   |
+| containerClassName |            `string`            |            Set custom style classes for the Modal container, where you can set custom Modal size and padding and background color            |  \_\_   |
+|     className      |            `string`            |                                             Set custom style classes for the Modal root element                                              |  \_\_   |
 
 </div>
 
@@ -653,7 +653,7 @@ Here is the API documentation of the Modal component.
 ### Modal Sizes
 
 ```ts
-type ModalSizes = "DEFAULT" | "sm" | "lg" | "xl" | "full";
+type ModalSizes = "sm" | "md" | "lg" | "xl" | "full";
 ```
 
 <div className="mb-10" />
@@ -661,5 +661,5 @@ type ModalSizes = "DEFAULT" | "sm" | "lg" | "xl" | "full";
 ### Modal Rounded
 
 ```ts
-type ModalRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
+type ModalRounded = "sm" | "md" | "lg" | "xl" | "none";
 ```

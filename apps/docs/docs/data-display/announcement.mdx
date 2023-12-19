@@ -2,16 +2,16 @@
 sidebar_position: 4
 ---
 
-import { Announcement } from 'rizzui';
-import { ChevronRightIcon, MegaphoneIcon } from '@heroicons/react/24/outline';
-import Paper from '@site/src/components/paper';
+import { Announcement } from "rizzui";
+import { ChevronRightIcon, MegaphoneIcon } from "@heroicons/react/24/outline";
+import Paper from "@site/src/components/paper";
 
 # Announcement
 
 A component for new product announcement or news.
 
 ```jsx
-import { Announcement } from 'rizzui';
+import { Announcement } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -21,28 +21,28 @@ import { Announcement } from 'rizzui';
 The default style of **Announcement** component.
 
 <Paper>
-	<Announcement
-		className="flex-wrap"
-		badgeText="Trending"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
+  <Announcement
+    className="flex-wrap"
+    badgeText="Trending"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
 </Paper>
 
 ```jsx
-import { Announcement } from 'rizzui';
+import { Announcement } from "rizzui";
 
 export default function App() {
-	return (
-		<Announcement
-			className="flex-wrap"
-			badgeText="Trending"
-			highlightedText="25% discount"
-		>
-			on our new product
-		</Announcement>
-	);
+  return (
+    <Announcement
+      className="flex-wrap"
+      badgeText="Trending"
+      highlightedText="25% discount"
+    >
+      on our new product
+    </Announcement>
+  );
 }
 ```
 
@@ -53,78 +53,78 @@ export default function App() {
 You can change the size of **Announcement** using [**size**](#announcement-sizes) property.
 
 <Paper className="gap-4 justify-start items-start">
-	<Announcement
-		className="flex-wrap"
-		size="sm"
-		badgeText="Small"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		badgeText="Default"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		size="lg"
-		badgeText="Large abc"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		size="xl"
-		badgeText="Extra Large"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
+  <Announcement
+    className="flex-wrap"
+    size="sm"
+    badgeText="Small"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    badgeText="Default"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    size="lg"
+    badgeText="Large"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    size="xl"
+    badgeText="Extra Large"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
 </Paper>
 
 ```jsx
-import { Announcement } from 'rizzui';
+import { Announcement } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Announcement
-				className="flex-wrap"
-				size="sm"
-				badgeText="Small"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				badgeText="Default"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				size="lg"
-				badgeText="Large abc"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				size="xl"
-				badgeText="Extra Large"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-		</>
-	);
+  return (
+    <>
+      <Announcement
+        className="flex-wrap"
+        size="sm"
+        badgeText="Small"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        badgeText="Default"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        size="lg"
+        badgeText="Large"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        size="xl"
+        badgeText="Extra Large"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+    </>
+  );
 }
 ```
 
@@ -135,94 +135,94 @@ export default function App() {
 You can change the border radius of **Announcement** using [**rounded**](#announcement-rounded) property.
 
 <Paper className="gap-4 justify-start items-start">
-	<Announcement
-		className="flex-wrap"
-		rounded="sm"
-		badgeText="Rounded Small"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		rounded="md"
-		badgeText="Rounded Medium"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		rounded="lg"
-		badgeText="Rounded Large"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		rounded="none"
-		badgeText="Rounded None"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		badgeText="Rounded Full"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
+  <Announcement
+    className="flex-wrap"
+    rounded="sm"
+    badgeText="Rounded Small"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    rounded="md"
+    badgeText="Rounded Medium"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    rounded="lg"
+    badgeText="Rounded Large"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    rounded="none"
+    badgeText="Rounded None"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    badgeText="Rounded Full"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
 </Paper>
 
 ```tsx
-import { Announcement } from 'rizzui';
+import { Announcement } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Announcement
-				className="flex-wrap"
-				rounded="sm"
-				badgeText="Rounded Small"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				rounded="md"
-				badgeText="Rounded Medium"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				rounded="lg"
-				badgeText="Rounded Large"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				rounded="none"
-				badgeText="Rounded None"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				badgeText="Rounded Full"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-		</>
-	);
+  return (
+    <>
+      <Announcement
+        className="flex-wrap"
+        rounded="sm"
+        badgeText="Rounded Small"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        rounded="md"
+        badgeText="Rounded Medium"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        rounded="lg"
+        badgeText="Rounded Large"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        rounded="none"
+        badgeText="Rounded None"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        badgeText="Rounded Full"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+    </>
+  );
 }
 ```
 
@@ -233,126 +233,112 @@ export default function App() {
 You can change the color of **Announcement** using [**color**](#announcement-colors) property.
 
 <Paper className="grid grid-cols-1 gap-4">
-	<Announcement
-		className="flex-wrap"
-		badgeText="Default"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		color="primary"
-		badgeText="Primary"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		color="secondary"
-		badgeText="Secondary"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		color="danger"
-		badgeText="Danger"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		color="info"
-		badgeText="Info"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		color="success"
-		badgeText="Success"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		color="warning"
-		badgeText="Warning"
-		highlightedText="25% discount"
-	>
-		on our new product
-	</Announcement>
+  <Announcement
+    className="flex-wrap"
+    color="primary"
+    badgeText="Primary"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    color="secondary"
+    badgeText="Secondary"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    color="danger"
+    badgeText="Danger"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    color="info"
+    badgeText="Info"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    color="success"
+    badgeText="Success"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    color="warning"
+    badgeText="Warning"
+    highlightedText="25% discount"
+  >
+    on our new product
+  </Announcement>
 </Paper>
 
 ```tsx
-import { Announcement } from 'rizzui';
+import { Announcement } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Announcement
-				className="flex-wrap"
-				badgeText="Default"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				color="primary"
-				badgeText="Primary"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				color="secondary"
-				badgeText="Secondary"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				color="danger"
-				badgeText="Danger"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				color="info"
-				badgeText="Info"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				color="success"
-				badgeText="Success"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				color="warning"
-				badgeText="Warning"
-				highlightedText="25% discount"
-			>
-				on our new product
-			</Announcement>
-		</>
-	);
+  return (
+    <>
+      <Announcement
+        className="flex-wrap"
+        color="primary"
+        badgeText="Primary"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        color="secondary"
+        badgeText="Secondary"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        color="danger"
+        badgeText="Danger"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        color="info"
+        badgeText="Info"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        color="success"
+        badgeText="Success"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        color="warning"
+        badgeText="Warning"
+        highlightedText="25% discount"
+      >
+        on our new product
+      </Announcement>
+    </>
+  );
 }
 ```
 
@@ -363,48 +349,46 @@ export default function App() {
 You can change background color of **Announcement** using **bgColor** property.
 
 <Paper className="gap-4 justify-start items-start">
-	<Announcement
-		className="flex-wrap"
-		badgeText="White Background"
-		highlightedText="25% discount"
-		bgColor="white"
-	>
-		on our every product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		badgeText="Gray Background"
-		highlightedText="25% discount"
-		bgColor="gray"
-	>
-		on our every product
-	</Announcement>
+  <Announcement
+    className="flex-wrap"
+    badgeText="White Background"
+    highlightedText="25% discount"
+  >
+    on our every product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    badgeText="Gray Background"
+    highlightedText="25% discount"
+    bgColor="muted"
+  >
+    on our every product
+  </Announcement>
 </Paper>
 
 ```jsx
-import { Announcement } from 'rizzui';
+import { Announcement } from "rizzui";
 
 export default function App() {
-	return (
-		<>
-			<Announcement
-				className="flex-wrap"
-				badgeText="White Background"
-				highlightedText="25% discount"
-				bgColor="white"
-			>
-				on our every product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				badgeText="Gray Background"
-				highlightedText="25% discount"
-				bgColor="gray"
-			>
-				on our every product
-			</Announcement>
-		</>
-	);
+  return (
+    <>
+      <Announcement
+        className="flex-wrap"
+        badgeText="White Background"
+        highlightedText="25% discount"
+      >
+        on our every product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        badgeText="Gray Background"
+        highlightedText="25% discount"
+        bgColor="muted"
+      >
+        on our every product
+      </Announcement>
+    </>
+  );
 }
 ```
 
@@ -415,57 +399,57 @@ export default function App() {
 You can add icons to **Announcement** using **startIcon** & **endIcon** property.
 
 <Paper className="gap-4 justify-start items-start">
-	<Announcement
-		className="flex-wrap"
-		highlightedText="25% discount"
-		color="primary"
-		startIcon={<MegaphoneIcon className="w-5 text-primary-dark" />}
-	>
-		on our every product
-	</Announcement>
-	<Announcement
-		className="flex-wrap"
-		badgeText="Trending"
-		highlightedText="25% discount"
-		color="danger"
-		endIcon={<ChevronRightIcon className="w-3.5 ml-1" />}
-	>
-		on our every product
-	</Announcement>
+  <Announcement
+    className="flex-wrap"
+    highlightedText="25% discount"
+    color="primary"
+    startIcon={<MegaphoneIcon className="w-5 text-primary-dark" />}
+  >
+    on our every product
+  </Announcement>
+  <Announcement
+    className="flex-wrap"
+    badgeText="Trending"
+    highlightedText="25% discount"
+    color="danger"
+    endIcon={<ChevronRightIcon className="w-3.5 ml-1" />}
+  >
+    on our every product
+  </Announcement>
 </Paper>
 
 ```jsx
-import { Announcement } from 'rizzui';
-import { ChevronRightIcon, MegaphoneIcon } from '@heroicons/react/24/outline';
+import { Announcement } from "rizzui";
+import { ChevronRightIcon, MegaphoneIcon } from "@heroicons/react/24/outline";
 
 export default function App() {
-	return (
-		<>
-			<Announcement
-				className="flex-wrap"
-				highlightedText="25% discount"
-				color="primary"
-				startIcon={<MegaphoneIcon className="w-5 text-primary-dark" />}
-			>
-				on our every product
-			</Announcement>
-			<Announcement
-				className="flex-wrap"
-				badgeText="Trending"
-				highlightedText="25% discount"
-				color="danger"
-				endIcon={<ChevronRightIcon className="w-3.5 ml-1" />}
-			>
-				on our every product
-			</Announcement>
-		</>
-	);
+  return (
+    <>
+      <Announcement
+        className="flex-wrap"
+        highlightedText="25% discount"
+        color="primary"
+        startIcon={<MegaphoneIcon className="w-5 text-primary-dark" />}
+      >
+        on our every product
+      </Announcement>
+      <Announcement
+        className="flex-wrap"
+        badgeText="Trending"
+        highlightedText="25% discount"
+        color="danger"
+        endIcon={<ChevronRightIcon className="w-3.5 ml-1" />}
+      >
+        on our every product
+      </Announcement>
+    </>
+  );
 }
 ```
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -477,20 +461,20 @@ Here is the API documentation of the Announcement component.
 
 <div className="overflow-x-auto">
 
-|          Props           |                     Type                     |                       Description                        |   Default   |
-| :----------------------: | :------------------------------------------: | :------------------------------------------------------: | :---------: |
-|        badgeText         |                   `string`                   |      Pass badge text to have badge at the beginning      |    \_ \_    |
-|     highlightedText      |                   `string`                   |          Pass highlighted text at the beginning          |    \_ \_    |
-|         children         |                                              |                                                          |    \_ \_    |
-|           size           |   [AnnouncementSizes](#announcement-sizes)   |                The size of the component.                | `"DEFAULT"` |
-|         rounded          | [AnnouncementRounded](#announcement-rounded) |                The rounded variants are:                 | `"DEFAULT"` |
-|          color           |  [AnnouncementColors](#announcement-colors)  |                 Choose color variations                  | `"DEFAULT"` |
-|         bgColor          |                `white` `gray`                |            Background color of the component             |  `"white"`  |
-|        className         |                   `string`                   |     Pass className to customize announcement design      |    \_ \_    |
-|        startIcon         |                 `ReactNode`                  |               Place icon at the beginning                |    \_ \_    |
-|         endIcon          |                 `ReactNode`                  |                  Place icon at the end                   |    \_ \_    |
-|      badgeClassName      |                   `string`                   |            Pass badgeClassName to style badge            |    \_ \_    |
-| highlightedTextClassName |                   `string`                   | Pass hightlightedTextClassName to style highlighted text |    \_ \_    |
+|          Props           |                     Type                     |                       Description                        |    Default     |
+| :----------------------: | :------------------------------------------: | :------------------------------------------------------: | :------------: |
+|        badgeText         |                   `string`                   |      Pass badge text to have badge at the beginning      |      \_\_      |
+|     highlightedText      |                   `string`                   |          Pass highlighted text at the beginning          |      \_\_      |
+|         children         |                                              |                                                          |      \_\_      |
+|           size           |   [AnnouncementSizes](#announcement-sizes)   |                The size of the component.                |     `"md"`     |
+|         rounded          | [AnnouncementRounded](#announcement-rounded) |                The rounded variants are:                 |    `"full"`    |
+|          color           |  [AnnouncementColors](#announcement-colors)  |                 Choose color variations                  |  `"primary"`   |
+|         bgColor          |             `background` `muted`             |            Background color of the component             | `"background"` |
+|        className         |                   `string`                   |     Pass className to customize announcement design      |      \_\_      |
+|        startIcon         |                 `ReactNode`                  |               Place icon at the beginning                |      \_\_      |
+|         endIcon          |                 `ReactNode`                  |                  Place icon at the end                   |      \_\_      |
+|      badgeClassName      |                   `string`                   |            Pass badgeClassName to style badge            |      \_\_      |
+| highlightedTextClassName |                   `string`                   | Pass hightlightedTextClassName to style highlighted text |      \_\_      |
 
 </div>
 
@@ -499,7 +483,7 @@ Here is the API documentation of the Announcement component.
 ### Announcement Sizes
 
 ```ts
-type AnnouncementSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
+type AnnouncementSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -507,7 +491,7 @@ type AnnouncementSizes = 'DEFAULT' | 'sm' | 'lg' | 'xl';
 ### Announcement Rounded
 
 ```ts
-type AnnouncementRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'md';
+type AnnouncementRounded = "pill" | "sm" | "lg" | "none" | "md";
 ```
 
 <div className="mb-10" />
@@ -516,11 +500,10 @@ type AnnouncementRounded = 'DEFAULT' | 'sm' | 'lg' | 'none' | 'md';
 
 ```ts
 type AnnouncementColors =
-	| 'DEFAULT'
-	| 'primary'
-	| 'secondary'
-	| 'danger'
-	| 'info'
-	| 'success'
-	| 'warning';
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "info"
+  | "success"
+  | "warning";
 ```

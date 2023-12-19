@@ -22,12 +22,12 @@ A slider component enables user to pick any value from a range.
 <div className="mb-4" />
 
 ```bash
-npm install rc-slider
+npm i rc-slider
 ```
 
 <div className="mb-4" />
 
-2. Create a file called **range-slider.tsx** inside your components directory. And then copy and paste the following code into that file.
+2. Create a range component, **components/range-slider.tsx**
 
 <div className="mb-4" />
 
@@ -35,59 +35,44 @@ npm install rc-slider
 import React from "react";
 import Slider from "rc-slider";
 import type { SliderProps } from "rc-slider";
+import { cn } from "rizzui";
 import "rc-slider/assets/index.css";
 
-import { cn } from "../../lib/cn";
-
-const classes = {
-  base: "[&>.rc-slider-rail]:bg-gray-200 [&>.rc-slider-handle]:opacity-100 [&>.rc-slider-handle-dragging]:!shadow-none [&>.rc-slider-handle-dragging]:ring-4",
+const rangeStyles = {
+  base: "[&>.rc-slider-rail]:bg-muted [&>.rc-slider-handle]:opacity-100 [&>.rc-slider-handle-dragging]:!shadow-none [&>.rc-slider-handle-dragging]:ring-4",
   size: {
     sm: "[&>.rc-slider-rail]:h-0.5 [&>.rc-slider-track]:h-0.5 [&>.rc-slider-handle]:h-3 [&>.rc-slider-handle]:w-3 [&>.rc-slider-handle]:border-[3px]",
-    DEFAULT:
-      "[&>.rc-slider-rail]:h-1 [&>.rc-slider-track]:h-1 [&>.rc-slider-handle]:h-4 [&>.rc-slider-handle]:w-4 [&>.rc-slider-handle]:border-4 [&>.rc-slider-handle]:-mt-1.5",
+    md: "[&>.rc-slider-rail]:h-1 [&>.rc-slider-track]:h-1 [&>.rc-slider-handle]:h-4 [&>.rc-slider-handle]:w-4 [&>.rc-slider-handle]:border-4 [&>.rc-slider-handle]:-mt-1.5",
     lg: "[&>.rc-slider-rail]:h-2 [&>.rc-slider-track]:h-2 [&>.rc-slider-handle]:h-5 [&>.rc-slider-handle]:w-5 [&>.rc-slider-handle]:border-[5px] [&>.rc-slider-handle]:-mt-1.5",
     xl: "[&>.rc-slider-rail]:h-3 [&>.rc-slider-track]:h-3 [&>.rc-slider-handle]:h-6 [&>.rc-slider-handle]:w-6 [&>.rc-slider-handle]:border-[6px] [&>.rc-slider-handle]:-mt-1.5",
   },
   color: {
-    DEFAULT:
-      "[&>.rc-slider-track]:bg-gray-900 [&>.rc-slider-handle]:border-gray-1000 [&>.rc-slider-handle]:hover:border-gray-1000 [&>.rc-slider-handle-dragging]:!border-gray-1000 [&>.rc-slider-handle-dragging]:ring-gray-400/60 [&>.rc-slider-step>.rc-slider-dot-active]:border-gray-1000",
     primary:
-      "[&>.rc-slider-track]:bg-primary [&>.rc-slider-handle]:border-primary-dark [&>.rc-slider-handle]:hover:border-primary-dark [&>.rc-slider-handle-dragging]:!border-primary-dark [&>.rc-slider-handle-dragging]:ring-primary-light/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-primary-dark",
+      "[&>.rc-slider-track]:bg-primary [&>.rc-slider-handle]:border-primary-dark [&>.rc-slider-handle]:hover:border-primary-dark [&>.rc-slider-handle-dragging]:!border-primary-dark [&>.rc-slider-handle-dragging]:ring-primary/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-primary-dark",
     secondary:
-      "[&>.rc-slider-track]:bg-secondary [&>.rc-slider-handle]:border-secondary-dark [&>.rc-slider-handle]:hover:border-secondary-dark [&>.rc-slider-handle-dragging]:!border-secondary-dark [&>.rc-slider-handle-dragging]:ring-secondary-light/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-secondary-dark",
+      "[&>.rc-slider-track]:bg-secondary [&>.rc-slider-handle]:border-secondary-dark [&>.rc-slider-handle]:hover:border-secondary-dark [&>.rc-slider-handle-dragging]:!border-secondary-dark [&>.rc-slider-handle-dragging]:ring-secondary/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-secondary-dark",
     danger:
-      "[&>.rc-slider-track]:bg-red [&>.rc-slider-handle]:border-red-dark [&>.rc-slider-handle]:hover:border-red-dark [&>.rc-slider-handle-dragging]:!border-red-dark [&>.rc-slider-handle-dragging]:ring-red-light/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-red-dark",
-    info: "[&>.rc-slider-track]:bg-blue [&>.rc-slider-handle]:border-blue-dark [&>.rc-slider-handle]:hover:border-blue-dark [&>.rc-slider-handle-dragging]:!border-blue-dark [&>.rc-slider-handle-dragging]:ring-blue-light/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-blue-dark",
-    success:
-      "[&>.rc-slider-track]:bg-green [&>.rc-slider-handle]:border-green-dark [&>.rc-slider-handle]:hover:border-green-dark [&>.rc-slider-handle-dragging]:!border-green-dark [&>.rc-slider-handle-dragging]:ring-green-light/50 [&>.rc-slider-step>.rc-slider-dot-active]:border-green-dark",
-    warning:
-      "[&>.rc-slider-track]:bg-orange [&>.rc-slider-handle]:border-orange-dark [&>.rc-slider-handle]:hover:border-orange-dark [&>.rc-slider-handle-dragging]:!border-orange-dark [&>.rc-slider-handle-dragging]:ring-orange-light/60 [&>.rc-slider-step>.rc-slider-dot-active]:border-orange-dark",
+      "[&>.rc-slider-track]:bg-red [&>.rc-slider-handle]:border-red-dark [&>.rc-slider-handle]:hover:border-red-dark [&>.rc-slider-handle-dragging]:!border-red-dark [&>.rc-slider-handle-dragging]:ring-red/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-red-dark",
   },
 };
 
 export interface RangeSliderProps extends SliderProps {
-  /** Sizes of the component are: */
-  size?: keyof typeof classes.size;
-  /** Change slider color */
-  color?: keyof typeof classes.color;
+  size?: keyof typeof rangeStyles.size;
+  color?: keyof typeof rangeStyles.color;
 }
 
-/**
- * A slider component enables user to pick any value from a range. We used `rc-slider` package to create Slider component.
- * See their [documentation](https://slider-react-component.vercel.app/) for more info.
- */
 export default function RangeSlider({
-  size = "DEFAULT",
-  color = "DEFAULT",
+  size = "md",
+  color = "primary",
   className,
   ...props
 }: RangeSliderProps) {
   return (
     <Slider
       className={cn(
-        classes.base,
-        classes.size[size],
-        classes.color[color],
+        rangeStyles.base,
+        rangeStyles.size[size],
+        rangeStyles.color[color],
         className
       )}
       {...props}
@@ -152,12 +137,8 @@ You can change the color of **RangeSlider** using [**color**](#rangeslider-color
 
 <Paper className="gap-6">
   <RangeSlider defaultValue={15} />
-  <RangeSlider defaultValue={20} color="primary" />
   <RangeSlider defaultValue={25} color="secondary" />
   <RangeSlider defaultValue={30} color="danger" />
-  <RangeSlider defaultValue={35} color="info" />
-  <RangeSlider defaultValue={40} color="success" />
-  <RangeSlider defaultValue={45} color="warning" />
 </Paper>
 
 ```jsx
@@ -167,12 +148,8 @@ export default function App() {
   return (
     <>
       <RangeSlider defaultValue={15} />
-      <RangeSlider defaultValue={20} color="primary" />
       <RangeSlider defaultValue={25} color="secondary" />
       <RangeSlider defaultValue={30} color="danger" />
-      <RangeSlider defaultValue={35} color="info" />
-      <RangeSlider defaultValue={40} color="success" />
-      <RangeSlider defaultValue={45} color="warning" />
     </>
   );
 }
@@ -332,7 +309,7 @@ export default function App() {
 				className={cn('[&>.rc-slider-step]:hidden')}
 			/>
 			<div className="mt-5 grid grid-cols-2 items-center justify-between gap-5 text-sm font-bold">
-				<div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
+				<div className="overflow-hidden rounded-lg border py-2">
 					<p className="px-3 pt-1 text-gray-400">Min</p>
 					<input
 						type="number"
@@ -344,7 +321,7 @@ export default function App() {
 						readOnly
 					/>
 				</div>
-				<div className="overflow-hidden rounded-lg border border-gray-lighter bg-gray-lightest py-2">
+				<div className="overflow-hidden rounded-lg border py-2">
 					<p className="px-3 pt-1 text-gray-400">Max</p>
 					<input
 						type="number"
@@ -363,7 +340,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -371,60 +348,62 @@ export default function App() {
 
 ### RangeSlider Props
 
-Here is the API documentation of the ActionIcon component. We used **rc-slider** package to create Slider component. See their [**Official documentation**](https://slider-react-component.vercel.app/) for more info.
+Here is the API documentation of the RangeSlider component.
 
 <div className="overflow-x-auto">
 
 |              Props              |                           Type                            |         Description         |   Default   |
 | :-----------------------------: | :-------------------------------------------------------: | :-------------------------: | :---------: |
-|          defaultValue           |                    `number` `number[]`                    |                             |    \_ \_    |
-|              size               |          [RangesliderSizes](#rangeslider-sizes)           | Sizes of the component are: | `"DEFAULT"` |
-|              color              |         [Rangeslidercolors](#rangeslider-colors)          |     Change slider color     | `"DEFAULT"` |
-|            prefixCls            |                         `string`                          |                             |    \_ \_    |
-|            className            |                         `string`                          |                             |    \_ \_    |
-|              style              |                      `CSSProperties`                      |                             |    \_ \_    |
-|            disabled             |                         `boolean`                         |                             |    \_ \_    |
-|            keyboard             |                         `boolean`                         |                             |    \_ \_    |
-|            autoFocus            |                         `boolean`                         |                             |    \_ \_    |
-|             onFocus             |   `((e: FocusEvent<HTMLDivElement, Element>) => void)`    |                             |    \_ \_    |
-|             onBlur              |   `((e: FocusEvent<HTMLDivElement, Element>) => void)`    |                             |    \_ \_    |
-|              range              |                         `boolean`                         |                             |    \_ \_    |
-|              count              |                         `boolean`                         |                             |    \_ \_    |
-|               min               |                         `number`                          |                             |    \_ \_    |
-|               max               |                         `number`                          |                             |    \_ \_    |
-|              step               |                      `number` `null`                      |                             |    \_ \_    |
-|              value              |                    `number` `number[]`                    |                             |    \_ \_    |
-|            onChange             |       [RangeSliderOnchange](#range-slider-onchange)       |                             |    \_ \_    |
-|         onBeforeChange          | [RangeSliderOnbeforechange](#range-slider-onbeforechange) |                             |    \_ \_    |
-|          onAfterChange          |  [RangeSliderOnafterchange](#range-slider-onafterchange)  |                             |    \_ \_    |
-|           allowCross            |                         `boolean`                         |                             |    \_ \_    |
-|            pushable             |                    `number` `boolean`                     |                             |    \_ \_    |
-|         draggableTrack          |                         `boolean`                         |         range only          |    \_ \_    |
-|             reverse             |                         `boolean`                         |                             |    \_ \_    |
-|            vertical             |                         `boolean`                         |                             |    \_ \_    |
-|            included             |                         `boolean`                         |                             |    \_ \_    |
-|           startPoint            |                         `number`                          |                             |    \_ \_    |
-|           trackStyle            |             `CSSProperties` `CSSProperties[]`             |                             |    \_ \_    |
-|           handleStyle           |             `CSSProperties` `CSSProperties[]`             |                             |    \_ \_    |
-|            railStyle            |                      `CSSProperties`                      |                             |    \_ \_    |
-|            dotStyle             |  `CSSProperties` `((dotValue: number) => CSSProperties)`  |                             |    \_ \_    |
-|         activeDotStyle          |  `CSSProperties` `((dotValue: number) => CSSProperties)`  |                             |    \_ \_    |
-|              marks              |          [RangeSliderMarks](#range-slider-marks)          |                             |    \_ \_    |
-|              dots               |                         `boolean`                         |                             |    \_ \_    |
-|          handleRender           |  [RangeSliderHandleRender](#range-slider-handle-render)   |                             |    \_ \_    |
-|            tabIndex             |                    `number` `number[]`                    |                             |    \_ \_    |
-|       ariaLabelForHandle        |                    `string` `string[]`                    |                             |    \_ \_    |
-|     ariaLabelledByForHandle     |                    `string` `string[]`                    |                             |    \_ \_    |
-| ariaValueTextFormatterForHandle |           `AriaValueFormat` `AriaValueFormat[]`           |                             |    \_ \_    |
+|          defaultValue           |                    `number` `number[]`                    |                             |    \_\_     |
+|              size               |          [RangesliderSizes](#rangeslider-sizes)           | Sizes of the component are: |   `"md"`    |
+|              color              |         [Rangeslidercolors](#rangeslider-colors)          |     Change slider color     | `"primary"` |
+|            prefixCls            |                         `string`                          |                             |    \_\_     |
+|            className            |                         `string`                          |                             |    \_\_     |
+|              style              |                      `CSSProperties`                      |                             |    \_\_     |
+|            disabled             |                         `boolean`                         |                             |    \_\_     |
+|            keyboard             |                         `boolean`                         |                             |    \_\_     |
+|            autoFocus            |                         `boolean`                         |                             |    \_\_     |
+|             onFocus             |   `((e: FocusEvent<HTMLDivElement, Element>) => void)`    |                             |    \_\_     |
+|             onBlur              |   `((e: FocusEvent<HTMLDivElement, Element>) => void)`    |                             |    \_\_     |
+|              range              |                         `boolean`                         |                             |    \_\_     |
+|              count              |                         `boolean`                         |                             |    \_\_     |
+|               min               |                         `number`                          |                             |    \_\_     |
+|               max               |                         `number`                          |                             |    \_\_     |
+|              step               |                      `number` `null`                      |                             |    \_\_     |
+|              value              |                    `number` `number[]`                    |                             |    \_\_     |
+|            onChange             |       [RangeSliderOnchange](#range-slider-onchange)       |                             |    \_\_     |
+|         onBeforeChange          | [RangeSliderOnbeforechange](#range-slider-onbeforechange) |                             |    \_\_     |
+|          onAfterChange          |  [RangeSliderOnafterchange](#range-slider-onafterchange)  |                             |    \_\_     |
+|           allowCross            |                         `boolean`                         |                             |    \_\_     |
+|            pushable             |                    `number` `boolean`                     |                             |    \_\_     |
+|         draggableTrack          |                         `boolean`                         |         range only          |    \_\_     |
+|             reverse             |                         `boolean`                         |                             |    \_\_     |
+|            vertical             |                         `boolean`                         |                             |    \_\_     |
+|            included             |                         `boolean`                         |                             |    \_\_     |
+|           startPoint            |                         `number`                          |                             |    \_\_     |
+|           trackStyle            |             `CSSProperties` `CSSProperties[]`             |                             |    \_\_     |
+|           handleStyle           |             `CSSProperties` `CSSProperties[]`             |                             |    \_\_     |
+|            railStyle            |                      `CSSProperties`                      |                             |    \_\_     |
+|            dotStyle             |  `CSSProperties` `((dotValue: number) => CSSProperties)`  |                             |    \_\_     |
+|         activeDotStyle          |  `CSSProperties` `((dotValue: number) => CSSProperties)`  |                             |    \_\_     |
+|              marks              |          [RangeSliderMarks](#range-slider-marks)          |                             |    \_\_     |
+|              dots               |                         `boolean`                         |                             |    \_\_     |
+|          handleRender           |  [RangeSliderHandleRender](#range-slider-handle-render)   |                             |    \_\_     |
+|            tabIndex             |                    `number` `number[]`                    |                             |    \_\_     |
+|       ariaLabelForHandle        |                    `string` `string[]`                    |                             |    \_\_     |
+|     ariaLabelledByForHandle     |                    `string` `string[]`                    |                             |    \_\_     |
+| ariaValueTextFormatterForHandle |           `AriaValueFormat` `AriaValueFormat[]`           |                             |    \_\_     |
 
 </div>
+
+- **Note:** You can check [**rc-slider documentation**](https://slider-react-component.vercel.app/) for more details.
 
 <div className="mb-10" />
 
 ### Rangeslider Sizes
 
 ```tsx
-type RangesliderSize = "sm" | "DEFAULT" | "lg" | "xl";
+type RangesliderSize = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -433,7 +412,6 @@ type RangesliderSize = "sm" | "DEFAULT" | "lg" | "xl";
 
 ```ts
 type Rangeslidercolors =
-  | "DEFAULT"
   | "primary"
   | "secondary"
   | "danger"

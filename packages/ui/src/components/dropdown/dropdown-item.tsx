@@ -2,52 +2,68 @@ import React from 'react';
 import { Menu } from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
+import { useDropdown } from './dropdown-context';
 
-export type DropdownItemRenderProps = {
-  /** Whether or not the item is the active/focused in the list. */
-  active: boolean;
-  /** Whether or not the item is disabled for keyboard navigation and ARIA purposes. */
-  disabled: boolean;
+export const dropdownItemStyles = {
+  rounded: {
+    none: 'rounded-none',
+    sm: 'rounded-sm',
+    md: 'rounded-[4px]',
+    lg: 'rounded-md',
+    xl: 'rounded-lg',
+  },
 };
 
 export type DropdownItemProps = {
-  /** Pass children for dropdown items */
-  children: ({ active, disabled }: DropdownItemRenderProps) => React.ReactNode;
-  /** Add className to design each item in the dropdown */
+  as?: 'button' | 'li';
   className?: string;
-  /** Add activeClassName to design the currently active item */
   activeClassName?: string;
-  /** Add disabledClassName to design the disabled item */
   disabledClassName?: string;
-};
+  disabled?: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement> &
+  React.HTMLAttributes<HTMLLIElement>;
 
-/** A component for adding items in the dropdown.
- * Should be used inside Dropdown component.
- * Here is the API Documentation for DropdownItem Component.
- */
+export const DropdownItem = React.forwardRef<
+  HTMLButtonElement,
+  DropdownItemProps
+>(
+  (
+    {
+      as = 'button',
+      className,
+      children,
+      disabled,
+      activeClassName,
+      disabledClassName,
+      ...props
+    },
+    ref: React.ForwardedRef<any>
+  ) => {
+    const { rounded } = useDropdown();
+    let Component = as;
 
-export const DropdownItem = ({
-  className,
-  children,
-  activeClassName,
-  disabledClassName,
-}: DropdownItemProps) => (
-  <Menu.Item>
-    {({ active, disabled }) => (
-      <button
-        type="button"
-        className={cn(
-          makeClassName(`dropdown-item`),
-          'flex w-full text-sm',
-          active && activeClassName,
-          disabled && disabledClassName,
-          className,
+    return (
+      <Menu.Item disabled={disabled}>
+        {({ active, disabled }) => (
+          <Component
+            ref={ref}
+            {...(Component === 'button' && { type: 'button' })}
+            className={cn(
+              makeClassName(`dropdown-item`),
+              'flex w-full items-center px-3 py-1.5',
+              rounded && dropdownItemStyles.rounded[rounded],
+              active && ['bg-muted/70', activeClassName],
+              disabled && disabledClassName,
+              className
+            )}
+            {...props}
+          >
+            {children}
+          </Component>
         )}
-      >
-        {children({ active, disabled })}
-      </button>
-    )}
-  </Menu.Item>
+      </Menu.Item>
+    );
+  }
 );
 
 DropdownItem.displayName = 'DropdownItem';

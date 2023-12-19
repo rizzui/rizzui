@@ -21,7 +21,7 @@ import { Alert } from "rizzui";
 
 You can change the style of **Alert** using the **variant** property.
 
-<Paper className="grid grid-cols-1 gap-4 text-gray-1000">
+<Paper className="grid grid-cols-1 gap-4 text-gray-950">
   <Alert variant="flat" color="info">
     <Text className="font-semibold">Flat variant</Text>
     <Text>
@@ -69,7 +69,7 @@ export default function App() {
 
 You can set diffirent size of the **Alert** using [**size**](#alert-sizes) property.
 
-<Paper className="gap-4 justify-start items-start text-gray-1000">
+<Paper className="gap-4 justify-start items-start text-gray-950">
   <Alert size="sm" color="danger">
     <Text className="font-semibold">Alert Small</Text>
     <Text>
@@ -145,7 +145,7 @@ export default function App() {
 
 Change border radius of the **Alert** component using [**rounded**](#alert-rounded) property.
 
-<Paper className="gap-4 justify-start items-start text-gray-1000">
+<Paper className="gap-4 justify-start items-start text-gray-950">
   <Alert color="success" rounded="none">
     <Text className="font-semibold">Rounded None</Text>
     <Text>
@@ -235,7 +235,7 @@ export default function App() {
 
 You can set different states of **Alert** using [**color**](#alert-colors) property.
 
-<Paper className="gap-4 grid grid-cols-1 text-gray-1000">
+<Paper className="gap-4 grid grid-cols-1 text-gray-950">
   <Alert color="danger" variant="flat">
     <Text className="font-semibold">Danger Alert</Text>
     <Text>
@@ -311,7 +311,7 @@ export default function App() {
 
 You can change style of **Alert** with property **icon**, **clearIcon**.
 
-<Paper className="text-gray-1000">
+<Paper className="text-gray-950">
   <Alert
     color="info"
     icon={<EnvelopeIcon className="w-6 text-blue-dark" />}
@@ -352,7 +352,7 @@ export default function App() {
 
 You can make a classic bar **Alert** by using **bar** property.
 
-<Paper className="grid grid-cols-1 gap-4 text-gray-1000">
+<Paper className="grid grid-cols-1 gap-4 text-gray-950">
   <Alert color="danger" bar={true}>
     <Text className="font-semibold">Danger Alert</Text>
     <Text>
@@ -428,7 +428,7 @@ export default function App() {
 
 You can make a closable **Alert** component using **closable** property.
 
-<Paper className="text-gray-1000 justify-start items-start gap-4">
+<Paper className="text-gray-950 justify-start items-start gap-4">
   <AlertClearable />
 </Paper>
 
@@ -468,7 +468,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -482,20 +482,20 @@ Here is the API documentation of the Alert component. You can use these props to
 
 |         Props          |              Type              |                    Description                    |   Default   |
 | :--------------------: | :----------------------------: | :-----------------------------------------------: | :---------: |
-|         color          |  [AlertColors](#alert-colors)  |                   Change color                    |    \_ \_    |
-|        children        |          `ReactNode`           |          Pass alert message as children           |    \_ \_    |
+|         color          |  [AlertColors](#alert-colors)  |                   Change color                    |    \_\_     |
+|        children        |          `ReactNode`           |          Pass alert message as children           |    \_\_     |
 |          size          |   [AlertSizes](#alert-sizes)   |            The size of the component.             | `"DEFAULT"` |
 |        rounded         | [AlertRounded](#alert-rounded) |             The rounded variants are:             | `"DEFAULT"` |
 |        variant         |        `flat` `outline`        |        The variants of the component are:         | `"outline"` |
 |          bar           |           `boolean`            |        Whether left bar should be visible         |  `"false"`  |
-|        closable        |           `boolean`            |                Add closable option                |    \_ \_    |
-|        onClose         | [AlertOnClose](#alert-onclose) |       Pass onClose function to clear alert        |    \_ \_    |
-|          icon          |          `ReactNode`           | Customize alert icon according to your preference |    \_ \_    |
-|       closeIcon        |          `ReactNode`           | Customize close icon according to your preference |    \_ \_    |
-|       className        |            `string`            |       Add className to design the container       |    \_ \_    |
-|      barClassName      |            `string`            |      Add barClassName to design the left bar      |    \_ \_    |
-| iconContainerClassName |            `string`            | Add iconContainerClassName to position the icons  |    \_ \_    |
-|     iconClassName      |            `string`            |   Add iconClassName to design the default icons   |    \_ \_    |
+|        closable        |           `boolean`            |                Add closable option                |    \_\_     |
+|        onClose         | [AlertOnClose](#alert-onclose) |       Pass onClose function to clear alert        |    \_\_     |
+|          icon          |          `ReactNode`           | Customize alert icon according to your preference |    \_\_     |
+|       closeIcon        |          `ReactNode`           | Customize close icon according to your preference |    \_\_     |
+|       className        |            `string`            |       Add className to design the container       |    \_\_     |
+|      barClassName      |            `string`            |      Add barClassName to design the left bar      |    \_\_     |
+| iconContainerClassName |            `string`            | Add iconContainerClassName to position the icons  |    \_\_     |
+|     iconClassName      |            `string`            |   Add iconClassName to design the default icons   |    \_\_     |
 
 </div>
 

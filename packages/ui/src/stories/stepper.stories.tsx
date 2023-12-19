@@ -2,13 +2,12 @@
 import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { Stepper, Step } from '../components/stepper';
+import { Stepper } from '../components/stepper';
 import { Button } from '../components/button';
 
 export default {
   title: 'Components/Stepper',
   component: Stepper,
-  subcomponents: { Step },
   parameters: {
     viewMode: 'docs',
   },
@@ -16,9 +15,9 @@ export default {
 
 const Template: ComponentStory<typeof Stepper> = (args) => (
   <Stepper {...args}>
-    <Step title="Step 1" description="This is a description" />
-    <Step title="Step 2" description="This is a description" />
-    <Step title="Step 3" description="This is a description" />
+    <Stepper.Step title="Step 1" description="This is a description" />
+    <Stepper.Step title="Step 2" description="This is a description" />
+    <Stepper.Step title="Step 3" description="This is a description" />
   </Stepper>
 );
 
@@ -26,27 +25,39 @@ export const Default = Template.bind({});
 
 export const SolidPrimary = () => (
   <Stepper currentIndex={1}>
-    <Step color="primary" title="Step 1" description="This is a description" />
-    <Step color="primary" title="Step 2" description="This is a description" />
-    <Step color="primary" title="Step 3" description="This is a description" />
+    <Stepper.Step
+      color="primary"
+      title="Step 1"
+      description="This is a description"
+    />
+    <Stepper.Step
+      color="primary"
+      title="Step 2"
+      description="This is a description"
+    />
+    <Stepper.Step
+      color="primary"
+      title="Step 3"
+      description="This is a description"
+    />
   </Stepper>
 );
 
 export const OutlinePrimary = () => (
   <Stepper dot currentIndex={1}>
-    <Step
+    <Stepper.Step
       variant="outline"
       color="primary"
       title="Step 1"
       description="This is a description"
     />
-    <Step
+    <Stepper.Step
       variant="outline"
       color="primary"
       title="Step 2"
       description="This is a description"
     />
-    <Step
+    <Stepper.Step
       variant="outline"
       color="primary"
       title="Step 3"
@@ -57,28 +68,40 @@ export const OutlinePrimary = () => (
 
 export const ErrorStep = () => (
   <Stepper currentIndex={1}>
-    <Step title="Step 1" description="This is a description" />
-    <Step
+    <Stepper.Step title="Step 1" description="This is a description" />
+    <Stepper.Step
       status="error"
       color="danger"
       title="Step 2"
       description="This is a description"
     />
-    <Step title="Step 3" description="This is a description" />
+    <Stepper.Step title="Step 3" description="This is a description" />
   </Stepper>
 );
 
 export const SmallSize = () => (
   <Stepper currentIndex={1}>
-    <Step size="sm" title="Step 1" description="This is a description" />
-    <Step size="sm" title="Step 2" description="This is a description" />
-    <Step size="sm" title="Step 3" description="This is a description" />
+    <Stepper.Step
+      size="sm"
+      title="Step 1"
+      description="This is a description"
+    />
+    <Stepper.Step
+      size="sm"
+      title="Step 2"
+      description="This is a description"
+    />
+    <Stepper.Step
+      size="sm"
+      title="Step 3"
+      description="This is a description"
+    />
   </Stepper>
 );
 
 export const CustomIcon = () => (
   <Stepper currentIndex={2}>
-    <Step
+    <Stepper.Step
       variant="outline"
       title="Login"
       icon={
@@ -98,7 +121,7 @@ export const CustomIcon = () => (
         </svg>
       }
     />
-    <Step
+    <Stepper.Step
       variant="outline"
       title="Verification"
       icon={
@@ -118,7 +141,7 @@ export const CustomIcon = () => (
         </svg>
       }
     />
-    <Step
+    <Stepper.Step
       variant="outline"
       title="Pay"
       icon={
@@ -138,7 +161,7 @@ export const CustomIcon = () => (
         </svg>
       }
     />
-    <Step
+    <Stepper.Step
       variant="outline"
       title="Done"
       icon={
@@ -166,9 +189,9 @@ export const Functional = () => {
   return (
     <>
       <Stepper currentIndex={currentStep}>
-        <Step title="Step 1" description="This is a description" />
-        <Step title="Step 2" description="This is a description" />
-        <Step title="Step 3" description="This is a description" />
+        <Stepper.Step title="Step 1" description="This is a description" />
+        <Stepper.Step title="Step 2" description="This is a description" />
+        <Stepper.Step title="Step 3" description="This is a description" />
       </Stepper>
       <div className="mt-7 flex space-x-4">
         <Button

@@ -3,6 +3,7 @@ import { cn } from '../../lib/cn';
 const passwordToggleIconClasses = {
   size: {
     sm: 'h-4 w-4',
+    md: 'h-[18px] w-[18px]',
     DEFAULT: 'h-[18px] w-[18px]',
     lg: 'h-[18px] w-[18px]',
     xl: 'h-5 w-5',

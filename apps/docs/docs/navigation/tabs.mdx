@@ -2,21 +2,22 @@
 sidebar_position: 27
 ---
 
-import { Tabs, TabList, Tab, TabPanels, TabPanel, cn } from 'rizzui';
+import { Tab } from "rizzui";
 import {
-	UserIcon,
-	BuildingOfficeIcon,
-	UsersIcon,
-	CreditCardIcon,
-} from '@heroicons/react/24/outline';
-import Paper from '@site/src/components/paper';
+  UserIcon,
+  BuildingOfficeIcon,
+  UsersIcon,
+  CreditCardIcon,
+} from "@heroicons/react/24/outline";
+import Paper from "@site/src/components/paper";
+import AuthResponsiveTab from "@site/src/components/auto-responsive-tab";
 
 # Tabs
 
 The Tabs Component allows the content author to organize page content within multiple tabs.
 
 ```tsx
-import { Tabs } from 'rizzui';
+import { Tab } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -26,1404 +27,265 @@ import { Tabs } from 'rizzui';
 A simple style of **Tabs**.
 
 <Paper>
-	<Tabs defaultIndex={1}>
-		<TabList className="flex justify-start space-x-8 border-b border-b-gray-300">
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative w-24 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:text-gray-800'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<p>My Account</p>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-px h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative w-24 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:text-gray-800'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<p>Company</p>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-px h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative w-24 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:text-gray-800'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<p>Team Member</p>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-px h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative w-24 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:text-gray-800'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<p>Billing</p>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-px h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-		</TabList>
-		<TabPanels className="mt-2">
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-				illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-				placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-				voluptatibus alias est laudantium unde natus iste corrupti dolor
-				dignissimos soluta quibusdam aperiam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-				dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-				nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-				saepe.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe officiis
-				debitis exercitationem non. Id, aliquid alias repudiandae veniam
-				praesentium voluptatem quam officiis nihil tempora. Debitis
-				exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-				similique minima mollitia quam, nam necessitatibus distinctio aut sequi
-				adipisci maiores. Inventore similique possimus aliquid.
-			</TabPanel>
-		</TabPanels>
-	</Tabs>
+  <Tab>
+    <Tab.List>
+      <Tab.ListItem>Recent</Tab.ListItem>
+      <Tab.ListItem>Popular</Tab.ListItem>
+      <Tab.ListItem>Trending</Tab.ListItem>
+    </Tab.List>
+    <Tab.Panels>
+      <Tab.Panel>Recent panel</Tab.Panel>
+      <Tab.Panel>Popular panel</Tab.Panel>
+      <Tab.Panel>Trending panel</Tab.Panel>
+    </Tab.Panels>
+  </Tab>
 </Paper>
 
 ```tsx
-import { Tabs, TabList, Tab, TabPanels, TabPanel, cn } from 'rizzui';
+import { Tab } from "rizzui";
 
 export default function App() {
-	return (
-		<Tabs defaultIndex={1}>
-			<TabList className="flex justify-start space-x-8 border-b border-b-gray-300">
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative w-24 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:text-gray-800'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<p>My Account</p>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-px h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative w-24 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:text-gray-800'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<p>Company</p>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-px h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative w-24 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:text-gray-800'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<p>Team Member</p>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-px h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative w-24 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:text-gray-800'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<p>Billing</p>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-px h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-			</TabList>
-			<TabPanels className="mt-2">
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-					illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-					placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-					voluptatibus alias est laudantium unde natus iste corrupti dolor
-					dignissimos soluta quibusdam aperiam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-					dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-					nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-					saepe.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-					officiis debitis exercitationem non. Id, aliquid alias repudiandae
-					veniam praesentium voluptatem quam officiis nihil tempora. Debitis
-					exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-					similique minima mollitia quam, nam necessitatibus distinctio aut
-					sequi adipisci maiores. Inventore similique possimus aliquid.
-				</TabPanel>
-			</TabPanels>
-		</Tabs>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## With Icon Underline
-
-You can use icons to tab of **Tabs**.
-
-<Paper>
-	<Tabs>
-		<TabList className="flex justify-start space-x-8 border-b border-b-gray-300">
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative w-28 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:text-gray-800'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<div className="inline-flex items-center">
-							<UserIcon className="mr-1 h-4 w-4" />
-							<p>My Account</p>
-						</div>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-px h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative w-28 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:text-gray-800'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<div className="inline-flex items-center">
-							<BuildingOfficeIcon className="mr-1 h-4 w-4" />
-							<p>Company</p>
-						</div>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-px h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative w-32 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:text-gray-800'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<div className="inline-flex items-center">
-							<UsersIcon className="mr-1 h-4 w-4" />
-							<p>Team Member</p>
-						</div>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-px h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative w-24 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:text-gray-800'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<div className="inline-flex items-center">
-							<CreditCardIcon className="mr-1 h-4 w-4" />
-							<p>Billing</p>
-						</div>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-px h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-		</TabList>
-		<TabPanels className="mt-2">
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-				illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-				placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-				voluptatibus alias est laudantium unde natus iste corrupti dolor
-				dignissimos soluta quibusdam aperiam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-				dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-				nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-				saepe.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe officiis
-				debitis exercitationem non. Id, aliquid alias repudiandae veniam
-				praesentium voluptatem quam officiis nihil tempora. Debitis
-				exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-				similique minima mollitia quam, nam necessitatibus distinctio aut sequi
-				adipisci maiores. Inventore similique possimus aliquid.
-			</TabPanel>
-		</TabPanels>
-	</Tabs>
-</Paper>
-
-```tsx
-import { Tabs, TabList, Tab, TabPanels, TabPanel, cn } from 'rizzui';
-import {
-	UserIcon,
-	BuildingOfficeIcon,
-	UsersIcon,
-	CreditCardIcon,
-} from '@heroicons/react/24/outline';
-
-export default function App() {
-	return (
-		<Tabs>
-			<TabList className="flex justify-start space-x-8 border-b border-b-gray-300">
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative w-28 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:text-gray-800'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<div className="inline-flex items-center">
-								<UserIcon className="mr-1 h-4 w-4" />
-								<p>My Account</p>
-							</div>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-px h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative w-28 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:text-gray-800'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<div className="inline-flex items-center">
-								<BuildingOfficeIcon className="mr-1 h-4 w-4" />
-								<p>Company</p>
-							</div>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-px h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative w-32 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:text-gray-800'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<div className="inline-flex items-center">
-								<UsersIcon className="mr-1 h-4 w-4" />
-								<p>Team Member</p>
-							</div>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-px h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative w-24 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:text-gray-800'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<div className="inline-flex items-center">
-								<CreditCardIcon className="mr-1 h-4 w-4" />
-								<p>Billing</p>
-							</div>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-px h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-			</TabList>
-			<TabPanels className="mt-2">
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-					illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-					placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-					voluptatibus alias est laudantium unde natus iste corrupti dolor
-					dignissimos soluta quibusdam aperiam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-					dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-					nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-					saepe.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-					officiis debitis exercitationem non. Id, aliquid alias repudiandae
-					veniam praesentium voluptatem quam officiis nihil tempora. Debitis
-					exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-					similique minima mollitia quam, nam necessitatibus distinctio aut
-					sequi adipisci maiores. Inventore similique possimus aliquid.
-				</TabPanel>
-			</TabPanels>
-		</Tabs>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## With Badge Underline
-
-You can use badge to tab of **Tabs**.
-
-<Paper>
-	<Tabs>
-		<TabList className="flex justify-start space-x-8 border-b border-b-gray-300">
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'group relative mb-1.5 w-32 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:rounded hover:bg-gray-100 hover:text-gray-700'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<div className="inline-flex space-x-1">
-							<p>My Account</p>
-							<span
-								className={cn(
-									'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
-									selected
-										? 'bg-gray-900 text-gray-0'
-										: 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
-								)}
-							>
-								10
-							</span>
-						</div>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-[7px] h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'group relative mb-1.5 w-32 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:rounded hover:bg-gray-100 hover:text-gray-700'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<div className="inline-flex space-x-1">
-							<p>Company</p>
-							<span
-								className={cn(
-									'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
-									selected
-										? 'bg-gray-900 text-gray-0'
-										: 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
-								)}
-							>
-								4
-							</span>
-						</div>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-[7px] h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'group relative mb-1.5 w-32 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:rounded hover:bg-gray-100 hover:text-gray-700'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<div className="inline-flex space-x-1">
-							<p>Team Member</p>
-							<span
-								className={cn(
-									'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
-									selected
-										? 'bg-gray-900 text-gray-0'
-										: 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
-								)}
-							>
-								6
-							</span>
-						</div>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-[7px] h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'group relative mb-1.5 w-32 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-gray-900'
-							: 'text-gray-500 hover:rounded hover:bg-gray-100 hover:text-gray-700'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<div className="inline-flex space-x-1">
-							<p>Billing</p>
-							<span
-								className={cn(
-									'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
-									selected
-										? 'bg-gray-900 text-gray-0'
-										: 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
-								)}
-							>
-								3
-							</span>
-						</div>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-[7px] h-0.5 w-full',
-								selected ? 'bg-gray-900' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-		</TabList>
-		<TabPanels className="mt-2">
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-				illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-				placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-				voluptatibus alias est laudantium unde natus iste corrupti dolor
-				dignissimos soluta quibusdam aperiam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-				dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-				nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-				saepe.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe officiis
-				debitis exercitationem non. Id, aliquid alias repudiandae veniam
-				praesentium voluptatem quam officiis nihil tempora. Debitis
-				exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-				similique minima mollitia quam, nam necessitatibus distinctio aut sequi
-				adipisci maiores. Inventore similique possimus aliquid.
-			</TabPanel>
-		</TabPanels>
-	</Tabs>
-</Paper>
-
-```tsx
-import { Tabs, TabList, Tab, TabPanels, TabPanel, cn } from 'rizzui';
-
-export default function App() {
-	return (
-		<Tabs>
-			<TabList className="flex justify-start space-x-8 border-b border-b-gray-300">
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'group relative mb-1.5 w-32 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:rounded hover:bg-gray-100 hover:text-gray-700'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<div className="inline-flex space-x-1">
-								<p>My Account</p>
-								<span
-									className={cn(
-										'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
-										selected
-											? 'bg-gray-900 text-gray-0'
-											: 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
-									)}
-								>
-									10
-								</span>
-							</div>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-[7px] h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'group relative mb-1.5 w-32 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:rounded hover:bg-gray-100 hover:text-gray-700'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<div className="inline-flex space-x-1">
-								<p>Company</p>
-								<span
-									className={cn(
-										'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
-										selected
-											? 'bg-gray-900 text-gray-0'
-											: 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
-									)}
-								>
-									4
-								</span>
-							</div>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-[7px] h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'group relative mb-1.5 w-32 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:rounded hover:bg-gray-100 hover:text-gray-700'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<div className="inline-flex space-x-1">
-								<p>Team Member</p>
-								<span
-									className={cn(
-										'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
-										selected
-											? 'bg-gray-900 text-gray-0'
-											: 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
-									)}
-								>
-									6
-								</span>
-							</div>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-[7px] h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'group relative mb-1.5 w-32 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-gray-900'
-								: 'text-gray-500 hover:rounded hover:bg-gray-100 hover:text-gray-700'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<div className="inline-flex space-x-1">
-								<p>Billing</p>
-								<span
-									className={cn(
-										'm-auto rounded-full py-0.5 px-1 text-xs leading-none',
-										selected
-											? 'bg-gray-900 text-gray-0'
-											: 'bg-gray-200 text-gray-500 group-hover:bg-gray-400 group-hover:text-gray-100'
-									)}
-								>
-									3
-								</span>
-							</div>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-[7px] h-0.5 w-full',
-									selected ? 'bg-gray-900' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-			</TabList>
-			<TabPanels className="mt-2">
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-					illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-					placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-					voluptatibus alias est laudantium unde natus iste corrupti dolor
-					dignissimos soluta quibusdam aperiam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-					dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-					nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-					saepe.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-					officiis debitis exercitationem non. Id, aliquid alias repudiandae
-					veniam praesentium voluptatem quam officiis nihil tempora. Debitis
-					exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-					similique minima mollitia quam, nam necessitatibus distinctio aut
-					sequi adipisci maiores. Inventore similique possimus aliquid.
-				</TabPanel>
-			</TabPanels>
-		</Tabs>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## In Pills
-
-You can use background color to show active **Tabs**.
-
-<Paper>
-	<Tabs>
-		<TabList className="flex justify-start space-x-4">
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'w-32 rounded py-2 px-3 text-sm outline-none',
-						selected
-							? 'bg-gray-100 font-medium text-gray-900'
-							: 'bg-gray-0 text-gray-500 hover:bg-gray-100'
-					)
-				}
-			>
-				My Account
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'w-32 rounded py-2 px-3 text-sm outline-none',
-						selected
-							? 'bg-gray-100 font-medium text-gray-900'
-							: 'bg-gray-0 text-gray-500 hover:bg-gray-100'
-					)
-				}
-			>
-				Company
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'w-32 rounded py-2 px-3 text-sm outline-none',
-						selected
-							? 'bg-gray-100 font-medium text-gray-900'
-							: 'bg-gray-0 text-gray-500 hover:bg-gray-100'
-					)
-				}
-			>
-				Team Member
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'w-32 rounded py-2 px-3 text-sm outline-none',
-						selected
-							? 'bg-gray-100 font-medium text-gray-900'
-							: 'bg-gray-0 text-gray-500 hover:bg-gray-100'
-					)
-				}
-			>
-				Billing
-			</Tab>
-		</TabList>
-		<TabPanels className="mt-2">
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-				illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-				placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-				voluptatibus alias est laudantium unde natus iste corrupti dolor
-				dignissimos soluta quibusdam aperiam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-				dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-				nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-				saepe.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe officiis
-				debitis exercitationem non. Id, aliquid alias repudiandae veniam
-				praesentium voluptatem quam officiis nihil tempora. Debitis
-				exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-				similique minima mollitia quam, nam necessitatibus distinctio aut sequi
-				adipisci maiores. Inventore similique possimus aliquid.
-			</TabPanel>
-		</TabPanels>
-	</Tabs>
-</Paper>
-
-```tsx
-import { Tabs, TabList, Tab, TabPanels, TabPanel, cn } from 'rizzui';
-
-export default function App() {
-	return (
-		<Tabs>
-			<TabList className="flex justify-start space-x-4">
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'w-32 rounded py-2 px-3 text-sm outline-none',
-							selected
-								? 'bg-gray-100 font-medium text-gray-900'
-								: 'bg-gray-0 text-gray-500 hover:bg-gray-100'
-						)
-					}
-				>
-					My Account
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'w-32 rounded py-2 px-3 text-sm outline-none',
-							selected
-								? 'bg-gray-100 font-medium text-gray-900'
-								: 'bg-gray-0 text-gray-500 hover:bg-gray-100'
-						)
-					}
-				>
-					Company
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'w-32 rounded py-2 px-3 text-sm outline-none',
-							selected
-								? 'bg-gray-100 font-medium text-gray-900'
-								: 'bg-gray-0 text-gray-500 hover:bg-gray-100'
-						)
-					}
-				>
-					Team Member
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'w-32 rounded py-2 px-3 text-sm outline-none',
-							selected
-								? 'bg-gray-100 font-medium text-gray-900'
-								: 'bg-gray-0 text-gray-500 hover:bg-gray-100'
-						)
-					}
-				>
-					Billing
-				</Tab>
-			</TabList>
-			<TabPanels className="mt-2">
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-					illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-					placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-					voluptatibus alias est laudantium unde natus iste corrupti dolor
-					dignissimos soluta quibusdam aperiam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-					dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-					nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-					saepe.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-					officiis debitis exercitationem non. Id, aliquid alias repudiandae
-					veniam praesentium voluptatem quam officiis nihil tempora. Debitis
-					exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-					similique minima mollitia quam, nam necessitatibus distinctio aut
-					sequi adipisci maiores. Inventore similique possimus aliquid.
-				</TabPanel>
-			</TabPanels>
-		</Tabs>
-	);
-}
-```
-
-<div className="mb-16" />
-
-## With Primary Underline
-
-You can change color of active **Tabs**.
-
-<Paper>
-	<Tabs>
-		<TabList className="flex justify-start space-x-8 border-b border-b-gray-300">
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative mb-1.5 w-28 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-primary'
-							: 'text-gray-500 hover:rounded hover:bg-primary-lighter hover:text-primary-light'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<p>My Account</p>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-[7px] h-0.5 w-full',
-								selected ? 'bg-primary' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative mb-1.5 w-28 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-primary'
-							: 'text-gray-500 hover:rounded hover:bg-primary-lighter hover:text-primary-light'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<p>Company</p>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-[7px] h-0.5 w-full',
-								selected ? 'bg-primary' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative mb-1.5 w-28 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-primary'
-							: 'text-gray-500 hover:rounded hover:bg-primary-lighter hover:text-primary-light'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<p>Team Member</p>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-[7px] h-0.5 w-full',
-								selected ? 'bg-primary' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-			<Tab
-				className={({ selected }) =>
-					cn(
-						'relative mb-1.5 w-28 py-2 text-sm outline-none',
-						selected
-							? 'font-medium text-primary'
-							: 'text-gray-500 hover:rounded hover:bg-primary-lighter hover:text-primary-light'
-					)
-				}
-			>
-				{({ selected }) => (
-					<>
-						<p>Billing</p>
-						<span
-							className={cn(
-								'absolute left-0 -bottom-[7px] h-0.5 w-full',
-								selected ? 'bg-primary' : 'bg-transparent'
-							)}
-						/>
-					</>
-				)}
-			</Tab>
-		</TabList>
-		<TabPanels className="mt-2">
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-				illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-				placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-				voluptatibus alias est laudantium unde natus iste corrupti dolor
-				dignissimos soluta quibusdam aperiam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-				dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-				nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-				saepe.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe officiis
-				debitis exercitationem non. Id, aliquid alias repudiandae veniam
-				praesentium voluptatem quam officiis nihil tempora. Debitis
-				exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-			</TabPanel>
-			<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-				similique minima mollitia quam, nam necessitatibus distinctio aut sequi
-				adipisci maiores. Inventore similique possimus aliquid.
-			</TabPanel>
-		</TabPanels>
-	</Tabs>
-</Paper>
-
-```tsx
-import { Tabs, TabList, Tab, TabPanels, TabPanel, cn } from 'rizzui';
-
-export default function App() {
-	return (
-		<Tabs>
-			<TabList className="flex justify-start space-x-8 border-b border-b-gray-300">
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative mb-1.5 w-28 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-primary'
-								: 'text-gray-500 hover:rounded hover:bg-primary-lighter hover:text-primary-light'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<p>My Account</p>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-[7px] h-0.5 w-full',
-									selected ? 'bg-primary' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative mb-1.5 w-28 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-primary'
-								: 'text-gray-500 hover:rounded hover:bg-primary-lighter hover:text-primary-light'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<p>Company</p>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-[7px] h-0.5 w-full',
-									selected ? 'bg-primary' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative mb-1.5 w-28 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-primary'
-								: 'text-gray-500 hover:rounded hover:bg-primary-lighter hover:text-primary-light'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<p>Team Member</p>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-[7px] h-0.5 w-full',
-									selected ? 'bg-primary' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-				<Tab
-					className={({ selected }) =>
-						cn(
-							'relative mb-1.5 w-28 py-2 text-sm outline-none',
-							selected
-								? 'font-medium text-primary'
-								: 'text-gray-500 hover:rounded hover:bg-primary-lighter hover:text-primary-light'
-						)
-					}
-				>
-					{({ selected }) => (
-						<>
-							<p>Billing</p>
-							<span
-								className={cn(
-									'absolute left-0 -bottom-[7px] h-0.5 w-full',
-									selected ? 'bg-primary' : 'bg-transparent'
-								)}
-							/>
-						</>
-					)}
-				</Tab>
-			</TabList>
-			<TabPanels className="mt-2">
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta at quo,
-					illo molestias vel tenetur dignissimos possimus repudiandae magnam,
-					placeat voluptatem mollitia ex accusamus. Quas, veniam laborum
-					voluptatibus alias est laudantium unde natus iste corrupti dolor
-					dignissimos soluta quibusdam aperiam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, qui
-					dolore eveniet est cum quisquam natus laudantium nostrum! Unde neque
-					nostrum nam accusamus eos. Aspernatur minus quas beatae. Recusandae,
-					saepe.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-					officiis debitis exercitationem non. Id, aliquid alias repudiandae
-					veniam praesentium voluptatem quam officiis nihil tempora. Debitis
-					exercitationem at sed ab quis officia voluptates maiores ad iusto!iam.
-				</TabPanel>
-				<TabPanel className="py-2 text-sm leading-6 text-gray-600">
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga, in
-					similique minima mollitia quam, nam necessitatibus distinctio aut
-					sequi adipisci maiores. Inventore similique possimus aliquid.
-				</TabPanel>
-			</TabPanels>
-		</Tabs>
-	);
+  return (
+    <Tab>
+      <Tab.List>
+        <Tab.ListItem>Recent</Tab.ListItem>
+        <Tab.ListItem>Popular</Tab.ListItem>
+        <Tab.ListItem>Trending</Tab.ListItem>
+      </Tab.List>
+      <Tab.Panels>
+        <Tab.Panel>Recent panel</Tab.Panel>
+        <Tab.Panel>Popular panel</Tab.Panel>
+        <Tab.Panel>Trending panel</Tab.Panel>
+      </Tab.Panels>
+    </Tab>
+  );
 }
 ```
 
 <div className="mb-20" />
 
-## APIs
+## With Icon
+
+You can use icon in the tab list item
+
+<Paper>
+  <Tab>
+    <Tab.List>
+      <Tab.ListItem>
+        <UserIcon className="h-4 w-4" /> My Account
+      </Tab.ListItem>
+      <Tab.ListItem>
+        <BuildingOfficeIcon className="h-4 w-4" /> Company
+      </Tab.ListItem>
+      <Tab.ListItem>
+        <UsersIcon className="h-4 w-4" /> Team Member
+      </Tab.ListItem>
+      <Tab.ListItem>
+        <CreditCardIcon className="h-4 w-4" /> Billing
+      </Tab.ListItem>
+    </Tab.List>
+    <Tab.Panels>
+      <Tab.Panel>Account panel</Tab.Panel>
+      <Tab.Panel>Company panel</Tab.Panel>
+      <Tab.Panel>Team member panel</Tab.Panel>
+      <Tab.Panel>Billing panel</Tab.Panel>
+    </Tab.Panels>
+  </Tab>
+</Paper>
+
+```tsx
+import { Tab } from "rizzui";
+import {
+  UserIcon,
+  BuildingOfficeIcon,
+  UsersIcon,
+  CreditCardIcon,
+} from "@heroicons/react/24/outline";
+
+export default function App() {
+  return (
+    <Tab>
+      <Tab.List>
+        <Tab.ListItem>
+          <UserIcon className="h-4 w-4" /> My Account
+        </Tab.ListItem>
+        <Tab.ListItem>
+          <BuildingOfficeIcon className="h-4 w-4" /> Company
+        </Tab.ListItem>
+        <Tab.ListItem>
+          <UsersIcon className="h-4 w-4" /> Team Member
+        </Tab.ListItem>
+        <Tab.ListItem>
+          <CreditCardIcon className="h-4 w-4" /> Billing
+        </Tab.ListItem>
+      </Tab.List>
+      <Tab.Panels>
+        <Tab.Panel>Account panel</Tab.Panel>
+        <Tab.Panel>Company panel</Tab.Panel>
+        <Tab.Panel>Team member panel</Tab.Panel>
+        <Tab.Panel>Billing panel</Tab.Panel>
+      </Tab.Panels>
+    </Tab>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Vertical Tabs
+
+You can create a vertical tab by adding a **vertical** prop into the **Tab** component.
+
+<Paper>
+  <Tab vertical>
+    <Tab.List>
+      <Tab.ListItem>Recent</Tab.ListItem>
+      <Tab.ListItem>Popular</Tab.ListItem>
+      <Tab.ListItem>Trending</Tab.ListItem>
+    </Tab.List>
+    <Tab.Panels>
+      <Tab.Panel>Recent panel</Tab.Panel>
+      <Tab.Panel>Popular panel</Tab.Panel>
+      <Tab.Panel>Trending panel</Tab.Panel>
+    </Tab.Panels>
+  </Tab>
+</Paper>
+
+```tsx
+import { Tab } from "rizzui";
+
+export default function App() {
+  return (
+    <Tab vertical>
+      <Tab.List>
+        <Tab.ListItem>Recent</Tab.ListItem>
+        <Tab.ListItem>Popular</Tab.ListItem>
+        <Tab.ListItem>Trending</Tab.ListItem>
+      </Tab.List>
+      <Tab.Panels>
+        <Tab.Panel>Recent panel</Tab.Panel>
+        <Tab.Panel>Popular panel</Tab.Panel>
+        <Tab.Panel>Trending panel</Tab.Panel>
+      </Tab.Panels>
+    </Tab>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Auto Responsive
+
+Experience our auto-responsive, scrollable tabs. The active tab stays visible, whether the tab was partially visibile or last hidden tab. Swipe or use left, right arrow keys or shift mousewheel to access hidden tabs.
+
+<Paper>
+  <AuthResponsiveTab />
+</Paper>
+
+```tsx
+import { Tab } from "rizzui";
+
+export default function App() {
+  return (
+    <Tab>
+      <Tab.List>
+        <Tab.ListItem>Home</Tab.ListItem>
+        <Tab.ListItem>Explore</Tab.ListItem>
+        <Tab.ListItem>Products</Tab.ListItem>
+        ...
+      </Tab.List>
+      <Tab.Panels>
+        <Tab.Panel>Home</Tab.Panel>
+        <Tab.Panel>Explore</Tab.Panel>
+        <Tab.Panel>Products</Tab.Panel>
+        ...
+      </Tab.Panels>
+    </Tab>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
 
 <hr />
 
 <div className="mb-10" />
 
-### Tabs Props
-
-Here is the API documentation of the Tabs component. We used **Tab** component of **headless UI** to build it. See their [**Official documentation**](https://headlessui.com/react/tabs) for more info.
-
-<div className="overflow-x-auto">
-
-|     Props     |            Type             | Description | Default |
-| :-----------: | :-------------------------: | :---------: | :-----: |
-|      as       |     `ElementType<any>`      |             |  \_ \_  |
-|    refName    |          `string`           |             |  \_ \_  |
-|   className   |            `any`            |             |  \_ \_  |
-| defaultIndex  |          `number`           |             |  \_ \_  |
-|   onChange    | `((index: number) => void)` |             |  \_ \_  |
-| selectedIndex |          `number`           |             |  \_ \_  |
-|   vertical    |          `boolean`          |             |  \_ \_  |
-|    manual     |          `boolean`          |             |  \_ \_  |
-
-</div>
-
-<div className="mb-10" />
-
-### TabList Props
-
-Here is the API documentation of the TabList component.
-
-<div className="overflow-x-auto">
-
-|   Props   |        Type        | Description | Default |
-| :-------: | :----------------: | :---------: | :-----: |
-|    as     | `ElementType<any>` |             |  \_ \_  |
-|  refName  |      `string`      |             |  \_ \_  |
-| className |       `any`        |             |  \_ \_  |
-
-</div>
-
-<div className="mb-10" />
-
 ### Tab Props
 
-Here is the API documentation of the Tab component.
+Here is the API documentation of the **Tab** component.
 
 <div className="overflow-x-auto">
 
-|   Props   |        Type        | Description | Default |
-| :-------: | :----------------: | :---------: | :-----: |
-|    as     | `ElementType<any>` |             |  \_ \_  |
-|  refName  |      `string`      |             |  \_ \_  |
-| className |       `any`        |             |  \_ \_  |
+|       Props        |            Type             |                                                Description                                                | Default |
+| :----------------: | :-------------------------: | :-------------------------------------------------------------------------------------------------------: | :-----: |
+|      vertical      |          `boolean`          | When true, the orientation of the **Tab.List** will be **vertical**, otherwise it will be **horizontal**. |  \_\_   |
+|   selectedIndex    |          `number`           |            The selected index if you want to use the Tab component as a controlled component.             |  \_\_   |
+|      onChange      | `((index: number) => void)` |                            A function called whenever the active tab changes.                             |  \_\_   |
+| hideHoverAnimation |          `boolean`          |                                   Use this prop to hide hover animation                                   |  false  |
+|      children      |       `ReactElement`        |                          Only allow **Tab.List** and **Tab.Panels** as children                           |  \_\_   |
+|     className      |          `string`           |                             Add classes to the main wrapper of this component                             |  \_\_   |
 
 </div>
 
 <div className="mb-10" />
 
-### TabPanels Props
+### Tab.List Props
 
-Here is the API documentation of the TabPanels component.
+Here is the API documentation of the **Tab.List** component.
 
 <div className="overflow-x-auto">
 
-|   Props   |        Type        | Description | Default |
-| :-------: | :----------------: | :---------: | :-----: |
-|    as     | `ElementType<any>` |             |  \_ \_  |
-|  refName  |      `string`      |             |  \_ \_  |
-| className |       `any`        |             |  \_ \_  |
+|   Props   |      Type      |                    Description                    | Default |
+| :-------: | :------------: | :-----------------------------------------------: | :-----: |
+| children  | `ReactElement` |      Only allow **Tab.ListItem** as children      |  \_\_   |
+| className |    `string`    | Add classes to the **Tab.List** of this component |  \_\_   |
 
 </div>
 
 <div className="mb-10" />
 
-### TabPanel Props
+### Tab.ListItem Props
 
-Here is the API documentation of the TabPanel component.
+Here is the API documentation of the **Tab.ListItem** component.
 
 <div className="overflow-x-auto">
 
-|   Props   |        Type        | Description | Default |
-| :-------: | :----------------: | :---------: | :-----: |
-|    as     | `ElementType<any>` |             |  \_ \_  |
-|  refName  |      `string`      |             |  \_ \_  |
-|  static   |     `boolean`      |             |  \_ \_  |
-|  unmount  |     `boolean`      |             |  \_ \_  |
-| className |       `any`        |             |  \_ \_  |
+|   Props   |    Type     |                      Description                      | Default |
+| :-------: | :---------: | :---------------------------------------------------: | :-----: |
+| children  | `ReactNode` |         Use any valid React element or string         |  \_\_   |
+| className |  `string`   | Add classes to the **Tab.ListItem** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Tab.Panels Props
+
+Here is the API documentation of the **Tab.Panels** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |      Type      |                     Description                     | Default |
+| :-------: | :------------: | :-------------------------------------------------: | :-----: |
+| children  | `ReactElement` |        Only allow **Tab.Panel** as children         |  \_\_   |
+| className |    `string`    | Add classes to the **Tab.Panels** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Tab.Panel Props
+
+Here is the API documentation of the **Tab.Panel** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |    Type     |                    Description                     | Default |
+| :-------: | :---------: | :------------------------------------------------: | :-----: |
+| children  | `ReactNode` |       Use any valid React element or string        |  \_\_   |
+| className |  `string`   | Add classes to the **Tab.Panel** of this component |  \_\_   |
 
 </div>

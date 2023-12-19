@@ -389,7 +389,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -401,16 +401,16 @@ Here is the API documentation of the Drawer component.
 
 <div className="overflow-x-auto">
 
-|       Props        |                  Type                  |                                                                 Description                                                                  |   Default   |
-| :----------------: | :------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :---------: |
-|       isOpen       |               `boolean`                |                                                      Whether the Drawer is open or not                                                       |    \_ \_    |
-|      onClose       |              `() => void`              |                              Called when drawer is closed (Escape key and click outside, depending on options)                               |    \_ \_    |
-|        size        |      [DrawerSizes](#drawer-sizes)      |                                              Preset size of drawer is sm, DEFAULT, lg, xl, full                                              | `"DEFAULT"` |
-|     placement      | [DrawerPlacements](#drawer-placements) |                 Drawer can be placed on left (default), top, right and bottom. Control drawer position with placement prop:                  |  `"right"`  |
-|     customSize     |                `string`                | Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" |    \_ \_    |
-|  overlayClassName  |                `string`                |                                                Override default CSS style of Drawer's overlay                                                |    \_ \_    |
-| containerClassName |                `string`                |           Set custom style classes for the Drawer container, where you can set custom Drawer size and padding and background color           |    \_ \_    |
-|     className      |                `string`                |                                             Set custom style classes for the Drawer root element                                             |    \_ \_    |
+|       Props        |                  Type                  |                                                                 Description                                                                  |  Default  |
+| :----------------: | :------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :-------: |
+|       isOpen       |               `boolean`                |                                                      Whether the Drawer is open or not                                                       |   \_\_    |
+|      onClose       |              `() => void`              |                              Called when drawer is closed (Escape key and click outside, depending on options)                               |   \_\_    |
+|        size        |      [DrawerSizes](#drawer-sizes)      |                                              Preset size of drawer is sm, DEFAULT, lg, xl, full                                              |  `"md"`   |
+|     placement      | [DrawerPlacements](#drawer-placements) |                 Drawer can be placed on left (default), top, right and bottom. Control drawer position with placement prop:                  | `"right"` |
+|     customSize     |                `string`                | Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" |   \_\_    |
+|  overlayClassName  |                `string`                |                                                Override default CSS style of Drawer's overlay                                                |   \_\_    |
+| containerClassName |                `string`                |           Set custom style classes for the Drawer container, where you can set custom Drawer size and padding and background color           |   \_\_    |
+|     className      |                `string`                |                                             Set custom style classes for the Drawer root element                                             |   \_\_    |
 
 </div>
 
@@ -419,7 +419,7 @@ Here is the API documentation of the Drawer component.
 ### Drawer Sizes
 
 ```ts
-type DrawerSizes = "DEFAULT" | "sm" | "lg" | "xl" | "full";
+type DrawerSizes = "sm" | "md" | "lg" | "xl" | "full";
 ```
 
 <div className="mb-10" />

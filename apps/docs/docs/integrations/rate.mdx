@@ -22,12 +22,12 @@ A component for getting word of experience of the user.
 <div className="mb-4" />
 
 ```bash
-npm install rc-rate
+npm i rc-rate
 ```
 
 <div className="mb-4" />
 
-2. Create a file called **rate.tsx** inside your components directory. And then copy and paste the following code into that file.
+2. Create a rate component, **components/rate.tsx**
 
 <div className="mb-4" />
 
@@ -39,63 +39,51 @@ import type { StarProps as RcStarProps } from "rc-rate/lib/Star";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { cn, FieldError, FieldHelperText, Tooltip } from "rizzui";
 
-const labelClasses = {
+const labelStyles = {
   size: {
     sm: "text-xs mb-1",
-    DEFAULT: "text-sm mb-1.5",
+    md: "text-sm mb-1.5",
     lg: "text-sm mb-1.5",
     xl: "text-base mb-2",
   },
 };
 
-const rateClasses = {
-  base: "flex items-center [&>li]:cursor-pointer [&.rc-rate-disabled>li]:cursor-default [&>li]:relative [&>li]:mr-0.5 rtl:[&>li]:ml-0.5 [&>li]:inline-block text-gray-200",
+const rateStyles = {
+  base: "flex items-center [&>li]:cursor-pointer [&.rc-rate-disabled>li]:cursor-default [&>li]:relative [&>li]:mr-0.5 rtl:[&>li]:ml-0.5 [&>li]:inline-block text-muted",
   size: {
     sm: "h-5 w-5",
-    DEFAULT: "h-6 w-6",
+    md: "h-6 w-6",
     lg: "h-7 w-7",
     xl: "h-8 w-8",
   },
   firstStar:
     "[&>li>div>.rc-rate-star-first]:absolute [&>li>div>.rc-rate-star-first]:left-0 rtl:[&>li>div>.rc-rate-star-first]:right-0 [&>li>div>.rc-rate-star-first]:top-0 [&>li>div>.rc-rate-star-first]:w-1/2 [&>li>div>.rc-rate-star-first]:h-full [&>li>div>.rc-rate-star-first]:overflow-hidden",
   color:
-    "[&>.rc-rate-star-half>div>.rc-rate-star-first]:text-orange-light [&>.rc-rate-star-full>div]:text-orange-light",
+    "[&>.rc-rate-star-half>div>.rc-rate-star-first]:text-orange [&>.rc-rate-star-full>div]:text-orange",
   transition:
     "[&>li>div]:transition-all [&>li>div]:duration-300 [&>.rc-rate-star:hover]:scale-110",
 };
 
 export interface RateProps
   extends Omit<RcRateProps, "character" | "className"> {
-  /** Set field label */
   label?: React.ReactNode;
-  /** The size of the component */
-  size?: keyof typeof rateClasses.size;
-  /** Pass single custom character or an array of custom characters */
+  size?: keyof typeof rateStyles.size;
   character?: React.ReactNode | Array<React.ReactNode>;
-  /** Custom className for custom character */
   characterClassName?: string;
-  /** Provide tooltip texts for each character */
   tooltips?: Array<string>;
-  /** Add helper text. It could be string or a React component */
   helperText?: React.ReactNode;
-  /** Show error message using this prop */
   error?: string;
-  /** Use labelClassName prop to do some addition style for the field label */
   labelClassName?: string;
-  /** Use rateClassName prop to do some addition style for the rate field */
   rateClassName?: string;
-  /** This prop allows you to customize the error message style */
   errorClassName?: string;
-  /** This prop allows you to customize the helper message style */
   helperClassName?: string;
-  /** Add custom classes into the component wrapper for extra style like spacing */
   className?: string;
 }
 
 const Rate = forwardRef<any, RateProps>(
   (
     {
-      size = "DEFAULT",
+      size = "md",
       disabled = false,
       character = <StarIcon />,
       label,
@@ -119,19 +107,28 @@ const Rate = forwardRef<any, RateProps>(
       if (!tooltips) {
         return node;
       }
+
       return (
-        <Tooltip content={() => tooltips[index as number]} placement="top">
+        <Tooltip content={tooltips[index as number]} placement="top">
           {node}
         </Tooltip>
       );
     };
+
     return (
       <div className={cn("aegon-rate", className)}>
         {label && (
-          <div className={cn("block", labelClasses.size[size], labelClassName)}>
+          <div
+            className={cn(
+              "block font-medium",
+              labelStyles.size[size],
+              labelClassName
+            )}
+          >
             {label}
           </div>
         )}
+
         <RcRate
           ref={ref}
           disabled={disabled}
@@ -140,7 +137,7 @@ const Rate = forwardRef<any, RateProps>(
             <div
               className={cn(
                 "[&>svg]:fill-current",
-                rateClasses.size[size],
+                rateStyles.size[size],
                 characterClassName
               )}
             >
@@ -150,19 +147,21 @@ const Rate = forwardRef<any, RateProps>(
             </div>
           )}
           className={cn(
-            rateClasses.base,
-            rateClasses.firstStar,
-            rateClasses.color,
-            !disabled && rateClasses.transition,
+            rateStyles.base,
+            rateStyles.firstStar,
+            rateStyles.color,
+            !disabled && rateStyles.transition,
             rateClassName
           )}
           {...props}
         />
+
         {!error && helperText && (
           <FieldHelperText tag="div" size={size} className={helperClassName}>
             {helperText}
           </FieldHelperText>
         )}
+
         {error && (
           <FieldError size={size} error={error} className={errorClassName} />
         )}
@@ -172,6 +171,7 @@ const Rate = forwardRef<any, RateProps>(
 );
 
 Rate.displayName = "Rate";
+
 export default Rate;
 ```
 
@@ -540,7 +540,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -548,52 +548,35 @@ export default function App() {
 
 ### Rate Props
 
-Here is the API documentation of the Rate component. We are using **rc-rate** package to build Rate component. See their [**Official documentation**](https://www.npmjs.com/package/rc-rate) for any query.
+Here is the API documentation of the Rate component.
 
 <div className="overflow-x-auto">
 
-|       Props        |                     Type                      |                                Description                                 |    Default     |
-| :----------------: | :-------------------------------------------: | :------------------------------------------------------------------------: | :------------: |
-|       label        |                  `ReactNode`                  |                              Set field label                               |     \_ \_      |
-|        size        |           [RateSizes](#rate-sizes)            |                         The size of the component                          |  `"DEFAULT"`   |
-|     character      |           `ReactNode` `ReactNode[]`           |       Pass single custom character or an array of custom characters        | `<StarIcon />` |
-| characterClassName |                   `string`                    |                   Custom className for custom character                    |     \_ \_      |
-|      tooltips      |                  `string[]`                   |                  Provide tooltip texts for each character                  |     \_ \_      |
-|     helperText     |                  `ReactNode`                  |          Add helper text. It could be string or a React component          |     \_ \_      |
-|       error        |                   `string`                    |                     Show error message using this prop                     |     \_ \_      |
-|   labelClassName   |                   `string`                    |   Use labelClassName prop to do some addition style for the field label    |     \_ \_      |
-|   rateClassName    |                   `string`                    |    Use rateClassName prop to do some addition style for the rate field     |     \_ \_      |
-|   errorClassName   |                   `string`                    |         This prop allows you to customize the error message style          |     \_ \_      |
-|  helperClassName   |                   `string`                    |         This prop allows you to customize the helper message style         |     \_ \_      |
-|     className      |                   `string`                    | Add custom classes into the component wrapper for extra style like spacing |     \_ \_      |
-|      disabled      |                   `boolean`                   |                                                                            |    `false`     |
-|     autoFocus      |                   `boolean`                   |                                                                            |    `false`     |
-|       value        |                   `number`                    |                                                                            |    `false`     |
-|    defaultValue    |                   `number`                    |                                                                            |    `false`     |
-|       style        |                `CSSProperties`                |                                                                            |    `false`     |
-|      tabIndex      |                   `number`                    |                                                                            |    `false`     |
-|      onFocus       |                `(() => void)`                 |                                                                            |    `false`     |
-|       onBlur       |                `(() => void)`                 |                                                                            |    `false`     |
-|      onChange      |          `((value: number) => void)`          |                                                                            |    `false`     |
-|     onKeyDown      |   `KeyboardEventHandler<HTMLUListElement>`    |                                                                            |    `false`     |
-|     prefixCls      |                   `string`                    |                                                                            |    `false`     |
-|       count        |                   `number`                    |                                                                            |    `false`     |
-|  characterRender   | [RateCharacterRender](#rate-character-render) |                                                                            |    `false`     |
-|     allowHalf      |                   `boolean`                   |                                                                            |    `false`     |
-|     allowClear     |                   `boolean`                   |                                                                            |    `false`     |
-|   onHoverChange    |          `((value: number) => void)`          |                                                                            |    `false`     |
-|     direction      |                   `string`                    |                                                                            |    `false`     |
-|        ref         |                  `Ref<any>`                   |                                                                            |    `false`     |
-|        key         |                 `key` `null`                  |                                                                            |    `false`     |
+|       Props        |           Type            |                                Description                                 |    Default     |
+| :----------------: | :-----------------------: | :------------------------------------------------------------------------: | :------------: |
+|       label        |        `ReactNode`        |                              Set field label                               |      \_\_      |
+|        size        | [RateSizes](#rate-sizes)  |                         The size of the component                          |  `"DEFAULT"`   |
+|     character      | `ReactNode` `ReactNode[]` |       Pass single custom character or an array of custom characters        | `<StarIcon />` |
+| characterClassName |         `string`          |                   Custom className for custom character                    |      \_\_      |
+|      tooltips      |        `string[]`         |                  Provide tooltip texts for each character                  |      \_\_      |
+|     helperText     |        `ReactNode`        |          Add helper text. It could be string or a React component          |      \_\_      |
+|       error        |         `string`          |                     Show error message using this prop                     |      \_\_      |
+|   labelClassName   |         `string`          |   Use labelClassName prop to do some addition style for the field label    |      \_\_      |
+|   rateClassName    |         `string`          |    Use rateClassName prop to do some addition style for the rate field     |      \_\_      |
+|   errorClassName   |         `string`          |         This prop allows you to customize the error message style          |      \_\_      |
+|  helperClassName   |         `string`          |         This prop allows you to customize the helper message style         |      \_\_      |
+|     className      |         `string`          | Add custom classes into the component wrapper for extra style like spacing |      \_\_      |
 
 </div>
+
+- **Note:** You can check [**rc-rate documentation**](https://www.npmjs.com/package/rc-rate) for more details.
 
 <div className="mb-10" />
 
 ### Rate Sizes
 
 ```tsx
-type RateSizes = "sm" | "DEFAULT" | "lg" | "xl";
+type RateSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />

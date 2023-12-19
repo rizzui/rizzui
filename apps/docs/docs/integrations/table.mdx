@@ -2,7 +2,6 @@
 sidebar_position: 3
 ---
 
-import Table from "@site/src/components/rc-table";
 import Paper from "@site/src/components/paper";
 import TableDefault, {
   TableModern,
@@ -25,12 +24,12 @@ React table component with useful functions.
 <div className="mb-4" />
 
 ```bash
-npm install rc-table
+npm i rc-table
 ```
 
 <div className="mb-4" />
 
-2. Create a file called **table.tsx** inside your components directory. And then copy and paste the following code into that file.
+2. Create a table component, **components/table.tsx**
 
 <div className="mb-4" />
 
@@ -41,36 +40,32 @@ import { Empty, cn } from "rizzui";
 
 export type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T;
 
-const classes = {
+const tableStyles = {
   table:
-    "[&_.rc-table-content]:overflow-x-auto [&_table]:w-full [&_.rc-table-row:hover]:bg-gray-50",
+    "[&_.rc-table-content]:overflow-x-auto [&_table]:w-full [&_.rc-table-row:hover]:bg-muted/60",
   thead:
     "[&_thead]:text-left [&_thead]:rtl:text-right [&_th.rc-table-cell]:uppercase [&_th.rc-table-cell]:text-xs [&_th.rc-table-cell]:font-medium [&_th.rc-table-cell]:tracking-wide",
   tCell:
     "[&_.rc-table-cell]:px-3 [&_th.rc-table-cell]:py-3 [&_td.rc-table-cell]:py-4",
   variants: {
     classic:
-      "[&_thead]:bg-gray-100 [&_.rc-table-container]:border-x [&_.rc-table-container]:border-gray-300 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-gray-300 [&_thead]:border-y [&_thead]:border-gray-300",
+      "[&_thead]:bg-muted/50 [&_.rc-table-container]:border-x [&_.rc-table-container]:border-muted [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted [&_thead]:border-y [&_thead]:border-muted",
     modern:
-      "[&_thead]:bg-gray-100 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-gray-300",
-    minimal: "[&_thead]:bg-gray-100",
+      "[&_thead]:bg-muted/50 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted",
+    minimal: "[&_thead]:bg-muted/50",
     elegant:
-      "[&_thead]:border-y [&_thead]:border-gray-300 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-gray-300",
+      "[&_thead]:border-y [&_thead]:border-muted [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted",
   },
-  striped: "[&_.rc-table-row:nth-child(2n)_.rc-table-cell]:bg-gray-100/50",
+  striped: "[&_.rc-table-row:nth-child(2n)_.rc-table-cell]:bg-muted/40",
 };
 
 type RCTableProps = ExtractProps<typeof Table>;
 
 export interface TableProps
   extends Omit<RCTableProps, "className" | "emptyText"> {
-  /** Set empty text, it will only appear when table has no data */
   emptyText?: React.ReactElement;
-  /** The variants of the component are: */
-  variant?: keyof typeof classes.variants;
-  /** Add striping style */
+  variant?: keyof typeof tableStyles.variants;
   striped?: boolean;
-  /** Add custom classes for extra style */
   className?: string;
 }
 
@@ -84,11 +79,11 @@ export default function RcTable({
   return (
     <Table
       className={cn(
-        classes.table,
-        classes.thead,
-        classes.tCell,
-        classes.variants[variant],
-        striped && classes.striped,
+        tableStyles.table,
+        tableStyles.thead,
+        tableStyles.tCell,
+        tableStyles.variants[variant],
+        striped && tableStyles.striped,
         className
       )}
       emptyText={emptyText ?? <Empty />}
@@ -113,30 +108,20 @@ type TextAlign = "left" | "center" | "right";
 export interface HeaderCellProps {
   title: React.ReactNode;
   width?: number;
-  /** Set table header cell text alignment */
   align?: TextAlign;
-  /** Make header cell text ellipsis, you need to set width prop too */
   ellipsis?: boolean;
-  /** Make sortable column, it's also required ascending prop too. Check our example for more details. */
   sortable?: boolean;
-  /** Make ascending column, it's also required sortable prop too. Check our example for more details. */
   ascending?: boolean;
-  /** Add custom classes to the sort icon for extra style */
   iconClassName?: string;
-  /** Add custom classes for extra style */
   className?: string;
 }
 
-// A util func
 function handleTextAlignment(align: TextAlign) {
   if (align === "center") return "justify-center";
   if (align === "right") return "justify-end rtl:justify-start";
   return "";
 }
 
-/**
- *  Table HeaderCell component.
- */
 export default function HeaderCell({
   title,
   align = "left",
@@ -152,11 +137,13 @@ export default function HeaderCell({
       "When ellipsis is true make sure you are using the same column width in HeaderCell component too."
     );
   }
+
   if (width !== undefined && ellipsis !== true) {
     console.warn(
       "width prop without ellipsis won't work, please set ellipsis prop true."
     );
   }
+
   return (
     <div
       className={cn(
@@ -172,6 +159,7 @@ export default function HeaderCell({
       >
         {title}
       </div>
+
       {sortable && (
         <div className="inline-flex">
           {ascending ? (
@@ -1288,7 +1276,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -1296,53 +1284,55 @@ export default function App() {
 
 ### Table Props
 
-Here is the API documentation of the Table component. Under the hood we are using rc-table package, you can check their [**Official documentation**](https://www.npmjs.com/package/rc-table) for more details.
+Here is the API documentation of the Table component.
 
 <div className="overflow-x-auto">
 
 |         Props          |                             Type                              |                        Description                         |   Default   |
 | :--------------------: | :-----------------------------------------------------------: | :--------------------------------------------------------: | :---------: |
-|       emptyText        |                          `ReactNode`                          | Set empty text, it will only appear when table has no data |    \_ \_    |
+|       emptyText        |                          `ReactNode`                          | Set empty text, it will only appear when table has no data |    \_\_     |
 |        variant         |               [TableVariants](#table-variants)                |             The variants of the component are:             | `"classic"` |
-|        striped         |                           `boolean`                           |                     Add striping style                     |    \_ \_    |
-|       className        |                           `string`                            |             Add custom classes for extra style             |    \_ \_    |
-|           id           |                           `string`                            |                                                            |    \_ \_    |
-|         style          |                        `CSSProperties`                        |                                                            |    \_ \_    |
-|         title          |               `PanelRender<DefaultRecordType>`                |                                                            |    \_ \_    |
-|        caption         |                          `ReactNode`                          |                                                            |    \_ \_    |
-|          data          |                `readonly DefaultRecordType[]`                 |                                                            |    \_ \_    |
-|         footer         |               `PanelRender<DefaultRecordType>`                |                                                            |    \_ \_    |
-|        summary         |     `((data: readonly DefaultRecordType[]) => ReactNode)`     |                                                            |    \_ \_    |
-|       prefixCls        |                           `string`                            |                                                            |    \_ \_    |
-|       direction        |                          `ltr` `rtl`                          |                                                            |    \_ \_    |
-|    expandedRowKeys     |                            `Key[]`                            |                                                            |    \_ \_    |
-| defaultExpandedRowKeys |                            `key[]`                            |                                                            |    \_ \_    |
-|   expandedRowRender    |            `ExpandedRowRender<DefaultRecordType>`             |                                                            |    \_ \_    |
-|    expandRowByClick    |                           `boolean`                           |                                                            |    \_ \_    |
-|       expandIcon       |             `RenderExpandIcon<DefaultRecordType>`             |                                                            |    \_ \_    |
-|        onExpand        |  `((expanded: boolean, record: DefaultRecordType) => void)`   |                                                            |    \_ \_    |
-|  onExpandedRowsChange  |               `((expandedKeys: Key[]) => void)`               |                                                            |    \_ \_    |
-|  defaultExpandAllRows  |                           `boolean`                           |                                                            |    \_ \_    |
-|       indentSize       |                           `number`                            |                                                            |    \_ \_    |
-| expandIconColumnIndex  |                           `number`                            |                                                            |    \_ \_    |
-|  expandedRowClassName  |               `RowClassName<DefaultRecordType>`               |                                                            |    \_ \_    |
-|   childrenColumnName   |                           `string`                            |                                                            |    \_ \_    |
-|        columns         |               `ColumnsType<DefaultRecordType>`                |                                                            |    \_ \_    |
-|         rowKey         |            `string` `GetRowKey<DefaultRecordType>`            |                                                            |    \_ \_    |
-|      tableLayout       |                        `fixed` `auto`                         |                                                            |    \_ \_    |
-|         scroll         |                 [TableScroll](#table-scroll)                  |                                                            |    \_ \_    |
-|       expandable       |             `ExpandableConfig<DefaultRecordType>`             |                     Config expand rows                     |    \_ \_    |
-|      rowClassName      |          `string` `RowClassName<DefaultRecordType>`           |                                                            |    \_ \_    |
-|       showHeader       |                           `boolean`                           |                                                            |    \_ \_    |
-|       components       |             `TableComponents<DefaultRecordType>`              |                                                            |    \_ \_    |
-|         onRow          |            `GetComponentProps<DefaultRecordType>`             |                                                            |    \_ \_    |
-|      onHeaderRow       | `GetComponentProps<readonly ColumnType<DefaultRecordType>[]>` |                                                            |    \_ \_    |
-|     internalHooks      |                           `string`                            |                                                            |    \_ \_    |
-|    transformColumns    |       [TableTransformColumns](#table-transform-columns)       |                                                            |    \_ \_    |
-|      internalRefs      |         `{ body: MutableRefObject<HTMLDivElement>; }`         |                                                            |    \_ \_    |
-|         sticky         |                    `sticky` `tableSticky`                     |                                                            |    \_ \_    |
+|        striped         |                           `boolean`                           |                     Add striping style                     |    \_\_     |
+|       className        |                           `string`                            |             Add custom classes for extra style             |    \_\_     |
+|           id           |                           `string`                            |                                                            |    \_\_     |
+|         style          |                        `CSSProperties`                        |                                                            |    \_\_     |
+|         title          |               `PanelRender<DefaultRecordType>`                |                                                            |    \_\_     |
+|        caption         |                          `ReactNode`                          |                                                            |    \_\_     |
+|          data          |                `readonly DefaultRecordType[]`                 |                                                            |    \_\_     |
+|         footer         |               `PanelRender<DefaultRecordType>`                |                                                            |    \_\_     |
+|        summary         |     `((data: readonly DefaultRecordType[]) => ReactNode)`     |                                                            |    \_\_     |
+|       prefixCls        |                           `string`                            |                                                            |    \_\_     |
+|       direction        |                          `ltr` `rtl`                          |                                                            |    \_\_     |
+|    expandedRowKeys     |                            `Key[]`                            |                                                            |    \_\_     |
+| defaultExpandedRowKeys |                            `key[]`                            |                                                            |    \_\_     |
+|   expandedRowRender    |            `ExpandedRowRender<DefaultRecordType>`             |                                                            |    \_\_     |
+|    expandRowByClick    |                           `boolean`                           |                                                            |    \_\_     |
+|       expandIcon       |             `RenderExpandIcon<DefaultRecordType>`             |                                                            |    \_\_     |
+|        onExpand        |  `((expanded: boolean, record: DefaultRecordType) => void)`   |                                                            |    \_\_     |
+|  onExpandedRowsChange  |               `((expandedKeys: Key[]) => void)`               |                                                            |    \_\_     |
+|  defaultExpandAllRows  |                           `boolean`                           |                                                            |    \_\_     |
+|       indentSize       |                           `number`                            |                                                            |    \_\_     |
+| expandIconColumnIndex  |                           `number`                            |                                                            |    \_\_     |
+|  expandedRowClassName  |               `RowClassName<DefaultRecordType>`               |                                                            |    \_\_     |
+|   childrenColumnName   |                           `string`                            |                                                            |    \_\_     |
+|        columns         |               `ColumnsType<DefaultRecordType>`                |                                                            |    \_\_     |
+|         rowKey         |            `string` `GetRowKey<DefaultRecordType>`            |                                                            |    \_\_     |
+|      tableLayout       |                        `fixed` `auto`                         |                                                            |    \_\_     |
+|         scroll         |                 [TableScroll](#table-scroll)                  |                                                            |    \_\_     |
+|       expandable       |             `ExpandableConfig<DefaultRecordType>`             |                     Config expand rows                     |    \_\_     |
+|      rowClassName      |          `string` `RowClassName<DefaultRecordType>`           |                                                            |    \_\_     |
+|       showHeader       |                           `boolean`                           |                                                            |    \_\_     |
+|       components       |             `TableComponents<DefaultRecordType>`              |                                                            |    \_\_     |
+|         onRow          |            `GetComponentProps<DefaultRecordType>`             |                                                            |    \_\_     |
+|      onHeaderRow       | `GetComponentProps<readonly ColumnType<DefaultRecordType>[]>` |                                                            |    \_\_     |
+|     internalHooks      |                           `string`                            |                                                            |    \_\_     |
+|    transformColumns    |       [TableTransformColumns](#table-transform-columns)       |                                                            |    \_\_     |
+|      internalRefs      |         `{ body: MutableRefObject<HTMLDivElement>; }`         |                                                            |    \_\_     |
+|         sticky         |                    `sticky` `tableSticky`                     |                                                            |    \_\_     |
 
 </div>
+
+- **Note:** You can check [**rc-table documentation**](https://www.npmjs.com/package/rc-table) for more details.
 
 <div className="mb-10" />
 

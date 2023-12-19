@@ -1,18 +1,58 @@
 import React from 'react';
-import { Tooltip, type TooltipProps } from '../tooltip';
+import { PopoverTrigger } from './popover-trigger';
+import { PopoverContent } from './popover-content';
+import { PopoverProvider, type PopoverProviderProps } from './popover-context';
 
-export type PopoverProps = Omit<TooltipProps, 'isPopover' | 'color'>;
+export type PopoverProps = {} & PopoverProviderProps;
 
-/**
- * Popover is a simple dialog alert which can have details of the content.
- * It can either have a confirm, cancel button or any action that can be triggered by the user's decision.
- */
-export function Popover({ children, ...props }: PopoverProps) {
+export function Popover({
+  isOpen,
+  setIsOpen,
+  gap = 8,
+  animation = 'zoomIn',
+  placement = 'bottom',
+  enableOverlay = false,
+  showArrow = true,
+  size = 'md',
+  shadow = 'md',
+  rounded = 'md',
+  arrowClassName,
+  overlayClassName,
+  children,
+}: React.PropsWithChildren<PopoverProps>) {
   return (
-    <Tooltip isPopover={true} color="invert" {...props}>
-      {children}
-    </Tooltip>
+    <PopoverProvider
+      value={{
+        isOpen,
+        setIsOpen,
+        gap,
+        animation,
+        enableOverlay,
+        showArrow,
+        placement,
+        size,
+        shadow,
+        rounded,
+        arrowClassName,
+        overlayClassName,
+      }}
+    >
+      <>
+        {React.Children.map(children, (child) => {
+          if (React.isValidElement(child) && child.type === PopoverTrigger) {
+            return child;
+          }
+          if (React.isValidElement(child) && child.type === PopoverContent) {
+            return child;
+          }
+          return null;
+        })}
+      </>
+    </PopoverProvider>
   );
 }
+
+Popover.Trigger = PopoverTrigger;
+Popover.Content = PopoverContent;
 
 Popover.displayName = 'Popover';

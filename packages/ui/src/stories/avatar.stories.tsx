@@ -3,9 +3,6 @@ import * as React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Avatar } from '../components/avatar';
 import { Badge } from '../components/badge';
-import { ActionIcon } from '../components/action-icon';
-import { CheckmarkIcon } from '../icons/checkmark';
-import { PlusIcon } from '../icons/plus';
 
 export default {
   title: 'Components/Avatar',
@@ -83,8 +80,7 @@ export const Rounded = () => (
 export const Colors = () => (
   <div className="flex items-center justify-around">
     <Avatar name="John Doe" initials="SM" />
-    <Avatar name="John Doe" initials="KM" color="invert" />
-    <Avatar name="John Doe" initials="LM" color="primary" />
+    <Avatar name="John Doe" initials="KM" color="primary" />
     <Avatar name="John Doe" initials="NM" color="secondary" />
     <Avatar name="John Doe" initials="AM" color="danger" />
     <Avatar name="John Doe" initials="DM" color="warning" />
@@ -95,11 +91,6 @@ export const Colors = () => (
 
 export const Borders = () => (
   <div className="flex items-center justify-around">
-    <Avatar
-      src="https://randomuser.me/api/portraits/women/40.jpg"
-      name="John Doe"
-      className="ring-2 ring-gray-900 ring-offset-2"
-    />
     <Avatar
       src="https://randomuser.me/api/portraits/women/41.jpg"
       name="John Doe"
@@ -177,67 +168,6 @@ export const OnlineStatus = () => (
   </div>
 );
 
-export const WithIcons = () => (
-  <div className="flex items-center justify-around">
-    <div className="relative inline-flex">
-      <Avatar
-        name="John Doe"
-        src="https://randomuser.me/api/portraits/women/40.jpg"
-      />
-      <ActionIcon
-        size="sm"
-        rounded="full"
-        variant="solid"
-        color="warning"
-        className="absolute bottom-0 right-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-      >
-        <PlusIcon />
-      </ActionIcon>
-    </div>
-    <div className="relative inline-flex">
-      <Avatar
-        src="https://randomuser.me/api/portraits/women/43.jpg"
-        name="John Doe"
-      />
-      <ActionIcon
-        size="sm"
-        rounded="full"
-        variant="solid"
-        color="danger"
-        className="absolute bottom-0 right-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          className="h-4 w-4"
-        >
-          <path
-            fillRule="evenodd"
-            d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </ActionIcon>
-    </div>
-    <div className="relative inline-flex">
-      <Avatar
-        src="https://randomuser.me/api/portraits/women/44.jpg"
-        name="John Doe"
-      />
-      <ActionIcon
-        size="sm"
-        rounded="full"
-        variant="solid"
-        color="success"
-        className="absolute bottom-0 right-0 translate-x-2 translate-y-1.5 scale-[0.65] shadow-lg"
-      >
-        <CheckmarkIcon />
-      </ActionIcon>
-    </div>
-  </div>
-);
-
 export const Group = () => (
   <div className="relative my-4 flex">
     <Avatar
@@ -250,27 +180,27 @@ export const Group = () => (
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/41.jpg"
-      className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-gray-0"
+      className="relative inline-flex -translate-x-[5px] object-cover ring-2 ring-background"
     />
     <Avatar
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/42.jpg"
-      className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-gray-0"
+      className="relative inline-flex -translate-x-[10px] object-cover ring-2 ring-background"
     />
     <Avatar
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/43.jpg"
-      className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-gray-0"
+      className="relative inline-flex -translate-x-[15px] object-cover ring-2 ring-background"
     />
     <Avatar
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/44.jpg"
-      className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-gray-0"
+      className="relative inline-flex -translate-x-[20px] object-cover ring-2 ring-background"
     />
-    <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[24px] items-center justify-center rounded-full object-cover text-sm font-medium text-gray-900">
+    <div className="bordered relative inline-flex h-[42px] w-[42px] -translate-x-[24px] items-center justify-center rounded-full object-cover text-sm font-medium">
       +5
     </div>
   </div>

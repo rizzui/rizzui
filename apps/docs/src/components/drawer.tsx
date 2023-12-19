@@ -3,6 +3,7 @@ import {
   Button,
   Drawer,
   Text,
+  Title,
   ActionIcon,
   Badge,
   Empty,
@@ -26,7 +27,7 @@ export default function DrawerDefault() {
 export function DrawerSizes() {
   const [drawerSate, setDrawerState] = useState<any>({
     isOpen: false,
-    size: "DEFAULT",
+    size: "md",
   });
 
   return (
@@ -253,11 +254,10 @@ export function DrawerIcons() {
       <Drawer isOpen={drawerState} onClose={() => setDrawerState(false)}>
         <div className="flex min-h-full flex-col py-4 px-5">
           <header className="flex items-center justify-between">
-            <Text as="h4">Shopping Cart</Text>
+            <Title as="h4">Shopping Cart</Title>
             <ActionIcon
               size="sm"
               variant="outline"
-              rounded="DEFAULT"
               onClick={() => setDrawerState(false)}
             >
               <XMarkIcon className="h-auto w-5" strokeWidth={1.5} />

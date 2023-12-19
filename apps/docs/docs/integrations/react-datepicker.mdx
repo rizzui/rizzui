@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-import DatePicker, {
+import {
   DatePickerDefault,
   MonthPicker,
   YearPicker,
@@ -11,7 +11,6 @@ import DatePicker, {
   CalendarWithTime,
   TimePicker,
   RangeDatePicker,
-  DatePickerCustomInput,
 } from "@site/src/components/date-picker";
 import Paper from "@site/src/components/paper";
 
@@ -30,16 +29,16 @@ A simple and reusable Datepicker component. We are using **react-datepicker** pa
 <div className="mb-4" />
 
 ```bash
-npm install react-datepicker
+npm i react-datepicker
 ```
 
 ```bash
-npm install --save @types/react-datepicker
+npm i --save @types/react-datepicker
 ```
 
 <div className="mb-4" />
 
-2. Create a file called **datepicker.tsx** inside your components directory. And then copy and paste the following code into that file.
+2. Create a DatePicker component, **components/datepicker.tsx**
 
 <div className="mb-4" />
 
@@ -51,42 +50,39 @@ import type { ReactDatePickerProps } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CalendarIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
-const calendarContainerClasses = {
+const calendarContainerStyles = {
   base: "[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md",
   monthContainer: {
     padding: "[&.react-datepicker>div]:pt-5 [&.react-datepicker>div]:pb-3",
   },
 };
 
-const prevNextButtonClasses = {
+const prevNextButtonStyles = {
   base: "[&.react-datepicker>button]:items-baseline [&.react-datepicker>button]:top-7",
   border:
-    "[&.react-datepicker>button]:border [&.react-datepicker>button]:border-solid [&.react-datepicker>button]:border-gray-300 [&.react-datepicker>button]:rounded-md",
+    "[&.react-datepicker>button]:border [&.react-datepicker>button]:border-solid [&.react-datepicker>button]:border-muted [&.react-datepicker>button]:rounded-md",
   size: "[&.react-datepicker>button]:h-[22px] [&.react-datepicker>button]:w-[22px]",
   children: {
     position: "[&.react-datepicker>button>span]:top-0",
     border:
-      "[&.react-datepicker>button>span]:before:border-t-[1.5px] [&.react-datepicker>button>span]:before:border-r-[1.5px] [&.react-datepicker>button>span]:before:border-gray-400",
+      "[&.react-datepicker>button>span]:before:border-t-[1.5px] [&.react-datepicker>button>span]:before:border-r-[1.5px] [&.react-datepicker>button>span]:before:border-muted",
     size: "[&.react-datepicker>button>span]:before:h-[7px] [&.react-datepicker>button>span]:before:w-[7px]",
   },
 };
 
-const timeOnlyClasses = {
+const timeOnlyStyles = {
   base: "[&.react-datepicker--time-only>div]:pr-0 [&.react-datepicker--time-only>div]:w-28",
 };
 
 export interface DatePickerProps<selectsRange extends boolean | undefined>
   extends Omit<ReactDatePickerProps, "selectsRange" | "onChange"> {
-  /** Pass function in onChange prop to handle selecting value */
   onChange(
     date: selectsRange extends false | undefined
       ? Date | null
       : [Date | null, Date | null],
     event: React.SyntheticEvent<any> | undefined
   ): void;
-  /** Whether range selecting is enabled */
   selectsRange?: selectsRange;
-  /** Pass input props to style input */
   inputProps?: InputProps;
 }
 
@@ -128,15 +124,15 @@ const DatePicker = ({
       onCalendarOpen={onCalendarOpen || handleCalenderOpen}
       onCalendarClose={onCalendarClose || handleCalenderClose}
       calendarClassName={cn(
-        calendarContainerClasses.base,
-        calendarContainerClasses.monthContainer.padding,
-        prevNextButtonClasses.base,
-        prevNextButtonClasses.border,
-        prevNextButtonClasses.size,
-        prevNextButtonClasses.children.position,
-        prevNextButtonClasses.children.border,
-        prevNextButtonClasses.children.size,
-        timeOnlyClasses.base,
+        calendarContainerStyles.base,
+        calendarContainerStyles.monthContainer.padding,
+        prevNextButtonStyles.base,
+        prevNextButtonStyles.border,
+        prevNextButtonStyles.size,
+        prevNextButtonStyles.children.position,
+        prevNextButtonStyles.children.border,
+        prevNextButtonStyles.children.size,
+        timeOnlyStyles.base,
         calendarClassName
       )}
       {...props}
@@ -154,10 +150,10 @@ export default DatePicker;
 
 ```css
 /* ................................................... */
-/* ?React Datepicker Styling */
+/* React Datepicker Styling */
 /* ................................................... */
 .react-datepicker-popper .react-datepicker {
-  @apply bg-gray-0 font-inter text-gray-600 dark:border-gray-300 dark:bg-gray-100;
+  @apply bg-white font-geist text-gray-600 dark:border-muted dark:bg-gray-50;
 }
 
 /* month container */
@@ -170,9 +166,23 @@ export default DatePicker;
   @apply w-auto border-l-0 pr-3.5;
 }
 
+.react-datepicker-popper
+  .react-datepicker__time-container
+  .react-datepicker__time {
+  @apply bg-gray-50 dark:bg-gray-200;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:hover {
+  @apply dark:bg-muted;
+}
+
 /* header */
 .react-datepicker .react-datepicker__header {
-  @apply border-b-gray-0 bg-gray-0 font-lexend dark:border-transparent dark:bg-gray-100;
+  @apply border-b-transparent bg-white dark:border-transparent dark:bg-gray-50;
 }
 
 /* current month name in header */
@@ -222,13 +232,13 @@ export default DatePicker;
 
 /* keyboard selected */
 .react-datepicker .react-datepicker__day--keyboard-selected {
-  @apply bg-gray-0;
+  @apply bg-gray-50;
 }
 
 /* today */
 .react-datepicker .react-datepicker__day--today {
-  @apply rounded-full border border-gray-300 bg-gray-0 leading-[26px] text-gray-900;
-  @apply hover:border-gray-600 hover:bg-gray-0;
+  @apply rounded-full border border-muted bg-gray-50 leading-[26px] text-gray-900;
+  @apply hover:border-gray-600 hover:bg-gray-50;
 }
 
 /* while selecting */
@@ -242,7 +252,7 @@ export default DatePicker;
 
 .react-datepicker
   div.react-datepicker__year-text--in-selecting-range.react-datepicker__year-text--disabled {
-  @apply bg-transparent text-gray-300;
+  @apply bg-transparent text-muted;
 }
 
 /* in range */
@@ -258,12 +268,12 @@ export default DatePicker;
 .react-datepicker .react-datepicker__day--range-start,
 .react-datepicker .react-datepicker__day--range-end,
 .react-datepicker .react-datepicker__day--selected {
-  @apply rounded-full border-none bg-gray-900 font-normal leading-7 text-gray-0;
-  @apply hover:bg-gray-900/80 hover:text-gray-0;
+  @apply rounded-full border-none bg-gray-900 font-normal leading-7 text-gray-50;
+  @apply hover:bg-gray-900/80 hover:text-gray-50;
 }
 
 .react-datepicker .react-datepicker__year-text--range-end {
-  @apply border-none bg-gray-900 font-normal text-gray-0 hover:bg-gray-900/80 hover:text-gray-0;
+  @apply border-none bg-gray-900 font-normal text-gray-50 hover:bg-gray-900/80 hover:text-gray-50;
 }
 
 /* time list */
@@ -283,6 +293,15 @@ export default DatePicker;
 }
 
 /* time only box */
+.react-datepicker-popper .react-datepicker-time__header {
+  @apply text-gray-700;
+}
+.react-datepicker-popper
+  .react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box {
+  width: 90px;
+}
 .react-datepicker--time-only
   .react-datepicker__time-container
   .react-datepicker__time
@@ -320,7 +339,7 @@ export default DatePicker;
 .react-datepicker .react-datepicker__month--range-start,
 .react-datepicker .react-datepicker__month--range-end,
 .react-datepicker .react-datepicker__month--selected {
-  @apply bg-gray-900 font-normal text-gray-0;
+  @apply bg-gray-900 font-normal text-gray-50;
 }
 
 /* hover on selected range start and end month */
@@ -330,7 +349,7 @@ export default DatePicker;
   .react-datepicker__month-text.react-datepicker__month--range-start:hover,
 .react-datepicker
   .react-datepicker__month-text.react-datepicker__month--range-end:hover {
-  @apply bg-gray-900/80 text-gray-0;
+  @apply bg-gray-900/80 text-gray-50;
 }
 
 /* year wrapper in year picker */
@@ -344,13 +363,13 @@ export default DatePicker;
 }
 
 .react-datepicker .react-datepicker__year-text--range-end {
-  @apply text-gray-0;
+  @apply text-gray-50;
 }
 
 /* keyboard selected year in year picker */
 .react-datepicker .react-datepicker__year-text--keyboard-selected {
   @apply bg-gray-200 text-gray-900;
-  @apply hover:bg-gray-300 hover:text-gray-900;
+  @apply hover:bg-muted hover:text-gray-900;
 }
 
 /* selected year & month in year picker */
@@ -358,21 +377,21 @@ export default DatePicker;
   .react-datepicker__year-text.react-datepicker__year-text--selected,
 .react-datepicker
   .react-datepicker__month-text.react-datepicker__month-text--selected {
-  @apply bg-gray-900 text-gray-0;
-  @apply hover:bg-gray-900/80 hover:text-gray-0;
+  @apply bg-gray-900 text-gray-50;
+  @apply hover:bg-gray-900/80 hover:text-gray-50;
 }
 
 /* year and month dropdown arrow */
 .react-datepicker .react-datepicker__year-read-view--down-arrow,
 .react-datepicker .react-datepicker__month-read-view--down-arrow {
-  @apply top-[5px] h-[7px] w-[7px] border-r-[1.5px] border-t-[1.5px] border-gray-400;
+  @apply top-[5px] h-[7px] w-[7px] border-r-[1.5px] border-t-[1.5px] border-muted;
 }
 
 /* sub-header containing year and month dropdown */
 .react-datepicker
   .react-datepicker__current-month--hasYearDropdown.react-datepicker__current-month--hasMonthDropdown
   ~ .react-datepicker__header__dropdown {
-  @apply my-2 grid grid-cols-2 divide-x divide-gray-300 text-sm;
+  @apply my-2 grid grid-cols-2 divide-x divide-muted text-sm;
 }
 
 /* month and year dropdown button in sub-header */
@@ -384,7 +403,7 @@ export default DatePicker;
 /* month and year dropdown */
 .react-datepicker .react-datepicker__year-dropdown,
 .react-datepicker .react-datepicker__month-dropdown {
-  @apply top-auto w-2/5 border border-gray-100 bg-gray-0 shadow-md;
+  @apply top-auto w-2/5 border border-gray-100 bg-gray-50 shadow-md;
 }
 
 /* year dropdown */
@@ -427,11 +446,11 @@ export default DatePicker;
 
 /* disabled item */
 .react-datepicker .react-datepicker__day--disabled {
-  @apply cursor-not-allowed text-gray-300 hover:bg-transparent dark:hover:text-gray-300;
+  @apply cursor-not-allowed text-muted hover:bg-transparent hover:text-muted dark:hover:text-muted;
 }
 
 .react-datepicker .react-datepicker__year-text--disabled {
-  @apply cursor-not-allowed text-gray-300 hover:bg-transparent dark:hover:text-gray-300;
+  @apply cursor-not-allowed text-muted hover:bg-transparent dark:hover:text-muted;
 }
 ```
 

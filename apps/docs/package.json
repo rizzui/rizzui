@@ -1,7 +1,7 @@
 {
   "name": "docs",
   "private": true,
-  "version": "0.6.0",
+  "version": "0.8.0",
   "scripts": {
     "docusaurus": "docusaurus",
     "dev": "docusaurus start",
@@ -23,6 +23,7 @@
     "@headlessui/react": "1.7.17",
     "@heroicons/react": "2.0.17",
     "@mdx-js/react": "^1.6.22",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "0.5.3",
     "autoprefixer": "10.4.14",
     "clsx": "^1.2.1",

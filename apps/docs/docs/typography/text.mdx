@@ -101,15 +101,6 @@ You can change style by just changing **tag** property in **Text** component.
       </Text>
       <Text as="q">The brown fox jumps over the lazy dog</Text>
     </div>
-    <div className="grid gap-1">
-      <Text as="span" className="tracking-wider text-gray-500">
-        blockquote
-      </Text>
-      <Text as="blockquote">
-        Before going to sleep every night, <br /> forgive everyone and sleep
-        with a clean heart.
-      </Text>
-    </div>
     <div>
       <Text as="span" className="tracking-wider text-gray-500">
         kbd
@@ -137,33 +128,6 @@ You can change style by just changing **tag** property in **Text** component.
       <Text as="em">
         ∑𝐹 = ρ𝑄(𝓥<Text as="sub">out</Text> &nbsp;-&nbsp; 𝓥
         <Text as="sub">in</Text>)
-      </Text>
-    </div>
-    <div>
-      <Text as="span" className="mb-2 block tracking-wider text-gray-500">
-        code
-      </Text>
-      <Text as="code">background-color: #000000</Text>
-    </div>
-    <div className="grid">
-      <Text as="span" className="tracking-wider text-gray-500">
-        pre
-      </Text>
-      <Text as="pre">
-        &lt;html&gt; <br />
-        &nbsp;&nbsp;&lt;head&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome to
-        campuslife.&lt;/title&gt; <br />
-        &nbsp;&nbsp;&lt;/head&gt; <br />
-        &nbsp;&nbsp;&lt;body&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Campuslife Wesbite&lt;/h1&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;My first page.&lt;/h2&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Campuslife is a free learning source
-        website for users. <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
-        &nbsp;&nbsp;&lt;/body&gt; <br />
-        &lt;/html&gt;
       </Text>
     </div>
   </div>
@@ -197,11 +161,6 @@ export default function App() {
 
       <Text as="q">The brown fox jumps over the lazy dog</Text>
 
-      <Text as="blockquote">
-        Before going to sleep every night, <br /> forgive everyone and sleep
-        with a clean heart.
-      </Text>
-
       <Text as="p">
         Please press <Text as="kbd">Ctrl</Text> + <Text as="kbd">Shift</Text> +{" "}
         <Text as="kbd">R</Text> to reload this page.
@@ -216,25 +175,6 @@ export default function App() {
         ∑𝐹 = ρ𝑄(𝓥<Text as="sub">out</Text> &nbsp;-&nbsp; 𝓥
         <Text as="sub">in</Text>)
       </Text>
-
-      <Text as="code">background-color: #000000</Text>
-
-      <Text as="pre">
-        &lt;html&gt; <br />
-        &nbsp;&nbsp;&lt;head&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Welcome to
-        campuslife.&lt;/title&gt; <br />
-        &nbsp;&nbsp;&lt;/head&gt; <br />
-        &nbsp;&nbsp;&lt;body&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Campuslife Wesbite&lt;/h1&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;My first page.&lt;/h2&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Campuslife is a free learning source
-        website for users. <br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; <br />
-        &nbsp;&nbsp;&lt;/body&gt; <br />
-        &lt;/html&gt;
-      </Text>
     </>
   );
 }
@@ -242,7 +182,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -254,11 +194,12 @@ Here is the API documentation of the Text component.
 
 <div className="overflow-x-auto">
 
-|   Props   |          Type          |               Description               | Default |
-| :-------: | :--------------------: | :-------------------------------------: | :-----: |
-|    as     | [TextTags](#text-tags) |                                         |  `"p"`  |
-|   title   |    `abbr` `string`     | title attribute only appear when tag is |  \_ \_  |
-| className |        `string`        |   Add custom classes for extra style    |  \_ \_  |
+|   Props    |              Type              |                               Description                                | Default  |
+| :--------: | :----------------------------: | :----------------------------------------------------------------------: | :------: |
+|     as     |     [TextTags](#text-tags)     |                                                                          |  `"p"`   |
+|   title    |        `abbr` `string`         |                 title attribute only appear when tag is                  |   \_\_   |
+| fontWeight | [TitleWeights](#title-weights) | Add font-weight, fontWeight='normal' won't work with b, strong and q tag | `"bold"` |
+| className  |            `string`            |                    Add custom classes for extra style                    |   \_\_   |
 
 </div>
 
@@ -274,15 +215,20 @@ type TextTags =
   | "strong"
   | "abbr"
   | "q"
-  | "blockquote"
-  | "code"
   | "del"
   | "em"
   | "i"
   | "kbd"
   | "mark"
-  | "pre"
   | "small"
   | "sub"
   | "sup";
+```
+
+<div className="mb-10" />
+
+### Title Weights
+
+```ts
+type TitleWeights = "bold" | "normal" | "medium" | "semibold";
 ```

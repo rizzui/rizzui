@@ -33,6 +33,36 @@ export default function App() {
 
 <div className="mb-16" />
 
+## Variants
+
+You can use different variants of our **Loader** component.
+
+<Paper>
+  <div className="flex items-center justify-around gap-3 w-full">
+    <Loader className="w-7 h-auto" />
+    <Loader variant="spinner" className="w-7 h-auto" />
+    <Loader variant="pulse" className="w-7 h-auto" />
+    <Loader variant="threeDot" className="w-7 h-auto" />
+  </div>
+</Paper>
+
+```jsx
+import { Loader } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Loader />
+      <Loader variant="spinner" />
+      <Loader variant="pulse" />
+      <Loader variant="threeDot" />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
 ## Sizes
 
 You can change the size of the **Loader** with property [**size**](#loader-sizes).
@@ -97,35 +127,9 @@ export default function App() {
 }
 ```
 
-<div className="mb-16" />
-
-## Animations
-
-You can change the animation of the **Loader** with property [**animation**](#loader-animations).
-
-<Paper>
-  <div className="flex items-center justify-around gap-3 w-full">
-    <Loader size="xl" animation="scaleUp" />
-    <Loader size="xl" animation="blink" />
-  </div>
-</Paper>
-
-```jsx
-import { Loader } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Loader size="xl" animation="scaleUp" />
-      <Loader size="xl" animation="blink" />
-    </>
-  );
-}
-```
-
 <div className="mb-20" />
 
-## APIs
+## API Reference
 
 <hr />
 
@@ -137,13 +141,11 @@ Here is the API documentation of the Loader component.
 
 <div className="overflow-x-auto">
 
-|   Props   |                 Type                  |            Description             |   Default   |
-| :-------: | :-----------------------------------: | :--------------------------------: | :---------: |
-|    tag    |      [LoaderTags](#loader-tags)       |         HTML tag supports          |   `"div"`   |
-|   size    |     [LoaderSizes](#loader-sizes)      |          Set loader size           | `"DEFAULT"` |
-|   color   |    [LoaderColors](#loader-colors)     |        Change Loader color         | `"DEFAULT"` |
-| animation | [LoaderAnimations](#loader-animation) |       Animation variants are       |  `"blink"`  |
-| className |               `string`                | Add custom classes for extra style |    \_ \_    |
+|   Props   |              Type              |            Description             |   Default   |
+| :-------: | :----------------------------: | :--------------------------------: | :---------: |
+|   size    |  [LoaderSizes](#loader-sizes)  |          Set loader size           | `"DEFAULT"` |
+|   color   | [LoaderColors](#loader-colors) |        Change Loader color         | `"current"` |
+| className |            `string`            | Add custom classes for extra style |    \_\_     |
 
 </div>
 
@@ -160,7 +162,7 @@ type LoaderTags = "div" | "span";
 ### Loader Sizes
 
 ```ts
-type LoaderSizes = "DEFAULT" | "sm" | "lg" | "xl";
+type LoaderSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -169,20 +171,11 @@ type LoaderSizes = "DEFAULT" | "sm" | "lg" | "xl";
 
 ```ts
 type LoaderColors =
-  | "DEFAULT"
+  | "current"
   | "primary"
   | "secondary"
   | "danger"
   | "info"
   | "success"
-  | "warning"
-  | "current";
-```
-
-<div className="mb-10" />
-
-### Loader Animations
-
-```ts
-type LoaderAnimations = "blink" | "scaleUp";
+  | "warning";
 ```
