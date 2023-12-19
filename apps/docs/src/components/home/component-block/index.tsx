@@ -23,7 +23,7 @@ const components = [
     id: 2,
     component: <InputBlock />,
     name: "Inputs",
-    count: 12,
+    count: 14,
     path: "/docs/inputs/input",
   },
   {
