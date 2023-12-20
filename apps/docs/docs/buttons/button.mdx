@@ -136,33 +136,6 @@ You can change the color of the **Button** using [**color**](#button-colors) pro
     <Button color="secondary">Secondary</Button>
     <Button color="danger">Danger</Button>
   </div>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-    <Button variant="flat">Primary</Button>
-    <Button variant="flat" color="secondary">
-      Secondary
-    </Button>
-    <Button variant="flat" color="danger">
-      Danger
-    </Button>
-  </div>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-    <Button variant="outline">Primary</Button>
-    <Button variant="outline" color="secondary">
-      Secondary
-    </Button>
-    <Button variant="outline" color="danger">
-      Danger
-    </Button>
-  </div>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <Button variant="text">Primary</Button>
-    <Button variant="text" color="secondary">
-      Secondary
-    </Button>
-    <Button variant="text" color="danger">
-      Danger
-    </Button>
-  </div>
 </Paper>
 
 ```tsx
@@ -171,42 +144,9 @@ import { Button } from "rizzui";
 export default function App() {
   return (
     <>
-      {/* variant solid / default */}
-      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-        <Button>Primary</Button>
-        <Button color="secondary">Secondary</Button>
-        <Button color="danger">Danger</Button>
-      </div>
-      {/* variant flat */}
-      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-        <Button variant="flat">Primary</Button>
-        <Button variant="flat" color="secondary">
-          Secondary
-        </Button>
-        <Button variant="flat" color="danger">
-          Danger
-        </Button>
-      </div>
-      {/* variant outline */}
-      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-        <Button variant="outline">Primary</Button>
-        <Button variant="outline" color="secondary">
-          Secondary
-        </Button>
-        <Button variant="outline" color="danger">
-          Danger
-        </Button>
-      </div>
-      {/* variant text */}
-      <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-        <Button variant="text">Primary</Button>
-        <Button variant="text" color="secondary">
-          Secondary
-        </Button>
-        <Button variant="text" color="danger">
-          Danger
-        </Button>
-      </div>
+      <Button>Primary</Button>
+      <Button color="secondary">Secondary</Button>
+      <Button color="danger">Danger</Button>
     </>
   );
 }
