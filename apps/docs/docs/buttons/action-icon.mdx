@@ -216,28 +216,6 @@ You can change the color of the **ActionIcon** using [**color**](#actionicon-col
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
   </div>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-    <ActionIcon variant="flat">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon variant="flat" color="secondary">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon variant="flat" color="danger">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-  </div>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <ActionIcon variant="text">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon variant="text" color="secondary">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon variant="text" color="danger">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-  </div>
 </Paper>
 
 ```tsx
@@ -247,42 +225,15 @@ import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 export default function App() {
   return (
     <>
-      {/* variant solid / default */}
-      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-        <ActionIcon>
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-        </ActionIcon>
-        <ActionIcon color="secondary">
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-        </ActionIcon>
-        <ActionIcon color="danger">
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-        </ActionIcon>
-      </div>
-      {/* variant flat */}
-      <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-        <ActionIcon variant="flat">
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-        </ActionIcon>
-        <ActionIcon variant="flat" color="secondary">
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-        </ActionIcon>
-        <ActionIcon variant="flat" color="danger">
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-        </ActionIcon>
-      </div>
-      {/* variant text */}
-      <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-        <ActionIcon variant="text">
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-        </ActionIcon>
-        <ActionIcon variant="text" color="secondary">
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-        </ActionIcon>
-        <ActionIcon variant="text" color="danger">
-          <AdjustmentsHorizontalIcon className="w-5 h-5" />
-        </ActionIcon>
-      </div>
+      <ActionIcon>
+        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      </ActionIcon>
+      <ActionIcon color="secondary">
+        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      </ActionIcon>
+      <ActionIcon color="danger">
+        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      </ActionIcon>
     </>
   );
 }
