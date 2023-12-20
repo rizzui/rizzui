@@ -81,7 +81,7 @@ export default function HeroBlock() {
 function BlurBGPattern() {
   return (
     <>
-      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.4] dark:opacity-[0.03]" />
+      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.3] dark:opacity-[0.02]" />
 
       <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
         <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-95" />
