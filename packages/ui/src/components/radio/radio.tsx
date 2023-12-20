@@ -34,8 +34,8 @@ const radioStyles = {
   },
   variant: {
     outline:
-      'bg-transparent border border-muted ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
-    flat: 'border-0 bg-muted/70 backdrop-blur ring-muted/70 hover:enabled:bg-muted/90 checked:!bg-primary',
+      'bg-transparent border border-muted ring-muted checked:!bg-primary dark:checked:!bg-transparent checked:!border-primary hover:enabled:border-primary',
+    flat: 'border-0 bg-muted/70 backdrop-blur ring-muted/70 hover:enabled:bg-muted/90 dark:checked:!bg-transparent dark:checked:!ring-primary checked:!bg-primary',
   },
 };
 

@@ -6,6 +6,8 @@ import { buttonVariantStyles } from '../../lib/button-variant';
 
 const actionIconStyles = {
   base: 'inline-flex items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
+  disabled:
+    'dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70',
   size: {
     sm: 'p-0.5 w-7 h-7',
     md: 'p-1 w-9 h-9',
@@ -85,8 +87,7 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
           variantStyle.base,
           variantStyle.color[color],
           isLoading && 'pointer-events-none relative',
-          disabled &&
-            'cursor-not-allowed border-muted bg-muted/70 text-muted-foreground backdrop-blur',
+          disabled && actionIconStyles.disabled,
           className
         )}
         {...(as && as !== 'span' && { type })}
