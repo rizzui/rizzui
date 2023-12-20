@@ -56,7 +56,7 @@ export default function FeatureBlock() {
           {features.map((feature) => (
             <div
               key={feature.title + feature.id}
-              className="border border-gray-200 shadow-sm rounded-xl pt-8 pb-7 px-6"
+              className="border border-gray-200 shadow-sm rounded-lg pt-8 pb-7 px-6"
             >
               <div className="h-11 w-11 xl:w-12 xl:h-12 rounded-md text-gray-900 mb-6 border border-gray-200 bg-gradient-to-t from-gray-100/60 flex items-center justify-center">
                 {feature.icon}
