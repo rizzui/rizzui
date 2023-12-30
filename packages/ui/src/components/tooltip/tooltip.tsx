@@ -38,7 +38,8 @@ const tooltipStyles = {
   arrow: {
     color: {
       primary: 'fill-primary',
-      invert: 'fill-background dark:fill-muted/90 [&>path]:stroke-muted',
+      invert:
+        'fill-background dark:fill-muted/80 [&>path]:stroke-muted dark:backdrop-blur-3xl',
       secondary: 'fill-secondary',
       danger: 'fill-red',
       info: 'fill-blue',
@@ -52,7 +53,7 @@ const tooltipStyles = {
       color: {
         primary: 'text-primary-foreground bg-primary',
         invert:
-          'bg-background dark:bg-muted/30 dark:backdrop-blur-3xl border border-muted',
+          'bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border border-muted',
         secondary: 'text-secondary-foreground bg-secondary',
         danger: 'text-white bg-red',
         info: 'text-white bg-blue',

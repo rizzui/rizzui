@@ -13,19 +13,19 @@ const errorStyles = {
 
 interface FieldErrorProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
-  tag?: 'div' | 'span';
+  as?: 'div' | 'span';
   error: string | null | undefined;
   size?: keyof typeof errorStyles.size;
   className?: string;
 }
 
 export function FieldError({
-  tag = 'div',
+  as = 'div',
   error,
   size,
   className,
 }: FieldErrorProps) {
-  const Component = tag;
+  const Component = as;
   return (
     <Component
       role="alert"

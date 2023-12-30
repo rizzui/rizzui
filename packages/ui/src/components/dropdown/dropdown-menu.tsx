@@ -16,12 +16,14 @@ export function DropdownMenu({
   className,
   children,
 }: React.PropsWithChildren<DropdownMenuProps>) {
-  const { rounded, shadow, refs, strategy, x, y } = useDropdown();
+  const { inPortal, rounded, shadow, refs, strategy, x, y } = useDropdown();
   const TransitionComponent: React.ElementType = Transition;
   const MenuItems: React.ElementType = Menu.Items;
 
+  const PortalComponent = inPortal ? FloatingPortal : Fragment;
+
   return (
-    <FloatingPortal>
+    <PortalComponent>
       <TransitionComponent
         as={Fragment}
         enter="transition ease-out duration-100"
@@ -52,8 +54,7 @@ export function DropdownMenu({
           {children}
         </MenuItems>
       </TransitionComponent>
-      <span className="sr-only">rizzui - dropdown</span>
-    </FloatingPortal>
+    </PortalComponent>
   );
 }
 

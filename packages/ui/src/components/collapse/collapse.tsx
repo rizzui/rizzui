@@ -11,8 +11,8 @@ export interface CollapseHeader {
 }
 
 export interface CollapseProps {
-  /** Set HTML tag of the `Collapse` component. Either `div` Or `ul`, default is `div` */
-  tag?: 'div' | 'ul';
+  /** Set HTML as of the `Collapse` component. Either `div` Or `ul`, default is `div` */
+  as?: 'div' | 'ul';
   /** Header component of the `Collapse` */
   header: ({ open, toggle }: CollapseHeader) => React.ReactNode;
   /** Set transition duration */
@@ -31,7 +31,7 @@ export interface CollapseProps {
  * designed to integrate beautifully with Tailwind CSS.
  */
 export function Collapse({
-  tag = 'div',
+  as = 'div',
   header,
   duration,
   defaultOpen = false,
@@ -41,10 +41,10 @@ export function Collapse({
 }: React.PropsWithChildren<CollapseProps>) {
   const { open, openTargetEl, targetEl, toggle } = useCollapse(
     duration,
-    defaultOpen,
+    defaultOpen
   );
-  const Component = tag;
-  const Children = tag !== 'div' ? 'li' : 'div';
+  const Component = as;
+  const Children = as !== 'div' ? 'li' : 'div';
   return (
     <Component
       role="collapse"

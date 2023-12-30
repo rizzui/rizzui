@@ -15,10 +15,10 @@ const inputStyles = {
   error:
     '!border-red [&.is-hover]:!border-red [&.is-focus]:!border-red !ring-red !bg-transparent',
   size: {
-    sm: 'px-2 py-1 text-xs h-8 leading-[32px]',
-    md: 'px-3.5 py-2 text-sm h-10 leading-[40px]',
-    lg: 'px-4 py-2 text-base h-12 leading-[48px]',
-    xl: 'px-5 py-2.5 text-base h-14 leading-[56px]',
+    sm: 'px-2 py-1 text-xs h-8',
+    md: 'px-3.5 py-2 text-sm h-10',
+    lg: 'px-4 py-2 text-base h-12',
+    xl: 'px-5 py-2.5 text-base h-14',
   },
   rounded: roundedStyles,
   variant: {

@@ -67,7 +67,11 @@ export const AdvancedCheckbox = forwardRef<
       <input
         type="checkbox"
         ref={ref}
-        className={cn('peer absolute -z-[1] opacity-0', inputClassName)}
+        className={cn(
+          makeClassName(`advanced-checkbox-input`),
+          'peer absolute -z-[1] opacity-0',
+          inputClassName
+        )}
         {...props}
       />
       <span

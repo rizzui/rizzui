@@ -41,6 +41,7 @@ export default function SelectBox({
           clearable: value !== null,
           onClear: () => setValue(null),
         })}
+        inPortal={false}
         label={label}
         {...props}
       />
@@ -138,7 +139,7 @@ export function CustomOptionSelectBox({
       options={customOptions}
       value={value}
       onChange={setValue}
-      displayValue={(value) => renderDisplayValue(value)}
+      displayValue={(value) => renderDisplayValue(value as any)}
       getOptionDisplayValue={(option) => renderOptionDisplayValue(option)}
       {...props}
     />

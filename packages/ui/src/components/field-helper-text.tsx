@@ -12,18 +12,18 @@ const helperTextStyles = {
 
 export interface FieldHelperTextProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
-  tag?: 'div' | 'span';
+  as?: 'div' | 'span';
   size?: keyof typeof helperTextStyles.size;
   className?: string;
 }
 
 export function FieldHelperText({
   size,
-  tag = 'div',
+  as = 'div',
   children,
   className,
 }: React.PropsWithChildren<FieldHelperTextProps>) {
-  const Component = tag;
+  const Component = as;
   return (
     <Component
       role="alert"

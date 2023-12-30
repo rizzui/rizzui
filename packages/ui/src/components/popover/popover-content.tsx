@@ -5,9 +5,9 @@ import { makeClassName } from '../../lib/make-class-name';
 import { roundedStyles } from '../../lib/rounded';
 import { cn } from '../../lib/cn';
 
-const tooltipStyle = {
-  base: 'z-[999] min-w-max bg-background dark:bg-muted/30 dark:backdrop-blur-3xl border border-muted',
-  arrow: 'fill-background dark:fill-muted/30 [&>path]:stroke-muted',
+const popoverStyles = {
+  base: 'z-[999] min-w-max bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border border-muted',
+  arrow: 'fill-background dark:fill-muted/80 [&>path]:stroke-muted',
   shadow: {
     sm: 'drop-shadow-md',
     md: 'drop-shadow-lg',
@@ -23,9 +23,9 @@ const tooltipStyle = {
   rounded: roundedStyles,
 };
 
-export type Shadow = keyof typeof tooltipStyle.shadow;
-export type Size = keyof typeof tooltipStyle.size;
-export type Rounded = keyof typeof tooltipStyle.rounded;
+export type Shadow = keyof typeof popoverStyles.shadow;
+export type Size = keyof typeof popoverStyles.size;
+export type Rounded = keyof typeof popoverStyles.rounded;
 
 type PopoverContentProps = {
   children:
@@ -85,10 +85,10 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
             ref={refs.setFloating}
             className={cn(
               makeClassName(`popover-content`),
-              tooltipStyle.base,
-              size && tooltipStyle.size[size],
-              rounded && tooltipStyle.rounded[rounded],
-              shadow && tooltipStyle.shadow[shadow],
+              popoverStyles.base,
+              size && popoverStyles.size[size],
+              rounded && popoverStyles.rounded[rounded],
+              shadow && popoverStyles.shadow[shadow],
               className
             )}
             style={{
@@ -110,7 +110,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
                 data-testid="popover-arrow"
                 className={cn(
                   makeClassName(`popover-arrow`),
-                  tooltipStyle.arrow,
+                  popoverStyles.arrow,
                   arrowClassName
                 )}
                 style={{ strokeDasharray: '0,14, 5' }}

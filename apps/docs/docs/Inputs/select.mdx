@@ -10,7 +10,7 @@ import SelectBox, {
 
 # Select
 
-The Tabs Component allows the content author to organize page content within multiple tabs.
+Listboxes are a great foundation for building custom, accessible select menus for your app, complete with robust support for keyboard navigation..
 
 ```tsx
 import { Select } from "rizzui";
@@ -168,7 +168,7 @@ function renderOptionDisplayValue(option: SelectOption) {
 
 ### Select Props
 
-Here is the API documentation of the **Tab** component.
+Here is the API documentation of the **Select** component.
 
 <div className="overflow-x-auto">
 
@@ -182,6 +182,7 @@ Here is the API documentation of the **Tab** component.
 |        variant        |   [SelectVariants](#select-variants)    |                                                                                               The variants of the component are:                                                                                               |  `"outline"`  |
 |         size          |      [SelectSizes](#select-sizes)       |                                                                           The size of the component. "sm" is equivalent to the dense select styling.                                                                           |    `"md"`     |
 |        rounded        |    [SelectRounded](#select-rounded)     |                                                                                                   The rounded variants are:                                                                                                    |    `"md"`     |
+|       inPortal        |                `boolean`                |                                                                                    Whether select options is rendered on the portal or not                                                                                     |   `"true"`    |
 |      placeholder      |                `string`                 |                                                                                                  Set select placeholder text                                                                                                   | `"Select..."` |
 |       disabled        |                `boolean`                |                                                                                             Whether the select is disabled or not                                                                                              |     \_\_      |
 |       clearable       |                `boolean`                |                                                                                                      Add clearable option                                                                                                      |     \_\_      |
