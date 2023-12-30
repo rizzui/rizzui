@@ -41,7 +41,6 @@ export default function SelectBox({
           clearable: value !== null,
           onClear: () => setValue(null),
         })}
-        inPortal={false}
         label={label}
         {...props}
       />
