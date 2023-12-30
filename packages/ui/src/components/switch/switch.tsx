@@ -243,7 +243,6 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
 
         {!error && helperText ? (
           <FieldHelperText
-            tag="div"
             size={size}
             className={cn(
               makeClassName(`switch-helper-text`),

@@ -14,10 +14,10 @@ const fileInputStyles = {
     '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted !text-muted-foreground',
   error: '!border-red hover:!border-red focus:!border-red !ring-red',
   size: {
-    sm: 'pr-2 py-1 text-xs h-8 leading-[32px] pl-[1px]',
-    md: 'pr-3.5 py-2 text-sm h-10 leading-[40px] pl-[1px]',
-    lg: 'pr-4 py-2 text-base h-12 leading-[48px] pl-[1px]',
-    xl: 'pr-5 py-2.5 text-base h-14 leading-[56px] pl-0.5',
+    sm: 'pr-2 py-1 text-xs h-8 pl-[1px]',
+    md: 'pr-3.5 py-2 text-sm h-10 pl-[1px]',
+    lg: 'pr-4 py-2 text-base h-12 pl-[1px]',
+    xl: 'pr-5 py-2.5 text-base h-14 pl-0.5',
   },
   rounded: roundedStyles,
   variant: {

@@ -20,7 +20,7 @@ const buttonStyles = {
 };
 
 export type ButtonProps = {
-  tag?: 'button' | 'span';
+  as?: 'button' | 'span';
   /** Set the loading status of button */
   isLoading?: boolean;
   /** Set the original html type of button */
@@ -51,7 +51,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       className,
       isLoading,
-      tag = 'button',
+      as = 'button',
       type = 'button',
       variant = 'solid',
       size = 'md',
@@ -62,7 +62,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const Component = tag;
+    const Component = as;
     const variantStyle = buttonStyles.variant[variant];
     return (
       <Component
@@ -79,7 +79,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           disabled && buttonStyles.disabled,
           className
         )}
-        {...(tag && tag !== 'span' && { type })}
+        {...(as && as !== 'span' && { type })}
         {...buttonProps}
       >
         {isLoading ? (

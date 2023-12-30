@@ -5,22 +5,21 @@ import { CheckmarkIcon } from '../../icons/checkmark';
 import { makeClassName } from '../../lib/make-class-name';
 
 const lineClasses = {
-  base: 'aegon-step-line absolute w-full group-last:hidden block h-px',
+  base: 'rizzui-step-line absolute w-full group-last:hidden block h-px',
   top: {
     noDot: {
       sm: 'top-[22px]',
-      DEFAULT: 'top-6',
+      md: 'top-6',
       lg: 'top-[26px]',
     },
     dot: {
       sm: 'top-[14px]',
-      DEFAULT: 'top-4',
+      md: 'top-4',
       lg: 'top-[18px]',
     },
   },
   titleLine: 'block h-px flex-auto group-last:hidden',
   color: {
-    DEFAULT: 'bg-gray-900',
     primary: 'bg-primary',
     secondary: 'bg-secondary',
     danger: 'bg-red',
@@ -34,7 +33,7 @@ const circleClasses = {
   base: 'z-10 inline-flex items-center justify-center rounded-full text-sm font-medium',
   size: {
     sm: 'h-7 w-7 mt-0.5',
-    DEFAULT: 'h-8 w-8',
+    md: 'h-8 w-8',
     lg: 'h-9 w-9',
   },
   waiting: 'border border-muted bg-white dark:bg-gray-50 text-gray-500',
@@ -42,7 +41,6 @@ const circleClasses = {
     solid: {
       base: 'text-gray-50 shadow-lg',
       color: {
-        DEFAULT: 'bg-gray-900',
         primary: 'bg-primary',
         secondary: 'bg-secondary',
         danger: 'bg-red',
@@ -54,7 +52,6 @@ const circleClasses = {
     outline: {
       base: 'border dark:bg-gray-50 bg-white shadow-lg',
       color: {
-        DEFAULT: 'text-gray-900 border-gray-900',
         primary: 'text-primary border-primary',
         secondary: 'text-secondary border-secondary',
         danger: 'text-red border-red',
@@ -71,7 +68,7 @@ const dotClasses = {
   waiting: 'bg-gray-300',
   size: {
     sm: 'h-3 w-3 !mt-2',
-    DEFAULT: 'h-4 w-4',
+    md: 'h-4 w-4',
     lg: 'h-5 w-5',
   },
 };
@@ -125,9 +122,9 @@ export function Step({
   icon,
   index = 0,
   status,
-  size = 'DEFAULT',
+  size = 'md',
   variant = 'solid',
-  color = 'DEFAULT',
+  color = 'primary',
   dot,
   className,
   circleClassName,
@@ -178,7 +175,7 @@ export function Step({
           contentClassName
         )}
       >
-        <span className="aegon-step-title flex items-center justify-center group-last:inline-block">
+        <span className="rizzui-step-title flex items-center justify-center group-last:inline-block">
           <h2
             className={cn(
               makeClassName(`step-title`),
@@ -201,7 +198,7 @@ export function Step({
           <span
             className={cn(
               makeClassName(`step-description`),
-              'aegon-step-description',
+              'rizzui-step-description',
               status === 'in-progress' ? 'text-gray-900' : 'text-gray-500',
               descriptionClassName
             )}

@@ -62,7 +62,7 @@ export const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
   ) => (
     <label
       className={cn(
-        makeClassName(`advanced-checkbox-root`),
+        makeClassName(`advanced-radio-root`),
         'relative block',
         className
       )}
@@ -70,13 +70,17 @@ export const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
       <input
         type="radio"
         ref={ref}
-        className={cn('peer absolute -z-[1] opacity-0', inputClassName)}
+        className={cn(
+          makeClassName(`advanced-radio-input`),
+          'peer absolute -z-[1] opacity-0',
+          inputClassName
+        )}
         {...props}
       />
       <span
         className={cn(
           'block',
-          makeClassName(`advanced-checkbox`),
+          makeClassName(`advanced-radio`),
           advancedRadioStyles.base,
           advancedRadioStyles.active,
           advancedRadioStyles.disabled,

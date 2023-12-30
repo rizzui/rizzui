@@ -8,6 +8,7 @@ type DropdownContextProps = {
   x?: number;
   y?: number;
   strategy?: Strategy;
+  inPortal?: boolean;
 };
 
 const DropdownContext = createContext<DropdownContextProps | null>(null);

@@ -138,7 +138,7 @@ export function CustomOptionSelectBox({
       options={customOptions}
       value={value}
       onChange={setValue}
-      displayValue={(value) => renderDisplayValue(value)}
+      displayValue={(value) => renderDisplayValue(value as any)}
       getOptionDisplayValue={(option) => renderOptionDisplayValue(option)}
       {...props}
     />

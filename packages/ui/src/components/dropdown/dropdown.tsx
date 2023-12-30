@@ -18,6 +18,7 @@ import { DropdownItem } from './dropdown-item';
 import { DropdownProvider } from './dropdown-context';
 
 export type DropdownProps = ExtractProps<typeof Menu> & {
+  inPortal?: boolean;
   placement?: Placement;
   rounded?: keyof typeof dropdownStyles.rounded;
   shadow?: keyof typeof dropdownStyles.shadow;
@@ -26,6 +27,7 @@ export type DropdownProps = ExtractProps<typeof Menu> & {
 };
 
 export function Dropdown({
+  inPortal = true,
   placement = 'bottom-start',
   rounded = 'md',
   shadow = 'md',
@@ -45,7 +47,9 @@ export function Dropdown({
   });
 
   return (
-    <DropdownProvider value={{ rounded, shadow, refs, x, y, strategy }}>
+    <DropdownProvider
+      value={{ rounded, shadow, refs, x, y, strategy, inPortal }}
+    >
       <Menu
         as="div"
         ref={refs.setReference}
@@ -55,15 +59,22 @@ export function Dropdown({
           className
         )}
       >
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === DropdownTrigger) {
-            return child;
-          }
-          if (React.isValidElement(child) && child.type === DropdownMenu) {
-            return child;
-          }
-          return null;
-        })}
+        {({ open }) => (
+          <>
+            {React.Children.map(children, (child) => {
+              if (
+                React.isValidElement(child) &&
+                child.type === DropdownTrigger
+              ) {
+                return child;
+              }
+              if (React.isValidElement(child) && child.type === DropdownMenu) {
+                return open ? child : null;
+              }
+              return null;
+            })}
+          </>
+        )}
       </Menu>
     </DropdownProvider>
   );

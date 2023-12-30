@@ -5,29 +5,28 @@ import { makeClassName } from '../../lib/make-class-name';
 
 const containerClasses = {
   base: 'flex-col space-y-2',
-  line: '[&>.aegon-step-line]:hidden',
+  line: '[&>.rizzui-step-line]:hidden',
   verticalLine: {
-    base: '[&>.aegon-step-line]:h-full [&>.aegon-step-line]:w-px min-h-[100px] last:min-h-0',
+    base: '[&>.rizzui-step-line]:h-full [&>.rizzui-step-line]:w-px min-h-[100px] last:min-h-0',
     left: {
       noDot: {
-        sm: '[&>.aegon-step-line]:left-3 rtl:[&>.aegon-step-line]:right-3',
-        DEFAULT:
-          '[&>.aegon-step-line]:left-3.5 rtl:[&>.aegon-step-line]:right-3.5',
-        lg: '[&>.aegon-step-line]:left-4 rtl:[&>.aegon-step-line]:right-4',
+        sm: '[&>.rizzui-step-line]:left-3 rtl:[&>.rizzui-step-line]:right-3',
+        md: '[&>.rizzui-step-line]:left-3.5 rtl:[&>.rizzui-step-line]:right-3.5',
+        lg: '[&>.rizzui-step-line]:left-4 rtl:[&>.rizzui-step-line]:right-4',
       },
       dot: {
-        sm: '[&>.aegon-step-line]:left-[5px] rtl:[&>.aegon-step-line]:right-[5px]',
-        DEFAULT: '[&>.aegon-step-line]:left-2 rtl:[&>.aegon-step-line]:right-2',
-        lg: '[&>.aegon-step-line]:left-2.5 rtl:[&>.aegon-step-line]:right-2.5',
+        sm: '[&>.rizzui-step-line]:left-[5px] rtl:[&>.rizzui-step-line]:right-[5px]',
+        md: '[&>.rizzui-step-line]:left-2 rtl:[&>.rizzui-step-line]:right-2',
+        lg: '[&>.rizzui-step-line]:left-2.5 rtl:[&>.rizzui-step-line]:right-2.5',
       },
     },
   },
 };
 
 const contentClasses = {
-  base: '[&>.aegon-step-title]:justify-start [&>.aegon-step-title>span]:hidden',
+  base: '[&>.rizzui-step-title]:justify-start [&>.rizzui-step-title>span]:hidden',
   containerDesc:
-    '[&>.aegon-step-description]:-translate-x-6 rtl:[&>.aegon-step-description]:translate-x-6 -ml-2 rtl:[&>.aegon-step-title>h2]:mr-0',
+    '[&>.rizzui-step-description]:-translate-x-6 rtl:[&>.rizzui-step-description]:translate-x-6 -ml-2 rtl:[&>.rizzui-step-title>h2]:mr-0',
 };
 
 export interface StepperProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -76,7 +75,7 @@ export function Stepper({
         makeClassName(`stepper-root`),
         'flex justify-between space-x-4 rtl:space-x-0',
         direction === 'vertical' && 'flex-col space-x-0',
-        className,
+        className
       )}
     >
       {React.Children.map(children, (child, index) => {
@@ -84,7 +83,7 @@ export function Stepper({
           return child;
         }
 
-        const { status, size = 'DEFAULT' } = child.props;
+        const { status, size = 'md' } = child.props;
 
         return React.cloneElement(child, {
           index,
@@ -96,15 +95,15 @@ export function Stepper({
             direction === 'vertical' &&
               (dot
                 ? containerClasses.verticalLine.left.dot[size]
-                : containerClasses.verticalLine.left.noDot[size]),
+                : containerClasses.verticalLine.left.noDot[size])
           ),
           circleClassName: cn(
             dot && direction === 'vertical' && 'mt-1.5',
-            dotClassName,
+            dotClassName
           ),
           contentClassName: cn(
             direction === 'vertical' && contentClasses.base,
-            contentClassName,
+            contentClassName
           ),
           titleClassName,
           descriptionClassName,

@@ -34,10 +34,10 @@ const selectStyles = {
     '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
   error: '!border-red hover:!border-red focus:!border-red !ring-red',
   size: {
-    sm: 'px-2 py-1 text-xs h-8 leading-[32px]',
-    md: 'px-3 py-2 text-sm h-10 leading-[40px]',
-    lg: 'px-4 py-2 text-base h-12 leading-[48px]',
-    xl: 'px-5 py-2.5 text-base h-14 leading-[56px]',
+    sm: 'px-2 py-1 text-xs h-8',
+    md: 'px-3 py-2 text-sm h-10',
+    lg: 'px-4 py-2 text-base h-12',
+    xl: 'px-5 py-2.5 text-base h-14',
   },
   rounded: roundedStyles,
   prefix: {
@@ -64,7 +64,7 @@ const selectStyles = {
 };
 
 const optionListStyles = {
-  base: `${dropdownStyles.base} max-h-[265px] w-full overflow-auto [&>ul]:!outline-none [&>ul]:!ring-0 [&>ul]:!p-0 [&>ul]:!m-0 [&>ul>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
+  base: `${dropdownStyles.base} max-h-[265px] w-full overflow-auto !outline-none !ring-0 !m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
   shadow: dropdownStyles.shadow,
   rounded: {
     none: 'rounded-none',
@@ -124,6 +124,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   prefix?: React.ReactNode;
   /** The suffix is design for adding any icon or text on the select field's end (it's a right icon for the `ltr` and left icon for the `rtl`) */
   suffix?: React.ReactNode;
+  /** Whether it is rendered on the portal or not */
+  inPortal?: boolean;
   /** Show error message using this prop */
   error?: string;
   /** Add helper text. It could be string or a React component */
@@ -179,6 +181,7 @@ export function Select<OptionType extends SelectOption>({
   helperText,
   prefix = null,
   placeholder = 'Select...',
+  inPortal = true,
   displayValue = displayValueFn,
   getOptionDisplayValue = getOptionDisplayValueFn,
   getOptionValue = getOptionValueFn,
@@ -217,9 +220,11 @@ export function Select<OptionType extends SelectOption>({
 
   const emptyValue = !isNumber(value) && isEmpty(value);
 
+  const PortalComponent = inPortal ? FloatingPortal : Fragment;
+
   return (
     <div
-      ref={refs.setReference}
+      ref={ref}
       className={cn(
         makeClassName(`select-root`),
         'grid w-full grid-cols-1',
@@ -244,7 +249,7 @@ export function Select<OptionType extends SelectOption>({
               </Listbox.Label>
             )}
 
-            <div ref={ref} className={cn('h-full')}>
+            <div ref={refs.setReference} className={cn('h-full')}>
               <Listbox.Button
                 className={cn(
                   makeClassName(`select-button`),
@@ -308,64 +313,64 @@ export function Select<OptionType extends SelectOption>({
                 ) : null}
               </Listbox.Button>
 
-              <FloatingPortal>
-                <Transition
-                  as={Fragment}
-                  leave="transition ease-in duration-100"
-                  leaveFrom="opacity-100"
-                  leaveTo="opacity-0"
-                >
-                  <Listbox.Options
-                    ref={refs.setFloating}
-                    className={cn(
-                      makeClassName(`select-options`),
-                      optionListStyles.base,
-                      optionListStyles.shadow[shadow],
-                      optionListStyles.rounded[rounded],
-                      dropdownClassName
-                    )}
-                    style={{
-                      width,
-                      position: strategy,
-                      top: y ?? 0,
-                      left: x ?? 0,
-                    }}
+              {open ? (
+                <PortalComponent>
+                  <Transition
+                    as={Fragment}
+                    leave="transition ease-in duration-100"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
                   >
-                    {options.map((option) => (
-                      <Listbox.Option
-                        key={option.value}
-                        {...(option?.disabled && {
-                          disabled: option?.disabled,
-                        })}
-                        className={({ active }) =>
-                          cn(
-                            makeClassName(`select-option`),
-                            'flex w-full items-center px-3 py-1.5',
-                            active && 'bg-muted/70',
-                            rounded && optionListStyles.item.rounded[rounded],
-                            size && optionListStyles.item.size[size],
-                            !option?.disabled && 'cursor-pointer',
-                            optionClassName
-                          )
-                        }
-                        value={getOptionValue(option)}
-                      >
-                        {({ selected }) => (
-                          <div
-                            className={cn(
-                              selected ? 'font-medium' : 'text-foreground'
-                            )}
-                          >
-                            {getOptionDisplayValue(option)}
-                          </div>
-                        )}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </Transition>
-
-                <span className="sr-only">rizzui - select</span>
-              </FloatingPortal>
+                    <Listbox.Options
+                      ref={refs.setFloating}
+                      className={cn(
+                        makeClassName(`select-options`),
+                        optionListStyles.base,
+                        optionListStyles.shadow[shadow],
+                        optionListStyles.rounded[rounded],
+                        dropdownClassName
+                      )}
+                      style={{
+                        width,
+                        position: strategy,
+                        top: y ?? 0,
+                        left: x ?? 0,
+                      }}
+                    >
+                      {options.map((option) => (
+                        <Listbox.Option
+                          key={option.value}
+                          {...(option?.disabled && {
+                            disabled: option?.disabled,
+                          })}
+                          className={({ active }) =>
+                            cn(
+                              makeClassName(`select-option`),
+                              'flex w-full items-center px-3 py-1.5',
+                              active && 'bg-muted/70',
+                              rounded && optionListStyles.item.rounded[rounded],
+                              size && optionListStyles.item.size[size],
+                              !option?.disabled && 'cursor-pointer',
+                              optionClassName
+                            )
+                          }
+                          value={getOptionValue(option)}
+                        >
+                          {({ selected }) => (
+                            <div
+                              className={cn(
+                                selected ? 'font-medium' : 'text-foreground'
+                              )}
+                            >
+                              {getOptionDisplayValue(option)}
+                            </div>
+                          )}
+                        </Listbox.Option>
+                      ))}
+                    </Listbox.Options>
+                  </Transition>
+                </PortalComponent>
+              ) : null}
             </div>
           </>
         )}
