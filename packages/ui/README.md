@@ -1,3 +1,6 @@
+<br />
+<br />
+
 <div align="center">
 
 <img alt="RizzUI" src="https://rizzui.vercel.app/img/rizz-logo.svg" width="auto" height="72" />
@@ -18,7 +21,7 @@
 
 <br />
 
-🎉 A Modern and Minimal React UI Library built with TailwindCSS. Designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application. We have carefully crafted each component to ensure that they are responsive, accessible and consistent across different devices and browsers.
+A Modern and Minimal React UI Library built with TailwindCSS. Designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application. We have carefully crafted each component to ensure that they are responsive, accessible and consistent across different devices and browsers.
 
 <br />
 
