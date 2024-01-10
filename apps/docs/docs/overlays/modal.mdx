@@ -133,7 +133,7 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 export default function App() {
   const [modalState, setModalState] = useState({
     isOpen: false,
-    size: "DEFAULT",
+    size: "md",
   });
   return (
     <>
@@ -156,7 +156,7 @@ export default function App() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "DEFAULT",
+              size: "md",
             }))
           }
         >
@@ -296,7 +296,7 @@ import { XMarkIcon } from "@heroicons/react/20/solid";
 export default function App() {
   const [modalState, setModalState] = useState({
     isOpen: false,
-    rounded: "DEFAULT",
+    rounded: "md",
   });
   return (
     <>
@@ -331,7 +331,7 @@ export default function App() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              rounded: "DEFAULT",
+              rounded: "md",
             }))
           }
         >
@@ -638,7 +638,7 @@ Here is the API documentation of the Modal component.
 | :----------------: | :----------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :-----: |
 |       isOpen       |           `boolean`            |                                                       Whether the Modal is open or not                                                       |  \_\_   |
 |      onClose       |          `() => void`          |                               Called when modal is closed (Escape key and click outside, depending on options)                               |  \_\_   |
-|        size        |   [ModalSizes](#modal-sizes)   |                                              Preset size of modal is sm, DEFAULT, lg, xl, full                                               | `"md"`  |
+|        size        |   [ModalSizes](#modal-sizes)   |                                                 Preset size of modal is sm, md, lg, xl, full                                                 | `"md"`  |
 |      rounded       | [ModalRounded](#modal-rounded) |                                                          The rounded variants are:                                                           | `"md"`  |
 |     customSize     |            `string`            | Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" |  \_\_   |
 |      noGutter      |           `boolean`            |                                           This prop will remove extra padding spacing from screen                                            |  \_\_   |

@@ -173,7 +173,7 @@ export default function App() {
 You can render any thing using our **Popover** component.
 
 <Paper>
-  <Popover enableOverlay>
+  <Popover enableOverlay overlayClassName="z-[9999]">
     <Popover.Trigger>
       <div className="w-12 cursor-pointer">
         <Avatar
@@ -183,7 +183,7 @@ You can render any thing using our **Popover** component.
         />
       </div>
     </Popover.Trigger>
-    <Popover.Content>
+    <Popover.Content className="z-[9999]">
       {({ setOpen }) => (
         <div className="font-geist">
           <div className="mb-3 flex items-center gap-3">

@@ -2,7 +2,7 @@
 sidebar_position: 34
 ---
 
-import { Stepper, Button } from "rizzui";
+import { Stepper } from "rizzui";
 import {
   UserIcon,
   DocumentMagnifyingGlassIcon,
@@ -338,9 +338,9 @@ Here is the API documentation of the Step component. You can use the following p
 |         icon         |          `ReactNode`           |                              Pass custom icon                              |    \_\_     |
 |        index         |            `number`            | Index number for each component. Handled underneath by `Stepper` component |     `0`     |
 |        status        |   [StepStatus](#step-status)   |                            Status of each step                             |    \_\_     |
-|         size         |    [StepSizes](#step-sizes)    |                           The size of each Step                            | `"DEFAULT"` |
+|         size         |    [StepSizes](#step-sizes)    |                           The size of each Step                            |   `"md"`    |
 |       variant        | [StepVariants](#step-variants) |                       The variants of the component                        |  `"solid"`  |
-|        color         |   [StepColors](#step-colors)   |                             Change Step Color                              | `"DEFAULT"` |
+|        color         |   [StepColors](#step-colors)   |                             Change Step Color                              | `"primary"` |
 |         dot          |           `boolean`            |           Whether to show dot. Handled from `Stepper` component            |    \_\_     |
 |      className       |            `string`            |                   Pass className to design the container                   |    \_\_     |
 |   circleClassName    |            `string`            |              Pass circleClassName to design the rounded disc               |    \_\_     |
@@ -363,7 +363,7 @@ type StepStatus = "error" | "waiting" | "in-progress" | "completed";
 ### Step Sizes
 
 ```ts
-type StepSizes = "DEFAULT" | "sm" | "lg";
+type StepSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
@@ -380,7 +380,6 @@ type StepVariants = "solid" | "outline";
 
 ```ts
 type StepColors =
-  | "DEFAULT"
   | "primary"
   | "secondary"
   | "danger"

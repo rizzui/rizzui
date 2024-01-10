@@ -17,7 +17,11 @@ export default function ModalDefault() {
   return (
     <>
       <Button onClick={() => setModalState(true)}>Open Modal</Button>
-      <Modal isOpen={modalState} onClose={() => setModalState(false)}>
+      <Modal
+        isOpen={modalState}
+        onClose={() => setModalState(false)}
+        className="z-[9999]"
+      >
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">
             <Title as="h3">Welcome to RizzUI</Title>
@@ -66,7 +70,7 @@ export default function ModalDefault() {
 }
 
 export function ModalSizes() {
-  const [modalState, setModalState] = useState({
+  const [modalState, setModalState] = useState<any>({
     isOpen: false,
     size: "md",
   });
@@ -141,6 +145,7 @@ export function ModalSizes() {
         onClose={() =>
           setModalState((prevState) => ({ ...prevState, isOpen: false }))
         }
+        className="z-[9999]"
       >
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">
@@ -194,7 +199,7 @@ export function ModalSizes() {
 }
 
 export function ModalRounded() {
-  const [modalState, setModalState] = useState({
+  const [modalState, setModalState] = useState<any>({
     isOpen: false,
     rounded: "md",
   });
@@ -269,10 +274,11 @@ export function ModalRounded() {
         onClose={() =>
           setModalState((prevState) => ({ ...prevState, isOpen: false }))
         }
+        className="z-[9999]"
       >
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">
-            <Text as="h3">Welcome to RizzUI</Text>
+            <Title as="h3">Welcome to RizzUI</Title>
             <ActionIcon
               size="sm"
               variant="text"
@@ -331,6 +337,7 @@ export function ModalCustomSize() {
         isOpen={modalState}
         onClose={() => setModalState(false)}
         customSize="1080px"
+        className="z-[9999]"
       >
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">
@@ -390,6 +397,7 @@ export function ModalCustomStyle() {
         onClose={() => setModalState(false)}
         overlayClassName="backdrop-blur"
         containerClassName="!max-w-4xl !shadow-2xl"
+        className="z-[9999]"
       >
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">

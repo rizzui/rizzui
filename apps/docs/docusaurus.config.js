@@ -7,7 +7,7 @@ const myTheme = require("./prism-theme");
 const config = {
   title: "RizzUI",
   tagline:
-    "A Modern, Minimal, TailwindCSS-based React UI Library. Intuitively crafted, easy-to-customize components for seamless integration. Responsive, accessible, and consistent across devices and browsers.",
+    "A Modern and Minimal React UI Library built with TailwindCSS. Designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application.",
   favicon: "img/rizz-favicon.svg",
 
   // Set the production url of your site here

@@ -484,8 +484,8 @@ Here is the API documentation of the Alert component. You can use these props to
 | :--------------------: | :----------------------------: | :-----------------------------------------------: | :---------: |
 |         color          |  [AlertColors](#alert-colors)  |                   Change color                    |    \_\_     |
 |        children        |          `ReactNode`           |          Pass alert message as children           |    \_\_     |
-|          size          |   [AlertSizes](#alert-sizes)   |            The size of the component.             | `"DEFAULT"` |
-|        rounded         | [AlertRounded](#alert-rounded) |             The rounded variants are:             | `"DEFAULT"` |
+|          size          |   [AlertSizes](#alert-sizes)   |            The size of the component.             |    `md"`    |
+|        rounded         | [AlertRounded](#alert-rounded) |             The rounded variants are:             |   `"md"`    |
 |        variant         |        `flat` `outline`        |        The variants of the component are:         | `"outline"` |
 |          bar           |           `boolean`            |        Whether left bar should be visible         |  `"false"`  |
 |        closable        |           `boolean`            |                Add closable option                |    \_\_     |
@@ -512,7 +512,7 @@ type AlertColors = "danger" | "info" | "success" | "warning";
 ### Alert Sizes
 
 ```ts
-type AlertSizes = "DEFAULT" | "sm" | "lg" | "xl";
+type AlertSizes = "sm" | "md" | "lg" | "xl";
 ```
 
 <div className="mb-10" />
@@ -520,7 +520,7 @@ type AlertSizes = "DEFAULT" | "sm" | "lg" | "xl";
 ### Alert Rounded
 
 ```ts
-type AlertRounded = "DEFAULT" | "sm" | "lg" | "xl" | "none";
+type AlertRounded = "sm" | "md" | "lg" | "xl" | "none";
 ```
 
 <div className="mb-10" />

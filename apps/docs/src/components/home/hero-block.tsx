@@ -53,7 +53,7 @@ export default function HeroBlock() {
             >
               <Button
                 size="lg"
-                tag="span"
+                as="span"
                 variant="outline"
                 className="text-sm md:text-base h-12 xl:h-[3.25rem] bg-white dark:bg-gray-50 shadow-lg px-8 xl:px-10 hover:shadow-xl transition-all"
               >

@@ -17,7 +17,11 @@ export default function DrawerDefault() {
   return (
     <>
       <Button onClick={() => setDrawerState(true)}>Open Drawer</Button>
-      <Drawer isOpen={drawerState} onClose={() => setDrawerState(false)}>
+      <Drawer
+        isOpen={drawerState}
+        onClose={() => setDrawerState(false)}
+        className="z-[9999]"
+      >
         <div className="py-4 px-5">Default Drawer</div>
       </Drawer>
     </>
@@ -51,7 +55,7 @@ export function DrawerSizes() {
             setDrawerState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "DEFAULT",
+              size: "md",
             }))
           }
         >
@@ -100,6 +104,7 @@ export function DrawerSizes() {
         onClose={() =>
           setDrawerState((prevState) => ({ ...prevState, isOpen: false }))
         }
+        className="z-[9999]"
       >
         <div className="py-4 px-5">
           This is{" "}
@@ -183,6 +188,7 @@ export function DrawerPlacement() {
         onClose={() =>
           setDrawerState((prevState) => ({ ...prevState, isOpen: false }))
         }
+        className="z-[9999]"
       >
         <div className="py-4 px-5">
           The drawer placement on the{" "}
@@ -206,6 +212,7 @@ export function DrawerCustomSize() {
         isOpen={drawerState}
         onClose={() => setDrawerState(false)}
         customSize="600px"
+        className="z-[9999]"
       >
         <div className="py-4 px-5">Custom Size = 600px</div>
       </Drawer>
@@ -224,6 +231,7 @@ export function DrawerCustomStyle() {
         onClose={() => setDrawerState(false)}
         overlayClassName="backdrop-blur"
         containerClassName="!max-w-[calc(100%-480px)] !shadow-2xl"
+        className="z-[9999]"
       >
         <div className="py-4 px-5">Custom Style</div>
       </Drawer>
@@ -251,7 +259,11 @@ export function DrawerIcons() {
           0
         </Badge>
       </div>
-      <Drawer isOpen={drawerState} onClose={() => setDrawerState(false)}>
+      <Drawer
+        isOpen={drawerState}
+        onClose={() => setDrawerState(false)}
+        className="z-[9999]"
+      >
         <div className="flex min-h-full flex-col py-4 px-5">
           <header className="flex items-center justify-between">
             <Title as="h4">Shopping Cart</Title>
