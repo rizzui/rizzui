@@ -1,0 +1,174 @@
+---
+sidebar_position: 7
+---
+
+# React Hot Toast
+
+Add beautiful notifications to your React app with react-hot-toast. Please follow their [**Official documentation**](https://react-hot-toast.com/docs) for more details.
+
+<div className="mb-16" />
+
+## Installation
+
+<hr />
+
+1.  Install the **react-hot-toast**
+
+<div className="mb-4" />
+
+```bash
+npm i react-hot-toast
+```
+
+<div className="mb-4" />
+
+
+## Usage
+
+<hr />
+
+<div className="mb-16" />
+
+## Basic Usage
+
+```tsx
+import toast, { Toaster } from 'react-hot-toast';
+
+const notify = () => toast('Here is your toast.');
+
+const App = () => {
+  return (
+    <div>
+      <button onClick={notify}>Make me a toast</button>
+      //Place this at the entry point of your application
+      <Toaster />
+    </div>
+  );
+};
+```
+
+## `toast()` API
+```tsx
+//Blank 
+toast('Hello World');
+
+//Success
+toast.success('Successfully created!');
+
+//Error
+toast.error('This is an error!');
+
+//Custom (JSX)
+toast.custom(<div>Hello World</div>);
+
+//Loading
+toast.loading('Waiting...');
+```
+
+```tsx
+//Promise
+const myPromise = fetchData();
+
+toast.promise(myPromise, {
+  loading: 'Loading',
+  success: 'Got the data',
+  error: 'Error when fetching',
+});
+```
+You can provide ToastOptions as the second argument. They will overwrite all options received from <Toaster/>
+```tsx
+//ToastOptions 
+toast('Hello World', {
+  duration: 4000,
+  position: 'top-center',
+
+  // Styling
+  style: {},
+  className: '',
+
+  // Custom Icon
+  icon: '👏',
+
+  // Change colors of success/error/loading icon
+  iconTheme: {
+    primary: '#000',
+    secondary: '#fff',
+  },
+
+  // Aria
+  ariaProps: {
+    role: 'status',
+    'aria-live': 'polite',
+  },
+});
+```
+## Styling 
+Set default for all toasts
+```tsx
+<Toaster
+  toastOptions={{
+    className: '',
+    style: {
+      border: '1px solid #713200',
+      padding: '16px',
+      color: '#713200',
+    },
+  }}
+/>
+```
+Set default for specific types
+```tsx
+<Toaster
+  toastOptions={{
+    success: {
+      style: {
+        background: 'green',
+      },
+    },
+    error: {
+      style: {
+        background: 'red',
+      },
+    },
+  }}
+/>
+```
+Style per toast
+```tsx
+toast('I have a border.', {
+  style: {
+    border: '1px solid black',
+  },
+});
+```
+Dark mode toast 
+```tsx
+toast('Hello Darkness!',
+  {
+    icon: '👏',
+    style: {
+      borderRadius: '5px',
+      background: '#333',
+      color: '#fff',
+    },
+  }
+);
+```
+
+Change icon color
+```tsx
+<Toaster
+  toastOptions={{
+    success: {
+      iconTheme: {
+        primary: 'green',
+        secondary: 'black',
+      },
+    },
+  }}
+/>
+```
+
+
+
+
