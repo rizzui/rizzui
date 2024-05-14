@@ -5,7 +5,7 @@ module.exports = {
     "./docs/**/*.{md,mdx}",
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./docusaurus.config.js",
-    "../../node_modules/rizzui/dist/*.{js,ts,jsx,tsx}",
+    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}",
   ],
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {

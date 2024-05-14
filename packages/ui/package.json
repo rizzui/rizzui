@@ -26,12 +26,12 @@
   "scripts": {
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "lint": "tsc",
-    "dev": "concurrently \"yarn build --watch\" \"yarn storybook\"",
+    "dev": "concurrently \"pnpm build --watch\" \"pnpm storybook\"",
     "build": "tsup",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "test": "jest --coverage",
-    "test:ci": "yarn test --ci",
+    "test:ci": "pnpm test --ci",
     "test:watch": "jest --watch"
   },
   "main": "./dist/index.js",
@@ -91,7 +91,7 @@
     "style-loader": "3.3.3",
     "tailwindcss": "3.3.3",
     "ts-jest": "29.1.1",
-    "tsconfig": "*",
+    "tsconfig": "workspace:*",
     "tsconfig-paths-webpack-plugin": "4.0.1",
     "tsup": "7.2.0",
     "typescript": "5.1.6"
