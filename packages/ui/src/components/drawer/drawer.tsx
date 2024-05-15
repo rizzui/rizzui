@@ -1,5 +1,10 @@
 import React, { Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import {
+  Dialog,
+  DialogPanel,
+  Transition,
+  TransitionChild as HeadLessTransitionChild,
+} from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
@@ -72,7 +77,7 @@ export function Drawer({
   children,
 }: React.PropsWithChildren<DrawerProps>) {
   const TransitionComponent: React.ElementType = Transition;
-  const TransitionChild: React.ElementType = Transition.Child;
+  const TransitionChild: React.ElementType = HeadLessTransitionChild;
   // checking customSize value
   if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
     const checkedCustomSizeValue =
@@ -103,7 +108,7 @@ export function Drawer({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Dialog.Overlay
+          <div
             className={cn(
               makeClassName(`drawer-overlay`),
               drawerClasses.overlay,
@@ -131,7 +136,7 @@ export function Drawer({
           }
           leaveTo={drawerClasses.placement[placement]}
         >
-          <div
+          <DialogPanel
             className={cn(
               makeClassName(`drawer-container`),
               'fixed h-full w-full break-words bg-background shadow-xl',
@@ -158,7 +163,7 @@ export function Drawer({
             })}
           >
             {children}
-          </div>
+          </DialogPanel>
         </TransitionChild>
       </Dialog>
     </TransitionComponent>

@@ -1,25 +1,24 @@
 import React from 'react';
-import { Menu } from '@headlessui/react';
-import {
-  type Placement,
-  flip,
-  shift,
-  offset,
-  autoUpdate,
-  useFloating,
-} from '@floating-ui/react';
 import { cn } from '../../lib/cn';
+import { Menu } from '@headlessui/react';
+import { DropdownItem } from './dropdown-item';
+import { DropdownMenu } from './dropdown-menu';
+import { DropdownTrigger } from './dropdown-trigger';
+import { DropdownProvider } from './dropdown-context';
 import { ExtractProps } from '../../lib/extract-props';
 import { makeClassName } from '../../lib/make-class-name';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
-import { DropdownTrigger } from './dropdown-trigger';
-import { DropdownMenu } from './dropdown-menu';
-import { DropdownItem } from './dropdown-item';
-import { DropdownProvider } from './dropdown-context';
+
+type Align = 'start' | 'end';
+type Side = 'top' | 'right' | 'bottom' | 'left';
+export type TheirPlacementType = `${Side}` | `${Side}-${Align}`;
+export type OurPlacementType = `${Side}` | `${Side} ${Align}`;
 
 export type DropdownProps = ExtractProps<typeof Menu> & {
+  gap?: number;
+  modal?: boolean;
   inPortal?: boolean;
-  placement?: Placement;
+  placement?: TheirPlacementType;
   rounded?: keyof typeof dropdownStyles.rounded;
   shadow?: keyof typeof dropdownStyles.shadow;
   children: React.ReactNode;
@@ -28,31 +27,20 @@ export type DropdownProps = ExtractProps<typeof Menu> & {
 
 export function Dropdown({
   inPortal = true,
+  modal = false,
   placement = 'bottom-start',
+  gap = 6,
   rounded = 'md',
   shadow = 'md',
   children,
   className,
 }: DropdownProps) {
-  const { x, y, refs, strategy } = useFloating({
-    placement,
-    middleware: [
-      flip(),
-      shift(),
-      offset({
-        mainAxis: 6,
-      }),
-    ],
-    whileElementsMounted: autoUpdate,
-  });
-
   return (
     <DropdownProvider
-      value={{ rounded, shadow, refs, x, y, strategy, inPortal }}
+      value={{ rounded, shadow, inPortal, placement, gap, modal }}
     >
       <Menu
         as="div"
-        ref={refs.setReference}
         className={cn(
           makeClassName(`dropdown-root inline-block`),
           'relative',

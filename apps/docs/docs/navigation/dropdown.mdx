@@ -33,8 +33,12 @@ A simple dropdown with component **Dropdown**.
 <Paper>
   <Dropdown>
     <Dropdown.Trigger>
-      <Button variant="outline">
-        Settings <ChevronDownIcon className="ml-2 w-5" />
+      <Button
+        as="span"
+        variant="outline"
+      >
+        Settings
+        <ChevronDownIcon className="ml-2 w-5" />
       </Button>
     </Dropdown.Trigger>
     <Dropdown.Menu className="text-sm font-inter">
@@ -53,7 +57,10 @@ export default function App() {
   return (
     <Dropdown>
       <Dropdown.Trigger>
-        <Button variant="outline">
+        <Button
+          as="span"
+          variant="outline"
+        >
           Settings <ChevronDownIcon className="ml-2 w-5" />
         </Button>
       </Dropdown.Trigger>
@@ -77,7 +84,11 @@ You can use **placement** and icon.
 <Paper>
   <Dropdown placement="bottom-end">
     <Dropdown.Trigger>
-      <ActionIcon variant="outline" rounded="full">
+      <ActionIcon
+        as="span"
+        variant="outline"
+        rounded="full"
+      >
         <AdjustmentsHorizontalIcon className="h-5 w-5" />
       </ActionIcon>
     </Dropdown.Trigger>
@@ -139,7 +150,10 @@ export default function App() {
   return (
     <Dropdown placement="bottom-end">
       <Dropdown.Trigger>
-        <ActionIcon variant="outline" rounded="full">
+        <ActionIcon
+          variant="outline"
+          rounded="full"
+        >
           <AdjustmentsHorizontalIcon className="h-5 w-5" />
         </ActionIcon>
       </Dropdown.Trigger>
@@ -209,9 +223,7 @@ The variation is limitless. You can style your **Dropdown** as you want to do.
           src="https://randomuser.me/api/portraits/women/40.jpg"
         />
         <span className="ml-2 text-start">
-          <Text className="text-gray-900 font-medium leading-tight">
-            Mary Hoops
-          </Text>
+          <Text className="text-gray-900 font-medium leading-tight">Mary Hoops</Text>
           <Text>maryhe@demo.io</Text>
         </span>
       </Dropdown.Item>
@@ -219,17 +231,11 @@ The variation is limitless. You can style your **Dropdown** as you want to do.
         <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
           Account Settings
         </Dropdown.Item>
-        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
-          Support
-        </Dropdown.Item>
-        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
-          License
-        </Dropdown.Item>
+        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">Support</Dropdown.Item>
+        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">License</Dropdown.Item>
       </div>
       <div className="mt-2 pt-2">
-        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
-          Sign Out
-        </Dropdown.Item>
+        <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">Sign Out</Dropdown.Item>
       </div>
     </Dropdown.Menu>
   </Dropdown>
@@ -255,9 +261,7 @@ export default function App() {
             src="https://randomuser.me/api/portraits/women/40.jpg"
           />
           <span className="ml-2 text-start">
-            <Text className="text-gray-900 font-medium leading-tight">
-              Mary Hoops
-            </Text>
+            <Text className="text-gray-900 font-medium leading-tight">Mary Hoops</Text>
             <Text>maryhe@demo.io</Text>
           </span>
         </Dropdown.Item>
@@ -265,17 +269,11 @@ export default function App() {
           <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
             Account Settings
           </Dropdown.Item>
-          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
-            Support
-          </Dropdown.Item>
-          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
-            License
-          </Dropdown.Item>
+          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">Support</Dropdown.Item>
+          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">License</Dropdown.Item>
         </div>
         <div className="mt-2 pt-2">
-          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">
-            Sign Out
-          </Dropdown.Item>
+          <Dropdown.Item className="hover:bg-gray-900 hover:text-gray-50">Sign Out</Dropdown.Item>
         </div>
       </Dropdown.Menu>
     </Dropdown>

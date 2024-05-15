@@ -1,30 +1,42 @@
-import React, { Fragment } from 'react';
-import { Menu, Transition } from '@headlessui/react';
-import { FloatingPortal } from '@floating-ui/react';
 import { cn } from '../../lib/cn';
+import React, { Fragment } from 'react';
+import { useDropdown } from './dropdown-context';
 import { makeClassName } from '../../lib/make-class-name';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
-import { useDropdown } from './dropdown-context';
+import { OurPlacementType, TheirPlacementType } from './dropdown';
+import { MenuItems, Transition, type MenuItemsProps } from '@headlessui/react';
 
-type DropdownMenuProps = {
-  as?: 'ul' | 'div';
-  className?: string;
+const ourPlacementObject: {
+  [key in TheirPlacementType]: OurPlacementType;
+} = {
+  top: 'top',
+  right: 'right',
+  bottom: 'bottom',
+  left: 'left',
+  'top-start': 'top start',
+  'top-end': 'top end',
+  'bottom-start': 'bottom start',
+  'bottom-end': 'bottom end',
+  'right-start': 'right start',
+  'right-end': 'right end',
+  'left-start': 'left start',
+  'left-end': 'left end',
 };
 
+type DropdownMenuProps = {
+  className?: string;
+} & MenuItemsProps;
+
 export function DropdownMenu({
-  as = 'div',
   className,
   children,
+  ...props
 }: React.PropsWithChildren<DropdownMenuProps>) {
-  const { inPortal, rounded, shadow, refs, strategy, x, y } = useDropdown();
-  const TransitionComponent: React.ElementType = Transition;
-  const MenuItems: React.ElementType = Menu.Items;
-
-  const PortalComponent = inPortal ? FloatingPortal : Fragment;
+  const { rounded, shadow, placement, gap, inPortal, modal } = useDropdown();
 
   return (
-    <PortalComponent>
-      <TransitionComponent
+    <>
+      <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
         enterFrom="transform opacity-0 scale-95"
@@ -34,9 +46,12 @@ export function DropdownMenu({
         leaveTo="transform opacity-0 scale-95"
       >
         <MenuItems
-          as={as}
-          ref={refs.setFloating}
-          data-testid="dropdown-menu"
+          anchor={{
+            to: ourPlacementObject[placement],
+            gap: gap,
+          }}
+          portal={inPortal}
+          modal={modal}
           className={cn(
             makeClassName(`dropdown-menu`),
             'w-48',
@@ -45,16 +60,12 @@ export function DropdownMenu({
             shadow && dropdownStyles.shadow[shadow],
             className
           )}
-          style={{
-            position: strategy,
-            top: y ?? 0,
-            left: x ?? 0,
-          }}
+          {...props}
         >
           {children}
         </MenuItems>
-      </TransitionComponent>
-    </PortalComponent>
+      </Transition>
+    </>
   );
 }
 
