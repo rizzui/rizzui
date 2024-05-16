@@ -8,11 +8,7 @@ import { DropdownProvider } from './dropdown-context';
 import { ExtractProps } from '../../lib/extract-props';
 import { makeClassName } from '../../lib/make-class-name';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
-
-type Align = 'start' | 'end';
-type Side = 'top' | 'right' | 'bottom' | 'left';
-export type TheirPlacementType = `${Side}` | `${Side}-${Align}`;
-export type OurPlacementType = `${Side}` | `${Side} ${Align}`;
+import { TheirPlacementType } from './dropdown.lib';
 
 export type DropdownProps = ExtractProps<typeof Menu> & {
   gap?: number;

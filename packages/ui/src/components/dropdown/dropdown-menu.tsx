@@ -1,27 +1,10 @@
 import { cn } from '../../lib/cn';
 import React, { Fragment } from 'react';
 import { useDropdown } from './dropdown-context';
+import { ourPlacementObject } from './dropdown.lib';
 import { makeClassName } from '../../lib/make-class-name';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
-import { OurPlacementType, TheirPlacementType } from './dropdown';
 import { MenuItems, Transition, type MenuItemsProps } from '@headlessui/react';
-
-const ourPlacementObject: {
-  [key in TheirPlacementType]: OurPlacementType;
-} = {
-  top: 'top',
-  right: 'right',
-  bottom: 'bottom',
-  left: 'left',
-  'top-start': 'top start',
-  'top-end': 'top end',
-  'bottom-start': 'bottom start',
-  'bottom-end': 'bottom end',
-  'right-start': 'right start',
-  'right-end': 'right end',
-  'left-start': 'left start',
-  'left-end': 'left end',
-};
 
 type DropdownMenuProps = {
   className?: string;

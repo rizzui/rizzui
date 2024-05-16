@@ -34,6 +34,8 @@ export default function SelectBox({
   return (
     <>
       <Select
+        placement=""
+        inPortal={false}
         options={options}
         onChange={setValue}
         value={value}

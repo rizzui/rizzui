@@ -1,16 +1,14 @@
-import { Listbox, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
 import {
-  type Placement,
-  flip,
-  shift,
-  offset,
-  autoUpdate,
-  useFloating,
-  FloatingPortal,
-} from '@floating-ui/react';
+  Listbox,
+  Label,
+  ListboxButton,
+  ListboxOptions,
+  ListboxOption,
+  Transition,
+} from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
-import { useElementSize } from '../../lib/use-element-size';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
@@ -20,13 +18,14 @@ import { labelStyles } from '../../lib/label-size';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { makeClassName } from '../../lib/make-class-name';
 import {
+  TheirPlacementType,
   displayValueFn,
   getOptionDisplayValueFn,
   getOptionValueFn,
   isEmpty,
   isNumber,
+  ourPlacementObject,
 } from './select.lib';
-import { Fragment } from 'react';
 
 const selectStyles = {
   base: 'flex items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
@@ -64,7 +63,7 @@ const selectStyles = {
 };
 
 const optionListStyles = {
-  base: `${dropdownStyles.base} max-h-[265px] w-full overflow-auto !outline-none !ring-0 !m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
+  base: `${dropdownStyles.base} max-h-[256px] overflow-auto !outline-none !ring-0 !m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
   shadow: dropdownStyles.shadow,
   rounded: {
     none: 'rounded-none',
@@ -132,8 +131,12 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   helperText?: React.ReactNode;
   /** Add custom classes for container */
   className?: string;
-  /** Add custom classes for container */
-  placement?: Placement;
+  /** Define the position of dropdown */
+  placement?: TheirPlacementType;
+  /** Define the gap between the selected and dropdown */
+  gap?: number;
+  /** Whether it is rendered on the modal or not */
+  modal?: boolean;
   /** Use labelClassName prop to do some addition style for the field label */
   labelClassName?: string;
   /** Add custom classes for select */
@@ -182,13 +185,15 @@ export function Select<OptionType extends SelectOption>({
   prefix = null,
   placeholder = 'Select...',
   inPortal = true,
+  modal = false,
   displayValue = displayValueFn,
   getOptionDisplayValue = getOptionDisplayValueFn,
   getOptionValue = getOptionValueFn,
   value,
   onClear,
   clearable,
-  placement = 'bottom-start',
+  placement = 'bottom',
+  gap = 6,
   size = 'md',
   rounded = 'md',
   shadow = 'md',
@@ -205,26 +210,10 @@ export function Select<OptionType extends SelectOption>({
   dropdownClassName,
   ...props
 }: SelectProps<OptionType>) {
-  const [ref, { width }] = useElementSize();
-  const { x, y, refs, strategy } = useFloating({
-    placement,
-    middleware: [
-      flip(),
-      shift(),
-      offset({
-        mainAxis: 6,
-      }),
-    ],
-    whileElementsMounted: autoUpdate,
-  });
-
   const emptyValue = !isNumber(value) && isEmpty(value);
-
-  const PortalComponent = inPortal ? FloatingPortal : Fragment;
 
   return (
     <div
-      ref={ref}
       className={cn(
         makeClassName(`select-root`),
         'grid w-full grid-cols-1',
@@ -235,7 +224,7 @@ export function Select<OptionType extends SelectOption>({
         {({ open }) => (
           <>
             {label && (
-              <Listbox.Label
+              <Label
                 className={cn(
                   makeClassName(`select-label`),
                   'block',
@@ -246,11 +235,11 @@ export function Select<OptionType extends SelectOption>({
                 )}
               >
                 {label}
-              </Listbox.Label>
+              </Label>
             )}
 
-            <div ref={refs.setReference} className={cn('h-full')}>
-              <Listbox.Button
+            <div className={cn('h-full')}>
+              <ListboxButton
                 className={cn(
                   makeClassName(`select-button`),
                   selectStyles.base,
@@ -311,65 +300,73 @@ export function Select<OptionType extends SelectOption>({
                     {suffix}
                   </span>
                 ) : null}
-              </Listbox.Button>
+              </ListboxButton>
 
               {open ? (
-                <PortalComponent>
+                <>
                   <Transition
                     as={Fragment}
                     leave="transition ease-in duration-100"
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options
-                      ref={refs.setFloating}
-                      className={cn(
-                        makeClassName(`select-options`),
-                        optionListStyles.base,
-                        optionListStyles.shadow[shadow],
-                        optionListStyles.rounded[rounded],
-                        dropdownClassName
-                      )}
-                      style={{
-                        width,
-                        position: strategy,
-                        top: y ?? 0,
-                        left: x ?? 0,
+                    <ListboxOptions
+                      modal={modal}
+                      portal={inPortal}
+                      className="-mt-[3px] p-[3px]"
+                      anchor={{
+                        to: ourPlacementObject[placement],
+                        gap: gap,
                       }}
                     >
-                      {options.map((option) => (
-                        <Listbox.Option
-                          key={option.value}
-                          {...(option?.disabled && {
-                            disabled: option?.disabled,
-                          })}
-                          className={({ active }) =>
-                            cn(
-                              makeClassName(`select-option`),
-                              'flex w-full items-center px-3 py-1.5',
-                              active && 'bg-muted/70',
-                              rounded && optionListStyles.item.rounded[rounded],
-                              size && optionListStyles.item.size[size],
-                              !option?.disabled && 'cursor-pointer',
-                              optionClassName
-                            )
-                          }
-                          value={getOptionValue(option)}
-                        >
-                          {({ selected }) => (
-                            <div
-                              className={cn(
-                                selected ? 'font-medium' : 'text-foreground'
-                              )}
-                            >
-                              {getOptionDisplayValue(option)}
-                            </div>
-                          )}
-                        </Listbox.Option>
-                      ))}
-                    </Listbox.Options>
+                      <div
+                        className={cn(
+                          'rizzui-select-options',
+                          makeClassName(`select-options`),
+                          optionListStyles.base,
+                          optionListStyles.shadow[shadow],
+                          optionListStyles.rounded[rounded],
+                          dropdownClassName
+                        )}
+                        style={{
+                          width: 'var(--button-width)',
+                        }}
+                      >
+                        {options.map((option) => (
+                          <ListboxOption
+                            key={option.value}
+                            {...(option?.disabled && {
+                              disabled: option?.disabled,
+                            })}
+                            className={({ focus }) =>
+                              cn(
+                                makeClassName(`select-option`),
+                                'flex w-full items-center px-3 py-1.5',
+                                focus && 'bg-muted/70',
+                                rounded &&
+                                  optionListStyles.item.rounded[rounded],
+                                size && optionListStyles.item.size[size],
+                                !option?.disabled && 'cursor-pointer',
+                                optionClassName
+                              )
+                            }
+                            value={getOptionValue(option)}
+                          >
+                            {({ selected }) => (
+                              <div
+                                className={cn(
+                                  selected ? 'font-medium' : 'text-foreground'
+                                )}
+                              >
+                                {getOptionDisplayValue(option)}
+                              </div>
+                            )}
+                          </ListboxOption>
+                        ))}
+                      </div>
+                    </ListboxOptions>
                   </Transition>
-                </PortalComponent>
+                </>
               ) : null}
             </div>
           </>

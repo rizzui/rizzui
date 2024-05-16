@@ -1,5 +1,8 @@
 import React from 'react';
-import { Tab as HeadlessTab } from '@headlessui/react';
+import {
+  TabList as HeadlessTabList,
+  type TabListProps as HeadlessTabListProps,
+} from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
 import { TabListItem } from './tab-list-item';
@@ -15,7 +18,7 @@ const tabListStyles = {
     'justify-start border-b gap-4 pb-[1px] overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden',
 };
 
-export type TabListProps = ExtractProps<typeof HeadlessTab.List> & {};
+export type TabListProps = ExtractProps<HeadlessTabListProps> & {};
 
 export function TabList({ children, className, ...props }: TabListProps) {
   const {
@@ -31,7 +34,7 @@ export function TabList({ children, className, ...props }: TabListProps) {
   useRePositioningActiveTab({ ref, activeTab });
 
   return (
-    <HeadlessTab.List
+    <HeadlessTabList
       ref={ref}
       onMouseLeave={() => setDisplayHighlight && setDisplayHighlight(false)}
       className={cn(
@@ -57,7 +60,7 @@ export function TabList({ children, className, ...props }: TabListProps) {
           hoverWidthRatio={1}
         />
       ) : null}
-    </HeadlessTab.List>
+    </HeadlessTabList>
   );
 }
 

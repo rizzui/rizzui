@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab as HeadlessTab } from '@headlessui/react';
+import { Tab as HeadlessTab, type TabProps } from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
 import { useTab } from './tab-context';
@@ -12,7 +12,7 @@ const tabListItemStyles = {
   horizontal: 'before:w-full before:h-0.5 before:start-0 before:-bottom-[1px]',
 };
 
-export type TabListItemProps = ExtractProps<typeof HeadlessTab> & {
+export type TabListItemProps = ExtractProps<TabProps> & {
   activeClassName?: string;
 };
 

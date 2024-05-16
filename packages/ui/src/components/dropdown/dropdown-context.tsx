@@ -1,5 +1,5 @@
-import { TheirPlacementType } from './dropdown';
 import React, { createContext, useContext } from 'react';
+import { TheirPlacementType } from './dropdown.lib';
 
 type DropdownContextProps = {
   inPortal?: boolean;
