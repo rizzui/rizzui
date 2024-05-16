@@ -217,7 +217,7 @@ export const WithCustomSize = () => {
       <Drawer
         isOpen={drawerState}
         onClose={() => setDrawerState(false)}
-        customSize="600px"
+        customSize={600}
       >
         <div className="px-5 py-4">Custom Size = 600px</div>
       </Drawer>

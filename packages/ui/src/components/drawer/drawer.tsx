@@ -7,8 +7,9 @@ import {
 } from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
+import { useResizeHandler } from './drawer.lib';
 
-const drawerClasses = {
+export const drawerClasses = {
   overlay:
     'fixed inset-0 cursor-pointer bg-black bg-opacity-60 transition-opacity dark:bg-opacity-80',
   placement: {
@@ -33,11 +34,17 @@ const drawerClasses = {
     xl: 'max-w-[60%]',
     full: 'max-w-full',
   },
+  resizeHandlerPlacement: {
+    top: 'start-1/2 -translate-x-1/2 bottom-1 w-14 h-2 cursor-n-resize',
+    right: 'start-1 top-1/2 h-14 w-2 -translate-y-1/2 cursor-w-resize',
+    bottom: 'start-1/2 -translate-x-1/2 top-1 w-14 h-2 cursor-n-resize',
+    left: 'end-1 top-1/2 h-14 w-2 -translate-y-1/2 cursor-w-resize',
+  }
 };
 
-const CHECK_VALID_CUSTOM_SIZE = /(\d*px)|(\d*%)?/g;
+// const CHECK_VALID_CUSTOM_SIZE = /(\d*px)|(\d*%)?/g;
 
-function isPlacementOnYAxis(placement: keyof typeof drawerClasses.placement) {
+export function isPlacementOnYAxis(placement: keyof typeof drawerClasses.placement) {
   return ['top', 'bottom'].indexOf(placement) !== -1;
 }
 
@@ -53,11 +60,15 @@ export type DrawerProps = {
   /** Preset size of drawer is sm, md, lg, xl, full */
   size?: DrawerSize;
   /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" */
-  customSize?: string;
+  customSize?: number;
+  /** Enable resizer for Drawer */
+  enableResizer?: boolean;
   /** Override default CSS style of Drawer's overlay */
   overlayClassName?: string;
   /** Set custom style classes for the Drawer container, where you can set custom Drawer size and padding and background color */
   containerClassName?: string;
+  /** Set custom style classes for the Drawer resizer */
+  resizerClassName?: string;
   /** Set custom style classes for the Drawer root element */
   className?: string;
 };
@@ -71,23 +82,28 @@ export function Drawer({
   size = 'md',
   placement = 'right',
   customSize,
+  enableResizer = false,
   overlayClassName,
   containerClassName,
+  resizerClassName,
   className,
   children,
 }: React.PropsWithChildren<DrawerProps>) {
   const TransitionComponent: React.ElementType = Transition;
   const TransitionChild: React.ElementType = HeadLessTransitionChild;
+  const { handleMouseDown, containerRef, width } = useResizeHandler({placement, customSize});
+
   // checking customSize value
-  if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
-    const checkedCustomSizeValue =
-      customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
-    if (checkedCustomSizeValue[0] === '') {
-      console.warn(
-        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"'
-      );
-    }
-  }
+  // if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
+  //   const checkedCustomSizeValue =
+  //     customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
+  //   if (checkedCustomSizeValue[0] === '') {
+  //     console.warn(
+  //       'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"'
+  //     );
+  //   }
+  // }
+
   return (
     <TransitionComponent appear show={isOpen} as={Fragment}>
       <Dialog
@@ -109,6 +125,7 @@ export function Drawer({
           leaveTo="opacity-0"
         >
           <div
+          onMouseDown={handleMouseDown}
             className={cn(
               makeClassName(`drawer-overlay`),
               drawerClasses.overlay,
@@ -120,7 +137,7 @@ export function Drawer({
           -> Please do not remove this Sr Only button.
           -> It's required this button to tackle the HeadlessUI's FocusTap Warnings
         */}
-        <button type="button" className="sr-only">
+        <button type="button" className="sr-only !min-w-[320px]">
           Sr Only
         </button>
         <TransitionChild
@@ -137,6 +154,7 @@ export function Drawer({
           leaveTo={drawerClasses.placement[placement]}
         >
           <DialogPanel
+            ref={containerRef}
             className={cn(
               makeClassName(`drawer-container`),
               'fixed h-full w-full break-words bg-background shadow-xl',
@@ -144,6 +162,7 @@ export function Drawer({
               placement === 'right' && 'inset-y-0 right-0',
               placement === 'bottom' && 'bottom-0',
               placement === 'left' && 'inset-y-0 left-0',
+              customSize && [isPlacementOnYAxis(placement) ? 'max-h-screen min-h-96' : 'max-w-full min-w-96'],
               !customSize && [
                 isPlacementOnYAxis(placement)
                   ? drawerClasses.sizeOfYAxisDrawer[size]
@@ -153,15 +172,21 @@ export function Drawer({
             )}
             {...(customSize && {
               style: {
-                maxHeight: isPlacementOnYAxis(placement)
-                  ? customSize
+                height: isPlacementOnYAxis(placement)
+                  ? width
                   : 'inherit',
-                maxWidth: !isPlacementOnYAxis(placement)
-                  ? customSize
-                  : 'inherit',
+                width: !isPlacementOnYAxis(placement)
+                  ? width
+                  : '100%',
               },
             })}
           >
+            {enableResizer && 
+            <div 
+            onMouseDown={handleMouseDown}
+            className={cn("absolute rounded-md bg-gray-400", drawerClasses.resizeHandlerPlacement[placement], resizerClassName)}
+            />
+          }
             {children}
           </DialogPanel>
         </TransitionChild>

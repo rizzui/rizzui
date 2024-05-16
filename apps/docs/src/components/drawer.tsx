@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Drawer,
-  Text,
-  Title,
-  ActionIcon,
-  Badge,
-  Empty,
-  EmptyProductBoxIcon,
-} from "rizzui";
+import { Button, Drawer, Text, Title, ActionIcon, Badge, Empty, EmptyProductBoxIcon } from "rizzui";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
@@ -21,6 +12,7 @@ export default function DrawerDefault() {
         isOpen={drawerState}
         onClose={() => setDrawerState(false)}
         className="z-[9999]"
+        customSize={384}
       >
         <div className="py-4 px-5">Default Drawer</div>
       </Drawer>
@@ -101,9 +93,7 @@ export function DrawerSizes() {
       <Drawer
         isOpen={drawerSate.isOpen}
         size={drawerSate.size}
-        onClose={() =>
-          setDrawerState((prevState) => ({ ...prevState, isOpen: false }))
-        }
+        onClose={() => setDrawerState((prevState) => ({ ...prevState, isOpen: false }))}
         className="z-[9999]"
       >
         <div className="py-4 px-5">
@@ -113,7 +103,8 @@ export function DrawerSizes() {
             {drawerSate.size}
             &quot;
           </Text>{" "}
-          size Drawer
+          size Drawer. Press
+          <Text as="strong">&quot; Esc &quot;</Text> key to close Drawer.
         </div>
       </Drawer>
     </>
@@ -183,11 +174,11 @@ export function DrawerPlacement() {
         </div>
       </div>
       <Drawer
+        customSize={384}
+        enableResizer={true}
         isOpen={drawerSate.isOpen}
         placement={drawerSate.placement}
-        onClose={() =>
-          setDrawerState((prevState) => ({ ...prevState, isOpen: false }))
-        }
+        onClose={() => setDrawerState((prevState) => ({ ...prevState, isOpen: false }))}
         className="z-[9999]"
       >
         <div className="py-4 px-5">
@@ -211,7 +202,7 @@ export function DrawerCustomSize() {
       <Drawer
         isOpen={drawerState}
         onClose={() => setDrawerState(false)}
-        customSize="600px"
+        customSize={600}
         className="z-[9999]"
       >
         <div className="py-4 px-5">Custom Size = 600px</div>
@@ -250,7 +241,10 @@ export function DrawerIcons() {
         onClick={() => setDrawerState(true)}
         className="relative inline-flex cursor-pointer"
       >
-        <ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
+        <ShoppingBagIcon
+          className="h-auto w-8"
+          strokeWidth={1.2}
+        />
         <Badge
           size="sm"
           enableOutlineRing
@@ -272,7 +266,10 @@ export function DrawerIcons() {
               variant="outline"
               onClick={() => setDrawerState(false)}
             >
-              <XMarkIcon className="h-auto w-5" strokeWidth={1.5} />
+              <XMarkIcon
+                className="h-auto w-5"
+                strokeWidth={1.5}
+              />
             </ActionIcon>
           </header>
           {/* End of drawer header */}
@@ -284,7 +281,10 @@ export function DrawerIcons() {
             />
           </div>
           {/* End of drawer body */}
-          <Button size="lg" className="sticky bottom-0 z-10">
+          <Button
+            size="lg"
+            className="sticky bottom-0 z-10"
+          >
             Proceed to Checkout
           </Button>
           {/* End of drawer footer */}

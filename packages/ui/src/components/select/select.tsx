@@ -63,7 +63,7 @@ const selectStyles = {
 };
 
 const optionListStyles = {
-  base: `${dropdownStyles.base} max-h-[256px] overflow-auto !outline-none !ring-0 !m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
+  base: `${dropdownStyles.base} overflow-auto w-[var(--button-width)] !outline-none !ring-0 m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
   shadow: dropdownStyles.shadow,
   rounded: {
     none: 'rounded-none',
@@ -87,6 +87,8 @@ const optionListStyles = {
       pill: 'rounded-lg',
     },
   },
+  inPortal: '[--anchor-max-height:256px;]',
+  notInPortal: 'absolute z-10 h-[256px] start-0 top-full mt-1.5'
 };
 
 export type SelectOption = {
@@ -192,7 +194,7 @@ export function Select<OptionType extends SelectOption>({
   value,
   onClear,
   clearable,
-  placement = 'bottom',
+  placement = 'bottom-start',
   gap = 6,
   size = 'md',
   rounded = 'md',
@@ -238,7 +240,7 @@ export function Select<OptionType extends SelectOption>({
               </Label>
             )}
 
-            <div className={cn('h-full')}>
+            <div className={cn('h-full', !inPortal && 'relative')}>
               <ListboxButton
                 className={cn(
                   makeClassName(`select-button`),
@@ -279,6 +281,7 @@ export function Select<OptionType extends SelectOption>({
 
                 {clearable && !emptyValue ? (
                   <FieldClearButton
+                    as={'span'}
                     size={size}
                     onClick={(e) => {
                       e.stopPropagation();
@@ -313,57 +316,47 @@ export function Select<OptionType extends SelectOption>({
                     <ListboxOptions
                       modal={modal}
                       portal={inPortal}
-                      className="-mt-[3px] p-[3px]"
-                      anchor={{
-                        to: ourPlacementObject[placement],
-                        gap: gap,
-                      }}
+                      {...(inPortal && {anchor: {to: ourPlacementObject[placement], gap: gap}})}
+                      className={cn(
+                        makeClassName(`select-options`),
+                        optionListStyles.base,
+                        optionListStyles.shadow[shadow],
+                        optionListStyles.rounded[rounded],
+                        inPortal ? optionListStyles.inPortal : optionListStyles.notInPortal,
+                        dropdownClassName
+                      )}
                     >
-                      <div
-                        className={cn(
-                          'rizzui-select-options',
-                          makeClassName(`select-options`),
-                          optionListStyles.base,
-                          optionListStyles.shadow[shadow],
-                          optionListStyles.rounded[rounded],
-                          dropdownClassName
-                        )}
-                        style={{
-                          width: 'var(--button-width)',
-                        }}
-                      >
-                        {options.map((option) => (
-                          <ListboxOption
-                            key={option.value}
-                            {...(option?.disabled && {
-                              disabled: option?.disabled,
-                            })}
-                            className={({ focus }) =>
-                              cn(
-                                makeClassName(`select-option`),
-                                'flex w-full items-center px-3 py-1.5',
-                                focus && 'bg-muted/70',
-                                rounded &&
-                                  optionListStyles.item.rounded[rounded],
-                                size && optionListStyles.item.size[size],
-                                !option?.disabled && 'cursor-pointer',
-                                optionClassName
-                              )
-                            }
-                            value={getOptionValue(option)}
-                          >
-                            {({ selected }) => (
-                              <div
-                                className={cn(
-                                  selected ? 'font-medium' : 'text-foreground'
-                                )}
-                              >
-                                {getOptionDisplayValue(option)}
-                              </div>
-                            )}
-                          </ListboxOption>
-                        ))}
-                      </div>
+                      {options.map((option) => (
+                        <ListboxOption
+                          key={option.value}
+                          {...(option?.disabled && {
+                            disabled: option?.disabled,
+                          })}
+                          className={({ focus }) =>
+                            cn(
+                              makeClassName(`select-option`),
+                              'flex w-full items-center px-3 py-1.5',
+                              focus && 'bg-muted/70',
+                              rounded &&
+                                optionListStyles.item.rounded[rounded],
+                              size && optionListStyles.item.size[size],
+                              !option?.disabled && 'cursor-pointer',
+                              optionClassName
+                            )
+                          }
+                          value={getOptionValue(option)}
+                        >
+                          {({ selected }) => (
+                            <div
+                              className={cn(
+                                selected ? 'font-medium' : 'text-foreground'
+                              )}
+                            >
+                              {getOptionDisplayValue(option)}
+                            </div>
+                          )}
+                        </ListboxOption>
+                      ))}
                     </ListboxOptions>
                   </Transition>
                 </>

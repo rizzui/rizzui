@@ -3,10 +3,7 @@ sidebar_position: 10
 ---
 
 import Paper from "@site/src/components/paper";
-import SelectBox, {
-  SelectBoxClearable,
-  CustomOptionSelectBox,
-} from "@site/src/components/select";
+import SelectBox, { SelectBoxClearable, CustomOptionSelectBox } from "@site/src/components/select";
 
 # Select
 
@@ -57,7 +54,10 @@ export default function App() {
 You can clear **Select** value using clearable property.
 
 <Paper>
-  <SelectBoxClearable clearable className="w-full max-w-md" />
+  <SelectBoxClearable
+    clearable
+    className="w-full max-w-md"
+  />
 </Paper>
 
 ```tsx
@@ -183,6 +183,8 @@ Here is the API documentation of the **Select** component.
 |         size          |      [SelectSizes](#select-sizes)       |                                                                           The size of the component. "sm" is equivalent to the dense select styling.                                                                           |    `"md"`     |
 |        rounded        |    [SelectRounded](#select-rounded)     |                                                                                                   The rounded variants are:                                                                                                    |    `"md"`     |
 |       inPortal        |                `boolean`                |                                                                                    Whether select options is rendered on the portal or not                                                                                     |   `"true"`    |
+|         modal         |                `boolean`                |                                                                             Whether the body scrollbar is hidden or not when dropdown is visible.                                                                              |   `"false"`   |
+|          gap          |                `number`                 |                                                                                  Sets the gap between trigger and dropdown if portal is true                                                                                   |     `"6"`     |
 |      placeholder      |                `string`                 |                                                                                                  Set select placeholder text                                                                                                   | `"Select..."` |
 |       disabled        |                `boolean`                |                                                                                             Whether the select is disabled or not                                                                                              |     \_\_      |
 |       clearable       |                `boolean`                |                                                                                                      Add clearable option                                                                                                      |     \_\_      |
