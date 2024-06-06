@@ -5,6 +5,7 @@ node_modules
 .pnp
 .pnp.js
 
+
 # testing
 coverage
 
@@ -33,3 +34,5 @@ yarn-error.log*
 
 # turbo
 .turbo
+%SystemDrive%
+coverage

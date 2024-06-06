@@ -10,8 +10,6 @@ type DropdownMenuProps = {
   className?: string;
 } & MenuItemsProps;
 
-const notInPortal = 'absolute z-10 start-0 mt-1.5'
-
 export function DropdownMenu({
   className,
   children,
@@ -33,14 +31,16 @@ export function DropdownMenu({
         <MenuItems
           modal={modal}
           portal={inPortal}
-          {...(inPortal && {anchor: {to: ourPlacementObject[placement], gap: gap}})}
+          {...(inPortal && {
+            anchor: { to: ourPlacementObject[placement], gap: gap },
+          })}
           className={cn(
             makeClassName(`dropdown-menu`),
             'w-48',
             dropdownStyles.base,
             rounded && dropdownStyles.rounded[rounded],
             shadow && dropdownStyles.shadow[shadow],
-            !inPortal && notInPortal,
+            !inPortal && 'absolute start-0 z-10 mt-1.5',
             className
           )}
           {...props}

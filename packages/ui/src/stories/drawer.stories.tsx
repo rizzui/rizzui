@@ -190,6 +190,8 @@ export const WithPlacement = () => {
         </div>
       </div>
       <Drawer
+        enableResizer={true}
+        customSize={400}
         isOpen={drawerSate.isOpen}
         placement={drawerSate.placement}
         onClose={() =>
