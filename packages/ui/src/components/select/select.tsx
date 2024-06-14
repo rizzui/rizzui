@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 import {
   Listbox,
   Label,
@@ -17,6 +17,7 @@ import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { makeClassName } from '../../lib/make-class-name';
+import { SearchIcon } from '../../icons/search';
 import {
   TheirPlacementType,
   displayValueFn,
@@ -25,6 +26,7 @@ import {
   isEmpty,
   isNumber,
   ourPlacementObject,
+  preventHeadlessUIKeyboardInterActions,
 } from './select.lib';
 
 const selectStyles = {
@@ -88,7 +90,16 @@ const optionListStyles = {
     },
   },
   inPortal: '[--anchor-max-height:256px;]',
-  notInPortal: 'absolute z-10 h-[256px] start-0 top-full mt-1.5'
+  notInPortal: 'absolute z-10 h-[256px] start-0 top-full mt-1.5',
+};
+
+const searchStyles = {
+  base: 'relative mb-2 block',
+  inputBase: 'px-10 placeholder:text-muted-foreground',
+  prefix:
+    'absolute z-10 start-1 top-5 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
+  suffix:
+    'absolute z-10 end-1 top-5 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
 };
 
 export type SelectOption = {
@@ -125,6 +136,30 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   prefix?: React.ReactNode;
   /** The suffix is design for adding any icon or text on the select field's end (it's a right icon for the `ltr` and left icon for the `rtl`) */
   suffix?: React.ReactNode;
+  /** Whether the select is searchable or not */
+  isSearchAble?: boolean;
+  /** The type of the search input */
+  searchType?: 'text' | 'search';
+  /** The props for the search input */
+  searchProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  /** The prefix for the search input */
+  searchPrefix?: React.ReactNode;
+  /** The suffix for the search input */
+  searchSuffix?: React.ReactNode;
+  /** Whether the search input is disabled */
+  searchDisabled?: boolean;
+  /** Whether the search input is readonly */
+  searchReadOnly?: boolean;
+  /** Add custom classes for search input */
+  searchClassName?: string;
+  /** Set search input placeholder text */
+  searchPlaceHolder?: string;
+  /** Add search prefix custom style */
+  searchPrefixClassName?: string;
+  /** Add search suffix custom style */
+  searchSuffixClassName?: string;
+  /** Add search container custom style */
+  searchContainerClassName?: string;
   /** Whether it is rendered on the portal or not */
   inPortal?: boolean;
   /** Show error message using this prop */
@@ -201,6 +236,14 @@ export function Select<OptionType extends SelectOption>({
   shadow = 'md',
   variant = 'outline',
   suffix = <ChevronDownIcon strokeWidth="2" className="h-4 w-4" />,
+  isSearchAble,
+  searchType,
+  searchProps,
+  searchPrefix = <SearchIcon strokeWidth="2" className="h-4 w-4" />,
+  searchSuffix = null,
+  searchDisabled,
+  searchReadOnly,
+  searchPlaceHolder = 'Search...',
   className,
   labelClassName,
   selectClassName,
@@ -209,10 +252,29 @@ export function Select<OptionType extends SelectOption>({
   prefixClassName,
   errorClassName,
   helperClassName,
+  searchClassName,
   dropdownClassName,
+  searchPrefixClassName,
+  searchSuffixClassName,
+  searchContainerClassName,
   ...props
 }: SelectProps<OptionType>) {
   const emptyValue = !isNumber(value) && isEmpty(value);
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  function handleOnClear(e: React.MouseEvent) {
+    e.stopPropagation();
+    setSearchQuery(() => '');
+    onClear && onClear(e);
+  }
+
+  const filteredOptions = useMemo(
+    () =>
+      options.filter((item) =>
+        item.label.toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+    [searchQuery]
+  );
 
   return (
     <div
@@ -283,10 +345,7 @@ export function Select<OptionType extends SelectOption>({
                   <FieldClearButton
                     as={'span'}
                     size={size}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onClear && onClear(e);
-                    }}
+                    onClick={handleOnClear}
                     hasSuffix={Boolean(suffix)}
                   />
                 ) : null}
@@ -316,17 +375,83 @@ export function Select<OptionType extends SelectOption>({
                     <ListboxOptions
                       modal={modal}
                       portal={inPortal}
-                      {...(inPortal && {anchor: {to: ourPlacementObject[placement], gap: gap}})}
+                      {...(inPortal && {
+                        anchor: {
+                          to: ourPlacementObject[placement],
+                          gap: gap,
+                        },
+                      })}
                       className={cn(
                         makeClassName(`select-options`),
                         optionListStyles.base,
                         optionListStyles.shadow[shadow],
                         optionListStyles.rounded[rounded],
-                        inPortal ? optionListStyles.inPortal : optionListStyles.notInPortal,
+                        inPortal
+                          ? optionListStyles.inPortal
+                          : optionListStyles.notInPortal,
                         dropdownClassName
                       )}
                     >
-                      {options.map((option) => (
+                      {isSearchAble && (
+                        <span
+                          className={cn(
+                            searchStyles.base,
+                            searchContainerClassName
+                          )}
+                        >
+                          {searchPrefix ? (
+                            <span
+                              className={cn(
+                                makeClassName(`select-prefix`),
+                                searchStyles.prefix,
+                                searchPrefix && selectStyles.prefix.size[size],
+                                searchPrefixClassName
+                              )}
+                            >
+                              {searchPrefix}
+                            </span>
+                          ) : null}
+                          <input
+                            type={searchType}
+                            spellCheck={false}
+                            value={searchQuery}
+                            disabled={searchDisabled}
+                            readOnly={searchReadOnly}
+                            placeholder={searchPlaceHolder}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            // prevent headless ui from handling these keys
+                            onKeyDown={(e) =>
+                              preventHeadlessUIKeyboardInterActions(e)
+                            }
+                            className={cn(
+                              makeClassName(`select-search`),
+                              selectStyles.base,
+                              selectStyles.size[size],
+                              selectStyles.variant[variant],
+                              selectStyles.rounded[rounded],
+                              searchDisabled && selectStyles.disabled,
+                              searchStyles.inputBase,
+                              searchClassName
+                            )}
+                            {...searchProps}
+                          />
+
+                          {searchSuffix ? (
+                            <span
+                              className={cn(
+                                makeClassName(`select-suffix`),
+                                searchStyles.suffix,
+                                searchSuffix && selectStyles.suffix.size[size],
+                                searchSuffixClassName
+                              )}
+                            >
+                              {searchSuffix}
+                            </span>
+                          ) : null}
+                        </span>
+                      )}
+
+                      {filteredOptions.map((option) => (
                         <ListboxOption
                           key={option.value}
                           {...(option?.disabled && {
@@ -337,8 +462,7 @@ export function Select<OptionType extends SelectOption>({
                               makeClassName(`select-option`),
                               'flex w-full items-center px-3 py-1.5',
                               focus && 'bg-muted/70',
-                              rounded &&
-                                optionListStyles.item.rounded[rounded],
+                              rounded && optionListStyles.item.rounded[rounded],
                               size && optionListStyles.item.size[size],
                               !option?.disabled && 'cursor-pointer',
                               optionClassName

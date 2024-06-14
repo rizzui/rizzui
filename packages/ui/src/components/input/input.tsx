@@ -234,6 +234,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
             {clearable ? (
               <FieldClearButton
+                as="span"
                 size={size}
                 onClick={onClear}
                 hasSuffix={Boolean(suffix)}

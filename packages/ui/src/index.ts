@@ -74,3 +74,5 @@ export * from './components/typography';
 export * from './components/accordion';
 
 export * from './components/select';
+
+export * from './components/multi-select';

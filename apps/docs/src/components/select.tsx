@@ -43,6 +43,7 @@ export default function SelectBox({
         })}
         label={label}
         {...props}
+        isSearchAble={true}
       />
     </>
   );

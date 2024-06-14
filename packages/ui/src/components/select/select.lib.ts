@@ -59,3 +59,24 @@ export const ourPlacementObject: {
   'left-start': 'left start',
   'left-end': 'left end',
 };
+
+export function preventHeadlessUIKeyboardInterActions(e: React.KeyboardEvent) {
+  const allowedHeadlessUIKeys = [
+    'ArrowUp',
+    'ArrowDown',
+    'Enter',
+    ' ',
+    'Home',
+    'End',
+    'Escape',
+  ];
+  if (
+    !allowedHeadlessUIKeys.includes(e.key) ||
+    e.shiftKey ||
+    e.ctrlKey ||
+    e.metaKey ||
+    e.altKey
+  ) {
+    e.stopPropagation();
+  }
+}
