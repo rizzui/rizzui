@@ -109,14 +109,16 @@ export type MultiSelectOption = {
 export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   typeof Listbox
 > & {
-  /** The class name of the select */
-  className?: string;
   /** The value of the select */
   value?: string[];
+  /** The class name of the select */
+  className?: string;
   /** The default value of the select */
   defaultValue?: string[];
   /** The function to call when the value changes */
   onChange?: (value: string[]) => void;
+  /** The function to call when the clear button is clicked */
+  onClear?: () => void;
   /** Whether the select is disabled */
   disabled?: boolean;
   /** The placeholder of the select */
@@ -202,16 +204,23 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The key to get the value of the option */
   getOptionValueKey?: string;
   /** Whether to hide the picked options */
-  hidePickedOptions?: boolean;
+  hideSelectedOptions?: boolean;
+  /** The class name of the selected value container */
+  selectContainerClassName?: string;
   /**
    * A function to determine the display value of the selected item.
    * @param value - The value of the selected item.
+   * @param handleClearItem - The function to remove the targeted item from selected.
    * @returns React node to display for the selected item.
    */
-  displayValue?: (option: MultiSelectOption) => React.ReactNode;
+  displayValue?: (
+    option: MultiSelectOption,
+    handleClearItem?: (item: string) => void
+  ) => React.ReactNode;
   /**
    * Use this function when you want to display something other than the default option displayValue.
    * @param option - The MultiSelectOption for which to get the display value.
+   * @param selected - The Selected for which to know the item is selected or not.
    * @returns React node to display for the specified option.
    */
   getOptionDisplayValue?(
@@ -222,11 +231,12 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
 
 export function MultiSelect<OptionType extends MultiSelectOption>({
   gap = 6,
-  modal,
+  modal = false,
   value,
   error,
   label,
   options,
+  onClear,
   onChange,
   disabled,
   clearable,
@@ -263,8 +273,9 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   searchReadOnly = false,
   selectedOptionClassName,
   searchContainerClassName,
+  selectContainerClassName,
   placeholder = 'Select...',
-  hidePickedOptions = false,
+  hideSelectedOptions = false,
   placement = 'bottom-start',
   getOptionValueKey = 'value',
   searchPlaceHolder = 'Search...',
@@ -286,10 +297,11 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
     [searchQuery]
   );
 
-  const handleReset = () => {
+  const handleClear = () => {
     setSelectedValue([]);
     setSearchQuery('');
     onChange?.([]);
+    onClear?.();
   };
 
   const handleClearItem = (item: string) => {
@@ -369,7 +381,8 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                     'flex w-full flex-wrap items-center gap-2 truncate text-start',
                     emptyValue && 'text-muted-foreground',
                     prefix && selectStyles.prefix.size[size],
-                    suffix && selectStyles.suffix.size[size]
+                    suffix && selectStyles.suffix.size[size],
+                    selectContainerClassName
                   )}
                 >
                   {emptyValue ? (
@@ -378,7 +391,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                     <>
                       {value?.map((item, index) => {
                         const mainItem = options.find(
-                          (op) => op.value === item
+                          (op) => op[getOptionValueKey] === item
                         );
                         return (
                           <Fragment key={index}>
@@ -389,25 +402,26 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                               )}
                             >
                               {mainItem && displayValue ? (
-                                displayValue(mainItem)
+                                displayValue(mainItem, handleClearItem)
                               ) : (
-                                <span className="py-1 ps-2">
-                                  {mainItem?.label}
-                                </span>
+                                <>
+                                  <span className="py-1 ps-2">
+                                    {mainItem?.label}
+                                  </span>
+                                  <span
+                                    className="px-1 py-1 hover:bg-muted"
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      handleClearItem(item);
+                                    }}
+                                  >
+                                    <XIcon
+                                      strokeWidth="2"
+                                      className="size-4 cursor-pointer"
+                                    />
+                                  </span>
+                                </>
                               )}
-
-                              <span
-                                className="px-1 py-1 hover:bg-muted"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleClearItem(item);
-                                }}
-                              >
-                                <XIcon
-                                  strokeWidth="2"
-                                  className="size-4 cursor-pointer"
-                                />
-                              </span>
                             </span>
                           </Fragment>
                         );
@@ -422,7 +436,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                     size={size}
                     onClick={(e) => {
                       e.preventDefault();
-                      handleReset();
+                      handleClear();
                     }}
                     hasSuffix={Boolean(suffix)}
                   />
@@ -545,7 +559,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                             rounded && optionListStyles.item.rounded[rounded],
                             size && optionListStyles.item.size[size],
                             !op?.disabled && 'cursor-pointer',
-                            selected && hidePickedOptions && '!hidden',
+                            selected && hideSelectedOptions && '!hidden',
                             optionClassName
                           )
                         }

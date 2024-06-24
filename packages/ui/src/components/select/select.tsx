@@ -137,7 +137,7 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   /** The suffix is design for adding any icon or text on the select field's end (it's a right icon for the `ltr` and left icon for the `rtl`) */
   suffix?: React.ReactNode;
   /** Whether the select is searchable or not */
-  isSearchAble?: boolean;
+  searchable?: boolean;
   /** The type of the search input */
   searchType?: 'text' | 'search';
   /** The props for the search input */
@@ -190,6 +190,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   helperClassName?: string;
   /** This prop allows you to customize the Options Wrapper style */
   dropdownClassName?: string;
+  /** The key to search in the options */
+  searchByKey?: string;
   /**
    * A function to determine the display value of the selected item.
    * @param value - The value of the selected item.
@@ -236,7 +238,7 @@ export function Select<OptionType extends SelectOption>({
   shadow = 'md',
   variant = 'outline',
   suffix = <ChevronDownIcon strokeWidth="2" className="h-4 w-4" />,
-  isSearchAble,
+  searchable,
   searchType,
   searchProps,
   searchPrefix = <SearchIcon strokeWidth="2" className="h-4 w-4" />,
@@ -245,6 +247,7 @@ export function Select<OptionType extends SelectOption>({
   searchReadOnly,
   searchPlaceHolder = 'Search...',
   className,
+  searchByKey = 'label',
   labelClassName,
   selectClassName,
   optionClassName,
@@ -271,7 +274,7 @@ export function Select<OptionType extends SelectOption>({
   const filteredOptions = useMemo(
     () =>
       options.filter((item) =>
-        item.label.toLowerCase().includes(searchQuery.toLowerCase())
+        item[searchByKey].toLowerCase().includes(searchQuery.toLowerCase())
       ),
     [searchQuery]
   );
@@ -392,7 +395,7 @@ export function Select<OptionType extends SelectOption>({
                         dropdownClassName
                       )}
                     >
-                      {isSearchAble && (
+                      {searchable && (
                         <span
                           className={cn(
                             searchStyles.base,
