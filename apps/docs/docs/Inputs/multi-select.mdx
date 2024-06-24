@@ -263,6 +263,7 @@ You can search inside **MultiSelect** options.
   <MultiSelectBox
     searchable={true}
     className="w-full max-w-md"
+    clearable={true}
   />
 </Paper>
 
@@ -282,6 +283,7 @@ export default function App() {
   return (
     <MultiSelect
       value={value}
+      clearable={true}
       searchable={true}
       options={options}
       onChange={setValue}
@@ -302,8 +304,8 @@ In this example, we are going to use **React Hook Form** and **Zod** for validat
 </Paper>
 
 ```tsx
-import { MultiSelect } from "rizzui";
 import { z } from "zod";
+import { MultiSelect, Button } from "rizzui";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
