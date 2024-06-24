@@ -4,6 +4,7 @@ sidebar_position: 11
 
 import Paper from "@site/src/components/paper";
 import MultiSelectBox, {
+  MultiSelectWithForm,
   MultiSelectBoxClearable,
   MultiSelectBoxCustomOption,
 } from "@site/src/components/multi-select";
@@ -292,6 +293,73 @@ export default function App() {
 
 <div className="mb-20" />
 
+## With React Hook Form and Zod Validation
+
+In this example, we are going to use **React Hook Form** and **Zod** for validation. Open browser console to see the submitted data.
+
+<Paper>
+  <MultiSelectWithForm />
+</Paper>
+
+```tsx
+import { MultiSelect } from "rizzui";
+import { z } from "zod";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const options = [
+  { label: "Apple 🍎", value: "apple" },
+  { label: "Banana 🍌", value: "banana" },
+  { label: "Cherry 🍒", value: "cherry" },
+ ...
+];
+
+const schema = z.object({
+  multiSelect: z.array(z.string()),
+});
+
+type SchemaType = z.infer<typeof schema>;
+
+export function MultiSelectWithForm() {
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      multiSelect: ["apple", "banana"],
+    },
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: SchemaType) => {
+    console.log("Submitted data", data);
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-md"
+    >
+      <Controller
+        control={control}
+        name="multiSelect"
+        render={({ field: { value, onChange }, fieldState: { error } }) => (
+          <MultiSelect
+            label="Multi Select"
+            value={value}
+            options={options}
+            onChange={onChange}
+            error={error?.message}
+            className="w-full max-w-md"
+          />
+        )}
+      />
+
+      <Button className="mt-4 w-full">Submit</Button>
+    </form>
+  );
+}
+```
+
+<div className="mb-20" />
+
 ## API Reference
 
 <hr />
@@ -353,6 +421,7 @@ Here is the API documentation of the **MultiSelect** component.
 |  searchPrefixClassName   |                     `string`                      |                                                                                          Override default CSS style of search prefix                                                                                           |     \_\_      |
 |     searchClassName      |                     `string`                      |                                                                                           Override default CSS style of search input                                                                                           |     \_\_      |
 |  searchSuffixClassName   |                     `string`                      |                                                                                          Override default CSS style of search suffix                                                                                           |     \_\_      |
+|       searchByKey        |                     `string`                      |                                                                                             Set a custom key to search in options                                                                                              |   `'label'`   |
 |       searchProps        |                `HTMLInputElement`                 |                                                                                        Set's extra attributes for search input element                                                                                         |     \_\_      |
 
 </div>

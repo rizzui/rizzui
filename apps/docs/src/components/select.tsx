@@ -1,5 +1,8 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
-import { Select, Text, type SelectProps, type SelectOption } from "rizzui";
+import { Controller, useForm } from "react-hook-form";
+import { Select, Text, type SelectProps, type SelectOption, Button } from "rizzui";
+import { z } from "zod";
 
 const options = [
   { label: "Apple 🍎", value: "apple" },
@@ -171,5 +174,54 @@ function renderOptionDisplayValue(option: SelectOption) {
         <Text>{option.value}</Text>
       </div>
     </div>
+  );
+}
+
+// with react hook form and zod validation
+
+const schema = z.object({
+  select: z.string().min(1, { message: "Select an option" }),
+});
+
+type SchemaType = z.infer<typeof schema>;
+
+export function SelectWithForm() {
+  const { handleSubmit, control } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: SchemaType) => {
+    console.log("Submitted data", data);
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-md"
+    >
+      <Controller
+        name="select"
+        control={control}
+        render={({ field: { value, onChange }, fieldState: { error } }) => (
+          <Select
+            label="Select"
+            value={value}
+            options={options}
+            onChange={onChange}
+            getOptionValue={(option) => option.value}
+            displayValue={(selected) => options?.find((r) => r.value === selected)?.label ?? ""}
+            error={error?.message}
+            className="w-full max-w-md"
+          />
+        )}
+      />
+
+      <Button
+        type="submit"
+        className="mt-4 w-full"
+      >
+        Submit
+      </Button>
+    </form>
   );
 }

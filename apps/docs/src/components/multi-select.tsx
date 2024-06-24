@@ -1,6 +1,16 @@
 import React from "react";
 import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
-import { MultiSelect, type MultiSelectProps, type MultiSelectOption, Text, cn } from "rizzui";
+import {
+  MultiSelect,
+  type MultiSelectProps,
+  type MultiSelectOption,
+  Text,
+  cn,
+  Button,
+} from "rizzui";
+import { z } from "zod";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const options = [
   { label: "Apple 🍎", value: "apple", customOptionKey: "movie" },
@@ -177,5 +187,52 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
       </div>
       {selected && <CheckIcon className="ms-auto size-5" />}
     </div>
+  );
+}
+
+// with react hook form and zod validation
+
+const schema = z.object({
+  multiSelect: z.array(z.string()),
+});
+
+type SchemaType = z.infer<typeof schema>;
+
+export function MultiSelectWithForm() {
+  const { handleSubmit, control } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: SchemaType) => {
+    console.log("Submitted data", data);
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-md"
+    >
+      <Controller
+        control={control}
+        name="multiSelect"
+        render={({ field: { value, onChange }, fieldState: { error } }) => (
+          <MultiSelect
+            label="Multi Select"
+            value={value}
+            options={options}
+            onChange={onChange}
+            error={error?.message}
+            className="w-full max-w-md"
+          />
+        )}
+      />
+
+      <Button
+        type="submit"
+        className="mt-4 w-full"
+      >
+        Submit
+      </Button>
+    </form>
   );
 }

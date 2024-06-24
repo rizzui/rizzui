@@ -207,6 +207,8 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   hideSelectedOptions?: boolean;
   /** The class name of the selected value container */
   selectContainerClassName?: string;
+  /** The key to search in the options */
+  searchByKey?: string;
   /**
    * A function to determine the display value of the selected item.
    * @param value - The value of the selected item.
@@ -265,6 +267,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   searchType = 'text',
   selectedItemClassName,
   getOptionDisplayValue,
+  searchByKey = 'label',
   optionCheckBox = true,
   searchPrefixClassName,
   searchSuffixClassName,
@@ -293,7 +296,9 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
 
   const filteredOptions = useMemo(
     () =>
-      options.filter((item) => item.label.toLowerCase().includes(searchQuery)),
+      options.filter((item) =>
+        item[searchByKey].toLowerCase().includes(searchQuery)
+      ),
     [searchQuery]
   );
 
