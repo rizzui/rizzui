@@ -249,6 +249,8 @@ export function SelectWithForm() {
             displayValue={(selected) => options?.find((r) => r.value === selected)?.label ?? ""}
             error={error?.message}
             className="w-full max-w-md"
+            clearable
+            onClear={() => onChange("")}
           />
         )}
       />

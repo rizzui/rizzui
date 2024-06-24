@@ -11,6 +11,7 @@ import {
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import toast, { Toaster } from "react-hot-toast";
 
 const options = [
   { label: "Apple 🍎", value: "apple", customOptionKey: "movie" },
@@ -67,6 +68,8 @@ export function MultiSelectBoxClearable({
         value={value}
         options={options}
         onChange={setValue}
+        clearable
+        onClear={() => setValue([])}
         {...props}
       />
     </>
@@ -193,7 +196,7 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 // with react hook form and zod validation
 
 const schema = z.object({
-  multiSelect: z.array(z.string()),
+  multiSelect: z.array(z.string()).min(1, { message: "Minimum 1 item required!" }),
 });
 
 type SchemaType = z.infer<typeof schema>;
@@ -205,34 +208,41 @@ export function MultiSelectWithForm() {
 
   const onSubmit = (data: SchemaType) => {
     console.log("Submitted data", data);
+    toast.success("Successfully Submitted.");
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-md"
-    >
-      <Controller
-        control={control}
-        name="multiSelect"
-        render={({ field: { value, onChange }, fieldState: { error } }) => (
-          <MultiSelect
-            label="Multi Select"
-            value={value}
-            options={options}
-            onChange={onChange}
-            error={error?.message}
-            className="w-full max-w-md"
-          />
-        )}
-      />
+    <>
+      <Toaster />
 
-      <Button
-        type="submit"
-        className="mt-4 w-full"
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full max-w-md"
       >
-        Submit
-      </Button>
-    </form>
+        <Controller
+          control={control}
+          name="multiSelect"
+          render={({ field: { value, onChange }, fieldState: { error } }) => (
+            <MultiSelect
+              label="Multi Select"
+              value={value}
+              options={options}
+              onChange={onChange}
+              error={error?.message}
+              className="w-full max-w-md"
+              clearable
+              onClear={() => onChange([])}
+            />
+          )}
+        />
+
+        <Button
+          type="submit"
+          className="mt-4 w-full"
+        >
+          Submit
+        </Button>
+      </form>
+    </>
   );
 }

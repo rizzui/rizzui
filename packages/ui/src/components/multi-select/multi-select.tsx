@@ -305,7 +305,6 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   const handleClear = () => {
     setSelectedValue([]);
     setSearchQuery('');
-    onChange?.([]);
     onClear?.();
   };
 

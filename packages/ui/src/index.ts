@@ -55,6 +55,8 @@ export * from './components/popover';
 
 export * from './components/progressbar';
 
+export * from './components/radial-progressbar';
+
 export * from './components/radio';
 
 export * from './components/radio-group';

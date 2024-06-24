@@ -58,10 +58,7 @@ export default function App() {
 You can clear **MultiSelect** values using **clearable** property.
 
 <Paper>
-  <MultiSelectBoxClearable
-    clearable={true}
-    className="w-full max-w-md"
-  />
+  <MultiSelectBoxClearable className="w-full max-w-md" />
 </Paper>
 
 ```tsx
@@ -84,6 +81,7 @@ export default function App() {
       label="Multi Select"
       onChange={setValue}
       clearable={true}
+      onClear={() => setValue([])}
     />
   );
 }
@@ -317,7 +315,7 @@ const options = [
 ];
 
 const schema = z.object({
-  multiSelect: z.array(z.string()),
+  multiSelect: z.array(z.string()).min(1, { message: "Minimum 1 item required!" }),
 });
 
 type SchemaType = z.infer<typeof schema>;
@@ -350,6 +348,8 @@ export function MultiSelectWithForm() {
             onChange={onChange}
             error={error?.message}
             className="w-full max-w-md"
+            clearable={true}
+            onClear={() => onChange([])}
           />
         )}
       />

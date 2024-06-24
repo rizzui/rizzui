@@ -35,16 +35,20 @@ export const drawerClasses = {
     full: 'max-w-full',
   },
   resizeHandlerPlacement: {
-    top: 'start-1/2 -translate-x-1/2 bottom-1 w-14 h-2 cursor-n-resize',
-    right: 'start-1 top-1/2 h-14 w-2 -translate-y-1/2 cursor-w-resize',
-    bottom: 'start-1/2 -translate-x-1/2 top-1 w-14 h-2 cursor-n-resize',
-    left: 'end-1 top-1/2 h-14 w-2 -translate-y-1/2 cursor-w-resize',
-  }
+    top: 'start-1/2 bottom-1 h-1.5 transition-transform duration-300 w-14 hover:scale-x-125 cursor-n-resize',
+    right:
+      'start-1 top-1/2 h-14 hover:scale-y-125 transition-transform duration-300 w-1.5 -translate-y-1/2 cursor-w-resize',
+    bottom:
+      'start-1/2 -translate-x-1/2 top-1 w-14 h-1.5 transition-transform duration-300 hover:scale-x-125 cursor-n-resize',
+    left: 'end-1 top-1/2 h-14 hover:scale-y-125 transition-transform duration-300 w-1.5 -translate-y-1/2 cursor-w-resize',
+  },
 };
 
 // const CHECK_VALID_CUSTOM_SIZE = /(\d*px)|(\d*%)?/g;
 
-export function isPlacementOnYAxis(placement: keyof typeof drawerClasses.placement) {
+export function isPlacementOnYAxis(
+  placement: keyof typeof drawerClasses.placement
+) {
   return ['top', 'bottom'].indexOf(placement) !== -1;
 }
 
@@ -91,7 +95,10 @@ export function Drawer({
 }: React.PropsWithChildren<DrawerProps>) {
   const TransitionComponent: React.ElementType = Transition;
   const TransitionChild: React.ElementType = HeadLessTransitionChild;
-  const { handleMouseDown, containerRef, width } = useResizeHandler({placement, customSize});
+  const { handleMouseDown, containerRef, width } = useResizeHandler({
+    placement,
+    customSize,
+  });
 
   // checking customSize value
   // if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
@@ -125,7 +132,7 @@ export function Drawer({
           leaveTo="opacity-0"
         >
           <div
-          onMouseDown={handleMouseDown}
+            onMouseDown={handleMouseDown}
             className={cn(
               makeClassName(`drawer-overlay`),
               drawerClasses.overlay,
@@ -162,7 +169,11 @@ export function Drawer({
               placement === 'right' && 'inset-y-0 right-0',
               placement === 'bottom' && 'bottom-0',
               placement === 'left' && 'inset-y-0 left-0',
-              customSize && [isPlacementOnYAxis(placement) ? 'max-h-screen min-h-96' : 'max-w-full min-w-96'],
+              customSize && [
+                isPlacementOnYAxis(placement)
+                  ? 'max-h-screen min-h-96'
+                  : 'min-w-96 max-w-full',
+              ],
               !customSize && [
                 isPlacementOnYAxis(placement)
                   ? drawerClasses.sizeOfYAxisDrawer[size]
@@ -172,21 +183,21 @@ export function Drawer({
             )}
             {...(customSize && {
               style: {
-                height: isPlacementOnYAxis(placement)
-                  ? width
-                  : 'inherit',
-                width: !isPlacementOnYAxis(placement)
-                  ? width
-                  : '100%',
+                height: isPlacementOnYAxis(placement) ? width : 'inherit',
+                width: !isPlacementOnYAxis(placement) ? width : '100%',
               },
             })}
           >
-            {enableResizer && 
-            <div 
-            onMouseDown={handleMouseDown}
-            className={cn("absolute rounded-md bg-gray-400", drawerClasses.resizeHandlerPlacement[placement], resizerClassName)}
-            />
-          }
+            {enableResizer && (
+              <div
+                onMouseDown={handleMouseDown}
+                className={cn(
+                  'absolute rounded-md bg-gray-400',
+                  drawerClasses.resizeHandlerPlacement[placement],
+                  resizerClassName
+                )}
+              />
+            )}
             {children}
           </DialogPanel>
         </TransitionChild>
