@@ -3,7 +3,7 @@
 module.exports = {
   content: [
     "./docs/**/*.{md,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/**/*.{js,ts,jsx,tsx,mdx}",
     "./docusaurus.config.js",
     "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}",
   ],
