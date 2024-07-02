@@ -8,7 +8,7 @@ type AccordionHeaderProps = {
   children:
     | React.ReactNode
     | (({ open }: { open: boolean }) => React.ReactNode);
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
 
 export const AccordionHeader = React.forwardRef<
   HTMLButtonElement,
