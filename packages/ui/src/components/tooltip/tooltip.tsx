@@ -21,7 +21,7 @@ import { makeClassName } from '../../lib/make-class-name';
 import { roundedStyles } from '../../lib/rounded';
 
 const tooltipStyles = {
-  base: 'text-center z-40 min-w-max',
+  base: 'text-center z-[9999] min-w-max',
   shadow: {
     sm: 'drop-shadow-md',
     md: 'drop-shadow-lg',
@@ -135,7 +135,7 @@ export function Tooltip({
   content,
   gap = 8,
   animation = 'zoomIn',
-  placement = 'bottom',
+  placement = 'top',
   size = 'md',
   rounded = 'md',
   shadow = 'md',

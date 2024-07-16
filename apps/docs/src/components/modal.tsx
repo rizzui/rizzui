@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Modal,
-  Button,
-  Text,
-  Title,
-  ActionIcon,
-  Input,
-  Password,
-  Checkbox,
-} from "rizzui";
+import { Modal, Button, Text, Title, ActionIcon, Input, Password, Checkbox, Tooltip } from "rizzui";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
 export default function ModalDefault() {
@@ -30,14 +21,34 @@ export default function ModalDefault() {
               variant="text"
               onClick={() => setModalState(false)}
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+              <XMarkIcon
+                className="h-auto w-6"
+                strokeWidth={1.8}
+              />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
-            <Password label="Password *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
+            <Password
+              label="Password *"
+              size="lg"
+              className="col-span-2"
+            />
             <Password
               label="Confirm Password *"
               size="lg"
@@ -48,8 +59,7 @@ export default function ModalDefault() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s <a className="underline">Terms of Service</a> and{" "}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -142,9 +152,7 @@ export function ModalSizes() {
       <Modal
         isOpen={modalState.isOpen}
         size={modalState.size}
-        onClose={() =>
-          setModalState((prevState) => ({ ...prevState, isOpen: false }))
-        }
+        onClose={() => setModalState((prevState) => ({ ...prevState, isOpen: false }))}
         className="z-[9999]"
       >
         <div className="m-auto px-7 pt-6 pb-8">
@@ -153,18 +161,36 @@ export function ModalSizes() {
             <ActionIcon
               size="sm"
               variant="text"
-              onClick={() =>
-                setModalState((prevState) => ({ ...prevState, isOpen: false }))
-              }
+              onClick={() => setModalState((prevState) => ({ ...prevState, isOpen: false }))}
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+              <XMarkIcon
+                className="h-auto w-6"
+                strokeWidth={1.8}
+              />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
-            <Password label="Password *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
+            <Password
+              label="Password *"
+              size="lg"
+              className="col-span-2"
+            />
             <Password
               label="Confirm Password *"
               size="lg"
@@ -175,8 +201,7 @@ export function ModalSizes() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s <a className="underline">Terms of Service</a> and{" "}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -185,9 +210,7 @@ export function ModalSizes() {
               type="submit"
               size="lg"
               className="col-span-2 mt-2"
-              onClick={() =>
-                setModalState((prevState) => ({ ...prevState, isOpen: false }))
-              }
+              onClick={() => setModalState((prevState) => ({ ...prevState, isOpen: false }))}
             >
               Create an Account
             </Button>
@@ -271,9 +294,7 @@ export function ModalRounded() {
       <Modal
         isOpen={modalState.isOpen}
         rounded={modalState.rounded}
-        onClose={() =>
-          setModalState((prevState) => ({ ...prevState, isOpen: false }))
-        }
+        onClose={() => setModalState((prevState) => ({ ...prevState, isOpen: false }))}
         className="z-[9999]"
       >
         <div className="m-auto px-7 pt-6 pb-8">
@@ -282,18 +303,36 @@ export function ModalRounded() {
             <ActionIcon
               size="sm"
               variant="text"
-              onClick={() =>
-                setModalState((prevState) => ({ ...prevState, isOpen: false }))
-              }
+              onClick={() => setModalState((prevState) => ({ ...prevState, isOpen: false }))}
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+              <XMarkIcon
+                className="h-auto w-6"
+                strokeWidth={1.8}
+              />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
-            <Password label="Password *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
+            <Password
+              label="Password *"
+              size="lg"
+              className="col-span-2"
+            />
             <Password
               label="Confirm Password *"
               size="lg"
@@ -304,8 +343,7 @@ export function ModalRounded() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s <a className="underline">Terms of Service</a> and{" "}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -314,9 +352,7 @@ export function ModalRounded() {
               type="submit"
               size="lg"
               className="col-span-2 mt-2"
-              onClick={() =>
-                setModalState((prevState) => ({ ...prevState, isOpen: false }))
-              }
+              onClick={() => setModalState((prevState) => ({ ...prevState, isOpen: false }))}
             >
               Create an Account
             </Button>
@@ -347,14 +383,34 @@ export function ModalCustomSize() {
               variant="text"
               onClick={() => setModalState(false)}
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+              <XMarkIcon
+                className="h-auto w-6"
+                strokeWidth={1.8}
+              />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
-            <Password label="Password *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
+            <Password
+              label="Password *"
+              size="lg"
+              className="col-span-2"
+            />
             <Password
               label="Confirm Password *"
               size="lg"
@@ -365,8 +421,7 @@ export function ModalCustomSize() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s <a className="underline">Terms of Service</a> and{" "}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -407,14 +462,34 @@ export function ModalCustomStyle() {
               variant="text"
               onClick={() => setModalState(false)}
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+              <XMarkIcon
+                className="h-auto w-6"
+                strokeWidth={1.8}
+              />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
-            <Password label="Password *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
+            <Password
+              label="Password *"
+              size="lg"
+              className="col-span-2"
+            />
             <Password
               label="Confirm Password *"
               size="lg"
@@ -425,8 +500,7 @@ export function ModalCustomStyle() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s <a className="underline">Terms of Service</a> and{" "}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
