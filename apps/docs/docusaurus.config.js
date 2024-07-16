@@ -18,7 +18,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "RedQ", // Usually your GitHub org/user name.
+  organizationName: "rizzui", // Usually your GitHub org/user name.
   projectName: "rizzui", // Usually your repo name.
 
   onBrokenLinks: "throw",
