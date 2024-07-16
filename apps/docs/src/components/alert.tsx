@@ -5,6 +5,7 @@ export default function AlertClearable() {
   const [state, setState] = React.useState(true);
   return (
     <>
+    
       <Button onClick={() => setState(true)} className="tracking-wider">
         Info Alert
       </Button>

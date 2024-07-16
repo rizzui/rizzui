@@ -58,7 +58,7 @@ const badgeStyles = {
   },
 };
 
-export type BadgeProps = {
+export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   /** Change badge color */
   color?: keyof (typeof badgeStyles.variant)['solid']['color'];
   /** The variants of the component are: */
@@ -73,7 +73,7 @@ export type BadgeProps = {
   rounded?: keyof typeof badgeStyles.rounded;
   /** Add custom classes for extra style */
   className?: string;
-};
+}
 
 /**
  * Badge is a small overlapped UI item which indicates a status, notification, or event that appears in relativity with the underlying object.
@@ -102,9 +102,9 @@ export function Badge({
         styles.base,
         badgeStyles.rounded[rounded],
         enableOutlineRing && badgeStyles.outlineRing,
-        className,
-        { ...props }
+        className
       )}
+      {...props}
     >
       {!renderAsDot ? children : null}
     </span>
