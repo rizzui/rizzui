@@ -92,14 +92,16 @@ export default function ComponentBlock() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {components.map((item, idx) => (
-            <ComponentCard key={`${item.name}-${idx}`} item={item} />
+            <ComponentCard
+              key={`${item.name}-${idx}`}
+              item={item}
+            />
           ))}
         </div>
 
         <div className="mt-8 xl:mt-10 2xl:mt-12 flex items-center justify-center">
           <Button
             size="lg"
-            variant="outline"
             onClick={() => history.push("/docs/buttons/action-icon")}
             className="min-w-[180px] shadow-sm hover:ring-[0.5px] hover:ring-gray-900"
           >

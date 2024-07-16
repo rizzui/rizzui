@@ -48,8 +48,8 @@ export default function FeatureBlock() {
             as="h2"
             className="text-2xl lg:text-3xl leading-[1.35] lg:leading-[1.3] font-semibold"
           >
-            A Next Gen UI Library with <br className="hidden sm:inline-block" />{" "}
-            Limitless Customization Options
+            A Next Gen UI Library with <br className="hidden sm:inline-block" /> Limitless
+            Customization Options
           </Title>
         </header>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 2xl:gap-5">
@@ -61,7 +61,10 @@ export default function FeatureBlock() {
               <div className="h-11 w-11 xl:w-12 xl:h-12 rounded-md text-gray-900 mb-6 border border-gray-200 bg-gradient-to-t from-gray-100/60 flex items-center justify-center">
                 {feature.icon}
               </div>
-              <Title as="h5" className="font-semibold">
+              <Title
+                as="h5"
+                className="font-semibold"
+              >
                 {feature.title}
               </Title>
               <Text className="leading-loose text-gray-600 dark:text-gray-500">
