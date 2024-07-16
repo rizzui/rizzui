@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
 ---
 
 import Paper from "@site/src/components/paper";
@@ -243,7 +243,12 @@ function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
     return isMask ? format(`${month}${year}`) : `${month}/${year}`;
   };
 
-  return <NumberInput {...props} format={_format} />;
+  return (
+    <NumberInput
+      {...props}
+      format={_format}
+    />
+  );
 }
 
 export default function App() {
@@ -416,7 +421,12 @@ export default function App() {
       }
       return isMask ? format(`${month}${year}`) : `${month}/${year}`;
     };
-    return <NumberInput {...props} format={_format} />;
+    return (
+      <NumberInput
+        {...props}
+        format={_format}
+      />
+    );
   }
 
   return (
@@ -490,7 +500,12 @@ function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
     }
     return isMask ? format(`${month}${year}`) : `${month}/${year}`;
   };
-  return <NumberInput {...props} format={_format} />;
+  return (
+    <NumberInput
+      {...props}
+      format={_format}
+    />
+  );
 }
 
 export default function App() {

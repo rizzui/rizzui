@@ -45,7 +45,7 @@ const ComponentPlayground: React.FC<PlaygroundProps> = ({ component }) => {
               onChange={(e) => handlePropChange(propName, e.target.value)}
             />
           )}
-        </div>
+        </div>,
       );
     }
 

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Menu } from '@headlessui/react';
 import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
+import { MenuItem } from '@headlessui/react';
 import { useDropdown } from './dropdown-context';
+import { makeClassName } from '../../lib/make-class-name';
 
 export const dropdownItemStyles = {
   rounded: {
@@ -17,8 +17,8 @@ export const dropdownItemStyles = {
 export type DropdownItemProps = {
   as?: 'button' | 'li';
   className?: string;
-  activeClassName?: string;
   disabledClassName?: string;
+  activeClassName?: string;
   disabled?: boolean;
 } & React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.HTMLAttributes<HTMLLIElement>;
@@ -43,8 +43,8 @@ export const DropdownItem = React.forwardRef<
     let Component = as;
 
     return (
-      <Menu.Item disabled={disabled}>
-        {({ active, disabled }) => (
+      <MenuItem disabled={disabled}>
+        {({ disabled, focus }) => (
           <Component
             ref={ref}
             {...(Component === 'button' && { type: 'button' })}
@@ -52,7 +52,7 @@ export const DropdownItem = React.forwardRef<
               makeClassName(`dropdown-item`),
               'flex w-full items-center px-3 py-1.5',
               rounded && dropdownItemStyles.rounded[rounded],
-              active && ['bg-muted/70', activeClassName],
+              focus && ['bg-muted/70', activeClassName],
               disabled && disabledClassName,
               className
             )}
@@ -61,7 +61,7 @@ export const DropdownItem = React.forwardRef<
             {children}
           </Component>
         )}
-      </Menu.Item>
+      </MenuItem>
     );
   }
 );

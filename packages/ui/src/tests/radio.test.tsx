@@ -11,7 +11,7 @@ test('Renders radio buttons and radio functionality', async () => {
       <Radio label="one" value="one" className="m-2" name="numbers" />
       <Radio label="two" value="two" className="m-2" name="numbers" />
       <Radio value="three" label="three" className="m-2" name="numbers" />
-    </div>,
+    </div>
   );
   const firstRadio = screen.getByRole('radio', { name: 'one' });
   const secondRadio = screen.getByRole('radio', { name: 'two' });
@@ -49,7 +49,7 @@ test('Radio button with helper and error text', () => {
         name="numbers"
         error="This field is required"
       />
-    </div>,
+    </div>
   );
   const errorHelperText = screen.getAllByRole('alert');
   expect(errorHelperText[0]).toHaveTextContent(/this radio has value of one/i);
@@ -59,7 +59,7 @@ test('Radio button with helper and error text', () => {
 
 test('Disabled radio button', async () => {
   render(
-    <Radio label="two" value="two" className="m-2" name="numbers" disabled />,
+    <Radio label="two" value="two" className="m-2" name="numbers" disabled />
   );
   const radioElement = screen.getByRole('radio');
   expect(radioElement).toBeDisabled();

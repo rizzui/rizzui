@@ -28,11 +28,7 @@ export const emoji = [
     </g>
     <defs>
       <clipPath id="clip0_1377_2673">
-        <rect
-          width="16"
-          height="16"
-          fill="white"
-        />
+        <rect width="16" height="16" fill="white" />
       </clipPath>
     </defs>
   </svg>,
@@ -60,11 +56,7 @@ export const emoji = [
     </g>
     <defs>
       <clipPath id="clip0_1377_2667">
-        <rect
-          width="16"
-          height="16"
-          fill="white"
-        />
+        <rect width="16" height="16" fill="white" />
       </clipPath>
     </defs>
   </svg>,
@@ -92,11 +84,7 @@ export const emoji = [
     </g>
     <defs>
       <clipPath id="clip0_1377_2661">
-        <rect
-          width="16"
-          height="16"
-          fill="white"
-        />
+        <rect width="16" height="16" fill="white" />
       </clipPath>
     </defs>
   </svg>,
@@ -124,11 +112,7 @@ export const emoji = [
     </g>
     <defs>
       <clipPath id="clip0_1377_2655">
-        <rect
-          width="16"
-          height="16"
-          fill="white"
-        />
+        <rect width="16" height="16" fill="white" />
       </clipPath>
     </defs>
   </svg>,
@@ -156,11 +140,7 @@ export const emoji = [
     </g>
     <defs>
       <clipPath id="clip0_1377_2649">
-        <rect
-          width="16"
-          height="16"
-          fill="white"
-        />
+        <rect width="16" height="16" fill="white" />
       </clipPath>
     </defs>
   </svg>,

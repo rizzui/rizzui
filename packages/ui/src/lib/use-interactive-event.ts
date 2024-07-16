@@ -27,7 +27,7 @@ export function useInteractiveEvent({
       setIsFocus((prevState) => !prevState);
       onFocus && onFocus(e); // eslint-disable-line no-unused-expressions
     },
-    [readOnly, onFocus],
+    [readOnly, onFocus]
   );
 
   const handleOnBlur = useCallback(
@@ -36,7 +36,7 @@ export function useInteractiveEvent({
       setIsFocus(() => false);
       onBlur && onBlur(e); // eslint-disable-line no-unused-expressions
     },
-    [readOnly, onBlur],
+    [readOnly, onBlur]
   );
 
   const handleOnMouseEnter = useCallback(
@@ -45,7 +45,7 @@ export function useInteractiveEvent({
       setIsHover(() => true);
       onMouseEnter && onMouseEnter(e); // eslint-disable-line no-unused-expressions
     },
-    [readOnly],
+    [readOnly]
   );
 
   const handleOnMouseLeave = useCallback(
@@ -54,7 +54,7 @@ export function useInteractiveEvent({
       setIsHover(() => false);
       onMouseLeave && onMouseLeave(e); // eslint-disable-line no-unused-expressions
     },
-    [readOnly],
+    [readOnly]
   );
 
   return {

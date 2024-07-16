@@ -190,6 +190,8 @@ export const WithPlacement = () => {
         </div>
       </div>
       <Drawer
+        enableResizer={true}
+        customSize={400}
         isOpen={drawerSate.isOpen}
         placement={drawerSate.placement}
         onClose={() =>
@@ -217,7 +219,7 @@ export const WithCustomSize = () => {
       <Drawer
         isOpen={drawerState}
         onClose={() => setDrawerState(false)}
-        customSize="600px"
+        customSize={600}
       >
         <div className="px-5 py-4">Custom Size = 600px</div>
       </Drawer>

@@ -1,4 +1,4 @@
-import { MouseEvent, FocusEvent, MutableRefObject, useState } from "react";
+import { MouseEvent, FocusEvent, MutableRefObject, useState } from 'react';
 
 export const getElementOffset = (el?: HTMLElement | null | undefined) => {
   if (!el)
@@ -75,7 +75,7 @@ const isRefTarget = (
     | FocusEvent<HTMLElement>
     | MutableRefObject<HTMLElement | null>
 ): eventOrRef is MutableRefObject<HTMLElement | null> => {
-  return typeof (eventOrRef as any)?.target === "undefined";
+  return typeof (eventOrRef as any)?.target === 'undefined';
 };
 export const useRect = (
   initialState?: ReactiveDomReact | (() => ReactiveDomReact)

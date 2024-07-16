@@ -189,7 +189,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 textareaStyles.variant[variant],
                 clearable && textareaStyles.clearable,
                 // it's important we are using placeholder-shown pseudo class to control input clear icon btn
-                !placeholder && 'placeholder:opacity-0',
+                !placeholder && 'placeholder-shown:placeholder:opacity-0',
                 isHover && 'is-hover', // must have is-focus class based on mouse enter
                 isFocus && 'is-focus', // must have is-focus class based on onFocus event
                 !cols && 'w-full',

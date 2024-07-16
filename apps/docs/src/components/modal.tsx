@@ -8,6 +8,7 @@ import {
   Input,
   Password,
   Checkbox,
+  Tooltip,
 } from "rizzui";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 
@@ -34,9 +35,22 @@ export default function ModalDefault() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
             <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"
@@ -161,9 +175,22 @@ export function ModalSizes() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
             <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"
@@ -290,9 +317,22 @@ export function ModalRounded() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
             <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"
@@ -351,9 +391,22 @@ export function ModalCustomSize() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
             <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"
@@ -411,9 +464,22 @@ export function ModalCustomStyle() {
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" size="lg" />
-            <Input label="Last Name *" size="lg" />
-            <Input label="Email *" size="lg" className="col-span-2" />
+            <Input
+              label="First Name *"
+              size="lg"
+              placeholder="Enter your first name"
+            />
+            <Input
+              label="Last Name *"
+              size="lg"
+              placeholder="Enter your last name"
+            />
+            <Input
+              label="Email *"
+              size="lg"
+              placeholder="Enter your email"
+              className="col-span-2"
+            />
             <Password label="Password *" size="lg" className="col-span-2" />
             <Password
               label="Confirm Password *"

@@ -36,7 +36,7 @@ export function CheckboxGroup({
         : [...values, value];
       setValues(newValues);
     },
-    [values, setValues],
+    [values, setValues]
   );
 
   return (

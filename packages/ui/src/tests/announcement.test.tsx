@@ -8,7 +8,7 @@ test('Renders announcement component with text', () => {
   render(
     <Announcement badgeText="Trending" highlightedText="25% discount">
       on our new product
-    </Announcement>,
+    </Announcement>
   );
   const badgeText = screen.getByText(/trending/i);
   const highlightedText = screen.getByText(/25% discount/i);
@@ -60,7 +60,7 @@ test('Renders announcement component with icon', () => {
       }
     >
       on our new product
-    </Announcement>,
+    </Announcement>
   );
   const announcementStartIcon = screen.getByTestId('announcement-startIcon');
   const announcementEndIcon = screen.getByTestId('announcement-endIcon');

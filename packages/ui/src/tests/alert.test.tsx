@@ -10,7 +10,7 @@ test('Renders alert component with danger', () => {
     <Alert color="danger">
       <h2>Danger</h2>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores.</p>
-    </Alert>,
+    </Alert>
   );
   const alertElement = screen.getByTestId('alert-parent');
   const xicon = screen.getByTestId('alert-xicon');
@@ -42,7 +42,7 @@ test('Renders alert component with bar', () => {
   render(
     <Alert bar color="danger">
       Bar
-    </Alert>,
+    </Alert>
   );
   const barElement = screen.getByTestId('alert-bar');
   expect(barElement).toBeInTheDocument();
@@ -53,7 +53,7 @@ test('Alert component with onClose functionality', async () => {
   render(
     <Alert closable onClose={onClose} color="danger">
       Closeable
-    </Alert>,
+    </Alert>
   );
   const alertClearIcon = screen.getByTestId('alert-clear-icon');
   expect(alertClearIcon).toBeInTheDocument();

@@ -1,8 +1,6 @@
 import React from "react";
 import { useHistory } from "@docusaurus/router";
-import { useColorMode } from "@docusaurus/theme-common";
 import { Button, Title, Text, cn } from "rizzui";
-import StarParticles from "../star-particles";
 
 const data = {
   title: `A Modern & Minimal React UI Library
@@ -15,7 +13,6 @@ const data = {
 };
 
 export default function HeroBlock() {
-  const { colorMode } = useColorMode();
   const history = useHistory();
 
   return (
@@ -30,7 +27,7 @@ export default function HeroBlock() {
             as="h1"
             dangerouslySetInnerHTML={{ __html: data.title }}
             className={cn(
-              "text-3xl sm:text-4xl xl:text-5xl 2xl:text-[54px] leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-10 font-semibold"
+              "text-3xl sm:text-4xl xl:text-5xl 2xl:text-[54px] leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-10 font-semibold",
             )}
           />
           <Text className="text-[15px] md:text-base lg:text-lg leading-[1.9] md:leading-[1.9] lg:leading-[1.9] max-w-5xl mx-auto mb-8 md:mb-12 text-gray-600 dark:text-gray-500">
@@ -72,22 +69,16 @@ export default function HeroBlock() {
       </div>
 
       <BlurBGPattern />
-
-      <StarParticles color={colorMode === "dark" ? "white" : "transparent"} />
     </section>
   );
 }
 
 function BlurBGPattern() {
   return (
-    <>
-      <span className="grid-box absolute inset-0 -z-[2] opacity-[0.3] dark:opacity-[0.02]" />
-
-      <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
-        <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-95" />
-        <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-105 hidden sm:flex" />
-        <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-95 hidden md:flex" />
-      </div>
-    </>
+    <div className="flex items-center inset-0 justify-evenly absolute h-full w-full -z-[1]">
+      <div className="w-1/4 h-full rounded bg-primary-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-95" />
+      <div className="w-1/4 h-full rounded bg-blue-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-105 hidden sm:flex" />
+      <div className="w-1/4 h-full rounded bg-secondary-dark filter blur-3xl opacity-[0.025] transform rotate-12 scale-95 hidden md:flex" />
+    </div>
   );
 }

@@ -76,7 +76,7 @@ const PrevIcon = ({ icon, rounded, outline, className }: IconProps) => (
       iconClasses.base,
       outline ? iconClasses.outline : iconClasses.center,
       iconClasses.rounded[rounded],
-      className
+      className,
     )}
   >
     {icon || (
@@ -104,7 +104,7 @@ const NextIcon = ({ icon, rounded, outline, className }: IconProps) => (
       iconClasses.base,
       outline ? iconClasses.outline : iconClasses.center,
       iconClasses.rounded[rounded],
-      className
+      className,
     )}
   >
     {icon || (
@@ -133,7 +133,7 @@ const JumpPrevIcon = ({ icon, rounded, outline, className }: IconProps) => (
       outline ? iconClasses.outline : iconClasses.center,
       iconClasses.rounded[rounded],
       !icon && outline && "py-0 leading-[26px]",
-      className
+      className,
     )}
   >
     {icon || "•••"}
@@ -147,7 +147,7 @@ const JumpNextIcon = ({ icon, rounded, outline, className }: IconProps) => (
       outline ? iconClasses.outline : iconClasses.center,
       iconClasses.rounded[rounded],
       !icon && outline && "py-0 leading-[26px]",
-      className
+      className,
     )}
   >
     {icon || "•••"}
@@ -252,7 +252,7 @@ export default function Pagination({
         classes.rounded[rounded],
         classes.variant[variant].base,
         classes.variant[variant].color[color],
-        className
+        className,
       )}
       {...props}
     />

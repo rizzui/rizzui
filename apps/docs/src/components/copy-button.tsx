@@ -12,7 +12,7 @@ interface CopyButtonProps {
 
 async function copyToClipboardWithMeta(
   value: string,
-  meta?: Record<string, unknown>
+  meta?: Record<string, unknown>,
 ) {
   navigator.clipboard.writeText(value);
 }

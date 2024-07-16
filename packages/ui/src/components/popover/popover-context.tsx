@@ -63,10 +63,10 @@ type PopoverContextProps = {
   isMounted: boolean;
   styles: React.CSSProperties;
   getReferenceProps: (
-    userProps?: React.HTMLProps<Element> | undefined,
+    userProps?: React.HTMLProps<Element> | undefined
   ) => Record<string, unknown>;
   getFloatingProps: (
-    userProps?: React.HTMLProps<HTMLElement> | undefined,
+    userProps?: React.HTMLProps<HTMLElement> | undefined
   ) => Record<string, unknown>;
   refs: any;
   x: number;
@@ -118,7 +118,7 @@ export function PopoverProvider({
     animation && {
       duration: { open: 150, close: 150 },
       ...tooltipAnimation[animation],
-    },
+    }
   );
 
   return (

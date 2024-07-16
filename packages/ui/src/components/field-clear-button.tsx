@@ -19,6 +19,7 @@ const clearBtnStyles = {
 };
 
 export interface FieldClearButtonProps {
+  as?: React.ElementType;
   hasSuffix?: boolean;
   size?: keyof typeof clearBtnStyles.size;
   onClick?: (event: React.MouseEvent) => void;
@@ -26,13 +27,15 @@ export interface FieldClearButtonProps {
 }
 
 export function FieldClearButton({
+  as,
   size,
   onClick,
   hasSuffix,
   className,
 }: FieldClearButtonProps) {
+  const Component = as || 'button';
   return (
-    <button
+    <Component
       type="button"
       onClick={onClick}
       className={cn(
@@ -55,7 +58,7 @@ export function FieldClearButton({
       >
         <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
       </svg>
-    </button>
+    </Component>
   );
 }
 

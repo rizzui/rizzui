@@ -1,16 +1,14 @@
-import { Listbox, Transition } from '@headlessui/react';
+import React, { Fragment, useMemo } from 'react';
 import {
-  type Placement,
-  flip,
-  shift,
-  offset,
-  autoUpdate,
-  useFloating,
-  FloatingPortal,
-} from '@floating-ui/react';
+  Listbox,
+  Label,
+  ListboxButton,
+  ListboxOptions,
+  ListboxOption,
+  Transition,
+} from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
-import { useElementSize } from '../../lib/use-element-size';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
@@ -19,14 +17,17 @@ import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { makeClassName } from '../../lib/make-class-name';
+import { SearchIcon } from '../../icons/search';
 import {
+  TheirPlacementType,
   displayValueFn,
   getOptionDisplayValueFn,
   getOptionValueFn,
   isEmpty,
   isNumber,
+  ourPlacementObject,
+  preventHeadlessUIKeyboardInterActions,
 } from './select.lib';
-import { Fragment } from 'react';
 
 const selectStyles = {
   base: 'flex items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
@@ -64,7 +65,7 @@ const selectStyles = {
 };
 
 const optionListStyles = {
-  base: `${dropdownStyles.base} max-h-[265px] w-full overflow-auto !outline-none !ring-0 !m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
+  base: `${dropdownStyles.base} overflow-auto w-[var(--button-width)] !outline-none !ring-0 m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
   shadow: dropdownStyles.shadow,
   rounded: {
     none: 'rounded-none',
@@ -88,6 +89,17 @@ const optionListStyles = {
       pill: 'rounded-lg',
     },
   },
+  inPortal: '[--anchor-max-height:256px;]',
+  notInPortal: 'absolute z-10 h-[256px] start-0 top-full mt-1.5',
+};
+
+const searchStyles = {
+  base: 'relative mb-2 block',
+  inputBase: 'px-10 placeholder:text-muted-foreground',
+  prefix:
+    'absolute z-10 start-1 top-5 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
+  suffix:
+    'absolute z-10 end-1 top-5 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
 };
 
 export type SelectOption = {
@@ -124,6 +136,30 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   prefix?: React.ReactNode;
   /** The suffix is design for adding any icon or text on the select field's end (it's a right icon for the `ltr` and left icon for the `rtl`) */
   suffix?: React.ReactNode;
+  /** Whether the select is searchable or not */
+  searchable?: boolean;
+  /** The type of the search input */
+  searchType?: 'text' | 'search';
+  /** The props for the search input */
+  searchProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  /** The prefix for the search input */
+  searchPrefix?: React.ReactNode;
+  /** The suffix for the search input */
+  searchSuffix?: React.ReactNode;
+  /** Whether the search input is disabled */
+  searchDisabled?: boolean;
+  /** Whether the search input is readonly */
+  searchReadOnly?: boolean;
+  /** Add custom classes for search input */
+  searchClassName?: string;
+  /** Set search input placeholder text */
+  searchPlaceHolder?: string;
+  /** Add search prefix custom style */
+  searchPrefixClassName?: string;
+  /** Add search suffix custom style */
+  searchSuffixClassName?: string;
+  /** Add search container custom style */
+  searchContainerClassName?: string;
   /** Whether it is rendered on the portal or not */
   inPortal?: boolean;
   /** Show error message using this prop */
@@ -132,8 +168,12 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   helperText?: React.ReactNode;
   /** Add custom classes for container */
   className?: string;
-  /** Add custom classes for container */
-  placement?: Placement;
+  /** Define the position of dropdown */
+  placement?: TheirPlacementType;
+  /** Define the gap between the selected and dropdown */
+  gap?: number;
+  /** Whether it is rendered on the modal or not */
+  modal?: boolean;
   /** Use labelClassName prop to do some addition style for the field label */
   labelClassName?: string;
   /** Add custom classes for select */
@@ -150,6 +190,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   helperClassName?: string;
   /** This prop allows you to customize the Options Wrapper style */
   dropdownClassName?: string;
+  /** The key to search in the options */
+  searchByKey?: string;
   /**
    * A function to determine the display value of the selected item.
    * @param value - The value of the selected item.
@@ -182,6 +224,7 @@ export function Select<OptionType extends SelectOption>({
   prefix = null,
   placeholder = 'Select...',
   inPortal = true,
+  modal = false,
   displayValue = displayValueFn,
   getOptionDisplayValue = getOptionDisplayValueFn,
   getOptionValue = getOptionValueFn,
@@ -189,12 +232,22 @@ export function Select<OptionType extends SelectOption>({
   onClear,
   clearable,
   placement = 'bottom-start',
+  gap = 6,
   size = 'md',
   rounded = 'md',
   shadow = 'md',
   variant = 'outline',
   suffix = <ChevronDownIcon strokeWidth="2" className="h-4 w-4" />,
+  searchable,
+  searchType,
+  searchProps,
+  searchPrefix = <SearchIcon strokeWidth="2" className="h-4 w-4" />,
+  searchSuffix = null,
+  searchDisabled,
+  searchReadOnly,
+  searchPlaceHolder = 'Search...',
   className,
+  searchByKey = 'label',
   labelClassName,
   selectClassName,
   optionClassName,
@@ -202,29 +255,32 @@ export function Select<OptionType extends SelectOption>({
   prefixClassName,
   errorClassName,
   helperClassName,
+  searchClassName,
   dropdownClassName,
+  searchPrefixClassName,
+  searchSuffixClassName,
+  searchContainerClassName,
   ...props
 }: SelectProps<OptionType>) {
-  const [ref, { width }] = useElementSize();
-  const { x, y, refs, strategy } = useFloating({
-    placement,
-    middleware: [
-      flip(),
-      shift(),
-      offset({
-        mainAxis: 6,
-      }),
-    ],
-    whileElementsMounted: autoUpdate,
-  });
-
   const emptyValue = !isNumber(value) && isEmpty(value);
+  const [searchQuery, setSearchQuery] = React.useState('');
 
-  const PortalComponent = inPortal ? FloatingPortal : Fragment;
+  function handleOnClear(e: React.MouseEvent) {
+    e.stopPropagation();
+    setSearchQuery(() => '');
+    onClear && onClear(e);
+  }
+
+  const filteredOptions = useMemo(
+    () =>
+      options.filter((item) =>
+        item[searchByKey].toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+    [searchQuery]
+  );
 
   return (
     <div
-      ref={ref}
       className={cn(
         makeClassName(`select-root`),
         'grid w-full grid-cols-1',
@@ -235,7 +291,7 @@ export function Select<OptionType extends SelectOption>({
         {({ open }) => (
           <>
             {label && (
-              <Listbox.Label
+              <Label
                 className={cn(
                   makeClassName(`select-label`),
                   'block',
@@ -246,11 +302,11 @@ export function Select<OptionType extends SelectOption>({
                 )}
               >
                 {label}
-              </Listbox.Label>
+              </Label>
             )}
 
-            <div ref={refs.setReference} className={cn('h-full')}>
-              <Listbox.Button
+            <div className={cn('h-full', !inPortal && 'relative')}>
+              <ListboxButton
                 className={cn(
                   makeClassName(`select-button`),
                   selectStyles.base,
@@ -290,11 +346,9 @@ export function Select<OptionType extends SelectOption>({
 
                 {clearable && !emptyValue ? (
                   <FieldClearButton
+                    as={'span'}
                     size={size}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onClear && onClear(e);
-                    }}
+                    onClick={handleOnClear}
                     hasSuffix={Boolean(suffix)}
                   />
                 ) : null}
@@ -311,43 +365,106 @@ export function Select<OptionType extends SelectOption>({
                     {suffix}
                   </span>
                 ) : null}
-              </Listbox.Button>
+              </ListboxButton>
 
               {open ? (
-                <PortalComponent>
+                <>
                   <Transition
                     as={Fragment}
                     leave="transition ease-in duration-100"
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options
-                      ref={refs.setFloating}
+                    <ListboxOptions
+                      modal={modal}
+                      portal={inPortal}
+                      {...(inPortal && {
+                        anchor: {
+                          to: ourPlacementObject[placement],
+                          gap: gap,
+                        },
+                      })}
                       className={cn(
                         makeClassName(`select-options`),
                         optionListStyles.base,
                         optionListStyles.shadow[shadow],
                         optionListStyles.rounded[rounded],
+                        inPortal
+                          ? optionListStyles.inPortal
+                          : optionListStyles.notInPortal,
                         dropdownClassName
                       )}
-                      style={{
-                        width,
-                        position: strategy,
-                        top: y ?? 0,
-                        left: x ?? 0,
-                      }}
                     >
-                      {options.map((option) => (
-                        <Listbox.Option
+                      {searchable && (
+                        <span
+                          className={cn(
+                            searchStyles.base,
+                            searchContainerClassName
+                          )}
+                        >
+                          {searchPrefix ? (
+                            <span
+                              className={cn(
+                                makeClassName(`select-prefix`),
+                                searchStyles.prefix,
+                                searchPrefix && selectStyles.prefix.size[size],
+                                searchPrefixClassName
+                              )}
+                            >
+                              {searchPrefix}
+                            </span>
+                          ) : null}
+                          <input
+                            type={searchType}
+                            spellCheck={false}
+                            value={searchQuery}
+                            disabled={searchDisabled}
+                            readOnly={searchReadOnly}
+                            placeholder={searchPlaceHolder}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            // prevent headless ui from handling these keys
+                            onKeyDown={(e) =>
+                              preventHeadlessUIKeyboardInterActions(e)
+                            }
+                            className={cn(
+                              makeClassName(`select-search`),
+                              selectStyles.base,
+                              selectStyles.size[size],
+                              selectStyles.variant[variant],
+                              selectStyles.rounded[rounded],
+                              searchDisabled && selectStyles.disabled,
+                              searchStyles.inputBase,
+                              searchClassName
+                            )}
+                            {...searchProps}
+                          />
+
+                          {searchSuffix ? (
+                            <span
+                              className={cn(
+                                makeClassName(`select-suffix`),
+                                searchStyles.suffix,
+                                searchSuffix && selectStyles.suffix.size[size],
+                                searchSuffixClassName
+                              )}
+                            >
+                              {searchSuffix}
+                            </span>
+                          ) : null}
+                        </span>
+                      )}
+
+                      {filteredOptions.map((option) => (
+                        <ListboxOption
                           key={option.value}
                           {...(option?.disabled && {
                             disabled: option?.disabled,
                           })}
-                          className={({ active }) =>
+                          className={({ focus }) =>
                             cn(
                               makeClassName(`select-option`),
                               'flex w-full items-center px-3 py-1.5',
-                              active && 'bg-muted/70',
+                              focus && 'bg-muted/70',
                               rounded && optionListStyles.item.rounded[rounded],
                               size && optionListStyles.item.size[size],
                               !option?.disabled && 'cursor-pointer',
@@ -365,11 +482,11 @@ export function Select<OptionType extends SelectOption>({
                               {getOptionDisplayValue(option)}
                             </div>
                           )}
-                        </Listbox.Option>
+                        </ListboxOption>
                       ))}
-                    </Listbox.Options>
+                    </ListboxOptions>
                   </Transition>
-                </PortalComponent>
+                </>
               ) : null}
             </div>
           </>

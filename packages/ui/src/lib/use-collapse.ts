@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 
 export function useCollapse(
   duration: number = 200,
-  defaultOpen: boolean = false,
+  defaultOpen: boolean = false
 ) {
   const targetEl = useRef<any>(null!);
   const [open, setOpen] = useState(defaultOpen);
