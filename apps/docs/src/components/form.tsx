@@ -47,9 +47,7 @@ export default function RizzUIForm() {
   return (
     <div className="w-full max-w-2xl mb-10">
       <Toaster />
-      <div className="mb-6">
-        <Title as="h3">Payment Details</Title>
-      </div>
+
       <form
         noValidate
         onSubmit={handleSubmit(onSubmit)}

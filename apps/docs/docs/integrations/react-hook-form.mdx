@@ -5,9 +5,11 @@ sidebar_position: 7
 import Paper from "@site/src/components/paper";
 import RizzUIForm from "@site/src/components/form";
 
-# Rizzui Form Validation
+# React Hook Form
 
-Rizzui Form components are a set of components that help you build forms in your application. In this example we will show you how to use the Rizzui Form components with **React Hook Form** & **ZOD** validation to build a simple full featured form.
+A React Hook Form integration with RizzUI Form components and zod validations.
+
+<br />
 
 <Paper>
   <RizzUIForm />
@@ -73,9 +75,6 @@ export default function RizzUIForm() {
 
   return (
     <div className="w-full max-w-2xl mb-10">
-      <div className="mb-6">
-        <Title as="h3">Payment Details</Title>
-      </div>
       <form
         noValidate
         onSubmit={handleSubmit(onSubmit)}
