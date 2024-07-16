@@ -1,6 +1,6 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
-import { render, screen, waitFor, act } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import { Collapse } from '../components/collapse';
@@ -24,7 +24,7 @@ test('Renders collapse component with content', async () => {
       unhappy with your purchase for any reason, email us within 90 days and we
       will refund you in full, no questions asked.If you are unhappy with your
       purchase for any reason.
-    </Collapse>,
+    </Collapse>
   );
   const collapseElement = screen.getByTestId('collapse-parent');
   const titleElement = screen.getByRole('button', { name: /option/i });
@@ -36,20 +36,20 @@ test('Renders collapse component with content', async () => {
   expect(descriptionElement).toBeInTheDocument();
   expect(descriptionElement).toHaveStyle({ display: 'none' });
   expect(descriptionElement).not.toBeVisible();
-  await act(async () => {
+  await React.act(async () => {
     await user.click(titleElement);
   });
   expect(collapseElement).toHaveAttribute('aria-expanded', 'true');
-  act(() => {
+  React.act(() => {
     expect(descriptionElement).toHaveStyle({ display: 'block' });
     expect(descriptionElement).toBeVisible();
   });
 
-  await act(async () => {
+  await React.act(async () => {
     await user.click(titleElement);
   });
   expect(collapseElement).toHaveAttribute('aria-expanded', 'false');
-  act(() => {
+  React.act(() => {
     waitFor(() => expect(descriptionElement).toHaveStyle({ display: 'none' }));
     waitFor(() => expect(descriptionElement).not.toBeVisible());
   });
