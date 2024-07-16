@@ -24,7 +24,7 @@
     "react ui"
   ],
   "scripts": {
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "clean": "rm -rf .turbo node_modules dist coverage",
     "lint": "tsc",
     "dev": "concurrently \"pnpm build --watch\" \"pnpm storybook\"",
     "build": "tsup",
