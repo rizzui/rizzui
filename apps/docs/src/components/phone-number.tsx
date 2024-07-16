@@ -146,7 +146,7 @@ const PhoneNumber = ({
         className={cn(
           "block font-medium",
           labelClasses.size[size],
-          labelClassName
+          labelClassName,
         )}
       >
         {label}
@@ -160,7 +160,7 @@ const PhoneNumber = ({
           inputClasses.rounded[rounded],
           inputClasses.variant[variant],
           error && inputClasses.error,
-          inputClassName
+          inputClassName,
         )}
         buttonClass={cn(
           buttonClasses.base,
@@ -169,13 +169,13 @@ const PhoneNumber = ({
           props.inputProps?.disabled && "pointer-events-none",
           // @ts-ignore
           props.inputProps?.readOnly && "pointer-events-none",
-          buttonClassName
+          buttonClassName,
         )}
         dropdownClass={cn(
           dropdownClasses.base,
           dropdownClasses.rounded[rounded],
           dropdownClasses.highlightListColor,
-          dropdownClassName
+          dropdownClassName,
         )}
         searchClass={cn(dropdownClasses.searchBox, searchClassName)}
         enableSearch={enableSearch}

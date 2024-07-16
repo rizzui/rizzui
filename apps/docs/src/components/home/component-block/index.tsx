@@ -92,10 +92,7 @@ export default function ComponentBlock() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {components.map((item, idx) => (
-            <ComponentCard
-              key={`${item.name}-${idx}`}
-              item={item}
-            />
+            <ComponentCard key={`${item.name}-${idx}`} item={item} />
           ))}
         </div>
 

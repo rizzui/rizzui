@@ -37,7 +37,7 @@ export const WithQuantityNumber = () => {
           <div className="-mr-3.5 grid gap-[2px] p-0.5 rtl:-ml-3.5 rtl:-mr-0">
             <button
               type="button"
-              className="rounded-[3px] bg-muted/70  px-1.5 py-0.5 backdrop-blur hover:bg-muted focus:bg-muted"
+              className="rounded-[3px] bg-muted/70 px-1.5 py-0.5 backdrop-blur hover:bg-muted focus:bg-muted"
               onClick={() => setState((prevState) => prevState + 1)}
             >
               <svg
@@ -53,7 +53,7 @@ export const WithQuantityNumber = () => {
             </button>
             <button
               type="button"
-              className="rounded-[3px]  bg-muted/70 px-1.5 py-0.5 backdrop-blur hover:bg-muted focus:bg-muted"
+              className="rounded-[3px] bg-muted/70 px-1.5 py-0.5 backdrop-blur hover:bg-muted focus:bg-muted"
               onClick={() => setState((prevState) => prevState - 1)}
             >
               <svg

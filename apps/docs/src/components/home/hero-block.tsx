@@ -27,7 +27,7 @@ export default function HeroBlock() {
             as="h1"
             dangerouslySetInnerHTML={{ __html: data.title }}
             className={cn(
-              "text-3xl sm:text-4xl xl:text-5xl 2xl:text-[54px] leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-10 font-semibold"
+              "text-3xl sm:text-4xl xl:text-5xl 2xl:text-[54px] leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-10 font-semibold",
             )}
           />
           <Text className="text-[15px] md:text-base lg:text-lg leading-[1.9] md:leading-[1.9] lg:leading-[1.9] max-w-5xl mx-auto mb-8 md:mb-12 text-gray-600 dark:text-gray-500">

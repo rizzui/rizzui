@@ -42,12 +42,12 @@ export default function HeaderCell({
 }: HeaderCellProps) {
   if (ellipsis && width === undefined) {
     console.warn(
-      "When ellipsis is true make sure you are using the same column width in HeaderCell component too."
+      "When ellipsis is true make sure you are using the same column width in HeaderCell component too.",
     );
   }
   if (width !== undefined && ellipsis !== true) {
     console.warn(
-      "width prop without ellipsis won't work, please set ellipsis prop true."
+      "width prop without ellipsis won't work, please set ellipsis prop true.",
     );
   }
   return (
@@ -56,7 +56,7 @@ export default function HeaderCell({
         "flex items-center gap-1",
         sortable && "cursor-pointer",
         handleTextAlignment(align),
-        className
+        className,
       )}
     >
       <div

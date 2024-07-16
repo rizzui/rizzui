@@ -85,13 +85,12 @@ export default function RizzUIForm() {
               <span className="bg-gray-100 p-3 rounded inline-block mb-3">
                 <CubeIcon className="size-6 text-blue" />
               </span>
-              <Title
-                as="h4"
-                className="text-base"
-              >
+              <Title as="h4" className="text-base">
                 One-Time Payment
               </Title>
-              <Text>Change users a one-time payment fee to access the content</Text>
+              <Text>
+                Change users a one-time payment fee to access the content
+              </Text>
             </AdvancedRadio>
             <AdvancedRadio
               defaultChecked
@@ -102,13 +101,12 @@ export default function RizzUIForm() {
               <span className="bg-gray-100 p-3 rounded inline-block mb-3">
                 <BoltIcon className="size-6 text-blue" />
               </span>
-              <Title
-                as="h4"
-                className="text-base"
-              >
+              <Title as="h4" className="text-base">
                 Membership
               </Title>
-              <Text>Split the full bundle price over several monthly payments</Text>
+              <Text>
+                Split the full bundle price over several monthly payments
+              </Text>
             </AdvancedRadio>
           </div>
         </div>
@@ -119,7 +117,10 @@ export default function RizzUIForm() {
             <Controller
               control={control}
               name="amount"
-              render={({ field: { value, onChange }, fieldState: { error } }) => (
+              render={({
+                field: { value, onChange },
+                fieldState: { error },
+              }) => (
                 <NumberInput
                   formatType="numeric"
                   thousandSeparator=","
@@ -160,10 +161,7 @@ export default function RizzUIForm() {
           )}
         />
 
-        <Button
-          type="submit"
-          className="w-full mt-2"
-        >
+        <Button type="submit" className="w-full mt-2">
           Submit
         </Button>
       </form>

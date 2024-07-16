@@ -34,7 +34,7 @@ function getStatusBadge(status: string) {
 const getColumns = (
   order: string,
   column: string,
-  onHeaderClick: (value: string) => any
+  onHeaderClick: (value: string) => any,
 ) => [
   {
     title: <></>,
@@ -155,7 +155,7 @@ export default function TableDefault() {
   });
   const columns: any = React.useMemo(
     () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
+    [order, column, onHeaderClick],
   );
 
   return (
@@ -186,7 +186,7 @@ export function TableModern() {
   });
   const columns: any = React.useMemo(
     () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
+    [order, column, onHeaderClick],
   );
   return (
     <Table
@@ -217,7 +217,7 @@ export function TableElegant() {
   });
   const columns: any = React.useMemo(
     () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
+    [order, column, onHeaderClick],
   );
   return (
     <Table
@@ -248,7 +248,7 @@ export function TableMinimal() {
   });
   const columns: any = React.useMemo(
     () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
+    [order, column, onHeaderClick],
   );
   return (
     <Table

@@ -91,7 +91,7 @@ function TokenRow({ token }: { token: TokenTypes }) {
         "!border border-muted shadow-sm @3xl:shadow-none rounded-lg flex flex-col @3xl:table-row",
         isContainLighter
           ? "@3xl:!border-x-0 @3xl:!border-b-0"
-          : "@3xl:!border-0"
+          : "@3xl:!border-0",
       )}
     >
       <td>
@@ -130,7 +130,7 @@ const TokenColor = React.forwardRef<HTMLInputElement, any>(
               hex === "#000000" && "dark:border dark:border-muted/50",
               colorMode === "dark" && [
                 name === "--background" && "dark:border dark:border-muted/50",
-              ]
+              ],
             )}
             style={{ backgroundColor: hex }}
           />
@@ -153,7 +153,7 @@ const TokenColor = React.forwardRef<HTMLInputElement, any>(
         ) : null}
       </div>
     );
-  }
+  },
 );
 
 function TokenClipboard({ name, value }: { name: string; value: string }) {

@@ -59,7 +59,10 @@ export function MultiSelectBoxClearable({
   label = "Multi Select",
   ...props
 }: MultiSelectProps<MultiSelectOption>) {
-  const [value, setValue] = React.useState([options[0].value, options[1].value]);
+  const [value, setValue] = React.useState([
+    options[0].value,
+    options[1].value,
+  ]);
 
   return (
     <>
@@ -133,7 +136,10 @@ export function MultiSelectBoxCustomOption({
   label = "Multi Select",
   ...props
 }: MultiSelectProps<MultiSelectOption>) {
-  const [value, setValue] = React.useState([customOptions[0].value, customOptions[1].value]);
+  const [value, setValue] = React.useState([
+    customOptions[0].value,
+    customOptions[1].value,
+  ]);
 
   return (
     <>
@@ -151,7 +157,10 @@ export function MultiSelectBoxCustomOption({
   );
 }
 
-function renderDisplayValue(option: MultiSelectOption, handleClearItem: (value: string) => void) {
+function renderDisplayValue(
+  option: MultiSelectOption,
+  handleClearItem: (value: string) => void,
+) {
   return (
     <div className="flex items-center gap-3 p-1">
       <img
@@ -176,7 +185,10 @@ function renderDisplayValue(option: MultiSelectOption, handleClearItem: (value: 
   );
 }
 
-function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) {
+function renderOptionDisplayValue(
+  option: MultiSelectOption,
+  selected: boolean,
+) {
   return (
     <div className={cn("flex items-center gap-3 py-1.5 px-3 pe-4 w-full")}>
       <img
@@ -196,7 +208,9 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 // with react hook form and zod validation
 
 const schema = z.object({
-  multiSelect: z.array(z.string()).min(1, { message: "Minimum 1 item required!" }),
+  multiSelect: z
+    .array(z.string())
+    .min(1, { message: "Minimum 1 item required!" }),
 });
 
 type SchemaType = z.infer<typeof schema>;
@@ -215,10 +229,7 @@ export function MultiSelectWithForm() {
     <>
       <Toaster />
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-md"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
         <Controller
           control={control}
           name="multiSelect"
@@ -236,10 +247,7 @@ export function MultiSelectWithForm() {
           )}
         />
 
-        <Button
-          type="submit"
-          className="mt-4 w-full"
-        >
+        <Button type="submit" className="mt-4 w-full">
           Submit
         </Button>
       </form>

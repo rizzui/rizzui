@@ -15,7 +15,7 @@ export const notification = () =>
         onClear={() => toast.dismiss(t.id)}
         containerClassName={cn(
           "max-w-xs transition-all ease-in-out duration-300 bg-green-lighter",
-          t.visible ? "" : "translate-x-[150%]"
+          t.visible ? "" : "translate-x-[150%]",
         )}
         className="[&_h2]:!mb-0"
       />
@@ -23,5 +23,5 @@ export const notification = () =>
     {
       duration: 5000,
       position: "top-right",
-    }
+    },
   );

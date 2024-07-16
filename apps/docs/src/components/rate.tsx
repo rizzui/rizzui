@@ -78,11 +78,11 @@ const Rate = forwardRef<any, RateProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const characterRender = (
       node: React.ReactElement,
-      { index }: RcStarProps
+      { index }: RcStarProps,
     ) => {
       if (!tooltips) {
         return node;
@@ -100,7 +100,7 @@ const Rate = forwardRef<any, RateProps>(
             className={cn(
               "block font-medium",
               labelClasses.size[size],
-              labelClassName
+              labelClassName,
             )}
           >
             {label}
@@ -115,7 +115,7 @@ const Rate = forwardRef<any, RateProps>(
               className={cn(
                 "[&>svg]:fill-current",
                 rateClasses.size[size],
-                characterClassName
+                characterClassName,
               )}
             >
               {Array.isArray(character)
@@ -128,7 +128,7 @@ const Rate = forwardRef<any, RateProps>(
             rateClasses.firstStar,
             rateClasses.color,
             !disabled && rateClasses.transition,
-            rateClassName
+            rateClassName,
           )}
           {...props}
         />
@@ -142,7 +142,7 @@ const Rate = forwardRef<any, RateProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Rate.displayName = "Rate";

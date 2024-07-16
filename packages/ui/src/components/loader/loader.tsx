@@ -58,7 +58,7 @@ export function Loader({
         loaderStyles.base,
         loaderStyles.sizes[size],
         loaderStyles.colors[color],
-        className,
+        className
       )}
       {...props}
     />
