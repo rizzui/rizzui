@@ -11,7 +11,7 @@ test('Checkbox element and functionality', async () => {
       <Checkbox label="one" value="one" className="m-2" name="numbers" />
       <Checkbox label="two" value="two" className="m-2" name="numbers" />
       <Checkbox value="three" label="three" className="m-2" name="numbers" />
-    </div>,
+    </div>
   );
   const firstCheckbox = screen.getByRole('checkbox', { name: 'one' });
   const secondCheckbox = screen.getByRole('checkbox', { name: 'two' });
@@ -49,7 +49,7 @@ test('Checkbox with helper and error text', () => {
         name="numbers"
         error="This field is required"
       />
-    </div>,
+    </div>
   );
   const errorHelperText = screen.getAllByRole('alert');
   expect(errorHelperText[0]).toHaveTextContent(/remember me/i);
@@ -59,13 +59,7 @@ test('Checkbox with helper and error text', () => {
 
 test('Disabled checkbox', async () => {
   render(
-    <Checkbox
-      label="two"
-      value="two"
-      className="m-2"
-      name="numbers"
-      disabled
-    />,
+    <Checkbox label="two" value="two" className="m-2" name="numbers" disabled />
   );
   const checkboxElement = screen.getByRole('checkbox');
   expect(checkboxElement).toBeDisabled();

@@ -62,6 +62,7 @@ export const CardExpiry = () => {
           month = '12';
         }
       }
+      // @ts-ignore
       return isMask ? format(`${month}${year}`) : `${month}/${year}`;
     };
     return <NumberInput {...props} format={_format} />;
@@ -122,6 +123,7 @@ export const CreditCardInputWithGap = () => {
           month = '12';
         }
       }
+      // @ts-ignore
       return isMask ? format(`${month}${year}`) : `${month}/${year}`;
     };
     return <NumberInput {...props} format={_format} />;
@@ -183,6 +185,7 @@ export const CreditCardInputWithNoGap = () => {
           month = '12';
         }
       }
+      // @ts-ignore
       return isMask ? format(`${month}${year}`) : `${month}/${year}`;
     };
     return <NumberInput {...props} format={_format} />;

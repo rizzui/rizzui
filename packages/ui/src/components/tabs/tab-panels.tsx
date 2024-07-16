@@ -1,5 +1,8 @@
 import React from 'react';
-import { Tab as HeadlessTab } from '@headlessui/react';
+import {
+  TabPanels as HeadlessTabPanels,
+  type TabPanelsProps as HeadlessTabPanelsProps,
+} from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
 import { TabPanel } from './tab-panel';
@@ -12,13 +15,13 @@ const tabPanelsStyles = {
   horizontal: 'mt-2',
 };
 
-export type TabPanelsProps = ExtractProps<typeof HeadlessTab.Panels> & {};
+export type TabPanelsProps = ExtractProps<HeadlessTabPanelsProps> & {};
 
 export function TabPanels({ children, className, ...props }: TabPanelsProps) {
   const { vertical } = useTab();
 
   return (
-    <HeadlessTab.Panels
+    <HeadlessTabPanels
       className={cn(
         makeClassName(`tab-panels`),
         tabPanelsStyles.base,
@@ -33,7 +36,7 @@ export function TabPanels({ children, className, ...props }: TabPanelsProps) {
         }
         return null;
       })}
-    </HeadlessTab.Panels>
+    </HeadlessTabPanels>
   );
 }
 

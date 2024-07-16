@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 14
 ---
 
 import { FileInput } from "rizzui";
@@ -39,9 +39,18 @@ export default function App() {
 You can change the style of **FileInput** using [**variant**](#fileinput-variants) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-  <FileInput label="Outline Variant" variant="outline" />
-  <FileInput label="Flat Variant" variant="flat" />
-  <FileInput label="Text Variant" variant="text" />
+  <FileInput
+    label="Outline Variant"
+    variant="outline"
+  />
+  <FileInput
+    label="Flat Variant"
+    variant="flat"
+  />
+  <FileInput
+    label="Text Variant"
+    variant="text"
+  />
 </Paper>
 
 ```tsx
@@ -50,9 +59,18 @@ import { FileInput } from "rizzui";
 export default function App() {
   return (
     <>
-      <FileInput label="Outline Variant" variant="outline" />
-      <FileInput label="Flat Variant" variant="flat" />
-      <FileInput label="Text Variant" variant="text" />
+      <FileInput
+        label="Outline Variant"
+        variant="outline"
+      />
+      <FileInput
+        label="Flat Variant"
+        variant="flat"
+      />
+      <FileInput
+        label="Text Variant"
+        variant="text"
+      />
     </>
   );
 }
@@ -65,10 +83,19 @@ export default function App() {
 You can change the size of **FileInput** using [**size**](#fileinput-sizes) property.
 
 <Paper className="justify-start items-start gap-6">
-  <FileInput label="Small FileInput" size="sm" />
+  <FileInput
+    label="Small FileInput"
+    size="sm"
+  />
   <FileInput label="Default FileInput" />
-  <FileInput label="Large FileInput" size="lg" />
-  <FileInput label="Extra Large FileInput" size="xl" />
+  <FileInput
+    label="Large FileInput"
+    size="lg"
+  />
+  <FileInput
+    label="Extra Large FileInput"
+    size="xl"
+  />
 </Paper>
 
 ```tsx
@@ -77,10 +104,19 @@ import { FileInput } from "rizzui";
 export default function App() {
   return (
     <>
-      <FileInput label="Small FileInput" size="sm" />
+      <FileInput
+        label="Small FileInput"
+        size="sm"
+      />
       <FileInput label="Default FileInput" />
-      <FileInput label="Large FileInput" size="lg" />
-      <FileInput label="Extra Large FileInput" size="xl" />
+      <FileInput
+        label="Large FileInput"
+        size="lg"
+      />
+      <FileInput
+        label="Extra Large FileInput"
+        size="xl"
+      />
     </>
   );
 }
@@ -93,11 +129,23 @@ export default function App() {
 You can change the border radius of **FileInput** using [**rounded**](#fileinput-rounded) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <FileInput label="Rounded Small" rounded="sm" />
+  <FileInput
+    label="Rounded Small"
+    rounded="sm"
+  />
   <FileInput label="Rounded Default" />
-  <FileInput label="Rounded Large" rounded="lg" />
-  <FileInput label="Rounded None" rounded="none" />
-  <FileInput label="Rounded Full" rounded="pill" />
+  <FileInput
+    label="Rounded Large"
+    rounded="lg"
+  />
+  <FileInput
+    label="Rounded None"
+    rounded="none"
+  />
+  <FileInput
+    label="Rounded Full"
+    rounded="pill"
+  />
 </Paper>
 
 ```tsx
@@ -106,11 +154,23 @@ import { FileInput } from "rizzui";
 export default function App() {
   return (
     <>
-      <FileInput label="Rounded Small" rounded="sm" />
+      <FileInput
+        label="Rounded Small"
+        rounded="sm"
+      />
       <FileInput label="Rounded Default" />
-      <FileInput label="Rounded Large" rounded="lg" />
-      <FileInput label="Rounded None" rounded="none" />
-      <FileInput label="Rounded Full" rounded="pill" />
+      <FileInput
+        label="Rounded Large"
+        rounded="lg"
+      />
+      <FileInput
+        label="Rounded None"
+        rounded="none"
+      />
+      <FileInput
+        label="Rounded Full"
+        rounded="pill"
+      />
     </>
   );
 }
@@ -153,14 +213,22 @@ export default function App() {
 By enabling **multiple** property true, user can upload multiple files.
 
 <Paper className="block">
-  <FileInput label="Upload Multiple Files" multiple />
+  <FileInput
+    label="Upload Multiple Files"
+    multiple
+  />
 </Paper>
 
 ```tsx
 import { FileInput } from "rizzui";
 
 export default function App() {
-  return <FileInput label="Upload Multiple Files" multiple />;
+  return (
+    <FileInput
+      label="Upload Multiple Files"
+      multiple
+    />
+  );
 }
 ```
 
@@ -171,14 +239,22 @@ export default function App() {
 The disabled state of the **FileInput** component.
 
 <Paper className="block">
-  <FileInput label="Upload File" disabled />
+  <FileInput
+    label="Upload File"
+    disabled
+  />
 </Paper>
 
 ```tsx
 import { FileInput } from "rizzui";
 
 export default function App() {
-  return <FileInput label="Upload File" disabled />;
+  return (
+    <FileInput
+      label="Upload File"
+      disabled
+    />
+  );
 }
 ```
 
@@ -189,14 +265,22 @@ export default function App() {
 You can add helper text to the **FileInput** component using **helperText** property.
 
 <Paper className="block">
-  <FileInput label="Upload Files" helperText="This is helper text!" />
+  <FileInput
+    label="Upload Files"
+    helperText="This is helper text!"
+  />
 </Paper>
 
 ```tsx
 import { FileInput } from "rizzui";
 
 export default function App() {
-  return <FileInput label="Upload Files" helperText="This is helper text!" />;
+  return (
+    <FileInput
+      label="Upload Files"
+      helperText="This is helper text!"
+    />
+  );
 }
 ```
 
@@ -207,14 +291,22 @@ export default function App() {
 You can show the validation error message using **error** property.
 
 <Paper className="block">
-  <FileInput label="Upload Files" error="This is error message!" />
+  <FileInput
+    label="Upload Files"
+    error="This is error message!"
+  />
 </Paper>
 
 ```tsx
 import { FileInput } from "rizzui";
 
 export default function App() {
-  return <FileInput label="Upload Files" error="This is error message!" />;
+  return (
+    <FileInput
+      label="Upload Files"
+      error="This is error message!"
+    />
+  );
 }
 ```
 

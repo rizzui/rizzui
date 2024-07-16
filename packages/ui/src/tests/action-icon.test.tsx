@@ -29,7 +29,7 @@ test('Renders action icon component with icon as children', () => {
   render(
     <ActionIcon>
       <FilterIcon />
-    </ActionIcon>,
+    </ActionIcon>
   );
   const buttonElement = screen.getByRole('button');
   const iconElement = screen.getByTestId('filter-icon');
@@ -41,7 +41,7 @@ test('Render spinner while loading', () => {
   render(
     <ActionIcon isLoading>
       <FilterIcon />
-    </ActionIcon>,
+    </ActionIcon>
   );
   const filterIconElement = screen.queryByTestId('filter-icon');
   const spinnerIconElement = screen.getByTestId('spinner-icon');
@@ -54,7 +54,7 @@ test('Function executes and element is focused on click', async () => {
   render(
     <ActionIcon onClick={handleClick}>
       <FilterIcon />
-    </ActionIcon>,
+    </ActionIcon>
   );
   const buttonElement = screen.getByRole('button');
   await user.click(buttonElement);
@@ -67,7 +67,7 @@ describe('Accessibilty testing', () => {
     render(
       <ActionIcon>
         <FilterIcon />
-      </ActionIcon>,
+      </ActionIcon>
     );
     const buttonElement = screen.getByRole('button');
     await user.tab();
@@ -79,7 +79,7 @@ describe('Accessibilty testing', () => {
     render(
       <ActionIcon onClick={handleClick}>
         <FilterIcon />
-      </ActionIcon>,
+      </ActionIcon>
     );
     await user.tab();
     await user.keyboard('[Enter]');

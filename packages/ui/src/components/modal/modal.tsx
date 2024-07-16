@@ -1,5 +1,10 @@
 import React, { Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import {
+  Dialog,
+  DialogPanel,
+  Transition,
+  TransitionChild as HeadLessTransitionChild,
+} from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
@@ -64,7 +69,7 @@ export function Modal({
   children,
 }: React.PropsWithChildren<ModalProps>) {
   const TransitionComponent: React.ElementType = Transition;
-  const TransitionChild: React.ElementType = Transition.Child;
+  const TransitionChild: React.ElementType = HeadLessTransitionChild;
   // checking customSize value
   if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
     const checkedCustomSizeValue =
@@ -102,7 +107,7 @@ export function Modal({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay
+            <div
               className={cn(
                 makeClassName(`modal-overlay`),
                 modalStyles.overlay,
@@ -126,7 +131,7 @@ export function Modal({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="pointer-events-none relative w-full transform overflow-hidden transition-all">
+            <DialogPanel className="pointer-events-none relative w-full transform overflow-hidden transition-all">
               <div
                 className={cn(
                   makeClassName(`modal-container`),
@@ -143,7 +148,7 @@ export function Modal({
               >
                 {children}
               </div>
-            </div>
+            </DialogPanel>
           </TransitionChild>
         </div>
       </Dialog>

@@ -161,10 +161,16 @@ You can set the loading state of the **Button** component using **isLoading** pr
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
     <Button isLoading={true}>Primary</Button>
-    <Button isLoading={true} color="secondary">
+    <Button
+      isLoading={true}
+      color="secondary"
+    >
       Secondary
     </Button>
-    <Button isLoading={true} color="danger">
+    <Button
+      isLoading={true}
+      color="danger"
+    >
       Danger
     </Button>
   </div>
@@ -177,10 +183,16 @@ export default function App() {
   return (
     <>
       <Button isLoading={true}>Primary</Button>
-      <Button isLoading={true} color="secondary">
+      <Button
+        isLoading={true}
+        color="secondary"
+      >
         Secondary
       </Button>
-      <Button isLoading={true} color="danger">
+      <Button
+        isLoading={true}
+        color="danger"
+      >
         Danger
       </Button>
     </>
@@ -215,7 +227,10 @@ You can set any Icon at any possition.
 <Paper>
   <Button>
     <span>View Details</span>{" "}
-    <ArrowRightIcon strokeWidth="2" className="h-4 w-4 ml-2" />
+    <ArrowRightIcon
+      strokeWidth="2"
+      className="h-4 w-4 ml-2"
+    />
   </Button>
 </Paper>
 
@@ -227,7 +242,10 @@ export default function App() {
   return (
     <Button>
       <span>View Details</span>{" "}
-      <ArrowRightIcon strokeWidth="2" className="h-4 w-4 ml-2" />
+      <ArrowRightIcon
+        strokeWidth="2"
+        className="h-4 w-4 ml-2"
+      />
     </Button>
   );
 }

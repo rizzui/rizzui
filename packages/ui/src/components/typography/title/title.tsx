@@ -41,7 +41,7 @@ export function Title({
         makeClassName(`title-${as}`),
         titleStyles.as[as],
         titleStyles.fontWeight[fontWeight],
-        className,
+        className
       )}
       {...props}
     >

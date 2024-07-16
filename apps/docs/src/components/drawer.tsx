@@ -21,6 +21,7 @@ export default function DrawerDefault() {
         isOpen={drawerState}
         onClose={() => setDrawerState(false)}
         className="z-[9999]"
+        customSize={384}
       >
         <div className="py-4 px-5">Default Drawer</div>
       </Drawer>
@@ -113,7 +114,8 @@ export function DrawerSizes() {
             {drawerSate.size}
             &quot;
           </Text>{" "}
-          size Drawer
+          size Drawer. Press
+          <Text as="strong">&quot; Esc &quot;</Text> key to close Drawer.
         </div>
       </Drawer>
     </>
@@ -183,6 +185,8 @@ export function DrawerPlacement() {
         </div>
       </div>
       <Drawer
+        customSize={384}
+        enableResizer={true}
         isOpen={drawerSate.isOpen}
         placement={drawerSate.placement}
         onClose={() =>
@@ -211,7 +215,7 @@ export function DrawerCustomSize() {
       <Drawer
         isOpen={drawerState}
         onClose={() => setDrawerState(false)}
-        customSize="600px"
+        customSize={600}
         className="z-[9999]"
       >
         <div className="py-4 px-5">Custom Size = 600px</div>

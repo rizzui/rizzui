@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Tab as HeadlessTab } from '@headlessui/react';
+import { TabGroup, type TabGroupProps } from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
 import { TabList } from './tab-list';
@@ -10,7 +10,7 @@ import { TabProvider } from './tab-context';
 import { useRect } from '../../lib/use-rect';
 import { makeClassName } from '../../lib/make-class-name';
 
-export type TabProps = ExtractProps<typeof HeadlessTab.Group> & {
+export type TabProps = ExtractProps<TabGroupProps> & {
   hideHoverAnimation?: boolean;
 };
 
@@ -41,7 +41,7 @@ export function Tab({
         hideHoverAnimation,
       }}
     >
-      <HeadlessTab.Group
+      <TabGroup
         as="div"
         selectedIndex={selectedIndex ?? activeTab}
         onChange={onChange ?? setActiveTab}
@@ -59,7 +59,7 @@ export function Tab({
           }
           return null;
         })}
-      </HeadlessTab.Group>
+      </TabGroup>
     </TabProvider>
   );
 }

@@ -40,8 +40,14 @@ export default function App() {
 You can change the style of **Switch** using [**variant**](#switch-variants) property.
 
 <Paper className="flex-row justify-around gap-4 flex-wrap">
-  <Switch variant="flat" label="Flat" />
-  <Switch variant="outline" label="Outline" />
+  <Switch
+    variant="flat"
+    label="Flat"
+  />
+  <Switch
+    variant="outline"
+    label="Outline"
+  />
 </Paper>
 
 ```tsx
@@ -50,8 +56,14 @@ import { Switch } from "rizzui";
 export default function App() {
   return (
     <>
-      <Switch variant="flat" label="Flat" />
-      <Switch variant="outline" label="Outline" />
+      <Switch
+        variant="flat"
+        label="Flat"
+      />
+      <Switch
+        variant="outline"
+        label="Outline"
+      />
     </>
   );
 }
@@ -64,10 +76,19 @@ export default function App() {
 You can set diffrient sizes of the **Switch** component using [**size**](#switch-sizes) property.
 
 <Paper className="flex-row justify-around gap-4 flex-wrap">
-  <Switch label="Small" size="sm" />
+  <Switch
+    label="Small"
+    size="sm"
+  />
   <Switch label="Default" />
-  <Switch size="lg" label="Large" />
-  <Switch size="xl" label="Extra Large" />
+  <Switch
+    size="lg"
+    label="Large"
+  />
+  <Switch
+    size="xl"
+    label="Extra Large"
+  />
 </Paper>
 
 ```tsx
@@ -76,10 +97,19 @@ import { Switch } from "rizzui";
 export default function App() {
   return (
     <>
-      <Switch label="Small" size="sm" />
+      <Switch
+        label="Small"
+        size="sm"
+      />
       <Switch label="Default" />
-      <Switch size="lg" label="Large" />
-      <Switch size="xl" label="Extra Large" />
+      <Switch
+        size="lg"
+        label="Large"
+      />
+      <Switch
+        size="xl"
+        label="Extra Large"
+      />
     </>
   );
 }
@@ -93,10 +123,22 @@ You can change the border radius of **Switch** using [**rounded**](#switch-round
 
 <Paper className="flex-row justify-around gap-4 flex-wrap">
   <Switch label="Default" />
-  <Switch label="None" rounded="none" />
-  <Switch label="Small" rounded="sm" />
-  <Switch label="Medium" rounded="md" />
-  <Switch label="Large" rounded="lg" />
+  <Switch
+    label="None"
+    rounded="none"
+  />
+  <Switch
+    label="Small"
+    rounded="sm"
+  />
+  <Switch
+    label="Medium"
+    rounded="md"
+  />
+  <Switch
+    label="Large"
+    rounded="lg"
+  />
 </Paper>
 
 ```tsx
@@ -106,10 +148,22 @@ export default function App() {
   return (
     <>
       <Switch label="Default" />
-      <Switch label="None" rounded="none" />
-      <Switch label="Small" rounded="sm" />
-      <Switch label="Medium" rounded="md" />
-      <Switch label="Large" rounded="lg" />
+      <Switch
+        label="None"
+        rounded="none"
+      />
+      <Switch
+        label="Small"
+        rounded="sm"
+      />
+      <Switch
+        label="Medium"
+        rounded="md"
+      />
+      <Switch
+        label="Large"
+        rounded="lg"
+      />
     </>
   );
 }
@@ -122,8 +176,16 @@ export default function App() {
 You can set label on the two diffrient side using **labelPlacement** property.
 
 <Paper className="sm:flex-row justify-around gap-2 flex-col">
-  <Switch label="Left Placement" variant="outline" labelPlacement="left" />
-  <Switch label="Right Placement" variant="outline" labelPlacement="right" />
+  <Switch
+    label="Left Placement"
+    variant="outline"
+    labelPlacement="left"
+  />
+  <Switch
+    label="Right Placement"
+    variant="outline"
+    labelPlacement="right"
+  />
 </Paper>
 
 ```tsx
@@ -132,7 +194,11 @@ import { Switch } from "rizzui";
 export default function App() {
   return (
     <>
-      <Switch label="Left Placement" variant="outline" labelPlacement="left" />
+      <Switch
+        label="Left Placement"
+        variant="outline"
+        labelPlacement="left"
+      />
       <Switch
         label="Right Placement"
         variant="outline"
@@ -181,14 +247,22 @@ export default function App() {
 The disabled style of the **Switch** component.
 
 <Paper>
-  <Switch label="Disabled" disabled />
+  <Switch
+    label="Disabled"
+    disabled
+  />
 </Paper>
 
 ```tsx
 import { Switch } from "rizzui";
 
 export default function App() {
-  return <Switch label="Disabled" disabled />;
+  return (
+    <Switch
+      label="Disabled"
+      disabled
+    />
+  );
 }
 ```
 

@@ -3,9 +3,9 @@
 module.exports = {
   content: [
     "./docs/**/*.{md,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/**/*.{js,ts,jsx,tsx,mdx}",
     "./docusaurus.config.js",
-    "../../node_modules/rizzui/dist/*.{js,ts,jsx,tsx}",
+    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}",
   ],
   darkMode: ["class", '[data-theme="dark"]'],
   theme: {
@@ -117,8 +117,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/container-queries"),
-  ],
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/container-queries")],
 };

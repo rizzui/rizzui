@@ -20,7 +20,7 @@ export default function Paper({
       className={cn(
         "mb-2.5 pt-10 pb-12 min-h-[200px] flex flex-col justify-center items-center px-6 relative shadow rounded border border-gray-200",
         !toggleCode && "[&+.theme-code-block]:hidden",
-        className
+        className,
       )}
     >
       <>{children}</>

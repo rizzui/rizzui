@@ -11,7 +11,7 @@ export function PopoverTrigger({
     <>
       {cloneElement(
         children,
-        getReferenceProps({ ref: refs.setReference, ...children.props }),
+        getReferenceProps({ ref: refs.setReference, ...children.props })
       )}
     </>
   );

@@ -44,7 +44,7 @@ export function Empty({
         makeClassName('empty-root'),
         emptyStyles.base,
         emptyStyles.alignment[alignment],
-        className,
+        className
       )}
     >
       <div className="text-center">

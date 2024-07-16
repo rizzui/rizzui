@@ -29,7 +29,7 @@ export function RadioGroup({
 }: RadioGroupProps) {
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value),
-    [value, setValue],
+    [value, setValue]
   );
 
   return (

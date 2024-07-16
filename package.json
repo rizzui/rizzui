@@ -1,6 +1,6 @@
 {
-  "name": "redq-ui",
-  "version": "0.8.4",
+  "name": "rizzui",
+  "version": "0.8.5",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -12,22 +12,22 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "serve": "turbo run serve",
-    "clean": "turbo run clean && rm -rf node_modules",
+    "clean": "turbo run clean && rm -rf node_modules .turbo",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish-packages": "turbo run build lint && changeset version && changeset publish",
     "prepare": "husky install"
   },
   "devDependencies": {
-    "prettier": "3.0.1",
-    "turbo": "latest",
-    "husky": "^8.0.0",
-    "tsup": "7.2.0"
+    "husky": "^9.0.11",
+    "prettier": "3.3.1",
+    "tsup": "8.1.0",
+    "turbo": "2.0.1"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "dependencies": {
-    "@changesets/cli": "^2.26.0"
+    "@changesets/cli": "^2.27.5"
   },
-  "packageManager": "yarn@1.21.1"
+  "packageManager": "pnpm@9.1.4"
 }

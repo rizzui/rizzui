@@ -85,7 +85,7 @@ export const ColumnGroupWithErrorText = () => (
 
 export const ColumnGroupWithStartLabel = () => (
   <div className="flex justify-center space-x-4 space-y-4">
-    <div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+    <div className="flex w-[500px] flex-col divide-y divide-slate-300">
       <Checkbox
         name="column-label-start-group"
         label="default"
@@ -119,7 +119,7 @@ export const ColumnGroupWithStartLabel = () => (
 
 export const ColumnGroupWithEndLabel = () => (
   <div className="flex justify-center space-x-4 space-y-4">
-    <div className="divide-slate-300 flex w-[500px] flex-col divide-y">
+    <div className="flex w-[500px] flex-col divide-y divide-slate-300">
       <Checkbox
         name="column-label-end-group"
         label="warning"

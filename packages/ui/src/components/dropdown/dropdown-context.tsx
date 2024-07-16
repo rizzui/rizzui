@@ -1,14 +1,13 @@
 import React, { createContext, useContext } from 'react';
-import { type Strategy } from '@floating-ui/react';
+import { TheirPlacementType } from './dropdown.lib';
 
 type DropdownContextProps = {
+  inPortal?: boolean;
+  placement: TheirPlacementType;
+  gap?: number;
+  modal?: boolean;
   rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
-  refs?: any;
-  x?: number;
-  y?: number;
-  strategy?: Strategy;
-  inPortal?: boolean;
 };
 
 const DropdownContext = createContext<DropdownContextProps | null>(null);

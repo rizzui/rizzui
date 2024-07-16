@@ -1,30 +1,25 @@
-import React, { Fragment } from 'react';
-import { Menu, Transition } from '@headlessui/react';
-import { FloatingPortal } from '@floating-ui/react';
 import { cn } from '../../lib/cn';
+import React, { Fragment } from 'react';
+import { useDropdown } from './dropdown-context';
+import { ourPlacementObject } from './dropdown.lib';
 import { makeClassName } from '../../lib/make-class-name';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
-import { useDropdown } from './dropdown-context';
+import { MenuItems, Transition, type MenuItemsProps } from '@headlessui/react';
 
 type DropdownMenuProps = {
-  as?: 'ul' | 'div';
   className?: string;
-};
+} & MenuItemsProps;
 
 export function DropdownMenu({
-  as = 'div',
   className,
   children,
+  ...props
 }: React.PropsWithChildren<DropdownMenuProps>) {
-  const { inPortal, rounded, shadow, refs, strategy, x, y } = useDropdown();
-  const TransitionComponent: React.ElementType = Transition;
-  const MenuItems: React.ElementType = Menu.Items;
-
-  const PortalComponent = inPortal ? FloatingPortal : Fragment;
+  const { rounded, shadow, placement, gap, inPortal, modal } = useDropdown();
 
   return (
-    <PortalComponent>
-      <TransitionComponent
+    <>
+      <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
         enterFrom="transform opacity-0 scale-95"
@@ -34,27 +29,26 @@ export function DropdownMenu({
         leaveTo="transform opacity-0 scale-95"
       >
         <MenuItems
-          as={as}
-          ref={refs.setFloating}
-          data-testid="dropdown-menu"
+          modal={modal}
+          portal={inPortal}
+          {...(inPortal && {
+            anchor: { to: ourPlacementObject[placement], gap: gap },
+          })}
           className={cn(
             makeClassName(`dropdown-menu`),
             'w-48',
             dropdownStyles.base,
             rounded && dropdownStyles.rounded[rounded],
             shadow && dropdownStyles.shadow[shadow],
+            !inPortal && 'absolute start-0 z-10 mt-1.5',
             className
           )}
-          style={{
-            position: strategy,
-            top: y ?? 0,
-            left: x ?? 0,
-          }}
+          {...props}
         >
           {children}
         </MenuItems>
-      </TransitionComponent>
-    </PortalComponent>
+      </Transition>
+    </>
   );
 }
 

@@ -55,6 +55,8 @@ export * from './components/popover';
 
 export * from './components/progressbar';
 
+export * from './components/radial-progressbar';
+
 export * from './components/radio';
 
 export * from './components/radio-group';
@@ -74,3 +76,5 @@ export * from './components/typography';
 export * from './components/accordion';
 
 export * from './components/select';
+
+export * from './components/multi-select';

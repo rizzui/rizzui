@@ -1,0 +1,284 @@
+---
+sidebar_position: 4
+---
+
+import { RadialProgressBar } from "rizzui";
+import {
+  RadialProgressbarColors,
+  RadialProgressbarGradientColors,
+} from "@site/src/components/radial-progressbar";
+import Paper from "@site/src/components/paper";
+
+# Radial Progressbar
+
+A basic widget for showing the work progress.
+
+```tsx
+import { RadialProgressBar } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+The default style of **RadialProgressBar**.
+
+<Paper>
+  <RadialProgressBar value={75} />
+</Paper>
+
+```tsx
+import { RadialProgressBar } from "rizzui";
+
+export default function App() {
+  return <RadialProgressBar value={75} />;
+}
+```
+
+<div className="mb-20" />
+
+## With Different Sizes
+
+The **RadialProgressBar** width height can be changed with property **size**.
+
+<Paper className="flex-row gap-10 flex-wrap justify-evenly">
+  <RadialProgressBar
+    size={80}
+    value={75}
+  />
+  <RadialProgressBar value={75} />
+  <RadialProgressBar
+    value={75}
+    size={120}
+  />
+</Paper>
+
+```tsx
+import { RadialProgressBar } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <RadialProgressBar
+        size={50}
+        value={75}
+      />
+      <RadialProgressBar value={75} />
+      <RadialProgressBar
+        value={75}
+        size={150}
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With Different Colors
+
+The **RadialProgressBar** trackColor and progressColor can be changed with property **trackColor** & **progressColor**.
+
+<Paper className="flex-row gap-10 flex-wrap justify-evenly">
+  <RadialProgressbarColors />
+</Paper>
+
+```tsx
+import { RadialProgressBar } from "rizzui";
+
+const data = [
+  {
+    trackColor: "#EFF4FF",
+    progressColor: "#3872FA",
+  },
+  {
+    trackColor: "#EBFEF8",
+    progressColor: "#10b981",
+  },
+  {
+    trackColor: "#FFEEF2",
+    progressColor: "#f1416c",
+  },
+  {
+    trackColor: "#F7EEFF",
+    progressColor: "#7928ca",
+  },
+];
+
+export default function App() {
+  return (
+    <>
+      {data.map((item, index) => (
+        <RadialProgressBar
+          key={index}
+          value={70}
+          trackColor={item.trackColor}
+          progressColor={item.progressColor}
+        />
+      ))}
+    </>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With Different Bar Width
+
+The ProgressBar width of **RadialProgressBar** can be changed with property **progressbarWidth**.
+
+<Paper className="flex-row gap-10 flex-wrap justify-evenly">
+  <RadialProgressBar
+    value={70}
+    progressbarWidth={6}
+  />
+  <RadialProgressBar value={70} />
+  <RadialProgressBar
+    value={70}
+    progressbarWidth={12}
+  />
+</Paper>
+
+```tsx
+import { RadialProgressBar } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <RadialProgressBar
+        value={70}
+        progressbarWidth={6}
+      />
+      <RadialProgressBar value={70} />
+      <RadialProgressBar
+        value={70}
+        progressbarWidth={12}
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With Gradient Colors
+
+You can set gradient colors to the **RadialProgressBar** with property **gradientColor**.
+
+:::danger Note
+For multiple gradient progressbar, you have to pass **unique id** to prop **gradientId**.
+:::
+
+<Paper className="flex-row gap-10 flex-wrap justify-evenly">
+  <RadialProgressbarGradientColors />
+</Paper>
+
+```tsx
+import { RadialProgressBar } from "rizzui";
+
+const gradientsData = [
+  {
+    trackColor: "#EFF4FF",
+    progressColor: "#3872FA",
+    gradientColor: "#7928ca",
+  },
+  {
+    trackColor: "#EBFEF8",
+    progressColor: "#10b981",
+    gradientColor: "#f1416c",
+  },
+  {
+    trackColor: "#FFEEF2",
+    progressColor: "#f1416c",
+    gradientColor: "#10b981",
+  },
+  {
+    trackColor: "#F7EEFF",
+    progressColor: "#7928ca",
+    gradientColor: "#3872FA",
+  },
+];
+
+export default function App() {
+  return (
+    <>
+      {gradientsData.map((item, index) => (
+        <RadialProgressBar
+          key={index}
+          value={70}
+          trackColor={item.trackColor}
+          progressColor={item.progressColor}
+          gradientColor={item.gradientColor}
+          gradientId={`gradient-${index}`}
+        />
+      ))}
+    </>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With Start Positions
+
+The ProgressBar start position can be changed with property **startAngle**.
+
+<Paper className="flex-row gap-10 flex-wrap justify-evenly">
+  <RadialProgressBar
+    value={70}
+    startAngle={45}
+  />
+</Paper>
+
+```tsx
+import { RadialProgressBar } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <RadialProgressBar
+        value={70}
+        startAngle={45}
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### RadialProgressBar Props
+
+Here is the API documentation of the RadialProgressBar component.
+
+<div className="overflow-x-auto">
+
+|        Props         |                   Type                   |                        Description                        |  Default  |
+| :------------------: | :--------------------------------------: | :-------------------------------------------------------: | :-------: |
+|        value         |                 `number`                 |                 Percentage of filled bar                  |   \_\_    |
+|         size         |                 `number`                 |    Width and Height of the RadialProgressBar component    |   `100`   |
+|      trackColor      |                 `string`                 |        Color of the track of the RadialProgressBar        | `#f0f0f0` |
+|    progressColor     |                 `string`                 |      Color of the progress of the RadialProgressBar       | `#111111` |
+|   progressbarWidth   |                 `number`                 |                 Width of the progress bar                 |    `8`    |
+|    gradientColor     |                 `string`                 |  Gradient color of the progress of the RadialProgressBar  |   \_\_    |
+|      gradientId      |                 `string`                 |           Unique id for the gradient color stop           |   \_\_    |
+|      startAngle      | [StartAngles](#progressbar-start-angles) |           Start angle of the RadialProgressBar            |   `90`    |
+|    trackClassName    |                 `string`                 |  Overrides the default style of RadialProgressBar track   |   \_\_    |
+| progressBarClassName |                 `string`                 | Overrides the default style of RadialProgressBar progress |   \_\_    |
+| useParentResponsive  |                `boolean`                 |  Uses the parent components width height for responsive   |  `false`  |
+
+</div>
+
+<div className="mb-10" />
+
+### Progressbar Start Angles
+
+```ts
+type ProgressbarStartAngles = 0 | 45 | 90 | 180 | 270 | 360;
+```

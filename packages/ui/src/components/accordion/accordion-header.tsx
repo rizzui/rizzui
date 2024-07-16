@@ -24,7 +24,7 @@ export const AccordionHeader = React.forwardRef<
       className={cn(
         makeClassName(`accordion-header`),
         'block w-full',
-        className,
+        className
       )}
       {...props}
     >

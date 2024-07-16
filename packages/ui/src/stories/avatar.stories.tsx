@@ -174,7 +174,7 @@ export const Group = () => (
       customSize="42px"
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/40.jpg"
-      className="relative inline-flex  object-cover"
+      className="relative inline-flex object-cover"
     />
     <Avatar
       customSize="42px"

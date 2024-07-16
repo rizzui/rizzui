@@ -214,7 +214,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
                 inputFieldStyles.base,
                 inputFieldStyles.reset,
                 // it's important we are using placeholder-shown pseudo class to control input clear icon btn
-                !placeholder && 'placeholder:opacity-0',
+                !placeholder && 'placeholder-shown:placeholder:opacity-0',
                 disabled && inputFieldStyles.disabled,
                 clearable && inputFieldStyles.clearable,
                 prefix && inputFieldStyles.prefix.size[size],
