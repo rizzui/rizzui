@@ -2,26 +2,22 @@
 sidebar_position: 4
 ---
 
-# Upgrade to v0.8.5
+# Upgrade
 
-This guide will help you upgrade your existing rizzui project to v0.8.5.
+## Upgrade to v0.8.5
+
+This guide will help you upgrade your existing `rizzui` project to v0.8.5.
+
+:::info
+We have handled all the breaking changes inside `rizzui` and its dependencies. So, you don't need to worry about breaking changes.
+:::
 
 ## Upgrade Steps
 
-### Step 1: Update the `RizzUI` package
+##### Update the `RizzUI`, `HeadlessUI`, `Floating UI` packages to the latest version
 
 ```bash
-npm install rizzui@latest
+npm install rizzui@latest @headlessui/react @floating-ui/react
 ```
 
-### Step 2: Update the `HeadlessUI` package
-
-```bash
-npm install @headlessui/react@latest
-```
-
-### Step 3: Update the `Floating UI` package
-
-```bash
-npm install @floating-ui/react@latest
-```
+_* **Note:** You have the flexibility to use alternative package managers such as **bun**, **pnpm**, and **yarn**.*_
