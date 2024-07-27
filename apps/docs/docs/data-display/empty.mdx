@@ -1,5 +1,5 @@
 ---
-sidebar_position: 36
+sidebar_position: 5
 ---
 
 import { Empty, EmptyProductBoxIcon, SearchNotFoundIcon } from "rizzui";
@@ -20,14 +20,22 @@ import { Empty } from "rizzui";
 The default style of the **Empty**.
 
 <Paper>
-  <Empty text="No Data" textClassName="mt-2" />
+  <Empty
+    text="No Data"
+    textClassName="mt-2"
+  />
 </Paper>
 
 ```tsx
 import { Empty } from "rizzui";
 
 export default function App() {
-  return <Empty text="No Data" textClassName="mt-2" />;
+  return (
+    <Empty
+      text="No Data"
+      textClassName="mt-2"
+    />
+  );
 }
 ```
 
@@ -38,14 +46,22 @@ export default function App() {
 You can use it if your product is **Empty**.
 
 <Paper>
-  <Empty image={<EmptyProductBoxIcon />} text="No Product Available" />
+  <Empty
+    image={<EmptyProductBoxIcon />}
+    text="No Product Available"
+  />
 </Paper>
 
 ```tsx
 import { Empty, EmptyProductBoxIcon } from "rizzui";
 
 export default function App() {
-  return <Empty image={<EmptyProductBoxIcon />} text="No Product Available" />;
+  return (
+    <Empty
+      image={<EmptyProductBoxIcon />}
+      text="No Product Available"
+    />
+  );
 }
 ```
 
@@ -56,14 +72,22 @@ export default function App() {
 You can use it if your search is **Empty**.
 
 <Paper>
-  <Empty image={<SearchNotFoundIcon />} text="No Result Found" />
+  <Empty
+    image={<SearchNotFoundIcon />}
+    text="No Result Found"
+  />
 </Paper>
 
 ```tsx
 import { Empty, SearchNotFoundIcon } from "rizzui";
 
 export default function App() {
-  return <Empty image={<SearchNotFoundIcon />} text="No Result Found" />;
+  return (
+    <Empty
+      image={<SearchNotFoundIcon />}
+      text="No Result Found"
+    />
+  );
 }
 ```
 
