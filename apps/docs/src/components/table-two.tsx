@@ -3,7 +3,6 @@ import {
   Table,
   TableHeader,
   TableBody,
-  TableFooter,
   TableRow,
   TableHead,
   TableCell,
@@ -33,8 +32,8 @@ export function TableDemo({ variant = "classic" }: { variant: TableVariantProps 
             "!bg-gray-100",
             variant === "modern" && "!border-y-0",
             variant === "minimal" && "!border-y-0",
-            variant === "elegant" && "!bg-transparent",
-            variant === "retro" && "!bg-transparent"
+            variant === "elegant" && "!bg-transparent dark:[&>tr>th]:!bg-transparent",
+            variant === "retro" && "!bg-transparent dark:[&>tr>th]:!bg-transparent"
           )}
         >
           <TableRow>
