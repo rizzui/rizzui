@@ -42,7 +42,6 @@ export function preventHeadlessUIKeyboardInterActions(e: React.KeyboardEvent) {
     'ArrowUp',
     'ArrowDown',
     'Enter',
-    ' ',
     'Home',
     'End',
     'Escape',
