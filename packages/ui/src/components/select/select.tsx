@@ -276,7 +276,7 @@ export function Select<OptionType extends SelectOption>({
       options.filter((item) =>
         item[searchByKey].toLowerCase().includes(searchQuery.toLowerCase())
       ),
-    [searchQuery]
+    [searchQuery, options]
   );
 
   return (

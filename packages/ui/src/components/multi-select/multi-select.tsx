@@ -299,7 +299,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
       options.filter((item) =>
         item[searchByKey].toLowerCase().includes(searchQuery)
       ),
-    [searchQuery]
+    [searchQuery, options]
   );
 
   const handleClear = () => {
