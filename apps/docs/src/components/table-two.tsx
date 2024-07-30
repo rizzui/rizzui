@@ -1,20 +1,7 @@
 import React from "react";
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableRow,
-  TableHead,
-  TableCell,
-  Avatar,
-  Text,
-  TableVariantProps,
-  cn,
-} from "rizzui";
-import { initialData } from "@site/src/data/table-data";
-import { getStatusBadge } from "./table";
+import { Badge, Table, TableVariantProps, cn } from "rizzui";
 
-export function TableDemo({ variant = "classic" }: { variant: TableVariantProps }) {
+export function TableDemo({ variant = "modern" }: { variant: TableVariantProps }) {
   return (
     <div className="overflow-x-auto overflow-y-hidden w-full">
       <Table
@@ -27,7 +14,7 @@ export function TableDemo({ variant = "classic" }: { variant: TableVariantProps 
           variant === "retro" && "!border-x-0 !border-t-0"
         )}
       >
-        <TableHeader
+        <Table.Header
           className={cn(
             "!bg-gray-100",
             variant === "modern" && "!border-y-0",
@@ -36,59 +23,39 @@ export function TableDemo({ variant = "classic" }: { variant: TableVariantProps 
             variant === "retro" && "!bg-transparent dark:[&>tr>th]:!bg-transparent"
           )}
         >
-          <TableRow>
-            <TableHead className="!px-3">ID</TableHead>
-            <TableHead>Employee</TableHead>
-            <TableHead>Designation</TableHead>
-            <TableHead>Phone Number</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead></TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {initialData.map((item, index) => (
-            <TableRow key={index}>
-              <TableCell className="!font-normal !px-3">{item.id}.</TableCell>
-              <TableCell className="!px-3">
-                <div className="flex min-w-36 items-center">
-                  <Avatar
-                    name="John Doe"
-                    src={item.employee.avatar}
-                  />
-                  <div className="ml-3 rtl:ml-0 rtl:mr-3">
-                    <Text className="mb-0.5 !text-sm font-medium">{item.employee.name}</Text>
-                    <Text className="text-xs text-gray-400">{item.employee.userName}</Text>
-                  </div>
-                </div>
-              </TableCell>
-              <TableCell className="!px-3">
-                <Text className="mb-0.5 !text-sm font-medium">{item.designation.role}</Text>
-                <Text className="text-xs text-gray-400">{item.designation.company}</Text>
-              </TableCell>
-              <TableCell className="!px-3">{item.phoneNumber}</TableCell>
-              <TableCell className="!px-3">{item.email}</TableCell>
-              <TableCell className="!px-3">{getStatusBadge(item.status)}</TableCell>
-              <TableCell className="!px-3">
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    className="underline"
-                    onClick={() => alert(`Edit item #${item.id}`)} // eslint-disable-line no-alert
-                  >
-                    Edit
-                  </button>
-                  <button
-                    type="button"
-                    className="underline"
-                  >
-                    View
-                  </button>
-                </div>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
+          <Table.Row>
+            <Table.Head>ID</Table.Head>
+            <Table.Head>Employee</Table.Head>
+            <Table.Head>Designation</Table.Head>
+            <Table.Head>Status</Table.Head>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>#12345</Table.Cell>
+            <Table.Cell>John Doe</Table.Cell>
+            <Table.Cell>FrontEnd Developer</Table.Cell>
+            <Table.Cell>
+              <Badge>Active</Badge>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>#12346</Table.Cell>
+            <Table.Cell>Jane Smith</Table.Cell>
+            <Table.Cell>UI/UX Designer</Table.Cell>
+            <Table.Cell>
+              <Badge>Active</Badge>
+            </Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>#12347</Table.Cell>
+            <Table.Cell>James Burns</Table.Cell>
+            <Table.Cell>Project Manager</Table.Cell>
+            <Table.Cell>
+              <Badge>Active</Badge>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
       </Table>
     </div>
   );
