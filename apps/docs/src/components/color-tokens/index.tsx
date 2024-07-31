@@ -1,6 +1,6 @@
 import React from "react";
 import { cn, Tab } from "rizzui";
-import { useColorMode } from "@docusaurus/theme-common";
+// import { useColorMode } from "@docusaurus/theme-common";
 import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { hexToRgb } from "@site/src/utils/hext-to-rgb";
 import { CopyButton } from "../copy-button";
@@ -13,19 +13,19 @@ type TokenTypes = {
 };
 
 export default function ColorTokens() {
-  const { colorMode } = useColorMode();
-  const [tabIndex, setTabIndex] = React.useState(0);
-  React.useEffect(() => {
-    if (colorMode === "dark") {
-      setTabIndex(1);
-    }
-    if (colorMode !== "dark") {
-      setTabIndex(0);
-    }
-  }, [colorMode]);
+  // const { colorMode } = useColorMode();
+  // const [tabIndex, setTabIndex] = React.useState(0);
+  // React.useEffect(() => {
+  //   if (colorMode === "dark") {
+  //     setTabIndex(1);
+  //   }
+  //   if (colorMode !== "dark") {
+  //     setTabIndex(0);
+  //   }
+  // }, [colorMode]);
 
   return (
-    <Tab selectedIndex={tabIndex} onChange={setTabIndex}>
+    <Tab>
       <Tab.List>
         <Tab.ListItem>Light Theme</Tab.ListItem>
         <Tab.ListItem>Dark Theme</Tab.ListItem>
@@ -58,7 +58,10 @@ function TokensTable({ tokens }: { tokens: TokenTypes[] }) {
         </thead>
         <tbody className="grid grid-cols-1 gap-5 @md:grid-cols-2 @3xl:table-row-group">
           {tokens.map((token: TokenTypes) => (
-            <TokenRow key={token.name} token={token} />
+            <TokenRow
+              key={token.name}
+              token={token}
+            />
           ))}
         </tbody>
       </table>
@@ -89,9 +92,7 @@ function TokenRow({ token }: { token: TokenTypes }) {
     <tr
       className={cn(
         "!border border-muted shadow-sm @3xl:shadow-none rounded-lg flex flex-col @3xl:table-row",
-        isContainLighter
-          ? "@3xl:!border-x-0 @3xl:!border-b-0"
-          : "@3xl:!border-0",
+        isContainLighter ? "@3xl:!border-x-0 @3xl:!border-b-0" : "@3xl:!border-0"
       )}
     >
       <td>
@@ -104,7 +105,10 @@ function TokenRow({ token }: { token: TokenTypes }) {
         />
       </td>
       <td className="!pt-0 @3xl:!pt-3">
-        <TokenClipboard name={token.name} value={cssVariable} />
+        <TokenClipboard
+          name={token.name}
+          value={cssVariable}
+        />
       </td>
       <td className="!pt-0 @3xl:!pt-3">
         <TokenRGBValue rgb={rgb} />
@@ -118,7 +122,7 @@ function TokenRow({ token }: { token: TokenTypes }) {
 
 const TokenColor = React.forwardRef<HTMLInputElement, any>(
   ({ hex, name, isChange, onReset, ...inputProps }) => {
-    const { colorMode } = useColorMode();
+    // const { colorMode } = useColorMode();
 
     return (
       <div className="flex items-center gap-2 relative">
@@ -127,10 +131,10 @@ const TokenColor = React.forwardRef<HTMLInputElement, any>(
             className={cn(
               "inline-flex w-full h-10 rounded shadow-md cursor-pointer",
               hex === "#ffffff" && "border border-muted/50",
-              hex === "#000000" && "dark:border dark:border-muted/50",
-              colorMode === "dark" && [
-                name === "--background" && "dark:border dark:border-muted/50",
-              ],
+              hex === "#000000" && "dark:border dark:border-muted/50"
+              // colorMode === "dark" && [
+              //   name === "--background" && "dark:border dark:border-muted/50",
+              // ]
             )}
             style={{ backgroundColor: hex }}
           />
@@ -148,12 +152,15 @@ const TokenColor = React.forwardRef<HTMLInputElement, any>(
             onClick={onReset}
             className="text-gray-900 flex-shrink-0 border-0 shadow-none outline-none p-0"
           >
-            <ArrowPathIcon strokeWidth={2} className="w-4 h-4 me-1" />
+            <ArrowPathIcon
+              strokeWidth={2}
+              className="w-4 h-4 me-1"
+            />
           </button>
         ) : null}
       </div>
     );
-  },
+  }
 );
 
 function TokenClipboard({ name, value }: { name: string; value: string }) {

@@ -249,6 +249,45 @@
   }
 }
 
+/* ........................................ */
+/* custom scrollbar design for table  */
+/* ........................................ */
+
+.custom-scrollbar::-webkit-scrollbar {
+  @apply w-1.5 bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent shadow-none;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-sm bg-transparent;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-300;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-300;
+}
+
+.custom-scrollbar-x::-webkit-scrollbar {
+  @apply h-1.5;
+}
+
+.custom-scrollbar-none::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* for firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0);
+}
+
 /* ................................................... */
 /* React Datepicker Styling */
 /* ................................................... */
