@@ -32,24 +32,24 @@ export function TableDemo({ variant = "modern" }: { variant: TableVariantProps }
         </Table.Header>
         <Table.Body>
           <Table.Row>
-            <Table.Cell>#12345</Table.Cell>
-            <Table.Cell>John Doe</Table.Cell>
+            <Table.Cell className="!font-normal">#12345</Table.Cell>
+            <Table.Cell className="font-semibold">John Doe</Table.Cell>
             <Table.Cell>FrontEnd Developer</Table.Cell>
             <Table.Cell>
               <Badge>Active</Badge>
             </Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.Cell>#12346</Table.Cell>
-            <Table.Cell>Jane Smith</Table.Cell>
+            <Table.Cell className="!font-normal">#12346</Table.Cell>
+            <Table.Cell className="font-semibold">Jane Smith</Table.Cell>
             <Table.Cell>UI/UX Designer</Table.Cell>
             <Table.Cell>
               <Badge>Active</Badge>
             </Table.Cell>
           </Table.Row>
           <Table.Row>
-            <Table.Cell>#12347</Table.Cell>
-            <Table.Cell>James Burns</Table.Cell>
+            <Table.Cell className="!font-normal">#12347</Table.Cell>
+            <Table.Cell className="font-semibold">James Burns</Table.Cell>
             <Table.Cell>Project Manager</Table.Cell>
             <Table.Cell>
               <Badge>Active</Badge>

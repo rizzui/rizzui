@@ -1,13 +1,10 @@
 ---
 sidebar_position: 3
+sidebar_class_name: hidden
 ---
 
 import Paper from "@site/src/components/paper";
-import TableDefault, {
-  TableModern,
-  TableElegant,
-  TableMinimal,
-} from "@site/src/components/table";
+import TableDefault, { TableModern, TableElegant, TableMinimal } from "@site/src/components/table";
 
 # Rc Table
 
@@ -305,19 +302,28 @@ function getStatusBadge(status: string) {
       return <Badge variant="flat">{status}</Badge>;
     case "active":
       return (
-        <Badge variant="flat" color="success">
+        <Badge
+          variant="flat"
+          color="success"
+        >
           {status}
         </Badge>
       );
     case "warning":
       return (
-        <Badge variant="flat" color="warning">
+        <Badge
+          variant="flat"
+          color="warning"
+        >
           {status}
         </Badge>
       );
     case "danger":
       return (
-        <Badge variant="flat" color="danger">
+        <Badge
+          variant="flat"
+          color="danger"
+        >
           {status}
         </Badge>
       );
@@ -326,11 +332,7 @@ function getStatusBadge(status: string) {
   }
 }
 
-const getColumns = (
-  order: string,
-  column: string,
-  onHeaderClick: (value: string) => any
-) => [
+const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
   {
     title: <></>,
     dataIndex: "checked",
@@ -362,12 +364,21 @@ const getColumns = (
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar name="John Doe" src={employee.avatar} />
+        <Avatar
+          name="John Doe"
+          src={employee.avatar}
+        />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
-          <Text as="h6" className="mb-0.5 !text-sm font-medium">
+          <Text
+            as="h6"
+            className="mb-0.5 !text-sm font-medium"
+          >
             {employee.name}
           </Text>
-          <Text as="p" className="text-xs text-gray-400">
+          <Text
+            as="p"
+            className="text-xs text-gray-400"
+          >
             {employee.userName}
           </Text>
         </div>
@@ -381,10 +392,16 @@ const getColumns = (
     width: 320,
     render: (designation: any) => (
       <div>
-        <Text as="h6" className="mb-0.5 !text-sm font-medium">
+        <Text
+          as="h6"
+          className="mb-0.5 !text-sm font-medium"
+        >
           {designation.role}
         </Text>
-        <Text as="p" className="text-xs text-gray-400">
+        <Text
+          as="p"
+          className="text-xs text-gray-400"
+        >
           {designation.company}
         </Text>
       </div>
@@ -423,7 +440,10 @@ const getColumns = (
         >
           Edit
         </button>
-        <button type="button" className="underline">
+        <button
+          type="button"
+          className="underline"
+        >
           View
         </button>
       </div>
@@ -453,7 +473,13 @@ export default function App() {
     [order, column, onHeaderClick]
   );
 
-  return <Table data={data} columns={columns} className="text-sm" />;
+  return (
+    <Table
+      data={data}
+      columns={columns}
+      className="text-sm"
+    />
+  );
 }
 ```
 
@@ -572,19 +598,28 @@ function getStatusBadge(status: string) {
       return <Badge variant="flat">{status}</Badge>;
     case "active":
       return (
-        <Badge variant="flat" color="success">
+        <Badge
+          variant="flat"
+          color="success"
+        >
           {status}
         </Badge>
       );
     case "warning":
       return (
-        <Badge variant="flat" color="warning">
+        <Badge
+          variant="flat"
+          color="warning"
+        >
           {status}
         </Badge>
       );
     case "danger":
       return (
-        <Badge variant="flat" color="danger">
+        <Badge
+          variant="flat"
+          color="danger"
+        >
           {status}
         </Badge>
       );
@@ -593,11 +628,7 @@ function getStatusBadge(status: string) {
   }
 }
 
-const getColumns = (
-  order: string,
-  column: string,
-  onHeaderClick: (value: string) => any
-) => [
+const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
   {
     title: <></>,
     dataIndex: "checked",
@@ -629,12 +660,21 @@ const getColumns = (
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar name="John Doe" src={employee.avatar} />
+        <Avatar
+          name="John Doe"
+          src={employee.avatar}
+        />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
-          <Text as="h6" className="mb-0.5 !text-sm font-medium">
+          <Text
+            as="h6"
+            className="mb-0.5 !text-sm font-medium"
+          >
             {employee.name}
           </Text>
-          <Text as="p" className="text-xs text-gray-400">
+          <Text
+            as="p"
+            className="text-xs text-gray-400"
+          >
             {employee.userName}
           </Text>
         </div>
@@ -648,10 +688,16 @@ const getColumns = (
     width: 320,
     render: (designation: any) => (
       <div>
-        <Text as="h6" className="mb-0.5 !text-sm font-medium">
+        <Text
+          as="h6"
+          className="mb-0.5 !text-sm font-medium"
+        >
           {designation.role}
         </Text>
-        <Text as="p" className="text-xs text-gray-400">
+        <Text
+          as="p"
+          className="text-xs text-gray-400"
+        >
           {designation.company}
         </Text>
       </div>
@@ -690,7 +736,10 @@ const getColumns = (
         >
           Edit
         </button>
-        <button type="button" className="underline">
+        <button
+          type="button"
+          className="underline"
+        >
           View
         </button>
       </div>
@@ -721,7 +770,12 @@ export default function App() {
   );
 
   return (
-    <Table data={data} columns={columns} className="text-sm" variant="modern" />
+    <Table
+      data={data}
+      columns={columns}
+      className="text-sm"
+      variant="modern"
+    />
   );
 }
 ```
@@ -841,19 +895,28 @@ function getStatusBadge(status: string) {
       return <Badge variant="flat">{status}</Badge>;
     case "active":
       return (
-        <Badge variant="flat" color="success">
+        <Badge
+          variant="flat"
+          color="success"
+        >
           {status}
         </Badge>
       );
     case "warning":
       return (
-        <Badge variant="flat" color="warning">
+        <Badge
+          variant="flat"
+          color="warning"
+        >
           {status}
         </Badge>
       );
     case "danger":
       return (
-        <Badge variant="flat" color="danger">
+        <Badge
+          variant="flat"
+          color="danger"
+        >
           {status}
         </Badge>
       );
@@ -862,11 +925,7 @@ function getStatusBadge(status: string) {
   }
 }
 
-const getColumns = (
-  order: string,
-  column: string,
-  onHeaderClick: (value: string) => any
-) => [
+const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
   {
     title: <></>,
     dataIndex: "checked",
@@ -898,12 +957,21 @@ const getColumns = (
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar name="John Doe" src={employee.avatar} />
+        <Avatar
+          name="John Doe"
+          src={employee.avatar}
+        />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
-          <Text as="h6" className="mb-0.5 !text-sm font-medium">
+          <Text
+            as="h6"
+            className="mb-0.5 !text-sm font-medium"
+          >
             {employee.name}
           </Text>
-          <Text as="p" className="text-xs text-gray-400">
+          <Text
+            as="p"
+            className="text-xs text-gray-400"
+          >
             {employee.userName}
           </Text>
         </div>
@@ -917,10 +985,16 @@ const getColumns = (
     width: 320,
     render: (designation: any) => (
       <div>
-        <Text as="h6" className="mb-0.5 !text-sm font-medium">
+        <Text
+          as="h6"
+          className="mb-0.5 !text-sm font-medium"
+        >
           {designation.role}
         </Text>
-        <Text as="p" className="text-xs text-gray-400">
+        <Text
+          as="p"
+          className="text-xs text-gray-400"
+        >
           {designation.company}
         </Text>
       </div>
@@ -959,7 +1033,10 @@ const getColumns = (
         >
           Edit
         </button>
-        <button type="button" className="underline">
+        <button
+          type="button"
+          className="underline"
+        >
           View
         </button>
       </div>
@@ -1115,19 +1192,28 @@ function getStatusBadge(status: string) {
       return <Badge variant="flat">{status}</Badge>;
     case "active":
       return (
-        <Badge variant="flat" color="success">
+        <Badge
+          variant="flat"
+          color="success"
+        >
           {status}
         </Badge>
       );
     case "warning":
       return (
-        <Badge variant="flat" color="warning">
+        <Badge
+          variant="flat"
+          color="warning"
+        >
           {status}
         </Badge>
       );
     case "danger":
       return (
-        <Badge variant="flat" color="danger">
+        <Badge
+          variant="flat"
+          color="danger"
+        >
           {status}
         </Badge>
       );
@@ -1136,11 +1222,7 @@ function getStatusBadge(status: string) {
   }
 }
 
-const getColumns = (
-  order: string,
-  column: string,
-  onHeaderClick: (value: string) => any
-) => [
+const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
   {
     title: <></>,
     dataIndex: "checked",
@@ -1172,12 +1254,21 @@ const getColumns = (
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar name="John Doe" src={employee.avatar} />
+        <Avatar
+          name="John Doe"
+          src={employee.avatar}
+        />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
-          <Text as="h6" className="mb-0.5 !text-sm font-medium">
+          <Text
+            as="h6"
+            className="mb-0.5 !text-sm font-medium"
+          >
             {employee.name}
           </Text>
-          <Text as="p" className="text-xs text-gray-400">
+          <Text
+            as="p"
+            className="text-xs text-gray-400"
+          >
             {employee.userName}
           </Text>
         </div>
@@ -1191,10 +1282,16 @@ const getColumns = (
     width: 320,
     render: (designation: any) => (
       <div>
-        <Text as="h6" className="mb-0.5 !text-sm font-medium">
+        <Text
+          as="h6"
+          className="mb-0.5 !text-sm font-medium"
+        >
           {designation.role}
         </Text>
-        <Text as="p" className="text-xs text-gray-400">
+        <Text
+          as="p"
+          className="text-xs text-gray-400"
+        >
           {designation.company}
         </Text>
       </div>
@@ -1233,7 +1330,10 @@ const getColumns = (
         >
           Edit
         </button>
-        <button type="button" className="underline">
+        <button
+          type="button"
+          className="underline"
+        >
           View
         </button>
       </div>
@@ -1347,9 +1447,7 @@ type TableVariants = "classic" | "modern" | "minimal" | "elegant";
 ### Table Scroll
 
 ```ts
-type TableScroll =
-  | { x?: string | number | true; y?: string | number }
-  | undefined;
+type TableScroll = { x?: string | number | true; y?: string | number } | undefined;
 ```
 
 <div className="mb-10" />
