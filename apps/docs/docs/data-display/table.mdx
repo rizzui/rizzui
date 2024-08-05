@@ -1,0 +1,283 @@
+---
+sidebar_position: 6
+sidebar_class_name: new-badge
+---
+
+import { Badge } from "rizzui";
+import Paper from "@site/src/components/paper";
+import { TableDemo } from "@site/src/components/table-two";
+
+# Table
+
+A content area which can be collapsed and expanded. Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS. Visit our [TanStack Table](/docs/integrations/tan-stack) integration page for a full table example with **TanStack Table**.
+
+```tsx
+import { Table } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+The default style of **Table** component.
+
+<Paper>
+  <TableDemo />
+</Paper>
+
+```tsx
+import { Badge, Table } from "rizzui";
+
+export default function App() {
+  return (
+    <Table>
+      <Table.Header>
+        <Table.Row>
+          <Table.Head>ID</Table.Head>
+          <Table.Head>Employee</Table.Head>
+          <Table.Head>Designation</Table.Head>
+          <Table.Head>Status</Table.Head>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>#12345</Table.Cell>
+          <Table.Cell>John Doe</Table.Cell>
+          <Table.Cell>FrontEnd Developer</Table.Cell>
+          <Table.Cell>
+            <Badge>Active</Badge>
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>#12346</Table.Cell>
+          <Table.Cell>Jane Smith</Table.Cell>
+          <Table.Cell>UI/UX Designer</Table.Cell>
+          <Table.Cell>
+            <Badge>Active</Badge>
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>#12347</Table.Cell>
+          <Table.Cell>James Burns</Table.Cell>
+          <Table.Cell>Project Manager</Table.Cell>
+          <Table.Cell>
+            <Badge>Active</Badge>
+          </Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Minimal
+
+You can change the style of **Table** by changing property [**variant**](#table-variants).
+
+<Paper>
+  <TableDemo variant="minimal" />
+</Paper>
+
+```tsx
+import { Table } from "rizzui";
+
+export default function App() {
+  return (
+    <Table variant="minimal">
+      <Table.Header>...</Table.Header>
+      <Table.Body>...</Table.Body>
+    </Table>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Elegant
+
+You can change the style of **Table** by changing property [**variant**](#table-variants).
+
+<Paper>
+  <TableDemo variant="elegant" />
+</Paper>
+
+```tsx
+import { Table } from "rizzui";
+
+export default function App() {
+  return (
+    <Table variant="elegant">
+      <Table.Header>...</Table.Header>
+      <Table.Body>...</Table.Body>
+    </Table>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Retro
+
+You can change the style of **Table** by changing property [**variant**](#table-variants).
+
+<Paper>
+  <TableDemo variant="retro" />
+</Paper>
+
+```tsx
+import { Table } from "rizzui";
+
+export default function App() {
+  return (
+    <Table variant="retro">
+      <Table.Header>...</Table.Header>
+      <Table.Body>...</Table.Body>
+    </Table>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Classic
+
+You can change the style of **Table** by changing property [**variant**](#table-variants).
+
+<Paper>
+  <TableDemo variant="classic" />
+</Paper>
+
+```tsx
+import { Table } from "rizzui";
+
+export default function App() {
+  return (
+    <Table variant="classic">
+      <Table.Header>...</Table.Header>
+      <Table.Body>...</Table.Body>
+    </Table>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### Table Props
+
+Here is the API documentation of the Table component.
+
+<div className="overflow-x-auto">
+
+|   Props   |               Type               |              Description              |   Default   |
+| :-------: | :------------------------------: | :-----------------------------------: | :---------: |
+| children  |          `ReactElement`          | Use any valid React element or string |    \_\_     |
+|  variant  | [TableVariants](#table-variants) |  The variants of the component are:   | `"classic"` |
+| className |             `string`             |  Add custom classes for extra style   |    \_\_     |
+
+</div>
+
+<div className="mb-10" />
+
+### Table.Header Props
+
+Here is the API documentation of the **Table.Header** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |      Type      |                      Description                      | Default |
+| :-------: | :------------: | :---------------------------------------------------: | :-----: |
+| children  | `ReactElement` |         Use any valid React element or string         |  \_\_   |
+| className |    `string`    | Add classes to the **Table.Header** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Table.Body Props
+
+Here is the API documentation of the **Table.Body** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |      Type      |                     Description                     | Default |
+| :-------: | :------------: | :-------------------------------------------------: | :-----: |
+| children  | `ReactElement` |        Use any valid React element or string        |  \_\_   |
+| className |    `string`    | Add classes to the **Table.Body** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Table.Footer Props
+
+Here is the API documentation of the **Table.Footer** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |      Type      |                      Description                      | Default |
+| :-------: | :------------: | :---------------------------------------------------: | :-----: |
+| children  | `ReactElement` |         Use any valid React element or string         |  \_\_   |
+| className |    `string`    | Add classes to the **Table.Footer** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Table.Row Props
+
+Here is the API documentation of the **Table.Row** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |      Type      |                    Description                     | Default |
+| :-------: | :------------: | :------------------------------------------------: | :-----: |
+| children  | `ReactElement` |       Use any valid React element or string        |  \_\_   |
+| className |    `string`    | Add classes to the **Table.Row** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Table.Head Props
+
+Here is the API documentation of the **Table.Head** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |      Type      |                     Description                     | Default |
+| :-------: | :------------: | :-------------------------------------------------: | :-----: |
+| children  | `ReactElement` |        Use any valid React element or string        |  \_\_   |
+| className |    `string`    | Add classes to the **Table.Head** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Table.Cell Props
+
+Here is the API documentation of the **Table.Cell** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |      Type      |                     Description                     | Default |
+| :-------: | :------------: | :-------------------------------------------------: | :-----: |
+| children  | `ReactElement` |        Use any valid React element or string        |  \_\_   |
+| className |    `string`    | Add classes to the **Table.Cell** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Table Variants
+
+```ts
+type TableVariants = "modern" | "minimal" | "elegant" | "retro" | "classic";
+```

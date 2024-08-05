@@ -4,25 +4,34 @@ import HeaderCell from "@site/src/components/header-cell";
 import { Checkbox, Avatar, Text, Badge } from "rizzui";
 import { initialData } from "@site/src/data/table-data";
 
-function getStatusBadge(status: string) {
+export function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
     case "pending":
       return <Badge variant="flat">{status}</Badge>;
     case "active":
       return (
-        <Badge variant="flat" color="success">
+        <Badge
+          variant="flat"
+          color="success"
+        >
           {status}
         </Badge>
       );
     case "warning":
       return (
-        <Badge variant="flat" color="warning">
+        <Badge
+          variant="flat"
+          color="warning"
+        >
           {status}
         </Badge>
       );
     case "danger":
       return (
-        <Badge variant="flat" color="danger">
+        <Badge
+          variant="flat"
+          color="danger"
+        >
           {status}
         </Badge>
       );
@@ -31,11 +40,7 @@ function getStatusBadge(status: string) {
   }
 }
 
-const getColumns = (
-  order: string,
-  column: string,
-  onHeaderClick: (value: string) => any,
-) => [
+const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
   {
     title: <></>,
     dataIndex: "checked",
@@ -67,12 +72,16 @@ const getColumns = (
     width: 250,
     render: (employee: any) => (
       <div className="flex items-center">
-        <Avatar name="John Doe" src={employee.avatar} />
+        <Avatar
+          name="John Doe"
+          src={employee.avatar}
+        />
         <div className="ml-3 rtl:ml-0 rtl:mr-3">
-          <Text as="h6" className="mb-0.5 !text-sm font-medium">
-            {employee.name}
-          </Text>
-          <Text as="p" className="text-xs text-gray-400">
+          <Text className="mb-0.5 !text-sm font-medium">{employee.name}</Text>
+          <Text
+            as="p"
+            className="text-xs text-gray-400"
+          >
             {employee.userName}
           </Text>
         </div>
@@ -86,10 +95,11 @@ const getColumns = (
     width: 320,
     render: (designation: any) => (
       <div>
-        <Text as="h6" className="mb-0.5 !text-sm font-medium">
-          {designation.role}
-        </Text>
-        <Text as="p" className="text-xs text-gray-400">
+        <Text className="mb-0.5 !text-sm font-medium">{designation.role}</Text>
+        <Text
+          as="p"
+          className="text-xs text-gray-400"
+        >
           {designation.company}
         </Text>
       </div>
@@ -128,7 +138,10 @@ const getColumns = (
         >
           Edit
         </button>
-        <button type="button" className="underline">
+        <button
+          type="button"
+          className="underline"
+        >
           View
         </button>
       </div>
@@ -155,7 +168,7 @@ export default function TableDefault() {
   });
   const columns: any = React.useMemo(
     () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick],
+    [order, column, onHeaderClick]
   );
 
   return (
@@ -186,7 +199,7 @@ export function TableModern() {
   });
   const columns: any = React.useMemo(
     () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick],
+    [order, column, onHeaderClick]
   );
   return (
     <Table
@@ -217,7 +230,7 @@ export function TableElegant() {
   });
   const columns: any = React.useMemo(
     () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick],
+    [order, column, onHeaderClick]
   );
   return (
     <Table
@@ -248,7 +261,7 @@ export function TableMinimal() {
   });
   const columns: any = React.useMemo(
     () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick],
+    [order, column, onHeaderClick]
   );
   return (
     <Table

@@ -115,7 +115,8 @@
     --ifm-toc-border-color: #e3e3e3;
 
     /* shadow */
-    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
     --ifm-navbar-shadow: 0 1px 0 0 #e3e3e3;
   }
 
@@ -209,7 +210,8 @@
 
     /* shadow */
     --ifm-toc-border-color: #222222;
-    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
     --ifm-navbar-shadow: 0 1px 0 0 #222222;
   }
 
@@ -249,6 +251,79 @@
   }
 }
 
+/* ........................................ */
+/* custom scrollbar design for table  */
+/* ........................................ */
+
+.custom-scrollbar::-webkit-scrollbar {
+  @apply w-1.5 bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent shadow-none;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-sm bg-transparent;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-300;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-300;
+}
+
+.custom-scrollbar-x::-webkit-scrollbar {
+  @apply h-1.5;
+}
+
+.custom-scrollbar-none::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* for firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0);
+}
+
+/* new badge css */
+
+.new-badge,
+.update-badge {
+  position: relative;
+}
+
+.new-badge:before,
+.update-badge:before {
+  position: absolute;
+  top: 6px;
+  right: 4px;
+  border-radius: 50px;
+  padding: 5px 8px;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.new-badge:before {
+  content: "New";
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* update badge css */
+.update-badge:before {
+  content: "upd";
+  background-color: #0070f3;
+  color: #ffffff;
+}
+
 /* ................................................... */
 /* React Datepicker Styling */
 /* ................................................... */
@@ -266,7 +341,9 @@
   @apply w-auto border-l-0 pr-3.5;
 }
 
-.react-datepicker-popper .react-datepicker__time-container .react-datepicker__time {
+.react-datepicker-popper
+  .react-datepicker__time-container
+  .react-datepicker__time {
   @apply bg-gray-50 dark:bg-gray-200;
 }
 
@@ -428,7 +505,8 @@
 }
 
 /* hover on selected months in range */
-.react-datepicker .react-datepicker__month-text.react-datepicker__month--in-range:hover {
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--in-range:hover {
   @apply bg-gray-200 text-gray-900;
 }
 
@@ -440,9 +518,12 @@
 }
 
 /* hover on selected range start and end month */
-.react-datepicker .react-datepicker__month-text.react-datepicker__month--selected:hover,
-.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-start:hover,
-.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-end:hover {
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--selected:hover,
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--range-start:hover,
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--range-end:hover {
   @apply bg-gray-900/80 text-gray-50;
 }
 
@@ -467,8 +548,10 @@
 }
 
 /* selected year & month in year picker */
-.react-datepicker .react-datepicker__year-text.react-datepicker__year-text--selected,
-.react-datepicker .react-datepicker__month-text.react-datepicker__month-text--selected {
+.react-datepicker
+  .react-datepicker__year-text.react-datepicker__year-text--selected,
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month-text--selected {
   @apply bg-gray-900 text-gray-50;
   @apply hover:bg-gray-900/80 hover:text-gray-50;
 }
@@ -836,7 +919,11 @@ svg[class*="lightToggleIcon"] {
     @apply w-80 fixed right-0 bg-white;
   }
 
-  [data-theme="dark"] .theme-doc-sidebar-container ~ main > .container .col.col--3 {
+  [data-theme="dark"]
+    .theme-doc-sidebar-container
+    ~ main
+    > .container
+    .col.col--3 {
     @apply bg-[#08090e];
   }
 }
@@ -885,7 +972,11 @@ svg[class*="lightToggleIcon"] {
   @apply after:block after:w-[3.5px] after:h-5 after:bg-white after:absolute after:top-[14px] after:-left-[3.5px] after:rounded-tl-3xl;
 }
 
-html[data-theme="dark"] #__docusaurus .theme-doc-sidebar-menu li:last-child > .menu__link::after {
+html[data-theme="dark"]
+  #__docusaurus
+  .theme-doc-sidebar-menu
+  li:last-child
+  > .menu__link::after {
   background-color: #08090e;
 }
 
@@ -918,11 +1009,16 @@ html[data-theme="dark"] #__docusaurus .theme-doc-sidebar-menu li:last-child > .m
   @apply mb-4 pb-0.5;
 }
 
-#__docusaurus .theme-doc-sidebar-item-category-level-2 .menu__list-item-collapsible > a {
+#__docusaurus
+  .theme-doc-sidebar-item-category-level-2
+  .menu__list-item-collapsible
+  > a {
   @apply border-l-2 rounded-none mx-0 font-normal !bg-gray-100 !text-sm px-5;
 }
 
-.theme-doc-sidebar-item-category-level-2 .menu__list-item-collapsible > a::after {
+.theme-doc-sidebar-item-category-level-2
+  .menu__list-item-collapsible
+  > a::after {
   @apply hidden;
 }
 
@@ -1185,7 +1281,10 @@ button[class*="toggleButton"].clean-btn:hover {
   @apply opacity-60 hover:opacity-100;
 }
 
-[data-theme="dark"] #__docusaurus li > .menu__link--active:not(.menu__link--sublist) {
+[data-theme="dark"]
+  #__docusaurus
+  li
+  > .menu__link--active:not(.menu__link--sublist) {
   @apply bg-transparent;
 }
 
@@ -1218,7 +1317,10 @@ button[class*="toggleButton"].clean-btn:hover {
   @apply bg-gray-900 !important;
 }
 
-#__docusaurus [class*="dropdownMenu_"] [class*="suggestion_"][class*="cursor"] * {
+#__docusaurus
+  [class*="dropdownMenu_"]
+  [class*="suggestion_"][class*="cursor"]
+  * {
   @apply text-gray-50 !important;
 }
 

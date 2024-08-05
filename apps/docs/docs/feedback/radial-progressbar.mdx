@@ -3,10 +3,7 @@ sidebar_position: 4
 ---
 
 import { RadialProgressBar } from "rizzui";
-import {
-  RadialProgressbarColors,
-  RadialProgressbarGradientColors,
-} from "@site/src/components/radial-progressbar";
+import { RadialProgressbarColors } from "@site/src/components/radial-progressbar";
 import Paper from "@site/src/components/paper";
 
 # Radial Progressbar
@@ -37,47 +34,9 @@ export default function App() {
 
 <div className="mb-20" />
 
-## With Different Sizes
+## With Sizes and Colors
 
-The **RadialProgressBar** width height can be changed with property **size**.
-
-<Paper className="flex-row gap-10 flex-wrap justify-evenly">
-  <RadialProgressBar
-    size={80}
-    value={75}
-  />
-  <RadialProgressBar value={75} />
-  <RadialProgressBar
-    value={75}
-    size={120}
-  />
-</Paper>
-
-```tsx
-import { RadialProgressBar } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <RadialProgressBar
-        size={50}
-        value={75}
-      />
-      <RadialProgressBar value={75} />
-      <RadialProgressBar
-        value={75}
-        size={150}
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-20" />
-
-## With Different Colors
-
-The **RadialProgressBar** trackColor and progressColor can be changed with property **trackColor** & **progressColor**.
+The **RadialProgressBar** width height and color can be changed with property **size** & **trackColor** & **progressColor**.
 
 <Paper className="flex-row gap-10 flex-wrap justify-evenly">
   <RadialProgressbarColors />
@@ -88,20 +47,19 @@ import { RadialProgressBar } from "rizzui";
 
 const data = [
   {
-    trackColor: "#EFF4FF",
-    progressColor: "#3872FA",
+    size: 80,
+    trackColor: "#F7EEFF",
+    progressColor: "#7928ca",
   },
   {
+    size: 100,
     trackColor: "#EBFEF8",
     progressColor: "#10b981",
   },
   {
+    size: 120,
     trackColor: "#FFEEF2",
     progressColor: "#f1416c",
-  },
-  {
-    trackColor: "#F7EEFF",
-    progressColor: "#7928ca",
   },
 ];
 
@@ -112,6 +70,7 @@ export default function App() {
         <RadialProgressBar
           key={index}
           value={70}
+          size={item.size}
           trackColor={item.trackColor}
           progressColor={item.progressColor}
         />
@@ -123,19 +82,15 @@ export default function App() {
 
 <div className="mb-20" />
 
-## With Different Bar Width
+## With Bar Width
 
 The ProgressBar width of **RadialProgressBar** can be changed with property **progressbarWidth**.
 
 <Paper className="flex-row gap-10 flex-wrap justify-evenly">
   <RadialProgressBar
     value={70}
-    progressbarWidth={6}
-  />
-  <RadialProgressBar value={70} />
-  <RadialProgressBar
-    value={70}
-    progressbarWidth={12}
+    size={120}
+    progressbarWidth={5}
   />
 </Paper>
 
@@ -147,12 +102,7 @@ export default function App() {
     <>
       <RadialProgressBar
         value={70}
-        progressbarWidth={6}
-      />
-      <RadialProgressBar value={70} />
-      <RadialProgressBar
-        value={70}
-        progressbarWidth={12}
+        progressbarWidth={5}
       />
     </>
   );
@@ -161,58 +111,38 @@ export default function App() {
 
 <div className="mb-20" />
 
-## With Gradient Colors
+## With Gradient Color
 
 You can set gradient colors to the **RadialProgressBar** with property **gradientColor**.
 
-:::danger Note
-For multiple gradient progressbar, you have to pass **unique id** to prop **gradientId**.
-:::
+**Note:** For multiple gradient progressbar, you have to pass **unique id** to prop **gradientId**.
 
 <Paper className="flex-row gap-10 flex-wrap justify-evenly">
-  <RadialProgressbarGradientColors />
+  <RadialProgressBar
+    value={70}
+    size={140}
+    progressbarWidth={12}
+    trackColor={"#F7EEFF"}
+    progressColor={"#7928ca"}
+    gradientColor={"#3872FA"}
+    gradientId={"uniqueId"}
+  />
 </Paper>
 
 ```tsx
 import { RadialProgressBar } from "rizzui";
 
-const gradientsData = [
-  {
-    trackColor: "#EFF4FF",
-    progressColor: "#3872FA",
-    gradientColor: "#7928ca",
-  },
-  {
-    trackColor: "#EBFEF8",
-    progressColor: "#10b981",
-    gradientColor: "#f1416c",
-  },
-  {
-    trackColor: "#FFEEF2",
-    progressColor: "#f1416c",
-    gradientColor: "#10b981",
-  },
-  {
-    trackColor: "#F7EEFF",
-    progressColor: "#7928ca",
-    gradientColor: "#3872FA",
-  },
-];
-
 export default function App() {
   return (
-    <>
-      {gradientsData.map((item, index) => (
-        <RadialProgressBar
-          key={index}
-          value={70}
-          trackColor={item.trackColor}
-          progressColor={item.progressColor}
-          gradientColor={item.gradientColor}
-          gradientId={`gradient-${index}`}
-        />
-      ))}
-    </>
+    <RadialProgressBar
+      value={70}
+      size={140}
+      progressbarWidth={12}
+      trackColor={"#F7EEFF"}
+      progressColor={"#7928ca"}
+      gradientColor={"#3872FA"}
+      gradientId={"uniqueId"}
+    />
   );
 }
 ```
@@ -224,23 +154,34 @@ export default function App() {
 The ProgressBar start position can be changed with property **startAngle**.
 
 <Paper className="flex-row gap-10 flex-wrap justify-evenly">
-  <RadialProgressBar
-    value={70}
-    startAngle={45}
-  />
+  <div className="relative">
+    <RadialProgressBar
+      value={70}
+      size={120}
+      startAngle={45}
+    />
+    <span className="absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-semibold">
+      70%
+    </span>
+  </div>
 </Paper>
 
 ```tsx
 import { RadialProgressBar } from "rizzui";
 
 export default function App() {
+  const value = 70;
   return (
-    <>
+    <div className="relative">
       <RadialProgressBar
-        value={70}
+        size={120}
+        value={value}
         startAngle={45}
       />
-    </>
+      <span className="absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-lg font-semibold">
+        {value}%
+      </span>
+    </div>
   );
 }
 ```

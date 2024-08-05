@@ -1,5 +1,6 @@
 ---
 sidebar_position: 11
+sidebar_class_name: update-badge
 ---
 
 import Paper from "@site/src/components/paper";
@@ -379,6 +380,7 @@ Here is the API documentation of the **MultiSelect** component.
 |          value           |                    `string[]`                     |                                                                                        The selected value. **value** prop is required.                                                                                         |     \_\_      |
 |         options          | [`MultiSelectOption[]`](#multiselect-option-type) |                                                                                Add options data using this prop. **options** prop is required.                                                                                 |     \_\_      |
 |         onChange         |            `(value: string[]) => void`            |                                                                      The function to call when a new option is selected.. **onChange** prop is required.                                                                       |     \_\_      |
+|      onSearchChange      |             `(value: string) => void`             |                                                                                    The function to call when type in options search panel.                                                                                     |     \_\_      |
 |         onClear          |                   `() => void `                   |                                                                                                          clear event                                                                                                           |     \_\_      |
 |          label           |                    `ReactNode`                    |                                                                                                        Set field label                                                                                                         |     \_\_      |
 |       labelWeight        |           [LabelWeight](#label-weight)            |                                                                                                     Set label font weight                                                                                                      |  `"medium"`   |

@@ -132,6 +132,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   clearable?: boolean;
   /** clear event */
   onClear?: (event: React.MouseEvent) => void;
+  /** Event of the searchable input when change */
+  onSearchChange?: (value: string) => void;
   /** The prefix is design for adding any icon or text on the select field's start (it's a left icon for the `ltr` and right icon for the `rtl`) */
   prefix?: React.ReactNode;
   /** The suffix is design for adding any icon or text on the select field's end (it's a right icon for the `ltr` and left icon for the `rtl`) */
@@ -245,6 +247,7 @@ export function Select<OptionType extends SelectOption>({
   searchSuffix = null,
   searchDisabled,
   searchReadOnly,
+  onSearchChange,
   searchPlaceHolder = 'Search...',
   className,
   searchByKey = 'label',
@@ -276,7 +279,7 @@ export function Select<OptionType extends SelectOption>({
       options.filter((item) =>
         item[searchByKey].toLowerCase().includes(searchQuery.toLowerCase())
       ),
-    [searchQuery]
+    [searchQuery, options]
   );
 
   return (
@@ -421,7 +424,10 @@ export function Select<OptionType extends SelectOption>({
                             disabled={searchDisabled}
                             readOnly={searchReadOnly}
                             placeholder={searchPlaceHolder}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => {
+                              setSearchQuery(e.target.value);
+                              onSearchChange && onSearchChange(e.target.value);
+                            }}
                             // prevent headless ui from handling these keys
                             onKeyDown={(e) =>
                               preventHeadlessUIKeyboardInterActions(e)

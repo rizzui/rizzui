@@ -2,13 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
-import {
-  Select,
-  Text,
-  type SelectProps,
-  type SelectOption,
-  Button,
-} from "rizzui";
+import { Select, Text, type SelectProps, type SelectOption, Button } from "rizzui";
 import { z } from "zod";
 
 const options = [
@@ -205,7 +199,10 @@ export function SelectWithForm() {
   return (
     <>
       <Toaster />
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full max-w-md"
+      >
         <Controller
           name="select"
           control={control}
@@ -216,9 +213,7 @@ export function SelectWithForm() {
               options={options}
               onChange={onChange}
               getOptionValue={(option) => option.value}
-              displayValue={(selected) =>
-                options?.find((r) => r.value === selected)?.label ?? ""
-              }
+              displayValue={(selected) => options?.find((r) => r.value === selected)?.label ?? ""}
               error={error?.message}
               className="w-full max-w-md"
               clearable
@@ -227,7 +222,10 @@ export function SelectWithForm() {
           )}
         />
 
-        <Button type="submit" className="mt-4 w-full">
+        <Button
+          type="submit"
+          className="mt-4 w-full"
+        >
           Submit
         </Button>
       </form>
