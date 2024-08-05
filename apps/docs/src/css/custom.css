@@ -249,6 +249,85 @@
   }
 }
 
+/* ........................................ */
+/* custom scrollbar design for table  */
+/* ........................................ */
+
+.custom-scrollbar::-webkit-scrollbar {
+  @apply w-1.5 bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent shadow-none;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded-sm bg-transparent;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-300;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-300;
+}
+
+.custom-scrollbar-x::-webkit-scrollbar {
+  @apply h-1.5;
+}
+
+.custom-scrollbar-none::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* for firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0);
+}
+
+/* new badge css */
+
+.new-badge,
+.update-badge {
+  position: relative;
+}
+
+.new-badge:before {
+  content: "New";
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  border-radius: 50px;
+  padding: 6px 8px;
+  background-color: #000000;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* update badge css */
+.update-badge:before {
+  content: "upd";
+  position: absolute;
+  top: 6px;
+  right: 7px;
+  border-radius: 50px;
+  padding: 6px 8px;
+  background-color: #0070f3;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
 /* ................................................... */
 /* React Datepicker Styling */
 /* ................................................... */

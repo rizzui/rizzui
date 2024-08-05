@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 import { Avatar, Badge } from "rizzui";
@@ -61,7 +61,10 @@ import { Avatar } from "rizzui";
 export default function App() {
   return (
     <>
-      <Avatar name="John Doe" initials="AB" />
+      <Avatar
+        name="John Doe"
+        initials="AB"
+      />
       <Avatar
         src="https://randomuser.me/api/portraits/women/40.jpg"
         name="John Doe"
@@ -79,12 +82,20 @@ You can change the size of the **Avatar** using **size** property.
 
 <Paper>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
-    <Avatar name="John Doe" initials="SM" size="sm" />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      size="sm"
+    />
     <Avatar
       src="https://randomuser.me/api/portraits/men/40.jpg"
       name="John Doe"
     />
-    <Avatar name="John Doe" initials="L" size="lg" />
+    <Avatar
+      name="John Doe"
+      initials="L"
+      size="lg"
+    />
     <Avatar
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/40.jpg"
@@ -99,12 +110,20 @@ import { Avatar } from "rizzui";
 export default function App() {
   return (
     <>
-      <Avatar name="John Doe" initials="SM" size="sm" />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        size="sm"
+      />
       <Avatar
         src="https://randomuser.me/api/portraits/men/40.jpg"
         name="John Doe"
       />
-      <Avatar name="John Doe" initials="L" size="lg" />
+      <Avatar
+        name="John Doe"
+        initials="L"
+        size="lg"
+      />
       <Avatar
         name="John Doe"
         src="https://randomuser.me/api/portraits/women/40.jpg"
@@ -193,13 +212,40 @@ You can change the color of the **Avatar** using **color** property.
 
 <Paper>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
-    <Avatar name="John Doe" initials="SM" />
-    <Avatar name="John Doe" initials="SM" color="primary" />
-    <Avatar name="John Doe" initials="SM" color="secondary" />
-    <Avatar name="John Doe" initials="SM" color="danger" />
-    <Avatar name="John Doe" initials="SM" color="warning" />
-    <Avatar name="John Doe" initials="SM" color="success" />
-    <Avatar name="John Doe" initials="SM" color="info" />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      color="primary"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      color="secondary"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      color="danger"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      color="warning"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      color="success"
+    />
+    <Avatar
+      name="John Doe"
+      initials="SM"
+      color="info"
+    />
   </div>
 </Paper>
 
@@ -209,13 +255,40 @@ import { Avatar } from "rizzui";
 export default function App() {
   return (
     <>
-      <Avatar name="John Doe" initials="SM" />
-      <Avatar name="John Doe" initials="SM" color="primary" />
-      <Avatar name="John Doe" initials="SM" color="secondary" />
-      <Avatar name="John Doe" initials="SM" color="danger" />
-      <Avatar name="John Doe" initials="SM" color="warning" />
-      <Avatar name="John Doe" initials="SM" color="success" />
-      <Avatar name="John Doe" initials="SM" color="info" />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        color="primary"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        color="secondary"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        color="danger"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        color="warning"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        color="success"
+      />
+      <Avatar
+        name="John Doe"
+        initials="SM"
+        color="info"
+      />
     </>
   );
 }
@@ -528,13 +601,7 @@ Here is the API documentation of the Avatar component.
 ### Avatar Colors
 
 ```ts
-type AvatarColors =
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+type AvatarColors = "primary" | "secondary" | "danger" | "info" | "success" | "warning";
 ```
 
 <div className="mb-10" />
