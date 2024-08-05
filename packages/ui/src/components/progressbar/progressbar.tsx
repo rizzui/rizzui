@@ -37,6 +37,12 @@ const progressBarStyles = {
       },
     },
   },
+  labelStyles: {
+    sm: 'text-xs font-bold',
+    md: 'text-sm font-bold',
+    lg: 'text-sm font-bold',
+    xl: 'text-sm font-bold',
+  },
 };
 
 export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -44,7 +50,7 @@ export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
   value?: number;
   /** Pass label to show percentage inside bar */
   label?: string;
-  /** Size of the compoents are: */
+  /** Size of the components are: */
   size?: keyof typeof progressBarStyles.size;
   /** The rounded variants are: */
   rounded?: keyof typeof progressBarStyles.rounded;
@@ -52,8 +58,12 @@ export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
   color?: keyof typeof progressBarStyles.variant.flat.color;
   /** The variants of the components are: */
   variant?: keyof typeof progressBarStyles.variant;
-  /** To style entire progressbar component */
+  /** Defines the label position of progressbar component */
+  labelPosition?: 'insideBar' | 'inlineLeft' | 'inlineRight';
+  /** To style the root of the component */
   className?: string;
+  /** To style progressbar track of the component */
+  trackClassName?: string;
   /** To style bar of the component */
   barClassName?: string;
   /** To style label */
@@ -67,51 +77,84 @@ export function Progressbar({
   rounded = 'pill',
   color = 'primary',
   variant = 'solid',
+  labelPosition = 'inlineRight',
   className,
   barClassName,
+  trackClassName,
   labelClassName,
   ...props
 }: ProgressbarProps) {
+  const isInsideBar = label && size === 'xl' && labelPosition === 'insideBar';
   return (
-    <div
+    <div className={cn('flex w-full items-center gap-4', className)}>
+      <div
+        className={cn(
+          makeClassName(`progressbar-root`),
+          'relative w-full bg-muted',
+          progressBarStyles.size[size],
+          progressBarStyles.rounded[rounded],
+          trackClassName
+        )}
+      >
+        <div
+          role={'progressbar'}
+          aria-valuemax={100}
+          aria-valuemin={0}
+          aria-valuenow={value}
+          aria-label={label}
+          className={cn(
+            makeClassName(`progressbar`),
+            progressBarStyles.base,
+            progressBarStyles.variant[variant].base,
+            progressBarStyles.variant[variant].color[color],
+            progressBarStyles.rounded[rounded],
+            barClassName
+          )}
+          style={{ width: `${value}%` }}
+          {...props}
+        >
+          {isInsideBar ? (
+            <ProgressbarLabel
+              size={size}
+              label={label}
+              className={labelClassName}
+            />
+          ) : null}
+        </div>
+      </div>
+      {!isInsideBar ? (
+        <ProgressbarLabel
+          size={size}
+          label={label}
+          className={cn(
+            labelPosition === 'inlineLeft' && 'order-first',
+            labelClassName
+          )}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+function ProgressbarLabel({
+  label,
+  className,
+  size = 'md',
+}: {
+  size: keyof typeof progressBarStyles.size;
+  label: string;
+  className?: string;
+}) {
+  return (
+    <Text
       className={cn(
-        makeClassName(`progressbar-root`),
-        'relative w-full bg-muted',
-        progressBarStyles.size[size],
-        progressBarStyles.rounded[rounded],
+        makeClassName(`progressbar-label`),
+        progressBarStyles.labelStyles[size],
         className
       )}
     >
-      <div
-        role={'progressbar'}
-        aria-valuemax={100}
-        aria-valuemin={0}
-        aria-valuenow={value}
-        aria-label={label}
-        className={cn(
-          makeClassName(`progressbar`),
-          progressBarStyles.base,
-          progressBarStyles.variant[variant].base,
-          progressBarStyles.variant[variant].color[color],
-          progressBarStyles.rounded[rounded],
-          barClassName
-        )}
-        style={{ width: `${value}%` }}
-        {...props}
-      >
-        {label && size === 'xl' && (
-          <Text
-            className={cn(
-              makeClassName(`progressbar-label`),
-              'text-xs font-bold',
-              labelClassName
-            )}
-          >
-            {label}
-          </Text>
-        )}
-      </div>
-    </div>
+      {label}
+    </Text>
   );
 }
 

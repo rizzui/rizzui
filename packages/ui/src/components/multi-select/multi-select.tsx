@@ -119,6 +119,8 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   onChange?: (value: string[]) => void;
   /** The function to call when the clear button is clicked */
   onClear?: () => void;
+  /** Event of the searchable input when change */
+  onSearchChange?: (value: string) => void;
   /** Whether the select is disabled */
   disabled?: boolean;
   /** The placeholder of the select */
@@ -250,6 +252,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   shadow = 'md',
   prefix = null,
   labelClassName,
+  onSearchChange,
   errorClassName,
   rounded = 'md',
   inPortal = true,
@@ -297,9 +300,11 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   const filteredOptions = useMemo(
     () =>
       options.filter((item) =>
-        item[searchByKey].toLowerCase().includes(searchQuery)
+        item[searchByKey]
+          .toLowerCase()
+          .includes(searchQuery.toLocaleLowerCase())
       ),
-    [searchQuery]
+    [searchQuery, options]
   );
 
   const handleClear = () => {
@@ -514,7 +519,10 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                         disabled={searchDisabled}
                         readOnly={searchReadOnly}
                         placeholder={searchPlaceHolder}
-                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onChange={(e) => {
+                          setSearchQuery(e.target.value);
+                          onSearchChange && onSearchChange(e.target.value);
+                        }}
                         // prevent headless ui from handling these keys
                         onKeyDown={(e) =>
                           preventHeadlessUIKeyboardInterActions(e)
