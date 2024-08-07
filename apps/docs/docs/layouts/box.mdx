@@ -1,0 +1,57 @@
+---
+sidebar_position: 3
+sidebar_class_name: "new-badge"
+---
+
+import { Box } from "rizzui";
+import Paper from "@site/src/components/paper";
+
+# Box
+
+Box is a layout component. It is a simple div element that can be used to create a layout.
+
+```tsx
+import { Box } from "rizzui";
+```
+
+<div className="mb-20" />
+
+## Default
+
+The style of **Box** component.
+
+<Paper>
+  <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow" />
+</Paper>
+
+```tsx
+import { Box } from "rizzui";
+
+export default function App() {
+  return (
+    <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow" />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### Box Props
+
+Here is the API documentation of the **Box** component. And the rest of the props are the same as the original html element. You can use props like **id**, **title**, **onClick** etc.
+
+<div className="overflow-x-auto">
+
+|   Props   |           Type            |             Description             | Default |
+| :-------: | :-----------------------: | :---------------------------------: | :-----: |
+|    as     | `div` or any html element |              Render as              | `"div"` |
+| children  |     `React.ReactNode`     | Accepts everything React can render |  \_\_   |
+| className |         `string`          | Add custom classes to the component |  \_\_   |
+
+</div>

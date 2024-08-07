@@ -80,3 +80,9 @@ export * from './components/select';
 export * from './components/multi-select';
 
 export * from './components/table';
+
+export * from './components/layouts/box';
+
+export * from './components/layouts/flex';
+
+export * from './components/layouts/grid';
