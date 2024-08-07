@@ -1,0 +1,100 @@
+---
+sidebar_position: 1
+sidebar_class_name: "new-badge"
+---
+
+import Paper from "@site/src/components/paper";
+import GridLayout from "@site/src/components/layouts";
+
+# Grid
+
+Grid is a layout component that allows you to create a grid layout.
+
+```tsx
+import { Grid } from "rizzui";
+```
+
+<div className="mb-20" />
+
+## Default
+
+The style of **Grid** component.
+
+<Paper>
+  <GridLayout />
+</Paper>
+
+```tsx
+import { Box, Grid } from "rizzui";
+
+export default function GridLayout() {
+  return (
+    <Grid
+      gap="4"
+      columns="3"
+    >
+      {[1, 2, 3, 4, 5, 6].map((i) => (
+        <Box
+          key={i}
+          className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow"
+        >
+          {i}
+        </Box>
+      ))}
+    </Grid>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### Grid Props
+
+Here is the API documentation of the **Grid** component. And the rest of the props are the same as the original html element. You can use props like **id**, **title**, **onClick** etc.
+
+<div className="overflow-x-auto">
+
+|   Props   |               Type               |                Description                | Default |
+| :-------: | :------------------------------: | :---------------------------------------: | :-----: |
+|    as     |    `div` or any html element     |                 Render as                 | `"div"` |
+|  columns  | [**Columns Type**](#column-type) |         Defines columns in a grid         |  `"1"`  |
+|    gap    |    [**Gap Type**](#gap-type)     | Defines the gap between columns in a grid |  `"4"`  |
+| children  |        `React.ReactNode`         |    Accepts everything React can render    |  \_\_   |
+| className |             `string`             |    Add custom classes to the component    |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Columns Type
+
+```ts
+type ColumnsType =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | undefined;
+```
+
+<div className="mb-10" />
+
+### Gap Type
+
+```ts
+type GapType = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | undefined;
+```
