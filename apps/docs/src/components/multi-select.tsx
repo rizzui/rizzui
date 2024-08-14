@@ -136,23 +136,18 @@ export function MultiSelectBoxCustomOption({
   const [value, setValue] = React.useState([customOptions[0].value, customOptions[1].value]);
 
   return (
-    <>
-      <MultiSelect
-        label={label}
-        value={value}
-        options={customOptions}
-        onChange={setValue}
-        clearable
-        displayValue={renderDisplayValue}
-        getOptionDisplayValue={renderOptionDisplayValue}
-        optionClassName="p-0"
-        // suffix={<></>}
-        onClear={() => setValue([])}
-        // selectClassName="w-auto"
-        // dropdownClassName="!min-w-80"
-        {...props}
-      />
-    </>
+    <MultiSelect
+      clearable
+      label={label}
+      value={value}
+      onChange={setValue}
+      optionClassName="p-0"
+      options={customOptions}
+      onClear={() => setValue([])}
+      displayValue={renderDisplayValue}
+      getOptionDisplayValue={renderOptionDisplayValue}
+      {...props}
+    />
   );
 }
 
@@ -199,6 +194,34 @@ function renderDisplayValue(
         ))}
       </div>
     </>
+  );
+}
+
+export function MultiSelectBoxCustomOptionTwo({
+  label = "Multi Select",
+  ...props
+}: MultiSelectProps<MultiSelectOption>) {
+  const [value, setValue] = React.useState([
+    customOptions[0].value,
+    customOptions[1].value,
+    customOptions[2].value,
+  ]);
+
+  return (
+    <MultiSelect
+      clearable
+      label={label}
+      value={value}
+      suffix={<></>}
+      onChange={setValue}
+      optionClassName="p-0"
+      options={customOptions}
+      dropdownClassName="min-w-80"
+      onClear={() => setValue([])}
+      displayValue={renderDisplayValueTwo}
+      getOptionDisplayValue={renderOptionDisplayValue}
+      {...props}
+    />
   );
 }
 
