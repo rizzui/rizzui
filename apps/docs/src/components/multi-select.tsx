@@ -170,8 +170,11 @@ function renderDisplayValue(
   return (
     <>
       <div className="flex w-full flex-wrap items-center gap-2 text-start">
-        {filteredItems.slice().map((item) => (
-          <div className="flex items-center gap-3 p-1 border border-muted rounded ps-2">
+        {filteredItems.slice().map((item, idx) => (
+          <div
+            key={idx}
+            className="flex items-center gap-3 p-1 border border-muted rounded ps-2"
+          >
             <img
               src={item.avatar}
               alt={item.label}
@@ -244,8 +247,11 @@ function renderDisplayValueTwo(
         <span className="border-s border-muted ps-2 ms-2">{filteredItems.length} Selected</span>
       ) : (
         <div className="ps-2 border-s border-muted flex items-center gap-2">
-          {filteredItems.slice(0, 2).map((item) => (
-            <div className="flex items-center gap-3 border border-muted rounded ps-2">
+          {filteredItems.slice(0, 2).map((item, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-3 border border-muted rounded ps-2"
+            >
               <Text fontWeight="medium">{item.label}</Text>
               <span
                 className="p-1 hover:bg-muted rounded-full cursor-pointer"

@@ -8,7 +8,6 @@ import {
   ListboxOptions,
 } from '@headlessui/react';
 import { cn } from 'src/lib/cn';
-import { Checkbox } from '../checkbox';
 import { XIcon } from 'src/icons/x-mark';
 import { SearchIcon } from 'src/icons/search';
 import { ChevronDownIcon } from 'src/icons/chevron-down';
