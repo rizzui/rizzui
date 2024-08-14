@@ -48,7 +48,7 @@ const checkboxStyles = {
       'bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
     flat: 'border-0 bg-muted/70 backdrop-blur hover:enabled:bg-muted focus:ring-muted checked:!bg-primary',
   },
-  intermediate: {
+  indeterminate: {
     base: 'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-black peer-checked:hidden',
     icon: 'rounded bg-primary-foreground',
     size: {
@@ -92,8 +92,8 @@ export interface CheckboxProps
   helperClassName?: string;
   /** Add custom classes to the root of the component */
   className?: string;
-  /** This prop is used to determine whether the checkbox is in an intermediate state */
-  intermediate?: boolean;
+  /** This prop is used to determine whether the checkbox is in an indeterminate state */
+  indeterminate?: boolean;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
@@ -113,7 +113,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       inputClassName,
       errorClassName,
       helperClassName,
-      intermediate,
+      indeterminate,
       className,
       ...checkboxProps
     },
@@ -146,17 +146,17 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             {...checkboxProps}
           />
 
-          {intermediate && (
+          {indeterminate && (
             <span
               className={cn(
-                checkboxStyles.intermediate.base,
+                checkboxStyles.indeterminate.base,
                 checkboxStyles.rounded[rounded]
               )}
             >
               <span
                 className={cn(
-                  checkboxStyles.intermediate.icon,
-                  checkboxStyles.intermediate.size[size]
+                  checkboxStyles.indeterminate.icon,
+                  checkboxStyles.indeterminate.size[size]
                 )}
               />
             </span>

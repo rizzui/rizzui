@@ -20,7 +20,7 @@ export const defaultColumns = [
         inputClassName="bg-white"
         aria-label="Select all rows"
         checked={table.getIsAllPageRowsSelected()}
-        intermediate={table.getIsSomeRowsSelected()}
+        indeterminate={table.getIsSomeRowsSelected()}
         onChange={() => table.toggleAllPageRowsSelected()}
       />
     ),
@@ -29,7 +29,7 @@ export const defaultColumns = [
         className="ps-2"
         aria-label="Select row"
         checked={row.getIsSelected()}
-        intermediate={row.getIsSomeSelected()}
+        indeterminate={row.getIsSomeSelected()}
         onChange={() => row.toggleSelected()}
       />
     ),
