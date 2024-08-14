@@ -25,6 +25,7 @@ import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from 'src/lib/make-class-name';
 import { FieldClearButton } from '../field-clear-button';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
+import { CheckmarkIcon } from 'src/icons/checkmark';
 
 const selectStyles = {
   base: 'flex items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
@@ -99,6 +100,11 @@ const searchStyles = {
     'absolute z-10 end-1 top-5 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
 };
 
+const checkboxStyles = {
+  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out size-5 rounded bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
+  icon: 'peer-checked:opacity-100 absolute opacity-0 text-primary-foreground size-4 start-0.5 top-0.5',
+};
+
 export type MultiSelectOption = {
   label: string;
   value: string;
@@ -113,6 +119,8 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   value?: string[];
   /** The class name of the select */
   className?: string;
+  /** Whether the select is focused by default or not */
+  autoFocus?: boolean;
   /** The default value of the select */
   defaultValue?: string[];
   /** The function to call when the value changes */
@@ -213,12 +221,13 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   searchByKey?: string;
   /**
    * A function to determine the display value of the selected item.
-   * @param value - The value of the selected item.
+   * @param selectedItems - An array of selected items.
    * @param handleClearItem - The function to remove the targeted item from selected.
    * @returns React node to display for the selected item.
    */
   displayValue?: (
-    option: MultiSelectOption,
+    selectedItems: string[],
+    options: MultiSelectOption[],
     handleClearItem?: (item: string) => void
   ) => React.ReactNode;
   /**
@@ -245,6 +254,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   disabled,
   clearable,
   className,
+  autoFocus,
   helperText,
   size = 'md',
   searchProps,
@@ -371,6 +381,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   error && emptyValue && selectStyles.error,
                   selectClassName
                 )}
+                autoFocus={autoFocus}
               >
                 {prefix ? (
                   <span
@@ -384,60 +395,59 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   </span>
                 ) : null}
 
-                <span
-                  className={cn(
-                    makeClassName(`multi-select-value`),
-                    'flex w-full flex-wrap items-center gap-2 truncate text-start',
-                    emptyValue && 'text-muted-foreground',
-                    prefix && selectStyles.prefix.size[size],
-                    suffix && selectStyles.suffix.size[size],
-                    selectContainerClassName
-                  )}
-                >
-                  {emptyValue ? (
-                    placeholder
-                  ) : (
-                    <>
-                      {value?.map((item, index) => {
-                        const mainItem = options.find(
-                          (op) => op[getOptionValueKey] === item
-                        );
-                        return (
-                          <Fragment key={index}>
-                            <span
-                              className={cn(
-                                'item-center flex gap-1 overflow-hidden rounded-md border border-muted text-xs',
-                                selectedItemClassName
-                              )}
-                            >
-                              {mainItem && displayValue ? (
-                                displayValue(mainItem, handleClearItem)
-                              ) : (
-                                <>
-                                  <span className="py-1 ps-2">
-                                    {mainItem?.label}
-                                  </span>
-                                  <span
-                                    className="px-1 py-1 hover:bg-muted"
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleClearItem(item);
-                                    }}
-                                  >
-                                    <XIcon
-                                      strokeWidth="2"
-                                      className="size-4 cursor-pointer"
-                                    />
-                                  </span>
-                                </>
-                              )}
-                            </span>
-                          </Fragment>
-                        );
-                      })}
-                    </>
-                  )}
-                </span>
+                {displayValue &&
+                  displayValue(selectedItems, options, handleClearItem)}
+
+                {!displayValue && (
+                  <span
+                    className={cn(
+                      makeClassName(`multi-select-value`),
+                      'flex w-full flex-wrap items-center gap-2 truncate text-start',
+                      emptyValue && 'text-muted-foreground',
+                      prefix && selectStyles.prefix.size[size],
+                      suffix && selectStyles.suffix.size[size],
+                      selectContainerClassName
+                    )}
+                  >
+                    {emptyValue ? (
+                      placeholder
+                    ) : (
+                      <>
+                        {value?.map((item, index) => {
+                          const mainItem = options.find(
+                            (op) => op[getOptionValueKey] === item
+                          );
+                          return (
+                            <Fragment key={index}>
+                              <span
+                                className={cn(
+                                  'item-center flex gap-1 overflow-hidden rounded-md border border-muted text-xs',
+                                  selectedItemClassName
+                                )}
+                              >
+                                <span className="py-1 ps-2">
+                                  {mainItem?.label}
+                                </span>
+                                <span
+                                  className="px-1 py-1 hover:bg-muted"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleClearItem(item);
+                                  }}
+                                >
+                                  <XIcon
+                                    strokeWidth="2"
+                                    className="size-4 cursor-pointer"
+                                  />
+                                </span>
+                              </span>
+                            </Fragment>
+                          );
+                        })}
+                      </>
+                    )}
+                  </span>
+                )}
 
                 {clearable && !emptyValue && !disabled ? (
                   <FieldClearButton
@@ -593,12 +603,23 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                                     )}
                                   >
                                     {optionCheckBox && (
-                                      <Checkbox
-                                        size={'sm'}
-                                        readOnly={true}
-                                        checked={selected}
-                                        iconClassName="size-4 left-0.5"
-                                      />
+                                      <span className="relative leading-none">
+                                        <input
+                                          type="checkbox"
+                                          readOnly={true}
+                                          checked={selected}
+                                          className={cn(
+                                            makeClassName(`checkbox-input`),
+                                            checkboxStyles.base
+                                          )}
+                                        />
+                                        <CheckmarkIcon
+                                          className={cn(
+                                            makeClassName(`checkbox-icon`),
+                                            checkboxStyles.icon
+                                          )}
+                                        />
+                                      </span>
                                     )}
                                     {op.label}
                                   </div>

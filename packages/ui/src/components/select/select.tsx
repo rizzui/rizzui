@@ -130,6 +130,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   shadow?: keyof typeof dropdownStyles.shadow;
   /** add clearable option */
   clearable?: boolean;
+  /** Whether the select is focused by default or not */
+  autoFocus?: boolean;
   /** clear event */
   onClear?: (event: React.MouseEvent) => void;
   /** Event of the searchable input when change */
@@ -222,6 +224,7 @@ export function Select<OptionType extends SelectOption>({
   error,
   options,
   disabled,
+  autoFocus,
   helperText,
   prefix = null,
   placeholder = 'Select...',
@@ -322,6 +325,7 @@ export function Select<OptionType extends SelectOption>({
                   error && emptyValue && selectStyles.error,
                   selectClassName
                 )}
+                autoFocus={autoFocus}
               >
                 {prefix ? (
                   <span

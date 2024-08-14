@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import { CheckIcon, PlusCircleIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import {
   MultiSelect,
   type MultiSelectProps,
@@ -142,36 +142,101 @@ export function MultiSelectBoxCustomOption({
         value={value}
         options={customOptions}
         onChange={setValue}
+        clearable
         displayValue={renderDisplayValue}
         getOptionDisplayValue={renderOptionDisplayValue}
         optionClassName="p-0"
+        // suffix={<></>}
+        onClear={() => setValue([])}
+        // selectClassName="w-auto"
+        // dropdownClassName="!min-w-80"
         {...props}
       />
     </>
   );
 }
 
-function renderDisplayValue(option: MultiSelectOption, handleClearItem: (value: string) => void) {
-  return (
-    <div className="flex items-center gap-3 p-1">
-      <img
-        src={option.avatar}
-        alt={option.label}
-        className="size-8 object-cover rounded-full bg-muted"
-      />
-      <div>
-        <Text fontWeight="medium">{option.label}</Text>
-        <Text>{option.value}</Text>
+function renderDisplayValue(
+  selectedItems: string[],
+  options: MultiSelectOption[],
+  handleClearItem: (value: string) => void
+) {
+  const filteredItems = options.filter((option) => selectedItems.includes(option.value));
+  const isEmpty = filteredItems.length === 0;
+
+  if (isEmpty) {
+    return (
+      <div className="flex w-full flex-wrap items-center gap-2 text-start text-muted-foreground">
+        Select...
       </div>
-      <span
-        className="p-1 hover:bg-muted rounded-full cursor-pointer"
-        onClick={(e) => {
-          e.stopPropagation();
-          handleClearItem(option.value);
-        }}
-      >
-        <XMarkIcon className="size-4" />
-      </span>
+    );
+  }
+
+  return (
+    <>
+      <div className="flex w-full flex-wrap items-center gap-2 text-start">
+        {filteredItems.slice().map((item) => (
+          <div className="flex items-center gap-3 p-1 border border-muted rounded ps-2">
+            <img
+              src={item.avatar}
+              alt={item.label}
+              className="size-8 object-cover rounded-full bg-muted"
+            />
+            <div>
+              <Text fontWeight="medium">{item.label}</Text>
+              <Text>{item.value}</Text>
+            </div>
+            <span
+              className="p-1 hover:bg-muted rounded-full cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClearItem(item.value);
+              }}
+            >
+              <XMarkIcon className="size-4" />
+            </span>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function renderDisplayValueTwo(
+  selectedItems: string[],
+  options: MultiSelectOption[],
+  handleClearItem: (value: string) => void
+) {
+  const filteredItems = options.filter((option) => selectedItems.includes(option.value));
+  const isEmpty = filteredItems.length === 0;
+  const isLongerThanTwo = filteredItems.length > 2;
+
+  return (
+    <div className={cn("flex w-full flex-wrap items-center gap-2 text-start", !isEmpty && "me-6")}>
+      <div className="flex items-center gap-1">
+        <PlusCircleIcon className="size-5 text-muted-foreground" />
+        Status
+      </div>
+      {isLongerThanTwo ? (
+        <span className="border-s border-muted ps-2 ms-2">{filteredItems.length} Selected</span>
+      ) : (
+        <div className="ps-2 border-s border-muted flex items-center gap-2">
+          {filteredItems.slice(0, 2).map((item) => (
+            <div className="flex items-center gap-3 border border-muted rounded ps-2">
+              <Text fontWeight="medium">{item.label}</Text>
+              <span
+                className="p-1 hover:bg-muted rounded-full cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClearItem(item.value);
+                }}
+              >
+                <XMarkIcon className="size-4" />
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
