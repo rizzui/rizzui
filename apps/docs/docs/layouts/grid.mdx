@@ -476,7 +476,10 @@ Here is the API documentation of the **Grid** component. And the rest of the pro
 |   Props   |               Type                |                Description                | Default |
 | :-------: | :-------------------------------: | :---------------------------------------: | :-----: |
 |    as     |     `div` or any html element     |                 Render as                 | `"div"` |
-|  columns  | [**Columns Type**](#columns-type) |         Defines columns in a grid         |  `"1"`  |
+|  columns  | [**Columns Type**](#columns-type) |         Defines columns in a grid         |  \_\_   |
+|   rows    |    [**Rows Type**](#rows-type)    |          Defines rows in a grid           |  \_\_   |
+|  justify  | [**Justify Type**](#justify-type) | Changes the position of grid column items |  \_\_   |
+|   align   |   [**Align Type**](#align-type)   | Changes the position of grid column items |  \_\_   |
 |    gap    |     [**Gap Type**](#gap-type)     | Defines the gap between columns in a grid |  `"4"`  |
 | children  |         `React.ReactNode`         |    Accepts everything React can render    |  \_\_   |
 | className |             `string`              |    Add custom classes to the component    |  \_\_   |
@@ -501,7 +504,54 @@ type ColumnsType =
   | "10"
   | "11"
   | "12"
-  | undefined;
+  | "none"
+  | "subgrid";
+```
+
+<div className="mb-10" />
+
+### Rows Type
+
+```ts
+type RowsType =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "none"
+  | "subgrid";
+```
+
+<div className="mb-10" />
+
+### Justify Type
+
+```ts
+type JustifyType =
+  | "center"
+  | "end"
+  | "start"
+  | "stretch"
+  | "around"
+  | "normal"
+  | "evenly"
+  | "between";
+```
+
+<div className="mb-10" />
+
+### Align Type
+
+```ts
+type AlignType = "center" | "end" | "start" | "stretch" | "baseline";
 ```
 
 <div className="mb-10" />
@@ -509,5 +559,5 @@ type ColumnsType =
 ### Gap Type
 
 ```ts
-type GapType = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | undefined;
+type GapType = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
 ```
