@@ -1,22 +1,4 @@
-import { Flex, Box, Grid, FlexProps } from "rizzui";
-
-export default function GridLayout() {
-  return (
-    <Grid
-      gap="4"
-      columns="3"
-    >
-      {[1, 2, 3, 4, 5, 6].map((i) => (
-        <Box
-          key={i}
-          className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow"
-        >
-          {i}
-        </Box>
-      ))}
-    </Grid>
-  );
-}
+import { Flex, Box, FlexProps } from "rizzui";
 
 export function FlexLayout({ justify, align, gap, className }: FlexProps) {
   return (
