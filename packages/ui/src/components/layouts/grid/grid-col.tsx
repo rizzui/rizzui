@@ -115,6 +115,13 @@ const gridColumnStyles = {
     last: 'order-last',
     none: 'order-none',
   },
+  placeSelf: {
+    auto: 'place-self-auto',
+    start: 'place-self-start',
+    end: 'place-self-end',
+    center: 'place-self-center',
+    stretch: 'place-self-stretch',
+  },
 };
 
 export interface GridColumnProps extends React.HTMLAttributes<HTMLElement> {
@@ -126,29 +133,32 @@ export interface GridColumnProps extends React.HTMLAttributes<HTMLElement> {
   colEnd?: keyof typeof gridColumnStyles.colEnd;
   /* defines the size of columns */
   colSpan?: keyof typeof gridColumnStyles.colSpan;
+  /* defines the order of the column */
+  order?: keyof typeof gridColumnStyles.order;
   /* defines the size of rows */
   rowSpan?: keyof typeof gridColumnStyles.rowSpan;
   /* defines the start of rows */
   rowStart?: keyof typeof gridColumnStyles.rowStart;
   /* defines the end of rows */
   rowEnd?: keyof typeof gridColumnStyles.rowEnd;
-  /* defines the order of the column */
-  order?: keyof typeof gridColumnStyles.order;
+  /* defines the alignment of the column */
+  placeSelf?: keyof typeof gridColumnStyles.placeSelf;
 }
 
 export const GridCol = React.forwardRef(
   (props: GridColumnProps, forwardRef: React.Ref<HTMLElement>) => {
     const {
       as,
-      children,
-      colStart,
-      colEnd,
-      colSpan,
-      rowStart,
-      rowEnd,
-      rowSpan,
       order,
+      rowEnd,
+      colEnd,
+      rowSpan,
+      colSpan,
+      colStart,
+      rowStart,
+      children,
       className,
+      placeSelf,
       ...rest
     } = props;
 
@@ -161,6 +171,7 @@ export const GridCol = React.forwardRef(
           colEnd && gridColumnStyles.colEnd[colEnd],
           colSpan && gridColumnStyles.colSpan[colSpan],
           colStart && gridColumnStyles.colStart[colStart],
+          placeSelf && gridColumnStyles.placeSelf[placeSelf],
           rowStart && gridColumnStyles.rowStart[rowStart],
           rowSpan && gridColumnStyles.rowSpan[rowSpan],
           rowEnd && gridColumnStyles.rowEnd[rowEnd],

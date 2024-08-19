@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+sidebar_class_name: "update-badge"
 ---
 
 import { Grid } from "rizzui";
@@ -67,10 +68,10 @@ The style of **Grid** component can be changed with property **justify** & **ali
       justify="start"
       className="grid-cols-[96px_96px_96px]"
     >
-      <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+      <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
         01
       </Grid.Col>
-      <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
+      <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
         02
       </Grid.Col>
       <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
@@ -83,10 +84,10 @@ The style of **Grid** component can be changed with property **justify** & **ali
       justify="center"
       className="grid-cols-[96px_96px_96px]"
     >
-      <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+      <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
         01
       </Grid.Col>
-      <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
+      <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
         02
       </Grid.Col>
       <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
@@ -99,10 +100,10 @@ The style of **Grid** component can be changed with property **justify** & **ali
       justify="end"
       className="grid-cols-[96px_96px_96px]"
     >
-     <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+     <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
         01
       </Grid.Col>
-      <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
+      <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
         02
       </Grid.Col>
       <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
@@ -120,46 +121,49 @@ export default function App() {
   return (
     <div className="w-full space-y-10">
       <Grid
+        align="start"
         justify="start"
         className="grid-cols-[96px_96px_96px]"
       >
-        <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+        <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
           01
         </Grid.Col>
         <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
           02
         </Grid.Col>
-        <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+        <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
           03
         </Grid.Col>
       </Grid>
 
       <Grid
+        align="center"
         justify="center"
         className="grid-cols-[96px_96px_96px]"
       >
-        <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+        <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
           01
         </Grid.Col>
         <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
           02
         </Grid.Col>
-        <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+        <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
           03
         </Grid.Col>
       </Grid>
 
       <Grid
+        align="end"
         justify="end"
         className="grid-cols-[96px_96px_96px]"
       >
-        <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+        <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
           01
         </Grid.Col>
         <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
           02
         </Grid.Col>
-        <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+        <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
           03
         </Grid.Col>
       </Grid>
@@ -472,25 +476,47 @@ Here is the API documentation of the **Grid** component. And the rest of the pro
 
 <div className="overflow-x-auto">
 
-|   Props   |               Type                |                Description                | Default |
-| :-------: | :-------------------------------: | :---------------------------------------: | :-----: |
-|    as     |     `div` or any html element     |                 Render as                 | `"div"` |
-|  columns  | [**Columns Type**](#columns-type) |         Defines columns in a grid         |  \_\_   |
-|   rows    |    [**Rows Type**](#rows-type)    |          Defines rows in a grid           |  \_\_   |
-|  justify  | [**Justify Type**](#justify-type) | Changes the position of grid column items |  \_\_   |
-|   align   |   [**Align Type**](#align-type)   | Changes the position of grid column items |  \_\_   |
-|    gap    |     [**Gap Type**](#gap-type)     | Defines the gap between columns in a grid |  `"4"`  |
-| children  |         `React.ReactNode`         |    Accepts everything React can render    |  \_\_   |
-| className |             `string`              |    Add custom classes to the component    |  \_\_   |
+|    Props     |                     Type                      |                Description                | Default |
+| :----------: | :-------------------------------------------: | :---------------------------------------: | :-----: |
+|      as      |           `div` or any html element           |                 Render as                 | `"div"` |
+|   columns    |       [**Columns Type**](#columns-type)       |         Defines columns in a grid         |  \_\_   |
+|     rows     |          [**Rows Type**](#rows-type)          |          Defines rows in a grid           |  \_\_   |
+|   justify    |       [**Justify Type**](#justify-type)       | Changes the position of grid column items |  \_\_   |
+|    align     |         [**Align Type**](#align-type)         | Changes the position of grid column items |  \_\_   |
+|     gap      |           [**Gap Type**](#gap-type)           | Defines the gap between columns in a grid |  `"4"`  |
+| placeContent | [**Place Content Type**](#place-content-type) | Defines the content placements in a grid  |  \_\_   |
+|  placeItems  |   [**Place Items Type**](#place-items-type)   |  Defines the content position in a grid   |  \_\_   |
+|   children   |               `React.ReactNode`               |    Accepts everything React can render    |  \_\_   |
+|  className   |                   `string`                    |    Add custom classes to the component    |  \_\_   |
+
+</div>
+
+### Grid Col Props
+
+Here is the API documentation of the **Grid.Col** component. And the rest of the props are the same as the original html element. You can use props like **id**, **title**, **onClick** etc.
+
+<div className="overflow-x-auto">
+
+|   Props   |                    Type                     |                        Description                        | Default |
+| :-------: | :-----------------------------------------: | :-------------------------------------------------------: | :-----: |
+|    as     |          `div` or any html element          |                         Render as                         | `"div"` |
+| colStart  | [**Column Start Type**](#column-start-type) |           Defines the start position of column            |  \_\_   |
+|  colEnd   |   [**Column End Type**](#column-end-type)   |            Defines the end position of column             |  \_\_   |
+|  colSpan  |  [**Column Span Type**](#column-span-type)  |                Defines size of the column                 |  \_\_   |
+|   order   |        [**Order Type**](#order-type)        |              Defines the order of the column              |  \_\_   |
+| rowStart  |    [**Row Start Type**](#row-start-type)    |             Defines the start position of row             |  \_\_   |
+|  rowEnd   |      [**Row End Type**](#row-end-type)      |              Defines the end position of row              |  \_\_   |
+|  rowSpan  |     [**Row Span Type**](#row-span-type)     |                  Defines size of the row                  |  \_\_   |
+| placeSelf |   [**Place Self Type**](#place-self-type)   | Defines the position of item inside the item area of grid |  \_\_   |
 
 </div>
 
 <div className="mb-10" />
 
-### Columns Type
+### Column Start Type
 
 ```ts
-type ColumnsType =
+type ColumnStartType =
   | "1"
   | "2"
   | "3"
@@ -503,16 +529,16 @@ type ColumnsType =
   | "10"
   | "11"
   | "12"
-  | "none"
-  | "subgrid";
+  | "13"
+  | "auto";
 ```
 
 <div className="mb-10" />
 
-### Rows Type
+### Column End Type
 
 ```ts
-type RowsType =
+type ColumnEndType =
   | "1"
   | "2"
   | "3"
@@ -525,38 +551,123 @@ type RowsType =
   | "10"
   | "11"
   | "12"
-  | "none"
-  | "subgrid";
+  | "13"
+  | "auto";
 ```
 
 <div className="mb-10" />
 
-### Justify Type
+### Column Span Type
 
 ```ts
-type JustifyType =
-  | "center"
-  | "end"
-  | "start"
-  | "stretch"
-  | "around"
-  | "normal"
-  | "evenly"
-  | "between";
+type ColumnSpanType =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "auto"
+  | "full";
 ```
 
 <div className="mb-10" />
 
-### Align Type
+### Order Type
 
 ```ts
-type AlignType = "center" | "end" | "start" | "stretch" | "baseline";
+type OrderType =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "first"
+  | "last"
+  | "none";
+```
+
+### Row Start Type
+
+```ts
+type RowStartType =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "13"
+  | "auto";
 ```
 
 <div className="mb-10" />
 
-### Gap Type
+### Row End Type
 
 ```ts
-type GapType = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
+type RowEndType =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "13"
+  | "auto";
+```
+
+<div className="mb-10" />
+
+### Row Span Type
+
+```ts
+type RowSpanType =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12"
+  | "auto"
+  | "full";
+```
+
+<div className="mb-10" />
+
+### Place Self Type
+
+```ts
+type PlaceSelfType = "center" | "auto" | "start" | "end" | "stretch";
 ```

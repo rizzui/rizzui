@@ -66,6 +66,23 @@ const gridStyles = {
     between: 'justify-between',
     stretch: 'justify-stretch',
   },
+  placeContent: {
+    center: 'place-content-center',
+    start: 'place-content-start',
+    end: 'place-content-end',
+    between: 'place-content-between',
+    around: 'place-content-around',
+    evenly: 'place-content-evenly',
+    baseline: 'place-content-baseline',
+    stretch: 'place-content-stretch',
+  },
+  placeItems: {
+    center: 'place-items-center',
+    start: 'place-items-start',
+    end: 'place-items-end',
+    baseline: 'place-items-baseline',
+    stretch: 'place-items-stretch',
+  },
 };
 
 export interface GridProps extends React.HTMLAttributes<HTMLElement> {
@@ -81,6 +98,10 @@ export interface GridProps extends React.HTMLAttributes<HTMLElement> {
   align?: keyof typeof gridStyles.align;
   /* defines the justification of grid items */
   justify?: keyof typeof gridStyles.justify;
+  /* defines the placement of grid items */
+  placeContent?: keyof typeof gridStyles.placeContent;
+  /* defines the placement of grid items */
+  placeItems?: keyof typeof gridStyles.placeItems;
 }
 
 const Grid = React.forwardRef(
@@ -94,6 +115,8 @@ const Grid = React.forwardRef(
       columns,
       children,
       className,
+      placeItems,
+      placeContent,
       ...rest
     } = props;
 
@@ -109,6 +132,8 @@ const Grid = React.forwardRef(
           align && gridStyles.align[align],
           columns && gridStyles.columns[columns],
           justify && gridStyles.justify[justify],
+          placeContent && gridStyles.placeContent[placeContent],
+          placeItems && gridStyles.placeItems[placeItems],
           className
         )}
         {...rest}
