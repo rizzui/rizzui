@@ -115,8 +115,7 @@
     --ifm-toc-border-color: #e3e3e3;
 
     /* shadow */
-    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --ifm-navbar-shadow: 0 1px 0 0 #e3e3e3;
   }
 
@@ -210,8 +209,7 @@
 
     /* shadow */
     --ifm-toc-border-color: #222222;
-    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-      0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --ifm-navbar-shadow: 0 1px 0 0 #222222;
   }
 
@@ -341,9 +339,7 @@
   @apply w-auto border-l-0 pr-3.5;
 }
 
-.react-datepicker-popper
-  .react-datepicker__time-container
-  .react-datepicker__time {
+.react-datepicker-popper .react-datepicker__time-container .react-datepicker__time {
   @apply bg-gray-50 dark:bg-gray-200;
 }
 
@@ -505,8 +501,7 @@
 }
 
 /* hover on selected months in range */
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--in-range:hover {
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--in-range:hover {
   @apply bg-gray-200 text-gray-900;
 }
 
@@ -518,12 +513,9 @@
 }
 
 /* hover on selected range start and end month */
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--selected:hover,
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--range-start:hover,
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--range-end:hover {
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--selected:hover,
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-start:hover,
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-end:hover {
   @apply bg-gray-900/80 text-gray-50;
 }
 
@@ -548,10 +540,8 @@
 }
 
 /* selected year & month in year picker */
-.react-datepicker
-  .react-datepicker__year-text.react-datepicker__year-text--selected,
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month-text--selected {
+.react-datepicker .react-datepicker__year-text.react-datepicker__year-text--selected,
+.react-datepicker .react-datepicker__month-text.react-datepicker__month-text--selected {
   @apply bg-gray-900 text-gray-50;
   @apply hover:bg-gray-900/80 hover:text-gray-50;
 }
@@ -919,11 +909,7 @@ svg[class*="lightToggleIcon"] {
     @apply w-80 fixed right-0 bg-white;
   }
 
-  [data-theme="dark"]
-    .theme-doc-sidebar-container
-    ~ main
-    > .container
-    .col.col--3 {
+  [data-theme="dark"] .theme-doc-sidebar-container ~ main > .container .col.col--3 {
     @apply bg-[#08090e];
   }
 }
@@ -972,11 +958,7 @@ svg[class*="lightToggleIcon"] {
   @apply after:block after:w-[3.5px] after:h-5 after:bg-white after:absolute after:top-[14px] after:-left-[3.5px] after:rounded-tl-3xl;
 }
 
-html[data-theme="dark"]
-  #__docusaurus
-  .theme-doc-sidebar-menu
-  li:last-child
-  > .menu__link::after {
+html[data-theme="dark"] #__docusaurus .theme-doc-sidebar-menu li:last-child > .menu__link::after {
   background-color: #08090e;
 }
 
@@ -1009,16 +991,11 @@ html[data-theme="dark"]
   @apply mb-4 pb-0.5;
 }
 
-#__docusaurus
-  .theme-doc-sidebar-item-category-level-2
-  .menu__list-item-collapsible
-  > a {
+#__docusaurus .theme-doc-sidebar-item-category-level-2 .menu__list-item-collapsible > a {
   @apply border-l-2 rounded-none mx-0 font-normal !bg-gray-100 !text-sm px-5;
 }
 
-.theme-doc-sidebar-item-category-level-2
-  .menu__list-item-collapsible
-  > a::after {
+.theme-doc-sidebar-item-category-level-2 .menu__list-item-collapsible > a::after {
   @apply hidden;
 }
 
@@ -1281,10 +1258,7 @@ button[class*="toggleButton"].clean-btn:hover {
   @apply opacity-60 hover:opacity-100;
 }
 
-[data-theme="dark"]
-  #__docusaurus
-  li
-  > .menu__link--active:not(.menu__link--sublist) {
+[data-theme="dark"] #__docusaurus li > .menu__link--active:not(.menu__link--sublist) {
   @apply bg-transparent;
 }
 
@@ -1317,10 +1291,7 @@ button[class*="toggleButton"].clean-btn:hover {
   @apply bg-gray-900 !important;
 }
 
-#__docusaurus
-  [class*="dropdownMenu_"]
-  [class*="suggestion_"][class*="cursor"]
-  * {
+#__docusaurus [class*="dropdownMenu_"] [class*="suggestion_"][class*="cursor"] * {
   @apply text-gray-50 !important;
 }
 
@@ -1387,4 +1358,8 @@ button[class*="toggleButton"].clean-btn:hover {
 /* for firefox */
 #__docusaurus .theme-doc-sidebar-container {
   scrollbar-color: rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0);
+}
+
+.straight-token-line span.token-line {
+  display: inline-block !important;
 }
