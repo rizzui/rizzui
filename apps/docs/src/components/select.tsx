@@ -1,9 +1,9 @@
-import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import React from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { Select, Text, type SelectProps, type SelectOption, Button } from "rizzui";
-import { z } from "zod";
 
 const options = [
   { label: "Apple 🍎", value: "apple" },
@@ -230,5 +230,27 @@ export function SelectWithForm() {
         </Button>
       </form>
     </>
+  );
+}
+
+export function CustomSelectWithSearch() {
+  const [value, setValue] = React.useState(null);
+  const [search, setSearch] = React.useState("");
+
+  const filteredOptions = options.filter((option) =>
+    option.label.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <Select
+      searchable
+      value={value}
+      onChange={setValue}
+      disableDefaultFilter
+      options={filteredOptions}
+      onSearchChange={setSearch}
+      label="With Custom Search"
+      className="w-full max-w-md"
+    />
   );
 }
