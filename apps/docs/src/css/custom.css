@@ -289,12 +289,21 @@
 }
 
 /* new badge css */
-
+#checkbox-props,
+#multiselect-props,
+#select-props,
+#grid-col-props,
+#grid-props,
 .new-badge,
 .update-badge {
   position: relative;
 }
 
+#checkbox-props::before,
+#multiselect-props::before,
+#select-props::before,
+#grid-col-props::before,
+#grid-props::before,
 .new-badge:before,
 .update-badge:before {
   position: absolute;
@@ -320,6 +329,20 @@
   content: "upd";
   background-color: #0070f3;
   color: #ffffff;
+}
+
+/* content update highlight badge */
+#checkbox-props::before,
+#multiselect-props::before,
+#select-props::before,
+#grid-col-props::before,
+#grid-props::before {
+  content: "update";
+  background-color: #0070f3;
+  color: #ffffff;
+  right: auto;
+  top: -24px;
+  left: 0;
 }
 
 /* ................................................... */
@@ -1362,4 +1385,14 @@ button[class*="toggleButton"].clean-btn:hover {
 
 .straight-token-line span.token-line {
   display: inline-block !important;
+}
+
+.multiselect-props-row-highlight table tbody tr:nth-child(23),
+.multiselect-props-row-highlight table tbody tr:nth-child(12),
+.select-props-row-highlight table tbody tr:nth-child(12),
+.select-props-row-highlight table tbody tr:nth-child(10),
+.checkbox-props-row-highlight table tbody tr:nth-child(8),
+.grid-props-table-row-highlight table tbody tr:nth-child(7),
+.grid-props-table-row-highlight table tbody tr:nth-child(8) {
+  @apply bg-[#0070f3]/10;
 }

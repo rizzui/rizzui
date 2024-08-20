@@ -22,14 +22,15 @@ The default style of **Grid** component.
 
 <Paper>
   <Grid columns="3">
-    {Array.from({ length: 5 }).map((_, index) => (
-      <Grid.Col
-        key={index}
-        className="border border-muted rounded-md w-40 h-24 text-3xl font-semibold flex justify-center items-center shadow"
-      >
-        0{index + 1}
-      </Grid.Col>
-    ))}
+    <Grid.Col className="border border-muted rounded-md size-52 text-3xl font-semibold flex justify-center items-center shadow">
+      01
+    </Grid.Col>
+    <Grid.Col className="border border-muted rounded-md size-52 text-3xl font-semibold flex justify-center items-center shadow">
+      02
+    </Grid.Col>
+    <Grid.Col className="border border-muted rounded-md size-52 text-3xl font-semibold flex justify-center items-center shadow">
+      03
+    </Grid.Col>
   </Grid>
 </Paper>
 
@@ -38,18 +39,16 @@ import { Grid } from "rizzui";
 
 export default function App() {
   return (
-    <Grid
-      gap="4"
-      columns="3"
-    >
-      {Array.from({ length: 8 }).map((_, index) => (
-        <Grid.Col
-          key={index}
-          className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow"
-        >
-          {index + 1}
-        </Grid.Col>
-      ))}
+    <Grid columns="3">
+      <Grid.Col className="border border-muted rounded-md size-52 text-3xl font-semibold flex justify-center items-center shadow">
+        01
+      </Grid.Col>
+      <Grid.Col className="border border-muted rounded-md size-52 text-3xl font-semibold flex justify-center items-center shadow">
+        02
+      </Grid.Col>
+      <Grid.Col className="border border-muted rounded-md size-52 text-3xl font-semibold flex justify-center items-center shadow">
+        03
+      </Grid.Col>
     </Grid>
   );
 }
@@ -62,56 +61,21 @@ export default function App() {
 The style of **Grid** component can be changed with property **justify** & **align**.
 
 <Paper>
-  <div className="w-full space-y-10">
-    <Grid
-      align="start"
-      justify="start"
-      className="grid-cols-[96px_96px_96px]"
-    >
-      <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
-        01
-      </Grid.Col>
-      <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
-        02
-      </Grid.Col>
-      <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
-        03
-      </Grid.Col>
-    </Grid>
-
-    <Grid
-      align="center"
-      justify="center"
-      className="grid-cols-[96px_96px_96px]"
-    >
-      <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
-        01
-      </Grid.Col>
-      <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
-        02
-      </Grid.Col>
-      <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
-        03
-      </Grid.Col>
-    </Grid>
-
-    <Grid
-      align="end"
-      justify="end"
-      className="grid-cols-[96px_96px_96px]"
-    >
-     <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
-        01
-      </Grid.Col>
-      <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
-        02
-      </Grid.Col>
-      <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
-        03
-      </Grid.Col>
-    </Grid>
-
-  </div>
+  <Grid
+    align="center"
+    justify="center"
+    className="grid-cols-[96px_96px_96px]"
+  >
+    <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
+      01
+    </Grid.Col>
+    <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+      02
+    </Grid.Col>
+    <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
+      03
+    </Grid.Col>
+  </Grid>
 </Paper>
 
 ```tsx
@@ -119,55 +83,21 @@ import { Grid } from "rizzui";
 
 export default function App() {
   return (
-    <div className="w-full space-y-10">
-      <Grid
-        align="start"
-        justify="start"
-        className="grid-cols-[96px_96px_96px]"
-      >
-        <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
-          01
-        </Grid.Col>
-        <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
-          02
-        </Grid.Col>
-        <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
-          03
-        </Grid.Col>
-      </Grid>
-
-      <Grid
-        align="center"
-        justify="center"
-        className="grid-cols-[96px_96px_96px]"
-      >
-        <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
-          01
-        </Grid.Col>
-        <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
-          02
-        </Grid.Col>
-        <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
-          03
-        </Grid.Col>
-      </Grid>
-
-      <Grid
-        align="end"
-        justify="end"
-        className="grid-cols-[96px_96px_96px]"
-      >
-        <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
-          01
-        </Grid.Col>
-        <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
-          02
-        </Grid.Col>
-        <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
-          03
-        </Grid.Col>
-      </Grid>
-    </div>
+    <Grid
+      align="center" // "center" | "end" | "start" | "stretch" | "baseline"
+      justify="center" // "center" | "end" | "start" | "stretch" | "around" | "normal" | "evenly" | "between"
+      className="grid-cols-[96px_96px_96px]"
+    >
+      <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
+        01
+      </Grid.Col>
+      <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
+        02
+      </Grid.Col>
+      <Grid.Col className="border border-muted rounded-md min-h-24 text-2xl font-semibold flex justify-center items-center shadow">
+        03
+      </Grid.Col>
+    </Grid>
   );
 }
 ```
@@ -200,7 +130,9 @@ import { Grid } from "rizzui";
 
 export default function App() {
   return (
-    <Grid columns="4">
+    <Grid
+      columns="4" // "3" | "1" | "2" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "none" | "subgrid"
+    >
       <Grid.Col className="border border-muted rounded-md min-w-40 h-24 text-3xl font-semibold flex justify-center items-center shadow">
         01
       </Grid.Col>
@@ -220,7 +152,7 @@ export default function App() {
 
 <div className="mb-20" />
 
-## With Start and End Column lines
+## With Start & End Columns
 
 The style of **Grid.Col** component can be changed with property **colStart** & **colEnd**.
 
@@ -394,76 +326,6 @@ export default function App() {
 
 <div className="mb-20" />
 
-## With Start and End Row lines
-
-The style of **Grid.Col** component can be changed with property **rowStart** & **rowEnd**.
-
-<Paper>
-  <Grid
-    rows="3"
-    className="grid-flow-col border border-muted bg-gray-50"
-  >
-    <Grid.Col
-      rowStart="2"
-      rowSpan="2"
-      className="border border-muted rounded-md min-w-40 min-h-20 text-3xl font-semibold flex justify-center items-center shadow"
-    >
-      01
-    </Grid.Col>
-    <Grid.Col
-      rowEnd="3"
-      rowSpan="2"
-      className="border border-muted rounded-md min-w-40 min-h-20 text-3xl font-semibold flex justify-center items-center shadow"
-    >
-      02
-    </Grid.Col>
-    <Grid.Col
-      rowStart="1"
-      rowEnd="4"
-      className="border border-muted rounded-md min-w-40 min-h-20 text-3xl font-semibold flex justify-center items-center shadow"
-    >
-      03
-    </Grid.Col>
-  </Grid>
-</Paper>
-
-```tsx
-import { Grid } from "rizzui";
-
-export default function App() {
-  return (
-    <Grid
-      rows="3"
-      className="grid-flow-col border border-muted"
-    >
-      <Grid.Col
-        rowStart="2"
-        rowSpan="2"
-        className="border border-muted rounded-md min-w-40 min-h-20 text-3xl font-semibold flex justify-center items-center shadow"
-      >
-        01
-      </Grid.Col>
-      <Grid.Col
-        rowEnd="3"
-        rowSpan="2"
-        className="border border-muted rounded-md min-w-40 min-h-20 text-3xl font-semibold flex justify-center items-center shadow"
-      >
-        02
-      </Grid.Col>
-      <Grid.Col
-        rowStart="1"
-        rowEnd="4"
-        className="border border-muted rounded-md min-w-40 min-h-20 text-3xl font-semibold flex justify-center items-center shadow"
-      >
-        03
-      </Grid.Col>
-    </Grid>
-  );
-}
-```
-
-<div className="mb-20" />
-
 ## API Reference
 
 <hr />
@@ -474,7 +336,7 @@ export default function App() {
 
 Here is the API documentation of the **Grid** component. And the rest of the props are the same as the original html element. You can use props like **id**, **title**, **onClick** etc.
 
-<div className="overflow-x-auto">
+<div className="mb-20 overflow-x-auto grid-props-table-row-highlight">
 
 |    Props     |                     Type                      |                Description                | Default |
 | :----------: | :-------------------------------------------: | :---------------------------------------: | :-----: |
