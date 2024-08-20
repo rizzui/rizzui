@@ -292,8 +292,8 @@
 #checkbox-props,
 #multiselect-props,
 #select-props,
-#grid-col-props,
-#grid-props,
+/* #grid-col-props, */
+/* #grid-props, */
 .new-badge,
 .update-badge {
   position: relative;
@@ -302,8 +302,8 @@
 #checkbox-props::before,
 #multiselect-props::before,
 #select-props::before,
-#grid-col-props::before,
-#grid-props::before,
+/* #grid-col-props::before, */
+/* #grid-props::before, */
 .new-badge:before,
 .update-badge:before {
   position: absolute;
@@ -334,9 +334,9 @@
 /* content update highlight badge */
 #checkbox-props::before,
 #multiselect-props::before,
-#select-props::before,
-#grid-col-props::before,
-#grid-props::before {
+/* #grid-col-props::before, */
+/* #grid-props::before */
+#select-props::before {
   content: "update";
   background-color: #0070f3;
   color: #ffffff;
@@ -1387,12 +1387,14 @@ button[class*="toggleButton"].clean-btn:hover {
   display: inline-block !important;
 }
 
+/* table row highlight  */
+
 .multiselect-props-row-highlight table tbody tr:nth-child(23),
 .multiselect-props-row-highlight table tbody tr:nth-child(12),
 .select-props-row-highlight table tbody tr:nth-child(12),
 .select-props-row-highlight table tbody tr:nth-child(10),
-.checkbox-props-row-highlight table tbody tr:nth-child(8),
-.grid-props-table-row-highlight table tbody tr:nth-child(7),
-.grid-props-table-row-highlight table tbody tr:nth-child(8) {
+.checkbox-props-row-highlight table tbody tr:nth-child(8)
+/* .grid-props-table-row-highlight table tbody tr:nth-child(7), */
+/* .grid-props-table-row-highlight table tbody tr:nth-child(8)  */ {
   @apply bg-[#0070f3]/10;
 }
