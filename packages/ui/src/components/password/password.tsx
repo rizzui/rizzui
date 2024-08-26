@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { PasswordToggleIcon } from './password-toggle-icon';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
@@ -91,6 +91,10 @@ export interface PasswordProps
   inputClassName?: string;
   /** Override default CSS style of prefix */
   prefixClassName?: string;
+  /** External visibility state */
+  showPassword?: boolean;
+  /** Set external visibility state to toggle visibilty using props */
+  setShowPassword?: (value: boolean) => void;
   /** Override default CSS style of password show/hide toggle icon */
   visibilityToggleIconClassName?: string;
   /** Override default CSS style of helperText */
@@ -123,6 +127,8 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
       errorClassName,
       helperClassName,
       prefixClassName,
+      showPassword = false,
+      setShowPassword,
       visibilityToggleIcon,
       visibilityToggleIconClassName,
       onFocus,
@@ -131,7 +137,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
     },
     ref
   ) => {
-    const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(showPassword);
     const {
       isFocus,
       isHover,
@@ -144,6 +150,10 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
       onBlur,
       onFocus,
     });
+
+    useEffect(() => {
+      setVisible(showPassword || false);
+    }, [showPassword]);
 
     return (
       <div

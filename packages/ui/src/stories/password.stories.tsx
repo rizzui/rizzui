@@ -118,3 +118,26 @@ WithValidationError.args = {
   placeholder: 'Enter your password',
   error: 'This field is required',
 };
+
+export const WithExternalVisibilityStateManagement = () => {
+  const [state, setState] = React.useState('my_password');
+  const [showPassword, setShowPassword] = React.useState(true);
+  return (
+    <div>
+      <Password
+        label="Password"
+        value={state}
+        onChange={(e) => setState(e.target.value)}
+        placeholder="Enter your password"
+        showPassword={showPassword}
+        setShowPassword={setShowPassword}
+      />
+      <button
+        onClick={() => setShowPassword(!showPassword)}
+        className="mt-4 rounded-md bg-blue-400 px-4 py-1 text-white"
+      >
+        Toggle Show Password
+      </button>
+    </div>
+  );
+};
