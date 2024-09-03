@@ -17,7 +17,7 @@ export default function HeroBlock() {
   const history = useHistory();
 
   return (
-    <section className="py-16 md:py-20 lg:py-32 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full border-b border-gray-100/90">
+    <section className="py-16 md:py-20 lg:py-32 2xl:py-36 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full border-b border-gray-100/90">
       <div className="absolute inset-0 flex justify-center">
         <div className=" w-48 h-48 bg-white rounded-full [filter:blur(2000px)]" />
       </div>
@@ -45,7 +45,7 @@ export default function HeroBlock() {
               Get Started{" "}
               <Box
                 as={"span"}
-                className="size-7 rounded-full inline-flex items-center justify-center bg-gradient-to-tr from-primary to-white/30 text-white absolute end-2"
+                className="size-7 rounded-full inline-flex items-center justify-center bg-gradient-to-tr from-primary to-white/30 dark:to-black/20 text-white dark:text-black absolute end-2"
               >
                 <ArrowRightIcon className="size-[17px]" />
               </Box>

@@ -107,7 +107,7 @@ export default function ComponentBlock() {
             Explore More{" "}
             <Box
               as={"span"}
-              className="size-7 rounded-full inline-flex items-center justify-center bg-gradient-to-tr from-primary to-white/30 text-white absolute end-2"
+              className="size-7 rounded-full inline-flex items-center justify-center bg-gradient-to-tr from-primary to-white/30 dark:to-black/20 text-white dark:text-black absolute end-2"
             >
               <ArrowRightIcon className="size-[17px]" />
             </Box>
