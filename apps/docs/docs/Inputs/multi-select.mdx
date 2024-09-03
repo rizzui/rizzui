@@ -9,6 +9,7 @@ import MultiSelectBox, {
   MultiSelectBoxClearable,
   MultiSelectBoxCustomOption,
   MultiSelectBoxCustomOptionTwo,
+  MultiSelectWithSearchAble,
 } from "@site/src/components/multi-select";
 
 # MultiSelect
@@ -286,10 +287,7 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 You can hide **MultiSelect** options using **hideSelectedOptions** property.
 
 <Paper>
-  <MultiSelectBox
-    hideSelectedOptions={true}
-    className="w-full max-w-md"
-  />
+  <MultiSelectBox hideSelectedOptions={true} className="w-full max-w-md" />
 </Paper>
 
 ```tsx
@@ -362,11 +360,7 @@ export default function App() {
 You can search inside **MultiSelect** options.
 
 <Paper>
-  <MultiSelectBox
-    searchable={true}
-    className="w-full max-w-md"
-    clearable={true}
-  />
+  <MultiSelectWithSearchAble className="w-full max-w-md" />
 </Paper>
 
 ```tsx
@@ -389,6 +383,7 @@ export default function App() {
       searchable={true}
       options={options}
       onChange={setValue}
+      onClear={() => setValue([])}
       label="Multi Select"
     />
   );

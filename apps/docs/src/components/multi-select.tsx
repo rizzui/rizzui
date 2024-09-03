@@ -1,5 +1,9 @@
 import React from "react";
-import { CheckIcon, PlusCircleIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import {
+  CheckIcon,
+  PlusCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/20/solid";
 import {
   MultiSelect,
   type MultiSelectProps,
@@ -55,11 +59,36 @@ export default function MultiSelectBox({
   );
 }
 
+export function MultiSelectWithSearchAble({
+  label = "Multi Select",
+  ...props
+}: MultiSelectProps<MultiSelectOption>) {
+  const [value, setValue] = React.useState([]);
+  console.log("customOptionKey", value);
+  return (
+    <>
+      <MultiSelect
+        label={label}
+        value={value}
+        options={options}
+        onChange={setValue}
+        searchable
+        clearable
+        onClear={() => setValue([])}
+        {...props}
+      />
+    </>
+  );
+}
+
 export function MultiSelectBoxClearable({
   label = "Multi Select",
   ...props
 }: MultiSelectProps<MultiSelectOption>) {
-  const [value, setValue] = React.useState([options[0].value, options[1].value]);
+  const [value, setValue] = React.useState([
+    options[0].value,
+    options[1].value,
+  ]);
 
   return (
     <>
@@ -133,7 +162,10 @@ export function MultiSelectBoxCustomOption({
   label = "Multi Select",
   ...props
 }: MultiSelectProps<MultiSelectOption>) {
-  const [value, setValue] = React.useState([customOptions[0].value, customOptions[1].value]);
+  const [value, setValue] = React.useState([
+    customOptions[0].value,
+    customOptions[1].value,
+  ]);
 
   return (
     <MultiSelect
@@ -156,7 +188,9 @@ function renderDisplayValue(
   options: MultiSelectOption[],
   handleClearItem: (value: string) => void
 ) {
-  const filteredItems = options.filter((option) => selectedItems.includes(option.value));
+  const filteredItems = options.filter((option) =>
+    selectedItems.includes(option.value)
+  );
   const isEmpty = filteredItems.length === 0;
 
   if (isEmpty) {
@@ -233,18 +267,27 @@ function renderDisplayValueTwo(
   options: MultiSelectOption[],
   handleClearItem: (value: string) => void
 ) {
-  const filteredItems = options.filter((option) => selectedItems.includes(option.value));
+  const filteredItems = options.filter((option) =>
+    selectedItems.includes(option.value)
+  );
   const isEmpty = filteredItems.length === 0;
   const isLongerThanTwo = filteredItems.length > 2;
 
   return (
-    <div className={cn("flex w-full flex-wrap items-center gap-2 text-start", !isEmpty && "me-6")}>
+    <div
+      className={cn(
+        "flex w-full flex-wrap items-center gap-2 text-start",
+        !isEmpty && "me-6"
+      )}
+    >
       <div className="flex items-center gap-1">
         <PlusCircleIcon className="size-5 text-muted-foreground" />
         Status
       </div>
       {isLongerThanTwo ? (
-        <span className="border-s border-muted ps-2 ms-2">{filteredItems.length} Selected</span>
+        <span className="border-s border-muted ps-2 ms-2">
+          {filteredItems.length} Selected
+        </span>
       ) : (
         <div className="ps-2 border-s border-muted flex items-center gap-2">
           {filteredItems.slice(0, 2).map((item, idx) => (
@@ -270,7 +313,10 @@ function renderDisplayValueTwo(
   );
 }
 
-function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) {
+function renderOptionDisplayValue(
+  option: MultiSelectOption,
+  selected: boolean
+) {
   return (
     <div className={cn("flex items-center gap-3 py-1.5 px-3 pe-4 w-full")}>
       <img
@@ -290,7 +336,9 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 // with react hook form and zod validation
 
 const schema = z.object({
-  multiSelect: z.array(z.string()).min(1, { message: "Minimum 1 item required!" }),
+  multiSelect: z
+    .array(z.string())
+    .min(1, { message: "Minimum 1 item required!" }),
 });
 
 type SchemaType = z.infer<typeof schema>;
@@ -309,10 +357,7 @@ export function MultiSelectWithForm() {
     <>
       <Toaster />
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-md"
-      >
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
         <Controller
           control={control}
           name="multiSelect"
@@ -330,10 +375,7 @@ export function MultiSelectWithForm() {
           )}
         />
 
-        <Button
-          type="submit"
-          className="mt-4 w-full"
-        >
+        <Button type="submit" className="mt-4 w-full">
           Submit
         </Button>
       </form>
