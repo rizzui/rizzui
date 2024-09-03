@@ -1,5 +1,5 @@
 import { type Person } from "./data";
-import { ActionIcon, Badge, Button, Checkbox, Popover, Text } from "rizzui";
+import { ActionIcon, Button, Checkbox, Popover } from "rizzui";
 import { createColumnHelper } from "@tanstack/react-table";
 import { AvatarCard, DateCell, getStatusBadge } from "./utils";
 import {
@@ -20,6 +20,7 @@ export const defaultColumns = [
         inputClassName="bg-white"
         aria-label="Select all rows"
         checked={table.getIsAllPageRowsSelected()}
+        indeterminate={table.getIsSomeRowsSelected()}
         onChange={() => table.toggleAllPageRowsSelected()}
       />
     ),
@@ -28,6 +29,7 @@ export const defaultColumns = [
         className="ps-2"
         aria-label="Select row"
         checked={row.getIsSelected()}
+        indeterminate={row.getIsSomeSelected()}
         onChange={() => row.toggleSelected()}
       />
     ),

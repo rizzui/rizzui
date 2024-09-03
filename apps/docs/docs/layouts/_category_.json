@@ -2,5 +2,6 @@
   "label": "Layouts",
   "position": 9,
   "collapsed": false,
-  "link": null
+  "link": null,
+  "className": "new-badge"
 }

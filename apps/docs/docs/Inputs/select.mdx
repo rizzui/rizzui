@@ -1,5 +1,6 @@
 ---
 sidebar_position: 10
+sidebar_class_name: "update-badge"
 ---
 
 import Paper from "@site/src/components/paper";
@@ -7,6 +8,7 @@ import SelectBox, {
   SelectBoxClearable,
   CustomOptionSelectBox,
   SelectWithForm,
+  CustomSelectWithSearch,
 } from "@site/src/components/select";
 
 # Select
@@ -169,6 +171,7 @@ function renderOptionDisplayValue(option: SelectOption) {
 You can search inside **Select** options.
 
 <Paper>
+  {/* <CustomSelectWithSearch /> */}
   <SelectBox
     searchable={true}
     className="w-full max-w-md"
@@ -278,7 +281,7 @@ export function SelectWithForm() {
 
 Here is the API documentation of the **Select** component.
 
-<div className="overflow-x-auto">
+<div className="overflow-x-auto select-props-row-highlight">
 
 |          Props           |                  Type                   |                                                                                                          Description                                                                                                           |    Default    |
 | :----------------------: | :-------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
@@ -291,7 +294,9 @@ Here is the API documentation of the **Select** component.
 |         variant          |   [SelectVariants](#select-variants)    |                                                                                               The variants of the component are:                                                                                               |  `"outline"`  |
 |           size           |      [SelectSizes](#select-sizes)       |                                                                           The size of the component. "sm" is equivalent to the dense select styling.                                                                           |    `"md"`     |
 |         rounded          |    [SelectRounded](#select-rounded)     |                                                                                                   The rounded variants are:                                                                                                    |    `"md"`     |
+|        autoFocus         |                `boolean`                |                                                                                          Whether select is focused by default or not                                                                                           |   `"false"`   |
 |         inPortal         |                `boolean`                |                                                                                    Whether select options is rendered on the portal or not                                                                                     |   `"true"`    |
+|   disableDefaultFilter   |                `boolean`                |                                                                                Whether the default filter works or not when search for options                                                                                 |   `"false"`   |
 |          modal           |                `boolean`                |                                                                             Whether the body scrollbar is hidden or not when dropdown is visible.                                                                              |   `"false"`   |
 |           gap            |                `number`                 |                                                                                  Sets the gap between trigger and dropdown if portal is true                                                                                   |     `"6"`     |
 |       placeholder        |                `string`                 |                                                                                                  Set select placeholder text                                                                                                   | `"Select..."` |

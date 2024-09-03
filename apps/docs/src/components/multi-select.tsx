@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
+import { CheckIcon, PlusCircleIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import {
   MultiSelect,
   type MultiSelectProps,
@@ -136,42 +136,136 @@ export function MultiSelectBoxCustomOption({
   const [value, setValue] = React.useState([customOptions[0].value, customOptions[1].value]);
 
   return (
+    <MultiSelect
+      clearable
+      label={label}
+      value={value}
+      onChange={setValue}
+      optionClassName="p-0"
+      options={customOptions}
+      onClear={() => setValue([])}
+      displayValue={renderDisplayValue}
+      getOptionDisplayValue={renderOptionDisplayValue}
+      {...props}
+    />
+  );
+}
+
+function renderDisplayValue(
+  selectedItems: string[],
+  options: MultiSelectOption[],
+  handleClearItem: (value: string) => void
+) {
+  const filteredItems = options.filter((option) => selectedItems.includes(option.value));
+  const isEmpty = filteredItems.length === 0;
+
+  if (isEmpty) {
+    return (
+      <div className="flex w-full flex-wrap items-center gap-2 text-start text-muted-foreground">
+        Select...
+      </div>
+    );
+  }
+
+  return (
     <>
-      <MultiSelect
-        label={label}
-        value={value}
-        options={customOptions}
-        onChange={setValue}
-        displayValue={renderDisplayValue}
-        getOptionDisplayValue={renderOptionDisplayValue}
-        optionClassName="p-0"
-        {...props}
-      />
+      <div className="flex w-full flex-wrap items-center gap-2 text-start">
+        {filteredItems.slice().map((item, idx) => (
+          <div
+            key={idx}
+            className="flex items-center gap-3 p-1 border border-muted rounded ps-2"
+          >
+            <img
+              src={item.avatar}
+              alt={item.label}
+              className="size-8 object-cover rounded-full bg-muted"
+            />
+            <div>
+              <Text fontWeight="medium">{item.label}</Text>
+              <Text>{item.value}</Text>
+            </div>
+            <span
+              className="p-1 hover:bg-muted rounded-full cursor-pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleClearItem(item.value);
+              }}
+            >
+              <XMarkIcon className="size-4" />
+            </span>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
 
-function renderDisplayValue(option: MultiSelectOption, handleClearItem: (value: string) => void) {
+export function MultiSelectBoxCustomOptionTwo({
+  label = "Multi Select",
+  ...props
+}: MultiSelectProps<MultiSelectOption>) {
+  const [value, setValue] = React.useState([
+    customOptions[0].value,
+    customOptions[1].value,
+    customOptions[2].value,
+  ]);
+
   return (
-    <div className="flex items-center gap-3 p-1">
-      <img
-        src={option.avatar}
-        alt={option.label}
-        className="size-8 object-cover rounded-full bg-muted"
-      />
-      <div>
-        <Text fontWeight="medium">{option.label}</Text>
-        <Text>{option.value}</Text>
+    <MultiSelect
+      clearable
+      label={label}
+      value={value}
+      suffix={<></>}
+      onChange={setValue}
+      optionClassName="p-0"
+      options={customOptions}
+      dropdownClassName="min-w-80"
+      onClear={() => setValue([])}
+      displayValue={renderDisplayValueTwo}
+      getOptionDisplayValue={renderOptionDisplayValue}
+      {...props}
+    />
+  );
+}
+
+function renderDisplayValueTwo(
+  selectedItems: string[],
+  options: MultiSelectOption[],
+  handleClearItem: (value: string) => void
+) {
+  const filteredItems = options.filter((option) => selectedItems.includes(option.value));
+  const isEmpty = filteredItems.length === 0;
+  const isLongerThanTwo = filteredItems.length > 2;
+
+  return (
+    <div className={cn("flex w-full flex-wrap items-center gap-2 text-start", !isEmpty && "me-6")}>
+      <div className="flex items-center gap-1">
+        <PlusCircleIcon className="size-5 text-muted-foreground" />
+        Status
       </div>
-      <span
-        className="p-1 hover:bg-muted rounded-full cursor-pointer"
-        onClick={(e) => {
-          e.stopPropagation();
-          handleClearItem(option.value);
-        }}
-      >
-        <XMarkIcon className="size-4" />
-      </span>
+      {isLongerThanTwo ? (
+        <span className="border-s border-muted ps-2 ms-2">{filteredItems.length} Selected</span>
+      ) : (
+        <div className="ps-2 border-s border-muted flex items-center gap-2">
+          {filteredItems.slice(0, 2).map((item, idx) => (
+            <div
+              key={idx}
+              className="flex items-center gap-3 border border-muted rounded ps-2"
+            >
+              <Text fontWeight="medium">{item.label}</Text>
+              <span
+                className="p-1 hover:bg-muted rounded-full cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClearItem(item.value);
+                }}
+              >
+                <XMarkIcon className="size-4" />
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

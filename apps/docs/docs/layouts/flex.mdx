@@ -1,10 +1,9 @@
 ---
 sidebar_position: 2
-sidebar_class_name: "new-badge"
 ---
 
 import Paper from "@site/src/components/paper";
-import { FlexLayout, FlexLayoutAlign } from "@site/src/components/layouts";
+import { Flex, Box } from "rizzui";
 
 # Flex
 
@@ -21,10 +20,20 @@ import { Flex } from "rizzui";
 The style of **Flex** component. The **Flex** gets the default style of the css flex property.
 
 <Paper>
-  <FlexLayout
+  <Flex
     justify="center"
-    className="[&>div]:size-24 [&>div]:text-3xl"
-  />
+    align="center"
+  >
+    <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+      1
+    </Box>
+    <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+      2
+    </Box>
+    <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+      3
+    </Box>
+  </Flex>
 </Paper>
 
 ```tsx
@@ -32,15 +41,19 @@ import { Flex, Box } from "rizzui";
 
 export default function App() {
   return (
-    <Flex>
-      {[1, 2, 3].map((i) => (
-        <Box
-          key={i}
-          className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow"
-        >
-          {i}
-        </Box>
-      ))}
+    <Flex
+      justify="center"
+      align="center"
+    >
+      <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+        1
+      </Box>
+      <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+        2
+      </Box>
+      <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+        3
+      </Box>
     </Flex>
   );
 }
@@ -50,15 +63,20 @@ export default function App() {
 
 ## With Justify Content
 
-The style of **Flex** component can be modified using the **justify** prop. The **justify** prop is used to changed the position of flex items inside the flex box.
+The style of **Flex** component can be modified using the **justify** prop. The **justify** prop is used to change the position of flex items inside the flex box.
 
 <Paper>
-  <FlexLayout className="mb-10" />
-  <FlexLayout
-    justify="center"
-    className="mb-10"
-  />
-  <FlexLayout justify="end" />
+  <Flex justify="start">
+    <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+      1
+    </Box>
+    <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+      2
+    </Box>
+    <Box className="ms-auto border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+      3
+    </Box>
+  </Flex>
 </Paper>
 
 ```tsx
@@ -67,38 +85,19 @@ import { Flex, Box } from "rizzui";
 export default function App() {
   return (
     <>
-      <Flex>
-        {[1, 2, 3].map((i) => (
-          <Box
-            key={i}
-            className="border border-muted rounded-md size-10 text-3xl font-semibold flex justify-center items-center shadow"
-          >
-            {i}
-          </Box>
-        ))}
-      </Flex>
-
-      <Flex justify="center">
-        {[1, 2, 3].map((i) => (
-          <Box
-            key={i}
-            className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow"
-          >
-            {i}
-          </Box>
-        ))}
-      </Flex>
-
-      <Flex justify="end">
-        {[1, 2, 3].map((i) => (
-          <Box
-            key={i}
-            className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow"
-          >
-            {i}
-          </Box>
-        ))}
-      </Flex>
+      <Flex
+      justify="start" // "center" | "start" | "end" | "between" | "around" | "evenly" | "normal"
+      >
+        <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+          1
+        </Box>
+        <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+          2
+        </Box>
+        <Box className="ms-auto border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+          3
+        </Box>
+    </Flex>
     <>
   );
 }
@@ -111,16 +110,20 @@ export default function App() {
 The style of **Flex** component can be modified by using the **align** prop. The **align** prop is used to align the flex items inside the flex box.
 
 <Paper>
-  <FlexLayoutAlign className="mb-10" />
-  <FlexLayoutAlign
-    align="center"
+  <Flex
     justify="center"
-    className="mb-10"
-  />
-  <FlexLayoutAlign
-    align="end"
-    justify="end"
-  />
+    align="center"
+  >
+    <Box className="border border-muted rounded-md size-16 text-3xl font-semibold flex justify-center items-center shadow">
+      1
+    </Box>
+    <Box className="border border-muted rounded-md size-20 text-3xl font-semibold flex justify-center items-center shadow">
+      2
+    </Box>
+    <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+      3
+    </Box>
+  </Flex>
 </Paper>
 
 ```tsx
@@ -129,40 +132,19 @@ import { Flex, Box } from "rizzui";
 export default function App() {
   return (
     <>
-      <Flex>
-        {[1, 2, 3].map((i) => (
-          <Box
-            key={i}
-            className="border border-muted rounded-md w-16 text-xl font-semibold flex justify-center items-center shadow"
-            style={{ height: `${(i + 1) * 20}px` }}
-          >
-            {i}
-          </Box>
-        ))}
-      </Flex>
-
-      <Flex justify='center' align='center'>
-        {[1, 2, 3].map((i) => (
-          <Box
-            key={i}
-            className="border border-muted rounded-md w-16 text-xl font-semibold flex justify-center items-center shadow"
-            style={{ height: `${(i + 1) * 20}px` }}
-          >
-            {i}
-          </Box>
-        ))}
-      </Flex>
-
-      <Flex justify='end' align='end'>
-        {[1, 2, 3].map((i) => (
-          <Box
-            key={i}
-            className="border border-muted rounded-md w-16 text-xl font-semibold flex justify-center items-center shadow"
-            style={{ height: `${(i + 1) * 20}px` }}
-          >
-            {i}
-          </Box>
-        ))}
+      <Flex
+        justify="center" // "center" | "start" | "end" | "between" | "around" | "evenly" | "normal"
+        align="center" // "center" | "start" | "end" | "baseline" | "stretch"
+      >
+         <Box className="border border-muted rounded-md size-16 text-3xl font-semibold flex justify-center items-center shadow">
+          1
+        </Box>
+        <Box className="border border-muted rounded-md size-20 text-3xl font-semibold flex justify-center items-center shadow">
+          2
+        </Box>
+        <Box className="border border-muted rounded-md size-24 text-3xl font-semibold flex justify-center items-center shadow">
+          3
+        </Box>
       </Flex>
     <>
   );
@@ -200,7 +182,7 @@ Here is the API documentation of the **Flex** component. And the rest of the pro
 ### Direction Type
 
 ```ts
-type DirectionType = "col" | "row" | "row-reverse" | "col-reverse" | undefined;
+type DirectionType = "col" | "row" | "row-reverse" | "col-reverse";
 ```
 
 <div className="mb-10" />
@@ -208,15 +190,7 @@ type DirectionType = "col" | "row" | "row-reverse" | "col-reverse" | undefined;
 ### Justify Type
 
 ```ts
-type JustifyType =
-  | "center"
-  | "start"
-  | "end"
-  | "between"
-  | "around"
-  | "evenly"
-  | "normal"
-  | undefined;
+type JustifyType = "center" | "start" | "end" | "between" | "around" | "evenly" | "normal";
 ```
 
 <div className="mb-10" />
@@ -224,7 +198,7 @@ type JustifyType =
 ### Align Type
 
 ```ts
-type AlignType = "center" | "start" | "end" | "baseline" | "stretch" | undefined;
+type AlignType = "center" | "start" | "end" | "baseline" | "stretch";
 ```
 
 <div className="mb-10" />
@@ -232,5 +206,5 @@ type AlignType = "center" | "start" | "end" | "baseline" | "stretch" | undefined
 ### Gap Type
 
 ```ts
-type GapType = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | undefined;
+type GapType = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12";
 ```
