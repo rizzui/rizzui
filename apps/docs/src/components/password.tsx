@@ -1,5 +1,5 @@
 import React from "react";
-import { Password } from "rizzui";
+import { Button, Flex, Password } from "rizzui";
 
 export default function PasswordClearable({ label }) {
   const [state, setState] = React.useState("my_password");
@@ -16,20 +16,22 @@ export default function PasswordClearable({ label }) {
 }
 
 export function PasswordVisibilityToggle() {
-  const [state, setState] = React.useState("my_password");
   const [showPassword, setShowPassword] = React.useState(false);
   return (
-    <div>
+    <Flex
+      align="end"
+      justify="center"
+    >
       <Password
-        label={"Visibility Toggle from outside"}
-        value={state}
-        clearable={true}
-        onClear={() => setState("")}
-        onChange={(e) => setState(e.target.value)}
+        label="Visibility toggle outside"
         placeholder="Your password"
-        showPassword={showPassword}
-        setShowPassword={setShowPassword}
+        hideVisibilityToggleIcon={true}
+        isPasswordVisible={showPassword}
+        className="grow"
       />
-    </div>
+      <Button onClick={() => setShowPassword(!showPassword)}>
+        {showPassword ? "Hide" : "Show"}
+      </Button>
+    </Flex>
   );
 }
