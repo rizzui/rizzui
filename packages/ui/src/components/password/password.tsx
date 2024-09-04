@@ -91,6 +91,10 @@ export interface PasswordProps
   inputClassName?: string;
   /** Override default CSS style of prefix */
   prefixClassName?: string;
+  /** External visibility state */
+  showPassword?: boolean;
+  /** Set external visibility state to toggle visibility using props */
+  setShowPassword?: (value: boolean) => void;
   /** Override default CSS style of password show/hide toggle icon */
   visibilityToggleIconClassName?: string;
   /** Override default CSS style of helperText */
@@ -123,6 +127,8 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
       errorClassName,
       helperClassName,
       prefixClassName,
+      showPassword,
+      setShowPassword,
       visibilityToggleIcon,
       visibilityToggleIconClassName,
       onFocus,
@@ -144,6 +150,8 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
       onBlur,
       onFocus,
     });
+
+    const isVisible = showPassword ? showPassword : visible;
 
     return (
       <div
@@ -201,7 +209,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
 
             <input
               ref={ref}
-              type={visible ? 'text' : 'password'}
+              type={isVisible ? 'text' : 'password'}
               disabled={disabled}
               onBlur={handleOnBlur}
               onFocus={handleOnFocus}
@@ -239,6 +247,8 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
               )}
               onClick={() => {
                 if (disabled) return false;
+                if (setShowPassword) return setShowPassword(!isVisible);
+                console.log('setShowPassword is not defined');
                 setVisible((prevState) => !prevState);
               }}
             >
