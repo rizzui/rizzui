@@ -248,7 +248,6 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
               onClick={() => {
                 if (disabled) return false;
                 if (setShowPassword) return setShowPassword(!isVisible);
-                console.log('setShowPassword is not defined');
                 setVisible((prevState) => !prevState);
               }}
             >
