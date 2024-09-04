@@ -66,31 +66,6 @@ TableRow.displayName = 'TableRow';
 TableHead.displayName = 'TableHead';
 TableCell.displayName = 'TableCell';
 
-// interface TableComponent
-//   extends React.ForwardRefExoticComponent<
-//     TableProps & React.RefAttributes<HTMLTableElement>
-//   > {
-//   Header: typeof TableHeader;
-//   Body: typeof TableBody;
-//   Footer: typeof TableFooter;
-//   Row: typeof TableRow;
-//   Head: typeof TableHead;
-//   Cell: typeof TableCell;
-// }
-
-// const TableWithComponents: TableComponent = Table as TableComponent;
-
-// TableWithComponents.Header = TableHeader;
-// TableWithComponents.Body = TableBody;
-// TableWithComponents.Footer = TableFooter;
-// TableWithComponents.Row = TableRow;
-// TableWithComponents.Head = TableHead;
-// TableWithComponents.Cell = TableCell;
-
-// TableWithComponents.displayName = 'Table';
-
-// export { TableWithComponents as Table };
-
 const TableWithComponents = Object.assign(Table, {
   Header: TableHeader,
   Body: TableBody,
@@ -103,5 +78,3 @@ const TableWithComponents = Object.assign(Table, {
 TableWithComponents.displayName = 'Table';
 
 export { TableWithComponents as Table };
-
-// export { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell };
