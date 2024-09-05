@@ -91,6 +91,8 @@ export interface PasswordProps
   inputClassName?: string;
   /** Override default CSS style of prefix */
   prefixClassName?: string;
+  /** External visibility state */
+  isPasswordVisible?: boolean;
   /** Override default CSS style of password show/hide toggle icon */
   visibilityToggleIconClassName?: string;
   /** Override default CSS style of helperText */
@@ -99,6 +101,8 @@ export interface PasswordProps
   errorClassName?: string;
   /** Add custom classes to the root of the component */
   className?: string;
+  /** hide visibility toggle icon */
+  hideVisibilityToggleIcon?: boolean;
 }
 
 export const Password = forwardRef<HTMLInputElement, PasswordProps>(
@@ -123,7 +127,9 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
       errorClassName,
       helperClassName,
       prefixClassName,
+      isPasswordVisible,
       visibilityToggleIcon,
+      hideVisibilityToggleIcon,
       visibilityToggleIconClassName,
       onFocus,
       onBlur,
@@ -132,6 +138,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
     ref
   ) => {
     const [visible, setVisible] = useState(false);
+
     const {
       isFocus,
       isHover,
@@ -144,6 +151,8 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
       onBlur,
       onFocus,
     });
+
+    const isVisible = isPasswordVisible ?? visible;
 
     return (
       <div
@@ -201,7 +210,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
 
             <input
               ref={ref}
-              type={visible ? 'text' : 'password'}
+              type={isVisible ? 'text' : 'password'}
               disabled={disabled}
               onBlur={handleOnBlur}
               onFocus={handleOnFocus}
@@ -228,26 +237,28 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
               <FieldClearButton size={size} onClick={onClear} hasSuffix />
             ) : null}
 
-            <span
-              role="button"
-              tabIndex={0}
-              className={cn(
-                makeClassName(`password-toggle-icon`),
-                'whitespace-nowrap leading-normal',
-                disabled && 'text-muted-foreground',
-                visibilityToggleIconClassName
-              )}
-              onClick={() => {
-                if (disabled) return false;
-                setVisible((prevState) => !prevState);
-              }}
-            >
-              {visibilityToggleIcon ? (
-                visibilityToggleIcon(visible)
-              ) : (
-                <PasswordToggleIcon isVisible={visible} iconSize={size} />
-              )}
-            </span>
+            {hideVisibilityToggleIcon ? null : (
+              <span
+                role="button"
+                tabIndex={0}
+                className={cn(
+                  makeClassName(`password-toggle-icon`),
+                  'whitespace-nowrap leading-normal',
+                  disabled && 'text-muted-foreground',
+                  visibilityToggleIconClassName
+                )}
+                onClick={() => {
+                  if (disabled) return false;
+                  setVisible(!visible);
+                }}
+              >
+                {visibilityToggleIcon ? (
+                  visibilityToggleIcon(visible)
+                ) : (
+                  <PasswordToggleIcon isVisible={visible} iconSize={size} />
+                )}
+              </span>
+            )}
           </span>
         </label>
 

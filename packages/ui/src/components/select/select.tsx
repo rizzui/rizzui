@@ -130,6 +130,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   shadow?: keyof typeof dropdownStyles.shadow;
   /** add clearable option */
   clearable?: boolean;
+  /** Whether the select is focused by default or not */
+  autoFocus?: boolean;
   /** clear event */
   onClear?: (event: React.MouseEvent) => void;
   /** Event of the searchable input when change */
@@ -194,6 +196,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   dropdownClassName?: string;
   /** The key to search in the options */
   searchByKey?: string;
+  /** Disable default filter */
+  disableDefaultFilter?: boolean;
   /**
    * A function to determine the display value of the selected item.
    * @param value - The value of the selected item.
@@ -222,6 +226,7 @@ export function Select<OptionType extends SelectOption>({
   error,
   options,
   disabled,
+  autoFocus,
   helperText,
   prefix = null,
   placeholder = 'Select...',
@@ -260,6 +265,7 @@ export function Select<OptionType extends SelectOption>({
   helperClassName,
   searchClassName,
   dropdownClassName,
+  disableDefaultFilter,
   searchPrefixClassName,
   searchSuffixClassName,
   searchContainerClassName,
@@ -276,9 +282,11 @@ export function Select<OptionType extends SelectOption>({
 
   const filteredOptions = useMemo(
     () =>
-      options.filter((item) =>
-        item[searchByKey].toLowerCase().includes(searchQuery.toLowerCase())
-      ),
+      disableDefaultFilter
+        ? options
+        : options.filter((item) =>
+            item[searchByKey].toLowerCase().includes(searchQuery.toLowerCase())
+          ),
     [searchQuery, options]
   );
 
@@ -322,6 +330,7 @@ export function Select<OptionType extends SelectOption>({
                   error && emptyValue && selectStyles.error,
                   selectClassName
                 )}
+                autoFocus={autoFocus}
               >
                 {prefix ? (
                   <span

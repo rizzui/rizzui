@@ -1,7 +1,7 @@
 import React from "react";
 import { Tooltip } from "rizzui";
 import {
-  ClipboardIcon,
+  ClipboardDocumentIcon,
   ClipboardDocumentCheckIcon,
 } from "@heroicons/react/24/outline";
 
@@ -12,7 +12,7 @@ interface CopyButtonProps {
 
 async function copyToClipboardWithMeta(
   value: string,
-  meta?: Record<string, unknown>,
+  meta?: Record<string, unknown>
 ) {
   navigator.clipboard.writeText(value);
 }
@@ -24,24 +24,31 @@ export function CopyButton({ value, src }: CopyButtonProps) {
       setHasCopied(false);
     }, 1000);
   }, [hasCopied]);
+
   return (
     <Tooltip
-      content={hasCopied ? "Copied!" : "Copy to clipboard"}
-      rounded="sm"
-      placement="top"
       size="sm"
+      color="invert"
+      rounded="pill"
+      placement="top"
+      content={hasCopied ? "Copied!" : "Copy to clipboard"}
+      className="font-medium"
     >
       {hasCopied ? (
-        <ClipboardDocumentCheckIcon className="w-3.5 h-auto ms-1.5 cursor-pointer" />
+        <ClipboardDocumentCheckIcon
+          strokeWidth={1.6}
+          className="size-[17px] ms-5 cursor-pointer"
+        />
       ) : (
-        <ClipboardIcon
+        <ClipboardDocumentIcon
+          strokeWidth={1.6}
           onClick={() => {
             copyToClipboardWithMeta(value, {
               component: src,
             });
             setHasCopied(true);
           }}
-          className="w-3.5 h-auto ms-1.5 cursor-pointer"
+          className="size-[17px] ms-5 cursor-pointer"
         />
       )}
     </Tooltip>

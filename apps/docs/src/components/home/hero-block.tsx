@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "@docusaurus/router";
-import { Button, Title, Text, cn } from "rizzui";
+import { Button, Title, Text, cn, Box } from "rizzui";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 const data = {
   title: `A Modern & Minimal React UI Library
@@ -16,7 +17,7 @@ export default function HeroBlock() {
   const history = useHistory();
 
   return (
-    <section className="py-16 md:py-20 lg:py-32 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full border-b border-gray-100/90">
+    <section className="py-16 md:py-20 lg:py-32 2xl:py-36 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full border-b border-gray-100/90">
       <div className="absolute inset-0 flex justify-center">
         <div className=" w-48 h-48 bg-white rounded-full [filter:blur(2000px)]" />
       </div>
@@ -27,20 +28,27 @@ export default function HeroBlock() {
             as="h1"
             dangerouslySetInnerHTML={{ __html: data.title }}
             className={cn(
-              "text-3xl sm:text-4xl xl:text-5xl 2xl:text-[54px] leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-10 font-semibold",
+              "text-3xl sm:text-4xl xl:text-5xl leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-7 font-semibold"
             )}
           />
-          <Text className="text-[15px] md:text-base lg:text-lg leading-[1.9] md:leading-[1.9] lg:leading-[1.9] max-w-5xl mx-auto mb-8 md:mb-12 text-gray-600 dark:text-gray-500">
+          <Text className="text-[15px] md:text-base leading-[1.9] md:leading-[1.9] max-w-[786px] mx-auto mb-8 md:mb-12 text-gray-600 dark:text-gray-500">
             {data.description}
           </Text>
 
-          <div className="flex items-center justify-center gap-2 md:gap-4">
+          <div className="flex items-center justify-center gap-4 md:gap-5">
             <Button
               size="lg"
-              className="text-sm md:text-base h-12 xl:h-[3.25rem] shadow-xl px-8 xl:px-10 hover:shadow-2xl transition-all"
+              rounded="pill"
+              className="text-sm md:text-base h-12 xl:h-[3.25rem] shadow-xl px-6 hover:shadow-2xl transition-all relative !pe-14 min-w-[180px]"
               onClick={() => history.push("/docs/guide/getting-started")}
             >
-              Get Started
+              Get Started{" "}
+              <Box
+                as={"span"}
+                className="size-7 rounded-full inline-flex items-center justify-center bg-gradient-to-tr from-primary to-white/30 dark:to-black/20 text-white dark:text-black absolute end-2"
+              >
+                <ArrowRightIcon className="size-[17px]" />
+              </Box>
             </Button>
             <a
               target="_blank"
@@ -52,7 +60,8 @@ export default function HeroBlock() {
                 size="lg"
                 as="span"
                 variant="outline"
-                className="text-sm md:text-base h-12 xl:h-[3.25rem] bg-white dark:bg-gray-50 shadow-lg px-8 xl:px-10 hover:shadow-xl transition-all"
+                rounded="pill"
+                className="text-sm md:text-base h-12 xl:h-[3.25rem] bg-white dark:bg-gray-50 shadow-lg px-8 xl:px-9 hover:shadow-xl transition-all relative"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

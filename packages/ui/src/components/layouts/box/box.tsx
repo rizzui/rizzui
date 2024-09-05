@@ -1,4 +1,5 @@
 import React from 'react';
+import { cn } from 'src/lib/cn';
 
 export interface BoxProps extends React.HTMLAttributes<HTMLElement> {
   /* defines the component tag name to render */
@@ -12,7 +13,7 @@ export const Box = React.forwardRef(
     const Comp = as || 'div';
 
     return (
-      <Comp ref={ref} className={className} {...rest}>
+      <Comp ref={ref} className={cn('block', className)} {...rest}>
         {children}
       </Comp>
     );
