@@ -12,6 +12,7 @@ import { makeClassName } from '../../lib/make-class-name';
 
 export type TabProps = ExtractProps<TabGroupProps> & {
   hideHoverAnimation?: boolean;
+  highlightClassName?: string;
 };
 
 export function Tab({
@@ -21,6 +22,7 @@ export function Tab({
   onChange,
   hideHoverAnimation,
   children,
+  highlightClassName,
   ...props
 }: TabProps) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -39,6 +41,7 @@ export function Tab({
         setDisplayHighlight,
         activeTab: selectedIndex ?? activeTab,
         hideHoverAnimation,
+        highlightClassName,
       }}
     >
       <TabGroup
