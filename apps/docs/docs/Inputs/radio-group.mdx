@@ -3,9 +3,7 @@ sidebar_position: 10
 ---
 
 import Paper from "@site/src/components/paper";
-import RadioGroupDefault, {
-  RadioGroupWithCard,
-} from "@site/src/components/radio-group";
+import RadioGroupDefault, { RadioGroupWithCard } from "@site/src/components/radio-group";
 
 # Radio Group
 
@@ -33,11 +31,28 @@ export default function App() {
   const [value, setValue] = useState("apple");
 
   return (
-    <RadioGroup value={value} setValue={setValue} className="flex gap-4">
-      <Radio label="Apple" value="apple" />
-      <Radio label="Pear" value="pear" />
-      <Radio label="Orange" value="orange" disabled />
-      <Radio label="Blueberry" value="blueberry" />
+    <RadioGroup
+      value={value}
+      setValue={setValue}
+      className="flex gap-4"
+    >
+      <Radio
+        label="Apple"
+        value="apple"
+      />
+      <Radio
+        label="Pear"
+        value="pear"
+      />
+      <Radio
+        label="Orange"
+        value="orange"
+        disabled
+      />
+      <Radio
+        label="Blueberry"
+        value="blueberry"
+      />
     </RadioGroup>
   );
 }

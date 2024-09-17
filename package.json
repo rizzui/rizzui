@@ -18,16 +18,16 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "husky": "^9.0.11",
-    "prettier": "3.3.1",
-    "tsup": "8.1.0",
-    "turbo": "2.0.12"
+    "husky": "^9.1.6",
+    "prettier": "3.3.3",
+    "tsup": "8.3.0",
+    "turbo": "2.1.2"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.5"
+    "@changesets/cli": "^2.27.8"
   },
   "packageManager": "pnpm@9.1.4"
 }

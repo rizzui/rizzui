@@ -168,12 +168,6 @@ You can change the style of **Textarea** using [**rounded**](#textarea-rounded) 
     className="w-full sm:w-auto"
   />
   <Textarea
-    label="Rounded Extra Large"
-    placeholder="Enter your message"
-    rounded="xl"
-    className="w-full sm:w-auto"
-  />
-  <Textarea
     label="Rounded None"
     placeholder="Enter your message"
     rounded="none"
@@ -201,11 +195,7 @@ export default function App() {
         placeholder="Enter your message"
         rounded="lg"
       />
-      <Textarea
-        label="Rounded Extra Large"
-        placeholder="Enter your message"
-        rounded="xl"
-      />
+
       <Textarea
         label="Rounded None"
         placeholder="Enter your message"
@@ -224,18 +214,17 @@ You can change rows and cols of **Textarea** using **rows** & **cols** property.
 
 <Paper className="block">
   <Textarea
-    rows={4}
+    rows={6}
     cols={50}
     label="Message"
     placeholder="Enter your message"
     textareaClassName="overflow-y-auto w-full md:w-auto"
-  >
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et!
+    defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et!
     Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
     assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
     Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
-    Quibusdam debitis natus optio quasi assumenda provident dolores animi?
-  </Textarea>
+    Quibusdam debitis natus optio quasi assumenda provident dolores animi?"
+  />
 </Paper>
 
 ```tsx
@@ -244,17 +233,17 @@ import { Textarea } from "rizzui";
 export default function App() {
   return (
     <Textarea
-      rows={4}
+      rows={6}
       cols={50}
       label="Message"
       placeholder="Enter your message"
-    >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla
-      et! Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
-      assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
-      Quibusdam debitis natus optio quasi assumenda provident dolores animi?
-    </Textarea>
+      textareaClassName="overflow-y-auto w-full md:w-auto"
+      defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et!
+    Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
+    assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
+    Quibusdam debitis natus optio quasi assumenda provident dolores animi?"
+    />
   );
 }
 ```

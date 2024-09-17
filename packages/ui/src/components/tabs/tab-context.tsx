@@ -24,6 +24,7 @@ type TabContextProps = {
   displayHighlight?: boolean;
   setDisplayHighlight?: React.Dispatch<React.SetStateAction<boolean>>;
   activeTab?: number;
+  highlightClassName?: string;
 };
 
 const TabContext = createContext<TabContextProps | null>(null);

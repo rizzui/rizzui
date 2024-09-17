@@ -29,6 +29,7 @@ export function TabList({ children, className, ...props }: TabListProps) {
     displayHighlight,
     setDisplayHighlight,
     hideHoverAnimation,
+    highlightClassName,
   } = useTab();
 
   useRePositioningActiveTab({ ref, activeTab });
@@ -58,6 +59,7 @@ export function TabList({ children, className, ...props }: TabListProps) {
           visible={displayHighlight}
           hoverHeightRatio={0.7}
           hoverWidthRatio={1}
+          className={highlightClassName}
         />
       ) : null}
     </HeadlessTabList>

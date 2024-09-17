@@ -38,8 +38,15 @@ export default function App() {
 You can change the style of **Radio** using [**variant**](#radio-variants) property.
 
 <Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
-  <Radio className="m-2" label="Outline" />
-  <Radio className="m-2" label="Flat" variant="flat" />
+  <Radio
+    className="m-2"
+    label="Outline"
+  />
+  <Radio
+    className="m-2"
+    label="Flat"
+    variant="flat"
+  />
 </Paper>
 
 ```tsx
@@ -48,8 +55,15 @@ import { Radio } from "rizzui";
 export default function App() {
   return (
     <>
-      <Radio className="m-2" label="Outline" />
-      <Radio className="m-2" label="Flat" variant="flat" />
+      <Radio
+        className="m-2"
+        label="Outline"
+      />
+      <Radio
+        className="m-2"
+        label="Flat"
+        variant="flat"
+      />
     </>
   );
 }
@@ -62,10 +76,25 @@ export default function App() {
 You can change the sizes of **Radio** using [**size**](#radio-sizes) property.
 
 <Paper className="flex-row justify-around gap-4 flex-wrap text-gray-900">
-  <Radio className="m-2" label="Small" size="sm" />
-  <Radio className="m-2" label="Default" />
-  <Radio className="m-2" label="Large" size="lg" />
-  <Radio className="m-2" label="Extra Large" size="xl" />
+  <Radio
+    className="m-2"
+    label="Small"
+    size="sm"
+  />
+  <Radio
+    className="m-2"
+    label="Default"
+  />
+  <Radio
+    className="m-2"
+    label="Large"
+    size="lg"
+  />
+  <Radio
+    className="m-2"
+    label="Extra Large"
+    size="xl"
+  />
 </Paper>
 
 ```tsx
@@ -74,10 +103,25 @@ import { Radio } from "rizzui";
 export default function App() {
   return (
     <>
-      <Radio className="m-2" label="Small" size="sm" />
-      <Radio className="m-2" label="Default" />
-      <Radio className="m-2" label="Large" size="lg" />
-      <Radio className="m-2" label="Extra Large" size="xl" />
+      <Radio
+        className="m-2"
+        label="Small"
+        size="sm"
+      />
+      <Radio
+        className="m-2"
+        label="Default"
+      />
+      <Radio
+        className="m-2"
+        label="Large"
+        size="lg"
+      />
+      <Radio
+        className="m-2"
+        label="Extra Large"
+        size="xl"
+      />
     </>
   );
 }
@@ -90,8 +134,16 @@ export default function App() {
 You can set label on the two diffrient side using **labelPlacement** property.
 
 <Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
-  <Radio className="m-2" label="Left Placement" labelPlacement="left" />
-  <Radio className="m-2" label="Right Placement" labelPlacement="right" />
+  <Radio
+    className="m-2"
+    label="Left Placement"
+    labelPlacement="left"
+  />
+  <Radio
+    className="m-2"
+    label="Right Placement"
+    labelPlacement="right"
+  />
 </Paper>
 
 ```tsx
@@ -100,8 +152,16 @@ import { Radio } from "rizzui";
 export default function App() {
   return (
     <>
-      <Radio className="m-2" label="Left Placement" labelPlacement="left" />
-      <Radio className="m-2" label="Right Placement" labelPlacement="right" />
+      <Radio
+        className="m-2"
+        label="Left Placement"
+        labelPlacement="left"
+      />
+      <Radio
+        className="m-2"
+        label="Right Placement"
+        labelPlacement="right"
+      />
     </>
   );
 }
@@ -114,14 +174,24 @@ export default function App() {
 You can change style of **Radio** using **disabled** property.
 
 <Paper className="text-gray-900">
-  <Radio className="m-2" label="Remember Me" disabled />
+  <Radio
+    className="m-2"
+    label="Remember Me"
+    disabled
+  />
 </Paper>
 
 ```tsx
 import { Radio } from "rizzui";
 
 export default function App() {
-  return <Radio className="m-2" label="Remember Me" disabled />;
+  return (
+    <Radio
+      className="m-2"
+      label="Remember Me"
+      disabled
+    />
+  );
 }
 ```
 

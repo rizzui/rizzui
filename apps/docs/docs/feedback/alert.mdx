@@ -22,19 +22,19 @@ import { Alert } from "rizzui";
 You can change the style of **Alert** using the **variant** property.
 
 <Paper className="grid grid-cols-1 gap-4 text-gray-950">
-  <Alert variant="flat" color="info">
+  <Alert
+    variant="flat"
+    color="info"
+  >
     <Text className="font-semibold">Flat variant</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert variant="outline" color="info">
+  <Alert
+    variant="outline"
+    color="info"
+  >
     <Text className="font-semibold">Outline variant</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
 </Paper>
 
@@ -44,18 +44,19 @@ import { Alert, Text } from "rizzui";
 export default function App() {
   return (
     <>
-      <Alert variant="flat" color="info">
+      <Alert
+        variant="flat"
+        color="info"
+      >
         <Text className="font-semibold">Flat variant</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
       <Alert color="info">
         <Text className="font-semibold">Outline variant</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
     </>
@@ -70,33 +71,30 @@ export default function App() {
 You can set diffirent size of the **Alert** using [**size**](#alert-sizes) property.
 
 <Paper className="gap-4 justify-start items-start text-gray-950">
-  <Alert size="sm" color="danger">
+  <Alert
+    size="sm"
+    color="danger"
+  >
     <Text className="font-semibold">Alert Small</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
   <Alert color="danger">
     <Text className="font-semibold">Alert Default</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert size="lg" color="danger">
+  <Alert
+    size="lg"
+    color="danger"
+  >
     <Text className="font-semibold">Alert Large</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert size="xl" color="danger">
+  <Alert
+    size="xl"
+    color="danger"
+  >
     <Text className="font-semibold">Alert Extra Large</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
 </Paper>
 
@@ -106,32 +104,37 @@ import { Alert } from "rizzui";
 export default function App() {
   return (
     <>
-      <Alert size="sm" color="danger">
+      <Alert
+        size="sm"
+        color="danger"
+      >
         <Text className="font-semibold">Alert Small</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
       <Alert color="danger">
         <Text className="font-semibold">Alert Default</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert size="lg" color="danger">
+      <Alert
+        size="lg"
+        color="danger"
+      >
         <Text className="font-semibold">Alert Large</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert size="xl" color="danger">
+      <Alert
+        size="xl"
+        color="danger"
+      >
         <Text className="font-semibold">Alert Extra Large</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
     </>
@@ -146,40 +149,37 @@ export default function App() {
 Change border radius of the **Alert** component using [**rounded**](#alert-rounded) property.
 
 <Paper className="gap-4 justify-start items-start text-gray-950">
-  <Alert color="success" rounded="none">
+  <Alert
+    color="success"
+    rounded="none"
+  >
     <Text className="font-semibold">Rounded None</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert color="success" rounded="sm">
+  <Alert
+    color="success"
+    rounded="sm"
+  >
     <Text className="font-semibold">Rounded Small</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
   <Alert color="success">
     <Text className="font-semibold">Rounded Default</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert color="success" rounded="lg">
+  <Alert
+    color="success"
+    rounded="lg"
+  >
     <Text className="font-semibold">Rounded Large</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert color="success" rounded="xl">
+  <Alert
+    color="success"
+    rounded="xl"
+  >
     <Text className="font-semibold">Rounded Extra Large</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
 </Paper>
 
@@ -189,39 +189,46 @@ import { Alert } from "rizzui";
 export default function App() {
   return (
     <>
-      <Alert color="success" rounded="none">
+      <Alert
+        color="success"
+        rounded="none"
+      >
         <Text className="font-semibold">Alert Rounded None</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert color="success" rounded="sm">
+      <Alert
+        color="success"
+        rounded="sm"
+      >
         <Text className="font-semibold">Alert Rounded Small</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
       <Alert color="success">
         <Text className="font-semibold">Alert Rounded Default</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert color="success" rounded="lg">
+      <Alert
+        color="success"
+        rounded="lg"
+      >
         <Text className="font-semibold">Alert Rounded Large</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert color="success" rounded="xl">
+      <Alert
+        color="success"
+        rounded="xl"
+      >
         <Text className="font-semibold">Alert Rounded Extra Large</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
     </>
@@ -236,33 +243,33 @@ export default function App() {
 You can set different states of **Alert** using [**color**](#alert-colors) property.
 
 <Paper className="gap-4 grid grid-cols-1 text-gray-950">
-  <Alert color="danger" variant="flat">
+  <Alert
+    color="danger"
+    variant="flat"
+  >
     <Text className="font-semibold">Danger Alert</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert color="info" variant="flat">
+  <Alert
+    color="info"
+    variant="flat"
+  >
     <Text className="font-semibold">Info Alert</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert color="success" variant="flat">
+  <Alert
+    color="success"
+    variant="flat"
+  >
     <Text className="font-semibold">Success Alert</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert color="warning" variant="flat">
+  <Alert
+    color="warning"
+    variant="flat"
+  >
     <Text className="font-semibold">Warning Alert</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
 </Paper>
 
@@ -272,32 +279,40 @@ import { Alert } from "rizzui";
 export default function App() {
   return (
     <>
-      <Alert color="danger" variant="flat">
+      <Alert
+        color="danger"
+        variant="flat"
+      >
         <Text className="font-semibold">Danger Alert</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert color="info" variant="flat">
+      <Alert
+        color="info"
+        variant="flat"
+      >
         <Text className="font-semibold">Info Alert</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert color="success" variant="flat">
+      <Alert
+        color="success"
+        variant="flat"
+      >
         <Text className="font-semibold">Success Alert</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert color="warning" variant="flat">
+      <Alert
+        color="warning"
+        variant="flat"
+      >
         <Text className="font-semibold">Warning Alert</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
     </>
@@ -318,10 +333,7 @@ You can change style of **Alert** with property **icon**, **clearIcon**.
     clearIcon={<TrashIcon className="w-6 text-blue-dark" />}
   >
     <Text className="font-semibold">Customizable icon Alert</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
 </Paper>
 
@@ -337,10 +349,7 @@ export default function App() {
       clearIcon={<TrashIcon className="w-6 text-blue-dark" />}
     >
       <Text className="font-semibold">Customizable icon Alert</Text>
-      <Text>
-        Attention All! We are excited to announce the launch of our new
-        product/service.
-      </Text>
+      <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
     </Alert>
   );
 }
@@ -353,33 +362,33 @@ export default function App() {
 You can make a classic bar **Alert** by using **bar** property.
 
 <Paper className="grid grid-cols-1 gap-4 text-gray-950">
-  <Alert color="danger" bar={true}>
+  <Alert
+    color="danger"
+    bar={true}
+  >
     <Text className="font-semibold">Danger Alert</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert color="info" bar={true}>
+  <Alert
+    color="info"
+    bar={true}
+  >
     <Text className="font-semibold">Info Alert</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert color="success" bar={true}>
+  <Alert
+    color="success"
+    bar={true}
+  >
     <Text className="font-semibold">Success Alert</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
-  <Alert color="warning" bar={true}>
+  <Alert
+    color="warning"
+    bar={true}
+  >
     <Text className="font-semibold">Warning Alert</Text>
-    <Text>
-      Attention All! We are excited to announce the launch of our new
-      product/service.
-    </Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
 </Paper>
 
@@ -389,32 +398,40 @@ import { Alert } from "rizzui";
 export default function App() {
   return (
     <>
-      <Alert color="danger" bar={true}>
+      <Alert
+        color="danger"
+        bar={true}
+      >
         <Text className="font-semibold">Danger Alert</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert color="info" bar={true}>
+      <Alert
+        color="info"
+        bar={true}
+      >
         <Text className="font-semibold">Info Alert</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert color="success" bar={true}>
+      <Alert
+        color="success"
+        bar={true}
+      >
         <Text className="font-semibold">Success Alert</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
-      <Alert color="warning" bar={true}>
+      <Alert
+        color="warning"
+        bar={true}
+      >
         <Text className="font-semibold">Warning Alert</Text>
         <Text>
-          Attention All! We are excited to announce the launch of our new
-          product/service.
+          Attention All! We are excited to announce the launch of our new product/service.
         </Text>
       </Alert>
     </>
@@ -456,8 +473,7 @@ export default function App() {
         >
           <Text className="font-semibold">Alert with info</Text>
           <Text>
-            Attention All! We are excited to announce the launch of our new
-            product/service.
+            Attention All! We are excited to announce the launch of our new product/service.
           </Text>
         </Alert>
       )}
