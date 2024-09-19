@@ -43,105 +43,93 @@ npm i --save @types/react-datepicker
 <div className="mb-4" />
 
 ```ts
-import { useState } from "react";
+import React from "react";
 import { cn, Input, InputProps } from "rizzui";
-import ReactDatePicker from "react-datepicker";
-import type { ReactDatePickerProps } from "react-datepicker";
+import DatePicker, { type DatePickerProps } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CalendarIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
-const calendarContainerStyles = {
-  base: "[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md",
+const calendarContainerClasses = {
+  base: "[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md ",
   monthContainer: {
     padding: "[&.react-datepicker>div]:pt-5 [&.react-datepicker>div]:pb-3",
   },
 };
 
-const prevNextButtonStyles = {
+const prevNextButtonClasses = {
   base: "[&.react-datepicker>button]:items-baseline [&.react-datepicker>button]:top-7",
   border:
-    "[&.react-datepicker>button]:border [&.react-datepicker>button]:border-solid [&.react-datepicker>button]:border-muted [&.react-datepicker>button]:rounded-md",
-  size: "[&.react-datepicker>button]:h-[22px] [&.react-datepicker>button]:w-[22px]",
+    "[&.react-datepicker>button]:border [&.react-datepicker>button]:border-solid [&.react-datepicker>button]:border-gray-300 [&.react-datepicker>button]:rounded-md",
+  size: "[&.react-datepicker>button]:h-[22px] [&.react-datepicker>button]:w-[22px] hover:[&.react-datepicker>button]:border-gray-900 [&.react-datepicker>button:hover>span::before]:border-gray-900",
   children: {
     position: "[&.react-datepicker>button>span]:top-0",
     border:
-      "[&.react-datepicker>button>span]:before:border-t-[1.5px] [&.react-datepicker>button>span]:before:border-r-[1.5px] [&.react-datepicker>button>span]:before:border-muted",
+      "[&.react-datepicker>button>span]:before:border-t-[1.5px] [&.react-datepicker>button>span]:before:border-r-[1.5px] [&.react-datepicker>button>span]:before:border-gray-400",
     size: "[&.react-datepicker>button>span]:before:h-[7px] [&.react-datepicker>button>span]:before:w-[7px]",
   },
 };
 
-const timeOnlyStyles = {
+const timeOnlyClasses = {
   base: "[&.react-datepicker--time-only>div]:pr-0 [&.react-datepicker--time-only>div]:w-28",
 };
 
-export interface DatePickerProps<selectsRange extends boolean | undefined>
-  extends Omit<ReactDatePickerProps, "selectsRange" | "onChange"> {
-  onChange(
-    date: selectsRange extends false | undefined
-      ? Date | null
-      : [Date | null, Date | null],
-    event: React.SyntheticEvent<any> | undefined
-  ): void;
-  selectsRange?: selectsRange;
-  inputProps?: InputProps;
-}
+const popperClasses = {
+  base: "[&>svg]:!fill-white dark:[&>svg]:!fill-gray-100 [&>svg]:!stroke-gray-300 dark:[&>svg]:!stroke-muted dark:[&>svg]:!text-muted",
+};
 
-const DatePicker = ({
+export type ReactDatePickerProps = DatePickerProps & {
+  inputProps?: InputProps;
+};
+
+const ReactDatePicker = ({
+  inputProps,
   customInput,
-  showPopperArrow = false,
-  dateFormat = "d MMMM yyyy",
-  selectsRange = false,
   onCalendarOpen,
   onCalendarClose,
-  inputProps,
+  popperClassName,
   calendarClassName,
   ...props
-}: DatePickerProps<boolean>) => {
-  const [isCalenderOpen, setIsCalenderOpen] = useState(false);
+}: ReactDatePickerProps) => {
+  const [isCalenderOpen, setIsCalenderOpen] = React.useState(false);
   const handleCalenderOpen = () => setIsCalenderOpen(true);
   const handleCalenderClose = () => setIsCalenderOpen(false);
   return (
-    <ReactDatePicker
+    <DatePicker
       customInput={
         customInput || (
           <Input
             prefix={<CalendarIcon className="w-5 h-5 text-gray-500" />}
             suffix={
               <ChevronDownIcon
-                className={cn(
-                  "h-4 w-4 text-gray-500 transition",
-                  isCalenderOpen && "rotate-180"
-                )}
+                className={cn("h-4 w-4 text-gray-500 transition", isCalenderOpen && "rotate-180")}
               />
             }
             {...inputProps}
           />
         )
       }
-      showPopperArrow={showPopperArrow}
-      dateFormat={dateFormat}
-      selectsRange={selectsRange}
       onCalendarOpen={onCalendarOpen || handleCalenderOpen}
       onCalendarClose={onCalendarClose || handleCalenderClose}
       calendarClassName={cn(
-        calendarContainerStyles.base,
-        calendarContainerStyles.monthContainer.padding,
-        prevNextButtonStyles.base,
-        prevNextButtonStyles.border,
-        prevNextButtonStyles.size,
-        prevNextButtonStyles.children.position,
-        prevNextButtonStyles.children.border,
-        prevNextButtonStyles.children.size,
-        timeOnlyStyles.base,
+        calendarContainerClasses.base,
+        calendarContainerClasses.monthContainer.padding,
+        prevNextButtonClasses.base,
+        prevNextButtonClasses.border,
+        prevNextButtonClasses.size,
+        prevNextButtonClasses.children.position,
+        prevNextButtonClasses.children.border,
+        prevNextButtonClasses.children.size,
+        timeOnlyClasses.base,
         calendarClassName
       )}
+      popperClassName={cn(popperClasses.base, popperClassName)}
       {...props}
     />
   );
 };
 
-DatePicker.displayName = "DatePicker";
-export default DatePicker;
+ReactDatePicker.displayName = "ReactDatePicker";
+export default ReactDatePicker;
 ```
 
 3. Copy and paste the following CSS code into your project CSS file.
@@ -166,9 +154,7 @@ export default DatePicker;
   @apply w-auto border-l-0 pr-3.5;
 }
 
-.react-datepicker-popper
-  .react-datepicker__time-container
-  .react-datepicker__time {
+.react-datepicker-popper .react-datepicker__time-container .react-datepicker__time {
   @apply bg-gray-50 dark:bg-gray-200;
 }
 
@@ -330,8 +316,7 @@ export default DatePicker;
 }
 
 /* hover on selected months in range */
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--in-range:hover {
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--in-range:hover {
   @apply bg-gray-200 text-gray-900;
 }
 
@@ -343,12 +328,9 @@ export default DatePicker;
 }
 
 /* hover on selected range start and end month */
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--selected:hover,
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--range-start:hover,
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--range-end:hover {
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--selected:hover,
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-start:hover,
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-end:hover {
   @apply bg-gray-900/80 text-gray-50;
 }
 
@@ -373,10 +355,8 @@ export default DatePicker;
 }
 
 /* selected year & month in year picker */
-.react-datepicker
-  .react-datepicker__year-text.react-datepicker__year-text--selected,
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month-text--selected {
+.react-datepicker .react-datepicker__year-text.react-datepicker__year-text--selected,
+.react-datepicker .react-datepicker__month-text.react-datepicker__month-text--selected {
   @apply bg-gray-900 text-gray-50;
   @apply hover:bg-gray-900/80 hover:text-gray-50;
 }
@@ -471,12 +451,12 @@ The default style of **DatePicker** component.
 </Paper>
 
 ```tsx
-import { DatePicker } from "@components/datepicker";
+import { ReactDatePicker } from "@components/datepicker";
 
 export default function App() {
-  const [startDate, setStartDate] = React.useState<Date>();
+  const [startDate, setStartDate] = React.useState<Date | null>();
   return (
-    <DatePicker
+    <ReactDatePicker
       selected={startDate}
       onChange={(date: Date) => setStartDate(date)}
       placeholderText="Select Date"
@@ -487,22 +467,22 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Monthpicker
+## MonthPicker
 
-You can use the **DatePicker** component as a **Monthpicker**
+You can use the **ReactDatePicker** component as a **MonthPicker**
 
 <Paper className="block">
   <MonthPicker />
 </Paper>
 
 ```tsx
-import { DatePicker } from "@components/datepicker";
+import { ReactDatePicker } from "@components/datepicker";
 
 export default function App() {
-  const [startDate, setStartDate] = React.useState<Date>();
+  const [startDate, setStartDate] = React.useState<Date | null>();
   return (
     <div className="h-72 w-96">
-      <DatePicker
+      <ReactDatePicker
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}
         dateFormat="MMMM yyyy"
@@ -516,22 +496,22 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Yearpicker
+## YearPicker
 
-You can use the **DatePicker** component as a **YearPicker**
+You can use the **ReactDatePicker** component as a **YearPicker**
 
 <Paper className="block">
   <YearPicker />
 </Paper>
 
 ```tsx
-import { DatePicker } from "@components/datepicker";
+import { ReactDatePicker } from "@components/datepicker";
 
 export default function App() {
-  const [startDate, setStartDate] = React.useState<Date>();
+  const [startDate, setStartDate] = React.useState<Date | null>();
   return (
     <div className="h-72">
-      <DatePicker
+      <ReactDatePicker
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}
         dateFormat="yyyy"
@@ -552,13 +532,13 @@ export default function App() {
 </Paper>
 
 ```tsx
-import { DatePicker } from "@components/datepicker";
+import { ReactDatePicker } from "@components/datepicker";
 
 export default function App() {
-  const [startDate, setStartDate] = React.useState<Date>();
+  const [startDate, setStartDate] = React.useState<Date | null>();
   return (
     <div className="h-96">
-      <DatePicker
+      <ReactDatePicker
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}
         placeholderText="Select Month from Dropdown"
@@ -578,13 +558,13 @@ export default function App() {
 </Paper>
 
 ```tsx
-import { DatePicker } from "@components/datepicker";
+import { ReactDatePicker } from "@components/datepicker";
 
 export default function App() {
-  const [startDate, setStartDate] = React.useState<Date>();
+  const [startDate, setStartDate] = React.useState<Date | null>();
   return (
     <div className="h-96">
-      <DatePicker
+      <ReactDatePicker
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}
         placeholderText="Select Year from Dropdown"
@@ -605,13 +585,13 @@ export default function App() {
 </Paper>
 
 ```tsx
-import { DatePicker } from "@components/datepicker";
+import { ReactDatePicker } from "@components/datepicker";
 
 export default function App() {
-  const [startDate, setStartDate] = React.useState<Date>();
+  const [startDate, setStartDate] = React.useState<Date | null>();
   return (
     <div className="h-96">
-      <DatePicker
+      <ReactDatePicker
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}
         dateFormat="d MMMM yyyy, h:mm aa"
@@ -632,13 +612,13 @@ export default function App() {
 </Paper>
 
 ```tsx
-import { DatePicker } from "@components/datepicker";
+import { ReactDatePicker } from "@components/datepicker";
 
 export default function App() {
-  const [startDate, setStartDate] = React.useState<Date>();
+  const [startDate, setStartDate] = React.useState<Date | null>();
   return (
     <div className="h-96">
-      <DatePicker
+      <ReactDatePicker
         selected={startDate}
         onChange={(date: Date) => setStartDate(date)}
         dateFormat="h:mm aa"
@@ -660,32 +640,22 @@ export default function App() {
 </Paper>
 
 ```tsx
-import { DatePicker } from "@components/datepicker";
+import { ReactDatePicker } from "@components/datepicker";
 
 export default function App() {
-  const [starRangetDate, setStartRangeDate] = React.useState<Date | null>(null);
-  const [endRangeDate, setEndRangeDate] = React.useState<Date | null>(null);
-  const handleRangeChange = (dates: [Date | null, Date | null]) => {
-    const [start, end] = dates;
-    setStartRangeDate(start);
-    setEndRangeDate(end);
-  };
+  const [starDate, setStartDate] = React.useState<[Date | null, Date | null]>();
   return (
     <div className="h-96">
-      <DatePicker
-        selected={starRangetDate}
-        onChange={handleRangeChange}
-        startDate={starRangetDate}
-        endDate={endRangeDate}
+      <ReactDatePicker
+        startDate={starDate?.[0]!}
+        endDate={starDate?.[1]!}
+        onChange={(dates) => setStartDate(dates)}
         monthsShown={2}
         placeholderText="Select Date in a Range"
         selectsRange
         inputProps={{
           clearable: true,
-          onClear: () => {
-            setStartRangeDate(null);
-            setEndRangeDate(null);
-          },
+          onClear: () => setStartDate([null, null]),
         }}
       />
     </div>
