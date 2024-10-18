@@ -94,12 +94,13 @@ const optionListStyles = {
 };
 
 const searchStyles = {
-  base: 'relative mb-2 block',
+  base: 'relative mb-2 block group [&.sticky]:mb-0',
   inputBase: 'px-10 placeholder:text-muted-foreground',
   prefix:
-    'absolute z-10 start-1 top-5 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
+    'absolute z-10 start-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
   suffix:
-    'absolute z-10 end-1 top-5 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
+    'absolute z-10 end-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
+  stickySearch: 'sticky top-0 z-10 bg-background pt-2 -translate-y-2',
 };
 
 export type SelectOption = {
@@ -198,6 +199,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   searchByKey?: string;
   /** Disable default filter */
   disableDefaultFilter?: boolean;
+  /** Whether the search input is sticky or not */
+  stickySearch?: boolean;
   /**
    * A function to determine the display value of the selected item.
    * @param value - The value of the selected item.
@@ -244,11 +247,12 @@ export function Select<OptionType extends SelectOption>({
   rounded = 'md',
   shadow = 'md',
   variant = 'outline',
-  suffix = <ChevronDownIcon strokeWidth="2" className="h-4 w-4" />,
+  suffix = <ChevronDownIcon strokeWidth="2" className="size-4" />,
   searchable,
   searchType,
   searchProps,
-  searchPrefix = <SearchIcon strokeWidth="2" className="h-4 w-4" />,
+  stickySearch,
+  searchPrefix = <SearchIcon strokeWidth="2" className="size-4" />,
   searchSuffix = null,
   searchDisabled,
   searchReadOnly,
@@ -408,9 +412,10 @@ export function Select<OptionType extends SelectOption>({
                       )}
                     >
                       {searchable && (
-                        <span
+                        <div
                           className={cn(
                             searchStyles.base,
+                            stickySearch && searchStyles.stickySearch,
                             searchContainerClassName
                           )}
                         >
@@ -466,9 +471,8 @@ export function Select<OptionType extends SelectOption>({
                               {searchSuffix}
                             </span>
                           ) : null}
-                        </span>
+                        </div>
                       )}
-
                       {filteredOptions.map((option) => (
                         <ListboxOption
                           key={option.value}

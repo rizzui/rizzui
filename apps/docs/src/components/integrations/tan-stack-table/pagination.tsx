@@ -31,14 +31,16 @@ export default function TablePagination<TData extends Record<string, any>>({
         <div className="flex items-center gap-4">
           <Text className="hidden font-medium text-gray-900 @md:block">Rows per page</Text>
           <Select
+            size="sm"
             options={options}
-            className="w-[70px]"
+            className="w-[52px]"
             value={table.getState().pagination.pageSize}
             onChange={(v: SelectOption) => {
               table.setPageSize(Number(v.value));
             }}
-            selectClassName="font-semibold text-sm ring-0 shadow-sm h-9"
+            selectClassName="font-semibold text-sm ring-0 shadow-sm"
             optionClassName="justify-center font-medium"
+            suffixClassName="[&_svg]:!size-3"
           />
         </div>
         <Text className="hidden font-medium text-gray-900 @3xl:block">
@@ -47,6 +49,7 @@ export default function TablePagination<TData extends Record<string, any>>({
         </Text>
         <div className="grid grid-cols-4 gap-2">
           <ActionIcon
+            size="sm"
             rounded="lg"
             variant="outline"
             aria-label="Go to first page"
@@ -57,6 +60,7 @@ export default function TablePagination<TData extends Record<string, any>>({
             <ChevronDoubleLeftIcon className="size-5" />
           </ActionIcon>
           <ActionIcon
+            size="sm"
             rounded="lg"
             variant="outline"
             aria-label="Go to previous page"
@@ -67,6 +71,7 @@ export default function TablePagination<TData extends Record<string, any>>({
             <ChevronLeftIcon className="size-5" />
           </ActionIcon>
           <ActionIcon
+            size="sm"
             rounded="lg"
             variant="outline"
             aria-label="Go to next page"
@@ -77,6 +82,7 @@ export default function TablePagination<TData extends Record<string, any>>({
             <ChevronRightIcon className="size-5" />
           </ActionIcon>
           <ActionIcon
+            size="sm"
             rounded="lg"
             variant="outline"
             aria-label="Go to last page"
