@@ -14,16 +14,12 @@ function calCulate(width: number, movement: number, param: 'add' | 'sub') {
   }
 }
 
-export function useResizeHandler({ placement, customSize = 384 }: ResizeProps) {
+export function useResizeHandler({ placement }: ResizeProps) {
   const [isResizing, setIsResizing] = useState(false);
   const [startPosition, setStartPosition] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  let containerInitialSize = isPlacementOnYAxis(placement)
-    ? containerRef.current?.clientHeight
-    : containerRef.current?.clientWidth;
-  const [width, setWidth] = useState<number>(
-    containerInitialSize ?? customSize
-  );
+
+  const [width, setWidth] = useState<number>(0);
 
   useEffect(() => {
     const handleResize = (e: globalThis.MouseEvent) => {
@@ -80,7 +76,14 @@ export function useResizeHandler({ placement, customSize = 384 }: ResizeProps) {
 
   const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
-    setWidth(() => containerInitialSize ?? (width ? width : customSize));
+    setWidth(() => {
+      if (isPlacementOnYAxis(placement) && containerRef.current) {
+        return containerRef.current?.clientHeight || 0;
+      } else if (containerRef.current) {
+        return containerRef.current.clientWidth;
+      }
+      return 0;
+    });
     setStartPosition(() =>
       isPlacementOnYAxis(placement) ? e.clientY : e.clientX
     );
