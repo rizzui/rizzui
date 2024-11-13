@@ -23,6 +23,8 @@ export type ButtonProps = {
   as?: 'button' | 'span';
   /** Set the loading status of button */
   isLoading?: boolean;
+  /** pass custom loader component */
+  loader?: JSX.Element;
   /** Set the original html type of button */
   type?: 'button' | 'submit' | 'reset';
   /** The variants of the component are: */
@@ -58,6 +60,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       rounded = 'md',
       color = 'primary',
       disabled,
+      loader,
       ...buttonProps
     },
     ref
@@ -92,7 +95,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 'absolute inset-0 flex h-full w-full items-center justify-center'
               )}
             >
-              <Loader size={size} className="scale-95" />
+              {loader ?? <Loader size={size} className="scale-95" />}
             </span>
           </>
         ) : (
