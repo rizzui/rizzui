@@ -1,5 +1,7 @@
 import React from "react";
-import { Alert, Button } from "rizzui";
+// import { Alert, Button } from "rizzui";
+import { Button } from "rizzui/button";
+import { Alert } from "rizzui/alert";
 
 export default function AlertClearable() {
   const [state, setState] = React.useState(true);
