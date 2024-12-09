@@ -28,8 +28,6 @@
     "lint": "tsc",
     "dev": "concurrently \"pnpm build --watch\"",
     "build": "tsup",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "test": "jest --coverage",
     "test:ci": "pnpm test --ci",
     "test:watch": "jest --watch"
@@ -59,18 +57,18 @@
   "peerDependencies": {
     "@floating-ui/react": ">=0.25.4",
     "@headlessui/react": ">=2.0.3",
-    "react": ">=18",
-    "react-dom": ">=18"
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@headlessui/react": "2.2.0",
     "@tailwindcss/forms": "0.5.9",
     "@testing-library/jest-dom": "6.6.3",
-    "@testing-library/react": "16.0.1",
+    "@testing-library/react": "16.1.0",
     "@testing-library/user-event": "14.5.2",
     "@types/jest": "29.5.14",
-    "@types/react": "^18.3.12",
+    "@types/react": "^19.0.1",
     "autoprefixer": "10.4.20",
     "babel-loader": "9.2.1",
     "clean-webpack-plugin": "4.0.0",
@@ -82,9 +80,9 @@
     "jest-environment-jsdom": "29.7.0",
     "postcss": "8.4.49",
     "postcss-loader": "8.1.1",
-    "prettier": "3.4.1",
+    "prettier": "3.4.2",
     "prettier-plugin-tailwindcss": "0.6.9",
-    "react": "18.3.1",
+    "react": "19.0.0",
     "react-docgen-typescript-plugin": "1.0.8",
     "style-loader": "4.0.0",
     "tailwindcss": "3.4.16",

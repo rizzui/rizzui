@@ -1,6 +1,6 @@
 import { defineConfig } from 'tsup';
 
-export default defineConfig((options) => ({
+export default defineConfig({
   entry: {
     index: 'src/index.ts',
     accordion: 'src/components/accordion/index.ts',
@@ -57,5 +57,4 @@ export default defineConfig((options) => ({
   bundle: true,
   minifyWhitespace: true,
   external: ['react', 'react-dom'],
-  ...options,
-}));
+});
