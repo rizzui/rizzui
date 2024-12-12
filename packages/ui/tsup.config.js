@@ -46,6 +46,8 @@ export default defineConfig({
     'field-error-text': 'src/components/field-error-text.tsx',
     'field-helper-text': 'src/components/field-helper-text.tsx',
     highlight: 'src/components/highlight.tsx',
+    cn: 'src/lib/cn.ts',
+    useCollapse: 'src/lib/use-collapse.ts',
   },
   format: ['esm', 'cjs'],
   dts: true,

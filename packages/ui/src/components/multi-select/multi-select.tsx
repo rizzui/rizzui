@@ -354,7 +354,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
         {...props}
       >
         {({ open }) => (
-          <>
+          <div>
             {label && (
               <Label
                 className={cn(
@@ -415,7 +415,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                     {emptyValue ? (
                       placeholder
                     ) : (
-                      <>
+                      <Fragment>
                         {value?.map((item, index) => {
                           const mainItem = options.find(
                             (op) => op[getOptionValueKey] === item
@@ -447,7 +447,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                             </Fragment>
                           );
                         })}
-                      </>
+                      </Fragment>
                     )}
                   </span>
                 )}
@@ -481,7 +481,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
 
             {open ? (
               <Transition
-                as={Fragment}
+                as="div"
                 leave="transition ease-in duration-100"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
@@ -592,11 +592,11 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                       >
                         {({ selected }) => {
                           return (
-                            <>
+                            <Fragment>
                               {getOptionDisplayValue ? (
                                 getOptionDisplayValue(op, selected)
                               ) : (
-                                <>
+                                <Fragment>
                                   <div
                                     className={cn(
                                       'flex items-center gap-2',
@@ -627,9 +627,9 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                                     )}
                                     {op.label}
                                   </div>
-                                </>
+                                </Fragment>
                               )}
-                            </>
+                            </Fragment>
                           );
                         }}
                       </ListboxOption>
@@ -638,7 +638,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                 </ListboxOptions>
               </Transition>
             ) : null}
-          </>
+          </div>
         )}
       </Listbox>
 

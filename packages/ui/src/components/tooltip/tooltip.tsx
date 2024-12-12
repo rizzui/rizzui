@@ -1,4 +1,10 @@
-import React, { cloneElement, ReactElement, RefObject, useRef, useState } from 'react';
+import React, {
+  cloneElement,
+  ReactElement,
+  RefObject,
+  useRef,
+  useState,
+} from 'react';
 import {
   Placement,
   FloatingArrow,
@@ -176,7 +182,10 @@ export function Tooltip({
     <>
       {cloneElement(
         children,
-        getReferenceProps({ ref: refs.setReference, ...(typeof children.props === 'object' ? children.props : {}) })
+        getReferenceProps({
+          ref: refs.setReference,
+          ...(typeof children.props === 'object' ? children.props : {}),
+        })
       )}
 
       {(isMounted || open) && (

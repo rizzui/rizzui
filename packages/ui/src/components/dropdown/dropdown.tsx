@@ -44,7 +44,7 @@ export function Dropdown({
         )}
       >
         {({ open }) => (
-          <>
+          <div>
             {React.Children.map(children, (child) => {
               if (
                 React.isValidElement(child) &&
@@ -57,7 +57,7 @@ export function Dropdown({
               }
               return null;
             })}
-          </>
+          </div>
         )}
       </Menu>
     </DropdownProvider>

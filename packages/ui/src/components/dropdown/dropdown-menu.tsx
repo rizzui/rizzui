@@ -1,5 +1,5 @@
+import React from 'react';
 import { cn } from '../../lib/cn';
-import React, { Fragment } from 'react';
 import { useDropdown } from './dropdown-context';
 import { ourPlacementObject } from './dropdown.lib';
 import { makeClassName } from '../../lib/make-class-name';
@@ -21,7 +21,7 @@ export function DropdownMenu({
 
   return (
     <Transition
-      as={Fragment}
+      as="div"
       enter="transition ease-out duration-100"
       enterFrom="transform opacity-0 scale-95"
       enterTo="transform opacity-100 scale-100"

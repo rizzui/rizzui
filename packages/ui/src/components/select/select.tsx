@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import {
   Listbox,
   Label,
@@ -304,7 +304,7 @@ export function Select<OptionType extends SelectOption>({
     >
       <Listbox value={value} disabled={disabled} {...props}>
         {({ open }) => (
-          <>
+          <div>
             {label && (
               <Label
                 className={cn(
@@ -384,131 +384,129 @@ export function Select<OptionType extends SelectOption>({
               </ListboxButton>
 
               {open ? (
-                <>
-                  <Transition
-                    as={Fragment}
-                    leave="transition ease-in duration-100"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
+                <Transition
+                  as="div"
+                  leave="transition ease-in duration-100"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                >
+                  <ListboxOptions
+                    modal={modal}
+                    portal={inPortal}
+                    {...(inPortal && {
+                      anchor: {
+                        to: ourPlacementObject[placement],
+                        gap: gap,
+                      },
+                    })}
+                    className={cn(
+                      makeClassName(`select-options`),
+                      optionListStyles.base,
+                      optionListStyles.shadow[shadow],
+                      optionListStyles.rounded[rounded],
+                      inPortal
+                        ? optionListStyles.inPortal
+                        : optionListStyles.notInPortal,
+                      dropdownClassName
+                    )}
                   >
-                    <ListboxOptions
-                      modal={modal}
-                      portal={inPortal}
-                      {...(inPortal && {
-                        anchor: {
-                          to: ourPlacementObject[placement],
-                          gap: gap,
-                        },
-                      })}
-                      className={cn(
-                        makeClassName(`select-options`),
-                        optionListStyles.base,
-                        optionListStyles.shadow[shadow],
-                        optionListStyles.rounded[rounded],
-                        inPortal
-                          ? optionListStyles.inPortal
-                          : optionListStyles.notInPortal,
-                        dropdownClassName
-                      )}
-                    >
-                      {searchable && (
-                        <div
-                          className={cn(
-                            searchStyles.base,
-                            stickySearch && searchStyles.stickySearch,
-                            searchContainerClassName
-                          )}
-                        >
-                          {searchPrefix ? (
-                            <span
-                              className={cn(
-                                makeClassName(`select-prefix`),
-                                searchStyles.prefix,
-                                searchPrefix && selectStyles.prefix.size[size],
-                                searchPrefixClassName
-                              )}
-                            >
-                              {searchPrefix}
-                            </span>
-                          ) : null}
-                          <input
-                            type={searchType}
-                            spellCheck={false}
-                            value={searchQuery}
-                            disabled={searchDisabled}
-                            readOnly={searchReadOnly}
-                            placeholder={searchPlaceHolder}
-                            onChange={(e) => {
-                              setSearchQuery(e.target.value);
-                              onSearchChange && onSearchChange(e.target.value);
-                            }}
-                            // prevent headless ui from handling these keys
-                            onKeyDown={(e) =>
-                              preventHeadlessUIKeyboardInterActions(e)
-                            }
+                    {searchable && (
+                      <div
+                        className={cn(
+                          searchStyles.base,
+                          stickySearch && searchStyles.stickySearch,
+                          searchContainerClassName
+                        )}
+                      >
+                        {searchPrefix ? (
+                          <span
                             className={cn(
-                              makeClassName(`select-search`),
-                              selectStyles.base,
-                              selectStyles.size[size],
-                              selectStyles.variant[variant],
-                              selectStyles.rounded[rounded],
-                              searchDisabled && selectStyles.disabled,
-                              searchStyles.inputBase,
-                              searchClassName
+                              makeClassName(`select-prefix`),
+                              searchStyles.prefix,
+                              searchPrefix && selectStyles.prefix.size[size],
+                              searchPrefixClassName
                             )}
-                            {...searchProps}
-                          />
-
-                          {searchSuffix ? (
-                            <span
-                              className={cn(
-                                makeClassName(`select-suffix`),
-                                searchStyles.suffix,
-                                searchSuffix && selectStyles.suffix.size[size],
-                                searchSuffixClassName
-                              )}
-                            >
-                              {searchSuffix}
-                            </span>
-                          ) : null}
-                        </div>
-                      )}
-                      {filteredOptions.map((option) => (
-                        <ListboxOption
-                          key={option.value}
-                          {...(option?.disabled && {
-                            disabled: option?.disabled,
-                          })}
-                          className={({ focus }) =>
-                            cn(
-                              makeClassName(`select-option`),
-                              'flex w-full items-center px-3 py-1.5',
-                              focus && 'bg-muted/70',
-                              rounded && optionListStyles.item.rounded[rounded],
-                              size && optionListStyles.item.size[size],
-                              !option?.disabled && 'cursor-pointer',
-                              optionClassName
-                            )
+                          >
+                            {searchPrefix}
+                          </span>
+                        ) : null}
+                        <input
+                          type={searchType}
+                          spellCheck={false}
+                          value={searchQuery}
+                          disabled={searchDisabled}
+                          readOnly={searchReadOnly}
+                          placeholder={searchPlaceHolder}
+                          onChange={(e) => {
+                            setSearchQuery(e.target.value);
+                            onSearchChange && onSearchChange(e.target.value);
+                          }}
+                          // prevent headless ui from handling these keys
+                          onKeyDown={(e) =>
+                            preventHeadlessUIKeyboardInterActions(e)
                           }
-                          value={getOptionValue(option)}
-                        >
-                          {({ selected }) => (
-                            <div
-                              className={cn(
-                                selected ? 'font-medium' : 'text-foreground'
-                              )}
-                            >
-                              {getOptionDisplayValue(option)}
-                            </div>
+                          className={cn(
+                            makeClassName(`select-search`),
+                            selectStyles.base,
+                            selectStyles.size[size],
+                            selectStyles.variant[variant],
+                            selectStyles.rounded[rounded],
+                            searchDisabled && selectStyles.disabled,
+                            searchStyles.inputBase,
+                            searchClassName
                           )}
-                        </ListboxOption>
-                      ))}
-                    </ListboxOptions>
-                  </Transition>
-                </>
+                          {...searchProps}
+                        />
+
+                        {searchSuffix ? (
+                          <span
+                            className={cn(
+                              makeClassName(`select-suffix`),
+                              searchStyles.suffix,
+                              searchSuffix && selectStyles.suffix.size[size],
+                              searchSuffixClassName
+                            )}
+                          >
+                            {searchSuffix}
+                          </span>
+                        ) : null}
+                      </div>
+                    )}
+                    {filteredOptions.map((option) => (
+                      <ListboxOption
+                        key={option.value}
+                        {...(option?.disabled && {
+                          disabled: option?.disabled,
+                        })}
+                        className={({ focus }) =>
+                          cn(
+                            makeClassName(`select-option`),
+                            'flex w-full items-center px-3 py-1.5',
+                            focus && 'bg-muted/70',
+                            rounded && optionListStyles.item.rounded[rounded],
+                            size && optionListStyles.item.size[size],
+                            !option?.disabled && 'cursor-pointer',
+                            optionClassName
+                          )
+                        }
+                        value={getOptionValue(option)}
+                      >
+                        {({ selected }) => (
+                          <div
+                            className={cn(
+                              selected ? 'font-medium' : 'text-foreground'
+                            )}
+                          >
+                            {getOptionDisplayValue(option)}
+                          </div>
+                        )}
+                      </ListboxOption>
+                    ))}
+                  </ListboxOptions>
+                </Transition>
               ) : null}
             </div>
-          </>
+          </div>
         )}
       </Listbox>
 
