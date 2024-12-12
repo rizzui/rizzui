@@ -1,14 +1,20 @@
-import { Box } from "rizzui/box";
-import { Flex } from "rizzui/flex";
+"use client";
+
+import { Input } from "rizzui/input";
+import { NumberInput } from "rizzui/number-input";
 
 export default function Page() {
   return (
-    <div className="p-12 flex justify-center">
-      <Flex justify="center" align="center">
-        <Box className="...">1</Box>
-        <Box className="...">2</Box>
-        <Box className="...">3</Box>
-      </Flex>
+    <div className="p-12">
+      <NumberInput
+        formatType="numeric"
+        value="20000000"
+        suffix=".00"
+        prefix="$"
+        displayType="input"
+        customInput={Input as React.ComponentType<unknown>}
+        {...{ label: "Number Input" }}
+      />
     </div>
   );
 }
