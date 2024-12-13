@@ -85,7 +85,7 @@ export default function ComponentBlock() {
             as="h2"
             className="text-2xl lg:text-3xl leading-[1.35] lg:leading-[1.3] font-semibold"
           >
-            35+ Production Ready Components
+            40+ Production Ready Components
           </Title>
         </div>
       </header>
@@ -93,7 +93,10 @@ export default function ComponentBlock() {
       <div className="container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {components.map((item, idx) => (
-            <ComponentCard key={`${item.name}-${idx}`} item={item} />
+            <ComponentCard
+              key={`${item.name}-${idx}`}
+              item={item}
+            />
           ))}
         </div>
 

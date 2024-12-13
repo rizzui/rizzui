@@ -6,7 +6,7 @@ import user from '@testing-library/user-event';
 import { Tooltip } from '../components/tooltip';
 import { Button } from '../components/button';
 
-global.ResizeObserver = jest.fn().mockImplementation(() => ({
+window.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
   disconnect: jest.fn(),

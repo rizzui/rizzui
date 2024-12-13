@@ -9,10 +9,10 @@ const actionIconStyles = {
   disabled:
     'dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70',
   size: {
-    sm: 'p-0.5 w-7 h-7',
-    md: 'p-1 w-9 h-9',
-    lg: 'p-2 w-11 h-11',
-    xl: 'p-2 w-12 h-12',
+    sm: 'p-0.5 size-8',
+    md: 'p-1 size-10',
+    lg: 'p-2 size-12',
+    xl: 'p-2 size-14',
   },
   rounded: {
     none: 'rounded-none',

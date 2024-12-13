@@ -10,10 +10,23 @@ export default function CheckboxGroupDefault() {
       setValues={setValues}
       className="flex flex-row gap-4 flex-wrap"
     >
-      <Checkbox label="Apple" value="apple" />
-      <Checkbox label="Pear" value="pear" />
-      <Checkbox label="Orange" value="orange" disabled />
-      <Checkbox label="Blueberry" value="blueberry" />
+      <Checkbox
+        label="Apple"
+        value="apple"
+      />
+      <Checkbox
+        label="Pear"
+        value="pear"
+      />
+      <Checkbox
+        label="Orange"
+        value="orange"
+        disabled
+      />
+      <Checkbox
+        label="Blueberry"
+        value="blueberry"
+      />
     </CheckboxGroup>
   );
 }
@@ -52,7 +65,6 @@ export function CheckboxGroupWithCard() {
       <AdvancedCheckbox
         name="payment"
         value="lead"
-        defaultChecked
         inputClassName="[&:checked~span_.icon]:block"
       >
         <span className="flex justify-between">

@@ -1,5 +1,6 @@
 ---
 sidebar_position: 7
+sidebar_class_name: "update-badge"
 ---
 
 import { Dropdown, Button, Text, ActionIcon, Avatar, cn } from "rizzui";
@@ -330,11 +331,12 @@ Here is the API documentation of the Dropdown component. You can use the followi
 
 <div className="overflow-x-auto">
 
-|   Props   |     Type      |                                Description                                 | Default |
-| :-------: | :-----------: | :------------------------------------------------------------------------: | :-----: |
-|    as     | `div` or `ul` | Use `as` to convert **Dropdown.Menu** component to render as `div` or `ul` |  `div`  |
-| children  |  `ReactNode`  |               Use Dropdown.Item and any valid React element                |  \_\_   |
-| className |   `string`    |                Add classes to the **Dropdown.Menu** wrapper                |  \_\_   |
+|    Props    |     Type      |                                    Description                                    | Default |
+| :---------: | :-----------: | :-------------------------------------------------------------------------------: | :-----: |
+|     as      | `div` or `ul` |    Use `as` to convert **Dropdown.Menu** component to render as `div` or `ul`     |  `div`  |
+|  children   |  `ReactNode`  |                   Use Dropdown.Item and any valid React element                   |  \_\_   |
+| anchorWidth |   `boolean`   | This item will set the `Dropdown.Menu` width same as the `Dropdown.Trigger` width | `false` |
+|  className  |   `string`    |                   Add classes to the **Dropdown.Menu** wrapper                    |  \_\_   |
 
 </div>
 
@@ -350,7 +352,7 @@ Here is the API documentation of the Dropdown component. You can use the followi
 |     children      |                `ReactNode`                 |                     Use any valid React element or sting                      |   \_\_   |
 |     disabled      |                 `boolean`                  |               This item will be skipped by keyboard navigation                | `false`  |
 |  activeClassName  |                  `string`                  |                To style active state of the **Dropdown.Item**                 |   \_\_   |
-| disabledClassName |                  `string`                  |                To style disbale state of the **Dropdown.Item**                |   \_\_   |
+| disabledClassName |                  `string`                  |                To style disable state of the **Dropdown.Item**                |   \_\_   |
 |     className     |                  `string`                  |                     Add classes to the **Dropdown.Item**                      |   \_\_   |
 |        ...        | `ButtonHTMLAttributes` or `HTMLAttributes` |         native props like **onClick**, **title**, **aria-label** ...          |   \_\_   |
 

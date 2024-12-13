@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   Dialog,
   DialogPanel,
@@ -81,7 +81,7 @@ export function Modal({
     }
   }
   return (
-    <TransitionComponent appear show={isOpen} as={Fragment}>
+    <TransitionComponent appear show={isOpen} as="div">
       <Dialog
         as="div"
         onClose={onClose}
@@ -99,7 +99,7 @@ export function Modal({
           )}
         >
           <TransitionChild
-            as={Fragment}
+            as="div"
             enter="ease-in-out duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
@@ -123,7 +123,7 @@ export function Modal({
             Sr Only
           </button>
           <TransitionChild
-            as={Fragment}
+            as="div"
             enter="ease-in-out duration-300"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100 scale-100"

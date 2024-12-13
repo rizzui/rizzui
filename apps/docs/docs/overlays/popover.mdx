@@ -128,7 +128,7 @@ export default function App() {
 
 ## Controlled
 
-You can control Popover state with **isOepn** and **setIsOpen** props:
+You can control Popover state with **isOpen** and **setIsOpen** props:
 
 <Paper>
   <Popover>
@@ -151,7 +151,7 @@ import { Popover, Title, Text, Button } from "rizzui";
 export default function App() {
   const [isOpen, setIsOpen] = useState();
   return (
-    <Popover isOepn={isOepn} setIsOpen={setIsOpen}>
+    <Popover isOpen={isOpen} setIsOpen={setIsOpen}>
       <Popover.Trigger>
         <Button variant="outline">Open Popover</Button>
       </Popover.Trigger>

@@ -51,21 +51,12 @@ export const defaultColumns = [
     size: 180,
     header: "Due Date",
     cell: ({ row }) => <DateCell date={new Date(row.original.dueDate)} />,
-    // footer: () => <span className="font-medium">Total:</span>,
   }),
 
   columnHelper.accessor("amount", {
     size: 120,
     header: "Amount",
     cell: ({ row }) => <span className="font-medium">$ {row.original.amount}</span>,
-    // footer: ({
-    //   table: {
-    //     options: { data },
-    //   },
-    // }) => {
-    //   const total = data.reduce((acc, row) => acc + row.amount, 0);
-    //   return <span className="font-medium">$ {total}</span>;
-    // },
   }),
 
   columnHelper.accessor("status", {
@@ -84,32 +75,38 @@ export const defaultColumns = [
           placement="bottom-end"
         >
           <Popover.Trigger>
-            <ActionIcon variant="text">
+            <ActionIcon
+              as="span"
+              variant="text"
+              className="h-auto p-0"
+            >
               <EllipsisHorizontalIcon
                 strokeWidth={2}
                 className="size-5"
               />
             </ActionIcon>
           </Popover.Trigger>
-          <Popover.Content className="max-w-40 grid grid-cols-1 gap-1 p-1">
+          <Popover.Content className="p-1 flex flex-col">
             <Button
+              size="sm"
               variant="text"
-              className="hover:bg-gray-100 gap-2"
+              className="hover:bg-gray-100 gap-2 justify-start"
             >
-              <PencilIcon className="size-4" /> Edit
+              <PencilIcon className="size-3.5" /> Edit
             </Button>
             <Button
+              size="sm"
               variant="text"
-              className="hover:bg-gray-100 gap-2"
+              className="hover:bg-gray-100 gap-2 justify-start"
             >
-              <EyeIcon className="size-4" /> View
+              <EyeIcon className="size-3.5" /> View
             </Button>
             <Button
+              size="sm"
               variant="text"
-              color="danger"
-              className="hover:bg-gray-100 gap-2"
+              className="hover:bg-gray-100 gap-2 justify-start"
             >
-              <TrashIcon className="size-4" /> Delete
+              <TrashIcon className="size-3.5" /> Delete
             </Button>
           </Popover.Content>
         </Popover>

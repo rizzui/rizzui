@@ -171,7 +171,6 @@ function renderOptionDisplayValue(option: SelectOption) {
 You can search inside **Select** options.
 
 <Paper>
-  {/* <CustomSelectWithSearch /> */}
   <SelectBox
     searchable={true}
     className="w-full max-w-md"
@@ -320,6 +319,7 @@ Here is the API documentation of the **Select** component.
 |      errorClassName      |                `string`                 |                                                                                          Override default CSS style of error message                                                                                           |     \_\_      |
 |        className         |                `string`                 |                                                                                        Add custom classes to the root of the component                                                                                         |     \_\_      |
 |        searchable        |                `boolean`                |                                                                                              Is select options searchable or not                                                                                               |   `"false"`   |
+|       stickySearch       |                `boolean`                |                                                                                                 Is search input sticky or not.                                                                                                 |   `"false"`   |
 |    searchPlaceholder     |                `string`                 |                                                                                               Set search input placeholder text                                                                                                | `"Search..."` |
 |        searchType        |             `text` `search`             |                                                                                                     Set search input type                                                                                                      |   `"text"`    |
 |      searchReadOnly      |                `boolean`                |                                                                                              Set search input is readonly or not                                                                                               |   `"false"`   |

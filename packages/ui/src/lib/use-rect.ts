@@ -1,4 +1,4 @@
-import { MouseEvent, FocusEvent, MutableRefObject, useState } from 'react';
+import { MouseEvent, FocusEvent, RefObject, useState } from 'react';
 
 export const getElementOffset = (el?: HTMLElement | null | undefined) => {
   if (!el)
@@ -52,7 +52,7 @@ export const isUnplacedRect = (rect?: ReactiveDomReact): boolean => {
 };
 
 export const getRefRect = (
-  ref?: MutableRefObject<HTMLElement | null>,
+  ref?: RefObject<HTMLElement | null>,
   getContainer?: () => HTMLElement | null
 ): ReactiveDomReact => {
   if (!ref || !ref.current) return defaultRect;
@@ -73,10 +73,11 @@ const isRefTarget = (
   eventOrRef:
     | MouseEvent<HTMLElement>
     | FocusEvent<HTMLElement>
-    | MutableRefObject<HTMLElement | null>
-): eventOrRef is MutableRefObject<HTMLElement | null> => {
+    | RefObject<HTMLElement | null>
+): eventOrRef is RefObject<HTMLElement | null> => {
   return typeof (eventOrRef as any)?.target === 'undefined';
 };
+
 export const useRect = (
   initialState?: ReactiveDomReact | (() => ReactiveDomReact)
 ) => {
@@ -88,7 +89,7 @@ export const useRect = (
     eventOrRef:
       | MouseEvent<HTMLElement>
       | FocusEvent<HTMLElement>
-      | MutableRefObject<HTMLElement | null>,
+      | RefObject<HTMLElement | null>,
     getContainer?: () => HTMLElement | null
   ) => {
     if (isRefTarget(eventOrRef))

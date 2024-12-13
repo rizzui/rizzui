@@ -287,7 +287,10 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 You can hide **MultiSelect** options using **hideSelectedOptions** property.
 
 <Paper>
-  <MultiSelectBox hideSelectedOptions={true} className="w-full max-w-md" />
+  <MultiSelectBox
+    hideSelectedOptions={true}
+    className="w-full max-w-md"
+  />
 </Paper>
 
 ```tsx
@@ -514,6 +517,7 @@ Here is the API documentation of the **MultiSelect** component.
 |  selectedItemClassName   |                     `string`                      |                                                                                                 Add custom class to the selected item                                                                                                 |     \_\_      |
 | selectedOptionClassName  |                     `string`                      |                                                                                               Add custom class to the selected options                                                                                                |     \_\_      |
 |        searchable        |                     `boolean`                     |                                                                                                  Is select options searchable or not                                                                                                  |   `"false"`   |
+|       stickySearch       |                     `boolean`                     |                                                                                                    Is search input sticky or not.                                                                                                     |   `"false"`   |
 |    searchPlaceholder     |                     `string`                      |                                                                                                   Set search input placeholder text                                                                                                   | `"Search..."` |
 |        searchType        |                  `text` `search`                  |                                                                                                         Set search input type                                                                                                         |   `"text"`    |
 |      searchReadOnly      |                     `boolean`                     |                                                                                                  Set search input is readonly or not                                                                                                  |   `"false"`   |

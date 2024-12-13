@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from 'react';
+import React from 'react';
 import {
   Dialog,
   DialogPanel,
@@ -102,9 +102,10 @@ export function Drawer({
   const newWidth = width !== 0 ? width : customSize;
 
   return (
-    <TransitionComponent appear show={isOpen} as={Fragment}>
+    <TransitionComponent appear show={isOpen} as="div">
       <Dialog
         as="aside"
+        open={isOpen}
         onClose={onClose}
         className={cn(
           makeClassName(`drawer-root`),
@@ -113,7 +114,7 @@ export function Drawer({
         )}
       >
         <TransitionChild
-          as={Fragment}
+          as="div"
           enter="ease-in-out duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
@@ -122,7 +123,6 @@ export function Drawer({
           leaveTo="opacity-0"
         >
           <div
-            // onMouseDown={handleMouseDown}
             className={cn(
               makeClassName(`drawer-overlay`),
               drawerClasses.overlay,
@@ -138,7 +138,7 @@ export function Drawer({
           Sr Only
         </button>
         <TransitionChild
-          as={Fragment}
+          as="div"
           enter="transform transition ease-in-out duration-300"
           enterFrom={drawerClasses.placement[placement]}
           enterTo={

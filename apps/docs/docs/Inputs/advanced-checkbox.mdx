@@ -26,22 +26,48 @@ import { AdvancedCheckbox } from "rizzui";
 You can change style of **AdvancedCheckbox**.
 
 <Paper className="flex-row flex-wrap gap-6">
-  <AdvancedCheckbox name="age" value="any" alignment="center">
+  <AdvancedCheckbox
+    name="age"
+    value="any"
+    alignment="center"
+  >
     Any
   </AdvancedCheckbox>
-  <AdvancedCheckbox name="age" value="one" defaultChecked alignment="center">
+  <AdvancedCheckbox
+    name="age"
+    value="one"
+    defaultChecked
+    alignment="center"
+  >
     1
   </AdvancedCheckbox>
-  <AdvancedCheckbox name="age" value="two" alignment="center">
+  <AdvancedCheckbox
+    name="age"
+    value="two"
+    alignment="center"
+  >
     2
   </AdvancedCheckbox>
-  <AdvancedCheckbox name="age" value="three" disabled alignment="center">
+  <AdvancedCheckbox
+    name="age"
+    value="three"
+    disabled
+    alignment="center"
+  >
     3
   </AdvancedCheckbox>
-  <AdvancedCheckbox name="age" value="four" alignment="center">
+  <AdvancedCheckbox
+    name="age"
+    value="four"
+    alignment="center"
+  >
     4
   </AdvancedCheckbox>
-  <AdvancedCheckbox name="age" value="five+" alignment="center">
+  <AdvancedCheckbox
+    name="age"
+    value="five+"
+    alignment="center"
+  >
     5+
   </AdvancedCheckbox>
 </Paper>
@@ -52,7 +78,11 @@ import { AdvancedCheckbox } from "rizzui";
 export default function App() {
   return (
     <div className="flex flex-wrap gap-6">
-      <AdvancedCheckbox name="age" value="any" alignment="center">
+      <AdvancedCheckbox
+        name="age"
+        value="any"
+        alignment="center"
+      >
         Any
       </AdvancedCheckbox>
       <AdvancedCheckbox
@@ -63,16 +93,33 @@ export default function App() {
       >
         1
       </AdvancedCheckbox>
-      <AdvancedCheckbox name="age" value="two" alignment="center">
+      <AdvancedCheckbox
+        name="age"
+        value="two"
+        alignment="center"
+      >
         2
       </AdvancedCheckbox>
-      <AdvancedCheckbox name="age" value="three" disabled alignment="center">
+      <AdvancedCheckbox
+        name="age"
+        value="three"
+        disabled
+        alignment="center"
+      >
         3
       </AdvancedCheckbox>
-      <AdvancedCheckbox name="age" value="four" alignment="center">
+      <AdvancedCheckbox
+        name="age"
+        value="four"
+        alignment="center"
+      >
         4
       </AdvancedCheckbox>
-      <AdvancedCheckbox name="age" value="five+" alignment="center">
+      <AdvancedCheckbox
+        name="age"
+        value="five+"
+        alignment="center"
+      >
         5+
       </AdvancedCheckbox>
     </div>
@@ -87,19 +134,32 @@ export default function App() {
 You can give different style of **AdvancedCheckbox** as you need.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-  <AdvancedCheckbox name="currency" value="taka" defaultChecked>
+  <AdvancedCheckbox
+    name="currency"
+    value="taka"
+    defaultChecked
+  >
     <CurrencyBangladeshiIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Taka</Text>
   </AdvancedCheckbox>
-  <AdvancedCheckbox name="currency" value="dollar">
+  <AdvancedCheckbox
+    name="currency"
+    value="dollar"
+  >
     <CurrencyDollarIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Dollar</Text>
   </AdvancedCheckbox>
-  <AdvancedCheckbox name="currency" value="euro">
+  <AdvancedCheckbox
+    name="currency"
+    value="euro"
+  >
     <CurrencyEuroIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Euro</Text>
   </AdvancedCheckbox>
-  <AdvancedCheckbox name="currency" value="pound">
+  <AdvancedCheckbox
+    name="currency"
+    value="pound"
+  >
     <CurrencyPoundIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Pound</Text>
   </AdvancedCheckbox>
@@ -112,19 +172,32 @@ import { CheckCircleIcon } from "@heroicons/react/20/solid";
 export default function App() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <AdvancedCheckbox name="currency" value="taka" defaultChecked>
+      <AdvancedCheckbox
+        name="currency"
+        value="taka"
+        defaultChecked
+      >
         <CurrencyBangladeshiIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Taka</Text>
       </AdvancedCheckbox>
-      <AdvancedCheckbox name="currency" value="dollar">
+      <AdvancedCheckbox
+        name="currency"
+        value="dollar"
+      >
         <CurrencyDollarIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Dollar</Text>
       </AdvancedCheckbox>
-      <AdvancedCheckbox name="currency" value="euro">
+      <AdvancedCheckbox
+        name="currency"
+        value="euro"
+      >
         <CurrencyEuroIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Euro</Text>
       </AdvancedCheckbox>
-      <AdvancedCheckbox name="currency" value="pound">
+      <AdvancedCheckbox
+        name="currency"
+        value="pound"
+      >
         <CurrencyPoundIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Pound</Text>
       </AdvancedCheckbox>
