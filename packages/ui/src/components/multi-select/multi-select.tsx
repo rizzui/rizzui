@@ -27,7 +27,7 @@ import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { CheckmarkIcon } from 'src/icons/checkmark';
 
 const selectStyles = {
-  base: 'flex items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
+  base: 'flex items-center peer group border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
   disabled:
     '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
   error: '!border-red hover:!border-red focus:!border-red !ring-red',
@@ -349,292 +349,274 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
         }
         {...props}
       >
-        {({ open }) => (
-          <>
-            {label && (
-              <Label
+        {label && (
+          <Label
+            className={cn(
+              makeClassName(`multi-select-label`),
+              'block',
+              labelStyles.size[size],
+              labelStyles.weight[labelWeight],
+              disabled && 'text-muted-foreground',
+              labelClassName
+            )}
+          >
+            {label}
+          </Label>
+        )}
+
+        <div className={cn('h-full', !inPortal && 'relative')}>
+          <ListboxButton
+            className={cn(
+              makeClassName(`multi-select-button`),
+              selectStyles.base,
+              selectStyles.variant[variant],
+              selectStyles.size[size],
+              selectStyles.rounded[rounded],
+              prefix && selectStyles.prefix.size[size],
+              suffix && selectStyles.suffix.size[size],
+              disabled && selectStyles.disabled,
+              error && emptyValue && selectStyles.error,
+              selectClassName
+            )}
+            autoFocus={autoFocus}
+          >
+            {prefix ? (
+              <span
                 className={cn(
-                  makeClassName(`multi-select-label`),
-                  'block',
-                  labelStyles.size[size],
-                  labelStyles.weight[labelWeight],
-                  disabled && 'text-muted-foreground',
-                  labelClassName
+                  makeClassName(`multi-select-prefix`),
+                  'block whitespace-nowrap leading-normal',
+                  prefixClassName
                 )}
               >
-                {label}
-              </Label>
-            )}
+                {prefix}
+              </span>
+            ) : null}
 
-            <div className={cn('h-full', !inPortal && 'relative')}>
-              <ListboxButton
+            {displayValue &&
+              displayValue(selectedItems, options, handleClearItem)}
+
+            {!displayValue && (
+              <span
                 className={cn(
-                  makeClassName(`multi-select-button`),
-                  selectStyles.base,
-                  selectStyles.variant[variant],
-                  selectStyles.size[size],
-                  selectStyles.rounded[rounded],
+                  makeClassName(`multi-select-value`),
+                  'flex w-full flex-wrap items-center gap-2 truncate text-start',
+                  emptyValue && 'text-muted-foreground',
                   prefix && selectStyles.prefix.size[size],
                   suffix && selectStyles.suffix.size[size],
-                  disabled && selectStyles.disabled,
-                  error && emptyValue && selectStyles.error,
-                  selectClassName
+                  selectContainerClassName
                 )}
-                autoFocus={autoFocus}
               >
-                {prefix ? (
+                {emptyValue ? (
+                  placeholder
+                ) : (
+                  <>
+                    {value?.map((item, index) => {
+                      const mainItem = options.find(
+                        (op) => op[getOptionValueKey] === item
+                      );
+                      return (
+                        <Fragment key={index}>
+                          <span
+                            className={cn(
+                              'item-center flex gap-1 overflow-hidden rounded-md border border-muted text-xs',
+                              selectedItemClassName
+                            )}
+                          >
+                            <span className="py-1 ps-2">{mainItem?.label}</span>
+                            <span
+                              className="px-1 py-1 hover:bg-muted"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleClearItem(item);
+                              }}
+                            >
+                              <XIcon
+                                strokeWidth="2"
+                                className="size-4 cursor-pointer"
+                              />
+                            </span>
+                          </span>
+                        </Fragment>
+                      );
+                    })}
+                  </>
+                )}
+              </span>
+            )}
+
+            {clearable && !emptyValue && !disabled ? (
+              <FieldClearButton
+                as="span"
+                size={size}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleClear();
+                }}
+                hasSuffix={Boolean(suffix)}
+              />
+            ) : null}
+
+            {suffix ? (
+              <span
+                className={cn(
+                  makeClassName(`multi-select-suffix`),
+                  'whitespace-nowrap leading-normal transition-transform duration-200 group-data-[open]:rotate-180',
+                  suffixClassName
+                )}
+              >
+                {suffix}
+              </span>
+            ) : null}
+          </ListboxButton>
+        </div>
+
+        <Transition
+          as={Fragment}
+          leave="transition ease-in duration-100"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <ListboxOptions
+            modal={modal}
+            portal={inPortal}
+            {...(inPortal && {
+              anchor: {
+                to: ourPlacementObject[placement],
+                gap: gap,
+              },
+            })}
+            className={cn(
+              makeClassName(`multi-select-options`),
+              optionListStyles.base,
+              optionListStyles.shadow[shadow],
+              optionListStyles.rounded[rounded],
+              inPortal
+                ? optionListStyles.inPortal
+                : optionListStyles.notInPortal,
+              dropdownClassName
+            )}
+          >
+            {searchable && (
+              <span className={cn(searchStyles.base, searchContainerClassName)}>
+                {searchPrefix ? (
                   <span
                     className={cn(
                       makeClassName(`multi-select-prefix`),
-                      'block whitespace-nowrap leading-normal',
-                      prefixClassName
+                      searchStyles.prefix,
+                      searchPrefix && selectStyles.prefix.size[size],
+                      searchPrefixClassName
                     )}
                   >
-                    {prefix}
+                    {searchPrefix}
                   </span>
                 ) : null}
+                <input
+                  type={searchType}
+                  spellCheck={false}
+                  value={searchQuery}
+                  disabled={searchDisabled}
+                  readOnly={searchReadOnly}
+                  placeholder={searchPlaceHolder}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    onSearchChange && onSearchChange(e.target.value);
+                  }}
+                  // prevent headless ui from handling these keys
+                  onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
+                  className={cn(
+                    makeClassName(`multi-select-search`),
+                    selectStyles.base,
+                    selectStyles.size[size],
+                    selectStyles.variant[variant],
+                    selectStyles.rounded[rounded],
+                    searchDisabled && selectStyles.disabled,
+                    searchStyles.inputBase,
+                    searchClassName
+                  )}
+                  {...searchProps}
+                />
 
-                {displayValue &&
-                  displayValue(selectedItems, options, handleClearItem)}
-
-                {!displayValue && (
-                  <span
-                    className={cn(
-                      makeClassName(`multi-select-value`),
-                      'flex w-full flex-wrap items-center gap-2 truncate text-start',
-                      emptyValue && 'text-muted-foreground',
-                      prefix && selectStyles.prefix.size[size],
-                      suffix && selectStyles.suffix.size[size],
-                      selectContainerClassName
-                    )}
-                  >
-                    {emptyValue ? (
-                      placeholder
-                    ) : (
-                      <>
-                        {value?.map((item, index) => {
-                          const mainItem = options.find(
-                            (op) => op[getOptionValueKey] === item
-                          );
-                          return (
-                            <Fragment key={index}>
-                              <span
-                                className={cn(
-                                  'item-center flex gap-1 overflow-hidden rounded-md border border-muted text-xs',
-                                  selectedItemClassName
-                                )}
-                              >
-                                <span className="py-1 ps-2">
-                                  {mainItem?.label}
-                                </span>
-                                <span
-                                  className="px-1 py-1 hover:bg-muted"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleClearItem(item);
-                                  }}
-                                >
-                                  <XIcon
-                                    strokeWidth="2"
-                                    className="size-4 cursor-pointer"
-                                  />
-                                </span>
-                              </span>
-                            </Fragment>
-                          );
-                        })}
-                      </>
-                    )}
-                  </span>
-                )}
-
-                {clearable && !emptyValue && !disabled ? (
-                  <FieldClearButton
-                    as="span"
-                    size={size}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleClear();
-                    }}
-                    hasSuffix={Boolean(suffix)}
-                  />
-                ) : null}
-
-                {suffix ? (
+                {searchSuffix ? (
                   <span
                     className={cn(
                       makeClassName(`multi-select-suffix`),
-                      'whitespace-nowrap leading-normal transition-transform duration-200',
-                      open && 'rotate-180',
-                      suffixClassName
+                      searchStyles.suffix,
+                      searchSuffix && selectStyles.suffix.size[size],
+                      searchSuffixClassName
                     )}
                   >
-                    {suffix}
+                    {searchSuffix}
                   </span>
                 ) : null}
-              </ListboxButton>
-            </div>
+              </span>
+            )}
 
-            {open ? (
-              <Transition
-                as={Fragment}
-                leave="transition ease-in duration-100"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <ListboxOptions
-                  modal={modal}
-                  portal={inPortal}
-                  {...(inPortal && {
-                    anchor: {
-                      to: ourPlacementObject[placement],
-                      gap: gap,
-                    },
+            {filteredOptions.map((op, index) => {
+              return (
+                <ListboxOption
+                  key={index}
+                  value={op[getOptionValueKey]}
+                  {...(op?.disabled && {
+                    disabled: op?.disabled,
                   })}
-                  className={cn(
-                    makeClassName(`multi-select-options`),
-                    optionListStyles.base,
-                    optionListStyles.shadow[shadow],
-                    optionListStyles.rounded[rounded],
-                    inPortal
-                      ? optionListStyles.inPortal
-                      : optionListStyles.notInPortal,
-                    dropdownClassName
-                  )}
+                  className={({ focus, selected }) =>
+                    cn(
+                      makeClassName(`multi-select-option`),
+                      'flex w-full items-center px-3 py-1.5',
+                      focus && 'bg-muted/70',
+                      rounded && optionListStyles.item.rounded[rounded],
+                      size && optionListStyles.item.size[size],
+                      !op?.disabled && 'cursor-pointer',
+                      selected && hideSelectedOptions && '!hidden',
+                      optionClassName
+                    )
+                  }
                 >
-                  {searchable && (
-                    <span
-                      className={cn(
-                        searchStyles.base,
-                        searchContainerClassName
-                      )}
-                    >
-                      {searchPrefix ? (
-                        <span
-                          className={cn(
-                            makeClassName(`multi-select-prefix`),
-                            searchStyles.prefix,
-                            searchPrefix && selectStyles.prefix.size[size],
-                            searchPrefixClassName
-                          )}
-                        >
-                          {searchPrefix}
-                        </span>
-                      ) : null}
-                      <input
-                        type={searchType}
-                        spellCheck={false}
-                        value={searchQuery}
-                        disabled={searchDisabled}
-                        readOnly={searchReadOnly}
-                        placeholder={searchPlaceHolder}
-                        onChange={(e) => {
-                          setSearchQuery(e.target.value);
-                          onSearchChange && onSearchChange(e.target.value);
-                        }}
-                        // prevent headless ui from handling these keys
-                        onKeyDown={(e) =>
-                          preventHeadlessUIKeyboardInterActions(e)
-                        }
-                        className={cn(
-                          makeClassName(`multi-select-search`),
-                          selectStyles.base,
-                          selectStyles.size[size],
-                          selectStyles.variant[variant],
-                          selectStyles.rounded[rounded],
-                          searchDisabled && selectStyles.disabled,
-                          searchStyles.inputBase,
-                          searchClassName
-                        )}
-                        {...searchProps}
-                      />
-
-                      {searchSuffix ? (
-                        <span
-                          className={cn(
-                            makeClassName(`multi-select-suffix`),
-                            searchStyles.suffix,
-                            searchSuffix && selectStyles.suffix.size[size],
-                            searchSuffixClassName
-                          )}
-                        >
-                          {searchSuffix}
-                        </span>
-                      ) : null}
-                    </span>
-                  )}
-
-                  {filteredOptions.map((op, index) => {
+                  {({ selected }) => {
                     return (
-                      <ListboxOption
-                        key={index}
-                        value={op[getOptionValueKey]}
-                        {...(op?.disabled && {
-                          disabled: op?.disabled,
-                        })}
-                        className={({ focus, selected }) =>
-                          cn(
-                            makeClassName(`multi-select-option`),
-                            'flex w-full items-center px-3 py-1.5',
-                            focus && 'bg-muted/70',
-                            rounded && optionListStyles.item.rounded[rounded],
-                            size && optionListStyles.item.size[size],
-                            !op?.disabled && 'cursor-pointer',
-                            selected && hideSelectedOptions && '!hidden',
-                            optionClassName
-                          )
-                        }
-                      >
-                        {({ selected }) => {
-                          return (
-                            <>
-                              {getOptionDisplayValue ? (
-                                getOptionDisplayValue(op, selected)
-                              ) : (
-                                <>
-                                  <div
-                                    className={cn(
-                                      'flex items-center gap-2',
-                                      selected
-                                        ? 'font-medium'
-                                        : 'text-foreground',
-                                      selectedOptionClassName
-                                    )}
-                                  >
-                                    {optionCheckBox && (
-                                      <span className="relative leading-none">
-                                        <input
-                                          type="checkbox"
-                                          readOnly={true}
-                                          checked={selected}
-                                          className={cn(
-                                            makeClassName(`checkbox-input`),
-                                            checkboxStyles.base
-                                          )}
-                                        />
-                                        <CheckmarkIcon
-                                          className={cn(
-                                            makeClassName(`checkbox-icon`),
-                                            checkboxStyles.icon
-                                          )}
-                                        />
-                                      </span>
-                                    )}
-                                    {op.label}
-                                  </div>
-                                </>
+                      <>
+                        {getOptionDisplayValue ? (
+                          getOptionDisplayValue(op, selected)
+                        ) : (
+                          <>
+                            <div
+                              className={cn(
+                                'flex items-center gap-2',
+                                selected ? 'font-medium' : 'text-foreground',
+                                selectedOptionClassName
                               )}
-                            </>
-                          );
-                        }}
-                      </ListboxOption>
+                            >
+                              {optionCheckBox && (
+                                <span className="relative leading-none">
+                                  <input
+                                    type="checkbox"
+                                    readOnly={true}
+                                    checked={selected}
+                                    className={cn(
+                                      makeClassName(`checkbox-input`),
+                                      checkboxStyles.base
+                                    )}
+                                  />
+                                  <CheckmarkIcon
+                                    className={cn(
+                                      makeClassName(`checkbox-icon`),
+                                      checkboxStyles.icon
+                                    )}
+                                  />
+                                </span>
+                              )}
+                              {op.label}
+                            </div>
+                          </>
+                        )}
+                      </>
                     );
-                  })}
-                </ListboxOptions>
-              </Transition>
-            ) : null}
-          </>
-        )}
+                  }}
+                </ListboxOption>
+              );
+            })}
+          </ListboxOptions>
+        </Transition>
       </Listbox>
 
       {!error && helperText ? (

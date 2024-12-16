@@ -1,4 +1,4 @@
-import React, { cloneElement, RefObject, useRef, useState } from 'react';
+import React, { cloneElement, RefObject, useRef, useState, JSX } from 'react';
 import {
   Placement,
   FloatingArrow,

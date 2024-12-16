@@ -16,7 +16,7 @@ export const DropdownTrigger = React.forwardRef<
       className={cn(makeClassName(`dropdown-button`), className)}
       {...props}
     >
-      <>{children}</>
+      {children}
     </MenuButton>
   );
 });

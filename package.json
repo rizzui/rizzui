@@ -1,6 +1,6 @@
 {
   "name": "rizzui",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -18,16 +18,16 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "husky": "^9.0.11",
-    "prettier": "3.3.1",
+    "husky": "^9.1.7",
+    "prettier": "3.4.2",
     "tsup": "8.1.0",
-    "turbo": "2.0.12"
+    "turbo": "2.3.3"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.5"
+    "@changesets/cli": "^2.27.10"
   },
   "packageManager": "pnpm@9.1.4"
 }

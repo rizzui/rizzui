@@ -30,7 +30,7 @@ import {
 } from './select.lib';
 
 const selectStyles = {
-  base: 'flex items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
+  base: 'flex items-center peer group border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
   disabled:
     '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
   error: '!border-red hover:!border-red focus:!border-red !ring-red',
@@ -299,213 +299,199 @@ export function Select<OptionType extends SelectOption>({
       )}
     >
       <Listbox value={value} disabled={disabled} {...props}>
-        {({ open }) => (
-          <>
-            {label && (
-              <Label
-                className={cn(
-                  makeClassName(`select-label`),
-                  'block',
-                  labelStyles.size[size],
-                  labelStyles.weight[labelWeight],
-                  disabled && 'text-muted-foreground',
-                  labelClassName
-                )}
-              >
-                {label}
-              </Label>
+        {label && (
+          <Label
+            className={cn(
+              makeClassName(`select-label`),
+              'block',
+              labelStyles.size[size],
+              labelStyles.weight[labelWeight],
+              disabled && 'text-muted-foreground',
+              labelClassName
             )}
+          >
+            {label}
+          </Label>
+        )}
 
-            <div className={cn('h-full', !inPortal && 'relative')}>
-              <ListboxButton
+        <div className={cn('h-full', !inPortal && 'relative')}>
+          <ListboxButton
+            className={cn(
+              makeClassName(`select-button`),
+              selectStyles.base,
+              selectStyles.variant[variant],
+              selectStyles.size[size],
+              selectStyles.rounded[rounded],
+              prefix && selectStyles.prefix.size[size],
+              suffix && selectStyles.suffix.size[size],
+              disabled && selectStyles.disabled,
+              error && emptyValue && selectStyles.error,
+              selectClassName
+            )}
+            autoFocus={autoFocus}
+          >
+            {prefix ? (
+              <span
                 className={cn(
-                  makeClassName(`select-button`),
-                  selectStyles.base,
-                  selectStyles.variant[variant],
-                  selectStyles.size[size],
-                  selectStyles.rounded[rounded],
-                  prefix && selectStyles.prefix.size[size],
-                  suffix && selectStyles.suffix.size[size],
-                  disabled && selectStyles.disabled,
-                  error && emptyValue && selectStyles.error,
-                  selectClassName
+                  makeClassName(`select-prefix`),
+                  'block whitespace-nowrap leading-normal',
+                  prefixClassName
                 )}
-                autoFocus={autoFocus}
               >
-                {prefix ? (
-                  <span
-                    className={cn(
-                      makeClassName(`select-prefix`),
-                      'block whitespace-nowrap leading-normal',
-                      prefixClassName
-                    )}
-                  >
-                    {prefix}
-                  </span>
-                ) : null}
+                {prefix}
+              </span>
+            ) : null}
 
+            <span
+              className={cn(
+                makeClassName(`select-value`),
+                'block w-full truncate text-left rtl:text-right',
+                emptyValue && 'text-muted-foreground',
+                prefix && selectStyles.prefix.size[size],
+                suffix && selectStyles.suffix.size[size]
+              )}
+            >
+              {emptyValue ? placeholder : displayValue(value)}
+            </span>
+
+            {clearable && !emptyValue ? (
+              <FieldClearButton
+                as={'span'}
+                size={size}
+                onClick={handleOnClear}
+                hasSuffix={Boolean(suffix)}
+              />
+            ) : null}
+
+            {suffix ? (
+              <span
+                className={cn(
+                  makeClassName(`select-suffix`),
+                  'whitespace-nowrap leading-normal transition-transform duration-200 group-data-[open]:rotate-180',
+                  suffixClassName
+                )}
+              >
+                {suffix}
+              </span>
+            ) : null}
+          </ListboxButton>
+
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <ListboxOptions
+              modal={modal}
+              portal={inPortal}
+              {...(inPortal && {
+                anchor: {
+                  to: ourPlacementObject[placement],
+                  gap: gap,
+                },
+              })}
+              className={cn(
+                makeClassName(`select-options`),
+                optionListStyles.base,
+                optionListStyles.shadow[shadow],
+                optionListStyles.rounded[rounded],
+                inPortal
+                  ? optionListStyles.inPortal
+                  : optionListStyles.notInPortal,
+                dropdownClassName
+              )}
+            >
+              {searchable && (
                 <span
-                  className={cn(
-                    makeClassName(`select-value`),
-                    'block w-full truncate text-left rtl:text-right',
-                    emptyValue && 'text-muted-foreground',
-                    prefix && selectStyles.prefix.size[size],
-                    suffix && selectStyles.suffix.size[size]
-                  )}
+                  className={cn(searchStyles.base, searchContainerClassName)}
                 >
-                  {emptyValue ? placeholder : displayValue(value)}
-                </span>
-
-                {clearable && !emptyValue ? (
-                  <FieldClearButton
-                    as={'span'}
-                    size={size}
-                    onClick={handleOnClear}
-                    hasSuffix={Boolean(suffix)}
-                  />
-                ) : null}
-
-                {suffix ? (
-                  <span
-                    className={cn(
-                      makeClassName(`select-suffix`),
-                      'whitespace-nowrap leading-normal transition-transform duration-200',
-                      open && 'rotate-180',
-                      suffixClassName
-                    )}
-                  >
-                    {suffix}
-                  </span>
-                ) : null}
-              </ListboxButton>
-
-              {open ? (
-                <>
-                  <Transition
-                    as={Fragment}
-                    leave="transition ease-in duration-100"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                  >
-                    <ListboxOptions
-                      modal={modal}
-                      portal={inPortal}
-                      {...(inPortal && {
-                        anchor: {
-                          to: ourPlacementObject[placement],
-                          gap: gap,
-                        },
-                      })}
+                  {searchPrefix ? (
+                    <span
                       className={cn(
-                        makeClassName(`select-options`),
-                        optionListStyles.base,
-                        optionListStyles.shadow[shadow],
-                        optionListStyles.rounded[rounded],
-                        inPortal
-                          ? optionListStyles.inPortal
-                          : optionListStyles.notInPortal,
-                        dropdownClassName
+                        makeClassName(`select-prefix`),
+                        searchStyles.prefix,
+                        searchPrefix && selectStyles.prefix.size[size],
+                        searchPrefixClassName
                       )}
                     >
-                      {searchable && (
-                        <span
-                          className={cn(
-                            searchStyles.base,
-                            searchContainerClassName
-                          )}
-                        >
-                          {searchPrefix ? (
-                            <span
-                              className={cn(
-                                makeClassName(`select-prefix`),
-                                searchStyles.prefix,
-                                searchPrefix && selectStyles.prefix.size[size],
-                                searchPrefixClassName
-                              )}
-                            >
-                              {searchPrefix}
-                            </span>
-                          ) : null}
-                          <input
-                            type={searchType}
-                            spellCheck={false}
-                            value={searchQuery}
-                            disabled={searchDisabled}
-                            readOnly={searchReadOnly}
-                            placeholder={searchPlaceHolder}
-                            onChange={(e) => {
-                              setSearchQuery(e.target.value);
-                              onSearchChange && onSearchChange(e.target.value);
-                            }}
-                            // prevent headless ui from handling these keys
-                            onKeyDown={(e) =>
-                              preventHeadlessUIKeyboardInterActions(e)
-                            }
-                            className={cn(
-                              makeClassName(`select-search`),
-                              selectStyles.base,
-                              selectStyles.size[size],
-                              selectStyles.variant[variant],
-                              selectStyles.rounded[rounded],
-                              searchDisabled && selectStyles.disabled,
-                              searchStyles.inputBase,
-                              searchClassName
-                            )}
-                            {...searchProps}
-                          />
+                      {searchPrefix}
+                    </span>
+                  ) : null}
+                  <input
+                    type={searchType}
+                    spellCheck={false}
+                    value={searchQuery}
+                    disabled={searchDisabled}
+                    readOnly={searchReadOnly}
+                    placeholder={searchPlaceHolder}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      onSearchChange && onSearchChange(e.target.value);
+                    }}
+                    // prevent headless ui from handling these keys
+                    onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
+                    className={cn(
+                      makeClassName(`select-search`),
+                      selectStyles.base,
+                      selectStyles.size[size],
+                      selectStyles.variant[variant],
+                      selectStyles.rounded[rounded],
+                      searchDisabled && selectStyles.disabled,
+                      searchStyles.inputBase,
+                      searchClassName
+                    )}
+                    {...searchProps}
+                  />
 
-                          {searchSuffix ? (
-                            <span
-                              className={cn(
-                                makeClassName(`select-suffix`),
-                                searchStyles.suffix,
-                                searchSuffix && selectStyles.suffix.size[size],
-                                searchSuffixClassName
-                              )}
-                            >
-                              {searchSuffix}
-                            </span>
-                          ) : null}
-                        </span>
+                  {searchSuffix ? (
+                    <span
+                      className={cn(
+                        makeClassName(`select-suffix`),
+                        searchStyles.suffix,
+                        searchSuffix && selectStyles.suffix.size[size],
+                        searchSuffixClassName
                       )}
+                    >
+                      {searchSuffix}
+                    </span>
+                  ) : null}
+                </span>
+              )}
 
-                      {filteredOptions.map((option) => (
-                        <ListboxOption
-                          key={option.value}
-                          {...(option?.disabled && {
-                            disabled: option?.disabled,
-                          })}
-                          className={({ focus }) =>
-                            cn(
-                              makeClassName(`select-option`),
-                              'flex w-full items-center px-3 py-1.5',
-                              focus && 'bg-muted/70',
-                              rounded && optionListStyles.item.rounded[rounded],
-                              size && optionListStyles.item.size[size],
-                              !option?.disabled && 'cursor-pointer',
-                              optionClassName
-                            )
-                          }
-                          value={getOptionValue(option)}
-                        >
-                          {({ selected }) => (
-                            <div
-                              className={cn(
-                                selected ? 'font-medium' : 'text-foreground'
-                              )}
-                            >
-                              {getOptionDisplayValue(option)}
-                            </div>
-                          )}
-                        </ListboxOption>
-                      ))}
-                    </ListboxOptions>
-                  </Transition>
-                </>
-              ) : null}
-            </div>
-          </>
-        )}
+              {filteredOptions.map((option) => (
+                <ListboxOption
+                  key={option.value}
+                  {...(option?.disabled && {
+                    disabled: option?.disabled,
+                  })}
+                  className={({ focus }) =>
+                    cn(
+                      makeClassName(`select-option`),
+                      'flex w-full items-center px-3 py-1.5',
+                      focus && 'bg-muted/70',
+                      rounded && optionListStyles.item.rounded[rounded],
+                      size && optionListStyles.item.size[size],
+                      !option?.disabled && 'cursor-pointer',
+                      optionClassName
+                    )
+                  }
+                  value={getOptionValue(option)}
+                >
+                  {({ selected }) => (
+                    <div
+                      className={cn(
+                        selected ? 'font-medium' : 'text-foreground'
+                      )}
+                    >
+                      {getOptionDisplayValue(option)}
+                    </div>
+                  )}
+                </ListboxOption>
+              ))}
+            </ListboxOptions>
+          </Transition>
+        </div>
       </Listbox>
 
       {!error && helperText ? (

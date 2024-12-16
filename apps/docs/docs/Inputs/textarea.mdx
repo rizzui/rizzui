@@ -4,7 +4,9 @@ sidebar_position: 3
 
 import { Textarea } from "rizzui";
 import Paper from "@site/src/components/paper";
-import TextareaCharacterCount, { TextareaClear } from "@site/src/components/text-area";
+import TextareaCharacterCount, {
+  TextareaClear,
+} from "@site/src/components/text-area";
 
 # Textarea
 
@@ -28,12 +30,7 @@ The default style of **Textarea** component.
 import { Textarea } from "rizzui";
 
 export default function App() {
-  return (
-    <Textarea
-      label="Message"
-      placeholder="Write you message..."
-    />
-  );
+  return <Textarea label="Message" placeholder="Write you message..." />;
 }
 ```
 
@@ -44,20 +41,9 @@ export default function App() {
 You can change the style of **Textarea** using [**variant**](#textarea-variants) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <Textarea
-    label="Outline"
-    placeholder="Enter your message"
-  />
-  <Textarea
-    label="Flat"
-    variant="flat"
-    placeholder="Enter your message"
-  />
-  <Textarea
-    label="Text"
-    variant="text"
-    placeholder="Enter your message"
-  />
+  <Textarea label="Outline" placeholder="Enter your message" />
+  <Textarea label="Flat" variant="flat" placeholder="Enter your message" />
+  <Textarea label="Text" variant="text" placeholder="Enter your message" />
 </Paper>
 
 ```tsx
@@ -66,20 +52,9 @@ import { Textarea } from "rizzui";
 export default function App() {
   return (
     <>
-      <Textarea
-        label="Outline"
-        placeholder="Enter your message"
-      />
-      <Textarea
-        label="Flat"
-        variant="flat"
-        placeholder="Enter your message"
-      />
-      <Textarea
-        label="Text"
-        variant="text"
-        placeholder="Enter your message"
-      />
+      <Textarea label="Outline" placeholder="Enter your message" />
+      <Textarea label="Flat" variant="flat" placeholder="Enter your message" />
+      <Textarea label="Text" variant="text" placeholder="Enter your message" />
     </>
   );
 }
@@ -92,25 +67,10 @@ export default function App() {
 You can change the style of **Textarea** using [**size**](#textarea-sizes) property.
 
 <Paper className="gap-4 flex-row flex-wrap justify-start items-start">
-  <Textarea
-    label="Small"
-    placeholder="Enter your message"
-    size="sm"
-  />
-  <Textarea
-    label="Default"
-    placeholder="Enter your message"
-  />
-  <Textarea
-    label="Large"
-    placeholder="Enter your message"
-    size="lg"
-  />
-  <Textarea
-    label="Extra Large"
-    placeholder="Enter your message"
-    size="xl"
-  />
+  <Textarea label="Small" placeholder="Enter your message" size="sm" />
+  <Textarea label="Default" placeholder="Enter your message" />
+  <Textarea label="Large" placeholder="Enter your message" size="lg" />
+  <Textarea label="Extra Large" placeholder="Enter your message" size="xl" />
 </Paper>
 
 ```tsx
@@ -119,20 +79,9 @@ import { Textarea } from "rizzui";
 export default function App() {
   return (
     <>
-      <Textarea
-        label="Small"
-        placeholder="Enter your message"
-        size="sm"
-      />
-      <Textarea
-        label="Default"
-        placeholder="Enter your message"
-      />
-      <Textarea
-        label="Large"
-        placeholder="Enter your message"
-        size="lg"
-      />
+      <Textarea label="Small" placeholder="Enter your message" size="sm" />
+      <Textarea label="Default" placeholder="Enter your message" />
+      <Textarea label="Large" placeholder="Enter your message" size="lg" />
       <Textarea
         label="Extra Large"
         placeholder="Enter your message"
@@ -192,10 +141,7 @@ export default function App() {
         placeholder="Enter your message"
         rounded="sm"
       />
-      <Textarea
-        label="Rounded Default"
-        placeholder="Enter your message"
-      />
+      <Textarea label="Rounded Default" placeholder="Enter your message" />
       <Textarea
         label="Rounded Large"
         placeholder="Enter your message"
@@ -229,13 +175,8 @@ You can change rows and cols of **Textarea** using **rows** & **cols** property.
     label="Message"
     placeholder="Enter your message"
     textareaClassName="overflow-y-auto w-full md:w-auto"
-  >
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et!
-    Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
-    assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
-    Quibusdam debitis natus optio quasi assumenda provident dolores animi?
-  </Textarea>
+    defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi assumenda provident dolores animi?"
+  />
 </Paper>
 
 ```tsx
@@ -249,11 +190,13 @@ export default function App() {
       label="Message"
       placeholder="Enter your message"
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla
-      et! Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
-      assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
-      Quibusdam debitis natus optio quasi assumenda provident dolores animi?
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+      architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius
+      soluta! Quibusdam debitis natus optio quasi assumenda provident dolores
+      animi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+      architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius
+      soluta! Quibusdam debitis natus optio quasi assumenda provident dolores
+      animi?
     </Textarea>
   );
 }
@@ -330,24 +273,14 @@ export default function App() {
 You can change disable state of **Textarea** using **disabled** property.
 
 <Paper className="block">
-  <Textarea
-    disabled
-    label="Message"
-    placeholder="Enter your message"
-  />
+  <Textarea disabled label="Message" placeholder="Enter your message" />
 </Paper>
 
 ```tsx
 import { Textarea } from "rizzui";
 
 export default function App() {
-  return (
-    <Textarea
-      disabled
-      label="Message"
-      placeholder="Enter your message"
-    />
-  );
+  return <Textarea disabled label="Message" placeholder="Enter your message" />;
 }
 ```
 
@@ -496,6 +429,12 @@ type TextareaOnclear = (event) => void;
 
 ```ts
 type TextareaRenderCharacterCount =
-  | (({ characterCount, maxLength }: { characterCount?: number; maxLength?: number }) => ReactNode)
+  | (({
+      characterCount,
+      maxLength,
+    }: {
+      characterCount?: number;
+      maxLength?: number;
+    }) => ReactNode)
   | undefined;
 ```

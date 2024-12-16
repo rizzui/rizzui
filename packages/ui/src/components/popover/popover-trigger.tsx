@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, JSX } from 'react';
 import { usePopover } from './popover-context';
 
 export function PopoverTrigger({

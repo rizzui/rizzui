@@ -52,7 +52,6 @@ export function CheckboxGroupWithCard() {
       <AdvancedCheckbox
         name="payment"
         value="lead"
-        defaultChecked
         inputClassName="[&:checked~span_.icon]:block"
       >
         <span className="flex justify-between">
