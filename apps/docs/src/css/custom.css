@@ -1405,3 +1405,15 @@ button[class*="toggleButton"].clean-btn:hover {
 /* .grid-props-table-row-highlight table tbody tr:nth-child(8)  */ {
   @apply bg-[#0070f3]/10;
 }
+
+
+/* For versioning */
+#__docusaurus .theme-doc-version-badge{
+  @apply mb-5;
+}
+#__docusaurus .theme-doc-version-banner{
+  @apply mx-auto max-w-[960px];
+}
+#__docusaurus .menu__list-item > .menu__list{
+  @apply pl-2.5;
+}
