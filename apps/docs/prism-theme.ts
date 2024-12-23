@@ -1,6 +1,4 @@
-"use strict";
-
-var theme = {
+const theme = {
   plain: {
     color: "#F8F8F2",
     backgroundColor: "#1e293b",
@@ -92,4 +90,4 @@ var theme = {
   ],
 };
 
-module.exports = theme;
+export default theme;

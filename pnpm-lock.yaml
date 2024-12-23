@@ -130,6 +130,12 @@ importers:
       '@docusaurus/module-type-aliases':
         specifier: 3.6.3
         version: 3.6.3(acorn@8.14.0)(esbuild@0.24.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@docusaurus/plugin-content-blog':
+        specifier: 3.6.3
+        version: 3.6.3(@docusaurus/plugin-content-docs@3.6.3(@mdx-js/react@3.1.0(@types/react@19.0.1)(react@19.0.0))(acorn@8.14.0)(esbuild@0.24.0)(eslint@9.16.0(jiti@1.21.6))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2))(@mdx-js/react@3.1.0(@types/react@19.0.1)(react@19.0.0))(acorn@8.14.0)(esbuild@0.24.0)(eslint@9.16.0(jiti@1.21.6))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.2)
+      '@docusaurus/types':
+        specifier: 3.6.3
+        version: 3.6.3(acorn@8.14.0)(esbuild@0.24.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tsconfig/docusaurus':
         specifier: 2.0.3
         version: 2.0.3

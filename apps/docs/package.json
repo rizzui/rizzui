@@ -52,6 +52,8 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.6.3",
+    "@docusaurus/plugin-content-blog": "3.6.3",
+    "@docusaurus/types": "3.6.3",
     "@tsconfig/docusaurus": "2.0.3",
     "@types/node": "22.10.1",
     "@types/react": "^19.0.1",

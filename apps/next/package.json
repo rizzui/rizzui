@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3001",
-    "build": "next build",
-    "serve": "next start -p 3001",
+    "next-dev": "next dev -p 3001",
+    "next-build": "next build",
+    "next-start": "next start -p 3001",
     "lint": "next lint",
     "clean": "rm -rf node_modules .next"
   },
