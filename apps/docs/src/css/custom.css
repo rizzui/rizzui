@@ -1417,3 +1417,6 @@ button[class*="toggleButton"].clean-btn:hover {
 #__docusaurus .customVersionDropdown + .menu__list{
   @apply pl-2.5;
 }
+/* .blog-wrapper #__docusaurus .container{
+  @apply !max-w-none;
+} */
