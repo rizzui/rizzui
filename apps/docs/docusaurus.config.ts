@@ -57,18 +57,15 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.ts"),
           editUrl: "https://github.com/rizzui/rizzui/apps/docs",
-
-          lastVersion: 'current',
+          lastVersion: "current",
           versions: {
             current: {
-              label: 'v1.0.0(current)', // Label for the current version
-              path: '', // Path for the current version (default: '')
+              label: "v-1.0.0",
             },
-            '0.8.7': {
-              label: 'v0.8.7',
+            "0.8.7": {
+              label: "v-0.8.7",
             },
           },
-
         },
         blog: {
           showReadingTime: true,
@@ -125,8 +122,8 @@ const config: Config = {
           "aria-label": "GitHub",
         },
         {
-          type: 'docsVersionDropdown',
-          position: 'right',
+          type: "docsVersionDropdown",
+          position: "right",
           className: "customVersionDropdown",
         },
       ],
