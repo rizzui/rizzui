@@ -1417,6 +1417,37 @@ button[class*="toggleButton"].clean-btn:hover {
 #__docusaurus .customVersionDropdown + .menu__list{
   @apply pl-2.5;
 }
-/* .blog-wrapper #__docusaurus .container{
+.blog-wrapper #__docusaurus .container{
   @apply !max-w-none;
-} */
+}
+.blog-list-page #__docusaurus aside{
+  @apply hidden;
+}
+.blog-list-page #__docusaurus main::before{
+  content: "Our Blogs";
+  @apply col-span-full text-4xl mb-5 text-slate-950 dark:text-white font-bold;
+}
+.blog-list-page #__docusaurus main{
+  @apply grid justify-between grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-5 mx-auto;
+}
+.blog-list-page #__docusaurus article{
+  @apply border p-5 rounded-lg !mb-0 w-full flex flex-col justify-between;
+}
+.blog-list-page #__docusaurus article header h2{
+  @apply text-xl font-medium !-mb-2 [&_a]:hover:no-underline [&_a]:text-blue;
+}
+.blog-list-page #__docusaurus article .markdown{
+  @apply h-full
+}
+.blog-list-page #__docusaurus article .markdown .anchor{
+  @apply hidden;
+}
+.blog-list-page #__docusaurus article footer{
+  @apply mt-4;
+}
+.blog-list-page #__docusaurus article footer .col{
+  @apply text-left mt-5;
+}
+.blog-list-page #__docusaurus article footer .col > a{
+  @apply block text-center bg-gray-200 dark:bg-slate-900 px-5 py-3 rounded-md hover:no-underline !font-normal capitalize text-sm [&_b]:!font-medium; 
+}

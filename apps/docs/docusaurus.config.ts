@@ -77,7 +77,7 @@ const config: Config = {
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
           postsPerPage: 5,
-          blogTitle: "RizzUI blog",
+          blogTitle: "RizzUI Blogs",
           blogDescription: "Read blog posts about RizzUI updates from team.",
           blogSidebarCount: "ALL",
           blogSidebarTitle: "List of all posts",
