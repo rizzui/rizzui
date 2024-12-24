@@ -1409,11 +1409,11 @@ button[class*="toggleButton"].clean-btn:hover {
 
 /* For versioning */
 #__docusaurus .theme-doc-version-badge{
-  @apply mb-5;
+  @apply hidden;
 }
 #__docusaurus .theme-doc-version-banner{
   @apply mx-auto max-w-[960px];
 }
-#__docusaurus .menu__list-item > .menu__list{
+#__docusaurus .customVersionDropdown + .menu__list{
   @apply pl-2.5;
 }

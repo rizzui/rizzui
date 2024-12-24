@@ -127,7 +127,7 @@ const config: Config = {
         {
           type: 'docsVersionDropdown',
           position: 'right',
-          // dropdownItemsAfter: [{ to: '/versions', label: 'All versions' }],
+          className: "customVersionDropdown",
         },
       ],
     },
