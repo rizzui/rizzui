@@ -57,6 +57,15 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.ts"),
           editUrl: "https://github.com/rizzui/rizzui/apps/docs",
+          lastVersion: "current",
+          versions: {
+            current: {
+              label: "v-1.0.0",
+            },
+            "0.8.7": {
+              label: "v-0.8.7",
+            },
+          },
         },
         blog: {
           showReadingTime: true,
@@ -65,7 +74,7 @@ const config: Config = {
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",
           postsPerPage: 5,
-          blogTitle: "RizzUI blog",
+          blogTitle: "RizzUI Blogs",
           blogDescription: "Read blog posts about RizzUI updates from team.",
           blogSidebarCount: "ALL",
           blogSidebarTitle: "List of all posts",
@@ -111,6 +120,11 @@ const config: Config = {
           position: "right",
           className: "header-github-link order-3 ml-3 -mr-3",
           "aria-label": "GitHub",
+        },
+        {
+          type: "docsVersionDropdown",
+          position: "right",
+          className: "customVersionDropdown",
         },
       ],
     },

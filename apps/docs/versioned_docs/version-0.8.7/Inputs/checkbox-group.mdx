@@ -1,0 +1,133 @@
+---
+sidebar_position: 7
+---
+
+import Paper from "@site/src/components/paper";
+import CheckboxGroupDefault from "@site/src/components/checkbox-group";
+import { CheckboxGroupWithCard } from "@site/src/components/checkbox-group";
+
+# Checkbox Group
+
+You can make a group of multiple choices **Checkbox** using **CheckboxGroup** component.
+
+```tsx
+import { CheckboxGroup } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## With Simple Checkbox
+
+Checkout the **CheckboxGroup** demo with **Checkbox** components.
+
+<Paper>
+  <CheckboxGroupDefault />
+</Paper>
+
+```tsx
+import { useState } from "react";
+import { Checkbox, CheckboxGroup } from "rizzui";
+
+export default function App() {
+  const [values, setValues] = useState(["apple"]);
+  return (
+    <CheckboxGroup
+      values={values}
+      setValues={setValues}
+      className="flex flex-row gap-4"
+    >
+      <Checkbox
+        label="Apple"
+        value="apple"
+      />
+      <Checkbox
+        label="Pear"
+        value="pear"
+      />
+      <Checkbox
+        label="Orange"
+        value="orange"
+        disabled
+      />
+      <Checkbox
+        label="Blueberry"
+        value="blueberry"
+      />
+    </CheckboxGroup>
+  );
+}
+```
+
+<div className="mb-10" />
+
+## With AdvancedCheckbox
+
+Checkout the **CheckboxGroup** demo with **AdvancedCheckbox** components.
+
+<Paper>
+  <CheckboxGroupWithCard />
+</Paper>
+
+```jsx
+import React from "react";
+import { CheckCircleIcon } from "@heroicons/react/20/solid";
+import { AdvancedCheckbox, CheckboxGroup, Text } from 'rizzui';
+
+const options = [
+  {
+    value: 'single'
+    title: 'Single Payment',
+    description: 'Charge a one-time fee',
+  }
+  ...
+]
+
+export default function App() {
+  const [values, setValues] = React.useState<string[]>(["single"]);
+
+  return (
+    <CheckboxGroup
+      values={values}
+      setValues={setValues}
+      className="grid grid-cols-1 sm:grid-cols-3 max-w-2xl mx-auto gap-4"
+    >
+      {options.map((item) => (
+        <AdvancedCheckbox
+          key={item.value}
+          name="payment"
+          value={item.value}
+          inputClassName="[&:checked~span_.icon]:block"
+        >
+          <span className="flex justify-between">
+            <Text as="b">{item.title}</Text>
+            <CheckCircleIcon className="icon hidden h-5 w-5 text-secondary" />
+          </span>
+          <Text>{item.description}</Text>
+        </AdvancedCheckbox>
+      ))}
+    </CheckboxGroup>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### CheckboxGroup Props
+
+Here is the API documentation of the CheckboxGroup component.
+
+<div className="overflow-x-auto">
+
+|   Props   |                 Type                 |          Description          | Default |
+| :-------: | :----------------------------------: | :---------------------------: | :-----: |
+|  values   |              `string[]`              |        Selected value         |  \_\_   |
+| setValues | `Dispatch<SetStateAction<string[]>>` | Pass function to select value |  \_\_   |
+| children  |             `ReactNode`              |   Radio buttons as children   |  \_\_   |
+
+</div>
