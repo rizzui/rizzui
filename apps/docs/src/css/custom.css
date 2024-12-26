@@ -1541,3 +1541,14 @@ button[class*="toggleButton"].clean-btn:hover {
 .blog-post-page #__docusaurus .container .row main .markdown {
   @apply [&_p]:text-base [&_p]:leading-[1.75rem];
 }
+
+.docs-version-current #__docusaurus .menu__list-item > .menu__list{
+  @apply border-l-0;
+}
+.docs-version-current #__docusaurus li > .menu__link{
+  @apply border-l-0 pl-5
+}
+.docs-version-current #__docusaurus li > .menu__link--active:not(.menu__link--sublist){
+  @apply border-l-0 pl-5 ml-0;
+}
+.docs-version-current #__docusaurus .theme-doc-sidebar-menu li > .menu__link::before{@apply hidden;}
