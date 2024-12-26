@@ -248,16 +248,10 @@ You can set the loading state of the **ActionIcon** button using **isLoading** p
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
     <ActionIcon isLoading={true}>Primary</ActionIcon>
-    <ActionIcon
-      isLoading={true}
-      color="secondary"
-    >
+    <ActionIcon isLoading={true} color="secondary">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
-    <ActionIcon
-      isLoading={true}
-      color="danger"
-    >
+    <ActionIcon isLoading={true} color="danger">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
   </div>
@@ -270,22 +264,13 @@ import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 export default function App() {
   return (
     <>
-      <ActionIcon
-        isLoading={true}
-        color="primary"
-      >
+      <ActionIcon isLoading={true} color="primary">
         <AdjustmentsHorizontalIcon className="w-5 h-5" />
       </ActionIcon>
-      <ActionIcon
-        isLoading={true}
-        color="secondary"
-      >
+      <ActionIcon isLoading={true} color="secondary">
         <AdjustmentsHorizontalIcon className="w-5 h-5" />
       </ActionIcon>
-      <ActionIcon
-        isLoading={true}
-        color="danger"
-      >
+      <ActionIcon isLoading={true} color="danger">
         <AdjustmentsHorizontalIcon className="w-5 h-5" />
       </ActionIcon>
     </>

@@ -7,10 +7,7 @@ export default function AlertClearable() {
   const [state, setState] = React.useState(true);
   return (
     <>
-      <Button
-        onClick={() => setState(true)}
-        className="tracking-wider"
-      >
+      <Button onClick={() => setState(true)} className="tracking-wider">
         Info Alert
       </Button>
       {state && (
@@ -21,7 +18,10 @@ export default function AlertClearable() {
           onClose={() => setState(false)}
         >
           <p className="font-semibold">Alert with info</p>
-          <p>Attention All! We are excited to announce the launch of our new product/service.</p>
+          <p>
+            Attention All! We are excited to announce the launch of our new
+            product/service.
+          </p>
         </Alert>
       )}
     </>
