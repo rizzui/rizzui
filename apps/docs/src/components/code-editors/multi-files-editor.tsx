@@ -19,7 +19,7 @@ type MultiFilesEditorProps = {
   className?: string;
   editorClassName?: string;
   editorWrapperClassName?: string;
-  editorOptions?: EditorProps
+  editorOptions?: EditorProps;
 };
 
 const PACKAGE_MANAGERS_ICONS = {
@@ -51,12 +51,12 @@ export function MultiFilesEditor({
               className={cn(
                 "border-0 bg-transparent cursor-pointer text-sm flex items-center py-3 px-2.5 relative font-inter transition-all duration-200 h-[47px]",
                 fileName === file.name &&
-                "pointer-events-none font-medium after:content-[''] after:block after:absolute after:w-full after:h-0.5 after:-bottom-[1px] after:start-0 after:bg-gray-900 dark:after:bg-gray-100"
+                  "pointer-events-none font-medium after:content-[''] after:block after:absolute after:w-full after:h-0.5 after:-bottom-[1px] after:start-0 after:bg-gray-900 dark:after:bg-gray-100"
               )}
             >
               <span
                 className={cn(
-                  "w-5 h-auto shrink-0 inline-flex items-center me-2",
+                  "w-5 h-auto shrink-0 inline-flex items-center me-2"
                 )}
               >
                 {PACKAGE_MANAGERS_ICONS[file.manager]}
@@ -87,10 +87,7 @@ export function MultiFilesEditor({
             {...editorOptions}
             className={cn("rounded-lg overflow-hidden", editorClassName)}
           />
-          <CopyButton
-            value={file.value}
-            className="absolute end-2 top-2 opacity-0 invisible group-hover/editor:opacity-100 group-hover/editor:visible"
-          />
+          <CopyButton value={file.value} className="absolute end-2 top-2" />
         </div>
       </div>
     </ClientComponent>

@@ -51,13 +51,11 @@ RizzUI now supports tree shaking. You can now import components individually or 
 
 ### Client Components
 
-Whenever you are importing these components you have to use `"use-client"` as a prefix. Because of the use cases of these components they are mostly used in the client side.
-
-**Example:**
+Whenever you are importing these components you have to use `"use client"` as a prefix. Because of the use cases of these components they are mostly used in the client side.
 
 ```jsx
 // highlight-next-line
-"use-client";
+"use client";
 
 import { Input } from "rizzui/input";
 
@@ -74,33 +72,33 @@ export default App () {
 
 Components that are not listed here can be used in server components.
 
-|   Component   |    Prefix    |
-| :-----------: | :----------: |
-|     Input     | "use-client" |
-|   Password    | "use-client" |
-|   Textarea    | "use-client" |
-| CheckboxGroup | "use-client" |
-|  RadioGroup   | "use-client" |
-|    Select     | "use-client" |
-|  MultiSelect  | "use-client" |
-|    PinCode    | "use-client" |
-|  NumberInput  | "use-client" |
-|   Dropdown    | "use-client" |
-|     Tabs      | "use-client" |
-|    Stepper    | "use-client" |
-|    Tooltip    | "use-client" |
-|    Popover    | "use-client" |
-|     Modal     | "use-client" |
-|    Drawer     | "use-client" |
-|   Accordion   | "use-client" |
+```jsx
+"use client"; // prefix is required for all client components
+
+import { Input } from "rizzui/input";
+import { Password } from "rizzui/password";
+import { Textarea } from "rizzui/textarea";
+import { CheckboxGroup } from "rizzui/checkbox-group";
+import { RadioGroup } from "rizzui/radio-group";
+import { Select } from "rizzui/select";
+import { MultiSelect } from "rizzui/multi-select";
+import { PinCode } from "rizzui/pin-code";
+import { NumberInput } from "rizzui/number-input";
+import { Dropdown } from "rizzui/dropdown";
+import { Tabs } from "rizzui/tabs";
+import { Stepper } from "rizzui/stepper";
+import { Tooltip } from "rizzui/tooltip";
+import { Popover } from "rizzui/popover";
+import { Modal } from "rizzui/modal";
+import { Drawer } from "rizzui/drawer";
+import { Accordion } from "rizzui/accordion";
+```
 
 <br />
 
 ### Server Components
 
-Components that supports server side rendering. Whenever you are importing these components you don't need to use `"use-client"` as a prefix. But if you are using events like **onClick**, **onChange** etc. you have to use `"use-client"` as a prefix.
-
-**Example:**
+Components that supports server side rendering. Whenever you are importing these components you don't need to use `"use client"` as a prefix. But if you are using events like **onClick**, **onChange** etc. you have to use `"use client"` as a prefix.
 
 ```jsx
 import { Button } from "rizzui/button";
@@ -116,7 +114,7 @@ export default App () {
 
 ```jsx
 // highlight-next-line
-"use-client";
+"use client";
 
 import { Button } from "rizzui/button";
 
@@ -151,7 +149,7 @@ The search field in the Select component is now can be sticky. When you scroll d
 **Example:**
 
 ```jsx
-"use-client";
+"use client";
 
 import { Select } from "rizzui/select";
 
@@ -172,7 +170,7 @@ The search field in the MultiSelect component is now can be sticky. When you scr
 **Example:**
 
 ```jsx
-"use-client";
+"use client";
 
 import { MultiSelect } from "rizzui/multi-select";
 

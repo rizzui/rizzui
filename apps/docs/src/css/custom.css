@@ -1416,7 +1416,7 @@ button[class*="toggleButton"].clean-btn:hover {
 #__docusaurus .customVersionDropdown + .menu__list {
   @apply pl-2.5;
 }
-#__docusaurus .theme-doc-version-banner{
+#__docusaurus .theme-doc-version-banner {
   @apply min-[997px]:w-[calc(100%-24px)] ml-auto mr-0 min-[1600px]:!mx-auto min-[997px]:!-mb-5 min-[1280px]:!mb-2 min-[1280px]:mt-7 min-[1600px]:max-w-[936px] min-[1600px]:translate-x-3;
 }
 
@@ -1529,7 +1529,7 @@ button[class*="toggleButton"].clean-btn:hover {
   header
   div[class*="authorCol_"]
   .avatar__intro {
-  @apply block [&_small]:mt-0.5;
+  @apply block [&_small]:mt-0.5 [&_small]:text-xs;
 }
 .blog-post-page
   #__docusaurus
@@ -1548,30 +1548,46 @@ button[class*="toggleButton"].clean-btn:hover {
   header
   div[class*="authorCol_"]
   .avatar__name {
-    @apply text-primary;
-  }
+  @apply text-primary [&_span]:font-medium [&_span]:text-sm;
+}
+.blog-post-page #__docusaurus .container .row header div[class*="container_"] {
+  @apply text-gray-400;
+}
 
 .blog-post-page #__docusaurus .container .row main .markdown {
   @apply [&_p]:text-base [&_p]:leading-[1.75rem];
 }
 
-.blog-post-page article header .row::before{
+.blog-post-page article header .row::before {
   content: "Posted By";
-  @apply ml-4 mb-3 text-sm text-muted-foreground w-full;
+  @apply ml-4 mb-3 text-sm w-full text-gray-400;
 }
 
-.docs-version-current #__docusaurus .menu__list-item > .menu__list{
+.docs-version-current #__docusaurus .menu__list-item > .menu__list {
   @apply border-l-0;
 }
-.docs-version-current #__docusaurus li > .menu__link{
-  @apply border-l-0 pl-5
+.docs-version-current #__docusaurus li > .menu__link {
+  @apply border-l-0 pl-5;
 }
-.docs-version-current #__docusaurus li > .menu__link--active:not(.menu__link--sublist){
+.docs-version-current
+  #__docusaurus
+  li
+  > .menu__link--active:not(.menu__link--sublist) {
   @apply border-l-0 pl-5 ml-0;
 }
-.docs-version-current #__docusaurus .theme-doc-sidebar-menu li > .menu__link::before{@apply hidden;}
+.docs-version-current
+  #__docusaurus
+  .theme-doc-sidebar-menu
+  li
+  > .menu__link::before {
+  @apply hidden;
+}
 
 .blog-list-page #__docusaurus .navbar__inner,
-.blog-post-page #__docusaurus .navbar__inner{
-  @apply max-w-[1536px]
+.blog-post-page #__docusaurus .navbar__inner {
+  @apply max-w-[1536px];
+}
+
+.blog-post-page #__docusaurus .navbar__inner {
+  @apply max-w-[1536px];
 }
