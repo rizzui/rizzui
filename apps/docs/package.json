@@ -26,6 +26,8 @@
     "@heroicons/react": "2.2.0",
     "@hookform/resolvers": "3.9.1",
     "@mdx-js/react": "3.1.0",
+    "@monaco-editor/react": "4.6.0",
+    "@number-flow/react": "0.4.4",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/forms": "0.5.9",
     "@tanstack/react-table": "8.20.5",
@@ -48,6 +50,7 @@
     "react-phone-input-2": "2.15.1",
     "rizzui": "workspace:*",
     "tailwindcss": "3.4.16",
+    "uuid": "11.0.3",
     "zod": "3.23.8"
   },
   "devDependencies": {

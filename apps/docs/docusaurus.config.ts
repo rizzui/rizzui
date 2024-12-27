@@ -2,7 +2,6 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 
 import myTheme from "./prism-theme";
-
 import type { Config } from "@docusaurus/types";
 
 const config: Config = {
