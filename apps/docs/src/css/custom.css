@@ -1416,6 +1416,9 @@ button[class*="toggleButton"].clean-btn:hover {
 #__docusaurus .customVersionDropdown + .menu__list {
   @apply pl-2.5;
 }
+#__docusaurus .theme-doc-version-banner{
+  @apply min-[997px]:w-[calc(100%-24px)] ml-auto mr-0 min-[1600px]:!mx-auto min-[997px]:!-mb-5 min-[1280px]:!mb-2 min-[1280px]:mt-7 min-[1600px]:max-w-[936px] min-[1600px]:translate-x-3;
+}
 
 /* blog list page  */
 .blog-wrapper #__docusaurus .container {
@@ -1426,25 +1429,25 @@ button[class*="toggleButton"].clean-btn:hover {
 }
 .blog-list-page #__docusaurus main::before {
   content: "The Latest RizzUI News";
-  @apply col-span-full text-[28px] mb-2 text-gray-700 dark:text-white font-semibold;
+  @apply col-span-full text-[28px] font-bold mt-2 mb-4 text-gray-700 dark:text-white;
 }
 .blog-list-page #__docusaurus main {
-  @apply grid justify-between grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-x-4 gap-y-6 mx-auto;
+  @apply grid justify-between grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-4 gap-y-6 mx-auto !max-w-[1232px] w-full flex-auto;
 }
 .blog-list-page #__docusaurus main .hidden-for-blog-list-page {
   @apply hidden;
 }
 .blog-list-page #__docusaurus article {
-  @apply border px-6 pt-6 pb-4 rounded-lg !mb-0 w-full flex flex-col justify-between;
+  @apply border p-1.5 rounded-xl !mb-0 w-full flex flex-col justify-between;
 }
 .blog-list-page #__docusaurus article header {
-  @apply [&_.row]:hidden;
+  @apply [&_.row]:hidden p-3 pb-0;
 }
 .blog-list-page #__docusaurus article header h2 {
   @apply text-xl font-medium !-mb-2 [&_a]:hover:no-underline [&_a]:text-blue;
 }
 .blog-list-page #__docusaurus article .markdown {
-  @apply h-full [&>p]:line-clamp-3 [&_ul_li]:mt-1 [&_ul_li_a]:pointer-events-none [&_ul_li_a]:no-underline;
+  @apply h-full [&>p]:line-clamp-3 [&_ul_li]:mt-1 [&_ul_li_a]:pointer-events-none [&_ul_li_a]:no-underline px-3;
 }
 .blog-list-page #__docusaurus article .markdown .anchor {
   @apply hidden;
@@ -1453,7 +1456,7 @@ button[class*="toggleButton"].clean-btn:hover {
   @apply mt-4 block w-full [&_.col--9]:hidden [&.row]:mx-0;
 }
 .blog-list-page #__docusaurus article footer .col {
-  @apply text-left mt-5 px-0;
+  @apply text-left px-0;
 }
 .blog-list-page #__docusaurus article footer .col--3 {
   @apply !w-full block p-0;
@@ -1469,13 +1472,13 @@ button[class*="toggleButton"].clean-btn:hover {
   @apply hidden;
 }
 .blog-post-page #__docusaurus .container .row main {
-  @apply mx-auto;
+  @apply mx-auto flex-auto max-w-[860px];
 }
 .blog-post-page #__docusaurus main .hidden-for-blog-list-page {
   @apply my-8;
 }
 .blog-post-page #__docusaurus .container .row main h1 {
-  @apply text-4xl font-medium;
+  @apply text-4xl font-bold mt-2;
 }
 .blog-post-page #__docusaurus .container .row main h2 {
   @apply text-3xl;
@@ -1538,8 +1541,23 @@ button[class*="toggleButton"].clean-btn:hover {
   div[class*="authorSocials_"] {
   @apply hidden;
 }
+.blog-post-page
+  #__docusaurus
+  .container
+  .row
+  header
+  div[class*="authorCol_"]
+  .avatar__name {
+    @apply text-primary;
+  }
+
 .blog-post-page #__docusaurus .container .row main .markdown {
   @apply [&_p]:text-base [&_p]:leading-[1.75rem];
+}
+
+.blog-post-page article header .row::before{
+  content: "Posted By";
+  @apply ml-4 mb-3 text-sm text-muted-foreground w-full;
 }
 
 .docs-version-current #__docusaurus .menu__list-item > .menu__list{
@@ -1552,3 +1570,8 @@ button[class*="toggleButton"].clean-btn:hover {
   @apply border-l-0 pl-5 ml-0;
 }
 .docs-version-current #__docusaurus .theme-doc-sidebar-menu li > .menu__link::before{@apply hidden;}
+
+.blog-list-page #__docusaurus .navbar__inner,
+.blog-post-page #__docusaurus .navbar__inner{
+  @apply max-w-[1536px]
+}
