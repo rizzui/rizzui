@@ -1,6 +1,6 @@
 {
   "name": "next",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "next-dev": "next dev -p 3001",
