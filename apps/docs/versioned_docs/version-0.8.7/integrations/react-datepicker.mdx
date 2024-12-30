@@ -1,0 +1,664 @@
+---
+sidebar_position: 6
+---
+
+import {
+  DatePickerDefault,
+  MonthPicker,
+  YearPicker,
+  MonthDropdownPicker,
+  YearDropdownPicker,
+  CalendarWithTime,
+  TimePicker,
+  RangeDatePicker,
+} from "@site/src/components/date-picker";
+import Paper from "@site/src/components/paper";
+
+# React Datepicker
+
+A simple and reusable Datepicker component. We are using **react-datepicker** package. Please follow their [**Official documentation**](https://www.npmjs.com/package/react-datepicker) for more details.
+
+<div className="mb-16" />
+
+## Installation
+
+<hr />
+
+1.  Install the **react-datepicker** and **@types/react-datepicker**
+
+<div className="mb-4" />
+
+```bash
+npm i react-datepicker
+```
+
+```bash
+npm i --save @types/react-datepicker
+```
+
+<div className="mb-4" />
+
+2. Create a DatePicker component, **components/datepicker.tsx**
+
+<div className="mb-4" />
+
+```ts
+import React from "react";
+import { cn, Input, InputProps } from "rizzui";
+import DatePicker, { type DatePickerProps } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { CalendarIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+
+const calendarContainerClasses = {
+  base: "[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md ",
+  monthContainer: {
+    padding: "[&.react-datepicker>div]:pt-5 [&.react-datepicker>div]:pb-3",
+  },
+};
+
+const prevNextButtonClasses = {
+  base: "[&.react-datepicker>button]:items-baseline [&.react-datepicker>button]:top-7",
+  border:
+    "[&.react-datepicker>button]:border [&.react-datepicker>button]:border-solid [&.react-datepicker>button]:border-gray-300 [&.react-datepicker>button]:rounded-md",
+  size: "[&.react-datepicker>button]:h-[22px] [&.react-datepicker>button]:w-[22px] hover:[&.react-datepicker>button]:border-gray-900 [&.react-datepicker>button:hover>span::before]:border-gray-900",
+  children: {
+    position: "[&.react-datepicker>button>span]:top-0",
+    border:
+      "[&.react-datepicker>button>span]:before:border-t-[1.5px] [&.react-datepicker>button>span]:before:border-r-[1.5px] [&.react-datepicker>button>span]:before:border-gray-400",
+    size: "[&.react-datepicker>button>span]:before:h-[7px] [&.react-datepicker>button>span]:before:w-[7px]",
+  },
+};
+
+const timeOnlyClasses = {
+  base: "[&.react-datepicker--time-only>div]:pr-0 [&.react-datepicker--time-only>div]:w-28",
+};
+
+const popperClasses = {
+  base: "[&>svg]:!fill-white dark:[&>svg]:!fill-gray-100 [&>svg]:!stroke-gray-300 dark:[&>svg]:!stroke-muted dark:[&>svg]:!text-muted",
+};
+
+export type ReactDatePickerProps = DatePickerProps & {
+  inputProps?: InputProps;
+};
+
+const ReactDatePicker = ({
+  inputProps,
+  customInput,
+  onCalendarOpen,
+  onCalendarClose,
+  popperClassName,
+  calendarClassName,
+  ...props
+}: ReactDatePickerProps) => {
+  const [isCalenderOpen, setIsCalenderOpen] = React.useState(false);
+  const handleCalenderOpen = () => setIsCalenderOpen(true);
+  const handleCalenderClose = () => setIsCalenderOpen(false);
+  return (
+    <DatePicker
+      customInput={
+        customInput || (
+          <Input
+            prefix={<CalendarIcon className="w-5 h-5 text-gray-500" />}
+            suffix={
+              <ChevronDownIcon
+                className={cn("h-4 w-4 text-gray-500 transition", isCalenderOpen && "rotate-180")}
+              />
+            }
+            {...inputProps}
+          />
+        )
+      }
+      onCalendarOpen={onCalendarOpen || handleCalenderOpen}
+      onCalendarClose={onCalendarClose || handleCalenderClose}
+      calendarClassName={cn(
+        calendarContainerClasses.base,
+        calendarContainerClasses.monthContainer.padding,
+        prevNextButtonClasses.base,
+        prevNextButtonClasses.border,
+        prevNextButtonClasses.size,
+        prevNextButtonClasses.children.position,
+        prevNextButtonClasses.children.border,
+        prevNextButtonClasses.children.size,
+        timeOnlyClasses.base,
+        calendarClassName
+      )}
+      popperClassName={cn(popperClasses.base, popperClassName)}
+      {...props}
+    />
+  );
+};
+
+ReactDatePicker.displayName = "ReactDatePicker";
+export default ReactDatePicker;
+```
+
+3. Copy and paste the following CSS code into your project CSS file.
+
+<div className="mb-4" />
+
+```css
+/* ................................................... */
+/* React Datepicker Styling */
+/* ................................................... */
+.react-datepicker-popper .react-datepicker {
+  @apply bg-white font-geist text-gray-600 dark:border-muted dark:bg-gray-50;
+}
+
+/* month container */
+.react-datepicker .react-datepicker__month-container {
+  @apply px-3;
+}
+
+/* time container */
+.react-datepicker .react-datepicker__time-container {
+  @apply w-auto border-l-0 pr-3.5;
+}
+
+.react-datepicker-popper .react-datepicker__time-container .react-datepicker__time {
+  @apply bg-gray-50 dark:bg-gray-200;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:hover {
+  @apply dark:bg-muted;
+}
+
+/* header */
+.react-datepicker .react-datepicker__header {
+  @apply border-b-transparent bg-white dark:border-transparent dark:bg-gray-50;
+}
+
+/* current month name in header */
+.react-datepicker .react-datepicker-year-header {
+  @apply dark:text-gray-700;
+}
+
+.react-datepicker .react-datepicker__current-month {
+  @apply mb-3 text-base font-medium dark:text-gray-700;
+}
+
+/* sun-sat day names in header */
+.react-datepicker .react-datepicker__day-names div {
+  @apply m-1.5 text-sm text-gray-700;
+}
+
+/* previous month button */
+.react-datepicker .react-datepicker__navigation--previous {
+  @apply ml-6 rtl:mr-6;
+}
+
+/* next month button */
+.react-datepicker .react-datepicker__navigation--next {
+  @apply mr-6 rtl:ml-6;
+}
+
+/* icon in previous month button */
+.react-datepicker .react-datepicker__navigation-icon--previous {
+  @apply right-0.5;
+}
+
+/* icon in next month button */
+.react-datepicker .react-datepicker__navigation-icon--next {
+  @apply left-0.5;
+}
+
+/* each day */
+.react-datepicker .react-datepicker__day {
+  @apply m-1.5 text-sm leading-7 text-gray-700;
+  @apply hover:rounded-full hover:bg-gray-100 hover:text-gray-900;
+}
+
+/* outside month */
+.react-datepicker .react-datepicker__day--outside-month {
+  @apply text-gray-500;
+}
+
+/* keyboard selected */
+.react-datepicker .react-datepicker__day--keyboard-selected {
+  @apply bg-gray-50;
+}
+
+/* today */
+.react-datepicker .react-datepicker__day--today {
+  @apply rounded-full border border-muted bg-gray-50 leading-[26px] text-gray-900;
+  @apply hover:border-gray-600 hover:bg-gray-50;
+}
+
+/* while selecting */
+.react-datepicker div.react-datepicker__day--in-selecting-range {
+  @apply rounded-full bg-gray-200 text-gray-900;
+}
+
+.react-datepicker div.react-datepicker__year-text--in-selecting-range {
+  @apply bg-gray-200 text-gray-900;
+}
+
+.react-datepicker
+  div.react-datepicker__year-text--in-selecting-range.react-datepicker__year-text--disabled {
+  @apply bg-transparent text-muted;
+}
+
+/* in range */
+.react-datepicker .react-datepicker__day--in-range {
+  @apply rounded-full bg-gray-200 text-gray-900;
+}
+
+.react-datepicker .react-datepicker__year-text--in-range {
+  @apply bg-gray-200 text-gray-900;
+}
+
+/* selected */
+.react-datepicker .react-datepicker__day--range-start,
+.react-datepicker .react-datepicker__day--range-end,
+.react-datepicker .react-datepicker__day--selected {
+  @apply rounded-full border-none bg-gray-900 font-normal leading-7 text-gray-50;
+  @apply hover:bg-gray-900/80 hover:text-gray-50;
+}
+
+.react-datepicker .react-datepicker__year-text--range-end {
+  @apply border-none bg-gray-900 font-normal text-gray-50 hover:bg-gray-900/80 hover:text-gray-50;
+}
+
+/* time list */
+.react-datepicker .react-datepicker__time-list {
+  @apply !h-[247px];
+}
+
+/* time item */
+.react-datepicker .react-datepicker__time-list-item {
+  @apply my-2 rounded text-sm text-gray-500;
+  @apply hover:bg-gray-100 hover:text-gray-900;
+}
+
+/* selected time item */
+.react-datepicker .react-datepicker__time-list-item--selected {
+  @apply !bg-gray-100 !font-medium !text-gray-900;
+}
+
+/* time only box */
+.react-datepicker-popper .react-datepicker-time__header {
+  @apply text-gray-700;
+}
+.react-datepicker-popper
+  .react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box {
+  width: 90px;
+}
+.react-datepicker--time-only
+  .react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box {
+  @apply w-auto;
+}
+
+/* time only item */
+.react-datepicker--time-only .react-datepicker__time-list-item {
+  @apply rounded-none;
+}
+
+/* month picker text */
+.react-datepicker .react-datepicker__month-text {
+  @apply w-0 px-5 py-1.5;
+}
+
+/* keyboard selected month in month picker */
+.react-datepicker .react-datepicker__month-text--keyboard-selected {
+  @apply bg-gray-100 text-gray-900;
+}
+
+/* month in range */
+.react-datepicker .react-datepicker__month--in-range {
+  @apply bg-gray-200 text-gray-700;
+}
+
+/* hover on selected months in range */
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--in-range:hover {
+  @apply bg-gray-200 text-gray-900;
+}
+
+/* selected month in range */
+.react-datepicker .react-datepicker__month--range-start,
+.react-datepicker .react-datepicker__month--range-end,
+.react-datepicker .react-datepicker__month--selected {
+  @apply bg-gray-900 font-normal text-gray-50;
+}
+
+/* hover on selected range start and end month */
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--selected:hover,
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-start:hover,
+.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-end:hover {
+  @apply bg-gray-900/80 text-gray-50;
+}
+
+/* year wrapper in year picker */
+.react-datepicker .react-datepicker__year-wrapper {
+  @apply inline-block max-w-[220px];
+}
+
+/* year text in year picker */
+.react-datepicker .react-datepicker__year-text {
+  @apply w-auto px-5 py-1.5 text-gray-600 dark:hover:text-gray-100;
+}
+
+.react-datepicker .react-datepicker__year-text--range-end {
+  @apply text-gray-50;
+}
+
+/* keyboard selected year in year picker */
+.react-datepicker .react-datepicker__year-text--keyboard-selected {
+  @apply bg-gray-200 text-gray-900;
+  @apply hover:bg-muted hover:text-gray-900;
+}
+
+/* selected year & month in year picker */
+.react-datepicker .react-datepicker__year-text.react-datepicker__year-text--selected,
+.react-datepicker .react-datepicker__month-text.react-datepicker__month-text--selected {
+  @apply bg-gray-900 text-gray-50;
+  @apply hover:bg-gray-900/80 hover:text-gray-50;
+}
+
+/* year and month dropdown arrow */
+.react-datepicker .react-datepicker__year-read-view--down-arrow,
+.react-datepicker .react-datepicker__month-read-view--down-arrow {
+  @apply top-[5px] h-[7px] w-[7px] border-r-[1.5px] border-t-[1.5px] border-muted;
+}
+
+/* sub-header containing year and month dropdown */
+.react-datepicker
+  .react-datepicker__current-month--hasYearDropdown.react-datepicker__current-month--hasMonthDropdown
+  ~ .react-datepicker__header__dropdown {
+  @apply my-2 grid grid-cols-2 divide-x divide-muted text-sm;
+}
+
+/* month and year dropdown button in sub-header */
+.react-datepicker .react-datepicker__month-dropdown-container--scroll,
+.react-datepicker .react-datepicker__year-dropdown-container--scroll {
+  @apply inline-flex justify-center;
+}
+
+/* month and year dropdown */
+.react-datepicker .react-datepicker__year-dropdown,
+.react-datepicker .react-datepicker__month-dropdown {
+  @apply top-auto w-2/5 border border-gray-100 bg-gray-50 shadow-md;
+}
+
+/* year dropdown */
+.react-datepicker .react-datepicker__year-dropdown {
+  @apply h-80;
+}
+
+/* month dropdown */
+.react-datepicker .react-datepicker__month-dropdown {
+  @apply py-3;
+}
+
+/* month and year option */
+.react-datepicker .react-datepicker__month-option,
+.react-datepicker .react-datepicker__year-option {
+  @apply my-1 py-1 text-sm text-gray-600;
+  @apply hover:bg-gray-100 hover:text-gray-900;
+}
+
+/* first and last type of month and year option */
+.react-datepicker .react-datepicker__month-option:first-of-type,
+.react-datepicker .react-datepicker__month-option:last-of-type,
+.react-datepicker .react-datepicker__year-option:first-of-type,
+.react-datepicker .react-datepicker__year-option:last-of-type {
+  @apply rounded-none;
+}
+
+/* selected month and year in dropdown */
+.react-datepicker .react-datepicker__month-option--selected_month,
+.react-datepicker .react-datepicker__year-option--selected_year {
+  @apply bg-gray-200 text-gray-900;
+  @apply [&>span]:hidden;
+}
+.react-datepicker .react-datepicker__day:hover,
+.react-datepicker .react-datepicker__month-text:hover,
+.react-datepicker .react-datepicker__quarter-text:hover,
+.react-datepicker .react-datepicker__year-text:hover {
+  @apply bg-gray-200 text-gray-900;
+}
+
+/* disabled item */
+.react-datepicker .react-datepicker__day--disabled {
+  @apply cursor-not-allowed text-muted hover:bg-transparent hover:text-muted dark:hover:text-muted;
+}
+
+.react-datepicker .react-datepicker__year-text--disabled {
+  @apply cursor-not-allowed text-muted hover:bg-transparent dark:hover:text-muted;
+}
+```
+
+<div className="mb-16" />
+
+## Usage
+
+<hr />
+
+<div className="mb-16" />
+
+## Default
+
+The default style of **DatePicker** component.
+
+<Paper className="block">
+  <DatePickerDefault />
+</Paper>
+
+```tsx
+import { ReactDatePicker } from "@components/datepicker";
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+  return (
+    <ReactDatePicker
+      selected={startDate}
+      onChange={(date: Date) => setStartDate(date)}
+      placeholderText="Select Date"
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## MonthPicker
+
+You can use the **ReactDatePicker** component as a **MonthPicker**
+
+<Paper className="block">
+  <MonthPicker />
+</Paper>
+
+```tsx
+import { ReactDatePicker } from "@components/datepicker";
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+  return (
+    <div className="h-72 w-96">
+      <ReactDatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="MMMM yyyy"
+        placeholderText="Select Month"
+        showMonthYearPicker
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## YearPicker
+
+You can use the **ReactDatePicker** component as a **YearPicker**
+
+<Paper className="block">
+  <YearPicker />
+</Paper>
+
+```tsx
+import { ReactDatePicker } from "@components/datepicker";
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+  return (
+    <div className="h-72">
+      <ReactDatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="yyyy"
+        placeholderText="Select Year"
+        showYearPicker
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Month Dropdown
+
+<Paper className="block">
+  <MonthDropdownPicker />
+</Paper>
+
+```tsx
+import { ReactDatePicker } from "@components/datepicker";
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+  return (
+    <div className="h-96">
+      <ReactDatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        placeholderText="Select Month from Dropdown"
+        showMonthDropdown
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Year Dropdown
+
+<Paper className="block">
+  <YearDropdownPicker />
+</Paper>
+
+```tsx
+import { ReactDatePicker } from "@components/datepicker";
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+  return (
+    <div className="h-96">
+      <ReactDatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        placeholderText="Select Year from Dropdown"
+        showYearDropdown
+        scrollableYearDropdown
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Calendar With Time
+
+<Paper className="block">
+  <CalendarWithTime />
+</Paper>
+
+```tsx
+import { ReactDatePicker } from "@components/datepicker";
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+  return (
+    <div className="h-96">
+      <ReactDatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="d MMMM yyyy, h:mm aa"
+        placeholderText="Select Date & Time"
+        showTimeSelect
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Time Only
+
+<Paper className="block">
+  <TimePicker />
+</Paper>
+
+```tsx
+import { ReactDatePicker } from "@components/datepicker";
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+  return (
+    <div className="h-96">
+      <ReactDatePicker
+        selected={startDate}
+        onChange={(date: Date) => setStartDate(date)}
+        dateFormat="h:mm aa"
+        placeholderText="Select Time"
+        showTimeSelect
+        showTimeSelectOnly
+      />
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Clearable Range Datepicker
+
+<Paper className="block">
+  <RangeDatePicker />
+</Paper>
+
+```tsx
+import { ReactDatePicker } from "@components/datepicker";
+
+export default function App() {
+  const [starDate, setStartDate] = React.useState<[Date | null, Date | null]>();
+  return (
+    <div className="h-96">
+      <ReactDatePicker
+        startDate={starDate?.[0]!}
+        endDate={starDate?.[1]!}
+        onChange={(dates) => setStartDate(dates)}
+        monthsShown={2}
+        placeholderText="Select Date in a Range"
+        selectsRange
+        inputProps={{
+          clearable: true,
+          onClear: () => setStartDate([null, null]),
+        }}
+      />
+    </div>
+  );
+}
+```

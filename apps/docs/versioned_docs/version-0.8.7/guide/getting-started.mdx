@@ -1,0 +1,136 @@
+---
+sidebar_position: 1
+---
+
+# Getting Started
+
+RizzUI - A Modern, Minimal, TailwindCSS-based React Open Source UI Library. Intuitively crafted, easy-to-customize components for seamless integration with React application. Responsive, accessible, and consistent across devices and browsers.
+
+## Installation
+
+System Requirements:
+
+- Node.js 18.20.4 or [later](https://nodejs.org/en).
+
+Go to your React / Next.js project directory & install RizzUI by running the following command:
+
+```bash title=Terminal
+npm i rizzui @headlessui/react @floating-ui/react
+```
+
+<div className="-mt-4 mb-8 ">
+  **Note:** Please don't forget to use **@headlessui/react@2.0.3** and
+  **@floating-ui/react@0.26.13** for the latest **rizzui**.
+</div>
+
+Now Install and configure TailwindCSS to have the style.
+
+```bash title=Terminal
+npm i -D tailwindcss postcss autoprefixer @tailwindcss/forms
+```
+
+## Tailwind Configuration
+
+If you don't plan to use dark mode in your application, then the current configuration is good to go. However, if you wish to implement both light and dark modes, please refer to our [dark mode documentation.](/docs/guide/dark-mode)
+
+```js title=tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+const colors = require("tailwindcss/colors");
+
+module.exports = {
+  content: [
+    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}", // ⚠️ Required this line to compile RizzUI style.
+    ...// 💡​ configure your components, and any other source files path that contain Tailwind class names.
+  ],
+  theme: {
+    extend: {
+      colors: {
+        /*
+        * body, modal, drawer background & ring-offset-color
+        */
+        background: colors.white,
+
+        /*
+        * body text color
+        */
+        foreground: colors.gray[600],
+
+        /*
+        * border, default flat bg color for input components, tab & dropdown hover color
+        */
+        muted: colors.gray[200],
+
+        /*
+        * primary colors
+        */
+        primary: {
+          lighter: colors.gray[200],
+          DEFAULT: colors.gray[800],
+          dark: colors.gray[950],
+          foreground: colors.white,
+        },
+
+        /*
+        * secondary colors
+        */
+        secondary: {
+          lighter: colors.indigo[200],
+          DEFAULT: colors.indigo[500],
+          dark: colors.indigo[700],
+          foreground: colors.white,
+        },
+
+        /*
+        * danger colors
+        */
+        red: {
+          lighter: colors.rose[200],
+          DEFAULT: colors.rose[500],
+          dark: colors.rose[700],
+        },
+
+        /*
+        * warning colors
+        */
+        orange: {
+          lighter: colors.amber[200],
+          DEFAULT: colors.amber[500],
+          dark: colors.amber[700],
+        },
+
+        /*
+        * info colors
+        */
+        blue: {
+          lighter: colors.sky[200],
+          DEFAULT: colors.sky[500],
+          dark: colors.sky[700],
+        },
+
+        /*
+        * success colors
+        */
+        green: {
+          lighter: colors.emerald[200],
+          DEFAULT: colors.emerald[500],
+          dark: colors.emerald[700],
+        },
+      },
+      ... // here goes your additional configuration
+    },
+  },
+  plugins: [require("@tailwindcss/forms")], // ⚠️ Required @tailwindcss/forms plugin.
+};
+```
+
+​🎉​ You are all set to use our components in your application.
+
+## Usage
+
+```tsx
+import { Button } from "rizzui";
+
+export default function App() {
+  return <Button>Default</Button>;
+}
+```
