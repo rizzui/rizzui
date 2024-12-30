@@ -1,6 +1,5 @@
 ---
 sidebar_position: 11
-sidebar_class_name: "update-badge"
 ---
 
 import Paper from "@site/src/components/paper";
@@ -17,6 +16,8 @@ import MultiSelectBox, {
 Listboxes are a great foundation for building custom, accessible Multi-Select menus for your app, complete with robust support for keyboard navigation.
 
 ```tsx
+"use client"; 
+
 import { MultiSelect } from "rizzui";
 ```
 
@@ -31,6 +32,8 @@ The default style of **MultiSelect** component.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
 
@@ -65,6 +68,8 @@ You can clear **MultiSelect** values using **clearable** property.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
 
@@ -101,6 +106,8 @@ Here is the custom option **MultiSelect** example.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from 'react'
 import { MultiSelect, cn } from "rizzui";
 
@@ -185,6 +192,8 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from 'react'
 import { MultiSelect, cn } from "rizzui";
 
@@ -287,10 +296,15 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 You can hide **MultiSelect** options using **hideSelectedOptions** property.
 
 <Paper>
-  <MultiSelectBox hideSelectedOptions={true} className="w-full max-w-md" />
+  <MultiSelectBox
+    hideSelectedOptions={true}
+    className="w-full max-w-md"
+  />
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
 
@@ -329,6 +343,8 @@ You can use custom option key of **MultiSelect** options as value property. In t
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
 
@@ -364,6 +380,8 @@ You can search inside **MultiSelect** options.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
 
@@ -401,6 +419,8 @@ In this example, we are going to use **React Hook Form** and **Zod** for validat
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { z } from "zod";
 import { MultiSelect, Button } from "rizzui";
 import { Controller, useForm } from "react-hook-form";
@@ -514,6 +534,7 @@ Here is the API documentation of the **MultiSelect** component.
 |  selectedItemClassName   |                     `string`                      |                                                                                                 Add custom class to the selected item                                                                                                 |     \_\_      |
 | selectedOptionClassName  |                     `string`                      |                                                                                               Add custom class to the selected options                                                                                                |     \_\_      |
 |        searchable        |                     `boolean`                     |                                                                                                  Is select options searchable or not                                                                                                  |   `"false"`   |
+|       stickySearch       |                     `boolean`                     |                                                                                                    Is search input sticky or not.                                                                                                     |   `"false"`   |
 |    searchPlaceholder     |                     `string`                      |                                                                                                   Set search input placeholder text                                                                                                   | `"Search..."` |
 |        searchType        |                  `text` `search`                  |                                                                                                         Set search input type                                                                                                         |   `"text"`    |
 |      searchReadOnly      |                     `boolean`                     |                                                                                                  Set search input is readonly or not                                                                                                  |   `"false"`   |

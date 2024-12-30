@@ -1,4 +1,10 @@
-import React, { cloneElement, RefObject, useRef, useState } from 'react';
+import React, {
+  cloneElement,
+  ReactElement,
+  RefObject,
+  useRef,
+  useState,
+} from 'react';
 import {
   Placement,
   FloatingArrow,
@@ -97,7 +103,7 @@ const tooltipAnimation = {
 
 export type TooltipProps = {
   /** Pass children which will have tooltip */
-  children: JSX.Element & { ref?: RefObject<any> };
+  children: ReactElement & { ref?: RefObject<any> };
   /** Content for tooltip */
   // content: ({ open, setOpen }: Content) => React.ReactNode;
   content: React.ReactNode;
@@ -176,7 +182,10 @@ export function Tooltip({
     <>
       {cloneElement(
         children,
-        getReferenceProps({ ref: refs.setReference, ...children.props })
+        getReferenceProps({
+          ref: refs.setReference,
+          ...(typeof children.props === 'object' ? children.props : {}),
+        })
       )}
 
       {(isMounted || open) && (

@@ -2,6 +2,8 @@
 sidebar_position: 1
 ---
 
+import { InstallationCommand, PostInstallationCommand} from '@site/src/components/code-editors/api-sdk';
+
 # Getting Started
 
 RizzUI - A Modern, Minimal, TailwindCSS-based React Open Source UI Library. Intuitively crafted, easy-to-customize components for seamless integration with React application. Responsive, accessible, and consistent across devices and browsers.
@@ -14,20 +16,16 @@ System Requirements:
 
 Go to your React / Next.js project directory & install RizzUI by running the following command:
 
-```bash title=Terminal
-npm i rizzui @headlessui/react @floating-ui/react
-```
+<InstallationCommand />
 
-<div className="-mt-4 mb-8 ">
-  **Note:** Please don't forget to use **@headlessui/react@2.0.3** and
+<div className="mt-4 mb-8 ">
+  **Note:** **RizzUI** is now support **React19**. Please don't forget to use **@headlessui/react@2.0.3** and
   **@floating-ui/react@0.26.13** for the latest **rizzui**.
 </div>
 
 Now Install and configure TailwindCSS to have the style.
 
-```bash title=Terminal
-npm i -D tailwindcss postcss autoprefixer @tailwindcss/forms
-```
+<PostInstallationCommand />
 
 ## Tailwind Configuration
 

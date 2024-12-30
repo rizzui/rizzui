@@ -46,7 +46,7 @@ export default function TableToolbar<TData extends Record<string, any>>({
           displayValue={(selected: string) => renderOptionDisplayValue(selected)}
           className={"w-32"}
           dropdownClassName="!z-20 h-auto"
-          selectClassName="h-[38px] ring-0"
+          selectClassName="ring-0"
         />
 
         {isFiltered && (
@@ -88,7 +88,7 @@ export default function TableToolbar<TData extends Record<string, any>>({
                         <Checkbox
                           size="sm"
                           key={column.id}
-                          label={<>{column.columnDef.header}</>}
+                          label={column.columnDef.header}
                           checked={column.getIsVisible()}
                           onChange={column.getToggleVisibilityHandler()}
                           iconClassName="size-4 translate-x-0.5"

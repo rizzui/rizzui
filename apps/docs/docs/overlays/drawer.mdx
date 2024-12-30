@@ -16,6 +16,8 @@ import DrawerDefault, {
 Display overlay area at any side of the screen.
 
 ```tsx
+"use client"; 
+
 import { Drawer } from "rizzui";
 ```
 
@@ -30,6 +32,8 @@ The default style of the **Drawer** component.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from "react";
 import { Drawer, Button } from "rizzui";
 
@@ -60,6 +64,8 @@ You can set size of the **Drawer**.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from "react";
 import { Drawer, Button, Text } from "rizzui";
 
@@ -163,6 +169,8 @@ You can set placement of the **Drawer**.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from "react";
 import { Drawer, Button, Text } from "rizzui";
 
@@ -259,6 +267,8 @@ You can set custom size of the **Drawer**.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from "react";
 import { Drawer, Button } from "rizzui";
 
@@ -271,6 +281,7 @@ export default function App() {
         isOpen={drawerState}
         onClose={() => setDrawerState(false)}
         customSize={600}
+        enableResizer={true}
       >
         <div className="py-4 px-5">Custom Size = 600px</div>
       </Drawer>
@@ -290,6 +301,8 @@ You can do custom style to **Drawer**.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from "react";
 import { Drawer, Button } from "rizzui";
 
@@ -322,6 +335,8 @@ You can render any thing you want. Here is an empty shpping cart drawer example.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from "react";
 import { XMarkIcon } from "@heroicons/react/20/solid";
 import { ShoppingBagIcon } from "@heroicons/react/24/outline";

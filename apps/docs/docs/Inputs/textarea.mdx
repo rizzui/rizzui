@@ -11,6 +11,8 @@ import TextareaCharacterCount, { TextareaClear } from "@site/src/components/text
 A basic widget for getting the user text or messages.
 
 ```tsx
+"use client"; 
+
 import { Textarea } from "rizzui";
 ```
 
@@ -25,6 +27,8 @@ The default style of **Textarea** component.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { Textarea } from "rizzui";
 
 export default function App() {
@@ -61,6 +65,8 @@ You can change the style of **Textarea** using [**variant**](#textarea-variants)
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { Textarea } from "rizzui";
 
 export default function App() {
@@ -114,6 +120,8 @@ You can change the style of **Textarea** using [**size**](#textarea-sizes) prope
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { Textarea } from "rizzui";
 
 export default function App() {
@@ -168,12 +176,6 @@ You can change the style of **Textarea** using [**rounded**](#textarea-rounded) 
     className="w-full sm:w-auto"
   />
   <Textarea
-    label="Rounded Extra Large"
-    placeholder="Enter your message"
-    rounded="xl"
-    className="w-full sm:w-auto"
-  />
-  <Textarea
     label="Rounded None"
     placeholder="Enter your message"
     rounded="none"
@@ -182,6 +184,8 @@ You can change the style of **Textarea** using [**rounded**](#textarea-rounded) 
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { Textarea } from "rizzui";
 
 export default function App() {
@@ -201,11 +205,7 @@ export default function App() {
         placeholder="Enter your message"
         rounded="lg"
       />
-      <Textarea
-        label="Rounded Extra Large"
-        placeholder="Enter your message"
-        rounded="xl"
-      />
+
       <Textarea
         label="Rounded None"
         placeholder="Enter your message"
@@ -224,37 +224,38 @@ You can change rows and cols of **Textarea** using **rows** & **cols** property.
 
 <Paper className="block">
   <Textarea
-    rows={4}
+    rows={6}
     cols={50}
     label="Message"
     placeholder="Enter your message"
     textareaClassName="overflow-y-auto w-full md:w-auto"
-  >
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et!
+    defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et!
     Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
     assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
     Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
-    Quibusdam debitis natus optio quasi assumenda provident dolores animi?
-  </Textarea>
+    Quibusdam debitis natus optio quasi assumenda provident dolores animi?"
+  />
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { Textarea } from "rizzui";
 
 export default function App() {
   return (
     <Textarea
-      rows={4}
+      rows={6}
       cols={50}
       label="Message"
       placeholder="Enter your message"
-    >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla
-      et! Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
-      assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
-      Quibusdam debitis natus optio quasi assumenda provident dolores animi?
-    </Textarea>
+      textareaClassName="overflow-y-auto w-full md:w-auto"
+      defaultValue="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate architecto aliquam nulla et!
+    Amet corrupti a consectetur aliquid qui eius soluta! Quibusdam debitis natus optio quasi
+    assumenda provident dolores animi? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Voluptate architecto aliquam nulla et! Amet corrupti a consectetur aliquid qui eius soluta!
+    Quibusdam debitis natus optio quasi assumenda provident dolores animi?"
+    />
   );
 }
 ```
@@ -270,6 +271,8 @@ You can set character limit and show character counter of **Textarea** using **m
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from "react";
 import { Textarea } from "aegon-ui";
 
@@ -303,6 +306,8 @@ You can add a clear button of **Textarea** using **clearable** property.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from "react";
 import { Textarea } from "aegon-ui";
 
@@ -338,6 +343,8 @@ You can change disable state of **Textarea** using **disabled** property.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { Textarea } from "rizzui";
 
 export default function App() {
@@ -366,6 +373,8 @@ You can add helper text to **Textarea** using **helperText** property.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { Textarea } from "rizzui";
 
 export default function App() {
@@ -394,6 +403,8 @@ You can show the validation error message using **error** property.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { Textarea } from "rizzui";
 
 export default function App() {

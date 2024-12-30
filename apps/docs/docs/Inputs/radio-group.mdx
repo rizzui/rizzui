@@ -3,15 +3,15 @@ sidebar_position: 10
 ---
 
 import Paper from "@site/src/components/paper";
-import RadioGroupDefault, {
-  RadioGroupWithCard,
-} from "@site/src/components/radio-group";
+import RadioGroupDefault, { RadioGroupWithCard } from "@site/src/components/radio-group";
 
 # Radio Group
 
 You can make a group of multiple choices **Radio** using **RadioGroup** component.
 
 ```tsx
+"use client"; 
+
 import { RadioGroup } from "rizzui";
 ```
 
@@ -26,6 +26,8 @@ Checkout the **RadioGroup** demo with **Radio** components.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { useState } from "react";
 import { Radio, RadioGroup } from "rizzui";
 
@@ -33,11 +35,28 @@ export default function App() {
   const [value, setValue] = useState("apple");
 
   return (
-    <RadioGroup value={value} setValue={setValue} className="flex gap-4">
-      <Radio label="Apple" value="apple" />
-      <Radio label="Pear" value="pear" />
-      <Radio label="Orange" value="orange" disabled />
-      <Radio label="Blueberry" value="blueberry" />
+    <RadioGroup
+      value={value}
+      setValue={setValue}
+      className="flex gap-4"
+    >
+      <Radio
+        label="Apple"
+        value="apple"
+      />
+      <Radio
+        label="Pear"
+        value="pear"
+      />
+      <Radio
+        label="Orange"
+        value="orange"
+        disabled
+      />
+      <Radio
+        label="Blueberry"
+        value="blueberry"
+      />
     </RadioGroup>
   );
 }
@@ -54,6 +73,8 @@ Checkout the **RadioGroup** demo with **AdvancedRadio** components.
 </Paper>
 
 ```jsx
+"use client"; 
+
 import { useState } from "react";
 import { AdvancedRadio, RadioGroup, Text } from "rizzui";
 

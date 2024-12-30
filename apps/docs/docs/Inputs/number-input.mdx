@@ -15,6 +15,8 @@ import NumberInputDefault, {
 A component for getting the user number input in a formatted way.
 
 ```tsx
+"use client"; 
+
 import { NumberInput } from "rizzui";
 ```
 
@@ -33,15 +35,17 @@ The default style of **NumberInput**.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { NumberInput, Input } from "rizzui";
 
 export default function App() {
   return (
     <NumberInput
-      label="NumberInput"
       formatType="numeric"
       placeholder="Type your number"
       customInput={Input as React.ComponentType<unknown>}
+      {...{ label: "NumberInput" }}
     />
   );
 }
@@ -65,18 +69,20 @@ You can change the style of **NumberInput** with property **prefix** & **suffix*
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { NumberInput, Input } from "rizzui";
 
 export default function App() {
   return (
     <NumberInput
-      label="Your Number"
       formatType="numeric"
       value="20000000"
       suffix=".00"
       prefix="$"
       displayType="input"
       customInput={Input as React.ComponentType<unknown>}
+      {...{ label: "Number Input" }}
     />
   );
 }
@@ -84,7 +90,7 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Comma Seperated
+## With Comma Separated
 
 You can change the style of **NumberInput** with property **thousandSeparator**.
 
@@ -99,17 +105,19 @@ You can change the style of **NumberInput** with property **thousandSeparator**.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { NumberInput, Input } from "rizzui";
 
 export default function App() {
   return (
     <NumberInput
-      label="Your Number"
       formatType="numeric"
       value="20000000"
       displayType="input"
       customInput={Input as React.ComponentType<unknown>}
       thousandSeparator=","
+      {...{ label: "Number Input" }}
     />
   );
 }
@@ -157,46 +165,48 @@ You can change the style of **NumberInput** with property **thousandsGroupStyle*
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { NumberInput, Input } from "rizzui";
 
 export default function App() {
   return (
     <>
       <NumberInput
-        label="Your Number"
         formatType="numeric"
         value="20000000"
         displayType="input"
         thousandSeparator=","
         thousandsGroupStyle="none"
         customInput={Input as React.ComponentType<unknown>}
+        {...{ label: "Number Input" }}
       />
       <NumberInput
-        label="Your Number"
         formatType="numeric"
         value="20000000"
         displayType="input"
         thousandSeparator=","
         thousandsGroupStyle="thousand"
         customInput={Input as React.ComponentType<unknown>}
+        {...{ label: "Number Input" }}
       />
       <NumberInput
-        label="Your Number"
         formatType="numeric"
         value="20000000"
         displayType="input"
         thousandSeparator=","
         thousandsGroupStyle="lakh"
         customInput={Input as React.ComponentType<unknown>}
+        {...{ label: "Number Input" }}
       />
       <NumberInput
-        label="Your Number"
         formatType="numeric"
         value="20000000"
         displayType="input"
         thousandSeparator=","
         thousandsGroupStyle="wan"
         customInput={Input as React.ComponentType<unknown>}
+        {...{ label: "Number Input" }}
       />
     </>
   );
@@ -214,6 +224,8 @@ You can change the style of **NumberInput** with property **clearable** & **mask
 </Paper>
 
 ```tsx
+"use client"; 
+
 import React from "react";
 import { NumberInput, Input, usePatternFormat, NumberInputProps } from "rizzui";
 
@@ -243,12 +255,7 @@ function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
     return isMask ? format(`${month}${year}`) : `${month}/${year}`;
   };
 
-  return (
-    <NumberInput
-      {...props}
-      format={_format}
-    />
-  );
+  return <NumberInput {...props} format={_format} />;
 }
 
 export default function App() {
@@ -297,6 +304,8 @@ You can change the style of **NumberInput** with property **mask**.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { NumberInput, Input } from "rizzui";
 
 export default function App() {
@@ -306,17 +315,17 @@ export default function App() {
         mask="~"
         value="411111"
         formatType="pattern"
-        label="Number Input"
         format="#### #### #### ####"
         customInput={Input as React.ComponentType<unknown>}
+        {...{ label: "Number Input" }}
       />
       <NumberInput
         mask="+"
         value="411111"
         formatType="pattern"
-        label="Number Input"
         format="#### #### #### ####"
         customInput={Input as React.ComponentType<unknown>}
+        {...{ label: "Number Input" }}
       />
     </>
   );
@@ -340,6 +349,8 @@ You can change the style of **NumberInput** with property **format** & **mask**.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { NumberInput, Input } from "rizzui";
 
 export default function App() {
@@ -348,9 +359,9 @@ export default function App() {
       mask="_"
       value="411111"
       formatType="pattern"
-      label="Credit Card Number"
       format="#### #### #### ####"
       customInput={Input as React.ComponentType<unknown>}
+      {...{ label: "Credit Card Number" }}
     />
   );
 }
@@ -367,6 +378,8 @@ You can change the style of **NumberInput** as phone number input.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { NumberInput, Input, usePatternFormat, NumberInputProps } from "rizzui";
 
 export default function App() {
@@ -394,6 +407,8 @@ You can use credit card input of **NumberInput** with gap.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { NumberInput, Input, usePatternFormat, NumberInputProps } from "rizzui";
 
 type CardExpiryType = NumberInputProps & {
@@ -421,12 +436,7 @@ export default function App() {
       }
       return isMask ? format(`${month}${year}`) : `${month}/${year}`;
     };
-    return (
-      <NumberInput
-        {...props}
-        format={_format}
-      />
-    );
+    return <NumberInput {...props} format={_format} />;
   }
 
   return (
@@ -474,6 +484,8 @@ You can use credit card input of **NumberInput** without gap.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { NumberInput, Input, usePatternFormat, NumberInputProps } from "rizzui";
 
 type CardExpiryType = NumberInputProps & {
@@ -500,12 +512,7 @@ function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
     }
     return isMask ? format(`${month}${year}`) : `${month}/${year}`;
   };
-  return (
-    <NumberInput
-      {...props}
-      format={_format}
-    />
-  );
+  return <NumberInput {...props} format={_format} />;
 }
 
 export default function App() {
@@ -587,7 +594,7 @@ Here is the API documentation of the NumberInput component. We used **react-numb
 |   thousandsGroupStyle    | [NumberInputThousandsGroupStyles](#number-input-thousands-group-styles) |                                                                             |  \_\_   |
 |        isAllowed         |               `((values: NumberFormatValues) => boolean)`               |                                                                             |  \_\_   |
 |        renderText        |           [NumberInputRenderText](#number-input-render-text)            |                                                                             |  \_\_   |
-|       getInputRef        |           [NumberInputGetinputref](#number-input-getinputref)           |                                                                             |  \_\_   |
+|       getInputRef        |           [NumberInputGetInputRef](#number-input-getinputref)           |                                                                             |  \_\_   |
 |      allowNegative       |                                `boolean`                                |                                                                             |  \_\_   |
 |    allowLeadingZeros     |                                `boolean`                                |                                                                             |  \_\_   |
 |       customInput        |                        `ComponentType<unknown>`                         |                                                                             |  \_\_   |
@@ -637,8 +644,8 @@ type NumberInputRenderText = (
 
 <div className="mb-10" />
 
-### Number Input Getinputref
+### Number Input GetInputRef
 
 ```tsx
-type NumberInputGetinputref = Ref<any> | ((el: HTMLInputElement) => void);
+type NumberInputGetInputRef = Ref<any> | ((el: HTMLInputElement) => void);
 ```

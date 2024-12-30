@@ -1,5 +1,7 @@
 import React from "react";
-import { Alert, Button } from "rizzui";
+// import { Alert, Button } from "rizzui";
+import { Button } from "rizzui/button";
+import { Alert } from "rizzui/alert";
 
 export default function AlertClearable() {
   const [state, setState] = React.useState(true);
@@ -10,9 +12,9 @@ export default function AlertClearable() {
       </Button>
       {state && (
         <Alert
+          closable
           color="info"
           variant="flat"
-          closable
           onClose={() => setState(false)}
         >
           <p className="font-semibold">Alert with info</p>

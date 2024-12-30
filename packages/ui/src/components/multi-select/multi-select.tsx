@@ -91,12 +91,13 @@ const optionListStyles = {
 };
 
 const searchStyles = {
-  base: 'relative mb-2 block',
+  base: 'relative mb-2 block group [&.sticky]:mb-0',
   inputBase: 'px-10 placeholder:text-muted-foreground',
   prefix:
-    'absolute z-10 start-1 top-5 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
+    'absolute z-10 start-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
   suffix:
-    'absolute z-10 end-1 top-5 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
+    'absolute z-10 end-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
+  stickySearch: 'sticky top-0 z-10 bg-background pt-2 -translate-y-2',
 };
 
 const checkboxStyles = {
@@ -218,6 +219,8 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   selectContainerClassName?: string;
   /** The key to search in the options */
   searchByKey?: string;
+  /** Whether the search input is sticky or not */
+  stickySearch?: boolean;
   /**
    * A function to determine the display value of the selected item.
    * @param selectedItems - An array of selected items.
@@ -257,6 +260,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   helperText,
   size = 'md',
   searchProps,
+  stickySearch,
   displayValue,
   shadow = 'md',
   prefix = null,
@@ -350,7 +354,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
         {...props}
       >
         {({ open }) => (
-          <>
+          <div>
             {label && (
               <Label
                 className={cn(
@@ -411,7 +415,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                     {emptyValue ? (
                       placeholder
                     ) : (
-                      <>
+                      <Fragment>
                         {value?.map((item, index) => {
                           const mainItem = options.find(
                             (op) => op[getOptionValueKey] === item
@@ -443,7 +447,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                             </Fragment>
                           );
                         })}
-                      </>
+                      </Fragment>
                     )}
                   </span>
                 )}
@@ -477,7 +481,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
 
             {open ? (
               <Transition
-                as={Fragment}
+                as="div"
                 leave="transition ease-in duration-100"
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
@@ -503,9 +507,10 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   )}
                 >
                   {searchable && (
-                    <span
+                    <div
                       className={cn(
                         searchStyles.base,
+                        stickySearch && searchStyles.stickySearch,
                         searchContainerClassName
                       )}
                     >
@@ -561,7 +566,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                           {searchSuffix}
                         </span>
                       ) : null}
-                    </span>
+                    </div>
                   )}
 
                   {filteredOptions.map((op, index) => {
@@ -587,11 +592,11 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                       >
                         {({ selected }) => {
                           return (
-                            <>
+                            <Fragment>
                               {getOptionDisplayValue ? (
                                 getOptionDisplayValue(op, selected)
                               ) : (
-                                <>
+                                <Fragment>
                                   <div
                                     className={cn(
                                       'flex items-center gap-2',
@@ -622,9 +627,9 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                                     )}
                                     {op.label}
                                   </div>
-                                </>
+                                </Fragment>
                               )}
-                            </>
+                            </Fragment>
                           );
                         }}
                       </ListboxOption>
@@ -633,7 +638,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                 </ListboxOptions>
               </Transition>
             ) : null}
-          </>
+          </div>
         )}
       </Listbox>
 

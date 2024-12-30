@@ -11,7 +11,7 @@ export function TableDemo({ variant = "modern" }: { variant: TableVariantProps }
           variant === "modern" && "!border-0",
           variant === "minimal" && "!border-0",
           variant === "elegant" && "!border-0",
-          variant === "retro" && "!border-x-0 !border-t-0"
+          variant === "retro" && "!border-0"
         )}
       >
         <Table.Header

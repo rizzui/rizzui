@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   Dialog,
   DialogPanel,
@@ -97,24 +97,15 @@ export function Drawer({
   const TransitionChild: React.ElementType = HeadLessTransitionChild;
   const { handleMouseDown, containerRef, width } = useResizeHandler({
     placement,
-    customSize,
   });
 
-  // checking customSize value
-  // if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
-  //   const checkedCustomSizeValue =
-  //     customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
-  //   if (checkedCustomSizeValue[0] === '') {
-  //     console.warn(
-  //       'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"'
-  //     );
-  //   }
-  // }
+  const newWidth = width !== 0 ? width : customSize;
 
   return (
-    <TransitionComponent appear show={isOpen} as={Fragment}>
+    <TransitionComponent appear show={isOpen} as="div">
       <Dialog
         as="aside"
+        open={isOpen}
         onClose={onClose}
         className={cn(
           makeClassName(`drawer-root`),
@@ -123,7 +114,7 @@ export function Drawer({
         )}
       >
         <TransitionChild
-          as={Fragment}
+          as="div"
           enter="ease-in-out duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
@@ -132,7 +123,6 @@ export function Drawer({
           leaveTo="opacity-0"
         >
           <div
-            onMouseDown={handleMouseDown}
             className={cn(
               makeClassName(`drawer-overlay`),
               drawerClasses.overlay,
@@ -148,7 +138,7 @@ export function Drawer({
           Sr Only
         </button>
         <TransitionChild
-          as={Fragment}
+          as="div"
           enter="transform transition ease-in-out duration-300"
           enterFrom={drawerClasses.placement[placement]}
           enterTo={
@@ -183,8 +173,8 @@ export function Drawer({
             )}
             {...(customSize && {
               style: {
-                height: isPlacementOnYAxis(placement) ? width : 'inherit',
-                width: !isPlacementOnYAxis(placement) ? width : '100%',
+                height: isPlacementOnYAxis(placement) ? newWidth : 'inherit',
+                width: !isPlacementOnYAxis(placement) ? newWidth : '100%',
               },
             })}
           >

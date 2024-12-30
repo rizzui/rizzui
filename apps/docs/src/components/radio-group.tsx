@@ -11,10 +11,23 @@ export default function RadioGroupDefault() {
       setValue={setValue}
       className="flex flex-wrap gap-6"
     >
-      <Radio label="Apple" value="apple" />
-      <Radio label="Pear" value="pear" />
-      <Radio label="Orange" value="orange" disabled />
-      <Radio label="Blueberry" value="blueberry" />
+      <Radio
+        label="Apple"
+        value="apple"
+      />
+      <Radio
+        label="Pear"
+        value="pear"
+      />
+      <Radio
+        label="Orange"
+        value="orange"
+        disabled
+      />
+      <Radio
+        label="Blueberry"
+        value="blueberry"
+      />
     </RadioGroup>
   );
 }
@@ -53,7 +66,6 @@ export function RadioGroupWithCard() {
       <AdvancedRadio
         name="payment"
         value="lead"
-        defaultChecked
         inputClassName="[&:checked~span_.icon]:block"
       >
         <span className="flex justify-between">

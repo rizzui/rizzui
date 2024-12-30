@@ -11,6 +11,8 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 Popover is a simple dialog alert which can have details of the content. It can either have a confirm, cancel button or any action that can be triggered by the user's decision.
 
 ```tsx
+"use client"; 
+
 import { Popover } from "rizzui";
 ```
 
@@ -35,6 +37,8 @@ A simple **Popover** component.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import { Popover, Title, Text, Button } from "rizzui";
 
 export default function App() {
@@ -91,6 +95,8 @@ You can create actionable **Popover** using state.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import React from "react";
 import { Popover, Title, Text, Button } from "rizzui";
 import { TrashIcon } from "@heroicons/react/24/solid";
@@ -128,7 +134,7 @@ export default function App() {
 
 ## Controlled
 
-You can control Popover state with **isOepn** and **setIsOpen** props:
+You can control Popover state with **isOpen** and **setIsOpen** props:
 
 <Paper>
   <Popover>
@@ -145,13 +151,15 @@ You can control Popover state with **isOepn** and **setIsOpen** props:
 </Paper>
 
 ```tsx
+"use client"; 
+
 import React, { useState } from "react";
 import { Popover, Title, Text, Button } from "rizzui";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState();
   return (
-    <Popover isOepn={isOepn} setIsOpen={setIsOpen}>
+    <Popover isOpen={isOpen} setIsOpen={setIsOpen}>
       <Popover.Trigger>
         <Button variant="outline">Open Popover</Button>
       </Popover.Trigger>
@@ -233,6 +241,8 @@ You can render any thing using our **Popover** component.
 </Paper>
 
 ```tsx
+"use client"; 
+
 import React from "react";
 import { Popover, Button, Avatar } from "rizzui";
 
