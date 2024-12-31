@@ -516,7 +516,7 @@ export function Select<OptionType extends SelectOption>({
         </FieldHelperText>
       ) : null}
 
-      {error && emptyValue ? (
+      {error ? (
         <FieldError size={size} error={error} className={errorClassName} />
       ) : null}
     </div>

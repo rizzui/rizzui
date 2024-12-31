@@ -37,6 +37,8 @@ export type ButtonProps = {
   disabled?: boolean;
   /** Add custom classes for extra style */
   className?: string;
+  /** Custom Loader component to show when button is in loading state */
+  loader?: React.ReactNode;
 } & React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.HTMLAttributes<HTMLSpanElement>;
 
@@ -58,6 +60,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       rounded = 'md',
       color = 'primary',
       disabled,
+      loader,
       ...buttonProps
     },
     ref
@@ -92,7 +95,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 'absolute inset-0 flex h-full w-full items-center justify-center'
               )}
             >
-              <Loader size={size} className="scale-95" />
+              {loader ?? <Loader size={size} className="scale-95" />}
             </span>
           </>
         ) : (
