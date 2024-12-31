@@ -5,13 +5,20 @@ import { makeClassName } from '../../lib/make-class-name';
 import { useResizeHandler } from './drawer.lib';
 
 export const drawerClasses = {
+  panel: 'fixed w-full h-full bg-background duration-300 ease-out',
   overlay:
     'fixed inset-0 cursor-pointer bg-black bg-opacity-60 transition-opacity dark:bg-opacity-80',
   placement: {
-    top: '-translate-y-full',
-    right: 'translate-x-full',
-    bottom: 'translate-y-full',
-    left: '-translate-x-full',
+    top: 'data-[closed]:-translate-y-full',
+    right: 'data-[closed]:translate-x-full',
+    bottom: 'data-[closed]:translate-y-full',
+    left: 'data-[closed]:-translate-x-full',
+  },
+  position: {
+    top: 'top-0',
+    right: 'inset-y-0 end-0',
+    bottom: 'bottom-0',
+    left: 'inset-y-0 start-0',
   },
   // -> when placement is set to top | bottom
   sizeOfYAxisDrawer: {
@@ -39,8 +46,6 @@ export const drawerClasses = {
   },
 };
 
-// const CHECK_VALID_CUSTOM_SIZE = /(\d*px)|(\d*%)?/g;
-
 export function isPlacementOnYAxis(
   placement: keyof typeof drawerClasses.placement
 ) {
@@ -60,7 +65,7 @@ export type DrawerProps = {
   size?: DrawerSize;
   /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" */
   customSize?: number;
-  /** Enable resizer for Drawer */
+  /** Enable resizer for Drawer. This will not work if any customSize is not provided */
   enableResizer?: boolean;
   /** Override default CSS style of Drawer's overlay */
   overlayClassName?: string;
@@ -114,27 +119,14 @@ export function Drawer({
           )}
         />
 
-        {/* <TransitionChild
-          enter="transform transition ease-in-out duration-300"
-          enterFrom={drawerClasses.placement[placement]}
-          enterTo={
-            isPlacementOnYAxis(placement) ? 'translate-y-0' : 'translate-x-0'
-          }
-          leave="transform transition ease-in-out duration-300"
-          leaveFrom={
-            isPlacementOnYAxis(placement) ? 'translate-y-0' : 'translate-x-0'
-          }
-          leaveTo={drawerClasses.placement[placement]}
-        > */}
         <DialogPanel
           ref={containerRef}
+          transition
           className={cn(
             makeClassName(`drawer-container`),
-            'fixed h-full w-full break-words bg-background shadow-xl',
-            placement === 'top' && 'top-0',
-            placement === 'right' && 'inset-y-0 right-0',
-            placement === 'bottom' && 'bottom-0',
-            placement === 'left' && 'inset-y-0 left-0',
+            drawerClasses.panel,
+            drawerClasses.position[placement],
+            drawerClasses.placement[placement],
             customSize && [
               isPlacementOnYAxis(placement)
                 ? 'max-h-screen min-h-96'
@@ -166,7 +158,6 @@ export function Drawer({
           )}
           {children}
         </DialogPanel>
-        {/* </TransitionChild> */}
       </Dialog>
     </>
   );
