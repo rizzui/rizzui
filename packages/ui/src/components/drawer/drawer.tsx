@@ -1,22 +1,24 @@
 import React from 'react';
-import {
-  Dialog,
-  DialogPanel,
-  Transition,
-  TransitionChild as HeadLessTransitionChild,
-} from '@headlessui/react';
+import { Dialog, DialogPanel } from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 import { useResizeHandler } from './drawer.lib';
 
 export const drawerClasses = {
+  panel: 'fixed w-full h-full bg-background duration-300 ease-out',
   overlay:
     'fixed inset-0 cursor-pointer bg-black bg-opacity-60 transition-opacity dark:bg-opacity-80',
   placement: {
-    top: '-translate-y-full',
-    right: 'translate-x-full',
-    bottom: 'translate-y-full',
-    left: '-translate-x-full',
+    top: 'data-[closed]:-translate-y-full',
+    right: 'data-[closed]:translate-x-full',
+    bottom: 'data-[closed]:translate-y-full',
+    left: 'data-[closed]:-translate-x-full',
+  },
+  position: {
+    top: 'top-0',
+    right: 'inset-y-0 end-0',
+    bottom: 'bottom-0',
+    left: 'inset-y-0 start-0',
   },
   // -> when placement is set to top | bottom
   sizeOfYAxisDrawer: {
@@ -44,8 +46,6 @@ export const drawerClasses = {
   },
 };
 
-// const CHECK_VALID_CUSTOM_SIZE = /(\d*px)|(\d*%)?/g;
-
 export function isPlacementOnYAxis(
   placement: keyof typeof drawerClasses.placement
 ) {
@@ -65,7 +65,7 @@ export type DrawerProps = {
   size?: DrawerSize;
   /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" */
   customSize?: number;
-  /** Enable resizer for Drawer */
+  /** Enable resizer for Drawer. This will not work if any customSize is not provided */
   enableResizer?: boolean;
   /** Override default CSS style of Drawer's overlay */
   overlayClassName?: string;
@@ -93,8 +93,6 @@ export function Drawer({
   className,
   children,
 }: React.PropsWithChildren<DrawerProps>) {
-  const TransitionComponent: React.ElementType = Transition;
-  const TransitionChild: React.ElementType = HeadLessTransitionChild;
   const { handleMouseDown, containerRef, width } = useResizeHandler({
     placement,
   });
@@ -102,7 +100,7 @@ export function Drawer({
   const newWidth = width !== 0 ? width : customSize;
 
   return (
-    <TransitionComponent appear show={isOpen} as="div">
+    <>
       <Dialog
         as="aside"
         open={isOpen}
@@ -113,86 +111,55 @@ export function Drawer({
           className
         )}
       >
-        <TransitionChild
-          as="div"
-          enter="ease-in-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in-out duration-300"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+        <div
+          className={cn(
+            makeClassName(`drawer-overlay`),
+            drawerClasses.overlay,
+            overlayClassName
+          )}
+        />
+
+        <DialogPanel
+          ref={containerRef}
+          transition
+          className={cn(
+            makeClassName(`drawer-container`),
+            drawerClasses.panel,
+            drawerClasses.position[placement],
+            drawerClasses.placement[placement],
+            customSize && [
+              isPlacementOnYAxis(placement)
+                ? 'max-h-screen min-h-96'
+                : 'min-w-96 max-w-full',
+            ],
+            !customSize && [
+              isPlacementOnYAxis(placement)
+                ? drawerClasses.sizeOfYAxisDrawer[size]
+                : drawerClasses.sizeOfXAxisDrawer[size],
+            ],
+            containerClassName
+          )}
+          {...(customSize && {
+            style: {
+              height: isPlacementOnYAxis(placement) ? newWidth : 'inherit',
+              width: !isPlacementOnYAxis(placement) ? newWidth : '100%',
+            },
+          })}
         >
-          <div
-            className={cn(
-              makeClassName(`drawer-overlay`),
-              drawerClasses.overlay,
-              overlayClassName
-            )}
-          />
-        </TransitionChild>
-        {/*
-          -> Please do not remove this Sr Only button.
-          -> It's required this button to tackle the HeadlessUI's FocusTap Warnings
-        */}
-        <button type="button" className="sr-only !min-w-[320px]">
-          Sr Only
-        </button>
-        <TransitionChild
-          as="div"
-          enter="transform transition ease-in-out duration-300"
-          enterFrom={drawerClasses.placement[placement]}
-          enterTo={
-            isPlacementOnYAxis(placement) ? 'translate-y-0' : 'translate-x-0'
-          }
-          leave="transform transition ease-in-out duration-300"
-          leaveFrom={
-            isPlacementOnYAxis(placement) ? 'translate-y-0' : 'translate-x-0'
-          }
-          leaveTo={drawerClasses.placement[placement]}
-        >
-          <DialogPanel
-            ref={containerRef}
-            className={cn(
-              makeClassName(`drawer-container`),
-              'fixed h-full w-full break-words bg-background shadow-xl',
-              placement === 'top' && 'top-0',
-              placement === 'right' && 'inset-y-0 right-0',
-              placement === 'bottom' && 'bottom-0',
-              placement === 'left' && 'inset-y-0 left-0',
-              customSize && [
-                isPlacementOnYAxis(placement)
-                  ? 'max-h-screen min-h-96'
-                  : 'min-w-96 max-w-full',
-              ],
-              !customSize && [
-                isPlacementOnYAxis(placement)
-                  ? drawerClasses.sizeOfYAxisDrawer[size]
-                  : drawerClasses.sizeOfXAxisDrawer[size],
-              ],
-              containerClassName
-            )}
-            {...(customSize && {
-              style: {
-                height: isPlacementOnYAxis(placement) ? newWidth : 'inherit',
-                width: !isPlacementOnYAxis(placement) ? newWidth : '100%',
-              },
-            })}
-          >
-            {enableResizer && (
-              <div
-                onMouseDown={handleMouseDown}
-                className={cn(
-                  'absolute rounded-md bg-gray-400',
-                  drawerClasses.resizeHandlerPlacement[placement],
-                  resizerClassName
-                )}
-              />
-            )}
-            {children}
-          </DialogPanel>
-        </TransitionChild>
+          {enableResizer && (
+            <div
+              onMouseDown={handleMouseDown}
+              className={cn(
+                'absolute rounded-md bg-gray-400',
+                drawerClasses.resizeHandlerPlacement[placement],
+                resizerClassName
+              )}
+            />
+          )}
+          {children}
+        </DialogPanel>
       </Dialog>
-    </TransitionComponent>
+    </>
   );
 }
 
