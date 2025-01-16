@@ -1,16 +1,14 @@
 import React from 'react';
-import {
-  Dialog,
-  DialogPanel,
-  Transition,
-  TransitionChild as HeadLessTransitionChild,
-} from '@headlessui/react';
+import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
 
 const modalStyles = {
+  root: 'rizzui-modal-root fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden',
+  area: 'rizzui-modal-area flex min-h-screen flex-col items-center justify-center',
   overlay:
-    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80',
+    'rizzui-modal-overlay fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80 z-10',
+  panel:
+    'rizzui-modal-panel m-auto w-full break-words bg-background shadow-xl z-20',
   size: {
     sm: 'max-w-sm',
     md: 'max-w-lg',
@@ -28,9 +26,7 @@ const modalStyles = {
   },
 };
 
-const CHECK_VALID_CUSTOM_SIZE = /(\d*px)|(\d*%)?/g;
-
-export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+export type ModalSize = keyof typeof modalStyles.size;
 
 export type ModalProps = {
   /** Whether the Modal is open or not */
@@ -39,12 +35,10 @@ export type ModalProps = {
   onClose(): void;
   /** Preset size of modal is sm, DEFAULT, lg, xl, full */
   size?: ModalSize;
+  /** Removes padding from scroll area when modal size is full */
+  noGutter?: boolean;
   /** The rounded variants are: */
   rounded?: keyof typeof modalStyles.rounded;
-  /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" */
-  customSize?: string;
-  /** This prop will remove extra padding spacing from screen */
-  noGutter?: boolean;
   /** Override default CSS style of Modal's overlay */
   overlayClassName?: string;
   /** Set custom style classes for the Modal container, where you can set custom Modal size and padding and background color */
@@ -54,103 +48,44 @@ export type ModalProps = {
 };
 
 /**
- * A fully-managed renderless Modal component. When requiring users to interact with the application, but without jumping to a new page and interrupting the user's workflow, you can use Modal to create a new floating layer over the current page to get user feedback or display information.
+ * A fully-managed render-less Modal component. When requiring users to interact with the application, but without jumping to a new page and interrupting the user's workflow, you can use Modal to create a new floating layer over the current page to get user feedback or display information.
  */
 export function Modal({
   isOpen,
   onClose,
+  children,
+  noGutter,
+  className,
   size = 'md',
   rounded = 'md',
-  noGutter,
-  customSize,
   overlayClassName,
   containerClassName,
-  className,
-  children,
 }: React.PropsWithChildren<ModalProps>) {
-  const TransitionComponent: React.ElementType = Transition;
-  const TransitionChild: React.ElementType = HeadLessTransitionChild;
-  // checking customSize value
-  if (customSize?.match(CHECK_VALID_CUSTOM_SIZE)) {
-    const checkedCustomSizeValue =
-      customSize?.match(CHECK_VALID_CUSTOM_SIZE) ?? [];
-    if (checkedCustomSizeValue[0] === '') {
-      console.warn(
-        'customSize prop value is not valid. Please set customSize prop like -> customSize="500px" or customSize="50%"'
-      );
-    }
-  }
   return (
-    <TransitionComponent appear show={isOpen}>
-      <Dialog
-        as="div"
-        onClose={onClose}
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      className={cn(modalStyles.root, className)}
+    >
+      <div
         className={cn(
-          makeClassName(`modal-root`),
-          'fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden',
-          className
+          modalStyles.area,
+          size !== 'full' && [!noGutter && 'p-4 sm:p-5']
         )}
       >
-        {/* -> required min-h-screen div to have the overflow y scrollbar when modal content is extra large */}
-        <div
+        <DialogBackdrop className={cn(modalStyles.overlay, overlayClassName)} />
+        <DialogPanel
           className={cn(
-            'flex min-h-screen flex-col items-center justify-center',
-            size !== 'full' && [!noGutter && 'p-4 sm:p-5']
+            modalStyles.panel,
+            modalStyles.size[size],
+            size !== 'full' && modalStyles.rounded[rounded],
+            containerClassName
           )}
         >
-          <TransitionChild
-            enter="ease-in-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in-out duration-300"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div
-              className={cn(
-                makeClassName(`modal-overlay`),
-                modalStyles.overlay,
-                overlayClassName
-              )}
-            />
-          </TransitionChild>
-          {/*
-            -> Please do not remove this Sr Only button.
-            -> It's required this button to tackle the HeadlessUI's FocusTap Warnings
-          */}
-          <button type="button" className="sr-only">
-            Sr Only
-          </button>
-          <TransitionChild
-            enter="ease-in-out duration-300"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="ease-in-out duration-300"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
-          >
-            <DialogPanel className="pointer-events-none relative w-full transform overflow-hidden transition-all">
-              <div
-                className={cn(
-                  makeClassName(`modal-container`),
-                  'pointer-events-auto m-auto w-full break-words bg-background shadow-xl',
-                  size !== 'full' && modalStyles.rounded[rounded],
-                  !customSize && modalStyles.size[size],
-                  containerClassName
-                )}
-                {...(customSize && {
-                  style: {
-                    maxWidth: customSize || 'inherit',
-                  },
-                })}
-              >
-                {children}
-              </div>
-            </DialogPanel>
-          </TransitionChild>
-        </div>
-      </Dialog>
-    </TransitionComponent>
+          {children}
+        </DialogPanel>
+      </div>
+    </Dialog>
   );
 }
 
