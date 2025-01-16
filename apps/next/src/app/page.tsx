@@ -2,25 +2,20 @@
 
 import { useState } from "react";
 import { Button } from "rizzui/button";
-import { Drawer } from "rizzui/drawer";
+import { Modal } from "rizzui/modal";
 
 export default function Page() {
-  const [drawerState, setDrawerState] = useState(false);
+  const [modalState, setModalState] = useState(false);
   return (
     <div>
-      <Button onClick={() => setDrawerState(true)}>Open Drawer</Button>
-      <Drawer
-        isOpen={drawerState}
-        onClose={() => setDrawerState(false)}
-        // className="z-[9999]"
-        // customSize={384}
-        // placement="left"
-        customSize={384}
-        enableResizer={true}
-        resizerClassName="bg-red-500"
+      <Button onClick={() => setModalState(true)}>Open Modal</Button>
+      <Modal
+        isOpen={modalState}
+        onClose={() => setModalState(false)}
+        // customSize="384px"
       >
-        <div className="py-4 px-5">Default Drawer</div>
-      </Drawer>
+        <div className="py-4 px-5 min-h-[400px]">Default Modal</div>
+      </Modal>
     </div>
   );
 }

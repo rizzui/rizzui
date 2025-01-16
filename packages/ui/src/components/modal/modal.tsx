@@ -81,7 +81,7 @@ export function Modal({
     }
   }
   return (
-    <TransitionComponent appear show={isOpen} as="div">
+    <TransitionComponent appear show={isOpen}>
       <Dialog
         as="div"
         onClose={onClose}
@@ -99,7 +99,6 @@ export function Modal({
           )}
         >
           <TransitionChild
-            as="div"
             enter="ease-in-out duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
@@ -123,7 +122,6 @@ export function Modal({
             Sr Only
           </button>
           <TransitionChild
-            as="div"
             enter="ease-in-out duration-300"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100 scale-100"
