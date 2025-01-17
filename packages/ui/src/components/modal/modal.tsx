@@ -6,9 +6,9 @@ const modalStyles = {
   root: 'rizzui-modal-root fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden',
   area: 'rizzui-modal-area flex min-h-screen flex-col items-center justify-center',
   overlay:
-    'rizzui-modal-overlay fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80 z-10',
+    'rizzui-modal-overlay fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80 z-10 duration-300 ease-in-out data-[closed]:opacity-0',
   panel:
-    'rizzui-modal-panel m-auto w-full break-words bg-background shadow-xl z-20',
+    'rizzui-modal-panel m-auto w-full break-words bg-background shadow-xl z-20 duration-300 ease-in-out data-[closed]:scale-95 data-[closed]:opacity-0',
   size: {
     sm: 'max-w-sm',
     md: 'max-w-lg',
@@ -39,6 +39,8 @@ export type ModalProps = {
   noGutter?: boolean;
   /** The rounded variants are: */
   rounded?: keyof typeof modalStyles.rounded;
+  /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize={500} */
+  customSize?: number;
   /** Override default CSS style of Modal's overlay */
   overlayClassName?: string;
   /** Set custom style classes for the Modal container, where you can set custom Modal size and padding and background color */
@@ -58,34 +60,45 @@ export function Modal({
   className,
   size = 'md',
   rounded = 'md',
+  customSize,
   overlayClassName,
   containerClassName,
 }: React.PropsWithChildren<ModalProps>) {
   return (
-    <Dialog
-      open={isOpen}
-      onClose={onClose}
-      className={cn(modalStyles.root, className)}
-    >
-      <div
-        className={cn(
-          modalStyles.area,
-          size !== 'full' && [!noGutter && 'p-4 sm:p-5']
-        )}
+    <>
+      <Dialog
+        open={isOpen}
+        onClose={onClose}
+        className={cn(modalStyles.root, className)}
       >
-        <DialogBackdrop className={cn(modalStyles.overlay, overlayClassName)} />
-        <DialogPanel
+        <div
           className={cn(
-            modalStyles.panel,
-            modalStyles.size[size],
-            size !== 'full' && modalStyles.rounded[rounded],
-            containerClassName
+            modalStyles.area,
+            size !== 'full' && [!noGutter && 'p-4 sm:p-5']
           )}
         >
-          {children}
-        </DialogPanel>
-      </div>
-    </Dialog>
+          <DialogBackdrop
+            className={cn(modalStyles.overlay, overlayClassName)}
+          />
+          <DialogPanel
+            transition
+            className={cn(
+              modalStyles.panel,
+              size !== 'full' && modalStyles.rounded[rounded],
+              !customSize && customSize !== 0 && modalStyles.size[size],
+              containerClassName
+            )}
+            {...((customSize || customSize === 0) && {
+              style: {
+                maxWidth: `${customSize}px` || 'inherit',
+              },
+            })}
+          >
+            {children}
+          </DialogPanel>
+        </div>
+      </Dialog>
+    </>
   );
 }
 

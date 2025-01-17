@@ -12,7 +12,9 @@ export default function Page() {
       <Modal
         isOpen={modalState}
         onClose={() => setModalState(false)}
-        // customSize="384px"
+        // customSize={500}
+        // rounded="xl"
+        // size="full"
       >
         <div className="py-4 px-5 min-h-[400px]">Default Modal</div>
       </Modal>
