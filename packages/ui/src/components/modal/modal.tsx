@@ -65,40 +65,39 @@ export function Modal({
   containerClassName,
 }: React.PropsWithChildren<ModalProps>) {
   return (
-    <>
-      <Dialog
-        open={isOpen}
-        onClose={onClose}
-        className={cn(modalStyles.root, className)}
+    <Dialog
+      open={isOpen}
+      onClose={onClose}
+      className={cn(modalStyles.root, className)}
+    >
+      <div
+        className={cn(
+          modalStyles.area,
+          size !== 'full' && [!noGutter && 'p-4 sm:p-5']
+        )}
       >
-        <div
+        <DialogBackdrop
+          transition
+          className={cn(modalStyles.overlay, overlayClassName)}
+        />
+        <DialogPanel
+          transition
           className={cn(
-            modalStyles.area,
-            size !== 'full' && [!noGutter && 'p-4 sm:p-5']
+            modalStyles.panel,
+            size !== 'full' && modalStyles.rounded[rounded],
+            !customSize && customSize !== 0 && modalStyles.size[size],
+            containerClassName
           )}
+          {...((customSize || customSize === 0) && {
+            style: {
+              maxWidth: `${customSize}px` || 'inherit',
+            },
+          })}
         >
-          <DialogBackdrop
-            className={cn(modalStyles.overlay, overlayClassName)}
-          />
-          <DialogPanel
-            transition
-            className={cn(
-              modalStyles.panel,
-              size !== 'full' && modalStyles.rounded[rounded],
-              !customSize && customSize !== 0 && modalStyles.size[size],
-              containerClassName
-            )}
-            {...((customSize || customSize === 0) && {
-              style: {
-                maxWidth: `${customSize}px` || 'inherit',
-              },
-            })}
-          >
-            {children}
-          </DialogPanel>
-        </div>
-      </Dialog>
-    </>
+          {children}
+        </DialogPanel>
+      </div>
+    </Dialog>
   );
 }
 
