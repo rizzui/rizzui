@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogPanel } from '@headlessui/react';
+import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 import { useResizeHandler } from './drawer.lib';
@@ -7,7 +7,7 @@ import { useResizeHandler } from './drawer.lib';
 export const drawerClasses = {
   panel: 'fixed w-full h-full bg-background duration-300 ease-out',
   overlay:
-    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 transition-opacity dark:bg-opacity-80',
+    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80 duration-300 ease-in-out data-[closed]:opacity-0',
   placement: {
     top: 'data-[closed]:-translate-y-full',
     right: 'data-[closed]:translate-x-full',
@@ -110,14 +110,14 @@ export function Drawer({
         className
       )}
     >
-      <div
+      <DialogBackdrop
+        transition
         className={cn(
           makeClassName(`drawer-overlay`),
           drawerClasses.overlay,
           overlayClassName
         )}
       />
-
       <DialogPanel
         ref={containerRef}
         transition
@@ -149,6 +149,7 @@ export function Drawer({
           <div
             onMouseDown={handleMouseDown}
             className={cn(
+              makeClassName(`drawer-resizer`),
               'absolute rounded-md bg-gray-400',
               drawerClasses.resizeHandlerPlacement[placement],
               resizerClassName

@@ -1,14 +1,15 @@
 import React from 'react';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { cn } from '../../lib/cn';
+import { makeClassName } from 'src/lib/make-class-name';
 
 const modalStyles = {
-  root: 'rizzui-modal-root fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden',
-  area: 'rizzui-modal-area flex min-h-screen flex-col items-center justify-center',
+  root: 'fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden',
+  area: 'flex min-h-screen flex-col items-center justify-center',
   overlay:
-    'rizzui-modal-overlay fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80 z-10 duration-300 ease-in-out data-[closed]:opacity-0',
+    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80 z-10 duration-300 ease-in-out data-[closed]:opacity-0',
   panel:
-    'rizzui-modal-panel m-auto w-full break-words bg-background shadow-xl z-20 duration-300 ease-in-out data-[closed]:scale-95 data-[closed]:opacity-0',
+    'm-auto w-full break-words bg-background shadow-xl z-20 duration-300 ease-in-out data-[closed]:scale-95 data-[closed]:opacity-0',
   size: {
     sm: 'max-w-sm',
     md: 'max-w-lg',
@@ -68,21 +69,27 @@ export function Modal({
     <Dialog
       open={isOpen}
       onClose={onClose}
-      className={cn(modalStyles.root, className)}
+      className={cn(makeClassName(`modal-root`), modalStyles.root, className)}
     >
       <div
         className={cn(
+          makeClassName(`modal-area`),
           modalStyles.area,
           size !== 'full' && [!noGutter && 'p-4 sm:p-5']
         )}
       >
         <DialogBackdrop
           transition
-          className={cn(modalStyles.overlay, overlayClassName)}
+          className={cn(
+            makeClassName(`modal-overlay`),
+            modalStyles.overlay,
+            overlayClassName
+          )}
         />
         <DialogPanel
           transition
           className={cn(
+            makeClassName(`modal-panel`),
             modalStyles.panel,
             size !== 'full' && modalStyles.rounded[rounded],
             !customSize && customSize !== 0 && modalStyles.size[size],
