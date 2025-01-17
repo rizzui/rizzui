@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogPanel } from '@headlessui/react';
+import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 import { useResizeHandler } from './drawer.lib';
@@ -7,7 +7,7 @@ import { useResizeHandler } from './drawer.lib';
 export const drawerClasses = {
   panel: 'fixed w-full h-full bg-background duration-300 ease-out',
   overlay:
-    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 transition-opacity dark:bg-opacity-80',
+    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80 duration-300 ease-in-out data-[closed]:opacity-0',
   placement: {
     top: 'data-[closed]:-translate-y-full',
     right: 'data-[closed]:translate-x-full',
@@ -100,66 +100,65 @@ export function Drawer({
   const newWidth = width !== 0 ? width : customSize;
 
   return (
-    <>
-      <Dialog
-        as="aside"
-        open={isOpen}
-        onClose={onClose}
+    <Dialog
+      as="aside"
+      open={isOpen}
+      onClose={onClose}
+      className={cn(
+        makeClassName(`drawer-root`),
+        'fixed inset-0 z-[999] overflow-hidden',
+        className
+      )}
+    >
+      <DialogBackdrop
+        transition
         className={cn(
-          makeClassName(`drawer-root`),
-          'fixed inset-0 z-[999] overflow-hidden',
-          className
+          makeClassName(`drawer-overlay`),
+          drawerClasses.overlay,
+          overlayClassName
         )}
+      />
+      <DialogPanel
+        ref={containerRef}
+        transition
+        className={cn(
+          makeClassName(`drawer-container`),
+          drawerClasses.panel,
+          drawerClasses.position[placement],
+          drawerClasses.placement[placement],
+          customSize && [
+            isPlacementOnYAxis(placement)
+              ? 'max-h-screen min-h-96'
+              : 'min-w-96 max-w-full',
+          ],
+          !customSize && [
+            isPlacementOnYAxis(placement)
+              ? drawerClasses.sizeOfYAxisDrawer[size]
+              : drawerClasses.sizeOfXAxisDrawer[size],
+          ],
+          containerClassName
+        )}
+        {...(customSize && {
+          style: {
+            height: isPlacementOnYAxis(placement) ? newWidth : 'inherit',
+            width: !isPlacementOnYAxis(placement) ? newWidth : '100%',
+          },
+        })}
       >
-        <div
-          className={cn(
-            makeClassName(`drawer-overlay`),
-            drawerClasses.overlay,
-            overlayClassName
-          )}
-        />
-
-        <DialogPanel
-          ref={containerRef}
-          transition
-          className={cn(
-            makeClassName(`drawer-container`),
-            drawerClasses.panel,
-            drawerClasses.position[placement],
-            drawerClasses.placement[placement],
-            customSize && [
-              isPlacementOnYAxis(placement)
-                ? 'max-h-screen min-h-96'
-                : 'min-w-96 max-w-full',
-            ],
-            !customSize && [
-              isPlacementOnYAxis(placement)
-                ? drawerClasses.sizeOfYAxisDrawer[size]
-                : drawerClasses.sizeOfXAxisDrawer[size],
-            ],
-            containerClassName
-          )}
-          {...(customSize && {
-            style: {
-              height: isPlacementOnYAxis(placement) ? newWidth : 'inherit',
-              width: !isPlacementOnYAxis(placement) ? newWidth : '100%',
-            },
-          })}
-        >
-          {enableResizer && (
-            <div
-              onMouseDown={handleMouseDown}
-              className={cn(
-                'absolute rounded-md bg-gray-400',
-                drawerClasses.resizeHandlerPlacement[placement],
-                resizerClassName
-              )}
-            />
-          )}
-          {children}
-        </DialogPanel>
-      </Dialog>
-    </>
+        {enableResizer && (
+          <div
+            onMouseDown={handleMouseDown}
+            className={cn(
+              makeClassName(`drawer-resizer`),
+              'absolute rounded-md bg-gray-400',
+              drawerClasses.resizeHandlerPlacement[placement],
+              resizerClassName
+            )}
+          />
+        )}
+        {children}
+      </DialogPanel>
+    </Dialog>
   );
 }
 
