@@ -51,7 +51,7 @@ export default function App() {
 
 <br />
 
-![RizzUI Button View](https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/bugfix/apps/docs/static/img/rizzui-use-example.png)
+![RizzUI Button View](https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/bugfix/apps/docs/static/img/example.png)
 
 <br />
 
