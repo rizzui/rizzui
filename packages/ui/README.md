@@ -2,9 +2,13 @@
 <br />
 
 <div align="center">
-
-<img alt="RizzUI" src="https://rizzui.vercel.app/img/rizz-logo.svg" width="auto" height="72" />
-
+  <a href="https://www.rizzui.com">
+    <picture>
+       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/rizzui/rizzui/49fec65a37391aafc091d74ec14b6b27517fe9a0/apps/docs/static/img/rizzui-logo-dark.svg">
+      <source media="(prefers-color-scheme: light)" srcset="https://www.rizzui.com/img/rizz-logo.svg">
+    <img alt="RizzUI Logo" src="https://www.rizzui.com/img/rizz-logo.svg" height="72"/>
+    </picture>
+  </a>
 </div>
 
 <br />
@@ -29,7 +33,11 @@ A Modern and Minimal React UI Library built with TailwindCSS. Designed to provid
 
 <br />
 
-## Here goes the banner
+<div align="center">
+
+<img alt="Readme Banner" src="https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/bugfix/apps/docs/static/img/rizzui-readme-banner-light.png" width="auto" />
+
+</div>
 
 ## Example
 
@@ -43,13 +51,13 @@ export default function App() {
 
 <br />
 
-![RizzUI Button View](images/banner-github-readme.png)
+![RizzUI Button View](https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/bugfix/apps/docs/static/img/rizzui-use-example.png)
 
 <br />
 
 ## Community and Contribution
 
-We are always looking for new ideas or other ways to improve RizzUI. If you have developed anything cool or found a bug, send us a pull request. Check out our [Contribution Guidelines](https://tremor.so/contributors).
+We are always looking for new ideas or other ways to improve RizzUI. If you have developed anything cool or found a bug, send us a pull request. Check out our [Contribution Guidelines](https://www.rizzui.com).
 
 ## License
 
