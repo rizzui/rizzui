@@ -51,13 +51,13 @@ export default function App() {
 
 <br />
 
-![RizzUI Button View](https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/bugfix/apps/docs/static/img/rizzui-use-example.png)
+![RizzUI Button View](https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/bugfix/apps/docs/static/img/example.png)
 
 <br />
 
 ## Community and Contribution
 
-We are always looking for new ideas or other ways to improve RizzUI. If you have developed anything cool or found a bug, send us a pull request. Check out our [Contribution Guidelines](https://www.rizzui.com).
+We are always looking for new ideas or other ways to improve RizzUI. If you have developed anything cool or found a bug, send us a pull request. Check out our [Contribution Guidelines](https://github.com/rizzui/rizzui/blob/bugfix/CONTRIBUTING.md).
 
 ## License
 

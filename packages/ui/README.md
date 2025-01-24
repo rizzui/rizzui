@@ -57,7 +57,7 @@ export default function App() {
 
 ## Community and Contribution
 
-We are always looking for new ideas or other ways to improve RizzUI. If you have developed anything cool or found a bug, send us a pull request. Check out our [Contribution Guidelines](https://www.rizzui.com).
+We are always looking for new ideas or other ways to improve RizzUI. If you have developed anything cool or found a bug, send us a pull request. Check out our [Contribution Guidelines](https://github.com/rizzui/rizzui/blob/bugfix/CONTRIBUTING.md).
 
 ## License
 
