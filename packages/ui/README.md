@@ -13,11 +13,15 @@
   <a href="https://www.npmjs.com/package/rizzui">
     <img alt="npm" src="https://img.shields.io/npm/dm/rizzui?color=16a679&label=npm&logo=npm" />
   </a>
-  &nbsp;&nbsp;
   <a href="https://www.rizzui.com/docs/guide/getting-started">
     <img alt="Read the documentation" src="https://img.shields.io/badge/Docs-blue?style=flat&logo=readthedocs&labelColor=5c5c5c&color=16a679" height="20" width="auto" />
   </a>
 </div>
+
+<h3 align="center">
+  <a href="https://www.rizzui.com/docs/guide/getting-started">Documentation</a> &bull;
+  <a href="https://www.rizzui.com">Website</a>
+</h3>
 
 <br />
 
@@ -25,13 +29,27 @@ A Modern and Minimal React UI Library built with TailwindCSS. Designed to provid
 
 <br />
 
-## Getting Started
+## Here goes the banner
 
-Visit https://rizzui.com to get started with RizzUI.
+## Example
 
-### Warning
+```jsx
+import { Button } from 'rizzui/button';
 
-We are using rizzui for [Isomorphic](https://themeforest.net/item/isomorphic-react-redux-admin-dashboard/20262330). We will make any necessary adjustments to ensure compatibility with [Isomorphic](https://themeforest.net/item/isomorphic-react-redux-admin-dashboard/20262330) requirements.
+export default function App() {
+  return <Button>Button</Button>;
+}
+```
+
+<br />
+
+![RizzUI Button View](images/banner-github-readme.png)
+
+<br />
+
+## Community and Contribution
+
+We are always looking for new ideas or other ways to improve RizzUI. If you have developed anything cool or found a bug, send us a pull request. Check out our [Contribution Guidelines](https://tremor.so/contributors).
 
 ## License
 

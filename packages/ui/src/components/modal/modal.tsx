@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { cn } from '../../lib/cn';
-import { makeClassName } from 'src/lib/make-class-name';
+import { makeClassName } from '../../lib/make-class-name';
 
 const modalStyles = {
   root: 'fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden',
