@@ -3,7 +3,7 @@ export const buttonVariantStyles = {
     base: 'border border-transparent dark:backdrop-blur',
     color: {
       primary:
-        'bg-primary hover:bg-primary-dark dark:hover:bg-primary/90 focus-visible:ring-muted text-primary-foreground',
+        'bg-primary-dark hover:bg-primary-dark dark:hover:bg-primary/90 focus-visible:ring-muted text-primary-foreground',
       secondary:
         'bg-secondary hover:bg-secondary-dark dark:hover:bg-secondary/80 focus-visible:ring-secondary/30 text-secondary-foreground',
       danger:

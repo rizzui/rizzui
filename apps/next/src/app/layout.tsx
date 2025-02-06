@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Provider } from "./theme";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,8 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html>
-      <body>{children}</body>
+    <html suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }

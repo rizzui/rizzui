@@ -23,14 +23,14 @@
   "devDependencies": {
     "husky": "^9.1.7",
     "prettier": "3.4.2",
-    "tsup": "8.3.5",
-    "turbo": "2.3.3"
+    "tsup": "8.3.6",
+    "turbo": "2.4.0"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.11"
+    "@changesets/cli": "^2.27.12"
   },
   "packageManager": "pnpm@9.1.4"
 }
