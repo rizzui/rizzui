@@ -16,7 +16,7 @@ import MultiSelectBox, {
 Listboxes are a great foundation for building custom, accessible Multi-Select menus for your app, complete with robust support for keyboard navigation.
 
 ```tsx
-"use client"; 
+"use client";
 
 import { MultiSelect } from "rizzui";
 ```
@@ -32,7 +32,7 @@ The default style of **MultiSelect** component.
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
@@ -68,7 +68,7 @@ You can clear **MultiSelect** values using **clearable** property.
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
@@ -106,7 +106,7 @@ Here is the custom option **MultiSelect** example.
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { MultiSelect, cn } from "rizzui";
@@ -192,7 +192,7 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { MultiSelect, cn } from "rizzui";
@@ -296,14 +296,11 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 You can hide **MultiSelect** options using **hideSelectedOptions** property.
 
 <Paper>
-  <MultiSelectBox
-    hideSelectedOptions={true}
-    className="w-full max-w-md"
-  />
+  <MultiSelectBox hideSelectedOptions={true} className="w-full max-w-md" />
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
@@ -343,7 +340,7 @@ You can use custom option key of **MultiSelect** options as value property. In t
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
@@ -380,7 +377,7 @@ You can search inside **MultiSelect** options.
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { MultiSelect } from "rizzui";
@@ -419,7 +416,7 @@ In this example, we are going to use **React Hook Form** and **Zod** for validat
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { z } from "zod";
 import { MultiSelect, Button } from "rizzui";
@@ -517,6 +514,7 @@ Here is the API documentation of the **MultiSelect** component.
 |          suffix          |                    `ReactNode`                    |                                               The suffix is design for adding any icon or text on the Select field's end (it's a right icon for the `ltr` and left icon for the `rtl`)                                                |     \_\_      |
 |        helperText        |                    `ReactNode`                    |                                                                                       Add helper text. It could be string or a React component                                                                                        |     \_\_      |
 |          error           |                     `string`                      |                                                                                                  Show error message using this prop                                                                                                   |     \_\_      |
+|        isRequired        |                     `boolean`                     |                                                                                        Add asterisk to label for showing the field is required                                                                                        |     \_\_      |
 |       displayValue       |                    `function`                     | A function to determine the display value of the selected item. **@param selectedItems** - **@param options** - **@param handleClearItem** - The value of the selected item, **@returns ReactNode** to display for the selected item. |     \_\_      |
 |  getOptionDisplayValue   |                    `function`                     |    Use this function when you want to change the default options look. **@param option** - **@param selected** - The SelectOption for which to get the display value, **@returns ReactNode** to display for the specified option.     |     \_\_      |
 |    getOptionValueKey     |                     `string`                      |                                                                            Can use any property as value inside your options object rather then **value**                                                                             |     \_\_      |

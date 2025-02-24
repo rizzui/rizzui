@@ -15,7 +15,7 @@ import SelectBox, {
 Listboxes are a great foundation for building custom, accessible select menus for your app, complete with robust support for keyboard navigation..
 
 ```tsx
-"use client"; 
+"use client";
 
 import { Select } from "rizzui";
 ```
@@ -31,7 +31,7 @@ The default style of **Select** component.
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { Select } from "rizzui";
@@ -63,14 +63,11 @@ export default function App() {
 You can clear **Select** value using clearable property.
 
 <Paper>
-  <SelectBoxClearable
-    clearable
-    className="w-full max-w-md"
-  />
+  <SelectBoxClearable clearable className="w-full max-w-md" />
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { Select } from "rizzui";
@@ -108,7 +105,7 @@ Here is the custom option **Select** example.
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react'
 import { Select, type SelectOption, Text } from "rizzui";
@@ -178,14 +175,11 @@ function renderOptionDisplayValue(option: SelectOption) {
 You can search inside **Select** options.
 
 <Paper>
-  <SelectBox
-    searchable={true}
-    className="w-full max-w-md"
-  />
+  <SelectBox searchable={true} className="w-full max-w-md" />
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { useState } from 'react';
 import { Select } from "rizzui";
@@ -206,6 +200,7 @@ export default function App() {
       searchable={true}
       options={options}
       onChange={setValue}
+      isRequired
     />
   );
 }
@@ -222,7 +217,7 @@ In this example, we are going to use **React Hook Form** and **Zod** for validat
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { Select, Button } from "rizzui";
 import { z } from "zod";
@@ -245,10 +240,7 @@ export function SelectWithForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="w-full max-w-md"
-    >
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md">
       <Controller
         name="select"
         control={control}
@@ -259,8 +251,11 @@ export function SelectWithForm() {
             options={options}
             onChange={onChange}
             getOptionValue={(option) => option.value}
-            displayValue={(selected) => options?.find((r) => r.value === selected)?.label ?? ""}
+            displayValue={(selected) =>
+              options?.find((r) => r.value === selected)?.label ?? ""
+            }
             error={error?.message}
+            isRequired
             className="w-full max-w-md"
             clearable
             onClear={() => onChange("")}
@@ -268,10 +263,7 @@ export function SelectWithForm() {
         )}
       />
 
-      <Button
-        type="submit"
-        className="mt-4 w-full"
-      >
+      <Button type="submit" className="mt-4 w-full">
         Submit
       </Button>
     </form>
@@ -317,6 +309,7 @@ Here is the API documentation of the **Select** component.
 |          suffix          |               `ReactNode`               |                                            The suffix is design for adding any icon or text on the Select field's end (it's a right icon for the `ltr` and left icon for the `rtl`)                                            |     \_\_      |
 |        helperText        |               `ReactNode`               |                                                                                    Add helper text. It could be string or a React component                                                                                    |     \_\_      |
 |          error           |                `string`                 |                                                                                               Show error message using this prop                                                                                               |     \_\_      |
+|        isRequired        |                `boolean`                |                                                                                    Add asterisk to label for showing the field is required                                                                                     |     \_\_      |
 |       displayValue       |               `function`                |                          A function to determine the display value of the selected item. **@param value** - The value of the selected item, **@returns ReactNode** to display for the selected item.                           |     \_\_      |
 |  getOptionDisplayValue   |               `function`                | Use this function when you want to display something other than the default displayValue. **@param option** - The SelectOption for which to get the display value, **@returns ReactNode** to display for the specified option. |     \_\_      |
 |      getOptionValue      |               `function`                |            Select whether the label or value should be returned in the onChange method. **@param option** - The SelectOption for which to get the value, **@returns** The selected value from the specified option.            |     \_\_      |
