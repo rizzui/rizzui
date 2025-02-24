@@ -35,7 +35,7 @@ A Modern and Minimal React UI Library built with TailwindCSS. Designed to provid
 
 <div align="center">
 
-<img alt="Readme Banner" src="https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/bugfix/apps/docs/static/img/rizzui-readme-banner-light.png" width="auto" />
+<img alt="Readme Banner" style='border-radius: 4px;' src="https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/develop/apps/docs/static/img/banner.png" width="auto" />
 
 </div>
 
