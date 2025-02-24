@@ -89,6 +89,8 @@ export interface FileInputProps
   helperClassName?: string;
   /** Override default CSS style of error message */
   errorClassName?: string;
+  /** Add asterisk to label for showing the field required **/
+  isRequired?: boolean;
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
@@ -113,6 +115,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       helperClassName,
       onFocus,
       onBlur,
+      isRequired,
       ...inputProps
     },
     ref
@@ -151,7 +154,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
             <span
               className={cn(
                 makeClassName(`file-input-label`),
-                'block',
+                'flex items-center gap-1',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
                 disabled && 'text-muted-foreground',
@@ -159,6 +162,13 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
               )}
             >
               {label}
+              {isRequired && (
+                <span
+                  className={cn(makeClassName('label-asterisk'), 'text-red')}
+                >
+                  *
+                </span>
+              )}
             </span>
           ) : null}
 

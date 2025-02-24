@@ -93,6 +93,8 @@ export interface TextareaProps
   errorClassName?: string;
   /** Add custom classes to the root of the component */
   className?: string;
+  /** Add asterisk to label for showing the field required **/
+  isRequired?: boolean;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -123,6 +125,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       renderCharacterCount,
       onMouseEnter,
       onMouseLeave,
+      isRequired,
       ...textareaProps
     },
     ref
@@ -155,7 +158,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             <span
               className={cn(
                 makeClassName(`textarea-label`),
-                'block',
+                'flex items-center gap-1',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
                 disabled && 'text-muted-foreground',
@@ -163,6 +166,13 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               )}
             >
               {label}
+              {isRequired && (
+                <span
+                  className={cn(makeClassName('label-asterisk'), 'text-red')}
+                >
+                  *
+                </span>
+              )}
             </span>
           ) : null}
 

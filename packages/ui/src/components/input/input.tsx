@@ -111,6 +111,8 @@ export interface InputProps
   errorClassName?: string;
   /** Add custom classes to the root of the component */
   className?: string;
+  /** Add asterisk to label for showing the field required **/
+  isRequired?: boolean;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -138,6 +140,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       helperClassName,
       prefixClassName,
       suffixClassName,
+      isRequired,
       onFocus,
       onBlur,
       ...inputProps
@@ -166,7 +169,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             <span
               className={cn(
                 makeClassName(`input-label`),
-                'block',
+                'flex items-center gap-1',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
                 disabled && 'text-muted-foreground',
@@ -174,6 +177,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               )}
             >
               {label}
+              {isRequired && (
+                <span
+                  className={cn(makeClassName('label-asterisk'), 'text-red')}
+                >
+                  *
+                </span>
+              )}
             </span>
           ) : null}
 

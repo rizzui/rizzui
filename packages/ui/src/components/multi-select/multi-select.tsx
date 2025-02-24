@@ -221,6 +221,8 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   searchByKey?: string;
   /** Whether the search input is sticky or not */
   stickySearch?: boolean;
+  /** Add asterisk to label for showing the field required **/
+  isRequired?: boolean;
   /**
    * A function to determine the display value of the selected item.
    * @param selectedItems - An array of selected items.
@@ -300,6 +302,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   searchPlaceHolder = 'Search...',
   suffix = <ChevronDownIcon strokeWidth="2" className="size-4" />,
   searchPrefix = <SearchIcon strokeWidth="2" className="size-4" />,
+  isRequired,
   ...props
 }: MultiSelectProps<OptionType>) {
   const [selectedValue, setSelectedValue] = useInternalState(
@@ -359,7 +362,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               <Label
                 className={cn(
                   makeClassName(`multi-select-label`),
-                  'block',
+                  'flex items-center gap-1',
                   labelStyles.size[size],
                   labelStyles.weight[labelWeight],
                   disabled && 'text-muted-foreground',
@@ -367,6 +370,13 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                 )}
               >
                 {label}
+                {isRequired && (
+                  <span
+                    className={cn(makeClassName('label-asterisk'), 'text-red')}
+                  >
+                    *
+                  </span>
+                )}
               </Label>
             )}
 

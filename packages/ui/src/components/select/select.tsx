@@ -201,6 +201,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   disableDefaultFilter?: boolean;
   /** Whether the search input is sticky or not */
   stickySearch?: boolean;
+  /** Add asterisk to label for showing the field required **/
+  isRequired?: boolean;
   /**
    * A function to determine the display value of the selected item.
    * @param value - The value of the selected item.
@@ -273,6 +275,7 @@ export function Select<OptionType extends SelectOption>({
   searchPrefixClassName,
   searchSuffixClassName,
   searchContainerClassName,
+  isRequired,
   ...props
 }: SelectProps<OptionType>) {
   const emptyValue = !isNumber(value) && isEmpty(value);
@@ -309,7 +312,7 @@ export function Select<OptionType extends SelectOption>({
               <Label
                 className={cn(
                   makeClassName(`select-label`),
-                  'block',
+                  'flex items-center gap-1',
                   labelStyles.size[size],
                   labelStyles.weight[labelWeight],
                   disabled && 'text-muted-foreground',
@@ -317,6 +320,13 @@ export function Select<OptionType extends SelectOption>({
                 )}
               >
                 {label}
+                {isRequired && (
+                  <span
+                    className={cn(makeClassName('label-asterisk'), 'text-red')}
+                  >
+                    *
+                  </span>
+                )}
               </Label>
             )}
 

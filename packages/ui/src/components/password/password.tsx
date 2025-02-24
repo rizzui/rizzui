@@ -103,6 +103,8 @@ export interface PasswordProps
   className?: string;
   /** hide visibility toggle icon */
   hideVisibilityToggleIcon?: boolean;
+  /** Add asterisk to label for showing the field required **/
+  isRequired?: boolean;
 }
 
 export const Password = forwardRef<HTMLInputElement, PasswordProps>(
@@ -133,6 +135,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
       visibilityToggleIconClassName,
       onFocus,
       onBlur,
+      isRequired,
       ...inputProps
     },
     ref
@@ -167,7 +170,7 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
             <span
               className={cn(
                 makeClassName(`password-label`),
-                'block',
+                'flex items-center gap-1',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
                 disabled && 'text-muted-foreground',
@@ -175,6 +178,13 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
               )}
             >
               {label}
+              {isRequired && (
+                <span
+                  className={cn(makeClassName('label-asterisk'), 'text-red')}
+                >
+                  *
+                </span>
+              )}
             </span>
           ) : null}
 
