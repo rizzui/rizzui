@@ -1,12 +1,11 @@
-import { Button } from "rizzui/button";
-import { ThemeSwitcher } from "./theme";
+import { Button } from "@/components/button";
 
 export default function Page() {
   return (
     <div className="p-12 flex justify-between items-center">
-      <Button color="primary">Open Drawer</Button>
-
-      <ThemeSwitcher />
+      <Button variant="outline" className="text-black">
+        Open Drawer
+      </Button>
     </div>
   );
 }
