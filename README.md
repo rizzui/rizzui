@@ -14,19 +14,20 @@
 <br />
 
 <div align="center">
-  <a href="https://www.npmjs.com/package/rizzui" style="text-decoration: none;">
+  <a href="https://www.npmjs.com/package/rizzui">
     <img alt="npm" src="https://img.shields.io/npm/dm/rizzui?color=16a679&label=npm&logo=npm" />
   </a>
-  test
   <a href="https://www.rizzui.com/docs/guide/getting-started">
     <img alt="Read the documentation" src="https://img.shields.io/badge/Docs-blue?style=flat&logo=readthedocs&labelColor=5c5c5c&color=16a679" height="20" width="auto" />
   </a>
 </div>
 
-<h3 align="center">
+<br />
+
+<div align="center">
   <a href="https://www.rizzui.com/docs/guide/getting-started">Documentation</a> &bull;
   <a href="https://www.rizzui.com">Website</a>
-</h3>
+</div>
 
 <br />
 
