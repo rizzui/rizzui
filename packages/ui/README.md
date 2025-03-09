@@ -14,7 +14,7 @@
 <br />
 
 <div align="center">
-  <a href="https://www.npmjs.com/package/rizzui">
+  <a href="https://www.npmjs.com/package/rizzui" style='text-decoration: none;'>
     <img alt="npm" src="https://img.shields.io/npm/dm/rizzui?color=16a679&label=npm&logo=npm" />
   </a>
   <a href="https://www.rizzui.com/docs/guide/getting-started">
@@ -39,10 +39,22 @@ A Modern and Minimal React UI Library built with TailwindCSS. Designed to provid
 
 </div>
 
-## Example
+## Install
+
+```bash
+npm install rizzui
+
+yarn add rizzui
+
+pnpm add rizzui
+```
+
+## Uses
 
 ```jsx
-import { Button } from 'rizzui/button';
+import { Button } from 'rizzui';
+// or
+import { Button } from 'rizzui/button'; // for tree-shaking
 
 export default function App() {
   return <Button>Button</Button>;
