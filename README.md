@@ -14,7 +14,7 @@
 <br />
 
 <div align="center">
-  <a href="https://www.npmjs.com/package/rizzui">
+  <a href="https://www.npmjs.com/package/rizzui" style="text-decoration: none;">
     <img alt="npm" src="https://img.shields.io/npm/dm/rizzui?color=16a679&label=npm&logo=npm" />
   </a>
   <a href="https://www.rizzui.com/docs/guide/getting-started">
