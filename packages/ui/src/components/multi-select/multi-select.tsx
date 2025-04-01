@@ -477,167 +477,167 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   </span>
                 ) : null}
               </ListboxButton>
-            </div>
 
-            {open ? (
-              <Transition
-                as="div"
-                leave="transition ease-in duration-100"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <ListboxOptions
-                  modal={modal}
-                  portal={inPortal}
-                  {...(inPortal && {
-                    anchor: {
-                      to: ourPlacementObject[placement],
-                      gap: gap,
-                    },
-                  })}
-                  className={cn(
-                    makeClassName(`multi-select-options`),
-                    optionListStyles.base,
-                    optionListStyles.shadow[shadow],
-                    optionListStyles.rounded[rounded],
-                    inPortal
-                      ? optionListStyles.inPortal
-                      : optionListStyles.notInPortal,
-                    dropdownClassName
-                  )}
+              {open ? (
+                <Transition
+                  as="div"
+                  leave="transition ease-in duration-100"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
                 >
-                  {searchable && (
-                    <div
-                      className={cn(
-                        searchStyles.base,
-                        stickySearch && searchStyles.stickySearch,
-                        searchContainerClassName
-                      )}
-                    >
-                      {searchPrefix ? (
-                        <span
-                          className={cn(
-                            makeClassName(`multi-select-prefix`),
-                            searchStyles.prefix,
-                            searchPrefix && selectStyles.prefix.size[size],
-                            searchPrefixClassName
-                          )}
-                        >
-                          {searchPrefix}
-                        </span>
-                      ) : null}
-                      <input
-                        type={searchType}
-                        spellCheck={false}
-                        value={searchQuery}
-                        disabled={searchDisabled}
-                        readOnly={searchReadOnly}
-                        placeholder={searchPlaceHolder}
-                        onChange={(e) => {
-                          setSearchQuery(e.target.value);
-                          onSearchChange && onSearchChange(e.target.value);
-                        }}
-                        // prevent headless ui from handling these keys
-                        onKeyDown={(e) =>
-                          preventHeadlessUIKeyboardInterActions(e)
-                        }
+                  <ListboxOptions
+                    modal={modal}
+                    portal={inPortal}
+                    {...(inPortal && {
+                      anchor: {
+                        to: ourPlacementObject[placement],
+                        gap: gap,
+                      },
+                    })}
+                    className={cn(
+                      makeClassName(`multi-select-options`),
+                      optionListStyles.base,
+                      optionListStyles.shadow[shadow],
+                      optionListStyles.rounded[rounded],
+                      inPortal
+                        ? optionListStyles.inPortal
+                        : optionListStyles.notInPortal,
+                      dropdownClassName
+                    )}
+                  >
+                    {searchable && (
+                      <div
                         className={cn(
-                          makeClassName(`multi-select-search`),
-                          selectStyles.base,
-                          selectStyles.size[size],
-                          selectStyles.variant[variant],
-                          selectStyles.rounded[rounded],
-                          searchDisabled && selectStyles.disabled,
-                          searchStyles.inputBase,
-                          searchClassName
+                          searchStyles.base,
+                          stickySearch && searchStyles.stickySearch,
+                          searchContainerClassName
                         )}
-                        {...searchProps}
-                      />
-
-                      {searchSuffix ? (
-                        <span
-                          className={cn(
-                            makeClassName(`multi-select-suffix`),
-                            searchStyles.suffix,
-                            searchSuffix && selectStyles.suffix.size[size],
-                            searchSuffixClassName
-                          )}
-                        >
-                          {searchSuffix}
-                        </span>
-                      ) : null}
-                    </div>
-                  )}
-
-                  {filteredOptions.map((op, index) => {
-                    return (
-                      <ListboxOption
-                        key={index}
-                        value={op[getOptionValueKey]}
-                        {...(op?.disabled && {
-                          disabled: op?.disabled,
-                        })}
-                        className={({ focus, selected }) =>
-                          cn(
-                            makeClassName(`multi-select-option`),
-                            'flex w-full items-center px-3 py-1.5',
-                            focus && 'bg-muted/70',
-                            rounded && optionListStyles.item.rounded[rounded],
-                            size && optionListStyles.item.size[size],
-                            !op?.disabled && 'cursor-pointer',
-                            selected && hideSelectedOptions && '!hidden',
-                            optionClassName
-                          )
-                        }
                       >
-                        {({ selected }) => {
-                          return (
-                            <Fragment>
-                              {getOptionDisplayValue ? (
-                                getOptionDisplayValue(op, selected)
-                              ) : (
-                                <Fragment>
-                                  <div
-                                    className={cn(
-                                      'flex items-center gap-2',
-                                      selected
-                                        ? 'font-medium'
-                                        : 'text-foreground',
-                                      selectedOptionClassName
-                                    )}
-                                  >
-                                    {optionCheckBox && (
-                                      <span className="relative leading-none">
-                                        <input
-                                          type="checkbox"
-                                          readOnly={true}
-                                          checked={selected}
-                                          className={cn(
-                                            makeClassName(`checkbox-input`),
-                                            checkboxStyles.base
-                                          )}
-                                        />
-                                        <CheckmarkIcon
-                                          className={cn(
-                                            makeClassName(`checkbox-icon`),
-                                            checkboxStyles.icon
-                                          )}
-                                        />
-                                      </span>
-                                    )}
-                                    {op.label}
-                                  </div>
-                                </Fragment>
-                              )}
-                            </Fragment>
-                          );
-                        }}
-                      </ListboxOption>
-                    );
-                  })}
-                </ListboxOptions>
-              </Transition>
-            ) : null}
+                        {searchPrefix ? (
+                          <span
+                            className={cn(
+                              makeClassName(`multi-select-prefix`),
+                              searchStyles.prefix,
+                              searchPrefix && selectStyles.prefix.size[size],
+                              searchPrefixClassName
+                            )}
+                          >
+                            {searchPrefix}
+                          </span>
+                        ) : null}
+                        <input
+                          type={searchType}
+                          spellCheck={false}
+                          value={searchQuery}
+                          disabled={searchDisabled}
+                          readOnly={searchReadOnly}
+                          placeholder={searchPlaceHolder}
+                          onChange={(e) => {
+                            setSearchQuery(e.target.value);
+                            onSearchChange && onSearchChange(e.target.value);
+                          }}
+                          // prevent headless ui from handling these keys
+                          onKeyDown={(e) =>
+                            preventHeadlessUIKeyboardInterActions(e)
+                          }
+                          className={cn(
+                            makeClassName(`multi-select-search`),
+                            selectStyles.base,
+                            selectStyles.size[size],
+                            selectStyles.variant[variant],
+                            selectStyles.rounded[rounded],
+                            searchDisabled && selectStyles.disabled,
+                            searchStyles.inputBase,
+                            searchClassName
+                          )}
+                          {...searchProps}
+                        />
+
+                        {searchSuffix ? (
+                          <span
+                            className={cn(
+                              makeClassName(`multi-select-suffix`),
+                              searchStyles.suffix,
+                              searchSuffix && selectStyles.suffix.size[size],
+                              searchSuffixClassName
+                            )}
+                          >
+                            {searchSuffix}
+                          </span>
+                        ) : null}
+                      </div>
+                    )}
+
+                    {filteredOptions.map((op, index) => {
+                      return (
+                        <ListboxOption
+                          key={index}
+                          value={op[getOptionValueKey]}
+                          {...(op?.disabled && {
+                            disabled: op?.disabled,
+                          })}
+                          className={({ focus, selected }) =>
+                            cn(
+                              makeClassName(`multi-select-option`),
+                              'flex w-full items-center px-3 py-1.5',
+                              focus && 'bg-muted/70',
+                              rounded && optionListStyles.item.rounded[rounded],
+                              size && optionListStyles.item.size[size],
+                              !op?.disabled && 'cursor-pointer',
+                              selected && hideSelectedOptions && '!hidden',
+                              optionClassName
+                            )
+                          }
+                        >
+                          {({ selected }) => {
+                            return (
+                              <Fragment>
+                                {getOptionDisplayValue ? (
+                                  getOptionDisplayValue(op, selected)
+                                ) : (
+                                  <Fragment>
+                                    <div
+                                      className={cn(
+                                        'flex items-center gap-2',
+                                        selected
+                                          ? 'font-medium'
+                                          : 'text-foreground',
+                                        selectedOptionClassName
+                                      )}
+                                    >
+                                      {optionCheckBox && (
+                                        <span className="relative leading-none">
+                                          <input
+                                            type="checkbox"
+                                            readOnly={true}
+                                            checked={selected}
+                                            className={cn(
+                                              makeClassName(`checkbox-input`),
+                                              checkboxStyles.base
+                                            )}
+                                          />
+                                          <CheckmarkIcon
+                                            className={cn(
+                                              makeClassName(`checkbox-icon`),
+                                              checkboxStyles.icon
+                                            )}
+                                          />
+                                        </span>
+                                      )}
+                                      {op.label}
+                                    </div>
+                                  </Fragment>
+                                )}
+                              </Fragment>
+                            );
+                          }}
+                        </ListboxOption>
+                      );
+                    })}
+                  </ListboxOptions>
+                </Transition>
+              ) : null}
+            </div>
           </div>
         )}
       </Listbox>
