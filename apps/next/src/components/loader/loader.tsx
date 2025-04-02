@@ -1,6 +1,6 @@
 import React from "react";
-import { cn } from "../lib/cn";
-import { makeClassName } from "../lib/make-class-name";
+import { cn } from "../../lib/cn";
+import { makeClassName } from "../../lib/make-class-name";
 import { BarsSpinner } from "./bars-spinner";
 import { PulseLoader } from "./pulse-loader";
 import { Spinner } from "./spinner";

@@ -6,9 +6,9 @@ import { buttonVariantStyles } from '../../lib/button-variant';
 import { roundedStyles } from '../../lib/rounded';
 
 const buttonStyles = {
-  base: 'inline-flex font-medium items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
+  base: 'font-medium items-center justify-center cursor-pointer active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
   disabled:
-    'dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70',
+    'dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground hover:text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70',
   size: {
     sm: 'px-2.5 py-1 text-xs h-8',
     md: 'px-4 py-2 text-sm h-10',

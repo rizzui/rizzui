@@ -1,39 +1,39 @@
-import React, { forwardRef } from 'react';
-import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
-import { SpinnerIcon } from '../../icons/spinner';
-import { buttonVariantStyles } from '../../lib/button-variant';
+import React, { forwardRef } from "react";
+import { cn } from "../../lib/cn";
+import { makeClassName } from "../../lib/make-class-name";
+import { SpinnerIcon } from "../../icons/spinner";
+import { buttonVariantStyles } from "../../lib/button-variant";
 
 const actionIconStyles = {
-  base: 'inline-flex items-center cursor-pointer justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
+  base: "inline-flex items-center cursor-pointer justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200",
   disabled:
-    'dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground hover:text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70',
+    "dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground hover:text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70",
   size: {
-    sm: 'p-0.5 size-8',
-    md: 'p-1 size-10',
-    lg: 'p-2 size-12',
-    xl: 'p-2 size-14',
+    sm: "p-0.5 size-8",
+    md: "p-1 size-10",
+    lg: "p-2 size-12",
+    xl: "p-2 size-14",
   },
   rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded',
-    lg: 'rounded-md',
-    full: 'rounded-full',
+    none: "rounded-none",
+    sm: "rounded-sm",
+    md: "rounded",
+    lg: "rounded-md",
+    full: "rounded-full",
   },
   spinnerSize: {
-    sm: 'w-3.5',
-    md: 'w-4',
-    lg: 'w-5',
-    xl: 'w-6',
+    sm: "w-3.5",
+    md: "w-4",
+    lg: "w-5",
+    xl: "w-6",
   },
   variant: buttonVariantStyles,
 };
 
 export type ActionIconProps = {
-  as?: 'button' | 'span';
+  as?: "button" | "span";
   /** Set the original html type of button */
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
   /** Use SVG icon as a children */
   children: React.ReactNode;
   /** Set the loading status of button */
@@ -45,7 +45,7 @@ export type ActionIconProps = {
   /** The rounded variants are: */
   rounded?: keyof typeof actionIconStyles.rounded;
   /** Change button color */
-  color?: keyof (typeof actionIconStyles.variant)['solid']['color'];
+  color?: keyof (typeof actionIconStyles.variant)["solid"]["color"];
   /** Add custom actionIconStyles for extra style */
   className?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement> &
@@ -59,15 +59,15 @@ export type ActionIconProps = {
 export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
   (
     {
-      as = 'button',
-      type = 'button',
+      as = "button",
+      type = "button",
       children,
       className,
       isLoading,
-      variant = 'solid',
-      size = 'md',
-      rounded = 'md',
-      color = 'primary',
+      variant = "solid",
+      size = "md",
+      rounded = "md",
+      color = "primary",
       disabled,
       ...actionIconProps
     },
@@ -86,18 +86,18 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
           actionIconStyles.rounded[rounded],
           variantStyle.base,
           variantStyle.color[color],
-          isLoading && 'pointer-events-none relative',
+          isLoading && "pointer-events-none relative",
           disabled && actionIconStyles.disabled,
           className
         )}
-        {...(as && as !== 'span' && { type })}
+        {...(as && as !== "span" && { type })}
         {...actionIconProps}
       >
         {isLoading ? (
           <SpinnerIcon
             className={cn(
               makeClassName(`action-icon-spinner`),
-              'h-auto animate-spin',
+              "h-auto animate-spin",
               actionIconStyles.spinnerSize[size]
             )}
           />
@@ -109,4 +109,4 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
   }
 );
 
-ActionIcon.displayName = 'ActionIcon';
+ActionIcon.displayName = "ActionIcon";
