@@ -376,7 +376,7 @@ export function ModalCustomSize() {
       <Modal
         isOpen={modalState}
         onClose={() => setModalState(false)}
-        customSize="1080px"
+        customSize={1080}
         className="z-[9999]"
       >
         <div className="m-auto px-7 pt-6 pb-8">

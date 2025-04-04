@@ -167,7 +167,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               makeClassName(`checkbox-icon`),
               checkboxStyles.activeIcon,
               checkboxStyles.size[size],
-              size === 'sm' && 'top-0.5',
+              size === 'sm' && 'top-0',
               iconClassName
             )}
           />
