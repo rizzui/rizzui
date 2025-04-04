@@ -2,6 +2,7 @@ import { ActionIcon } from "@/components/action-icon";
 import { Button } from "@/components/button";
 import { Input } from "@/components/input";
 import { Password } from "@/components/password";
+import { Switch } from "@/components/switch";
 import { Textarea } from "@/components/textarea";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 
@@ -25,14 +26,19 @@ export default function Page() {
         placeholder="Enter your password"
         helperText="Hello"
       /> */}
-      <Textarea
+      {/* <Textarea
         label="Textarea"
         placeholder="Write your message..."
-        // error="Error message"
+        error="Error message"
         helperText="Hello"
         clearable
         disabled
-      />
+      /> */}
+      {/* <Switch label="Default" />
+      <Switch label="None" rounded="none" />
+      <Switch label="Small" rounded="sm" />
+      <Switch label="Medium" rounded="md" />
+      <Switch label="Large" rounded="lg" /> */}
     </div>
   );
 }
