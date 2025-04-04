@@ -1,13 +1,27 @@
+"use client";
+
 import { ActionIcon } from "@/components/action-icon";
+import { AdvancedCheckbox } from "@/components/advanced-checkbox";
+import { AdvancedRadio } from "@/components/advanced-radio";
 import { Button } from "@/components/button";
 import { Checkbox } from "@/components/checkbox";
 import { Input } from "@/components/input";
 import { Password } from "@/components/password";
+import { Radio } from "@/components/radio";
+import { Select } from "@/components/select";
 import { Switch } from "@/components/switch";
 import { Textarea } from "@/components/textarea";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
+const options = [
+  { label: "Apple 🍎", value: "apple" },
+  { label: "Banana 🍌", value: "banana" },
+  { label: "Cherry 🍒", value: "cherry" },
+  // ...
+];
 
 export default function Page() {
+  const [value, setValue] = useState(null);
   return (
     <div className=" p-12">
       {/* <Button variant="outline">Hello</Button>
@@ -42,6 +56,60 @@ export default function Page() {
       <Switch label="Large" rounded="lg" /> */}
       {/* <Checkbox className="m-2" label="Outline" variant="outline" disabled /> */}
       {/* <Checkbox className="m-2" label="Flat" variant="flat" disabled /> */}
+      {/* <div className="flex flex-wrap gap-6">
+        <AdvancedCheckbox name="age" value="any" alignment="center">
+          Any
+        </AdvancedCheckbox>
+        <AdvancedCheckbox
+          name="age"
+          value="one"
+          defaultChecked
+          alignment="center"
+        >
+          1
+        </AdvancedCheckbox>
+        <AdvancedCheckbox name="age" value="two" alignment="center">
+          2
+        </AdvancedCheckbox>
+        <AdvancedCheckbox name="age" value="three" disabled alignment="center">
+          3
+        </AdvancedCheckbox>
+        <AdvancedCheckbox name="age" value="four" alignment="center">
+          4
+        </AdvancedCheckbox>
+        <AdvancedCheckbox name="age" value="five+" alignment="center">
+          5+
+        </AdvancedCheckbox>
+      </div> */}
+      {/* <Radio className="m-2" label="Outline" disabled />
+      <Radio className="m-2" label="Flat" variant="flat" disabled /> */}
+      {/* <div className="flex flex-wrap gap-6">
+        <AdvancedRadio name="age" value="any" alignment="center">
+          Any
+        </AdvancedRadio>
+        <AdvancedRadio name="age" value="one" defaultChecked alignment="center">
+          1
+        </AdvancedRadio>
+        <AdvancedRadio name="age" value="two" alignment="center">
+          2
+        </AdvancedRadio>
+        <AdvancedRadio name="age" value="three" disabled alignment="center">
+          3
+        </AdvancedRadio>
+        <AdvancedRadio name="age" value="four" alignment="center">
+          4
+        </AdvancedRadio>
+        <AdvancedRadio name="age" value="five+" alignment="center">
+          5+
+        </AdvancedRadio>
+      </div> */}
+      <Select
+        label="Select"
+        options={options}
+        value={value}
+        onChange={setValue}
+        variant="flat"
+      />
     </div>
   );
 }

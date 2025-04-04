@@ -1,29 +1,29 @@
-import React, { forwardRef } from 'react';
-import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
-import { roundedStyles } from '../../lib/rounded';
+import React, { forwardRef } from "react";
+import { cn } from "../../lib/cn";
+import { makeClassName } from "../../lib/make-class-name";
+import { roundedStyles } from "../../lib/rounded";
 
 const advancedCheckboxStyles = {
-  base: 'border border-muted hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out',
+  base: "border border-muted hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out",
   active:
-    'peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px]',
+    "peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px]",
   disabled:
-    'peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:border-muted peer-disabled:hover:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed peer-disabled:text-muted-foreground',
+    "peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:border-muted peer-disabled:hover:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed peer-disabled:text-muted-foreground",
   alignment: {
-    left: '',
-    center: 'text-center [&>*]:mx-auto',
+    left: "",
+    center: "text-center [&>*]:mx-auto",
   },
   size: {
-    sm: 'px-2 py-1 min-h-[32px] min-w-[70px]',
-    md: 'px-3.5 py-2 min-h-[40px] min-w-[90px]',
-    lg: 'px-4 py-2 min-h-[48px] min-w-[120px]',
-    xl: 'px-5 py-2.5 min-h-[56px] min-w-[150px]',
+    sm: "px-2 py-1 min-h-[32px] min-w-[70px]",
+    md: "px-3.5 py-2 min-h-[40px] min-w-[90px]",
+    lg: "px-4 py-2 min-h-[48px] min-w-[120px]",
+    xl: "px-5 py-2.5 min-h-[56px] min-w-[150px]",
   },
   rounded: roundedStyles,
 };
 
 export interface AdvancedCheckboxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
   /** Pass content as children */
   children: React.ReactNode;
   /** The size of the component. `"sm"` is equivalent to the dense styling. */
@@ -46,9 +46,9 @@ export const AdvancedCheckbox = forwardRef<
 >(
   (
     {
-      rounded = 'md',
-      size = 'md',
-      alignment = 'left',
+      rounded = "md",
+      size = "md",
+      alignment = "left",
       children,
       inputClassName,
       contentClassName,
@@ -60,7 +60,7 @@ export const AdvancedCheckbox = forwardRef<
     <label
       className={cn(
         makeClassName(`advanced-checkbox-root`),
-        'relative block',
+        "relative block",
         className
       )}
     >
@@ -69,14 +69,14 @@ export const AdvancedCheckbox = forwardRef<
         ref={ref}
         className={cn(
           makeClassName(`advanced-checkbox-input`),
-          'peer absolute -z-[1] opacity-0',
+          "peer absolute -z-[1] opacity-0",
           inputClassName
         )}
         {...props}
       />
       <span
         className={cn(
-          'block',
+          "block",
           makeClassName(`advanced-checkbox`),
           advancedCheckboxStyles.base,
           advancedCheckboxStyles.active,
@@ -93,4 +93,4 @@ export const AdvancedCheckbox = forwardRef<
   )
 );
 
-AdvancedCheckbox.displayName = 'AdvancedCheckbox';
+AdvancedCheckbox.displayName = "AdvancedCheckbox";
