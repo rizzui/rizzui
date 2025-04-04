@@ -1,5 +1,6 @@
 import { ActionIcon } from "@/components/action-icon";
 import { Button } from "@/components/button";
+import { Checkbox } from "@/components/checkbox";
 import { Input } from "@/components/input";
 import { Password } from "@/components/password";
 import { Switch } from "@/components/switch";
@@ -33,12 +34,14 @@ export default function Page() {
         helperText="Hello"
         clearable
         disabled
-      /> */}
+        /> */}
+      {/* <Switch label="None" rounded="none" disabled /> */}
       {/* <Switch label="Default" />
-      <Switch label="None" rounded="none" />
       <Switch label="Small" rounded="sm" />
       <Switch label="Medium" rounded="md" />
       <Switch label="Large" rounded="lg" /> */}
+      {/* <Checkbox className="m-2" label="Outline" variant="outline" disabled /> */}
+      {/* <Checkbox className="m-2" label="Flat" variant="flat" disabled /> */}
     </div>
   );
 }
