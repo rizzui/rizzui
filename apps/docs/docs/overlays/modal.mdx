@@ -478,7 +478,7 @@ export default function App() {
       <Modal
         isOpen={modalState}
         onClose={() => setModalState(false)}
-        customSize="1080px"
+        customSize={1080}
       >
         <div className="m-auto px-7 pt-6 pb-8">
           <div className="mb-7 flex items-center justify-between">
@@ -657,7 +657,7 @@ Here is the API documentation of the Modal component.
 |      onClose       |          `() => void`          |                               Called when modal is closed (Escape key and click outside, depending on options)                               |  \_\_   |
 |        size        |   [ModalSizes](#modal-sizes)   |                                                 Preset size of modal is sm, md, lg, xl, full                                                 | `"md"`  |
 |      rounded       | [ModalRounded](#modal-rounded) |                                                          The rounded variants are:                                                           | `"md"`  |
-|     customSize     |            `string`            | Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" |  \_\_   |
+|     customSize     |            `number`            |         Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize=\{500\}             |  \_\_   |
 |      noGutter      |           `boolean`            |                                           This prop will remove extra padding spacing from screen                                            |  \_\_   |
 |  overlayClassName  |            `string`            |                                                Override default CSS style of Modal's overlay                                                 |  \_\_   |
 | containerClassName |            `string`            |            Set custom style classes for the Modal container, where you can set custom Modal size and padding and background color            |  \_\_   |

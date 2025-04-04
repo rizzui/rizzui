@@ -87,7 +87,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: "img/rizz-social-card.jpg",
+    image: "img/rizz-social-card.png",
     fonts: {
       myFont: ["Geist", "sans-serif"],
       myOtherFont: ["-apple-system", "system-ui", "sans-serif"],
