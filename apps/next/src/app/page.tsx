@@ -17,7 +17,23 @@ const options = [
   { label: "Apple 🍎", value: "apple" },
   { label: "Banana 🍌", value: "banana" },
   { label: "Cherry 🍒", value: "cherry" },
-  // ...
+  { label: "Date 🍇", value: "date" },
+  { label: "Elderberry 🍇", value: "elderberry" },
+  { label: "Fig 🍈", value: "fig" },
+  { label: "Grape 🍇", value: "grape" },
+  { label: "Honeydew 🍈", value: "honeydew" },
+  { label: "Kiwi 🥝", value: "kiwi" },
+  { label: "Lemon 🍋", value: "lemon" },
+  { label: "Mango 🥭", value: "mango" },
+  { label: "Nectarine 🍑", value: "nectarine" },
+  { label: "Orange 🍊", value: "orange" },
+  { label: "Papaya 🍈", value: "papaya" },
+  { label: "Quince 🍐", value: "quince" },
+  { label: "Raspberry 🍓", value: "raspberry" },
+  { label: "Strawberry 🍓", value: "strawberry" },
+  { label: "Tangerine 🍊", value: "tangerine" },
+  { label: "Ugli Fruit 🍊", value: "ugli-fruit" },
+  { label: "Watermelon 🍉", value: "watermelon" },
 ];
 
 export default function Page() {
@@ -108,7 +124,6 @@ export default function Page() {
         options={options}
         value={value}
         onChange={setValue}
-        variant="flat"
       />
     </div>
   );
