@@ -28,7 +28,7 @@ const inputStyles = {
 
 // actual input field styles
 const inputFieldStyles = {
-  base: 'w-full border-0 bg-transparent p-0 focus:outline-none focus:ring-0',
+  base: 'w-full border-0 bg-transparent p-0 [font-size:inherit] focus:outline-none focus:ring-0',
   reset:
     '[&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
   disabled: 'cursor-not-allowed placeholder:text-muted-foreground',
@@ -206,7 +206,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 prefix && inputFieldStyles.prefix.size[size],
                 suffix && inputFieldStyles.suffix.size[size]
               )}
-              style={{ fontSize: 'inherit' }}
               {...inputProps}
             />
 

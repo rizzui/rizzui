@@ -1,43 +1,43 @@
-import React, { forwardRef } from 'react';
-import { cn } from '../../lib/cn';
-import { FieldHelperText } from '../field-helper-text';
-import { FieldError } from '../field-error-text';
-import { FieldClearButton } from '../field-clear-button';
-import { makeClassName } from '../../lib/make-class-name';
-import { roundedStyles } from '../../lib/rounded';
-import { labelStyles } from '../../lib/label-size';
+import React, { forwardRef } from "react";
+import { cn } from "../../lib/cn";
+import { FieldHelperText } from "../field-helper-text";
+import { FieldError } from "../field-error-text";
+import { FieldClearButton } from "../field-clear-button";
+import { makeClassName } from "../../lib/make-class-name";
+import { roundedStyles } from "../../lib/rounded";
+import { labelStyles } from "../../lib/label-size";
 
 const textareaStyles = {
-  base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] focus-within:ring-[0.8px] focus-within:ring-primary hover:border-primary focus-within:border-primary',
+  base: "block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] focus-within:ring-[0.8px] focus-within:ring-primary hover:border-primary focus-within:border-primary",
   scrollBar:
-    '[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
+    "[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent",
   disabled:
-    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted placeholder:text-muted-foreground text-muted-foreground',
+    "!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted placeholder:text-muted-foreground text-muted-foreground",
   clearable:
-    '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
-  error: '!border-red hover:!border-red focus:!border-red !ring-red',
+    "[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible",
+  error: "!border-red hover:!border-red focus:!border-red !ring-red",
   size: {
-    sm: 'px-2.5 py-1 text-xs',
-    md: 'px-3 py-2 text-sm',
-    lg: 'px-4 py-2 text-base',
-    xl: 'px-4 py-2.5 text-base',
+    sm: "px-2.5 py-1 text-xs",
+    md: "px-3 py-2 text-sm",
+    lg: "px-4 py-2 text-base",
+    xl: "px-4 py-2.5 text-base",
   },
   rounded: roundedStyles,
   variant: {
-    text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
-    outline: 'bg-transparent ring-muted border border-muted',
+    text: "border-transparent ring-transparent bg-transparent",
+    flat: "border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur",
+    outline: "bg-transparent ring-muted border border-muted",
   },
 };
 
 // clear button spacing based on size
 const clearButtonSpacing = {
-  base: 'absolute',
+  base: "absolute",
   size: {
-    sm: 'end-2.5 top-1',
-    md: 'end-4 top-2',
-    lg: 'end-5 top-2',
-    xl: 'end-6 top-2.5',
+    sm: "end-2.5 top-1",
+    md: "end-4 top-2",
+    lg: "end-5 top-2",
+    xl: "end-6 top-2.5",
   },
 };
 
@@ -97,10 +97,10 @@ export interface TextareaProps
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
-      variant = 'outline',
-      size = 'md',
-      rounded = 'md',
-      labelWeight = 'medium',
+      variant = "outline",
+      size = "md",
+      rounded = "md",
+      labelWeight = "medium",
       cols,
       rows = 5,
       label,
@@ -130,7 +130,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       <div
         className={cn(
           makeClassName(`textarea-root`),
-          'flex flex-col',
+          "flex flex-col",
           className
         )}
       >
@@ -139,10 +139,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             <span
               className={cn(
                 makeClassName(`textarea-label`),
-                'block',
+                "block",
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
-                disabled && 'text-muted-foreground',
+                disabled && "text-muted-foreground",
                 labelClassName
               )}
             >
@@ -159,7 +159,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               maxLength={maxLength}
               {...(cols && { cols })}
               // placeholder is a required prop for the clearable input component even if the user does not set any
-              placeholder={placeholder || 'Screen reader only'}
+              placeholder={placeholder || "Screen reader only"}
               className={cn(
                 makeClassName(`textarea-field`),
                 textareaStyles.base,
@@ -169,9 +169,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 textareaStyles.variant[variant],
                 clearable && textareaStyles.clearable,
                 // it's important we are using placeholder-shown pseudo class to control input clear icon btn
-                !placeholder && 'placeholder-shown:placeholder:opacity-0',
-                !cols && 'w-full',
-                readOnly && 'focus:ring-0',
+                !placeholder && "placeholder-shown:placeholder:opacity-0",
+                !cols && "w-full",
+                readOnly && "focus:ring-0",
                 disabled && textareaStyles.disabled,
                 error && textareaStyles.error,
                 textareaClassName
@@ -184,7 +184,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 size={size}
                 onClick={onClear}
                 className={cn(
-                  'cursor-pointer',
+                  "cursor-pointer",
                   clearButtonSpacing.base,
                   clearButtonSpacing.size[size]
                 )}
@@ -204,7 +204,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             size={size}
             className={cn(
               makeClassName(`textarea-helper-text`),
-              disabled && 'text-muted-foreground',
+              disabled && "text-muted-foreground",
               helperClassName
             )}
           >
@@ -224,4 +224,4 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   }
 );
 
-Textarea.displayName = 'Textarea';
+Textarea.displayName = "Textarea";
