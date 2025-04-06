@@ -320,7 +320,12 @@ export function Select<OptionType extends SelectOption>({
               </Label>
             )}
 
-            <div className={cn('h-full', !inPortal && 'relative')}>
+            <div
+              className={cn(
+                !inPortal && 'relative',
+                !inPortal && label ? 'h-auto' : 'h-full'
+              )}
+            >
               <ListboxButton
                 className={cn(
                   makeClassName(`select-button`),
