@@ -113,7 +113,7 @@ export function Progressbar({
           style={{ width: `${value}%` }}
           {...props}
         >
-          {isInsideBar ? (
+          {isInsideBar && label ? (
             <ProgressbarLabel
               size={size}
               label={label}
@@ -122,7 +122,7 @@ export function Progressbar({
           ) : null}
         </div>
       </div>
-      {!isInsideBar ? (
+      {!isInsideBar && label ? (
         <ProgressbarLabel
           size={size}
           label={label}
