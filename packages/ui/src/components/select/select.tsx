@@ -100,7 +100,8 @@ const searchStyles = {
     'absolute z-10 start-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
   suffix:
     'absolute z-10 end-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
-  stickySearch: 'sticky top-0 z-10 bg-background pt-2 -translate-y-2',
+  stickyContainer: 'sticky top-0 z-10 pt-2 -translate-y-2',
+  stickyContent: 'bg-background rounded-md',
 };
 
 export type SelectOption = {
@@ -413,63 +414,69 @@ export function Select<OptionType extends SelectOption>({
                     {searchable && (
                       <div
                         className={cn(
-                          searchStyles.base,
-                          stickySearch && searchStyles.stickySearch,
+                          stickySearch && searchStyles.stickyContainer,
                           searchContainerClassName
                         )}
                       >
-                        {searchPrefix ? (
-                          <span
-                            className={cn(
-                              makeClassName(`select-prefix`),
-                              searchStyles.prefix,
-                              searchPrefix && selectStyles.prefix.size[size],
-                              searchPrefixClassName
-                            )}
-                          >
-                            {searchPrefix}
-                          </span>
-                        ) : null}
-                        <input
-                          type={searchType}
-                          spellCheck={false}
-                          value={searchQuery}
-                          disabled={searchDisabled}
-                          readOnly={searchReadOnly}
-                          placeholder={searchPlaceHolder}
-                          onChange={(e) => {
-                            setSearchQuery(e.target.value);
-                            onSearchChange && onSearchChange(e.target.value);
-                          }}
-                          // prevent headless ui from handling these keys
-                          onKeyDown={(e) =>
-                            preventHeadlessUIKeyboardInterActions(e)
-                          }
+                        <div
                           className={cn(
-                            makeClassName(`select-search`),
-                            selectStyles.base,
-                            selectStyles.size[size],
-                            selectStyles.variant[variant],
-                            selectStyles.rounded[rounded],
-                            searchDisabled && selectStyles.disabled,
-                            searchStyles.inputBase,
-                            searchClassName
+                            searchStyles.base,
+                            stickySearch && searchStyles.stickyContent
                           )}
-                          {...searchProps}
-                        />
-
-                        {searchSuffix ? (
-                          <span
+                        >
+                          {searchPrefix ? (
+                            <span
+                              className={cn(
+                                makeClassName(`select-prefix`),
+                                searchStyles.prefix,
+                                searchPrefix && selectStyles.prefix.size[size],
+                                searchPrefixClassName
+                              )}
+                            >
+                              {searchPrefix}
+                            </span>
+                          ) : null}
+                          <input
+                            type={searchType}
+                            spellCheck={false}
+                            value={searchQuery}
+                            disabled={searchDisabled}
+                            readOnly={searchReadOnly}
+                            placeholder={searchPlaceHolder}
+                            onChange={(e) => {
+                              setSearchQuery(e.target.value);
+                              onSearchChange && onSearchChange(e.target.value);
+                            }}
+                            // prevent headless ui from handling these keys
+                            onKeyDown={(e) =>
+                              preventHeadlessUIKeyboardInterActions(e)
+                            }
                             className={cn(
-                              makeClassName(`select-suffix`),
-                              searchStyles.suffix,
-                              searchSuffix && selectStyles.suffix.size[size],
-                              searchSuffixClassName
+                              makeClassName(`select-search`),
+                              selectStyles.base,
+                              selectStyles.size[size],
+                              selectStyles.variant[variant],
+                              selectStyles.rounded[rounded],
+                              searchDisabled && selectStyles.disabled,
+                              searchStyles.inputBase,
+                              searchClassName
                             )}
-                          >
-                            {searchSuffix}
-                          </span>
-                        ) : null}
+                            {...searchProps}
+                          />
+
+                          {searchSuffix ? (
+                            <span
+                              className={cn(
+                                makeClassName(`select-suffix`),
+                                searchStyles.suffix,
+                                searchSuffix && selectStyles.suffix.size[size],
+                                searchSuffixClassName
+                              )}
+                            >
+                              {searchSuffix}
+                            </span>
+                          ) : null}
+                        </div>
                       </div>
                     )}
                     {filteredOptions.map((option) => (
