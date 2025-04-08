@@ -1,62 +1,63 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import React, { Fragment, useMemo, useState } from "react";
 import {
   Label,
   Listbox,
+  Transition,
   ListboxButton,
   ListboxOption,
   ListboxOptions,
-} from '@headlessui/react';
-import { cn } from '../../lib/cn';
-import { XIcon } from '../../icons/x-mark';
-import { SearchIcon } from '../../icons/search';
-import { ChevronDownIcon } from '../../icons/chevron-down';
+} from "@headlessui/react";
+import { cn } from "../../lib/cn";
+import { XIcon } from "../../icons/x-mark";
+import { SearchIcon } from "../../icons/search";
+import { ChevronDownIcon } from "../../icons/chevron-down";
 import {
   useInternalState,
   ourPlacementObject,
   preventHeadlessUIKeyboardInterActions,
-} from './multi-select.lib';
-import { FieldError } from '../field-error-text';
-import { roundedStyles } from '../../lib/rounded';
-import { labelStyles } from '../../lib/label-size';
-import { ExtractProps } from '../../lib/extract-props';
-import { FieldHelperText } from '../field-helper-text';
-import { makeClassName } from '../../lib/make-class-name';
-import { FieldClearButton } from '../field-clear-button';
-import { dropdownStyles } from '../../lib/dropdown-list-style';
-import { CheckmarkIcon } from '../../icons/checkmark';
+} from "./multi-select.lib";
+import { FieldError } from "../field-error-text";
+import { roundedStyles } from "../../lib/rounded";
+import { labelStyles } from "../../lib/label-size";
+import { ExtractProps } from "../../lib/extract-props";
+import { FieldHelperText } from "../field-helper-text";
+import { makeClassName } from "../../lib/make-class-name";
+import { FieldClearButton } from "../field-clear-button";
+import { dropdownStyles } from "../../lib/dropdown-list-style";
+import { CheckmarkIcon } from "../../icons/checkmark";
 
 const selectStyles = {
-  base: 'flex group items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
+  base: "flex group items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary",
   disabled:
-    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
-  error: '!border-red hover:!border-red focus:!border-red !ring-red',
+    "!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted",
+  error: "!border-red hover:!border-red focus:!border-red !ring-red",
   size: {
-    sm: 'px-2 py-1 text-xs min-h-8',
-    md: 'px-3 py-2 text-sm min-h-10',
-    lg: 'px-4 py-2 text-base min-h-12',
-    xl: 'px-5 py-2.5 text-base min-h-14',
+    sm: "px-2 py-1 text-xs min-h-8",
+    md: "px-3 py-2 text-sm min-h-10",
+    lg: "px-4 py-2 text-base min-h-12",
+    xl: "px-5 py-2.5 text-base min-h-14",
   },
   rounded: roundedStyles,
   prefix: {
     size: {
-      sm: 'ps-1.5',
-      md: 'ps-2.5',
-      lg: 'ps-3.5',
-      xl: 'ps-4',
+      sm: "ps-1.5",
+      md: "ps-2.5",
+      lg: "ps-3.5",
+      xl: "ps-4",
     },
   },
   suffix: {
     size: {
-      sm: 'pe-1.5',
-      md: 'pe-2.5',
-      lg: 'pe-3.5',
-      xl: 'pe-4',
+      sm: "pe-1.5",
+      md: "pe-2.5",
+      lg: "pe-3.5",
+      xl: "pe-4",
     },
   },
   variant: {
-    text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur',
-    outline: 'border border-muted ring-muted bg-transparent',
+    text: "border-transparent ring-transparent bg-transparent",
+    flat: "border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur",
+    outline: "border border-muted ring-muted bg-transparent",
   },
 };
 
@@ -64,44 +65,44 @@ const optionListStyles = {
   base: `${dropdownStyles.base} overflow-auto w-[var(--button-width)] !outline-none !ring-0 m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg data-[open]:opacity-100 data-[leave]:data-[closed]:opacity-100`,
   shadow: dropdownStyles.shadow,
   rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    pill: 'rounded-xl',
+    none: "rounded-none",
+    sm: "rounded-sm",
+    md: "rounded-md",
+    lg: "rounded-lg",
+    pill: "rounded-xl",
   },
   item: {
     size: {
-      sm: 'text-xs',
-      md: 'text-sm',
-      lg: 'text-base',
-      xl: 'text-base',
+      sm: "text-xs",
+      md: "text-sm",
+      lg: "text-base",
+      xl: "text-base",
     },
     rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-[4px]',
-      lg: 'rounded-md',
-      pill: 'rounded-lg',
+      none: "rounded-none",
+      sm: "rounded-sm",
+      md: "rounded-[4px]",
+      lg: "rounded-md",
+      pill: "rounded-lg",
     },
   },
-  inPortal: '[--anchor-max-height:256px]',
-  notInPortal: 'absolute z-10 h-[256px] start-0 top-full mt-1.5',
+  inPortal: "[--anchor-max-height:256px]",
+  notInPortal: "absolute z-10 h-[256px] start-0 top-full mt-1.5",
 };
 
 const searchStyles = {
-  base: 'relative mb-2 block group [&.sticky]:mb-0',
-  inputBase: 'px-10 placeholder:text-muted-foreground',
+  base: "relative mb-2 block group [&.sticky]:mb-0",
+  inputBase: "px-10 placeholder:text-muted-foreground",
   prefix:
-    'absolute z-10 start-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
+    "absolute z-10 start-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground",
   suffix:
-    'absolute z-10 end-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
-  stickySearch: 'sticky top-0 z-10 bg-background pt-2 -translate-y-2',
+    "absolute z-10 end-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground",
+  stickySearch: "sticky top-0 z-10 bg-background pt-2 -translate-y-2",
 };
 
 const checkboxStyles = {
-  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out size-5 rounded bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
-  icon: 'peer-checked:opacity-100 absolute opacity-0 text-primary-foreground size-4 start-0.5 top-0.5',
+  base: "peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out size-5 rounded bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary",
+  icon: "peer-checked:opacity-100 absolute opacity-0 text-primary-foreground size-4 start-0.5 top-0.5",
 };
 
 export type MultiSelectOption = {
@@ -197,7 +198,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** Whether the search is read only */
   searchReadOnly?: boolean;
   /** The type of the search */
-  searchType?: 'text' | 'search';
+  searchType?: "text" | "search";
   /** The props of the search */
   searchProps?: React.InputHTMLAttributes<HTMLInputElement>;
   /** Whether the select is searchable or not */
@@ -257,16 +258,16 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   className,
   autoFocus,
   helperText,
-  size = 'md',
+  size = "md",
   searchProps,
   stickySearch,
   displayValue,
-  shadow = 'md',
+  shadow = "md",
   prefix = null,
   labelClassName,
   onSearchChange,
   errorClassName,
-  rounded = 'md',
+  rounded = "md",
   inPortal = true,
   selectClassName,
   helperClassName,
@@ -277,26 +278,26 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   defaultValue = [],
   dropdownClassName,
   searchable = false,
-  variant = 'outline',
+  variant = "outline",
   searchSuffix = null,
-  searchType = 'text',
+  searchType = "text",
   selectedItemClassName,
   getOptionDisplayValue,
-  searchByKey = 'label',
+  searchByKey = "label",
   optionCheckBox = true,
   searchPrefixClassName,
   searchSuffixClassName,
-  labelWeight = 'medium',
+  labelWeight = "medium",
   searchDisabled = false,
   searchReadOnly = false,
   selectedOptionClassName,
   searchContainerClassName,
   selectContainerClassName,
-  placeholder = 'Select...',
+  placeholder = "Select...",
   hideSelectedOptions = false,
-  placement = 'bottom-start',
-  getOptionValueKey = 'value',
-  searchPlaceHolder = 'Search...',
+  placement = "bottom-start",
+  getOptionValueKey = "value",
+  searchPlaceHolder = "Search...",
   suffix = <ChevronDownIcon strokeWidth="2" className="size-4" />,
   searchPrefix = <SearchIcon strokeWidth="2" className="size-4" />,
   ...props
@@ -305,7 +306,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
     defaultValue,
     value
   );
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const selectedItems = selectedValue ?? [];
   const emptyValue = selectedItems.length === 0;
 
@@ -321,7 +322,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
 
   const handleClear = () => {
     setSelectedValue([]);
-    setSearchQuery('');
+    setSearchQuery("");
     onClear?.();
   };
 
@@ -335,7 +336,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
     <div
       className={cn(
         makeClassName(`multi-select-root`),
-        'grid w-full grid-cols-1',
+        "grid w-full grid-cols-1",
         className
       )}
     >
@@ -356,10 +357,10 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
           <Label
             className={cn(
               makeClassName(`multi-select-label`),
-              'block',
+              "block",
               labelStyles.size[size],
               labelStyles.weight[labelWeight],
-              disabled && 'text-muted-foreground',
+              disabled && "text-muted-foreground",
               labelClassName
             )}
           >
@@ -367,7 +368,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
           </Label>
         )}
 
-        <div className={cn(!inPortal && 'relative')}>
+        <div className={cn(!inPortal && "relative")}>
           <ListboxButton
             className={cn(
               makeClassName(`multi-select-button`),
@@ -387,7 +388,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               <span
                 className={cn(
                   makeClassName(`multi-select-prefix`),
-                  'block leading-normal whitespace-nowrap',
+                  "block whitespace-nowrap leading-normal",
                   prefixClassName
                 )}
               >
@@ -402,8 +403,8 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               <span
                 className={cn(
                   makeClassName(`multi-select-value`),
-                  'flex w-full flex-wrap items-center gap-2 truncate text-start',
-                  emptyValue && 'text-muted-foreground',
+                  "flex w-full flex-wrap items-center gap-2 truncate text-start",
+                  emptyValue && "text-muted-foreground",
                   prefix && selectStyles.prefix.size[size],
                   suffix && selectStyles.suffix.size[size],
                   selectContainerClassName
@@ -421,13 +422,13 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                         <Fragment key={index}>
                           <span
                             className={cn(
-                              'item-center border-muted flex gap-1 overflow-hidden rounded-md border text-xs',
+                              "item-center flex gap-1 overflow-hidden rounded-md border border-muted text-xs",
                               selectedItemClassName
                             )}
                           >
                             <span className="py-1 ps-2">{mainItem?.label}</span>
                             <span
-                              className="hover:bg-muted px-1 py-1"
+                              className="px-1 py-1 hover:bg-muted"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleClearItem(item);
@@ -463,7 +464,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               <span
                 className={cn(
                   makeClassName(`multi-select-suffix`),
-                  'leading-normal whitespace-nowrap transition-transform duration-200 group-data-[open]:rotate-180',
+                  "whitespace-nowrap leading-normal transition-transform duration-200 group-data-[open]:rotate-180",
                   suffixClassName
                 )}
               >
@@ -564,12 +565,12 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   className={({ focus, selected }) =>
                     cn(
                       makeClassName(`multi-select-option`),
-                      'flex w-full items-center px-3 py-1.5',
-                      focus && 'bg-muted/70',
+                      "flex w-full items-center px-3 py-1.5",
+                      focus && "bg-muted/70",
                       rounded && optionListStyles.item.rounded[rounded],
                       size && optionListStyles.item.size[size],
-                      !op?.disabled && 'cursor-pointer',
-                      selected && hideSelectedOptions && '!hidden',
+                      !op?.disabled && "cursor-pointer",
+                      selected && hideSelectedOptions && "!hidden",
                       optionClassName
                     )
                   }
@@ -583,8 +584,8 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                           <Fragment>
                             <div
                               className={cn(
-                                'flex items-center gap-2',
-                                selected ? 'font-medium' : 'text-foreground',
+                                "flex items-center gap-2",
+                                selected ? "font-medium" : "text-foreground",
                                 selectedOptionClassName
                               )}
                             >

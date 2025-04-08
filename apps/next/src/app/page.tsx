@@ -6,6 +6,7 @@ import { AdvancedRadio } from "@/components/advanced-radio";
 import { Button } from "@/components/button";
 import { Checkbox } from "@/components/checkbox";
 import { Input } from "@/components/input";
+import { MultiSelect } from "@/components/multi-select";
 import { Password } from "@/components/password";
 import { Radio } from "@/components/radio";
 import { Select } from "@/components/select";
@@ -37,7 +38,7 @@ const options = [
 ];
 
 export default function Page() {
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState<string[]>([]);
   return (
     <div className=" p-12">
       {/* <Button variant="outline">Hello</Button>
@@ -119,11 +120,20 @@ export default function Page() {
           5+
         </AdvancedRadio>
       </div> */}
-      <Select
+      {/* <Select
         label="Select"
         options={options}
         value={value}
         onChange={setValue}
+        inPortal={false}
+      /> */}
+      <MultiSelect
+        value={value}
+        options={options}
+        label="Multi Select"
+        onChange={setValue}
+        error="Error message"
+        helperText="Helper text"
       />
     </div>
   );
