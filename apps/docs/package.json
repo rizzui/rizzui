@@ -47,6 +47,7 @@
     "react-hook-form": "7.55.0",
     "react-hot-toast": "2.5.2",
     "react-live": "4.1.8",
+    "react-number-format": "5.4.3",
     "react-phone-input-2": "2.15.1",
     "rizzui": "workspace:*",
     "tailwindcss": "4.1.1",

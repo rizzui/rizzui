@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 import {
   NumericFormat,
   PatternFormat,
   NumberFormatBase,
-} from 'react-number-format';
+} from "react-number-format";
 
-import { ExtractProps } from '../../lib/extract-props';
+export type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T;
 
 export type NumberInputProps = (
   | ExtractProps<typeof NumericFormat>
@@ -13,7 +13,7 @@ export type NumberInputProps = (
   | ExtractProps<typeof NumberFormatBase>
 ) & {
   /** These are the format types of the component */
-  formatType: 'numeric' | 'pattern' | 'custom';
+  formatType: "numeric" | "pattern" | "custom";
 };
 
 /**
@@ -21,15 +21,15 @@ export type NumberInputProps = (
  * See their [official documentation](https://s-yadav.github.io/react-number-format/docs/intro) for more info.
  */
 export const NumberInput = ({ formatType, ...props }: NumberInputProps) => {
-  if (formatType === 'custom') {
+  if (formatType === "custom") {
     return (
       <NumberFormatBase {...(props as ExtractProps<typeof NumberFormatBase>)} />
     );
   }
-  if (formatType === 'numeric') {
+  if (formatType === "numeric") {
     return <NumericFormat {...(props as ExtractProps<typeof NumericFormat>)} />;
   }
   return <PatternFormat {...(props as ExtractProps<typeof PatternFormat>)} />;
 };
 
-NumberInput.displayName = 'NumberInput';
+NumberInput.displayName = "NumberInput";

@@ -45,8 +45,6 @@ export * from './components/loader';
 
 export * from './components/modal';
 
-export * from './components/number-input';
-
 export * from './components/password';
 
 export * from './components/pin-code';
