@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/checkbox";
 import { Input } from "@/components/input";
 import { MultiSelect } from "@/components/multi-select";
 import { Password } from "@/components/password";
+import { PinCode } from "@/components/pin-code";
 import { Radio } from "@/components/radio";
 import { Select } from "@/components/select";
 import { Switch } from "@/components/switch";
@@ -38,7 +39,7 @@ const options = [
 ];
 
 export default function Page() {
-  const [value, setValue] = useState<string[]>([]);
+  // const [value, setValue] = useState<string[]>([]);
   return (
     <div className=" p-12">
       {/* <Button variant="outline">Hello</Button>
@@ -127,14 +128,16 @@ export default function Page() {
         onChange={setValue}
         inPortal={false}
       /> */}
-      <MultiSelect
+      {/* <MultiSelect
         value={value}
         options={options}
         label="Multi Select"
         onChange={setValue}
         error="Error message"
         helperText="Helper text"
-      />
+      /> */}
+
+      {/* <PinCode center={false} error="This field is required" /> */}
     </div>
   );
 }
