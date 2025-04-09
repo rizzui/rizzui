@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import { ActionIcon } from "@/components/action-icon";
 import { AdvancedCheckbox } from "@/components/advanced-checkbox";
@@ -13,6 +13,7 @@ import { Radio } from "@/components/radio";
 import { Select } from "@/components/select";
 import { Switch } from "@/components/switch";
 import { Textarea } from "@/components/textarea";
+import { FileInput } from "@/components/upload";
 import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 const options = [
@@ -138,6 +139,12 @@ export default function Page() {
       /> */}
 
       {/* <PinCode center={false} error="This field is required" /> */}
+      {/* <FileInput
+        label="Outline Variant"
+        variant="outline"
+        error="Error message"
+        helperText="Helper text"
+      /> */}
     </div>
   );
 }
