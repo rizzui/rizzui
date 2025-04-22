@@ -1,24 +1,24 @@
-import React from 'react';
-import { usePopover } from './popover-context';
-import { FloatingArrow, FloatingPortal } from '@floating-ui/react';
-import { makeClassName } from '../../lib/make-class-name';
-import { roundedStyles } from '../../lib/rounded';
-import { cn } from '../../lib/cn';
+import React from "react";
+import { usePopover } from "./popover-context";
+import { FloatingArrow, FloatingPortal } from "@floating-ui/react";
+import { makeClassName } from "../../lib/make-class-name";
+import { roundedStyles } from "../../lib/rounded";
+import { cn } from "../../lib/cn";
 
 const popoverStyles = {
-  base: 'z-[999] min-w-max bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border border-muted',
-  arrow: 'fill-background dark:fill-muted/80 [&>path]:stroke-muted',
+  base: "z-[999] min-w-max bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border border-muted",
+  arrow: "fill-background dark:fill-muted/80 [&>path]:stroke-muted",
   shadow: {
-    sm: 'drop-shadow-md',
-    md: 'drop-shadow-lg',
-    lg: 'drop-shadow-xl',
-    xl: 'drop-shadow-2xl',
+    sm: "drop-shadow-md",
+    md: "drop-shadow-lg",
+    lg: "drop-shadow-xl",
+    xl: "drop-shadow-2xl",
   },
   size: {
-    sm: 'p-2.5',
-    md: 'p-4',
-    lg: 'p-5',
-    xl: 'p-6',
+    sm: "p-2.5",
+    md: "p-4",
+    lg: "p-5",
+    xl: "p-6",
   },
   rounded: roundedStyles,
 };
@@ -61,7 +61,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
     arrowClassName,
     overlayClassName,
   } = usePopover();
-  const isChildrenFunction = typeof children === 'function';
+  const isChildrenFunction = typeof children === "function";
 
   return (
     <>
@@ -71,8 +71,8 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
             <div
               className={cn(
                 makeClassName(`popover-overlay`),
-                'fixed inset-0 z-[998] cursor-pointer bg-black/60 transition-opacity duration-200',
-                open ? '' : 'opacity-0',
+                "fixed inset-0 z-[998] cursor-pointer bg-black/60 transition-opacity duration-200",
+                open ? "" : "opacity-0",
                 overlayClassName
               )}
             >
@@ -113,7 +113,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
                   popoverStyles.arrow,
                   arrowClassName
                 )}
-                style={{ strokeDasharray: '0,14, 5' }}
+                style={{ strokeDasharray: "0,14, 5" }}
               />
             ) : null}
           </div>
@@ -123,4 +123,4 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
   );
 }
 
-PopoverContent.displayName = 'PopoverContent';
+PopoverContent.displayName = "PopoverContent";

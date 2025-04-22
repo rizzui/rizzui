@@ -1,9 +1,16 @@
-"use client";
+// "use client";
 
-import { Button } from "@/components/button";
-import { Dropdown } from "@/components/dropdown";
-import { ChevronDownIcon } from "@/icons/chevron-down";
+import { Badge } from "@/components/badge";
+
+import { Blockquote } from "@/components/typography";
 
 export default function Page() {
-  return <div className="p-40"></div>;
+  return (
+    <div className="p-20">
+      <Blockquote>
+        Before going to sleep every night, forgive everyone and sleep with a
+        clean heart.
+      </Blockquote>
+    </div>
+  );
 }

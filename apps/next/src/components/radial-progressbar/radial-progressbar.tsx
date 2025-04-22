@@ -1,23 +1,23 @@
-import React from 'react';
-import { cn } from '../../lib/cn';
+import React from "react";
+import { cn } from "../../lib/cn";
 
 const classes = {
-  base: 'transform',
+  base: "transform",
   startAngle: {
-    0: 'rotate-0',
-    45: '-rotate-45',
-    90: '-rotate-90',
-    180: '-rotate-180',
-    270: '-rotate-[270deg]',
-    360: '-rotate-[360deg]',
+    0: "rotate-0",
+    45: "-rotate-45",
+    90: "-rotate-90",
+    180: "-rotate-180",
+    270: "-rotate-[270deg]",
+    360: "-rotate-[360deg]",
   },
   fixLabelAngle: {
-    0: 'rotate-0',
-    45: 'rotate-45',
-    90: 'rotate-90',
-    180: 'rotate-180',
-    270: 'rotate-[270deg]',
-    360: 'rotate-[360deg]',
+    0: "rotate-0",
+    45: "rotate-45",
+    90: "rotate-90",
+    180: "rotate-180",
+    270: "rotate-[270deg]",
+    360: "rotate-[360deg]",
   },
 };
 
@@ -49,10 +49,10 @@ export type RadialProgressBarProps = {
 export function RadialProgressBar({
   value = 0,
   size = 100,
-  trackColor = '#f0f0f0',
-  progressColor = '#111111',
+  trackColor = "#f0f0f0",
+  progressColor = "#111111",
   gradientColor,
-  gradientId = 'gradient',
+  gradientId = "gradient",
   startAngle = 90,
   trackClassName,
   progressbarWidth = 8,
@@ -69,13 +69,13 @@ export function RadialProgressBar({
   React.useEffect(() => {
     const progressBarRefEl = progressBarRef.current;
     if (progressBarRefEl) {
-      progressBarRefEl.style.transition = 'stroke-dashoffset 0.3s ease-in-out';
+      progressBarRefEl.style.transition = "stroke-dashoffset 0.3s ease-in-out";
       progressBarRefEl.style.strokeDashoffset = offset.toString();
     }
     // Cleanup function to remove transition style when unmounting
     return () => {
       if (progressBarRefEl) {
-        progressBarRefEl.style.transition = '';
+        progressBarRefEl.style.transition = "";
       }
     };
   }, [offset]);
@@ -85,7 +85,7 @@ export function RadialProgressBar({
       {...(!useParentResponsive && { width: size, height: size })}
       viewBox={`0 0 ${size} ${size}`}
       className={cn(
-        'transition-all duration-200',
+        "transition-all duration-200",
         classes.base,
         classes.startAngle[startAngle]
       )}
@@ -103,7 +103,7 @@ export function RadialProgressBar({
         cx={cx}
         cy={cy}
         r={radius}
-        fill={'transparent'}
+        fill={"transparent"}
         strokeWidth={progressbarWidth}
         stroke={trackColor}
         {...(trackClassName && { className: trackClassName })}

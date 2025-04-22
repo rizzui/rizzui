@@ -1,6 +1,6 @@
 import React from 'react';
-import { cn } from 'src/lib/cn';
-import { tableStyles } from 'src/lib/table-style';
+import { cn } from '../../lib/cn';
+import { tableStyles } from '../../lib/table-style';
 import { makeClassName } from '../../lib/make-class-name';
 
 export type TableVariantProps = keyof typeof tableStyles.variants;

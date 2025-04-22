@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function Spinner({ ...props }: React.SVGProps<SVGSVGElement>) {
   return (
@@ -43,4 +43,4 @@ export function Spinner({ ...props }: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-Spinner.displayName = 'Spinner';
+Spinner.displayName = "Spinner";
