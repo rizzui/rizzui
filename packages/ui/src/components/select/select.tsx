@@ -313,7 +313,7 @@ export function Select<OptionType extends SelectOption>({
               labelClassName
             )}
           >
-            {label}
+            <>{label}</>
           </Label>
         )}
 

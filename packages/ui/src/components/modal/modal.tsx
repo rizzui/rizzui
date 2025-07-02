@@ -101,7 +101,7 @@ export function Modal({
             },
           })}
         >
-          {children}
+          <>{children}</>
         </DialogPanel>
       </div>
     </Dialog>

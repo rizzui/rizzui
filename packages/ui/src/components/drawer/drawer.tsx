@@ -156,7 +156,7 @@ export function Drawer({
             )}
           />
         )}
-        {children}
+        <>{children}</>
       </DialogPanel>
     </Dialog>
   );

@@ -363,7 +363,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               labelClassName
             )}
           >
-            {label}
+            <>{label}</>
           </Label>
         )}
 
@@ -394,58 +394,61 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                 {prefix}
               </span>
             ) : null}
+            <>
+              {displayValue &&
+                displayValue(selectedItems, options, handleClearItem)}
 
-            {displayValue &&
-              displayValue(selectedItems, options, handleClearItem)}
-
-            {!displayValue && (
-              <span
-                className={cn(
-                  makeClassName(`multi-select-value`),
-                  'flex w-full flex-wrap items-center gap-2 truncate text-start',
-                  emptyValue && 'text-muted-foreground',
-                  prefix && selectStyles.prefix.size[size],
-                  suffix && selectStyles.suffix.size[size],
-                  selectContainerClassName
-                )}
-              >
-                {emptyValue ? (
-                  placeholder
-                ) : (
-                  <Fragment>
-                    {value?.map((item, index) => {
-                      const mainItem = options.find(
-                        (op) => op[getOptionValueKey] === item
-                      );
-                      return (
-                        <Fragment key={index}>
-                          <span
-                            className={cn(
-                              'item-center border-muted flex gap-1 overflow-hidden rounded-md border text-xs',
-                              selectedItemClassName
-                            )}
-                          >
-                            <span className="py-1 ps-2">{mainItem?.label}</span>
+              {!displayValue && (
+                <span
+                  className={cn(
+                    makeClassName(`multi-select-value`),
+                    'flex w-full flex-wrap items-center gap-2 truncate text-start',
+                    emptyValue && 'text-muted-foreground',
+                    prefix && selectStyles.prefix.size[size],
+                    suffix && selectStyles.suffix.size[size],
+                    selectContainerClassName
+                  )}
+                >
+                  {emptyValue ? (
+                    placeholder
+                  ) : (
+                    <Fragment>
+                      {value?.map((item, index) => {
+                        const mainItem = options.find(
+                          (op) => op[getOptionValueKey] === item
+                        );
+                        return (
+                          <Fragment key={index}>
                             <span
-                              className="hover:bg-muted px-1 py-1"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleClearItem(item);
-                              }}
+                              className={cn(
+                                'item-center border-muted flex gap-1 overflow-hidden rounded-md border text-xs',
+                                selectedItemClassName
+                              )}
                             >
-                              <XIcon
-                                strokeWidth="2"
-                                className="size-4 cursor-pointer"
-                              />
+                              <span className="py-1 ps-2">
+                                {mainItem?.label}
+                              </span>
+                              <span
+                                className="hover:bg-muted px-1 py-1"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleClearItem(item);
+                                }}
+                              >
+                                <XIcon
+                                  strokeWidth="2"
+                                  className="size-4 cursor-pointer"
+                                />
+                              </span>
                             </span>
-                          </span>
-                        </Fragment>
-                      );
-                    })}
-                  </Fragment>
-                )}
-              </span>
-            )}
+                          </Fragment>
+                        );
+                      })}
+                    </Fragment>
+                  )}
+                </span>
+              )}
+            </>
 
             {clearable && !emptyValue && !disabled ? (
               <FieldClearButton

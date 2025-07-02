@@ -28,10 +28,10 @@ export default function HeroBlock() {
             as="h1"
             dangerouslySetInnerHTML={{ __html: data.title }}
             className={cn(
-              "text-3xl sm:text-4xl xl:text-5xl leading-[1.3] sm:leading-[1.3] lg:leading-[1.2] xl:leading-[1.2] 2xl:leading-[1.18] drop-shadow-sm mb-6 md:mb-7 font-semibold"
+              "!text-3xl sm:!text-4xl xl:!text-5xl !leading-[1.3] sm:!leading-[1.3] lg:!leading-[1.2] xl:!leading-[1.2] 2xl:!leading-[1.18] drop-shadow-sm !mb-6 md:!mb-7 font-semibold"
             )}
           />
-          <Text className="text-[15px] md:text-base leading-[1.9] md:leading-[1.9] max-w-[786px] mx-auto mb-8 md:mb-12 text-gray-600 dark:text-gray-500">
+          <Text className="!text-[15px] md:!text-base !leading-[1.9] md:!leading-[1.9] max-w-[786px] !mx-auto !mb-8 md:!mb-12 text-gray-600 dark:text-gray-500">
             {data.description}
           </Text>
 
@@ -61,7 +61,7 @@ export default function HeroBlock() {
                 as="span"
                 variant="outline"
                 rounded="pill"
-                className="text-sm md:text-base h-12 xl:h-[3.25rem] bg-white dark:bg-gray-50 shadow-lg px-8 xl:px-9 hover:shadow-xl transition-all relative"
+                className="!text-sm md:!text-base h-12 xl:h-[3.25rem] bg-white dark:bg-gray-50 shadow-lg px-8 xl:px-9 hover:shadow-xl transition-all relative"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
