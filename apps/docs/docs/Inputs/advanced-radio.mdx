@@ -30,6 +30,7 @@ You can change style of **AdvancedRadio**.
     name="age"
     value="any"
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     Any
   </AdvancedRadio>
@@ -38,6 +39,7 @@ You can change style of **AdvancedRadio**.
     value="one"
     defaultChecked
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     1
   </AdvancedRadio>
@@ -45,6 +47,7 @@ You can change style of **AdvancedRadio**.
     name="age"
     value="two"
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     2
   </AdvancedRadio>
@@ -53,6 +56,7 @@ You can change style of **AdvancedRadio**.
     value="three"
     disabled
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     3
   </AdvancedRadio>
@@ -60,6 +64,7 @@ You can change style of **AdvancedRadio**.
     name="age"
     value="four"
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     4
   </AdvancedRadio>
@@ -67,6 +72,7 @@ You can change style of **AdvancedRadio**.
     name="age"
     value="five+"
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     5+
   </AdvancedRadio>
@@ -78,48 +84,22 @@ import { AdvancedRadio } from "rizzui";
 export default function App() {
   return (
     <div className="flex flex-wrap gap-6">
-      <AdvancedRadio
-        name="age"
-        value="any"
-        alignment="center"
-      >
+      <AdvancedRadio name="age" value="any" alignment="center">
         Any
       </AdvancedRadio>
-      <AdvancedRadio
-        name="age"
-        value="one"
-        defaultChecked
-        alignment="center"
-      >
+      <AdvancedRadio name="age" value="one" defaultChecked alignment="center">
         1
       </AdvancedRadio>
-      <AdvancedRadio
-        name="age"
-        value="two"
-        alignment="center"
-      >
+      <AdvancedRadio name="age" value="two" alignment="center">
         2
       </AdvancedRadio>
-      <AdvancedRadio
-        name="age"
-        value="three"
-        disabled
-        alignment="center"
-      >
+      <AdvancedRadio name="age" value="three" disabled alignment="center">
         3
       </AdvancedRadio>
-      <AdvancedRadio
-        name="age"
-        value="four"
-        alignment="center"
-      >
+      <AdvancedRadio name="age" value="four" alignment="center">
         4
       </AdvancedRadio>
-      <AdvancedRadio
-        name="age"
-        value="five+"
-        alignment="center"
-      >
+      <AdvancedRadio name="age" value="five+" alignment="center">
         5+
       </AdvancedRadio>
     </div>
@@ -134,32 +114,19 @@ export default function App() {
 You can give different style of **AdvancedRadio** as you need.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-  <AdvancedRadio
-    name="currency"
-    value="taka"
-    defaultChecked
-  >
+  <AdvancedRadio name="currency" value="taka" defaultChecked>
     <CurrencyBangladeshiIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Taka</Text>
   </AdvancedRadio>
-  <AdvancedRadio
-    name="currency"
-    value="dollar"
-  >
+  <AdvancedRadio name="currency" value="dollar">
     <CurrencyDollarIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Dollar</Text>
   </AdvancedRadio>
-  <AdvancedRadio
-    name="currency"
-    value="euro"
-  >
+  <AdvancedRadio name="currency" value="euro">
     <CurrencyEuroIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Euro</Text>
   </AdvancedRadio>
-  <AdvancedRadio
-    name="currency"
-    value="pound"
-  >
+  <AdvancedRadio name="currency" value="pound">
     <CurrencyPoundIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Pound</Text>
   </AdvancedRadio>
@@ -171,32 +138,19 @@ import { AdvancedRadio } from "rizzui";
 export default function App() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <AdvancedRadio
-        name="currency"
-        value="taka"
-        defaultChecked
-      >
+      <AdvancedRadio name="currency" value="taka" defaultChecked>
         <CurrencyBangladeshiIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Taka</Text>
       </AdvancedRadio>
-      <AdvancedRadio
-        name="currency"
-        value="dollar"
-      >
+      <AdvancedRadio name="currency" value="dollar">
         <CurrencyDollarIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Dollar</Text>
       </AdvancedRadio>
-      <AdvancedRadio
-        name="currency"
-        value="euro"
-      >
+      <AdvancedRadio name="currency" value="euro">
         <CurrencyEuroIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Euro</Text>
       </AdvancedRadio>
-      <AdvancedRadio
-        name="currency"
-        value="pound"
-      >
+      <AdvancedRadio name="currency" value="pound">
         <CurrencyPoundIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Pound</Text>
       </AdvancedRadio>

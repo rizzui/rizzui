@@ -4,7 +4,7 @@ import { makeClassName } from '../../lib/make-class-name';
 import { roundedStyles } from '../../lib/rounded';
 
 const advancedCheckboxStyles = {
-  base: 'border border-muted hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out',
+  base: 'border border-muted hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out block',
   active:
     'peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px]',
   disabled:
@@ -69,14 +69,13 @@ export const AdvancedCheckbox = forwardRef<
         ref={ref}
         className={cn(
           makeClassName(`advanced-checkbox-input`),
-          'peer absolute -z-[1] opacity-0',
+          'peer sr-only',
           inputClassName
         )}
         {...props}
       />
       <span
         className={cn(
-          'block',
           makeClassName(`advanced-checkbox`),
           advancedCheckboxStyles.base,
           advancedCheckboxStyles.active,

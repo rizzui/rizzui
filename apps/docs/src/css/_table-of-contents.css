@@ -1,0 +1,38 @@
+#__docusaurus {
+  ul.table-of-contents {
+    margin-top: 7px;
+    border-left: none;
+    &::before {
+      color: var(--ifm-color-gray-900);
+      content: "On This Page";
+      display: block;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    li {
+      margin-left: 0;
+      margin-right: 0;
+      a {
+        font-size: 14px;
+        font-weight: 400;
+        &:hover {
+          color: var(--ifm-color-primary);
+        }
+      }
+    }
+  }
+}
+
+html[data-theme="dark"] {
+  #__docusaurus {
+    ul.table-of-contents {
+      li {
+        a {
+          &:hover {
+            color: #ced2d1;
+          }
+        }
+      }
+    }
+  }
+}

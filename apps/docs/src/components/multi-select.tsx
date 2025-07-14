@@ -214,7 +214,7 @@ function renderDisplayValue(
               alt={item.label}
               className="size-8 object-cover rounded-full bg-muted"
             />
-            <div>
+            <div className="[&>p]:!mb-0 [&>p]:leading-snug!">
               <Text fontWeight="medium">{item.label}</Text>
               <Text>{item.value}</Text>
             </div>
@@ -293,7 +293,7 @@ function renderDisplayValueTwo(
           {filteredItems.slice(0, 2).map((item, idx) => (
             <div
               key={idx}
-              className="flex items-center gap-3 border border-muted rounded ps-2"
+              className="flex items-center gap-3 border border-muted rounded ps-2 [&>p]:!mb-0 [&>p]:leading-snug!"
             >
               <Text fontWeight="medium">{item.label}</Text>
               <span
@@ -324,7 +324,7 @@ function renderOptionDisplayValue(
         alt={option.label}
         className="size-9 object-cover rounded bg-muted"
       />
-      <div>
+      <div className="[&>p]:!mb-0">
         <Text fontWeight="medium">{option.label}</Text>
         <Text>{option.value}</Text>
       </div>

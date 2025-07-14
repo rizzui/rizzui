@@ -53,7 +53,7 @@ export default function HeroBlock() {
             <a
               target="_blank"
               href="https://github.com/rizzui/rizzui"
-              className="inline-flex items-center hover:no-underline"
+              className="inline-flex items-center hover:!no-underline"
               rel="noreferrer noopener"
             >
               <Button

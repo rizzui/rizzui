@@ -2,6 +2,14 @@
 sidebar_position: 2
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import NpmIcon from "@site/src/components/icons/npm-icon";
+import YarnIcon from "@site/src/components/icons/yarn-icon";
+import PnpmIcon from "@site/src/components/icons/pnpm-icon";
+import BunIcon from "@site/src/components/icons/bun-icon";
+
 # Dark Mode
 
 Adding dark mode to your Next.js app, it's a one-time process. We use [next-themes](https://www.npmjs.com/package/next-themes) and [CSS variables](#configure-globalscss) for a seamless dark mode experience.
@@ -10,9 +18,49 @@ Adding dark mode to your Next.js app, it's a one-time process. We use [next-them
 
 Install [next-themes](https://www.npmjs.com/package/next-themes) by running the following command:
 
-```bash title=Terminal
-npm i next-themes
-```
+<Tabs groupId="package-manager">
+  <TabItem
+    value="npm"
+    label={
+      <div className="flex items-center gap-2">
+        <NpmIcon className="size-6" /> NPM
+      </div>
+    }
+    default
+  >
+    <CodeBlock language="js">{`npm i next-themes`}</CodeBlock>
+  </TabItem>
+  <TabItem
+    value="yarn"
+    label={
+      <div className="flex items-center gap-2">
+        <YarnIcon className="size-6" /> YARN
+      </div>
+    }
+  >
+    <CodeBlock language="js">{`yarn add next-themes`}</CodeBlock>
+  </TabItem>
+  <TabItem
+    value="pnpm"
+    label={
+      <div className="flex items-center gap-2">
+        <PnpmIcon className="size-6" /> PNPM
+      </div>
+    }
+  >
+    <CodeBlock language="js">{`pnpm i -D next-themes`}</CodeBlock>
+  </TabItem>
+  <TabItem
+    value="bun"
+    label={
+      <div className="flex items-center gap-2">
+        <BunIcon className="size-6" /> BUN
+      </div>
+    }
+  >
+    <CodeBlock language="js">{`bun add -D next-themes`}</CodeBlock>
+  </TabItem>
+</Tabs>
 
 ## Create a theme provider
 
@@ -216,7 +264,7 @@ We are using rgb formated CSS variables to define our light & dark mode theme. W
 }
 ```
 
-- **Note:** use our theming tools to customize these [CSS variables](/docs/guide/theming#theme-tokens)
+**Note:** use our theming tools to customize these [CSS variables](/docs/guide/theming#theme-tokens)
 
 ## Configure tailwind.config.js
 

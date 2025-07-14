@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@source "../../static/fonts/geist-font.css";
+@import "../../static/fonts/geist-font.css";
 @source "../../node_modules/rizzui/src";
 @plugin "@tailwindcss/forms";
 
@@ -172,3 +172,11 @@
   --color-green: var(--green);
   --color-green-dark: var(--green-dark);
 }
+
+@import "./_variables.css";
+@import "./_layout.css";
+@import "./_navbar.css";
+@import "./_sidebar.css";
+@import "./_table-of-contents.css";
+@import "./_mark-down.css";
+@import "./_adomonition.css";

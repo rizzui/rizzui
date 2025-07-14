@@ -1,6 +1,3 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
@@ -67,10 +64,7 @@ const config: Config = {
           blogSidebarTitle: "List of all posts",
         },
         theme: {
-          customCss: [
-            require.resolve("./src/css/custom.css"),
-            require.resolve("./src/css/docusaurus.css"),
-          ],
+          customCss: [require.resolve("./src/css/custom.css")],
         },
       } satisfies Preset.Options,
     ],
@@ -105,25 +99,25 @@ const config: Config = {
           label: "Blog",
         },
         {
-          href: "https://github.com/rizzui/rizzui",
-          position: "right",
-          className: "header-github-link order-3 ml-3 -mr-3",
-          "aria-label": "GitHub",
-        },
-        {
           type: "docsVersionDropdown",
           position: "right",
           className: "customVersionDropdown",
         },
+        {
+          href: "https://github.com/rizzui/rizzui",
+          position: "right",
+          className: "header-github-link",
+          "aria-label": "GitHub",
+        },
       ],
     },
-    colorMode: {
-      defaultMode: "light",
-      respectPrefersColorScheme: true,
-    },
+    // colorMode: {
+    //   defaultMode: "light",
+    //   respectPrefersColorScheme: false,
+    // },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      theme: prismThemes.nightOwl,
+      darkTheme: prismThemes.nightOwl,
     },
   } satisfies Preset.ThemeConfig,
 };
