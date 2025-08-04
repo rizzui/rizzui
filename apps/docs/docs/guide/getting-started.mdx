@@ -2,7 +2,13 @@
 sidebar_position: 1
 ---
 
-import { InstallationCommand, PostInstallationCommand} from '@site/src/components/code-editors/api-sdk';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import NpmIcon from "@site/src/components/icons/npm-icon";
+import YarnIcon from "@site/src/components/icons/yarn-icon";
+import PnpmIcon from "@site/src/components/icons/pnpm-icon";
+import BunIcon from "@site/src/components/icons/bun-icon";
 
 # Getting Started
 
@@ -10,22 +16,121 @@ RizzUI - A Modern, Minimal, TailwindCSS-based React Open Source UI Library. Intu
 
 ## Installation
 
-System Requirements:
-
-- Node.js 18.20.4 or [later](https://nodejs.org/en).
+System Requirements: Node.js 18.20.4 or [later](https://nodejs.org/en).
 
 Go to your React / Next.js project directory & install RizzUI by running the following command:
 
-<InstallationCommand />
+<Tabs groupId="package-manager">
+  <TabItem
+    value="npm"
+    label={
+      <div className="flex items-center gap-2">
+        <NpmIcon className="size-6" /> NPM
+      </div>
+    }
+    default
+  >
+    <CodeBlock language="js">
+      {`npm i rizzui @headlessui/react @floating-ui/react`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="yarn"
+    label={
+      <div className="flex items-center gap-2">
+        <YarnIcon className="size-6" /> YARN
+      </div>
+    }
+  >
+    <CodeBlock language="js">
+      {`yarn add rizzui @headlessui/react @floating-ui/react`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="pnpm"
+    label={
+      <div className="flex items-center gap-2">
+        <PnpmIcon className="size-6" /> PNPM
+      </div>
+    }
+  >
+    <CodeBlock language="js">
+      {`pnpm add rizzui @headlessui/react @floating-ui/react`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="bun"
+    label={
+      <div className="flex items-center gap-2">
+        <BunIcon className="size-6" /> BUN
+      </div>
+    }
+  >
+    <CodeBlock language="js">
+      {`bun add rizzui @headlessui/react @floating-ui/react`}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
 
-<div className="mt-4 mb-8 ">
-  **Note:** **RizzUI** is now support **React19**. Please don't forget to use **@headlessui/react@2.0.3** and
-  **@floating-ui/react@0.26.13** for the latest **rizzui**.
+<div className="!mt-4 !mb-8 ">
+  **Note:** **RizzUI** is now support **React19**. Please don't forget to use
+  **@headlessui/react@2.0.3** and **@floating-ui/react@0.26.13** for the latest
+  **rizzui**.
 </div>
 
 Now Install and configure TailwindCSS to have the style.
 
-<PostInstallationCommand />
+<Tabs groupId="package-manager">
+  <TabItem
+    value="npm"
+    label={
+      <div className="flex items-center gap-2">
+        <NpmIcon className="size-6" /> NPM
+      </div>
+    }
+    default
+  >
+    <CodeBlock language="js">
+      {`npm i -D tailwindcss postcss autoprefixer @tailwindcss/forms`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="yarn"
+    label={
+      <div className="flex items-center gap-2">
+        <YarnIcon className="size-6" /> YARN
+      </div>
+    }
+  >
+    <CodeBlock language="js">
+      {`yarn add -D tailwindcss postcss autoprefixer @tailwindcss/forms`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="pnpm"
+    label={
+      <div className="flex items-center gap-2">
+        <PnpmIcon className="size-6" /> PNPM
+      </div>
+    }
+  >
+    <CodeBlock language="js">
+      {`pnpm i -D tailwindcss postcss autoprefixer @tailwindcss/forms`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="bun"
+    label={
+      <div className="flex items-center gap-2">
+        <BunIcon className="size-6" /> BUN
+      </div>
+    }
+  >
+    <CodeBlock language="js">
+      {`bun add -D tailwindcss postcss autoprefixer @tailwindcss/forms`}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
 
 ## Tailwind Configuration
 

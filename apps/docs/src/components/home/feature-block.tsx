@@ -35,14 +35,14 @@ const features = [
 export default function FeatureBlock() {
   return (
     <section className="py-16 lg:py-20">
-      <div className="container mx-auto">
+      <div className="!container mx-auto">
         <header className="text-center mb-8 sm:mb-10 md:mb-12">
           <Text className="!mb-3 lg:!mb-4 !text-[11px] sm:!text-xs lg:!text-sm tracking-[4px] uppercase text-gray-500">
             Why RizzUI?
           </Text>
           <Title
             as="h2"
-            className="text-2xl lg:text-3xl leading-[1.35] lg:leading-[1.3] font-semibold"
+            className="!text-2xl lg:!text-3xl !leading-[1.35] lg:!leading-[1.3] font-semibold"
           >
             A Next Gen UI Library with <br className="hidden sm:inline-block" />{" "}
             Limitless Customization Options
@@ -52,15 +52,15 @@ export default function FeatureBlock() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="border border-gray-200 shadow-sm rounded-xl py-7 px-6"
+              className="border border-gray-200 shadow-xs rounded-xl py-7 px-6"
             >
               <div className="h-11 w-11 xl:w-12 xl:h-12 rounded-lg text-gray-900 mb-6 border border-gray-200 bg-gradient-to-t from-gray-100/60 flex items-center justify-center">
                 {feature.icon}
               </div>
-              <Title as="h5" className="font-semibold">
+              <Title as="h5" className="font-semibold !text-lg">
                 {feature.title}
               </Title>
-              <Text className="leading-loose text-gray-600 dark:text-gray-500">
+              <Text className="text-[15px] leading-loose text-gray-600 dark:text-gray-500">
                 {feature.description}
               </Text>
             </div>

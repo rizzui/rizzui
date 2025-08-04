@@ -6,13 +6,12 @@ import { FieldClearButton } from '../field-clear-button';
 import { makeClassName } from '../../lib/make-class-name';
 import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
-import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
 const inputStyles = {
-  base: 'flex items-center peer w-full transition duration-200 border [&.is-focus]:ring-[0.8px] ring-[0.6px] [&.is-hover]:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary [&_input::placeholder]:opacity-60',
+  base: 'flex items-center peer w-full transition duration-200 border focus-within:ring-[0.8px] ring-[0.6px] hover:border-primary focus-within:border-primary focus-within:ring-primary [&_input::placeholder]:opacity-60',
   disabled: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted',
   error:
-    '!border-red [&.is-hover]:!border-red [&.is-focus]:!border-red !ring-red !bg-transparent',
+    '!border-red hover:!border-red focus-within:!border-red !ring-red !bg-transparent',
   size: {
     sm: 'px-2 py-1 text-xs h-8',
     md: 'px-3.5 py-2 text-sm h-10',
@@ -22,14 +21,14 @@ const inputStyles = {
   rounded: roundedStyles,
   variant: {
     text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-muted/70 backdrop-blur',
+    flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
     outline: 'border border-muted ring-muted bg-transparent',
   },
 };
 
 // actual input field styles
 const inputFieldStyles = {
-  base: 'w-full border-0 bg-transparent p-0 focus:outline-none focus:ring-0',
+  base: 'w-full border-0 bg-transparent p-0 [font-size:inherit] focus:outline-none focus:ring-0',
   reset:
     '[&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
   disabled: 'cursor-not-allowed placeholder:text-muted-foreground',
@@ -144,19 +143,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    const {
-      isFocus,
-      isHover,
-      handleOnBlur,
-      handleOnFocus,
-      handleOnMouseEnter,
-      handleOnMouseLeave,
-    } = useInteractiveEvent({
-      readOnly,
-      onBlur,
-      onFocus,
-    });
-
     return (
       <div
         className={cn(makeClassName(`input-root`), 'flex flex-col', className)}
@@ -184,22 +170,16 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               inputStyles.size[size],
               inputStyles.rounded[rounded],
               inputStyles.variant[variant],
-              isHover && 'is-hover', // must have is-hover class based on mouse enter
-              isFocus && 'is-focus', // must have is-focus class based on onFocus event
               disabled && inputStyles.disabled,
               error && inputStyles.error,
               inputClassName
             )}
-            data-focus={isFocus}
-            data-hover={isHover}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
           >
             {prefix ? (
               <span
                 className={cn(
                   makeClassName(`input-prefix`),
-                  'whitespace-nowrap leading-normal',
+                  'leading-normal whitespace-nowrap',
                   prefixClassName
                 )}
               >
@@ -211,8 +191,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               ref={ref}
               type={type}
               disabled={disabled}
-              onBlur={handleOnBlur}
-              onFocus={handleOnFocus}
               readOnly={readOnly}
               spellCheck="false"
               // placeholder is a required prop for the clearable input component even if the user does not set any
@@ -228,7 +206,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 prefix && inputFieldStyles.prefix.size[size],
                 suffix && inputFieldStyles.suffix.size[size]
               )}
-              style={{ fontSize: 'inherit' }}
               {...inputProps}
             />
 
@@ -245,7 +222,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               <span
                 className={cn(
                   makeClassName(`input-suffix`),
-                  'whitespace-nowrap leading-normal',
+                  'leading-normal whitespace-nowrap',
                   suffixClassName
                 )}
               >

@@ -3,7 +3,7 @@ import { cn } from '../../../lib/cn';
 import { makeClassName } from '../../../lib/make-class-name';
 
 const blockquoteStyles = {
-  blockquote: 'border-l-4 border-mute text-quote py-3 px-4',
+  blockquote: 'border-l-4 border-muted text-quote py-3 px-4',
 };
 
 export type BlockquoteProps = {

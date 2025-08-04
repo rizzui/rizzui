@@ -1,8 +1,6 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
-import myTheme from "./prism-theme";
+import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "RizzUI",
@@ -25,19 +23,6 @@ const config: Config = {
     locales: ["en"],
   },
 
-  plugins: [
-    async function myPlugin(context, options) {
-      return {
-        name: "docusaurus-tailwindcss",
-        configurePostCss(postcssOptions) {
-          postcssOptions.plugins.push(require("tailwindcss"));
-          postcssOptions.plugins.push(require("autoprefixer"));
-          return postcssOptions;
-        },
-      };
-    },
-  ],
-
   themes: [
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
@@ -51,7 +36,7 @@ const config: Config = {
 
   presets: [
     [
-      "@docusaurus/preset-classic",
+      "classic",
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.ts"),
@@ -79,9 +64,9 @@ const config: Config = {
           blogSidebarTitle: "List of all posts",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: [require.resolve("./src/css/custom.css")],
         },
-      },
+      } satisfies Preset.Options,
     ],
   ],
 
@@ -93,7 +78,6 @@ const config: Config = {
       myOtherFont: ["-apple-system", "system-ui", "sans-serif"],
     },
     navbar: {
-      // hideOnScroll: true,
       logo: {
         alt: "RizzUI",
         src: "img/rizz-logo.svg",
@@ -115,27 +99,27 @@ const config: Config = {
           label: "Blog",
         },
         {
-          href: "https://github.com/rizzui/rizzui",
-          position: "right",
-          className: "header-github-link order-3 ml-3 -mr-3",
-          "aria-label": "GitHub",
-        },
-        {
           type: "docsVersionDropdown",
           position: "right",
           className: "customVersionDropdown",
         },
+        {
+          href: "https://github.com/rizzui/rizzui",
+          position: "right",
+          className: "header-github-link",
+          "aria-label": "GitHub",
+        },
       ],
     },
-    colorMode: {
-      defaultMode: "light",
-      respectPrefersColorScheme: true,
-    },
+    // colorMode: {
+    //   defaultMode: "light",
+    //   respectPrefersColorScheme: false,
+    // },
     prism: {
-      theme: myTheme,
-      darkTheme: myTheme,
+      theme: prismThemes.nightOwl,
+      darkTheme: prismThemes.nightOwl,
     },
-  },
+  } satisfies Preset.ThemeConfig,
 };
 
 export default config;

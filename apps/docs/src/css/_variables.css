@@ -1,0 +1,132 @@
+:root {
+  /* global variables override */
+  --doc-sidebar-width: 288px !important;
+  --ifm-font-family-base: "Geist", sans-serif;
+  --ifm-global-border-color: #70747325;
+  --ifm-font-color-base: #3e4342;
+  --ifm-heading-margin-bottom: 0.6rem;
+  --ifm-code-border-color: #dee2e2;
+
+  /* navbar variables override */
+  --ifm-navbar-height: 4rem;
+  --ifm-navbar-shadow: none;
+  --ifm-navbar-background-color: #ffffff;
+
+  /* navbar search variables override */
+  --ifm-color-gray-400: #7074734f;
+  --ifm-color-gray-0: #f8f9fa;
+  --ifm-navbar-search-input-icon: "";
+
+  /* navbar contact button variables */
+  --ifm-navbar-contact-color: #ffffff;
+  --ifm-navbar-contact-background-color: #0d9373;
+  --ifm-navbar-contact-background-hover-color: #0d9374e5;
+  --ifm-navbar-contact-border: #0d9373;
+
+  /* sidebar variables override */
+  --ifm-menu-color: #171b1a;
+  --ifm-menu-color-background-hover: #5054530d;
+  --ifm-menu-color-active: #0d9373;
+  --ifm-menu-color-background-active: #0d93731a;
+  --ifm-sidebar-icon-color: #9ea3a2;
+
+  /* mobile sidebar variables override */
+  --ifm-navbar-sidebar-width: 300px;
+  --ifm-color-emphasis-600: #171b1a;
+  --ifm-backdrop-color: #0003;
+
+  /* table of contents variables override */
+  --ifm-color-primary: #0d9373;
+  --ifm-toc-link-color: #707473;
+
+  /* heading variables override */
+  --ifm-heading-color: #111827;
+
+  /* accordion variables */
+  --ifm-accordion-background-color: transparent;
+  --ifm-accordion-border-color: #dadada;
+  --ifm-accordion-button-hover-color: #171b1a;
+
+  /* tip variables */
+  --ifm-tip-background-color: #ecfdf580;
+  --ifm-tip-border-color: #10b98133;
+
+  /* admonitions variables */
+  --admonition-note-color: #18181b;
+  --admonition-note-background-color: #fafafa80;
+  --admonition-note-border-color: #71717a33;
+  --admonition-tip-color: #064e3b;
+  --admonition-tip-background-color: #ecfdf580;
+  --admonition-tip-border-color: #10b98133;
+
+  /* some random variables for code blocks */
+  --c-black: #000;
+  --c-white: #fff;
+  --c-blue-0: #f0f6ff;
+  --c-blue-10: #e3edff;
+  --c-blue-20: #cddfff;
+  --c-blue-30: #b2ceff;
+  --c-blue-40: #97bdff;
+  --c-blue-50: #7cabff;
+  --c-blue-60: #639bff;
+  --c-blue-70: #4d8dff;
+  --c-blue-80: #3880ff;
+  --c-blue-90: #1b6dff;
+  --c-blue-100: #0054e9;
+  --c-yellow-80: #ffc409;
+  --c-green-80: #17c948;
+  --c-orange-80: #ff7336;
+  --c-red-60: #f56570;
+  --c-red-80: #ef3442;
+  --c-green-90: #00ba33;
+  --c-red-90: #e21827;
+  --c-orange-90: #ff5b13;
+  --c-yellow-90: #f4b100;
+}
+
+html[data-theme="dark"] {
+  /* global variables override */
+  --ifm-background-color: #090d0d;
+  --ifm-global-border-color: #ced2d10f;
+  --ifm-font-color-base: #9ea3a2;
+  --ifm-code-border-color: #252928;
+
+  /* navbar variables override */
+  --ifm-navbar-background-color: #090d0d;
+
+  /* navbar search variables override */
+  --ifm-color-gray-0: #090d0d;
+
+  /* sidebar variables override */
+  --ifm-menu-color: #ced2d1b1;
+  --ifm-menu-color-active: #07c983;
+  --ifm-sidebar-icon-color: #707473;
+
+  /* mobile sidebar variables override */
+  --ifm-color-emphasis-600: #ffffff;
+  --ifm-backdrop-color: #090d0dcc;
+
+  /* table of contents variables override */
+  --ifm-color-primary: #07c983;
+  --ifm-toc-link-color: #9ea3a2;
+
+  /* heading variables override */
+  --ifm-heading-color: #f3f7f6;
+
+  /* accordion variables */
+  --ifm-accordion-background-color: #0a0a0a99;
+  --ifm-accordion-border-color: #1d1d1d;
+  --ifm-accordion-button-hover-color: #ffffff;
+
+  /* tip variables */
+  --ifm-tip-background-color: #10b9811a;
+  --ifm-tip-border-color: #10b9814d;
+
+  /* admonitions variables */
+  --admonition-note-color: #e4e4e7;
+  --admonition-note-background-color: #71717a1a;
+  --admonition-note-border-color: #71717a4d;
+  --admonition-tip-color: #a7f3d0;
+  --admonition-tip-background-color: #10b9811a;
+  --admonition-tip-border-color: #10b9814d;
+}

@@ -1,23 +1,16 @@
-"use client";
+// "use client";
 
-import { useState } from "react";
-import { Button } from "rizzui/button";
-import { Modal } from "rizzui/modal";
+import { Badge } from "@/components/badge";
+
+import { Blockquote } from "@/components/typography";
 
 export default function Page() {
-  const [modalState, setModalState] = useState(false);
   return (
-    <div>
-      <Button onClick={() => setModalState(true)}>Open Modal</Button>
-      <Modal
-        isOpen={modalState}
-        onClose={() => setModalState(false)}
-        // customSize={500}
-        // rounded="xl"
-        // size="full"
-      >
-        <div className="py-4 px-5 min-h-[400px]">Default Modal</div>
-      </Modal>
+    <div className="p-20">
+      <Blockquote>
+        Before going to sleep every night, forgive everyone and sleep with a
+        clean heart.
+      </Blockquote>
     </div>
   );
 }

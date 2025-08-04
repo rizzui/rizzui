@@ -77,7 +77,7 @@ export default function ComponentBlock() {
   const ref = React.useRef(null);
   const history = useHistory();
   const isInView = useInView(ref, {
-    rootMargin: '-100px',
+    rootMargin: "-100px",
     threshold: 0.5,
   });
 
@@ -90,21 +90,21 @@ export default function ComponentBlock() {
           </Text>
           <Title
             as="h2"
-            className="text-2xl lg:text-3xl leading-[1.35] lg:leading-[1.3] font-semibold"
+            className="!text-2xl lg:!text-3xl !leading-[1.35] lg:!leading-[1.3] font-semibold"
           >
-            <NumberFlow value={isInView ? 40 : 0} animated={isInView ? true : false} />
+            <NumberFlow
+              value={isInView ? 40 : 0}
+              animated={isInView ? true : false}
+            />
             + Production Ready Components
           </Title>
         </div>
       </header>
 
-      <div className="container mx-auto">
+      <div className="!container mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {components.map((item, idx) => (
-            <ComponentCard
-              key={`${item.name}-${idx}`}
-              item={item}
-            />
+            <ComponentCard key={`${item.name}-${idx}`} item={item} />
           ))}
         </div>
 

@@ -62,17 +62,13 @@ type PopoverContextProps = {
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
   isMounted: boolean;
   styles: React.CSSProperties;
-  getReferenceProps: (
-    userProps?: React.HTMLProps<Element> | undefined
-  ) => Record<string, unknown>;
-  getFloatingProps: (
-    userProps?: React.HTMLProps<HTMLElement> | undefined
-  ) => Record<string, unknown>;
+  getReferenceProps: (userProps?: any) => Record<string, unknown>;
+  getFloatingProps: (userProps?: any) => Record<string, unknown>;
   refs: any;
   x: number;
   y: number;
   strategy: Strategy;
-  arrowRef: React.MutableRefObject<SVGSVGElement | null>;
+  arrowRef: React.RefObject<SVGSVGElement | null>;
   context: any;
 } & CommonTypes;
 

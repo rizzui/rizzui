@@ -8,7 +8,6 @@ import {
   AdvancedRadio,
   Title,
   Button,
-  NumberInput,
   Select,
   type SelectOption,
 } from "rizzui";
@@ -112,7 +111,7 @@ export default function RizzUIForm() {
         <div>
           <Text className="font-semibold mb-4">Amount Submission</Text>
           <div className="grid grid-cols-2 gap-6">
-            <Controller
+            {/* <Controller
               control={control}
               name="amount"
               render={({
@@ -132,7 +131,7 @@ export default function RizzUIForm() {
                   }}
                 />
               )}
-            />
+            /> */}
             <Input
               label="Beneficiary"
               placeholder="John Doe"

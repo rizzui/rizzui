@@ -80,7 +80,7 @@ export interface CheckboxProps
   error?: string;
   /** Add helper text. It could be string or a React component */
   helperText?: React.ReactNode;
-  /** Use iconClassName prop to apply some additonal style for check mark icon */
+  /** Use iconClassName prop to apply some additional style for check mark icon */
   iconClassName?: string;
   /** Use labelClassName prop to apply some addition style for the field label */
   labelClassName?: string;

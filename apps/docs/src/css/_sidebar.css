@@ -1,0 +1,94 @@
+#__docusaurus {
+  .theme-doc-sidebar-container {
+    --doc-sidebar-width: 270px;
+    nav.menu {
+      padding: 0rem 1rem 1rem 0.3rem;
+
+      ul {
+        /* padding-left: 0.5rem; */
+        li {
+          margin: 0;
+          a.menu__link {
+            font-size: 14px;
+            font-weight: 400;
+            padding: 0.6rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+          a.menu__link--active {
+            font-weight: 600;
+            &::before {
+              background: var(--ifm-menu-color-active);
+            }
+          }
+
+          .menu__list-item-collapsible {
+            border-radius: 0.5rem;
+            &:hover {
+              background-color: transparent;
+            }
+
+            a.menu__link {
+              font-weight: 600;
+              border-radius: 0.5rem;
+              color: var(--ifm-color-emphasis-600);
+              padding-bottom: 0.4rem;
+              &:hover {
+                background-color: transparent;
+              }
+              &::after {
+                background-size: 18px 18px;
+              }
+              &::before {
+                display: none;
+                background: none;
+              }
+            }
+          }
+          ul {
+            padding-left: 8px;
+            padding-right: 1rem;
+            li {
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 996px) {
+    .theme-layout-navbar-sidebar {
+      width: 400px;
+      .theme-layout-navbar-sidebar-panel {
+        &:last-child {
+          width: 100%;
+        }
+      }
+    }
+    .theme-doc-sidebar-menu {
+      width: 100%;
+      li {
+        margin-bottom: 20px;
+        ul {
+          li {
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 485px) {
+    .theme-layout-navbar-sidebar {
+      width: 300px;
+      .theme-layout-navbar-sidebar-panel {
+        &:last-child {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

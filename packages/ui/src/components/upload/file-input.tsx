@@ -6,7 +6,6 @@ import { FieldClearButton } from '../field-clear-button';
 import { makeClassName } from '../../lib/make-class-name';
 import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
-import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
 const fileInputStyles = {
   base: 'flex items-center peer w-full transition duration-200',
@@ -21,10 +20,10 @@ const fileInputStyles = {
   },
   rounded: roundedStyles,
   variant: {
-    flat: '[&.is-focus]:ring-2 [&.is-focus]:bg-transparent border-0 [&_input::placeholder]:opacity-80 bg-primary-lighter/70 [&.is-focus]:ring-primary/30 text-primary-dark',
+    flat: 'focus-within:ring-2 focus-within::bg-transparent border-0 [&_input::placeholder]:opacity-80 bg-primary-lighter/70 focus-within::ring-primary/30 text-primary-dark',
     outline:
-      'bg-transparent [&.is-focus]:ring-[0.8px] ring-[0.6px] ring-muted border border-muted [&_input::placeholder]:text-gray-500 hover:border-primary [&.is-focus]:border-primary [&.is-focus]:ring-primary',
-    text: 'border-0 [&.is-focus]:ring-2 bg-transparent [&_input::placeholder]:opacity-70 hover:text-primary-dark [&.is-focus]:ring-primary/30 text-primary',
+      'bg-transparent focus-within::ring-[0.8px] ring-[0.6px] ring-muted border border-muted [&_input::placeholder]:text-gray-500 hover:border-primary focus-within::border-primary focus-within::ring-primary',
+    text: 'border-0 focus-within::ring-2 bg-transparent [&_input::placeholder]:opacity-70 hover:text-primary-dark focus-within::ring-primary/30 text-primary',
   },
 };
 
@@ -117,19 +116,6 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     },
     ref
   ) => {
-    const {
-      isFocus,
-      isHover,
-      handleOnBlur,
-      handleOnFocus,
-      handleOnMouseEnter,
-      handleOnMouseLeave,
-    } = useInteractiveEvent({
-      readOnly,
-      onBlur,
-      onFocus,
-    });
-
     const handleOnClear = useCallback(
       (e: any) => {
         e.preventDefault();
@@ -169,22 +155,15 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
               fileInputStyles.size[size],
               fileInputStyles.rounded[rounded],
               fileInputStyles.variant[variant],
-              isFocus && 'is-focus', // must have is-focus class based on onFocus event
               disabled && fileInputStyles.disabled,
               error && fileInputStyles.error,
               inputClassName
             )}
-            data-focus={isFocus}
-            data-hover={isHover}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
           >
             <input
               ref={ref}
               type="file"
               disabled={disabled}
-              onBlur={handleOnBlur}
-              onFocus={handleOnFocus}
               readOnly={readOnly}
               spellCheck="false"
               className={cn(

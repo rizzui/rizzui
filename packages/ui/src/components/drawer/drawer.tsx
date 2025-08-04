@@ -7,7 +7,7 @@ import { useResizeHandler } from './drawer.lib';
 export const drawerClasses = {
   panel: 'fixed w-full h-full bg-background duration-300 ease-out',
   overlay:
-    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80 duration-300 ease-in-out data-[closed]:opacity-0',
+    'fixed inset-0 cursor-pointer bg-black/60 duration-300 ease-in-out data-[closed]:opacity-0',
   placement: {
     top: 'data-[closed]:-translate-y-full',
     right: 'data-[closed]:translate-x-full',
@@ -129,7 +129,7 @@ export function Drawer({
           customSize && [
             isPlacementOnYAxis(placement)
               ? 'max-h-screen min-h-96'
-              : 'min-w-96 max-w-full',
+              : 'max-w-full min-w-96',
           ],
           !customSize && [
             isPlacementOnYAxis(placement)
@@ -156,7 +156,7 @@ export function Drawer({
             )}
           />
         )}
-        {children}
+        <>{children}</>
       </DialogPanel>
     </Dialog>
   );

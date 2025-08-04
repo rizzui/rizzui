@@ -7,7 +7,7 @@ const modalStyles = {
   root: 'fixed inset-0 z-[999] overflow-y-auto overflow-x-hidden',
   area: 'flex min-h-screen flex-col items-center justify-center',
   overlay:
-    'fixed inset-0 cursor-pointer bg-black bg-opacity-60 dark:bg-opacity-80 z-10 duration-300 ease-in-out data-[closed]:opacity-0',
+    'fixed inset-0 cursor-pointer bg-black/60 z-10 duration-300 ease-in-out data-[closed]:opacity-0',
   panel:
     'm-auto w-full break-words bg-background shadow-xl z-20 duration-300 ease-in-out data-[closed]:scale-95 data-[closed]:opacity-0',
   size: {
@@ -101,7 +101,7 @@ export function Modal({
             },
           })}
         >
-          {children}
+          <>{children}</>
         </DialogPanel>
       </div>
     </Dialog>

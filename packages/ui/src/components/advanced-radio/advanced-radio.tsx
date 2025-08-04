@@ -4,11 +4,11 @@ import { makeClassName } from '../../lib/make-class-name';
 import { roundedStyles } from '../../lib/rounded';
 
 const advancedRadioStyles = {
-  base: 'border border-muted hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out',
+  base: 'border border-muted hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out block',
   active:
     'peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px]',
   disabled:
-    'peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:text-muted-foreground peer-disabled:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed',
+    'peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:text-muted-foreground peer-disabled:border-muted peer-disabled:hover:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed',
   alignment: {
     left: '',
     center: 'text-center [&>*]:mx-auto',
@@ -79,7 +79,6 @@ export const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
       />
       <span
         className={cn(
-          'block',
           makeClassName(`advanced-radio`),
           advancedRadioStyles.base,
           advancedRadioStyles.active,

@@ -25,7 +25,6 @@ export default defineConfig({
     loader: 'src/components/loader/index.ts',
     modal: 'src/components/modal/index.ts',
     'multi-select': 'src/components/multi-select/index.ts',
-    'number-input': 'src/components/number-input/index.ts',
     password: 'src/components/password/index.ts',
     'pin-code': 'src/components/pin-code/index.ts',
     popover: 'src/components/popover/index.ts',

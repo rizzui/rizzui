@@ -1,5 +1,5 @@
 import React from 'react';
-import { cn } from 'src/lib/cn';
+import { cn } from '../../lib/cn';
 
 const classes = {
   base: 'transform',

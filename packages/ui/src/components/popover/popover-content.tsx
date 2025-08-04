@@ -71,8 +71,8 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
             <div
               className={cn(
                 makeClassName(`popover-overlay`),
-                'fixed inset-0 z-[998] cursor-pointer bg-black bg-opacity-60 transition-opacity duration-200',
-                open ? 'bg-opacity-60 dark:bg-opacity-80' : 'opacity-0',
+                'fixed inset-0 z-[998] cursor-pointer bg-black/60 transition-opacity duration-200',
+                open ? '' : 'opacity-0',
                 overlayClassName
               )}
             >

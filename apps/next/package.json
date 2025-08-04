@@ -10,27 +10,30 @@
     "clean": "rm -rf node_modules .next"
   },
   "dependencies": {
-    "@floating-ui/react": "0.27.2",
+    "@floating-ui/react": "0.27.6",
     "@headlessui/react": "2.2.0",
-    "framer-motion": "11.15.0",
-    "next": "15.1.2",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "rizzui": "workspace:*"
+    "framer-motion": "12.6.3",
+    "next": "15.2.4",
+    "next-themes": "0.4.6",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-number-format": "5.4.3",
+    "rizzui": "workspace:*",
+    "tailwind-merge": "3.1.0"
   },
   "devDependencies": {
     "@heroicons/react": "2.2.0",
-    "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/forms": "0.5.9",
-    "@types/node": "^22.10.2",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2",
-    "autoprefixer": "10.4.20",
+    "@tailwindcss/forms": "0.5.10",
+    "@tailwindcss/postcss": "4.1.1",
+    "@types/node": "^22.13.17",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
+    "autoprefixer": "10.4.21",
     "clsx": "2.1.1",
-    "eslint": "^9.17.0",
-    "eslint-config-next": "15.1.2",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.2"
+    "eslint": "^9.23.0",
+    "eslint-config-next": "15.2.4",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.1",
+    "typescript": "^5.8.2"
   }
 }

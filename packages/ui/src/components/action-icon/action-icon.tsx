@@ -5,9 +5,9 @@ import { SpinnerIcon } from '../../icons/spinner';
 import { buttonVariantStyles } from '../../lib/button-variant';
 
 const actionIconStyles = {
-  base: 'inline-flex items-center justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
+  base: 'inline-flex items-center cursor-pointer justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
   disabled:
-    'dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70',
+    'dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground hover:text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70',
   size: {
     sm: 'p-0.5 size-8',
     md: 'p-1 size-10',

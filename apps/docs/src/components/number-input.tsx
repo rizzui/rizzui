@@ -1,5 +1,11 @@
 import React from "react";
-import { NumberInput, Input, usePatternFormat, NumberInputProps } from "rizzui";
+import {
+  NumberInput,
+  NumberInputProps,
+  usePatternFormat,
+} from "./integrations/number-input";
+
+import { Input } from "rizzui";
 
 type CardExpiryType = NumberInputProps & {
   isMask?: boolean;
@@ -54,12 +60,7 @@ function CardExpiry({ isMask = false, ...props }: CardExpiryType) {
     return isMask ? format(`${month}${year}`) : `${month}/${year}`;
   };
 
-  return (
-    <NumberInput
-      {...props}
-      format={_format}
-    />
-  );
+  return <NumberInput {...props} format={_format} />;
 }
 
 export function NumberInputClearable() {
@@ -105,12 +106,7 @@ function CardExpiryTwo({ isMask = false, ...props }: CardExpiryType) {
     return isMask ? format(`${month}${year}`) : `${month}/${year}`;
   };
 
-  return (
-    <NumberInput
-      {...props}
-      format={_format}
-    />
-  );
+  return <NumberInput {...props} format={_format} />;
 }
 
 export function NumberInputCardExpiry() {
@@ -172,12 +168,7 @@ export function NumberInputWithGap() {
       }
       return isMask ? format(`${month}${year}`) : `${month}/${year}`;
     };
-    return (
-      <NumberInput
-        {...props}
-        format={_format}
-      />
-    );
+    return <NumberInput {...props} format={_format} />;
   }
 
   return (
@@ -234,12 +225,7 @@ export function NumberInputWithNoGap() {
       }
       return isMask ? format(`${month}${year}`) : `${month}/${year}`;
     };
-    return (
-      <NumberInput
-        {...props}
-        format={_format}
-      />
-    );
+    return <NumberInput {...props} format={_format} />;
   }
 
   return (

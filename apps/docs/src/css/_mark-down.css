@@ -1,0 +1,319 @@
+#__docusaurus {
+  .container {
+    .theme-doc-version-badge {
+      display: none;
+    }
+    .searchQueryInput_ACBU {
+      font-size: 16px;
+      padding: 1rem 2rem;
+    }
+    section {
+      > article {
+        border-bottom: 1px solid var(--ifm-accordion-border-color);
+      }
+    }
+    .theme-doc-toc-mobile {
+      > button {
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--ifm-menu-color);
+        &:hover {
+          color: var(--ifm-color-primary);
+        }
+        &::after {
+          background-size: 20px;
+        }
+      }
+    }
+    .markdown {
+      margin-top: 1.6rem;
+      margin-bottom: 5rem;
+
+      p,
+      li {
+        font-size: 15px;
+        line-height: 1.75rem;
+        font-weight: 400;
+        /* margin-bottom: 0rem; */
+      }
+
+      a {
+        color: var(--ifm-menu-color);
+        font-weight: 500;
+        text-decoration: underline;
+        text-decoration-color: var(--ifm-color-primary);
+        text-underline-offset: 0.2rem;
+        &:hover {
+          text-decoration-thickness: 0.1rem;
+        }
+      }
+
+      .anchor {
+        a {
+          color: var(--ifm-color-primary);
+          text-decoration: none;
+        }
+      }
+
+      h1 {
+        font-size: 1.75rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+      }
+
+      h2.anchor {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+        /* margin-top: 4rem; */
+      }
+
+      h3.anchor {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+        /* margin-top: 4rem; */
+      }
+
+      h4.anchor {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 0.6rem;
+        /* margin-top: 2rem; */
+      }
+
+      h5.anchor {
+        color: var(--ifm-color-primary);
+        margin-bottom: 10px;
+      }
+
+      code {
+        border-color: var(--ifm-code-border-color);
+        padding: 0.1rem 0.4rem;
+        border-radius: 0.3rem;
+      }
+
+      pre {
+        code {
+          padding: 1rem 1.25rem;
+        }
+      }
+
+      strong {
+        font-weight: 600;
+        color: var(--ifm-menu-color);
+      }
+
+      ol {
+        margin-top: 1rem;
+        li {
+          margin-bottom: 0.6rem;
+          padding-left: 0.5rem;
+        }
+      }
+
+      blockquote {
+        color: var(--ifm-font-color-base);
+        margin: 2rem 0;
+      }
+
+      .accordion {
+        box-shadow: none;
+        background-color: var(--ifm-accordion-background-color);
+        border: 1px solid var(--ifm-accordion-border-color);
+        padding-left: 1rem;
+        padding-right: 1rem;
+        @media screen and (min-width: 640px) {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+        summary {
+          font-size: 14px;
+          font-weight: 500;
+          color: var(--ifm-menu-color);
+          &:hover {
+            color: var(--ifm-accordion-button-hover-color);
+          }
+          &::before {
+            top: 50%;
+            transform: translateY(-50%);
+            border-color: transparent transparent transparent
+              var(--ifm-menu-color);
+          }
+          @media screen and (min-width: 640px) {
+            font-size: 16px;
+          }
+          p {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-inline-start: 0.5rem;
+          }
+        }
+        > div {
+          > div {
+            border: none;
+            color: var(--ifm-font-color-base);
+            padding-bottom: 1rem;
+          }
+        }
+      }
+
+      .accordion-container {
+        .accordion {
+          margin-bottom: 0;
+          &:not(:last-child) {
+            border-bottom: 0;
+            border-radius: 8px 8px 0 0;
+          }
+          &:last-child {
+            border-radius: 0 0 8px 8px;
+          }
+        }
+      }
+
+      .tabs-container {
+        .tabs {
+          border-bottom: 1px solid var(--ifm-accordion-border-color);
+          gap: 1.5rem;
+          .tabs__item {
+            padding: 12px 4px 8px 4px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ifm-menu-color);
+            &:hover {
+              background-color: transparent;
+              color: var(--ifm-color-primary);
+            }
+          }
+          .tabs__item--active {
+            color: var(--ifm-color-primary);
+            border-bottom-width: 1px;
+          }
+        }
+      }
+
+      table {
+        width: 100%;
+        display: table;
+        border-spacing: 0;
+        border: 1px solid var(--ifm-accordion-border-color);
+        box-shadow:
+          0 1px 3px 0 #0000001a,
+          0 1px 2px -1px #0000001a;
+
+        thead {
+          border-bottom: 1px solid var(--ifm-accordion-border-color);
+        }
+
+        tbody,
+        thead {
+          background-color: transparent !important;
+
+          tr {
+            border: 0;
+            background-color: transparent !important;
+
+            th {
+              border: 0;
+              text-align: start !important;
+              background-color: transparent !important;
+              font-size: 12px;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              color: var(--ifm-font-color-base);
+              font-weight: 500;
+            }
+
+            td {
+              border: 0;
+              text-align: left !important;
+              padding: 1rem;
+              font-size: 14px;
+
+              code {
+                white-space: nowrap;
+                font-size: 1em;
+              }
+
+              &:first-child {
+                color: var(--ifm-heading-color);
+                font-weight: 500;
+              }
+            }
+          }
+        }
+      }
+
+      .theme-code-block {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          "Open Sans",
+          "Helvetica Neue",
+          sans-serif;
+        > div {
+          font-weight: 400;
+
+          pre {
+            font-size: 14px;
+            font-weight: 400;
+          }
+
+          button.clean-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            border: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: var(--ifm-heading-color);
+            padding: 0;
+            transition: all 0.2s ease-in-out;
+
+            svg + svg {
+              color: var(--ifm-heading-color);
+            }
+
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.9);
+            }
+          }
+        }
+
+        &:hover {
+          > div {
+            button.clean-btn {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    .pagination-nav {
+      margin-top: 1rem;
+      a {
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        color: var(--ifm-menu-color);
+        &:hover {
+          color: var(--ifm-color-primary);
+        }
+        .pagination-nav__label {
+          font-size: 14px;
+          font-weight: 600;
+          margin-top: 0.3rem;
+        }
+      }
+    }
+  }
+}

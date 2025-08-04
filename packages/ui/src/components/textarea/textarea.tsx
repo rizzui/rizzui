@@ -6,14 +6,13 @@ import { FieldClearButton } from '../field-clear-button';
 import { makeClassName } from '../../lib/make-class-name';
 import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
-import { useInteractiveEvent } from '../../lib/use-interactive-event';
 
 const textareaStyles = {
-  base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] [&.is-focus]:ring-[0.8px] [&.is-focus]:ring-primary [&.is-hover]:border-primary [&.is-focus]:border-primary',
+  base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] focus-within:ring-[0.8px] focus-within:ring-primary hover:border-primary focus-within:border-primary',
   scrollBar:
     '[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
   disabled:
-    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted placeholder:text-muted-foreground',
+    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted placeholder:text-muted-foreground text-muted-foreground',
   clearable:
     '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
   error: '!border-red hover:!border-red focus:!border-red !ring-red',
@@ -26,7 +25,7 @@ const textareaStyles = {
   rounded: roundedStyles,
   variant: {
     text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 [&.is-focus]:ring-[1.8px] [&.is-focus]:bg-transparent bg-muted/70 backdrop-blur',
+    flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
     outline: 'bg-transparent ring-muted border border-muted',
   },
 };
@@ -127,21 +126,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     },
     ref
   ) => {
-    const {
-      isFocus,
-      isHover,
-      handleOnBlur,
-      handleOnFocus,
-      handleOnMouseEnter,
-      handleOnMouseLeave,
-    } = useInteractiveEvent({
-      readOnly,
-      onBlur,
-      onFocus,
-      onMouseEnter,
-      onMouseLeave,
-    });
-
     return (
       <div
         className={cn(
@@ -171,12 +155,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               ref={ref}
               rows={rows}
               disabled={disabled}
-              onBlur={handleOnBlur}
-              onFocus={handleOnFocus}
               readOnly={readOnly}
               maxLength={maxLength}
-              onMouseEnter={handleOnMouseEnter}
-              onMouseLeave={handleOnMouseLeave}
               {...(cols && { cols })}
               // placeholder is a required prop for the clearable input component even if the user does not set any
               placeholder={placeholder || 'Screen reader only'}
@@ -190,8 +170,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 clearable && textareaStyles.clearable,
                 // it's important we are using placeholder-shown pseudo class to control input clear icon btn
                 !placeholder && 'placeholder-shown:placeholder:opacity-0',
-                isHover && 'is-hover', // must have is-focus class based on mouse enter
-                isFocus && 'is-focus', // must have is-focus class based on onFocus event
                 !cols && 'w-full',
                 readOnly && 'focus:ring-0',
                 disabled && textareaStyles.disabled,
@@ -206,6 +184,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
                 size={size}
                 onClick={onClear}
                 className={cn(
+                  'cursor-pointer',
                   clearButtonSpacing.base,
                   clearButtonSpacing.size[size]
                 )}

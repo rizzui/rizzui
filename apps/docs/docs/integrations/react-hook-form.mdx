@@ -26,7 +26,6 @@ import {
   Title,
   Select,
   Button,
-  NumberInput,
   AdvancedRadio,
   type SelectOption,
 } from "rizzui";
@@ -141,24 +140,6 @@ export default function RizzUIForm() {
         <div>
           <Text className="font-semibold mb-4">Amount Submission</Text>
           <div className="grid grid-cols-2 gap-6">
-            <Controller
-              control={control}
-              name="amount"
-              render={({ field: { value, onChange }, fieldState: { error } }) => (
-                <NumberInput
-                  formatType="numeric"
-                  thousandSeparator=","
-                  placeholder="$123456"
-                  value={value}
-                  onValueChange={(v) => onChange(v.floatValue ?? 0)}
-                  customInput={Input as React.ComponentType<unknown>}
-                  {...{
-                    label: "Amount",
-                    error: error?.message,
-                  }}
-                />
-              )}
-            />
             <Input
               label="Beneficiary"
               placeholder="John Doe"
