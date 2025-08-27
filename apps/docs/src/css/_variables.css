@@ -1,132 +1,208 @@
 :root {
-  /* global variables override */
-  --doc-sidebar-width: 288px !important;
-  --ifm-font-family-base: "Geist", sans-serif;
-  --ifm-global-border-color: #70747325;
-  --ifm-font-color-base: #3e4342;
-  --ifm-heading-margin-bottom: 0.6rem;
-  --ifm-code-border-color: #dee2e2;
+  --background: 255 255 255; /* #ffffff */
+  --foreground: 72 72 72; /* #484848 */
+  --muted: 227 227 227; /* #e3e3e3 */
+  --muted-foreground: 146 146 146; /* #929292 */
 
-  /* navbar variables override */
+  /* ----------------------------------- */
+  /* gray colors */
+  /* ----------------------------------- */
+  --gray-50: 250 250 250; /* #fafafa */
+  --gray-100: 241 241 241; /* #f1f1f1 */
+  --gray-200: 227 227 227; /* #e3e3e3 */
+  --gray-300: 223 223 223; /* #dfdfdf */
+  --gray-400: 146 146 146; /* #929292 */
+  --gray-500: 102 102 102; /* #666666 */
+  --gray-600: 72 72 72; /* #484848 */
+  --gray-700: 51 51 51; /* #333333 */
+  --gray-800: 34 34 34; /* #222222 */
+  --gray-900: 17 17 17; /* #111111 */
+  --gray-950: 0 0 0; /* #000000 */
+
+  /* ----------------------------------- */
+  /* primary/brand colors */
+  /* ----------------------------------- */
+  --primary-lighter: 227 227 227; /* #e3e3e3 */
+  --primary-default: 17 17 17; /* #111111 */
+  --primary-dark: 0 0 0; /* #000000 */
+  --primary-foreground: 255 255 255; /* #ffffff */
+
+  /* ----------------------------------- */
+  /* secondary colors */
+  /* ----------------------------------- */
+  --secondary-lighter: 221 227 255; /* #dde3ff */
+  --secondary-default: 78 54 245; /* #4e36f5 */
+  --secondary-dark: 67 42 216; /* #432ad8 */
+  --secondary-foreground: 255 255 255; /* #ffffff */
+
+  /* ----------------------------------- */
+  /* red/error colors */
+  /* ----------------------------------- */
+  --red-lighter: 247 212 214; /* #f7d4d6 */
+  --red-default: 238 0 0; /* #e00 */
+  --red-dark: 197 0 0; /* #c50000 */
+
+  /* ----------------------------------- */
+  /* orange/warning colors */
+  /* ----------------------------------- */
+  --orange-lighter: 255 239 207; /* #ffefcf */
+  --orange-default: 245 166 35; /* #f5a623 */
+  --orange-dark: 171 87 10; /* #ab570a */
+
+  /* ----------------------------------- */
+  /* blue/info colors */
+  /* ----------------------------------- */
+  --blue-lighter: 211 229 255; /* #d3e5ff */
+  --blue-default: 0 112 243; /* #0070f3 */
+  --blue-dark: 7 97 209; /* #0761d1 */
+
+  /* ----------------------------------- */
+  /* green/success colors */
+  /* ----------------------------------- */
+  --green-lighter: 185 249 207; /* #b9f9cf */
+  --green-default: 17 168 73; /* #11a849 */
+  --green-dark: 17 132 60; /* #11843c */
+
+  /* docusaurus theme */
+  --ifm-color-primary: #111111;
+  --ifm-color-primary-dark: #222222;
+  --ifm-color-primary-darker: #111111;
+  --ifm-color-primary-darkest: #000000;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+  --ifm-scrollbar-track-background-color: transparent;
+  --ifm-scrollbar-thumb-background-color: rgba(0, 0, 0, 0.18);
+  --ifm-scrollbar-thumb-hover-background-color: #e3e3e3;
+  --ifm-scrollbar-size: 6px;
+
+  /* lists */
+  --ifm-list-left-padding: 1rem;
+  --ifm-list-item-margin: 0.875rem;
+
+  /* gray shades */
+  --ifm-color-gray-100: #f1f1f1;
+  --ifm-color-gray-200: #e3e3e3;
+  --ifm-color-gray-300: #dfdfdf;
+  --ifm-color-gray-400: #929292;
+  --ifm-color-gray-500: #666666;
+  --ifm-color-gray-600: #484848;
+  --ifm-color-gray-700: #333333;
+  --ifm-color-gray-800: #222222;
+  --ifm-color-gray-900: #111111;
+
+  /* fonts */
+  --ifm-font-family-base: 'Geist', 'sans-serif';
+
+  /* navbar */
   --ifm-navbar-height: 4rem;
-  --ifm-navbar-shadow: none;
-  --ifm-navbar-background-color: #ffffff;
 
-  /* navbar search variables override */
-  --ifm-color-gray-400: #7074734f;
-  --ifm-color-gray-0: #f8f9fa;
-  --ifm-navbar-search-input-icon: "";
+  /* hr / border */
+  --ifm-hr-background-color: var(--ifm-color-gray-300);
 
-  /* navbar contact button variables */
-  --ifm-navbar-contact-color: #ffffff;
-  --ifm-navbar-contact-background-color: #0d9373;
-  --ifm-navbar-contact-background-hover-color: #0d9374e5;
-  --ifm-navbar-contact-border: #0d9373;
+  /* border radius */
+  --ifm-global-radius: 0.25rem;
+  --ifm-toc-border-color: #e3e3e3;
 
-  /* sidebar variables override */
-  --ifm-menu-color: #171b1a;
-  --ifm-menu-color-background-hover: #5054530d;
-  --ifm-menu-color-active: #0d9373;
-  --ifm-menu-color-background-active: #0d93731a;
-  --ifm-sidebar-icon-color: #9ea3a2;
-
-  /* mobile sidebar variables override */
-  --ifm-navbar-sidebar-width: 300px;
-  --ifm-color-emphasis-600: #171b1a;
-  --ifm-backdrop-color: #0003;
-
-  /* table of contents variables override */
-  --ifm-color-primary: #0d9373;
-  --ifm-toc-link-color: #707473;
-
-  /* heading variables override */
-  --ifm-heading-color: #111827;
-
-  /* accordion variables */
-  --ifm-accordion-background-color: transparent;
-  --ifm-accordion-border-color: #dadada;
-  --ifm-accordion-button-hover-color: #171b1a;
-
-  /* tip variables */
-  --ifm-tip-background-color: #ecfdf580;
-  --ifm-tip-border-color: #10b98133;
-
-  /* admonitions variables */
-  --admonition-note-color: #18181b;
-  --admonition-note-background-color: #fafafa80;
-  --admonition-note-border-color: #71717a33;
-  --admonition-tip-color: #064e3b;
-  --admonition-tip-background-color: #ecfdf580;
-  --admonition-tip-border-color: #10b98133;
-
-  /* some random variables for code blocks */
-  --c-black: #000;
-  --c-white: #fff;
-  --c-blue-0: #f0f6ff;
-  --c-blue-10: #e3edff;
-  --c-blue-20: #cddfff;
-  --c-blue-30: #b2ceff;
-  --c-blue-40: #97bdff;
-  --c-blue-50: #7cabff;
-  --c-blue-60: #639bff;
-  --c-blue-70: #4d8dff;
-  --c-blue-80: #3880ff;
-  --c-blue-90: #1b6dff;
-  --c-blue-100: #0054e9;
-  --c-yellow-80: #ffc409;
-  --c-green-80: #17c948;
-  --c-orange-80: #ff7336;
-  --c-red-60: #f56570;
-  --c-red-80: #ef3442;
-  --c-green-90: #00ba33;
-  --c-red-90: #e21827;
-  --c-orange-90: #ff5b13;
-  --c-yellow-90: #f4b100;
+  /* shadow */
+  --ifm-global-shadow-lw:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --ifm-navbar-shadow: 0 1px 0 0 #e3e3e3;
 }
 
-html[data-theme="dark"] {
-  /* global variables override */
-  --ifm-background-color: #090d0d;
-  --ifm-global-border-color: #ced2d10f;
-  --ifm-font-color-base: #9ea3a2;
-  --ifm-code-border-color: #252928;
+/* dark theme */
+html[data-theme='dark'] {
+  --ifm-scrollbar-track-background-color: transparent;
 
-  /* navbar variables override */
-  --ifm-navbar-background-color: #090d0d;
+  --background: 8 9 14; /* #08090e */
+  --foreground: 223 223 223; /* #dfdfdf */
+  --muted: 51 51 51; /* #333333 */
+  --muted-foreground: 102 102 102; /* #666666 */
 
-  /* navbar search variables override */
-  --ifm-color-gray-0: #090d0d;
+  /* ----------------------------------- */
+  /* gray/natural colors */
+  /* ----------------------------------- */
+  --gray-50: 17 17 17; /* #111111 */
+  --gray-100: 34 34 34; /* #222222 */
+  --gray-200: 51 51 51; /* #333333 */
+  --gray-300: 72 72 72; /* #484848 */
+  --gray-400: 102 102 102; /* #666666 */
+  --gray-500: 146 146 146; /* #929292 */
+  --gray-600: 223 223 223; /* #dfdfdf */
+  --gray-700: 227 227 227; /* #e3e3e3 */
+  --gray-800: 241 241 241; /* #f1f1f1 */
+  --gray-900: 250 250 250; /* #fafafa */
+  --gray-950: 255 255 255; /* #ffffff */
 
-  /* sidebar variables override */
-  --ifm-menu-color: #ced2d1b1;
-  --ifm-menu-color-active: #07c983;
-  --ifm-sidebar-icon-color: #707473;
+  /* ----------------------------------- */
+  /* primary/brand colors */
+  /* ----------------------------------- */
+  --primary-lighter: 34 34 34; /* #222222 */
+  --primary-default: 241 241 241; /* #f1f1f1 */
+  --primary-dark: 255 255 255; /* #ffffff */
+  --primary-foreground: 0 0 0; /* #000000 */
 
-  /* mobile sidebar variables override */
-  --ifm-color-emphasis-600: #ffffff;
-  --ifm-backdrop-color: #090d0dcc;
+  /* ----------------------------------- */
+  /* secondary colors */
+  /* ----------------------------------- */
+  --secondary-lighter: 31 22 90; /* #1f165a */
+  --secondary-dark: 193 203 255; /* #c1cbff */
 
-  /* table of contents variables override */
-  --ifm-color-primary: #07c983;
-  --ifm-toc-link-color: #9ea3a2;
+  /* ----------------------------------- */
+  /* red/error colors */
+  /* ----------------------------------- */
+  --red-lighter: 80 0 0; /* #500000 */
+  --red-dark: 255 193 193; /* #ffc1c1 */
 
-  /* heading variables override */
-  --ifm-heading-color: #f3f7f6;
+  /* ----------------------------------- */
+  /* orange/warning colors */
+  /* ----------------------------------- */
+  --orange-lighter: 68 29 4; /* #441d04 */
+  --orange-dark: 252 234 139; /* #fcea8b */
 
-  /* accordion variables */
-  --ifm-accordion-background-color: #0a0a0a99;
-  --ifm-accordion-border-color: #1d1d1d;
-  --ifm-accordion-button-hover-color: #ffffff;
+  /* ----------------------------------- */
+  /* blue/info colors */
+  /* ----------------------------------- */
+  --blue-lighter: 13 51 94; /* #0d335e */
+  --blue-dark: 181 233 255; /* #b5e9ff */
 
-  /* tip variables */
-  --ifm-tip-background-color: #10b9811a;
-  --ifm-tip-border-color: #10b9814d;
+  /* ----------------------------------- */
+  /* green/success colors */
+  /* ----------------------------------- */
+  --green-lighter: 3 48 22; /* #033016 */
+  --green-dark: 185 249 207; /* #b9f9cf */
+  /* here you can customize other colors for dark theme if design required */
 
-  /* admonitions variables */
-  --admonition-note-color: #e4e4e7;
-  --admonition-note-background-color: #71717a1a;
-  --admonition-note-border-color: #71717a4d;
-  --admonition-tip-color: #a7f3d0;
-  --admonition-tip-background-color: #10b9811a;
-  --admonition-tip-border-color: #10b9814d;
+  /* docusaurus dark theme */
+  --ifm-background-color: #08090e;
+  --ifm-color-primary: #f1f1f1;
+  --ifm-color-primary-dark: #e3e3e3;
+  --ifm-color-primary-darker: #dfdfdf;
+  --ifm-color-primary-darkest: #929292;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* gray shades */
+  --ifm-color-gray-100: #111111;
+  --ifm-color-gray-200: #222222;
+  --ifm-color-gray-300: #333333;
+  --ifm-color-gray-400: #484848;
+  --ifm-color-gray-500: #666666;
+  --ifm-color-gray-600: #929292;
+  --ifm-color-gray-700: #dfdfdf;
+  --ifm-color-gray-800: #e3e3e3;
+  --ifm-color-gray-900: #f1f1f1;
+
+  /* hr / border */
+  --ifm-hr-background-color: var(--ifm-color-gray-300);
+
+  /* shadow */
+  --ifm-toc-border-color: #222222;
+  --ifm-global-shadow-lw:
+    0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --ifm-navbar-shadow: 0 1px 0 0 #222222;
 }
