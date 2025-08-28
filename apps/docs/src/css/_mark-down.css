@@ -14,7 +14,7 @@
     }
     .theme-doc-toc-mobile {
       > button {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.8rem;
         font-size: 14px;
         font-weight: 500;
         color: var(--ifm-menu-color);
@@ -22,9 +22,12 @@
           color: var(--ifm-color-primary);
         }
         &::after {
-          background-size: 20px;
+          background-size: 1.6rem;
         }
       }
+    }
+    .prism-code + div[class*='buttonGroup_'] button {
+      opacity: 0.6;
     }
     .markdown {
       line-height: 1.8;
@@ -35,7 +38,7 @@
       menu,
       ul {
         list-style-type: none;
-        padding-left: calc(var(--ifm-list-left-padding) - 0.25rem /* 4px */);
+        padding-left: 0.75rem;
       }
 
       > ul li:before {
@@ -44,10 +47,14 @@
         content: '→';
       }
 
+      li + li {
+        margin-top: 0.875rem;
+      }
+
       p,
       li {
         font-size: 15px;
-        line-height: 1.75rem;
+        /* line-height: 1.75rem; */
         font-weight: 400;
         /* margin-bottom: 0rem; */
         a {
@@ -56,7 +63,10 @@
           text-decoration-line: underline;
         }
       }
-
+      .border-muted.rounded-md > p {
+        font-size: inherit !important;
+        font-weight: 600 !important;
+      }
       a {
         color: var(--ifm-menu-color);
         font-weight: 500;
@@ -64,7 +74,7 @@
         text-decoration-color: var(--ifm-color-primary);
         text-underline-offset: 0.2rem;
         &:hover {
-          text-decoration-thickness: 0.1rem;
+          text-decoration-thickness: 0rem;
         }
       }
 
@@ -76,9 +86,12 @@
       }
 
       h1 {
-        font-size: 1.75rem;
-        font-weight: 600;
+        font-size: 26px;
+        font-weight: 700;
         margin-bottom: 0.6rem;
+        @media (min-width: 575px) {
+          font-size: 1.75rem;
+        }
       }
 
       h2.anchor {
@@ -89,7 +102,7 @@
       }
 
       h3.anchor {
-        font-size: 1.25rem;
+        font-size: 1.125rem;
         font-weight: 600;
         margin-bottom: 0.6rem;
         /* margin-top: 4rem; */
@@ -108,14 +121,19 @@
       }
 
       code {
-        border-color: var(--ifm-code-border-color);
-        padding: 0.1rem 0.4rem;
-        border-radius: 0.3rem;
+        border: 0.1rem solid #0000001a;
+        display: inline-block;
+        font-weight: 600;
+        border-radius: 4px;
+        padding: 0.1rem 0.375rem;
+        color: rgb(41 53 72 / var(--tw-text-opacity, 1));
+        background-color: initial;
       }
-
       pre {
         code {
-          padding: 1rem 1.25rem;
+          padding: 1rem;
+          font-size: 14px;
+          border: 0px solid;
         }
       }
 
@@ -126,16 +144,26 @@
 
       ol {
         list-style-type: decimal;
-        padding-left: calc(var(--ifm-list-left-padding) + 0.25rem /* 4px */);
+        padding-left: 1rem;
         li {
           margin-bottom: 0.6rem;
-          padding-left: 0.5rem;
+          padding-left: 0rem;
         }
       }
 
       blockquote {
         color: var(--ifm-font-color-base);
-        margin: 2rem 0;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        padding-bottom: 0.75rem;
+        padding-top: 0.75rem;
+        font-weight: 600;
+        border-left-width: 4px;
+        p {
+          font-size: inherit;
+          font-weight: inherit;
+          line-height: inherit;
+        }
       }
 
       .accordion {
@@ -196,11 +224,11 @@
       .tabs-container {
         .tabs {
           border-bottom: 1px solid var(--ifm-accordion-border-color);
-          gap: 1.5rem;
+          padding-left: 0;
+          gap: 1rem;
           .tabs__item {
-            padding: 12px 4px 8px 4px;
+            padding: 0.75rem 0.625rem 0.52rem;
             font-size: 14px;
-            font-weight: 600;
             color: var(--ifm-menu-color);
             &:hover {
               background-color: transparent;
@@ -209,7 +237,15 @@
           }
           .tabs__item--active {
             color: var(--ifm-color-primary);
-            border-bottom-width: 1px;
+            border-bottom-width: 2px;
+          }
+        }
+        .theme-code-block {
+          border-radius: 8px;
+          pre code {
+            padding-top: 14px;
+            padding-bottom: 14px;
+            padding-left: 24px;
           }
         }
       }
@@ -218,13 +254,13 @@
         width: 100%;
         display: table;
         border-spacing: 0;
-        border: 1px solid var(--ifm-accordion-border-color);
+        border: 1px solid var(--ifm-color-gray-200);
         box-shadow:
           0 1px 3px 0 #0000001a,
           0 1px 2px -1px #0000001a;
 
         thead {
-          border-bottom: 1px solid var(--ifm-accordion-border-color);
+          border-bottom: 1px solid var(--ifm-color-gray-200);
         }
 
         tbody,
@@ -232,31 +268,29 @@
           background-color: transparent !important;
 
           tr {
-            border: 0;
-            background-color: transparent !important;
-
+            background-color: transparent;
+            border-top: 0px solid;
+            border-bottom: 0px solid;
             th {
-              border: 0;
-              text-align: start !important;
-              background-color: transparent !important;
-              font-size: 12px;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              color: var(--ifm-font-color-base);
               font-weight: 500;
+              padding: 0.75rem 1.125rem;
+              border-width: 0;
+              font-size: 14px;
+              color: #666666;
+              line-height: 1.45;
             }
-
             td {
               border: 0;
-              text-align: left !important;
-              padding: 1rem;
+              padding: 0.75rem 1.125rem;
               font-size: 14px;
 
               code {
                 white-space: nowrap;
-                font-size: 1em;
               }
-
+              &:nth-child(4n + 1) {
+                font-weight: 600;
+                color: var(--ifm-color-gray-400);
+              }
               &:first-child {
                 color: var(--ifm-heading-color);
                 font-weight: 500;
@@ -267,6 +301,12 @@
       }
 
       .theme-code-block {
+        border-radius: 4px;
+        color: #f8f8f2;
+        background-color: #1e293b;
+        overflow: auto;
+        max-height: 800px;
+        scrollbar-width: thin;
         font-family:
           system-ui,
           -apple-system,
@@ -288,24 +328,17 @@
           }
 
           button.clean-btn {
-            width: 32px;
-            height: 32px;
+            padding: 0.5rem 0.4rem;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 4px;
             border: 0;
-            background-color: rgba(255, 255, 255, 0.7);
-            color: var(--ifm-heading-color);
-            padding: 0;
+            background-color: transparent;
             transition: all 0.2s ease-in-out;
 
-            svg + svg {
-              color: var(--ifm-heading-color);
-            }
-
             &:hover {
-              background-color: rgba(255, 255, 255, 0.9);
+              background-color: transparent;
             }
           }
         }
@@ -321,13 +354,15 @@
     }
     .pagination-nav {
       margin-top: 3rem;
-      a {
+      a.pagination-nav__link {
         border-radius: 4px;
         padding: 1rem;
         color: var(--ifm-menu-color);
         border-color: var(--ifm-color-gray-200);
         &:hover {
+          @apply hover:shadow-[0_0_0_0.6px_currentColor];
           color: var(--ifm-color-primary);
+          border-color: var(--ifm-color-primary);
         }
         .pagination-nav__sublabel {
           color: var(--ifm-color-gray-400);
@@ -346,5 +381,27 @@
         }
       }
     }
+  }
+}
+
+html[data-theme='dark'] #__docusaurus .container .markdown {
+  code {
+    background-color: var(--ifm-color-gray-200);
+    color: var(--ifm-color-gray-700);
+  }
+  table {
+    border-color: var(--ifm-color-gray-300);
+    thead {
+      border-color: var(--ifm-color-gray-300);
+    }
+  }
+  table tbody tr th,
+  table thead tr th {
+    background-color: var(--ifm-color-gray-200);
+    color: var(--ifm-color-gray-600);
+  }
+
+  .tabs-container .tabs {
+    border-color: var(--ifm-color-gray-300);
   }
 }

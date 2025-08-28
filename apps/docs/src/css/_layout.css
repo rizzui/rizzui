@@ -1,16 +1,8 @@
 #__docusaurus {
   .main-wrapper {
     /* max-width: 102rem; */
+    padding-top: 64px;
     width: 100%;
-    /* margin: 0 auto; */
-    /* padding: 0 0; */
-    /* @media screen and (min-width: 1024px) {
-      padding: 0 32px;
-
-      aside.theme-doc-sidebar-container + main {
-        padding-left: 26px;
-      }
-    } */
     .theme-doc-breadcrumbs {
       display: none;
     }
@@ -18,8 +10,9 @@
       max-width: 100%;
       padding-top: 0;
       padding-bottom: 0;
-
       @media screen and (min-width: 997px) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
         div[class*='docItemCol_'] {
           max-width: 100% !important;
         }
@@ -81,4 +74,8 @@ html {
       z-index: 999;
     }
   }
+}
+
+.plugin-pages #__docusaurus .navbar__inner {
+  @apply container mx-auto !px-0;
 }

@@ -2,13 +2,13 @@
 sidebar_position: 1
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
-import CodeBlock from "@theme/CodeBlock";
-import NpmIcon from "@site/src/components/icons/npm-icon";
-import YarnIcon from "@site/src/components/icons/yarn-icon";
-import PnpmIcon from "@site/src/components/icons/pnpm-icon";
-import BunIcon from "@site/src/components/icons/bun-icon";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import NpmIcon from '@site/src/components/icons/npm-icon';
+import YarnIcon from '@site/src/components/icons/yarn-icon';
+import PnpmIcon from '@site/src/components/icons/pnpm-icon';
+import BunIcon from '@site/src/components/icons/bun-icon';
 
 # Getting Started
 
@@ -16,7 +16,9 @@ RizzUI - A Modern, Minimal, TailwindCSS-based React Open Source UI Library. Intu
 
 ## Installation
 
-System Requirements: Node.js 18.20.4 or [later](https://nodejs.org/en).
+System Requirements:
+
+- Node.js 18.20.4 or [later](https://nodejs.org/en).
 
 Go to your React / Next.js project directory & install RizzUI by running the following command:
 
@@ -25,7 +27,7 @@ Go to your React / Next.js project directory & install RizzUI by running the fol
     value="npm"
     label={
       <div className="flex items-center gap-2">
-        <NpmIcon className="size-6" /> NPM
+        <NpmIcon className="size-5" /> npm
       </div>
     }
     default
@@ -38,7 +40,7 @@ Go to your React / Next.js project directory & install RizzUI by running the fol
     value="yarn"
     label={
       <div className="flex items-center gap-2">
-        <YarnIcon className="size-6" /> YARN
+        <YarnIcon className="size-5" /> yarn
       </div>
     }
   >
@@ -50,7 +52,7 @@ Go to your React / Next.js project directory & install RizzUI by running the fol
     value="pnpm"
     label={
       <div className="flex items-center gap-2">
-        <PnpmIcon className="size-6" /> PNPM
+        <PnpmIcon className="size-5" /> pnpm
       </div>
     }
   >
@@ -62,7 +64,7 @@ Go to your React / Next.js project directory & install RizzUI by running the fol
     value="bun"
     label={
       <div className="flex items-center gap-2">
-        <BunIcon className="size-6" /> BUN
+        <BunIcon className="size-5" /> bun
       </div>
     }
   >
@@ -80,12 +82,12 @@ Go to your React / Next.js project directory & install RizzUI by running the fol
 
 Now Install and configure TailwindCSS to have the style.
 
-<Tabs groupId="package-manager">
+<Tabs groupId="package-manager-tailwind">
   <TabItem
     value="npm"
     label={
       <div className="flex items-center gap-2">
-        <NpmIcon className="size-6" /> NPM
+        <NpmIcon className="size-5" /> npm
       </div>
     }
     default
@@ -98,7 +100,7 @@ Now Install and configure TailwindCSS to have the style.
     value="yarn"
     label={
       <div className="flex items-center gap-2">
-        <YarnIcon className="size-6" /> YARN
+        <YarnIcon className="size-5" /> yarn
       </div>
     }
   >
@@ -110,7 +112,7 @@ Now Install and configure TailwindCSS to have the style.
     value="pnpm"
     label={
       <div className="flex items-center gap-2">
-        <PnpmIcon className="size-6" /> PNPM
+        <PnpmIcon className="size-5" /> pnpm
       </div>
     }
   >
@@ -122,7 +124,7 @@ Now Install and configure TailwindCSS to have the style.
     value="bun"
     label={
       <div className="flex items-center gap-2">
-        <BunIcon className="size-6" /> BUN
+        <BunIcon className="size-5" /> bun
       </div>
     }
   >
@@ -231,7 +233,7 @@ module.exports = {
 ## Usage
 
 ```tsx
-import { Button } from "rizzui";
+import { Button } from 'rizzui';
 
 export default function App() {
   return <Button>Default</Button>;

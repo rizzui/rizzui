@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "../../static/fonts/geist-font.css";
+@import 'tailwindcss';
+@import '../../static/fonts/geist-font.css';
 @source "../../node_modules/rizzui/src";
 @plugin "@tailwindcss/forms";
 
@@ -73,7 +73,7 @@
 }
 
 /* dark theme */
-[data-theme="dark"] {
+[data-theme='dark'] {
   /* body style */
   --background: oklch(14.11% 0.0112 275.23); /* #08090e */
   --foreground: oklch(90.37% 0 0); /* #dfdfdf */
@@ -173,11 +173,12 @@
   --color-green-dark: var(--green-dark);
 }
 
-@import "./_variables.css";
-@import "./_layout.css";
-@import "./_navbar.css";
-@import "./_sidebar.css";
-@import "./_table-of-contents.css";
-@import "./_mark-down.css";
-@import "./_adomonition.css";
-@import "./_blog.css";
+@import './_variables.css';
+@import './_layout.css';
+@import './_common.css';
+@import './_navbar.css';
+@import './_sidebar.css';
+@import './_table-of-contents.css';
+@import './_mark-down.css';
+@import './_adomonition.css';
+@import './_blog.css';

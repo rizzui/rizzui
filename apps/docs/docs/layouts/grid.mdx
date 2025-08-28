@@ -2,15 +2,15 @@
 sidebar_position: 1
 ---
 
-import { Grid } from "rizzui";
-import Paper from "@site/src/components/paper";
+import { Grid } from 'rizzui';
+import Paper from '@site/src/components/paper';
 
 # Grid
 
 Grid is a layout component that allows you to create a grid layout.
 
 ```tsx
-import { Grid } from "rizzui";
+import { Grid } from 'rizzui';
 ```
 
 <div className="mb-20" />
@@ -34,7 +34,7 @@ The default style of **Grid** component.
 </Paper>
 
 ```tsx
-import { Grid } from "rizzui";
+import { Grid } from 'rizzui';
 
 export default function App() {
   return (
@@ -55,7 +55,7 @@ The style of **Grid** component can be changed with property **justify** & **ali
 
 <Paper>
   <Grid align="center" justify="center" className="grid-cols-[96px_96px_96px]">
-    <Grid.Col className="border border-muted rounded-md min-h-16 text-2xl font-semibold flex justify-center items-center shadow">
+    <Grid.Col className="border border-muted rounded-md min-h-16 font-semibold flex justify-center items-center shadow">
       01
     </Grid.Col>
     <Grid.Col className="border border-muted rounded-md min-h-20 text-2xl font-semibold flex justify-center items-center shadow">
@@ -68,7 +68,7 @@ The style of **Grid** component can be changed with property **justify** & **ali
 </Paper>
 
 ```tsx
-import { Grid } from "rizzui";
+import { Grid } from 'rizzui';
 
 export default function App() {
   return (
@@ -109,7 +109,7 @@ The style of **Grid.Col** component can be changed with property **colSpan**.
 </Paper>
 
 ```tsx
-import { Grid } from "rizzui";
+import { Grid } from 'rizzui';
 
 export default function App() {
   return (
@@ -178,7 +178,7 @@ The style of **Grid.Col** component can be changed with property **colStart** & 
 </Paper>
 
 ```tsx
-import { Grid } from "rizzui";
+import { Grid } from 'rizzui';
 
 export default function App() {
   return (
@@ -235,7 +235,7 @@ The style of **Grid.Col** component can be changed with property **rowSpan**.
 </Paper>
 
 ```tsx
-import { Grid } from "rizzui";
+import { Grid } from 'rizzui';
 
 export default function App() {
   return (
@@ -309,21 +309,21 @@ Here is the API documentation of the **Grid.Col** component. And the rest of the
 
 ```ts
 type ColumnsType =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "13"
-  | "auto"
-  | "full";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | 'auto'
+  | 'full';
 ```
 
 </div>
@@ -334,21 +334,21 @@ type ColumnsType =
 
 ```ts
 type RowsType =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "13"
-  | "auto"
-  | "full";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | 'auto'
+  | 'full';
 ```
 
 </div>
@@ -357,13 +357,13 @@ type RowsType =
 
 ```ts
 type JustifyType =
-  | "start"
-  | "end"
-  | "center"
-  | "between"
-  | "around"
-  | "evenly"
-  | "stretch";
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'evenly'
+  | 'stretch';
 ```
 
 <div className="mb-10" />
@@ -372,13 +372,13 @@ type JustifyType =
 
 ```ts
 type AlignType =
-  | "start"
-  | "end"
-  | "center"
-  | "between"
-  | "around"
-  | "evenly"
-  | "stretch";
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'between'
+  | 'around'
+  | 'evenly'
+  | 'stretch';
 ```
 
 <div className="mb-10" />
@@ -387,18 +387,18 @@ type AlignType =
 
 ```ts
 type GapType =
-  | "0"
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "12";
+  | '0'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '12';
 ```
 
 <div className="mb-10" />
@@ -407,13 +407,13 @@ type GapType =
 
 ```ts
 type PlaceContentType =
-  | "center"
-  | "start"
-  | "end"
-  | "between"
-  | "around"
-  | "evenly"
-  | "stretch";
+  | 'center'
+  | 'start'
+  | 'end'
+  | 'between'
+  | 'around'
+  | 'evenly'
+  | 'stretch';
 ```
 
 <div className="mb-10" />
@@ -421,7 +421,7 @@ type PlaceContentType =
 ### Place Items Type
 
 ```ts
-type PlaceItemsType = "center" | "start" | "end" | "stretch";
+type PlaceItemsType = 'center' | 'start' | 'end' | 'stretch';
 ```
 
 <div className="mb-10 straight-token-line">
@@ -430,20 +430,20 @@ type PlaceItemsType = "center" | "start" | "end" | "stretch";
 
 ```ts
 type ColumnStartType =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "13"
-  | "auto";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | 'auto';
 ```
 
 </div>
@@ -454,20 +454,20 @@ type ColumnStartType =
 
 ```ts
 type ColumnEndType =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "13"
-  | "auto";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | 'auto';
 ```
 
 </div>
@@ -478,20 +478,20 @@ type ColumnEndType =
 
 ```ts
 type ColumnSpanType =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "auto"
-  | "full";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | 'auto'
+  | 'full';
 ```
 
 </div>
@@ -502,21 +502,21 @@ type ColumnSpanType =
 
 ```ts
 type OrderType =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "first"
-  | "last"
-  | "none";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | 'first'
+  | 'last'
+  | 'none';
 ```
 
 </div>
@@ -527,20 +527,20 @@ type OrderType =
 
 ```ts
 type RowStartType =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "13"
-  | "auto";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | 'auto';
 ```
 
 </div>
@@ -551,20 +551,20 @@ type RowStartType =
 
 ```ts
 type RowEndType =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "13"
-  | "auto";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | 'auto';
 ```
 
 </div>
@@ -575,20 +575,20 @@ type RowEndType =
 
 ```ts
 type RowSpanType =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12"
-  | "auto"
-  | "full";
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | 'auto'
+  | 'full';
 ```
 
 </div>
@@ -596,5 +596,5 @@ type RowSpanType =
 ### Place Self Type
 
 ```ts
-type PlaceSelfType = "center" | "auto" | "start" | "end" | "stretch";
+type PlaceSelfType = 'center' | 'auto' | 'start' | 'end' | 'stretch';
 ```

@@ -1,75 +1,75 @@
-import React from "react";
-import NumberFlow from "@number-flow/react";
-import { useHistory } from "@docusaurus/router";
-import { Button, Title, Text, Box } from "rizzui";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
-import ButtonBlock from "./button-block";
-import TypographyBlock from "./typography-block";
-import TabBlock from "./tab-block";
-import FeedbackBlock from "./feedback-block";
-import DataDisplayBlock from "./data-display-block";
-import OverlayBlock from "./overlay-block";
-import InputBlock from "./input-block";
-import IntegrationBlock from "./integration-block";
-import ComponentCard from "./component-card";
-import { useInView } from "@site/src/utils/hooks/useInView";
+import React from 'react';
+import NumberFlow from '@number-flow/react';
+import { useHistory } from '@docusaurus/router';
+import { Button, Title, Text, Box } from 'rizzui';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
+import ButtonBlock from './button-block';
+import TypographyBlock from './typography-block';
+import TabBlock from './tab-block';
+import FeedbackBlock from './feedback-block';
+import DataDisplayBlock from './data-display-block';
+import OverlayBlock from './overlay-block';
+import InputBlock from './input-block';
+import IntegrationBlock from './integration-block';
+import ComponentCard from './component-card';
+import { useInView } from '@site/src/utils/hooks/useInView';
 
 const components = [
   {
     id: 1,
     component: <ButtonBlock />,
-    name: "Buttons",
+    name: 'Buttons',
     count: 2,
-    path: "/docs/buttons/action-icon",
+    path: '/docs/buttons/action-icon',
   },
   {
     id: 2,
     component: <InputBlock />,
-    name: "Inputs",
+    name: 'Inputs',
     count: 15,
-    path: "/docs/inputs/input",
+    path: '/docs/inputs/input',
   },
   {
     id: 3,
     component: <TabBlock />,
-    name: "Navigation",
+    name: 'Navigation',
     count: 3,
-    path: "/docs/navigation/dropdown",
+    path: '/docs/navigation/dropdown',
   },
   {
     id: 4,
     component: <FeedbackBlock />,
-    name: "Feedback",
+    name: 'Feedback',
     count: 4,
-    path: "/docs/feedback/alert",
+    path: '/docs/feedback/alert',
   },
   {
     id: 5,
     component: <OverlayBlock />,
-    name: "Overlays",
+    name: 'Overlays',
     count: 4,
-    path: "/docs/overlays/tooltip",
+    path: '/docs/overlays/tooltip',
   },
   {
     id: 6,
     component: <DataDisplayBlock />,
-    name: "Data Display",
+    name: 'Data Display',
     count: 6,
-    path: "/docs/data-display/accordion",
+    path: '/docs/data-display/accordion',
   },
   {
     id: 7,
     component: <TypographyBlock />,
-    name: "Typography",
+    name: 'Typography',
     count: 4,
-    path: "/docs/typography/title",
+    path: '/docs/typography/title',
   },
   {
     id: 8,
     component: <IntegrationBlock />,
-    name: "Integrations",
+    name: 'Integrations',
     count: 7,
-    path: "/docs/Integrations/rate",
+    path: '/docs/Integrations/rate',
   },
 ];
 
@@ -77,7 +77,7 @@ export default function ComponentBlock() {
   const ref = React.useRef(null);
   const history = useHistory();
   const isInView = useInView(ref, {
-    rootMargin: "-100px",
+    rootMargin: '-100px',
     threshold: 0.5,
   });
 
@@ -101,7 +101,7 @@ export default function ComponentBlock() {
         </div>
       </header>
 
-      <div className="!container mx-auto">
+      <div className="!container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {components.map((item, idx) => (
             <ComponentCard key={`${item.name}-${idx}`} item={item} />
@@ -112,12 +112,12 @@ export default function ComponentBlock() {
           <Button
             size="lg"
             rounded="pill"
-            onClick={() => history.push("/docs/buttons/action-icon")}
+            onClick={() => history.push('/docs/buttons/action-icon')}
             className="min-w-[180px] shadow-sm hover:ring-[0.5px] hover:ring-gray-900 relative !pe-14"
           >
-            Explore More{" "}
+            Explore More{' '}
             <Box
-              as={"span"}
+              as={'span'}
               className="size-7 rounded-full inline-flex items-center justify-center bg-gradient-to-tr from-primary to-white/30 dark:to-black/20 text-white dark:text-black absolute end-2"
             >
               <ArrowRightIcon className="size-[17px]" />
