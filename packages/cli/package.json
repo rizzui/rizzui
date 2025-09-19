@@ -1,0 +1,61 @@
+{
+  "name": "rizzui-cli",
+  "version": "1.0.0",
+  "description": "CLI tool to configure RizzUI with Next.js applications seamlessly",
+  "main": "./dist/index.js",
+  "bin": {
+    "rizzui-cli": "./dist/cli.js",
+    "rizzui": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "rizzui",
+    "cli",
+    "tailwindcss",
+    "nextjs",
+    "react",
+    "ui-library"
+  ],
+  "author": {
+    "name": "REDQ",
+    "url": "https://redq.io/"
+  },
+  "license": "MIT",
+  "homepage": "https://rizzui.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rizzui/rizzui.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/rizzui/rizzui/issues"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^6.0.1",
+    "chalk": "^4.1.2",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.3.0",
+    "ora": "^5.4.1",
+    "picocolors": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.17.11",
+    "tsconfig": "workspace:*",
+    "tsup": "8.5.0",
+    "typescript": "5.8.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
