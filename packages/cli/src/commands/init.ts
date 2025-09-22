@@ -1,13 +1,14 @@
 import { select, confirm } from '@inquirer/prompts';
 import path from 'path';
-import { ProjectDetector, ProjectInfo, FileOperations, Logger, COLOR_NAMES, ColorName } from '../utils';
+import { ProjectDetector, ProjectInfo, FileOperations, Logger, COLOR_NAMES, ColorName, DANGER_COLORS, WARNING_COLORS, INFO_COLORS, SUCCESS_COLORS } from '../utils';
 import {
-  generateTailwindConfig,
+  generatePostCSSConfig,
   generateGlobalCss,
   generateThemeProvider,
   generateThemeSwitcher,
   TailwindConfigOptions,
-  GlobalCssOptions
+  GlobalCssOptions,
+  ThemeOption
 } from '../templates';
 
 interface InitOptions {
@@ -35,9 +36,11 @@ export class InitCommand {
       if (options.default) {
         // Use default configuration
         config = {
+          themeOption: 'default-light',
           isDarkMode: false,
         };
         cssOptions = {
+          themeOption: 'default-light',
           isDarkMode: false,
         };
         Logger.info('Using default light mode configuration');
@@ -45,6 +48,7 @@ export class InitCommand {
         // Interactive configuration
         config = await this.promptForConfiguration();
         cssOptions = {
+          themeOption: config.themeOption,
           isDarkMode: config.isDarkMode,
           customColors: config.customColors,
         };
@@ -62,7 +66,7 @@ export class InitCommand {
       }
 
       Logger.newLine();
-      Logger.success('🎉 RizzUI has been successfully configured!');
+      Logger.success('🎉 RizzUI has been successfully configured with Tailwind CSS v4!');
       Logger.newLine();
       Logger.info('Next steps:');
       Logger.log('1. Install dependencies: ' + this.getInstallCommand(projectInfo.packageManager));
@@ -73,6 +77,12 @@ export class InitCommand {
       }
 
       Logger.log(`${config.isDarkMode ? '4' : '2'}. Start using RizzUI components: import { Button } from 'rizzui'`);
+      Logger.newLine();
+      Logger.info('✨ New in this setup:');
+      Logger.log('• Tailwind CSS v4 with simplified @import syntax');
+      Logger.log('• CSS-first configuration using @theme blocks');
+      Logger.log('• Improved performance and build times');
+      Logger.log('• Modern CSS features support');
 
     } catch (error) {
       Logger.error('Failed to initialize RizzUI');
@@ -81,82 +91,83 @@ export class InitCommand {
   }
 
   private static async promptForConfiguration(): Promise<TailwindConfigOptions> {
-    const isDarkMode = await confirm({
-      message: 'Do you want to enable dark mode support?',
-      default: true,
-    });
+    const themeOption = await select({
+      message: 'Choose your theme configuration:',
+      choices: [
+        { name: 'Default light theme', value: 'default-light' as const },
+        { name: 'Default light with dark theme', value: 'default-with-dark' as const },
+        { name: 'Custom light theme', value: 'custom-light' as const },
+        { name: 'Custom light with dark theme', value: 'custom-with-dark' as const },
+      ],
+      default: 'default-light' as const,
+    }) as ThemeOption;
 
+    const isDarkMode = themeOption === 'default-with-dark' || themeOption === 'custom-with-dark';
     let customColors: TailwindConfigOptions['customColors'];
 
-    if (isDarkMode) {
-      const useCustomColors = await confirm({
-        message: 'Do you want to customize the color scheme?',
-        default: false,
+    if (themeOption === 'custom-light' || themeOption === 'custom-with-dark') {
+      Logger.info('Customize your color scheme (you can use default for any category):');
+
+      const primaryColor = await select({
+        message: 'Primary color:',
+        choices: [
+          { name: 'Default (gray)', value: null },
+          ...COLOR_NAMES.map(color => ({ name: color, value: color }))
+        ],
       });
 
-      if (useCustomColors) {
-        Logger.info('Select colors for your theme (you can skip any category):');
+      const secondaryColor = await select({
+        message: 'Secondary color:',
+        choices: [
+          { name: 'Default (indigo)', value: null },
+          ...COLOR_NAMES.map(color => ({ name: color, value: color }))
+        ],
+      });
 
-        const primaryColor = await select({
-          message: 'Primary color:',
-          choices: [
-            { name: 'Default (gray)', value: null },
-            ...COLOR_NAMES.map(color => ({ name: color, value: color }))
-          ],
-        });
+      const dangerColor = await select({
+        message: 'Danger/Error color:',
+        choices: [
+          { name: 'Default (red)', value: null },
+          ...DANGER_COLORS.map(color => ({ name: color, value: color }))
+        ],
+      });
 
-        const secondaryColor = await select({
-          message: 'Secondary color:',
-          choices: [
-            { name: 'Default (indigo)', value: null },
-            ...COLOR_NAMES.map(color => ({ name: color, value: color }))
-          ],
-        });
+      const warningColor = await select({
+        message: 'Warning color:',
+        choices: [
+          { name: 'Default (amber)', value: null },
+          ...WARNING_COLORS.map(color => ({ name: color, value: color }))
+        ],
+      });
 
-        const dangerColor = await select({
-          message: 'Danger/Error color:',
-          choices: [
-            { name: 'Default (red)', value: null },
-            ...COLOR_NAMES.map(color => ({ name: color, value: color }))
-          ],
-        });
+      const infoColor = await select({
+        message: 'Info color:',
+        choices: [
+          { name: 'Default (sky)', value: null },
+          ...INFO_COLORS.map(color => ({ name: color, value: color }))
+        ],
+      });
 
-        const warningColor = await select({
-          message: 'Warning color:',
-          choices: [
-            { name: 'Default (amber)', value: null },
-            ...COLOR_NAMES.map(color => ({ name: color, value: color }))
-          ],
-        });
+      const successColor = await select({
+        message: 'Success color:',
+        choices: [
+          { name: 'Default (emerald)', value: null },
+          ...SUCCESS_COLORS.map(color => ({ name: color, value: color }))
+        ],
+      });
 
-        const infoColor = await select({
-          message: 'Info color:',
-          choices: [
-            { name: 'Default (sky)', value: null },
-            ...COLOR_NAMES.map(color => ({ name: color, value: color }))
-          ],
-        });
-
-        const successColor = await select({
-          message: 'Success color:',
-          choices: [
-            { name: 'Default (emerald)', value: null },
-            ...COLOR_NAMES.map(color => ({ name: color, value: color }))
-          ],
-        });
-
-        customColors = {
-          ...(primaryColor && { primary: primaryColor }),
-          ...(secondaryColor && { secondary: secondaryColor }),
-          ...(dangerColor && { danger: dangerColor }),
-          ...(warningColor && { warning: warningColor }),
-          ...(infoColor && { info: infoColor }),
-          ...(successColor && { success: successColor }),
-        };
-      }
+      customColors = {
+        ...(primaryColor && { primary: primaryColor }),
+        ...(secondaryColor && { secondary: secondaryColor }),
+        ...(dangerColor && { danger: dangerColor }),
+        ...(warningColor && { warning: warningColor }),
+        ...(infoColor && { info: infoColor }),
+        ...(successColor && { success: successColor }),
+      };
     }
 
     return {
+      themeOption,
       isDarkMode,
       customColors,
     };
@@ -173,8 +184,8 @@ export class InitCommand {
 
     const devDependencies: Record<string, string> = {
       'tailwindcss': '^4.1.11',
+      '@tailwindcss/postcss': '^4.1.11',
       'postcss': '^8.5.6',
-      'autoprefixer': '^10.4.21',
       '@tailwindcss/forms': '^0.5.10',
     };
 
@@ -197,11 +208,11 @@ export class InitCommand {
     config: TailwindConfigOptions,
     cssOptions: GlobalCssOptions
   ): Promise<void> {
-    // Generate tailwind.config.js
-    Logger.startSpinner('Generating Tailwind configuration...');
-    const tailwindConfig = generateTailwindConfig(config);
-    await FileOperations.updateTailwindConfig(projectInfo.projectRoot, tailwindConfig);
-    Logger.stopSpinner(true, 'Generated tailwind.config.js');
+    // Generate postcss.config.mjs
+    Logger.startSpinner('Generating PostCSS configuration...');
+    const postCSSConfig = generatePostCSSConfig();
+    await FileOperations.updatePostCSSConfig(projectInfo.projectRoot, postCSSConfig);
+    Logger.stopSpinner(true, 'Generated postcss.config.mjs');
 
     // Generate global.css
     Logger.startSpinner('Generating global styles...');

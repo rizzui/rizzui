@@ -24,14 +24,18 @@ const config: Config = {
   },
 
   themes: [
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        hashed: true,
-        highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true,
-      },
-    ],
+    // Temporarily disabled search plugin due to React 19 compatibility issues
+    // [
+    //   require.resolve('@easyops-cn/docusaurus-search-local'),
+    //   {
+    //     hashed: true,
+    //     highlightSearchTermsOnTargetPage: true,
+    //     explicitSearchResultPath: true,
+    //     docsRouteBasePath: 'docs',
+    //     blogRouteBasePath: 'blog',
+    //     useAllContextsWithNoSearchContext: true,
+    //   },
+    // ],
   ],
 
   presets: [

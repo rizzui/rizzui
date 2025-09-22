@@ -1,6 +1,6 @@
 # RizzUI CLI
 
-A command-line interface tool to configure RizzUI with Next.js applications seamlessly.
+A command-line interface tool to configure RizzUI with Next.js applications seamlessly, featuring **Tailwind CSS v4** support.
 
 ## Installation
 
@@ -22,9 +22,9 @@ rizzui init
 
 This command will:
 - Detect your Next.js project configuration
-- Install required dependencies
-- Generate Tailwind CSS configuration
-- Set up global styles
+- Install required dependencies (including **Tailwind CSS v4**)
+- Generate PostCSS configuration for Tailwind CSS v4
+- Set up global styles with modern `@import` and `@theme` syntax
 - Configure dark mode support (optional)
 - Create theme components (if dark mode is enabled)
 
@@ -59,13 +59,14 @@ rizzui add --all
 
 ## Features
 
+- ✅ **Tailwind CSS v4** support with modern configuration
 - ✅ Automatic Next.js project detection
 - ✅ TypeScript/JavaScript detection
 - ✅ Package manager detection (npm, yarn, pnpm, bun)
 - ✅ Interactive color scheme selection
-- ✅ Dark mode configuration
-- ✅ Tailwind CSS setup
-- ✅ Global styles generation
+- ✅ Dark mode configuration with CSS-first approach
+- ✅ PostCSS configuration generation
+- ✅ Global styles with `@import` and `@theme` blocks
 - ✅ Theme provider components
 - 🔄 Component installation (coming soon)
 
@@ -90,14 +91,22 @@ All colors are based on Tailwind CSS color palette and support both light and da
 ## Generated Files
 
 ### Light Mode Only
-- `tailwind.config.js` - Tailwind configuration
-- `styles/globals.css` or `src/styles/globals.css` - Global styles
+- `postcss.config.mjs` - PostCSS configuration for Tailwind CSS v4
+- `styles/globals.css` or `src/styles/globals.css` - Global styles with `@import` and `@theme`
 
 ### With Dark Mode
-- `tailwind.config.js` - Tailwind configuration with dark mode
-- `styles/globals.css` or `src/styles/globals.css` - Global styles with CSS variables
+- `postcss.config.mjs` - PostCSS configuration for Tailwind CSS v4
+- `styles/globals.css` or `src/styles/globals.css` - Global styles with CSS variables and dark mode
 - `components/theme-provider.tsx` - Next.js theme provider
 - `components/theme-switcher.tsx` - Theme toggle component
+
+## What's New in Tailwind CSS v4
+
+- **Simplified Installation**: Fewer dependencies, zero configuration
+- **CSS-First Configuration**: Use `@theme` blocks instead of `tailwind.config.js`
+- **Modern Import Syntax**: Single `@import "tailwindcss";` replaces multiple directives
+- **Performance**: Up to 5x faster builds, 100x faster incremental builds
+- **Modern CSS Features**: Built on cascade layers and registered custom properties
 
 ## License
 

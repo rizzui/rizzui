@@ -305,3 +305,9 @@ export function hexToRgb(hex: string): string {
 export function getColorVariants(colorName: ColorName) {
   return TAILWIND_COLORS[colorName];
 }
+
+// Filtered color options for specific purposes
+export const DANGER_COLORS: ColorName[] = ['red', 'rose', 'pink', 'orange'];
+export const WARNING_COLORS: ColorName[] = ['amber', 'yellow', 'orange'];
+export const INFO_COLORS: ColorName[] = ['sky', 'blue', 'cyan', 'indigo'];
+export const SUCCESS_COLORS: ColorName[] = ['emerald', 'green', 'teal', 'lime'];

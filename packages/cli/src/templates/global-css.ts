@@ -1,6 +1,8 @@
 import { ColorName, TAILWIND_COLORS, hexToRgb } from '../utils/colors';
+import { ThemeOption } from './tailwind-config';
 
 export interface GlobalCssOptions {
+  themeOption: ThemeOption;
   isDarkMode: boolean;
   customColors?: {
     primary?: ColorName;
@@ -15,16 +17,6 @@ export interface GlobalCssOptions {
 export function generateGlobalCss(options: GlobalCssOptions): string {
   const { isDarkMode, customColors } = options;
 
-  // Convert hex colors to RGB format for CSS variables
-  const getRgbFromHex = (hex: string) => {
-    return hexToRgb(hex);
-  };
-
-  const getColorValue = (colorName: ColorName, shade: number) => {
-    const colorValue = TAILWIND_COLORS[colorName][shade as keyof typeof TAILWIND_COLORS[ColorName]];
-    return getRgbFromHex(colorValue);
-  };
-
   const primaryColor = customColors?.primary || 'gray';
   const secondaryColor = customColors?.secondary || 'indigo';
   const dangerColor = customColors?.danger || 'red';
@@ -32,120 +24,126 @@ export function generateGlobalCss(options: GlobalCssOptions): string {
   const infoColor = customColors?.info || 'sky';
   const successColor = customColors?.success || 'emerald';
 
-  let css = `@tailwind base;
-@tailwind components;
-@tailwind utilities;
+  let css = `@import "tailwindcss";
 
-@layer base {
-  /* --------------------------------- */
-  /* light theme */
-  /* --------------------------------- */
-  :root {
-    --background: 255 255 255; /* #ffffff */
-    --foreground: 72 72 72; /* #484848 */
-    --muted: 227 227 227; /* #e3e3e3 */
-    --muted-foreground: 146 146 146; /* #929292 */
+/* RizzUI Theme Configuration */
+@theme {
+  /* Color Palette */
+  --color-background: #ffffff;
+  --color-foreground: #484848;
+  --color-muted: #e3e3e3;
+  --color-muted-foreground: #929292;
 
-    /*
-    * primary colors
-    */
-    --primary-lighter: ${getColorValue(primaryColor, 200)}; /* ${TAILWIND_COLORS[primaryColor][200]} */
-    --primary-default: ${getColorValue(primaryColor, 800)}; /* ${TAILWIND_COLORS[primaryColor][800]} */
-    --primary-dark: ${getColorValue(primaryColor, 950)}; /* ${TAILWIND_COLORS[primaryColor][950]} */
-    --primary-foreground: 255 255 255; /* #ffffff */
+  /* Primary Colors */
+  --color-primary-lighter: ${TAILWIND_COLORS[primaryColor][200]};
+  --color-primary: ${TAILWIND_COLORS[primaryColor][800]};
+  --color-primary-dark: ${TAILWIND_COLORS[primaryColor][950]};
+  --color-primary-foreground: #ffffff;
 
-    /*
-    * secondary colors
-    */
-    --secondary-lighter: ${getColorValue(secondaryColor, 200)}; /* ${TAILWIND_COLORS[secondaryColor][200]} */
-    --secondary-default: ${getColorValue(secondaryColor, 500)}; /* ${TAILWIND_COLORS[secondaryColor][500]} */
-    --secondary-dark: ${getColorValue(secondaryColor, 700)}; /* ${TAILWIND_COLORS[secondaryColor][700]} */
-    --secondary-foreground: 255 255 255; /* #ffffff */
+  /* Secondary Colors */
+  --color-secondary-lighter: ${TAILWIND_COLORS[secondaryColor][200]};
+  --color-secondary: ${TAILWIND_COLORS[secondaryColor][500]};
+  --color-secondary-dark: ${TAILWIND_COLORS[secondaryColor][700]};
+  --color-secondary-foreground: #ffffff;
 
-    /*
-    * danger colors
-    */
-    --red-lighter: ${getColorValue(dangerColor, 200)}; /* ${TAILWIND_COLORS[dangerColor][200]} */
-    --red-default: ${getColorValue(dangerColor, 500)}; /* ${TAILWIND_COLORS[dangerColor][500]} */
-    --red-dark: ${getColorValue(dangerColor, 700)}; /* ${TAILWIND_COLORS[dangerColor][700]} */
+  /* Danger Colors */
+  --color-red-lighter: ${TAILWIND_COLORS[dangerColor][200]};
+  --color-red: ${TAILWIND_COLORS[dangerColor][500]};
+  --color-red-dark: ${TAILWIND_COLORS[dangerColor][700]};
 
-    /*
-    * warning colors
-    */
-    --orange-lighter: ${getColorValue(warningColor, 200)}; /* ${TAILWIND_COLORS[warningColor][200]} */
-    --orange-default: ${getColorValue(warningColor, 500)}; /* ${TAILWIND_COLORS[warningColor][500]} */
-    --orange-dark: ${getColorValue(warningColor, 700)}; /* ${TAILWIND_COLORS[warningColor][700]} */
+  /* Warning Colors */
+  --color-orange-lighter: ${TAILWIND_COLORS[warningColor][200]};
+  --color-orange: ${TAILWIND_COLORS[warningColor][500]};
+  --color-orange-dark: ${TAILWIND_COLORS[warningColor][700]};
 
-    /*
-    * info colors
-    */
-    --blue-lighter: ${getColorValue(infoColor, 200)}; /* ${TAILWIND_COLORS[infoColor][200]} */
-    --blue-default: ${getColorValue(infoColor, 500)}; /* ${TAILWIND_COLORS[infoColor][500]} */
-    --blue-dark: ${getColorValue(infoColor, 700)}; /* ${TAILWIND_COLORS[infoColor][700]} */
+  /* Info Colors */
+  --color-blue-lighter: ${TAILWIND_COLORS[infoColor][200]};
+  --color-blue: ${TAILWIND_COLORS[infoColor][500]};
+  --color-blue-dark: ${TAILWIND_COLORS[infoColor][700]};
 
-    /*
-    * success colors
-    */
-    --green-lighter: ${getColorValue(successColor, 200)}; /* ${TAILWIND_COLORS[successColor][200]} */
-    --green-default: ${getColorValue(successColor, 500)}; /* ${TAILWIND_COLORS[successColor][500]} */
-    --green-dark: ${getColorValue(successColor, 700)}; /* ${TAILWIND_COLORS[successColor][700]} */
-  }`;
+  /* Success Colors */
+  --color-green-lighter: ${TAILWIND_COLORS[successColor][200]};
+  --color-green: ${TAILWIND_COLORS[successColor][500]};
+  --color-green-dark: ${TAILWIND_COLORS[successColor][700]};
+}`;
 
   if (isDarkMode) {
     css += `
 
-  /* --------------------------------- */
-  /* dark theme */
-  /* --------------------------------- */
-  [data-theme='dark'] {
-    --background: 8 9 14; /* #08090e */
-    --foreground: 223 223 223; /* #dfdfdf */
-    --muted: 51 51 51; /* #333333 */
-    --muted-foreground: 102 102 102; /* #666666 */
+/* Dark Mode Theme Variables */
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-background: #08090e;
+    --color-foreground: #dfdfdf;
+    --color-muted: #333333;
+    --color-muted-foreground: #666666;
 
-    /*
-    * primary colors
-    */
-    --primary-lighter: ${getColorValue(primaryColor, 800)}; /* ${TAILWIND_COLORS[primaryColor][800]} */
-    --primary-default: ${getColorValue(primaryColor, 100)}; /* ${TAILWIND_COLORS[primaryColor][100]} */
-    --primary-dark: ${getColorValue(primaryColor, 50)}; /* ${TAILWIND_COLORS[primaryColor][50]} */
-    --primary-foreground: 0 0 0; /* #000000 */
+    /* Primary Colors - Dark Mode */
+    --color-primary-lighter: ${TAILWIND_COLORS[primaryColor][800]};
+    --color-primary: ${TAILWIND_COLORS[primaryColor][100]};
+    --color-primary-dark: ${TAILWIND_COLORS[primaryColor][50]};
+    --color-primary-foreground: #000000;
 
-    /*
-    * secondary colors
-    */
-    --secondary-lighter: ${getColorValue(secondaryColor, 900)}; /* ${TAILWIND_COLORS[secondaryColor][900]} */
-    --secondary-dark: ${getColorValue(secondaryColor, 300)}; /* ${TAILWIND_COLORS[secondaryColor][300]} */
+    /* Secondary Colors - Dark Mode */
+    --color-secondary-lighter: ${TAILWIND_COLORS[secondaryColor][900]};
+    --color-secondary-dark: ${TAILWIND_COLORS[secondaryColor][300]};
 
-    /*
-    * danger colors
-    */
-    --red-lighter: ${getColorValue(dangerColor, 900)}; /* ${TAILWIND_COLORS[dangerColor][900]} */
-    --red-dark: ${getColorValue(dangerColor, 300)}; /* ${TAILWIND_COLORS[dangerColor][300]} */
+    /* Danger Colors - Dark Mode */
+    --color-red-lighter: ${TAILWIND_COLORS[dangerColor][900]};
+    --color-red-dark: ${TAILWIND_COLORS[dangerColor][300]};
 
-    /*
-    * warning colors
-    */
-    --orange-lighter: ${getColorValue(warningColor, 900)}; /* ${TAILWIND_COLORS[warningColor][900]} */
-    --orange-dark: ${getColorValue(warningColor, 300)}; /* ${TAILWIND_COLORS[warningColor][300]} */
+    /* Warning Colors - Dark Mode */
+    --color-orange-lighter: ${TAILWIND_COLORS[warningColor][900]};
+    --color-orange-dark: ${TAILWIND_COLORS[warningColor][300]};
 
-    /*
-    * info colors
-    */
-    --blue-lighter: ${getColorValue(infoColor, 900)}; /* ${TAILWIND_COLORS[infoColor][900]} */
-    --blue-dark: ${getColorValue(infoColor, 300)}; /* ${TAILWIND_COLORS[infoColor][300]} */
+    /* Info Colors - Dark Mode */
+    --color-blue-lighter: ${TAILWIND_COLORS[infoColor][900]};
+    --color-blue-dark: ${TAILWIND_COLORS[infoColor][300]};
 
-    /*
-    * success colors
-    */
-    --green-lighter: ${getColorValue(successColor, 900)}; /* ${TAILWIND_COLORS[successColor][900]} */
-    --green-dark: ${getColorValue(successColor, 300)}; /* ${TAILWIND_COLORS[successColor][300]} */
-
-    /* here you can customize other colors for dark theme if design required */
-  }`;
+    /* Success Colors - Dark Mode */
+    --color-green-lighter: ${TAILWIND_COLORS[successColor][900]};
+    --color-green-dark: ${TAILWIND_COLORS[successColor][300]};
   }
+}
 
-  css += '\n}';
+/* Manual Dark Mode Toggle Support */
+[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+[data-theme='dark'] * {
+  --color-background: #08090e;
+  --color-foreground: #dfdfdf;
+  --color-muted: #333333;
+  --color-muted-foreground: #666666;
+
+  /* Primary Colors - Dark Mode */
+  --color-primary-lighter: ${TAILWIND_COLORS[primaryColor][800]};
+  --color-primary: ${TAILWIND_COLORS[primaryColor][100]};
+  --color-primary-dark: ${TAILWIND_COLORS[primaryColor][50]};
+  --color-primary-foreground: #000000;
+
+  /* Secondary Colors - Dark Mode */
+  --color-secondary-lighter: ${TAILWIND_COLORS[secondaryColor][900]};
+  --color-secondary-dark: ${TAILWIND_COLORS[secondaryColor][300]};
+
+  /* Danger Colors - Dark Mode */
+  --color-red-lighter: ${TAILWIND_COLORS[dangerColor][900]};
+  --color-red-dark: ${TAILWIND_COLORS[dangerColor][300]};
+
+  /* Warning Colors - Dark Mode */
+  --color-orange-lighter: ${TAILWIND_COLORS[warningColor][900]};
+  --color-orange-dark: ${TAILWIND_COLORS[warningColor][300]};
+
+  /* Info Colors - Dark Mode */
+  --color-blue-lighter: ${TAILWIND_COLORS[infoColor][900]};
+  --color-blue-dark: ${TAILWIND_COLORS[infoColor][300]};
+
+  /* Success Colors - Dark Mode */
+  --color-green-lighter: ${TAILWIND_COLORS[successColor][900]};
+  --color-green-dark: ${TAILWIND_COLORS[successColor][300]};
+}`;
+  }
 
   return css;
 }

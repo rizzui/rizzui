@@ -46,24 +46,20 @@ export class FileOperations {
     Logger.success('Updated package.json');
   }
 
-  static async updateTailwindConfig(projectRoot: string, config: any): Promise<void> {
-    const configPath = path.join(projectRoot, 'tailwind.config.js');
+  static async updatePostCSSConfig(projectRoot: string, config: string): Promise<void> {
+    const configPath = path.join(projectRoot, 'postcss.config.mjs');
     const configExists = await fs.pathExists(configPath);
 
     if (configExists) {
-      const existingConfig = await this.readFile(configPath);
-      Logger.warning('tailwind.config.js already exists. You may need to merge configurations manually.');
+      Logger.warning('postcss.config.mjs already exists. You may need to merge configurations manually.');
 
       // Backup existing config
-      const backupPath = path.join(projectRoot, 'tailwind.config.js.backup');
+      const backupPath = path.join(projectRoot, 'postcss.config.mjs.backup');
       await fs.copy(configPath, backupPath);
       Logger.info(`Backup created at ${backupPath}`);
     }
 
-    const configContent = `/** @type {import('tailwindcss').Config} */
-module.exports = ${JSON.stringify(config, null, 2).replace(/"/g, "'")};`;
-
-    await this.writeFile(configPath, configContent);
+    await this.writeFile(configPath, config);
   }
 
   static async appendToFile(filePath: string, content: string): Promise<void> {
