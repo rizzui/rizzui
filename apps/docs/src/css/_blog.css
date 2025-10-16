@@ -3,8 +3,8 @@
   @apply !max-w-none;
 }
 .blog-list-page #__docusaurus {
-  aside {
-    @apply hidden;
+  aside.col.col--3 {
+    display: none !important;
   }
   main {
     @apply grid justify-between grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-4 gap-y-6 mx-auto !max-w-[1232px] w-full flex-auto;
@@ -56,8 +56,8 @@
     @apply max-w-[1536px];
   }
   div.col--2,
-  aside {
-    @apply hidden;
+  aside.col.col--3 {
+    @apply !hidden;
   }
   .container .row {
     header {

@@ -751,7 +751,7 @@ export function AvatarCard({ src, name, className, description, avatarProps }: A
         <Text className="font-lexend text-sm font-medium text-gray-900 dark:text-gray-700">
           {name}
         </Text>
-        {description && <Text className="text-[13px] text-gray-500">{description}</Text>}
+        {description && <Text className="!text-[13px] text-gray-500">{description}</Text>}
       </figcaption>
     </figure>
   );
@@ -784,7 +784,7 @@ export function DateCell({
       </time>
       <time
         dateTime={formatDate(date, "HH:mm:ss")}
-        className={cn("text-[13px] text-gray-500", timeClassName)}
+        className={cn("!text-[13px] text-gray-500", timeClassName)}
       >
         {formatDate(date, timeFormat)}
       </time>

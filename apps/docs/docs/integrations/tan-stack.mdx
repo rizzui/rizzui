@@ -684,7 +684,7 @@ export function renderOptionDisplayValue(value: string) {
             color="warning"
             renderAsDot
           />
-          <Text className="ms-2 font-medium capitalize text-orange-dark">{value}</Text>
+          <Text className="!ms-2 font-medium capitalize text-orange-dark">{value}</Text>
         </div>
       );
     case "paid":
@@ -694,7 +694,7 @@ export function renderOptionDisplayValue(value: string) {
             color="success"
             renderAsDot
           />
-          <Text className="ms-2 font-medium capitalize text-green-dark">{value}</Text>
+          <Text className="!ms-2 font-medium capitalize text-green-dark">{value}</Text>
         </div>
       );
     case "overdue":
@@ -704,7 +704,7 @@ export function renderOptionDisplayValue(value: string) {
             color="danger"
             renderAsDot
           />
-          <Text className="ms-2 font-medium capitalize text-red-dark">{value}</Text>
+          <Text className="!ms-2 font-medium capitalize text-red-dark">{value}</Text>
         </div>
       );
     default:
@@ -714,7 +714,7 @@ export function renderOptionDisplayValue(value: string) {
             renderAsDot
             className="bg-gray-400"
           />
-          <Text className="ms-2 font-medium capitalize text-gray-600">{value}</Text>
+          <Text className="!ms-2 font-medium capitalize text-gray-600">{value}</Text>
         </div>
       );
   }
@@ -751,7 +751,7 @@ export function AvatarCard({ src, name, className, description, avatarProps }: A
         <Text className="font-lexend text-sm font-medium text-gray-900 dark:text-gray-700">
           {name}
         </Text>
-        {description && <Text className="text-[13px] text-gray-500">{description}</Text>}
+        {description && <Text className="!text-[13px] text-gray-500">{description}</Text>}
       </figcaption>
     </figure>
   );
@@ -784,7 +784,7 @@ export function DateCell({
       </time>
       <time
         dateTime={formatDate(date, "HH:mm:ss")}
-        className={cn("text-[13px] text-gray-500", timeClassName)}
+        className={cn("!text-[13px] text-gray-500", timeClassName)}
       >
         {formatDate(date, timeFormat)}
       </time>
@@ -806,7 +806,7 @@ export function getStatusBadge(status: string) {
             color="warning"
             renderAsDot
           />
-          <Text className="ms-2 font-medium text-orange-dark">{status}</Text>
+          <Text className="!ms-2 font-medium text-orange-dark">{status}</Text>
         </div>
       );
     case "paid":
@@ -816,7 +816,7 @@ export function getStatusBadge(status: string) {
             color="success"
             renderAsDot
           />
-          <Text className="ms-2 font-medium text-green-dark">{status}</Text>
+          <Text className="!ms-2 font-medium text-green-dark">{status}</Text>
         </div>
       );
     case "overdue":
@@ -826,7 +826,7 @@ export function getStatusBadge(status: string) {
             color="danger"
             renderAsDot
           />
-          <Text className="ms-2 font-medium text-red-dark">{status}</Text>
+          <Text className="!ms-2 font-medium text-red-dark">{status}</Text>
         </div>
       );
     default:
@@ -836,7 +836,7 @@ export function getStatusBadge(status: string) {
             renderAsDot
             className="bg-gray-400"
           />
-          <Text className="ms-2 font-medium text-gray-600">{status}</Text>
+          <Text className="!ms-2 font-medium text-gray-600">{status}</Text>
         </div>
       );
   }

@@ -247,7 +247,7 @@ function renderDisplayValue(
         Status
       </div>
       {isLongerThanTwo ? (
-        <span className="border-s border-muted ps-2 ms-2">{filteredItems.length} Selected</span>
+        <span className="border-s border-muted !ps-2 !ms-2">{filteredItems.length} Selected</span>
       ) : (
         <div className="ps-2 border-s border-muted flex items-center gap-2">
           {filteredItems.slice(0, 2).map((item) => (

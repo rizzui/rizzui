@@ -116,8 +116,8 @@ const config: Config = {
     //   respectPrefersColorScheme: false,
     // },
     prism: {
-      theme: prismThemes.nightOwl,
-      darkTheme: prismThemes.nightOwl,
+      theme: prismThemes.oceanicNext,
+      darkTheme: prismThemes.oceanicNext,
     },
   } satisfies Preset.ThemeConfig,
 };
