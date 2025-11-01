@@ -49,13 +49,23 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.ts'),
           editUrl: 'https://github.com/rizzui/rizzui/apps/docs',
-          lastVersion: 'current',
+          lastVersion: '1.0.0',
           versions: {
             current: {
+              label: 'Next',
+              path: 'next',
+            },
+            '1.0.0': {
               label: 'v-1.0.0',
+              path: 'v1',
+            },
+            '2.0.0': {
+              label: 'v-2.0.0',
+              path: 'v2',
             },
             '0.8.7': {
               label: 'v-0.8.7',
+              path: 'v0.8.7',
             },
           },
         },
