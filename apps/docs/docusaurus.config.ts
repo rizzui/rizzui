@@ -16,7 +16,12 @@ const config: Config = {
   projectName: 'rizzui',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -24,14 +29,17 @@ const config: Config = {
   },
 
   themes: [
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        hashed: true,
-        highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true,
-      },
-    ],
+    // Search plugin temporarily disabled due to compatibility issues with Docusaurus 3.9.2
+    // Error: Can't resolve '@theme/SearchPage'
+    // TODO: Replace with Algolia DocSearch or wait for plugin update
+    // [
+    //   require.resolve('@easyops-cn/docusaurus-search-local'),
+    //   {
+    //     hashed: true,
+    //     highlightSearchTermsOnTargetPage: true,
+    //     explicitSearchResultPath: true,
+    //   },
+    // ],
   ],
 
   presets: [

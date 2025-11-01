@@ -1,11 +1,17 @@
 'use client';
 
 // ✅ Import from specific path for tree-shaking (reduces from 168.4k to ~8k)
-import { Button } from 'rizzui/button';
+import { ActionIcon } from 'rizzui/action-icon';
 import { useState } from 'react';
+import { PlusIcon } from '@/icons/plus';
+import { XIcon } from '@/icons/x-mark';
+import { SearchIcon } from '@/icons/search';
+import { StarIcon } from '@/icons/star';
+import { ShoppingCartIcon } from '@/icons/shopping-cart';
+import { CheckmarkIcon } from '@/icons/checkmark';
 import Link from 'next/link';
 
-export default function Page() {
+export default function ActionIconPage() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLoadingDemo = () => {
@@ -19,23 +25,23 @@ export default function Page() {
         {/* Header */}
         <div className="text-center space-y-4">
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white">
-            RizzUI Component Showcase
+            RizzUI ActionIcon Component
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Explore all button variants, sizes, rounded styles, and states
+            Icon-only buttons for actions and interactions
           </p>
 
           {/* Component Navigation */}
           <div className="flex justify-center gap-4 pt-4">
             <Link
               href="/"
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium"
+              className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
             >
               Button
             </Link>
             <Link
               href="/action-icon"
-              className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium"
             >
               ActionIcon
             </Link>
@@ -55,7 +61,7 @@ export default function Page() {
         {/* Variants Section */}
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-            Button Variants
+            ActionIcon Variants
           </h2>
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
             Available variants:{' '}
@@ -86,7 +92,18 @@ export default function Page() {
                 Solid (Primary Style)
               </h3>
               <div className="flex flex-wrap gap-4">
-                <Button variant="solid">Solid Button</Button>
+                <ActionIcon variant="solid">
+                  <PlusIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="solid">
+                  <SearchIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="solid">
+                  <StarIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="solid">
+                  <ShoppingCartIcon className="w-5 h-5" />
+                </ActionIcon>
               </div>
             </div>
 
@@ -96,7 +113,18 @@ export default function Page() {
                 Outline
               </h3>
               <div className="flex flex-wrap gap-4">
-                <Button variant="outline">Outline Button</Button>
+                <ActionIcon variant="outline">
+                  <PlusIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="outline">
+                  <SearchIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="outline">
+                  <StarIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="outline">
+                  <ShoppingCartIcon className="w-5 h-5" />
+                </ActionIcon>
               </div>
             </div>
 
@@ -106,7 +134,18 @@ export default function Page() {
                 Flat
               </h3>
               <div className="flex flex-wrap gap-4">
-                <Button variant="flat">Flat Button</Button>
+                <ActionIcon variant="flat">
+                  <PlusIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="flat">
+                  <SearchIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="flat">
+                  <StarIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="flat">
+                  <ShoppingCartIcon className="w-5 h-5" />
+                </ActionIcon>
               </div>
             </div>
 
@@ -116,7 +155,18 @@ export default function Page() {
                 Text
               </h3>
               <div className="flex flex-wrap gap-4">
-                <Button variant="text">Text Button</Button>
+                <ActionIcon variant="text">
+                  <PlusIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="text">
+                  <SearchIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="text">
+                  <StarIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="text">
+                  <ShoppingCartIcon className="w-5 h-5" />
+                </ActionIcon>
               </div>
             </div>
 
@@ -126,7 +176,18 @@ export default function Page() {
                 Danger
               </h3>
               <div className="flex flex-wrap gap-4">
-                <Button variant="danger">Danger Button</Button>
+                <ActionIcon variant="danger">
+                  <XIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="danger">
+                  <XIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="danger">
+                  <XIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="danger">
+                  <XIcon className="w-5 h-5" />
+                </ActionIcon>
               </div>
             </div>
           </div>
@@ -138,11 +199,22 @@ export default function Page() {
             Sizes
           </h2>
           <div className="flex flex-wrap items-end gap-4">
-            <Button size="sm">Small</Button>
-            <Button size="md">Medium</Button>
-            <Button size="lg">Large</Button>
-            <Button size="xl">Extra Large</Button>
+            <ActionIcon size="sm">
+              <PlusIcon className="w-4 h-4" />
+            </ActionIcon>
+            <ActionIcon size="md">
+              <PlusIcon className="w-5 h-5" />
+            </ActionIcon>
+            <ActionIcon size="lg">
+              <PlusIcon className="w-6 h-6" />
+            </ActionIcon>
+            <ActionIcon size="xl">
+              <PlusIcon className="w-7 h-7" />
+            </ActionIcon>
           </div>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
+            Sizes: SM (32px), MD (40px), LG (48px), XL (56px)
+          </p>
         </section>
 
         {/* Rounded Section */}
@@ -151,11 +223,46 @@ export default function Page() {
             Rounded Variants
           </h2>
           <div className="flex flex-wrap gap-4">
-            <Button rounded="none">None</Button>
-            <Button rounded="sm">Small</Button>
-            <Button rounded="md">Medium</Button>
-            <Button rounded="lg">Large</Button>
-            <Button rounded="pill">Pill</Button>
+            <div className="text-center">
+              <ActionIcon rounded="none">
+                <StarIcon className="w-5 h-5" />
+              </ActionIcon>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                None
+              </p>
+            </div>
+            <div className="text-center">
+              <ActionIcon rounded="sm">
+                <StarIcon className="w-5 h-5" />
+              </ActionIcon>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                Small
+              </p>
+            </div>
+            <div className="text-center">
+              <ActionIcon rounded="md">
+                <StarIcon className="w-5 h-5" />
+              </ActionIcon>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                Medium
+              </p>
+            </div>
+            <div className="text-center">
+              <ActionIcon rounded="lg">
+                <StarIcon className="w-5 h-5" />
+              </ActionIcon>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                Large
+              </p>
+            </div>
+            <div className="text-center">
+              <ActionIcon rounded="full">
+                <StarIcon className="w-5 h-5" />
+              </ActionIcon>
+              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+                Full
+              </p>
+            </div>
           </div>
         </section>
 
@@ -171,18 +278,18 @@ export default function Page() {
                 Loading
               </h3>
               <div className="flex flex-wrap gap-4">
-                <Button isLoading={isLoading} onClick={handleLoadingDemo}>
-                  {isLoading ? 'Loading...' : 'Click to Load'}
-                </Button>
-                <Button variant="outline" isLoading>
-                  Loading
-                </Button>
-                <Button variant="flat" isLoading>
-                  Loading
-                </Button>
-                <Button variant="text" isLoading>
-                  Loading
-                </Button>
+                <ActionIcon isLoading={isLoading} onClick={handleLoadingDemo}>
+                  <CheckmarkIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="outline" isLoading>
+                  <SearchIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="flat" isLoading>
+                  <StarIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="text" isLoading>
+                  <PlusIcon className="w-5 h-5" />
+                </ActionIcon>
               </div>
             </div>
 
@@ -192,22 +299,24 @@ export default function Page() {
                 Disabled
               </h3>
               <div className="flex flex-wrap gap-4">
-                <Button disabled>Solid</Button>
-                <Button variant="outline" disabled>
-                  Outline
-                </Button>
-                <Button variant="flat" disabled>
-                  Flat
-                </Button>
-                <Button variant="text" disabled>
-                  Text
-                </Button>
+                <ActionIcon disabled>
+                  <PlusIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="outline" disabled>
+                  <SearchIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="flat" disabled>
+                  <StarIcon className="w-5 h-5" />
+                </ActionIcon>
+                <ActionIcon variant="text" disabled>
+                  <XIcon className="w-5 h-5" />
+                </ActionIcon>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Combination Grid */}
+        {/* Size × Variant Matrix */}
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
             Size × Variant Matrix
@@ -240,113 +349,113 @@ export default function Page() {
                 <tr className="border-t border-gray-200 dark:border-gray-700">
                   <td className="p-4 text-gray-700 dark:text-gray-300">SM</td>
                   <td className="p-4 text-center">
-                    <Button size="sm" variant="solid">
-                      Button
-                    </Button>
+                    <ActionIcon size="sm" variant="solid">
+                      <PlusIcon className="w-4 h-4" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="sm" variant="outline">
-                      Button
-                    </Button>
+                    <ActionIcon size="sm" variant="outline">
+                      <PlusIcon className="w-4 h-4" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="sm" variant="flat">
-                      Button
-                    </Button>
+                    <ActionIcon size="sm" variant="flat">
+                      <PlusIcon className="w-4 h-4" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="sm" variant="text">
-                      Button
-                    </Button>
+                    <ActionIcon size="sm" variant="text">
+                      <PlusIcon className="w-4 h-4" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="sm" variant="danger">
-                      Button
-                    </Button>
+                    <ActionIcon size="sm" variant="danger">
+                      <XIcon className="w-4 h-4" />
+                    </ActionIcon>
                   </td>
                 </tr>
                 <tr className="border-t border-gray-200 dark:border-gray-700">
                   <td className="p-4 text-gray-700 dark:text-gray-300">MD</td>
                   <td className="p-4 text-center">
-                    <Button size="md" variant="solid">
-                      Button
-                    </Button>
+                    <ActionIcon size="md" variant="solid">
+                      <PlusIcon className="w-5 h-5" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="md" variant="outline">
-                      Button
-                    </Button>
+                    <ActionIcon size="md" variant="outline">
+                      <PlusIcon className="w-5 h-5" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="md" variant="flat">
-                      Button
-                    </Button>
+                    <ActionIcon size="md" variant="flat">
+                      <PlusIcon className="w-5 h-5" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="md" variant="text">
-                      Button
-                    </Button>
+                    <ActionIcon size="md" variant="text">
+                      <PlusIcon className="w-5 h-5" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="md" variant="danger">
-                      Button
-                    </Button>
+                    <ActionIcon size="md" variant="danger">
+                      <XIcon className="w-5 h-5" />
+                    </ActionIcon>
                   </td>
                 </tr>
                 <tr className="border-t border-gray-200 dark:border-gray-700">
                   <td className="p-4 text-gray-700 dark:text-gray-300">LG</td>
                   <td className="p-4 text-center">
-                    <Button size="lg" variant="solid">
-                      Button
-                    </Button>
+                    <ActionIcon size="lg" variant="solid">
+                      <PlusIcon className="w-6 h-6" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="lg" variant="outline">
-                      Button
-                    </Button>
+                    <ActionIcon size="lg" variant="outline">
+                      <PlusIcon className="w-6 h-6" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="lg" variant="flat">
-                      Button
-                    </Button>
+                    <ActionIcon size="lg" variant="flat">
+                      <PlusIcon className="w-6 h-6" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="lg" variant="text">
-                      Button
-                    </Button>
+                    <ActionIcon size="lg" variant="text">
+                      <PlusIcon className="w-6 h-6" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="lg" variant="danger">
-                      Button
-                    </Button>
+                    <ActionIcon size="lg" variant="danger">
+                      <XIcon className="w-6 h-6" />
+                    </ActionIcon>
                   </td>
                 </tr>
                 <tr className="border-t border-gray-200 dark:border-gray-700">
                   <td className="p-4 text-gray-700 dark:text-gray-300">XL</td>
                   <td className="p-4 text-center">
-                    <Button size="xl" variant="solid">
-                      Button
-                    </Button>
+                    <ActionIcon size="xl" variant="solid">
+                      <PlusIcon className="w-7 h-7" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="xl" variant="outline">
-                      Button
-                    </Button>
+                    <ActionIcon size="xl" variant="outline">
+                      <PlusIcon className="w-7 h-7" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="xl" variant="flat">
-                      Button
-                    </Button>
+                    <ActionIcon size="xl" variant="flat">
+                      <PlusIcon className="w-7 h-7" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="xl" variant="text">
-                      Button
-                    </Button>
+                    <ActionIcon size="xl" variant="text">
+                      <PlusIcon className="w-7 h-7" />
+                    </ActionIcon>
                   </td>
                   <td className="p-4 text-center">
-                    <Button size="xl" variant="danger">
-                      Button
-                    </Button>
+                    <ActionIcon size="xl" variant="danger">
+                      <XIcon className="w-7 h-7" />
+                    </ActionIcon>
                   </td>
                 </tr>
               </tbody>
@@ -354,78 +463,10 @@ export default function Page() {
           </div>
         </section>
 
-        {/* All Variants Grid */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-            All Button Variants
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {/* Solid */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Solid
-              </h3>
-              <div className="space-y-3">
-                <Button variant="solid" className="w-full">
-                  Solid
-                </Button>
-              </div>
-            </div>
-
-            {/* Outline */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Outline
-              </h3>
-              <div className="space-y-3">
-                <Button variant="outline" className="w-full">
-                  Outline
-                </Button>
-              </div>
-            </div>
-
-            {/* Flat */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Flat
-              </h3>
-              <div className="space-y-3">
-                <Button variant="flat" className="w-full">
-                  Flat
-                </Button>
-              </div>
-            </div>
-
-            {/* Text */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Text
-              </h3>
-              <div className="space-y-3">
-                <Button variant="text" className="w-full">
-                  Text
-                </Button>
-              </div>
-            </div>
-
-            {/* Danger */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Danger
-              </h3>
-              <div className="space-y-3">
-                <Button variant="danger" className="w-full">
-                  Danger
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Props Documentation */}
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-            Button Props & API
+            ActionIcon Props & API
           </h2>
           <div className="space-y-6">
             <div className="overflow-x-auto">
@@ -468,7 +509,7 @@ export default function Page() {
                     </td>
                     <td className="p-3 font-mono text-xs">'md'</td>
                     <td className="p-3 text-gray-700 dark:text-gray-300">
-                      The size of the button
+                      The size of the icon button
                     </td>
                   </tr>
                   <tr>
@@ -476,11 +517,23 @@ export default function Page() {
                       rounded
                     </td>
                     <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
-                      'none' | 'sm' | 'md' | 'lg' | 'pill'
+                      'none' | 'sm' | 'md' | 'lg' | 'full'
                     </td>
                     <td className="p-3 font-mono text-xs">'md'</td>
                     <td className="p-3 text-gray-700 dark:text-gray-300">
                       Border radius style
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-3 font-mono text-xs text-blue-600 dark:text-blue-400">
+                      children
+                    </td>
+                    <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
+                      ReactNode
+                    </td>
+                    <td className="p-3 font-mono text-xs">required</td>
+                    <td className="p-3 text-gray-700 dark:text-gray-300">
+                      SVG icon element
                     </td>
                   </tr>
                   <tr>
@@ -533,18 +586,6 @@ export default function Page() {
                   </tr>
                   <tr>
                     <td className="p-3 font-mono text-xs text-blue-600 dark:text-blue-400">
-                      loader
-                    </td>
-                    <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
-                      ReactNode
-                    </td>
-                    <td className="p-3 font-mono text-xs">-</td>
-                    <td className="p-3 text-gray-700 dark:text-gray-300">
-                      Custom loader component
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-blue-600 dark:text-blue-400">
                       className
                     </td>
                     <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
@@ -569,9 +610,12 @@ export default function Page() {
                     Basic Usage:
                   </p>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-xs">
-                    {`import { Button } from 'rizzui/button';
+                    {`import { ActionIcon } from 'rizzui/action-icon';
+import { PlusIcon } from '@heroicons/react/24/outline';
 
-<Button>Click me</Button>`}
+<ActionIcon>
+  <PlusIcon className="w-5 h-5" />
+</ActionIcon>`}
                   </pre>
                 </div>
 
@@ -580,27 +624,31 @@ export default function Page() {
                     With all props:
                   </p>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-xs">
-                    {`<Button
+                    {`<ActionIcon
   variant="solid"
   size="lg"
-  rounded="pill"
+  rounded="full"
   isLoading={false}
   disabled={false}
   onClick={() => console.log('clicked')}
 >
-  Submit
-</Button>`}
+  <StarIcon className="w-6 h-6" />
+</ActionIcon>`}
                   </pre>
                 </div>
 
                 <div>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                    Loading state:
+                    Delete button example:
                   </p>
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-xs">
-                    {`<Button isLoading variant="outline">
-  Processing...
-</Button>`}
+                    {`<ActionIcon 
+  variant="danger" 
+  rounded="full"
+  onClick={handleDelete}
+>
+  <XIcon className="w-5 h-5" />
+</ActionIcon>`}
                   </pre>
                 </div>
 
@@ -610,10 +658,10 @@ export default function Page() {
                   </p>
                   <pre className="bg-green-900 text-green-100 p-4 rounded-lg overflow-x-auto text-xs">
                     {`// ✅ Good - ~8KB
-import { Button } from 'rizzui/button';
+import { ActionIcon } from 'rizzui/action-icon';
 
 // ❌ Bad - 168KB (imports entire library)
-import { Button } from 'rizzui';`}
+import { ActionIcon } from 'rizzui';`}
                   </pre>
                 </div>
               </div>
@@ -624,3 +672,4 @@ import { Button } from 'rizzui';`}
     </div>
   );
 }
+

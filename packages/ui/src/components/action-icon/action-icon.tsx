@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { SpinnerIcon } from '../../icons/spinner';
-import { cn } from '../../lib/cn';
 
 const actionIcon = tv({
   base: 'inline-flex items-center cursor-pointer justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
@@ -94,7 +93,7 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
     ref
   ) => {
     const Component = as;
-    
+
     return (
       <Component
         ref={ref}

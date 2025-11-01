@@ -10,11 +10,11 @@
     "clean": "rm -rf node_modules .next"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.28.4",
+    "@floating-ui/react": "^0.27.16",
     "@headlessui/react": "^2.2.0",
     "framer-motion": "^12.10.6",
     "next": "^15.3.2",
-    "next-themes": "^0.4.7",
+    "next-themes": "^0.4.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-number-format": "^5.4.3",

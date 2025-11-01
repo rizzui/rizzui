@@ -16,12 +16,11 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "3.8.1",
-    "@docusaurus/preset-classic": "3.8.1",
-    "@docusaurus/theme-classic": "3.8.1",
-    "@docusaurus/theme-common": "3.8.1",
-    "@easyops-cn/docusaurus-search-local": "0.51.1",
-    "@floating-ui/react": "0.27.13",
+    "@docusaurus/core": "3.9.2",
+    "@docusaurus/preset-classic": "3.9.2",
+    "@docusaurus/theme-classic": "3.9.2",
+    "@docusaurus/theme-common": "3.9.2",
+    "@floating-ui/react": "0.27.16",
     "@headlessui/react": "2.2.4",
     "@heroicons/react": "2.2.0",
     "@hookform/resolvers": "5.1.1",
@@ -55,9 +54,9 @@
     "zod": "3.25.67"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.8.1",
-    "@docusaurus/plugin-content-blog": "3.8.1",
-    "@docusaurus/types": "3.8.1",
+    "@docusaurus/module-type-aliases": "3.9.2",
+    "@docusaurus/plugin-content-blog": "3.9.2",
+    "@docusaurus/types": "3.9.2",
     "@tsconfig/docusaurus": "2.0.3",
     "@types/node": "24.0.8",
     "@types/react": "^19.1.8",
