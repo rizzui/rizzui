@@ -18,7 +18,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-number-format": "^5.4.3",
-    "rizzui": "workspace:^1.0.2",
+    "rizzui": "workspace:^2.0.0",
     "tailwind-merge": "^3.1.1"
   },
   "devDependencies": {
