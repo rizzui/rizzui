@@ -1,0 +1,60 @@
+---
+sidebar_position: 4
+---
+
+import { Blockquote } from "rizzui";
+import Paper from "@site/src/components/paper";
+
+# Blockquote
+
+Blockquote component is the used to render text and paragraphs within an interface using well-defined typographic styles. It renders a **p** tag by default.
+
+```jsx
+import { Blockquote } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+The default style of the **Blockquote**.
+
+<Paper>
+  <Blockquote>
+    Before going to sleep every night, forgive everyone and sleep with a clean
+    heart.
+  </Blockquote>
+</Paper>
+
+```jsx
+import { Blockquote } from "rizzui";
+
+export default function App() {
+  return (
+    <Blockquote>
+      Before going to sleep every night, forgive everyone and sleep with a clean
+      heart.
+    </Blockquote>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### Blockquote Props
+
+Here is the API documentation of the Blockquote component.
+
+<div className="overflow-x-auto">
+
+|   Props   |   Type   |            Description             | Default |
+| :-------: | :------: | :--------------------------------: | :-----: |
+| className | `string` | Add custom classes for extra style |  \_\_   |
+
+</div>

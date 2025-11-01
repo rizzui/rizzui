@@ -1,0 +1,204 @@
+---
+sidebar_position: 9
+---
+
+import { AdvancedRadio, Text } from "rizzui";
+import {
+  CurrencyBangladeshiIcon,
+  CurrencyDollarIcon,
+  CurrencyEuroIcon,
+  CurrencyPoundIcon,
+} from "@heroicons/react/24/outline";
+import Paper from "@site/src/components/paper";
+
+# AdvancedRadio
+
+A basic widget for getting the user input of radio with advanced design.
+
+```jsx
+import { AdvancedRadio } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Simple Advanced Radio
+
+You can change style of **AdvancedRadio**.
+
+<Paper className="flex-row gap-4 flex-wrap">
+  <AdvancedRadio
+    name="age"
+    value="any"
+    alignment="center"
+    contentClassName="[&>p]:mb-0!"
+  >
+    Any
+  </AdvancedRadio>
+  <AdvancedRadio
+    name="age"
+    value="one"
+    defaultChecked
+    alignment="center"
+    contentClassName="[&>p]:mb-0!"
+  >
+    1
+  </AdvancedRadio>
+  <AdvancedRadio
+    name="age"
+    value="two"
+    alignment="center"
+    contentClassName="[&>p]:mb-0!"
+  >
+    2
+  </AdvancedRadio>
+  <AdvancedRadio
+    name="age"
+    value="three"
+    disabled
+    alignment="center"
+    contentClassName="[&>p]:mb-0!"
+  >
+    3
+  </AdvancedRadio>
+  <AdvancedRadio
+    name="age"
+    value="four"
+    alignment="center"
+    contentClassName="[&>p]:mb-0!"
+  >
+    4
+  </AdvancedRadio>
+  <AdvancedRadio
+    name="age"
+    value="five+"
+    alignment="center"
+    contentClassName="[&>p]:mb-0!"
+  >
+    5+
+  </AdvancedRadio>
+</Paper>
+
+```jsx
+import { AdvancedRadio } from "rizzui";
+
+export default function App() {
+  return (
+    <div className="flex flex-wrap gap-6">
+      <AdvancedRadio name="age" value="any" alignment="center">
+        Any
+      </AdvancedRadio>
+      <AdvancedRadio name="age" value="one" defaultChecked alignment="center">
+        1
+      </AdvancedRadio>
+      <AdvancedRadio name="age" value="two" alignment="center">
+        2
+      </AdvancedRadio>
+      <AdvancedRadio name="age" value="three" disabled alignment="center">
+        3
+      </AdvancedRadio>
+      <AdvancedRadio name="age" value="four" alignment="center">
+        4
+      </AdvancedRadio>
+      <AdvancedRadio name="age" value="five+" alignment="center">
+        5+
+      </AdvancedRadio>
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Currency Card Radio
+
+You can give different style of **AdvancedRadio** as you need.
+
+<Paper className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <AdvancedRadio name="currency" value="taka" defaultChecked>
+    <CurrencyBangladeshiIcon className="w-7 h-auto mb-4" />
+    <Text className="font-semibold">Taka</Text>
+  </AdvancedRadio>
+  <AdvancedRadio name="currency" value="dollar">
+    <CurrencyDollarIcon className="w-7 h-auto mb-4" />
+    <Text className="font-semibold">Dollar</Text>
+  </AdvancedRadio>
+  <AdvancedRadio name="currency" value="euro">
+    <CurrencyEuroIcon className="w-7 h-auto mb-4" />
+    <Text className="font-semibold">Euro</Text>
+  </AdvancedRadio>
+  <AdvancedRadio name="currency" value="pound">
+    <CurrencyPoundIcon className="w-7 h-auto mb-4" />
+    <Text className="font-semibold">Pound</Text>
+  </AdvancedRadio>
+</Paper>
+
+```jsx
+import { AdvancedRadio } from "rizzui";
+
+export default function App() {
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <AdvancedRadio name="currency" value="taka" defaultChecked>
+        <CurrencyBangladeshiIcon className="w-7 h-auto mb-4" />
+        <Text className="font-semibold">Taka</Text>
+      </AdvancedRadio>
+      <AdvancedRadio name="currency" value="dollar">
+        <CurrencyDollarIcon className="w-7 h-auto mb-4" />
+        <Text className="font-semibold">Dollar</Text>
+      </AdvancedRadio>
+      <AdvancedRadio name="currency" value="euro">
+        <CurrencyEuroIcon className="w-7 h-auto mb-4" />
+        <Text className="font-semibold">Euro</Text>
+      </AdvancedRadio>
+      <AdvancedRadio name="currency" value="pound">
+        <CurrencyPoundIcon className="w-7 h-auto mb-4" />
+        <Text className="font-semibold">Pound</Text>
+      </AdvancedRadio>
+    </div>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### AdvancedRadio Props
+
+Here is the API documentation of the AdvancedRadio component. And the rest of the props of AdvancedRadio are the same as the original html input field.
+
+<div className="overflow-x-auto">
+
+|      Props       |                  Type                   |                                   Description                                   | Default |
+| :--------------: | :-------------------------------------: | :-----------------------------------------------------------------------------: | :-----: |
+|     children     |               `ReactNode`               |                            Pass content as children                             |  \_\_   |
+|     disabled     |                `boolean`                |                     Whether the checkbox is disabled or not                     |  \_\_   |
+|       size       |   [RadioSizes](#advanced-radio-sizes)   | The size of the component.<br /> "sm" is equivalent to the dense input styling. | `"md"`  |
+|     rounded      | [RadioRounded](#advanced-radio-rounded) |                            The rounded variants are:                            | `"md"`  |
+|  inputClassName  |                `string`                 |                      Add inputClassName to style the input                      |  \_\_   |
+| contentClassName |                `string`                 |                     Add contentClassName to style the input                     |  \_\_   |
+|    className     |                `string`                 |                 Add custom classes to the root of the component                 |  \_\_   |
+|       ref        |         `Ref<HTMLInputElement>`         |                                                                                 |  \_\_   |
+|       ...        |          `InputHTMLAttributes`          |     native props like **value**, **onChange**, **onFocus**, **onBlur** ...      |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Advanced Radio Sizes
+
+```ts
+type RadioSizes = "sm" | "md" | "lg" | "xl";
+```
+
+<div className="mb-10" />
+
+### Advanced Radio Rounded
+
+```ts
+type RadioRounded = "sm" | "md" | "lg" | "pill" | "none";
+```
