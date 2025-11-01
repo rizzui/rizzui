@@ -59,8 +59,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "4.1.16",
-    "clsx": "2.1.1",
-    "tailwind-merge": "3.3.1"
+    "tailwind-variants": "^0.2.1"
   },
   "peerDependencies": {
     "@floating-ui/react": ">=0.25.4",

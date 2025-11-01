@@ -1,55 +1,76 @@
 import React, { forwardRef } from 'react';
-import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { SpinnerIcon } from '../../icons/spinner';
-import { buttonVariantStyles } from '../../lib/button-variant';
+import { cn } from '../../lib/cn';
 
-const actionIconStyles = {
+const actionIcon = tv({
   base: 'inline-flex items-center cursor-pointer justify-center active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200',
-  disabled:
-    'dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground hover:text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70',
-  size: {
-    sm: 'p-0.5 size-8',
-    md: 'p-1 size-10',
-    lg: 'p-2 size-12',
-    xl: 'p-2 size-14',
+  variants: {
+    variant: {
+      solid:
+        'bg-primary-dark hover:bg-primary-dark dark:hover:bg-primary/90 focus-visible:ring-muted text-primary-foreground border border-transparent dark:backdrop-blur',
+      outline:
+        'bg-transparent border border-muted hover:border-primary focus-visible:ring-muted hover:text-primary dark:backdrop-blur',
+      flat: 'bg-muted hover:bg-primary-lighter focus-visible:ring-primary-lighter hover:text-primary-dark border-transparent backdrop-blur',
+      text: 'hover:text-primary focus-visible:ring-primary-lighter',
+      danger:
+        'bg-red hover:bg-red-dark dark:hover:bg-red/80 focus-visible:ring-red/30 text-white border border-transparent dark:backdrop-blur',
+    },
+    size: {
+      sm: 'p-0.5 size-8',
+      md: 'p-1 size-10',
+      lg: 'p-2 size-12',
+      xl: 'p-2 size-14',
+    },
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded-sm',
+      md: 'rounded',
+      lg: 'rounded-md',
+      full: 'rounded-full',
+    },
+    disabled: {
+      true: 'dark:hover:bg-muted/70 cursor-not-allowed border-muted bg-muted/70 text-muted-foreground hover:text-muted-foreground backdrop-blur-xl hover:border-muted hover:bg-muted/70',
+    },
+    isLoading: {
+      true: 'pointer-events-none relative',
+    },
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded',
-    lg: 'rounded-md',
-    full: 'rounded-full',
+  defaultVariants: {
+    variant: 'solid',
+    size: 'md',
+    rounded: 'md',
   },
-  spinnerSize: {
-    sm: 'w-3.5',
-    md: 'w-4',
-    lg: 'w-5',
-    xl: 'w-6',
-  },
-  variant: buttonVariantStyles,
-};
+});
 
-export type ActionIconProps = {
-  as?: 'button' | 'span';
-  /** Set the original html type of button */
-  type?: 'button' | 'submit' | 'reset';
-  /** Use SVG icon as a children */
-  children: React.ReactNode;
-  /** Set the loading status of button */
-  isLoading?: boolean;
-  /** The variants of the component are: */
-  variant?: keyof typeof actionIconStyles.variant;
-  /** The size of the component. `"sm"` is equivalent to the dense button styling. */
-  size?: keyof typeof actionIconStyles.size;
-  /** The rounded variants are: */
-  rounded?: keyof typeof actionIconStyles.rounded;
-  /** Change button color */
-  color?: keyof (typeof actionIconStyles.variant)['solid']['color'];
-  /** Add custom actionIconStyles for extra style */
-  className?: string;
-} & React.ButtonHTMLAttributes<HTMLButtonElement> &
-  React.HTMLAttributes<HTMLSpanElement>;
+const spinnerStyles = tv({
+  base: 'h-auto animate-spin',
+  variants: {
+    size: {
+      sm: 'w-3.5',
+      md: 'w-4',
+      lg: 'w-5',
+      xl: 'w-6',
+    },
+  },
+});
+
+export type ActionIconProps = Omit<
+  VariantProps<typeof actionIcon>,
+  'disabled' | 'isLoading'
+> &
+  Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> &
+  React.HTMLAttributes<HTMLSpanElement> & {
+    as?: 'button' | 'span';
+    /** Set the original html type of button */
+    type?: 'button' | 'submit' | 'reset';
+    /** Use SVG icon as a children */
+    children: React.ReactNode;
+    /** Set the loading status of button */
+    isLoading?: boolean;
+    /** Disabled state */
+    disabled?: boolean;
+  };
 
 /**
  * Primary action icon button to trigger an operation. Here is the API documentation of the ActionIcon component.
@@ -64,43 +85,33 @@ export const ActionIcon = forwardRef<HTMLButtonElement, ActionIconProps>(
       children,
       className,
       isLoading,
-      variant = 'solid',
-      size = 'md',
-      rounded = 'md',
-      color = 'primary',
+      variant,
+      size,
+      rounded,
       disabled,
       ...actionIconProps
     },
     ref
   ) => {
     const Component = as;
-    const variantStyle = actionIconStyles.variant[variant];
+    
     return (
       <Component
         ref={ref}
         disabled={disabled}
-        className={cn(
-          makeClassName(`action-icon-root`),
-          actionIconStyles.base,
-          actionIconStyles.size[size],
-          actionIconStyles.rounded[rounded],
-          variantStyle.base,
-          variantStyle.color[color],
-          isLoading && 'pointer-events-none relative',
-          disabled && actionIconStyles.disabled,
-          className
-        )}
+        className={actionIcon({
+          variant,
+          size,
+          rounded,
+          disabled,
+          isLoading,
+          className,
+        })}
         {...(as && as !== 'span' && { type })}
         {...actionIconProps}
       >
         {isLoading ? (
-          <SpinnerIcon
-            className={cn(
-              makeClassName(`action-icon-spinner`),
-              'h-auto animate-spin',
-              actionIconStyles.spinnerSize[size]
-            )}
-          />
+          <SpinnerIcon className={spinnerStyles({ size })} />
         ) : (
           <>{children}</>
         )}
