@@ -50,16 +50,13 @@ const config: Config = {
           sidebarPath: require.resolve('./sidebars.ts'),
           editUrl: 'https://github.com/rizzui/rizzui/apps/docs',
           lastVersion: '2.0.0',
+          includeCurrentVersion: false,
           versions: {
-            current: {
-              label: 'Next',
-              path: 'next',
-            },
             '2.0.0': {
               label: 'v-2.0.0',
             },
-            '1.0.0': {
-              label: 'v-1.0.0',
+            '1.0.1': {
+              label: 'v-1.0.1',
               path: 'v1',
             },
             '0.8.7': {
