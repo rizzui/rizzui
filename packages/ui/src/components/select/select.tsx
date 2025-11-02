@@ -303,10 +303,12 @@ export function Select<OptionType extends SelectOption>({
     () =>
       disableDefaultFilter
         ? options
-        : options.filter((item) =>
-            item[searchByKey].toLowerCase().includes(searchQuery.toLowerCase())
-          ),
-    [searchQuery, options]
+        : options.filter((item) => {
+            const value = item[searchByKey];
+            if (!value) return false;
+            return String(value).toLowerCase().includes(searchQuery.toLowerCase());
+          }),
+    [searchQuery, options, disableDefaultFilter, searchByKey]
   );
 
   return (

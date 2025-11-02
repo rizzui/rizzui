@@ -3,7 +3,7 @@
 // ✅ Import from specific path for tree-shaking (reduces from 168.4k to ~8k)
 import { Button } from 'rizzui/button';
 import { useState } from 'react';
-import Link from 'next/link';
+import { ShowcaseNav } from '@/components/showcase-nav';
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
@@ -16,37 +16,16 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-8">
       <div className="max-w-7xl mx-auto space-y-12">
+        <ShowcaseNav currentPath="/" />
+
         {/* Header */}
         <div className="text-center space-y-4">
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white">
-            RizzUI Component Showcase
+            Button Component
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">
             Explore all button variants, sizes, rounded styles, and states
           </p>
-
-          {/* Component Navigation */}
-          <div className="flex justify-center gap-4 pt-4">
-            <Link
-              href="/"
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium"
-            >
-              Button
-            </Link>
-            <Link
-              href="/action-icon"
-              className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
-            >
-              ActionIcon
-            </Link>
-            <Link
-              href="/badge"
-              className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
-            >
-              Badge
-            </Link>
-          </div>
-
           <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-lg text-sm">
             ✅ Tree-shakeable import • Bundle size: ~8KB (was 168KB)
           </div>

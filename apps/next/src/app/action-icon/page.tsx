@@ -9,7 +9,7 @@ import { SearchIcon } from '@/icons/search';
 import { StarIcon } from '@/icons/star';
 import { ShoppingCartIcon } from '@/icons/shopping-cart';
 import { CheckmarkIcon } from '@/icons/checkmark';
-import Link from 'next/link';
+import { ShowcaseNav } from '@/components/showcase-nav';
 
 export default function ActionIconPage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,37 +22,16 @@ export default function ActionIconPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-8">
       <div className="max-w-7xl mx-auto space-y-12">
+        <ShowcaseNav currentPath="/action-icon" />
+
         {/* Header */}
         <div className="text-center space-y-4">
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white">
-            RizzUI ActionIcon Component
+            ActionIcon Component
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">
             Icon-only buttons for actions and interactions
           </p>
-
-          {/* Component Navigation */}
-          <div className="flex justify-center gap-4 pt-4">
-            <Link
-              href="/"
-              className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
-            >
-              Button
-            </Link>
-            <Link
-              href="/action-icon"
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-lg font-medium"
-            >
-              ActionIcon
-            </Link>
-            <Link
-              href="/badge"
-              className="px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700"
-            >
-              Badge
-            </Link>
-          </div>
-
           <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-lg text-sm">
             ✅ Tree-shakeable import • Bundle size: ~8KB (was 168KB)
           </div>
