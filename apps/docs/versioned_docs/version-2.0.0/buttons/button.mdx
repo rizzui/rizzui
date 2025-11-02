@@ -14,15 +14,6 @@ Primary action button to trigger an operation.
 import { Button } from "rizzui";
 ```
 
-:::tip What's New in v2.0.0
-- **Simplified variant structure**: `danger` is now a variant instead of a color prop
-- **Removed color prop**: Use `variant="danger"` instead of `color="danger"`
-- **Optimized bundle**: 80% smaller import size (~7 KB vs 36.5 KB)
-- **Better TypeScript**: Enhanced type inference with tailwind-variants
-:::
-
-
-
 <div className="mb-20 md:mb-28" />
 
 ## Default
@@ -137,8 +128,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-<div className="mb-16" />
-
 ## Loading
 
 You can set the loading state of the **Button** component using **isLoading** property.
@@ -146,9 +135,15 @@ You can set the loading state of the **Button** component using **isLoading** pr
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
     <Button isLoading={true}>Solid</Button>
-    <Button isLoading={true} variant="outline">Outline</Button>
-    <Button isLoading={true} variant="flat">Flat</Button>
-    <Button isLoading={true} variant="danger">Danger</Button>
+    <Button isLoading={true} variant="outline">
+      Outline
+    </Button>
+    <Button isLoading={true} variant="flat">
+      Flat
+    </Button>
+    <Button isLoading={true} variant="danger">
+      Danger
+    </Button>
   </div>
 </Paper>
 
@@ -159,9 +154,15 @@ export default function App() {
   return (
     <>
       <Button isLoading={true}>Solid</Button>
-      <Button isLoading={true} variant="outline">Outline</Button>
-      <Button isLoading={true} variant="flat">Flat</Button>
-      <Button isLoading={true} variant="danger">Danger</Button>
+      <Button isLoading={true} variant="outline">
+        Outline
+      </Button>
+      <Button isLoading={true} variant="flat">
+        Flat
+      </Button>
+      <Button isLoading={true} variant="danger">
+        Danger
+      </Button>
     </>
   );
 }
@@ -232,20 +233,20 @@ Here is the API documentation of the Button component. And the rest of the props
 
 <div className="overflow-x-auto">
 
-|   Props   |                    Type                    |                                       Description                                       |   Default   |
-| :-------: | :----------------------------------------: | :-------------------------------------------------------------------------------------: | :---------: |
-|    as     |             `button` or `span`             |                                        Render as                                        | `"button"`  |
-| children  |             `React.ReactNode`              |                           Accepts everything React can render                           |    \_\_     |
-|   type    |        [ButtonTypes](#button-types)        |                          Set the original HTML type of button                           | `"button"`  |
-|  variant  |     [ButtonVariants](#button-variants)     |                                 Set the button variants                                 |  `"solid"`  |
-|   size    |        [ButtonSizes](#button-sizes)        | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. |   `"md"`    |
-|  rounded  |      [ButtonRounded](#button-rounded)      |                        Set border radius of the button component                        |   `"md"`    |
-| isLoading |                 `boolean`                  |                            Set the loading status of button                             |    \_\_     |
-| disabled  |                 `boolean`                  |                              Disabled state of the button                               |    \_\_     |
-| className |                  `string`                  |                           Add custom classes for extra style                            |    \_\_     |
-|  loader   |             `React.ReactNode`              |                    Custom loader component for loading state                            |    \_\_     |
-|    ref    |          `Ref<HTMLButtonElement>`          |                                       forwardRef                                        |    \_\_     |
-|    ...    | `ButtonHTMLAttributes` or `HTMLAttributes` |              native props like **onClick**, **title**, **aria-label** ...               |    \_\_     |
+|   Props   |                    Type                    |                                       Description                                       |  Default   |
+| :-------: | :----------------------------------------: | :-------------------------------------------------------------------------------------: | :--------: |
+|    as     |             `button` or `span`             |                                        Render as                                        | `"button"` |
+| children  |             `React.ReactNode`              |                           Accepts everything React can render                           |    \_\_    |
+|   type    |        [ButtonTypes](#button-types)        |                          Set the original HTML type of button                           | `"button"` |
+|  variant  |     [ButtonVariants](#button-variants)     |                                 Set the button variants                                 | `"solid"`  |
+|   size    |        [ButtonSizes](#button-sizes)        | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. |  `"md"`    |
+|  rounded  |      [ButtonRounded](#button-rounded)      |                        Set border radius of the button component                        |  `"md"`    |
+| isLoading |                 `boolean`                  |                            Set the loading status of button                             |    \_\_    |
+|  disabled |                 `boolean`                  |                              Disabled state of the button                               |    \_\_    |
+|   loader  |             `React.ReactNode`              |                     Custom Loader component to show when isLoading                      |    \_\_    |
+| className |                  `string`                  |                           Add custom classes for extra style                            |    \_\_    |
+|    ref    |          `Ref<HTMLButtonElement>`          |                                       forwardRef                                        |    \_\_    |
+|    ...    | `ButtonHTMLAttributes` or `HTMLAttributes` |              native props like **onClick**, **title**, **aria-label** ...               |    \_\_    |
 
 </div>
 

@@ -21,15 +21,6 @@ Primary action icon button to trigger an operation. It's a simple button that co
 import { ActionIcon } from "rizzui";
 ```
 
-:::tip What's New in v2.0.0
-- **Simplified variant structure**: `danger` is now a variant instead of a color prop
-- **Removed color prop**: Use `variant="danger"` instead of `color="danger"`
-- **Optimized bundle**: Smaller bundle size with tailwind-variants
-- **Better TypeScript**: Enhanced type inference
-:::
-
-
-
 <div className="mb-20 md:mb-28" />
 
 ## Default
@@ -62,7 +53,7 @@ You can change the style of the **ActionIcon** using [**variant**](#actionicon-v
 
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <ActionIcon variant="solid">
+    <ActionIcon variant="text">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
     <ActionIcon variant="outline">
@@ -71,10 +62,7 @@ You can change the style of the **ActionIcon** using [**variant**](#actionicon-v
     <ActionIcon variant="flat">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
-    <ActionIcon variant="text">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon variant="danger">
+    <ActionIcon variant="solid">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
   </div>
@@ -87,7 +75,7 @@ import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
 export default function App() {
   return (
     <>
-      <ActionIcon variant="solid">
+      <ActionIcon variant="text">
         <AdjustmentsHorizontalIcon className="w-5 h-5" />
       </ActionIcon>
       <ActionIcon variant="outline">
@@ -96,10 +84,7 @@ export default function App() {
       <ActionIcon variant="flat">
         <AdjustmentsHorizontalIcon className="w-5 h-5" />
       </ActionIcon>
-      <ActionIcon variant="text">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
-      </ActionIcon>
-      <ActionIcon variant="danger">
+      <ActionIcon variant="solid">
         <AdjustmentsHorizontalIcon className="w-5 h-5" />
       </ActionIcon>
     </>
@@ -340,6 +325,7 @@ Here is the API documentation of the ActionIcon component. And the rest of the p
 |  variant  |     [ActionIconVariants](#actionicon-variants)     |                                 Set the ActionIcon variants                                 |  `"solid"`  |
 |   size    |        [ActionIconSizes](#actionicon-sizes)        | Set the size of the component. <br /> `"sm"` is equivalent to the dense ActionIcon styling. |   `"md"`    |
 |  rounded  |      [ActionIconRounded](#actionicon-rounded)      |                        Set border radius of the ActionIcon component                        |   `"md"`    |
+|   color   |       [ActionIconColors](#actionicon-colors)       |                                   Change ActionIcon color                                   | `"primary"` |
 | isLoading |                     `boolean`                      |                            Set the loading status of ActionIcon                             |    \_\_     |
 | disabled  |                     `boolean`                      |                              Disabled state of the ActionIcon                               |    \_\_     |
 | className |                      `string`                      |                             Add custom classes for extra style                              |    \_\_     |
@@ -361,7 +347,7 @@ type ActionIconButtonTypes = "button" | "submit" | "reset";
 ### ActionIcon Variants
 
 ```ts
-type ActionIconVariants = "solid" | "outline" | "flat" | "text" | "danger";
+type ActionIconVariants = "solid" | "flat" | "outline" | "text";
 ```
 
 <div className="mb-10" />
@@ -377,5 +363,13 @@ type ActionIconSizes = "sm" | "md" | "lg" | "xl";
 ### ActionIcon Rounded
 
 ```ts
-type ActionIconRounded = "none" | "sm" | "md" | "lg" | "full";
+type ActionIconRounded = "sm" | "md" | "lg" | "none" | "full";
+```
+
+<div className="mb-10" />
+
+### ActionIcon Colors
+
+```ts
+type ActionIconColors = "primary" | "secondary" | "danger";
 ```

@@ -40,10 +40,11 @@ You can change the style of the **Button** using [**variant**](#button-variants)
 
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <Button variant="text">Button</Button>
-    <Button variant="outline">Button</Button>
-    <Button variant="flat">Button</Button>
-    <Button variant="solid">Button</Button>
+    <Button variant="solid">Solid</Button>
+    <Button variant="outline">Outline</Button>
+    <Button variant="flat">Flat</Button>
+    <Button variant="text">Text</Button>
+    <Button variant="danger">Danger</Button>
   </div>
 </Paper>
 
@@ -53,10 +54,11 @@ import { Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Button variant="text">Button</Button>
-      <Button variant="outline">Button</Button>
-      <Button variant="flat">Button</Button>
-      <Button variant="solid">Button</Button>
+      <Button variant="solid">Solid</Button>
+      <Button variant="outline">Outline</Button>
+      <Button variant="flat">Flat</Button>
+      <Button variant="text">Text</Button>
+      <Button variant="danger">Danger</Button>
     </>
   );
 }
@@ -126,51 +128,20 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Colors
-
-You can change the color of the **Button** using [**color**](#button-colors) property.
-
-<Paper>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-    <Button>Primary</Button>
-    <Button color="secondary">Secondary</Button>
-    <Button color="danger">Danger</Button>
-  </div>
-</Paper>
-
-```tsx
-import { Button } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Button>Primary</Button>
-      <Button color="secondary">Secondary</Button>
-      <Button color="danger">Danger</Button>
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
 ## Loading
 
 You can set the loading state of the **Button** component using **isLoading** property.
 
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <Button isLoading={true}>Primary</Button>
-    <Button
-      isLoading={true}
-      color="secondary"
-    >
-      Secondary
+    <Button isLoading={true}>Solid</Button>
+    <Button isLoading={true} variant="outline">
+      Outline
     </Button>
-    <Button
-      isLoading={true}
-      color="danger"
-    >
+    <Button isLoading={true} variant="flat">
+      Flat
+    </Button>
+    <Button isLoading={true} variant="danger">
       Danger
     </Button>
   </div>
@@ -182,17 +153,14 @@ import { Button } from "rizzui";
 export default function App() {
   return (
     <>
-      <Button isLoading={true}>Primary</Button>
-      <Button
-        isLoading={true}
-        color="secondary"
-      >
-        Secondary
+      <Button isLoading={true}>Solid</Button>
+      <Button isLoading={true} variant="outline">
+        Outline
       </Button>
-      <Button
-        isLoading={true}
-        color="danger"
-      >
+      <Button isLoading={true} variant="flat">
+        Flat
+      </Button>
+      <Button isLoading={true} variant="danger">
         Danger
       </Button>
     </>
@@ -265,20 +233,20 @@ Here is the API documentation of the Button component. And the rest of the props
 
 <div className="overflow-x-auto">
 
-|   Props   |                    Type                    |                                       Description                                       |   Default   |
-| :-------: | :----------------------------------------: | :-------------------------------------------------------------------------------------: | :---------: |
-|    as     |             `button` or `span`             |                                        Render as                                        | `"button"`  |
-| children  |             `React.ReactNode`              |                           Accepts everything React can render                           |    \_\_     |
-|   type    |        [ButtonTypes](#button-types)        |                          Set the original HTML type of button                           | `"button"`  |
-|  variant  |     [ButtonVariants](#button-variants)     |                                 Set the button variants                                 |  `"solid"`  |
-|   size    |        [ButtonSizes](#button-sizes)        | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. |   `"md"`    |
-|  rounded  |      [ButtonRounded](#button-rounded)      |                        Set border radius of the button component                        |   `"md"`    |
-|   color   |       [ButtonColors](#button-colors)       |                                   Change button color                                   | `"primary"` |
-| isLoading |                 `boolean`                  |                            Set the loading status of button                             |    \_\_     |
-| disabled  |                 `boolean`                  |                              Disabled state of the button                               |    \_\_     |
-| className |                  `string`                  |                           Add custom classes for extra style                            |    \_\_     |
-|    ref    |          `Ref<HTMLButtonElement>`          |                                       forwardRef                                        |    \_\_     |
-|    ...    | `ButtonHTMLAttributes` or `HTMLAttributes` |              native props like **onClick**, **title**, **aria-label** ...               |    \_\_     |
+|   Props   |                    Type                    |                                       Description                                       |  Default   |
+| :-------: | :----------------------------------------: | :-------------------------------------------------------------------------------------: | :--------: |
+|    as     |             `button` or `span`             |                                        Render as                                        | `"button"` |
+| children  |             `React.ReactNode`              |                           Accepts everything React can render                           |    \_\_    |
+|   type    |        [ButtonTypes](#button-types)        |                          Set the original HTML type of button                           | `"button"` |
+|  variant  |     [ButtonVariants](#button-variants)     |                                 Set the button variants                                 | `"solid"`  |
+|   size    |        [ButtonSizes](#button-sizes)        | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. |  `"md"`    |
+|  rounded  |      [ButtonRounded](#button-rounded)      |                        Set border radius of the button component                        |  `"md"`    |
+| isLoading |                 `boolean`                  |                            Set the loading status of button                             |    \_\_    |
+|  disabled |                 `boolean`                  |                              Disabled state of the button                               |    \_\_    |
+|   loader  |             `React.ReactNode`              |                     Custom Loader component to show when isLoading                      |    \_\_    |
+| className |                  `string`                  |                           Add custom classes for extra style                            |    \_\_    |
+|    ref    |          `Ref<HTMLButtonElement>`          |                                       forwardRef                                        |    \_\_    |
+|    ...    | `ButtonHTMLAttributes` or `HTMLAttributes` |              native props like **onClick**, **title**, **aria-label** ...               |    \_\_    |
 
 </div>
 
@@ -295,7 +263,7 @@ type ButtonTypes = "button" | "submit" | "reset";
 ### Button Variants
 
 ```ts
-type ButtonVariants = "solid" | "flat" | "outline" | "text";
+type ButtonVariants = "solid" | "outline" | "flat" | "text" | "danger";
 ```
 
 <div className="mb-10" />
@@ -311,13 +279,5 @@ type ButtonSizes = "sm" | "md" | "lg" | "xl";
 ### Button Rounded
 
 ```ts
-type ButtonRounded = "sm" | "md" | "lg" | "none" | "pill";
-```
-
-<div className="mb-10" />
-
-### Button Colors
-
-```ts
-type ButtonColors = "primary" | "secondary" | "danger";
+type ButtonRounded = "none" | "sm" | "md" | "lg" | "pill";
 ```
