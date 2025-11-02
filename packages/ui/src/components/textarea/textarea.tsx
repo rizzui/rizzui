@@ -1,45 +1,63 @@
 import React, { forwardRef } from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldError } from '../field-error-text';
 import { FieldClearButton } from '../field-clear-button';
 import { makeClassName } from '../../lib/make-class-name';
-import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
 
-const textareaStyles = {
-  base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] focus-within:ring-[0.8px] focus-within:ring-primary hover:border-primary focus-within:border-primary',
-  scrollBar:
-    '[scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
-  disabled:
-    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted placeholder:text-muted-foreground text-muted-foreground',
-  clearable:
-    '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
-  error: '!border-red hover:!border-red focus:!border-red !ring-red',
-  size: {
-    sm: 'px-2.5 py-1 text-xs',
-    md: 'px-3 py-2 text-sm',
-    lg: 'px-4 py-2 text-base',
-    xl: 'px-4 py-2.5 text-base',
+const textarea = tv({
+  base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] focus-within:ring-[0.8px] focus-within:ring-primary hover:border-primary focus-within:border-primary [scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent',
+  variants: {
+    variant: {
+      text: 'border-transparent ring-transparent bg-transparent',
+      flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
+      outline: 'bg-transparent ring-muted border border-muted',
+    },
+    size: {
+      sm: 'px-2.5 py-1 text-xs',
+      md: 'px-3 py-2 text-sm',
+      lg: 'px-4 py-2 text-base',
+      xl: 'px-4 py-2.5 text-base',
+    },
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      pill: 'rounded-full',
+    },
+    disabled: {
+      true: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted placeholder:text-muted-foreground text-muted-foreground',
+    },
+    error: {
+      true: '!border-red hover:!border-red focus:!border-red !ring-red',
+    },
+    clearable: {
+      true: '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
+    },
   },
-  rounded: roundedStyles,
-  variant: {
-    text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
-    outline: 'bg-transparent ring-muted border border-muted',
+  defaultVariants: {
+    variant: 'outline',
+    size: 'md',
+    rounded: 'md',
   },
-};
+});
 
-// clear button spacing based on size
-const clearButtonSpacing = {
+const clearButton = tv({
   base: 'absolute',
-  size: {
-    sm: 'end-2.5 top-1',
-    md: 'end-4 top-2',
-    lg: 'end-5 top-2',
-    xl: 'end-6 top-2.5',
+  variants: {
+    size: {
+      sm: 'end-2.5 top-1',
+      md: 'end-4 top-2',
+      lg: 'end-5 top-2',
+      xl: 'end-6 top-2.5',
+    },
   },
-};
+});
+
+type TextareaVariant = VariantProps<typeof textarea>;
 
 export interface TextareaProps
   extends React.DetailedHTMLProps<
@@ -57,9 +75,9 @@ export interface TextareaProps
   /** Default value in textarea */
   children?: React.ReactNode;
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof textareaStyles.size;
+  size?: TextareaVariant['size'];
   /** The variants of the component are: */
-  variant?: keyof typeof textareaStyles.variant;
+  variant?: TextareaVariant['variant'];
   /** Set field label */
   label?: React.ReactNode;
   /** Set font weight for label */
@@ -69,7 +87,7 @@ export interface TextareaProps
   /** clear event */
   onClear?: (event: React.MouseEvent) => void;
   /** The rounded variants are: */
-  rounded?: keyof typeof textareaStyles.rounded;
+  rounded?: TextareaVariant['rounded'];
   /** It is the password visibility toggle icon.  */
   renderCharacterCount?({
     characterCount,
@@ -160,22 +178,21 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               {...(cols && { cols })}
               // placeholder is a required prop for the clearable input component even if the user does not set any
               placeholder={placeholder || 'Screen reader only'}
-              className={cn(
-                makeClassName(`textarea-field`),
-                textareaStyles.base,
-                textareaStyles.scrollBar,
-                textareaStyles.size[size],
-                textareaStyles.rounded[rounded],
-                textareaStyles.variant[variant],
-                clearable && textareaStyles.clearable,
-                // it's important we are using placeholder-shown pseudo class to control input clear icon btn
-                !placeholder && 'placeholder-shown:placeholder:opacity-0',
-                !cols && 'w-full',
-                readOnly && 'focus:ring-0',
-                disabled && textareaStyles.disabled,
-                error && textareaStyles.error,
-                textareaClassName
-              )}
+              className={textarea({
+                variant,
+                size,
+                rounded,
+                disabled,
+                error: Boolean(error),
+                clearable,
+                className: cn(
+                  makeClassName(`textarea-field`),
+                  !placeholder && 'placeholder-shown:placeholder:opacity-0',
+                  !cols && 'w-full',
+                  readOnly && 'focus:ring-0',
+                  textareaClassName
+                ),
+              })}
               {...textareaProps}
             />
 
@@ -183,11 +200,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
               <FieldClearButton
                 size={size}
                 onClick={onClear}
-                className={cn(
-                  'cursor-pointer',
-                  clearButtonSpacing.base,
-                  clearButtonSpacing.size[size]
-                )}
+                className={clearButton({ size, className: 'cursor-pointer' })}
               />
             ) : null}
 

@@ -1,57 +1,76 @@
 import React, { forwardRef, useState } from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { PasswordToggleIcon } from './password-toggle-icon';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
 import { makeClassName } from '../../lib/make-class-name';
-import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
 
-const inputStyles = {
+const inputContainer = tv({
   base: 'flex items-center peer w-full transition duration-200 border focus-within:ring-[0.8px] ring-[0.6px] hover:border-primary focus-within:border-primary focus-within:ring-primary [&_input::placeholder]:opacity-60',
-  disabled: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted',
-  error:
-    '!border-red hover:!border-red focus-within:!border-red !ring-red !bg-transparent',
-  size: {
-    sm: 'px-2 py-1 text-xs h-8',
-    md: 'px-3.5 py-2 text-sm h-10',
-    lg: 'px-4 py-2 text-base h-12',
-    xl: 'px-5 py-2.5 text-base h-14',
+  variants: {
+    variant: {
+      text: 'border-transparent ring-transparent bg-transparent',
+      flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
+      outline: 'border border-muted ring-muted bg-transparent',
+    },
+    size: {
+      sm: 'px-2 py-1 text-xs h-8',
+      md: 'px-3.5 py-2 text-sm h-10',
+      lg: 'px-4 py-2 text-base h-12',
+      xl: 'px-5 py-2.5 text-base h-14',
+    },
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      pill: 'rounded-full',
+    },
+    disabled: {
+      true: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted',
+    },
+    error: {
+      true: '!border-red hover:!border-red focus-within:!border-red !ring-red !bg-transparent',
+    },
   },
-  rounded: roundedStyles,
-  variant: {
-    text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
-    outline: 'border border-muted ring-muted bg-transparent',
+  defaultVariants: {
+    variant: 'outline',
+    size: 'md',
+    rounded: 'md',
   },
-};
+});
 
-// actual input field styles
-const inputFieldStyles = {
-  base: 'w-full border-0 bg-transparent [font-size:inherit] p-0 focus:outline-none focus:ring-0',
-  reset:
-    '[&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
-  disabled: 'cursor-not-allowed placeholder:text-muted-foreground',
-  clearable:
-    '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
-  prefix: {
+const inputField = tv({
+  base: 'w-full border-0 bg-transparent [font-size:inherit] p-0 focus:outline-none focus:ring-0 [&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
+  variants: {
     size: {
-      sm: 'ps-1.5',
-      md: 'ps-2.5',
-      lg: 'ps-3.5',
-      xl: 'ps-4',
+      sm: '',
+      md: '',
+      lg: '',
+      xl: '',
+    },
+    disabled: {
+      true: 'cursor-not-allowed placeholder:text-muted-foreground',
+    },
+    clearable: {
+      true: '[&:placeholder-shown~.input-clear-btn]:opacity-0 [&:placeholder-shown~.input-clear-btn]:invisible [&:not(:placeholder-shown)~.input-clear-btn]:opacity-100 [&:not(:placeholder-shown)~.input-clear-btn]:visible',
+    },
+    hasPrefix: {
+      true: '',
     },
   },
-  suffix: {
-    size: {
-      sm: 'pe-1.5',
-      md: 'pe-2.5',
-      lg: 'pe-3.5',
-      xl: 'pe-4',
-    },
-  },
-};
+  compoundVariants: [
+    { hasPrefix: true, size: 'sm', class: 'ps-1.5' },
+    { hasPrefix: true, size: 'md', class: 'ps-2.5' },
+    { hasPrefix: true, size: 'lg', class: 'ps-3.5' },
+    { hasPrefix: true, size: 'xl', class: 'ps-4' },
+  ],
+});
+
+type PasswordVariant = VariantProps<typeof inputContainer>;
 
 export interface PasswordProps
   extends Omit<
@@ -59,11 +78,11 @@ export interface PasswordProps
     'size' | 'type' | 'prefix'
   > {
   /** The variants of the component are: */
-  variant?: keyof typeof inputStyles.variant;
+  variant?: PasswordVariant['variant'];
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof inputStyles.size;
+  size?: PasswordVariant['size'];
   /** The rounded variants are: */
-  rounded?: keyof typeof inputStyles.rounded;
+  rounded?: PasswordVariant['rounded'];
   /** Set input placeholder text */
   placeholder?: string;
   /** Whether the input is disabled */
@@ -164,16 +183,14 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
           ) : null}
 
           <span
-            className={cn(
-              makeClassName(`password-container`),
-              inputStyles.base,
-              inputStyles.size[size],
-              inputStyles.rounded[rounded],
-              inputStyles.variant[variant],
-              disabled && inputStyles.disabled,
-              error && inputStyles.error,
-              inputClassName
-            )}
+            className={inputContainer({
+              variant,
+              size,
+              rounded,
+              disabled,
+              error: Boolean(error),
+              className: inputClassName,
+            })}
           >
             {prefix ? (
               <span
@@ -195,17 +212,17 @@ export const Password = forwardRef<HTMLInputElement, PasswordProps>(
               spellCheck="false"
               // placeholder is a required prop for the clearable input component even if the user does not set any
               placeholder={placeholder || 'Screen reader only'}
-              className={cn(
-                makeClassName(`password-field`),
-                inputFieldStyles.base,
-                inputFieldStyles.reset,
-                // it's important we are using placeholder-shown pseudo class to control input clear icon btn
-                !placeholder && 'placeholder-shown:placeholder:opacity-0',
-                disabled && inputFieldStyles.disabled,
-                clearable && inputFieldStyles.clearable,
-                prefix && inputFieldStyles.prefix.size[size],
-                visibilityToggleIcon && inputFieldStyles.suffix.size[size]
-              )}
+              className={inputField({
+                size,
+                disabled,
+                clearable,
+                hasPrefix: Boolean(prefix),
+                className: cn(
+                  makeClassName(`password-field`),
+                  !placeholder && 'placeholder-shown:placeholder:opacity-0',
+                  visibilityToggleIcon && (size === 'sm' ? 'pe-1.5' : size === 'md' ? 'pe-2.5' : size === 'lg' ? 'pe-3.5' : 'pe-4')
+                ),
+              })}
               {...inputProps}
             />
 
