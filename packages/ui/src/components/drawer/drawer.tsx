@@ -1,58 +1,86 @@
 import React from 'react';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 import { useResizeHandler } from './drawer.lib';
 
-export const drawerClasses = {
-  panel: 'fixed w-full h-full bg-background duration-300 ease-out',
-  overlay:
-    'fixed inset-0 cursor-pointer bg-black/60 duration-300 ease-in-out data-[closed]:opacity-0',
-  placement: {
-    top: 'data-[closed]:-translate-y-full',
-    right: 'data-[closed]:translate-x-full',
-    bottom: 'data-[closed]:translate-y-full',
-    left: 'data-[closed]:-translate-x-full',
+const drawer = tv({
+  slots: {
+    root: 'fixed inset-0 z-[999] overflow-hidden',
+    overlay:
+      'fixed inset-0 cursor-pointer bg-black/60 duration-300 ease-in-out data-[closed]:opacity-0',
+    panel: 'fixed w-full h-full bg-background duration-300 ease-out',
+    resizer: 'absolute rounded-md bg-gray-400',
   },
-  position: {
-    top: 'top-0',
-    right: 'inset-y-0 end-0',
-    bottom: 'bottom-0',
-    left: 'inset-y-0 start-0',
+  variants: {
+    placement: {
+      top: {
+        panel: 'top-0 data-[closed]:-translate-y-full',
+        resizer:
+          'start-1/2 bottom-1 h-1.5 transition-transform duration-300 w-14 hover:scale-x-125 cursor-n-resize',
+      },
+      right: {
+        panel: 'inset-y-0 end-0 data-[closed]:translate-x-full',
+        resizer:
+          'start-1 top-1/2 h-14 hover:scale-y-125 transition-transform duration-300 w-1.5 -translate-y-1/2 cursor-w-resize',
+      },
+      bottom: {
+        panel: 'bottom-0 data-[closed]:translate-y-full',
+        resizer:
+          'start-1/2 -translate-x-1/2 top-1 w-14 h-1.5 transition-transform duration-300 hover:scale-x-125 cursor-n-resize',
+      },
+      left: {
+        panel: 'inset-y-0 start-0 data-[closed]:-translate-x-full',
+        resizer:
+          'end-1 top-1/2 h-14 hover:scale-y-125 transition-transform duration-300 w-1.5 -translate-y-1/2 cursor-w-resize',
+      },
+    },
+    size: {
+      sm: {},
+      md: {},
+      lg: {},
+      xl: {},
+      full: {},
+    },
   },
-  // -> when placement is set to top | bottom
-  sizeOfYAxisDrawer: {
-    sm: 'max-h-[30%]',
-    md: 'max-h-[35%]',
-    lg: 'max-h-[60%]',
-    xl: 'max-h-[80%]',
-    full: 'max-h-full',
+  compoundVariants: [
+    // Y-axis (top/bottom) sizes
+    { placement: 'top', size: 'sm', class: { panel: 'max-h-[30%]' } },
+    { placement: 'top', size: 'md', class: { panel: 'max-h-[35%]' } },
+    { placement: 'top', size: 'lg', class: { panel: 'max-h-[60%]' } },
+    { placement: 'top', size: 'xl', class: { panel: 'max-h-[80%]' } },
+    { placement: 'top', size: 'full', class: { panel: 'max-h-full' } },
+    { placement: 'bottom', size: 'sm', class: { panel: 'max-h-[30%]' } },
+    { placement: 'bottom', size: 'md', class: { panel: 'max-h-[35%]' } },
+    { placement: 'bottom', size: 'lg', class: { panel: 'max-h-[60%]' } },
+    { placement: 'bottom', size: 'xl', class: { panel: 'max-h-[80%]' } },
+    { placement: 'bottom', size: 'full', class: { panel: 'max-h-full' } },
+    // X-axis (left/right) sizes
+    { placement: 'left', size: 'sm', class: { panel: 'max-w-sm' } },
+    { placement: 'left', size: 'md', class: { panel: 'max-w-md' } },
+    { placement: 'left', size: 'lg', class: { panel: 'max-w-2xl' } },
+    { placement: 'left', size: 'xl', class: { panel: 'max-w-[60%]' } },
+    { placement: 'left', size: 'full', class: { panel: 'max-w-full' } },
+    { placement: 'right', size: 'sm', class: { panel: 'max-w-sm' } },
+    { placement: 'right', size: 'md', class: { panel: 'max-w-md' } },
+    { placement: 'right', size: 'lg', class: { panel: 'max-w-2xl' } },
+    { placement: 'right', size: 'xl', class: { panel: 'max-w-[60%]' } },
+    { placement: 'right', size: 'full', class: { panel: 'max-w-full' } },
+  ],
+  defaultVariants: {
+    placement: 'right',
+    size: 'md',
   },
-  // -> when placement is set to left | right
-  sizeOfXAxisDrawer: {
-    sm: 'max-w-sm',
-    md: 'max-w-md',
-    lg: 'max-w-2xl',
-    xl: 'max-w-[60%]',
-    full: 'max-w-full',
-  },
-  resizeHandlerPlacement: {
-    top: 'start-1/2 bottom-1 h-1.5 transition-transform duration-300 w-14 hover:scale-x-125 cursor-n-resize',
-    right:
-      'start-1 top-1/2 h-14 hover:scale-y-125 transition-transform duration-300 w-1.5 -translate-y-1/2 cursor-w-resize',
-    bottom:
-      'start-1/2 -translate-x-1/2 top-1 w-14 h-1.5 transition-transform duration-300 hover:scale-x-125 cursor-n-resize',
-    left: 'end-1 top-1/2 h-14 hover:scale-y-125 transition-transform duration-300 w-1.5 -translate-y-1/2 cursor-w-resize',
-  },
-};
+});
 
-export function isPlacementOnYAxis(
-  placement: keyof typeof drawerClasses.placement
-) {
-  return ['top', 'bottom'].indexOf(placement) !== -1;
+type DrawerVariant = VariantProps<typeof drawer>;
+
+export function isPlacementOnYAxis(placement: DrawerVariant['placement']) {
+  return ['top', 'bottom'].indexOf(placement as string) !== -1;
 }
 
-export type DrawerSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+export type DrawerSize = DrawerVariant['size'];
 
 export type DrawerProps = {
   /** Whether the Drawer is open or not */
@@ -60,7 +88,7 @@ export type DrawerProps = {
   /** Called when drawer is closed (Escape key and click outside, depending on options) */
   onClose(): void;
   /** Drawer can be placed on left (default), top, right and bottom. Control drawer position with placement prop: */
-  placement?: keyof typeof drawerClasses.placement;
+  placement?: DrawerVariant['placement'];
   /** Preset size of drawer is sm, md, lg, xl, full */
   size?: DrawerSize;
   /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" */
@@ -98,46 +126,24 @@ export function Drawer({
   });
 
   const newWidth = width !== 0 ? width : customSize;
+  const { root, overlay: overlayClass, panel, resizer } = drawer({ placement, size });
 
   return (
-    <Dialog
-      as="aside"
-      open={isOpen}
-      onClose={onClose}
-      className={cn(
-        makeClassName(`drawer-root`),
-        'fixed inset-0 z-[999] overflow-hidden',
-        className
-      )}
-    >
-      <DialogBackdrop
-        transition
-        className={cn(
-          makeClassName(`drawer-overlay`),
-          drawerClasses.overlay,
-          overlayClassName
-        )}
-      />
+    <Dialog as="aside" open={isOpen} onClose={onClose} className={root({ className })}>
+      <DialogBackdrop transition className={overlayClass({ className: overlayClassName })} />
       <DialogPanel
         ref={containerRef}
         transition
-        className={cn(
-          makeClassName(`drawer-container`),
-          drawerClasses.panel,
-          drawerClasses.position[placement],
-          drawerClasses.placement[placement],
-          customSize && [
-            isPlacementOnYAxis(placement)
-              ? 'max-h-screen min-h-96'
-              : 'max-w-full min-w-96',
-          ],
-          !customSize && [
-            isPlacementOnYAxis(placement)
-              ? drawerClasses.sizeOfYAxisDrawer[size]
-              : drawerClasses.sizeOfXAxisDrawer[size],
-          ],
-          containerClassName
-        )}
+        className={panel({
+          className: cn(
+            customSize && [
+              isPlacementOnYAxis(placement)
+                ? 'max-h-screen min-h-96'
+                : 'max-w-full min-w-96',
+            ],
+            containerClassName
+          ),
+        })}
         {...(customSize && {
           style: {
             height: isPlacementOnYAxis(placement) ? newWidth : 'inherit',
@@ -146,15 +152,7 @@ export function Drawer({
         })}
       >
         {enableResizer && (
-          <div
-            onMouseDown={handleMouseDown}
-            className={cn(
-              makeClassName(`drawer-resizer`),
-              'absolute rounded-md bg-gray-400',
-              drawerClasses.resizeHandlerPlacement[placement],
-              resizerClassName
-            )}
-          />
+          <div onMouseDown={handleMouseDown} className={resizer({ className: resizerClassName })} />
         )}
         <>{children}</>
       </DialogPanel>

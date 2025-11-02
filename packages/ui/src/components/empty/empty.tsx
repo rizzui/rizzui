@@ -1,18 +1,25 @@
 import React from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { DefaultIcon } from './empty-icons';
 import { makeClassName } from '../../lib/make-class-name';
 
-const emptyStyles = {
-  base: 'flex flex-col items-start',
-  alignment: {
-    start: 'items-start',
-    center: 'items-center',
-    end: 'items-end',
+const empty = tv({
+  base: 'flex flex-col',
+  variants: {
+    alignment: {
+      start: 'items-start',
+      center: 'items-center',
+      end: 'items-end',
+    },
   },
-};
+  defaultVariants: {
+    alignment: 'center',
+  },
+});
 
 type EmptyTextTagProps = 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
+type EmptyVariant = VariantProps<typeof empty>;
 
 export interface EmptyProps {
   image?: React.ReactNode;
@@ -21,7 +28,7 @@ export interface EmptyProps {
   text?: string;
   textAs?: EmptyTextTagProps;
   textClassName?: string;
-  alignment?: keyof typeof emptyStyles.alignment;
+  alignment?: EmptyVariant['alignment'];
   className?: string;
 }
 
@@ -40,12 +47,10 @@ export function Empty({
   return (
     <div
       data-testid="empty-state"
-      className={cn(
-        makeClassName('empty-root'),
-        emptyStyles.base,
-        emptyStyles.alignment[alignment],
-        className
-      )}
+      className={empty({
+        alignment,
+        className,
+      })}
     >
       <div className="text-center">
         <div className={cn(makeClassName('empty-icon'), imageClassName)}>

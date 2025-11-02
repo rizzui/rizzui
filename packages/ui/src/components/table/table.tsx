@@ -1,9 +1,10 @@
 import React from 'react';
+import { type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { tableStyles } from '../../lib/table-style';
+import { table } from '../../lib/table-style';
 import { makeClassName } from '../../lib/make-class-name';
 
-export type TableVariantProps = keyof typeof tableStyles.variants;
+export type TableVariantProps = VariantProps<typeof table>['variant'];
 export interface TableProps extends React.ComponentPropsWithRef<'table'> {
   variant?: TableVariantProps;
 }
@@ -12,11 +13,7 @@ const Table = React.forwardRef<HTMLTableElement, TableProps>(
   ({ className, variant = 'modern', ...props }, ref) => (
     <table
       ref={ref}
-      className={cn(
-        makeClassName(`table-root`),
-        tableStyles.variants[variant],
-        className
-      )}
+      className={table({ variant, className })}
       {...props}
     />
   )

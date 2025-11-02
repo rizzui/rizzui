@@ -1,25 +1,24 @@
 import React from 'react';
-import { cn } from '../../lib/cn';
+import { tv, type VariantProps } from 'tailwind-variants';
 
-const classes = {
-  base: 'transform',
-  startAngle: {
-    0: 'rotate-0',
-    45: '-rotate-45',
-    90: '-rotate-90',
-    180: '-rotate-180',
-    270: '-rotate-[270deg]',
-    360: '-rotate-[360deg]',
+const radialProgress = tv({
+  base: 'transform transition-all duration-200',
+  variants: {
+    startAngle: {
+      0: 'rotate-0',
+      45: '-rotate-45',
+      90: '-rotate-90',
+      180: '-rotate-180',
+      270: '-rotate-[270deg]',
+      360: '-rotate-[360deg]',
+    },
   },
-  fixLabelAngle: {
-    0: 'rotate-0',
-    45: 'rotate-45',
-    90: 'rotate-90',
-    180: 'rotate-180',
-    270: 'rotate-[270deg]',
-    360: 'rotate-[360deg]',
+  defaultVariants: {
+    startAngle: 90,
   },
-};
+});
+
+type RadialProgressVariant = VariantProps<typeof radialProgress>;
 
 export type RadialProgressBarProps = {
   /** percentage of filled bar */
@@ -43,7 +42,7 @@ export type RadialProgressBarProps = {
   /** use parent responsive */
   useParentResponsive?: boolean;
   /** start angle of the progress bar */
-  startAngle?: keyof typeof classes.startAngle;
+  startAngle?: RadialProgressVariant['startAngle'];
 };
 
 export function RadialProgressBar({
@@ -84,11 +83,7 @@ export function RadialProgressBar({
     <svg
       {...(!useParentResponsive && { width: size, height: size })}
       viewBox={`0 0 ${size} ${size}`}
-      className={cn(
-        'transition-all duration-200',
-        classes.base,
-        classes.startAngle[startAngle]
-      )}
+      className={radialProgress({ startAngle })}
     >
       {gradientColor && (
         <defs>
