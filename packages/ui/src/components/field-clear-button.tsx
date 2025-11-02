@@ -1,27 +1,32 @@
 import React from 'react';
-import { cn } from '../lib/cn';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { makeClassName } from '../lib/make-class-name';
 
-const clearBtnStyles = {
+const fieldClearButton = tv({
   base: 'inline-flex shrink-0 transform items-center justify-center rounded-full bg-muted/70 backdrop-blur text-foreground/90 transition-all duration-200 ease-in-out hover:bg-primary hover:text-primary-foreground',
-  size: {
-    sm: 'h-3.5 w-3.5',
-    md: 'h-4 w-4',
-    lg: 'h-4 w-4',
-    xl: 'h-[18px] w-[18px]',
+  variants: {
+    size: {
+      sm: 'h-3.5 w-3.5',
+      md: 'h-4 w-4',
+      lg: 'h-4 w-4',
+      xl: 'h-[18px] w-[18px]',
+    },
+    hasSuffix: {
+      true: '',
+    },
   },
-  hasSuffix: {
-    sm: 'me-1.5',
-    md: 'me-2',
-    lg: 'me-2.5',
-    xl: 'me-2.5',
-  },
-};
+  compoundVariants: [
+    { hasSuffix: true, size: 'sm', class: 'me-1.5' },
+    { hasSuffix: true, size: 'md', class: 'me-2' },
+    { hasSuffix: true, size: 'lg', class: 'me-2.5' },
+    { hasSuffix: true, size: 'xl', class: 'me-2.5' },
+  ],
+});
 
 export interface FieldClearButtonProps {
   as?: React.ElementType;
   hasSuffix?: boolean;
-  size?: keyof typeof clearBtnStyles.size;
+  size?: VariantProps<typeof fieldClearButton>['size'];
   onClick?: (event: React.MouseEvent) => void;
   className?: string;
 }
@@ -38,16 +43,11 @@ export function FieldClearButton({
     <Component
       type="button"
       onClick={onClick}
-      className={cn(
-        makeClassName(`input-clear-btn`),
-        'input-clear-btn', // must contain this CSS class in this component
-        clearBtnStyles.base,
-        size && [
-          clearBtnStyles.size[size],
-          hasSuffix && clearBtnStyles.hasSuffix[size],
-        ],
-        className
-      )}
+      className={fieldClearButton({
+        size,
+        hasSuffix,
+        className: makeClassName(`input-clear-btn`) + ' input-clear-btn ' + (className || ''),
+      })}
     >
       {/* HeroIcon: x-mark */}
       <svg

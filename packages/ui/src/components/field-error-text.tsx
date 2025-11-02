@@ -1,21 +1,23 @@
 import React from 'react';
-import { cn } from '../lib/cn';
+import { tv, type VariantProps } from 'tailwind-variants';
 
-const errorStyles = {
+const fieldError = tv({
   base: 'text-red',
-  size: {
-    sm: 'text-[11px] mt-0.5',
-    md: 'text-[13px] mt-0.5',
-    lg: 'text-[13px] mt-1',
-    xl: 'text-sm mt-1',
+  variants: {
+    size: {
+      sm: 'text-[11px] mt-0.5',
+      md: 'text-[13px] mt-0.5',
+      lg: 'text-[13px] mt-1',
+      xl: 'text-sm mt-1',
+    },
   },
-};
+});
 
 interface FieldErrorProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   as?: 'div' | 'span';
   error: string | null | undefined;
-  size?: keyof typeof errorStyles.size;
+  size?: VariantProps<typeof fieldError>['size'];
   className?: string;
 }
 
@@ -27,14 +29,7 @@ export function FieldError({
 }: FieldErrorProps) {
   const Component = as;
   return (
-    <Component
-      role="alert"
-      className={cn(
-        errorStyles.base,
-        size && errorStyles.size[size],
-        className
-      )}
-    >
+    <Component role="alert" className={fieldError({ size, className })}>
       {error}
     </Component>
   );
