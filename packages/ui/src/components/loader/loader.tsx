@@ -1,4 +1,5 @@
 import React from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 import { BarsSpinner } from './bars-spinner';
@@ -6,24 +7,30 @@ import { PulseLoader } from './pulse-loader';
 import { Spinner } from './spinner';
 import { ThreeDotScale } from './three-dot-scale';
 
-const loaderStyles = {
+const loader = tv({
   base: 'h-auto',
-  sizes: {
-    sm: 'w-5',
-    md: 'w-[22px]',
-    lg: 'w-7',
-    xl: 'w-9',
+  variants: {
+    size: {
+      sm: 'w-5',
+      md: 'w-[22px]',
+      lg: 'w-7',
+      xl: 'w-9',
+    },
+    color: {
+      current: 'text-current',
+      primary: 'text-primary',
+      secondary: 'text-secondary',
+      danger: 'text-red',
+      info: 'text-blue',
+      success: 'text-green',
+      warning: 'text-orange',
+    },
   },
-  colors: {
-    current: 'text-current',
-    primary: 'text-primary',
-    secondary: 'text-secondary',
-    danger: 'text-red',
-    info: 'text-blue',
-    success: 'text-green',
-    warning: 'text-orange',
+  defaultVariants: {
+    size: 'md',
+    color: 'current',
   },
-};
+});
 
 const Components = {
   bars: BarsSpinner,
@@ -32,12 +39,12 @@ const Components = {
   threeDot: ThreeDotScale,
 };
 
-export type LoaderSizeTypes = keyof typeof loaderStyles.sizes;
-export type LoaderColorTypes = keyof typeof loaderStyles.colors;
+type LoaderVariant = VariantProps<typeof loader>;
+
 export interface LoaderTypes extends React.SVGProps<SVGSVGElement> {
-  size?: LoaderSizeTypes;
+  size?: LoaderVariant['size'];
   variant?: keyof typeof Components;
-  color?: LoaderColorTypes;
+  color?: LoaderVariant['color'];
   className?: string;
 }
 
@@ -53,13 +60,11 @@ export function Loader({
   return (
     <SVGComponent
       data-testid="loader"
-      className={cn(
-        makeClassName(`loader-${variant}`),
-        loaderStyles.base,
-        loaderStyles.sizes[size],
-        loaderStyles.colors[color],
-        className
-      )}
+      className={loader({
+        size,
+        color,
+        className: cn(makeClassName(`loader-${variant}`), className),
+      })}
       {...props}
     />
   );
