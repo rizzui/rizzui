@@ -1,31 +1,49 @@
 import React from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { usePopover } from './popover-context';
 import { FloatingArrow, FloatingPortal } from '@floating-ui/react';
 import { makeClassName } from '../../lib/make-class-name';
-import { roundedStyles } from '../../lib/rounded';
 import { cn } from '../../lib/cn';
 
-const popoverStyles = {
+const popover = tv({
   base: 'z-[999] min-w-max bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border border-muted',
-  arrow: 'fill-background dark:fill-muted/80 [&>path]:stroke-muted',
-  shadow: {
-    sm: 'drop-shadow-md',
-    md: 'drop-shadow-lg',
-    lg: 'drop-shadow-xl',
-    xl: 'drop-shadow-2xl',
+  variants: {
+    size: {
+      sm: 'p-2.5',
+      md: 'p-4',
+      lg: 'p-5',
+      xl: 'p-6',
+    },
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      pill: 'rounded-full',
+    },
+    shadow: {
+      sm: 'drop-shadow-md',
+      md: 'drop-shadow-lg',
+      lg: 'drop-shadow-xl',
+      xl: 'drop-shadow-2xl',
+    },
   },
-  size: {
-    sm: 'p-2.5',
-    md: 'p-4',
-    lg: 'p-5',
-    xl: 'p-6',
+  defaultVariants: {
+    size: 'md',
+    rounded: 'md',
+    shadow: 'md',
   },
-  rounded: roundedStyles,
-};
+});
 
-export type Shadow = keyof typeof popoverStyles.shadow;
-export type Size = keyof typeof popoverStyles.size;
-export type Rounded = keyof typeof popoverStyles.rounded;
+const popoverArrow = tv({
+  base: 'fill-background dark:fill-muted/80 [&>path]:stroke-muted',
+});
+
+type PopoverVariant = VariantProps<typeof popover>;
+
+export type Shadow = PopoverVariant['shadow'];
+export type Size = PopoverVariant['size'];
+export type Rounded = PopoverVariant['rounded'];
 
 type PopoverContentProps = {
   children:
@@ -83,14 +101,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
           <div
             role="popover"
             ref={refs.setFloating}
-            className={cn(
-              makeClassName(`popover-content`),
-              popoverStyles.base,
-              size && popoverStyles.size[size],
-              rounded && popoverStyles.rounded[rounded],
-              shadow && popoverStyles.shadow[shadow],
-              className
-            )}
+            className={popover({ size, rounded, shadow, className })}
             style={{
               position: strategy,
               top: y ?? 0,
@@ -108,11 +119,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
                 ref={arrowRef}
                 context={context}
                 data-testid="popover-arrow"
-                className={cn(
-                  makeClassName(`popover-arrow`),
-                  popoverStyles.arrow,
-                  arrowClassName
-                )}
+                className={popoverArrow({ className: arrowClassName })}
                 style={{ strokeDasharray: '0,14, 5' }}
               />
             ) : null}
