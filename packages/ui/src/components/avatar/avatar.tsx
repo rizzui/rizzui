@@ -1,46 +1,59 @@
 import React from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
-const classes = {
+const avatar = tv({
   base: 'inline-flex items-center justify-center flex-shrink-0',
-  size: {
-    sm: '32',
-    md: '40',
-    lg: '48',
-    xl: '56',
+  variants: {
+    size: {
+      sm: 'text-xs',
+      md: 'text-sm',
+      lg: 'text-base',
+      xl: 'text-lg',
+    },
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded',
+      md: 'rounded-xl',
+      lg: 'rounded-2xl',
+      full: 'rounded-full',
+    },
+    color: {
+      primary: 'bg-primary text-primary-foreground',
+      secondary: 'bg-secondary text-secondary-foreground',
+      success: 'bg-green text-white',
+      warning: 'bg-orange text-white',
+      danger: 'bg-red text-white',
+      info: 'bg-blue text-white',
+    },
+    clickable: {
+      true: 'cursor-pointer',
+    },
   },
-  fontSize: {
-    sm: 'text-xs',
-    md: 'text-sm',
-    lg: 'text-base',
-    xl: 'text-lg',
+  defaultVariants: {
+    size: 'md',
+    rounded: 'full',
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded',
-    md: 'rounded-xl',
-    lg: 'rounded-2xl',
-    full: 'rounded-full',
-  },
-  color: {
-    primary: 'bg-primary text-primary-foreground',
-    secondary: 'bg-secondary text-secondary-foreground',
-    success: 'bg-green text-white',
-    warning: 'bg-orange text-white',
-    danger: 'bg-red text-white',
-    info: 'bg-blue text-white',
-  },
+});
+
+const avatarSizes = {
+  sm: '32',
+  md: '40',
+  lg: '48',
+  xl: '56',
 };
+
+type AvatarVariant = VariantProps<typeof avatar>;
 
 export type AvatarProps = {
   src?: string;
   name: string;
   initials?: string;
-  size?: keyof typeof classes.size;
+  size?: AvatarVariant['size'];
   customSize?: string | number;
-  rounded?: keyof typeof classes.rounded;
-  color?: keyof typeof classes.color;
+  rounded?: AvatarVariant['rounded'];
+  color?: AvatarVariant['color'];
   onClick?: () => void;
   className?: string;
 };
@@ -88,7 +101,7 @@ export function Avatar({
   const [isError, setError] = React.useState(false);
 
   let signature = initials || getInitials(name);
-  let avatarSize = customSize ?? classes.size[size];
+  let avatarSize = customSize ?? avatarSizes[size];
 
   if (src && !isError) {
     return (
@@ -101,15 +114,13 @@ export function Avatar({
         width={avatarSize}
         height={avatarSize}
         onError={() => setError(() => true)}
-        className={cn(
-          makeClassName(`avatar-img`),
-          classes.base,
-          classes.rounded[rounded],
-          color && classes.color[color],
-          onClick && 'cursor-pointer',
-          'object-cover',
-          className
-        )}
+        className={avatar({
+          size,
+          rounded,
+          color,
+          clickable: Boolean(onClick),
+          className: cn(makeClassName(`avatar-img`), 'object-cover', className),
+        })}
         style={{
           width: avatarSize + 'px',
           height: avatarSize + 'px',
@@ -123,16 +134,13 @@ export function Avatar({
   return (
     <span
       title={name}
-      className={cn(
-        makeClassName(`avatar-initials`),
-        classes.base,
-        classes.fontSize[size],
-        classes.rounded[rounded],
-        color && classes.color[color],
-        'font-semibold',
-        onClick && 'cursor-pointer',
-        className
-      )}
+      className={avatar({
+        size,
+        rounded,
+        color,
+        clickable: Boolean(onClick),
+        className: cn(makeClassName(`avatar-initials`), 'font-semibold', className),
+      })}
       style={{
         width: avatarSize + 'px',
         height: avatarSize + 'px',

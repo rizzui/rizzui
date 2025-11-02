@@ -1,49 +1,75 @@
 import React from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { Text } from '../typography';
 import { makeClassName } from '../../lib/make-class-name';
-import { roundedStyles } from '../../lib/rounded';
 
-const progressBarStyles = {
+const progressBar = tv({
   base: 'absolute top-0 bottom-0 left-0 h-full flex items-center justify-center',
-  size: {
-    sm: 'h-1.5',
-    md: 'h-2',
-    lg: 'h-3',
-    xl: 'h-4',
-  },
-  rounded: roundedStyles,
-  variant: {
-    solid: {
-      base: 'text-background',
-      color: {
-        primary: 'bg-primary',
-        secondary: 'bg-secondary',
-        danger: 'bg-red',
-        info: 'bg-blue',
-        success: 'bg-green',
-        warning: 'bg-orange',
-      },
+  variants: {
+    size: {
+      sm: 'h-1.5',
+      md: 'h-2',
+      lg: 'h-3',
+      xl: 'h-4',
     },
-    flat: {
-      base: '',
-      color: {
-        primary: 'bg-primary/40 text-primary-dark',
-        secondary: 'bg-secondary/40 text-secondary-dark',
-        danger: 'bg-red/40 text-red-dark',
-        info: 'bg-blue/40 text-blue-dark',
-        success: 'bg-green/40 text-green-dark',
-        warning: 'bg-orange/40 text-orange-dark',
-      },
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      pill: 'rounded-full',
+    },
+    variant: {
+      solid: 'text-background',
+      flat: '',
+    },
+    color: {
+      primary: '',
+      secondary: '',
+      danger: '',
+      info: '',
+      success: '',
+      warning: '',
     },
   },
-  labelStyles: {
-    sm: 'text-xs font-bold',
-    md: 'text-sm font-bold',
-    lg: 'text-sm font-bold',
-    xl: 'text-sm font-bold',
+  compoundVariants: [
+    // Solid variants
+    { variant: 'solid', color: 'primary', class: 'bg-primary' },
+    { variant: 'solid', color: 'secondary', class: 'bg-secondary' },
+    { variant: 'solid', color: 'danger', class: 'bg-red' },
+    { variant: 'solid', color: 'info', class: 'bg-blue' },
+    { variant: 'solid', color: 'success', class: 'bg-green' },
+    { variant: 'solid', color: 'warning', class: 'bg-orange' },
+    // Flat variants
+    { variant: 'flat', color: 'primary', class: 'bg-primary/40 text-primary-dark' },
+    { variant: 'flat', color: 'secondary', class: 'bg-secondary/40 text-secondary-dark' },
+    { variant: 'flat', color: 'danger', class: 'bg-red/40 text-red-dark' },
+    { variant: 'flat', color: 'info', class: 'bg-blue/40 text-blue-dark' },
+    { variant: 'flat', color: 'success', class: 'bg-green/40 text-green-dark' },
+    { variant: 'flat', color: 'warning', class: 'bg-orange/40 text-orange-dark' },
+  ],
+  defaultVariants: {
+    size: 'md',
+    rounded: 'pill',
+    variant: 'solid',
+    color: 'primary',
   },
-};
+});
+
+const progressLabel = tv({
+  base: 'font-bold',
+  variants: {
+    size: {
+      sm: 'text-xs',
+      md: 'text-sm',
+      lg: 'text-sm',
+      xl: 'text-sm',
+    },
+  },
+});
+
+type ProgressBarVariant = VariantProps<typeof progressBar>;
 
 export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Percentage of filled bar */
@@ -51,13 +77,13 @@ export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
   /** Pass label to show percentage inside bar */
   label?: string;
   /** Size of the components are: */
-  size?: keyof typeof progressBarStyles.size;
+  size?: ProgressBarVariant['size'];
   /** The rounded variants are: */
-  rounded?: keyof typeof progressBarStyles.rounded;
+  rounded?: ProgressBarVariant['rounded'];
   /** Pass color variations */
-  color?: keyof typeof progressBarStyles.variant.flat.color;
+  color?: ProgressBarVariant['color'];
   /** The variants of the components are: */
-  variant?: keyof typeof progressBarStyles.variant;
+  variant?: ProgressBarVariant['variant'];
   /** Defines the label position of progressbar component */
   labelPosition?: 'insideBar' | 'inlineLeft' | 'inlineRight';
   /** To style the root of the component */
@@ -91,8 +117,7 @@ export function Progressbar({
         className={cn(
           makeClassName(`progressbar-root`),
           'relative w-full bg-muted',
-          progressBarStyles.size[size],
-          progressBarStyles.rounded[rounded],
+          progressBar({ size, rounded }),
           trackClassName
         )}
       >
@@ -102,14 +127,13 @@ export function Progressbar({
           aria-valuemin={0}
           aria-valuenow={value}
           aria-label={label}
-          className={cn(
-            makeClassName(`progressbar`),
-            progressBarStyles.base,
-            progressBarStyles.variant[variant].base,
-            progressBarStyles.variant[variant].color[color],
-            progressBarStyles.rounded[rounded],
-            barClassName
-          )}
+          className={progressBar({
+            size,
+            rounded,
+            variant,
+            color,
+            className: barClassName,
+          })}
           style={{ width: `${value}%` }}
           {...props}
         >
@@ -141,17 +165,16 @@ function ProgressbarLabel({
   className,
   size = 'md',
 }: {
-  size: keyof typeof progressBarStyles.size;
+  size: ProgressBarVariant['size'];
   label: string;
   className?: string;
 }) {
   return (
     <Text
-      className={cn(
-        makeClassName(`progressbar-label`),
-        progressBarStyles.labelStyles[size],
-        className
-      )}
+      className={progressLabel({
+        size,
+        className: cn(makeClassName(`progressbar-label`), className),
+      })}
     >
       {label}
     </Text>
