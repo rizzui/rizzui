@@ -1,10 +1,10 @@
 import React from 'react';
-import { cn } from '../../../lib/cn';
+import { tv } from 'tailwind-variants';
 import { makeClassName } from '../../../lib/make-class-name';
 
-const codeStyles = {
-  pre: 'border ring-[0.5px] ring-muted border-muted py-3 px-4 rounded-lg bg-muted/70 backdrop-blur',
-};
+const code = tv({
+  base: 'border ring-[0.5px] ring-muted border-muted py-3 px-4 rounded-lg bg-muted/70 backdrop-blur',
+});
 
 export type CodeProps = {
   className?: string;
@@ -16,10 +16,7 @@ export function Code({
   ...props
 }: React.PropsWithChildren<CodeProps>) {
   return (
-    <pre
-      className={cn(makeClassName(`code`), codeStyles.pre, className)}
-      {...props}
-    >
+    <pre className={code({ className })} {...props}>
       <code className="border-none bg-transparent p-0 shadow-none">
         {children}
       </code>
