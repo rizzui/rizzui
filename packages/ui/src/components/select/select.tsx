@@ -6,13 +6,13 @@ import {
   ListboxOptions,
   ListboxOption,
 } from '@headlessui/react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
 import { ChevronDownIcon } from '../../icons/chevron-down';
-import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { makeClassName } from '../../lib/make-class-name';
@@ -28,40 +28,56 @@ import {
   preventHeadlessUIKeyboardInterActions,
 } from './select.lib';
 
-const selectStyles = {
+const select = tv({
   base: 'flex group items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
-  disabled:
-    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
-  error: '!border-red hover:!border-red focus:!border-red !ring-red',
-  size: {
-    sm: 'px-2 py-1 text-xs h-8',
-    md: 'px-3 py-2 text-sm h-10',
-    lg: 'px-4 py-2 text-base h-12',
-    xl: 'px-5 py-2.5 text-base h-14',
-  },
-  rounded: roundedStyles,
-  prefix: {
+  variants: {
+    variant: {
+      text: 'border-transparent ring-transparent bg-transparent',
+      flat: 'border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur',
+      outline: 'border border-muted ring-muted bg-transparent',
+    },
     size: {
-      sm: 'ps-1.5',
-      md: 'ps-2.5',
-      lg: 'ps-3.5',
-      xl: 'ps-4',
+      sm: 'px-2 py-1 text-xs h-8',
+      md: 'px-3 py-2 text-sm h-10',
+      lg: 'px-4 py-2 text-base h-12',
+      xl: 'px-5 py-2.5 text-base h-14',
+    },
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      pill: 'rounded-full',
+    },
+    disabled: {
+      true: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
+    },
+    error: {
+      true: '!border-red hover:!border-red focus:!border-red !ring-red',
+    },
+    hasPrefix: {
+      true: '',
+    },
+    hasSuffix: {
+      true: '',
     },
   },
-  suffix: {
-    size: {
-      sm: 'pe-1.5',
-      md: 'pe-2.5',
-      lg: 'pe-3.5',
-      xl: 'pe-4',
-    },
+  compoundVariants: [
+    { hasPrefix: true, size: 'sm', class: 'ps-1.5' },
+    { hasPrefix: true, size: 'md', class: 'ps-2.5' },
+    { hasPrefix: true, size: 'lg', class: 'ps-3.5' },
+    { hasPrefix: true, size: 'xl', class: 'ps-4' },
+    { hasSuffix: true, size: 'sm', class: 'pe-1.5' },
+    { hasSuffix: true, size: 'md', class: 'pe-2.5' },
+    { hasSuffix: true, size: 'lg', class: 'pe-3.5' },
+    { hasSuffix: true, size: 'xl', class: 'pe-4' },
+  ],
+  defaultVariants: {
+    variant: 'outline',
+    size: 'md',
+    rounded: 'md',
   },
-  variant: {
-    text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur',
-    outline: 'border border-muted ring-muted bg-transparent',
-  },
-};
+});
 
 const optionListStyles = {
   base: `${dropdownStyles.base} overflow-auto w-[var(--button-width)] !outline-none !ring-0 m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg data-[open]:opacity-100 data-[leave]:data-[closed]:opacity-100`,
@@ -121,11 +137,11 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   /** Set select placeholder text */
   placeholder?: string;
   /** The size of the component. `"sm"` is equivalent to the dense select styling. */
-  size?: keyof typeof selectStyles.size;
+  size?: VariantProps<typeof select>['size'];
   /** The rounded variants are: */
-  rounded?: keyof typeof selectStyles.rounded;
+  rounded?: VariantProps<typeof select>['rounded'];
   /** The variants of the component are: */
-  variant?: keyof typeof selectStyles.variant;
+  variant?: VariantProps<typeof select>['variant'];
   /** The shadow variants of the component are: */
   shadow?: keyof typeof dropdownStyles.shadow;
   /** add clearable option */
@@ -319,18 +335,16 @@ export function Select<OptionType extends SelectOption>({
 
         <div className={cn(!inPortal && 'relative')}>
           <ListboxButton
-            className={cn(
-              makeClassName(`select-button`),
-              selectStyles.base,
-              selectStyles.variant[variant],
-              selectStyles.size[size],
-              selectStyles.rounded[rounded],
-              prefix && selectStyles.prefix.size[size],
-              suffix && selectStyles.suffix.size[size],
-              disabled && selectStyles.disabled,
-              error && emptyValue && selectStyles.error,
-              selectClassName
-            )}
+            className={select({
+              variant,
+              size,
+              rounded,
+              disabled,
+              error: error && emptyValue,
+              hasPrefix: Boolean(prefix),
+              hasSuffix: Boolean(suffix),
+              className: selectClassName,
+            })}
             autoFocus={autoFocus}
           >
             {prefix ? (
@@ -349,9 +363,7 @@ export function Select<OptionType extends SelectOption>({
               className={cn(
                 makeClassName(`select-value`),
                 'block w-full truncate text-left rtl:text-right',
-                emptyValue && 'text-muted-foreground',
-                prefix && selectStyles.prefix.size[size],
-                suffix && selectStyles.suffix.size[size]
+                emptyValue && 'text-muted-foreground'
               )}
             >
               {emptyValue ? placeholder : displayValue(value)}
@@ -412,7 +424,6 @@ export function Select<OptionType extends SelectOption>({
                     className={cn(
                       makeClassName(`select-prefix`),
                       searchStyles.prefix,
-                      searchPrefix && selectStyles.prefix.size[size],
                       searchPrefixClassName
                     )}
                   >
@@ -432,16 +443,13 @@ export function Select<OptionType extends SelectOption>({
                   }}
                   // prevent headless ui from handling these keys
                   onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
-                  className={cn(
-                    makeClassName(`select-search`),
-                    selectStyles.base,
-                    selectStyles.size[size],
-                    selectStyles.variant[variant],
-                    selectStyles.rounded[rounded],
-                    searchDisabled && selectStyles.disabled,
-                    searchStyles.inputBase,
-                    searchClassName
-                  )}
+                  className={select({
+                    variant,
+                    size,
+                    rounded,
+                    disabled: searchDisabled,
+                    className: cn(searchStyles.inputBase, searchClassName),
+                  })}
                   {...searchProps}
                 />
 
@@ -450,7 +458,6 @@ export function Select<OptionType extends SelectOption>({
                     className={cn(
                       makeClassName(`select-suffix`),
                       searchStyles.suffix,
-                      searchSuffix && selectStyles.suffix.size[size],
                       searchSuffixClassName
                     )}
                   >
