@@ -6,6 +6,7 @@ import {
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { XIcon } from '../../icons/x-mark';
 import { SearchIcon } from '../../icons/search';
@@ -16,7 +17,6 @@ import {
   preventHeadlessUIKeyboardInterActions,
 } from './multi-select.lib';
 import { FieldError } from '../field-error-text';
-import { roundedStyles } from '../../lib/rounded';
 import { labelStyles } from '../../lib/label-size';
 import { ExtractProps } from '../../lib/extract-props';
 import { FieldHelperText } from '../field-helper-text';
@@ -25,40 +25,56 @@ import { FieldClearButton } from '../field-clear-button';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { CheckmarkIcon } from '../../icons/checkmark';
 
-const selectStyles = {
+const multiSelect = tv({
   base: 'flex group items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
-  disabled:
-    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
-  error: '!border-red hover:!border-red focus:!border-red !ring-red',
-  size: {
-    sm: 'px-2 py-1 text-xs min-h-8',
-    md: 'px-3 py-2 text-sm min-h-10',
-    lg: 'px-4 py-2 text-base min-h-12',
-    xl: 'px-5 py-2.5 text-base min-h-14',
-  },
-  rounded: roundedStyles,
-  prefix: {
+  variants: {
+    variant: {
+      text: 'border-transparent ring-transparent bg-transparent',
+      flat: 'border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur',
+      outline: 'border border-muted ring-muted bg-transparent',
+    },
     size: {
-      sm: 'ps-1.5',
-      md: 'ps-2.5',
-      lg: 'ps-3.5',
-      xl: 'ps-4',
+      sm: 'px-2 py-1 text-xs min-h-8',
+      md: 'px-3 py-2 text-sm min-h-10',
+      lg: 'px-4 py-2 text-base min-h-12',
+      xl: 'px-5 py-2.5 text-base min-h-14',
+    },
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded-sm',
+      md: 'rounded-md',
+      lg: 'rounded-lg',
+      pill: 'rounded-full',
+    },
+    disabled: {
+      true: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
+    },
+    error: {
+      true: '!border-red hover:!border-red focus:!border-red !ring-red',
+    },
+    hasPrefix: {
+      true: '',
+    },
+    hasSuffix: {
+      true: '',
     },
   },
-  suffix: {
-    size: {
-      sm: 'pe-1.5',
-      md: 'pe-2.5',
-      lg: 'pe-3.5',
-      xl: 'pe-4',
-    },
+  compoundVariants: [
+    { hasPrefix: true, size: 'sm', class: 'ps-1.5' },
+    { hasPrefix: true, size: 'md', class: 'ps-2.5' },
+    { hasPrefix: true, size: 'lg', class: 'ps-3.5' },
+    { hasPrefix: true, size: 'xl', class: 'ps-4' },
+    { hasSuffix: true, size: 'sm', class: 'pe-1.5' },
+    { hasSuffix: true, size: 'md', class: 'pe-2.5' },
+    { hasSuffix: true, size: 'lg', class: 'pe-3.5' },
+    { hasSuffix: true, size: 'xl', class: 'pe-4' },
+  ],
+  defaultVariants: {
+    variant: 'outline',
+    size: 'md',
+    rounded: 'md',
   },
-  variant: {
-    text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur',
-    outline: 'border border-muted ring-muted bg-transparent',
-  },
-};
+});
 
 const optionListStyles = {
   base: `${dropdownStyles.base} overflow-auto w-[var(--button-width)] !outline-none !ring-0 m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg data-[open]:opacity-100 data-[leave]:data-[closed]:opacity-100`,
@@ -133,7 +149,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The placeholder of the select */
   placeholder?: string;
   /** The size of the select */
-  size?: keyof typeof selectStyles.size;
+  size?: VariantProps<typeof multiSelect>['size'];
   /** The label of the select */
   label?: React.ReactNode;
   /** The weight of the label */
@@ -151,9 +167,9 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** Whether the select is in the portal */
   inPortal?: boolean;
   /** The variant of the select */
-  variant?: keyof typeof selectStyles.variant;
+  variant?: VariantProps<typeof multiSelect>['variant'];
   /** The rounded of the select */
-  rounded?: keyof typeof selectStyles.rounded;
+  rounded?: VariantProps<typeof multiSelect>['rounded'];
   /** The shadow of the select */
   shadow?: keyof typeof optionListStyles.shadow;
   /** The prefix of the select */
@@ -369,18 +385,16 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
 
         <div className={cn(!inPortal && 'relative')}>
           <ListboxButton
-            className={cn(
-              makeClassName(`multi-select-button`),
-              selectStyles.base,
-              selectStyles.variant[variant],
-              selectStyles.size[size],
-              selectStyles.rounded[rounded],
-              prefix && selectStyles.prefix.size[size],
-              suffix && selectStyles.suffix.size[size],
-              disabled && selectStyles.disabled,
-              error && emptyValue && selectStyles.error,
-              selectClassName
-            )}
+            className={multiSelect({
+              variant,
+              size,
+              rounded,
+              disabled,
+              error: Boolean(error && emptyValue),
+              hasPrefix: Boolean(prefix),
+              hasSuffix: Boolean(suffix),
+              className: selectClassName,
+            })}
             autoFocus={autoFocus}
           >
             {prefix ? (
@@ -404,8 +418,6 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                     makeClassName(`multi-select-value`),
                     'flex w-full flex-wrap items-center gap-2 truncate text-start',
                     emptyValue && 'text-muted-foreground',
-                    prefix && selectStyles.prefix.size[size],
-                    suffix && selectStyles.suffix.size[size],
                     selectContainerClassName
                   )}
                 >
@@ -508,7 +520,6 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                     className={cn(
                       makeClassName(`multi-select-prefix`),
                       searchStyles.prefix,
-                      searchPrefix && selectStyles.prefix.size[size],
                       searchPrefixClassName
                     )}
                   >
@@ -528,16 +539,13 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   }}
                   // prevent headless ui from handling these keys
                   onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
-                  className={cn(
-                    makeClassName(`multi-select-search`),
-                    selectStyles.base,
-                    selectStyles.size[size],
-                    selectStyles.variant[variant],
-                    selectStyles.rounded[rounded],
-                    searchDisabled && selectStyles.disabled,
-                    searchStyles.inputBase,
-                    searchClassName
-                  )}
+                  className={multiSelect({
+                    variant,
+                    size,
+                    rounded,
+                    disabled: searchDisabled,
+                    className: cn(searchStyles.inputBase, searchClassName),
+                  })}
                   {...searchProps}
                 />
 
@@ -546,7 +554,6 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                     className={cn(
                       makeClassName(`multi-select-suffix`),
                       searchStyles.suffix,
-                      searchSuffix && selectStyles.suffix.size[size],
                       searchSuffixClassName
                     )}
                   >
