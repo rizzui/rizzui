@@ -340,7 +340,7 @@ export function Select<OptionType extends SelectOption>({
               size,
               rounded,
               disabled,
-              error: error && emptyValue,
+              error: Boolean(error && emptyValue),
               hasPrefix: Boolean(prefix),
               hasSuffix: Boolean(suffix),
               className: selectClassName,
