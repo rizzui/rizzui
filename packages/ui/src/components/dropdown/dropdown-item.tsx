@@ -1,18 +1,22 @@
 import React from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { MenuItem } from '@headlessui/react';
 import { useDropdown } from './dropdown-context';
 import { makeClassName } from '../../lib/make-class-name';
 
-export const dropdownItemStyles = {
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-[4px]',
-    lg: 'rounded-md',
-    xl: 'rounded-lg',
+const dropdownItem = tv({
+  base: 'flex w-full items-center px-3 py-1.5',
+  variants: {
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded-sm',
+      md: 'rounded-[4px]',
+      lg: 'rounded-md',
+      xl: 'rounded-lg',
+    },
   },
-};
+});
 
 export type DropdownItemProps = {
   as?: 'button' | 'li';
@@ -48,14 +52,14 @@ export const DropdownItem = React.forwardRef<
           <Component
             ref={ref}
             {...(Component === 'button' && { type: 'button' })}
-            className={cn(
-              makeClassName(`dropdown-item`),
-              'flex w-full items-center px-3 py-1.5',
-              rounded && dropdownItemStyles.rounded[rounded],
-              focus && ['bg-muted/70', activeClassName],
-              disabled && disabledClassName,
-              className
-            )}
+            className={dropdownItem({
+              rounded,
+              className: cn(
+                focus && ['bg-muted/70', activeClassName],
+                disabled && disabledClassName,
+                className
+              ),
+            })}
             {...props}
           >
             {children}

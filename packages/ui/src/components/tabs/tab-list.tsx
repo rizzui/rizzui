@@ -3,6 +3,7 @@ import {
   TabList as HeadlessTabList,
   type TabListProps as HeadlessTabListProps,
 } from '@headlessui/react';
+import { tv } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { ExtractProps } from '../../lib/extract-props';
 import { TabListItem } from './tab-list-item';
@@ -11,12 +12,19 @@ import { useTab } from './tab-context';
 import { useRePositioningActiveTab } from './tab-lib';
 import { makeClassName } from '../../lib/make-class-name';
 
-const tabListStyles = {
+const tabList = tv({
   base: 'relative flex border-muted',
-  vertical: 'flex-col border-e pe-3',
-  horizontal:
-    'justify-start border-b gap-4 pb-[1px] overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden',
-};
+  variants: {
+    vertical: {
+      true: 'flex-col border-e pe-3',
+      false:
+        'justify-start border-b gap-4 pb-[1px] overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden',
+    },
+  },
+  defaultVariants: {
+    vertical: false,
+  },
+});
 
 export type TabListProps = ExtractProps<HeadlessTabListProps> & {};
 
@@ -40,8 +48,7 @@ export function TabList({ children, className, ...props }: TabListProps) {
       onMouseLeave={() => setDisplayHighlight && setDisplayHighlight(false)}
       className={cn(
         makeClassName(`tab-list`),
-        tabListStyles.base,
-        vertical ? tabListStyles.vertical : tabListStyles.horizontal,
+        tabList({ vertical }),
         className
       )}
       {...props}
