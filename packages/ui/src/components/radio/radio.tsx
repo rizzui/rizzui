@@ -1,52 +1,68 @@
 import React, { forwardRef } from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
-const radioLabelStyles = {
-  weight: labelStyles.weight,
-  size: labelStyles.size,
-  margin: {
-    left: {
-      sm: 'me-1.5',
-      md: 'me-2',
-      lg: 'me-2.5',
-      xl: 'me-3',
-    },
-    right: {
-      sm: 'ms-1.5',
-      md: 'ms-2',
-      lg: 'ms-2.5',
-      xl: 'ms-3',
-    },
-  },
-};
-
-const radioStyles = {
+const radio = tv({
   base: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted ring-[0.6px] focus:ring-muted focus:ring-offset-background text-primary dark:text-primary-foreground',
-  size: {
-    sm: 'h-5 w-5',
-    md: 'h-6 w-6',
-    lg: 'h-7 w-7',
-    xl: 'h-8 w-8',
+  variants: {
+    variant: {
+      outline:
+        'bg-transparent border border-muted ring-muted checked:!bg-primary dark:checked:!bg-transparent checked:!border-primary hover:enabled:border-primary',
+      flat: 'border-0 bg-muted/70 backdrop-blur ring-muted/70 hover:enabled:bg-muted/90 dark:checked:!bg-transparent dark:checked:!ring-primary checked:!bg-primary',
+    },
+    size: {
+      sm: 'h-5 w-5',
+      md: 'h-6 w-6',
+      lg: 'h-7 w-7',
+      xl: 'h-8 w-8',
+    },
   },
-  variant: {
-    outline:
-      'bg-transparent border border-muted ring-muted checked:!bg-primary dark:checked:!bg-transparent checked:!border-primary hover:enabled:border-primary',
-    flat: 'border-0 bg-muted/70 backdrop-blur ring-muted/70 hover:enabled:bg-muted/90 dark:checked:!bg-transparent dark:checked:!ring-primary checked:!bg-primary',
+  defaultVariants: {
+    variant: 'outline',
+    size: 'md',
   },
-};
+});
+
+const radioLabel = tv({
+  base: 'mb-0',
+  variants: {
+    size: labelStyles.size,
+    labelWeight: labelStyles.weight,
+    labelPlacement: {
+      left: '',
+      right: '',
+    },
+    disabled: {
+      true: 'text-muted-foreground',
+    },
+  },
+  compoundVariants: [
+    { labelPlacement: 'left', class: 'order-first' },
+    { labelPlacement: 'left', size: 'sm', class: 'me-1.5' },
+    { labelPlacement: 'left', size: 'md', class: 'me-2' },
+    { labelPlacement: 'left', size: 'lg', class: 'me-2.5' },
+    { labelPlacement: 'left', size: 'xl', class: 'me-3' },
+    { labelPlacement: 'right', size: 'sm', class: 'ms-1.5' },
+    { labelPlacement: 'right', size: 'md', class: 'ms-2' },
+    { labelPlacement: 'right', size: 'lg', class: 'ms-2.5' },
+    { labelPlacement: 'right', size: 'xl', class: 'ms-3' },
+  ],
+});
+
+type RadioVariant = VariantProps<typeof radio>;
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The variants of the component are: */
-  variant?: keyof typeof radioStyles.variant;
+  variant?: RadioVariant['variant'];
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof radioStyles.size;
+  size?: RadioVariant['size'];
   /** Available directions of the label are: */
-  labelPlacement?: keyof typeof radioLabelStyles.margin;
+  labelPlacement?: 'left' | 'right';
   /** Set font weight for label */
   labelWeight?: keyof typeof labelStyles.weight;
   /** Whether the input is disabled */
@@ -103,28 +119,23 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
           type="radio"
           ref={ref}
           disabled={disabled}
-          className={cn(
-            makeClassName(`radio-field`),
-            radioStyles.base,
-            radioStyles.size[size],
-            radioStyles.variant[variant],
-            inputClassName
-          )}
+          className={radio({
+            variant,
+            size,
+            className: inputClassName,
+          })}
           {...radioProps}
         />
 
         {label ? (
           <span
-            className={cn(
-              makeClassName(`radio-label`),
-              radioLabelStyles.size[size],
-              radioLabelStyles.weight[labelWeight],
-              radioLabelStyles.margin[labelPlacement][size],
-              disabled && 'text-muted-foreground',
-              labelPlacement === 'left' && 'order-first',
-              'mb-0',
-              labelClassName
-            )}
+            className={radioLabel({
+              size,
+              labelWeight,
+              labelPlacement,
+              disabled,
+              className: labelClassName,
+            })}
           >
             {label}
           </span>
