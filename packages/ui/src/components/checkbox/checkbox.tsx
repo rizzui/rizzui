@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { CheckmarkIcon } from '../../icons/checkmark';
 import { FieldError } from '../field-error-text';
@@ -6,51 +7,67 @@ import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
-const checkboxLabelStyles = {
-  weight: labelStyles.weight,
-  size: labelStyles.size,
-  margin: {
-    left: {
-      sm: 'me-1.5',
-      md: 'me-2',
-      lg: 'me-2.5',
-      xl: 'me-3',
-    },
-    right: {
-      sm: 'ms-1.5',
-      md: 'ms-2',
-      lg: 'ms-2.5',
-      xl: 'ms-3',
-    },
-  },
-};
-
-const checkboxStyles = {
+const checkbox = tv({
   base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out',
-  disabled: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted',
-  size: {
-    sm: 'h-5 w-5',
-    md: 'h-6 w-6',
-    lg: 'h-7 w-7',
-    xl: 'h-8 w-8',
+  variants: {
+    variant: {
+      outline:
+        'bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
+      flat: 'border-0 bg-muted/70 backdrop-blur hover:enabled:bg-muted focus:ring-muted checked:!bg-primary',
+    },
+    size: {
+      sm: 'h-5 w-5',
+      md: 'h-6 w-6',
+      lg: 'h-7 w-7',
+      xl: 'h-8 w-8',
+    },
+    rounded: {
+      none: 'rounded-none',
+      sm: 'rounded-sm',
+      md: 'rounded',
+      lg: 'rounded-md',
+      full: 'rounded-full',
+    },
+    disabled: {
+      true: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted',
+    },
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded',
-    lg: 'rounded-md',
-    full: 'rounded-full',
+  defaultVariants: {
+    variant: 'outline',
+    size: 'md',
+    rounded: 'md',
   },
-  activeIcon:
-    'peer-checked:opacity-100 absolute opacity-0 top-0 left-0 text-primary-foreground',
-  variant: {
-    outline:
-      'bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
-    flat: 'border-0 bg-muted/70 backdrop-blur hover:enabled:bg-muted focus:ring-muted checked:!bg-primary',
+});
+
+const checkboxLabel = tv({
+  base: 'mb-0',
+  variants: {
+    size: labelStyles.size,
+    labelWeight: labelStyles.weight,
+    labelPlacement: {
+      left: '',
+      right: '',
+    },
+    disabled: {
+      true: 'text-muted-foreground',
+    },
   },
-  indeterminate: {
-    base: 'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-black peer-checked:hidden',
-    icon: 'rounded bg-primary-foreground',
+  compoundVariants: [
+    { labelPlacement: 'left', class: 'order-first' },
+    { labelPlacement: 'left', size: 'sm', class: 'me-1.5' },
+    { labelPlacement: 'left', size: 'md', class: 'me-2' },
+    { labelPlacement: 'left', size: 'lg', class: 'me-2.5' },
+    { labelPlacement: 'left', size: 'xl', class: 'me-3' },
+    { labelPlacement: 'right', size: 'sm', class: 'ms-1.5' },
+    { labelPlacement: 'right', size: 'md', class: 'ms-2' },
+    { labelPlacement: 'right', size: 'lg', class: 'ms-2.5' },
+    { labelPlacement: 'right', size: 'xl', class: 'ms-3' },
+  ],
+});
+
+const indeterminateIcon = tv({
+  base: 'rounded bg-primary-foreground',
+  variants: {
     size: {
       sm: 'h-0.5 w-2.5',
       md: 'h-0.5 w-3',
@@ -58,20 +75,22 @@ const checkboxStyles = {
       xl: 'h-[3px] w-4',
     },
   },
-};
+});
+
+type CheckboxVariant = VariantProps<typeof checkbox>;
 
 export interface CheckboxProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** The variants of the component are: */
-  variant?: keyof typeof checkboxStyles.variant;
+  variant?: CheckboxVariant['variant'];
   /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof checkboxStyles.size;
+  size?: CheckboxVariant['size'];
   /** Set font weight for label */
   labelWeight?: keyof typeof labelStyles.weight;
   /** The rounded variants are: */
-  rounded?: keyof typeof checkboxStyles.rounded;
+  rounded?: CheckboxVariant['rounded'];
   /** Available directions of the label are: */
-  labelPlacement?: keyof typeof checkboxLabelStyles.margin;
+  labelPlacement?: 'left' | 'right';
   /** Whether the input is disabled */
   disabled?: boolean;
   /** Set field label */
@@ -134,39 +153,32 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             type="checkbox"
             ref={ref}
             disabled={disabled}
-            className={cn(
-              makeClassName(`checkbox-input`),
-              checkboxStyles.base,
-              checkboxStyles.disabled,
-              checkboxStyles.size[size],
-              checkboxStyles.rounded[rounded],
-              checkboxStyles.variant[variant],
-              inputClassName
-            )}
+            className={checkbox({
+              variant,
+              size,
+              rounded,
+              disabled,
+              className: inputClassName,
+            })}
             {...checkboxProps}
           />
 
           {indeterminate && (
             <span
               className={cn(
-                checkboxStyles.indeterminate.base,
-                checkboxStyles.rounded[rounded]
+                'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-black peer-checked:hidden',
+                checkbox({ rounded })
               )}
             >
-              <span
-                className={cn(
-                  checkboxStyles.indeterminate.icon,
-                  checkboxStyles.indeterminate.size[size]
-                )}
-              />
+              <span className={indeterminateIcon({ size })} />
             </span>
           )}
 
           <CheckmarkIcon
             className={cn(
               makeClassName(`checkbox-icon`),
-              checkboxStyles.activeIcon,
-              checkboxStyles.size[size],
+              'peer-checked:opacity-100 absolute opacity-0 top-0 left-0 text-primary-foreground',
+              checkbox({ size }),
               size === 'sm' && 'top-0',
               iconClassName
             )}
@@ -175,16 +187,13 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
         {label ? (
           <span
-            className={cn(
-              makeClassName(`checkbox-label`),
-              checkboxLabelStyles.size[size],
-              checkboxLabelStyles.weight[labelWeight],
-              checkboxLabelStyles.margin[labelPlacement][size],
-              disabled && 'text-muted-foreground',
-              labelPlacement === 'left' && 'order-first',
-              'mb-0',
-              labelClassName
-            )}
+            className={checkboxLabel({
+              size,
+              labelWeight,
+              labelPlacement,
+              disabled,
+              className: labelClassName,
+            })}
           >
             {label}
           </span>
