@@ -2,7 +2,6 @@
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-/* default theme */
 :root {
   /* ----------------------------------- */
   /* body style */
