@@ -16,7 +16,7 @@ import MultiSelectBox, {
 Listboxes are a great foundation for building custom, accessible Multi-Select menus for your app, complete with robust support for keyboard navigation.
 
 ```tsx
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui-v0";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -31,7 +31,7 @@ The default style of **MultiSelect** component.
 
 ```tsx
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui-v0";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -65,7 +65,7 @@ You can clear **MultiSelect** values using **clearable** property.
 
 ```tsx
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui-v0";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -101,7 +101,7 @@ Here is the custom option **MultiSelect** example.
 
 ```tsx
 import { useState } from 'react'
-import { MultiSelect, cn } from "rizzui";
+import { MultiSelect, cn } from "rizzui-v0";
 
 const customOptions = [
   {
@@ -185,7 +185,7 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 
 ```tsx
 import { useState } from 'react'
-import { MultiSelect, cn } from "rizzui";
+import { MultiSelect, cn } from "rizzui-v0";
 
 const customOptions = [
   {
@@ -294,7 +294,7 @@ You can hide **MultiSelect** options using **hideSelectedOptions** property.
 
 ```tsx
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui-v0";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -332,7 +332,7 @@ You can use custom option key of **MultiSelect** options as value property. In t
 
 ```tsx
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui-v0";
 
 const options = [
   { label: "Apple 🍎", value: "apple", customOptionKey: "movie" },
@@ -367,7 +367,7 @@ You can search inside **MultiSelect** options.
 
 ```tsx
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui-v0";
 
 const options = [
   { label: "Apple 🍎", value: "apple" },
@@ -404,7 +404,7 @@ In this example, we are going to use **React Hook Form** and **Zod** for validat
 
 ```tsx
 import { z } from "zod";
-import { MultiSelect, Button } from "rizzui";
+import { MultiSelect, Button } from "rizzui-v0";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -126,6 +126,12 @@ importers:
       rizzui:
         specifier: workspace:*
         version: link:../../packages/ui
+      rizzui-v0:
+        specifier: npm:rizzui@0.8.7
+        version: rizzui@0.8.7(@floating-ui/react@0.27.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@headlessui/react@2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      rizzui-v1:
+        specifier: npm:rizzui@1.0.1
+        version: rizzui@1.0.1(@floating-ui/react@0.27.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@headlessui/react@2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       tailwindcss:
         specifier: 4.1.11
         version: 4.1.11
@@ -7716,6 +7722,18 @@ packages:
       react-loadable: '*'
       webpack: '>=4.41.1 || 5.x'
 
+  react-number-format@5.4.0:
+    resolution: {integrity: sha512-NWdICrqLhI7rAS8yUeLVd6Wr4cN7UjJ9IBTS0f/a9i7UB4x4Ti70kGnksBtZ7o4Z7YRbvCMMR/jQmkoOBa/4fg==}
+    peerDependencies:
+      react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+
+  react-number-format@5.4.2:
+    resolution: {integrity: sha512-cg//jVdS49PYDgmcYoBnMMHl4XNTMuV723ZnHD2aXYtWWWqbVF3hjQ8iB+UZEuXapLbeA8P8H+1o6ZB1lcw3vg==}
+    peerDependencies:
+      react: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^0.14 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+
   react-number-format@5.4.4:
     resolution: {integrity: sha512-wOmoNZoOpvMminhifQYiYSTCLUDOiUbBunrMrMjA+dV52sY+vck1S4UhR6PkgnoCquvvMSeJjErXZ4qSaWCliA==}
     peerDependencies:
@@ -7943,6 +7961,22 @@ packages:
 
   ripemd160@2.0.2:
     resolution: {integrity: sha512-ii4iagi25WusVoiC4B4lq7pbXfAp3D9v5CwfkY33vffw2+pkDjY1D8GaN7spsxvCSx8dkPqOZCEZyfxcmJG2IA==}
+
+  rizzui@0.8.7:
+    resolution: {integrity: sha512-97bRRyDd1/+mTixY1vmDYqTbbdHkT+T90+AgXoo+52jr5KuyYzaTaqLFx5bGI+kA5LshsQNy0dzBOKXGb2hgfA==}
+    peerDependencies:
+      '@floating-ui/react': '>=0.25.4'
+      '@headlessui/react': '>=2.0.3'
+      react: '>=18'
+      react-dom: '>=18'
+
+  rizzui@1.0.1:
+    resolution: {integrity: sha512-3vtrLWg/miyY0uhpHct79WIYkrBzzRtzqO4Tz7P/l+xsIBXzfdeiWdNfJBoe74tjnOpFRxdcBetoFMhXPaHzBA==}
+    peerDependencies:
+      '@floating-ui/react': '>=0.25.4'
+      '@headlessui/react': '>=2.0.3'
+      react: '>=19'
+      react-dom: '>=19'
 
   rollup@4.50.2:
     resolution: {integrity: sha512-BgLRGy7tNS9H66aIMASq1qSYbAAJV6Z6WR4QYTvj5FgF15rZ/ympT1uixHXwzbZUBDbkvqUI1KR0fH1FhMaQ9w==}
@@ -8386,6 +8420,9 @@ packages:
 
   tabbable@6.2.0:
     resolution: {integrity: sha512-Cat63mxsVJlzYvN51JmVXIgNoUokrIaT2zLclCXjRd8boZ0004U4KCs/sToJ75C6sdlByWxpYnb5Boif1VSFew==}
+
+  tailwind-merge@2.3.0:
+    resolution: {integrity: sha512-vkYrLpIP+lgR0tQCG6AP7zZXCTLc1Lnv/CCRT3BqJ9CZ3ui2++GPaGb1x/ILsINIMSYqqvrpqjUFsMNLlW99EA==}
 
   tailwind-merge@2.6.0:
     resolution: {integrity: sha512-P+Vu1qXfzediirmHOC3xKGAYeZtPcV9g76X+xg2FD4tYgR71ewMA35Y3sCz3zhiN/dwefRpJX0yBcgwi1fXNQA==}
@@ -18385,6 +18422,17 @@ snapshots:
       react-loadable: '@docusaurus/react-loadable@6.0.0(react@19.1.0)'
       webpack: 5.99.9
 
+  react-number-format@5.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      prop-types: 15.8.1
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+
+  react-number-format@5.4.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+
   react-number-format@5.4.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       react: 19.1.0
@@ -18710,6 +18758,26 @@ snapshots:
     dependencies:
       hash-base: 3.0.5
       inherits: 2.0.4
+
+  rizzui@0.8.7(@floating-ui/react@0.27.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@headlessui/react@2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      '@floating-ui/react': 0.27.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@headlessui/react': 2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      clsx: 2.1.1
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+      react-number-format: 5.4.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      tailwind-merge: 2.3.0
+
+  rizzui@1.0.1(@floating-ui/react@0.27.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(@headlessui/react@2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
+      '@floating-ui/react': 0.27.16(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@headlessui/react': 2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      clsx: 2.1.1
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+      react-number-format: 5.4.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      tailwind-merge: 2.6.0
 
   rollup@4.50.2:
     dependencies:
@@ -19270,6 +19338,10 @@ snapshots:
       '@pkgr/core': 0.2.9
 
   tabbable@6.2.0: {}
+
+  tailwind-merge@2.3.0:
+    dependencies:
+      '@babel/runtime': 7.26.0
 
   tailwind-merge@2.6.0: {}
 

@@ -2,7 +2,7 @@
 sidebar_position: 14
 ---
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 import Paper from "@site/src/components/paper";
 import FileInputClearable from "@site/src/components/file-input";
 
@@ -13,7 +13,7 @@ A basic widget for getting the attachment file.
 ```tsx
 "use client";
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 // or,
 import { FileInput } from "rizzui/upload";
 ```
@@ -31,7 +31,7 @@ The default style of **FileInput**.
 ```tsx
 "use client";
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 
 export default function App() {
   return <FileInput label="Upload File" />;
@@ -62,7 +62,7 @@ You can change the style of **FileInput** using [**variant**](#fileinput-variant
 ```tsx
 "use client";
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 
 export default function App() {
   return (
@@ -109,7 +109,7 @@ You can change the size of **FileInput** using [**size**](#fileinput-sizes) prop
 ```tsx
 "use client";
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 
 export default function App() {
   return (
@@ -161,7 +161,7 @@ You can change the border radius of **FileInput** using [**rounded**](#fileinput
 ```tsx
 "use client";
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 
 export default function App() {
   return (
@@ -202,7 +202,7 @@ You can clear value of the **FileInput** using **clearable** & **onClear** prope
 "use client";
 
 import React from "react";
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 
 export default function App() {
   const [state, setState] = React.useState<any>("");
@@ -236,7 +236,7 @@ By enabling **multiple** property true, user can upload multiple files.
 ```tsx
 "use client";
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 
 export default function App() {
   return (
@@ -264,7 +264,7 @@ The disabled state of the **FileInput** component.
 ```tsx
 "use client";
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 
 export default function App() {
   return (
@@ -292,7 +292,7 @@ You can add helper text to the **FileInput** component using **helperText** prop
 ```tsx
 "use client";
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 
 export default function App() {
   return (
@@ -320,7 +320,7 @@ You can show the validation error message using **error** property.
 ```tsx
 "use client";
 
-import { FileInput } from "rizzui";
+import { FileInput } from "rizzui-v1";
 
 export default function App() {
   return (

@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 
 import Paper from "@site/src/components/paper";
-import { Badge } from "rizzui";
+import { Badge } from "rizzui-v1";
 import TanStackTableDemo from "@site/src/components/integrations/tan-stack-table";
 
 # TanStack Table
@@ -38,7 +38,7 @@ npm install @tanstack/react-table
 
 ```ts
 import React from "react";
-import { Table } from "rizzui";
+import { Table } from "rizzui-v1";
 import { type Person } from "./data";
 import { flexRender, Table as TanStackTableTypes } from "@tanstack/react-table";
 
@@ -132,7 +132,7 @@ export default function MainTable({ table }: TablePropsTypes) {
 
 ```ts
 import { type Person } from "./data";
-import { ActionIcon, Badge, Button, Checkbox, Popover, Text } from "rizzui";
+import { ActionIcon, Badge, Button, Checkbox, Popover, Text } from "rizzui-v1";
 import { createColumnHelper } from "@tanstack/react-table";
 import { AvatarCard, DateCell, getStatusBadge } from "./utils";
 import {
@@ -467,7 +467,7 @@ export const defaultData = [
 <div className="mb-4" />
 
 ```ts
-import { ActionIcon, Select, SelectOption, Text } from "rizzui";
+import { ActionIcon, Select, SelectOption, Text } from "rizzui-v1";
 import { type Table as ReactTableType } from "@tanstack/react-table";
 import {
   ChevronDoubleLeftIcon,
@@ -567,7 +567,7 @@ export default function TablePagination<TData extends Record<string, any>>({
 <div className="mb-4" />
 
 ```ts
-import { ActionIcon, Badge, Button, Checkbox, Input, Popover, Select, Text, Title } from "rizzui";
+import { ActionIcon, Badge, Button, Checkbox, Input, Popover, Select, Text, Title } from "rizzui-v1";
 import { type Table as ReactTableType } from "@tanstack/react-table";
 import {
   AdjustmentsHorizontalIcon,
@@ -729,7 +729,7 @@ export function renderOptionDisplayValue(value: string) {
 
 ```ts
 import dayjs from "dayjs";
-import { Avatar, AvatarProps, Badge, cn, Text } from "rizzui";
+import { Avatar, AvatarProps, Badge, cn, Text } from "rizzui-v1";
 
 interface AvatarCardProps {
   src: string;
