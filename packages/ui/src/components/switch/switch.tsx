@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
@@ -8,8 +8,8 @@ import { labelStyles } from '../../lib/label-size';
 
 const switchTV = tv({
   slots: {
-    container: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-muted ring-transparent ring-offset-background peer-checked/switch:bg-primary peer-checked/switch:border-primary',
-    knob: 'flex justify-center items-center transform ring-0 transition duration-200 ease-in-out translate-x-[2.5px] rtl:-translate-x-[2.5px] bg-primary',
+    container: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-muted ring-transparent ring-offset-background peer-checked/switch:bg-primary peer-checked/switch:border-primary rounded-full border-[length:var(--border-width)]',
+    knob: 'flex justify-center items-center transform ring-0 transition duration-200 ease-in-out translate-x-[2.5px] rtl:-translate-x-[2.5px] bg-primary rounded-full',
     input: 'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span_.rizzui-switch-off-icon]:hidden [&:checked:enabled~span_.rizzui-switch-on-icon]:opacity-100 [&:checked:enabled~span>.rizzui-switch-knob]:bg-white [&:checked:enabled~span>.rizzui-switch-knob]:text-black [&:checked:enabled~span>.rizzui-switch-knob]:dark:bg-black [&:checked:enabled~span>.rizzui-switch-knob]:dark:text-white',
     icon: '',
     label: '',
@@ -17,11 +17,11 @@ const switchTV = tv({
   variants: {
     variant: {
       flat: {
-        container: 'border border-transparent bg-muted/70 backdrop-blur group-hover/switch:bg-muted',
+        container: 'border-transparent bg-muted/70 backdrop-blur group-hover/switch:bg-muted',
         knob: 'bg-white text-foreground shadow-sm dark:text-primary-foreground',
       },
       outline: {
-        container: 'border border-muted ring-[0.6px] ring-muted group-hover/switch:border-primary',
+        container: 'border-border ring-[0.6px] ring-muted group-hover/switch:border-primary',
         knob: 'bg-muted text-foreground',
       },
     },
@@ -46,35 +46,6 @@ const switchTV = tv({
         icon: 'w-4 h-4',
         label: 'text-lg',
         input: '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.36rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.36rem]',
-      },
-      xl: {
-        container: 'w-14 h-8',
-        knob: 'w-[1.63rem] h-[1.63rem]',
-        icon: 'w-5 h-5',
-        label: 'text-xl',
-        input: '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.6rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.6rem]',
-      },
-    },
-    rounded: {
-      none: {
-        container: 'rounded-none',
-        knob: 'rounded-none',
-      },
-      sm: {
-        container: 'rounded-sm',
-        knob: 'rounded-sm',
-      },
-      md: {
-        container: 'rounded-md',
-        knob: 'rounded',
-      },
-      lg: {
-        container: 'rounded-lg',
-        knob: 'rounded-md',
-      },
-      pill: {
-        container: 'rounded-full',
-        knob: 'rounded-full',
       },
     },
     labelPlacement: {
@@ -103,16 +74,13 @@ const switchTV = tv({
     { labelPlacement: 'left', size: 'sm', class: { label: 'me-1.5' } },
     { labelPlacement: 'left', size: 'md', class: { label: 'me-2' } },
     { labelPlacement: 'left', size: 'lg', class: { label: 'me-2.5' } },
-    { labelPlacement: 'left', size: 'xl', class: { label: 'me-3' } },
     { labelPlacement: 'right', size: 'sm', class: { label: 'ms-1.5' } },
     { labelPlacement: 'right', size: 'md', class: { label: 'ms-2' } },
     { labelPlacement: 'right', size: 'lg', class: { label: 'ms-2.5' } },
-    { labelPlacement: 'right', size: 'xl', class: { label: 'ms-3' } },
   ],
   defaultVariants: {
     variant: 'flat',
     size: 'md',
-    rounded: 'pill',
     labelPlacement: 'right',
     labelWeight: 'medium',
   },
@@ -154,39 +122,37 @@ export interface SwitchProps
   helperClassName?: string;
   /** Add custom classes to the root of the component */
   className?: string;
+  /** Ref for the input element */
+  ref?: React.Ref<HTMLInputElement>;
 }
 
-export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
-  (
-    {
-      label,
-      labelPlacement = 'right',
-      labelWeight = 'medium',
-      rounded = 'pill',
-      size = 'md',
-      variant = 'flat',
-      disabled = false,
-      onIcon,
-      offIcon,
-      error,
-      helperText,
-      className,
-      labelClassName,
-      switchClassName,
-      switchKnobClassName,
-      errorClassName,
-      helperClassName,
-      ...props
-    },
-    ref
-  ) => {
+export function Switch({
+  label,
+  labelPlacement = 'right',
+  labelWeight = 'medium',
+  size = 'md',
+  variant = 'flat',
+  disabled = false,
+  onIcon,
+  offIcon,
+  error,
+  helperText,
+  className,
+  labelClassName,
+  switchClassName,
+  switchKnobClassName,
+  errorClassName,
+  helperClassName,
+  ref,
+  ...props
+}: SwitchProps) {
     const {
       container,
       knob,
       input: inputClass,
       icon,
       label: labelClass,
-    } = switchTV({ variant, size, rounded, labelPlacement, labelWeight, disabled });
+    } = switchTV({ variant, size, labelPlacement, labelWeight, disabled });
 
     return (
       <div className={cn('rizzui-switch', className)}>
@@ -273,7 +239,4 @@ export const Switch = forwardRef<HTMLInputElement, SwitchProps>(
         ) : null}
       </div>
     );
-  }
-);
-
-Switch.displayName = 'Switch';
+}

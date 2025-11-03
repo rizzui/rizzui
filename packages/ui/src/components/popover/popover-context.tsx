@@ -14,7 +14,7 @@ import {
   useTransitionStyles,
   Strategy,
 } from '@floating-ui/react';
-import { type Size, type Shadow, type Rounded } from './popover-content';
+import { type Size, type Shadow } from './popover-content';
 
 const tooltipAnimation = {
   fadeIn: {
@@ -52,7 +52,6 @@ type CommonTypes = {
   enableOverlay?: boolean;
   size?: Size;
   shadow?: Shadow;
-  rounded?: Rounded;
   arrowClassName?: string;
   overlayClassName?: string;
 };

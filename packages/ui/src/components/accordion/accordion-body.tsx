@@ -6,16 +6,21 @@ import { cn } from '../../lib/cn';
 type AccordionBodyProps = {
   as?: 'div' | 'ul';
   className?: string;
+  children?: React.ReactNode;
+  ref?: React.Ref<any>;
 } & React.HTMLAttributes<HTMLDivElement> &
   React.HTMLAttributes<HTMLUListElement>;
 
-export const AccordionBody = React.forwardRef<
-  any,
-  React.PropsWithChildren<AccordionBodyProps>
->(({ as = 'div', className, children, ...props }, ref) => {
+export function AccordionBody({ 
+  as = 'div', 
+  className, 
+  children,
+  ref,
+  ...props 
+}: AccordionBodyProps) {
   let Component = as;
   const { targetEl, openTargetEl } = useAccordion();
-  useImperativeHandle(ref, () => targetEl);
+  useImperativeHandle(ref, () => targetEl.current);
 
   return (
     <Component
@@ -27,6 +32,4 @@ export const AccordionBody = React.forwardRef<
       {children}
     </Component>
   );
-});
-
-AccordionBody.displayName = 'AccordionBody';
+}

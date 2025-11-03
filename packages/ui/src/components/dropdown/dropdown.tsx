@@ -15,7 +15,6 @@ export type DropdownProps = ExtractProps<typeof Menu> & {
   modal?: boolean;
   inPortal?: boolean;
   placement?: TheirPlacementType;
-  rounded?: keyof typeof dropdownStyles.rounded;
   shadow?: keyof typeof dropdownStyles.shadow;
   children: React.ReactNode;
   className?: string;
@@ -26,14 +25,13 @@ export function Dropdown({
   modal = false,
   placement = 'bottom-start',
   gap = 6,
-  rounded = 'md',
   shadow = 'md',
   children,
   className,
 }: DropdownProps) {
   return (
     <DropdownProvider
-      value={{ rounded, shadow, inPortal, placement, gap, modal }}
+      value={{ shadow, inPortal, placement, gap, modal }}
     >
       <Menu
         as="div"
@@ -45,7 +43,7 @@ export function Dropdown({
       >
         {({ open }) => (
           <div>
-            {React.Children.map(children, (child) => {
+            {React.Children.toArray(children).map((child) => {
               if (
                 React.isValidElement(child) &&
                 child.type === DropdownTrigger

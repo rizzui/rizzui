@@ -6,31 +6,21 @@ import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 const popover = tv({
-  base: 'z-[999] min-w-max bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border border-muted',
+  base: 'z-[999] min-w-max bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border-[length:var(--border-width)] border-border rounded-[var(--border-radius)]',
   variants: {
     size: {
       sm: 'p-2.5',
       md: 'p-4',
       lg: 'p-5',
-      xl: 'p-6',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      pill: 'rounded-full',
     },
     shadow: {
       sm: 'drop-shadow-md',
       md: 'drop-shadow-lg',
       lg: 'drop-shadow-xl',
-      xl: 'drop-shadow-2xl',
     },
   },
   defaultVariants: {
     size: 'md',
-    rounded: 'md',
     shadow: 'md',
   },
 });
@@ -43,7 +33,6 @@ type PopoverVariant = VariantProps<typeof popover>;
 
 export type Shadow = PopoverVariant['shadow'];
 export type Size = PopoverVariant['size'];
-export type Rounded = PopoverVariant['rounded'];
 
 type PopoverContentProps = {
   children:
@@ -75,7 +64,6 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
     getFloatingProps,
     size,
     shadow,
-    rounded,
     arrowClassName,
     overlayClassName,
   } = usePopover();
@@ -101,7 +89,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
           <div
             role="popover"
             ref={refs.setFloating}
-            className={popover({ size, rounded, shadow, className })}
+            className={popover({ size, shadow, className })}
             style={{
               position: strategy,
               top: y ?? 0,

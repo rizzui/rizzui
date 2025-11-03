@@ -2,8 +2,10 @@
 
 // ✅ Import from specific path for tree-shaking (reduces from 168.4k to ~8k)
 import { Button } from 'rizzui/button';
+// import { Button } from '@/components/button';
 import { useState } from 'react';
 import { ShowcaseNav } from '@/components/showcase-nav';
+import Link from 'next/link';
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
@@ -65,7 +67,9 @@ export default function Page() {
                 Solid (Primary Style)
               </h3>
               <div className="flex flex-wrap gap-4">
-                <Button variant="solid">Solid Button</Button>
+                <Button as={Link} href="/action-icon">
+                  Action Icon
+                </Button>
               </div>
             </div>
 
@@ -120,21 +124,6 @@ export default function Page() {
             <Button size="sm">Small</Button>
             <Button size="md">Medium</Button>
             <Button size="lg">Large</Button>
-            <Button size="xl">Extra Large</Button>
-          </div>
-        </section>
-
-        {/* Rounded Section */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-            Rounded Variants
-          </h2>
-          <div className="flex flex-wrap gap-4">
-            <Button rounded="none">None</Button>
-            <Button rounded="sm">Small</Button>
-            <Button rounded="md">Medium</Button>
-            <Button rounded="lg">Large</Button>
-            <Button rounded="pill">Pill</Button>
           </div>
         </section>
 
@@ -296,34 +285,6 @@ export default function Page() {
                   </td>
                   <td className="p-4 text-center">
                     <Button size="lg" variant="danger">
-                      Button
-                    </Button>
-                  </td>
-                </tr>
-                <tr className="border-t border-gray-200 dark:border-gray-700">
-                  <td className="p-4 text-gray-700 dark:text-gray-300">XL</td>
-                  <td className="p-4 text-center">
-                    <Button size="xl" variant="solid">
-                      Button
-                    </Button>
-                  </td>
-                  <td className="p-4 text-center">
-                    <Button size="xl" variant="outline">
-                      Button
-                    </Button>
-                  </td>
-                  <td className="p-4 text-center">
-                    <Button size="xl" variant="flat">
-                      Button
-                    </Button>
-                  </td>
-                  <td className="p-4 text-center">
-                    <Button size="xl" variant="text">
-                      Button
-                    </Button>
-                  </td>
-                  <td className="p-4 text-center">
-                    <Button size="xl" variant="danger">
                       Button
                     </Button>
                   </td>

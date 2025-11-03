@@ -4,20 +4,12 @@ import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
 const avatar = tv({
-  base: 'inline-flex items-center justify-center flex-shrink-0',
+  base: 'inline-flex items-center justify-center flex-shrink-0 rounded-full',
   variants: {
     size: {
       sm: 'text-xs',
       md: 'text-sm',
       lg: 'text-base',
-      xl: 'text-lg',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded',
-      md: 'rounded-xl',
-      lg: 'rounded-2xl',
-      full: 'rounded-full',
     },
     color: {
       primary: 'bg-primary text-primary-foreground',
@@ -33,7 +25,6 @@ const avatar = tv({
   },
   defaultVariants: {
     size: 'md',
-    rounded: 'full',
   },
 });
 
@@ -41,7 +32,6 @@ const avatarSizes = {
   sm: '32',
   md: '40',
   lg: '48',
-  xl: '56',
 };
 
 type AvatarVariant = VariantProps<typeof avatar>;
@@ -93,7 +83,6 @@ export function Avatar({
   size = 'md',
   initials,
   customSize,
-  rounded = 'full',
   color,
   onClick,
   className,
@@ -116,7 +105,6 @@ export function Avatar({
         onError={() => setError(() => true)}
         className={avatar({
           size,
-          rounded,
           color,
           clickable: Boolean(onClick),
           className: cn(makeClassName(`avatar-img`), 'object-cover', className),
@@ -136,7 +124,6 @@ export function Avatar({
       title={name}
       className={avatar({
         size,
-        rounded,
         color,
         clickable: Boolean(onClick),
         className: cn(makeClassName(`avatar-initials`), 'font-semibold', className),

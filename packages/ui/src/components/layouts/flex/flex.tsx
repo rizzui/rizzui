@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { type ElementType } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { cn } from 'src/lib/cn';
 
 const flex = tv({
   base: 'flex w-full',
@@ -51,42 +50,41 @@ const flex = tv({
   },
 });
 
-export type FlexProps = VariantProps<typeof flex> & {
+export type FlexProps<T extends ElementType = 'div'> = VariantProps<typeof flex> & {
   /* defines the component tag name to render */
-  as?: React.ElementType;
-} & React.HTMLAttributes<HTMLElement>;
+  as?: T;
+  ref?: React.Ref<any>;
+  children?: React.ReactNode;
+} & Omit<React.ComponentPropsWithRef<T>, 'as' | 'ref' | 'className'> & {
+    className?: string;
+  };
 
-export const Flex = React.forwardRef(
-  (props: FlexProps, ref: React.Ref<HTMLElement>) => {
-    const {
-      as,
-      children,
-      direction = 'row',
-      justify = 'start',
-      align = 'start',
-      gap = '4',
-      className,
-      ...rest
-    } = props;
+export function Flex<T extends ElementType = 'div'>({
+  as,
+  ref,
+  children,
+  direction = 'row',
+  justify = 'start',
+  align = 'start',
+  gap = '4',
+  className,
+  ...rest
+}: FlexProps<T>) {
+  const Component = (as || 'div') as ElementType;
 
-    const Comp = as ?? 'div';
-
-    return (
-      <Comp
-        ref={ref}
-        className={flex({
-          direction,
-          justify,
-          align,
-          gap,
-          className,
-        })}
-        {...rest}
-      >
-        {children}
-      </Comp>
-    );
-  }
-);
-
-Flex.displayName = 'Flex';
+  return (
+    <Component
+      ref={ref}
+      className={flex({
+        direction,
+        justify,
+        align,
+        gap,
+        className,
+      })}
+      {...rest}
+    >
+      {children}
+    </Component>
+  );
+}

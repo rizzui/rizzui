@@ -2,7 +2,7 @@ import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 
 const badge = tv({
-  base: 'inline-flex items-center justify-center font-semibold leading-none',
+  base: 'inline-flex items-center justify-center font-semibold leading-none rounded-full border-[length:var(--border-width)]',
   variants: {
     variant: {
       solid: '',
@@ -21,14 +21,6 @@ const badge = tv({
       sm: 'px-1.5 py-1 text-[10px] leading-[1.1]',
       md: 'px-2.5 py-1.5 text-xs',
       lg: 'px-3 py-2 text-sm',
-      xl: 'px-3 py-2 text-base',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      pill: 'rounded-full',
     },
     renderAsDot: {
       true: '',
@@ -103,13 +95,11 @@ const badge = tv({
     { renderAsDot: true, size: 'sm', class: 'w-1.5 h-1.5 px-0 py-0' },
     { renderAsDot: true, size: 'md', class: 'w-2 h-2 px-0 py-0' },
     { renderAsDot: true, size: 'lg', class: 'w-3 h-3 px-0 py-0' },
-    { renderAsDot: true, size: 'xl', class: 'w-3.5 h-3.5 px-0 py-0' },
   ],
   defaultVariants: {
     variant: 'solid',
     color: 'primary',
     size: 'md',
-    rounded: 'pill',
   },
 });
 
@@ -132,7 +122,6 @@ export function Badge({
   size,
   color,
   variant,
-  rounded,
   enableOutlineRing,
   children,
   className,
@@ -144,7 +133,6 @@ export function Badge({
         variant,
         color,
         size,
-        rounded,
         renderAsDot,
         enableOutlineRing,
         className,
@@ -155,5 +143,3 @@ export function Badge({
     </span>
   );
 }
-
-Badge.displayName = 'Badge';

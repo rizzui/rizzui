@@ -1,6 +1,6 @@
 import React, { type ElementType } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { Loader } from '../loader';
+// import { Loader } from "../loader";
 
 const button = tv({
   base: 'font-medium inline-flex items-center justify-center cursor-pointer active:enabled:translate-y-px focus:outline-none focus-visible:ring-[1.8px] focus-visible:ring-offset-2 ring-offset-background transition-colors duration-200 rounded-[var(--border-radius)]',
@@ -80,7 +80,7 @@ export function Button<T extends ElementType = 'button'>({
         <>
           <span className="invisible opacity-0">{children}</span>
           <span className="absolute inset-0 flex h-full w-full items-center justify-center">
-            {loader ?? <Loader size={size} className="scale-95" />}
+            {loader ?? 'Loading...'}
           </span>
         </>
       ) : (

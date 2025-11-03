@@ -1,23 +1,15 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
 const advancedCheckbox = tv({
-  base: 'border border-muted hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out block peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px] peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:border-muted peer-disabled:hover:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed peer-disabled:text-muted-foreground',
+  base: 'border-[length:var(--border-width)] border-border hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out block peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px] peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:border-muted peer-disabled:hover:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed peer-disabled:text-muted-foreground rounded-[var(--border-radius)]',
   variants: {
     size: {
       sm: 'px-2 py-1 min-h-[32px] min-w-[70px]',
       md: 'px-3.5 py-2 min-h-[40px] min-w-[90px]',
       lg: 'px-4 py-2 min-h-[48px] min-w-[120px]',
-      xl: 'px-5 py-2.5 min-h-[56px] min-w-[150px]',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      pill: 'rounded-full',
     },
     alignment: {
       left: '',
@@ -26,7 +18,6 @@ const advancedCheckbox = tv({
   },
   defaultVariants: {
     size: 'md',
-    rounded: 'md',
     alignment: 'left',
   },
 });
@@ -49,25 +40,21 @@ export interface AdvancedCheckboxProps
   contentClassName?: string;
   /** Add className to style the container */
   className?: string;
+  /** Ref for the input element */
+  ref?: React.Ref<HTMLInputElement>;
 }
 
-export const AdvancedCheckbox = forwardRef<
-  HTMLInputElement,
-  AdvancedCheckboxProps
->(
-  (
-    {
-      rounded = 'md',
-      size = 'md',
-      alignment = 'left',
-      children,
-      inputClassName,
-      contentClassName,
-      className,
-      ...props
-    },
-    ref
-  ) => (
+export function AdvancedCheckbox({
+  size = 'md',
+  alignment = 'left',
+  children,
+  inputClassName,
+  contentClassName,
+  className,
+  ref,
+  ...props
+}: AdvancedCheckboxProps) {
+  return (
     <label
       className={cn(
         makeClassName(`advanced-checkbox-root`),
@@ -88,7 +75,6 @@ export const AdvancedCheckbox = forwardRef<
       <span
         className={advancedCheckbox({
           size,
-          rounded,
           alignment,
           className: contentClassName,
         })}
@@ -96,7 +82,5 @@ export const AdvancedCheckbox = forwardRef<
         {children}
       </span>
     </label>
-  )
-);
-
-AdvancedCheckbox.displayName = 'AdvancedCheckbox';
+  );
+}

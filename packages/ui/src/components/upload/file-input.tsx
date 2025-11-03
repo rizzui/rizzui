@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
@@ -9,10 +9,10 @@ import { labelStyles } from '../../lib/label-size';
 
 const fileInput = tv({
   slots: {
-    container: 'flex items-center peer w-full transition duration-200',
+    container: 'flex items-center peer w-full transition duration-200 rounded-[var(--border-radius)] border-[length:var(--border-width)]',
     input: 'w-full border-0 bg-transparent p-0 focus:outline-none focus:ring-0',
     button:
-      '[&::file-selector-button]:inline-flex [&::file-selector-button]:font-medium [&::file-selector-button]:leading-none [&::file-selector-button]:items-center [&::file-selector-button]:justify-center [&::file-selector-button]:border-0 [&::file-selector-button]:focus-visible:ring-2 [&::file-selector-button]:focus-visible:ring-opacity-50 [&::file-selector-button]:bg-primary [&::file-selector-button]:hover:enabled:bg-primary-dark [&::file-selector-button]:focus-visible:ring-primary/30 [&::file-selector-button]:text-primary-foreground',
+      '[&::file-selector-button]:inline-flex [&::file-selector-button]:font-medium [&::file-selector-button]:leading-none [&::file-selector-button]:items-center [&::file-selector-button]:justify-center [&::file-selector-button]:border-0 [&::file-selector-button]:focus-visible:ring-2 [&::file-selector-button]:focus-visible:ring-opacity-50 [&::file-selector-button]:bg-primary [&::file-selector-button]:hover:enabled:bg-primary-dark [&::file-selector-button]:focus-visible:ring-primary/30 [&::file-selector-button]:text-primary-foreground [&::file-selector-button]:rounded-[calc(var(--border-radius)-2px)]',
   },
   variants: {
     variant: {
@@ -22,7 +22,7 @@ const fileInput = tv({
       },
       outline: {
         container:
-          'bg-transparent focus-within::ring-[0.8px] ring-[0.6px] ring-muted border border-muted [&_input::placeholder]:text-gray-500 hover:border-primary focus-within::border-primary focus-within::ring-primary',
+          'bg-transparent focus-within::ring-[0.8px] ring-[0.6px] ring-muted border-border [&_input::placeholder]:text-gray-500 hover:border-primary focus-within::border-primary focus-within::ring-primary',
       },
       text: {
         container:
@@ -41,29 +41,6 @@ const fileInput = tv({
       lg: {
         container: 'pr-4 py-2 text-base h-12 pl-[1px]',
         button: '[&::file-selector-button]:h-11 [&::file-selector-button]:px-4',
-      },
-      xl: {
-        container: 'pr-5 py-2.5 text-base h-14 pl-0.5',
-        button: '[&::file-selector-button]:h-12 [&::file-selector-button]:px-5',
-      },
-    },
-    rounded: {
-      none: { container: 'rounded-none' },
-      sm: {
-        container: 'rounded-sm',
-        button: '[&::file-selector-button]:rounded-sm',
-      },
-      md: {
-        container: 'rounded-md',
-        button: '[&::file-selector-button]:rounded',
-      },
-      lg: {
-        container: 'rounded-lg',
-        button: '[&::file-selector-button]:rounded-md',
-      },
-      pill: {
-        container: 'rounded-full',
-        button: '[&::file-selector-button]:rounded-full',
       },
     },
     disabled: {
@@ -89,70 +66,48 @@ const fileInput = tv({
   defaultVariants: {
     variant: 'outline',
     size: 'md',
-    rounded: 'md',
   },
 });
 
 export interface FileInputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'type'> {
-  /** The variants of the component are: */
   variant?: VariantProps<typeof fileInput>['variant'];
-  /** The size of the component. `"sm"` is equivalent to the dense input styling. */
   size?: VariantProps<typeof fileInput>['size'];
-  /** The rounded variants are: */
-  rounded?: VariantProps<typeof fileInput>['rounded'];
-  /** Set input placeholder text */
   placeholder?: string;
-  /** Whether the input is disabled */
   disabled?: boolean;
-  /** Set field label */
   label?: React.ReactNode;
-  /** Set font weight for label */
   labelWeight?: keyof typeof labelStyles.weight;
-  /** add clearable option */
   clearable?: boolean;
-  /** clear event */
   onClear?: (event: React.MouseEvent) => void;
-  /** Add helper text. It could be string or a React component */
   helperText?: React.ReactNode;
-  /** Show error message using this prop */
   error?: string;
-  /** Override default CSS style of label */
   labelClassName?: string;
-  /** Override default CSS style of input */
   inputClassName?: string;
-  /** Override default CSS style of helperText */
   helperClassName?: string;
-  /** Override default CSS style of error message */
   errorClassName?: string;
+  ref?: React.Ref<HTMLInputElement>;
 }
 
-export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  (
-    {
-      className,
-      variant = 'outline',
-      size = 'md',
-      rounded = 'md',
-      disabled,
-      placeholder,
-      label,
-      labelWeight = 'medium',
-      error,
-      clearable,
-      onClear,
-      readOnly,
-      helperText,
-      labelClassName,
-      inputClassName,
-      errorClassName,
-      helperClassName,
-      onFocus,
-      onBlur,
-      ...inputProps
-    },
-    ref
-  ) => {
+export function FileInput({
+  className,
+  variant = 'outline',
+  size = 'md',
+  disabled,
+  placeholder,
+  label,
+  labelWeight = 'medium',
+  error,
+  clearable,
+  onClear,
+  readOnly,
+  helperText,
+  labelClassName,
+  inputClassName,
+  errorClassName,
+  helperClassName,
+  ref,
+  ...inputProps
+}: FileInputProps) {
     const handleOnClear = useCallback(
       (e: any) => {
         e.preventDefault();
@@ -165,7 +120,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
       container,
       input: inputStyle,
       button,
-    } = fileInput({ variant, size, rounded, disabled, error: Boolean(error), clearable });
+    } = fileInput({ variant, size, disabled, error: Boolean(error), clearable });
 
     return (
       <div
@@ -234,7 +189,4 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
         ) : null}
       </div>
     );
-  }
-);
-
-FileInput.displayName = 'FileInput';
+}

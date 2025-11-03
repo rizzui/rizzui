@@ -9,88 +9,104 @@ export interface TableProps extends React.ComponentPropsWithRef<'table'> {
   variant?: TableVariantProps;
 }
 
-const Table = React.forwardRef<HTMLTableElement, TableProps>(
-  ({ className, variant = 'modern', ...props }, ref) => (
+function Table({ 
+  className, 
+  variant = 'modern',
+  ref,
+  ...props 
+}: TableProps) {
+  return (
     <table
       ref={ref}
       className={table({ variant, className })}
       {...props}
     />
-  )
-);
+  );
+}
 
-const TableHeader = React.forwardRef<
-  HTMLTableSectionElement,
-  React.ComponentPropsWithRef<'thead'>
->(({ className, ...props }, ref) => (
-  <thead
-    ref={ref}
-    className={cn(makeClassName(`table-header`), className)}
-    {...props}
-  />
-));
+function TableHeader({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<'thead'>) {
+  return (
+    <thead
+      ref={ref}
+      className={cn(makeClassName(`table-header`), className)}
+      {...props}
+    />
+  );
+}
 
-const TableBody = React.forwardRef<
-  HTMLTableSectionElement,
-  React.ComponentPropsWithRef<'tbody'>
->(({ className, ...props }, ref) => (
-  <tbody
-    ref={ref}
-    className={cn(makeClassName(`table-body`), className)}
-    {...props}
-  />
-));
+function TableBody({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<'tbody'>) {
+  return (
+    <tbody
+      ref={ref}
+      className={cn(makeClassName(`table-body`), className)}
+      {...props}
+    />
+  );
+}
 
-const TableFooter = React.forwardRef<
-  HTMLTableSectionElement,
-  React.ComponentPropsWithRef<'tfoot'>
->(({ className, ...props }, ref) => (
-  <tfoot
-    ref={ref}
-    className={cn(makeClassName(`table-footer`), className)}
-    {...props}
-  />
-));
+function TableFooter({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<'tfoot'>) {
+  return (
+    <tfoot
+      ref={ref}
+      className={cn(makeClassName(`table-footer`), className)}
+      {...props}
+    />
+  );
+}
 
-const TableRow = React.forwardRef<
-  HTMLTableRowElement,
-  React.ComponentPropsWithRef<'tr'>
->(({ className, ...props }, ref) => (
-  <tr
-    ref={ref}
-    className={cn(makeClassName(`table-row`), className)}
-    {...props}
-  />
-));
+function TableRow({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<'tr'>) {
+  return (
+    <tr
+      ref={ref}
+      className={cn(makeClassName(`table-row`), className)}
+      {...props}
+    />
+  );
+}
 
-const TableHead = React.forwardRef<
-  HTMLTableCellElement,
-  React.ComponentPropsWithRef<'th'>
->(({ className, ...props }, ref) => (
-  <th
-    ref={ref}
-    className={cn(makeClassName(`table-head`), className)}
-    {...props}
-  />
-));
+function TableHead({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<'th'>) {
+  return (
+    <th
+      ref={ref}
+      className={cn(makeClassName(`table-head`), className)}
+      {...props}
+    />
+  );
+}
 
-const TableCell = React.forwardRef<
-  HTMLTableCellElement,
-  React.ComponentPropsWithRef<'td'>
->(({ className, ...props }, ref) => (
-  <td
-    ref={ref}
-    className={cn(makeClassName(`table-cell`), className)}
-    {...props}
-  />
-));
-
-TableHeader.displayName = 'TableHeader';
-TableBody.displayName = 'TableBody';
-TableFooter.displayName = 'TableFooter';
-TableRow.displayName = 'TableRow';
-TableHead.displayName = 'TableHead';
-TableCell.displayName = 'TableCell';
+function TableCell({
+  className,
+  ref,
+  ...props
+}: React.ComponentPropsWithRef<'td'>) {
+  return (
+    <td
+      ref={ref}
+      className={cn(makeClassName(`table-cell`), className)}
+      {...props}
+    />
+  );
+}
 
 const TableWithComponents = Object.assign(Table, {
   Header: TableHeader,

@@ -10,6 +10,7 @@ export type AccordionProps = {
   defaultOpen?: boolean;
   duration?: number;
   className?: string;
+  children?: React.ReactNode;
 };
 
 export function Accordion({
@@ -18,21 +19,13 @@ export function Accordion({
   duration,
   className,
   children,
-}: React.PropsWithChildren<AccordionProps>) {
+}: AccordionProps) {
   let Component = as;
 
   return (
     <AccordionProvider defaultOpen={defaultOpen} duration={duration}>
       <Component className={cn(makeClassName(`accordion-root`), className)}>
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === AccordionHeader) {
-            return React.cloneElement(child);
-          }
-          if (React.isValidElement(child) && child.type === AccordionBody) {
-            return child;
-          }
-          return null;
-        })}
+        {children}
       </Component>
     </AccordionProvider>
   );
@@ -40,5 +33,3 @@ export function Accordion({
 
 Accordion.Header = AccordionHeader;
 Accordion.Body = AccordionBody;
-
-Accordion.displayName = 'Accordion';

@@ -29,25 +29,17 @@ import {
 } from './select.lib';
 
 const select = tv({
-  base: 'flex group items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
+  base: 'flex group items-center peer border-[length:var(--border-width)] hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-[var(--border-radius)]',
   variants: {
     variant: {
       text: 'border-transparent ring-transparent bg-transparent',
       flat: 'border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur',
-      outline: 'border border-muted ring-muted bg-transparent',
+      outline: 'border-border ring-muted bg-transparent',
     },
     size: {
       sm: 'px-2 py-1 text-xs h-8',
       md: 'px-3 py-2 text-sm h-10',
       lg: 'px-4 py-2 text-base h-12',
-      xl: 'px-5 py-2.5 text-base h-14',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      pill: 'rounded-full',
     },
     disabled: {
       true: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
@@ -63,45 +55,23 @@ const select = tv({
     },
   },
   compoundVariants: [
-    { hasPrefix: true, size: 'sm', class: 'ps-1.5' },
-    { hasPrefix: true, size: 'md', class: 'ps-2.5' },
-    { hasPrefix: true, size: 'lg', class: 'ps-3.5' },
-    { hasPrefix: true, size: 'xl', class: 'ps-4' },
-    { hasSuffix: true, size: 'sm', class: 'pe-1.5' },
-    { hasSuffix: true, size: 'md', class: 'pe-2.5' },
-    { hasSuffix: true, size: 'lg', class: 'pe-3.5' },
-    { hasSuffix: true, size: 'xl', class: 'pe-4' },
+    { hasPrefix: true, class: 'ps-2.5' },
+    { hasSuffix: true, class: 'pe-2.5' },
   ],
   defaultVariants: {
     variant: 'outline',
     size: 'md',
-    rounded: 'md',
   },
 });
 
 const optionListStyles = {
   base: `${dropdownStyles.base} overflow-auto w-[var(--button-width)] !outline-none !ring-0 m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg data-[open]:opacity-100 data-[leave]:data-[closed]:opacity-100`,
   shadow: dropdownStyles.shadow,
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    pill: 'rounded-xl',
-  },
   item: {
     size: {
       sm: 'text-xs',
       md: 'text-sm',
       lg: 'text-base',
-      xl: 'text-base',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-[4px]',
-      lg: 'rounded-md',
-      pill: 'rounded-lg',
     },
   },
   inPortal: '[--anchor-max-height:256px]',
@@ -259,7 +229,6 @@ export function Select<OptionType extends SelectOption>({
   placement = 'bottom-start',
   gap = 6,
   size = 'md',
-  rounded = 'md',
   shadow = 'md',
   variant = 'outline',
   suffix = <ChevronDownIcon strokeWidth="2" className="size-4" />,
@@ -340,7 +309,6 @@ export function Select<OptionType extends SelectOption>({
             className={select({
               variant,
               size,
-              rounded,
               disabled,
               error: Boolean(error && emptyValue),
               hasPrefix: Boolean(prefix),
@@ -406,7 +374,6 @@ export function Select<OptionType extends SelectOption>({
               makeClassName(`select-options`),
               optionListStyles.base,
               optionListStyles.shadow[shadow],
-              optionListStyles.rounded[rounded],
               inPortal
                 ? optionListStyles.inPortal
                 : optionListStyles.notInPortal,
@@ -448,7 +415,6 @@ export function Select<OptionType extends SelectOption>({
                   className={select({
                     variant,
                     size,
-                    rounded,
                     disabled: searchDisabled,
                     className: cn(searchStyles.inputBase, searchClassName),
                   })}
@@ -480,7 +446,7 @@ export function Select<OptionType extends SelectOption>({
                     makeClassName(`select-option`),
                     'flex w-full items-center px-3 py-1.5',
                     focus && 'bg-muted/70',
-                    rounded && optionListStyles.item.rounded[rounded],
+                    'rounded-[calc(var(--border-radius)/2)]',
                     size && optionListStyles.item.size[size],
                     !option?.disabled && 'cursor-pointer',
                     optionClassName

@@ -15,7 +15,6 @@ export function Popover({
   showArrow = true,
   size = 'md',
   shadow = 'md',
-  rounded = 'md',
   arrowClassName,
   overlayClassName,
   children,
@@ -32,22 +31,11 @@ export function Popover({
         placement,
         size,
         shadow,
-        rounded,
         arrowClassName,
         overlayClassName,
       }}
     >
-      <>
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === PopoverTrigger) {
-            return child;
-          }
-          if (React.isValidElement(child) && child.type === PopoverContent) {
-            return child;
-          }
-          return null;
-        })}
-      </>
+      {children}
     </PopoverProvider>
   );
 }

@@ -1,23 +1,15 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
 const advancedRadio = tv({
-  base: 'border border-muted hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out block peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px] peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:text-muted-foreground peer-disabled:border-muted peer-disabled:hover:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed',
+  base: 'border-[length:var(--border-width)] border-border hover:border-primary ring-[0.6px] ring-muted cursor-pointer transition duration-200 ease-in-out block peer-checked:border-primary peer-checked:ring-primary peer-checked:ring-[0.8px] peer-disabled:bg-muted/70 peer-disabled:backdrop-blur peer-disabled:text-muted-foreground peer-disabled:border-muted peer-disabled:hover:border-muted peer-disabled:ring-muted peer-disabled:cursor-not-allowed rounded-[var(--border-radius)]',
   variants: {
     size: {
       sm: 'px-2 py-1 min-h-[32px] min-w-[70px]',
       md: 'px-3.5 py-2 min-h-[40px] min-w-[90px]',
       lg: 'px-4 py-2 min-h-[48px] min-w-[120px]',
-      xl: 'px-5 py-2.5 min-h-[56px] min-w-[150px]',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      pill: 'rounded-full',
     },
     alignment: {
       left: '',
@@ -26,7 +18,6 @@ const advancedRadio = tv({
   },
   defaultVariants: {
     size: 'md',
-    rounded: 'md',
     alignment: 'left',
   },
 });
@@ -49,6 +40,8 @@ export interface AdvancedRadioProps
   contentClassName?: string;
   /** Add className to style the container */
   className?: string;
+  /** Ref for the input element */
+  ref?: React.Ref<HTMLInputElement>;
 }
 
 /**
@@ -57,20 +50,17 @@ export interface AdvancedRadioProps
  * And the rest of the props of AdvancedRadio are the same as the original html input field.
  * You can use props like `value`, `name`, `disabled` etc.
  */
-export const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
-  (
-    {
-      rounded = 'md',
-      size = 'md',
-      alignment = 'left',
-      children,
-      inputClassName,
-      contentClassName,
-      className,
-      ...props
-    },
-    ref
-  ) => (
+export function AdvancedRadio({
+  size = 'md',
+  alignment = 'left',
+  children,
+  inputClassName,
+  contentClassName,
+  className,
+  ref,
+  ...props
+}: AdvancedRadioProps) {
+  return (
     <label
       className={cn(
         makeClassName(`advanced-radio-root`),
@@ -91,7 +81,6 @@ export const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
       <span
         className={advancedRadio({
           size,
-          rounded,
           alignment,
           className: contentClassName,
         })}
@@ -99,7 +88,5 @@ export const AdvancedRadio = forwardRef<HTMLInputElement, AdvancedRadioProps>(
         {children}
       </span>
     </label>
-  )
-);
-
-AdvancedRadio.displayName = 'AdvancedRadio';
+  );
+}

@@ -27,26 +27,17 @@ import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
 const tooltip = tv({
-  base: 'text-center z-[9999] min-w-max',
+  base: 'text-center z-[9999] min-w-max rounded-[var(--border-radius)] border-[length:var(--border-width)]',
   variants: {
     size: {
       sm: 'px-2.5 py-1 text-xs',
       md: 'px-3 py-1.5 text-sm',
       lg: 'px-3.5 py-2 text-base',
-      xl: 'px-4 py-2.5 text-base',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      pill: 'rounded-full',
     },
     shadow: {
       sm: 'drop-shadow-md',
       md: 'drop-shadow-lg',
       lg: 'drop-shadow-xl',
-      xl: 'drop-shadow-2xl',
     },
     color: {
       primary: '',
@@ -59,20 +50,19 @@ const tooltip = tv({
     },
   },
   compoundVariants: [
-    { color: 'primary', class: 'text-primary-foreground bg-primary' },
+    { color: 'primary', class: 'text-primary-foreground bg-primary border-transparent' },
     {
       color: 'invert',
-      class: 'bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border border-muted',
+      class: 'bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border-border',
     },
-    { color: 'secondary', class: 'text-secondary-foreground bg-secondary' },
-    { color: 'danger', class: 'text-white bg-red' },
-    { color: 'info', class: 'text-white bg-blue' },
-    { color: 'success', class: 'text-white bg-green' },
-    { color: 'warning', class: 'text-white bg-orange' },
+    { color: 'secondary', class: 'text-secondary-foreground bg-secondary border-transparent' },
+    { color: 'danger', class: 'text-white bg-red border-transparent' },
+    { color: 'info', class: 'text-white bg-blue border-transparent' },
+    { color: 'success', class: 'text-white bg-green border-transparent' },
+    { color: 'warning', class: 'text-white bg-orange border-transparent' },
   ],
   defaultVariants: {
     size: 'md',
-    rounded: 'md',
     shadow: 'md',
     color: 'primary',
   },
@@ -169,7 +159,6 @@ export function Tooltip({
   animation = 'zoomIn',
   placement = 'top',
   size = 'md',
-  rounded = 'md',
   shadow = 'md',
   color = 'primary',
   className,
@@ -219,7 +208,7 @@ export function Tooltip({
           <div
             role="tooltip"
             ref={refs.setFloating}
-            className={tooltip({ size, rounded, shadow, color, className })}
+            className={tooltip({ size, shadow, color, className })}
             style={{
               position: strategy,
               top: y ?? 0,

@@ -7,20 +7,20 @@ import { makeClassName } from '../../lib/make-class-name';
 
 const alert = tv({
   slots: {
-    root: 'relative block w-full bg-transparent break-all dark:backdrop-blur',
-    bar: 'absolute left-0 top-0 h-full p-0.5 rtl:right-0 rtl:left-auto',
+    root: 'relative block w-full bg-transparent break-all dark:backdrop-blur rounded-[var(--border-radius)] border-[length:var(--border-width)]',
+    bar: 'absolute left-0 top-0 h-full p-0.5 rtl:right-0 rtl:left-auto rounded-tl-[var(--border-radius)] rounded-bl-[var(--border-radius)]',
     iconWrapper: 'absolute top-0 h-full flex items-center justify-center',
-    icon: 'flex justify-center items-center p-1',
+    icon: 'flex justify-center items-center p-1 rounded-[calc(var(--border-radius)/2)]',
     content: '',
     closeWrapper: 'absolute top-0 h-full flex items-center justify-center',
   },
   variants: {
     variant: {
       flat: {
-        root: 'border',
+        root: '',
       },
       outline: {
-        root: 'border bg-transparent',
+        root: 'border-border bg-transparent',
       },
     },
     color: {
@@ -50,40 +50,6 @@ const alert = tv({
         iconWrapper: 'start-4',
         closeWrapper: 'end-4',
         content: 'ps-11',
-      },
-      xl: {
-        root: 'px-5 py-5 text-base leading-7',
-        icon: 'h-6 w-6',
-        iconWrapper: 'start-5',
-        closeWrapper: 'end-5',
-        content: 'ps-12',
-      },
-    },
-    rounded: {
-      none: {
-        root: 'rounded-none',
-        icon: 'rounded-none',
-        bar: 'rounded-tl-none rounded-bl-none',
-      },
-      sm: {
-        root: 'rounded-sm',
-        icon: 'rounded-sm',
-        bar: 'rounded-tl-sm rounded-bl-sm',
-      },
-      md: {
-        root: 'rounded-md',
-        icon: 'rounded',
-        bar: 'rounded-tl-md rounded-bl-md',
-      },
-      lg: {
-        root: 'rounded-lg',
-        icon: 'rounded-md',
-        bar: 'rounded-tl-lg rounded-bl-lg',
-      },
-      xl: {
-        root: 'rounded-xl',
-        icon: 'rounded-lg',
-        bar: 'rounded-tl-xl rounded-bl-xl',
       },
     },
     closable: {
@@ -176,7 +142,6 @@ export type AlertProps = {
  */
 export function Alert({
   size = 'md',
-  rounded = 'md',
   variant = 'outline',
   color,
   bar: showBar = false,
@@ -197,7 +162,7 @@ export function Alert({
     icon: iconClass,
     content,
     closeWrapper,
-  } = alert({ variant, color, size, rounded, closable, bar: showBar });
+  } = alert({ variant, color, size, closable, bar: showBar });
 
   return (
     <div data-testid="alert-parent" className={root({ className })}>

@@ -8,12 +8,15 @@ type AccordionHeaderProps = {
   children:
     | React.ReactNode
     | (({ open }: { open: boolean }) => React.ReactNode);
+  ref?: React.Ref<HTMLButtonElement>;
 } & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
 
-export const AccordionHeader = React.forwardRef<
-  HTMLButtonElement,
-  AccordionHeaderProps
->(({ children, className, ...props }, ref) => {
+export function AccordionHeader({ 
+  children, 
+  className, 
+  ref,
+  ...props 
+}: AccordionHeaderProps) {
   const { isOpen, toggle } = useAccordion();
   const isChildrenFunction = typeof children === 'function';
 
@@ -31,6 +34,4 @@ export const AccordionHeader = React.forwardRef<
       {isChildrenFunction ? children({ open: isOpen }) : children}
     </button>
   );
-});
-
-AccordionHeader.displayName = 'AccordionHeader';
+}

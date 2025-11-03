@@ -5,20 +5,12 @@ import { Text } from '../typography';
 import { makeClassName } from '../../lib/make-class-name';
 
 const progressBar = tv({
-  base: 'absolute top-0 bottom-0 left-0 h-full flex items-center justify-center',
+  base: 'absolute top-0 bottom-0 left-0 h-full flex items-center justify-center rounded-full',
   variants: {
     size: {
       sm: 'h-1.5',
       md: 'h-2',
       lg: 'h-3',
-      xl: 'h-4',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      pill: 'rounded-full',
     },
     variant: {
       solid: 'text-background',
@@ -51,7 +43,6 @@ const progressBar = tv({
   ],
   defaultVariants: {
     size: 'md',
-    rounded: 'pill',
     variant: 'solid',
     color: 'primary',
   },
@@ -64,7 +55,6 @@ const progressLabel = tv({
       sm: 'text-xs',
       md: 'text-sm',
       lg: 'text-sm',
-      xl: 'text-sm',
     },
   },
 });
@@ -100,7 +90,6 @@ export function Progressbar({
   value,
   label = '',
   size = 'md',
-  rounded = 'pill',
   color = 'primary',
   variant = 'solid',
   labelPosition = 'inlineRight',
@@ -110,14 +99,14 @@ export function Progressbar({
   labelClassName,
   ...props
 }: ProgressbarProps) {
-  const isInsideBar = label && size === 'xl' && labelPosition === 'insideBar';
+  const isInsideBar = false;
   return (
     <div className={cn('flex w-full items-center gap-4', className)}>
       <div
         className={cn(
           makeClassName(`progressbar-root`),
-          'relative w-full bg-muted',
-          progressBar({ size, rounded }),
+          'relative w-full bg-muted rounded-full',
+          progressBar({ size }),
           trackClassName
         )}
       >
@@ -129,7 +118,6 @@ export function Progressbar({
           aria-label={label}
           className={progressBar({
             size,
-            rounded,
             variant,
             color,
             className: barClassName,

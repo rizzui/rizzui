@@ -5,20 +5,12 @@ import { Badge } from '../badge';
 import { makeClassName } from '../../lib/make-class-name';
 
 const announcement = tv({
-  base: 'flex items-center w-fit',
+  base: 'flex items-center w-fit rounded-full',
   variants: {
     size: {
       sm: 'text-xs pe-6 ps-0.5 py-0.5',
       md: 'text-sm pe-7 ps-1 py-1',
       lg: 'text-base pe-8 ps-1 py-1',
-      xl: 'text-lg pe-9 ps-1 py-1',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      pill: 'rounded-full',
     },
     bgColor: {
       background: 'bg-background',
@@ -27,7 +19,6 @@ const announcement = tv({
   },
   defaultVariants: {
     size: 'md',
-    rounded: 'md',
     bgColor: 'background',
   },
 });
@@ -79,7 +70,6 @@ export interface AnnouncementProps {
 
 export const Announcement = ({
   size = 'md',
-  rounded = 'md',
   color = 'primary',
   bgColor = 'background',
   badgeText,
@@ -94,7 +84,6 @@ export const Announcement = ({
   <div
     className={announcement({
       size,
-      rounded,
       bgColor,
       className,
     })}
@@ -104,7 +93,6 @@ export const Announcement = ({
     {badgeText ? (
       <Badge
         size={size}
-        rounded={rounded}
         color={color}
         className={cn(makeClassName(`announcement-badge`), badgeClassName)}
       >

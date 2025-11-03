@@ -18,25 +18,17 @@ const pinCodeContainer = tv({
 });
 
 const pinCode = tv({
-  base: 'block peer text-center bg-transparent mr-2 focus:placeholder:opacity-0 focus:outline-none transition duration-200',
+  base: 'block peer text-center bg-transparent mr-2 focus:placeholder:opacity-0 focus:outline-none transition duration-200 rounded-[var(--border-radius)] border-[length:var(--border-width)]',
   variants: {
     variant: {
       flat: 'focus:ring-[1.8px] border-0 placeholder:opacity-90 bg-muted/70 backdrop-blur focus:ring-primary focus:enabled:bg-transparent',
       outline:
-        'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-muted border border-muted placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
+        'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-muted border-border placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
     },
     size: {
       sm: 'px-1 py-1 text-sm h-8 w-8',
       md: 'px-2 py-2 text-sm h-10 w-10',
       lg: 'px-2 py-2 text-base h-12 w-12',
-      xl: 'px-2.5 py-2.5 text-lg h-14 w-14',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      full: 'rounded-full',
     },
     disabled: {
       true: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:placeholder:text-muted-foreground disabled:text-muted-foreground disabled:cursor-not-allowed disabled:border-muted',
@@ -48,7 +40,6 @@ const pinCode = tv({
   defaultVariants: {
     variant: 'outline',
     size: 'md',
-    rounded: 'md',
   },
 });
 
@@ -93,13 +84,14 @@ export function PinCode({
   setValue,
   center = true,
   size = 'md',
-  rounded = 'md',
   variant = 'outline',
   placeholder = '○',
   error,
   className,
   inputClassName,
   errorClassName,
+  disabled,
+  onChange,
   ...props
 }: PinCodeProps) {
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -188,7 +180,6 @@ export function PinCode({
             className={pinCode({
               variant,
               size,
-              rounded,
               disabled: props.disabled,
               error: !!error,
               className: cn(

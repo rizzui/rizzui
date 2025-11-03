@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { type ElementType } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 
 const gridCol = tv({
@@ -126,9 +126,10 @@ const gridCol = tv({
   },
 });
 
-export interface GridColumnProps extends React.HTMLAttributes<HTMLElement> {
+export type GridColumnProps<T extends ElementType = 'div'> = {
   /* defines the component tag name to render */
-  as?: React.ElementType;
+  as?: T;
+  ref?: React.Ref<any>;
   /* defines the gap between grid items */
   colStart?: VariantProps<typeof gridCol>['colStart'];
   /* defines the number of columns in the grid */
@@ -145,47 +146,45 @@ export interface GridColumnProps extends React.HTMLAttributes<HTMLElement> {
   rowEnd?: VariantProps<typeof gridCol>['rowEnd'];
   /* defines the alignment of the column */
   placeSelf?: VariantProps<typeof gridCol>['placeSelf'];
+  children?: React.ReactNode;
+} & Omit<React.ComponentPropsWithRef<T>, 'as' | 'ref' | 'className'> & {
+    className?: string;
+  };
+
+export function GridCol<T extends ElementType = 'div'>({
+  as,
+  ref,
+  order,
+  rowEnd,
+  colEnd,
+  rowSpan,
+  colSpan,
+  colStart,
+  rowStart,
+  children,
+  className,
+  placeSelf,
+  ...rest
+}: GridColumnProps<T>) {
+  const Component = (as || 'div') as ElementType;
+
+  return (
+    <Component
+      ref={ref}
+      className={gridCol({
+        colEnd,
+        colSpan,
+        colStart,
+        placeSelf,
+        rowStart,
+        rowSpan,
+        rowEnd,
+        order,
+        className,
+      })}
+      {...rest}
+    >
+      {children}
+    </Component>
+  );
 }
-
-export const GridCol = React.forwardRef(
-  (props: GridColumnProps, forwardRef: React.Ref<HTMLElement>) => {
-    const {
-      as,
-      order,
-      rowEnd,
-      colEnd,
-      rowSpan,
-      colSpan,
-      colStart,
-      rowStart,
-      children,
-      className,
-      placeSelf,
-      ...rest
-    } = props;
-
-    const Comp = as || 'div';
-
-    return (
-      <Comp
-        ref={forwardRef}
-        className={gridCol({
-          colEnd,
-          colSpan,
-          colStart,
-          placeSelf,
-          rowStart,
-          rowSpan,
-          rowEnd,
-          order,
-          className,
-        })}
-        {...rest}
-      >
-        {children}
-      </Comp>
-    );
-  }
-);
-
-GridCol.displayName = 'GridCol';

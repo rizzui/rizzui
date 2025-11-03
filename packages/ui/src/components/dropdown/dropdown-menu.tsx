@@ -17,7 +17,7 @@ export function DropdownMenu({
   anchorWidth,
   ...props
 }: React.PropsWithChildren<DropdownMenuProps>) {
-  const { rounded, shadow, placement, gap, inPortal, modal } = useDropdown();
+  const { shadow, placement, gap, inPortal, modal } = useDropdown();
 
   return (
     <Transition
@@ -41,7 +41,6 @@ export function DropdownMenu({
           dropdownStyles.base,
           anchorWidth && 'w-[--button-width]',
           shadow && dropdownStyles.shadow[shadow],
-          rounded && dropdownStyles.rounded[rounded],
           !inPortal && 'absolute start-0 z-10 mt-1.5',
           className
         )}

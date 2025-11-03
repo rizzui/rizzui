@@ -6,16 +6,7 @@ import { useDropdown } from './dropdown-context';
 import { makeClassName } from '../../lib/make-class-name';
 
 const dropdownItem = tv({
-  base: 'flex w-full items-center px-3 py-1.5',
-  variants: {
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-[4px]',
-      lg: 'rounded-md',
-      xl: 'rounded-lg',
-    },
-  },
+  base: 'flex w-full items-center px-3 py-1.5 rounded-[calc(var(--border-radius)/2)]',
 });
 
 export type DropdownItemProps = {
@@ -24,26 +15,20 @@ export type DropdownItemProps = {
   disabledClassName?: string;
   activeClassName?: string;
   disabled?: boolean;
+  ref?: React.Ref<any>;
 } & React.ButtonHTMLAttributes<HTMLButtonElement> &
   React.HTMLAttributes<HTMLLIElement>;
 
-export const DropdownItem = React.forwardRef<
-  HTMLButtonElement,
-  DropdownItemProps
->(
-  (
-    {
-      as = 'button',
-      className,
-      children,
-      disabled,
-      activeClassName,
-      disabledClassName,
-      ...props
-    },
-    ref: React.ForwardedRef<any>
-  ) => {
-    const { rounded } = useDropdown();
+export function DropdownItem({
+  as = 'button',
+  className,
+  children,
+  disabled,
+  activeClassName,
+  disabledClassName,
+  ref,
+  ...props
+}: DropdownItemProps) {
     let Component = as;
 
     return (
@@ -53,7 +38,6 @@ export const DropdownItem = React.forwardRef<
             ref={ref}
             {...(Component === 'button' && { type: 'button' })}
             className={dropdownItem({
-              rounded,
               className: cn(
                 focus && ['bg-muted/70', activeClassName],
                 disabled && disabledClassName,
@@ -67,7 +51,4 @@ export const DropdownItem = React.forwardRef<
         )}
       </MenuItem>
     );
-  }
-);
-
-DropdownItem.displayName = 'DropdownItem';
+}

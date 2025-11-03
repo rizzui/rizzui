@@ -6,7 +6,6 @@ type DropdownContextProps = {
   placement: TheirPlacementType;
   gap?: number;
   modal?: boolean;
-  rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
   shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 };
 

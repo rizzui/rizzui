@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { CheckmarkIcon } from '../../icons/checkmark';
@@ -8,25 +8,17 @@ import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const checkbox = tv({
-  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out',
+  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out rounded-[var(--border-radius)] border-[length:var(--border-width)]',
   variants: {
     variant: {
       outline:
-        'bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
+        'bg-transparent border-border ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
       flat: 'border-0 bg-muted/70 backdrop-blur hover:enabled:bg-muted focus:ring-muted checked:!bg-primary',
     },
     size: {
       sm: 'h-5 w-5',
       md: 'h-6 w-6',
       lg: 'h-7 w-7',
-      xl: 'h-8 w-8',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded',
-      lg: 'rounded-md',
-      full: 'rounded-full',
     },
     disabled: {
       true: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted',
@@ -35,7 +27,6 @@ const checkbox = tv({
   defaultVariants: {
     variant: 'outline',
     size: 'md',
-    rounded: 'md',
   },
 });
 
@@ -57,11 +48,9 @@ const checkboxLabel = tv({
     { labelPlacement: 'left', size: 'sm', class: 'me-1.5' },
     { labelPlacement: 'left', size: 'md', class: 'me-2' },
     { labelPlacement: 'left', size: 'lg', class: 'me-2.5' },
-    { labelPlacement: 'left', size: 'xl', class: 'me-3' },
     { labelPlacement: 'right', size: 'sm', class: 'ms-1.5' },
     { labelPlacement: 'right', size: 'md', class: 'ms-2' },
     { labelPlacement: 'right', size: 'lg', class: 'ms-2.5' },
-    { labelPlacement: 'right', size: 'xl', class: 'ms-3' },
   ],
 });
 
@@ -72,7 +61,6 @@ const indeterminateIcon = tv({
       sm: 'h-0.5 w-2.5',
       md: 'h-0.5 w-3',
       lg: 'h-[3px] w-3.5',
-      xl: 'h-[3px] w-4',
     },
   },
 });
@@ -113,31 +101,30 @@ export interface CheckboxProps
   className?: string;
   /** This prop is used to determine whether the checkbox is in an indeterminate state */
   indeterminate?: boolean;
+  /** Ref for the input element */
+  ref?: React.Ref<HTMLInputElement>;
 }
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  (
-    {
-      variant = 'outline',
-      size = 'md',
-      rounded = 'md',
-      labelPlacement = 'right',
-      labelWeight = 'medium',
-      label,
-      disabled,
-      error,
-      helperText,
-      iconClassName,
-      labelClassName,
-      inputClassName,
-      errorClassName,
-      helperClassName,
-      indeterminate,
-      className,
-      ...checkboxProps
-    },
-    ref
-  ) => (
+export function Checkbox({
+  variant = 'outline',
+  size = 'md',
+  labelPlacement = 'right',
+  labelWeight = 'medium',
+  label,
+  disabled,
+  error,
+  helperText,
+  iconClassName,
+  labelClassName,
+  inputClassName,
+  errorClassName,
+  helperClassName,
+  indeterminate,
+  className,
+  ref,
+  ...checkboxProps
+}: CheckboxProps) {
+  return (
     <div
       className={cn(makeClassName(`checkbox-root`), 'flex flex-col', className)}
     >
@@ -156,7 +143,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             className={checkbox({
               variant,
               size,
-              rounded,
               disabled,
               className: inputClassName,
             })}
@@ -166,8 +152,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           {indeterminate && (
             <span
               className={cn(
-                'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-black peer-checked:hidden',
-                checkbox({ rounded })
+                'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-black peer-checked:hidden rounded-[var(--border-radius)]'
               )}
             >
               <span className={indeterminateIcon({ size })} />
@@ -221,7 +206,5 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         />
       ) : null}
     </div>
-  )
-);
-
-Checkbox.displayName = 'Checkbox';
+  );
+}

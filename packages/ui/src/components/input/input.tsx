@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
@@ -8,25 +8,17 @@ import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const inputContainer = tv({
-  base: 'flex items-center peer w-full transition duration-200 border focus-within:ring-[0.8px] ring-[0.6px] hover:border-primary focus-within:border-primary focus-within:ring-primary [&_input::placeholder]:opacity-60',
+  base: 'flex items-center peer w-full transition duration-200 border-[length:var(--border-width)] focus-within:ring-[0.8px] ring-[0.6px] hover:border-primary focus-within:border-primary focus-within:ring-primary [&_input::placeholder]:opacity-60 rounded-[var(--border-radius)]',
   variants: {
     variant: {
       text: 'border-transparent ring-transparent bg-transparent',
       flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
-      outline: 'border border-muted ring-muted bg-transparent',
+      outline: 'border-border ring-muted bg-transparent',
     },
     size: {
       sm: 'px-2 py-1 text-xs h-8',
       md: 'px-3.5 py-2 text-sm h-10',
       lg: 'px-4 py-2 text-base h-12',
-      xl: 'px-5 py-2.5 text-base h-14',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-md',
-      lg: 'rounded-lg',
-      pill: 'rounded-full',
     },
     disabled: {
       true: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted',
@@ -38,19 +30,12 @@ const inputContainer = tv({
   defaultVariants: {
     variant: 'outline',
     size: 'md',
-    rounded: 'md',
   },
 });
 
 const inputField = tv({
   base: 'w-full border-0 bg-transparent p-0 [font-size:inherit] focus:outline-none focus:ring-0 [&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
   variants: {
-    size: {
-      sm: '',
-      md: '',
-      lg: '',
-      xl: '',
-    },
     disabled: {
       true: 'cursor-not-allowed placeholder:text-muted-foreground',
     },
@@ -65,26 +50,16 @@ const inputField = tv({
     },
   },
   compoundVariants: [
-    { hasPrefix: true, size: 'sm', class: 'ps-1.5' },
-    { hasPrefix: true, size: 'md', class: 'ps-2.5' },
-    { hasPrefix: true, size: 'lg', class: 'ps-3.5' },
-    { hasPrefix: true, size: 'xl', class: 'ps-4' },
-    { hasSuffix: true, size: 'sm', class: 'pe-1.5' },
-    { hasSuffix: true, size: 'md', class: 'pe-2.5' },
-    { hasSuffix: true, size: 'lg', class: 'pe-3.5' },
-    { hasSuffix: true, size: 'xl', class: 'pe-4' },
+    { hasPrefix: true, class: 'ps-2.5' },
+    { hasSuffix: true, class: 'pe-2.5' },
   ],
 });
-
-type InputVariant = VariantProps<typeof inputContainer>;
-type FieldVariant = VariantProps<typeof inputField>;
 
 export interface InputProps
   extends Omit<
     React.InputHTMLAttributes<HTMLInputElement>,
     'size' | 'type' | 'prefix' | 'suffix'
   > {
-  /** This Input component only support these types */
   type?:
     | 'text'
     | 'email'
@@ -97,189 +72,157 @@ export interface InputProps
     | 'week'
     | 'month'
     | 'datetime-local';
-  /** The variants of the component are: */
-  variant?: InputVariant['variant'];
-  /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: InputVariant['size'];
-  /** The rounded variants are: */
-  rounded?: InputVariant['rounded'];
-  /** Set input placeholder text */
+  variant?: VariantProps<typeof inputContainer>['variant'];
+  size?: VariantProps<typeof inputContainer>['size'];
   placeholder?: string;
-  /** Whether the input is disabled */
   disabled?: boolean;
-  /** Set field label */
   label?: React.ReactNode;
-  /** Set font weight for label */
   labelWeight?: keyof typeof labelStyles.weight;
-  /** add clearable option */
   clearable?: boolean;
-  /** clear event */
   onClear?: (event: React.MouseEvent) => void;
-  /** The prefix is design for adding any icon or text on the Input field's start (it's a left icon for the `ltr` and right icon for the `rtl`) */
   prefix?: React.ReactNode;
-  /** The suffix is design for adding any icon or text on the Input field's end (it's a right icon for the `ltr` and left icon for the `rtl`) */
   suffix?: React.ReactNode;
-  /** Add helper text. It could be string or a React component */
   helperText?: React.ReactNode;
-  /** Show error message using this prop */
   error?: string;
-  /** Override default CSS style of label */
   labelClassName?: string;
-  /** Override default CSS style of input */
   inputClassName?: string;
-  /** Override default CSS style of prefix */
   prefixClassName?: string;
-  /** Override default CSS style of suffix */
   suffixClassName?: string;
-  /** Override default CSS style of helperText */
   helperClassName?: string;
-  /** Override default CSS style of error message */
   errorClassName?: string;
-  /** Add custom classes to the root of the component */
   className?: string;
+  ref?: React.Ref<HTMLInputElement>;
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      className,
-      type = 'text',
-      variant = 'outline',
-      size = 'md',
-      rounded = 'md',
-      disabled,
-      placeholder,
-      label,
-      labelWeight = 'medium',
-      error,
-      clearable,
-      onClear,
-      prefix,
-      suffix,
-      readOnly,
-      helperText,
-      labelClassName,
-      inputClassName,
-      errorClassName,
-      helperClassName,
-      prefixClassName,
-      suffixClassName,
-      onFocus,
-      onBlur,
-      ...inputProps
-    },
-    ref
-  ) => {
-    return (
-      <div
-        className={cn(makeClassName(`input-root`), 'flex flex-col', className)}
-      >
-        <label className="block">
-          {label ? (
+export function Input({
+  className,
+  type = 'text',
+  variant = 'outline',
+  size = 'md',
+  disabled,
+  placeholder,
+  label,
+  labelWeight = 'medium',
+  error,
+  clearable,
+  onClear,
+  prefix,
+  suffix,
+  readOnly,
+  helperText,
+  labelClassName,
+  inputClassName,
+  errorClassName,
+  helperClassName,
+  prefixClassName,
+  suffixClassName,
+  ref,
+  ...inputProps
+}: InputProps) {
+  return (
+    <div
+      className={cn(makeClassName(`input-root`), 'flex flex-col', className)}
+    >
+      <label className="block">
+        {label ? (
+          <span
+            className={cn(
+              makeClassName(`input-label`),
+              'block',
+              labelStyles.size[size],
+              labelStyles.weight[labelWeight],
+              disabled && 'text-muted-foreground',
+              labelClassName
+            )}
+          >
+            {label}
+          </span>
+        ) : null}
+
+        <span
+          className={inputContainer({
+            variant,
+            size,
+            disabled,
+            error: Boolean(error),
+            className: inputClassName,
+          })}
+        >
+          {prefix ? (
             <span
               className={cn(
-                makeClassName(`input-label`),
-                'block',
-                labelStyles.size[size],
-                labelStyles.weight[labelWeight],
-                disabled && 'text-muted-foreground',
-                labelClassName
+                makeClassName(`input-prefix`),
+                'leading-normal whitespace-nowrap',
+                prefixClassName
               )}
             >
-              {label}
+              {prefix}
             </span>
           ) : null}
 
-          <span
-            className={inputContainer({
-              variant,
-              size,
-              rounded,
+          <input
+            ref={ref}
+            type={type}
+            disabled={disabled}
+            readOnly={readOnly}
+            spellCheck="false"
+            placeholder={placeholder || 'Screen reader only'}
+            className={inputField({
               disabled,
-              error: Boolean(error),
-              className: inputClassName,
+              clearable,
+              hasPrefix: Boolean(prefix),
+              hasSuffix: Boolean(suffix),
+              className: cn(
+                makeClassName(`input-field`),
+                !placeholder && 'placeholder-shown:placeholder:opacity-0'
+              ),
             })}
-          >
-            {prefix ? (
-              <span
-                className={cn(
-                  makeClassName(`input-prefix`),
-                  'leading-normal whitespace-nowrap',
-                  prefixClassName
-                )}
-              >
-                {prefix}
-              </span>
-            ) : null}
-
-            <input
-              ref={ref}
-              type={type}
-              disabled={disabled}
-              readOnly={readOnly}
-              spellCheck="false"
-              // placeholder is a required prop for the clearable input component even if the user does not set any
-              placeholder={placeholder || 'Screen reader only'}
-              className={inputField({
-                size,
-                disabled,
-                clearable,
-                hasPrefix: Boolean(prefix),
-                hasSuffix: Boolean(suffix),
-                className: cn(
-                  makeClassName(`input-field`),
-                  !placeholder && 'placeholder-shown:placeholder:opacity-0'
-                ),
-              })}
-              {...inputProps}
-            />
-
-            {clearable ? (
-              <FieldClearButton
-                as="span"
-                size={size}
-                onClick={onClear}
-                hasSuffix={Boolean(suffix)}
-              />
-            ) : null}
-
-            {suffix ? (
-              <span
-                className={cn(
-                  makeClassName(`input-suffix`),
-                  'leading-normal whitespace-nowrap',
-                  suffixClassName
-                )}
-              >
-                {suffix}
-              </span>
-            ) : null}
-          </span>
-        </label>
-
-        {!error && helperText ? (
-          <FieldHelperText
-            size={size}
-            className={cn(
-              makeClassName(`input-helper-text`),
-              disabled && 'text-muted-foreground',
-              helperClassName
-            )}
-          >
-            {helperText}
-          </FieldHelperText>
-        ) : null}
-
-        {error ? (
-          <FieldError
-            size={size}
-            error={error}
-            className={cn(makeClassName(`input-error-text`), errorClassName)}
+            {...inputProps}
           />
-        ) : null}
-      </div>
-    );
-  }
-);
 
-Input.displayName = 'Input';
+          {clearable ? (
+            <FieldClearButton
+              as="span"
+              size={size}
+              onClick={onClear}
+              hasSuffix={Boolean(suffix)}
+            />
+          ) : null}
+
+          {suffix ? (
+            <span
+              className={cn(
+                makeClassName(`input-suffix`),
+                'leading-normal whitespace-nowrap',
+                suffixClassName
+              )}
+            >
+              {suffix}
+            </span>
+          ) : null}
+        </span>
+      </label>
+
+      {!error && helperText ? (
+        <FieldHelperText
+          size={size}
+          className={cn(
+            makeClassName(`input-helper-text`),
+            disabled && 'text-muted-foreground',
+            helperClassName
+          )}
+        >
+          {helperText}
+        </FieldHelperText>
+      ) : null}
+
+      {error ? (
+        <FieldError
+          size={size}
+          error={error}
+          className={cn(makeClassName(`input-error-text`), errorClassName)}
+        />
+      ) : null}
+    </div>
+  );
+}

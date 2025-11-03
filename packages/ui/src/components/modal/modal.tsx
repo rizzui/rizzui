@@ -11,27 +11,18 @@ const modal = tv({
     overlay:
       'fixed inset-0 cursor-pointer bg-black/60 z-10 duration-300 ease-in-out data-[closed]:opacity-0',
     panel:
-      'm-auto w-full break-words bg-background shadow-xl z-20 duration-300 ease-in-out data-[closed]:scale-95 data-[closed]:opacity-0',
+      'm-auto w-full break-words bg-background shadow-xl z-20 duration-300 ease-in-out data-[closed]:scale-95 data-[closed]:opacity-0 rounded-[var(--border-radius)]',
   },
   variants: {
     size: {
       sm: { panel: 'max-w-sm' },
       md: { panel: 'max-w-lg' },
       lg: { panel: 'max-w-2xl' },
-      xl: { panel: 'max-w-[60%]' },
       full: { panel: 'max-w-full min-h-screen' },
-    },
-    rounded: {
-      none: { panel: 'rounded-none' },
-      sm: { panel: 'rounded-lg' },
-      md: { panel: 'rounded-xl' },
-      lg: { panel: 'rounded-2xl' },
-      xl: { panel: 'rounded-3xl' },
     },
   },
   defaultVariants: {
     size: 'md',
-    rounded: 'md',
   },
 });
 
@@ -70,12 +61,11 @@ export function Modal({
   noGutter,
   className,
   size = 'md',
-  rounded = 'md',
   customSize,
   overlayClassName,
   containerClassName,
 }: React.PropsWithChildren<ModalProps>) {
-  const { root, area, overlay: overlayClass, panel } = modal({ size, rounded });
+  const { root, area, overlay: overlayClass, panel } = modal({ size });
 
   return (
     <Dialog open={isOpen} onClose={onClose} className={root({ className })}>

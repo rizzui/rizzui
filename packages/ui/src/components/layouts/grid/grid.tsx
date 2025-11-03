@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { type ElementType } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { cn } from 'src/lib/cn';
 import { GridCol } from './grid-col';
 
 const gridVariants = tv({
@@ -93,54 +92,51 @@ const gridVariants = tv({
   },
 });
 
-export type GridProps = VariantProps<typeof gridVariants> & {
+export type GridProps<T extends ElementType = 'div'> = VariantProps<typeof gridVariants> & {
   /* defines the component tag name to render */
-  as?: React.ElementType;
-} & React.HTMLAttributes<HTMLElement>;
+  as?: T;
+  ref?: React.Ref<any>;
+  children?: React.ReactNode;
+} & Omit<React.ComponentPropsWithRef<T>, 'as' | 'ref' | 'className'> & {
+    className?: string;
+  };
 
-const Grid = React.forwardRef(
-  (props: GridProps, forwardRef: React.Ref<HTMLElement>) => {
-    const {
-      as,
-      gap = '4',
-      rows,
-      align,
-      justify,
-      columns,
-      children,
-      className,
-      placeItems,
-      placeContent,
-      ...rest
-    } = props;
+function GridBase<T extends ElementType = 'div'>({
+  as,
+  ref,
+  gap = '4',
+  rows,
+  align,
+  justify,
+  columns,
+  children,
+  className,
+  placeItems,
+  placeContent,
+  ...rest
+}: GridProps<T>) {
+  const Component = (as || 'div') as ElementType;
 
-    const Comp = as || 'div';
+  return (
+    <Component
+      ref={ref}
+      className={gridVariants({
+        gap,
+        rows,
+        align,
+        columns,
+        justify,
+        placeContent,
+        placeItems,
+        className,
+      })}
+      {...rest}
+    >
+      {children}
+    </Component>
+  );
+}
 
-    return (
-      <Comp
-        ref={forwardRef}
-        className={gridVariants({
-          gap,
-          rows,
-          align,
-          columns,
-          justify,
-          placeContent,
-          placeItems,
-          className,
-        })}
-        {...rest}
-      >
-        {children}
-      </Comp>
-    );
-  }
-);
-
-const GridComponents = Object.assign(Grid, {
+export const Grid = Object.assign(GridBase, {
   Col: GridCol,
 });
-
-GridComponents.displayName = 'Grid';
-
-export { GridComponents as Grid };
