@@ -17,7 +17,7 @@ Listboxes are a great foundation for building custom, accessible select menus fo
 ```tsx
 "use client"; 
 
-import { Select } from "rizzui-v1";
+import { Select } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -34,7 +34,7 @@ The default style of **Select** component.
 "use client"; 
 
 import { useState } from 'react'
-import { Select } from "rizzui-v1";
+import { Select } from "rizzui";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -73,7 +73,7 @@ You can clear **Select** value using clearable property.
 "use client"; 
 
 import { useState } from 'react'
-import { Select } from "rizzui-v1";
+import { Select } from "rizzui";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -111,7 +111,7 @@ Here is the custom option **Select** example.
 "use client"; 
 
 import { useState } from 'react'
-import { Select, type SelectOption, Text } from "rizzui-v1";
+import { Select, type SelectOption, Text } from "rizzui";
 
 const options = [
   {
@@ -188,7 +188,7 @@ You can search inside **Select** options.
 "use client"; 
 
 import { useState } from 'react';
-import { Select } from "rizzui-v1";
+import { Select } from "rizzui";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -224,7 +224,7 @@ In this example, we are going to use **React Hook Form** and **Zod** for validat
 ```tsx
 "use client"; 
 
-import { Select, Button } from "rizzui-v1";
+import { Select, Button } from "rizzui";
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

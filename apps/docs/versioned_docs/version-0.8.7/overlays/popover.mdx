@@ -2,7 +2,7 @@
 sidebar_position: 31
 ---
 
-import { Popover, Title, Text, Button, ActionIcon, Avatar } from "rizzui-v0";
+import { Popover, Title, Text, Button, ActionIcon, Avatar } from "rizzui";
 import Paper from "@site/src/components/paper";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
@@ -11,7 +11,7 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 Popover is a simple dialog alert which can have details of the content. It can either have a confirm, cancel button or any action that can be triggered by the user's decision.
 
 ```tsx
-import { Popover } from "rizzui-v0";
+import { Popover } from "rizzui";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -35,7 +35,7 @@ A simple **Popover** component.
 </Paper>
 
 ```tsx
-import { Popover, Title, Text, Button } from "rizzui-v0";
+import { Popover, Title, Text, Button } from "rizzui";
 
 export default function App() {
   return (
@@ -92,7 +92,7 @@ You can create actionable **Popover** using state.
 
 ```tsx
 import React from "react";
-import { Popover, Title, Text, Button } from "rizzui-v0";
+import { Popover, Title, Text, Button } from "rizzui";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
 export default function App() {
@@ -146,7 +146,7 @@ You can control Popover state with **isOpen** and **setIsOpen** props:
 
 ```tsx
 import React, { useState } from "react";
-import { Popover, Title, Text, Button } from "rizzui-v0";
+import { Popover, Title, Text, Button } from "rizzui";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState();
@@ -234,7 +234,7 @@ You can render any thing using our **Popover** component.
 
 ```tsx
 import React from "react";
-import { Popover, Button, Avatar } from "rizzui-v0";
+import { Popover, Button, Avatar } from "rizzui";
 
 export default function App() {
   return (

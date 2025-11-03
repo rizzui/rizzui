@@ -49,8 +49,6 @@
     "react-number-format": "5.4.4",
     "react-phone-input-2": "2.15.1",
     "rizzui": "workspace:*",
-    "rizzui-v1": "npm:rizzui@1.0.1",
-    "rizzui-v0": "npm:rizzui@0.8.7",
     "tailwindcss": "4.1.11",
     "uuid": "11.1.0",
     "zod": "3.25.67"

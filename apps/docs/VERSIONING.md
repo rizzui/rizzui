@@ -1,66 +1,60 @@
 # Documentation Versioning Strategy
 
-This document explains how RizzUI documentation handles multiple versions with their corresponding package versions.
+This document explains how RizzUI documentation handles multiple versions.
 
 ## Version Structure
 
-The documentation site supports three versions, each using its specific RizzUI package:
+The documentation site supports three versions:
 
 ### Version 2.0.0 (Default/Latest)
 - **Path**: `/docs`
 - **Package**: `rizzui` (workspace)
 - **Source**: Local workspace components from `packages/ui`
-- **Import**: `import { Button } from "rizzui"`
-- **Purpose**: Latest stable release with current development components
+- **Status**: Latest stable release
 
 ### Version 1.0.1
 - **Path**: `/docs/v1`
-- **Package**: `rizzui-v1` (npm alias for `rizzui@1.0.1`)
-- **Source**: Published npm package `rizzui@1.0.1`
-- **Import**: `import { Button } from "rizzui-v1"`
-- **Purpose**: Previous stable release
+- **Package**: `rizzui` (workspace)
+- **Source**: Local workspace components from `packages/ui`
+- **Status**: Previous stable release documentation
 
 ### Version 0.8.7
 - **Path**: `/docs/v0.8.7`  
-- **Package**: `rizzui-v0` (npm alias for `rizzui@0.8.7`)
-- **Source**: Published npm package `rizzui@0.8.7`
-- **Import**: `import { Button } from "rizzui-v0"`
-- **Purpose**: Legacy version
+- **Package**: `rizzui` (workspace)
+- **Source**: Local workspace components from `packages/ui`
+- **Status**: Legacy version documentation
 
-## How It Works
+## Important Note
 
-### Package Aliases
+**All versions use the same workspace components for live examples.** This ensures:
+- Consistent behavior across all documentation versions
+- No compatibility issues with React/Docusaurus
+- Maintainable codebase with single source of truth
 
-In `package.json`, we use npm package aliases to install specific versions:
+The versioned documentation serves to:
+1. **Preserve historical API documentation** - Each version documents the API as it existed
+2. **Show migration paths** - Users can compare versions to understand changes
+3. **Support legacy users** - Users on older versions can reference appropriate docs
 
-```json
-{
-  "dependencies": {
-    "rizzui": "workspace:*",      // Latest from workspace
-    "rizzui-v1": "npm:rizzui@1.0.1",  // v1.0.1 from npm
-    "rizzui-v0": "npm:rizzui@0.8.7"   // v0.8.7 from npm
-  }
-}
-```
-
-### Documentation Structure
+## Documentation Structure
 
 ```
 apps/docs/
-├── docs/                           # Current/development docs (uses workspace rizzui)
+├── docs/                           # Current/latest docs (v2.0.0)
 ├── versioned_docs/
-│   ├── version-2.0.0/             # v2.0.0 docs (uses workspace rizzui)
-│   ├── version-1.0.1/             # v1.0.1 docs (uses rizzui-v1)
-│   └── version-0.8.7/             # v0.8.7 docs (uses rizzui-v0)
+│   ├── version-2.0.0/             # v2.0.0 docs snapshot
+│   ├── version-1.0.1/             # v1.0.1 docs snapshot
+│   └── version-0.8.7/             # v0.8.7 docs snapshot
 └── versioned_sidebars/
     ├── version-2.0.0-sidebars.json
     ├── version-1.0.1-sidebars.json
     └── version-0.8.7-sidebars.json
 ```
 
-### Import Examples
+## Usage
 
-**Version 2.0.0 (workspace):**
+All versions use the same import:
+
 ```tsx
 import { Button } from "rizzui";
 
@@ -69,53 +63,57 @@ export default function App() {
 }
 ```
 
-**Version 1.0.1 (npm):**
-```tsx
-import { Button } from "rizzui-v1";
+## API Differences
 
-export default function App() {
-  return <Button>Click Me</Button>;
-}
-```
+Each version's documentation reflects the API as it existed at that time:
 
-**Version 0.8.7 (npm):**
-```tsx
-import { Button } from "rizzui-v0";
+### Version 2.0.0
+- Latest component APIs
+- All current features documented
+- Latest design tokens and styling
 
-export default function App() {
-  return <Button>Click Me</Button>;
-}
-```
+### Version 1.0.1  
+- Documentation reflects v1.0.1 API
+- May reference deprecated props
+- Historical examples preserved
+
+### Version 0.8.7
+- Documentation reflects v0.8.7 API
+- Legacy component structure
+- Original API documentation
 
 ## Benefits
 
-1. **True Version Isolation**: Each documentation version shows components from its actual package version
-2. **Accurate Examples**: Users see exactly how components work in their installed version
-3. **No Breaking Changes**: Old documentation continues to work with old package versions
-4. **Development Flexibility**: Latest docs can use cutting-edge workspace components
+1. **Single Source of Truth**: All examples use workspace components
+2. **No Compatibility Issues**: Avoid package version conflicts
+3. **Easy Maintenance**: Update components in one place
+4. **Consistent Examples**: All live demos work reliably
+5. **Historical Record**: Preserved API documentation for reference
+
+## For Users
+
+If you're using a specific version of RizzUI from npm:
+
+1. **Install your version**: `npm install rizzui@1.0.1`
+2. **Reference that version's docs**: Navigate to `/docs/v1`
+3. **Note**: Live examples show latest components, but API documentation matches your version
+4. **Migration**: Compare with latest docs to see what changed
 
 ## Updating Documentation
 
 ### For Version 2.0.0 (Latest)
-Update files in `docs/` and `versioned_docs/version-2.0.0/` - they use workspace components.
+Update files in both `docs/` and `versioned_docs/version-2.0.0/`
 
-### For Version 1.0.1 or 0.8.7
-Only update if there are documentation fixes. Component examples should match their published npm versions.
+### For Historical Versions
+Only update for:
+- Documentation fixes (typos, clarity)
+- Correcting historical inaccuracies
+- Never change API examples to match newer versions
 
-## TypeScript Support
+## Best Practices
 
-Type declarations are provided in `src/types/rizzui-versions.d.ts` for the aliased packages.
-
-## Testing
-
-To verify all versions work correctly:
-
-```bash
-pnpm dev
-```
-
-Then navigate to:
-- http://localhost:3000/docs - Version 2.0.0 (default)
-- http://localhost:3000/docs/v1 - Version 1.0.1
-- http://localhost:3000/docs/v0.8.7 - Version 0.8.7
-
+1. Keep version snapshots as historical records
+2. All examples use `import { X } from "rizzui"`
+3. Document breaking changes between versions
+4. Preserve original API signatures in older docs
+5. Add notes when showing newer features in older version docs
