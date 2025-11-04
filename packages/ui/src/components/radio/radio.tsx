@@ -7,11 +7,11 @@ import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const radio = tv({
-  base: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted ring-[0.6px] focus:ring-border focus:ring-offset-background text-primary dark:text-primary-foreground border-[length:var(--border-width)]',
+  base: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted focus:ring-border focus:ring-offset-background text-primary dark:text-primary-foreground border-[length:var(--border-width)]',
   variants: {
     variant: {
       outline:
-        'bg-transparent border-border ring-border checked:!bg-primary dark:checked:!bg-transparent checked:!border-primary hover:enabled:border-primary',
+        'bg-transparent border-border checked:!bg-primary dark:checked:!bg-transparent checked:!border-primary hover:enabled:border-primary',
     },
     size: {
       sm: 'h-5 w-5',
@@ -53,33 +53,19 @@ type RadioVariant = VariantProps<typeof radio>;
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  /** The variants of the component are: */
   variant?: RadioVariant['variant'];
-  /** The size of the component. `"sm"` is equivalent to the dense input styling. */
   size?: RadioVariant['size'];
-  /** Available directions of the label are: */
   labelPlacement?: 'left' | 'right';
-  /** Set font weight for label */
   labelWeight?: keyof typeof labelStyles.weight;
-  /** Whether the input is disabled */
   disabled?: boolean;
-  /** Set field label */
   label?: React.ReactNode;
-  /** Show error message using this prop */
   error?: string;
-  /** Add helper text. It could be string or a React component */
   helperText?: React.ReactNode;
-  /** Use className prop to apply style for entire component */
   className?: string;
-  /** Use labelClassName prop to apply some addition style for the field label */
   labelClassName?: string;
-  /** Add custom classes for the input filed extra style */
   inputClassName?: string;
-  /** This prop allows you to customize the error message style */
   errorClassName?: string;
-  /** This prop allows you to customize the helper message style */
   helperClassName?: string;
-  /** Ref for the input element */
   ref?: React.Ref<HTMLInputElement>;
 }
 
@@ -108,7 +94,7 @@ export function Radio({
         className={cn(
           makeClassName(`radio-container`),
           'flex cursor-pointer flex-row items-center',
-          disabled && 'cursor-not-allowed text-foreground/70'
+          disabled && 'text-foreground/70 cursor-not-allowed'
         )}
       >
         <input

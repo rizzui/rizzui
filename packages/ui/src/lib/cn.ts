@@ -1,10 +1,4 @@
-import { tv } from 'tailwind-variants';
-
-// Use tailwind-variants for className merging
-// This replaces the previous clsx + tailwind-merge combination
-const merge = tv({
-  base: '',
-});
+import { twMerge } from 'tailwind-merge';
 
 type ClassValue =
   | string
@@ -16,7 +10,16 @@ type ClassValue =
   | ClassValue[]
   | Record<string, any>;
 
-export function cn(...inputs: ClassValue[]) {
+/**
+ * Utility function for conditionally joining class names together with proper
+ * Tailwind CSS class merging using tailwind-merge
+ * 
+ * Supports: strings, numbers, arrays, objects with boolean/string values
+ * 
+ * @example
+ * cn('px-2', 'py-1', { 'bg-blue-500': true }, ['text-white']) // => merged classes
+ */
+export function cn(...inputs: ClassValue[]): string {
   const classes: string[] = [];
 
   for (const input of inputs) {
@@ -30,14 +33,13 @@ export function cn(...inputs: ClassValue[]) {
       if (nested) classes.push(nested);
     } else if (typeof input === 'object') {
       // Handle conditional classes like { 'class-name': true }
-      // Flatten nested objects if values are strings (for old style objects)
       for (const [key, value] of Object.entries(input)) {
         if (typeof value === 'boolean') {
           if (value) classes.push(key);
         } else if (typeof value === 'string') {
           classes.push(value);
         } else if (typeof value === 'object' && value !== null) {
-          // Handle nested objects (like badge variant styles)
+          // Handle nested objects (like variant styles)
           for (const nestedValue of Object.values(value)) {
             if (typeof nestedValue === 'string') {
               classes.push(nestedValue);
@@ -48,5 +50,6 @@ export function cn(...inputs: ClassValue[]) {
     }
   }
 
-  return merge({ class: classes.join(' ') });
+  // Use tailwind-merge to properly merge Tailwind CSS classes
+  return twMerge(classes.join(' '));
 }

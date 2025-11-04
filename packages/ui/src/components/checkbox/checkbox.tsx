@@ -12,7 +12,7 @@ const checkbox = tv({
   variants: {
     variant: {
       outline:
-        'bg-transparent border-border ring-[0.6px] ring-border focus:ring-border checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
+        'bg-transparent border-border focus:ring-border checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
       flat: 'border-0 bg-muted/70 backdrop-blur hover:enabled:bg-muted focus:ring-border checked:!bg-primary',
     },
     size: {
@@ -134,7 +134,7 @@ export function Checkbox({
           {indeterminate && (
             <span
               className={cn(
-                'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden rounded-[var(--border-radius)] bg-black peer-checked:hidden'
+                'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden rounded-[--border-radius] bg-black peer-checked:hidden'
               )}
             >
               <span className={indeterminateIcon({ size })} />
