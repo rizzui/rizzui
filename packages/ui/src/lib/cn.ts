@@ -1,55 +1,19 @@
-import { twMerge } from 'tailwind-merge';
-
-type ClassValue =
-  | string
-  | number
-  | bigint
-  | boolean
-  | undefined
-  | null
-  | ClassValue[]
-  | Record<string, any>;
+import { cnBase } from 'tailwind-variants';
 
 /**
  * Utility function for conditionally joining class names together with proper
- * Tailwind CSS class merging using tailwind-merge
+ * Tailwind CSS class merging using tailwind-variants v3
  * 
- * Supports: strings, numbers, arrays, objects with boolean/string values
+ * Uses cnBase from tailwind-variants which provides:
+ * - Class name concatenation
+ * - Automatic Tailwind CSS conflict resolution via tailwind-merge
+ * - Support for strings, arrays, objects, and conditional classes
  * 
  * @example
- * cn('px-2', 'py-1', { 'bg-blue-500': true }, ['text-white']) // => merged classes
+ * cn('px-2 py-1', 'px-4') // => 'py-1 px-4' (conflict resolved)
+ * cn('text-sm', { 'font-bold': true }) // => 'text-sm font-bold'
+ * cn(['flex', 'items-center']) // => 'flex items-center'
  */
-export function cn(...inputs: ClassValue[]): string {
-  const classes: string[] = [];
-
-  for (const input of inputs) {
-    if (!input) continue;
-
-    if (typeof input === 'string' || typeof input === 'number' || typeof input === 'bigint') {
-      classes.push(String(input));
-    } else if (Array.isArray(input)) {
-      // Recursively handle arrays
-      const nested = cn(...input);
-      if (nested) classes.push(nested);
-    } else if (typeof input === 'object') {
-      // Handle conditional classes like { 'class-name': true }
-      for (const [key, value] of Object.entries(input)) {
-        if (typeof value === 'boolean') {
-          if (value) classes.push(key);
-        } else if (typeof value === 'string') {
-          classes.push(value);
-        } else if (typeof value === 'object' && value !== null) {
-          // Handle nested objects (like variant styles)
-          for (const nestedValue of Object.values(value)) {
-            if (typeof nestedValue === 'string') {
-              classes.push(nestedValue);
-            }
-          }
-        }
-      }
-    }
-  }
-
-  // Use tailwind-merge to properly merge Tailwind CSS classes
-  return twMerge(classes.join(' '));
+export function cn(...inputs: Parameters<typeof cnBase>): string {
+  return cnBase(...inputs) || '';
 }

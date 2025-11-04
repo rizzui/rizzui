@@ -71,9 +71,6 @@ const drawer = tv({
 
 type DrawerVariant = VariantProps<typeof drawer>;
 
-// Export drawer variant classes for use in drawer.lib.ts
-export const drawerClasses = drawer;
-
 export function isPlacementOnYAxis(placement: DrawerVariant['placement']) {
   return ['top', 'bottom'].indexOf(placement as string) !== -1;
 }
