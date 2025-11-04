@@ -59,7 +59,7 @@ export default function SelectPage() {
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
             Variants
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Select
               label="Outline"
               variant="outline"
@@ -68,15 +68,6 @@ export default function SelectPage() {
                 value: category,
               }))}
               placeholder="Outline"
-            />
-            <Select
-              label="Flat"
-              variant="flat"
-              options={categories.map((category) => ({
-                label: category,
-                value: category,
-              }))}
-              placeholder="Flat"
             />
             <Select
               label="Text"
@@ -119,15 +110,6 @@ export default function SelectPage() {
                 value: category,
               }))}
               placeholder="Large"
-            />
-            <Select
-              size="xl"
-              label="Extra Large"
-              options={categories.map((category) => ({
-                label: category,
-                value: category,
-              }))}
-              placeholder="XL"
             />
           </div>
         </section>

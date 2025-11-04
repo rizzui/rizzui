@@ -13,7 +13,7 @@ import { useRePositioningActiveTab } from './tab-lib';
 import { makeClassName } from '../../lib/make-class-name';
 
 const tabList = tv({
-  base: 'relative flex border-muted',
+  base: 'relative flex border-border',
   variants: {
     vertical: {
       true: 'flex-col border-e pe-3',
@@ -26,7 +26,9 @@ const tabList = tv({
   },
 });
 
-export type TabListProps = ExtractProps<HeadlessTabListProps> & {};
+export type TabListProps = Omit<ExtractProps<HeadlessTabListProps>, 'children'> & {
+  children: React.ReactNode;
+};
 
 export function TabList({ children, className, ...props }: TabListProps) {
   const {
@@ -53,12 +55,7 @@ export function TabList({ children, className, ...props }: TabListProps) {
       )}
       {...props}
     >
-      {React.Children.map(children as any, (child) => {
-        if (React.isValidElement(child) && child.type === TabListItem) {
-          return child;
-        }
-        return null;
-      })}
+      {children as any}
 
       {!hideHoverAnimation ? (
         <Highlight
@@ -72,5 +69,3 @@ export function TabList({ children, className, ...props }: TabListProps) {
     </HeadlessTabList>
   );
 }
-
-TabList.displayName = 'TabList';

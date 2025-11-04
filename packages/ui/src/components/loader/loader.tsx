@@ -14,7 +14,6 @@ const loader = tv({
       sm: 'w-5',
       md: 'w-[22px]',
       lg: 'w-7',
-      xl: 'w-9',
     },
     color: {
       current: 'text-current',

@@ -9,12 +9,11 @@ import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const inputContainer = tv({
-  base: 'flex items-center peer w-full transition duration-200 border-[length:var(--border-width)] focus-within:ring-[0.8px] ring-[0.6px] hover:border-primary focus-within:border-primary focus-within:ring-primary [&_input::placeholder]:opacity-60 rounded-[var(--border-radius)]',
+  base: 'flex items-center peer w-full transition duration-200 border-[length:var(--border-width)] focus-within:ring-[0.8px] hover:border-primary focus-within:border-primary focus-within:ring-primary [&_input::placeholder]:opacity-60 rounded-[var(--border-radius)]',
   variants: {
     variant: {
       text: 'border-transparent ring-transparent bg-transparent',
-      flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
-      outline: 'border-border ring-muted bg-transparent',
+      outline: 'border-border ring-border bg-transparent',
     },
     size: {
       sm: 'px-2 py-1 text-xs h-8',
@@ -47,9 +46,7 @@ const inputField = tv({
       true: '',
     },
   },
-  compoundVariants: [
-    { hasPrefix: true, class: 'ps-2.5' },
-  ],
+  compoundVariants: [{ hasPrefix: true, class: 'ps-2.5' }],
 });
 
 export interface PasswordProps
@@ -107,123 +104,119 @@ export function Password({
   ref,
   ...inputProps
 }: PasswordProps) {
-    const [visible, setVisible] = useState(false);
-    const isVisible = isPasswordVisible ?? visible;
+  const [visible, setVisible] = useState(false);
+  const isVisible = isPasswordVisible ?? visible;
 
-    return (
-      <div
-        className={cn(
-          makeClassName(`password-root`),
-          'flex flex-col',
-          className
-        )}
-      >
-        <label className="block">
-          {label ? (
+  return (
+    <div
+      className={cn(makeClassName(`password-root`), 'flex flex-col', className)}
+    >
+      <label className="block">
+        {label ? (
+          <span
+            className={cn(
+              makeClassName(`password-label`),
+              'block',
+              labelStyles.size[size],
+              labelStyles.weight[labelWeight],
+              disabled && 'text-muted-foreground',
+              labelClassName
+            )}
+          >
+            {label}
+          </span>
+        ) : null}
+
+        <span
+          className={inputContainer({
+            variant,
+            size,
+            disabled,
+            error: Boolean(error),
+            className: inputClassName,
+          })}
+        >
+          {prefix ? (
             <span
               className={cn(
-                makeClassName(`password-label`),
-                'block',
-                labelStyles.size[size],
-                labelStyles.weight[labelWeight],
-                disabled && 'text-muted-foreground',
-                labelClassName
+                makeClassName(`password-prefix`),
+                'leading-normal whitespace-nowrap',
+                prefixClassName
               )}
             >
-              {label}
+              {prefix}
             </span>
           ) : null}
 
-          <span
-            className={inputContainer({
-              variant,
-              size,
+          <input
+            ref={ref}
+            type={isVisible ? 'text' : 'password'}
+            disabled={disabled}
+            readOnly={readOnly}
+            spellCheck="false"
+            placeholder={placeholder || 'Screen reader only'}
+            className={inputField({
               disabled,
-              error: Boolean(error),
-              className: inputClassName,
+              clearable,
+              hasPrefix: Boolean(prefix),
+              className: cn(
+                makeClassName(`password-field`),
+                !placeholder && 'placeholder-shown:placeholder:opacity-0',
+                visibilityToggleIcon && 'pe-2.5'
+              ),
             })}
-          >
-            {prefix ? (
-              <span
-                className={cn(
-                  makeClassName(`password-prefix`),
-                  'leading-normal whitespace-nowrap',
-                  prefixClassName
-                )}
-              >
-                {prefix}
-              </span>
-            ) : null}
-
-            <input
-              ref={ref}
-              type={isVisible ? 'text' : 'password'}
-              disabled={disabled}
-              readOnly={readOnly}
-              spellCheck="false"
-              placeholder={placeholder || 'Screen reader only'}
-              className={inputField({
-                disabled,
-                clearable,
-                hasPrefix: Boolean(prefix),
-                className: cn(
-                  makeClassName(`password-field`),
-                  !placeholder && 'placeholder-shown:placeholder:opacity-0',
-                  visibilityToggleIcon && 'pe-2.5'
-                ),
-              })}
-              {...inputProps}
-            />
-
-            {clearable ? (
-              <FieldClearButton size={size} onClick={onClear} hasSuffix />
-            ) : null}
-
-            {hideVisibilityToggleIcon ? null : (
-              <span
-                role="button"
-                tabIndex={0}
-                className={cn(
-                  makeClassName(`password-toggle-icon`),
-                  'cursor-pointer leading-normal whitespace-nowrap',
-                  disabled && 'text-muted-foreground',
-                  visibilityToggleIconClassName
-                )}
-                onClick={() => {
-                  if (disabled) return false;
-                  setVisible(!visible);
-                }}
-              >
-                {visibilityToggleIcon ? (
-                  visibilityToggleIcon(visible)
-                ) : (
-                  <PasswordToggleIcon isVisible={visible} iconSize={size} />
-                )}
-              </span>
-            )}
-          </span>
-        </label>
-
-        {!error && helperText ? (
-          <FieldHelperText
-            size={size}
-            className={cn(
-              makeClassName(`password-helper-text`),
-              disabled && 'text-muted-foreground',
-              helperClassName
-            )}
-          >
-            {helperText}
-          </FieldHelperText>
-        ) : null}
-
-        {error ? (
-          <FieldError
-            size={size}
-            error={error}
-            className={cn(makeClassName(`password-error-text`), errorClassName)}
+            {...inputProps}
           />
-        ) : null}
-      </div>
-    );
+
+          {clearable ? (
+            <FieldClearButton size={size} onClick={onClear} hasSuffix />
+          ) : null}
+
+          {hideVisibilityToggleIcon ? null : (
+            <span
+              role="button"
+              tabIndex={0}
+              className={cn(
+                makeClassName(`password-toggle-icon`),
+                'cursor-pointer leading-normal whitespace-nowrap',
+                disabled && 'text-muted-foreground',
+                visibilityToggleIconClassName
+              )}
+              onClick={() => {
+                if (disabled) return false;
+                setVisible(!visible);
+              }}
+            >
+              {visibilityToggleIcon ? (
+                visibilityToggleIcon(visible)
+              ) : (
+                <PasswordToggleIcon isVisible={visible} iconSize={size} />
+              )}
+            </span>
+          )}
+        </span>
+      </label>
+
+      {!error && helperText ? (
+        <FieldHelperText
+          size={size}
+          className={cn(
+            makeClassName(`password-helper-text`),
+            disabled && 'text-muted-foreground',
+            helperClassName
+          )}
+        >
+          {helperText}
+        </FieldHelperText>
+      ) : null}
+
+      {error ? (
+        <FieldError
+          size={size}
+          error={error}
+          className={cn(makeClassName(`password-error-text`), errorClassName)}
+        />
+      ) : null}
+    </div>
+  );
 }

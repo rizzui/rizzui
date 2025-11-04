@@ -121,29 +121,16 @@ type TooltipVariant = VariantProps<typeof tooltip>;
 type TooltipArrowVariant = VariantProps<typeof tooltipArrow>;
 
 export type TooltipProps = {
-  /** Pass children which will have tooltip */
   children: ReactElement & { ref?: RefObject<any> };
-  /** Content for tooltip */
   content: React.ReactNode;
-  /** Change Tooltip color */
   color?: TooltipVariant['color'];
-  /** Supported Tooltip sizes are: */
   size?: TooltipVariant['size'];
-  /** The rounded variants are: */
-  rounded?: TooltipVariant['rounded'];
-  /** Supported tooltip shadows are: */
   shadow?: TooltipVariant['shadow'];
-  /** Supported Tooltip Placements are: */
   placement?: Placement;
-  /** Set custom offset default is 8 */
   gap?: number;
-  /** Supported Animations are: */
   animation?: keyof typeof tooltipAnimation;
-  /** Add custom classes for Tooltip container or content */
   className?: string;
-  /** Add custom classes for Tooltip arrow */
   arrowClassName?: string;
-  /** Whether tooltip arrow should be shown or hidden */
   showArrow?: boolean;
 };
 
@@ -193,15 +180,17 @@ export function Tooltip({
     ...tooltipAnimation[animation],
   });
 
+  const triggerElement = React.cloneElement(
+    children,
+    getReferenceProps({
+      ref: refs.setReference,
+      ...(typeof children.props === 'object' ? children.props : {}),
+    })
+  );
+
   return (
     <>
-      {cloneElement(
-        children,
-        getReferenceProps({
-          ref: refs.setReference,
-          ...(typeof children.props === 'object' ? children.props : {}),
-        })
-      )}
+      {triggerElement}
 
       {(isMounted || open) && (
         <FloatingPortal>

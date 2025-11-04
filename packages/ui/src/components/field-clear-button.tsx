@@ -9,7 +9,6 @@ const fieldClearButton = tv({
       sm: 'h-3.5 w-3.5',
       md: 'h-4 w-4',
       lg: 'h-4 w-4',
-      xl: 'h-[18px] w-[18px]',
     },
     hasSuffix: {
       true: '',
@@ -19,7 +18,6 @@ const fieldClearButton = tv({
     { hasSuffix: true, size: 'sm', class: 'me-1.5' },
     { hasSuffix: true, size: 'md', class: 'me-2' },
     { hasSuffix: true, size: 'lg', class: 'me-2.5' },
-    { hasSuffix: true, size: 'xl', class: 'me-2.5' },
   ],
 });
 

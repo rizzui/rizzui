@@ -1,7 +1,6 @@
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { XIcon } from '../../icons/x-mark';
-import { cn } from '../../lib/cn';
 import { AlertIcon } from './icons';
 import { makeClassName } from '../../lib/make-class-name';
 
@@ -61,15 +60,49 @@ const alert = tv({
   },
   compoundVariants: [
     // Flat + colors for root
-    { variant: 'flat', color: 'danger', class: { root: 'bg-red-lighter/70 border-red dark:border-red/70' } },
-    { variant: 'flat', color: 'info', class: { root: 'bg-blue-lighter/70 border-blue dark:border-blue/70' } },
-    { variant: 'flat', color: 'success', class: { root: 'bg-green-lighter/70 border-green dark:border-green/70' } },
-    { variant: 'flat', color: 'warning', class: { root: 'bg-orange-lighter/70 border-orange dark:border-orange/70' } },
+    {
+      variant: 'flat',
+      color: 'danger',
+      class: { root: 'bg-red-lighter/70 border-red dark:border-red/70' },
+    },
+    {
+      variant: 'flat',
+      color: 'info',
+      class: { root: 'bg-blue-lighter/70 border-blue dark:border-blue/70' },
+    },
+    {
+      variant: 'flat',
+      color: 'success',
+      class: { root: 'bg-green-lighter/70 border-green dark:border-green/70' },
+    },
+    {
+      variant: 'flat',
+      color: 'warning',
+      class: {
+        root: 'bg-orange-lighter/70 border-orange dark:border-orange/70',
+      },
+    },
     // Outline + colors for root
-    { variant: 'outline', color: 'danger', class: { root: 'border-red dark:border-red/70' } },
-    { variant: 'outline', color: 'info', class: { root: 'border-blue dark:border-blue/70' } },
-    { variant: 'outline', color: 'success', class: { root: 'border-green dark:border-green/70' } },
-    { variant: 'outline', color: 'warning', class: { root: 'border-orange dark:border-orange/70' } },
+    {
+      variant: 'outline',
+      color: 'danger',
+      class: { root: 'border-red dark:border-red/70' },
+    },
+    {
+      variant: 'outline',
+      color: 'info',
+      class: { root: 'border-blue dark:border-blue/70' },
+    },
+    {
+      variant: 'outline',
+      color: 'success',
+      class: { root: 'border-green dark:border-green/70' },
+    },
+    {
+      variant: 'outline',
+      color: 'warning',
+      class: { root: 'border-orange dark:border-orange/70' },
+    },
     // Bar colors
     { color: 'danger', class: { bar: 'bg-red' } },
     { color: 'info', class: { bar: 'bg-blue' } },
@@ -83,18 +116,41 @@ const alert = tv({
     // Flat icons
     { variant: 'flat', color: 'danger', class: { icon: 'bg-white text-red' } },
     { variant: 'flat', color: 'info', class: { icon: 'bg-white text-blue' } },
-    { variant: 'flat', color: 'success', class: { icon: 'bg-white text-green' } },
-    { variant: 'flat', color: 'warning', class: { icon: 'bg-white text-orange' } },
+    {
+      variant: 'flat',
+      color: 'success',
+      class: { icon: 'bg-white text-green' },
+    },
+    {
+      variant: 'flat',
+      color: 'warning',
+      class: { icon: 'bg-white text-orange' },
+    },
     // Outline icons
-    { variant: 'outline', color: 'danger', class: { icon: 'bg-white border text-red border-red' } },
-    { variant: 'outline', color: 'info', class: { icon: 'bg-white border text-blue border-blue' } },
-    { variant: 'outline', color: 'success', class: { icon: 'bg-white border text-green border-green' } },
-    { variant: 'outline', color: 'warning', class: { icon: 'bg-white border text-orange border-orange' } },
+    {
+      variant: 'outline',
+      color: 'danger',
+      class: { icon: 'bg-white border text-red border-red' },
+    },
+    {
+      variant: 'outline',
+      color: 'info',
+      class: { icon: 'bg-white border text-blue border-blue' },
+    },
+    {
+      variant: 'outline',
+      color: 'success',
+      class: { icon: 'bg-white border text-green border-green' },
+    },
+    {
+      variant: 'outline',
+      color: 'warning',
+      class: { icon: 'bg-white border text-orange border-orange' },
+    },
     // Closable padding
     { closable: true, size: 'sm', class: { content: 'pe-8' } },
     { closable: true, size: 'md', class: { content: 'pe-10' } },
     { closable: true, size: 'lg', class: { content: 'pe-11' } },
-    { closable: true, size: 'xl', class: { content: 'pe-12' } },
     // Bar removes border
     { bar: true, variant: 'flat', class: { root: '!border-0' } },
   ],
@@ -106,33 +162,18 @@ const alert = tv({
 });
 
 export type AlertProps = {
-  /** The size of the component. */
   size?: VariantProps<typeof alert>['size'];
-  /** The rounded variants are: */
-  rounded?: VariantProps<typeof alert>['rounded'];
-  /** The variants of the component are: */
   variant?: VariantProps<typeof alert>['variant'];
-  /** Change input color */
   color: 'danger' | 'info' | 'success' | 'warning';
-  /** Whether left bar should be visible */
   bar?: boolean;
-  /** Pass alert message as children */
   children: React.ReactNode;
-  /** Add closable option */
   closable?: boolean;
-  /** Pass onClick function to clear alert */
   onClose?: (event: React.MouseEvent) => void;
-  /** Customize start icon according to your preference */
   icon?: React.ReactNode;
-  /** Customize close icon according to your preference */
   closeIcon?: React.ReactNode;
-  /** Add className to design the container */
   className?: string;
-  /** Add barClassName to design the left bar */
   barClassName?: string;
-  /** Add iconContainerClassName to position the icons */
   iconContainerClassName?: string;
-  /** Add iconClassName to design the default icons */
   iconClassName?: string;
 };
 
@@ -166,8 +207,13 @@ export function Alert({
 
   return (
     <div data-testid="alert-parent" className={root({ className })}>
-      {showBar && <span data-testid="alert-bar" className={bar({ className: barClassName })} />}
-      
+      {showBar && (
+        <span
+          data-testid="alert-bar"
+          className={bar({ className: barClassName })}
+        />
+      )}
+
       <div
         data-testid="alert-content"
         className={iconWrapper({ className: iconContainerClassName })}
@@ -178,9 +224,9 @@ export function Alert({
           </span>
         )}
       </div>
-      
+
       <div className={content()}>{children}</div>
-      
+
       {(closable || closeIcon) && (
         <div
           role="button"

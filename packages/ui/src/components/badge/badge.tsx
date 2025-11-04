@@ -6,7 +6,7 @@ const badge = tv({
   variants: {
     variant: {
       solid: '',
-      flat: '',
+      flat: 'border-0',
       outline: 'bg-transparent border',
     },
     color: {
@@ -108,15 +108,10 @@ export type BadgeProps = Omit<
   'renderAsDot' | 'enableOutlineRing'
 > &
   React.HTMLAttributes<HTMLSpanElement> & {
-    /** Render badge as a dot */
     renderAsDot?: boolean;
-    /** Set a outline ring. It is useful for the overlapping UI. */
     enableOutlineRing?: boolean;
   };
 
-/**
- * Badge is a small overlapped UI item which indicates a status, notification, or event that appears in relativity with the underlying object.
- */
 export function Badge({
   renderAsDot = false,
   size,

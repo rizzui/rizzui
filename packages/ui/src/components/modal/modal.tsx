@@ -31,23 +31,13 @@ type ModalVariant = VariantProps<typeof modal>;
 export type ModalSize = ModalVariant['size'];
 
 export type ModalProps = {
-  /** Whether the Modal is open or not */
   isOpen: boolean;
-  /** Called when modal is closed (Escape key and click outside, depending on options) */
   onClose(): void;
-  /** Preset size of modal is sm, DEFAULT, lg, xl, full */
   size?: ModalSize;
-  /** Removes padding from scroll area when modal size is full */
   noGutter?: boolean;
-  /** The rounded variants are: */
-  rounded?: ModalVariant['rounded'];
-  /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize={500} */
   customSize?: number;
-  /** Override default CSS style of Modal's overlay */
   overlayClassName?: string;
-  /** Set custom style classes for the Modal container, where you can set custom Modal size and padding and background color */
   containerClassName?: string;
-  /** Set custom style classes for the Modal root element */
   className?: string;
 };
 

@@ -36,7 +36,7 @@ const circleClasses = {
     md: 'h-8 w-8',
     lg: 'h-9 w-9',
   },
-  waiting: 'border border-muted bg-white dark:bg-gray-50 text-gray-500',
+  waiting: 'border border-border bg-white dark:bg-gray-50 text-gray-500',
   variant: {
     solid: {
       base: 'text-gray-50 shadow-lg',

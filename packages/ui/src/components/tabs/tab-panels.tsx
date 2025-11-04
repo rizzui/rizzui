@@ -33,14 +33,7 @@ export function TabPanels({ children, className, ...props }: TabPanelsProps) {
       className={cn(makeClassName(`tab-panels`), tabPanels({ vertical }), className)}
       {...props}
     >
-      {React.Children.map(children as any, (child) => {
-        if (React.isValidElement(child) && child.type === TabPanel) {
-          return child;
-        }
-        return null;
-      })}
+      {children}
     </HeadlessTabPanels>
   );
 }
-
-TabPanels.displayName = 'TabPanels';

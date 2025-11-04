@@ -8,12 +8,11 @@ import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const textarea = tv({
-  base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 ring-[0.6px] focus-within:ring-[0.8px] focus-within:ring-primary hover:border-primary focus-within:border-primary [scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent rounded-[var(--border-radius)] border-[length:var(--border-width)]',
+  base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 focus-within:ring-[0.8px] focus-within:ring-primary hover:border-primary focus-within:border-primary [scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent rounded-[var(--border-radius)] border-[length:var(--border-width)]',
   variants: {
     variant: {
       text: 'border-transparent ring-transparent bg-transparent',
-      flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
-      outline: 'bg-transparent ring-muted border-border',
+      outline: 'bg-transparent ring-border border-border',
     },
     size: {
       sm: 'px-2.5 py-1 text-xs',
@@ -104,92 +103,88 @@ export function Textarea({
   ref,
   ...textareaProps
 }: TextareaProps) {
-    return (
-      <div
-        className={cn(
-          makeClassName(`textarea-root`),
-          'flex flex-col',
-          className
-        )}
-      >
-        <label className="block">
-          {label ? (
-            <span
-              className={cn(
-                makeClassName(`textarea-label`),
-                'block',
-                labelStyles.size[size],
-                labelStyles.weight[labelWeight],
-                disabled && 'text-muted-foreground',
-                labelClassName
-              )}
-            >
-              {label}
-            </span>
-          ) : null}
-
-          <span className="relative block">
-            <textarea
-              ref={ref}
-              rows={rows}
-              disabled={disabled}
-              readOnly={readOnly}
-              maxLength={maxLength}
-              {...(cols && { cols })}
-              placeholder={placeholder || 'Screen reader only'}
-              className={textarea({
-                variant,
-                size,
-                disabled,
-                error: Boolean(error),
-                clearable,
-                className: cn(
-                  makeClassName(`textarea-field`),
-                  !placeholder && 'placeholder-shown:placeholder:opacity-0',
-                  !cols && 'w-full',
-                  readOnly && 'focus:ring-0',
-                  textareaClassName
-                ),
-              })}
-              {...textareaProps}
-            />
-
-            {clearable ? (
-              <FieldClearButton
-                size={size}
-                onClick={onClear}
-                className={clearButton({ size, className: 'cursor-pointer' })}
-              />
-            ) : null}
-
-            {renderCharacterCount &&
-              renderCharacterCount({
-                characterCount: String(textareaProps?.value).length,
-                maxLength,
-              })}
-          </span>
-        </label>
-
-        {!error && helperText ? (
-          <FieldHelperText
-            size={size}
+  return (
+    <div
+      className={cn(makeClassName(`textarea-root`), 'flex flex-col', className)}
+    >
+      <label className="block">
+        {label ? (
+          <span
             className={cn(
-              makeClassName(`textarea-helper-text`),
+              makeClassName(`textarea-label`),
+              'block',
+              labelStyles.size[size],
+              labelStyles.weight[labelWeight],
               disabled && 'text-muted-foreground',
-              helperClassName
+              labelClassName
             )}
           >
-            {helperText}
-          </FieldHelperText>
+            {label}
+          </span>
         ) : null}
 
-        {error ? (
-          <FieldError
-            size={size}
-            error={error}
-            className={cn(makeClassName(`textarea-error-text`), errorClassName)}
+        <span className="relative block">
+          <textarea
+            ref={ref}
+            rows={rows}
+            disabled={disabled}
+            readOnly={readOnly}
+            maxLength={maxLength}
+            {...(cols && { cols })}
+            placeholder={placeholder || 'Screen reader only'}
+            className={textarea({
+              variant,
+              size,
+              disabled,
+              error: Boolean(error),
+              clearable,
+              className: cn(
+                makeClassName(`textarea-field`),
+                !placeholder && 'placeholder-shown:placeholder:opacity-0',
+                !cols && 'w-full',
+                readOnly && 'focus:ring-0',
+                textareaClassName
+              ),
+            })}
+            {...textareaProps}
           />
-        ) : null}
-      </div>
-    );
+
+          {clearable ? (
+            <FieldClearButton
+              size={size}
+              onClick={onClear}
+              className={clearButton({ size, className: 'cursor-pointer' })}
+            />
+          ) : null}
+
+          {renderCharacterCount &&
+            renderCharacterCount({
+              characterCount: String(textareaProps?.value).length,
+              maxLength,
+            })}
+        </span>
+      </label>
+
+      {!error && helperText ? (
+        <FieldHelperText
+          size={size}
+          className={cn(
+            makeClassName(`textarea-helper-text`),
+            disabled && 'text-muted-foreground',
+            helperClassName
+          )}
+        >
+          {helperText}
+        </FieldHelperText>
+      ) : null}
+
+      {error ? (
+        <FieldError
+          size={size}
+          error={error}
+          className={cn(makeClassName(`textarea-error-text`), errorClassName)}
+        />
+      ) : null}
+    </div>
+  );
 }

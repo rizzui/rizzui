@@ -7,7 +7,6 @@ const fieldHelperText = tv({
       sm: 'text-[11px] mt-0.5',
       md: 'text-[13px] mt-0.5',
       lg: 'text-[13px] mt-1',
-      xl: 'text-sm mt-1',
     },
   },
 });

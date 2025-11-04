@@ -24,7 +24,6 @@ export default function RadioPage() {
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">Variants</h2>
           <div className="space-y-4">
             <Radio variant="outline" label="Outline variant" name="variant" />
-            <Radio variant="flat" label="Flat variant" name="variant" />
           </div>
         </section>
 
@@ -34,7 +33,6 @@ export default function RadioPage() {
             <Radio size="sm" label="Small" name="size" />
             <Radio size="md" label="Medium" name="size" />
             <Radio size="lg" label="Large" name="size" />
-            <Radio size="xl" label="Extra Large" name="size" />
           </div>
         </section>
 

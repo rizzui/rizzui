@@ -34,7 +34,6 @@ export default function PasswordPage() {
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">Variants</h2>
           <div className="space-y-4">
             <Password variant="outline" label="Outline" placeholder="Outline variant" />
-            <Password variant="flat" label="Flat" placeholder="Flat variant" />
             <Password variant="text" label="Text" placeholder="Text variant" />
           </div>
         </section>
@@ -45,7 +44,6 @@ export default function PasswordPage() {
             <Password size="sm" label="Small" placeholder="Small password input" />
             <Password size="md" label="Medium" placeholder="Medium password input" />
             <Password size="lg" label="Large" placeholder="Large password input" />
-            <Password size="xl" label="Extra Large" placeholder="XL password input" />
           </div>
         </section>
 

@@ -26,7 +26,7 @@ export default function Page() {
             Button Component
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Explore all button variants, sizes, rounded styles, and states
+            Explore all button variants, sizes, and states
           </p>
           <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-lg text-sm">
             ✅ Tree-shakeable import • Bundle size: ~8KB (was 168KB)
@@ -404,23 +404,11 @@ export default function Page() {
                       size
                     </td>
                     <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
-                      'sm' | 'md' | 'lg' | 'xl'
+                      'sm' | 'md' | 'lg'
                     </td>
                     <td className="p-3 font-mono text-xs">'md'</td>
                     <td className="p-3 text-gray-700 dark:text-gray-300">
                       The size of the button
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-blue-600 dark:text-blue-400">
-                      rounded
-                    </td>
-                    <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
-                      'none' | 'sm' | 'md' | 'lg' | 'pill'
-                    </td>
-                    <td className="p-3 font-mono text-xs">'md'</td>
-                    <td className="p-3 text-gray-700 dark:text-gray-300">
-                      Border radius style
                     </td>
                   </tr>
                   <tr>
@@ -523,7 +511,6 @@ export default function Page() {
                     {`<Button
   variant="solid"
   size="lg"
-  rounded="pill"
   isLoading={false}
   disabled={false}
   onClick={() => console.log('clicked')}

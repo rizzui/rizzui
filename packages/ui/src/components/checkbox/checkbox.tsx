@@ -12,8 +12,8 @@ const checkbox = tv({
   variants: {
     variant: {
       outline:
-        'bg-transparent border-border ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
-      flat: 'border-0 bg-muted/70 backdrop-blur hover:enabled:bg-muted focus:ring-muted checked:!bg-primary',
+        'bg-transparent border-border ring-[0.6px] ring-border focus:ring-border checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
+      flat: 'border-0 bg-muted/70 backdrop-blur hover:enabled:bg-muted focus:ring-border checked:!bg-primary',
     },
     size: {
       sm: 'h-5 w-5',
@@ -69,39 +69,21 @@ type CheckboxVariant = VariantProps<typeof checkbox>;
 
 export interface CheckboxProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  /** The variants of the component are: */
   variant?: CheckboxVariant['variant'];
-  /** The size of the component. `"sm"` is equivalent to the dense input styling. */
   size?: CheckboxVariant['size'];
-  /** Set font weight for label */
   labelWeight?: keyof typeof labelStyles.weight;
-  /** The rounded variants are: */
-  rounded?: CheckboxVariant['rounded'];
-  /** Available directions of the label are: */
   labelPlacement?: 'left' | 'right';
-  /** Whether the input is disabled */
   disabled?: boolean;
-  /** Set field label */
   label?: React.ReactNode;
-  /** Show error message using this prop */
   error?: string;
-  /** Add helper text. It could be string or a React component */
   helperText?: React.ReactNode;
-  /** Use iconClassName prop to apply some additional style for check mark icon */
   iconClassName?: string;
-  /** Use labelClassName prop to apply some addition style for the field label */
   labelClassName?: string;
-  /** Add custom classes for the input filed extra style */
   inputClassName?: string;
-  /** This prop allows you to customize the error message style */
   errorClassName?: string;
-  /** This prop allows you to customize the helper message style */
   helperClassName?: string;
-  /** Add custom classes to the root of the component */
   className?: string;
-  /** This prop is used to determine whether the checkbox is in an indeterminate state */
   indeterminate?: boolean;
-  /** Ref for the input element */
   ref?: React.Ref<HTMLInputElement>;
 }
 
@@ -152,7 +134,7 @@ export function Checkbox({
           {indeterminate && (
             <span
               className={cn(
-                'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden bg-black peer-checked:hidden rounded-[var(--border-radius)]'
+                'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden rounded-[var(--border-radius)] bg-black peer-checked:hidden'
               )}
             >
               <span className={indeterminateIcon({ size })} />
@@ -162,7 +144,7 @@ export function Checkbox({
           <CheckmarkIcon
             className={cn(
               makeClassName(`checkbox-icon`),
-              'peer-checked:opacity-100 absolute opacity-0 top-0 left-0 text-primary-foreground',
+              'text-primary-foreground absolute top-0 left-0 opacity-0 peer-checked:opacity-100',
               checkbox({ size }),
               size === 'sm' && 'top-0',
               iconClassName

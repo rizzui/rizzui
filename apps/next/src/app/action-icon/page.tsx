@@ -187,62 +187,10 @@ export default function ActionIconPage() {
             <ActionIcon size="lg">
               <PlusIcon className="w-6 h-6" />
             </ActionIcon>
-            <ActionIcon size="xl">
-              <PlusIcon className="w-7 h-7" />
-            </ActionIcon>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
-            Sizes: SM (32px), MD (40px), LG (48px), XL (56px)
+            Sizes: SM (32px), MD (40px), LG (48px)
           </p>
-        </section>
-
-        {/* Rounded Section */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-            Rounded Variants
-          </h2>
-          <div className="flex flex-wrap gap-4">
-            <div className="text-center">
-              <ActionIcon rounded="none">
-                <StarIcon className="w-5 h-5" />
-              </ActionIcon>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                None
-              </p>
-            </div>
-            <div className="text-center">
-              <ActionIcon rounded="sm">
-                <StarIcon className="w-5 h-5" />
-              </ActionIcon>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                Small
-              </p>
-            </div>
-            <div className="text-center">
-              <ActionIcon rounded="md">
-                <StarIcon className="w-5 h-5" />
-              </ActionIcon>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                Medium
-              </p>
-            </div>
-            <div className="text-center">
-              <ActionIcon rounded="lg">
-                <StarIcon className="w-5 h-5" />
-              </ActionIcon>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                Large
-              </p>
-            </div>
-            <div className="text-center">
-              <ActionIcon rounded="full">
-                <StarIcon className="w-5 h-5" />
-              </ActionIcon>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                Full
-              </p>
-            </div>
-          </div>
         </section>
 
         {/* States Section */}
@@ -409,34 +357,6 @@ export default function ActionIconPage() {
                     </ActionIcon>
                   </td>
                 </tr>
-                <tr className="border-t border-gray-200 dark:border-gray-700">
-                  <td className="p-4 text-gray-700 dark:text-gray-300">XL</td>
-                  <td className="p-4 text-center">
-                    <ActionIcon size="xl" variant="solid">
-                      <PlusIcon className="w-7 h-7" />
-                    </ActionIcon>
-                  </td>
-                  <td className="p-4 text-center">
-                    <ActionIcon size="xl" variant="outline">
-                      <PlusIcon className="w-7 h-7" />
-                    </ActionIcon>
-                  </td>
-                  <td className="p-4 text-center">
-                    <ActionIcon size="xl" variant="flat">
-                      <PlusIcon className="w-7 h-7" />
-                    </ActionIcon>
-                  </td>
-                  <td className="p-4 text-center">
-                    <ActionIcon size="xl" variant="text">
-                      <PlusIcon className="w-7 h-7" />
-                    </ActionIcon>
-                  </td>
-                  <td className="p-4 text-center">
-                    <ActionIcon size="xl" variant="danger">
-                      <XIcon className="w-7 h-7" />
-                    </ActionIcon>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -484,23 +404,11 @@ export default function ActionIconPage() {
                       size
                     </td>
                     <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
-                      'sm' | 'md' | 'lg' | 'xl'
+                      'sm' | 'md' | 'lg'
                     </td>
                     <td className="p-3 font-mono text-xs">'md'</td>
                     <td className="p-3 text-gray-700 dark:text-gray-300">
                       The size of the icon button
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-blue-600 dark:text-blue-400">
-                      rounded
-                    </td>
-                    <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
-                      'none' | 'sm' | 'md' | 'lg' | 'full'
-                    </td>
-                    <td className="p-3 font-mono text-xs">'md'</td>
-                    <td className="p-3 text-gray-700 dark:text-gray-300">
-                      Border radius style
                     </td>
                   </tr>
                   <tr>
@@ -606,7 +514,6 @@ import { PlusIcon } from '@heroicons/react/24/outline';
                     {`<ActionIcon
   variant="solid"
   size="lg"
-  rounded="full"
   isLoading={false}
   disabled={false}
   onClick={() => console.log('clicked')}
@@ -623,7 +530,6 @@ import { PlusIcon } from '@heroicons/react/24/outline';
                   <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-xs">
                     {`<ActionIcon 
   variant="danger" 
-  rounded="full"
   onClick={handleDelete}
 >
   <XIcon className="w-5 h-5" />
@@ -651,4 +557,3 @@ import { ActionIcon } from 'rizzui';`}
     </div>
   );
 }
-

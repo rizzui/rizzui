@@ -204,46 +204,6 @@ export default function BadgePage() {
             <Badge size="sm">Small</Badge>
             <Badge size="md">Medium</Badge>
             <Badge size="lg">Large</Badge>
-            <Badge size="xl">Extra Large</Badge>
-          </div>
-        </section>
-
-        {/* Rounded Section */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-            Rounded Variants
-          </h2>
-          <div className="flex flex-wrap gap-4">
-            <div className="text-center">
-              <Badge rounded="none">None</Badge>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                None
-              </p>
-            </div>
-            <div className="text-center">
-              <Badge rounded="sm">Small</Badge>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                Small
-              </p>
-            </div>
-            <div className="text-center">
-              <Badge rounded="md">Medium</Badge>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                Medium
-              </p>
-            </div>
-            <div className="text-center">
-              <Badge rounded="lg">Large</Badge>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                Large
-              </p>
-            </div>
-            <div className="text-center">
-              <Badge rounded="pill">Pill</Badge>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
-                Pill (Default)
-              </p>
-            </div>
           </div>
         </section>
 
@@ -279,12 +239,6 @@ export default function BadgePage() {
                   <Badge renderAsDot size="lg" color="success" />
                   <span className="text-sm text-gray-700 dark:text-gray-300">
                     Large
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Badge renderAsDot size="xl" color="success" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    Extra Large
                   </span>
                 </div>
               </div>
@@ -581,23 +535,11 @@ export default function BadgePage() {
                       size
                     </td>
                     <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
-                      'sm' | 'md' | 'lg' | 'xl'
+                      'sm' | 'md' | 'lg'
                     </td>
                     <td className="p-3 font-mono text-xs">'md'</td>
                     <td className="p-3 text-gray-700 dark:text-gray-300">
                       The size of the badge
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="p-3 font-mono text-xs text-blue-600 dark:text-blue-400">
-                      rounded
-                    </td>
-                    <td className="p-3 font-mono text-xs text-gray-600 dark:text-gray-400">
-                      'none' | 'sm' | 'md' | 'lg' | 'pill'
-                    </td>
-                    <td className="p-3 font-mono text-xs">'pill'</td>
-                    <td className="p-3 text-gray-700 dark:text-gray-300">
-                      Border radius style
                     </td>
                   </tr>
                   <tr>

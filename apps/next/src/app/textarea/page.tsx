@@ -24,7 +24,6 @@ export default function TextareaPage() {
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">Variants</h2>
           <div className="space-y-4">
             <Textarea variant="outline" label="Outline" placeholder="Outline variant..." rows={3} />
-            <Textarea variant="flat" label="Flat" placeholder="Flat variant..." rows={3} />
             <Textarea variant="text" label="Text" placeholder="Text variant..." rows={3} />
           </div>
         </section>
@@ -35,7 +34,6 @@ export default function TextareaPage() {
             <Textarea size="sm" label="Small" placeholder="Small textarea..." rows={2} />
             <Textarea size="md" label="Medium" placeholder="Medium textarea..." rows={3} />
             <Textarea size="lg" label="Large" placeholder="Large textarea..." rows={4} />
-            <Textarea size="xl" label="Extra Large" placeholder="XL textarea..." rows={5} />
           </div>
         </section>
 

@@ -46,8 +46,6 @@ type HighlightedTextVariant = VariantProps<typeof announcementHighlight>;
 export interface AnnouncementProps {
   /** Size of the component */
   size?: AnnouncementVariant['size'];
-  /** The rounded variants are: */
-  rounded?: AnnouncementVariant['rounded'];
   /** Choose color variations */
   color?: HighlightedTextVariant['color'];
   /** Background color of the component */
@@ -104,7 +102,10 @@ export const Announcement = ({
       <span
         className={announcementHighlight({
           color,
-          className: cn(makeClassName(`announcement-highlighted-text`), highlightedTextClassName),
+          className: cn(
+            makeClassName(`announcement-highlighted-text`),
+            highlightedTextClassName
+          ),
         })}
       >
         {highlightedText}

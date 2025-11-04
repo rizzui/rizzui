@@ -62,27 +62,15 @@ const progressLabel = tv({
 type ProgressBarVariant = VariantProps<typeof progressBar>;
 
 export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Percentage of filled bar */
   value?: number;
-  /** Pass label to show percentage inside bar */
   label?: string;
-  /** Size of the components are: */
   size?: ProgressBarVariant['size'];
-  /** The rounded variants are: */
-  rounded?: ProgressBarVariant['rounded'];
-  /** Pass color variations */
   color?: ProgressBarVariant['color'];
-  /** The variants of the components are: */
   variant?: ProgressBarVariant['variant'];
-  /** Defines the label position of progressbar component */
   labelPosition?: 'insideBar' | 'inlineLeft' | 'inlineRight';
-  /** To style the root of the component */
   className?: string;
-  /** To style progressbar track of the component */
   trackClassName?: string;
-  /** To style bar of the component */
   barClassName?: string;
-  /** To style label */
   labelClassName?: string;
 }
 

@@ -7,9 +7,9 @@ const button = tv({
   variants: {
     variant: {
       solid:
-        'bg-primary hover:bg-primary-dark dark:hover:bg-primary/90 focus-visible:ring-muted text-primary-foreground border-[length:var(--border-width)] border-transparent dark:backdrop-blur',
+        'bg-primary hover:bg-primary-dark dark:hover:bg-primary/90 focus-visible:ring-border text-primary-foreground border-[length:var(--border-width)] border-transparent dark:backdrop-blur',
       outline:
-        'bg-transparent border-[length:var(--border-width)] border-border hover:border-primary focus-visible:ring-muted hover:text-primary dark:backdrop-blur',
+        'bg-transparent border-[length:var(--border-width)] border-border hover:border-primary focus-visible:ring-border hover:text-primary dark:backdrop-blur',
       flat: 'bg-muted hover:bg-primary-lighter focus-visible:ring-primary-lighter hover:text-primary-dark border-[length:var(--border-width)] border-transparent backdrop-blur',
       text: 'hover:text-primary focus-visible:ring-primary-lighter border-[length:var(--border-width)] border-transparent',
       danger:

@@ -42,7 +42,6 @@ export type AvatarProps = {
   initials?: string;
   size?: AvatarVariant['size'];
   customSize?: string | number;
-  rounded?: AvatarVariant['rounded'];
   color?: AvatarVariant['color'];
   onClick?: () => void;
   className?: string;

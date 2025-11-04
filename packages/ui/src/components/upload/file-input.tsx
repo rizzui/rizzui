@@ -16,13 +16,9 @@ const fileInput = tv({
   },
   variants: {
     variant: {
-      flat: {
-        container:
-          'focus-within:ring-2 focus-within::bg-transparent border-0 [&_input::placeholder]:opacity-80 bg-primary-lighter/70 focus-within::ring-primary/30 text-primary-dark',
-      },
       outline: {
         container:
-          'bg-transparent focus-within::ring-[0.8px] ring-[0.6px] ring-muted border-border [&_input::placeholder]:text-gray-500 hover:border-primary focus-within::border-primary focus-within::ring-primary',
+          'bg-transparent focus-within::ring-[0.8px] ring-border border-border [&_input::placeholder]:text-gray-500 hover:border-primary focus-within::border-primary focus-within::ring-primary',
       },
       text: {
         container:

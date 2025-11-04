@@ -43,12 +43,6 @@ export default function InputPage() {
             </div>
             <div>
               <h3 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-3">
-                Flat
-              </h3>
-              <Input variant="flat" placeholder="Flat variant" />
-            </div>
-            <div>
-              <h3 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-3">
                 Text
               </h3>
               <Input variant="text" placeholder="Text variant" />
@@ -65,7 +59,6 @@ export default function InputPage() {
             <Input size="sm" placeholder="Small (h-8)" />
             <Input size="md" placeholder="Medium (h-10)" />
             <Input size="lg" placeholder="Large (h-12)" />
-            <Input size="xl" placeholder="Extra Large (h-14)" />
           </div>
         </section>
 

@@ -9,7 +9,7 @@ export interface TableProps extends React.ComponentPropsWithRef<'table'> {
   variant?: TableVariantProps;
 }
 
-function Table({ 
+function TableRoot({ 
   className, 
   variant = 'modern',
   ref,
@@ -108,7 +108,7 @@ function TableCell({
   );
 }
 
-const TableWithComponents = Object.assign(Table, {
+export const Table = Object.assign(TableRoot, {
   Header: TableHeader,
   Body: TableBody,
   Footer: TableFooter,
@@ -116,7 +116,3 @@ const TableWithComponents = Object.assign(Table, {
   Head: TableHead,
   Cell: TableCell,
 });
-
-TableWithComponents.displayName = 'Table';
-
-export { TableWithComponents as Table };

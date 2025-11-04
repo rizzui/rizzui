@@ -23,7 +23,7 @@ const pinCode = tv({
     variant: {
       flat: 'focus:ring-[1.8px] border-0 placeholder:opacity-90 bg-muted/70 backdrop-blur focus:ring-primary focus:enabled:bg-transparent',
       outline:
-        'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-muted border-border placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
+        'bg-transparent focus:ring-[0.8px] ring-border border-border placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
     },
     size: {
       sm: 'px-1 py-1 text-sm h-8 w-8',
@@ -50,29 +50,16 @@ export interface PinCodeProps
     React.InputHTMLAttributes<HTMLInputElement>,
     'size' | 'type' | 'value'
   > {
-  /** Pass setState to get back the pin code value */
   setValue?: React.Dispatch<React.SetStateAction<string | number | undefined>>;
-  /** This Pin Code component only support these two types */
   type?: 'text' | 'number';
-  /** Mask and unmask to hide and show pin code */
   mask?: boolean;
-  /** Set pin code length */
   length?: number;
-  /** Make pin code horizontally center */
   center?: boolean;
-  /** Set placeholder text */
   placeholder?: string;
-  /** The size of the component. `"sm"` is equivalent to the dense input styling. */
   size?: PinCodeVariant['size'];
-  /** The rounded variants are: */
-  rounded?: PinCodeVariant['rounded'];
-  /** The variants of the component are: */
   variant?: PinCodeVariant['variant'];
-  /** Show error message using this prop */
   error?: string;
-  /** Add custom classes for the input filed extra style */
   inputClassName?: string;
-  /** This prop allows you to customize the error message style */
   errorClassName?: string;
 }
 
@@ -180,7 +167,7 @@ export function PinCode({
             className={pinCode({
               variant,
               size,
-              disabled: props.disabled,
+              disabled: disabled,
               error: !!error,
               className: cn(
                 mask &&

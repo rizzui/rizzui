@@ -29,12 +29,11 @@ import {
 } from './select.lib';
 
 const select = tv({
-  base: 'flex group items-center peer border-[length:var(--border-width)] hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-[var(--border-radius)]',
+  base: 'flex group items-center peer border-[length:var(--border-width)] hover:border-primary w-full transition duration-200 hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-[var(--border-radius)]',
   variants: {
     variant: {
       text: 'border-transparent ring-transparent bg-transparent',
-      flat: 'border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur',
-      outline: 'border-border ring-muted bg-transparent',
+      outline: 'border-border ring-border bg-transparent',
     },
     size: {
       sm: 'px-2 py-1 text-xs h-8',
@@ -100,19 +99,11 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   options: SelectOption[];
   /** Whether the select is disabled */
   disabled?: boolean;
-  /** Set field label */
   label?: React.ReactNode;
-  /** Set font weight for label */
   labelWeight?: keyof typeof labelStyles.weight;
-  /** Set select placeholder text */
   placeholder?: string;
-  /** The size of the component. `"sm"` is equivalent to the dense select styling. */
   size?: VariantProps<typeof select>['size'];
-  /** The rounded variants are: */
-  rounded?: VariantProps<typeof select>['rounded'];
-  /** The variants of the component are: */
   variant?: VariantProps<typeof select>['variant'];
-  /** The shadow variants of the component are: */
   shadow?: keyof typeof dropdownStyles.shadow;
   /** add clearable option */
   clearable?: boolean;

@@ -35,13 +35,6 @@ export default function CheckboxPage() {
                 <Checkbox variant="outline" label="Checked" defaultChecked />
               </div>
             </div>
-            <div>
-              <h3 className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-3">Flat</h3>
-              <div className="flex gap-4">
-                <Checkbox variant="flat" label="Flat variant" />
-                <Checkbox variant="flat" label="Checked" defaultChecked />
-              </div>
-            </div>
           </div>
         </section>
 
@@ -52,7 +45,6 @@ export default function CheckboxPage() {
             <Checkbox size="sm" label="Small" />
             <Checkbox size="md" label="Medium" />
             <Checkbox size="lg" label="Large" />
-            <Checkbox size="xl" label="Extra Large" />
           </div>
         </section>
 

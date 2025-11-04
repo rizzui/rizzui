@@ -7,9 +7,9 @@ const actionIcon = tv({
   variants: {
     variant: {
       solid:
-        'bg-primary-dark hover:bg-primary-dark dark:hover:bg-primary/90 focus-visible:ring-muted text-primary-foreground border-transparent dark:backdrop-blur',
+        'bg-primary-dark hover:bg-primary-dark dark:hover:bg-primary/90 focus-visible:ring-border text-primary-foreground border-transparent dark:backdrop-blur',
       outline:
-        'bg-transparent border-border hover:border-primary focus-visible:ring-muted hover:text-primary dark:backdrop-blur',
+        'bg-transparent border-border hover:border-primary focus-visible:ring-border hover:text-primary dark:backdrop-blur',
       flat: 'bg-muted hover:bg-primary-lighter focus-visible:ring-primary-lighter hover:text-primary-dark border-transparent backdrop-blur',
       text: 'hover:text-primary focus-visible:ring-primary-lighter border-transparent',
       danger:
@@ -30,7 +30,6 @@ const actionIcon = tv({
   defaultVariants: {
     variant: 'solid',
     size: 'md',
-    rounded: 'md',
   },
 });
 
@@ -41,7 +40,6 @@ const spinnerStyles = tv({
       sm: 'w-3.5',
       md: 'w-4',
       lg: 'w-5',
-      xl: 'w-6',
     },
   },
 });
@@ -53,23 +51,13 @@ export type ActionIconProps = Omit<
   Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'disabled'> &
   React.HTMLAttributes<HTMLSpanElement> & {
     as?: 'button' | 'span';
-    /** Set the original html type of button */
     type?: 'button' | 'submit' | 'reset';
-    /** Use SVG icon as a children */
     children: React.ReactNode;
-    /** Set the loading status of button */
     isLoading?: boolean;
-    /** Disabled state */
     disabled?: boolean;
-    /** Ref for the button element */
     ref?: React.Ref<HTMLButtonElement>;
   };
 
-/**
- * Primary action icon button to trigger an operation. Here is the API documentation of the ActionIcon component.
- * And the rest of the props are the same as the original html button.
- * You can use props like `id`, `title`, `onClick`, `onFocus`, `onBlur` etc.
- */
 export function ActionIcon({
   as = 'button',
   type = 'button',
@@ -82,27 +70,27 @@ export function ActionIcon({
   ref,
   ...actionIconProps
 }: ActionIconProps) {
-    const Component = as;
+  const Component = as;
 
-    return (
-      <Component
-        ref={ref}
-        disabled={disabled}
-        className={actionIcon({
-          variant,
-          size,
-          disabled,
-          isLoading,
-          className,
-        })}
-        {...(as && as !== 'span' && { type })}
-        {...actionIconProps}
-      >
-        {isLoading ? (
-          <SpinnerIcon className={spinnerStyles({ size })} />
-        ) : (
-          <>{children}</>
-        )}
-      </Component>
-    );
+  return (
+    <Component
+      ref={ref}
+      disabled={disabled}
+      className={actionIcon({
+        variant,
+        size,
+        disabled,
+        isLoading,
+        className,
+      })}
+      {...(as && as !== 'span' && { type })}
+      {...actionIconProps}
+    >
+      {isLoading ? (
+        <SpinnerIcon className={spinnerStyles({ size })} />
+      ) : (
+        <>{children}</>
+      )}
+    </Component>
+  );
 }

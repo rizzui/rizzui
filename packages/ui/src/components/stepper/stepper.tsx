@@ -69,6 +69,39 @@ export function Stepper({
   contentClassName,
   descriptionClassName,
 }: StepperProps) {
+  const childrenWithProps = React.Children.toArray(children).map((child, index) => {
+    if (!React.isValidElement(child)) {
+      return child;
+    }
+
+    const childProps = child.props as StepProps;
+    const { status, size = 'md' } = childProps;
+
+    return React.cloneElement(child as React.ReactElement<StepProps>, {
+      index,
+      dot,
+      status: status || calcStatus(currentIndex, index),
+      className: cn(
+        direction === 'horizontal' && containerClasses.line,
+        direction === 'vertical' && containerClasses.verticalLine.base,
+        direction === 'vertical' &&
+          (dot
+            ? containerClasses.verticalLine.left.dot[size]
+            : containerClasses.verticalLine.left.noDot[size])
+      ),
+      circleClassName: cn(
+        dot && direction === 'vertical' && 'mt-1.5',
+        dotClassName
+      ),
+      contentClassName: cn(
+        direction === 'vertical' && contentClasses.base,
+        contentClassName
+      ),
+      titleClassName,
+      descriptionClassName,
+    });
+  });
+
   return (
     <div
       className={cn(
@@ -78,37 +111,7 @@ export function Stepper({
         className
       )}
     >
-      {React.Children.map(children, (child, index) => {
-        if (!React.isValidElement<StepProps>(child)) {
-          return child;
-        }
-
-        const { status, size = 'md' } = child.props;
-
-        return React.cloneElement(child, {
-          index,
-          dot,
-          status: status || calcStatus(currentIndex, index),
-          className: cn(
-            direction === 'horizontal' && containerClasses.line,
-            direction === 'vertical' && containerClasses.verticalLine.base,
-            direction === 'vertical' &&
-              (dot
-                ? containerClasses.verticalLine.left.dot[size]
-                : containerClasses.verticalLine.left.noDot[size])
-          ),
-          circleClassName: cn(
-            dot && direction === 'vertical' && 'mt-1.5',
-            dotClassName
-          ),
-          contentClassName: cn(
-            direction === 'vertical' && contentClasses.base,
-            contentClassName
-          ),
-          titleClassName,
-          descriptionClassName,
-        });
-      })}
+      {childrenWithProps}
     </div>
   );
 }

@@ -8,12 +8,11 @@ import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const inputContainer = tv({
-  base: 'flex items-center peer w-full transition duration-200 border-[length:var(--border-width)] focus-within:ring-[0.8px] ring-[0.6px] hover:border-primary focus-within:border-primary focus-within:ring-primary [&_input::placeholder]:opacity-60 rounded-[var(--border-radius)]',
+  base: 'flex items-center peer w-full transition duration-200 border-[length:var(--border-width)] focus-within:ring-[0.8px] hover:border-primary focus-within:border-primary focus-within:ring-primary [&_input::placeholder]:opacity-60 rounded-[var(--border-radius)]',
   variants: {
     variant: {
       text: 'border-transparent ring-transparent bg-transparent',
-      flat: 'border-0 ring-muted/70 focus-within:ring-[1.8px] focus-within:bg-transparent bg-muted/70 backdrop-blur',
-      outline: 'border-border ring-muted bg-transparent',
+      outline: 'border-border ring-border bg-transparent',
     },
     size: {
       sm: 'px-2 py-1 text-xs h-8',

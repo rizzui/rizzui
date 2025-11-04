@@ -7,12 +7,11 @@ import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const radio = tv({
-  base: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted ring-[0.6px] focus:ring-muted focus:ring-offset-background text-primary dark:text-primary-foreground border-[length:var(--border-width)]',
+  base: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted ring-[0.6px] focus:ring-border focus:ring-offset-background text-primary dark:text-primary-foreground border-[length:var(--border-width)]',
   variants: {
     variant: {
       outline:
-        'bg-transparent border-border ring-muted checked:!bg-primary dark:checked:!bg-transparent checked:!border-primary hover:enabled:border-primary',
-      flat: 'border-0 bg-muted/70 backdrop-blur ring-muted/70 hover:enabled:bg-muted/90 dark:checked:!bg-transparent dark:checked:!ring-primary checked:!bg-primary',
+        'bg-transparent border-border ring-border checked:!bg-primary dark:checked:!bg-transparent checked:!border-primary hover:enabled:border-primary',
     },
     size: {
       sm: 'h-5 w-5',

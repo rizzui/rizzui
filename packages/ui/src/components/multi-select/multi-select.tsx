@@ -26,12 +26,11 @@ import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { CheckmarkIcon } from '../../icons/checkmark';
 
 const multiSelect = tv({
-  base: 'flex group items-center peer border-[length:var(--border-width)] hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-[var(--border-radius)]',
+  base: 'flex group items-center peer border-[length:var(--border-width)] hover:border-primary w-full transition duration-200 hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-[var(--border-radius)]',
   variants: {
     variant: {
       text: 'border-transparent ring-transparent bg-transparent',
-      flat: 'border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur',
-      outline: 'border-border ring-muted bg-transparent',
+      outline: 'border-border ring-border bg-transparent',
     },
     size: {
       sm: 'px-2 py-1 text-xs min-h-8',
@@ -86,7 +85,7 @@ const searchStyles = {
 };
 
 const checkboxStyles = {
-  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out size-5 rounded bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
+  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out size-5 rounded bg-transparent border border-border ring-border focus:ring-border checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
   icon: 'peer-checked:opacity-100 absolute opacity-0 text-primary-foreground size-4 start-0.5 top-0.5',
 };
 
@@ -136,11 +135,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   error?: string;
   /** Whether the select is in the portal */
   inPortal?: boolean;
-  /** The variant of the select */
   variant?: VariantProps<typeof multiSelect>['variant'];
-  /** The rounded of the select */
-  rounded?: VariantProps<typeof multiSelect>['rounded'];
-  /** The shadow of the select */
   shadow?: keyof typeof optionListStyles.shadow;
   /** The prefix of the select */
   prefix?: React.ReactNode;
@@ -401,7 +396,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                           <Fragment key={index}>
                             <span
                               className={cn(
-                                'item-center border-muted flex gap-1 overflow-hidden rounded-md border text-xs',
+                                'item-center border-border flex gap-1 overflow-hidden rounded-md border text-xs',
                                 selectedItemClassName
                               )}
                             >

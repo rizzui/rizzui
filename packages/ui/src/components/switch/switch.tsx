@@ -8,7 +8,7 @@ import { labelStyles } from '../../lib/label-size';
 
 const switchTV = tv({
   slots: {
-    container: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-muted ring-transparent ring-offset-background peer-checked/switch:bg-primary peer-checked/switch:border-primary rounded-full border-[length:var(--border-width)]',
+    container: 'flex items-center cursor-pointer transition duration-200 ease-in-out peer-focus/switch:ring-[1.5px] peer-focus/switch:ring-offset-2 peer-focus/switch:ring-border ring-transparent ring-offset-background peer-checked/switch:bg-primary peer-checked/switch:border-primary rounded-full border-[length:var(--border-width)]',
     knob: 'flex justify-center items-center transform ring-0 transition duration-200 ease-in-out translate-x-[2.5px] rtl:-translate-x-[2.5px] bg-primary rounded-full',
     input: 'peer/switch absolute -z-[1] opacity-0 [&:checked:enabled~span_.rizzui-switch-off-icon]:hidden [&:checked:enabled~span_.rizzui-switch-on-icon]:opacity-100 [&:checked:enabled~span>.rizzui-switch-knob]:bg-white [&:checked:enabled~span>.rizzui-switch-knob]:text-black [&:checked:enabled~span>.rizzui-switch-knob]:dark:bg-black [&:checked:enabled~span>.rizzui-switch-knob]:dark:text-white',
     icon: '',
@@ -21,7 +21,7 @@ const switchTV = tv({
         knob: 'bg-white text-foreground shadow-sm dark:text-primary-foreground',
       },
       outline: {
-        container: 'border-border ring-[0.6px] ring-muted group-hover/switch:border-primary',
+        container: 'border-border ring-[0.6px] ring-border group-hover/switch:border-primary',
         knob: 'bg-muted text-foreground',
       },
     },
@@ -88,41 +88,22 @@ const switchTV = tv({
 
 export interface SwitchProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  /** Set field label */
   label?: React.ReactNode;
-  /** Change label direction */
   labelPlacement?: VariantProps<typeof switchTV>['labelPlacement'];
-  /** Set font weight for label */
   labelWeight?: VariantProps<typeof switchTV>['labelWeight'];
-  /** The rounded variants are: */
-  rounded?: VariantProps<typeof switchTV>['rounded'];
-  /** The size of the component. */
   size?: VariantProps<typeof switchTV>['size'];
-  /** Whether the switch is disabled */
   disabled?: boolean;
-  /** The variants of the component are: */
   variant?: VariantProps<typeof switchTV>['variant'];
-  /** Set custom icon when the switch is on */
   onIcon?: React.ReactNode;
-  /** Set custom icon when the switch is off */
   offIcon?: React.ReactNode;
-  /** Add helper text. It could be string or a React component */
   helperText?: React.ReactNode;
-  /** Show error message using this prop */
   error?: string;
-  /** Add custom classes for switch label */
   labelClassName?: string;
-  /** Add custom classes of switch wrapper for extra style */
   switchClassName?: string;
-  /** Add custom classes of switch handler for extra style */
   switchKnobClassName?: string;
-  /** This prop allows you to customize the error message style */
   errorClassName?: string;
-  /** This prop allows you to customize the helper message style */
   helperClassName?: string;
-  /** Add custom classes to the root of the component */
   className?: string;
-  /** Ref for the input element */
   ref?: React.Ref<HTMLInputElement>;
 }
 

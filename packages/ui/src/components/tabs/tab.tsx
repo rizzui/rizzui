@@ -53,15 +53,7 @@ export function Tab({
         })}
         {...props}
       >
-        {React.Children.map(children as any, (child) => {
-          if (React.isValidElement(child) && child.type === TabList) {
-            return child;
-          }
-          if (React.isValidElement(child) && child.type === TabPanels) {
-            return child;
-          }
-          return null;
-        })}
+        {children}
       </TabGroup>
     </TabProvider>
   );
@@ -71,5 +63,3 @@ Tab.List = TabList;
 Tab.ListItem = TabListItem;
 Tab.Panels = TabPanels;
 Tab.Panel = TabPanel;
-
-Tab.displayName = 'Tab';
