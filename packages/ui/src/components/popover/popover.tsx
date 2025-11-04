@@ -1,9 +1,11 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { PopoverTrigger } from './popover-trigger';
 import { PopoverContent } from './popover-content';
 import { PopoverProvider, type PopoverProviderProps } from './popover-context';
 
-export type PopoverProps = {} & PopoverProviderProps;
+export type PopoverProps = PopoverProviderProps & {
+  children: ReactNode;
+};
 
 export function Popover({
   isOpen,
@@ -18,7 +20,7 @@ export function Popover({
   arrowClassName,
   overlayClassName,
   children,
-}: React.PropsWithChildren<PopoverProps>) {
+}: PopoverProps) {
   return (
     <PopoverProvider
       value={{

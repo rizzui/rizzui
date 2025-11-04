@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
@@ -78,31 +78,19 @@ export function isPlacementOnYAxis(placement: DrawerVariant['placement']) {
 export type DrawerSize = DrawerVariant['size'];
 
 export type DrawerProps = {
-  /** Whether the Drawer is open or not */
   isOpen: boolean;
-  /** Called when drawer is closed (Escape key and click outside, depending on options) */
   onClose(): void;
-  /** Drawer can be placed on left (default), top, right and bottom. Control drawer position with placement prop: */
   placement?: DrawerVariant['placement'];
-  /** Preset size of drawer is sm, md, lg, xl, full */
   size?: DrawerSize;
-  /** Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize="500px" or customSize="90%" */
   customSize?: number;
-  /** Enable resizer for Drawer. This will not work if any customSize is not provided */
   enableResizer?: boolean;
-  /** Override default CSS style of Drawer's overlay */
   overlayClassName?: string;
-  /** Set custom style classes for the Drawer container, where you can set custom Drawer size and padding and background color */
   containerClassName?: string;
-  /** Set custom style classes for the Drawer resizer */
   resizerClassName?: string;
-  /** Set custom style classes for the Drawer root element */
   className?: string;
+  children?: ReactNode;
 };
 
-/**
- * Display overlay area at any side of the screen
- */
 export function Drawer({
   isOpen,
   onClose,
@@ -115,17 +103,30 @@ export function Drawer({
   resizerClassName,
   className,
   children,
-}: React.PropsWithChildren<DrawerProps>) {
+}: DrawerProps) {
   const { handleMouseDown, containerRef, width } = useResizeHandler({
     placement,
   });
 
   const newWidth = width !== 0 ? width : customSize;
-  const { root, overlay: overlayClass, panel, resizer } = drawer({ placement, size });
+  const {
+    root,
+    overlay: overlayClass,
+    panel,
+    resizer,
+  } = drawer({ placement, size });
 
   return (
-    <Dialog as="aside" open={isOpen} onClose={onClose} className={root({ className })}>
-      <DialogBackdrop transition className={overlayClass({ className: overlayClassName })} />
+    <Dialog
+      as="aside"
+      open={isOpen}
+      onClose={onClose}
+      className={root({ className })}
+    >
+      <DialogBackdrop
+        transition
+        className={overlayClass({ className: overlayClassName })}
+      />
       <DialogPanel
         ref={containerRef}
         transition
@@ -147,9 +148,12 @@ export function Drawer({
         })}
       >
         {enableResizer && (
-          <div onMouseDown={handleMouseDown} className={resizer({ className: resizerClassName })} />
+          <div
+            onMouseDown={handleMouseDown}
+            className={resizer({ className: resizerClassName })}
+          />
         )}
-        <>{children}</>
+        {children}
       </DialogPanel>
     </Dialog>
   );

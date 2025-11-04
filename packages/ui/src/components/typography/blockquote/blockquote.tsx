@@ -3,7 +3,7 @@ import { tv } from 'tailwind-variants';
 import { makeClassName } from '../../../lib/make-class-name';
 
 const blockquote = tv({
-  base: 'border-l-4 border-border text-quote py-3 px-4',
+  base: 'border-l-4 border-border text-quote py-3 px-4 text-text-primary',
 });
 
 export type BlockquoteProps = {

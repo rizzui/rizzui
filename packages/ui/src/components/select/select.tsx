@@ -1,4 +1,10 @@
-import React, { useMemo } from 'react';
+import {
+  useMemo,
+  useState,
+  type ReactNode,
+  type MouseEvent,
+  type InputHTMLAttributes,
+} from 'react';
 import {
   Listbox,
   Label,
@@ -8,7 +14,7 @@ import {
 } from '@headlessui/react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { ExtractProps } from '../../lib/extract-props';
+import type { ExtractProps } from '../../lib/extract-props';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
@@ -18,7 +24,7 @@ import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { makeClassName } from '../../lib/make-class-name';
 import { SearchIcon } from '../../icons/search';
 import {
-  TheirPlacementType,
+  type TheirPlacementType,
   displayValueFn,
   getOptionDisplayValueFn,
   getOptionValueFn,
@@ -99,7 +105,7 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   options: SelectOption[];
   /** Whether the select is disabled */
   disabled?: boolean;
-  label?: React.ReactNode;
+  label?: ReactNode;
   labelWeight?: keyof typeof labelStyles.weight;
   placeholder?: string;
   size?: VariantProps<typeof select>['size'];
@@ -110,23 +116,23 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   /** Whether the select is focused by default or not */
   autoFocus?: boolean;
   /** clear event */
-  onClear?: (event: React.MouseEvent) => void;
+  onClear?: (event: MouseEvent) => void;
   /** Event of the searchable input when change */
   onSearchChange?: (value: string) => void;
   /** The prefix is design for adding any icon or text on the select field's start (it's a left icon for the `ltr` and right icon for the `rtl`) */
-  prefix?: React.ReactNode;
+  prefix?: ReactNode;
   /** The suffix is design for adding any icon or text on the select field's end (it's a right icon for the `ltr` and left icon for the `rtl`) */
-  suffix?: React.ReactNode;
+  suffix?: ReactNode;
   /** Whether the select is searchable or not */
   searchable?: boolean;
   /** The type of the search input */
   searchType?: 'text' | 'search';
   /** The props for the search input */
-  searchProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  searchProps?: InputHTMLAttributes<HTMLInputElement>;
   /** The prefix for the search input */
-  searchPrefix?: React.ReactNode;
+  searchPrefix?: ReactNode;
   /** The suffix for the search input */
-  searchSuffix?: React.ReactNode;
+  searchSuffix?: ReactNode;
   /** Whether the search input is disabled */
   searchDisabled?: boolean;
   /** Whether the search input is readonly */
@@ -146,7 +152,7 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   /** Show error message using this prop */
   error?: string;
   /** Add helper text. It could be string or a React component */
-  helperText?: React.ReactNode;
+  helperText?: ReactNode;
   /** Add custom classes for container */
   className?: string;
   /** Define the position of dropdown */
@@ -182,13 +188,13 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
    * @param value - The value of the selected item.
    * @returns React node to display for the selected item.
    */
-  displayValue?(value: ExtractProps<typeof Listbox>['value']): React.ReactNode;
+  displayValue?(value: ExtractProps<typeof Listbox>['value']): ReactNode;
   /**
    * Use this function when you want to display something other than the default displayValue.
    * @param option - The SelectOption for which to get the display value.
    * @returns React node to display for the specified option.
    */
-  getOptionDisplayValue?(option: SelectOption): React.ReactNode;
+  getOptionDisplayValue?(option: SelectOption): ReactNode;
   /**
    * Select whether the label or value should be returned in the onChange method.
    * @param option - The SelectOption for which to get the value.
@@ -251,12 +257,12 @@ export function Select<OptionType extends SelectOption>({
   ...props
 }: SelectProps<OptionType>) {
   const emptyValue = !isNumber(value) && isEmpty(value);
-  const [searchQuery, setSearchQuery] = React.useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  function handleOnClear(e: React.MouseEvent) {
+  function handleOnClear(e: MouseEvent) {
     e.stopPropagation();
-    setSearchQuery(() => '');
-    onClear && onClear(e);
+    setSearchQuery('');
+    onClear?.(e);
   }
 
   const filteredOptions = useMemo(
@@ -266,7 +272,9 @@ export function Select<OptionType extends SelectOption>({
         : options.filter((item) => {
             const value = item[searchByKey];
             if (!value) return false;
-            return String(value).toLowerCase().includes(searchQuery.toLowerCase());
+            return String(value)
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase());
           }),
     [searchQuery, options, disableDefaultFilter, searchByKey]
   );
@@ -291,7 +299,7 @@ export function Select<OptionType extends SelectOption>({
               labelClassName
             )}
           >
-            <>{label}</>
+            {label}
           </Label>
         )}
 
@@ -308,7 +316,7 @@ export function Select<OptionType extends SelectOption>({
             })}
             autoFocus={autoFocus}
           >
-            {prefix ? (
+            {prefix && (
               <span
                 className={cn(
                   makeClassName(`select-prefix`),
@@ -318,7 +326,7 @@ export function Select<OptionType extends SelectOption>({
               >
                 {prefix}
               </span>
-            ) : null}
+            )}
 
             <span
               className={cn(
@@ -330,26 +338,26 @@ export function Select<OptionType extends SelectOption>({
               {emptyValue ? placeholder : displayValue(value)}
             </span>
 
-            {clearable && !emptyValue ? (
+            {clearable && !emptyValue && (
               <FieldClearButton
-                as={'span'}
+                as="span"
                 size={size}
                 onClick={handleOnClear}
                 hasSuffix={Boolean(suffix)}
               />
-            ) : null}
+            )}
 
-            {suffix ? (
+            {suffix && (
               <span
                 className={cn(
                   makeClassName(`select-suffix`),
-                  'leading-normal whitespace-nowrap transition-transform duration-200 group-data-[open]:rotate-180',
+                  'leading-normal whitespace-nowrap transition-transform duration-200 group-data-open:rotate-180',
                   suffixClassName
                 )}
               >
                 {suffix}
               </span>
-            ) : null}
+            )}
           </ListboxButton>
 
           <ListboxOptions
@@ -379,7 +387,7 @@ export function Select<OptionType extends SelectOption>({
                   searchContainerClassName
                 )}
               >
-                {searchPrefix ? (
+                {searchPrefix && (
                   <span
                     className={cn(
                       makeClassName(`select-prefix`),
@@ -389,7 +397,7 @@ export function Select<OptionType extends SelectOption>({
                   >
                     {searchPrefix}
                   </span>
-                ) : null}
+                )}
                 <input
                   type={searchType}
                   spellCheck={false}
@@ -399,7 +407,7 @@ export function Select<OptionType extends SelectOption>({
                   placeholder={searchPlaceHolder}
                   onChange={(e) => {
                     setSearchQuery(e.target.value);
-                    onSearchChange && onSearchChange(e.target.value);
+                    onSearchChange?.(e.target.value);
                   }}
                   // prevent headless ui from handling these keys
                   onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
@@ -412,7 +420,7 @@ export function Select<OptionType extends SelectOption>({
                   {...searchProps}
                 />
 
-                {searchSuffix ? (
+                {searchSuffix && (
                   <span
                     className={cn(
                       makeClassName(`select-suffix`),
@@ -422,7 +430,7 @@ export function Select<OptionType extends SelectOption>({
                   >
                     {searchSuffix}
                   </span>
-                ) : null}
+                )}
               </div>
             )}
 
@@ -458,15 +466,15 @@ export function Select<OptionType extends SelectOption>({
         </div>
       </Listbox>
 
-      {!error && helperText ? (
+      {!error && helperText && (
         <FieldHelperText size={size} className={helperClassName}>
           {helperText}
         </FieldHelperText>
-      ) : null}
+      )}
 
-      {error ? (
+      {error && (
         <FieldError size={size} error={error} className={errorClassName} />
-      ) : null}
+      )}
     </div>
   );
 }

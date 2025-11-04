@@ -1,9 +1,33 @@
-import React, { useCallback } from 'react';
+import {
+  createContext,
+  useContext,
+  type ReactNode,
+  type HTMLAttributes,
+  type Dispatch,
+  type SetStateAction,
+  type ChangeEvent,
+} from 'react';
 
-export interface RadioGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+type RadioGroupContextType = {
   value: string;
-  setValue: React.Dispatch<React.SetStateAction<string>>;
-  children: React.ReactNode;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  isChecked: (value: string) => boolean;
+};
+
+const RadioGroupContext = createContext<RadioGroupContextType | null>(null);
+
+export function useRadioGroup() {
+  const context = useContext(RadioGroupContext);
+  if (!context) {
+    throw new Error('useRadioGroup must be used within a RadioGroup component');
+  }
+  return context;
+}
+
+export interface RadioGroupProps extends HTMLAttributes<HTMLDivElement> {
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
+  children: ReactNode;
 }
 
 export function RadioGroup({
@@ -12,21 +36,17 @@ export function RadioGroup({
   children,
   ...props
 }: RadioGroupProps) {
-  const handleChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value),
-    [setValue]
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+
+  const isChecked = (radioValue: string) => value === radioValue;
+
+  return (
+    <RadioGroupContext.Provider
+      value={{ value, onChange: handleChange, isChecked }}
+    >
+      <div {...props}>{children}</div>
+    </RadioGroupContext.Provider>
   );
-
-  const childrenWithProps = React.Children.toArray(children).map((child) => {
-    if (!React.isValidElement(child)) {
-      return child;
-    }
-    
-    return React.cloneElement(child as React.ReactElement<any>, {
-      onChange: handleChange,
-      checked: value === (child as any).props.value,
-    });
-  });
-
-  return <div {...props}>{childrenWithProps}</div>;
 }

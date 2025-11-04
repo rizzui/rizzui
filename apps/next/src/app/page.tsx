@@ -1,8 +1,8 @@
 'use client';
 
 // ✅ Import from specific path for tree-shaking (reduces from 168.4k to ~8k)
-import { Button } from 'rizzui/button';
-// import { Button } from '@/components/button';
+// import { Button } from 'rizzui/button';
+import { Button } from '@/components/button';
 import { useState } from 'react';
 import { ShowcaseNav } from '@/components/showcase-nav';
 import Link from 'next/link';

@@ -40,7 +40,7 @@ test('Renders alert component with warning', () => {
 
 test('Renders alert component with bar', () => {
   render(
-    <Alert bar color="danger">
+    <Alert color="danger">
       Bar
     </Alert>
   );

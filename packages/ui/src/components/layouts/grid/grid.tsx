@@ -1,4 +1,4 @@
-import React, { type ElementType } from 'react';
+import type { ElementType, Ref, ReactNode, ComponentPropsWithRef } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { GridCol } from './grid-col';
 
@@ -92,14 +92,47 @@ const gridVariants = tv({
   },
 });
 
-export type GridProps<T extends ElementType = 'div'> = VariantProps<typeof gridVariants> & {
+type ColumnsType = VariantProps<typeof gridVariants>['columns'];
+
+export type GridProps<T extends ElementType = 'div'> = {
   /* defines the component tag name to render */
   as?: T;
-  ref?: React.Ref<any>;
-  children?: React.ReactNode;
-} & Omit<React.ComponentPropsWithRef<T>, 'as' | 'ref' | 'className'> & {
-    className?: string;
-  };
+  ref?: Ref<any>;
+  children?: ReactNode;
+  gap?: VariantProps<typeof gridVariants>['gap'];
+  rows?: VariantProps<typeof gridVariants>['rows'];
+  align?: VariantProps<typeof gridVariants>['align'];
+  justify?: VariantProps<typeof gridVariants>['justify'];
+  columns?: ColumnsType;
+  /* responsive columns */
+  cols?: ColumnsType;
+  colsSm?: ColumnsType;
+  colsMd?: ColumnsType;
+  colsLg?: ColumnsType;
+  colsXl?: ColumnsType;
+  cols2xl?: ColumnsType;
+  placeItems?: VariantProps<typeof gridVariants>['placeItems'];
+  placeContent?: VariantProps<typeof gridVariants>['placeContent'];
+  className?: string;
+} & Omit<
+  ComponentPropsWithRef<T>,
+  | 'as'
+  | 'ref'
+  | 'className'
+  | 'gap'
+  | 'rows'
+  | 'align'
+  | 'justify'
+  | 'columns'
+  | 'cols'
+  | 'colsSm'
+  | 'colsMd'
+  | 'colsLg'
+  | 'colsXl'
+  | 'cols2xl'
+  | 'placeItems'
+  | 'placeContent'
+>;
 
 function GridBase<T extends ElementType = 'div'>({
   as,
@@ -109,6 +142,12 @@ function GridBase<T extends ElementType = 'div'>({
   align,
   justify,
   columns,
+  cols,
+  colsSm,
+  colsMd,
+  colsLg,
+  colsXl,
+  cols2xl,
   children,
   className,
   placeItems,
@@ -116,6 +155,18 @@ function GridBase<T extends ElementType = 'div'>({
   ...rest
 }: GridProps<T>) {
   const Component = (as || 'div') as ElementType;
+
+  // Build responsive column classes
+  const responsiveColsClasses = [
+    cols && `grid-cols-${cols}`,
+    colsSm && `sm:grid-cols-${colsSm}`,
+    colsMd && `md:grid-cols-${colsMd}`,
+    colsLg && `lg:grid-cols-${colsLg}`,
+    colsXl && `xl:grid-cols-${colsXl}`,
+    cols2xl && `2xl:grid-cols-${cols2xl}`,
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <Component
@@ -128,7 +179,7 @@ function GridBase<T extends ElementType = 'div'>({
         justify,
         placeContent,
         placeItems,
-        className,
+        className: [responsiveColsClasses, className].filter(Boolean).join(' '),
       })}
       {...rest}
     >

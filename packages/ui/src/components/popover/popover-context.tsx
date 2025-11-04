@@ -1,6 +1,16 @@
-import React, { createContext, useContext, useRef, useState } from 'react';
 import {
-  Placement,
+  createContext,
+  useContext,
+  useRef,
+  useState,
+  type CSSProperties,
+  type Dispatch,
+  type SetStateAction,
+  type RefObject,
+  type ReactNode,
+} from 'react';
+import {
+  type Placement,
   offset,
   flip,
   shift,
@@ -12,9 +22,9 @@ import {
   useRole,
   arrow,
   useTransitionStyles,
-  Strategy,
+  type Strategy,
 } from '@floating-ui/react';
-import { type Size, type Shadow } from './popover-content';
+import type { Size, Shadow } from './popover-content';
 
 const tooltipAnimation = {
   fadeIn: {
@@ -45,7 +55,7 @@ const tooltipAnimation = {
       transform: 'translateY(4px)',
     },
   },
-};
+} as const;
 
 type CommonTypes = {
   showArrow?: boolean;
@@ -58,24 +68,24 @@ type CommonTypes = {
 
 type PopoverContextProps = {
   open: boolean;
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen?: Dispatch<SetStateAction<boolean>>;
   isMounted: boolean;
-  styles: React.CSSProperties;
+  styles: CSSProperties;
   getReferenceProps: (userProps?: any) => Record<string, unknown>;
   getFloatingProps: (userProps?: any) => Record<string, unknown>;
   refs: any;
-  x: number;
-  y: number;
+  x: number | null;
+  y: number | null;
   strategy: Strategy;
-  arrowRef: React.RefObject<SVGSVGElement | null>;
+  arrowRef: RefObject<SVGSVGElement | null>;
   context: any;
 } & CommonTypes;
 
-const AccordionContext = createContext<PopoverContextProps | null>(null);
+const PopoverContext = createContext<PopoverContextProps | null>(null);
 
 export type PopoverProviderProps = {
   isOpen?: boolean;
-  setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen?: Dispatch<SetStateAction<boolean>>;
   placement?: Placement;
   animation?: keyof typeof tooltipAnimation;
   gap?: number;
@@ -84,9 +94,12 @@ export type PopoverProviderProps = {
 export function PopoverProvider({
   value,
   children,
-}: React.PropsWithChildren<{ value: PopoverProviderProps }>) {
+}: {
+  value: PopoverProviderProps;
+  children: ReactNode;
+}) {
   const { isOpen, setIsOpen, gap, animation, placement } = value;
-  const arrowRef = useRef(null);
+  const arrowRef = useRef<SVGSVGElement | null>(null);
   const [open, setOpen] = useState(false);
 
   const { x, y, refs, strategy, context } = useFloating({
@@ -110,14 +123,16 @@ export function PopoverProvider({
 
   const { isMounted, styles } = useTransitionStyles(
     context,
-    animation && {
-      duration: { open: 150, close: 150 },
-      ...tooltipAnimation[animation],
-    }
+    animation
+      ? {
+          duration: { open: 150, close: 150 },
+          ...tooltipAnimation[animation],
+        }
+      : undefined
   );
 
   return (
-    <AccordionContext.Provider
+    <PopoverContext.Provider
       value={{
         open: isOpen ?? open,
         setOpen: setIsOpen ?? setOpen,
@@ -135,14 +150,14 @@ export function PopoverProvider({
       }}
     >
       {children}
-    </AccordionContext.Provider>
+    </PopoverContext.Provider>
   );
 }
 
-export const usePopover = (): PopoverContextProps => {
-  const context = useContext(AccordionContext);
+export function usePopover(): PopoverContextProps {
+  const context = useContext(PopoverContext);
   if (!context) {
     throw new Error('usePopover must be used within a PopoverProvider');
   }
   return context;
-};
+}

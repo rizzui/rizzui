@@ -1,17 +1,18 @@
-import React, { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import { usePopover } from './popover-context';
 
 export function PopoverTrigger({
   children,
 }: {
-  children: ReactElement & { ref?: React.RefObject<any> };
+  children: ReactElement;
 }) {
   const { getReferenceProps, refs } = usePopover();
-  
-  const triggerElement = React.cloneElement(
-    children,
-    getReferenceProps({ ref: refs.setReference, ...(typeof children.props === 'object' ? children.props : {}) })
-  );
-  
-  return <>{triggerElement}</>;
+
+  const child = children as ReactElement<any>;
+  const triggerProps = getReferenceProps({
+    ref: refs.setReference,
+    ...child.props,
+  });
+
+  return <child.type {...triggerProps} />;
 }

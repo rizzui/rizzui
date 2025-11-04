@@ -1,4 +1,4 @@
-import React from 'react';
+import type { InputHTMLAttributes, ReactNode, Ref } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
@@ -25,14 +25,14 @@ const advancedRadio = tv({
 type AdvancedRadioVariant = VariantProps<typeof advancedRadio>;
 
 export interface AdvancedRadioProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  children: React.ReactNode;
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  children: ReactNode;
   size?: AdvancedRadioVariant['size'];
   alignment?: AdvancedRadioVariant['alignment'];
   inputClassName?: string;
   contentClassName?: string;
   className?: string;
-  ref?: React.Ref<HTMLInputElement>;
+  ref?: Ref<HTMLInputElement>;
 }
 
 /**
@@ -64,7 +64,7 @@ export function AdvancedRadio({
         ref={ref}
         className={cn(
           makeClassName(`advanced-radio-input`),
-          'peer absolute -z-[1] opacity-0',
+          'peer absolute -z-1 opacity-0',
           inputClassName
         )}
         {...props}

@@ -1,49 +1,36 @@
-import React from 'react';
+import type { HTMLAttributes } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { Text } from '../typography';
 import { makeClassName } from '../../lib/make-class-name';
 
-const progressBar = tv({
-  base: 'absolute top-0 bottom-0 left-0 h-full flex items-center justify-center rounded-full',
+const progressTrack = tv({
+  base: 'relative w-full bg-muted rounded-full overflow-hidden',
   variants: {
     size: {
       sm: 'h-1.5',
       md: 'h-2',
       lg: 'h-3',
     },
-    variant: {
-      solid: 'text-background',
-      flat: '',
-    },
-    color: {
-      primary: '',
-      secondary: '',
-      danger: '',
-      info: '',
-      success: '',
-      warning: '',
-    },
   },
-  compoundVariants: [
-    // Solid variants
-    { variant: 'solid', color: 'primary', class: 'bg-primary' },
-    { variant: 'solid', color: 'secondary', class: 'bg-secondary' },
-    { variant: 'solid', color: 'danger', class: 'bg-red' },
-    { variant: 'solid', color: 'info', class: 'bg-blue' },
-    { variant: 'solid', color: 'success', class: 'bg-green' },
-    { variant: 'solid', color: 'warning', class: 'bg-orange' },
-    // Flat variants
-    { variant: 'flat', color: 'primary', class: 'bg-primary/40 text-primary-dark' },
-    { variant: 'flat', color: 'secondary', class: 'bg-secondary/40 text-secondary-dark' },
-    { variant: 'flat', color: 'danger', class: 'bg-red/40 text-red-dark' },
-    { variant: 'flat', color: 'info', class: 'bg-blue/40 text-blue-dark' },
-    { variant: 'flat', color: 'success', class: 'bg-green/40 text-green-dark' },
-    { variant: 'flat', color: 'warning', class: 'bg-orange/40 text-orange-dark' },
-  ],
   defaultVariants: {
     size: 'md',
-    variant: 'solid',
+  },
+});
+
+const progressBar = tv({
+  base: 'absolute top-0 bottom-0 left-0 h-full flex items-center justify-center rounded-full',
+  variants: {
+    color: {
+      primary: 'bg-primary',
+      secondary: 'bg-secondary',
+      danger: 'bg-red',
+      info: 'bg-blue',
+      success: 'bg-green',
+      warning: 'bg-orange',
+    },
+  },
+  defaultVariants: {
     color: 'primary',
   },
 });
@@ -59,14 +46,14 @@ const progressLabel = tv({
   },
 });
 
+type ProgressTrackVariant = VariantProps<typeof progressTrack>;
 type ProgressBarVariant = VariantProps<typeof progressBar>;
 
-export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ProgressbarProps extends HTMLAttributes<HTMLDivElement> {
   value?: number;
   label?: string;
-  size?: ProgressBarVariant['size'];
+  size?: ProgressTrackVariant['size'];
   color?: ProgressBarVariant['color'];
-  variant?: ProgressBarVariant['variant'];
   labelPosition?: 'insideBar' | 'inlineLeft' | 'inlineRight';
   className?: string;
   trackClassName?: string;
@@ -75,11 +62,10 @@ export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function Progressbar({
-  value,
+  value = 0,
   label = '',
   size = 'md',
   color = 'primary',
-  variant = 'solid',
   labelPosition = 'inlineRight',
   className,
   barClassName,
@@ -88,41 +74,38 @@ export function Progressbar({
   ...props
 }: ProgressbarProps) {
   const isInsideBar = false;
+
   return (
     <div className={cn('flex w-full items-center gap-4', className)}>
       <div
         className={cn(
-          makeClassName(`progressbar-root`),
-          'relative w-full bg-muted rounded-full',
-          progressBar({ size }),
-          trackClassName
+          makeClassName(`progressbar-track`),
+          progressTrack({ size, className: trackClassName })
         )}
       >
         <div
-          role={'progressbar'}
+          role="progressbar"
           aria-valuemax={100}
           aria-valuemin={0}
           aria-valuenow={value}
           aria-label={label}
           className={progressBar({
-            size,
-            variant,
             color,
             className: barClassName,
           })}
           style={{ width: `${value}%` }}
           {...props}
         >
-          {isInsideBar ? (
+          {isInsideBar && (
             <ProgressbarLabel
               size={size}
               label={label}
               className={labelClassName}
             />
-          ) : null}
+          )}
         </div>
       </div>
-      {!isInsideBar ? (
+      {!isInsideBar && (
         <ProgressbarLabel
           size={size}
           label={label}
@@ -131,7 +114,7 @@ export function Progressbar({
             labelClassName
           )}
         />
-      ) : null}
+      )}
     </div>
   );
 }
@@ -141,7 +124,7 @@ function ProgressbarLabel({
   className,
   size = 'md',
 }: {
-  size: ProgressBarVariant['size'];
+  size: ProgressTrackVariant['size'];
   label: string;
   className?: string;
 }) {

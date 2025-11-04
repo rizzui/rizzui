@@ -10,7 +10,7 @@ const fontWeight = {
 } as const;
 
 const title = tv({
-  base: '',
+  base: 'text-text-primary',
   variants: {
     as: {
       h1: 'text-4xl',

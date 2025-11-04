@@ -1,4 +1,4 @@
-import React, { type ElementType } from 'react';
+import type { ElementType, Ref, ReactNode, ComponentPropsWithRef } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 
 const gridCol = tv({
@@ -129,7 +129,7 @@ const gridCol = tv({
 export type GridColumnProps<T extends ElementType = 'div'> = {
   /* defines the component tag name to render */
   as?: T;
-  ref?: React.Ref<any>;
+  ref?: Ref<any>;
   /* defines the gap between grid items */
   colStart?: VariantProps<typeof gridCol>['colStart'];
   /* defines the number of columns in the grid */
@@ -146,10 +146,22 @@ export type GridColumnProps<T extends ElementType = 'div'> = {
   rowEnd?: VariantProps<typeof gridCol>['rowEnd'];
   /* defines the alignment of the column */
   placeSelf?: VariantProps<typeof gridCol>['placeSelf'];
-  children?: React.ReactNode;
-} & Omit<React.ComponentPropsWithRef<T>, 'as' | 'ref' | 'className'> & {
-    className?: string;
-  };
+  children?: ReactNode;
+  className?: string;
+} & Omit<
+  ComponentPropsWithRef<T>,
+  | 'as'
+  | 'ref'
+  | 'className'
+  | 'colStart'
+  | 'colEnd'
+  | 'colSpan'
+  | 'order'
+  | 'rowSpan'
+  | 'rowStart'
+  | 'rowEnd'
+  | 'placeSelf'
+>;
 
 export function GridCol<T extends ElementType = 'div'>({
   as,

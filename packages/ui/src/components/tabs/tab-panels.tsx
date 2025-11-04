@@ -1,12 +1,10 @@
-import React from 'react';
 import {
   TabPanels as HeadlessTabPanels,
   type TabPanelsProps as HeadlessTabPanelsProps,
 } from '@headlessui/react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { ExtractProps } from '../../lib/extract-props';
-import { TabPanel } from './tab-panel';
+import type { ExtractProps } from '../../lib/extract-props';
 import { useTab } from './tab-context';
 import { makeClassName } from '../../lib/make-class-name';
 
@@ -23,7 +21,7 @@ const tabPanels = tv({
   },
 });
 
-export type TabPanelsProps = ExtractProps<HeadlessTabPanelsProps> & {};
+export type TabPanelsProps = ExtractProps<HeadlessTabPanelsProps>;
 
 export function TabPanels({ children, className, ...props }: TabPanelsProps) {
   const { vertical } = useTab();

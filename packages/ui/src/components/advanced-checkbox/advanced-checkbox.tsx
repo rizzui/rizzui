@@ -1,4 +1,4 @@
-import React from 'react';
+import type { InputHTMLAttributes, ReactNode, Ref } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
@@ -25,14 +25,14 @@ const advancedCheckbox = tv({
 type AdvancedCheckboxVariant = VariantProps<typeof advancedCheckbox>;
 
 export interface AdvancedCheckboxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  children: React.ReactNode;
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  children: ReactNode;
   size?: AdvancedCheckboxVariant['size'];
   alignment?: AdvancedCheckboxVariant['alignment'];
   inputClassName?: string;
   contentClassName?: string;
   className?: string;
-  ref?: React.Ref<HTMLInputElement>;
+  ref?: Ref<HTMLInputElement>;
 }
 
 export function AdvancedCheckbox({

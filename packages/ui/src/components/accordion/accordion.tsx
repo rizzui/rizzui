@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactNode, ElementType } from 'react';
 import { AccordionHeader } from './accordion-header';
 import { AccordionBody } from './accordion-body';
 import { AccordionProvider } from './accordion-context';
@@ -10,7 +10,7 @@ export type AccordionProps = {
   defaultOpen?: boolean;
   duration?: number;
   className?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 export function Accordion({
@@ -20,7 +20,7 @@ export function Accordion({
   className,
   children,
 }: AccordionProps) {
-  let Component = as;
+  const Component = (as || 'div') as ElementType;
 
   return (
     <AccordionProvider defaultOpen={defaultOpen} duration={duration}>

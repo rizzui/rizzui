@@ -12,7 +12,10 @@ export function Bold({
   ...props
 }: React.PropsWithChildren<BoldProps>) {
   return (
-    <b className={cn(makeClassName(`bold`), className)} {...props}>
+    <b
+      className={cn(makeClassName(`bold`), 'text-text-primary', className)}
+      {...props}
+    >
       {children}
     </b>
   );

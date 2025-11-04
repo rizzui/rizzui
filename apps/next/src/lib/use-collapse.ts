@@ -1,37 +1,12 @@
-import {
-  createContext,
-  useContext,
-  useRef,
-  useState,
-  type MutableRefObject,
-  type Dispatch,
-  type SetStateAction,
-  type ReactNode,
-} from 'react';
+/* eslint-disable no-unused-expressions */
+import { useState, useRef } from 'react';
 
-type AccordionContextProps = {
-  isOpen: boolean;
-  toggle: () => void;
-  targetEl: MutableRefObject<any>;
-  openTargetEl: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
-};
-
-const AccordionContext = createContext<AccordionContextProps | null>(null);
-
-type AccordionProviderProps = {
-  defaultOpen?: boolean;
-  duration?: number;
-  children: ReactNode;
-};
-
-export function AccordionProvider({
-  defaultOpen = false,
-  duration = 200,
-  children,
-}: AccordionProviderProps) {
+export function useCollapse(
+  duration: number = 200,
+  defaultOpen: boolean = false
+) {
   const targetEl = useRef<any>(null!);
-  const [isOpen, setIsOpen] = useState(defaultOpen);
+  const [open, setOpen] = useState(defaultOpen);
   const [openTargetEl, setOpenTargetEl] = useState(defaultOpen);
 
   function slideUp(target: any) {
@@ -46,8 +21,8 @@ export function AccordionProvider({
     target.style.paddingBottom = 0;
     target.style.marginTop = 0;
     target.style.marginBottom = 0;
-    setIsOpen(() => false);
     // set custom delay to animated
+    setOpen(() => false);
     window.setTimeout(() => {
       target.style.display = 'none';
       target.style.removeProperty('height');
@@ -83,8 +58,8 @@ export function AccordionProvider({
     target.style.removeProperty('padding-bottom');
     target.style.removeProperty('margin-top');
     target.style.removeProperty('margin-bottom');
-    setIsOpen(() => true);
     // set custom delay to animated
+    setOpen(() => true);
     window.setTimeout(() => {
       target.style.removeProperty('height');
       target.style.removeProperty('overflow');
@@ -103,25 +78,12 @@ export function AccordionProvider({
     }
   }
 
-  return (
-    <AccordionContext.Provider
-      value={{
-        isOpen,
-        setIsOpen,
-        targetEl,
-        openTargetEl,
-        toggle,
-      }}
-    >
-      {children}
-    </AccordionContext.Provider>
-  );
-}
-
-export function useAccordion(): AccordionContextProps {
-  const context = useContext(AccordionContext);
-  if (!context) {
-    throw new Error('useAccordion must be used within a AccordionProvider');
-  }
-  return context;
+  return {
+    open,
+    targetEl,
+    openTargetEl,
+    slideUp,
+    slideDown,
+    toggle,
+  };
 }

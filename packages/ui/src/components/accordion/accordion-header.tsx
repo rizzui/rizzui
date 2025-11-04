@@ -1,24 +1,21 @@
-import React from 'react';
+import type { ReactNode, Ref, ButtonHTMLAttributes } from 'react';
 import { useAccordion } from './accordion-context';
 import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 type AccordionHeaderProps = {
   className?: string;
-  children:
-    | React.ReactNode
-    | (({ open }: { open: boolean }) => React.ReactNode);
-  ref?: React.Ref<HTMLButtonElement>;
-} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
+  children: ReactNode | (({ open }: { open: boolean }) => ReactNode);
+  ref?: Ref<HTMLButtonElement>;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
 
-export function AccordionHeader({ 
-  children, 
-  className, 
+export function AccordionHeader({
+  children,
+  className,
   ref,
-  ...props 
+  ...props
 }: AccordionHeaderProps) {
   const { isOpen, toggle } = useAccordion();
-  const isChildrenFunction = typeof children === 'function';
 
   return (
     <button
@@ -31,7 +28,7 @@ export function AccordionHeader({
       )}
       {...props}
     >
-      {isChildrenFunction ? children({ open: isOpen }) : children}
+      {typeof children === 'function' ? children({ open: isOpen }) : children}
     </button>
   );
 }

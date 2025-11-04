@@ -1,4 +1,4 @@
-import React from 'react';
+import type { InputHTMLAttributes, ReactNode, Ref } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { CheckmarkIcon } from '../../icons/checkmark';
@@ -6,6 +6,7 @@ import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
+import { useCheckboxGroup } from '../checkbox-group/checkbox-group';
 
 const checkbox = tv({
   base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out rounded-[var(--border-radius)] border-[length:var(--border-width)]',
@@ -68,15 +69,15 @@ const indeterminateIcon = tv({
 type CheckboxVariant = VariantProps<typeof checkbox>;
 
 export interface CheckboxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   variant?: CheckboxVariant['variant'];
   size?: CheckboxVariant['size'];
   labelWeight?: keyof typeof labelStyles.weight;
   labelPlacement?: 'left' | 'right';
   disabled?: boolean;
-  label?: React.ReactNode;
+  label?: ReactNode;
   error?: string;
-  helperText?: React.ReactNode;
+  helperText?: ReactNode;
   iconClassName?: string;
   labelClassName?: string;
   inputClassName?: string;
@@ -84,7 +85,7 @@ export interface CheckboxProps
   helperClassName?: string;
   className?: string;
   indeterminate?: boolean;
-  ref?: React.Ref<HTMLInputElement>;
+  ref?: Ref<HTMLInputElement>;
 }
 
 export function Checkbox({
@@ -104,8 +105,26 @@ export function Checkbox({
   indeterminate,
   className,
   ref,
+  value,
+  checked,
+  onChange,
   ...checkboxProps
 }: CheckboxProps) {
+  // Try to get checkbox group context (optional)
+  let groupContext;
+  try {
+    groupContext = useCheckboxGroup();
+  } catch {
+    // Not in a checkbox group, use standalone mode
+    groupContext = null;
+  }
+
+  // Use group context if available, otherwise use individual props
+  const isChecked = groupContext
+    ? groupContext.isChecked(value as string)
+    : checked;
+  const handleChange = groupContext ? groupContext.onChange : onChange;
+
   return (
     <div
       className={cn(makeClassName(`checkbox-root`), 'flex flex-col', className)}
@@ -122,6 +141,9 @@ export function Checkbox({
             type="checkbox"
             ref={ref}
             disabled={disabled}
+            value={value}
+            checked={isChecked}
+            onChange={handleChange}
             className={checkbox({
               variant,
               size,

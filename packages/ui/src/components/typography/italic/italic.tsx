@@ -12,7 +12,10 @@ export function Italic({
   ...props
 }: React.PropsWithChildren<ItalicProps>) {
   return (
-    <i className={cn(makeClassName(`italic`), className)} {...props}>
+    <i
+      className={cn(makeClassName(`italic`), 'text-text-secondary', className)}
+      {...props}
+    >
       {children}
     </i>
   );

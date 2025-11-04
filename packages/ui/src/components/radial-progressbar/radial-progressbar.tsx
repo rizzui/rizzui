@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRef, useEffect } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 
 const radialProgress = tv({
@@ -21,27 +21,16 @@ const radialProgress = tv({
 type RadialProgressVariant = VariantProps<typeof radialProgress>;
 
 export type RadialProgressBarProps = {
-  /** percentage of filled bar */
   value?: number;
-  /** width and height of the component */
   size?: number;
-  /** color of progress track */
   trackColor?: string;
-  /** width of progress bar */
   progressbarWidth?: number;
-  /** color of progress bar */
   progressColor?: string;
-  /** gradient color of progress bar */
   gradientColor?: string;
-  /** gradient id of progress bar */
   gradientId?: string;
-  /** class name for progress bar */
   trackClassName?: string;
-  /** class name for progress bar */
   progressBarClassName?: string;
-  /** use parent responsive */
   useParentResponsive?: boolean;
-  /** start angle of the progress bar */
   startAngle?: RadialProgressVariant['startAngle'];
 };
 
@@ -64,8 +53,9 @@ export function RadialProgressBar({
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (value / 100) * circumference;
 
-  const progressBarRef = React.useRef<SVGCircleElement | null>(null);
-  React.useEffect(() => {
+  const progressBarRef = useRef<SVGCircleElement | null>(null);
+
+  useEffect(() => {
     const progressBarRefEl = progressBarRef.current;
     if (progressBarRefEl) {
       progressBarRefEl.style.transition = 'stroke-dashoffset 0.3s ease-in-out';
@@ -98,10 +88,10 @@ export function RadialProgressBar({
         cx={cx}
         cy={cy}
         r={radius}
-        fill={'transparent'}
+        fill="transparent"
         strokeWidth={progressbarWidth}
         stroke={trackColor}
-        {...(trackClassName && { className: trackClassName })}
+        className={trackClassName}
       />
 
       <circle
@@ -115,7 +105,7 @@ export function RadialProgressBar({
         strokeDasharray={`${circumference} ${circumference}`}
         strokeDashoffset={-offset}
         strokeLinecap="round"
-        {...(progressBarClassName && { className: progressBarClassName })}
+        className={progressBarClassName}
       />
     </svg>
   );

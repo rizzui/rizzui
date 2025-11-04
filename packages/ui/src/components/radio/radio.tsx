@@ -1,10 +1,11 @@
-import React from 'react';
+import type { InputHTMLAttributes, ReactNode, Ref } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
+import { useRadioGroup } from '../radio-group/radio-group';
 
 const radio = tv({
   base: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted focus:ring-border focus:ring-offset-background text-primary dark:text-primary-foreground border-[length:var(--border-width)]',
@@ -52,21 +53,21 @@ const radioLabel = tv({
 type RadioVariant = VariantProps<typeof radio>;
 
 export interface RadioProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
   variant?: RadioVariant['variant'];
   size?: RadioVariant['size'];
   labelPlacement?: 'left' | 'right';
   labelWeight?: keyof typeof labelStyles.weight;
   disabled?: boolean;
-  label?: React.ReactNode;
+  label?: ReactNode;
   error?: string;
-  helperText?: React.ReactNode;
+  helperText?: ReactNode;
   className?: string;
   labelClassName?: string;
   inputClassName?: string;
   errorClassName?: string;
   helperClassName?: string;
-  ref?: React.Ref<HTMLInputElement>;
+  ref?: Ref<HTMLInputElement>;
 }
 
 export function Radio({
@@ -84,8 +85,26 @@ export function Radio({
   errorClassName,
   helperClassName,
   ref,
+  value,
+  checked,
+  onChange,
   ...radioProps
 }: RadioProps) {
+  // Try to get radio group context (optional)
+  let groupContext;
+  try {
+    groupContext = useRadioGroup();
+  } catch {
+    // Not in a radio group, use standalone mode
+    groupContext = null;
+  }
+
+  // Use group context if available, otherwise use individual props
+  const isChecked = groupContext
+    ? groupContext.isChecked(value as string)
+    : checked;
+  const handleChange = groupContext ? groupContext.onChange : onChange;
+
   return (
     <div
       className={cn(makeClassName(`radio-root`), 'flex flex-col', className)}
@@ -101,6 +120,9 @@ export function Radio({
           type="radio"
           ref={ref}
           disabled={disabled}
+          value={value}
+          checked={isChecked}
+          onChange={handleChange}
           className={radio({
             variant,
             size,

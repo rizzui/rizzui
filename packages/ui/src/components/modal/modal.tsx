@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
@@ -15,9 +15,9 @@ const modal = tv({
   },
   variants: {
     size: {
-      sm: { panel: 'max-w-sm' },
-      md: { panel: 'max-w-lg' },
-      lg: { panel: 'max-w-2xl' },
+      sm: { panel: 'max-w-xl' },
+      md: { panel: 'max-w-2xl' },
+      lg: { panel: 'max-w-4xl' },
       full: { panel: 'max-w-full min-h-screen' },
     },
   },
@@ -39,11 +39,9 @@ export type ModalProps = {
   overlayClassName?: string;
   containerClassName?: string;
   className?: string;
+  children?: ReactNode;
 };
 
-/**
- * A fully-managed render-less Modal component. When requiring users to interact with the application, but without jumping to a new page and interrupting the user's workflow, you can use Modal to create a new floating layer over the current page to get user feedback or display information.
- */
 export function Modal({
   isOpen,
   onClose,
@@ -54,18 +52,18 @@ export function Modal({
   customSize,
   overlayClassName,
   containerClassName,
-}: React.PropsWithChildren<ModalProps>) {
+}: ModalProps) {
   const { root, area, overlay: overlayClass, panel } = modal({ size });
 
   return (
     <Dialog open={isOpen} onClose={onClose} className={root({ className })}>
       <div
-        className={cn(
-          area(),
-          size !== 'full' && [!noGutter && 'p-4 sm:p-5']
-        )}
+        className={cn(area(), size !== 'full' && [!noGutter && 'p-4 sm:p-5'])}
       >
-        <DialogBackdrop transition className={overlayClass({ className: overlayClassName })} />
+        <DialogBackdrop
+          transition
+          className={overlayClass({ className: overlayClassName })}
+        />
         <DialogPanel
           transition
           className={panel({ className: containerClassName })}
@@ -75,7 +73,7 @@ export function Modal({
             },
           })}
         >
-          <>{children}</>
+          {children}
         </DialogPanel>
       </div>
     </Dialog>

@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { TabGroup, type TabGroupProps } from '@headlessui/react';
 import { cn } from '../../lib/cn';
-import { ExtractProps } from '../../lib/extract-props';
+import type { ExtractProps } from '../../lib/extract-props';
 import { TabList } from './tab-list';
 import { TabListItem } from './tab-list-item';
 import { TabPanels } from './tab-panels';

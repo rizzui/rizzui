@@ -1,8 +1,9 @@
-import React from 'react';
+import { useId, type HTMLAttributes, type ReactNode } from 'react';
 import { cn } from '../../lib/cn';
 import { XIcon } from '../../icons/x-mark';
 import { CheckmarkIcon } from '../../icons/checkmark';
 import { makeClassName } from '../../lib/make-class-name';
+import { useStepper } from './stepper';
 
 const lineClasses = {
   base: 'rizzui-step-line absolute w-full group-last:hidden block h-px',
@@ -74,64 +75,97 @@ const dotClasses = {
 };
 
 export interface StepProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
-  /** Give a title for the step */
-  title: React.ReactNode;
-  /** Give a description for the step */
-  description?: React.ReactNode;
-  /** Pass custom icon */
-  icon?: React.ReactNode;
-  /** Index number for each component. Handled underneath by `Stepper` component */
+  extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+  title: ReactNode;
+  description?: ReactNode;
+  icon?: ReactNode;
   index?: number;
-  /** Status of each step */
   status?: 'waiting' | 'in-progress' | 'completed' | 'error';
-  /** The size of each Step */
   size?: keyof typeof circleClasses.size;
-  /** The variants of the component are: */
   variant?: keyof typeof circleClasses.variant;
-  /** Change Step Color */
   color?: keyof typeof lineClasses.color;
-  /** Whether to show dot. Handled from `Stepper` component */
   dot?: boolean;
-  /** Pass className to design the container */
   className?: string;
-  /** Pass circleClassName to design the rounded disc */
   circleClassName?: string;
-  /** Pass contentClassName to design the content area */
   contentClassName?: string;
-  /** Pass titleClassName to design the label or title */
   titleClassName?: string;
-  /** Pass descriptionClassName to design the description */
   descriptionClassName?: string;
 }
 
-const renderIconText = (
+function renderIconText(
   index: number,
   status: StepProps['status'],
   dot: StepProps['dot']
-) => {
+) {
   if (!dot && status === 'error') return <XIcon className="h-5 w-5" />;
   if (!dot && status === 'completed')
     return <CheckmarkIcon className="h-5 w-5" />;
   return index + 1;
-};
+}
 
 export function Step({
   title,
   description,
   icon,
-  index = 0,
-  status,
+  index: propsIndex,
+  status: propsStatus,
   size = 'md',
   variant = 'solid',
   color = 'primary',
-  dot,
-  className,
-  circleClassName,
-  contentClassName,
-  titleClassName,
-  descriptionClassName,
+  dot: propsDot,
+  className: propsClassName,
+  circleClassName: propsCircleClassName,
+  contentClassName: propsContentClassName,
+  titleClassName: propsTitleClassName,
+  descriptionClassName: propsDescriptionClassName,
 }: StepProps) {
+  const stepId = useId();
+
+  // Try to get stepper context (optional)
+  let stepperContext;
+  try {
+    stepperContext = useStepper();
+  } catch {
+    // Not in a stepper, use standalone mode
+    stepperContext = null;
+  }
+
+  // Use context values if available, otherwise use props
+  const index = stepperContext
+    ? stepperContext.registerStep(stepId)
+    : (propsIndex ?? 0);
+  const dot = stepperContext ? stepperContext.dot : propsDot;
+
+  // Calculate status
+  const calcStatus = (currentIndex: number, stepIndex: number) => {
+    if (stepIndex === currentIndex) return 'in-progress';
+    if (stepIndex < currentIndex) return 'completed';
+    return 'waiting';
+  };
+
+  const status =
+    propsStatus ||
+    (stepperContext
+      ? calcStatus(stepperContext.currentIndex, index)
+      : 'waiting');
+
+  // Get classNames from context or props
+  const className = stepperContext
+    ? cn(stepperContext.getStepClassName(size), propsClassName)
+    : propsClassName;
+
+  const circleClassName = stepperContext
+    ? cn(stepperContext.getCircleClassName(), propsCircleClassName)
+    : propsCircleClassName;
+
+  const contentClassName = stepperContext
+    ? cn(stepperContext.getContentClassName(), propsContentClassName)
+    : propsContentClassName;
+
+  const titleClassName = stepperContext?.titleClassName || propsTitleClassName;
+  const descriptionClassName =
+    stepperContext?.descriptionClassName || propsDescriptionClassName;
+
   return (
     <div
       className={cn(
@@ -171,7 +205,7 @@ export function Step({
       <div
         className={cn(
           makeClassName(`step-container`),
-          'ml-3 mt-0.5 flex flex-1 flex-col',
+          'mt-0.5 ml-3 flex flex-1 flex-col',
           contentClassName
         )}
       >
@@ -179,7 +213,7 @@ export function Step({
           <h2
             className={cn(
               makeClassName(`step-title`),
-              '!mb-0 mr-2 text-base font-medium rtl:ml-2',
+              'mr-2 mb-0! text-base font-medium rtl:ml-2',
               status === 'waiting' ? 'text-gray-500' : 'text-gray-900',
               titleClassName
             )}

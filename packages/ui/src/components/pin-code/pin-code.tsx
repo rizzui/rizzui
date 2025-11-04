@@ -1,4 +1,12 @@
-import React, { useRef } from 'react';
+import {
+  useRef,
+  type Dispatch,
+  type SetStateAction,
+  type InputHTMLAttributes,
+  type ChangeEvent,
+  type KeyboardEvent,
+  type ClipboardEvent,
+} from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { FieldError } from '../field-error-text';
@@ -47,10 +55,10 @@ type PinCodeVariant = VariantProps<typeof pinCode>;
 
 export interface PinCodeProps
   extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
+    InputHTMLAttributes<HTMLInputElement>,
     'size' | 'type' | 'value'
   > {
-  setValue?: React.Dispatch<React.SetStateAction<string | number | undefined>>;
+  setValue?: Dispatch<SetStateAction<string | number | undefined>>;
   type?: 'text' | 'number';
   mask?: boolean;
   length?: number;
@@ -90,20 +98,17 @@ export function PinCode({
   }
 
   function setPinValue() {
-    setValue && setValue(inputRefs.current.map((node) => node.value).join(''));
+    setValue?.(inputRefs.current.map((node) => node.value).join(''));
   }
 
-  function handleChange(
-    event: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>, index: number) {
     const inputValues = event.target.value.split('');
     inputRefs.current[index].value = inputValues[inputValues.length - 1];
     if (index < length - 1) inputRefs.current[index + 1].focus();
     setPinValue();
   }
 
-  function handleKeyDown(event: React.KeyboardEvent, index: number) {
+  function handleKeyDown(event: KeyboardEvent, index: number) {
     const currentValue = inputRefs.current[index].value;
 
     if (event.key === 'ArrowRight' && index < length - 1) {
@@ -126,20 +131,27 @@ export function PinCode({
     }
   }
 
-  function handlePaste(
-    event: React.ClipboardEvent<HTMLInputElement>,
-    index: number
-  ) {
-    const copiedValue = event.clipboardData.getData('text').split('');
-    for (let i = 0; i < length - index; i += 1) {
-      inputRefs.current[index + i].value = copiedValue[i] ?? '';
-      if (index + i === length - 1) {
-        inputRefs.current[index + i].focus();
-      } else {
-        inputRefs.current[index + i + 1].focus();
+  function handlePaste(event: ClipboardEvent<HTMLInputElement>, index: number) {
+    event.preventDefault();
+    const pastedData = event.clipboardData.getData('text');
+    const copiedValue = pastedData.replace(/\D/g, '').split(''); // Remove non-digits for number type
+
+    // Fill inputs starting from the current index
+    for (let i = 0; i < length - index && i < copiedValue.length; i += 1) {
+      if (inputRefs.current[index + i]) {
+        inputRefs.current[index + i].value = copiedValue[i] ?? '';
       }
     }
-    event.preventDefault();
+
+    // Focus the last filled input or the last input if all are filled
+    const lastFilledIndex = Math.min(
+      index + copiedValue.length - 1,
+      length - 1
+    );
+    if (inputRefs.current[lastFilledIndex]) {
+      inputRefs.current[lastFilledIndex].focus();
+    }
+
     setPinValue();
   }
 
@@ -153,13 +165,15 @@ export function PinCode({
             key={index}
             ref={addInputRefs(index)}
             type={type}
-            inputMode={type === 'text' ? type : 'numeric'}
+            inputMode={type === 'text' ? 'text' : 'numeric'}
+            pattern={type === 'number' ? '[0-9]*' : undefined}
+            maxLength={1}
             defaultValue={
               defaultValue ? defaultValue.toString().split('')[index] : ''
             }
             autoCapitalize="off"
             autoCorrect="off"
-            autoComplete="off"
+            autoComplete="one-time-code"
             placeholder={placeholder}
             onChange={(event) => handleChange(event, index)}
             onKeyDown={(event) => handleKeyDown(event, index)}
@@ -180,7 +194,7 @@ export function PinCode({
         ))}
       </div>
 
-      {error ? (
+      {error && (
         <FieldError
           size={size}
           error={error}
@@ -190,7 +204,7 @@ export function PinCode({
             errorClassName
           )}
         />
-      ) : null}
+      )}
     </div>
   );
 }

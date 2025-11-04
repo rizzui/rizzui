@@ -1,4 +1,9 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import {
+  useMemo,
+  useState,
+  type ReactNode,
+  type InputHTMLAttributes,
+} from 'react';
 import {
   Label,
   Listbox,
@@ -18,7 +23,7 @@ import {
 } from './multi-select.lib';
 import { FieldError } from '../field-error-text';
 import { labelStyles } from '../../lib/label-size';
-import { ExtractProps } from '../../lib/extract-props';
+import type { ExtractProps } from '../../lib/extract-props';
 import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
 import { FieldClearButton } from '../field-clear-button';
@@ -120,7 +125,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The size of the select */
   size?: VariantProps<typeof multiSelect>['size'];
   /** The label of the select */
-  label?: React.ReactNode;
+  label?: ReactNode;
   /** The weight of the label */
   labelWeight?: keyof typeof labelStyles.weight;
   /** The class name of the label */
@@ -138,9 +143,9 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   variant?: VariantProps<typeof multiSelect>['variant'];
   shadow?: keyof typeof optionListStyles.shadow;
   /** The prefix of the select */
-  prefix?: React.ReactNode;
+  prefix?: ReactNode;
   /** The suffix of the select */
-  suffix?: React.ReactNode;
+  suffix?: ReactNode;
   /** The class name of the prefix */
   prefixClassName?: string;
   /** The class name of the selected item */
@@ -156,7 +161,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The modal of the select */
   modal?: boolean;
   /** The helper text of the select */
-  helperText?: React.ReactNode;
+  helperText?: ReactNode;
   /** The class name of the dropdown */
   dropdownClassName?: string;
   /** The class name of the search */
@@ -170,9 +175,9 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The place holder of the search */
   searchPlaceHolder?: string;
   /** The search suffix */
-  searchSuffix?: React.ReactNode;
+  searchSuffix?: ReactNode;
   /** The search prefix */
-  searchPrefix?: React.ReactNode;
+  searchPrefix?: ReactNode;
   /** Whether the search is disabled */
   searchDisabled?: boolean;
   /** Whether the search is read only */
@@ -180,7 +185,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The type of the search */
   searchType?: 'text' | 'search';
   /** The props of the search */
-  searchProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  searchProps?: InputHTMLAttributes<HTMLInputElement>;
   /** Whether the select is searchable or not */
   searchable?: boolean;
   /** Options for select */
@@ -211,7 +216,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
     selectedItems: string[],
     options: MultiSelectOption[],
     handleClearItem?: (item: string) => void
-  ) => React.ReactNode;
+  ) => ReactNode;
   /**
    * Use this function when you want to display something other than the default option displayValue.
    * @param option - The MultiSelectOption for which to get the display value.
@@ -221,7 +226,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   getOptionDisplayValue?(
     option: MultiSelectOption,
     selected: boolean
-  ): React.ReactNode;
+  ): ReactNode;
 };
 
 export function MultiSelect<OptionType extends MultiSelectOption>({
@@ -324,12 +329,10 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
         disabled={disabled}
         value={selectedValue}
         defaultValue={selectedValue}
-        onChange={
-          ((values: string[]) => {
-            onChange?.(values);
-            setSelectedValue(values);
-          }) as any
-        }
+        onChange={(values: string[]) => {
+          onChange?.(values);
+          setSelectedValue(values);
+        }}
         {...props}
       >
         {label && (
@@ -343,7 +346,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               labelClassName
             )}
           >
-            <>{label}</>
+            {label}
           </Label>
         )}
 
@@ -360,7 +363,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
             })}
             autoFocus={autoFocus}
           >
-            {prefix ? (
+            {prefix && (
               <span
                 className={cn(
                   makeClassName(`multi-select-prefix`),
@@ -370,62 +373,57 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               >
                 {prefix}
               </span>
-            ) : null}
-            <>
-              {displayValue &&
-                displayValue(selectedItems, options, handleClearItem)}
+            )}
 
-              {!displayValue && (
-                <span
-                  className={cn(
-                    makeClassName(`multi-select-value`),
-                    'flex w-full flex-wrap items-center gap-2 truncate text-start',
-                    emptyValue && 'text-muted-foreground',
-                    selectContainerClassName
-                  )}
-                >
-                  {emptyValue ? (
-                    placeholder
-                  ) : (
-                    <Fragment>
-                      {value?.map((item, index) => {
-                        const mainItem = options.find(
-                          (op) => op[getOptionValueKey] === item
-                        );
-                        return (
-                          <Fragment key={index}>
-                            <span
-                              className={cn(
-                                'item-center border-border flex gap-1 overflow-hidden rounded-md border text-xs',
-                                selectedItemClassName
-                              )}
-                            >
-                              <span className="py-1 ps-2">
-                                {mainItem?.label}
-                              </span>
-                              <span
-                                className="hover:bg-muted px-1 py-1"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleClearItem(item);
-                                }}
-                              >
-                                <XIcon
-                                  strokeWidth="2"
-                                  className="size-4 cursor-pointer"
-                                />
-                              </span>
-                            </span>
-                          </Fragment>
-                        );
-                      })}
-                    </Fragment>
-                  )}
-                </span>
-              )}
-            </>
+            {displayValue ? (
+              displayValue(selectedItems, options, handleClearItem)
+            ) : (
+              <span
+                className={cn(
+                  makeClassName(`multi-select-value`),
+                  'flex w-full flex-wrap items-center gap-2 truncate text-start',
+                  emptyValue && 'text-muted-foreground',
+                  selectContainerClassName
+                )}
+              >
+                {emptyValue ? (
+                  placeholder
+                ) : (
+                  <>
+                    {value?.map((item, index) => {
+                      const mainItem = options.find(
+                        (op) => op[getOptionValueKey] === item
+                      );
+                      return (
+                        <span
+                          key={index}
+                          className={cn(
+                            'item-center border-border flex gap-1 overflow-hidden rounded-md border text-xs',
+                            selectedItemClassName
+                          )}
+                        >
+                          <span className="py-1 ps-2">{mainItem?.label}</span>
+                          <span
+                            className="hover:bg-muted px-1 py-1"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleClearItem(item);
+                            }}
+                          >
+                            <XIcon
+                              strokeWidth="2"
+                              className="size-4 cursor-pointer"
+                            />
+                          </span>
+                        </span>
+                      );
+                    })}
+                  </>
+                )}
+              </span>
+            )}
 
-            {clearable && !emptyValue && !disabled ? (
+            {clearable && !emptyValue && !disabled && (
               <FieldClearButton
                 as="span"
                 size={size}
@@ -435,19 +433,19 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                 }}
                 hasSuffix={Boolean(suffix)}
               />
-            ) : null}
+            )}
 
-            {suffix ? (
+            {suffix && (
               <span
                 className={cn(
                   makeClassName(`multi-select-suffix`),
-                  'leading-normal whitespace-nowrap transition-transform duration-200 group-data-[open]:rotate-180',
+                  'leading-normal whitespace-nowrap transition-transform duration-200 group-data-open:rotate-180',
                   suffixClassName
                 )}
               >
                 {suffix}
               </span>
-            ) : null}
+            )}
           </ListboxButton>
 
           <ListboxOptions
@@ -477,7 +475,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   searchContainerClassName
                 )}
               >
-                {searchPrefix ? (
+                {searchPrefix && (
                   <span
                     className={cn(
                       makeClassName(`multi-select-prefix`),
@@ -487,7 +485,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   >
                     {searchPrefix}
                   </span>
-                ) : null}
+                )}
                 <input
                   type={searchType}
                   spellCheck={false}
@@ -497,7 +495,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   placeholder={searchPlaceHolder}
                   onChange={(e) => {
                     setSearchQuery(e.target.value);
-                    onSearchChange && onSearchChange(e.target.value);
+                    onSearchChange?.(e.target.value);
                   }}
                   // prevent headless ui from handling these keys
                   onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
@@ -510,7 +508,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   {...searchProps}
                 />
 
-                {searchSuffix ? (
+                {searchSuffix && (
                   <span
                     className={cn(
                       makeClassName(`multi-select-suffix`),
@@ -520,7 +518,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   >
                     {searchSuffix}
                   </span>
-                ) : null}
+                )}
               </div>
             )}
 
@@ -540,51 +538,47 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                       'rounded-[calc(var(--border-radius)/2)]',
                       size && optionListStyles.item.size[size],
                       !op?.disabled && 'cursor-pointer',
-                      selected && hideSelectedOptions && '!hidden',
+                      selected && hideSelectedOptions && 'hidden!',
                       optionClassName
                     )
                   }
                 >
-                  {({ selected }) => {
-                    return (
-                      <Fragment>
-                        {getOptionDisplayValue ? (
-                          getOptionDisplayValue(op, selected)
-                        ) : (
-                          <Fragment>
-                            <div
-                              className={cn(
-                                'flex items-center gap-2',
-                                selected ? 'font-medium' : 'text-foreground',
-                                selectedOptionClassName
-                              )}
-                            >
-                              {optionCheckBox && (
-                                <span className="relative leading-none">
-                                  <input
-                                    type="checkbox"
-                                    readOnly={true}
-                                    checked={selected}
-                                    className={cn(
-                                      makeClassName(`checkbox-input`),
-                                      checkboxStyles.base
-                                    )}
-                                  />
-                                  <CheckmarkIcon
-                                    className={cn(
-                                      makeClassName(`checkbox-icon`),
-                                      checkboxStyles.icon
-                                    )}
-                                  />
-                                </span>
-                              )}
-                              {op.label}
-                            </div>
-                          </Fragment>
-                        )}
-                      </Fragment>
-                    );
-                  }}
+                  {({ selected }) => (
+                    <>
+                      {getOptionDisplayValue ? (
+                        getOptionDisplayValue(op, selected)
+                      ) : (
+                        <div
+                          className={cn(
+                            'flex items-center gap-2',
+                            selected ? 'font-medium' : 'text-foreground',
+                            selectedOptionClassName
+                          )}
+                        >
+                          {optionCheckBox && (
+                            <span className="relative leading-none">
+                              <input
+                                type="checkbox"
+                                readOnly={true}
+                                checked={selected}
+                                className={cn(
+                                  makeClassName(`checkbox-input`),
+                                  checkboxStyles.base
+                                )}
+                              />
+                              <CheckmarkIcon
+                                className={cn(
+                                  makeClassName(`checkbox-icon`),
+                                  checkboxStyles.icon
+                                )}
+                              />
+                            </span>
+                          )}
+                          {op.label}
+                        </div>
+                      )}
+                    </>
+                  )}
                 </ListboxOption>
               );
             })}
@@ -592,15 +586,15 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
         </div>
       </Listbox>
 
-      {!error && helperText ? (
+      {!error && helperText && (
         <FieldHelperText size={size} className={helperClassName}>
           {helperText}
         </FieldHelperText>
-      ) : null}
+      )}
 
-      {error ? (
+      {error && (
         <FieldError size={size} error={error} className={errorClassName} />
-      ) : null}
+      )}
     </div>
   );
 }

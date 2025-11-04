@@ -1,12 +1,11 @@
-import React from 'react';
+import type { ReactNode } from 'react';
 import {
   TabList as HeadlessTabList,
   type TabListProps as HeadlessTabListProps,
 } from '@headlessui/react';
 import { tv } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { ExtractProps } from '../../lib/extract-props';
-import { TabListItem } from './tab-list-item';
+import type { ExtractProps } from '../../lib/extract-props';
 import { Highlight } from '../highlight';
 import { useTab } from './tab-context';
 import { useRePositioningActiveTab } from './tab-lib';
@@ -27,7 +26,7 @@ const tabList = tv({
 });
 
 export type TabListProps = Omit<ExtractProps<HeadlessTabListProps>, 'children'> & {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export function TabList({ children, className, ...props }: TabListProps) {
@@ -55,9 +54,9 @@ export function TabList({ children, className, ...props }: TabListProps) {
       )}
       {...props}
     >
-      {children as any}
+      {children}
 
-      {!hideHoverAnimation ? (
+      {!hideHoverAnimation && (
         <Highlight
           rect={rect}
           visible={displayHighlight}
@@ -65,7 +64,7 @@ export function TabList({ children, className, ...props }: TabListProps) {
           hoverWidthRatio={1}
           className={highlightClassName}
         />
-      ) : null}
+      )}
     </HeadlessTabList>
   );
 }

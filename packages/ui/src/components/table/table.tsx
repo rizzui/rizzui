@@ -1,26 +1,22 @@
-import React from 'react';
-import { type VariantProps } from 'tailwind-variants';
+import type { ComponentPropsWithRef } from 'react';
+import type { VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { table } from '../../lib/table-style';
 import { makeClassName } from '../../lib/make-class-name';
 
 export type TableVariantProps = VariantProps<typeof table>['variant'];
-export interface TableProps extends React.ComponentPropsWithRef<'table'> {
+export interface TableProps extends ComponentPropsWithRef<'table'> {
   variant?: TableVariantProps;
 }
 
-function TableRoot({ 
-  className, 
+function TableRoot({
+  className,
   variant = 'modern',
   ref,
-  ...props 
+  ...props
 }: TableProps) {
   return (
-    <table
-      ref={ref}
-      className={table({ variant, className })}
-      {...props}
-    />
+    <table ref={ref} className={table({ variant, className })} {...props} />
   );
 }
 
@@ -28,7 +24,7 @@ function TableHeader({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithRef<'thead'>) {
+}: ComponentPropsWithRef<'thead'>) {
   return (
     <thead
       ref={ref}
@@ -42,7 +38,7 @@ function TableBody({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithRef<'tbody'>) {
+}: ComponentPropsWithRef<'tbody'>) {
   return (
     <tbody
       ref={ref}
@@ -56,7 +52,7 @@ function TableFooter({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithRef<'tfoot'>) {
+}: ComponentPropsWithRef<'tfoot'>) {
   return (
     <tfoot
       ref={ref}
@@ -66,11 +62,7 @@ function TableFooter({
   );
 }
 
-function TableRow({
-  className,
-  ref,
-  ...props
-}: React.ComponentPropsWithRef<'tr'>) {
+function TableRow({ className, ref, ...props }: ComponentPropsWithRef<'tr'>) {
   return (
     <tr
       ref={ref}
@@ -80,11 +72,7 @@ function TableRow({
   );
 }
 
-function TableHead({
-  className,
-  ref,
-  ...props
-}: React.ComponentPropsWithRef<'th'>) {
+function TableHead({ className, ref, ...props }: ComponentPropsWithRef<'th'>) {
   return (
     <th
       ref={ref}
@@ -94,11 +82,7 @@ function TableHead({
   );
 }
 
-function TableCell({
-  className,
-  ref,
-  ...props
-}: React.ComponentPropsWithRef<'td'>) {
+function TableCell({ className, ref, ...props }: ComponentPropsWithRef<'td'>) {
   return (
     <td
       ref={ref}

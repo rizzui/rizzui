@@ -1,6 +1,7 @@
 'use client';
 
 import { Dropdown } from 'rizzui/dropdown';
+// import { Dropdown } from '@/components/dropdown';
 import { Button } from 'rizzui/button';
 import { ShowcaseNav } from '@/components/showcase-nav';
 
@@ -11,18 +12,24 @@ export default function DropdownPage() {
         <ShowcaseNav currentPath="/dropdown" />
 
         <div className="text-center space-y-4">
-          <h1 className="text-5xl font-bold text-gray-900 dark:text-white">Dropdown Component</h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300">Dropdown menu for actions and navigation</p>
+          <h1 className="text-5xl font-bold text-gray-900 dark:text-white">
+            Dropdown Component
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            Dropdown menu for actions and navigation
+          </p>
           <div className="inline-block bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-4 py-2 rounded-lg text-sm">
             ✅ Tree-shakeable import • Bundle size: ~14KB
           </div>
         </div>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">Basic Dropdown</h2>
+          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
+            Basic Dropdown
+          </h2>
           <Dropdown>
             <Dropdown.Trigger>
-              <Button>Open Menu</Button>
+              <Button as="span">Open Menu</Button>
             </Dropdown.Trigger>
             <Dropdown.Menu>
               <Dropdown.Item>Profile</Dropdown.Item>
@@ -33,10 +40,14 @@ export default function DropdownPage() {
         </section>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">With Icons</h2>
+          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
+            With Icons
+          </h2>
           <Dropdown>
             <Dropdown.Trigger>
-              <Button variant="outline">Actions</Button>
+              <Button variant="outline" as="span">
+                Actions
+              </Button>
             </Dropdown.Trigger>
             <Dropdown.Menu>
               <Dropdown.Item>Edit</Dropdown.Item>
@@ -47,13 +58,15 @@ export default function DropdownPage() {
         </section>
 
         <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">Usage Example</h2>
+          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
+            Usage Example
+          </h2>
           <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-xs">
-{`import { Dropdown } from 'rizzui/dropdown';
+            {`import { Dropdown } from 'rizzui/dropdown';
 
 <Dropdown>
   <Dropdown.Trigger>
-    <Button>Menu</Button>
+    <Button as="span">Menu</Button>
   </Dropdown.Trigger>
   <Dropdown.Menu>
     <Dropdown.Item>Action 1</Dropdown.Item>
@@ -66,4 +79,3 @@ export default function DropdownPage() {
     </div>
   );
 }
-

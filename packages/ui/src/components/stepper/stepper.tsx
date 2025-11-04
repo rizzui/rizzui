@@ -1,5 +1,11 @@
-import React from 'react';
-import { Step, type StepProps } from './step';
+import {
+  createContext,
+  useContext,
+  useRef,
+  type ReactNode,
+  type HTMLAttributes,
+} from 'react';
+import { Step } from './step';
 import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
@@ -29,35 +35,43 @@ const contentClasses = {
     '[&>.rizzui-step-description]:-translate-x-6 rtl:[&>.rizzui-step-description]:translate-x-6 -ml-2 rtl:[&>.rizzui-step-title>h2]:mr-0',
 };
 
-export interface StepperProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Index of currently active step */
-  currentIndex?: number;
-  /** Direction of stepper */
-  direction?: 'horizontal' | 'vertical';
-  /** Whether to show dot */
-  dot?: boolean;
-  /** Pass Step Component as children */
-  children: React.ReactNode;
-  /** Pass dotClassName to design the rounded disc */
+type StepperContextType = {
+  currentIndex: number;
+  direction: 'horizontal' | 'vertical';
+  dot: boolean;
   dotClassName?: string;
-  /** Pass contentClassName to design the content area */
   contentClassName?: string;
-  /** Pass titleClassName to design the label or title */
   titleClassName?: string;
-  /** Pass descriptionClassName to design the description */
+  descriptionClassName?: string;
+  registerStep: (id: string) => number;
+  getStepClassName: (
+    size: keyof typeof containerClasses.verticalLine.left.noDot
+  ) => string;
+  getCircleClassName: () => string;
+  getContentClassName: () => string;
+};
+
+const StepperContext = createContext<StepperContextType | null>(null);
+
+export function useStepper() {
+  const context = useContext(StepperContext);
+  if (!context) {
+    throw new Error('useStepper must be used within a Stepper component');
+  }
+  return context;
+}
+
+export interface StepperProps extends HTMLAttributes<HTMLDivElement> {
+  currentIndex?: number;
+  direction?: 'horizontal' | 'vertical';
+  dot?: boolean;
+  children: ReactNode;
+  dotClassName?: string;
+  contentClassName?: string;
+  titleClassName?: string;
   descriptionClassName?: string;
 }
 
-const calcStatus = (activeIndex: number, currentIndex: number) => {
-  if (activeIndex === currentIndex) return 'in-progress';
-  if (currentIndex < activeIndex) return 'completed';
-  return 'waiting';
-};
-
-/**
- * Stepper tool is used to enlighten user regarding the progress of the task.
- * `Stepper` component displays the progress of the task in a sequence of numbered steps through `Step` component.
- */
 export function Stepper({
   currentIndex = 0,
   children,
@@ -69,50 +83,75 @@ export function Stepper({
   contentClassName,
   descriptionClassName,
 }: StepperProps) {
-  const childrenWithProps = React.Children.toArray(children).map((child, index) => {
-    if (!React.isValidElement(child)) {
-      return child;
+  const stepRegistryRef = useRef<Map<string, number>>(new Map());
+  const stepOrderRef = useRef<string[]>([]);
+
+  // Clear registry on each render
+  stepRegistryRef.current.clear();
+  stepOrderRef.current = [];
+
+  const registerStep = (id: string) => {
+    // Check if this step is already registered in this render
+    if (!stepRegistryRef.current.has(id)) {
+      const index = stepOrderRef.current.length;
+      stepOrderRef.current.push(id);
+      stepRegistryRef.current.set(id, index);
+      return index;
     }
+    return stepRegistryRef.current.get(id)!;
+  };
 
-    const childProps = child.props as StepProps;
-    const { status, size = 'md' } = childProps;
+  const getStepClassName = (
+    size: keyof typeof containerClasses.verticalLine.left.noDot
+  ) => {
+    return cn(
+      direction === 'horizontal' && containerClasses.line,
+      direction === 'vertical' && containerClasses.verticalLine.base,
+      direction === 'vertical' &&
+        (dot
+          ? containerClasses.verticalLine.left.dot[size]
+          : containerClasses.verticalLine.left.noDot[size])
+    );
+  };
 
-    return React.cloneElement(child as React.ReactElement<StepProps>, {
-      index,
-      dot,
-      status: status || calcStatus(currentIndex, index),
-      className: cn(
-        direction === 'horizontal' && containerClasses.line,
-        direction === 'vertical' && containerClasses.verticalLine.base,
-        direction === 'vertical' &&
-          (dot
-            ? containerClasses.verticalLine.left.dot[size]
-            : containerClasses.verticalLine.left.noDot[size])
-      ),
-      circleClassName: cn(
-        dot && direction === 'vertical' && 'mt-1.5',
-        dotClassName
-      ),
-      contentClassName: cn(
-        direction === 'vertical' && contentClasses.base,
-        contentClassName
-      ),
-      titleClassName,
-      descriptionClassName,
-    });
-  });
+  const getCircleClassName = () => {
+    return cn(dot && direction === 'vertical' && 'mt-1.5', dotClassName);
+  };
+
+  const getContentClassName = () => {
+    return cn(
+      direction === 'vertical' && contentClasses.base,
+      contentClassName
+    );
+  };
 
   return (
-    <div
-      className={cn(
-        makeClassName(`stepper-root`),
-        'flex justify-between space-x-4 rtl:space-x-0',
-        direction === 'vertical' && 'flex-col space-x-0',
-        className
-      )}
+    <StepperContext.Provider
+      value={{
+        currentIndex,
+        direction,
+        dot,
+        dotClassName,
+        contentClassName,
+        titleClassName,
+        descriptionClassName,
+        registerStep,
+        getStepClassName,
+        getCircleClassName,
+        getContentClassName,
+      }}
     >
-      {childrenWithProps}
-    </div>
+      <div
+        className={cn(
+          makeClassName(`stepper-root`),
+          'flex justify-between space-x-4 rtl:space-x-0',
+          direction === 'vertical' && 'flex-col space-x-0',
+          className
+        )}
+      >
+        {children}
+      </div>
+    </StepperContext.Provider>
   );
 }
 

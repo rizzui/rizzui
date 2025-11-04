@@ -1,12 +1,6 @@
-import React, {
-  cloneElement,
-  ReactElement,
-  RefObject,
-  useRef,
-  useState,
-} from 'react';
+import { useRef, useState, type ReactElement, type ReactNode } from 'react';
 import {
-  Placement,
+  type Placement,
   FloatingArrow,
   offset,
   flip,
@@ -50,12 +44,19 @@ const tooltip = tv({
     },
   },
   compoundVariants: [
-    { color: 'primary', class: 'text-primary-foreground bg-primary border-transparent' },
+    {
+      color: 'primary',
+      class: 'text-primary-foreground bg-primary border-transparent',
+    },
     {
       color: 'invert',
-      class: 'bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border-border',
+      class:
+        'bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border-border',
     },
-    { color: 'secondary', class: 'text-secondary-foreground bg-secondary border-transparent' },
+    {
+      color: 'secondary',
+      class: 'text-secondary-foreground bg-secondary border-transparent',
+    },
     { color: 'danger', class: 'text-white bg-red border-transparent' },
     { color: 'info', class: 'text-white bg-blue border-transparent' },
     { color: 'success', class: 'text-white bg-green border-transparent' },
@@ -115,14 +116,13 @@ const tooltipAnimation = {
       transform: 'translateY(4px)',
     },
   },
-};
+} as const;
 
 type TooltipVariant = VariantProps<typeof tooltip>;
-type TooltipArrowVariant = VariantProps<typeof tooltipArrow>;
 
 export type TooltipProps = {
-  children: ReactElement & { ref?: RefObject<any> };
-  content: React.ReactNode;
+  children: ReactElement;
+  content: ReactNode;
   color?: TooltipVariant['color'];
   size?: TooltipVariant['size'];
   shadow?: TooltipVariant['shadow'];
@@ -153,11 +153,11 @@ export function Tooltip({
   showArrow = true,
 }: TooltipProps) {
   const [open, setOpen] = useState(false);
-  const arrowRef = useRef(null);
+  const arrowRef = useRef<SVGSVGElement | null>(null);
 
   const { x, y, refs, strategy, context } = useFloating({
     placement,
-    open: open,
+    open,
     onOpenChange: setOpen,
     middleware: [
       arrow({ element: arrowRef }),
@@ -180,24 +180,25 @@ export function Tooltip({
     ...tooltipAnimation[animation],
   });
 
-  const triggerElement = React.cloneElement(
-    children,
-    getReferenceProps({
-      ref: refs.setReference,
-      ...(typeof children.props === 'object' ? children.props : {}),
-    })
-  );
+  const child = children as ReactElement<any>;
+  const triggerProps = getReferenceProps({
+    ref: refs.setReference,
+    ...child.props,
+  });
 
   return (
     <>
-      {triggerElement}
+      <child.type {...triggerProps} />
 
       {(isMounted || open) && (
         <FloatingPortal>
           <div
             role="tooltip"
             ref={refs.setFloating}
-            className={tooltip({ size, shadow, color, className })}
+            className={cn(
+              makeClassName('tooltip'),
+              tooltip({ size, shadow, color, className })
+            )}
             style={{
               position: strategy,
               top: y ?? 0,
