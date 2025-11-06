@@ -127,24 +127,15 @@ const gridCol = tv({
 });
 
 export type GridColumnProps<T extends ElementType = 'div'> = {
-  /* defines the component tag name to render */
   as?: T;
   ref?: Ref<any>;
-  /* defines the gap between grid items */
   colStart?: VariantProps<typeof gridCol>['colStart'];
-  /* defines the number of columns in the grid */
   colEnd?: VariantProps<typeof gridCol>['colEnd'];
-  /* defines the size of columns */
   colSpan?: VariantProps<typeof gridCol>['colSpan'];
-  /* defines the order of the column */
   order?: VariantProps<typeof gridCol>['order'];
-  /* defines the size of rows */
   rowSpan?: VariantProps<typeof gridCol>['rowSpan'];
-  /* defines the start of rows */
   rowStart?: VariantProps<typeof gridCol>['rowStart'];
-  /* defines the end of rows */
   rowEnd?: VariantProps<typeof gridCol>['rowEnd'];
-  /* defines the alignment of the column */
   placeSelf?: VariantProps<typeof gridCol>['placeSelf'];
   children?: ReactNode;
   className?: string;

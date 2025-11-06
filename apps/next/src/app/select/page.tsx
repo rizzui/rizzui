@@ -47,6 +47,7 @@ export default function SelectPage() {
             }))}
             value={category}
             onChange={(value) => setCategory(value as string)}
+            getOptionValue={(option) => option.value}
             placeholder="Choose category"
           />
           <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
@@ -67,12 +68,17 @@ export default function SelectPage() {
                 label: category,
                 value: category,
               }))}
+              getOptionValue={(option) => option.value}
               placeholder="Outline"
             />
             <Select
               label="Text"
               variant="text"
-              options={categories}
+              options={categories.map((category) => ({
+                label: category,
+                value: category,
+              }))}
+              getOptionValue={(option) => option.value}
               placeholder="Text"
             />
           </div>
@@ -110,60 +116,6 @@ export default function SelectPage() {
                 value: category,
               }))}
               placeholder="Large"
-            />
-          </div>
-        </section>
-
-        {/* Rounded */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
-            Rounded Variants
-          </h2>
-          <div className="space-y-4">
-            <Select
-              rounded="none"
-              label="None"
-              options={categories.map((category) => ({
-                label: category,
-                value: category,
-              }))}
-              placeholder="None"
-            />
-            <Select
-              rounded="sm"
-              label="Small"
-              options={categories.map((category) => ({
-                label: category,
-                value: category,
-              }))}
-              placeholder="Small"
-            />
-            <Select
-              rounded="md"
-              label="Medium"
-              options={categories.map((category) => ({
-                label: category,
-                value: category,
-              }))}
-              placeholder="Medium"
-            />
-            <Select
-              rounded="lg"
-              label="Large"
-              options={categories.map((category) => ({
-                label: category,
-                value: category,
-              }))}
-              placeholder="Large"
-            />
-            <Select
-              rounded="pill"
-              label="Pill"
-              options={categories.map((category) => ({
-                label: category,
-                value: category,
-              }))}
-              placeholder="Pill"
             />
           </div>
         </section>

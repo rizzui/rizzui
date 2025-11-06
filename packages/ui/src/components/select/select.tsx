@@ -1,6 +1,6 @@
 import {
-  useMemo,
   useState,
+  useCallback,
   type ReactNode,
   type MouseEvent,
   type InputHTMLAttributes,
@@ -30,9 +30,14 @@ import {
   getOptionValueFn,
   isEmpty,
   isNumber,
+} from './select.lib';
+import {
   ourPlacementObject,
   preventHeadlessUIKeyboardInterActions,
-} from './select.lib';
+  useFilteredOptions,
+  useInternalState,
+} from './select-shared.lib';
+import { optionListStyles, searchStyles } from './select-shared.styles';
 
 const select = tv({
   base: 'flex group items-center peer border-[length:var(--border-width)] hover:border-primary w-full transition duration-200 hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-[var(--border-radius)]',
@@ -69,30 +74,6 @@ const select = tv({
   },
 });
 
-const optionListStyles = {
-  base: `${dropdownStyles.base} overflow-auto w-[var(--button-width)] !outline-none !ring-0 m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg data-[open]:opacity-100 data-[leave]:data-[closed]:opacity-100`,
-  shadow: dropdownStyles.shadow,
-  item: {
-    size: {
-      sm: 'text-xs',
-      md: 'text-sm',
-      lg: 'text-base',
-    },
-  },
-  inPortal: '[--anchor-max-height:256px]',
-  notInPortal: 'absolute z-10 h-[256px] start-0 top-full mt-1.5',
-};
-
-const searchStyles = {
-  base: 'relative mb-2 block group [&.sticky]:mb-0',
-  inputBase: 'px-10 placeholder:text-muted-foreground',
-  prefix:
-    'absolute z-10 start-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
-  suffix:
-    'absolute z-10 end-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
-  stickySearch: 'sticky top-0 z-10 bg-background pt-2 -translate-y-2',
-};
-
 export type SelectOption = {
   value: string | number;
   label: string;
@@ -103,6 +84,8 @@ export type SelectOption = {
 export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   /** Options for select */
   options: SelectOption[];
+  /** The default value of the select (uncontrolled) */
+  defaultValue?: ExtractProps<typeof Listbox>['value'];
   /** Whether the select is disabled */
   disabled?: boolean;
   label?: ReactNode;
@@ -110,13 +93,12 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   placeholder?: string;
   size?: VariantProps<typeof select>['size'];
   variant?: VariantProps<typeof select>['variant'];
-  shadow?: keyof typeof dropdownStyles.shadow;
   /** add clearable option */
   clearable?: boolean;
   /** Whether the select is focused by default or not */
   autoFocus?: boolean;
   /** clear event */
-  onClear?: (event: MouseEvent) => void;
+  onClear?: (event?: MouseEvent) => void;
   /** Event of the searchable input when change */
   onSearchChange?: (value: string) => void;
   /** The prefix is design for adding any icon or text on the select field's start (it's a left icon for the `ltr` and right icon for the `rtl`) */
@@ -183,6 +165,8 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
   disableDefaultFilter?: boolean;
   /** Whether the search input is sticky or not */
   stickySearch?: boolean;
+  /** The key to get the value of the option (string approach, alternative to getOptionValue) */
+  getOptionValueKey?: string;
   /**
    * A function to determine the display value of the selected item.
    * @param value - The value of the selected item.
@@ -196,7 +180,7 @@ export type SelectProps<SelectOption> = ExtractProps<typeof Listbox> & {
    */
   getOptionDisplayValue?(option: SelectOption): ReactNode;
   /**
-   * Select whether the label or value should be returned in the onChange method.
+   * Select whether the label or value should be returned in the onChange method (function approach, alternative to getOptionValueKey).
    * @param option - The SelectOption for which to get the value.
    * @returns The selected value from the specified option.
    */
@@ -220,13 +204,15 @@ export function Select<OptionType extends SelectOption>({
   displayValue = displayValueFn,
   getOptionDisplayValue = getOptionDisplayValueFn,
   getOptionValue = getOptionValueFn,
+  getOptionValueKey,
   value,
+  defaultValue,
+  onChange,
   onClear,
   clearable,
   placement = 'bottom-start',
   gap = 6,
   size = 'md',
-  shadow = 'md',
   variant = 'outline',
   suffix = <ChevronDownIcon strokeWidth="2" className="size-4" />,
   searchable,
@@ -256,27 +242,51 @@ export function Select<OptionType extends SelectOption>({
   searchContainerClassName,
   ...props
 }: SelectProps<OptionType>) {
-  const emptyValue = !isNumber(value) && isEmpty(value);
+  const [internalValue, setInternalValue] = useInternalState(
+    defaultValue,
+    value
+  );
   const [searchQuery, setSearchQuery] = useState('');
 
-  function handleOnClear(e: MouseEvent) {
-    e.stopPropagation();
-    setSearchQuery('');
-    onClear?.(e);
-  }
+  // Use internal value if component is uncontrolled
+  const currentValue = value !== undefined ? value : internalValue;
+  const emptyValue = !isNumber(currentValue) && isEmpty(currentValue);
 
-  const filteredOptions = useMemo(
-    () =>
-      disableDefaultFilter
-        ? options
-        : options.filter((item) => {
-            const value = item[searchByKey];
-            if (!value) return false;
-            return String(value)
-              .toLowerCase()
-              .includes(searchQuery.toLowerCase());
-          }),
-    [searchQuery, options, disableDefaultFilter, searchByKey]
+  // Use shared filter hook
+  const filteredOptions = useFilteredOptions(
+    options,
+    searchQuery,
+    searchByKey,
+    disableDefaultFilter
+  );
+
+  // Memoized callbacks
+  const handleOnClear = useCallback(
+    (e?: MouseEvent) => {
+      e?.stopPropagation();
+      setSearchQuery('');
+      onClear?.(e);
+    },
+    [onClear]
+  );
+
+  const handleChange = useCallback(
+    (newValue: any) => {
+      setInternalValue(newValue);
+      onChange?.(newValue);
+    },
+    [onChange, setInternalValue]
+  );
+
+  // Compute option value with support for both getOptionValue and getOptionValueKey
+  const computeOptionValue = useCallback(
+    (option: OptionType) => {
+      if (getOptionValueKey) {
+        return option[getOptionValueKey];
+      }
+      return getOptionValue(option);
+    },
+    [getOptionValue, getOptionValueKey]
   );
 
   return (
@@ -287,182 +297,191 @@ export function Select<OptionType extends SelectOption>({
         className
       )}
     >
-      <Listbox value={value} disabled={disabled} {...props}>
-        {label && (
-          <Label
-            className={cn(
-              makeClassName(`select-label`),
-              'block',
-              labelStyles.size[size],
-              labelStyles.weight[labelWeight],
-              disabled && 'text-muted-foreground',
-              labelClassName
-            )}
-          >
-            {label}
-          </Label>
-        )}
-
-        <div className={cn(!inPortal && 'relative')}>
-          <ListboxButton
-            className={select({
-              variant,
-              size,
-              disabled,
-              error: Boolean(error && emptyValue),
-              hasPrefix: Boolean(prefix),
-              hasSuffix: Boolean(suffix),
-              className: selectClassName,
-            })}
-            autoFocus={autoFocus}
-          >
-            {prefix && (
-              <span
-                className={cn(
-                  makeClassName(`select-prefix`),
-                  'block leading-normal whitespace-nowrap',
-                  prefixClassName
-                )}
-              >
-                {prefix}
-              </span>
-            )}
-
-            <span
+      <Listbox
+        value={currentValue}
+        onChange={handleChange}
+        disabled={disabled}
+        {...props}
+      >
+        <div className="contents">
+          {label && (
+            <Label
               className={cn(
-                makeClassName(`select-value`),
-                'block w-full truncate text-left rtl:text-right',
-                emptyValue && 'text-muted-foreground'
+                makeClassName(`select-label`),
+                'block',
+                labelStyles.size[size],
+                labelStyles.weight[labelWeight],
+                disabled && 'text-muted-foreground',
+                labelClassName
               )}
             >
-              {emptyValue ? placeholder : displayValue(value)}
-            </span>
+              {label}
+            </Label>
+          )}
 
-            {clearable && !emptyValue && (
-              <FieldClearButton
-                as="span"
-                size={size}
-                onClick={handleOnClear}
-                hasSuffix={Boolean(suffix)}
-              />
-            )}
+          <div className={cn(!inPortal && 'relative')}>
+            <ListboxButton
+              className={select({
+                variant,
+                size,
+                disabled,
+                error: Boolean(error && emptyValue),
+                hasPrefix: Boolean(prefix),
+                hasSuffix: Boolean(suffix),
+                className: selectClassName,
+              })}
+              autoFocus={autoFocus}
+            >
+              {prefix && (
+                <span
+                  className={cn(
+                    makeClassName(`select-prefix`),
+                    'block leading-normal whitespace-nowrap',
+                    prefixClassName
+                  )}
+                >
+                  {prefix}
+                </span>
+              )}
 
-            {suffix && (
               <span
                 className={cn(
-                  makeClassName(`select-suffix`),
-                  'leading-normal whitespace-nowrap transition-transform duration-200 group-data-open:rotate-180',
-                  suffixClassName
+                  makeClassName(`select-value`),
+                  'block w-full truncate text-left rtl:text-right',
+                  emptyValue && 'text-muted-foreground'
                 )}
               >
-                {suffix}
+                {emptyValue ? placeholder : displayValue(currentValue)}
               </span>
-            )}
-          </ListboxButton>
 
-          <ListboxOptions
-            modal={modal}
-            portal={inPortal}
-            {...(inPortal && {
-              anchor: {
-                to: ourPlacementObject[placement],
-                gap: gap,
-              },
-            })}
-            className={cn(
-              makeClassName(`select-options`),
-              optionListStyles.base,
-              optionListStyles.shadow[shadow],
-              inPortal
-                ? optionListStyles.inPortal
-                : optionListStyles.notInPortal,
-              dropdownClassName
-            )}
-          >
-            {searchable && (
-              <div
-                className={cn(
-                  searchStyles.base,
-                  stickySearch && searchStyles.stickySearch,
-                  searchContainerClassName
-                )}
-              >
-                {searchPrefix && (
-                  <span
-                    className={cn(
-                      makeClassName(`select-prefix`),
-                      searchStyles.prefix,
-                      searchPrefixClassName
-                    )}
-                  >
-                    {searchPrefix}
-                  </span>
-                )}
-                <input
-                  type={searchType}
-                  spellCheck={false}
-                  value={searchQuery}
-                  disabled={searchDisabled}
-                  readOnly={searchReadOnly}
-                  placeholder={searchPlaceHolder}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
-                    onSearchChange?.(e.target.value);
-                  }}
-                  // prevent headless ui from handling these keys
-                  onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
-                  className={select({
-                    variant,
-                    size,
-                    disabled: searchDisabled,
-                    className: cn(searchStyles.inputBase, searchClassName),
-                  })}
-                  {...searchProps}
+              {clearable && !emptyValue && (
+                <FieldClearButton
+                  as="span"
+                  size={size}
+                  onClick={handleOnClear}
+                  hasSuffix={Boolean(suffix)}
                 />
+              )}
 
-                {searchSuffix && (
-                  <span
-                    className={cn(
-                      makeClassName(`select-suffix`),
-                      searchStyles.suffix,
-                      searchSuffixClassName
-                    )}
-                  >
-                    {searchSuffix}
-                  </span>
-                )}
-              </div>
-            )}
+              {suffix && (
+                <span
+                  className={cn(
+                    makeClassName(`select-suffix`),
+                    'leading-normal whitespace-nowrap transition-transform duration-200 group-data-open:rotate-180',
+                    suffixClassName
+                  )}
+                >
+                  {suffix}
+                </span>
+              )}
+            </ListboxButton>
 
-            {filteredOptions.map((option) => (
-              <ListboxOption
-                key={option.value}
-                {...(option?.disabled && {
-                  disabled: option?.disabled,
-                })}
-                className={({ focus }) =>
-                  cn(
-                    makeClassName(`select-option`),
-                    'flex w-full items-center px-3 py-1.5',
-                    focus && 'bg-muted/70',
-                    'rounded-[calc(var(--border-radius)/2)]',
-                    size && optionListStyles.item.size[size],
-                    !option?.disabled && 'cursor-pointer',
-                    optionClassName
-                  )
-                }
-                value={getOptionValue(option)}
-              >
-                {({ selected }) => (
-                  <div
-                    className={cn(selected ? 'font-medium' : 'text-foreground')}
-                  >
-                    {getOptionDisplayValue(option)}
-                  </div>
-                )}
-              </ListboxOption>
-            ))}
-          </ListboxOptions>
+            <ListboxOptions
+              modal={modal}
+              portal={inPortal}
+              {...(inPortal && {
+                anchor: {
+                  to: ourPlacementObject[placement],
+                  gap: gap,
+                },
+              })}
+              className={cn(
+                makeClassName(`select-options`),
+                optionListStyles.base,
+                optionListStyles.shadow,
+                inPortal
+                  ? optionListStyles.inPortal
+                  : optionListStyles.notInPortal,
+                dropdownClassName
+              )}
+            >
+              {searchable && (
+                <div
+                  className={cn(
+                    searchStyles.base,
+                    stickySearch && searchStyles.stickySearch,
+                    searchContainerClassName
+                  )}
+                >
+                  {searchPrefix && (
+                    <span
+                      className={cn(
+                        makeClassName(`select-prefix`),
+                        searchStyles.prefix,
+                        searchPrefixClassName
+                      )}
+                    >
+                      {searchPrefix}
+                    </span>
+                  )}
+                  <input
+                    type={searchType}
+                    spellCheck={false}
+                    value={searchQuery}
+                    disabled={searchDisabled}
+                    readOnly={searchReadOnly}
+                    placeholder={searchPlaceHolder}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      onSearchChange?.(e.target.value);
+                    }}
+                    // prevent headless ui from handling these keys
+                    onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
+                    className={select({
+                      variant,
+                      size,
+                      disabled: searchDisabled,
+                      className: cn(searchStyles.inputBase, searchClassName),
+                    })}
+                    {...searchProps}
+                  />
+
+                  {searchSuffix && (
+                    <span
+                      className={cn(
+                        makeClassName(`select-suffix`),
+                        searchStyles.suffix,
+                        searchSuffixClassName
+                      )}
+                    >
+                      {searchSuffix}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {filteredOptions.map((option) => (
+                <ListboxOption
+                  key={option.value}
+                  {...(option?.disabled && {
+                    disabled: option?.disabled,
+                  })}
+                  className={({ focus }) =>
+                    cn(
+                      makeClassName(`select-option`),
+                      'flex w-full items-center px-3 py-1.5',
+                      focus && 'bg-muted/70',
+                      'rounded-[calc(var(--border-radius)/2)]',
+                      size && optionListStyles.item.size[size],
+                      !option?.disabled && 'cursor-pointer',
+                      optionClassName
+                    )
+                  }
+                  value={computeOptionValue(option)}
+                >
+                  {({ selected }) => (
+                    <div
+                      className={cn(
+                        selected ? 'font-medium' : 'text-foreground'
+                      )}
+                    >
+                      {getOptionDisplayValue(option)}
+                    </div>
+                  )}
+                </ListboxOption>
+              ))}
+            </ListboxOptions>
+          </div>
         </div>
       </Listbox>
 

@@ -21,17 +21,12 @@ import { cn } from '../../lib/cn';
 import { makeClassName } from '../../lib/make-class-name';
 
 const tooltip = tv({
-  base: 'text-center z-[9999] min-w-max rounded-[var(--border-radius)] border-[length:var(--border-width)]',
+  base: 'text-center z-[9999] min-w-max rounded-[var(--border-radius)] border-[length:var(--border-width)] drop-shadow-[0px_8px_24px_rgba(149,157,165,0.2)]',
   variants: {
     size: {
       sm: 'px-2.5 py-1 text-xs',
       md: 'px-3 py-1.5 text-sm',
       lg: 'px-3.5 py-2 text-base',
-    },
-    shadow: {
-      sm: 'drop-shadow-md',
-      md: 'drop-shadow-lg',
-      lg: 'drop-shadow-xl',
     },
     color: {
       primary: '',
@@ -64,7 +59,6 @@ const tooltip = tv({
   ],
   defaultVariants: {
     size: 'md',
-    shadow: 'md',
     color: 'primary',
   },
 });
@@ -125,7 +119,6 @@ export type TooltipProps = {
   content: ReactNode;
   color?: TooltipVariant['color'];
   size?: TooltipVariant['size'];
-  shadow?: TooltipVariant['shadow'];
   placement?: Placement;
   gap?: number;
   animation?: keyof typeof tooltipAnimation;
@@ -146,7 +139,6 @@ export function Tooltip({
   animation = 'zoomIn',
   placement = 'top',
   size = 'md',
-  shadow = 'md',
   color = 'primary',
   className,
   arrowClassName,
@@ -197,7 +189,7 @@ export function Tooltip({
             ref={refs.setFloating}
             className={cn(
               makeClassName('tooltip'),
-              tooltip({ size, shadow, color, className })
+              tooltip({ size, color, className })
             )}
             style={{
               position: strategy,

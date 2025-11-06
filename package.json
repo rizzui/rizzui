@@ -15,6 +15,9 @@
     "next-dev": "turbo run next-dev",
     "next-build": "turbo run next-build",
     "next-start": "turbo run next-start",
+    "legacy-docs-dev": "pnpm --filter legacy-docs dev",
+    "legacy-docs-build": "pnpm --filter legacy-docs build",
+    "legacy-docs-serve": "pnpm --filter legacy-docs serve",
     "clean": "turbo run clean && rm -rf node_modules .turbo",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish-packages": "turbo run build lint && changeset version && changeset publish",
@@ -24,7 +27,7 @@
     "husky": "^9.1.7",
     "prettier": "3.6.2",
     "tsup": "8.5.0",
-    "turbo": "2.5.4"
+    "turbo": "^2.6.0"
   },
   "engines": {
     "node": ">=18.0.0"

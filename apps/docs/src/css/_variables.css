@@ -1,7 +1,7 @@
 :root {
   /* global variables override */
   --doc-sidebar-width: 288px !important;
-  --ifm-font-family-base: 'Geist', sans-serif;
+  --ifm-font-family-base: 'Outfit', sans-serif;
   --ifm-global-border-color: #70747325;
   --ifm-font-color-base: #3e4342;
   --ifm-heading-margin-bottom: 0.6rem;

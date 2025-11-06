@@ -19,7 +19,7 @@ const config: Config = {
 
   markdown: {
     hooks: {
-  onBrokenMarkdownLinks: 'warn',
+      onBrokenMarkdownLinks: 'warn',
     },
   },
 
@@ -55,14 +55,6 @@ const config: Config = {
             '2.0.0': {
               label: 'v-2.0.0',
             },
-            '1.0.1': {
-              label: 'v-1.0.1',
-              path: 'v1',
-            },
-            '0.8.7': {
-              label: 'v-0.8.7',
-              path: 'v0.8.7',
-            },
           },
         },
         blog: {
@@ -88,8 +80,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/rizz-social-card.png',
     fonts: {
-      myFont: ['Geist', 'sans-serif'],
-      myOtherFont: ['-apple-system', 'system-ui', 'sans-serif'],
+      myFont: ['Outfit', 'sans-serif'],
     },
     navbar: {
       logo: {

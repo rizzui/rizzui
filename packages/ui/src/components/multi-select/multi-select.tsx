@@ -1,7 +1,9 @@
 import {
-  useMemo,
   useState,
+  useCallback,
+  useMemo,
   type ReactNode,
+  type MouseEvent,
   type InputHTMLAttributes,
 } from 'react';
 import {
@@ -20,15 +22,16 @@ import {
   useInternalState,
   ourPlacementObject,
   preventHeadlessUIKeyboardInterActions,
-} from './multi-select.lib';
+  useFilteredOptions,
+} from '../select/select-shared.lib';
 import { FieldError } from '../field-error-text';
 import { labelStyles } from '../../lib/label-size';
 import type { ExtractProps } from '../../lib/extract-props';
 import { FieldHelperText } from '../field-helper-text';
 import { makeClassName } from '../../lib/make-class-name';
 import { FieldClearButton } from '../field-clear-button';
-import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { CheckmarkIcon } from '../../icons/checkmark';
+import { optionListStyles, searchStyles } from '../select/select-shared.styles';
 
 const multiSelect = tv({
   base: 'flex group items-center peer border-[length:var(--border-width)] hover:border-primary w-full transition duration-200 hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-[var(--border-radius)]',
@@ -65,30 +68,6 @@ const multiSelect = tv({
   },
 });
 
-const optionListStyles = {
-  base: `${dropdownStyles.base} overflow-auto w-[var(--button-width)] !outline-none !ring-0 m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg data-[open]:opacity-100 data-[leave]:data-[closed]:opacity-100`,
-  shadow: dropdownStyles.shadow,
-  item: {
-    size: {
-      sm: 'text-xs',
-      md: 'text-sm',
-      lg: 'text-base',
-    },
-  },
-  inPortal: '[--anchor-max-height:256px]',
-  notInPortal: 'absolute z-10 h-[256px] start-0 top-full mt-1.5',
-};
-
-const searchStyles = {
-  base: 'relative mb-2 block group [&.sticky]:mb-0',
-  inputBase: 'px-10 placeholder:text-muted-foreground',
-  prefix:
-    'absolute z-10 start-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
-  suffix:
-    'absolute z-10 end-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
-  stickySearch: 'sticky top-0 z-10 bg-background pt-2 -translate-y-2',
-};
-
 const checkboxStyles = {
   base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out size-5 rounded bg-transparent border border-border ring-border focus:ring-border checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
   icon: 'peer-checked:opacity-100 absolute opacity-0 text-primary-foreground size-4 start-0.5 top-0.5',
@@ -96,7 +75,7 @@ const checkboxStyles = {
 
 export type MultiSelectOption = {
   label: string;
-  value: string;
+  value: string | number;
   disabled?: boolean;
   [key: string]: any;
 };
@@ -105,17 +84,17 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   typeof Listbox
 > & {
   /** The value of the select */
-  value?: string[];
+  value?: (string | number)[];
   /** The class name of the select */
   className?: string;
   /** Whether the select is focused by default or not */
   autoFocus?: boolean;
   /** The default value of the select */
-  defaultValue?: string[];
+  defaultValue?: (string | number)[];
   /** The function to call when the value changes */
-  onChange?: (value: string[]) => void;
+  onChange?: (value: (string | number)[]) => void;
   /** The function to call when the clear button is clicked */
-  onClear?: () => void;
+  onClear?: (event?: MouseEvent) => void;
   /** Event of the searchable input when change */
   onSearchChange?: (value: string) => void;
   /** Whether the select is disabled */
@@ -141,7 +120,6 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** Whether the select is in the portal */
   inPortal?: boolean;
   variant?: VariantProps<typeof multiSelect>['variant'];
-  shadow?: keyof typeof optionListStyles.shadow;
   /** The prefix of the select */
   prefix?: ReactNode;
   /** The suffix of the select */
@@ -196,7 +174,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   optionCheckBox?: boolean;
   /** The class name of the selected option */
   selectedOptionClassName?: string;
-  /** The key to get the value of the option */
+  /** The key to get the value of the option (string approach, alternative to getOptionValue) */
   getOptionValueKey?: string;
   /** Whether to hide the picked options */
   hideSelectedOptions?: boolean;
@@ -204,6 +182,8 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   selectContainerClassName?: string;
   /** The key to search in the options */
   searchByKey?: string;
+  /** Disable default filter */
+  disableDefaultFilter?: boolean;
   /** Whether the search input is sticky or not */
   stickySearch?: boolean;
   /**
@@ -213,9 +193,9 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
    * @returns React node to display for the selected item.
    */
   displayValue?: (
-    selectedItems: string[],
+    selectedItems: (string | number)[],
     options: MultiSelectOption[],
-    handleClearItem?: (item: string) => void
+    handleClearItem?: (item: string | number) => void
   ) => ReactNode;
   /**
    * Use this function when you want to display something other than the default option displayValue.
@@ -227,6 +207,14 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
     option: MultiSelectOption,
     selected: boolean
   ): ReactNode;
+  /**
+   * Select whether the label or value should be returned in the onChange method (function approach, alternative to getOptionValueKey).
+   * @param option - The MultiSelectOption for which to get the value.
+   * @returns The selected value from the specified option.
+   */
+  getOptionValue?: (
+    option: MultiSelectOption
+  ) => MultiSelectOption[keyof MultiSelectOption] | MultiSelectOption;
 };
 
 export function MultiSelect<OptionType extends MultiSelectOption>({
@@ -247,7 +235,6 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   searchProps,
   stickySearch,
   displayValue,
-  shadow = 'md',
   prefix = null,
   labelClassName,
   onSearchChange,
@@ -267,6 +254,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   searchType = 'text',
   selectedItemClassName,
   getOptionDisplayValue,
+  getOptionValue,
   searchByKey = 'label',
   optionCheckBox = true,
   searchPrefixClassName,
@@ -281,6 +269,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   hideSelectedOptions = false,
   placement = 'bottom-start',
   getOptionValueKey = 'value',
+  disableDefaultFilter,
   searchPlaceHolder = 'Search...',
   suffix = <ChevronDownIcon strokeWidth="2" className="size-4" />,
   searchPrefix = <SearchIcon strokeWidth="2" className="size-4" />,
@@ -291,30 +280,48 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
     value
   );
   const [searchQuery, setSearchQuery] = useState('');
-  const selectedItems = selectedValue ?? [];
+
+  const selectedItems = useMemo(() => selectedValue ?? [], [selectedValue]);
   const emptyValue = selectedItems.length === 0;
 
-  const filteredOptions = useMemo(
-    () =>
-      options.filter((item) => {
-        const value = item[searchByKey];
-        if (!value) return false;
-        return String(value).toLowerCase().includes(searchQuery.toLowerCase());
-      }),
-    [searchQuery, options, searchByKey]
+  // Use shared filter hook
+  const filteredOptions = useFilteredOptions(
+    options,
+    searchQuery,
+    searchByKey,
+    disableDefaultFilter
   );
 
-  const handleClear = () => {
-    setSelectedValue([]);
-    setSearchQuery('');
-    onClear?.();
-  };
+  // Memoized callbacks
+  const handleClear = useCallback(
+    (e?: MouseEvent) => {
+      e?.stopPropagation();
+      setSelectedValue([]);
+      setSearchQuery('');
+      onClear?.(e);
+    },
+    [onClear, setSelectedValue]
+  );
 
-  const handleClearItem = (item: string) => {
-    const filteredItems = selectedItems.filter((i) => i !== item);
-    setSelectedValue(filteredItems);
-    onChange?.(filteredItems);
-  };
+  const handleClearItem = useCallback(
+    (item: string | number) => {
+      const filteredItems = selectedItems.filter((i) => i !== item);
+      setSelectedValue(filteredItems);
+      onChange?.(filteredItems);
+    },
+    [selectedItems, setSelectedValue, onChange]
+  );
+
+  // Compute option value with support for both getOptionValue and getOptionValueKey
+  const computeOptionValue = useCallback(
+    (option: OptionType) => {
+      if (getOptionValue) {
+        return getOptionValue(option);
+      }
+      return option[getOptionValueKey];
+    },
+    [getOptionValue, getOptionValueKey]
+  );
 
   return (
     <div
@@ -329,260 +336,259 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
         disabled={disabled}
         value={selectedValue}
         defaultValue={selectedValue}
-        onChange={(values: string[]) => {
+        onChange={(values: (string | number)[]) => {
           onChange?.(values);
           setSelectedValue(values);
         }}
         {...props}
       >
-        {label && (
-          <Label
-            className={cn(
-              makeClassName(`multi-select-label`),
-              'block',
-              labelStyles.size[size],
-              labelStyles.weight[labelWeight],
-              disabled && 'text-muted-foreground',
-              labelClassName
-            )}
-          >
-            {label}
-          </Label>
-        )}
+        <div className="contents">
+          {label && (
+            <Label
+              className={cn(
+                makeClassName(`multi-select-label`),
+                'block',
+                labelStyles.size[size],
+                labelStyles.weight[labelWeight],
+                disabled && 'text-muted-foreground',
+                labelClassName
+              )}
+            >
+              {label}
+            </Label>
+          )}
 
-        <div className={cn(!inPortal && 'relative')}>
-          <ListboxButton
-            className={multiSelect({
-              variant,
-              size,
-              disabled,
-              error: Boolean(error && emptyValue),
-              hasPrefix: Boolean(prefix),
-              hasSuffix: Boolean(suffix),
-              className: selectClassName,
-            })}
-            autoFocus={autoFocus}
-          >
-            {prefix && (
-              <span
-                className={cn(
-                  makeClassName(`multi-select-prefix`),
-                  'block leading-normal whitespace-nowrap',
-                  prefixClassName
-                )}
-              >
-                {prefix}
-              </span>
-            )}
-
-            {displayValue ? (
-              displayValue(selectedItems, options, handleClearItem)
-            ) : (
-              <span
-                className={cn(
-                  makeClassName(`multi-select-value`),
-                  'flex w-full flex-wrap items-center gap-2 truncate text-start',
-                  emptyValue && 'text-muted-foreground',
-                  selectContainerClassName
-                )}
-              >
-                {emptyValue ? (
-                  placeholder
-                ) : (
-                  <>
-                    {value?.map((item, index) => {
-                      const mainItem = options.find(
-                        (op) => op[getOptionValueKey] === item
-                      );
-                      return (
-                        <span
-                          key={index}
-                          className={cn(
-                            'item-center border-border flex gap-1 overflow-hidden rounded-md border text-xs',
-                            selectedItemClassName
-                          )}
-                        >
-                          <span className="py-1 ps-2">{mainItem?.label}</span>
-                          <span
-                            className="hover:bg-muted px-1 py-1"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleClearItem(item);
-                            }}
-                          >
-                            <XIcon
-                              strokeWidth="2"
-                              className="size-4 cursor-pointer"
-                            />
-                          </span>
-                        </span>
-                      );
-                    })}
-                  </>
-                )}
-              </span>
-            )}
-
-            {clearable && !emptyValue && !disabled && (
-              <FieldClearButton
-                as="span"
-                size={size}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleClear();
-                }}
-                hasSuffix={Boolean(suffix)}
-              />
-            )}
-
-            {suffix && (
-              <span
-                className={cn(
-                  makeClassName(`multi-select-suffix`),
-                  'leading-normal whitespace-nowrap transition-transform duration-200 group-data-open:rotate-180',
-                  suffixClassName
-                )}
-              >
-                {suffix}
-              </span>
-            )}
-          </ListboxButton>
-
-          <ListboxOptions
-            modal={modal}
-            portal={inPortal}
-            {...(inPortal && {
-              anchor: {
-                to: ourPlacementObject[placement],
-                gap: gap,
-              },
-            })}
-            className={cn(
-              makeClassName(`multi-select-options`),
-              optionListStyles.base,
-              optionListStyles.shadow[shadow],
-              inPortal
-                ? optionListStyles.inPortal
-                : optionListStyles.notInPortal,
-              dropdownClassName
-            )}
-          >
-            {searchable && (
-              <div
-                className={cn(
-                  searchStyles.base,
-                  stickySearch && searchStyles.stickySearch,
-                  searchContainerClassName
-                )}
-              >
-                {searchPrefix && (
-                  <span
-                    className={cn(
-                      makeClassName(`multi-select-prefix`),
-                      searchStyles.prefix,
-                      searchPrefixClassName
-                    )}
-                  >
-                    {searchPrefix}
-                  </span>
-                )}
-                <input
-                  type={searchType}
-                  spellCheck={false}
-                  value={searchQuery}
-                  disabled={searchDisabled}
-                  readOnly={searchReadOnly}
-                  placeholder={searchPlaceHolder}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
-                    onSearchChange?.(e.target.value);
-                  }}
-                  // prevent headless ui from handling these keys
-                  onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
-                  className={multiSelect({
-                    variant,
-                    size,
-                    disabled: searchDisabled,
-                    className: cn(searchStyles.inputBase, searchClassName),
-                  })}
-                  {...searchProps}
-                />
-
-                {searchSuffix && (
-                  <span
-                    className={cn(
-                      makeClassName(`multi-select-suffix`),
-                      searchStyles.suffix,
-                      searchSuffixClassName
-                    )}
-                  >
-                    {searchSuffix}
-                  </span>
-                )}
-              </div>
-            )}
-
-            {filteredOptions.map((op, index) => {
-              return (
-                <ListboxOption
-                  key={index}
-                  value={op[getOptionValueKey]}
-                  {...(op?.disabled && {
-                    disabled: op?.disabled,
-                  })}
-                  className={({ focus, selected }) =>
-                    cn(
-                      makeClassName(`multi-select-option`),
-                      'flex w-full items-center px-3 py-1.5',
-                      focus && 'bg-muted/70',
-                      'rounded-[calc(var(--border-radius)/2)]',
-                      size && optionListStyles.item.size[size],
-                      !op?.disabled && 'cursor-pointer',
-                      selected && hideSelectedOptions && 'hidden!',
-                      optionClassName
-                    )
-                  }
+          <div className={cn(!inPortal && 'relative')}>
+            <ListboxButton
+              className={multiSelect({
+                variant,
+                size,
+                disabled,
+                error: Boolean(error && emptyValue),
+                hasPrefix: Boolean(prefix),
+                hasSuffix: Boolean(suffix),
+                className: selectClassName,
+              })}
+              autoFocus={autoFocus}
+            >
+              {prefix && (
+                <span
+                  className={cn(
+                    makeClassName(`multi-select-prefix`),
+                    'block leading-normal whitespace-nowrap',
+                    prefixClassName
+                  )}
                 >
-                  {({ selected }) => (
+                  {prefix}
+                </span>
+              )}
+
+              {displayValue ? (
+                displayValue(selectedItems, options, handleClearItem)
+              ) : (
+                <span
+                  className={cn(
+                    makeClassName(`multi-select-value`),
+                    'flex w-full flex-wrap items-center gap-2 truncate text-start',
+                    emptyValue && 'text-muted-foreground',
+                    selectContainerClassName
+                  )}
+                >
+                  {emptyValue ? (
+                    placeholder
+                  ) : (
                     <>
-                      {getOptionDisplayValue ? (
-                        getOptionDisplayValue(op, selected)
-                      ) : (
-                        <div
-                          className={cn(
-                            'flex items-center gap-2',
-                            selected ? 'font-medium' : 'text-foreground',
-                            selectedOptionClassName
-                          )}
-                        >
-                          {optionCheckBox && (
-                            <span className="relative leading-none">
-                              <input
-                                type="checkbox"
-                                readOnly={true}
-                                checked={selected}
-                                className={cn(
-                                  makeClassName(`checkbox-input`),
-                                  checkboxStyles.base
-                                )}
-                              />
-                              <CheckmarkIcon
-                                className={cn(
-                                  makeClassName(`checkbox-icon`),
-                                  checkboxStyles.icon
-                                )}
+                      {value?.map((item, index) => {
+                        const mainItem = options.find(
+                          (op) => op[getOptionValueKey] === item
+                        );
+                        return (
+                          <span
+                            key={index}
+                            className={cn(
+                              'item-center border-border flex gap-1 overflow-hidden rounded-md border text-xs',
+                              selectedItemClassName
+                            )}
+                          >
+                            <span className="py-1 ps-2">{mainItem?.label}</span>
+                            <span
+                              className="hover:bg-muted px-1 py-1"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleClearItem(item);
+                              }}
+                            >
+                              <XIcon
+                                strokeWidth="2"
+                                className="size-4 cursor-pointer"
                               />
                             </span>
-                          )}
-                          {op.label}
-                        </div>
-                      )}
+                          </span>
+                        );
+                      })}
                     </>
                   )}
-                </ListboxOption>
-              );
-            })}
-          </ListboxOptions>
+                </span>
+              )}
+
+              {clearable && !emptyValue && !disabled && (
+                <FieldClearButton
+                  as="span"
+                  size={size}
+                  onClick={handleClear}
+                  hasSuffix={Boolean(suffix)}
+                />
+              )}
+
+              {suffix && (
+                <span
+                  className={cn(
+                    makeClassName(`multi-select-suffix`),
+                    'leading-normal whitespace-nowrap transition-transform duration-200 group-data-open:rotate-180',
+                    suffixClassName
+                  )}
+                >
+                  {suffix}
+                </span>
+              )}
+            </ListboxButton>
+
+            <ListboxOptions
+              modal={modal}
+              portal={inPortal}
+              {...(inPortal && {
+                anchor: {
+                  to: ourPlacementObject[placement],
+                  gap: gap,
+                },
+              })}
+              className={cn(
+                makeClassName(`multi-select-options`),
+                optionListStyles.base,
+                optionListStyles.shadow,
+                inPortal
+                  ? optionListStyles.inPortal
+                  : optionListStyles.notInPortal,
+                dropdownClassName
+              )}
+            >
+              {searchable && (
+                <div
+                  className={cn(
+                    searchStyles.base,
+                    stickySearch && searchStyles.stickySearch,
+                    searchContainerClassName
+                  )}
+                >
+                  {searchPrefix && (
+                    <span
+                      className={cn(
+                        makeClassName(`multi-select-prefix`),
+                        searchStyles.prefix,
+                        searchPrefixClassName
+                      )}
+                    >
+                      {searchPrefix}
+                    </span>
+                  )}
+                  <input
+                    type={searchType}
+                    spellCheck={false}
+                    value={searchQuery}
+                    disabled={searchDisabled}
+                    readOnly={searchReadOnly}
+                    placeholder={searchPlaceHolder}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      onSearchChange?.(e.target.value);
+                    }}
+                    // prevent headless ui from handling these keys
+                    onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
+                    className={multiSelect({
+                      variant,
+                      size,
+                      disabled: searchDisabled,
+                      className: cn(searchStyles.inputBase, searchClassName),
+                    })}
+                    {...searchProps}
+                  />
+
+                  {searchSuffix && (
+                    <span
+                      className={cn(
+                        makeClassName(`multi-select-suffix`),
+                        searchStyles.suffix,
+                        searchSuffixClassName
+                      )}
+                    >
+                      {searchSuffix}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {filteredOptions.map((op, index) => {
+                return (
+                  <ListboxOption
+                    key={index}
+                    value={computeOptionValue(op)}
+                    {...(op?.disabled && {
+                      disabled: op?.disabled,
+                    })}
+                    className={({ focus, selected }) =>
+                      cn(
+                        makeClassName(`multi-select-option`),
+                        'flex w-full items-center px-3 py-1.5',
+                        focus && 'bg-muted/70',
+                        'rounded-[calc(var(--border-radius)/2)]',
+                        size && optionListStyles.item.size[size],
+                        !op?.disabled && 'cursor-pointer',
+                        selected && hideSelectedOptions && 'hidden!',
+                        optionClassName
+                      )
+                    }
+                  >
+                    {({ selected }) => (
+                      <>
+                        {getOptionDisplayValue ? (
+                          getOptionDisplayValue(op, selected)
+                        ) : (
+                          <div
+                            className={cn(
+                              'flex items-center gap-2',
+                              selected ? 'font-medium' : 'text-foreground',
+                              selectedOptionClassName
+                            )}
+                          >
+                            {optionCheckBox && (
+                              <span className="relative leading-none">
+                                <input
+                                  type="checkbox"
+                                  readOnly={true}
+                                  checked={selected}
+                                  className={cn(
+                                    makeClassName(`checkbox-input`),
+                                    checkboxStyles.base
+                                  )}
+                                />
+                                <CheckmarkIcon
+                                  className={cn(
+                                    makeClassName(`checkbox-icon`),
+                                    checkboxStyles.icon
+                                  )}
+                                />
+                              </span>
+                            )}
+                            {op.label}
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </ListboxOption>
+                );
+              })}
+            </ListboxOptions>
+          </div>
         </div>
       </Listbox>
 

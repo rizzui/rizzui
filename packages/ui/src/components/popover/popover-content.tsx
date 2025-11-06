@@ -6,22 +6,16 @@ import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 const popover = tv({
-  base: 'z-[9999] min-w-max bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border-[length:var(--border-width)] border-border rounded-[var(--border-radius)]',
+  base: 'z-[9999] min-w-max bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border-[length:var(--border-width)] border-border rounded-[var(--border-radius)] shadow-[0px_8px_24px_rgba(149,157,165,0.2)]',
   variants: {
     size: {
       sm: 'p-2.5',
       md: 'p-4',
       lg: 'p-5',
     },
-    shadow: {
-      sm: 'drop-shadow-md',
-      md: 'drop-shadow-lg',
-      lg: 'drop-shadow-xl',
-    },
   },
   defaultVariants: {
     size: 'md',
-    shadow: 'md',
   },
 });
 
@@ -31,7 +25,6 @@ const popoverArrow = tv({
 
 type PopoverVariant = VariantProps<typeof popover>;
 
-export type Shadow = PopoverVariant['shadow'];
 export type Size = PopoverVariant['size'];
 
 type PopoverContentProps = {
@@ -63,7 +56,6 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
     showArrow,
     getFloatingProps,
     size,
-    shadow,
     arrowClassName,
     overlayClassName,
   } = usePopover();
@@ -95,7 +87,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
       <div
         role="popover"
         ref={refs.setFloating}
-        className={popover({ size, shadow, className })}
+        className={popover({ size, className })}
         style={{
           position: strategy,
           top: y ?? 0,

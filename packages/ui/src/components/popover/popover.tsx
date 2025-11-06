@@ -16,7 +16,6 @@ export function Popover({
   enableOverlay = false,
   showArrow = true,
   size = 'md',
-  shadow = 'md',
   arrowClassName,
   overlayClassName,
   children,
@@ -32,7 +31,6 @@ export function Popover({
         showArrow,
         placement,
         size,
-        shadow,
         arrowClassName,
         overlayClassName,
       }}

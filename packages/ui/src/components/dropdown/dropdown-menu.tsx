@@ -18,7 +18,7 @@ export function DropdownMenu({
   anchorWidth,
   ...props
 }: DropdownMenuProps) {
-  const { shadow, placement, gap, inPortal, modal } = useDropdown();
+  const { placement, gap, inPortal, modal } = useDropdown();
 
   return (
     <Transition
@@ -41,7 +41,7 @@ export function DropdownMenu({
           'w-48',
           dropdownStyles.base,
           anchorWidth && 'w-[--button-width]',
-          shadow && dropdownStyles.shadow[shadow],
+          dropdownStyles.shadow,
           !inPortal && 'absolute start-0 z-10 mt-1.5',
           className
         )}

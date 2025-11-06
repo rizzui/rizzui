@@ -6,7 +6,6 @@ type DropdownContextProps = {
   placement: TheirPlacementType;
   gap?: number;
   modal?: boolean;
-  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
 const DropdownContext = createContext<DropdownContextProps | null>(null);

@@ -31,7 +31,7 @@ export default function DropdownPage() {
             <Dropdown.Trigger>
               <Button as="span">Open Menu</Button>
             </Dropdown.Trigger>
-            <Dropdown.Menu>
+            <Dropdown.Menu className="text-sm">
               <Dropdown.Item>Profile</Dropdown.Item>
               <Dropdown.Item>Settings</Dropdown.Item>
               <Dropdown.Item>Logout</Dropdown.Item>
