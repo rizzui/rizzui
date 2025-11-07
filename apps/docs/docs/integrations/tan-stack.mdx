@@ -516,7 +516,6 @@ export default function TablePagination<TData extends Record<string, any>>({
         </Text>
         <div className="grid grid-cols-4 gap-2">
           <ActionIcon
-            rounded="lg"
             variant="outline"
             aria-label="Go to first page"
             onClick={() => table.firstPage()}
@@ -526,7 +525,6 @@ export default function TablePagination<TData extends Record<string, any>>({
             <ChevronDoubleLeftIcon className="size-5" />
           </ActionIcon>
           <ActionIcon
-            rounded="lg"
             variant="outline"
             aria-label="Go to previous page"
             onClick={() => table.previousPage()}
@@ -536,7 +534,6 @@ export default function TablePagination<TData extends Record<string, any>>({
             <ChevronLeftIcon className="size-5" />
           </ActionIcon>
           <ActionIcon
-            rounded="lg"
             variant="outline"
             aria-label="Go to next page"
             onClick={() => table.nextPage()}
@@ -546,7 +543,6 @@ export default function TablePagination<TData extends Record<string, any>>({
             <ChevronRightIcon className="size-5" />
           </ActionIcon>
           <ActionIcon
-            rounded="lg"
             variant="outline"
             aria-label="Go to last page"
             onClick={() => table.lastPage()}

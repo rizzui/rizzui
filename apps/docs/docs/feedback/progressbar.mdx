@@ -85,7 +85,6 @@ You can change the size of **Progressbar** using [**size**](#progressbar-sizes) 
   />
   <Progressbar
     value={85}
-    size="xl"
   />
 </Paper>
 
@@ -106,7 +105,6 @@ export default function App() {
       />
       <Progressbar
         value={85}
-        size="xl"
       />
     </>
   );
@@ -115,59 +113,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Rounded
-
-You can change the border radius of **Progressbar** using [**rounded**](#progressbar-rounded) property.
-
-<Paper className="gap-6">
-  <Progressbar
-    value={45}
-    rounded="sm"
-  />
-  <Progressbar value={65} />
-  <Progressbar
-    value={75}
-    rounded="md"
-  />
-  <Progressbar
-    value={85}
-    rounded="lg"
-  />
-  <Progressbar
-    value={95}
-    rounded="none"
-  />
-</Paper>
-
-```tsx
-import { Progressbar } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Progressbar
-        value={45}
-        rounded="sm"
-      />
-      <Progressbar value={65} />
-      <Progressbar
-        value={75}
-        rounded="md"
-      />
-      <Progressbar
-        value={85}
-        rounded="lg"
-      />
-      <Progressbar
-        value={95}
-        rounded="none"
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
 
 ## Colors
 
@@ -235,7 +180,7 @@ export default function App() {
 
 You can set label of **Progressbar** using **label** property. And set position of label using [**labelPosition**](#progressbar-label-position) property.
 
-Note: **labelPosition='insideBar'** property will only work when **size="xl"**.
+Note: **labelPosition='insideBar'** property will only work when **size="lg"**.
 
 <Paper>
   <div className="grid grid-cols-1 gap-10 w-full">
@@ -251,7 +196,6 @@ Note: **labelPosition='insideBar'** property will only work when **size="xl"**.
     <Progressbar
       value={75}
       label="75%"
-      size="xl"
       labelPosition="insideBar"
     />
   </div>
@@ -275,7 +219,6 @@ export default function App() {
       <Progressbar
         value={75}
         label="75%"
-        size="xl"
         labelPosition="insideBar"
       />
     </div>
@@ -300,10 +243,9 @@ Here is the API documentation of the Progressbar component.
 |     Props      |                          Type                           |                                  Description                                   |     Default     |
 | :------------: | :-----------------------------------------------------: | :----------------------------------------------------------------------------: | :-------------: |
 |     value      |                        `number`                         |                            Percentage of filled bar                            |      \_\_       |
-|     label      |                        `string`                         | Pass label to show percentage inside bar. It will only work when **size="xl"** |      `""`       |
+|     label      |                        `string`                         | Pass label to show percentage inside bar. It will only work when **size="lg"** |      `""`       |
 |    variant     |                     `solid` `flat`                      |                      The variants of the components are:                       |    `"solid"`    |
 |      size      |          [ProgressbarSize](#progressbar-sizes)          |                           Size of the components are                           |     `"md"`      |
-|    rounded     |       [ProgressbarRounded](#progressbar-rounded)        |                           The rounded variants are:                            |    `"pill"`     |
 |     color      |         [ProgressbarColor](#progressbar-colors)         |                             Pass color variations                              |   `"primary"`   |
 | labelPosition  | [ProgressbarLabelPosition](#progressbar-label-position) |                Sets the label position of progressbar component                | `"inlineRight"` |
 |   className    |                        `string`                         |                       To style the root of the component                       |      \_\_       |
@@ -318,15 +260,7 @@ Here is the API documentation of the Progressbar component.
 ### Progressbar Sizes
 
 ```ts
-type ProgressbarSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Progressbar Rounded
-
-```ts
-type ProgressbarRounded = "sm" | "md" | "lg" | "pill" | "none";
+type ProgressbarSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />

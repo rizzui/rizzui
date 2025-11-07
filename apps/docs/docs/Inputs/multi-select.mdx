@@ -8,8 +8,7 @@ import MultiSelectBox, {
   MultiSelectBoxClearable,
   MultiSelectBoxCustomOption,
   MultiSelectBoxCustomOptionTwo,
-  MultiSelectWithSearchAble,
-} from "@site/src/components/multi-select";
+  MultiSelectWithSearchAble } from "@site/src/components/multi-select";
 
 # MultiSelect
 
@@ -115,13 +114,11 @@ const customOptions = [
   {
     label: "Wolverine",
     value: "wolverine@rizzui.io",
-    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
-  },
+    avatar: "https://randomuser.me/api/portraits/men/43.jpg" },
   {
     label: "MessiJr",
     value: "messijr@rizzui.io",
-    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-  },
+    avatar: "https://randomuser.me/api/portraits/women/65.jpg" },
  ...
 ];
 
@@ -201,13 +198,11 @@ const customOptions = [
   {
     label: "Wolverine",
     value: "wolverine@rizzui.io",
-    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
-  },
+    avatar: "https://randomuser.me/api/portraits/men/43.jpg" },
   {
     label: "MessiJr",
     value: "messijr@rizzui.io",
-    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
-  },
+    avatar: "https://randomuser.me/api/portraits/women/65.jpg" },
  ...
 ];
 
@@ -434,18 +429,15 @@ const options = [
 ];
 
 const schema = z.object({
-  multiSelect: z.array(z.string()).min(1, { message: "Minimum 1 item required!" }),
-});
+  multiSelect: z.array(z.string()).min(1, { message: "Minimum 1 item required!" }) });
 
 type SchemaType = z.infer<typeof schema>;
 
 export function MultiSelectWithForm() {
   const { handleSubmit, control } = useForm({
     defaultValues: {
-      multiSelect: ["apple", "banana"],
-    },
-    resolver: zodResolver(schema),
-  });
+      multiSelect: ["apple", "banana"] },
+    resolver: zodResolver(schema) });
 
   const onSubmit = (data: SchemaType) => {
     console.log("Submitted data", data);
@@ -505,7 +497,6 @@ Here is the API documentation of the **MultiSelect** component.
 |      optionCheckBox      |                     `boolean`                     |                                                                                                 Show checkbox in option list or not.                                                                                                  |   `"true"`    |
 |         variant          |   [MultiSelectVariants](#multiselect-variants)    |                                                                                                  The variants of the component are:                                                                                                   |  `"outline"`  |
 |           size           |      [MultiSelectSizes](#multiselect-sizes)       |                                                                              The size of the component. "sm" is equivalent to the dense select styling.                                                                               |    `"md"`     |
-|         rounded          |    [MultiSelectRounded](#multiselect-rounded)     |                                                                                                       The rounded variants are:                                                                                                       |    `"md"`     |
 |        autoFocus         |                     `boolean`                     |                                                                                              Whether select is focused by default or not                                                                                              |   `"false"`   |
 |         inPortal         |                     `boolean`                     |                                                                                        Whether select options is rendered on the portal or not                                                                                        |   `"true"`    |
 |          modal           |                     `boolean`                     |                                                                                 Whether the body scrollbar is hidden or not when dropdown is visible.                                                                                 |   `"false"`   |
@@ -584,15 +575,10 @@ type MultiSelectVariants = "outline" | "flat" | "text";
 ### MultiSelect Sizes
 
 ```ts
-type MultiSelectSizes = "sm" | "md" | "lg" | "xl";
+type MultiSelectSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
 
-### MultiSelect Rounded
-
-```ts
-type MultiSelectRounded = "sm" | "md" | "lg" | "none" | "pill";
-```
 
 <div className="mb-10" />

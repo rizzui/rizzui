@@ -237,7 +237,6 @@ export default function Pagination({
       nextIcon={
         <NextIcon
           icon={nextIcon as React.ReactNode}
-          rounded={rounded}
           outline={outline}
           className={nextIconClassName as string}
         />
@@ -245,7 +244,6 @@ export default function Pagination({
       prevIcon={
         <PrevIcon
           icon={prevIcon as React.ReactNode}
-          rounded={rounded}
           outline={outline}
           className={prevIconClassName as string}
         />
@@ -253,7 +251,6 @@ export default function Pagination({
       jumpPrevIcon={
         <JumpPrevIcon
           icon={jumpPrevIcon as React.ReactNode}
-          rounded={rounded}
           outline={outline}
           className={jumpPrevIconClassName as string}
         />
@@ -261,7 +258,6 @@ export default function Pagination({
       jumpNextIcon={
         <JumpNextIcon
           icon={jumpNextIcon as React.ReactNode}
-          rounded={rounded}
           outline={outline}
           className={jumpNextIconClassName as string}
         />
@@ -339,55 +335,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Rounded
-
-You can change the border radius of **Pagination** button / item using [**rounded**](#pagination-rounded) property.
-
-<Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-8">
-  <Pagination
-    total={25}
-    rounded="sm"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination total={25} defaultCurrent={1} className="[&_li]:!mt-0" />
-  <Pagination
-    total={25}
-    rounded="lg"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    rounded="none"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    rounded="full"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-</Paper>
-
-```tsx
-import Pagination from "@components/pagination";
-
-export default function App() {
-  return (
-    <>
-      <Pagination total={25} rounded="sm" defaultCurrent={1} />
-      <Pagination total={25} variant="solid" defaultCurrent={1} />
-      <Pagination total={25} rounded="lg" defaultCurrent={1} />
-      <Pagination total={25} rounded="none" defaultCurrent={1} />
-      <Pagination total={25} rounded="full" defaultCurrent={1} />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
 
 ## Colors
 
@@ -560,7 +507,6 @@ Here is the API documentation of the Pagination component.
 |    defaultCurrent     |                    `number`                     |                                   |    \_\_     |
 |         total         |                    `number`                     |                                   |    \_\_     |
 |        variant        |                 `solid` `flat`                  | These are the variants we support |  `"solid"`  |
-|        rounded        |    [PaginationRounded](#pagination-rounded)     |      Rounded variations are       |   `"md"`    |
 |         color         |     [PaginationColors](#pagination-colors)      |        Change Loader color        | `"primary"` |
 |        outline        |                    `boolean`                    |    Whether show outline or not    |   `false`   |
 |       disabled        |                    `boolean`                    |                                   |    \_\_     |
@@ -597,14 +543,6 @@ Here is the API documentation of the Pagination component.
 </div>
 
 - **Note:** You can check [**rc-pagination documentation**](https://pagination-react-component.vercel.app/) for more details.
-
-<div className="mb-10" />
-
-### Pagination Rounded
-
-```ts
-type PaginationRounded = "sm" | "md" | "lg" | "none" | "full";
-```
 
 <div className="mb-10" />
 

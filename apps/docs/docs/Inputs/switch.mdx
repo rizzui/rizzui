@@ -86,8 +86,7 @@ You can set diffrient sizes of the **Switch** component using [**size**](#switch
     label="Large"
   />
   <Switch
-    size="xl"
-    label="Extra Large"
+    label="Large"
   />
 </Paper>
 
@@ -107,62 +106,7 @@ export default function App() {
         label="Large"
       />
       <Switch
-        size="xl"
-        label="Extra Large"
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of **Switch** using [**rounded**](#switch-rounded) property.
-
-<Paper className="flex-row justify-around gap-4 flex-wrap">
-  <Switch label="Default" />
-  <Switch
-    label="None"
-    rounded="none"
-  />
-  <Switch
-    label="Small"
-    rounded="sm"
-  />
-  <Switch
-    label="Medium"
-    rounded="md"
-  />
-  <Switch
-    label="Large"
-    rounded="lg"
-  />
-</Paper>
-
-```tsx
-import { Switch } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Switch label="Default" />
-      <Switch
-        label="None"
-        rounded="none"
-      />
-      <Switch
-        label="Small"
-        rounded="sm"
-      />
-      <Switch
-        label="Medium"
-        rounded="md"
-      />
-      <Switch
         label="Large"
-        rounded="lg"
       />
     </>
   );
@@ -170,6 +114,7 @@ export default function App() {
 ```
 
 <div className="mb-16" />
+
 
 ## Label Placement
 
@@ -345,7 +290,6 @@ Here is the API documentation of the Switch component. And the rest of the props
 |   labelPlacement    |           `left` `right`           |                         Change label direction                         | `"right"`  |
 |       variant       | [SwitchVariants](#switch-variants) |                   The variants of the component are:                   |  `"flat"`  |
 |        size         |    [SwitchSizes](#switch-sizes)    |                       The size of the component.                       |   `"md"`   |
-|       rounded       |  [SwitchRounded](#switch-rounded)  |                       The rounded variants are:                        |  `"pill"`  |
 |      disabled       |             `boolean`              |                     Whether the switch is disabled                     |  `false`   |
 |       onIcon        |            `ReactNode`             |                 Set custom icon when the switch is on                  |    \_\_    |
 |       offIcon       |            `ReactNode`             |                 Set custom icon when the switch is off                 |    \_\_    |
@@ -383,13 +327,10 @@ type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ### Switch Sizes
 
 ```ts
-type SwitchSizes = "sm" | "md" | "lg" | "xl";
+type SwitchSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
 
-### Switch Rounded
 
-```ts
-type SwitchRounded = "sm" | "md" | "lg" | "none" | "pill";
-```
+

@@ -303,7 +303,6 @@ Here is the API documentation of the **Select** component.
 |       labelWeight        |      [LabelWeight](#label-weight)       |                                                                                                     Set label font weight                                                                                                      |  `"medium"`   |
 |         variant          |   [SelectVariants](#select-variants)    |                                                                                               The variants of the component are:                                                                                               |  `"outline"`  |
 |           size           |      [SelectSizes](#select-sizes)       |                                                                           The size of the component. "sm" is equivalent to the dense select styling.                                                                           |    `"md"`     |
-|         rounded          |    [SelectRounded](#select-rounded)     |                                                                                                   The rounded variants are:                                                                                                    |    `"md"`     |
 |        autoFocus         |                `boolean`                |                                                                                          Whether select is focused by default or not                                                                                           |   `"false"`   |
 |         inPortal         |                `boolean`                |                                                                                    Whether select options is rendered on the portal or not                                                                                     |   `"true"`    |
 |   disableDefaultFilter   |                `boolean`                |                                                                                Whether the default filter works or not when search for options                                                                                 |   `"false"`   |
@@ -380,15 +379,7 @@ type SelectVariants = "outline" | "flat" | "text";
 ### Select Sizes
 
 ```ts
-type SelectSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Select Rounded
-
-```ts
-type SelectRounded = "sm" | "md" | "lg" | "none" | "pill";
+type SelectSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />

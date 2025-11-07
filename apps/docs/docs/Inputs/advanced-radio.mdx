@@ -7,8 +7,7 @@ import {
   CurrencyBangladeshiIcon,
   CurrencyDollarIcon,
   CurrencyEuroIcon,
-  CurrencyPoundIcon,
-} from "@heroicons/react/24/outline";
+  CurrencyPoundIcon } from "@heroicons/react/24/outline";
 import Paper from "@site/src/components/paper";
 
 # AdvancedRadio
@@ -178,7 +177,6 @@ Here is the API documentation of the AdvancedRadio component. And the rest of th
 |     children     |               `ReactNode`               |                            Pass content as children                             |  \_\_   |
 |     disabled     |                `boolean`                |                     Whether the checkbox is disabled or not                     |  \_\_   |
 |       size       |   [RadioSizes](#advanced-radio-sizes)   | The size of the component.<br /> "sm" is equivalent to the dense input styling. | `"md"`  |
-|     rounded      | [RadioRounded](#advanced-radio-rounded) |                            The rounded variants are:                            | `"md"`  |
 |  inputClassName  |                `string`                 |                      Add inputClassName to style the input                      |  \_\_   |
 | contentClassName |                `string`                 |                     Add contentClassName to style the input                     |  \_\_   |
 |    className     |                `string`                 |                 Add custom classes to the root of the component                 |  \_\_   |
@@ -192,13 +190,11 @@ Here is the API documentation of the AdvancedRadio component. And the rest of th
 ### Advanced Radio Sizes
 
 ```ts
-type RadioSizes = "sm" | "md" | "lg" | "xl";
+type RadioSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
 
-### Advanced Radio Rounded
 
 ```ts
-type RadioRounded = "sm" | "md" | "lg" | "pill" | "none";
 ```

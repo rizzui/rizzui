@@ -203,7 +203,7 @@ You can set diffirent sizes of the **Rate** component using [**size**](#rate-siz
   <Rate label="Small" size="sm" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
   <Rate label="Default" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
   <Rate label="Large" size="lg" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
-  <Rate label="Extra Large" size="xl" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
+  <Rate label="Large" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
 </Paper>
 
 ```tsx
@@ -215,7 +215,7 @@ export default function App() {
       <Rate size="sm" label="Small" />
       <Rate label="Default" />
       <Rate size="lg" label="Large" />
-      <Rate size="xl" label="Extra Large" />
+      <Rate label="Large" />
     </>
   );
 }
@@ -242,7 +242,6 @@ import { Rate } from "@components/rate";
 export default function App() {
   return (
     <Rate
-      size="xl"
       defaultValue={3}
       tooltips={["terrible", "bad", "normal", "good", "wonderful"]}
     />
@@ -269,7 +268,7 @@ User can select half star when you add **allowHalf** property to the **Rate** co
 import { Rate } from "@components/rate";
 
 export default function App() {
-  return <Rate size="xl" allowHalf defaultValue={1.5} />;
+  return <Rate allowHalf defaultValue={1.5} />;
 }
 ```
 
@@ -284,7 +283,6 @@ You can set custom charater to the **Rate** component using **character** proper
     character={<HeartIcon className="w-7" />}
     defaultValue={1.5}
     className="[&_li]:!mt-0 [&_ul]:!pl-0"
-    size="xl"
   />
 </Paper>
 
@@ -297,7 +295,6 @@ export default function App() {
     <Rate
       character={<HeartIcon className="w-6" />}
       defaultValue={1.5}
-      size="xl"
     />
   );
 }
@@ -313,7 +310,6 @@ Use any custom characker emoji to the **Rate** component using **character** pro
   <Rate
     character={emoji}
     defaultValue={2}
-    size="xl"
     className="[&_li]:!mt-0 [&_ul]:!pl-0"
     characterClassName="[&>svg]:mr-2"
   />
@@ -473,7 +469,6 @@ export default function App() {
     <Rate
       character={emoji}
       defaultValue={1.5}
-      size="xl"
       characterClassName="[&>svg]:mr-2"
     />
   );
@@ -576,7 +571,7 @@ Here is the API documentation of the Rate component.
 ### Rate Sizes
 
 ```tsx
-type RateSizes = "sm" | "md" | "lg" | "xl";
+type RateSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />

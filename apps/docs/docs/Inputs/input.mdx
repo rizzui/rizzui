@@ -120,12 +120,6 @@ You can change the sizes of **Input** using [**size**](#input-sizes) property.
   <Input type="email" size="sm" label="Small" placeholder="Enter your email" />
   <Input type="email" label="Default" placeholder="Enter your email" />
   <Input type="email" size="lg" label="Large" placeholder="Enter your email" />
-  <Input
-    type="email"
-    size="xl"
-    label="Extra Large"
-    placeholder="Enter your email"
-  />
 </Paper>
 
 ```tsx
@@ -147,70 +141,12 @@ export default function App() {
         label="Large"
         placeholder="Enter your email"
       />
-      <Input
-        type="email"
-        size="xl"
-        label="Extra Large"
-        placeholder="Enter your email"
-      />
     </>
   );
 }
 ```
 
 <div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of **Input** using [**rounded**](#input-rounded) property.
-
-<Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-950">
-  <Input label="Rounded None" placeholder="Enter your name" rounded="none" />
-  <Input label="Rounded Small" placeholder="Enter your name" rounded="sm" />
-  <Input label="Rounded Default" placeholder="Enter your name" />
-  <Input label="Rounded Large" placeholder="Enter your name" rounded="lg" />
-  <Input label="Rounded pill" placeholder="Enter your name" rounded="pill" />
-</Paper>
-
-```tsx
-import { Input } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Input
-        label="Rounded Small"
-        placeholder="Enter your name"
-        variant="active"
-        rounded="sm"
-      />
-      <Input
-        label="Rounded Default"
-        placeholder="Enter your name"
-        variant="active"
-      />
-      <Input
-        label="Rounded Large"
-        placeholder="Enter your name"
-        variant="active"
-        rounded="lg"
-      />
-      <Input
-        label="Rounded None"
-        placeholder="Enter your name"
-        variant="active"
-        rounded="none"
-      />
-      <Input
-        label="Rounded pill"
-        placeholder="Enter your name"
-        variant="active"
-        rounded="pill"
-      />
-    </>
-  );
-}
-```
 
 <div className="mb-16" />
 
@@ -477,7 +413,6 @@ Here is the API documentation of the Input component. And the rest of the props 
 |   labelWeight   |   [LabelWeight](#label-weight)   |                                                           Set label font weight                                                           | `"medium"`  |
 |     variant     | [InputVariants](#input-variants) |                                                    The variants of the component are:                                                     | `"outline"` |
 |      size       |    [InputSizes](#input-sizes)    |                                 The size of the component. "sm" is equivalent to the dense input styling.                                 |   `"md"`    |
-|     rounded     |  [InputRounded](#input-rounded)  |                                                         The rounded variants are:                                                         |   `"md"`    |
 |   placeholder   |             `string`             |                                                        Set input placeholder text                                                         |    \_\_     |
 |    disabled     |            `boolean`             |                                                   Whether the input is disabled or not                                                    |    \_\_     |
 |    clearable    |            `boolean`             |                                                           Add clearable option                                                            |    \_\_     |
@@ -539,14 +474,6 @@ type InputVariants = "outline" | "flat" | "text";
 
 ```ts
 type InputSizes = "sm" | "md" | "lg";
-```
-
-<div className="mb-10" />
-
-### Input Rounded
-
-```ts
-type InputRounded = "sm" | "md" | "lg" | "none" | "pill";
 ```
 
 <div className="mb-10" />

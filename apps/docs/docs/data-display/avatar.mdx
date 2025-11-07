@@ -105,7 +105,6 @@ You can change the size of the **Avatar** using **size** property.
     <Avatar
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/40.jpg"
-      size="xl"
     />
   </div>
 </Paper>
@@ -135,7 +134,6 @@ export default function App() {
       <Avatar
         name="John Doe"
         src="https://randomuser.me/api/portraits/women/40.jpg"
-        size="xl"
       />
     </>
   );
@@ -144,77 +142,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Rounded
-
-You can change the border radius of the **Avatar** using [**rounded**](#avatar-rounded) property.
-
-<Paper>
-  <div className="mt-4 flex items-center justify-around gap-3 w-full flex-wrap">
-    <Avatar
-      src="https://randomuser.me/api/portraits/women/40.jpg"
-      name="John Doe"
-      rounded="none"
-    />
-    <Avatar
-      name="John Doe"
-      src="https://randomuser.me/api/portraits/women/41.jpg"
-      rounded="sm"
-    />
-    <Avatar
-      rounded="md"
-      src="https://randomuser.me/api/portraits/women/42.jpg"
-      name="John Doe"
-    />
-    <Avatar
-      rounded="lg"
-      src="https://randomuser.me/api/portraits/women/43.jpg"
-      name="John Doe"
-    />
-    <Avatar
-      src="https://randomuser.me/api/portraits/women/44.jpg"
-      name="John Doe"
-    />
-  </div>
-</Paper>
-
-```tsx
-"use client";
-
-import { Avatar } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Avatar
-        src="https://randomuser.me/api/portraits/women/40.jpg"
-        name="John Doe"
-        rounded="none"
-      />
-      <Avatar
-        name="John Doe"
-        src="https://randomuser.me/api/portraits/women/41.jpg"
-        rounded="sm"
-      />
-      <Avatar
-        rounded="md"
-        src="https://randomuser.me/api/portraits/women/42.jpg"
-        name="John Doe"
-      />
-      <Avatar
-        rounded="lg"
-        src="https://randomuser.me/api/portraits/women/43.jpg"
-        name="John Doe"
-      />
-      <Avatar
-        src="https://randomuser.me/api/portraits/women/44.jpg"
-        name="John Doe"
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
 
 ## Colors
 
@@ -608,7 +535,6 @@ Here is the API documentation of the Avatar component.
 |   color    |  [AvatarColors](#avatar-colors)  |         Modify avatar color; by default, avatars have randomly generated colors.         |   \_\_   |
 |    size    |             `string`             |                                    Size of the avatar                                    |   \_\_   |
 | customSize |             `string`             |                  customSize of the avatar, example -> customSize="62px"                  |   \_\_   |
-|  rounded   | [AvatarRounded](#avatar-rounded) |                                    Set border radius                                     | `"full"` |
 |  onClick   | [AvatarOnclick](#avatar-onclick) |                                    Mouse click event                                     |   \_\_   |
 | className  |             `string`             | Name of the CSS class you want to add to this component alongside the default sb-avatar. |   \_\_   |
 
@@ -620,14 +546,6 @@ Here is the API documentation of the Avatar component.
 
 ```ts
 type AvatarColors = "primary" | "secondary" | "danger" | "info" | "success" | "warning";
-```
-
-<div className="mb-10" />
-
-### Avatar Rounded
-
-```ts
-type AvatarRounded = "sm" | "md" | "lg" | "full" | "none";
 ```
 
 <div className="mb-10" />

@@ -75,7 +75,6 @@ You can change the size of the **Button** using [**size**](#button-sizes) proper
     <Button size="sm">Button</Button>
     <Button>Button</Button>
     <Button size="lg">Button</Button>
-    <Button size="xl">Button</Button>
   </div>
 </Paper>
 
@@ -88,43 +87,12 @@ export default function App() {
       <Button size="sm">Button</Button>
       <Button>Button</Button>
       <Button size="lg">Button</Button>
-      <Button size="xl">Button</Button>
     </>
   );
 }
 ```
 
 <div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of the **Button** using [**rounded**](#button-rounded) property.
-
-<Paper>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <Button rounded="none">Button</Button>
-    <Button rounded="sm">Button</Button>
-    <Button>Button</Button>
-    <Button rounded="lg">Button</Button>
-    <Button rounded="pill">Button</Button>
-  </div>
-</Paper>
-
-```tsx
-import { Button } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Button rounded="none">Button</Button>
-      <Button rounded="sm">Button</Button>
-      <Button>Button</Button>
-      <Button rounded="lg">Button</Button>
-      <Button rounded="pill">Button</Button>
-    </>
-  );
-}
-```
 
 <div className="mb-16" />
 
@@ -240,7 +208,6 @@ Here is the API documentation of the Button component. And the rest of the props
 |   type    |        [ButtonTypes](#button-types)        |                          Set the original HTML type of button                           | `"button"` |
 |  variant  |     [ButtonVariants](#button-variants)     |                                 Set the button variants                                 | `"solid"`  |
 |   size    |        [ButtonSizes](#button-sizes)        | Set the size of the component. <br /> `"sm"` is equivalent to the dense button styling. |  `"md"`    |
-|  rounded  |      [ButtonRounded](#button-rounded)      |                        Set border radius of the button component                        |  `"md"`    |
 | isLoading |                 `boolean`                  |                            Set the loading status of button                             |    \_\_    |
 |  disabled |                 `boolean`                  |                              Disabled state of the button                               |    \_\_    |
 |   loader  |             `React.ReactNode`              |                     Custom Loader component to show when isLoading                      |    \_\_    |
@@ -271,13 +238,5 @@ type ButtonVariants = "solid" | "outline" | "flat" | "text" | "danger";
 ### Button Sizes
 
 ```ts
-type ButtonSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Button Rounded
-
-```ts
-type ButtonRounded = "none" | "sm" | "md" | "lg" | "pill";
+type ButtonSizes = "sm" | "md" | "lg";
 ```

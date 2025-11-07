@@ -71,7 +71,7 @@ You can change the size of the **Badge** using [**size**](#badge-sizes) property
     <Badge size="sm">Badge</Badge>
     <Badge>Badge</Badge>
     <Badge size="lg">Badge</Badge>
-    <Badge size="xl">Badge</Badge>
+    <Badge>Badge</Badge>
   </div>
 </Paper>
 
@@ -84,38 +84,6 @@ export default function App() {
       <Badge size="sm">Badge</Badge>
       <Badge>Badge</Badge>
       <Badge size="lg">Badge</Badge>
-      <Badge size="xl">Badge</Badge>
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of the **Badge** using [**rounded**](#badge-rounded) property.
-
-<Paper>
-  <div className="flex items-center justify-around gap-3 w-full flex-wrap">
-    <Badge rounded="none">Badge</Badge>
-    <Badge rounded="sm">Badge</Badge>
-    <Badge rounded="md">Badge</Badge>
-    <Badge rounded="lg">Badge</Badge>
-    <Badge>Badge</Badge>
-  </div>
-</Paper>
-
-```tsx
-import { Badge } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Badge rounded="none">Badge</Badge>
-      <Badge rounded="sm">Badge</Badge>
-      <Badge rounded="md">Badge</Badge>
-      <Badge rounded="lg">Badge</Badge>
       <Badge>Badge</Badge>
     </>
   );
@@ -123,6 +91,7 @@ export default function App() {
 ```
 
 <div className="mb-16" />
+
 
 ## Colors
 
@@ -623,7 +592,6 @@ Here is the API documentation of the Badge component. You can use props like **i
 |     children      |        `React.ReactNode`         |                          Accepts everything React can render                           |    \_\_     |
 |      variant      | [BadgeVariants](#badge-variants) |                                 Set the Badge variants                                 |  `"solid"`  |
 |       size        |    [BadgeSizes](#badge-sizes)    | Set the size of the component. <br /> `"sm"` is equivalent to the dense Badge styling. |   `"md"`    |
-|      rounded      |  [BadgeRounded](#badge-rounded)  |                        Set border radius of the Badge component                        |  `"full"`   |
 |       color       |   [BadgeColors](#badge-colors)   |                                   Change Badge color                                   | `"primary"` |
 | enableOutlineRing |            `boolean`             |                Set a outline ring. It is useful for the overlapping UI.                |    \_\_     |
 |    renderAsDot    |            `boolean`             |                                 Render badge as a dot                                  |    \_\_     |
@@ -644,15 +612,7 @@ type BadgeVariants = "solid" | "flat" | "outline";
 ### Badge Sizes
 
 ```ts
-type BadgeSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Badge Rounded
-
-```ts
-type BadgeRounded = "none" | "sm" | "md" | "lg" | "full";
+type BadgeSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />

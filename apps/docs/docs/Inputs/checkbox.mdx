@@ -95,8 +95,7 @@ You can change the sizes of **Checkbox** using [**size**](#checkbox-sizes) prope
   />
   <Checkbox
     className="m-2"
-    label="Extra Large"
-    size="xl"
+    label="Large"
   />
 </Paper>
 
@@ -123,8 +122,7 @@ export default function App() {
       />
       <Checkbox
         className="m-2"
-        label="Extra Large"
-        size="xl"
+        label="Large"
       />
     </>
   );
@@ -133,73 +131,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Rounded
-
-You can change the border radius of **Checkbox** using [**rounded**](#checkbox-rounded) property.
-
-<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
-  <Checkbox
-    className="m-2"
-    label="Rounded Small"
-    rounded="sm"
-  />
-  <Checkbox
-    className="m-2"
-    label="Rounded Default"
-  />
-  <Checkbox
-    className="m-2"
-    label="Rounded Large"
-    rounded="lg"
-  />
-  <Checkbox
-    className="m-2"
-    label="Rounded None"
-    rounded="none"
-  />
-  <Checkbox
-    className="m-2"
-    label="Rounded Circle"
-    rounded="full"
-  />
-</Paper>
-
-```tsx
-import { Checkbox } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Checkbox
-        className="m-2"
-        label="Rounded Small"
-        rounded="sm"
-      />
-      <Checkbox
-        className="m-2"
-        label="Rounded Default"
-      />
-      <Checkbox
-        className="m-2"
-        label="Rounded Large"
-        rounded="lg"
-      />
-      <Checkbox
-        className="m-2"
-        label="Rounded None"
-        rounded="none"
-      />
-      <Checkbox
-        className="m-2"
-        label="Rounded Circle"
-        rounded="full"
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
 
 ## Label Placement
 
@@ -348,7 +279,6 @@ Here is the API documentation of the Checkbox component. And the rest of the pro
 | labelPlacement  |             `left` `right`             |                             Change label direction                              |  `"right"`  |
 |     variant     | [CheckboxVariants](#checkbox-variants) |                       The variants of the component are:                        | `"outline"` |
 |      size       |    [CheckboxSizes](#checkbox-sizes)    | The size of the component.<br /> "sm" is equivalent to the dense input styling. |   `"md"`    |
-|     rounded     |  [CheckboxRounded](#checkbox-rounded)  |                            The rounded variants are:                            |   `"md"`    |
 |    disabled     |               `boolean`                |                      Whether the input is disabled or not                       |    \_\_     |
 |  indeterminate  |               `boolean`                |                     Whether the input indeterminate or not                      |    \_\_     |
 |      error      |                `string`                |                       Show error message using this prop                        |    \_\_     |
@@ -385,13 +315,10 @@ type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ### Checkbox Sizes
 
 ```ts
-type CheckboxSizes = "sm" | "md" | "lg" | "xl";
+type CheckboxSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
 
-### Checkbox Rounded
 
-```ts
-type CheckboxRounded = "sm" | "md" | "lg" | "full" | "none";
-```
+

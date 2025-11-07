@@ -247,8 +247,8 @@
         div[class*='colorModeToggle_'] button:hover {
           background-color: transparent;
         }
-        .customVersionDropdown {
-          margin-right: 1rem;
+        svg[class*='iconExternalLink_'] {
+          @apply hidden;
         }
       }
     }
@@ -434,6 +434,28 @@ html[data-theme='dark'] {
             opacity: 0.6;
             &:hover {
               opacity: 1;
+            }
+          }
+          .navbar__item--dropdown {
+            .navbar__link {
+              color: var(--ifm-color-gray-400);
+              &:hover {
+                color: var(--ifm-color-gray-200);
+              }
+            }
+            .navbar__dropdown {
+              background: var(--ifm-navbar-background-color);
+              border-color: var(--ifm-color-emphasis-300);
+              .dropdown__link {
+                color: var(--ifm-color-gray-400);
+                &:hover {
+                  background-color: var(--ifm-color-emphasis-200);
+                  color: var(--ifm-color-gray-200);
+                }
+                &:not(:last-child) {
+                  border-bottom-color: var(--ifm-color-emphasis-300);
+                }
+              }
             }
           }
         }

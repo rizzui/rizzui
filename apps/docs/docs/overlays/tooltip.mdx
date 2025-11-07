@@ -58,8 +58,8 @@ You can change the size of **Tooltip** using [**size**](#tooltip-sizes) property
   <Tooltip size="lg" content={"Large Tooltip!"}>
     <Button variant="outline">Large</Button>
   </Tooltip>
-  <Tooltip size="xl" content={"Extra Large Tooltip!"}>
-    <Button variant="outline">Extra Large</Button>
+  <Tooltip content={"Large Tooltip!"}>
+    <Button variant="outline">Large</Button>
   </Tooltip>
 </Paper>
 
@@ -80,67 +80,16 @@ export default function App() {
       <Tooltip size="lg" content={"Large Tooltip!"}>
         <Button variant="outline">Large</Button>
       </Tooltip>
-      <Tooltip size="xl" content={"Extra Large Tooltip!"}>
-        <Button variant="outline">Extra Large</Button>
-      </Tooltip>
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of **Tooltip** using [**rounded**](#tooltip-rounded) property.
-
-<Paper className="flex-row flex-wrap justify-around gap-4">
-  <Tooltip rounded="none" content={"Rounded None!"}>
-    <Button variant="outline">None</Button>
-  </Tooltip>
-  <Tooltip rounded="sm" content={"Rounded Small!"}>
-    <Button variant="outline">Small</Button>
-  </Tooltip>
-  <Tooltip content={"Rounded Default!"}>
-    <Button variant="outline">Default</Button>
-  </Tooltip>
-  <Tooltip rounded="lg" content={"Rounded Large!"}>
-    <Button variant="outline">Large</Button>
-  </Tooltip>
-  <Tooltip rounded="pill" content={"Rounded Full!"}>
-    <Button variant="outline">Full</Button>
-  </Tooltip>
-</Paper>
-
-```tsx
-"use client"; 
-
-import { Tooltip, Button } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Tooltip rounded="none" content={"Rounded None!"}>
-        <Button variant="outline">None</Button>
-      </Tooltip>
-      <Tooltip rounded="sm" content={"Rounded Small!"}>
-        <Button variant="outline">Small</Button>
-      </Tooltip>
-      <Tooltip content={"Rounded Default!"}>
-        <Button variant="outline">Default</Button>
-      </Tooltip>
-      <Tooltip rounded="lg" content={"Rounded Large!"}>
+      <Tooltip content={"Large Tooltip!"}>
         <Button variant="outline">Large</Button>
       </Tooltip>
-      <Tooltip rounded="pill" content={"Rounded Full!"}>
-        <Button variant="outline">Full</Button>
-      </Tooltip>
     </>
   );
 }
 ```
 
 <div className="mb-16" />
+
 
 ## Colors
 
@@ -222,8 +171,8 @@ You can change the shadow style of **Tooltip** using [**shadow**](#tooltip-shado
   <Tooltip shadow="lg" content={"Large Shadow!"}>
     <Button variant="outline">Large</Button>
   </Tooltip>
-  <Tooltip shadow="xl" content={"Extra Large Shadow!"}>
-    <Button variant="outline">Extra Large</Button>
+  <Tooltip shadow="xl" content={"Large Shadow!"}>
+    <Button variant="outline">Large</Button>
   </Tooltip>
 </Paper>
 
@@ -244,8 +193,8 @@ export default function App() {
       <Tooltip shadow="lg" content={"Large Shadow!"}>
         <Button variant="outline">Large</Button>
       </Tooltip>
-      <Tooltip shadow="xl" content={"Extra Large Shadow!"}>
-        <Button variant="outline">Extra Large</Button>
+      <Tooltip shadow="xl" content={"Large Shadow!"}>
+        <Button variant="outline">Large</Button>
       </Tooltip>
     </>
   );
@@ -491,7 +440,6 @@ Here is the API documentation of the Tooltip component. You can use the followin
 |    children    |   [TooltipChildren](#tooltip-children)   |      Pass children which will have tooltip      |    \_\_     |
 |     color      |     [TooltipColors](#tooltip-colors)     |              Change Tooltip color               | `"primary"` |
 |      size      |      [TooltipSizes](#tooltip-sizes)      |          Supported Tooltip sizes are:           |   `"md"`    |
-|    rounded     |    [TooltipRounded](#tooltip-rounded)    |            The rounded variants are:            |   `"md"`    |
 |     shadow     |    [TooltipShadows](#tooltip-shadows)    |         Supported tooltip shadows are:          |   `"md"`    |
 |   className    |                 `string`                 |   Add custom classes to the tooltip container   |    \_\_     |
 |   showArrow    |                `boolean`                 | Whether tooltip arrow should be shown or hidden |   `true`    |
@@ -544,15 +492,7 @@ type TooltipColors =
 ### Tooltip Sizes
 
 ```ts
-type TooltipSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Tooltip Rounded
-
-```ts
-type TooltipRounded = "sm" | "md" | "lg" | "none" | "pill";
+type TooltipSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />

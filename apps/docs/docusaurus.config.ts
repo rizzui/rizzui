@@ -49,13 +49,7 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.ts'),
           editUrl: 'https://github.com/rizzui/rizzui/apps/docs',
-          lastVersion: '2.0.0',
-          includeCurrentVersion: false,
-          versions: {
-            '2.0.0': {
-              label: 'v-2.0.0',
-            },
-          },
+          routeBasePath: 'docs',
         },
         blog: {
           showReadingTime: true,
@@ -110,9 +104,19 @@ const config: Config = {
           'aria-label': 'GitHub',
         },
         {
-          type: 'docsVersionDropdown',
+          type: 'dropdown',
+          label: 'v-2.0.0',
           position: 'right',
-          className: 'customVersionDropdown',
+          items: [
+            {
+              label: 'v-1.0.0',
+              href: 'https://your-legacy-docs-url-1.com', // Replace with your actual URL
+            },
+            {
+              label: 'v-0.8.7',
+              href: 'https://your-legacy-docs-url-2.com', // Replace with your actual URL
+            },
+          ],
         },
       ],
     },

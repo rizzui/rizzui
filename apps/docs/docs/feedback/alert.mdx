@@ -90,10 +90,9 @@ You can set diffirent size of the **Alert** using [**size**](#alert-sizes) prope
     <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
   <Alert
-    size="xl"
     color="danger"
   >
-    <Text className="font-semibold">Alert Extra Large</Text>
+    <Text className="font-semibold">Alert Large</Text>
     <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
   </Alert>
 </Paper>
@@ -129,10 +128,9 @@ export default function App() {
         </Text>
       </Alert>
       <Alert
-        size="xl"
         color="danger"
       >
-        <Text className="font-semibold">Alert Extra Large</Text>
+        <Text className="font-semibold">Alert Large</Text>
         <Text>
           Attention All! We are excited to announce the launch of our new product/service.
         </Text>
@@ -144,99 +142,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Rounded
-
-Change border radius of the **Alert** component using [**rounded**](#alert-rounded) property.
-
-<Paper className="gap-4 justify-start items-start text-gray-950">
-  <Alert
-    color="success"
-    rounded="none"
-  >
-    <Text className="font-semibold">Rounded None</Text>
-    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
-  </Alert>
-  <Alert
-    color="success"
-    rounded="sm"
-  >
-    <Text className="font-semibold">Rounded Small</Text>
-    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
-  </Alert>
-  <Alert color="success">
-    <Text className="font-semibold">Rounded Default</Text>
-    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
-  </Alert>
-  <Alert
-    color="success"
-    rounded="lg"
-  >
-    <Text className="font-semibold">Rounded Large</Text>
-    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
-  </Alert>
-  <Alert
-    color="success"
-    rounded="xl"
-  >
-    <Text className="font-semibold">Rounded Extra Large</Text>
-    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
-  </Alert>
-</Paper>
-
-```tsx
-import { Alert } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Alert
-        color="success"
-        rounded="none"
-      >
-        <Text className="font-semibold">Alert Rounded None</Text>
-        <Text>
-          Attention All! We are excited to announce the launch of our new product/service.
-        </Text>
-      </Alert>
-      <Alert
-        color="success"
-        rounded="sm"
-      >
-        <Text className="font-semibold">Alert Rounded Small</Text>
-        <Text>
-          Attention All! We are excited to announce the launch of our new product/service.
-        </Text>
-      </Alert>
-      <Alert color="success">
-        <Text className="font-semibold">Alert Rounded Default</Text>
-        <Text>
-          Attention All! We are excited to announce the launch of our new product/service.
-        </Text>
-      </Alert>
-      <Alert
-        color="success"
-        rounded="lg"
-      >
-        <Text className="font-semibold">Alert Rounded Large</Text>
-        <Text>
-          Attention All! We are excited to announce the launch of our new product/service.
-        </Text>
-      </Alert>
-      <Alert
-        color="success"
-        rounded="xl"
-      >
-        <Text className="font-semibold">Alert Rounded Extra Large</Text>
-        <Text>
-          Attention All! We are excited to announce the launch of our new product/service.
-        </Text>
-      </Alert>
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
 
 ## Colors
 
@@ -501,7 +406,6 @@ Here is the API documentation of the Alert component. You can use these props to
 |         color          |  [AlertColors](#alert-colors)  |                   Change color                    |    \_\_     |
 |        children        |          `ReactNode`           |          Pass alert message as children           |    \_\_     |
 |          size          |   [AlertSizes](#alert-sizes)   |            The size of the component.             |    `md"`    |
-|        rounded         | [AlertRounded](#alert-rounded) |             The rounded variants are:             |   `"md"`    |
 |        variant         |        `flat` `outline`        |        The variants of the component are:         | `"outline"` |
 |          bar           |           `boolean`            |        Whether left bar should be visible         |  `"false"`  |
 |        closable        |           `boolean`            |                Add closable option                |    \_\_     |
@@ -528,15 +432,7 @@ type AlertColors = "danger" | "info" | "success" | "warning";
 ### Alert Sizes
 
 ```ts
-type AlertSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Alert Rounded
-
-```ts
-type AlertRounded = "sm" | "md" | "lg" | "xl" | "none";
+type AlertSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />

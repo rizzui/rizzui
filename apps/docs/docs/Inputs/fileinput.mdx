@@ -101,8 +101,7 @@ You can change the size of **FileInput** using [**size**](#fileinput-sizes) prop
     size="lg"
   />
   <FileInput
-    label="Extra Large FileInput"
-    size="xl"
+    label="Large FileInput"
   />
 </Paper>
 
@@ -124,8 +123,7 @@ export default function App() {
         size="lg"
       />
       <FileInput
-        label="Extra Large FileInput"
-        size="xl"
+        label="Large FileInput"
       />
     </>
   );
@@ -134,61 +132,6 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Rounded
-
-You can change the border radius of **FileInput** using [**rounded**](#fileinput-rounded) property.
-
-<Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <FileInput
-    label="Rounded Small"
-    rounded="sm"
-  />
-  <FileInput label="Rounded Default" />
-  <FileInput
-    label="Rounded Large"
-    rounded="lg"
-  />
-  <FileInput
-    label="Rounded None"
-    rounded="none"
-  />
-  <FileInput
-    label="Rounded Full"
-    rounded="pill"
-  />
-</Paper>
-
-```tsx
-"use client";
-
-import { FileInput } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <FileInput
-        label="Rounded Small"
-        rounded="sm"
-      />
-      <FileInput label="Rounded Default" />
-      <FileInput
-        label="Rounded Large"
-        rounded="lg"
-      />
-      <FileInput
-        label="Rounded None"
-        rounded="none"
-      />
-      <FileInput
-        label="Rounded Full"
-        rounded="pill"
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
 
 ## With Clearable Button
 
@@ -352,7 +295,6 @@ Here is the API documentation of the Input component. And the rest of the props 
 |   labelWeight   |       [LabelWeight](#label-weight)       |                            Set label font weight                            | `"medium"`  |
 |     variant     | [FileinputVariants](#fileinput-variants) |                     The variants of the component are:                      | `"outline"` |
 |      size       |    [FileinputSizes](#fileinput-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. |   `"md"`    |
-|     rounded     |  [FileinputRounded](#fileinput-rounded)  |                          The rounded variants are:                          |   `"md"`    |
 |   placeholder   |                 `string`                 |                         Set input placeholder text                          |    \_\_     |
 |    disabled     |                `boolean`                 |                    Whether the input is disabled or not                     |    \_\_     |
 |    clearable    |                `boolean`                 |                            add clearable option                             |    \_\_     |
@@ -390,15 +332,7 @@ type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ### Fileinput Sizes
 
 ```ts
-type FileinputSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Fileinput Rounded
-
-```ts
-type FileinputRounded = "sm" | "md" | "lg" | "none" | "pill";
+type FileinputSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
