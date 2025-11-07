@@ -34,13 +34,16 @@ const actionIcon = tv({
 });
 
 const spinnerStyles = tv({
-  base: 'h-auto animate-spin',
+  base: 'animate-spin',
   variants: {
     size: {
-      sm: 'w-3.5',
-      md: 'w-4',
-      lg: 'w-5',
+      sm: 'size-4',
+      md: 'size-[18px]',
+      lg: 'w-5 h-5',
     },
+  },
+  defaultVariants: {
+    size: 'md',
   },
 });
 
