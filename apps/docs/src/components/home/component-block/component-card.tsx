@@ -1,6 +1,7 @@
-import React from 'react';
 import { useHistory } from '@docusaurus/router';
-import { Title, Text, cn } from 'rizzui';
+import { cn } from 'rizzui/cn';
+import { Title } from 'rizzui/typography';
+import { Text } from 'rizzui/typography';
 
 export default function ComponentCard({ item }: any) {
   const history = useHistory();
@@ -9,10 +10,10 @@ export default function ComponentCard({ item }: any) {
     <div
       onClick={() => history.push(item.path)}
       className={cn(
-        'flex flex-col rounded-xl border border-muted flex-shrink-0 relative shadow-xs overflow-hidden group/card cursor-pointer transition-all hover:[box-shadow:0_12px_28px_-8px_rgba(0,0,0,0.1)] dark:hover:[box-shadow:0_12px_28px_-8px_rgba(255,255,255,0.05)]'
+        'flex flex-col rounded-xl border border-border flex-shrink-0 relative overflow-hidden group/card cursor-pointer transition-all [box-shadow:0_1.5px_0_var(--border-color)]'
       )}
     >
-      <div className="flex h-full justify-center items-center px-6 py-12 min-h-[256px] before:h-[calc(100%-8px)] before:absolute before:bg-gradient-to-b before:from-gray-100/60 before:-z-[1] before:inset-1 before:w-[calc(100%-8px)] before:rounded-t-lg">
+      <div className="flex h-full justify-center items-center px-6 py-12 min-h-[256px] before:h-[calc(100%-6px)] before:absolute before:bg-gradient-to-b before:from-gray-100/60 before:-z-[1] before:inset-[3px] before:w-[calc(100%-6px)] before:rounded-t-lg relative">
         {item.component}
       </div>
 

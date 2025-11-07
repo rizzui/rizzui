@@ -14,6 +14,7 @@ import InputBlock from './input-block';
 import IntegrationBlock from './integration-block';
 import ComponentCard from './component-card';
 import { useInView } from '@site/src/utils/hooks/useInView';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 const components = [
   {
@@ -86,12 +87,12 @@ export default function ComponentBlock() {
     <section className="pt-10 md:pt-16 xl:pt-20 2xl:pt-24 pb-14 md:pb-20 group">
       <header className="text-center mb-8 sm:mb-10 md:mb-12">
         <div ref={ref} className="container mx-auto">
-          <Text className="!mb-3 lg:!mb-4 !text-[11px] sm:!text-xs lg:!text-sm tracking-[4px] uppercase text-gray-500">
+          <Text className="!mb-3 !text-[11px] sm:!text-xs lg:!text-sm tracking-[4px] uppercase text-gray-500">
             Beautifully Crafted
           </Text>
           <Title
             as="h2"
-            className="!text-2xl lg:!text-3xl !leading-[1.35] lg:!leading-[1.3] font-semibold"
+            className="!text-2xl lg:!text-3xl !leading-[1.35] lg:!leading-[1.3] font-semibold 2xl:!text-4xl"
           >
             <NumberFlow
               value={isInView ? 40 : 0}
@@ -116,6 +117,7 @@ export default function ComponentBlock() {
             className="min-w-[160px] shadow-sm hover:ring-[0.5px] hover:ring-gray-900 relative"
           >
             Explore More{' '}
+            <ArrowRightIcon strokeWidth={2} className="size-[18px] ms-2" />
           </Button>
         </div>
       </div>

@@ -116,10 +116,6 @@ const config: Config = {
         },
       ],
     },
-    // colorMode: {
-    //   defaultMode: "light",
-    //   respectPrefersColorScheme: false,
-    // },
     prism: {
       theme: prismThemes.oceanicNext,
       darkTheme: prismThemes.oceanicNext,

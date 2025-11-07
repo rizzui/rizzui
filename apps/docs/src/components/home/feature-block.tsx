@@ -1,5 +1,5 @@
-import React from 'react';
-import { Title, Text } from 'rizzui';
+import { Title } from 'rizzui/typography';
+import { Text } from 'rizzui/typography';
 import MegaPhoneIcon from '../icons/mega-phone';
 import ColorSwatchIcon from '../icons/color-swatch';
 import RocketIcon from '../icons/rocket';
@@ -42,7 +42,7 @@ export default function FeatureBlock() {
           </Text>
           <Title
             as="h2"
-            className="!text-2xl lg:!text-3xl !leading-[1.35] lg:!leading-[1.3] font-semibold"
+            className="!text-2xl lg:!text-3xl !leading-[1.35] lg:!leading-[1.3] font-semibold 2xl:!text-4xl"
           >
             A Next Gen UI Library with <br className="hidden sm:inline-block" />{' '}
             Limitless Customization Options
@@ -52,9 +52,9 @@ export default function FeatureBlock() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="border border-gray-200 shadow-xs rounded-xl py-7 px-6"
+              className="border 2xl:px-7 border-border [box-shadow:0_1.5px_0_var(--border-color)] rounded-xl py-7 px-6 2xl:pt-8"
             >
-              <div className="h-11 w-11 xl:w-12 xl:h-12 rounded-lg text-gray-900 mb-6 border border-gray-200 bg-gradient-to-t from-gray-100/60 flex items-center justify-center">
+              <div className="h-11 w-11 xl:w-12 xl:h-12 rounded-lg text-gray-900 mb-6 border border-border bg-gradient-to-t from-gray-100/60 flex items-center justify-center">
                 {feature.icon}
               </div>
               <Title as="h5" className="font-semibold !text-lg">

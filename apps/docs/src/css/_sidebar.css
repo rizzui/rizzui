@@ -11,13 +11,14 @@
       background-color: transparent;
     }
     .menu__caret:hover {
-      background-color: transparent
+      background-color: transparent;
     }
   }
   .menu__list-item > .menu__list {
     @apply border-l border-gray-200 ml-1.5;
   }
   .theme-doc-sidebar-container {
+    border-width: 2px;
     scrollbar-color: rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0);
     @media screen and (min-width: 997px) {
       --doc-sidebar-width: 270px;

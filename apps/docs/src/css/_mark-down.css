@@ -370,7 +370,8 @@
         border-radius: 4px;
         padding: 1rem;
         color: var(--ifm-menu-color);
-        border-color: var(--ifm-color-gray-200);
+        border-color: var(--border-color);
+        box-shadow: 0 1.5px 0 var(--border-color);
         &:hover {
           @apply hover:shadow-[0_0_0_0.6px_currentColor];
           color: var(--ifm-color-primary);

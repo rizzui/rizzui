@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Button, cn } from "rizzui";
+import React, { useState } from 'react';
+import { Button, cn } from 'rizzui';
 
 type PaperProps = {
   className?: string;
@@ -18,8 +18,8 @@ export default function Paper({
   return (
     <div
       className={cn(
-        "mb-2.5 pt-10 pb-12 min-h-[200px] flex flex-col justify-center items-center px-6 relative shadow rounded border border-gray-200",
-        !toggleCode && "[&+.theme-code-block]:hidden",
+        'mb-2.5 pt-10 pb-12 min-h-[200px] flex flex-col justify-center items-center px-6 relative rounded border border-border [box-shadow:0_1.5px_0_var(--border-color)]',
+        !toggleCode && '[&+.theme-code-block]:hidden',
         className
       )}
     >
@@ -46,7 +46,7 @@ export default function Paper({
               d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
             />
           </svg>
-          {toggleCode ? "Hide Code" : "Show Code"}
+          {toggleCode ? 'Hide Code' : 'Show Code'}
         </Button>
       ) : null}
     </div>
