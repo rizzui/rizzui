@@ -113,7 +113,7 @@ export default function ComponentBlock() {
         <div className="mt-8 xl:mt-10 2xl:mt-12 flex items-center justify-center">
           <Button
             size="lg"
-            onClick={() => history.push('/docs/buttons/action-icon')}
+            onClick={() => history.push('/docs/guide/components')}
             className="min-w-[160px] shadow-sm hover:ring-[0.5px] hover:ring-gray-900 relative"
           >
             Explore More{' '}

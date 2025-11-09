@@ -1,0 +1,125 @@
+---
+sidebar_position: 2
+hide_table_of_contents: true
+---
+
+import { Badge } from 'rizzui';
+
+# Components
+
+Here you can find all the components available in the library. We are continuously working on adding more components to enhance your development experience.
+
+<div className="mt-12 mb-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-5">
+    {/* Column 1 - Alphabetically sorted */}
+    <div className="space-y-5">
+      <ComponentLink href="/docs/data-display/accordion" title="Accordion" />
+      <ComponentLink href="/docs/buttons/action-icon" title="Action Icon" />
+      <ComponentLink href="/docs/Inputs/advanced-checkbox" title="Advanced Checkbox" />
+      <ComponentLink href="/docs/Inputs/advanced-radio" title="Advanced Radio" />
+      <ComponentLink href="/docs/feedback/alert" title="Alert" />
+      <ComponentLink href="/docs/data-display/announcement" title="Announcement" />
+      <ComponentLink href="/docs/data-display/avatar" title="Avatar" />
+      <ComponentLink href="/docs/data-display/badge" title="Badge" />
+      <ComponentLink href="/docs/typography/blockquote" title="Blockquote" />
+      <ComponentLink href="/docs/layouts/box" title="Box" />
+      <ComponentLink href="/docs/buttons/button" title="Button" />
+      <ComponentLink href="/docs/Inputs/checkbox" title="Checkbox" />
+      <ComponentLink href="/docs/Inputs/checkbox-group" title="Checkbox Group" />
+      <ComponentLink href="/docs/typography/code" title="Code" />
+      <ComponentLink href="/docs/overlays/drawer" title="Drawer" />
+      <ComponentLink href="/docs/navigation/dropdown" title="Dropdown" />
+    </div>
+
+    {/* Column 2 */}
+    <div className="space-y-5">
+      <ComponentLink href="/docs/data-display/empty" title="Empty" />
+      <ComponentLink href="/docs/Inputs/fileinput" title="File Input" />
+      <ComponentLink href="/docs/layouts/flex" title="Flex" />
+      <ComponentLink href="/docs/layouts/grid" title="Grid" />
+      <ComponentLink href="/docs/Inputs/input" title="Input" />
+      <ComponentLink href="/docs/feedback/loader" title="Loader" />
+      <ComponentLink href="/docs/overlays/modal" title="Modal" />
+      <ComponentLink href="/docs/Inputs/multi-select" title="Multi Select" />
+      <ComponentLink href="/docs/Inputs/password" title="Password" />
+      <ComponentLink href="/docs/Inputs/pin-code" title="Pin Code" />
+      <ComponentLink href="/docs/overlays/popover" title="Popover" />
+      <ComponentLink href="/docs/feedback/progressbar" title="Progressbar" />
+      <ComponentLink href="/docs/feedback/radial-progressbar" title="Radial Progressbar" />
+      <ComponentLink href="/docs/Inputs/radio" title="Radio" />
+      <ComponentLink href="/docs/Inputs/radio-group" title="Radio Group" />
+      <ComponentLink href="/docs/Inputs/select" title="Select" />
+    </div>
+
+    {/* Column 3 */}
+    <div className="space-y-5">
+      <ComponentLink href="/docs/navigation/stepper" title="Stepper" />
+      <ComponentLink href="/docs/Inputs/switch" title="Switch" />
+      <ComponentLink href="/docs/data-display/table" title="Table" />
+      <ComponentLink href="/docs/navigation/tabs" title="Tabs" />
+      <ComponentLink href="/docs/typography/text" title="Text" />
+      <ComponentLink href="/docs/Inputs/textarea" title="Textarea" />
+      <ComponentLink href="/docs/typography/title" title="Title" />
+      <ComponentLink href="/docs/overlays/tooltip" title="Tooltip" />
+    </div>
+
+  </div>
+</div>
+
+<br />
+
+## Integrations
+
+Third-party integrations and enhanced components built with popular React libraries.
+
+<div className="mt-8 mb-12">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-5">
+    <div className="space-y-5">
+      <ComponentLink href="/docs/integrations/pagination" title="Pagination" />
+      <ComponentLink
+        href="/docs/integrations/phone-number"
+        title="Phone Number"
+      />
+      <ComponentLink
+        href="/docs/integrations/range-slider"
+        title="Range Slider"
+      />
+    </div>
+    <div className="space-y-5">
+      <ComponentLink href="/docs/integrations/rate" title="Rate" />
+      <ComponentLink
+        href="/docs/integrations/react-datepicker"
+        title="React Datepicker"
+      />
+      <ComponentLink
+        href="/docs/integrations/react-hook-form"
+        title="React Hook Form"
+      />
+    </div>
+    <div className="space-y-5">
+      <ComponentLink href="/docs/integrations/table" title="Table (RC-Table)" />
+      <ComponentLink
+        href="/docs/integrations/tan-stack"
+        title="TanStack Table"
+      />
+    </div>
+  </div>
+</div>
+
+export function ComponentLink({ href, title, isNew = false }) {
+  return (
+    <a
+      href={href}
+      className="flex items-center gap-2 text-base font-medium text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors group"
+    >
+      <span className="group-hover:translate-x-0.5 transition-transform">
+        {title}
+      </span>
+      {isNew && (
+        <Badge size="sm" color="info" className="text-[10px] px-2 py-0.5">
+          NEW
+        </Badge>
+      )}
+    </a>
+  );
+}

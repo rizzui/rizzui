@@ -88,7 +88,7 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          to: 'docs/buttons/action-icon',
+          to: 'docs/guide/components',
           position: 'left',
           label: 'Components',
         },

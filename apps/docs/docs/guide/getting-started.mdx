@@ -12,15 +12,30 @@ import BunIcon from '@site/src/components/icons/bun-icon';
 
 # Getting Started
 
-RizzUI - A Modern, Minimal, TailwindCSS-based React Open Source UI Library. Intuitively crafted, easy-to-customize components for seamless integration with React application. Responsive, accessible, and consistent across devices and browsers.
+Welcome to **RizzUI** - A modern, minimal React UI library built with **Tailwind CSS v4** and **React 19**. Get production-ready components that are intuitive, accessible, and performant.
+
+## Features
+
+- **50+ Components** - Comprehensive set of UI components including buttons, forms, modals, and more
+- **Tailwind CSS v4** - Modern CSS-first configuration without JavaScript config files
+- **Dark Mode Ready** - Built-in dark mode support using OKLCH color space
+- **Fully Accessible** - WCAG compliant components built on Headless UI primitives
+- **Tree-shakeable** - Optimized bundle size - only ship what you use
+- **TypeScript Native** - Complete type safety and IntelliSense support
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- **React** 19.1.0 or higher
+- **Node.js** 18.0.0 or higher
+- **Package Manager**: pnpm 9.0+ (recommended), npm, or yarn
 
 ## Installation
 
-System Requirements:
+### Step 1: Install RizzUI & Core Dependencies
 
-- Node.js 18.20.4 or [later](https://nodejs.org/en).
-
-Go to your React / Next.js project directory & install RizzUI by running the following command:
+Navigate to your React/Next.js project and run:
 
 <Tabs groupId="package-manager">
   <TabItem
@@ -33,7 +48,7 @@ Go to your React / Next.js project directory & install RizzUI by running the fol
     default
   >
     <CodeBlock language="js">
-      {`npm i rizzui @headlessui/react @floating-ui/react`}
+      {`npm i rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -45,7 +60,7 @@ Go to your React / Next.js project directory & install RizzUI by running the fol
     }
   >
     <CodeBlock language="js">
-      {`yarn add rizzui @headlessui/react @floating-ui/react`}
+      {`yarn add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -57,7 +72,7 @@ Go to your React / Next.js project directory & install RizzUI by running the fol
     }
   >
     <CodeBlock language="js">
-      {`pnpm add rizzui @headlessui/react @floating-ui/react`}
+      {`pnpm add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -69,18 +84,24 @@ Go to your React / Next.js project directory & install RizzUI by running the fol
     }
   >
     <CodeBlock language="js">
-      {`bun add rizzui @headlessui/react @floating-ui/react`}
+      {`bun add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants`}
     </CodeBlock>
   </TabItem>
 </Tabs>
 
-<div className="!mt-4 !mb-8 ">
-  **Note:** **RizzUI** is now support **React19**. Please don't forget to use
-  **@headlessui/react@2.0.3** and **@floating-ui/react@0.26.13** for the latest
-  **rizzui**.
+<div className="!mt-6 !mb-8 p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-800">
+  **Package Overview** - **`rizzui`** - The core UI component library -
+  **`@headlessui/react`** - Provides accessible, unstyled primitives for complex
+  components (dropdowns, modals, tabs) - **`@floating-ui/react`** - Advanced
+  positioning system for tooltips, popovers, and dropdowns -
+  **`@tailwindcss/postcss`** - Tailwind CSS v4 PostCSS processing engine -
+  **`tailwind-variants`** - Type-safe variant management system for component
+  styling
 </div>
 
-Now Install and configure TailwindCSS to have the style.
+### Step 2: Install Tailwind CSS & Forms Plugin
+
+Install these development dependencies for styling:
 
 <Tabs groupId="package-manager-tailwind">
   <TabItem
@@ -93,7 +114,7 @@ Now Install and configure TailwindCSS to have the style.
     default
   >
     <CodeBlock language="js">
-      {`npm i -D tailwindcss postcss autoprefixer @tailwindcss/forms`}
+      {`npm i -D tailwindcss @tailwindcss/forms`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -105,7 +126,7 @@ Now Install and configure TailwindCSS to have the style.
     }
   >
     <CodeBlock language="js">
-      {`yarn add -D tailwindcss postcss autoprefixer @tailwindcss/forms`}
+      {`yarn add -D tailwindcss @tailwindcss/forms`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -117,7 +138,7 @@ Now Install and configure TailwindCSS to have the style.
     }
   >
     <CodeBlock language="js">
-      {`pnpm i -D tailwindcss postcss autoprefixer @tailwindcss/forms`}
+      {`pnpm add -D tailwindcss @tailwindcss/forms`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -129,113 +150,179 @@ Now Install and configure TailwindCSS to have the style.
     }
   >
     <CodeBlock language="js">
-      {`bun add -D tailwindcss postcss autoprefixer @tailwindcss/forms`}
+      {`bun add -D tailwindcss @tailwindcss/forms`}
     </CodeBlock>
   </TabItem>
 </Tabs>
 
-## Tailwind Configuration
+<div className="!mt-6 !mb-8 p-4 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
+  **Development Dependencies** - **`tailwindcss`** - The core Tailwind CSS v4
+  framework - **`@tailwindcss/forms`** - Enhanced form styling with consistent,
+  accessible input designs
+</div>
 
-If you don't plan to use dark mode in your application, then the current configuration is good to go. However, if you wish to implement both light and dark modes, please refer to our [dark mode documentation.](/docs/guide/dark-mode)
+## Configuration
 
-```js title=tailwind.config.js
-/** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
+### Step 3: Configure Your Styles
 
-module.exports = {
-  content: [
-    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}", // ⚠️ Required this line to compile RizzUI style.
-    ...// 💡​ configure your components, and any other source files path that contain Tailwind class names.
-  ],
-  theme: {
-    extend: {
-      colors: {
-        /*
-        * body, modal, drawer background & ring-offset-color
-        */
-        background: colors.white,
+Tailwind CSS v4 uses a modern CSS-first configuration approach. No `tailwind.config.js` file is required.
 
-        /*
-        * body text color
-        */
-        foreground: colors.gray[600],
+Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
 
-        /*
-        * border, default flat bg color for input components, tab & dropdown hover color
-        */
-        muted: colors.gray[200],
+```css title=globals.css
+/* Import Tailwind CSS v4 */
+@import 'tailwindcss';
 
-        /*
-        * primary colors
-        */
-        primary: {
-          lighter: colors.gray[200],
-          DEFAULT: colors.gray[800],
-          dark: colors.gray[950],
-          foreground: colors.white,
-        },
+/* Configure content sources for RizzUI components */
+@source '../node_modules/rizzui/dist';
 
-        /*
-        * secondary colors
-        */
-        secondary: {
-          lighter: colors.indigo[200],
-          DEFAULT: colors.indigo[500],
-          dark: colors.indigo[700],
-          foreground: colors.white,
-        },
+/* Enable enhanced form styles */
+@plugin '@tailwindcss/forms';
 
-        /*
-        * danger colors
-        */
-        red: {
-          lighter: colors.rose[200],
-          DEFAULT: colors.rose[500],
-          dark: colors.rose[700],
-        },
+/* Define color palette using OKLCH color space */
+:root {
+  /* Base Colors - backgrounds, text, and borders */
+  --background: oklch(100% 0 0); /* #ffffff */
+  --foreground: oklch(40.17% 0 0); /* #484848 */
+  --muted: oklch(91.58% 0 0); /* #e3e3e3 */
+  --muted-foreground: oklch(66% 0 0); /* #929292 */
 
-        /*
-        * warning colors
-        */
-        orange: {
-          lighter: colors.amber[200],
-          DEFAULT: colors.amber[500],
-          dark: colors.amber[700],
-        },
+  /* Border Tokens */
+  --border-radius: 0.5rem; /* 8px */
+  --border-width: 0.0625rem; /* 1px */
+  --border-color: oklch(90.37% 0 0); /* #dfdfdf */
 
-        /*
-        * info colors
-        */
-        blue: {
-          lighter: colors.sky[200],
-          DEFAULT: colors.sky[500],
-          dark: colors.sky[700],
-        },
+  /* Text Tokens */
+  --text-primary: oklch(0% 0 0); /* #000000 */
+  --text-secondary: oklch(40.17% 0 0); /* #484848 */
 
-        /*
-        * success colors
-        */
-        green: {
-          lighter: colors.emerald[200],
-          DEFAULT: colors.emerald[500],
-          dark: colors.emerald[700],
-        },
-      },
-      ... // here goes your additional configuration
-    },
-  },
-  plugins: [require("@tailwindcss/forms")], // ⚠️ Required @tailwindcss/forms plugin.
-};
+  /* Primary Brand Colors - buttons, links, and focus states */
+  --primary-lighter: oklch(91.58% 0 0); /* #e3e3e3 */
+  --primary: oklch(17.76% 0 0); /* #111111 */
+  --primary-dark: oklch(0% 0 0); /* #000000 */
+  --primary-foreground: oklch(100% 0 0); /* #ffffff */
+
+  /* Secondary Colors - accents and highlights */
+  --secondary-lighter: oklch(91.99% 0.0386 276.02); /* #dde3ff */
+  --secondary: oklch(50.51% 0.2633 276.95); /* #4e36f5 */
+  --secondary-dark: oklch(45.41% 0.2431 277.06); /* #432ad8 */
+  --secondary-foreground: oklch(100% 0 0); /* #ffffff */
+
+  /* Danger/Error - error messages and destructive actions */
+  --red-lighter: oklch(89.99% 0.0393 14); /* #f7d4d6 */
+  --red: oklch(59.6% 0.2445 29.23); /* #ee0000 */
+  --red-dark: oklch(51.71% 0.2121 29.2338); /* #c50000 */
+
+  /* Warning - warning messages and caution states */
+  --orange-lighter: oklch(95.67% 0.0452 84.5695); /* #ffefcf */
+  --orange: oklch(78.37% 0.1587 72.99); /* #f5a623 */
+  --orange-dark: oklch(54.83% 0.1339 53.95); /* #ab570a */
+
+  /* Info - informational messages and highlights */
+  --blue-lighter: oklch(91.66% 0.0404 257.5078); /* #d3e5ff */
+  --blue: oklch(57.31% 0.2144 258.25); /* #0070f3 */
+  --blue-dark: oklch(51.58% 0.1888 258.27); /* #0761d1 */
+
+  /* Success - success messages and positive states */
+  --green-lighter: oklch(92.79% 0.086 155.61); /* #b9f9cf */
+  --green: oklch(64.01% 0.1776 148.74); /* #11a849 */
+  --green-dark: oklch(53.79% 0.1441 149.52); /* #11843c */
+}
+
+/* Map CSS variables to Tailwind's color system */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --border-radius: var(--border-radius);
+  --color-border: var(--border-color);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  --color-primary-lighter: var(--primary-lighter);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary-lighter: var(--secondary-lighter);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-red-lighter: var(--red-lighter);
+  --color-red: var(--red);
+  --color-red-dark: var(--red-dark);
+
+  --color-orange-lighter: var(--orange-lighter);
+  --color-orange: var(--orange);
+  --color-orange-dark: var(--orange-dark);
+
+  --color-blue-lighter: var(--blue-lighter);
+  --color-blue: var(--blue);
+  --color-blue-dark: var(--blue-dark);
+
+  --color-green-lighter: var(--green-lighter);
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
+}
 ```
 
-​🎉​ You are all set to use our components in your application.
+<div className="!mt-6 !mb-8 p-4 bg-purple-50 dark:bg-purple-950/30 rounded-lg border border-purple-200 dark:border-purple-800">
+  **About OKLCH Color Space** OKLCH is a modern color space that provides
+  perceptually uniform colors. Unlike RGB/HEX, colors with the same lightness
+  value in OKLCH appear equally bright to human eyes, making it ideal for
+  creating accessible and visually consistent color palettes.
+</div>
+
+### Step 4: Configure PostCSS
+
+Create or update your `postcss.config.mjs`:
+
+```js title=postcss.config.mjs
+const config = {
+  plugins: {
+    '@tailwindcss/postcss': {},
+  },
+};
+export default config;
+```
 
 ## Usage
+
+Now you're ready to start using RizzUI components in your application. For dark mode support, refer to our [dark mode guide](/docs/guide/dark-mode).
+
+### Basic Example
+
+Here's a simple example to get you started:
 
 ```tsx
 import { Button } from 'rizzui';
 
 export default function App() {
-  return <Button>Default</Button>;
+  return (
+    <div>
+      <Button>Get Started</Button>
+    </div>
+  );
 }
 ```
+
+## Next Steps
+
+Now that you have RizzUI set up, explore these resources to enhance your application:
+
+- **[Dark Mode](/docs/guide/dark-mode)** - Add dark mode support to your application
+- **[Theming](/docs/guide/theming)** - Customize colors and theme tokens
+- **[Components](/docs/buttons/button)** - Browse the complete component library
+- **[Form Components](/docs/Inputs/input)** - Explore form inputs and validation
+
+## Support
+
+If you encounter any issues or have questions:
+
+- Open an issue on [GitHub](https://github.com/rizzui/rizzui/issues)
+- Check our [documentation](https://rizzui.com/docs) for detailed guides
+- Join our community for support and discussions

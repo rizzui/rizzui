@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 import { Button, Badge, ActionIcon } from 'rizzui';
@@ -15,15 +15,28 @@ import ColorTokens from '@site/src/components/color-tokens';
 
 # Theming
 
-Theming plays a vital role in the development of applications, offering a powerful mechanism to enhance user experience and visual appeal. This documentation explores the significance of theming, guiding you through the process of implementing and customizing themes to elevate the overall aesthetics and usability of your application.
+Theming is essential for creating visually appealing and accessible applications. RizzUI 2.0 uses **Tailwind CSS v4** with the modern **OKLCH color space** to provide perceptually uniform colors that look consistent across different screens and lighting conditions.
+
+## Why OKLCH Color Space?
+
+OKLCH (Lightness, Chroma, Hue) offers several advantages over traditional RGB/HEX:
+
+- **Perceptual Uniformity** - Colors with the same lightness value appear equally bright to human eyes
+- **Better Accessibility** - Easier to create color palettes that meet WCAG contrast requirements
+- **Predictable Color Manipulation** - Adjusting lightness values produces intuitive results
+- **Future-Proof** - Native browser support with automatic fallbacks for older browsers
 
 ## Theme Tokens
 
-Customize your color token for light and dark mode theme. Click on the color box, choose your color and then copy & paste it to your **global.css** file.
+Customize your color tokens for both light and dark modes. Click on any color box below to select a new color, then copy the generated CSS variable to your **globals.css** file.
 
 <ColorTokens />
 
-## Variant prop
+## Component Variants
+
+RizzUI components support multiple visual variants to suit different UI contexts and design requirements.
+
+### Variant Prop
 
 <Paper isOpen>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
@@ -40,16 +53,23 @@ import { Button } from 'rizzui';
 export default function App() {
   return (
     <>
-      <Button variant="text">Button</Button>
-      <Button variant="outline">Button</Button>
-      <Button variant="flat">Button</Button>
-      <Button>Button</Button>
+      <Button variant="text">Text Button</Button>
+      <Button variant="outline">Outline Button</Button>
+      <Button variant="flat">Flat Button</Button>
+      <Button variant="solid">Solid Button</Button>
     </>
   );
 }
 ```
 
-## Color prop
+**Available Variants:**
+
+- **text** - Minimal style with no background, ideal for tertiary actions
+- **outline** - Border with transparent background, great for secondary actions
+- **flat** - Subtle background color, perfect for low-emphasis buttons
+- **solid** - Default variant with full background color for primary actions
+
+### Color Prop
 
 <Paper isOpen>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap mb-10">
@@ -99,19 +119,72 @@ export default function App() {
 </Paper>
 
 ```tsx
-import { Button } from 'rizzui';
+import { Badge } from 'rizzui';
 
 export default function App() {
   return (
     <>
-      <Badge>Badge</Badge>
-      <Badge color="secondary">Badge</Badge>
-      <Badge color="info">Badge</Badge>
-      <Badge color="warning">Badge</Badge>
-      <Badge color="danger">Badge</Badge>
-      <Badge color="success">Badge</Badge>
-      ... {/* flat & outline variant */}
+      {/* Solid variant (default) */}
+      <Badge>Primary</Badge>
+      <Badge color="secondary">Secondary</Badge>
+      <Badge color="info">Info</Badge>
+      <Badge color="warning">Warning</Badge>
+      <Badge color="danger">Danger</Badge>
+      <Badge color="success">Success</Badge>
+
+      {/* Flat variant */}
+      <Badge variant="flat">Primary</Badge>
+      <Badge variant="flat" color="secondary">
+        Secondary
+      </Badge>
+      <Badge variant="flat" color="info">
+        Info
+      </Badge>
+
+      {/* Outline variant */}
+      <Badge variant="outline">Primary</Badge>
+      <Badge variant="outline" color="secondary">
+        Secondary
+      </Badge>
+      <Badge variant="outline" color="info">
+        Info
+      </Badge>
     </>
   );
 }
 ```
+
+**Available Colors:**
+
+- **primary** - Default brand color (default)
+- **secondary** - Accent color for secondary emphasis
+- **info** - Informational states and messages
+- **warning** - Warning states and caution indicators
+- **danger** - Error states and destructive actions
+- **success** - Success states and positive confirmations
+
+## Customization Tips
+
+### Changing Brand Colors
+
+To customize your brand colors, update the CSS variables in your `globals.css`:
+
+```css
+:root {
+  /* Change primary brand color */
+  --primary: oklch(50% 0.2 250); /* Your custom color */
+
+  /* Adjust secondary accent color */
+  --secondary: oklch(60% 0.25 300);
+}
+```
+
+### Creating Custom Color Schemes
+
+Use the [OKLCH color picker](https://oklch.com/) to generate consistent color palettes. Keep these guidelines in mind:
+
+- **Lightness (L)**: 0% (black) to 100% (white) - controls brightness
+- **Chroma (C)**: 0 (gray) to 0.4+ (vibrant) - controls color intensity
+- **Hue (H)**: 0-360 degrees - controls the color itself
+
+For accessible designs, maintain at least a 4.5:1 contrast ratio between text and backgrounds.
