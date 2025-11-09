@@ -1,0 +1,304 @@
+---
+title: RizzUI 2.0.0
+description: Major release with Tailwind CSS v4, CSS-first configuration, and modern React patterns.
+authors: [idris, nahid]
+---
+
+We're excited to announce **RizzUI 2.0.0**, a major release that brings significant improvements to the developer experience, performance, and modern web standards. This release represents a major step forward in making RizzUI more powerful, easier to use, and aligned with the latest web technologies.
+
+<div className="hidden-for-blog-list-page">
+
+**RizzUI 2.0.0** introduces groundbreaking changes, new APIs, and improvements to the developer experience. Key updates include:
+
+</div>
+
+- [Tailwind CSS v4 Migration](#tailwind-css-v4-migration)
+- [CSS-First Configuration](#css-first-configuration)
+- [OKLCH Color Space](#oklch-color-space)
+- [Theme Style Tokens](#theme-style-tokens)
+- [Breaking Changes](#breaking-changes)
+- [Modern React Patterns](#modern-react-patterns)
+- [Enhanced Performance](#enhanced-performance)
+- [Improved Dark Mode](#improved-dark-mode)
+- [Updated Peer Dependencies](#updated-peer-dependencies)
+
+{/* truncate */}
+
+<br />
+
+### Tailwind CSS v4 Migration
+
+RizzUI 2.0.0 now uses **Tailwind CSS v4**, the latest version of Tailwind CSS. This brings significant improvements including better performance, enhanced CSS features, and a more modern development experience. The migration to Tailwind CSS v4 ensures RizzUI stays at the forefront of CSS tooling and provides access to the latest Tailwind features.
+
+<br />
+
+### CSS-First Configuration
+
+One of the most significant changes in RizzUI 2.0.0 is the move to **CSS-first configuration**. You no longer need a `tailwind.config.js` file! All configuration is now done directly in your CSS file, making setup simpler and more intuitive.
+
+**Example:**
+
+```css
+@import 'tailwindcss';
+@source '../../node_modules/rizzui/dist';
+@plugin '@tailwindcss/forms';
+
+/* ⚠️ Required: Dark mode variant */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root {
+  /* ⚠️ Required: RizzUI color variables */
+  --background: oklch(100% 0 0);
+  --foreground: oklch(40.17% 0 0);
+  /* ... more color variables ... */
+}
+```
+
+This CSS-first approach eliminates the need for JavaScript configuration files and makes it easier to customize RizzUI to match your project's needs.
+
+<br />
+
+### OKLCH Color Space
+
+RizzUI 2.0.0 now uses the **OKLCH color space** for all color definitions. OKLCH provides better color consistency, improved perceptual uniformity, and superior color manipulation capabilities. This ensures that colors look consistent across different devices and browsers, and makes it easier to create accessible color schemes.
+
+**Benefits:**
+
+- Better color consistency across devices
+- Improved perceptual uniformity
+- Superior color manipulation capabilities
+- Enhanced accessibility support
+
+<br />
+
+### Theme Style Tokens
+
+RizzUI 2.0.0 introduces a **theme token system** that provides consistent design tokens across all components. These tokens are defined as CSS variables and automatically mapped to Tailwind CSS utilities through the `@theme inline` directive.
+
+Key theme tokens include:
+
+- `--border-radius` - Default border radius (0.5rem / 8px)
+- `--border-width` - Default border width (0.0625rem / 1px)
+- `--text-primary` - Primary text color
+- `--text-secondary` - Secondary text color
+
+**Example:**
+
+```css
+:root {
+  /* Border tokens */
+  --border-radius: 0.5rem; /* 8px */
+  --border-width: 0.0625rem; /* 1px */
+
+  /* Text tokens */
+  --text-primary: oklch(0% 0 0);
+  --text-secondary: oklch(40.17% 0 0);
+}
+```
+
+**Usage in Components:**
+
+```jsx
+// Using border tokens
+<div className="rounded-[var(--border-radius)] border-[length:var(--border-width)]">
+  Card
+</div>
+
+// Using text tokens
+<p className="text-[var(--text-primary)]">Primary text</p>
+<p className="text-[var(--text-secondary)]">Secondary text</p>
+```
+
+This token system provides a consistent design language across your application and makes it easy to customize the entire design system by simply updating CSS variables.
+
+<br />
+
+### Breaking Changes
+
+RizzUI 2.0.0 includes several breaking changes to simplify the API and improve consistency:
+
+#### Removed Color Prop from Button Components
+
+The `color` prop has been removed from Button components. Use the `variant` prop and className for styling instead.
+
+**Before (v1.x):**
+
+```jsx
+<Button color="primary">Click</Button>
+<Button color="secondary">Click</Button>
+```
+
+**After (v2.0.0):**
+
+```jsx
+<Button>Click</Button>
+<Button variant="outline">Click</Button>
+<Button className="bg-secondary">Click</Button>
+```
+
+#### Removed Rounded Props
+
+The `rounded` prop (`sm`, `md`, `lg`, `xl`, `pill`) has been removed from all components. Border radius is now controlled through the `--border-radius` CSS variable.
+
+**Before (v1.x):**
+
+```jsx
+<Button rounded="lg">Click</Button>
+<Input rounded="md" />
+```
+
+**After (v2.0.0):**
+
+```jsx
+<Button>Click</Button>
+<Input />
+// Or customize via CSS variable
+<div style={{ '--border-radius': '0.75rem' }}>
+  <Button>Click</Button>
+</div>
+```
+
+#### Removed Size XL Prop
+
+The `size="xl"` prop has been removed from all components. Available sizes are now `sm`, `md`, and `lg`.
+
+**Before (v1.x):**
+
+```jsx
+<Button size="xl">Click</Button>
+<Input size="xl" />
+```
+
+**After (v2.0.0):**
+
+```jsx
+<Button size="lg">Click</Button>
+<Input size="lg" />
+```
+
+These changes simplify the component API and provide more consistent styling through CSS variables.
+
+<br />
+
+### Modern React Patterns
+
+RizzUI 2.0.0 has been refactored to use modern React patterns, removing legacy APIs and embracing React 19 features. Components now use `ElementType` for polymorphism and refs are handled as regular props, eliminating the need for `forwardRef`.
+
+**Example:**
+
+```jsx
+import { Box } from 'rizzui/box';
+
+// Polymorphic component usage
+<Box as="section" className="container">
+  Content
+</Box>
+
+// With ref support
+<Box ref={boxRef} className="wrapper">
+  Content
+</Box>
+```
+
+This modernization improves type safety, reduces bundle size, and makes components more intuitive to use.
+
+<br />
+
+### Enhanced Performance
+
+RizzUI 2.0.0 includes significant performance improvements:
+
+- **Better Tree Shaking**: Optimized exports ensure only the code you use is included in your bundle
+- **Reduced Bundle Size**: Modern React patterns and optimized code result in smaller bundle sizes
+- **Improved Runtime Performance**: Refactored components perform better at runtime
+- **Faster Build Times**: CSS-first configuration reduces build complexity
+
+These improvements mean faster load times for your applications and a better user experience.
+
+<br />
+
+### Improved Dark Mode
+
+Dark mode support has been significantly enhanced in RizzUI 2.0.0. With OKLCH color space and improved CSS variables, dark mode now provides:
+
+- Better color contrast
+- More consistent appearance across components
+- Easier customization
+- Improved accessibility
+
+**Example:**
+
+```css
+[data-theme='dark'] {
+  --background: oklch(14.11% 0.0112 275.23);
+  --foreground: oklch(90.37% 0 0);
+  /* ... more dark theme variables ... */
+}
+```
+
+<br />
+
+### Updated Peer Dependencies
+
+RizzUI 2.0.0 requires updated peer dependencies to ensure compatibility and access to the latest features:
+
+- **React**: 19.1.0 or higher
+- **@tailwindcss/postcss**: 4.1.3 or higher
+- **tailwind-variants**: 3.1.1 or higher
+- **@headlessui/react**: 2.2.9 or higher
+- **@floating-ui/react**: 0.27.16 or higher
+
+**Installation:**
+
+```bash
+# Using pnpm (recommended)
+pnpm add rizzui@2.0.0 @headlessui/react@^2.2.9 @floating-ui/react@^0.27.16 @tailwindcss/postcss@^4.1.3 tailwind-variants@^3.1.1
+
+# Using npm
+npm install rizzui@2.0.0 @headlessui/react@^2.2.9 @floating-ui/react@^0.27.16 @tailwindcss/postcss@^4.1.3 tailwind-variants@^3.1.1
+
+# Using yarn
+yarn add rizzui@2.0.0 @headlessui/react@^2.2.9 @floating-ui/react@^0.27.16 @tailwindcss/postcss@^4.1.3 tailwind-variants@^3.1.1
+```
+
+<br />
+
+### PostCSS Configuration
+
+Update your `postcss.config.mjs` to use the new Tailwind CSS v4 PostCSS plugin:
+
+```js
+const config = {
+  plugins: {
+    '@tailwindcss/postcss': {},
+  },
+};
+export default config;
+```
+
+<br />
+
+### Migration Guide
+
+If you're upgrading from RizzUI 1.x, here are the key steps:
+
+1. **Update dependencies** to the versions listed above
+2. **Remove `tailwind.config.js`** - configuration is now CSS-first
+3. **Update your CSS file** with the new Tailwind CSS v4 configuration
+4. **Update PostCSS config** to use `@tailwindcss/postcss`
+5. **Review component usage** - some components may have minor API changes
+
+For detailed migration instructions, please refer to our [documentation](/docs/guide/getting-started).
+
+<br />
+
+### What's Next
+
+RizzUI 2.0.0 sets the foundation for future improvements. We're committed to:
+
+- Continuing to improve performance and bundle size
+- Adding more components and features
+- Enhancing accessibility and developer experience
+- Staying aligned with the latest web standards
+
+We're excited to see what you build with RizzUI 2.0.0! If you have any questions or feedback, please reach out to us on [GitHub](https://github.com/rizzui/rizzui).

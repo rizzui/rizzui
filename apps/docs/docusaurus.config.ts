@@ -62,6 +62,7 @@ const config: Config = {
           blogDescription: 'Read blog posts about RizzUI updates from team.',
           blogSidebarCount: 'ALL',
           blogSidebarTitle: 'List of all posts',
+          blogListComponent: '@site/src/pages/blog/index',
         },
         theme: {
           customCss: [require.resolve('./src/css/custom.css')],

@@ -1,20 +1,49 @@
 /* blog list page  */
 .blog-wrapper #__docusaurus .container {
-  @apply !max-w-none;
+  @apply !max-w-none px-0;
 }
+
+/* Banner Section - Positioned before the blog list page */
+.blog-list-page .blog-banner {
+  @apply w-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 border-b border-gray-100 dark:border-gray-800;
+  @apply py-12 md:py-16 lg:py-20 px-4 md:px-6;
+  display: block;
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.blog-banner-content {
+  @apply text-center;
+}
+
+.blog-banner-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4;
+}
+
+.blog-banner-description {
+  @apply text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto;
+}
+
 .blog-list-page #__docusaurus {
   aside.col.col--3 {
     display: none !important;
   }
+
+  .container {
+    @apply !max-w-none px-0;
+  }
+
   main {
-    @apply grid justify-between grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-4 gap-y-6 mx-auto !max-w-[1232px] w-full flex-auto;
+    @apply grid justify-between grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-4 gap-y-6 mx-auto !max-w-[1232px] w-full flex-auto px-4 md:px-6 py-8 md:py-12;
     .hidden-for-blog-list-page {
       @apply hidden;
     }
   }
+
+  /* Remove the old ::before title */
   main::before {
-    content: 'The Latest RizzUI News';
-    @apply col-span-full text-[28px] font-bold mt-2 mb-4 text-gray-700 dark:text-white;
+    display: none;
   }
 }
 
@@ -140,7 +169,6 @@
   @apply hidden;
 }
 
-.blog-list-page #__docusaurus .navbar__inner,
-.blog-post-page #__docusaurus .navbar__inner {
-  @apply max-w-[1536px];
+.plugin-blog #__docusaurus .navbar__inner {
+  @apply container mx-auto !px-0;
 }
