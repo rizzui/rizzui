@@ -148,6 +148,8 @@ export function FileInput({
               disabled={disabled}
               readOnly={readOnly}
               spellCheck="false"
+              aria-invalid={error ? 'true' : undefined}
+              aria-required={inputProps.required}
               className={cn(inputStyle(), button())}
               style={{ fontSize: 'inherit' }}
               {...inputProps}

@@ -33,7 +33,11 @@ const checkbox = tv({
 const checkboxLabel = tv({
   base: 'mb-0',
   variants: {
-    size: labelStyles.size,
+    size: {
+      sm: 'text-xs',
+      md: 'text-sm',
+      lg: 'text-sm',
+    },
     labelWeight: labelStyles.weight,
     labelPlacement: {
       left: '',
@@ -125,9 +129,7 @@ export function Checkbox({
   const handleChange = groupContext ? groupContext.onChange : onChange;
 
   return (
-    <div
-      className={cn('rizzui-checkbox-root', 'flex flex-col', className)}
-    >
+    <div className={cn('rizzui-checkbox-root', 'flex flex-col', className)}>
       <label
         className={cn(
           'rizzui-checkbox-container',
@@ -143,6 +145,8 @@ export function Checkbox({
             value={value}
             checked={isChecked}
             onChange={handleChange}
+            aria-invalid={error ? 'true' : undefined}
+            aria-required={checkboxProps.required}
             className={checkbox({
               variant,
               size,

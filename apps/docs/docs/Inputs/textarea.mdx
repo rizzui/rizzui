@@ -2,18 +2,18 @@
 sidebar_position: 3
 ---
 
-import { Textarea } from "rizzui/textarea";
-import Paper from "@site/src/components/paper";
+import { Textarea } from 'rizzui/textarea';
+import Paper from '@site/src/components/paper';
 import TextareaCharacterCount, {
   TextareaClear,
-} from "@site/src/components/text-area";
+} from '@site/src/components/text-area';
 
 # Textarea
 
 A basic widget for getting the user text or messages.
 
 ```tsx
-import { Textarea } from "rizzui/textarea";
+import { Textarea } from 'rizzui/textarea';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -23,11 +23,11 @@ import { Textarea } from "rizzui/textarea";
 The default style of **Textarea** component.
 
 <Paper className="text-gray-950 block">
-  <Textarea label="Message" />
+  <Textarea label="Message" className="w-full max-w-md" />
 </Paper>
 
 ```tsx
-import { Textarea } from "rizzui/textarea";
+import { Textarea } from 'rizzui/textarea';
 
 export default function App() {
   return <Textarea label="Message" placeholder="Write you message..." />;
@@ -47,7 +47,7 @@ You can change the style of **Textarea** using [**variant**](#textarea-variants)
 </Paper>
 
 ```tsx
-import { Textarea } from "rizzui/textarea";
+import { Textarea } from 'rizzui/textarea';
 
 export default function App() {
   return (
@@ -66,14 +66,28 @@ export default function App() {
 
 You can change the style of **Textarea** using [**size**](#textarea-sizes) property.
 
-<Paper className="gap-4 flex-row flex-wrap justify-start items-start">
-  <Textarea label="Small" placeholder="Enter your message" size="sm" />
-  <Textarea label="Default" placeholder="Enter your message" />
-  <Textarea label="Large" placeholder="Enter your message" size="lg" />
+<Paper className="gap-4 flex-cols flex-wrap justify-start items-start">
+  <Textarea
+    label="Small"
+    placeholder="Enter your message"
+    size="sm"
+    className="w-full max-w-xs"
+  />
+  <Textarea
+    label="Default"
+    placeholder="Enter your message"
+    className="w-full max-w-sm"
+  />
+  <Textarea
+    label="Large"
+    placeholder="Enter your message"
+    size="lg"
+    className="w-full max-w-md"
+  />
 </Paper>
 
 ```tsx
-import { Textarea } from "rizzui/textarea";
+import { Textarea } from 'rizzui/textarea';
 
 export default function App() {
   return (
@@ -85,8 +99,6 @@ export default function App() {
   );
 }
 ```
-
-<div className="mb-16" />
 
 <div className="mb-16" />
 
@@ -110,7 +122,7 @@ You can change rows and cols of **Textarea** using **rows** & **cols** property.
 </Paper>
 
 ```tsx
-import { Textarea } from "rizzui/textarea";
+import { Textarea } from 'rizzui/textarea';
 
 export default function App() {
   return (
@@ -141,13 +153,13 @@ You can set character limit and show character counter of **Textarea** using **m
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Textarea } from "aegon-ui";
+import { useState } from 'react';
+import { Textarea } from 'aegon-ui';
 
 export default function App() {
-  const [state, setState] = useState("Do not lose hope, nor be sad.");
+  const [state, setState] = useState('Do not lose hope, nor be sad.');
 
   return (
     <Textarea
@@ -176,14 +188,14 @@ You can add a clear button of **Textarea** using **clearable** property.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Textarea } from "aegon-ui";
+import { useState } from 'react';
+import { Textarea } from 'aegon-ui';
 
 export default function App() {
   const [state, setState] = useState(
-    "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+    'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
   );
 
   return (
@@ -191,7 +203,7 @@ export default function App() {
       label="Message"
       clearable
       value={state}
-      onClear={() => setState("")}
+      onClear={() => setState('')}
       onChange={(e) => setState(e.target.value)}
     />
   );
@@ -205,13 +217,18 @@ export default function App() {
 You can change disable state of **Textarea** using **disabled** property.
 
 <Paper className="block">
-  <Textarea disabled label="Message" placeholder="Enter your message" />
+  <Textarea
+    disabled
+    label="Message"
+    placeholder="Enter your message"
+    className="w-full max-w-md"
+  />
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { Textarea } from "rizzui/textarea";
+import { Textarea } from 'rizzui/textarea';
 
 export default function App() {
   return <Textarea disabled label="Message" placeholder="Enter your message" />;
@@ -229,11 +246,12 @@ You can add helper text to **Textarea** using **helperText** property.
     label="Message"
     placeholder="Enter your message"
     helperText="This is helper text."
+    className="w-full max-w-md"
   />
 </Paper>
 
 ```tsx
-import { Textarea } from "rizzui/textarea";
+import { Textarea } from 'rizzui/textarea';
 
 export default function App() {
   return (
@@ -257,11 +275,12 @@ You can show the validation error message using **error** property.
     label="Message"
     error="This field is required"
     placeholder="Enter your message"
+    className="w-full max-w-md"
   />
 </Paper>
 
 ```tsx
-import { Textarea } from "rizzui/textarea";
+import { Textarea } from 'rizzui/textarea';
 
 export default function App() {
   return (
@@ -319,7 +338,7 @@ Here is the API documentation of the Textarea component. And the rest of the pro
 ### Textarea Variants
 
 ```ts
-type TextareaVariants = "outline" | "flat" | "text";
+type TextareaVariants = 'outline' | 'flat' | 'text';
 ```
 
 <div className="mb-10" />
@@ -327,7 +346,7 @@ type TextareaVariants = "outline" | "flat" | "text";
 ### Label Weight
 
 ```ts
-type LabelWeight = "normal" | "medium" | "semibold" | "bold";
+type LabelWeight = 'normal' | 'medium' | 'semibold' | 'bold';
 ```
 
 <div className="mb-10" />
@@ -335,7 +354,7 @@ type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ### Textarea Sizes
 
 ```ts
-type TextareaSizes = "sm" | "md" | "lg";
+type TextareaSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />

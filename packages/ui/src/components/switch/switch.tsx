@@ -32,7 +32,7 @@ const switchTV = tv({
         container: 'w-8 h-5',
         knob: 'w-3.5 h-3.5',
         icon: 'h-3 w-3',
-        label: 'text-sm',
+        label: 'text-xs',
         input:
           '[&:checked+span>.rizzui-switch-knob]:translate-x-[.88rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[.88rem]',
       },
@@ -40,7 +40,7 @@ const switchTV = tv({
         container: 'w-10 h-6',
         knob: 'w-[1.13rem] h-[1.13rem]',
         icon: 'h-3.5 w-3.5',
-        label: 'text-base',
+        label: 'text-sm',
         input:
           '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.14rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.14rem]',
       },
@@ -48,7 +48,7 @@ const switchTV = tv({
         container: 'w-12 h-7',
         knob: 'w-[1.38rem] h-[1.38rem]',
         icon: 'w-4 h-4',
-        label: 'text-lg',
+        label: 'text-sm',
         input:
           '[&:checked+span>.rizzui-switch-knob]:translate-x-[1.36rem] rtl:[&:checked+span>.rizzui-switch-knob]:-translate-x-[1.36rem]',
       },
@@ -145,6 +145,8 @@ export function Switch({
   errorClassName,
   helperClassName,
   ref,
+  checked,
+  defaultChecked,
   ...props
 }: SwitchProps) {
   const {
@@ -173,6 +175,12 @@ export function Switch({
           ref={ref}
           type="checkbox"
           disabled={disabled}
+          checked={checked}
+          defaultChecked={defaultChecked}
+          aria-invalid={error ? 'true' : undefined}
+          aria-label={label ? undefined : 'Toggle switch'}
+          aria-required={props.required}
+          aria-checked={checked ?? defaultChecked ?? false}
           className={inputClass()}
           {...props}
         />

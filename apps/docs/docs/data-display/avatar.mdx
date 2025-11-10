@@ -2,18 +2,18 @@
 sidebar_position: 2
 ---
 
-import { Avatar } from "rizzui/avatar";
-import { Badge } from "rizzui/badge";
-import Paper from "@site/src/components/paper";
+import { Avatar } from 'rizzui/avatar';
+import { Badge } from 'rizzui/badge';
+import Paper from '@site/src/components/paper';
 
 # Avatar
 
 Avatar is a small UI item which represents user profile picture, or event that appears in relativity with the underlying object.
 
 ```tsx
-"use client";
+'use client';
 
-import { Avatar } from "rizzui/avatar";
+import { Avatar } from 'rizzui/avatar';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -30,9 +30,9 @@ The default style of the **Avatar**.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { Avatar } from "rizzui/avatar";
+import { Avatar } from 'rizzui/avatar';
 
 export default function App() {
   return (
@@ -51,7 +51,7 @@ export default function App() {
 You can add text or avatar icon to **Avatar** component using **initials** or **src** property.
 
 <Paper>
-  <div className="flex items-center gap-3 justify-around w-full">
+  <div className="flex items-center gap-3 justify-around w-full max-w-xl">
     <Avatar name="John Doe" />
     <Avatar
       src="https://randomuser.me/api/portraits/women/40.jpg"
@@ -61,17 +61,14 @@ You can add text or avatar icon to **Avatar** component using **initials** or **
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { Avatar } from "rizzui/avatar";
+import { Avatar } from 'rizzui/avatar';
 
 export default function App() {
   return (
     <>
-      <Avatar
-        name="John Doe"
-        initials="AB"
-      />
+      <Avatar name="John Doe" initials="AB" />
       <Avatar
         src="https://randomuser.me/api/portraits/women/40.jpg"
         name="John Doe"
@@ -89,20 +86,12 @@ You can change the size of the **Avatar** using **size** property.
 
 <Paper>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
-    <Avatar
-      name="John Doe"
-      initials="SM"
-      size="sm"
-    />
+    <Avatar name="John Doe" initials="SM" size="sm" />
     <Avatar
       src="https://randomuser.me/api/portraits/men/40.jpg"
       name="John Doe"
     />
-    <Avatar
-      name="John Doe"
-      initials="L"
-      size="lg"
-    />
+    <Avatar name="John Doe" initials="L" size="lg" />
     <Avatar
       name="John Doe"
       src="https://randomuser.me/api/portraits/women/40.jpg"
@@ -111,27 +100,19 @@ You can change the size of the **Avatar** using **size** property.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { Avatar } from "rizzui/avatar";
+import { Avatar } from 'rizzui/avatar';
 
 export default function App() {
   return (
     <>
-      <Avatar
-        name="John Doe"
-        initials="SM"
-        size="sm"
-      />
+      <Avatar name="John Doe" initials="SM" size="sm" />
       <Avatar
         src="https://randomuser.me/api/portraits/men/40.jpg"
         name="John Doe"
       />
-      <Avatar
-        name="John Doe"
-        initials="L"
-        size="lg"
-      />
+      <Avatar name="John Doe" initials="L" size="lg" />
       <Avatar
         name="John Doe"
         src="https://randomuser.me/api/portraits/women/40.jpg"
@@ -143,92 +124,37 @@ export default function App() {
 
 <div className="mb-16" />
 
-
 ## Colors
 
 You can change the color of the **Avatar** using **color** property.
 
 <Paper>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
-    <Avatar
-      name="John Doe"
-      initials="SM"
-    />
-    <Avatar
-      name="John Doe"
-      initials="SM"
-      color="primary"
-    />
-    <Avatar
-      name="John Doe"
-      initials="SM"
-      color="secondary"
-    />
-    <Avatar
-      name="John Doe"
-      initials="SM"
-      color="danger"
-    />
-    <Avatar
-      name="John Doe"
-      initials="SM"
-      color="warning"
-    />
-    <Avatar
-      name="John Doe"
-      initials="SM"
-      color="success"
-    />
-    <Avatar
-      name="John Doe"
-      initials="SM"
-      color="info"
-    />
+    <Avatar name="John Doe" initials="SM" />
+    <Avatar name="John Doe" initials="SM" color="primary" />
+    <Avatar name="John Doe" initials="SM" color="secondary" />
+    <Avatar name="John Doe" initials="SM" color="danger" />
+    <Avatar name="John Doe" initials="SM" color="warning" />
+    <Avatar name="John Doe" initials="SM" color="success" />
+    <Avatar name="John Doe" initials="SM" color="info" />
   </div>
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { Avatar } from "rizzui/avatar";
+import { Avatar } from 'rizzui/avatar';
 
 export default function App() {
   return (
     <>
-      <Avatar
-        name="John Doe"
-        initials="SM"
-      />
-      <Avatar
-        name="John Doe"
-        initials="SM"
-        color="primary"
-      />
-      <Avatar
-        name="John Doe"
-        initials="SM"
-        color="secondary"
-      />
-      <Avatar
-        name="John Doe"
-        initials="SM"
-        color="danger"
-      />
-      <Avatar
-        name="John Doe"
-        initials="SM"
-        color="warning"
-      />
-      <Avatar
-        name="John Doe"
-        initials="SM"
-        color="success"
-      />
-      <Avatar
-        name="John Doe"
-        initials="SM"
-        color="info"
-      />
+      <Avatar name="John Doe" initials="SM" />
+      <Avatar name="John Doe" initials="SM" color="primary" />
+      <Avatar name="John Doe" initials="SM" color="secondary" />
+      <Avatar name="John Doe" initials="SM" color="danger" />
+      <Avatar name="John Doe" initials="SM" color="warning" />
+      <Avatar name="John Doe" initials="SM" color="success" />
+      <Avatar name="John Doe" initials="SM" color="info" />
     </>
   );
 }
@@ -277,9 +203,9 @@ You can add border to **Avatar** by adding extra className using **className** p
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { Avatar } from "rizzui/avatar";
+import { Avatar } from 'rizzui/avatar';
 
 export default function App() {
   return (
@@ -326,7 +252,7 @@ export default function App() {
 You can use **Badge** with **Avatar** component for online status.
 
 <Paper>
-  <div className="flex items-center justify-around gap-3 w-full flex-wrap">
+  <div className="flex items-center justify-around gap-3 flex-wrap w-full max-w-xl">
     <div className="relative inline-flex">
       <Avatar
         name="John Doe"
@@ -370,10 +296,10 @@ You can use **Badge** with **Avatar** component for online status.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { Avatar } from "rizzui/avatar";
-import { Badge } from "rizzui/badge";
+import { Avatar } from 'rizzui/avatar';
+import { Badge } from 'rizzui/badge';
 
 export default function App() {
   return (
@@ -470,9 +396,9 @@ You can use **Avatar** component to create a group of avatars.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { Avatar } from "rizzui/avatar";
+import { Avatar } from 'rizzui/avatar';
 
 export default function App() {
   return (
@@ -529,16 +455,16 @@ Here is the API documentation of the Avatar component.
 
 <div className="overflow-x-auto">
 
-|   Props    |               Type               |                                       Description                                        | Default  |
-| :--------: | :------------------------------: | :--------------------------------------------------------------------------------------: | :------: |
-|    name    |             `string`             | Will be used to generate avatar initials based on the person name when image is missing  |   \_\_   |
-|  initials  |             `string`             |                        Display custom text when image is missing                         |   \_\_   |
-|    src     |             `string`             |                              Image soruce (local or remote)                              |   \_\_   |
-|   color    |  [AvatarColors](#avatar-colors)  |         Modify avatar color; by default, avatars have randomly generated colors.         |   \_\_   |
-|    size    |             `string`             |                                    Size of the avatar                                    |   \_\_   |
-| customSize |             `string`             |                  customSize of the avatar, example -> customSize="62px"                  |   \_\_   |
-|  onClick   | [AvatarOnclick](#avatar-onclick) |                                    Mouse click event                                     |   \_\_   |
-| className  |             `string`             | Name of the CSS class you want to add to this component alongside the default sb-avatar. |   \_\_   |
+|   Props    |               Type               |                                       Description                                        | Default |
+| :--------: | :------------------------------: | :--------------------------------------------------------------------------------------: | :-----: |
+|    name    |             `string`             | Will be used to generate avatar initials based on the person name when image is missing  |  \_\_   |
+|  initials  |             `string`             |                        Display custom text when image is missing                         |  \_\_   |
+|    src     |             `string`             |                              Image soruce (local or remote)                              |  \_\_   |
+|   color    |  [AvatarColors](#avatar-colors)  |         Modify avatar color; by default, avatars have randomly generated colors.         |  \_\_   |
+|    size    |             `string`             |                                    Size of the avatar                                    |  \_\_   |
+| customSize |             `string`             |                  customSize of the avatar, example -> customSize="62px"                  |  \_\_   |
+|  onClick   | [AvatarOnclick](#avatar-onclick) |                                    Mouse click event                                     |  \_\_   |
+| className  |             `string`             | Name of the CSS class you want to add to this component alongside the default sb-avatar. |  \_\_   |
 
 </div>
 
@@ -547,7 +473,13 @@ Here is the API documentation of the Avatar component.
 ### Avatar Colors
 
 ```ts
-type AvatarColors = "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type AvatarColors =
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'info'
+  | 'success'
+  | 'warning';
 ```
 
 <div className="mb-10" />

@@ -29,7 +29,7 @@ import { Accordion } from 'rizzui';
 A simple style of **Accordion**.
 
 <Paper className="block">
-  <div>
+  <div className="w-full">
     {defaultCollapseData.map((item) => (
       <Accordion
         key={item.title}
@@ -112,7 +112,7 @@ export default function App() {
 You can change the style of the **Accordion**.
 
 <Paper className="block">
-  <div className="rounded-3xl border border-gray-200">
+  <div className="rounded-3xl border border-gray-200 w-full">
     {customStyleCollapseData.map((item) => (
       <Accordion
         key={item.title}
@@ -142,7 +142,9 @@ You can change the style of the **Accordion**.
             </div>
           )}
         </Accordion.Header>
-        <Accordion.Body className="mb-7 text-[15px]">{item.content}</Accordion.Body>
+        <Accordion.Body className="mb-7 text-[15px]">
+          {item.content}
+        </Accordion.Body>
       </Accordion>
     ))}
   </div>

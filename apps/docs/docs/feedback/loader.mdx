@@ -2,15 +2,15 @@
 sidebar_position: 2
 ---
 
-import { Loader } from "rizzui/loader";
-import Paper from "@site/src/components/paper";
+import { Loader } from 'rizzui/loader';
+import Paper from '@site/src/components/paper';
 
 # Loader
 
 A loader for displaying loading state of a page or a section.
 
 ```jsx
-import { Loader } from "rizzui/loader";
+import { Loader } from 'rizzui/loader';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -24,7 +24,7 @@ The default style of the **Loader** component.
 </Paper>
 
 ```jsx
-import { Loader } from "rizzui/loader";
+import { Loader } from 'rizzui/loader';
 
 export default function App() {
   return <Loader />;
@@ -47,7 +47,7 @@ You can use different variants of our **Loader** component.
 </Paper>
 
 ```jsx
-import { Loader } from "rizzui/loader";
+import { Loader } from 'rizzui/loader';
 
 export default function App() {
   return (
@@ -72,12 +72,11 @@ You can change the size of the **Loader** with property [**size**](#loader-sizes
     <Loader size="sm" />
     <Loader />
     <Loader size="lg" />
-    <Loader />
   </div>
 </Paper>
 
 ```jsx
-import { Loader } from "rizzui/loader";
+import { Loader } from 'rizzui/loader';
 
 export default function App() {
   return (
@@ -85,7 +84,6 @@ export default function App() {
       <Loader size="sm" />
       <Loader />
       <Loader size="lg" />
-      <Loader />
     </>
   );
 }
@@ -110,7 +108,7 @@ You can change the color of the **Loader** with property [**color**](#loader-col
 </Paper>
 
 ```jsx
-import { Loader } from "rizzui/loader";
+import { Loader } from 'rizzui/loader';
 
 export default function App() {
   return (
@@ -154,7 +152,7 @@ Here is the API documentation of the Loader component.
 ### Loader Tags
 
 ```ts
-type LoaderTags = "div" | "span";
+type LoaderTags = 'div' | 'span';
 ```
 
 <div className="mb-10" />
@@ -162,7 +160,7 @@ type LoaderTags = "div" | "span";
 ### Loader Sizes
 
 ```ts
-type LoaderSizes = "sm" | "md" | "lg";
+type LoaderSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
@@ -171,11 +169,11 @@ type LoaderSizes = "sm" | "md" | "lg";
 
 ```ts
 type LoaderColors =
-  | "current"
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+  | 'current'
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'info'
+  | 'success'
+  | 'warning';
 ```

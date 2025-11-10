@@ -118,19 +118,28 @@ export function Alert({
       <div className={content()}>{children}</div>
 
       {(closable || closeIcon) && (
-        <div
-          role="button"
-          tabIndex={0}
+        <button
+          type="button"
+          aria-label="Close alert"
           className={closeWrapper()}
           onClick={onClose}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              if (onClose) {
+                onClose(e as unknown as MouseEvent);
+              }
+            }
+          }}
         >
           {closeIcon || (
             <XIcon
               data-testid="alert-clear-icon"
               className="text-muted-foreground cursor-pointer"
+              aria-hidden="true"
             />
           )}
-        </div>
+        </button>
       )}
     </div>
   );

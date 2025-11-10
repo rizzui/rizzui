@@ -53,7 +53,11 @@ export function Empty({
     >
       <div className="text-center">
         <div className={cn('rizzui-empty-icon', imageClassName)}>
-          {image || <DefaultIcon className={defaultImageClassName} />}
+          {image ? (
+            image
+          ) : (
+            <DefaultIcon className={defaultImageClassName} aria-hidden="true" />
+          )}
         </div>
         {text ? (
           <Component

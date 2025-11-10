@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Modal,
   Button,
@@ -9,8 +9,8 @@ import {
   Password,
   Checkbox,
   Tooltip,
-} from "rizzui";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+} from 'rizzui';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export default function ModalDefault() {
   const [modalState, setModalState] = useState(false);
@@ -32,7 +32,11 @@ export default function ModalDefault() {
               onClick={() => setModalState(false)}
               aria-label="Close modal"
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} aria-hidden="true" />
+              <XMarkIcon
+                className="h-auto w-6"
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
@@ -63,8 +67,8 @@ export default function ModalDefault() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s{' '}
+                  <a className="underline">Terms of Service</a> and{' '}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -87,7 +91,7 @@ export default function ModalDefault() {
 export function ModalSizes() {
   const [modalState, setModalState] = useState<any>({
     isOpen: false,
-    size: "md",
+    size: 'md',
   });
 
   return (
@@ -99,7 +103,7 @@ export function ModalSizes() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "sm",
+              size: 'sm',
             }))
           }
         >
@@ -111,7 +115,7 @@ export function ModalSizes() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "md",
+              size: 'md',
             }))
           }
         >
@@ -123,7 +127,7 @@ export function ModalSizes() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "lg",
+              size: 'lg',
             }))
           }
         >
@@ -135,19 +139,7 @@ export function ModalSizes() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "xl",
-            }))
-          }
-        >
-          xl
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() =>
-            setModalState((prevState) => ({
-              ...prevState,
-              isOpen: true,
-              size: "full",
+              size: 'full',
             }))
           }
         >
@@ -203,8 +195,8 @@ export function ModalSizes() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s{' '}
+                  <a className="underline">Terms of Service</a> and{' '}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -229,7 +221,7 @@ export function ModalSizes() {
 export function ModalRounded() {
   const [modalState, setModalState] = useState<any>({
     isOpen: false,
-    rounded: "md",
+    rounded: 'md',
   });
 
   return (
@@ -241,7 +233,7 @@ export function ModalRounded() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              rounded: "none",
+              rounded: 'none',
             }))
           }
         >
@@ -253,7 +245,7 @@ export function ModalRounded() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              rounded: "sm",
+              rounded: 'sm',
             }))
           }
         >
@@ -265,7 +257,7 @@ export function ModalRounded() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              rounded: "md",
+              rounded: 'md',
             }))
           }
         >
@@ -277,7 +269,7 @@ export function ModalRounded() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              rounded: "lg",
+              rounded: 'lg',
             }))
           }
         >
@@ -289,7 +281,7 @@ export function ModalRounded() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              rounded: "xl",
+              rounded: 'xl',
             }))
           }
         >
@@ -298,7 +290,6 @@ export function ModalRounded() {
       </div>
       <Modal
         isOpen={modalState.isOpen}
-        rounded={modalState.rounded}
         onClose={() =>
           setModalState((prevState) => ({ ...prevState, isOpen: false }))
         }
@@ -345,8 +336,8 @@ export function ModalRounded() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s{' '}
+                  <a className="underline">Terms of Service</a> and{' '}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -389,7 +380,11 @@ export function ModalCustomSize() {
               onClick={() => setModalState(false)}
               aria-label="Close modal"
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} aria-hidden="true" />
+              <XMarkIcon
+                className="h-auto w-6"
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
@@ -420,8 +415,8 @@ export function ModalCustomSize() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s{' '}
+                  <a className="underline">Terms of Service</a> and{' '}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -463,7 +458,11 @@ export function ModalCustomStyle() {
               onClick={() => setModalState(false)}
               aria-label="Close modal"
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} aria-hidden="true" />
+              <XMarkIcon
+                className="h-auto w-6"
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
@@ -494,8 +493,8 @@ export function ModalCustomStyle() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s{' '}
+                  <a className="underline">Terms of Service</a> and{' '}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }

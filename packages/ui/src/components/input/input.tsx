@@ -168,6 +168,7 @@ export function Input({
             spellCheck="false"
             placeholder={placeholder || 'Screen reader only'}
             aria-invalid={error ? 'true' : undefined}
+            aria-required={inputProps.required}
             className={inputField({
               disabled,
               clearable,

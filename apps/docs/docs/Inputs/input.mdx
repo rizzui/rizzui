@@ -2,24 +2,24 @@
 sidebar_position: 1
 ---
 
-import { Input } from "rizzui/input";
-import Paper from "@site/src/components/paper";
+import { Input } from 'rizzui/input';
+import Paper from '@site/src/components/paper';
 import InputCounter, {
   InputCharacterCounter,
   InputClearable,
-} from "@site/src/components/input";
+} from '@site/src/components/input';
 import {
   MagnifyingGlassIcon,
   ArrowRightIcon,
   CurrencyDollarIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 # Input
 
 A basic widget for getting the user input.
 
 ```tsx
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -29,11 +29,15 @@ import { Input } from "rizzui/input";
 The default style of **Input** component.
 
 <Paper className="text-gray-950 block">
-  <Input label="Name" placeholder="Enter your name" />
+  <Input
+    label="Name"
+    placeholder="Enter your name"
+    className="w-full max-w-xs"
+  />
 </Paper>
 
 ```tsx
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return <Input label="Name" placeholder="Enter your name" />;
@@ -63,7 +67,7 @@ You can change the type of **Input** using [**type**](#input-types) property.
 </Paper>
 
 ```tsx
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
@@ -97,7 +101,7 @@ You can change the style of **Input** using [**variant**](#input-variants) prope
 </Paper>
 
 ```tsx
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
@@ -117,13 +121,30 @@ export default function App() {
 You can change the sizes of **Input** using [**size**](#input-sizes) property.
 
 <Paper className="gap-4 justify-start items-start text-gray-950">
-  <Input type="email" size="sm" label="Small" placeholder="Enter your email" />
-  <Input type="email" label="Default" placeholder="Enter your email" />
-  <Input type="email" size="lg" label="Large" placeholder="Enter your email" />
+  <Input
+    type="email"
+    size="sm"
+    label="Small"
+    placeholder="Enter your email"
+    className="w-full max-w-xs"
+  />
+  <Input
+    type="email"
+    label="Default"
+    placeholder="Enter your email"
+    className="w-full max-w-sm"
+  />
+  <Input
+    type="email"
+    size="lg"
+    label="Large"
+    placeholder="Enter your email"
+    className="w-full max-w-md"
+  />
 </Paper>
 
 ```tsx
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
@@ -172,12 +193,12 @@ You can add any text or icon to the **Input** component using **prefix**, **suff
 </Paper>
 
 ```tsx
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 import {
   MagnifyingGlassIcon,
   ArrowRightIcon,
   CurrencyDollarIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
@@ -212,11 +233,11 @@ You can create quantity counter with **Input**.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Input } from "rizzui/input";
-import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { useState } from 'react';
+import { Input } from 'rizzui/input';
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   const [state, setState] = useState(0);
@@ -263,14 +284,14 @@ You can create character counter with **Input**.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Input } from "rizzui/input";
+import { useState } from 'react';
+import { Input } from 'rizzui/input';
 
 export default function App() {
   const MAXLENGTH = 24;
-  const [state, setState] = React.useState("Chat GPT is awesome!");
+  const [state, setState] = React.useState('Chat GPT is awesome!');
 
   return (
     <Input
@@ -296,13 +317,13 @@ You can create clearable **Input** using **clearable** property.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Input } from "rizzui/input";
+import { useState } from 'react';
+import { Input } from 'rizzui/input';
 
 export default function App() {
-  const [state, setState] = useState("This is Jhon.");
+  const [state, setState] = useState('This is Jhon.');
 
   return (
     <Input
@@ -311,7 +332,7 @@ export default function App() {
       value={state}
       placeholder="clearable ..."
       onChange={(e) => setState(e.target.value)}
-      onClear={() => setState("")}
+      onClear={() => setState('')}
       clearable
     />
   );
@@ -325,11 +346,17 @@ export default function App() {
 You can make disable **Input** using **disabled** property.
 
 <Paper className="block text-gray-950">
-  <Input type="text" label="Name" placeholder="Enter your name" disabled />
+  <Input
+    type="text"
+    label="Name"
+    placeholder="Enter your name"
+    disabled
+    className="w-full max-w-md"
+  />
 </Paper>
 
 ```tsx
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
@@ -350,11 +377,12 @@ You can show field helper message to the **Input** using **helperText** property
     label="Email"
     placeholder="Your email"
     helperText="Example: john@doe.io"
+    className="w-full max-w-md"
   />
 </Paper>
 
 ```tsx
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
@@ -375,11 +403,16 @@ export default function App() {
 You can show the validation error message using **error** property.
 
 <Paper className="block text-gray-950">
-  <Input label="Name" placeholder="Your Name" error="This field is required" />
+  <Input
+    label="Name"
+    placeholder="Your Name"
+    error="This field is required"
+    className="w-full max-w-md"
+  />
 </Paper>
 
 ```tsx
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
@@ -439,17 +472,17 @@ Here is the API documentation of the Input component. And the rest of the props 
 
 ```ts
 type InputTypes =
-  | "text"
-  | "number"
-  | "email"
-  | "time"
-  | "date"
-  | "datetime-local"
-  | "month"
-  | "search"
-  | "tel"
-  | "url"
-  | "week";
+  | 'text'
+  | 'number'
+  | 'email'
+  | 'time'
+  | 'date'
+  | 'datetime-local'
+  | 'month'
+  | 'search'
+  | 'tel'
+  | 'url'
+  | 'week';
 ```
 
 <div className="mb-10" />
@@ -457,7 +490,7 @@ type InputTypes =
 ### Label Weight
 
 ```ts
-type LabelWeight = "normal" | "medium" | "semibold" | "bold";
+type LabelWeight = 'normal' | 'medium' | 'semibold' | 'bold';
 ```
 
 <div className="mb-10" />
@@ -465,7 +498,7 @@ type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ### Input Variants
 
 ```ts
-type InputVariants = "outline" | "flat" | "text";
+type InputVariants = 'outline' | 'flat' | 'text';
 ```
 
 <div className="mb-10" />
@@ -473,7 +506,7 @@ type InputVariants = "outline" | "flat" | "text";
 ### Input Sizes
 
 ```ts
-type InputSizes = "sm" | "md" | "lg";
+type InputSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />

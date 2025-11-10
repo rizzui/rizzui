@@ -33,9 +33,9 @@ const pinCode = tv({
         'bg-transparent focus:ring-[0.8px] ring-border border-border placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
     },
     size: {
-      sm: 'px-1 py-1 text-sm h-8 w-8',
-      md: 'px-2 py-2 text-sm h-10 w-10',
-      lg: 'px-2 py-2 text-base h-12 w-12',
+      sm: 'px-1 py-1 h-8 w-8 text-sm',
+      md: 'px-2 py-2 h-10 w-10 text-base',
+      lg: 'px-2 py-2 h-12 w-12 text-lg',
     },
     disabled: {
       true: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:placeholder:text-muted-foreground disabled:text-muted-foreground disabled:cursor-not-allowed disabled:border-muted',
@@ -68,6 +68,7 @@ export interface PinCodeProps
   error?: string;
   inputClassName?: string;
   errorClassName?: string;
+  label?: string;
 }
 
 export function PinCode({
@@ -86,6 +87,7 @@ export function PinCode({
   errorClassName,
   disabled,
   onChange,
+  label,
   ...props
 }: PinCodeProps) {
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -154,11 +156,17 @@ export function PinCode({
     setPinValue();
   }
 
+  const pinGroupLabel = label || `Pin code, ${length} digits`;
+
   return (
-    <div
-      className={cn('rizzui-pin-code-root', 'flex flex-col', className)}
-    >
-      <div className={pinCodeContainer({ center })}>
+    <div className={cn('rizzui-pin-code-root', 'flex flex-col', className)}>
+      <div
+        role="group"
+        aria-label={pinGroupLabel}
+        aria-invalid={error ? 'true' : undefined}
+        aria-required={props.required}
+        className={pinCodeContainer({ center })}
+      >
         {Array.from({ length }, (_, index) => (
           <input
             key={index}
@@ -174,6 +182,8 @@ export function PinCode({
             autoCorrect="off"
             autoComplete="one-time-code"
             placeholder={placeholder}
+            aria-invalid={error ? 'true' : undefined}
+            aria-label={`${pinGroupLabel}, digit ${index + 1} of ${length}`}
             onChange={(event) => handleChange(event, index)}
             onKeyDown={(event) => handleKeyDown(event, index)}
             onPaste={(event) => handlePaste(event, index)}

@@ -132,6 +132,7 @@ export function Textarea({
             {...(cols && { cols })}
             placeholder={placeholder || 'Screen reader only'}
             aria-invalid={error ? 'true' : undefined}
+            aria-required={textareaProps.required}
             className={textarea({
               variant,
               size,

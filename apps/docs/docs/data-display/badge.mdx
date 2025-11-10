@@ -2,18 +2,18 @@
 sidebar_position: 4
 ---
 
-import { Badge } from "rizzui/badge";
-import { Text } from "rizzui/typography";
-import { Avatar } from "rizzui/avatar";
-import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
-import Paper from "@site/src/components/paper";
+import { Badge } from 'rizzui/badge';
+import { Text } from 'rizzui/typography';
+import { Avatar } from 'rizzui/avatar';
+import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
+import Paper from '@site/src/components/paper';
 
 # Badge
 
 Badge is a small overlapped UI item which indicates a status, notification, or event that appears in relativity with the underlying object.
 
 ```tsx
-import { Badge } from "rizzui/badge";
+import { Badge } from 'rizzui/badge';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -27,7 +27,7 @@ The default style of **Badge** component.
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui/badge";
+import { Badge } from 'rizzui/badge';
 
 export default function App() {
   return <Badge>Badge</Badge>;
@@ -41,7 +41,7 @@ export default function App() {
 You can change the style of the **Badge** using [**variant**](#badge-variants) property.
 
 <Paper>
-  <div className="flex items-center justify-around gap-3 w-full flex-wrap">
+  <div className="flex items-center justify-around gap-3 flex-wrap w-full max-w-xl">
     <Badge variant="outline">Badge</Badge>
     <Badge variant="flat">Badge</Badge>
     <Badge>Badge</Badge>
@@ -49,7 +49,7 @@ You can change the style of the **Badge** using [**variant**](#badge-variants) p
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui/badge";
+import { Badge } from 'rizzui/badge';
 
 export default function App() {
   return (
@@ -78,7 +78,7 @@ You can change the size of the **Badge** using [**size**](#badge-sizes) property
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui/badge";
+import { Badge } from 'rizzui/badge';
 
 export default function App() {
   return (
@@ -93,7 +93,6 @@ export default function App() {
 ```
 
 <div className="mb-16" />
-
 
 ## Colors
 
@@ -110,74 +109,44 @@ You can change the color of the **Badge** using [**color**](#badge-colors) prope
   </div>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap mb-10">
     <Badge variant="flat">Badge</Badge>
-    <Badge
-      variant="flat"
-      color="secondary"
-    >
+    <Badge variant="flat" color="secondary">
       Badge
     </Badge>
-    <Badge
-      variant="flat"
-      color="info"
-    >
+    <Badge variant="flat" color="info">
       Badge
     </Badge>
-    <Badge
-      variant="flat"
-      color="warning"
-    >
+    <Badge variant="flat" color="warning">
       Badge
     </Badge>
-    <Badge
-      variant="flat"
-      color="danger"
-    >
+    <Badge variant="flat" color="danger">
       Badge
     </Badge>
-    <Badge
-      variant="flat"
-      color="success"
-    >
+    <Badge variant="flat" color="success">
       Badge
     </Badge>
   </div>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
     <Badge variant="outline">Badge</Badge>
-    <Badge
-      variant="outline"
-      color="secondary"
-    >
+    <Badge variant="outline" color="secondary">
       Badge
     </Badge>
-    <Badge
-      variant="outline"
-      color="info"
-    >
+    <Badge variant="outline" color="info">
       Badge
     </Badge>
-    <Badge
-      variant="outline"
-      color="warning"
-    >
+    <Badge variant="outline" color="warning">
       Badge
     </Badge>
-    <Badge
-      variant="outline"
-      color="danger"
-    >
+    <Badge variant="outline" color="danger">
       Badge
     </Badge>
-    <Badge
-      variant="outline"
-      color="success"
-    >
+    <Badge variant="outline" color="success">
       Badge
     </Badge>
   </div>
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui/badge";
+import { Badge } from 'rizzui/badge';
 
 export default function App() {
   return (
@@ -194,68 +163,38 @@ export default function App() {
       {/* variant flat */}
       <div className="flex items-center justify-around gap-3 w-full flex-wrap mb-10">
         <Badge variant="flat">Badge</Badge>
-        <Badge
-          variant="flat"
-          color="secondary"
-        >
+        <Badge variant="flat" color="secondary">
           Badge
         </Badge>
-        <Badge
-          variant="flat"
-          color="info"
-        >
+        <Badge variant="flat" color="info">
           Badge
         </Badge>
-        <Badge
-          variant="flat"
-          color="warning"
-        >
+        <Badge variant="flat" color="warning">
           Badge
         </Badge>
-        <Badge
-          variant="flat"
-          color="danger"
-        >
+        <Badge variant="flat" color="danger">
           Badge
         </Badge>
-        <Badge
-          variant="flat"
-          color="success"
-        >
+        <Badge variant="flat" color="success">
           Badge
         </Badge>
       </div>
       {/* variant outline */}
       <div className="flex items-center justify-around gap-3 w-full flex-wrap">
         <Badge variant="outline">Badge</Badge>
-        <Badge
-          variant="outline"
-          color="secondary"
-        >
+        <Badge variant="outline" color="secondary">
           Badge
         </Badge>
-        <Badge
-          variant="outline"
-          color="info"
-        >
+        <Badge variant="outline" color="info">
           Badge
         </Badge>
-        <Badge
-          variant="outline"
-          color="warning"
-        >
+        <Badge variant="outline" color="warning">
           Badge
         </Badge>
-        <Badge
-          variant="outline"
-          color="danger"
-        >
+        <Badge variant="outline" color="danger">
           Badge
         </Badge>
-        <Badge
-          variant="outline"
-          color="success"
-        >
+        <Badge variant="outline" color="success">
           Badge
         </Badge>
       </div>
@@ -277,45 +216,30 @@ You can render **Badge** as dot using **renderAsDot** property.
       <Text>Primary</Text>
     </div>
     <div className="flex items-center gap-2">
-      <Badge
-        renderAsDot
-        color="secondary"
-      />
+      <Badge renderAsDot color="secondary" />
       <Text>Secondary</Text>
     </div>
     <div className="flex items-center gap-2">
-      <Badge
-        renderAsDot
-        color="danger"
-      />
+      <Badge renderAsDot color="danger" />
       <Text>Danger</Text>
     </div>
     <div className="flex items-center gap-2">
-      <Badge
-        renderAsDot
-        color="warning"
-      />
+      <Badge renderAsDot color="warning" />
       <Text>Warning</Text>
     </div>
     <div className="flex items-center gap-2">
-      <Badge
-        renderAsDot
-        color="success"
-      />
+      <Badge renderAsDot color="success" />
       <Text>Success</Text>
     </div>
     <div className="flex items-center gap-2">
-      <Badge
-        renderAsDot
-        color="info"
-      />
+      <Badge renderAsDot color="info" />
       <Text>Info</Text>
     </div>
   </div>
 </Paper>
 
 ```tsx
-import { Badge, Text } from "rizzui";
+import { Badge, Text } from 'rizzui';
 
 export default function App() {
   return (
@@ -325,38 +249,23 @@ export default function App() {
         <Text>Primary</Text>
       </div>
       <div className="flex items-center gap-2">
-        <Badge
-          renderAsDot
-          color="secondary"
-        />
+        <Badge renderAsDot color="secondary" />
         <Text>Secondary</Text>
       </div>
       <div className="flex items-center gap-2">
-        <Badge
-          renderAsDot
-          color="danger"
-        />
+        <Badge renderAsDot color="danger" />
         <Text>Danger</Text>
       </div>
       <div className="flex items-center gap-2">
-        <Badge
-          renderAsDot
-          color="warning"
-        />
+        <Badge renderAsDot color="warning" />
         <Text>Warning</Text>
       </div>
       <div className="flex items-center gap-2">
-        <Badge
-          renderAsDot
-          color="success"
-        />
+        <Badge renderAsDot color="success" />
         <Text>Success</Text>
       </div>
       <div className="flex items-center gap-2">
-        <Badge
-          renderAsDot
-          color="info"
-        />
+        <Badge renderAsDot color="info" />
         <Text>Info</Text>
       </div>
     </>
@@ -373,10 +282,7 @@ You can use **Badge** to make a ecommerce cart counter component.
 <Paper>
   <div className="flex items-center justify-around gap-3 w-full flex-wrap">
     <div className="relative inline-flex">
-      <ShoppingBagIcon
-        className="h-auto w-8"
-        strokeWidth={1.2}
-      />
+      <ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
       <Badge
         size="sm"
         enableOutlineRing
@@ -386,10 +292,7 @@ You can use **Badge** to make a ecommerce cart counter component.
       </Badge>
     </div>
     <div className="relative ml-3 inline-flex">
-      <ShoppingCartIcon
-        className="h-auto w-8"
-        strokeWidth={1.2}
-      />
+      <ShoppingCartIcon className="h-auto w-8" strokeWidth={1.2} />
       <Badge
         size="sm"
         color="success"
@@ -400,10 +303,7 @@ You can use **Badge** to make a ecommerce cart counter component.
       </Badge>
     </div>
     <div className="relative ml-3 inline-flex">
-      <ShoppingBagIcon
-        className="h-auto w-8"
-        strokeWidth={1.2}
-      />
+      <ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
       <Badge
         size="sm"
         color="danger"
@@ -417,17 +317,14 @@ You can use **Badge** to make a ecommerce cart counter component.
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui/badge";
-import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { Badge } from 'rizzui/badge';
+import { ShoppingBagIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
     <>
       <div className="relative inline-flex">
-        <ShoppingBagIcon
-          className="h-auto w-8"
-          strokeWidth={1.2}
-        />
+        <ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
         <Badge
           size="sm"
           enableOutlineRing
@@ -437,10 +334,7 @@ export default function App() {
         </Badge>
       </div>
       <div className="relative ml-3 inline-flex">
-        <ShoppingCartIcon
-          className="h-auto w-8"
-          strokeWidth={1.2}
-        />
+        <ShoppingCartIcon className="h-auto w-8" strokeWidth={1.2} />
         <Badge
           size="sm"
           color="success"
@@ -451,10 +345,7 @@ export default function App() {
         </Badge>
       </div>
       <div className="relative ml-3 inline-flex">
-        <ShoppingBagIcon
-          className="h-auto w-8"
-          strokeWidth={1.2}
-        />
+        <ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
         <Badge
           size="sm"
           color="danger"
@@ -523,7 +414,7 @@ You can use the **Badge** with **Avatar** component to show the current state of
 </Paper>
 
 ```tsx
-import { Badge, Avatar } from "rizzui";
+import { Badge, Avatar } from 'rizzui';
 
 export default function App() {
   return (
@@ -606,7 +497,7 @@ Here is the API documentation of the Badge component. You can use props like **i
 ### Badge Variants
 
 ```ts
-type BadgeVariants = "solid" | "flat" | "outline";
+type BadgeVariants = 'solid' | 'flat' | 'outline';
 ```
 
 <div className="mb-10" />
@@ -614,7 +505,7 @@ type BadgeVariants = "solid" | "flat" | "outline";
 ### Badge Sizes
 
 ```ts
-type BadgeSizes = "sm" | "md" | "lg";
+type BadgeSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
@@ -622,5 +513,11 @@ type BadgeSizes = "sm" | "md" | "lg";
 ### Badge Colors
 
 ```ts
-type BadgeColors = "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type BadgeColors =
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'info'
+  | 'success'
+  | 'warning';
 ```

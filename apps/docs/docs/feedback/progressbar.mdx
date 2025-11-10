@@ -2,15 +2,15 @@
 sidebar_position: 3
 ---
 
-import { Progressbar } from "rizzui/progressbar";
-import Paper from "@site/src/components/paper";
+import { Progressbar } from 'rizzui/progressbar';
+import Paper from '@site/src/components/paper';
 
 # Progressbar
 
 A basic widget for showing the work progress.
 
 ```tsx
-import { Progressbar } from "rizzui/progressbar";
+import { Progressbar } from 'rizzui/progressbar';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -24,7 +24,7 @@ The default style of **Progressbar**.
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui/progressbar";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return <Progressbar value={75} />;
@@ -38,30 +38,18 @@ export default function App() {
 You can change the style of **Progressbar** using **variant** property.
 
 <Paper className="gap-6">
-  <Progressbar
-    variant="flat"
-    value={50}
-  />
-  <Progressbar
-    variant="solid"
-    value={90}
-  />
+  <Progressbar variant="flat" value={50} />
+  <Progressbar variant="solid" value={90} />
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui/progressbar";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return (
     <>
-      <Progressbar
-        variant="flat"
-        value={75}
-      />
-      <Progressbar
-        variant="solid"
-        value={75}
-      />
+      <Progressbar variant="flat" value={75} />
+      <Progressbar variant="solid" value={75} />
     </>
   );
 }
@@ -74,38 +62,20 @@ export default function App() {
 You can change the size of **Progressbar** using [**size**](#progressbar-sizes) property.
 
 <Paper className="gap-6">
-  <Progressbar
-    value={45}
-    size="sm"
-  />
+  <Progressbar value={45} size="sm" />
   <Progressbar value={65} />
-  <Progressbar
-    value={75}
-    size="lg"
-  />
-  <Progressbar
-    value={85}
-  />
+  <Progressbar value={75} size="lg" />
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui/progressbar";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return (
     <>
-      <Progressbar
-        value={45}
-        size="sm"
-      />
+      <Progressbar value={45} size="sm" />
       <Progressbar value={65} />
-      <Progressbar
-        value={75}
-        size="lg"
-      />
-      <Progressbar
-        value={85}
-      />
+      <Progressbar value={75} size="lg" />
     </>
   );
 }
@@ -113,62 +83,31 @@ export default function App() {
 
 <div className="mb-16" />
 
-
 ## Colors
 
 You can change the color of **Progressbar** using [**color**](#progressbar-colors) property.
 
 <Paper className="gap-6">
   <Progressbar value={25} />
-  <Progressbar
-    value={45}
-    color="secondary"
-  />
-  <Progressbar
-    value={65}
-    color="danger"
-  />
-  <Progressbar
-    value={75}
-    color="info"
-  />
-  <Progressbar
-    value={85}
-    color="success"
-  />
-  <Progressbar
-    value={95}
-    color="warning"
-  />
+  <Progressbar value={45} color="secondary" />
+  <Progressbar value={65} color="danger" />
+  <Progressbar value={75} color="info" />
+  <Progressbar value={85} color="success" />
+  <Progressbar value={95} color="warning" />
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui/progressbar";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return (
     <>
       <Progressbar value={25} />
-      <Progressbar
-        value={45}
-        color="secondary"
-      />
-      <Progressbar
-        value={65}
-        color="danger"
-      />
-      <Progressbar
-        value={75}
-        color="info"
-      />
-      <Progressbar
-        value={85}
-        color="success"
-      />
-      <Progressbar
-        value={95}
-        color="warning"
-      />
+      <Progressbar value={45} color="secondary" />
+      <Progressbar value={65} color="danger" />
+      <Progressbar value={75} color="info" />
+      <Progressbar value={85} color="success" />
+      <Progressbar value={95} color="warning" />
     </>
   );
 }
@@ -184,43 +123,21 @@ Note: **labelPosition='insideBar'** property will only work when **size="lg"**.
 
 <Paper>
   <div className="grid grid-cols-1 gap-10 w-full">
-    <Progressbar
-      value={75}
-      label="75%"
-    />
-    <Progressbar
-      value={75}
-      label="75%"
-      labelPosition="inlineLeft"
-    />
-    <Progressbar
-      value={75}
-      label="75%"
-      labelPosition="insideBar"
-    />
+    <Progressbar value={75} label="75%" />
+    <Progressbar value={75} label="75%" labelPosition="inlineLeft" />
+    <Progressbar value={75} label="75%" labelPosition="insideBar" />
   </div>
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui/progressbar";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return (
     <div className="grid grid-cols-1 gap-10 w-full">
-      <Progressbar
-        value={75}
-        label="75%"
-      />
-      <Progressbar
-        value={75}
-        label="75%"
-        labelPosition="inlineLeft"
-      />
-      <Progressbar
-        value={75}
-        label="75%"
-        labelPosition="insideBar"
-      />
+      <Progressbar value={75} label="75%" />
+      <Progressbar value={75} label="75%" labelPosition="inlineLeft" />
+      <Progressbar value={75} label="75%" labelPosition="insideBar" />
     </div>
   );
 }
@@ -260,7 +177,7 @@ Here is the API documentation of the Progressbar component.
 ### Progressbar Sizes
 
 ```ts
-type ProgressbarSizes = "sm" | "md" | "lg";
+type ProgressbarSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
@@ -268,7 +185,13 @@ type ProgressbarSizes = "sm" | "md" | "lg";
 ### Progressbar Colors
 
 ```ts
-type ProgressbarColors = "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type ProgressbarColors =
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'info'
+  | 'success'
+  | 'warning';
 ```
 
 <div className="mb-10" />
@@ -276,5 +199,5 @@ type ProgressbarColors = "primary" | "secondary" | "danger" | "info" | "success"
 ### Progressbar Label Position
 
 ```ts
-type ProgressbarLabelPosition = "inlineLeft" | "inlineRight" | "insideBar";
+type ProgressbarLabelPosition = 'inlineLeft' | 'inlineRight' | 'insideBar';
 ```

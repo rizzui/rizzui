@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-import { Switch } from "rizzui/switch";
-import Paper from "@site/src/components/paper";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
+import { Switch } from 'rizzui/switch';
+import Paper from '@site/src/components/paper';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
 # Switch
 
@@ -12,7 +12,7 @@ A basic widget for getting the user input. It's a wonderfull interface for toggl
 as an alternative of **Checkbox** component.
 
 ```tsx
-import { Switch } from "rizzui/switch";
+import { Switch } from 'rizzui/switch';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -26,7 +26,7 @@ The default style of **Switch** component.
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui/switch";
+import { Switch } from 'rizzui/switch';
 
 export default function App() {
   return <Switch />;
@@ -39,31 +39,21 @@ export default function App() {
 
 You can change the style of **Switch** using [**variant**](#switch-variants) property.
 
-<Paper className="flex-row justify-around gap-4 flex-wrap">
-  <Switch
-    variant="flat"
-    label="Flat"
-  />
-  <Switch
-    variant="outline"
-    label="Outline"
-  />
+<Paper>
+  <div className="w-full max-w-md flex justify-around gap-4 flex-wrap">
+    <Switch variant="flat" label="Flat" />
+    <Switch variant="outline" label="Outline" />
+  </div>
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui/switch";
+import { Switch } from 'rizzui/switch';
 
 export default function App() {
-  return (
+  return (s
     <>
-      <Switch
-        variant="flat"
-        label="Flat"
-      />
-      <Switch
-        variant="outline"
-        label="Outline"
-      />
+      <Switch variant="flat" label="Flat" />
+      <Switch variant="outline" label="Outline" />
     </>
   );
 }
@@ -75,39 +65,23 @@ export default function App() {
 
 You can set diffrient sizes of the **Switch** component using [**size**](#switch-sizes) property.
 
-<Paper className="flex-row justify-around gap-4 flex-wrap">
-  <Switch
-    label="Small"
-    size="sm"
-  />
-  <Switch label="Default" />
-  <Switch
-    size="lg"
-    label="Large"
-  />
-  <Switch
-    label="Large"
-  />
+<Paper>
+  <div className="w-full max-w-xl flex justify-around gap-4 flex-wrap">
+    <Switch label="Small" size="sm" />
+    <Switch label="Default" />
+    <Switch size="lg" label="Large" />
+  </div>
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui/switch";
+import { Switch } from 'rizzui/switch';
 
 export default function App() {
   return (
     <>
-      <Switch
-        label="Small"
-        size="sm"
-      />
+      <Switch label="Small" size="sm" />
       <Switch label="Default" />
-      <Switch
-        size="lg"
-        label="Large"
-      />
-      <Switch
-        label="Large"
-      />
+      <Switch size="lg" label="Large" />
     </>
   );
 }
@@ -115,35 +89,24 @@ export default function App() {
 
 <div className="mb-16" />
 
-
 ## Label Placement
 
 You can set label on the two diffrient side using **labelPlacement** property.
 
-<Paper className="sm:flex-row justify-around gap-2 flex-col">
-  <Switch
-    label="Left Placement"
-    variant="outline"
-    labelPlacement="left"
-  />
-  <Switch
-    label="Right Placement"
-    variant="outline"
-    labelPlacement="right"
-  />
+<Paper>
+  <div className="w-full max-w-xl flex justify-around gap-4 flex-wrap">
+    <Switch label="Left Placement" variant="outline" labelPlacement="left" />
+    <Switch label="Right Placement" variant="outline" labelPlacement="right" />
+  </div>
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui/switch";
+import { Switch } from 'rizzui/switch';
 
 export default function App() {
   return (
     <>
-      <Switch
-        label="Left Placement"
-        variant="outline"
-        labelPlacement="left"
-      />
+      <Switch label="Left Placement" variant="outline" labelPlacement="left" />
       <Switch
         label="Right Placement"
         variant="outline"
@@ -170,8 +133,8 @@ You can set custom on, off icon of the **Switch** component using **onIcon** & *
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui/switch";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
+import { Switch } from 'rizzui/switch';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
@@ -192,22 +155,14 @@ export default function App() {
 The disabled style of the **Switch** component.
 
 <Paper>
-  <Switch
-    label="Disabled"
-    disabled
-  />
+  <Switch label="Disabled" disabled />
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui/switch";
+import { Switch } from 'rizzui/switch';
 
 export default function App() {
-  return (
-    <Switch
-      label="Disabled"
-      disabled
-    />
-  );
+  return <Switch label="Disabled" disabled />;
 }
 ```
 
@@ -227,7 +182,7 @@ You can add helperText to the **Switch** using **helperText** property.
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui/switch";
+import { Switch } from 'rizzui/switch';
 
 export default function App() {
   return (
@@ -256,7 +211,7 @@ You can show the validation error message using **error** property.
 </Paper>
 
 ```tsx
-import { Switch } from "rizzui/switch";
+import { Switch } from 'rizzui/switch';
 
 export default function App() {
   return (
@@ -311,7 +266,7 @@ Here is the API documentation of the Switch component. And the rest of the props
 ### Switch Variants
 
 ```ts
-type SwitchVariants = "outline" | "flat";
+type SwitchVariants = 'outline' | 'flat';
 ```
 
 <div className="mb-10" />
@@ -319,7 +274,7 @@ type SwitchVariants = "outline" | "flat";
 ### Label Weight
 
 ```ts
-type LabelWeight = "normal" | "medium" | "semibold" | "bold";
+type LabelWeight = 'normal' | 'medium' | 'semibold' | 'bold';
 ```
 
 <div className="mb-10" />
@@ -327,10 +282,7 @@ type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ### Switch Sizes
 
 ```ts
-type SwitchSizes = "sm" | "md" | "lg";
+type SwitchSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
-
-
-
