@@ -30,8 +30,9 @@ export default function ModalDefault() {
               size="sm"
               variant="text"
               onClick={() => setModalState(false)}
+              aria-label="Close modal"
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} aria-hidden="true" />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
@@ -386,8 +387,9 @@ export function ModalCustomSize() {
               size="sm"
               variant="text"
               onClick={() => setModalState(false)}
+              aria-label="Close modal"
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} aria-hidden="true" />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
@@ -459,8 +461,9 @@ export function ModalCustomStyle() {
               size="sm"
               variant="text"
               onClick={() => setModalState(false)}
+              aria-label="Close modal"
             >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
+              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} aria-hidden="true" />
             </ActionIcon>
           </div>
           <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">

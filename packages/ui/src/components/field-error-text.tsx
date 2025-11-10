@@ -27,8 +27,13 @@ export function FieldErrorText({
   className,
 }: FieldErrorTextProps) {
   const Component = as;
+  if (!error) return null;
   return (
-    <Component role="alert" className={fieldError({ size, className })}>
+    <Component
+      role="alert"
+      aria-live="polite"
+      className={fieldError({ size, className })}
+    >
       {error}
     </Component>
   );

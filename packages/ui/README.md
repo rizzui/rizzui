@@ -20,18 +20,25 @@
   <a href="https://www.rizzui.com/docs/guide/getting-started">
     <img alt="Read the documentation" src="https://img.shields.io/badge/Docs-blue?style=flat&logo=readthedocs&labelColor=5c5c5c&color=16a679" height="20" width="auto" />
   </a>
+  <a href="https://github.com/rizzui/rizzui">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/rizzui/rizzui?style=flat&color=16a679" />
+  </a>
 </div>
 
 <br />
 
 <div align="center">
   <a href="https://www.rizzui.com/docs/guide/getting-started">Documentation</a> &bull;
-  <a href="https://www.rizzui.com">Website</a>
+  <a href="https://www.rizzui.com">Website</a> &bull;
+  <a href="https://github.com/rizzui/rizzui">GitHub</a>
 </div>
 
 <br />
 
-A Modern and Minimal React UI Library built with TailwindCSS. Designed to provide you with a simple and intuitive set of UI components that are easy to use, customize and integrate into your React application. We have carefully crafted each component to ensure that they are responsive, accessible and consistent across different devices and browsers.
+<div align="center">
+  <h3>✨ Build beautiful React apps faster with Tailwind CSS v4</h3>
+  <p>A modern, minimal UI component library that gets out of your way</p>
+</div>
 
 <br />
 
@@ -41,30 +48,48 @@ A Modern and Minimal React UI Library built with TailwindCSS. Designed to provid
 
 </div>
 
-## Requirements
+## Why RizzUI?
+
+RizzUI is designed for developers who want **beautiful, accessible components** without the bloat. Built with React 19 and Tailwind CSS v4, it provides everything you need to ship faster:
+
+- 🎨 **Modern Design** - Clean, minimal components that look great out of the box
+- ⚡️ **Lightweight** - Tree-shakeable exports, import only what you need
+- 🎯 **Type-Safe** - Full TypeScript support with excellent autocomplete
+- ♿️ **Accessible** - Built with accessibility in mind, following WCAG guidelines
+- 🎭 **Customizable** - Easy theming with CSS variables, no config files needed
+- 🌙 **Dark Mode** - Built-in dark mode support that just works
+- 📦 **Zero Config** - Works with Tailwind CSS v4's CSS-first approach
+- 🚀 **React 19 Ready** - Built for the latest React features
+
+## Quick Start
+
+### Requirements
 
 - **React**: 19.1.0 or higher
 - **Node.js**: 18.0.0 or higher
-- **Package Manager**: pnpm 9.0.0+ (recommended), npm, or yarn
+- **Package Manager**: pnpm 9.0.0+ (recommended), npm, yarn, or bun
 
-## Installation
+### Installation
 
-Install RizzUI and its required peer dependencies:
+Install RizzUI and its peer dependencies:
 
 ```bash
-# Using npm
-npm install rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants
-
 # Using pnpm (recommended)
 pnpm add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants
 
+# Using npm
+npm install rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants
+
 # Using yarn
 yarn add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants
+
+# Using bun
+bun add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants
 ```
 
-## Tailwind CSS v4 Configuration
+### Configure Tailwind CSS v4
 
-RizzUI 2.0 uses **Tailwind CSS v4** with CSS-first configuration. No `tailwind.config.js` needed!
+RizzUI 2.0 uses **Tailwind CSS v4** with CSS-first configuration. No `tailwind.config.js` needed! 🎉
 
 Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
 
@@ -164,10 +189,10 @@ Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  
+
   --border-radius: var(--border-radius);
   --color-border: var(--border-color);
-  
+
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
 
@@ -214,24 +239,41 @@ export default config;
 
 ## Usage
 
+That's it! You're ready to use RizzUI components. Import them individually for optimal tree-shaking:
+
 ```jsx
 import { Button } from 'rizzui/button';
+import { Input } from 'rizzui/input';
+import { Card } from 'rizzui/card';
 
 export default function App() {
-  return <Button>Button</Button>;
+  return (
+    <div>
+      <Button variant="solid" color="primary">
+        Click me
+      </Button>
+      <Input placeholder="Enter your name" />
+    </div>
+  );
 }
 ```
+
+**💡 Tip**: Import from specific paths (e.g., `rizzui/button`) instead of the main entry point for better tree-shaking and smaller bundle sizes.
 
 <br />
 
 ![RizzUI Button View](https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/bugfix/apps/docs/static/img/example.png)
 
-## Theme Provider
+## Theme Support
+
+### Theme Provider Setup
+
+RizzUI works seamlessly with `next-themes` for theme switching:
 
 ```jsx
-"use client";
+'use client';
 
-import { ThemeProvider as NextThemeProvider } from "next-themes";
+import { ThemeProvider as NextThemeProvider } from 'next-themes';
 
 export function ThemeProvider({ children }: React.PropsWithChildren<{}>) {
   return (
@@ -246,14 +288,17 @@ export function ThemeProvider({ children }: React.PropsWithChildren<{}>) {
 }
 ```
 
-## Theme Switcher
+### Theme Switcher Component
+
+Here's a ready-to-use theme switcher:
 
 ```jsx
 'use client';
 
 import React from 'react';
 import { useTheme } from 'next-themes';
-import { ActionIcon, DropdownMenu } from 'rizzui';
+import { ActionIcon } from 'rizzui/action-icon';
+import { Dropdown } from 'rizzui/dropdown';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 export function ThemeSwitcher() {
@@ -278,10 +323,26 @@ export function ThemeSwitcher() {
 }
 ```
 
-## Community and Contribution
+## Documentation
 
-We are always looking for new ideas or other ways to improve RizzUI. If you have developed anything cool or found a bug, send us a pull request. Check out our [Contribution Guidelines](https://github.com/rizzui/rizzui/blob/bugfix/CONTRIBUTING.md).
+📚 **Full documentation available at [rizzui.com](https://www.rizzui.com/docs/guide/getting-started)**
+
+Explore component APIs, examples, and best practices in our comprehensive docs.
+
+## Contributing
+
+We love contributions! Whether it's fixing bugs, adding features, or improving documentation, your help makes RizzUI better for everyone.
+
+- 🐛 **Found a bug?** [Open an issue](https://github.com/rizzui/rizzui/issues)
+- 💡 **Have an idea?** [Start a discussion](https://github.com/rizzui/rizzui/discussions)
+- 🔧 **Want to contribute?** Check out our [Contributing Guidelines](https://github.com/rizzui/rizzui/blob/bugfix/CONTRIBUTING.md)
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Licensed under the [MIT License](https://choosealicense.com/licenses/mit/) - feel free to use RizzUI in your projects! 🎉
+
+---
+
+<div align="center">
+  Made with ❤️ by the REDQ team
+</div>

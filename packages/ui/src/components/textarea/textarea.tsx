@@ -131,6 +131,7 @@ export function Textarea({
             maxLength={maxLength}
             {...(cols && { cols })}
             placeholder={placeholder || 'Screen reader only'}
+            aria-invalid={error ? 'true' : undefined}
             className={textarea({
               variant,
               size,

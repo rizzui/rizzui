@@ -131,6 +131,9 @@ const Rate = ({
     );
   };
 
+  const value = props.value ?? props.defaultValue ?? 0;
+  const count = props.count ?? 5;
+
   return (
     <div className={cn('rizzui-rate', className)}>
       {label && (
@@ -144,31 +147,38 @@ const Rate = ({
           {label}
         </label>
       )}
-      <RcRate
-        ref={ref}
-        disabled={disabled}
-        characterRender={characterRender}
-        character={({ index }: RcStarProps) => (
-          <div
-            className={cn(
-              characterClass(),
-              characterClassName
-            )}
-          >
-            {Array.isArray(character)
-              ? character[index as number]
-              : character}
-          </div>
-        )}
-        className={cn(
-          containerClass(),
-          firstStarClass(),
-          rateClassName
-        )}
-        {...props}
-      />
+      <div
+        role="radiogroup"
+        aria-invalid={error ? 'true' : undefined}
+      >
+        <RcRate
+          ref={ref}
+          disabled={disabled}
+          characterRender={characterRender}
+          character={({ index }: RcStarProps) => (
+            <div
+              className={cn(
+                characterClass(),
+                characterClassName
+              )}
+              aria-label={tooltips?.[index as number] || `Rate ${index + 1} out of ${count}`}
+            >
+              {Array.isArray(character)
+                ? character[index as number]
+                : character}
+            </div>
+          )}
+          className={cn(
+            containerClass(),
+            firstStarClass(),
+            rateClassName
+          )}
+          aria-label={typeof label === 'string' ? label : 'Rating'}
+          {...props}
+        />
+      </div>
       {!error && helperText && (
-        <FieldHelperText tag="div" size={size} className={helperClassName}>
+        <FieldHelperText as="div" size={size} className={helperClassName}>
           {helperText}
         </FieldHelperText>
       )}

@@ -250,21 +250,22 @@ export function DrawerIcons() {
 
   return (
     <>
-      <div
-        role="button"
-        tabIndex={0}
+      <button
+        type="button"
         onClick={() => setDrawerState(true)}
-        className="relative inline-flex cursor-pointer"
+        aria-label="Open shopping cart"
+        className="relative inline-flex cursor-pointer border-0 bg-transparent p-0"
       >
-        <ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} />
+        <ShoppingBagIcon className="h-auto w-8" strokeWidth={1.2} aria-hidden="true" />
         <Badge
           size="sm"
           enableOutlineRing
           className="absolute right-1 top-0.5 -translate-y-1/3 translate-x-1/2"
+          aria-label="0 items in cart"
         >
           0
         </Badge>
-      </div>
+      </button>
       <Drawer
         isOpen={drawerState}
         onClose={() => setDrawerState(false)}
@@ -277,8 +278,9 @@ export function DrawerIcons() {
               size="sm"
               variant="outline"
               onClick={() => setDrawerState(false)}
+              aria-label="Close drawer"
             >
-              <XMarkIcon className="h-auto w-5" strokeWidth={1.5} />
+              <XMarkIcon className="h-auto w-5" strokeWidth={1.5} aria-hidden="true" />
             </ActionIcon>
           </header>
           {/* End of drawer header */}

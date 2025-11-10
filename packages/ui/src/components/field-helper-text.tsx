@@ -25,8 +25,9 @@ export function FieldHelperText({
   className,
 }: React.PropsWithChildren<FieldHelperTextProps>) {
   const Component = as;
+  if (!children) return null;
   return (
-    <Component role="alert" className={fieldHelperText({ size, className })}>
+    <Component className={fieldHelperText({ size, className })}>
       {children}
     </Component>
   );

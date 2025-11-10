@@ -122,9 +122,7 @@ export function Input({
   ...inputProps
 }: InputProps) {
   return (
-    <div
-      className={cn('rizzui-input-root', 'flex flex-col', className)}
-    >
+    <div className={cn('rizzui-input-root', 'flex flex-col', className)}>
       <label className="block">
         {label ? (
           <span
@@ -169,6 +167,7 @@ export function Input({
             readOnly={readOnly}
             spellCheck="false"
             placeholder={placeholder || 'Screen reader only'}
+            aria-invalid={error ? 'true' : undefined}
             className={inputField({
               disabled,
               clearable,

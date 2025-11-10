@@ -42,10 +42,27 @@ export default function RangeSlider({
   ...props
 }: RangeSliderProps) {
   const { container: containerClass } = rangeSlider({ size });
+  
+  const value = props.value ?? props.defaultValue ?? (props.range ? [props.min ?? 0, props.max ?? 100] : props.min ?? 0);
+  const min = props.min ?? 0;
+  const max = props.max ?? 100;
+  
+  const getAriaValueText = () => {
+    if (props.ariaValueText) return props.ariaValueText;
+    if (Array.isArray(value)) {
+      return `${value[0]} to ${value[1]}`;
+    }
+    return String(value);
+  };
 
   return (
     <Slider
       className={cn(containerClass(), className)}
+      aria-label={props['aria-label'] || 'Range slider'}
+      aria-valuemin={min}
+      aria-valuemax={max}
+      aria-valuenow={Array.isArray(value) ? undefined : value}
+      aria-valuetext={getAriaValueText()}
       {...props}
     />
   );
@@ -90,8 +107,11 @@ export function RangeSliderCounter() {
       />
       <div className="mt-5 flex items-center justify-between gap-5 text-sm font-bold">
         <div className="overflow-hidden rounded-lg max-w-[200px] w-full border border-gray-200 py-2">
-          <p className="px-3 pt-1 text-gray-400">Min</p>
+          <label htmlFor="range-slider-min" className="px-3 pt-1 text-gray-400 block">
+            Min
+          </label>
           <input
+            id="range-slider-min"
             type="number"
             value={state.min}
             onChange={(e) => handleMinChange(parseInt(e.target.value))}
@@ -99,17 +119,24 @@ export function RangeSliderCounter() {
             min={0}
             max={state.max}
             readOnly
+            aria-label="Minimum value"
+            aria-readonly="true"
           />
         </div>
         <div className="overflow-hidden rounded-lg max-w-[200px] w-full border border-gray-200 py-2">
-          <p className="px-3 pt-1 text-gray-400">Max</p>
+          <label htmlFor="range-slider-max" className="px-3 pt-1 text-gray-400 block">
+            Max
+          </label>
           <input
+            id="range-slider-max"
             type="number"
             value={state.max}
             onChange={(e) => handleMaxChange(parseInt(e.target.value))}
             className="w-full border-none !bg-gray-lightest p-3 pb-1  text-sm outline-none focus:shadow-none focus:ring-0"
             min={state.min}
             readOnly
+            aria-label="Maximum value"
+            aria-readonly="true"
           />
         </div>
       </div>

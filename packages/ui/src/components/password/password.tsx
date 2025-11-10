@@ -154,6 +154,7 @@ export function Password({
             readOnly={readOnly}
             spellCheck="false"
             placeholder={placeholder || 'Screen reader only'}
+            aria-invalid={error ? 'true' : undefined}
             className={inputField({
               disabled,
               clearable,
@@ -172,18 +173,29 @@ export function Password({
           ) : null}
 
           {hideVisibilityToggleIcon ? null : (
-            <span
-              role="button"
+            <button
+              type="button"
               tabIndex={0}
+              aria-label={isVisible ? 'Hide password' : 'Show password'}
+              aria-pressed={isVisible}
+              disabled={disabled}
               className={cn(
                 'rizzui-password-toggle-icon',
-                'cursor-pointer leading-normal whitespace-nowrap',
-                disabled && 'text-muted-foreground',
+                'cursor-pointer leading-normal whitespace-nowrap border-0 bg-transparent p-0',
+                disabled && 'text-muted-foreground cursor-not-allowed',
                 visibilityToggleIconClassName
               )}
               onClick={() => {
                 if (disabled) return false;
                 setVisible(!visible);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  if (!disabled) {
+                    setVisible(!visible);
+                  }
+                }
               }}
             >
               {visibilityToggleIcon ? (
@@ -191,7 +203,7 @@ export function Password({
               ) : (
                 <PasswordToggleIcon isVisible={visible} iconSize={size} />
               )}
-            </span>
+            </button>
           )}
         </span>
       </label>
