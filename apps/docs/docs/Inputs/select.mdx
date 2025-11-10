@@ -283,6 +283,142 @@ export function SelectWithForm() {
 
 <div className="mb-20" />
 
+## Advanced Examples
+
+### Async Select with Loading State
+
+Implement a Select component that loads options asynchronously from an API.
+
+```tsx
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Select, type SelectOption } from 'rizzui/select';
+import { Loader } from 'rizzui/loader';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+export default function AsyncSelect() {
+  const [options, setOptions] = useState<SelectOption[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      setLoading(true);
+      try {
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        const mockUsers: User[] = [
+          { id: 1, name: 'John Doe', email: 'john@example.com' },
+          { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+          { id: 3, name: 'Bob Johnson', email: 'bob@example.com' },
+        ];
+
+        const selectOptions: SelectOption[] = mockUsers.map(user => ({
+          label: `${user.name} (${user.email})`,
+          value: user.id.toString(),
+        }));
+
+        setOptions(selectOptions);
+      } catch (error) {
+        console.error('Failed to fetch users:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  return (
+    <Select
+      label="Select User"
+      value={value}
+      options={loading ? [] : options}
+      onChange={setValue}
+      placeholder={loading ? 'Loading users...' : 'Select a user'}
+      disabled={loading}
+      displayValue={(selected) => {
+        const option = options.find(opt => opt.value === selected);
+        return option?.label ?? '';
+      }}
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+### Select with Custom Filtering
+
+Create a Select with custom filtering logic for complex data structures.
+
+```tsx
+'use client';
+
+import { useState, useMemo } from 'react';
+import { Select, type SelectOption } from 'rizzui/select';
+
+interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+}
+
+export default function CustomFilterSelect() {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [value, setValue] = useState<string | null>(null);
+
+  const products: Product[] = [
+    { id: 1, name: 'Laptop', category: 'Electronics', price: 999 },
+    { id: 2, name: 'Phone', category: 'Electronics', price: 699 },
+    { id: 3, name: 'Desk', category: 'Furniture', price: 299 },
+    { id: 4, name: 'Chair', category: 'Furniture', price: 199 },
+  ];
+
+  const options: SelectOption[] = useMemo(() => {
+    return products
+      .filter(product => {
+        const search = searchTerm.toLowerCase();
+        return (
+          product.name.toLowerCase().includes(search) ||
+          product.category.toLowerCase().includes(search) ||
+          product.price.toString().includes(search)
+        );
+      })
+      .map(product => ({
+        label: `${product.name} - $${product.price} (${product.category})`,
+        value: product.id.toString(),
+      }));
+  }, [searchTerm]);
+
+  return (
+    <Select
+      label="Select Product"
+      value={value}
+      options={options}
+      onChange={setValue}
+      searchable
+      onSearchChange={setSearchTerm}
+      placeholder="Search by name, category, or price"
+      displayValue={(selected) => {
+        const product = products.find(p => p.id.toString() === selected);
+        return product ? `${product.name} - $${product.price}` : '';
+      }}
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
 ## API Reference
 
 <hr />
