@@ -214,7 +214,7 @@ export default function App() {
 
 ## Disabled
 
-You can change disable state of **Textarea** using **disabled** property.
+You can change disabled state of **Textarea** using **disabled** property.
 
 <Paper className="block">
   <Textarea
@@ -321,10 +321,10 @@ Here is the API documentation of the Textarea component. And the rest of the pro
 |        error         |                             `string`                             |                    Show error message using this prop                     |    \_\_     |
 |      helperText      |                           `ReactNode`                            |         Add helper text. It could be string or a React component          |    \_\_     |
 |      clearable       |                            `boolean`                             |                           add clearable option                            |    \_\_     |
-|       onClear        |               [TextareaOnclear](#textarea-onclear)               |                                clear event                                |    \_\_     |
+|       onClear        |               [TextareaOnClear](#textarea-onclear)               |                                clear event                                |    \_\_     |
 | renderCharacterCount | [TextareaRenderCharacterCount](#textarea-render-character-count) |                Use this prop to show character count limit                |    \_\_     |
-|    labelClassName    |                             `string`                             |      Use labelClassName prop to do some addition style for the label      |    \_\_     |
-|  textareaClassName   |                             `string`                             |            Add custom classes for the input filed extra style             |    \_\_     |
+|    labelClassName    |                             `string`                             |      Use labelClassName prop to do some additional style for the label      |    \_\_     |
+|  textareaClassName   |                             `string`                             |            Add custom classes for the input field extra style             |    \_\_     |
 |   helperClassName    |                             `string`                             |        This prop allows you to customize the helper message style         |    \_\_     |
 |    errorClassName    |                             `string`                             |         This prop allows you to customize the error message style         |    \_\_     |
 |      className       |                             `string`                             |              Add custom classes to the root of the component              |    \_\_     |
@@ -364,7 +364,7 @@ type TextareaSizes = 'sm' | 'md' | 'lg';
 ### Textarea onClear
 
 ```ts
-type TextareaOnclear = (event) => void;
+type TextareaOnClear = (event) => void;
 ```
 
 <div className="mb-10" />

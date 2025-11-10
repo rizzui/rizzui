@@ -134,12 +134,12 @@ You can use **placement** and icon.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { Dropdown } from "rizzui/dropdown";
-import { Button } from "rizzui/button";
-import { ActionIcon } from "rizzui/action-icon";
-import { cn } from "rizzui";
+import { Dropdown } from 'rizzui/dropdown';
+import { Button } from 'rizzui/button';
+import { ActionIcon } from 'rizzui/action-icon';
+import { cn } from 'rizzui';
 import {
   AdjustmentsHorizontalIcon,
   PencilIcon,
@@ -149,15 +149,13 @@ import {
   ShareIcon,
   HeartIcon,
   TrashIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
     <Dropdown placement="bottom-end">
       <Dropdown.Trigger>
-        <ActionIcon
-          variant="outline"
-        >
+        <ActionIcon variant="outline">
           <AdjustmentsHorizontalIcon className="h-5 w-5" />
         </ActionIcon>
       </Dropdown.Trigger>
@@ -198,7 +196,7 @@ export default function App() {
             Delete
           </Dropdown.Item>
         </div>
-      </Dropdown.Menus>
+      </Dropdown.Menu>
     </Dropdown>
   );
 }
@@ -321,7 +319,7 @@ Here is the API documentation of the Dropdown component. You can use the followi
 
 |   Props   |                   Type                   |                               Description                               |     Default      |
 | :-------: | :--------------------------------------: | :---------------------------------------------------------------------: | :--------------: |
-| children  |                   \_\_                   |        Use **Dropdown.Trigger** & **Dropdown.Menu** as childrens        |       \_\_       |
+| children  |                   \_\_                   |        Use **Dropdown.Trigger** & **Dropdown.Menu** as children         |       \_\_       |
 |  shadow   |   [DropdownShadows](#dropdown-shadows)   |          The shadow variants supported by this component are:           |      `"md"`      |
 | placement | [DropdownPlacement](#dropdown-placement) | The dropdown menu placements. Won't work if **inPortal** prop is false. | `"bottom-start"` |
 | inPortal  |                `boolean`                 |     Whether the **Dropdown.Menu** is rendered on the portal or not      |     `"true"`     |
@@ -371,10 +369,10 @@ Here is the API documentation of the Dropdown component. You can use the followi
 |       Props       |                    Type                    |                                  Description                                  | Default  |
 | :---------------: | :----------------------------------------: | :---------------------------------------------------------------------------: | :------: |
 |        as         |              `button` or `li`              | Use `as` to convert **Dropdown.Item** component to render as `button` or `li` | `button` |
-|     children      |                `ReactNode`                 |                     Use any valid React element or sting                      |   \_\_   |
+|     children      |                `ReactNode`                 |                     Use any valid React element or string                     |   \_\_   |
 |     disabled      |                 `boolean`                  |               This item will be skipped by keyboard navigation                | `false`  |
 |  activeClassName  |                  `string`                  |                To style active state of the **Dropdown.Item**                 |   \_\_   |
-| disabledClassName |                  `string`                  |                To style disable state of the **Dropdown.Item**                |   \_\_   |
+| disabledClassName |                  `string`                  |               To style disabled state of the **Dropdown.Item**                |   \_\_   |
 |     className     |                  `string`                  |                     Add classes to the **Dropdown.Item**                      |   \_\_   |
 |        ...        | `ButtonHTMLAttributes` or `HTMLAttributes` |         native props like **onClick**, **title**, **aria-label** ...          |   \_\_   |
 

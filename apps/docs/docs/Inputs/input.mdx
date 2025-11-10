@@ -291,7 +291,7 @@ import { Input } from 'rizzui/input';
 
 export default function App() {
   const MAXLENGTH = 24;
-  const [state, setState] = React.useState('Chat GPT is awesome!');
+  const [state, setState] = useState('Chat GPT is awesome!');
 
   return (
     <Input
@@ -343,7 +343,7 @@ export default function App() {
 
 ## Disabled
 
-You can make disable **Input** using **disabled** property.
+You can make disabled **Input** using **disabled** property.
 
 <Paper className="block text-gray-950">
   <Input
@@ -449,7 +449,7 @@ Here is the API documentation of the Input component. And the rest of the props 
 |   placeholder   |             `string`             |                                                        Set input placeholder text                                                         |    \_\_     |
 |    disabled     |            `boolean`             |                                                   Whether the input is disabled or not                                                    |    \_\_     |
 |    clearable    |            `boolean`             |                                                           Add clearable option                                                            |    \_\_     |
-|     onClear     |  [InputOnclear](#input-onclear)  |                                                                clear event                                                                |    \_\_     |
+|     onClear     |  [InputOnClear](#input-onclear)  |                                                                clear event                                                                |    \_\_     |
 |     prefix      |           `ReactNode`            | The prefix is design for adding any icon or text on the Input field's start (it's a left icon for the `ltr` and right icon for the `rtl`) |    \_\_     |
 |     suffix      |           `ReactNode`            |  The suffix is design for adding any icon or text on the Input field's end (it's a right icon for the `ltr` and left icon for the `rtl`)  |    \_\_     |
 |   helperText    |           `ReactNode`            |                                         Add helper text. It could be string or a React component                                          |    \_\_     |
@@ -514,5 +514,5 @@ type InputSizes = 'sm' | 'md' | 'lg';
 ### Input onClear
 
 ```ts
-type InputOnclear = (event) => void;
+type InputOnClear = (event) => void;
 ```

@@ -49,14 +49,12 @@ Whenever you are importing these components you have to use `"use client"` as a 
 
 ```jsx
 // highlight-next-line
-"use client";
+'use client';
 
-import { Input } from "rizzui/input";
+import { Input } from 'rizzui/input';
 
-export default App () {
-  return (
-    <Input label="Input" />
-  );
+export default function App() {
+  return <Input label="Input" />;
 }
 ```
 
@@ -67,28 +65,28 @@ export default App () {
 Components that are not listed here can be used in server components.
 
 ```jsx
-"use client"; // prefix is required for all client components
+'use client'; // prefix is required for all client components
 
-import { Input } from "rizzui/input";
-import { Password } from "rizzui/password";
-import { Textarea } from "rizzui/textarea";
-import { CheckboxGroup } from "rizzui/checkbox-group";
-import { RadioGroup } from "rizzui/radio-group";
-import { Select } from "rizzui/select";
-import { MultiSelect } from "rizzui/multi-select";
-import { PinCode } from "rizzui/pin-code";
-import { NumberInput } from "rizzui/number-input";
-import { Dropdown } from "rizzui/dropdown";
-import { Tabs } from "rizzui/tabs";
-import { Stepper } from "rizzui/stepper";
-import { Tooltip } from "rizzui/tooltip";
-import { Popover } from "rizzui/popover";
-import { Modal } from "rizzui/modal";
-import { Drawer } from "rizzui/drawer";
-import { Accordion } from "rizzui/accordion";
+import { Input } from 'rizzui/input';
+import { Password } from 'rizzui/password';
+import { Textarea } from 'rizzui/textarea';
+import { CheckboxGroup } from 'rizzui/checkbox-group';
+import { RadioGroup } from 'rizzui/radio-group';
+import { Select } from 'rizzui/select';
+import { MultiSelect } from 'rizzui/multi-select';
+import { PinCode } from 'rizzui/pin-code';
+import { NumberInput } from 'rizzui/number-input';
+import { Dropdown } from 'rizzui/dropdown';
+import { Tabs } from 'rizzui/tabs';
+import { Stepper } from 'rizzui/stepper';
+import { Tooltip } from 'rizzui/tooltip';
+import { Popover } from 'rizzui/popover';
+import { Modal } from 'rizzui/modal';
+import { Drawer } from 'rizzui/drawer';
+import { Accordion } from 'rizzui/accordion';
 import { FileInput } from 'rizzui/upload';
 import { RadialProgressBar } from 'rizzui/radial-progressbar';
-import { Avatar } from "rizzui/avatar";
+import { Avatar } from 'rizzui/avatar';
 ```
 
 <br />
@@ -98,12 +96,10 @@ import { Avatar } from "rizzui/avatar";
 Components that supports server side rendering. Whenever you are importing these components you don't need to use `"use client"` as a prefix. But if you are using events like **onClick**, **onChange** etc. you have to use `"use client"` as a prefix.
 
 ```jsx
-import { Button } from "rizzui/button";
+import { Button } from 'rizzui/button';
 
-export default App () {
-  return (
-    <Button>Click Me</Button>
-  );
+export default function App() {
+  return <Button>Click Me</Button>;
 }
 ```
 
@@ -111,14 +107,12 @@ export default App () {
 
 ```jsx
 // highlight-next-line
-"use client";
+'use client';
 
-import { Button } from "rizzui/button";
+import { Button } from 'rizzui/button';
 
-export default App () {
-  return (
-    <Button onClick={() => console.log('clicked')}>Click Me</Button>
-  );
+export default function App() {
+  return <Button onClick={() => console.log('clicked')}>Click Me</Button>;
 }
 ```
 
@@ -146,11 +140,11 @@ The search field in the Select component is now can be sticky. When you scroll d
 **Example:**
 
 ```jsx
-"use client";
+'use client';
 
-import { Select } from "rizzui/select";
+import { Select } from 'rizzui/select';
 
-export default App () {
+export default function App() {
   return (
     // highlight-next-line
     <Select label="Select" options={options} stickySearch={true} />
@@ -167,11 +161,11 @@ The search field in the MultiSelect component is now can be sticky. When you scr
 **Example:**
 
 ```jsx
-"use client";
+'use client';
 
-import { MultiSelect } from "rizzui/multi-select";
+import { MultiSelect } from 'rizzui/multi-select';
 
-export default App () {
+export default function App() {
   return (
     // highlight-next-line
     <MultiSelect label="MultiSelect" options={options} stickySearch={true} />
