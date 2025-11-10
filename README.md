@@ -189,10 +189,10 @@ Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-
+  
   --border-radius: var(--border-radius);
   --color-border: var(--border-color);
-
+  
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
 

@@ -42,7 +42,7 @@ export default function RangeSlider({
   ...props
 }: RangeSliderProps) {
   const { container: containerClass } = rangeSlider({ size });
-  
+
   const value = props.value ?? props.defaultValue ?? (props.range ? [props.min ?? 0, props.max ?? 100] : props.min ?? 0);
   const min = props.min ?? 0;
   const max = props.max ?? 100;

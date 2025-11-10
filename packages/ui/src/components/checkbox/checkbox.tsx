@@ -8,7 +8,7 @@ import { labelStyles } from '../../lib/label-size';
 import { useCheckboxGroup } from '../checkbox-group/checkbox-group';
 
 const checkbox = tv({
-  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out rounded-[var(--border-radius)] border-[length:var(--border-width)]',
+  base: 'peer outline-none focus:outline-none checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out rounded-[var(--border-radius)] border-[length:var(--border-width)]',
   variants: {
     variant: {
       outline:

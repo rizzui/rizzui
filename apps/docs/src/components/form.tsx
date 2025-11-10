@@ -71,25 +71,23 @@ const schema = z
 
     // Additional Information
     bio: z.string().min(10, { message: 'Bio must be at least 10 characters' }),
-    resume: z
-      .any()
-      .refine(
-        (files) => {
-          // Check if FileList is available (browser environment)
-          try {
-            if (typeof window !== 'undefined' && window.FileList) {
-              return files instanceof window.FileList && files.length > 0;
-            }
-          } catch {
-            // FileList not available (SSR)
+    resume: z.any().refine(
+      (files) => {
+        // Check if FileList is available (browser environment)
+        try {
+          if (typeof window !== 'undefined' && window.FileList) {
+            return files instanceof window.FileList && files.length > 0;
           }
-          // SSR fallback: check if it's a FileList-like object
-          return files && typeof files.length === 'number' && files.length > 0;
-        },
-        {
-          message: 'Resume file is required',
+        } catch {
+          // FileList not available (SSR)
         }
-      ),
+        // SSR fallback: check if it's a FileList-like object
+        return files && typeof files.length === 'number' && files.length > 0;
+      },
+      {
+        message: 'Resume file is required',
+      }
+    ),
 
     // Radio Group
     employmentStatus: z
@@ -193,7 +191,7 @@ export default function RizzUIForm() {
     // Convert FileList to file names for display
     const formattedData = {
       ...data,
-      resume: Array.from(data.resume).map((file) => ({
+      resume: Array.from(data.resume as FileList).map((file: File) => ({
         name: file.name,
         size: file.size,
         type: file.type,

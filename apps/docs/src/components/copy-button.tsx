@@ -56,7 +56,7 @@ export function CopyButton({ value, src }: CopyButtonProps) {
             strokeWidth={1.6}
             className="size-[17px]"
             aria-hidden="true"
-          />
+        />
         </button>
       )}
     </Tooltip>
