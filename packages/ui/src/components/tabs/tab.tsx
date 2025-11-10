@@ -8,7 +8,6 @@ import { TabPanels } from './tab-panels';
 import { TabPanel } from './tab-panel';
 import { TabProvider } from './tab-context';
 import { useRect } from '../../lib/use-rect';
-import { makeClassName } from '../../lib/make-class-name';
 
 export type TabProps = ExtractProps<TabGroupProps> & {
   hideHoverAnimation?: boolean;
@@ -48,7 +47,7 @@ export function Tab({
         as="div"
         selectedIndex={selectedIndex ?? activeTab}
         onChange={onChange ?? setActiveTab}
-        className={cn(makeClassName(`tab-root`), 'w-full', className, {
+        className={cn('rizzui-tab-root', 'w-full', className, {
           'flex gap-4': vertical,
         })}
         {...props}

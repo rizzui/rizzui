@@ -2,9 +2,8 @@ import type { InputHTMLAttributes, ReactNode, Ref } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { CheckmarkIcon } from '../../icons/checkmark';
-import { FieldError } from '../field-error-text';
+import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
-import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 import { useCheckboxGroup } from '../checkbox-group/checkbox-group';
 
@@ -127,11 +126,11 @@ export function Checkbox({
 
   return (
     <div
-      className={cn(makeClassName(`checkbox-root`), 'flex flex-col', className)}
+      className={cn('rizzui-checkbox-root', 'flex flex-col', className)}
     >
       <label
         className={cn(
-          makeClassName(`checkbox-container`),
+          'rizzui-checkbox-container',
           'flex cursor-pointer flex-row items-center',
           disabled && 'cursor-not-allowed'
         )}
@@ -165,7 +164,7 @@ export function Checkbox({
 
           <CheckmarkIcon
             className={cn(
-              makeClassName(`checkbox-icon`),
+              'rizzui-checkbox-icon',
               'text-primary-foreground absolute top-0 left-0 opacity-0 peer-checked:opacity-100',
               checkbox({ size }),
               size === 'sm' && 'top-0',
@@ -193,7 +192,7 @@ export function Checkbox({
         <FieldHelperText
           size={size}
           className={cn(
-            makeClassName(`checkbox-helper-text`),
+            'rizzui-checkbox-helper-text',
             disabled && 'text-muted-foreground',
             helperClassName
           )}
@@ -203,10 +202,10 @@ export function Checkbox({
       ) : null}
 
       {error ? (
-        <FieldError
+        <FieldErrorText
           size={size}
           error={error}
-          className={cn(makeClassName(`checkbox-error-text`), errorClassName)}
+          className={cn('rizzui-checkbox-error-text', errorClassName)}
         />
       ) : null}
     </div>

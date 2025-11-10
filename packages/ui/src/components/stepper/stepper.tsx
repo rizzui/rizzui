@@ -7,7 +7,6 @@ import {
 } from 'react';
 import { Step } from './step';
 import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
 
 const containerClasses = {
   base: 'flex-col space-y-2',
@@ -32,7 +31,7 @@ const containerClasses = {
 const contentClasses = {
   base: '[&>.rizzui-step-title]:justify-start [&>.rizzui-step-title>span]:hidden',
   containerDesc:
-    '[&>.rizzui-step-description]:-translate-x-6 rtl:[&>.rizzui-step-description]:translate-x-6 -ml-2 rtl:[&>.rizzui-step-title>h2]:mr-0',
+    '[&>.rizzui-step-description]:-translate-x-6 rtl:[&>.rizzui-step-description]:translate-x-6 -ms-2 [&>.rizzui-step-title>h2]:me-0',
 };
 
 type StepperContextType = {
@@ -143,7 +142,7 @@ export function Stepper({
     >
       <div
         className={cn(
-          makeClassName(`stepper-root`),
+          'rizzui-stepper-root',
           'flex justify-between space-x-4 rtl:space-x-0',
           direction === 'vertical' && 'flex-col space-x-0',
           className

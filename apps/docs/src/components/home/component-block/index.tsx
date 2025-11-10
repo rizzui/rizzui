@@ -95,7 +95,7 @@ export default function ComponentBlock() {
             className="!text-2xl lg:!text-3xl !leading-[1.35] lg:!leading-[1.3] font-semibold 2xl:!text-4xl"
           >
             <NumberFlow
-              value={isInView ? 40 : 0}
+              value={isInView ? 50 : 0}
               animated={isInView ? true : false}
             />
             + Production Ready Components

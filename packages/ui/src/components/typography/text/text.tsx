@@ -1,11 +1,9 @@
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { cn } from '../../../lib/cn';
-import { makeClassName } from '../../../lib/make-class-name';
 import { fontWeightStyles } from '../../../lib/font-weight';
 
 const text = tv({
-  base: 'text-text-secondary',
+  base: 'rizzui-text text-text-secondary',
   variants: {
     as: {
       p: '',
@@ -71,7 +69,7 @@ export function Text({
       className={text({
         as,
         fontWeight,
-        className: cn(makeClassName(`text-${as}`), className),
+        className,
       })}
       {...props}
     >

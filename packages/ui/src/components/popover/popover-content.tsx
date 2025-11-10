@@ -2,7 +2,6 @@ import type { ReactNode, Dispatch, SetStateAction } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { usePopover } from './popover-context';
 import { FloatingArrow, FloatingPortal } from '@floating-ui/react';
-import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 const popover = tv({
@@ -74,7 +73,7 @@ export function PopoverContent({ children, className }: PopoverContentProps) {
       {enableOverlay && (
         <div
           className={cn(
-            makeClassName(`popover-overlay`),
+            'rizzui-popover-overlay',
             'fixed inset-0 z-9998 cursor-pointer bg-black/60 transition-opacity duration-200',
             !open && 'opacity-0',
             overlayClassName

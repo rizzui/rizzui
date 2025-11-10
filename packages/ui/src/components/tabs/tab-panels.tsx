@@ -6,7 +6,6 @@ import { tv } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import type { ExtractProps } from '../../lib/extract-props';
 import { useTab } from './tab-context';
-import { makeClassName } from '../../lib/make-class-name';
 
 const tabPanels = tv({
   base: 'py-2',
@@ -28,7 +27,7 @@ export function TabPanels({ children, className, ...props }: TabPanelsProps) {
 
   return (
     <HeadlessTabPanels
-      className={cn(makeClassName(`tab-panels`), tabPanels({ vertical }), className)}
+      className={cn('rizzui-tab-panels', tabPanels({ vertical }), className)}
       {...props}
     >
       {children}

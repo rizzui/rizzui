@@ -2,7 +2,6 @@ import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { Badge } from '../badge';
-import { makeClassName } from '../../lib/make-class-name';
 
 const announcement = tv({
   base: 'flex items-center w-fit rounded-full',
@@ -24,7 +23,7 @@ const announcement = tv({
 });
 
 const announcementHighlight = tv({
-  base: 'ml-2.5 font-medium rtl:mr-2.5',
+  base: 'rizzui-announcement-highlighted-text ms-2.5 font-medium',
   variants: {
     color: {
       primary: 'text-primary',
@@ -44,25 +43,15 @@ type AnnouncementVariant = VariantProps<typeof announcement>;
 type HighlightedTextVariant = VariantProps<typeof announcementHighlight>;
 
 export interface AnnouncementProps {
-  /** Size of the component */
   size?: AnnouncementVariant['size'];
-  /** Choose color variations */
   color?: HighlightedTextVariant['color'];
-  /** Background color of the component */
   bgColor?: AnnouncementVariant['bgColor'];
-  /** Pass badge text to have badge at the beginning */
   badgeText?: string;
-  /** Pass highlighted text at the beginning */
   highlightedText?: string;
-  /** Pass className to customize announcement design */
   className?: string;
-  /** Place icon at the beginning */
   startIcon?: React.ReactNode;
-  /** Place icon at the end */
   endIcon?: React.ReactNode;
-  /** Pass badgeClassName to style badge */
   badgeClassName?: string;
-  /** Pass hightlightedTextClassName to style highlighted text */
   highlightedTextClassName?: string;
 }
 
@@ -92,7 +81,7 @@ export const Announcement = ({
       <Badge
         size={size}
         color={color}
-        className={cn(makeClassName(`announcement-badge`), badgeClassName)}
+        className={cn('rizzui-announcement-badge', badgeClassName)}
       >
         {badgeText}
       </Badge>
@@ -102,10 +91,7 @@ export const Announcement = ({
       <span
         className={announcementHighlight({
           color,
-          className: cn(
-            makeClassName(`announcement-highlighted-text`),
-            highlightedTextClassName
-          ),
+          className: highlightedTextClassName,
         })}
       >
         {highlightedText}
@@ -114,8 +100,8 @@ export const Announcement = ({
 
     <span
       className={cn(
-        makeClassName(`announcement-text`),
-        !highlightedText ? 'ml-2.5 rtl:mr-2.5' : 'ml-1 rtl:mr-1'
+        'rizzui-announcement-text',
+        !highlightedText ? 'ms-2.5' : 'ms-1'
       )}
     >
       {children}

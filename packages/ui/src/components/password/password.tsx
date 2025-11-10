@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { PasswordToggleIcon } from './password-toggle-icon';
 import { cn } from '../../lib/cn';
-import { FieldError } from '../field-error-text';
+import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
-import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const inputContainer = tv({
@@ -109,13 +108,13 @@ export function Password({
 
   return (
     <div
-      className={cn(makeClassName(`password-root`), 'flex flex-col', className)}
+      className={cn('rizzui-password-root', 'flex flex-col', className)}
     >
       <label className="block">
         {label ? (
           <span
             className={cn(
-              makeClassName(`password-label`),
+              'rizzui-password-label',
               'block',
               labelStyles.size[size],
               labelStyles.weight[labelWeight],
@@ -139,7 +138,7 @@ export function Password({
           {prefix ? (
             <span
               className={cn(
-                makeClassName(`password-prefix`),
+                'rizzui-password-prefix',
                 'leading-normal whitespace-nowrap',
                 prefixClassName
               )}
@@ -160,7 +159,7 @@ export function Password({
               clearable,
               hasPrefix: Boolean(prefix),
               className: cn(
-                makeClassName(`password-field`),
+                'rizzui-password-field',
                 !placeholder && 'placeholder-shown:placeholder:opacity-0',
                 visibilityToggleIcon && 'pe-2.5'
               ),
@@ -177,7 +176,7 @@ export function Password({
               role="button"
               tabIndex={0}
               className={cn(
-                makeClassName(`password-toggle-icon`),
+                'rizzui-password-toggle-icon',
                 'cursor-pointer leading-normal whitespace-nowrap',
                 disabled && 'text-muted-foreground',
                 visibilityToggleIconClassName
@@ -201,7 +200,7 @@ export function Password({
         <FieldHelperText
           size={size}
           className={cn(
-            makeClassName(`password-helper-text`),
+            'rizzui-password-helper-text',
             disabled && 'text-muted-foreground',
             helperClassName
           )}
@@ -211,10 +210,10 @@ export function Password({
       ) : null}
 
       {error ? (
-        <FieldError
+        <FieldErrorText
           size={size}
           error={error}
-          className={cn(makeClassName(`password-error-text`), errorClassName)}
+          className={cn('rizzui-password-error-text', errorClassName)}
         />
       ) : null}
     </div>

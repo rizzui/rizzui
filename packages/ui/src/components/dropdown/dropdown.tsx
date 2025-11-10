@@ -6,7 +6,6 @@ import { DropdownMenu } from './dropdown-menu';
 import { DropdownTrigger } from './dropdown-trigger';
 import { DropdownProvider } from './dropdown-context';
 import type { ExtractProps } from '../../lib/extract-props';
-import { makeClassName } from '../../lib/make-class-name';
 import type { TheirPlacementType } from './dropdown.lib';
 
 export type DropdownProps = ExtractProps<typeof Menu> & {
@@ -31,7 +30,7 @@ export function Dropdown({
       <Menu
         as="div"
         className={cn(
-          makeClassName(`dropdown-root inline-block`),
+          'rizzui-dropdown-root inline-block',
           'relative',
           className
         )}

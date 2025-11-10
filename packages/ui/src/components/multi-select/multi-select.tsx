@@ -24,11 +24,10 @@ import {
   preventHeadlessUIKeyboardInterActions,
   useFilteredOptions,
 } from '../select/select-shared.lib';
-import { FieldError } from '../field-error-text';
+import { FieldErrorText } from '../field-error-text';
 import { labelStyles } from '../../lib/label-size';
 import type { ExtractProps } from '../../lib/extract-props';
 import { FieldHelperText } from '../field-helper-text';
-import { makeClassName } from '../../lib/make-class-name';
 import { FieldClearButton } from '../field-clear-button';
 import { CheckmarkIcon } from '../../icons/checkmark';
 import { optionListStyles, searchStyles } from '../select/select-shared.styles';
@@ -326,7 +325,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   return (
     <div
       className={cn(
-        makeClassName(`multi-select-root`),
+        'rizzui-multi-select-root',
         'grid w-full grid-cols-1',
         className
       )}
@@ -346,7 +345,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
           {label && (
             <Label
               className={cn(
-                makeClassName(`multi-select-label`),
+                'rizzui-multi-select-label',
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
@@ -374,7 +373,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               {prefix && (
                 <span
                   className={cn(
-                    makeClassName(`multi-select-prefix`),
+                    'rizzui-multi-select-prefix',
                     'block leading-normal whitespace-nowrap',
                     prefixClassName
                   )}
@@ -388,7 +387,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               ) : (
                 <span
                   className={cn(
-                    makeClassName(`multi-select-value`),
+                    'rizzui-multi-select-value',
                     'flex w-full flex-wrap items-center gap-2 truncate text-start',
                     emptyValue && 'text-muted-foreground',
                     selectContainerClassName
@@ -443,7 +442,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
               {suffix && (
                 <span
                   className={cn(
-                    makeClassName(`multi-select-suffix`),
+                    'rizzui-multi-select-suffix',
                     'leading-normal whitespace-nowrap transition-transform duration-200 group-data-open:rotate-180',
                     suffixClassName
                   )}
@@ -463,7 +462,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                 },
               })}
               className={cn(
-                makeClassName(`multi-select-options`),
+                'rizzui-multi-select-options',
                 optionListStyles.base,
                 optionListStyles.shadow,
                 inPortal
@@ -483,7 +482,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   {searchPrefix && (
                     <span
                       className={cn(
-                        makeClassName(`multi-select-prefix`),
+                        'rizzui-multi-select-prefix',
                         searchStyles.prefix,
                         searchPrefixClassName
                       )}
@@ -516,7 +515,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                   {searchSuffix && (
                     <span
                       className={cn(
-                        makeClassName(`multi-select-suffix`),
+                        'rizzui-multi-select-suffix',
                         searchStyles.suffix,
                         searchSuffixClassName
                       )}
@@ -537,7 +536,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                     })}
                     className={({ focus, selected }) =>
                       cn(
-                        makeClassName(`multi-select-option`),
+                        'rizzui-multi-select-option',
                         'flex w-full items-center px-3 py-1.5',
                         focus && 'bg-muted/70',
                         'rounded-[calc(var(--border-radius)/2)]',
@@ -567,13 +566,13 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
                                   readOnly={true}
                                   checked={selected}
                                   className={cn(
-                                    makeClassName(`checkbox-input`),
+                                    'rizzui-checkbox-input',
                                     checkboxStyles.base
                                   )}
                                 />
                                 <CheckmarkIcon
                                   className={cn(
-                                    makeClassName(`checkbox-icon`),
+                                    'rizzui-checkbox-icon',
                                     checkboxStyles.icon
                                   )}
                                 />
@@ -599,7 +598,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
       )}
 
       {error && (
-        <FieldError size={size} error={error} className={errorClassName} />
+        <FieldErrorText size={size} error={error} className={errorClassName} />
       )}
     </div>
   );

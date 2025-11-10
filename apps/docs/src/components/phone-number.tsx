@@ -4,7 +4,7 @@ import type { PhoneInputProps } from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from 'rizzui/cn';
-import { FieldError } from 'rizzui/field-error-text';
+import { FieldErrorText } from 'rizzui/field-error-text';
 import { FieldHelperText } from 'rizzui/field-helper-text';
 import { FieldClearButton } from 'rizzui/field-clear-button';
 
@@ -189,7 +189,7 @@ const PhoneNumber = ({
         </FieldHelperText>
       )}
       {error && (
-        <FieldError size={size} error={error} className={errorClassName} />
+        <FieldErrorText size={size} error={error} className={errorClassName} />
       )}
     </div>
   );

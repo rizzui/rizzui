@@ -2,7 +2,6 @@ import type { HTMLAttributes } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { Text } from '../typography';
-import { makeClassName } from '../../lib/make-class-name';
 
 const progressTrack = tv({
   base: 'relative w-full bg-muted rounded-full overflow-hidden',
@@ -79,7 +78,7 @@ export function Progressbar({
     <div className={cn('flex w-full items-center gap-4', className)}>
       <div
         className={cn(
-          makeClassName(`progressbar-track`),
+          'rizzui-progressbar-track',
           progressTrack({ size, className: trackClassName })
         )}
       >
@@ -132,7 +131,7 @@ function ProgressbarLabel({
     <Text
       className={progressLabel({
         size,
-        className: cn(makeClassName(`progressbar-label`), className),
+        className: cn(`rizzui-progressbar-label`, className),
       })}
     >
       {label}

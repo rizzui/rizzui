@@ -110,7 +110,7 @@ export default function HeroBlock() {
                 size="lg"
                 as="span"
                 variant="outline"
-                className="!text-sm md:!text-base h-12 bg-white dark:bg-gray-50 px-7 transition-all relative"
+                className="!text-sm md:!text-base h-12 bg-white dark:bg-gray-50 px-6 transition-all relative"
               >
                 View on Github
               </Button>
@@ -125,7 +125,9 @@ export default function HeroBlock() {
               <RedQLogo className="w-auto h-5 text-primary filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0" />
               <GovernfulLogo className="w-auto h-7 filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0 dark:invert" />
               <ProaLogo className="w-auto h-[18px] text-primary filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0 dark:invert" />
-              {/* <TrueBeepLogo className="w-auto h-7 filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0" /> */}
+              {/*
+                <TrueBeepLogo className="w-auto h-7 filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0 dark:invert" />
+              */}
             </div>
           </div>
         </header>

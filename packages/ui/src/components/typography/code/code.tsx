@@ -1,6 +1,5 @@
 import React from 'react';
 import { tv } from 'tailwind-variants';
-import { makeClassName } from '../../../lib/make-class-name';
 
 const code = tv({
   base: 'border ring-[0.5px] ring-border border-border py-3 px-4 rounded-lg bg-muted/70 backdrop-blur',

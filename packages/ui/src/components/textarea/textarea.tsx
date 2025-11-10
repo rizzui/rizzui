@@ -2,9 +2,8 @@ import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { FieldHelperText } from '../field-helper-text';
-import { FieldError } from '../field-error-text';
+import { FieldErrorText } from '../field-error-text';
 import { FieldClearButton } from '../field-clear-button';
-import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const textarea = tv({
@@ -105,13 +104,13 @@ export function Textarea({
 }: TextareaProps) {
   return (
     <div
-      className={cn(makeClassName(`textarea-root`), 'flex flex-col', className)}
+      className={cn('rizzui-textarea-root', 'flex flex-col', className)}
     >
       <label className="block">
         {label ? (
           <span
             className={cn(
-              makeClassName(`textarea-label`),
+              'rizzui-textarea-label',
               'block',
               labelStyles.size[size],
               labelStyles.weight[labelWeight],
@@ -139,7 +138,7 @@ export function Textarea({
               error: Boolean(error),
               clearable,
               className: cn(
-                makeClassName(`textarea-field`),
+                'rizzui-textarea-field',
                 !placeholder && 'placeholder-shown:placeholder:opacity-0',
                 !cols && 'w-full',
                 readOnly && 'focus:ring-0',
@@ -169,7 +168,7 @@ export function Textarea({
         <FieldHelperText
           size={size}
           className={cn(
-            makeClassName(`textarea-helper-text`),
+            'rizzui-textarea-helper-text',
             disabled && 'text-muted-foreground',
             helperClassName
           )}
@@ -179,10 +178,10 @@ export function Textarea({
       ) : null}
 
       {error ? (
-        <FieldError
+        <FieldErrorText
           size={size}
           error={error}
-          className={cn(makeClassName(`textarea-error-text`), errorClassName)}
+          className={cn('rizzui-textarea-error-text', errorClassName)}
         />
       ) : null}
     </div>

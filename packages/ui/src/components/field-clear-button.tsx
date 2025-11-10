@@ -1,9 +1,8 @@
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { makeClassName } from '../lib/make-class-name';
 
 const fieldClearButton = tv({
-  base: 'inline-flex shrink-0 transform items-center justify-center rounded-full bg-muted/70 backdrop-blur text-foreground/90 transition-all duration-200 ease-in-out hover:bg-primary hover:text-primary-foreground',
+  base: 'rizzui-input-clear-btn input-clear-btn inline-flex shrink-0 transform items-center justify-center rounded-full bg-muted/70 backdrop-blur text-foreground/90 transition-all duration-200 ease-in-out hover:bg-primary hover:text-primary-foreground',
   variants: {
     size: {
       sm: 'h-3.5 w-3.5',
@@ -44,7 +43,7 @@ export function FieldClearButton({
       className={fieldClearButton({
         size,
         hasSuffix,
-        className: makeClassName(`input-clear-btn`) + ' input-clear-btn ' + (className || ''),
+        className,
       })}
     >
       {/* HeroIcon: x-mark */}

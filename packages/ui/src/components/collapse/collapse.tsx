@@ -1,7 +1,6 @@
 import type { ReactNode, ElementType } from 'react';
 import { cn } from '../../lib/cn';
 import { useCollapse } from '../../lib/use-collapse';
-import { makeClassName } from '../../lib/make-class-name';
 
 export interface CollapseHeader {
   open?: boolean;
@@ -39,12 +38,12 @@ export function Collapse({
       role="collapse"
       aria-expanded={open}
       data-testid="collapse-parent"
-      className={cn(makeClassName(`collapse-root`), className)}
+      className={cn('rizzui-collapse-root', className)}
     >
       {header({ open, toggle })}
       <Children
         ref={targetEl}
-        className={cn(makeClassName(`collapse-panel`), panelClassName)}
+        className={cn('rizzui-collapse-panel', panelClassName)}
         style={!openTargetEl ? { display: 'none' } : { display: 'block' }}
       >
         {children}

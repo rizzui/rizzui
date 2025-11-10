@@ -12,7 +12,7 @@ const fieldError = tv({
   },
 });
 
-interface FieldErrorProps
+interface FieldErrorTextProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   as?: 'div' | 'span';
   error: string | null | undefined;
@@ -20,12 +20,12 @@ interface FieldErrorProps
   className?: string;
 }
 
-export function FieldError({
+export function FieldErrorText({
   as = 'div',
   error,
   size,
   className,
-}: FieldErrorProps) {
+}: FieldErrorTextProps) {
   const Component = as;
   return (
     <Component role="alert" className={fieldError({ size, className })}>
@@ -34,4 +34,4 @@ export function FieldError({
   );
 }
 
-FieldError.displayName = 'FieldError';
+FieldErrorText.displayName = 'FieldErrorText';

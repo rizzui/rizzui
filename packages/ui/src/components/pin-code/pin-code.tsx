@@ -9,8 +9,7 @@ import {
 } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { FieldError } from '../field-error-text';
-import { makeClassName } from '../../lib/make-class-name';
+import { FieldErrorText } from '../field-error-text';
 
 const pinCodeContainer = tv({
   base: 'flex flex-row',
@@ -157,7 +156,7 @@ export function PinCode({
 
   return (
     <div
-      className={cn(makeClassName(`pin-code-root`), 'flex flex-col', className)}
+      className={cn('rizzui-pin-code-root', 'flex flex-col', className)}
     >
       <div className={pinCodeContainer({ center })}>
         {Array.from({ length }, (_, index) => (
@@ -195,11 +194,11 @@ export function PinCode({
       </div>
 
       {error && (
-        <FieldError
+        <FieldErrorText
           size={size}
           error={error}
           className={cn(
-            makeClassName(`pin-code-error-text`),
+            'rizzui-pin-code-error-text',
             center && 'flex justify-center',
             errorClassName
           )}

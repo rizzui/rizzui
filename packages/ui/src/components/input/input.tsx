@@ -1,10 +1,9 @@
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { FieldError } from '../field-error-text';
+import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
-import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const inputContainer = tv({
@@ -33,7 +32,7 @@ const inputContainer = tv({
 });
 
 const inputField = tv({
-  base: 'w-full border-0 bg-transparent p-0 [font-size:inherit] focus:outline-none focus:ring-0 [&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
+  base: 'rizzui-input-field w-full border-0 bg-transparent p-0 [font-size:inherit] focus:outline-none focus:ring-0 [&::-ms-clear]:hidden [&::-ms-reveal]:hidden [&::-webkit-search-cancel-button]:hidden [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none',
   variants: {
     disabled: {
       true: 'cursor-not-allowed placeholder:text-muted-foreground',
@@ -46,6 +45,10 @@ const inputField = tv({
     },
     hasSuffix: {
       true: '',
+    },
+    hasPlaceholder: {
+      true: '',
+      false: 'placeholder-shown:placeholder:opacity-0',
     },
   },
   compoundVariants: [
@@ -120,13 +123,13 @@ export function Input({
 }: InputProps) {
   return (
     <div
-      className={cn(makeClassName(`input-root`), 'flex flex-col', className)}
+      className={cn('rizzui-input-root', 'flex flex-col', className)}
     >
       <label className="block">
         {label ? (
           <span
             className={cn(
-              makeClassName(`input-label`),
+              'rizzui-input-label',
               'block',
               labelStyles.size[size],
               labelStyles.weight[labelWeight],
@@ -150,7 +153,7 @@ export function Input({
           {prefix ? (
             <span
               className={cn(
-                makeClassName(`input-prefix`),
+                'rizzui-input-prefix',
                 'leading-normal whitespace-nowrap',
                 prefixClassName
               )}
@@ -171,10 +174,7 @@ export function Input({
               clearable,
               hasPrefix: Boolean(prefix),
               hasSuffix: Boolean(suffix),
-              className: cn(
-                makeClassName(`input-field`),
-                !placeholder && 'placeholder-shown:placeholder:opacity-0'
-              ),
+              hasPlaceholder: Boolean(placeholder),
             })}
             {...inputProps}
           />
@@ -191,7 +191,7 @@ export function Input({
           {suffix ? (
             <span
               className={cn(
-                makeClassName(`input-suffix`),
+                'rizzui-input-suffix',
                 'leading-normal whitespace-nowrap',
                 suffixClassName
               )}
@@ -206,7 +206,7 @@ export function Input({
         <FieldHelperText
           size={size}
           className={cn(
-            makeClassName(`input-helper-text`),
+            'rizzui-input-helper-text',
             disabled && 'text-muted-foreground',
             helperClassName
           )}
@@ -216,10 +216,10 @@ export function Input({
       ) : null}
 
       {error ? (
-        <FieldError
+        <FieldErrorText
           size={size}
           error={error}
-          className={cn(makeClassName(`input-error-text`), errorClassName)}
+          className={cn('rizzui-input-error-text', errorClassName)}
         />
       ) : null}
     </div>

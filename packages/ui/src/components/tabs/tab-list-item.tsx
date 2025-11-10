@@ -4,7 +4,6 @@ import { tv } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import type { ExtractProps } from '../../lib/extract-props';
 import { useTab } from './tab-context';
-import { makeClassName } from '../../lib/make-class-name';
 
 const tabListItem = tv({
   base: 'relative py-2.5 px-3 flex items-center hover:text-primary gap-1 [&>*]:pointer-events-none outline-none before:absolute before:bg-primary before:opacity-0 before:transition-all before:duration-200 cursor-pointer',
@@ -44,7 +43,7 @@ export function TabListItem({
       onMouseOver={handleMouseOver}
       className={({ selected }) =>
         cn(
-          makeClassName('tab-list-item'),
+          'rizzui-tab-list-item',
           tabListItem({
             selected,
             vertical,

@@ -2,7 +2,6 @@ import type { ReactNode, MouseEvent } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { XIcon } from '../../icons/x-mark';
 import { AlertIcon } from './icons';
-import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 const alert = tv({

@@ -1,6 +1,5 @@
 import type { ReactNode, Ref, ButtonHTMLAttributes } from 'react';
 import { useAccordion } from './accordion-context';
-import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 type AccordionHeaderProps = {
@@ -22,7 +21,7 @@ export function AccordionHeader({
       ref={ref}
       onClick={() => toggle()}
       className={cn(
-        makeClassName(`accordion-header`),
+        'rizzui-accordion-header',
         'block w-full',
         className
       )}

@@ -1,10 +1,9 @@
 import React, { useCallback } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { FieldError } from '../field-error-text';
+import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
-import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 
 const fileInput = tv({
@@ -121,7 +120,7 @@ export function FileInput({
     return (
       <div
         className={cn(
-          makeClassName(`file-input-root`),
+          'rizzui-file-input-root',
           'flex flex-col',
           className
         )}
@@ -130,7 +129,7 @@ export function FileInput({
           {label ? (
             <span
               className={cn(
-                makeClassName(`file-input-label`),
+                'rizzui-file-input-label',
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
@@ -164,7 +163,7 @@ export function FileInput({
           <FieldHelperText
             size={size}
             className={cn(
-              makeClassName(`file-input-helper-text`),
+              'rizzui-file-input-helper-text',
               disabled && 'text-muted-foreground',
               helperClassName
             )}
@@ -174,11 +173,11 @@ export function FileInput({
         ) : null}
 
         {error ? (
-          <FieldError
+          <FieldErrorText
             size={size}
             error={error}
             className={cn(
-              makeClassName(`file-input-error-text`),
+              'rizzui-file-input-error-text',
               errorClassName
             )}
           />

@@ -9,7 +9,6 @@ import type { ExtractProps } from '../../lib/extract-props';
 import { Highlight } from '../highlight';
 import { useTab } from './tab-context';
 import { useRePositioningActiveTab } from './tab-lib';
-import { makeClassName } from '../../lib/make-class-name';
 
 const tabList = tv({
   base: 'relative flex border-border',
@@ -48,7 +47,7 @@ export function TabList({ children, className, ...props }: TabListProps) {
       ref={ref}
       onMouseLeave={() => setDisplayHighlight && setDisplayHighlight(false)}
       className={cn(
-        makeClassName(`tab-list`),
+        'rizzui-tab-list',
         tabList({ vertical }),
         className
       )}

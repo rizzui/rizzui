@@ -1,7 +1,5 @@
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { cn } from '../../../lib/cn';
-import { makeClassName } from '../../../lib/make-class-name';
 import { fontWeightStyles } from '../../../lib/font-weight';
 
 const fontWeight = {
@@ -10,7 +8,7 @@ const fontWeight = {
 } as const;
 
 const title = tv({
-  base: 'text-text-primary',
+  base: 'rizzui-title text-text-primary',
   variants: {
     as: {
       h1: 'text-4xl',
@@ -46,7 +44,7 @@ export function Title({
       className={title({
         as,
         fontWeight,
-        className: cn(makeClassName(`title-${as}`), className),
+        className,
       })}
       {...props}
     >

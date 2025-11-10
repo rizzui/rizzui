@@ -122,7 +122,7 @@ import type { StarProps as RcStarProps } from 'rc-rate/lib/Star';
 import { StarIcon } from '@heroicons/react/24/outline';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from 'rizzui/cn';
-import { FieldError } from 'rizzui/field-error-text';
+import { FieldErrorText } from 'rizzui/field-error-text';
 import { FieldHelperText } from 'rizzui/field-helper-text';
 import { Tooltip } from 'rizzui/tooltip';
 
@@ -268,7 +268,7 @@ const Rate = ({
         </FieldHelperText>
       )}
       {error && (
-        <FieldError size={size} error={error} className={errorClassName} />
+        <FieldErrorText size={size} error={error} className={errorClassName} />
       )}
     </div>
   );

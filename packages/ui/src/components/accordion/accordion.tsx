@@ -2,7 +2,6 @@ import type { ReactNode, ElementType } from 'react';
 import { AccordionHeader } from './accordion-header';
 import { AccordionBody } from './accordion-body';
 import { AccordionProvider } from './accordion-context';
-import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 export type AccordionProps = {
@@ -24,7 +23,7 @@ export function Accordion({
 
   return (
     <AccordionProvider defaultOpen={defaultOpen} duration={duration}>
-      <Component className={cn(makeClassName(`accordion-root`), className)}>
+      <Component className={cn('rizzui-accordion-root', className)}>
         {children}
       </Component>
     </AccordionProvider>

@@ -1,14 +1,12 @@
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
-import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
 import { BarsSpinner } from './bars-spinner';
 import { PulseLoader } from './pulse-loader';
 import { Spinner } from './spinner';
 import { ThreeDotScale } from './three-dot-scale';
 
 const loader = tv({
-  base: 'h-auto',
+  base: 'rizzui-loader h-auto',
   variants: {
     size: {
       sm: 'w-5',
@@ -62,7 +60,7 @@ export function Loader({
       className={loader({
         size,
         color,
-        className: cn(makeClassName(`loader-${variant}`), className),
+        className,
       })}
       {...props}
     />

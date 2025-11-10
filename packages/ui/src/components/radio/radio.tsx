@@ -1,9 +1,8 @@
 import type { InputHTMLAttributes, ReactNode, Ref } from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { FieldError } from '../field-error-text';
+import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
-import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
 import { useRadioGroup } from '../radio-group/radio-group';
 
@@ -107,11 +106,11 @@ export function Radio({
 
   return (
     <div
-      className={cn(makeClassName(`radio-root`), 'flex flex-col', className)}
+      className={cn('rizzui-radio-root', 'flex flex-col', className)}
     >
       <label
         className={cn(
-          makeClassName(`radio-container`),
+          'rizzui-radio-container',
           'flex cursor-pointer flex-row items-center',
           disabled && 'text-foreground/70 cursor-not-allowed'
         )}
@@ -150,7 +149,7 @@ export function Radio({
         <FieldHelperText
           size={size}
           className={cn(
-            makeClassName(`radio-helper-text`),
+            'rizzui-radio-helper-text',
             disabled && 'text-muted-foreground',
             helperClassName
           )}
@@ -160,10 +159,10 @@ export function Radio({
       ) : null}
 
       {error ? (
-        <FieldError
+        <FieldErrorText
           size={size}
           error={error}
-          className={cn(makeClassName(`radio-error-text`), errorClassName)}
+          className={cn('rizzui-radio-error-text', errorClassName)}
         />
       ) : null}
     </div>

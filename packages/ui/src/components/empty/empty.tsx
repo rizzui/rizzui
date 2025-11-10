@@ -2,7 +2,6 @@ import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { DefaultIcon } from './empty-icons';
-import { makeClassName } from '../../lib/make-class-name';
 
 const empty = tv({
   base: 'flex flex-col',
@@ -53,13 +52,13 @@ export function Empty({
       })}
     >
       <div className="text-center">
-        <div className={cn(makeClassName('empty-icon'), imageClassName)}>
+        <div className={cn('rizzui-empty-icon', imageClassName)}>
           {image || <DefaultIcon className={defaultImageClassName} />}
         </div>
         {text ? (
           <Component
             role="heading"
-            className={cn(makeClassName('empty-text'), textClassName)}
+            className={cn('rizzui-empty-text', textClassName)}
           >
             {text}
           </Component>

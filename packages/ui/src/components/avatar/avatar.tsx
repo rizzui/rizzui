@@ -1,7 +1,6 @@
 import React from 'react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
 
 const avatar = tv({
   base: 'inline-flex items-center justify-center flex-shrink-0 rounded-full',
@@ -106,7 +105,7 @@ export function Avatar({
           size,
           color,
           clickable: Boolean(onClick),
-          className: cn(makeClassName(`avatar-img`), 'object-cover', className),
+          className: cn('rizzui-avatar-img', 'object-cover', className),
         })}
         style={{
           width: avatarSize + 'px',
@@ -125,7 +124,7 @@ export function Avatar({
         size,
         color,
         clickable: Boolean(onClick),
-        className: cn(makeClassName(`avatar-initials`), 'font-semibold', className),
+        className: cn('rizzui-avatar-initials', 'font-semibold', className),
       })}
       style={{
         width: avatarSize + 'px',

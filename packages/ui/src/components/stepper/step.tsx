@@ -2,7 +2,6 @@ import { useId, type HTMLAttributes, type ReactNode } from 'react';
 import { cn } from '../../lib/cn';
 import { XIcon } from '../../icons/x-mark';
 import { CheckmarkIcon } from '../../icons/checkmark';
-import { makeClassName } from '../../lib/make-class-name';
 import { useStepper } from './stepper';
 
 const lineClasses = {
@@ -169,14 +168,14 @@ export function Step({
   return (
     <div
       className={cn(
-        makeClassName(`step-root`),
+        'rizzui-step-root',
         'group relative flex flex-1 last:flex-none',
         className
       )}
     >
       <div
         className={cn(
-          makeClassName(`step-line`),
+          'rizzui-step-line',
           lineClasses.base,
           dot ? lineClasses.top.dot[size] : lineClasses.top.noDot[size],
           status === 'completed' ? lineClasses.color[color] : 'bg-muted'
@@ -185,7 +184,7 @@ export function Step({
 
       <div
         className={cn(
-          makeClassName(`step-circle`),
+          'rizzui-step-circle',
           circleClasses.base,
           dot && dotClasses.base,
           dot ? dotClasses.size[size] : circleClasses.size[size],
@@ -204,7 +203,7 @@ export function Step({
 
       <div
         className={cn(
-          makeClassName(`step-container`),
+          'rizzui-step-container',
           'mt-0.5 ml-3 flex flex-1 flex-col',
           contentClassName
         )}
@@ -212,8 +211,8 @@ export function Step({
         <span className="rizzui-step-title flex items-center justify-center group-last:inline-block">
           <h2
             className={cn(
-              makeClassName(`step-title`),
-              'mr-2 mb-0! text-base font-medium rtl:ml-2',
+              'rizzui-step-title',
+              'me-2 mb-0! text-base font-medium',
               status === 'waiting' ? 'text-gray-500' : 'text-gray-900',
               titleClassName
             )}
@@ -231,7 +230,7 @@ export function Step({
         {description && (
           <span
             className={cn(
-              makeClassName(`step-description`),
+              'rizzui-step-description',
               'rizzui-step-description',
               status === 'in-progress' ? 'text-gray-900' : 'text-gray-500',
               descriptionClassName

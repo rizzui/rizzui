@@ -2,7 +2,6 @@ import type { ComponentPropsWithRef } from 'react';
 import type { VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { table } from '../../lib/table-style';
-import { makeClassName } from '../../lib/make-class-name';
 
 export type TableVariantProps = VariantProps<typeof table>['variant'];
 export interface TableProps extends ComponentPropsWithRef<'table'> {
@@ -28,7 +27,7 @@ function TableHeader({
   return (
     <thead
       ref={ref}
-      className={cn(makeClassName(`table-header`), className)}
+      className={cn('rizzui-table-header', className)}
       {...props}
     />
   );
@@ -42,7 +41,7 @@ function TableBody({
   return (
     <tbody
       ref={ref}
-      className={cn(makeClassName(`table-body`), className)}
+      className={cn('rizzui-table-body', className)}
       {...props}
     />
   );
@@ -56,7 +55,7 @@ function TableFooter({
   return (
     <tfoot
       ref={ref}
-      className={cn(makeClassName(`table-footer`), className)}
+      className={cn('rizzui-table-footer', className)}
       {...props}
     />
   );
@@ -66,7 +65,7 @@ function TableRow({ className, ref, ...props }: ComponentPropsWithRef<'tr'>) {
   return (
     <tr
       ref={ref}
-      className={cn(makeClassName(`table-row`), className)}
+      className={cn('rizzui-table-row', className)}
       {...props}
     />
   );
@@ -76,7 +75,7 @@ function TableHead({ className, ref, ...props }: ComponentPropsWithRef<'th'>) {
   return (
     <th
       ref={ref}
-      className={cn(makeClassName(`table-head`), className)}
+      className={cn('rizzui-table-head', className)}
       {...props}
     />
   );
@@ -86,7 +85,7 @@ function TableCell({ className, ref, ...props }: ComponentPropsWithRef<'td'>) {
   return (
     <td
       ref={ref}
-      className={cn(makeClassName(`table-cell`), className)}
+      className={cn('rizzui-table-cell', className)}
       {...props}
     />
   );

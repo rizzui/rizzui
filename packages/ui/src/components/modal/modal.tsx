@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
 
 const modal = tv({
   slots: {

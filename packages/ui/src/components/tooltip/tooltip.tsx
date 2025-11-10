@@ -18,7 +18,6 @@ import {
 } from '@floating-ui/react';
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
 
 const tooltip = tv({
   base: 'text-center z-[9999] min-w-max rounded-[var(--border-radius)] border-[length:var(--border-width)] drop-shadow-[0px_8px_24px_rgba(149,157,165,0.2)]',
@@ -188,7 +187,7 @@ export function Tooltip({
             role="tooltip"
             ref={refs.setFloating}
             className={cn(
-              makeClassName('tooltip'),
+              'rizzui-tooltip',
               tooltip({ size, color, className })
             )}
             style={{

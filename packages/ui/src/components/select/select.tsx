@@ -15,13 +15,12 @@ import {
 import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import type { ExtractProps } from '../../lib/extract-props';
-import { FieldError } from '../field-error-text';
+import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
 import { ChevronDownIcon } from '../../icons/chevron-down';
 import { labelStyles } from '../../lib/label-size';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
-import { makeClassName } from '../../lib/make-class-name';
 import { SearchIcon } from '../../icons/search';
 import {
   type TheirPlacementType,
@@ -292,7 +291,7 @@ export function Select<OptionType extends SelectOption>({
   return (
     <div
       className={cn(
-        makeClassName(`select-root`),
+        'rizzui-select-root',
         'grid w-full grid-cols-1',
         className
       )}
@@ -307,7 +306,7 @@ export function Select<OptionType extends SelectOption>({
           {label && (
             <Label
               className={cn(
-                makeClassName(`select-label`),
+                'rizzui-select-label',
                 'block',
                 labelStyles.size[size],
                 labelStyles.weight[labelWeight],
@@ -335,7 +334,7 @@ export function Select<OptionType extends SelectOption>({
               {prefix && (
                 <span
                   className={cn(
-                    makeClassName(`select-prefix`),
+                    'rizzui-select-prefix',
                     'block leading-normal whitespace-nowrap',
                     prefixClassName
                   )}
@@ -346,7 +345,7 @@ export function Select<OptionType extends SelectOption>({
 
               <span
                 className={cn(
-                  makeClassName(`select-value`),
+                  'rizzui-select-value',
                   'block w-full truncate text-left rtl:text-right',
                   emptyValue && 'text-muted-foreground'
                 )}
@@ -366,7 +365,7 @@ export function Select<OptionType extends SelectOption>({
               {suffix && (
                 <span
                   className={cn(
-                    makeClassName(`select-suffix`),
+                    'rizzui-select-suffix',
                     'leading-normal whitespace-nowrap transition-transform duration-200 group-data-open:rotate-180',
                     suffixClassName
                   )}
@@ -386,7 +385,7 @@ export function Select<OptionType extends SelectOption>({
                 },
               })}
               className={cn(
-                makeClassName(`select-options`),
+                'rizzui-select-options',
                 optionListStyles.base,
                 optionListStyles.shadow,
                 inPortal
@@ -406,7 +405,7 @@ export function Select<OptionType extends SelectOption>({
                   {searchPrefix && (
                     <span
                       className={cn(
-                        makeClassName(`select-prefix`),
+                        'rizzui-select-prefix',
                         searchStyles.prefix,
                         searchPrefixClassName
                       )}
@@ -439,7 +438,7 @@ export function Select<OptionType extends SelectOption>({
                   {searchSuffix && (
                     <span
                       className={cn(
-                        makeClassName(`select-suffix`),
+                        'rizzui-select-suffix',
                         searchStyles.suffix,
                         searchSuffixClassName
                       )}
@@ -458,7 +457,7 @@ export function Select<OptionType extends SelectOption>({
                   })}
                   className={({ focus }) =>
                     cn(
-                      makeClassName(`select-option`),
+                      'rizzui-select-option',
                       'flex w-full items-center px-3 py-1.5',
                       focus && 'bg-muted/70',
                       'rounded-[calc(var(--border-radius)/2)]',
@@ -492,7 +491,7 @@ export function Select<OptionType extends SelectOption>({
       )}
 
       {error && (
-        <FieldError size={size} error={error} className={errorClassName} />
+        <FieldErrorText size={size} error={error} className={errorClassName} />
       )}
     </div>
   );

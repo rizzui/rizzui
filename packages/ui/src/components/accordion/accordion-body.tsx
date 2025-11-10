@@ -6,7 +6,6 @@ import {
   type ElementType,
 } from 'react';
 import { useAccordion } from './accordion-context';
-import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 type AccordionBodyProps = {
@@ -32,7 +31,7 @@ export function AccordionBody({
     <Component
       ref={targetEl}
       style={!openTargetEl ? { display: 'none' } : { display: 'block' }}
-      className={cn(makeClassName(`accordion-panel`), className)}
+      className={cn('rizzui-accordion-panel', className)}
       {...props}
     >
       {children}
