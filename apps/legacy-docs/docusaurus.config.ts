@@ -63,6 +63,7 @@ const config: Config = {
             },
             '0.8.7': {
               label: 'v-0.8.7',
+              banner: 'none',
             },
           },
         },

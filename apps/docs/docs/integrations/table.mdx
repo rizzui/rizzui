@@ -5,6 +5,13 @@ sidebar_class_name: hidden
 
 import Paper from "@site/src/components/paper";
 import TableDefault, { TableModern, TableElegant, TableMinimal } from "@site/src/components/table";
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import NpmIcon from '@site/src/components/icons/npm-icon';
+import YarnIcon from '@site/src/components/icons/yarn-icon';
+import PnpmIcon from '@site/src/components/icons/pnpm-icon';
+import BunIcon from '@site/src/components/icons/bun-icon';
 
 # Rc Table
 
@@ -20,9 +27,57 @@ React table component with useful functions.
 
 <div className="mb-4" />
 
-```bash
-npm i rc-table
-```
+<Tabs groupId="package-manager">
+  <TabItem
+    value="npm"
+    label={
+      <div className="flex items-center gap-2">
+        <NpmIcon className="size-5" /> npm
+      </div>
+    }
+    default
+  >
+    <CodeBlock language="bash">
+      {`npm install rc-table`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="yarn"
+    label={
+      <div className="flex items-center gap-2">
+        <YarnIcon className="size-5" /> yarn
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`yarn add rc-table`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="pnpm"
+    label={
+      <div className="flex items-center gap-2">
+        <PnpmIcon className="size-5" /> pnpm
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`pnpm add rc-table`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="bun"
+    label={
+      <div className="flex items-center gap-2">
+        <BunIcon className="size-5" /> bun
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`bun add rc-table`}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
 
 <div className="mb-4" />
 
@@ -33,7 +88,8 @@ npm i rc-table
 ```ts
 import React from "react";
 import Table from "rc-table";
-import { Empty, cn } from "rizzui";
+import { Empty } from "rizzui/empty";
+import { cn } from "rizzui";
 
 export type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T;
 
@@ -201,7 +257,10 @@ The default style of **Table** component.
 import React from "react";
 import Table from "@components/table";
 import HeaderCell from "@components/header-cell";
-import { Checkbox, Avatar, Text, Badge } from "rizzui";
+import { Checkbox } from "rizzui/checkbox";
+import { Avatar } from "rizzui/avatar";
+import { Text } from "rizzui/typography";
+import { Badge } from "rizzui/badge";
 
 const initialData = [
   {
@@ -497,7 +556,10 @@ You can change the style of **Table** by changing property [**variant**](#table-
 import React from "react";
 import Table from "@components/table";
 import HeaderCell from "@components/header-cell";
-import { Checkbox, Avatar, Text, Badge } from "rizzui";
+import { Checkbox } from "rizzui/checkbox";
+import { Avatar } from "rizzui/avatar";
+import { Text } from "rizzui/typography";
+import { Badge } from "rizzui/badge";
 
 const initialData = [
   {
@@ -794,7 +856,10 @@ You can change the style of **Table** by changing property [**variant**](#table-
 import React from "react";
 import Table from "@components/table";
 import HeaderCell from "@components/header-cell";
-import { Checkbox, Avatar, Text, Badge } from "rizzui";
+import { Checkbox } from "rizzui/checkbox";
+import { Avatar } from "rizzui/avatar";
+import { Text } from "rizzui/typography";
+import { Badge } from "rizzui/badge";
 
 const initialData = [
   {
@@ -1091,7 +1156,10 @@ You can change the style of **Table** by changing property [**variant**](#table-
 import React from "react";
 import Table from "@components/table";
 import HeaderCell from "@components/header-cell";
-import { Checkbox, Avatar, Text, Badge } from "rizzui";
+import { Checkbox } from "rizzui/checkbox";
+import { Avatar } from "rizzui/avatar";
+import { Text } from "rizzui/typography";
+import { Badge } from "rizzui/badge";
 
 const initialData = [
   {

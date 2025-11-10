@@ -2,7 +2,8 @@
 sidebar_position: 1
 ---
 
-import { Alert, Text } from "rizzui";
+import { Alert } from "rizzui/alert";
+import { Text } from "rizzui/typography";
 import Paper from "@site/src/components/paper";
 import AlertClearable from "@site/src/components/alert";
 import { EnvelopeIcon, TrashIcon } from "@heroicons/react/24/outline";
@@ -12,7 +13,7 @@ import { EnvelopeIcon, TrashIcon } from "@heroicons/react/24/outline";
 A simple alert component for showing alert messages.
 
 ```jsx
-import { Alert } from "rizzui";
+import { Alert } from "rizzui/alert";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -98,7 +99,7 @@ You can set diffirent size of the **Alert** using [**size**](#alert-sizes) prope
 </Paper>
 
 ```jsx
-import { Alert } from "rizzui";
+import { Alert } from "rizzui/alert";
 
 export default function App() {
   return (
@@ -179,7 +180,7 @@ You can set different states of **Alert** using [**color**](#alert-colors) prope
 </Paper>
 
 ```tsx
-import { Alert } from "rizzui";
+import { Alert } from "rizzui/alert";
 
 export default function App() {
   return (
@@ -243,7 +244,7 @@ You can change style of **Alert** with property **icon**, **clearIcon**.
 </Paper>
 
 ```tsx
-import { Alert } from "rizzui";
+import { Alert } from "rizzui/alert";
 import { EnvelopeIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 export default function App() {
@@ -298,7 +299,7 @@ You can make a classic bar **Alert** by using **bar** property.
 </Paper>
 
 ```tsx
-import { Alert } from "rizzui";
+import { Alert } from "rizzui/alert";
 
 export default function App() {
   return (

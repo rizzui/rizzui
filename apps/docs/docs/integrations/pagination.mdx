@@ -2,16 +2,37 @@
 sidebar_position: 4
 ---
 
-import Pagination from "@site/src/components/pagination";
-import Paper from "@site/src/components/paper";
+import Pagination from '@site/src/components/pagination';
+import Paper from '@site/src/components/paper';
+import { Badge } from 'rizzui/badge';
 import {
   ChevronDoubleRightIcon,
   ChevronDoubleLeftIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import NpmIcon from '@site/src/components/icons/npm-icon';
+import YarnIcon from '@site/src/components/icons/yarn-icon';
+import PnpmIcon from '@site/src/components/icons/pnpm-icon';
+import BunIcon from '@site/src/components/icons/bun-icon';
 
-# Rc Pagination
+# Pagination
 
-The Pagination component enables the user to select a specific info from a range of infos.
+A flexible and customizable pagination component for navigating through large datasets. Built on top of **rc-pagination**, the Pagination component seamlessly integrates with RizzUI's design system, providing a consistent and accessible user experience for paginated content.
+
+<div className="mb-16" />
+
+## Features
+
+- 📄 **Flexible Navigation** - Easy navigation through paginated content
+- 🎨 **Multiple Variants** - Choose from solid or flat styles
+- 🔲 **Outline Mode** - Optional outline style for icons and items
+- ⚙️ **Customizable Icons** - Customize previous, next, and jump icons
+- 📊 **Page Size Control** - Built-in support for page size selection
+- 🔍 **Quick Jumper** - Jump to any page quickly
+- ♿ **Accessible** - Built with accessibility best practices
+- 🎯 **Type Safe** - Full TypeScript support
 
 <div className="mb-16" />
 
@@ -19,101 +40,152 @@ The Pagination component enables the user to select a specific info from a range
 
 <hr />
 
-1.  Install the **rc-pagination** package.
+Before using the Pagination component, you'll need to install the required dependency:
+
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 1
+  </Badge>
+  <span>
+    Install the <strong>rc-pagination</strong> package.
+  </span>
+</div>
 
 <div className="mb-4" />
 
-```bash
-npm i rc-pagination
-```
+<Tabs groupId="package-manager">
+  <TabItem
+    value="npm"
+    label={
+      <div className="flex items-center gap-2">
+        <NpmIcon className="size-5" /> npm
+      </div>
+    }
+    default
+  >
+    <CodeBlock language="bash">
+      {`npm install rc-pagination`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="yarn"
+    label={
+      <div className="flex items-center gap-2">
+        <YarnIcon className="size-5" /> yarn
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`yarn add rc-pagination`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="pnpm"
+    label={
+      <div className="flex items-center gap-2">
+        <PnpmIcon className="size-5" /> pnpm
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`pnpm add rc-pagination`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="bun"
+    label={
+      <div className="flex items-center gap-2">
+        <BunIcon className="size-5" /> bun
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`bun add rc-pagination`}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
 
-<div className="mb-4" />
+<div className="mb-14" />
 
-2. Create a pagination component, **components/pagination.tsx**
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 2
+  </Badge>
+  <span>
+    Create a pagination component, <strong>components/pagination.tsx</strong>
+  </span>
+</div>
 
-<div className="mb-4" />
-
-```ts
-import React from "react";
-import "rc-pagination/assets/index.css";
+```tsx
+import React from 'react';
+import 'rc-pagination/assets/index.css';
 import RcPagination, {
   PaginationProps as RcPaginationProps,
-} from "rc-pagination";
-import { cn } from "rizzui";
+} from 'rc-pagination';
+import { tv, type VariantProps } from 'tailwind-variants';
+import { cn } from 'rizzui/cn';
 
-const paginationStyles = {
-  base: {
-    item: "[&>.rc-pagination-item>a]:!no-underline [&>.rc-pagination-item>a]:font-medium [&>li.rc-pagination-item]:border-muted [&>.rc-pagination-item:not(.rc-pagination-item-active)]:bg-transparent",
-    icon: "[&>.rc-pagination-prev]:align-baseline [&>.rc-pagination-next]:align-baseline",
-    outline:
-      "[&>.rc-pagination-item]:leading-7 [&>.rc-pagination-item]:border-0",
+const pagination = tv({
+  slots: {
+    container:
+      '[&>.rc-pagination-item>a]:!no-underline [&>.rc-pagination-item>a]:!font-medium [&>li.rc-pagination-item]:!border-muted [&>.rc-pagination-item:not(.rc-pagination-item-active)]:!bg-transparent rounded-[var(--border-radius)]',
+    icon: '',
     jumperDiv:
-      "[&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:text-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:text-gray-500",
+      '[&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:!text-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper]:!text-gray-500',
     jumperInput:
-      "[&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:!py-[3px] [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:text-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:border-muted [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:ring-0",
+      '[&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:!py-[3px] [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:!text-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:!border-muted [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:!ring-0 rounded-[var(--border-radius)]',
   },
-  rounded: {
-    none: "[&>.rc-pagination-item]:rounded-none [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:rounded-none",
-    sm: "[&>.rc-pagination-item]:rounded-sm [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:rounded-sm",
-    md: "[&>.rc-pagination-item]:rounded-md [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:rounded-md",
-    lg: "[&>.rc-pagination-item]:rounded-lg [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:rounded-lg",
-    full: "[&>.rc-pagination-item]:rounded-full [&>.rc-pagination-options>.rc-pagination-options-quick-jumper>input]:rounded-full",
-  },
-  variant: {
-    solid: {
-      base: "",
-      color: {
-        primary:
-          "[&>.rc-pagination-item-active]:bg-primary [&>.rc-pagination-item-active>a]:!text-primary-foreground [&>li.rc-pagination-item-active]:border-primary [&>.rc-pagination-item-active]:hover:border-primary [&>.rc-pagination-item-active]:focus:border-primary",
-        secondary:
-          "[&>.rc-pagination-item-active]:bg-secondary [&>.rc-pagination-item-active>a]:!text-secondary-foreground [&>li.rc-pagination-item-active]:border-secondary [&>.rc-pagination-item-active]:hover:border-secondary [&>.rc-pagination-item-active]:focus:border-secondary",
-        danger:
-          "[&>.rc-pagination-item-active]:bg-red [&>.rc-pagination-item-active>a]:!text-white [&>li.rc-pagination-item-active]:border-red [&>.rc-pagination-item-active]:hover:border-red [&>.rc-pagination-item-active]:focus:border-red",
+  variants: {
+    variant: {
+      solid: {
+        container:
+          '[&>.rc-pagination-item-active]:!bg-primary [&>.rc-pagination-item-active>a]:!text-primary-foreground [&>li.rc-pagination-item-active]:!border-primary [&>.rc-pagination-item-active]:hover:!border-primary [&>.rc-pagination-item-active]:focus:!border-primary',
+      },
+      flat: {
+        container:
+          '[&>.rc-pagination-item-active]:!bg-primary-lighter [&>li.rc-pagination-item-active]:border-primary-lighter [&>.rc-pagination-item-active>a]:text-primary-dark [&>.rc-pagination-item-active>a]:hover:text-primary-dark [&>.rc-pagination-item-active>a]:focus:text-primary-dark [&>.rc-pagination-item-active]:hover:border-primary-lighter [&>.rc-pagination-item-active]:focus:!border-primary-lighter',
       },
     },
-    flat: {
-      base: "",
-      color: {
-        primary:
-          "[&>.rc-pagination-item-active]:bg-primary-lighter [&>li.rc-pagination-item-active]:border-primary-lighter [&>.rc-pagination-item-active>a]:text-primary-dark [&>.rc-pagination-item-active>a]:hover:text-primary-dark [&>.rc-pagination-item-active>a]:focus:text-primary-dark [&>.rc-pagination-item-active]:hover:border-primary-lighter [&>.rc-pagination-item-active]:focus:border-primary-lighter",
-        secondary:
-          "[&>.rc-pagination-item-active]:bg-secondary-lighter [&>li.rc-pagination-item-active]:border-secondary-lighter [&>.rc-pagination-item-active>a]:text-secondary-dark [&>.rc-pagination-item-active>a]:hover:text-secondary-dark [&>.rc-pagination-item-active>a]:focus:text-secondary-dark [&>.rc-pagination-item-active]:hover:border-secondary-lighter [&>.rc-pagination-item-active]:focus:border-secondary-lighter",
-        danger:
-          "[&>.rc-pagination-item-active]:bg-red-lighter [&>li.rc-pagination-item-active]:border-red-lighter [&>.rc-pagination-item-active>a]:text-red-dark [&>.rc-pagination-item-active>a]:hover:text-red-dark [&>.rc-pagination-item-active>a]:focus:text-red-dark [&>.rc-pagination-item-active]:hover:border-red-lighter [&>.rc-pagination-item-active]:focus:border-red-lighter",
+    outline: {
+      true: {
+        container:
+          '[&>.rc-pagination-item]:!leading-7 [&>.rc-pagination-item]:!border-0',
+        icon: '[&>.rc-pagination-prev]:!align-baseline [&>.rc-pagination-next]:!align-baseline',
+      },
+      false: {
+        container:
+          '[&>.rc-pagination-item]:!leading-7 [&>.rc-pagination-item]:!border-0',
+        icon: '[&>.rc-pagination-prev]:!align-baseline [&>.rc-pagination-next]:!align-baseline',
       },
     },
   },
-};
+  defaultVariants: {
+    variant: 'solid',
+    outline: false,
+  },
+});
 
-const iconStyles = {
-  base: "text-foreground",
-  outline: "border border-muted p-[5px]",
-  center: "inline-block align-middle",
-  rounded: {
-    none: "rounded-none",
-    sm: "rounded-sm",
-    md: "rounded-md",
-    lg: "rounded-lg",
-    full: "rounded-full",
+const iconTV = tv({
+  base: 'text-foreground rounded-[var(--border-radius)]',
+  variants: {
+    outline: {
+      true: 'border border-muted p-[5px]',
+      false: 'inline-block align-middle',
+    },
   },
-};
+  defaultVariants: {
+    outline: false,
+  },
+});
 
 type IconProps = {
   icon: React.ReactNode;
-  rounded: keyof typeof iconStyles.rounded;
   outline: boolean;
   className: string;
 };
 
-const PrevIcon = ({ icon, rounded, outline, className }: IconProps) => (
-  <div
-    className={cn(
-      iconStyles.base,
-      outline ? iconStyles.outline : iconStyles.center,
-      iconStyles.rounded[rounded],
-      className
-    )}
-  >
+const PrevIcon = ({ icon, outline, className }: IconProps) => (
+  <div className={iconTV({ outline, className })}>
     {icon || (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -133,15 +205,8 @@ const PrevIcon = ({ icon, rounded, outline, className }: IconProps) => (
   </div>
 );
 
-const NextIcon = ({ icon, rounded, outline, className }: IconProps) => (
-  <div
-    className={cn(
-      iconStyles.base,
-      outline ? iconStyles.outline : iconStyles.center,
-      iconStyles.rounded[rounded],
-      className
-    )}
-  >
+const NextIcon = ({ icon, outline, className }: IconProps) => (
+  <div className={iconTV({ outline, className })}>
     {icon || (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -161,53 +226,45 @@ const NextIcon = ({ icon, rounded, outline, className }: IconProps) => (
   </div>
 );
 
-const JumpPrevIcon = ({ icon, rounded, outline, className }: IconProps) => (
+const JumpPrevIcon = ({ icon, outline, className }: IconProps) => (
   <div
-    className={cn(
-      iconStyles.base,
-      outline ? iconStyles.outline : iconStyles.center,
-      iconStyles.rounded[rounded],
-      !icon && outline && "py-0 leading-[26px]",
-      className
-    )}
+    className={iconTV({
+      outline,
+      className: cn(!icon && outline && 'py-0 leading-[26px]', className),
+    })}
   >
-    {icon || "•••"}
+    {icon || '•••'}
   </div>
 );
 
-const JumpNextIcon = ({ icon, rounded, outline, className }: IconProps) => (
+const JumpNextIcon = ({ icon, outline, className }: IconProps) => (
   <div
-    className={cn(
-      iconStyles.base,
-      outline ? iconStyles.outline : iconStyles.center,
-      iconStyles.rounded[rounded],
-      !icon && outline && "py-0 leading-[26px]",
-      className
-    )}
+    className={iconTV({
+      outline,
+      className: cn(!icon && outline && 'py-0 leading-[26px]', className),
+    })}
   >
-    {icon || "•••"}
+    {icon || '•••'}
   </div>
 );
 
 export const localeDefault = {
-  items_per_page: "/ page",
-  jump_to: "Go to",
-  jump_to_confirm: "confirm",
-  page: "Page",
-  prev_page: "Previous Page",
-  next_page: "Next Page",
-  prev_5: "Previous 5 Pages",
-  next_5: "Next 5 Pages",
-  prev_3: "Previous 3 Pages",
-  next_3: "Next 3 Pages",
-  page_size: "Page Size",
+  items_per_page: '/ page',
+  jump_to: 'Go to',
+  jump_to_confirm: 'confirm',
+  page: 'Page',
+  prev_page: 'Previous Page',
+  next_page: 'Next Page',
+  prev_5: 'Previous 5 Pages',
+  next_5: 'Next 5 Pages',
+  prev_3: 'Previous 3 Pages',
+  next_3: 'Next 3 Pages',
+  page_size: 'Page Size',
 };
 
 export interface PaginationProps extends RcPaginationProps {
   outline?: boolean;
-  rounded?: keyof typeof paginationStyles.rounded;
-  variant?: keyof typeof paginationStyles.variant;
-  color?: keyof typeof paginationStyles.variant.flat.color;
+  variant?: VariantProps<typeof pagination>['variant'];
   prevIconClassName?: string;
   nextIconClassName?: string;
   jumpPrevIconClassName?: string;
@@ -216,9 +273,7 @@ export interface PaginationProps extends RcPaginationProps {
 
 export default function Pagination({
   outline = false,
-  rounded = "md",
-  variant = "solid",
-  color = "primary",
+  variant = 'solid',
   locale,
   nextIcon,
   prevIcon,
@@ -231,6 +286,16 @@ export default function Pagination({
   className,
   ...props
 }: PaginationProps) {
+  const {
+    container: containerClass,
+    icon: iconClass,
+    jumperDiv: jumperDivClass,
+    jumperInput: jumperInputClass,
+  } = pagination({
+    variant,
+    outline,
+  });
+
   return (
     <RcPagination
       locale={locale || localeDefault}
@@ -263,14 +328,10 @@ export default function Pagination({
         />
       }
       className={cn(
-        paginationStyles.base.item,
-        paginationStyles.base.jumperDiv,
-        paginationStyles.base.jumperInput,
-        !outline && paginationStyles.base.outline,
-        !outline && paginationStyles.base.icon,
-        paginationStyles.rounded[rounded],
-        paginationStyles.variant[variant].base,
-        paginationStyles.variant[variant].color[color],
+        containerClass(),
+        iconClass(),
+        jumperDivClass(),
+        jumperInputClass(),
         className
       )}
       {...props}
@@ -278,21 +339,25 @@ export default function Pagination({
   );
 }
 
-Pagination.displayName = "Pagination";
+Pagination.displayName = 'Pagination';
 ```
 
-<div className="mb-20 md:mb-28" />
+<div className="mb-16" />
 
-## Default
+## Usage
 
-The default style of **Pagination**.
+<hr />
+
+### Basic Example
+
+The simplest way to use the Pagination component with default settings:
 
 <Paper>
   <Pagination total={25} defaultCurrent={1} className="[&_li]:!mt-0" />
 </Paper>
 
 ```tsx
-import Pagination from "@components/pagination";
+import Pagination from '@components/pagination';
 
 export default function App() {
   return <Pagination total={25} defaultCurrent={1} />;
@@ -301,9 +366,32 @@ export default function App() {
 
 <div className="mb-16" />
 
+### Controlled Component
+
+For controlled usage, manage the current page with state:
+
+```tsx
+import React from 'react';
+import Pagination from '@components/pagination';
+
+export default function App() {
+  const [current, setCurrent] = React.useState(1);
+
+  return (
+    <Pagination
+      total={100}
+      current={current}
+      onChange={(page) => setCurrent(page)}
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
 ## Variants
 
-You can change the style of **Pagination** using **variant** property.
+The Pagination component supports two visual variants to match your design needs:
 
 <Paper className="flex-row flex-wrap justify-between">
   <Pagination
@@ -321,7 +409,7 @@ You can change the style of **Pagination** using **variant** property.
 </Paper>
 
 ```tsx
-import Pagination from "@components/pagination";
+import Pagination from '@components/pagination';
 
 export default function App() {
   return (
@@ -335,69 +423,9 @@ export default function App() {
 
 <div className="mb-16" />
 
+## Outline Mode
 
-## Colors
-
-You can change the color of **Pagination** using [**color**](#pagination-colors) property.
-
-<Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-8">
-  <Pagination total={25} defaultCurrent={1} className="[&_li]:!mt-0" />
-  <Pagination
-    total={25}
-    color="secondary"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-  <Pagination
-    total={25}
-    color="danger"
-    defaultCurrent={1}
-    className="[&_li]:!mt-0"
-  />
-</Paper>
-
-```tsx
-import Pagination from "@components/pagination";
-
-export default function App() {
-  return (
-    <>
-      <Pagination total={25} defaultCurrent={1} />
-      <Pagination total={25} color="secondary" defaultCurrent={1} />
-      <Pagination total={25} color="danger" defaultCurrent={1} />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Disabled
-
-You can make **Pagination** disabled using **disabled** property.
-
-<Paper>
-  <Pagination
-    total={25}
-    defaultCurrent={1}
-    className="[&_li]:!mt-0 [&_li>a]:!text-[#00000040]"
-    disabled
-  />
-</Paper>
-
-```tsx
-import Pagination from "@components/pagination";
-
-export default function App() {
-  return <Pagination total={25} defaultCurrent={1} disabled />;
-}
-```
-
-<div className="mb-16" />
-
-## With Outline
-
-You can change the style of **Pagination** using **outline** property.
+Enable outline mode to add borders around pagination items and icons:
 
 <Paper>
   <Pagination
@@ -409,7 +437,7 @@ You can change the style of **Pagination** using **outline** property.
 </Paper>
 
 ```tsx
-import Pagination from "@components/pagination";
+import Pagination from '@components/pagination';
 
 export default function App() {
   return <Pagination total={25} outline={true} defaultCurrent={1} />;
@@ -418,9 +446,32 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Custom Previous & Next
+## Disabled State
 
-You can change the style of **Pagination** using **prevIcon** & **nextIcon** property.
+Disable the pagination component to prevent user interaction:
+
+<Paper>
+  <Pagination
+    total={25}
+    defaultCurrent={1}
+    className="[&_li]:!mt-0 [&_li>a]:!text-[#00000040]"
+    disabled
+  />
+</Paper>
+
+```tsx
+import Pagination from '@components/pagination';
+
+export default function App() {
+  return <Pagination total={25} defaultCurrent={1} disabled />;
+}
+```
+
+<div className="mb-16" />
+
+## Custom Icons
+
+Customize the previous and next icons with text or React components:
 
 <Paper>
   <Pagination
@@ -435,7 +486,7 @@ You can change the style of **Pagination** using **prevIcon** & **nextIcon** pro
 </Paper>
 
 ```tsx
-import Pagination from "@components/pagination";
+import Pagination from '@components/pagination';
 
 export default function App() {
   return (
@@ -453,9 +504,9 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Custom Prev Next Jump
+## Custom Jump Icons
 
-You can change the style of **Pagination** using **jumpPrevIcon** & **jumpNextIcon** property.
+Customize the jump previous and jump next icons for better visual feedback:
 
 <Paper>
   <Pagination
@@ -469,11 +520,11 @@ You can change the style of **Pagination** using **jumpPrevIcon** & **jumpNextIc
 </Paper>
 
 ```tsx
-import Pagination from "@components/pagination";
+import Pagination from '@components/pagination';
 import {
   ChevronDoubleRightIcon,
   ChevronDoubleLeftIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
@@ -488,6 +539,83 @@ export default function App() {
 }
 ```
 
+<div className="mb-16" />
+
+## Advanced Usage
+
+### Page Size Selection
+
+Enable page size selection to let users choose how many items to display per page:
+
+```tsx
+import Pagination from '@components/pagination';
+
+export default function App() {
+  return (
+    <Pagination
+      total={100}
+      defaultCurrent={1}
+      showSizeChanger
+      pageSizeOptions={['10', '20', '50', '100']}
+      onShowSizeChange={(current, size) => {
+        console.log(`Page: ${current}, Size: ${size}`);
+      }}
+    />
+  );
+}
+```
+
+### Quick Jumper
+
+Enable quick jumper to allow users to jump directly to a specific page:
+
+```tsx
+import Pagination from '@components/pagination';
+
+export default function App() {
+  return (
+    <Pagination
+      total={100}
+      defaultCurrent={1}
+      showQuickJumper
+      onChange={(page) => {
+        console.log(`Jumped to page: ${page}`);
+      }}
+    />
+  );
+}
+```
+
+### Show Total
+
+Display the total number of items and current range:
+
+```tsx
+import Pagination from '@components/pagination';
+
+export default function App() {
+  return (
+    <Pagination
+      total={100}
+      defaultCurrent={1}
+      showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
+    />
+  );
+}
+```
+
+### Simple Mode
+
+Use simple mode for compact pagination:
+
+```tsx
+import Pagination from '@components/pagination';
+
+export default function App() {
+  return <Pagination total={100} defaultCurrent={1} simple />;
+}
+```
+
 <div className="mb-20" />
 
 ## API Reference
@@ -498,79 +626,59 @@ export default function App() {
 
 ### Pagination Props
 
-Here is the API documentation of the Pagination component.
+| Prop                      | Type                                                    | Description                                       | Default     |
+| :------------------------ | :------------------------------------------------------ | :------------------------------------------------ | :---------- |
+| **variant**               | `"solid" \| "flat"`                                     | Visual style variant of the component             | `"solid"`   |
+| **outline**               | `boolean`                                               | Whether to show outline style for items and icons | `false`     |
+| **disabled**              | `boolean`                                               | Disable all pagination interactions               | `false`     |
+| **total**                 | `number`                                                | Total number of data items                        | `undefined` |
+| **current**               | `number`                                                | Current page number (controlled)                  | `undefined` |
+| **defaultCurrent**        | `number`                                                | Default page number (uncontrolled)                | `undefined` |
+| **pageSize**              | `number`                                                | Number of data items per page (controlled)        | `undefined` |
+| **defaultPageSize**       | `number`                                                | Default number of data items per page             | `undefined` |
+| **showSizeChanger**       | `boolean`                                               | Show page size selector                           | `false`     |
+| **pageSizeOptions**       | `string[] \| number[]`                                  | Specify the size options                          | `undefined` |
+| **showQuickJumper**       | `boolean \| object`                                     | Show quick jumper to jump to any page             | `false`     |
+| **showTotal**             | `(total: number, range: [number, number]) => ReactNode` | Show total number and range                       | `undefined` |
+| **simple**                | `boolean`                                               | Simple mode for compact pagination                | `false`     |
+| **hideOnSinglePage**      | `boolean`                                               | Hide pagination when there's only one page        | `false`     |
+| **prevIcon**              | `ReactNode \| ComponentType`                            | Custom previous icon                              | `undefined` |
+| **nextIcon**              | `ReactNode \| ComponentType`                            | Custom next icon                                  | `undefined` |
+| **jumpPrevIcon**          | `ReactNode \| ComponentType`                            | Custom jump previous icon                         | `undefined` |
+| **jumpNextIcon**          | `ReactNode \| ComponentType`                            | Custom jump next icon                             | `undefined` |
+| **prevIconClassName**     | `string`                                                | Additional CSS classes for previous icon          | `undefined` |
+| **nextIconClassName**     | `string`                                                | Additional CSS classes for next icon              | `undefined` |
+| **jumpPrevIconClassName** | `string`                                                | Additional CSS classes for jump previous icon     | `undefined` |
+| **jumpNextIconClassName** | `string`                                                | Additional CSS classes for jump next icon         | `undefined` |
+| **onChange**              | `(page: number, pageSize: number) => void`              | Callback when page changes                        | `undefined` |
+| **onShowSizeChange**      | `(current: number, size: number) => void`               | Callback when page size changes                   | `undefined` |
+| **className**             | `string`                                                | Additional CSS classes for the root element       | `undefined` |
 
-<div className="overflow-x-auto">
+<div className="mb-4" />
 
-|         Props         |                      Type                       |            Description            |   Default   |
-| :-------------------: | :---------------------------------------------: | :-------------------------------: | :---------: |
-|    defaultCurrent     |                    `number`                     |                                   |    \_\_     |
-|         total         |                    `number`                     |                                   |    \_\_     |
-|        variant        |                 `solid` `flat`                  | These are the variants we support |  `"solid"`  |
-|         color         |     [PaginationColors](#pagination-colors)      |        Change Loader color        | `"primary"` |
-|        outline        |                    `boolean`                    |    Whether show outline or not    |   `false`   |
-|       disabled        |                    `boolean`                    |                                   |    \_\_     |
-|   prevIconClassName   |                    `string`                     | Pass className for previous icon  |    \_\_     |
-|   nextIconClassName   |                    `string`                     |   Pass className for next icon    |    \_\_     |
-| jumpPrevIconClassName |                    `string`                     | Pass className for previous icon  |    \_\_     |
-| jumpNextIconClassName |                    `string`                     |   Pass className for next icon    |    \_\_     |
-|       onChange        |  `((page: number, pageSize: number) => void)`   |                                   |    \_\_     |
-|   onShowSizeChange    |   `((current: number, size: number) => void)`   |                                   |    \_\_     |
-|      itemRender       | [PaginationItemRender](#pagination-item-render) |                                   |    \_\_     |
-|       showTotal       |  [PaginationShowTotal](#pagination-show-total)  |                                   |    \_\_     |
-|       className       |                    `string`                     |                                   |    \_\_     |
-|    selectPrefixCls    |                    `string`                     |                                   |    \_\_     |
-|       prefixCls       |                    `string`                     |                                   |    \_\_     |
-|    pageSizeOptions    |              `string[]` `number[]`              |                                   |    \_\_     |
-|        current        |                    `number`                     |                                   |    \_\_     |
-|       pageSize        |                    `number`                     |                                   |    \_\_     |
-|    defaultPageSize    |                    `number`                     |                                   |    \_\_     |
-|   hideOnSinglePage    |                    `boolean`                    |                                   |    \_\_     |
-|    showSizeChanger    |                    `boolean`                    |                                   |    \_\_     |
-|     showLessItems     |                    `boolean`                    |                                   |    \_\_     |
-|  showPrevNextJumpers  |                    `boolean`                    |                                   |    \_\_     |
-|    showQuickJumper    |               `boolean` `object`                |                                   |    \_\_     |
-|       showTitle       |                    `boolean`                    |                                   |    \_\_     |
-|        simple         |                    `boolean`                    |                                   |    \_\_     |
-|        locale         |               `PaginationLocale`                |                                   |    \_\_     |
-|         style         |                 `CSSProperties`                 |                                   |    \_\_     |
-| selectComponentClass  |               `ComponentType<{}>`               |                                   |    \_\_     |
-|       prevIcon        |         `ReactNode` `ComponentType<{}>`         |                                   |    \_\_     |
-|       nextIcon        |         `ReactNode` `ComponentType<{}>`         |                                   |    \_\_     |
-|     jumpPrevIcon      |         `ReactNode` `ComponentType<{}>`         |                                   |    \_\_     |
-|     jumpNextIcon      |         `ReactNode` `ComponentType<{}>`         |                                   |    \_\_     |
-
-</div>
-
-- **Note:** You can check [**rc-pagination documentation**](https://pagination-react-component.vercel.app/) for more details.
+> **Note:** The Pagination component extends all props from [rc-pagination](https://pagination-react-component.vercel.app/), allowing you to use features like `itemRender`, `locale`, `showLessItems`, and more. Refer to the rc-pagination documentation for a complete list of available props.
 
 <div className="mb-10" />
 
-### Pagination Colors
+### Pagination Variants
 
 ```ts
-type PaginationColors = "primary" | "secondary" | "danger";
+type PaginationVariants = 'solid' | 'flat';
 ```
+
+- **solid** - Active page with solid background color (default)
+- **flat** - Active page with lighter background color
 
 <div className="mb-10" />
 
-### Pagination Item Render
+## Best Practices
 
-```ts
-type PaginationItemRender = (
-  page: number,
-  type: "page" | "next" | "prev" | "jump-prev" | "jump-next",
-  element: ReactNode
-) => ReactNode;
-```
+- **Use appropriate total** - Always provide an accurate total count for better UX
+- **Handle page changes** - Use `onChange` callback to update your data source
+- **Consider page size** - Enable `showSizeChanger` for large datasets
+- **Provide quick jumper** - Enable `showQuickJumper` for datasets with many pages
+- **Show totals** - Use `showTotal` to give users context about the dataset size
+- **Accessibility** - The component includes built-in ARIA attributes for screen readers
+- **Mobile considerations** - Consider using `simple` mode on mobile devices
 
-<div className="mb-10" />
-
-### Pagination Show Total
-
-```ts
-type PaginationShowTotal = (
-  total: number,
-  range: [number, number]
-) => ReactNode;
-```
+<div className="mb-20" />

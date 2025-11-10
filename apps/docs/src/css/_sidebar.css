@@ -18,6 +18,8 @@
     @apply border-l border-gray-200 ml-1.5;
   }
   .theme-doc-sidebar-container {
+    border-left: 0;
+    border-top: 0;
     border-width: 2px;
     scrollbar-color: rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0);
     @media screen and (min-width: 997px) {

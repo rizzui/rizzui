@@ -2,7 +2,9 @@
 sidebar_position: 4
 ---
 
-import { Badge, Text, Avatar } from "rizzui";
+import { Badge } from "rizzui/badge";
+import { Text } from "rizzui/typography";
+import { Avatar } from "rizzui/avatar";
 import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 import Paper from "@site/src/components/paper";
 
@@ -11,7 +13,7 @@ import Paper from "@site/src/components/paper";
 Badge is a small overlapped UI item which indicates a status, notification, or event that appears in relativity with the underlying object.
 
 ```tsx
-import { Badge } from "rizzui";
+import { Badge } from "rizzui/badge";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -25,7 +27,7 @@ The default style of **Badge** component.
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui";
+import { Badge } from "rizzui/badge";
 
 export default function App() {
   return <Badge>Badge</Badge>;
@@ -47,7 +49,7 @@ You can change the style of the **Badge** using [**variant**](#badge-variants) p
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui";
+import { Badge } from "rizzui/badge";
 
 export default function App() {
   return (
@@ -76,7 +78,7 @@ You can change the size of the **Badge** using [**size**](#badge-sizes) property
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui";
+import { Badge } from "rizzui/badge";
 
 export default function App() {
   return (
@@ -175,7 +177,7 @@ You can change the color of the **Badge** using [**color**](#badge-colors) prope
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui";
+import { Badge } from "rizzui/badge";
 
 export default function App() {
   return (
@@ -415,7 +417,7 @@ You can use **Badge** to make a ecommerce cart counter component.
 </Paper>
 
 ```tsx
-import { Badge } from "rizzui";
+import { Badge } from "rizzui/badge";
 import { ShoppingBagIcon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 export default function App() {

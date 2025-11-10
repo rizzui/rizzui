@@ -29,17 +29,14 @@ const config: Config = {
   },
 
   themes: [
-    // Search plugin temporarily disabled due to compatibility issues with Docusaurus 3.9.2
-    // Error: Can't resolve '@theme/SearchPage'
-    // TODO: Replace with Algolia DocSearch or wait for plugin update
-    // [
-    //   require.resolve('@easyops-cn/docusaurus-search-local'),
-    //   {
-    //     hashed: true,
-    //     highlightSearchTermsOnTargetPage: true,
-    //     explicitSearchResultPath: true,
-    //   },
-    // ],
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      },
+    ],
   ],
 
   presets: [
@@ -111,11 +108,11 @@ const config: Config = {
           items: [
             {
               label: 'v-1.0.0',
-              href: 'https://your-legacy-docs-url-1.com', // Replace with your actual URL
+              href: 'https://legacy-docs.rizzui.com/docs/guide/getting-started', // Replace with your actual URL
             },
             {
               label: 'v-0.8.7',
-              href: 'https://your-legacy-docs-url-2.com', // Replace with your actual URL
+              href: 'https://legacy-docs.rizzui.com/docs/0.8.7/guide/getting-started', // Replace with your actual URL
             },
           ],
         },

@@ -1,52 +1,51 @@
 import React from 'react';
-import { cn } from 'rizzui';
+import { tv, type VariantProps } from 'tailwind-variants';
+import { cn } from 'rizzui/cn';
 import Slider from 'rc-slider';
 import type { SliderProps } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-const classes = {
-  base: '[&>.rc-slider-rail]:!bg-gray-200 [&>.rc-slider-handle]:!opacity-100 [&>.rc-slider-handle-dragging]:!shadow-none [&>.rc-slider-handle-dragging]:!ring-4',
-  size: {
-    sm: '[&>.rc-slider-rail]:!h-0.5 [&>.rc-slider-track]:!h-0.5 [&>.rc-slider-handle]:!h-3 [&>.rc-slider-handle]:!w-3 [&>.rc-slider-handle]:!border-[3px]',
-    md: '[&>.rc-slider-rail]:!h-1 [&>.rc-slider-track]:!h-1 [&>.rc-slider-handle]:!h-4 [&>.rc-slider-handle]:!w-4 [&>.rc-slider-handle]:!border-4 [&>.rc-slider-handle]:!-mt-1.5',
-    lg: '[&>.rc-slider-rail]:!h-2 [&>.rc-slider-track]:!h-2 [&>.rc-slider-handle]:!h-5 [&>.rc-slider-handle]:!w-5 [&>.rc-slider-handle]:!border-[5px] [&>.rc-slider-handle]:!-mt-1.5',
-    xl: '[&>.rc-slider-rail]:!h-3 [&>.rc-slider-track]:!h-3 [&>.rc-slider-handle]:!h-6 [&>.rc-slider-handle]:!w-6 [&>.rc-slider-handle]:!border-[6px] [&>.rc-slider-handle]:!-mt-1.5',
+const rangeSlider = tv({
+  slots: {
+    container:
+      '[&>.rc-slider-rail]:!bg-gray-200 [&>.rc-slider-handle]:!opacity-100 [&>.rc-slider-handle-dragging]:!shadow-none [&>.rc-slider-handle-dragging]:!ring-4 [&>.rc-slider-track]:!bg-primary [&>.rc-slider-handle]:!border-primary-dark [&>.rc-slider-handle]:hover:!border-primary-dark [&>.rc-slider-handle-dragging]:!border-primary-dark [&>.rc-slider-handle-dragging]:!ring-primary/40 [&>.rc-slider-step>.rc-slider-dot-active]:!border-primary-dark',
   },
-  color: {
-    primary:
-      '[&>.rc-slider-track]:!bg-primary [&>.rc-slider-handle]:!border-primary-dark [&>.rc-slider-handle]:hover:!border-primary-dark [&>.rc-slider-handle-dragging]:!!border-primary-dark [&>.rc-slider-handle-dragging]:!ring-primary/40 [&>.rc-slider-step>.rc-slider-dot-active]:!border-primary-dark',
-    secondary:
-      '[&>.rc-slider-track]:!bg-secondary [&>.rc-slider-handle]:!border-secondary-dark [&>.rc-slider-handle]:hover:!border-secondary-dark [&>.rc-slider-handle-dragging]:!border-secondary-dark [&>.rc-slider-handle-dragging]:!ring-secondary/40 [&>.rc-slider-step>.rc-slider-dot-active]:!border-secondary-dark',
-    danger:
-      '[&>.rc-slider-track]:!bg-red [&>.rc-slider-handle]:!border-red-dark [&>.rc-slider-handle]:hover:!border-red-dark [&>.rc-slider-handle-dragging]:!border-red-dark [&>.rc-slider-handle-dragging]:!ring-red/40 [&>.rc-slider-step>.rc-slider-dot-active]:!border-red-dark',
+  variants: {
+    size: {
+      sm: {
+        container:
+          '[&>.rc-slider-rail]:!h-0.5 [&>.rc-slider-track]:!h-0.5 [&>.rc-slider-handle]:!h-3 [&>.rc-slider-handle]:!w-3 [&>.rc-slider-handle]:!border-[3px]',
+      },
+      md: {
+        container:
+          '[&>.rc-slider-rail]:!h-1 [&>.rc-slider-track]:!h-1 [&>.rc-slider-handle]:!h-4 [&>.rc-slider-handle]:!w-4 [&>.rc-slider-handle]:!border-4 [&>.rc-slider-handle]:!-mt-1.5',
+      },
+      lg: {
+        container:
+          '[&>.rc-slider-rail]:!h-2 [&>.rc-slider-track]:!h-2 [&>.rc-slider-handle]:!h-5 [&>.rc-slider-handle]:!w-5 [&>.rc-slider-handle]:!border-[5px] [&>.rc-slider-handle]:!-mt-1.5',
+      },
+    },
   },
-};
+  defaultVariants: {
+    size: 'md',
+  },
+});
 
 export interface RangeSliderProps extends SliderProps {
-  /** Sizes of the component are: */
-  size?: keyof typeof classes.size;
-  /** Change slider color */
-  color?: keyof typeof classes.color;
+  /** The size of the component */
+  size?: VariantProps<typeof rangeSlider>['size'];
 }
 
-/**
- * A slider component enables user to pick any value from a range. We used `rc-slider` package to create Slider component.
- * See their [documentation](https://slider-react-component.vercel.app/) for more info.
- */
 export default function RangeSlider({
   size = 'md',
-  color = 'primary',
   className,
   ...props
 }: RangeSliderProps) {
+  const { container: containerClass } = rangeSlider({ size });
+
   return (
     <Slider
-      className={cn(
-        classes.base,
-        classes.size[size],
-        classes.color[color],
-        className
-      )}
+      className={cn(containerClass(), className)}
       {...props}
     />
   );

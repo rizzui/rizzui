@@ -1,36 +1,20 @@
-import React from "react";
-import { cn, Input, InputProps } from "rizzui";
-import DatePicker, { type DatePickerProps } from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { CalendarIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import React from 'react';
+import { tv } from 'tailwind-variants';
+import { cn, Input, InputProps } from 'rizzui';
+import DatePicker, { type DatePickerProps } from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { CalendarIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
-const calendarContainerClasses = {
-  base: "[&.react-datepicker]:!shadow-lg [&.react-datepicker]:!border-gray-100 [&.react-datepicker]:!rounded-md ",
-  monthContainer: {
-    padding: "[&.react-datepicker>div]:!pt-5 [&.react-datepicker>div]:!pb-3",
+const datePicker = tv({
+  slots: {
+    calendar: '[&.react-datepicker]:!shadow-lg [&.react-datepicker]:!border-[var(--border-color)] [&.react-datepicker]:!rounded-[var(--border-radius)]',
+    monthContainer: '[&.react-datepicker>div]:!pt-5 [&.react-datepicker>div]:!pb-3',
+    prevNextButton: '[&.react-datepicker>button]:!items-baseline [&.react-datepicker>button]:!top-7 [&.react-datepicker>button]:!border [&.react-datepicker>button]:!border-solid [&.react-datepicker>button]:!border-[var(--border-color)] [&.react-datepicker>button]:!rounded-[var(--border-radius)] [&.react-datepicker>button]:!h-[22px] [&.react-datepicker>button]:!w-[22px] hover:[&.react-datepicker>button]:!border-[var(--text-primary)] [&.react-datepicker>button:hover>span::before]:!border-[var(--text-primary)]',
+    prevNextButtonChild: '[&.react-datepicker>button>span]:!top-0 [&.react-datepicker>button>span]:!before:border-t-[1.5px] [&.react-datepicker>button>span]:!before:border-r-[1.5px] [&.react-datepicker>button>span]:!before:border-[var(--muted-foreground)] [&.react-datepicker>button>span]:!before:h-[7px] [&.react-datepicker>button>span]:!before:w-[7px]',
+    timeOnly: '[&.react-datepicker--time-only>div]:!pr-0 [&.react-datepicker--time-only>div]:!w-28',
+    popper: '[&>svg]:!fill-[var(--background)] dark:[&>svg]:!fill-[var(--muted)] [&>svg]:!stroke-[var(--border-color)] dark:[&>svg]:!stroke-[var(--muted)] dark:[&>svg]:!text-[var(--muted)]',
   },
-};
-
-const prevNextButtonClasses = {
-  base: "[&.react-datepicker>button]:!items-baseline [&.react-datepicker>button]:!top-7",
-  border:
-    "[&.react-datepicker>button]:!border [&.react-datepicker>button]:!border-solid [&.react-datepicker>button]:!border-gray-300 [&.react-datepicker>button]:!rounded-md",
-  size: "[&.react-datepicker>button]:!h-[22px] [&.react-datepicker>button]:!w-[22px] hover:[&.react-datepicker>button]:!border-gray-900 [&.react-datepicker>button:hover>span::before]:!border-gray-900",
-  children: {
-    position: "[&.react-datepicker>button>span]:!top-0",
-    border:
-      "[&.react-datepicker>button>span]:!before:border-t-[1.5px] [&.react-datepicker>button>span]:!before:border-r-[1.5px] [&.react-datepicker>button>span]:!before:border-gray-400",
-    size: "[&.react-datepicker>button>span]:!before:h-[7px] [&.react-datepicker>button>span]:!before:w-[7px]",
-  },
-};
-
-const timeOnlyClasses = {
-  base: "[&.react-datepicker--time-only>div]:!pr-0 [&.react-datepicker--time-only>div]:!w-28",
-};
-
-const popperClasses = {
-  base: "[&>svg]:!fill-white dark:[&>svg]:!fill-gray-100 [&>svg]:!stroke-gray-300 dark:[&>svg]:!stroke-muted dark:[&>svg]:!text-muted",
-};
+});
 
 export type ReactDatePickerProps = DatePickerProps & {
   inputProps?: InputProps;
@@ -48,15 +32,25 @@ const ReactDatePicker = ({
   const [isCalenderOpen, setIsCalenderOpen] = React.useState(false);
   const handleCalenderOpen = () => setIsCalenderOpen(true);
   const handleCalenderClose = () => setIsCalenderOpen(false);
+
+  const {
+    calendar: calendarClass,
+    monthContainer: monthContainerClass,
+    prevNextButton: prevNextButtonClass,
+    prevNextButtonChild: prevNextButtonChildClass,
+    timeOnly: timeOnlyClass,
+    popper: popperClass,
+  } = datePicker();
+
   return (
     <DatePicker
       customInput={
         customInput || (
           <Input
-            prefix={<CalendarIcon className="w-5 h-5 text-gray-500" />}
+            prefix={<CalendarIcon className="w-5 h-5 text-[var(--muted-foreground)]" />}
             suffix={
               <ChevronDownIcon
-                className={cn("h-4 w-4 text-gray-500 transition", isCalenderOpen && "rotate-180")}
+                className={cn('h-4 w-4 text-[var(--muted-foreground)] transition', isCalenderOpen && 'rotate-180')}
               />
             }
             {...inputProps}
@@ -66,24 +60,20 @@ const ReactDatePicker = ({
       onCalendarOpen={onCalendarOpen || handleCalenderOpen}
       onCalendarClose={onCalendarClose || handleCalenderClose}
       calendarClassName={cn(
-        calendarContainerClasses.base,
-        calendarContainerClasses.monthContainer.padding,
-        prevNextButtonClasses.base,
-        prevNextButtonClasses.border,
-        prevNextButtonClasses.size,
-        prevNextButtonClasses.children.position,
-        prevNextButtonClasses.children.border,
-        prevNextButtonClasses.children.size,
-        timeOnlyClasses.base,
+        calendarClass(),
+        monthContainerClass(),
+        prevNextButtonClass(),
+        prevNextButtonChildClass(),
+        timeOnlyClass(),
         calendarClassName
       )}
-      popperClassName={cn(popperClasses.base, popperClassName)}
+      popperClassName={cn(popperClass(), popperClassName)}
       {...props}
     />
   );
 };
 
-ReactDatePicker.displayName = "ReactDatePicker";
+ReactDatePicker.displayName = 'ReactDatePicker';
 export default ReactDatePicker;
 
 export function DatePickerDefault() {

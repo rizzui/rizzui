@@ -9,12 +9,20 @@ import NpmIcon from '@site/src/components/icons/npm-icon';
 import YarnIcon from '@site/src/components/icons/yarn-icon';
 import PnpmIcon from '@site/src/components/icons/pnpm-icon';
 import BunIcon from '@site/src/components/icons/bun-icon';
+import { Badge } from 'rizzui/badge';
 
 # Dark Mode
 
 Adding dark mode to your Next.js app, it's a one-time process. We use [next-themes](https://www.npmjs.com/package/next-themes) and [CSS variables](#configure-globalscss) for a seamless dark mode experience.
 
-## Install next-themes
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 1
+  </Badge>
+  <span>
+    Install <strong>next-themes</strong>
+  </span>
+</div>
 
 Install [next-themes](https://www.npmjs.com/package/next-themes) by running the following command:
 
@@ -62,9 +70,16 @@ Install [next-themes](https://www.npmjs.com/package/next-themes) by running the 
   </TabItem>
 </Tabs>
 
-## Create a theme provider
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 2
+  </Badge>
+  <span>
+    Create a <strong>theme provider</strong>
+  </span>
+</div>
 
-Create a theme provider component, **components/theme-provider.tsx**
+Create a theme provider component, <strong>components/theme-provider.tsx</strong>
 
 ```tsx theme-provider.tsx
 'use client';
@@ -84,9 +99,16 @@ export function ThemeProvider({ children }: React.PropsWithChildren<{}>) {
 }
 ```
 
-## Wrap your root layout
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 3
+  </Badge>
+  <span>
+    Wrap your <strong>root layout</strong>
+  </span>
+</div>
 
-Add the **ThemeProvider** component to your root layout, **app/layout.tsx**
+Add the <strong>ThemeProvider</strong> component to your root layout, <strong>app/layout.tsx</strong>
 
 ```tsx layout.tsx
 import { ThemeProvider } from '@/components/theme-provider';
@@ -114,16 +136,24 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 }
 ```
 
-## Add theme-switcher
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 4
+  </Badge>
+  <span>
+    Add <strong>theme-switcher</strong>
+  </span>
+</div>
 
-Add a theme switcher components, **components/theme-switcher.tsx**
+Add a theme switcher components, <strong>components/theme-switcher.tsx</strong>
 
 ```tsx theme-switcher.tsx
 'use client';
 
 import React from 'react';
 import { useTheme } from 'next-themes';
-import { ActionIcon, DropdownMenu } from 'rizzui';
+import { ActionIcon } from 'rizzui/action-icon';
+import { DropdownMenu } from 'rizzui/dropdown';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 export function ThemeSwitcher() {
@@ -148,9 +178,16 @@ export function ThemeSwitcher() {
 }
 ```
 
-## Configure globals.css
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 5
+  </Badge>
+  <span>
+    Configure <strong>globals.css</strong>
+  </span>
+</div>
 
-RizzUI 2.0 uses **Tailwind CSS v4** with the modern OKLCH color space for better color perception. Create or update your `app/globals.css`:
+RizzUI 2.0 uses <strong>Tailwind CSS v4</strong> with the modern OKLCH color space for better color perception. Create or update your <code>app/globals.css</code>:
 
 ```css title=globals.css
 /* Import Tailwind CSS v4 */
@@ -300,9 +337,16 @@ RizzUI 2.0 uses **Tailwind CSS v4** with the modern OKLCH color space for better
 
 **Note:** use our theming tools to customize these [CSS variables](/docs/guide/theming#theme-tokens)
 
-## Configure PostCSS
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 6
+  </Badge>
+  <span>
+    Configure <strong>PostCSS</strong>
+  </span>
+</div>
 
-Create or update your `postcss.config.mjs`:
+Create or update your <code>postcss.config.mjs</code>:
 
 ```js title=postcss.config.mjs
 const config = {

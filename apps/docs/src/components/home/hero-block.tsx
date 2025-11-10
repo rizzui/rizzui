@@ -4,7 +4,7 @@ import { Button } from 'rizzui/button';
 import { Title, Text } from 'rizzui/typography';
 import { cn } from 'rizzui/cn';
 import { GovernfulLogo } from '../icons/governful-logo';
-import { TrueBeepLogo } from '../icons/truebeep-logo';
+// import { TrueBeepLogo } from '../icons/truebeep-logo';
 import { RedQLogo } from '../icons/redq-logo';
 import { ProaLogo } from '../icons/proa-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
@@ -22,11 +22,11 @@ export default function HeroBlock() {
     <section className="py-16 md:py-20 lg:py-32 2xl:py-36 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full border-b border-gray-100/90">
       {/* Dashed Top Fade Grid */}
       <div
-        className="absolute inset-0 z-0 -mt-2"
+        className="absolute inset-0 z-0 -mt-2 opacity-90 dark:opacity-50"
         style={{
           backgroundImage: `
-        linear-gradient(to right, #e7e5e4 1px, transparent 1px),
-        linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+        linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--border-color) 1px, transparent 1px)
       `,
           backgroundSize: '20px 20px',
           backgroundPosition: '0 0, 0 0',
@@ -75,6 +75,7 @@ export default function HeroBlock() {
             badgeText="⚡ v2.0.0"
             highlightedText=" released"
             highlightedTextClassName="ml-1.5"
+            // badgeClassName="dark:bg-[#efefef]"
             className="mb-6 md:!mb-7 mx-auto border border-border [box-shadow:0_1px_0_var(--border-color)]"
           >
             — upgraded for React 19 and beyond.
@@ -102,7 +103,7 @@ export default function HeroBlock() {
             <a
               target="_blank"
               href="https://github.com/rizzui/rizzui"
-              className="inline-flex items-center hover:!no-underline"
+              className="inline-flex items-center hover:!no-underline outline-none focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-offset-background focus:ring-primary rounded-[var(--border-radius)]"
               rel="noreferrer noopener"
             >
               <Button
@@ -122,8 +123,8 @@ export default function HeroBlock() {
             </Text>
             <div className="flex items-center justify-center gap-5 md:gap-5 mt-5 lg:gap-8 2xl:gap-10">
               <RedQLogo className="w-auto h-5 text-primary filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0" />
-              <GovernfulLogo className="w-auto h-7 filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0" />
-              <ProaLogo className="w-auto h-[18px] text-primary filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0" />
+              <GovernfulLogo className="w-auto h-7 filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0 dark:invert" />
+              <ProaLogo className="w-auto h-[18px] text-primary filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0 dark:invert" />
               {/* <TrueBeepLogo className="w-auto h-7 filter grayscale opacity-70 hover:opacity-100 transition-all hover:grayscale-0" /> */}
             </div>
           </div>

@@ -17,7 +17,7 @@ Listboxes are a great foundation for building custom, accessible Multi-Select me
 ```tsx
 "use client"; 
 
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui/multi-select";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -34,7 +34,7 @@ The default style of **MultiSelect** component.
 "use client"; 
 
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui/multi-select";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -70,7 +70,7 @@ You can clear **MultiSelect** values using **clearable** property.
 "use client"; 
 
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui/multi-select";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -108,7 +108,8 @@ Here is the custom option **MultiSelect** example.
 "use client"; 
 
 import { useState } from 'react'
-import { MultiSelect, cn } from "rizzui";
+import { MultiSelect } from "rizzui/multi-select";
+import { cn } from "rizzui";
 
 const customOptions = [
   {
@@ -192,7 +193,8 @@ function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) 
 "use client"; 
 
 import { useState } from 'react'
-import { MultiSelect, cn } from "rizzui";
+import { MultiSelect } from "rizzui/multi-select";
+import { cn } from "rizzui";
 
 const customOptions = [
   {
@@ -301,7 +303,7 @@ You can hide **MultiSelect** options using **hideSelectedOptions** property.
 "use client"; 
 
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui/multi-select";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -341,7 +343,7 @@ You can use custom option key of **MultiSelect** options as value property. In t
 "use client"; 
 
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui/multi-select";
 
 const options = [
   { label: "Apple 🍎", value: "apple", customOptionKey: "movie" },
@@ -378,7 +380,7 @@ You can search inside **MultiSelect** options.
 "use client"; 
 
 import { useState } from 'react'
-import { MultiSelect } from "rizzui";
+import { MultiSelect } from "rizzui/multi-select";
 
 const options = [
   { label: "Apple 🍎", value: "apple" },
@@ -417,7 +419,8 @@ In this example, we are going to use **React Hook Form** and **Zod** for validat
 "use client"; 
 
 import { z } from "zod";
-import { MultiSelect, Button } from "rizzui";
+import { MultiSelect } from "rizzui/multi-select";
+import { Button } from "rizzui/button";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

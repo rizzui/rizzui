@@ -1,9 +1,9 @@
-import React from "react";
-import { Tooltip } from "rizzui";
+import React from 'react';
+import { Tooltip } from 'rizzui';
 import {
   ClipboardDocumentIcon,
   ClipboardDocumentCheckIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 interface CopyButtonProps {
   value: string;
@@ -29,15 +29,14 @@ export function CopyButton({ value, src }: CopyButtonProps) {
     <Tooltip
       size="sm"
       color="invert"
-      rounded="pill"
       placement="top"
-      content={hasCopied ? "Copied!" : "Copy to clipboard"}
+      content={hasCopied ? 'Copied!' : 'Copy to clipboard'}
       className="font-medium"
     >
       {hasCopied ? (
         <ClipboardDocumentCheckIcon
           strokeWidth={1.6}
-          className="size-[17px] ms-5 cursor-pointer"
+          className="size-[17px] ms-2 cursor-pointer"
         />
       ) : (
         <ClipboardDocumentIcon
@@ -48,7 +47,7 @@ export function CopyButton({ value, src }: CopyButtonProps) {
             });
             setHasCopied(true);
           }}
-          className="size-[17px] ms-5 cursor-pointer"
+          className="size-[17px] ms-2 cursor-pointer"
         />
       )}
     </Tooltip>

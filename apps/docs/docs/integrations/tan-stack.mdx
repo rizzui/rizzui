@@ -1,14 +1,21 @@
 ---
-sidebar_position: 3
+sidebar_position: 6
 ---
 
-import Paper from "@site/src/components/paper";
-import { Badge } from "rizzui";
-import TanStackTableDemo from "@site/src/components/integrations/tan-stack-table";
+import Paper from '@site/src/components/paper';
+import { Badge } from 'rizzui/badge';
+import TanStackTableDemo from '@site/src/components/integrations/tan-stack-table';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import NpmIcon from '@site/src/components/icons/npm-icon';
+import YarnIcon from '@site/src/components/icons/yarn-icon';
+import PnpmIcon from '@site/src/components/icons/pnpm-icon';
+import BunIcon from '@site/src/components/icons/bun-icon';
 
 # TanStack Table
 
-HeadlessUI components for building highly interactive and accessible tables. In these example we have used our own **Table** components with **TanStack** table.
+A powerful, headless table component built on top of **TanStack Table** (formerly React Table). Seamlessly integrated with RizzUI's design system, this component provides a flexible and performant solution for building complex, interactive data tables with sorting, filtering, pagination, and row selection.
 
 <div className="mb-14" />
 
@@ -18,29 +25,98 @@ HeadlessUI components for building highly interactive and accessible tables. In 
 
 <div className="mb-16" />
 
+## Features
+
+- 🎯 **Headless Architecture** - Full control over table rendering and styling
+- 🔍 **Advanced Filtering** - Global search and column-specific filters
+- 📊 **Sorting & Pagination** - Built-in sorting and pagination capabilities
+- ✅ **Row Selection** - Single and multi-row selection with checkboxes
+- 🎨 **Theme Integration** - Fully integrated with RizzUI theme colors and design tokens
+- 🌓 **Dark Mode Support** - Automatic dark mode styling using RizzUI theme variables
+- 📱 **Responsive** - Works seamlessly across all device sizes
+- ⚡ **Performant** - Optimized for large datasets with virtual scrolling support
+- 🎛️ **Column Visibility** - Toggle column visibility dynamically
+- ♿ **Accessible** - Built with accessibility best practices
+
+<div className="mb-16" />
+
 ## Installation
 
 <hr />
 
-1. Install the **@tanstack/react-table** package.
+Before using the TanStack Table component, you'll need to install the required dependency:
+
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 1
+  </Badge>
+  <span>
+    Install the <strong>@tanstack/react-table</strong> package.
+  </span>
+</div>
 
 <div className="mb-4" />
 
-```bash
-npm install @tanstack/react-table
-```
+<Tabs groupId="package-manager">
+  <TabItem
+    value="npm"
+    label={
+      <div className="flex items-center gap-2">
+        <NpmIcon className="size-5" /> npm
+      </div>
+    }
+    default
+  >
+    <CodeBlock language="bash">{`npm install @tanstack/react-table`}</CodeBlock>
+  </TabItem>
+  <TabItem
+    value="yarn"
+    label={
+      <div className="flex items-center gap-2">
+        <YarnIcon className="size-5" /> yarn
+      </div>
+    }
+  >
+    <CodeBlock language="bash">{`yarn add @tanstack/react-table`}</CodeBlock>
+  </TabItem>
+  <TabItem
+    value="pnpm"
+    label={
+      <div className="flex items-center gap-2">
+        <PnpmIcon className="size-5" /> pnpm
+      </div>
+    }
+  >
+    <CodeBlock language="bash">{`pnpm add @tanstack/react-table`}</CodeBlock>
+  </TabItem>
+  <TabItem
+    value="bun"
+    label={
+      <div className="flex items-center gap-2">
+        <BunIcon className="size-5" /> bun
+      </div>
+    }
+  >
+    <CodeBlock language="bash">{`bun add @tanstack/react-table`}</CodeBlock>
+  </TabItem>
+</Tabs>
 
-<div className="mb-4" />
+<div className="mb-14" />
 
-2. Create a table component **table.tsx**
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 2
+  </Badge>
+  <span>
+    Create a table component, <strong>table.tsx</strong>
+  </span>
+</div>
 
-<div className="mb-4" />
-
-```ts
-import React from "react";
-import { Table } from "rizzui";
-import { type Person } from "./data";
-import { flexRender, Table as TanStackTableTypes } from "@tanstack/react-table";
+```tsx
+import React from 'react';
+import { Table } from 'rizzui/table';
+import { type Person } from './data';
+import { flexRender, Table as TanStackTableTypes } from '@tanstack/react-table';
 
 type TablePropsTypes = {
   table: TanStackTableTypes<Person>;
@@ -49,7 +125,9 @@ type TablePropsTypes = {
 export default function MainTable({ table }: TablePropsTypes) {
   const footers = table
     .getFooterGroups()
-    .map((group) => group.headers.map((header) => header.column.columnDef.footer))
+    .map((group) =>
+      group.headers.map((header) => header.column.columnDef.footer)
+    )
     .flat()
     .filter(Boolean);
 
@@ -61,7 +139,7 @@ export default function MainTable({ table }: TablePropsTypes) {
           width: table.getTotalSize(),
         }}
       >
-        <Table.Header className="!bg-gray-100 !border-y-0">
+        <Table.Header className="!bg-[var(--muted)] !border-y-0">
           {table.getHeaderGroups().map((headerGroup) => {
             return (
               <Table.Row key={headerGroup.id}>
@@ -77,7 +155,10 @@ export default function MainTable({ table }: TablePropsTypes) {
                     >
                       {header.isPlaceholder
                         ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                     </Table.Head>
                   );
                 })}
@@ -111,7 +192,12 @@ export default function MainTable({ table }: TablePropsTypes) {
                   return (
                     <Table.Cell key={footer.id}>
                       {footer.isPlaceholder ? null : (
-                        <>{flexRender(footer.column.columnDef.footer, footer.getContext())}</>
+                        <>
+                          {flexRender(
+                            footer.column.columnDef.footer,
+                            footer.getContext()
+                          )}
+                        </>
                       )}
                     </Table.Cell>
                   );
@@ -126,26 +212,36 @@ export default function MainTable({ table }: TablePropsTypes) {
 }
 ```
 
-3. Create a **column.tsx** file
+<div className="mb-14" />
 
-<div className="mb-4" />
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 3
+  </Badge>
+  <span>
+    Create a <strong>column.tsx</strong> file to define your table columns.
+  </span>
+</div>
 
-```ts
-import { type Person } from "./data";
-import { ActionIcon, Badge, Button, Checkbox, Popover, Text } from "rizzui";
-import { createColumnHelper } from "@tanstack/react-table";
-import { AvatarCard, DateCell, getStatusBadge } from "./utils";
+```tsx
+import { type Person } from './data';
+import { ActionIcon } from 'rizzui/action-icon';
+import { Button } from 'rizzui/button';
+import { Checkbox } from 'rizzui/checkbox';
+import { Popover } from 'rizzui/popover';
+import { createColumnHelper } from '@tanstack/react-table';
+import { AvatarCard, DateCell, getStatusBadge } from './utils';
 import {
   EllipsisHorizontalIcon,
   EyeIcon,
   PencilIcon,
   TrashIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 const columnHelper = createColumnHelper<Person>();
 
 export const defaultColumns = [
-  columnHelper.accessor("id", {
+  columnHelper.accessor('id', {
     size: 50,
     header: ({ table }) => (
       <Checkbox
@@ -153,6 +249,7 @@ export const defaultColumns = [
         inputClassName="bg-white"
         aria-label="Select all rows"
         checked={table.getIsAllPageRowsSelected()}
+        indeterminate={table.getIsSomeRowsSelected()}
         onChange={() => table.toggleAllPageRowsSelected()}
       />
     ),
@@ -161,14 +258,15 @@ export const defaultColumns = [
         className="ps-2"
         aria-label="Select row"
         checked={row.getIsSelected()}
+        indeterminate={row.getIsSomeSelected()}
         onChange={() => row.toggleSelected()}
       />
     ),
   }),
 
-  columnHelper.accessor("name", {
+  columnHelper.accessor('name', {
     size: 280,
-    header: "Customer",
+    header: 'Customer',
     cell: ({ row: { original } }) => (
       <AvatarCard
         src={original.avatar}
@@ -178,60 +276,58 @@ export const defaultColumns = [
     ),
   }),
 
-  columnHelper.accessor("dueDate", {
+  columnHelper.accessor('dueDate', {
     size: 180,
-    header: "Due Date",
+    header: 'Due Date',
     cell: ({ row }) => <DateCell date={new Date(row.original.dueDate)} />,
   }),
 
-  columnHelper.accessor("amount", {
+  columnHelper.accessor('amount', {
     size: 120,
-    header: "Amount",
-    cell: ({ row }) => <span className="font-medium">$ {row.original.amount}</span>,
+    header: 'Amount',
+    cell: ({ row }) => (
+      <span className="font-medium">$ {row.original.amount}</span>
+    ),
   }),
 
-  columnHelper.accessor("status", {
+  columnHelper.accessor('status', {
     size: 120,
-    header: "Status",
+    header: 'Status',
     cell: (info) => getStatusBadge(info.renderValue()!),
   }),
 
-  columnHelper.accessor("avatar", {
+  columnHelper.accessor('avatar', {
     size: 120,
-    header: "",
+    header: '',
     cell: () => (
       <div className="w-full flex justify-center">
-        <Popover
-          shadow="sm"
-          placement="bottom-end"
-        >
+        <Popover shadow="sm" placement="bottom-end">
           <Popover.Trigger>
-            <ActionIcon variant="text">
-              <EllipsisHorizontalIcon
-                strokeWidth={2}
-                className="size-5"
-              />
+            <ActionIcon as="span" variant="text" className="h-auto p-0">
+              <EllipsisHorizontalIcon strokeWidth={2} className="size-5" />
             </ActionIcon>
           </Popover.Trigger>
-          <Popover.Content className="max-w-40 grid grid-cols-1 gap-1 p-1">
+          <Popover.Content className="p-1 flex flex-col">
             <Button
+              size="sm"
               variant="text"
-              className="hover:bg-gray-100 gap-2"
+              className="hover:bg-[var(--muted)] gap-2 justify-start"
             >
-              <PencilIcon className="size-4" /> Edit
+              <PencilIcon className="size-3.5" /> Edit
             </Button>
             <Button
+              size="sm"
               variant="text"
-              className="hover:bg-gray-100 gap-2"
+              className="hover:bg-[var(--muted)] gap-2 justify-start"
             >
-              <EyeIcon className="size-4" /> View
+              <EyeIcon className="size-3.5" /> View
             </Button>
             <Button
+              size="sm"
               variant="text"
-              color="danger"
-              className="hover:bg-gray-100 gap-2"
+              className="hover:bg-[var(--muted)] gap-2 justify-start"
             >
-              <TrashIcon className="size-4" /> Delete
+              <TrashIcon className="size-3.5" /> Delete
             </Button>
           </Popover.Content>
         </Popover>
@@ -239,14 +335,21 @@ export const defaultColumns = [
     ),
   }),
 ];
-
 ```
 
-4. Create a **data.ts** file
+<div className="mb-14" />
 
-<div className="mb-4" />
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 4
+  </Badge>
+  <span>
+    Create a <strong>data.ts</strong> file to define your data structure and
+    sample data.
+  </span>
+</div>
 
-```ts
+```tsx
 export type Person = {
   id: string;
   name: string;
@@ -260,227 +363,47 @@ export type Person = {
 
 export const defaultData = [
   {
-    id: "62447",
-    name: "Francis Sanford MD",
-    userName: "George33",
-    avatar: "https://randomuser.me/api/portraits/women/8.jpg",
-    email: "Marya.Barrow@yahoo.com",
-    dueDate: "2023-10-18T13:24:00.760Z",
+    id: '62447',
+    name: 'Francis Sanford MD',
+    userName: 'George33',
+    avatar: 'https://randomuser.me/api/portraits/women/8.jpg',
+    email: 'Marya.Barrow@yahoo.com',
+    dueDate: '2023-10-18T13:24:00.760Z',
     amount: 544,
-    status: "Paid",
+    status: 'Paid',
   },
-  {
-    id: "86740",
-    name: "Lucia Kshlerin",
-    userName: "Kenyon_Goldner56",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-    email: "Mason_Davis4@yahoo.com",
-    dueDate: "2023-07-18T01:06:16.095Z",
-    amount: 560,
-    status: "Pending",
-  },
-  {
-    id: "42548",
-    name: "Byron Hoppe III",
-    userName: "Walton.Hane98",
-    avatar: "https://randomuser.me/api/portraits/men/75.jpg",
-    email: "Jayda_Schill35@yahoo.com",
-    dueDate: "2024-12-18T15:32:21.317Z",
-    amount: 249,
-    status: "Pending",
-  },
-  {
-    id: "97024",
-    name: "Camille Jenkins",
-    userName: "Dalton_Von55",
-    avatar: "https://randomuser.me/api/portraits/men/9.jpg",
-    email: "Retha.Lehne47@hotmail.com",
-    dueDate: "2024-06-30T19:06:03.018Z",
-    amount: 255,
-    status: "Draft",
-  },
-  {
-    id: "14608",
-    name: "Kelli Mitchell",
-    userName: "Iva.Denesik",
-    avatar: "https://randomuser.me/api/portraits/men/22.jpg",
-    email: "Guise.Champ@hotmail.com",
-    dueDate: "2025-07-24T18:45:02.179Z",
-    amount: 329,
-    status: "Paid",
-  },
-  {
-    id: "95656",
-    name: "Randall Kuhic",
-    userName: "Henry_Quigley0",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    email: "Simeon93@yahoo.com",
-    dueDate: "2023-11-02T00:20:47.253Z",
-    amount: 402,
-    status: "Paid",
-  },
-  {
-    id: "73151",
-    name: "Jody Carroll",
-    userName: "Lavon32",
-    avatar: "https://randomuser.me/api/portraits/women/8.jpg",
-    email: "Frieda_Renne@gmail.com",
-    dueDate: "2024-01-03T02:53:29.596Z",
-    amount: 977,
-    status: "Overdue",
-  },
-  {
-    id: "57931",
-    name: "Jill Russel",
-    userName: "Abdiel.Terry",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-    email: "Cleora.Murra@hotmail.com",
-    dueDate: "2025-01-23T08:52:39.081Z",
-    amount: 736,
-    status: "Paid",
-  },
-  {
-    id: "36515",
-    name: "Genevieve Hammes",
-    userName: "Kian_Huels",
-    avatar: "https://randomuser.me/api/portraits/men/75.jpg",
-    email: "Bernard63@yahoo.com",
-    dueDate: "2024-07-29T18:18:19.193Z",
-    amount: 755,
-    status: "Draft",
-  },
-  {
-    id: "34893",
-    name: "Alejandro Reichert",
-    userName: "Timothy91",
-    avatar: "https://randomuser.me/api/portraits/men/9.jpg",
-    email: "Wava.Mulle47@gmail.com",
-    dueDate: "2023-05-04T04:33:47.908Z",
-    amount: 240,
-    status: "Draft",
-  },
-  {
-    id: "66356",
-    name: "Ricardo Kling",
-    userName: "Celia.Shanahan86",
-    avatar: "https://randomuser.me/api/portraits/men/22.jpg",
-    email: "Gene73@yahoo.com",
-    dueDate: "2025-04-16T11:49:15.276Z",
-    amount: 852,
-    status: "Overdue",
-  },
-  {
-    id: "81467",
-    name: "Carl Bode",
-    userName: "Pablo_Thompson",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    email: "Virgil.Skile@hotmail.com",
-    dueDate: "2024-05-28T04:44:49.629Z",
-    amount: 295,
-    status: "Draft",
-  },
-  {
-    id: "14042",
-    name: "Sherry Weber",
-    userName: "Shane39",
-    avatar: "https://randomuser.me/api/portraits/women/8.jpg",
-    email: "Aidan22@hotmail.com",
-    dueDate: "2025-11-30T00:34:34.822Z",
-    amount: 318,
-    status: "Paid",
-  },
-  {
-    id: "49825",
-    name: "Erika O'Reilly",
-    userName: "Hazle_Bednar95",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-    email: "Ardith57@yahoo.com",
-    dueDate: "2024-05-17T06:24:33.253Z",
-    amount: 463,
-    status: "Overdue",
-  },
-  {
-    id: "81929",
-    name: "Lillian Anderson",
-    userName: "Cyrus_Hettinger",
-    avatar: "https://randomuser.me/api/portraits/men/75.jpg",
-    email: "Aletha_Watrs87@gmail.com",
-    dueDate: "2023-12-29T04:41:54.007Z",
-    amount: 196,
-    status: "Pending",
-  },
-  {
-    id: "25086",
-    name: "Connie Braun",
-    userName: "Ramona99",
-    avatar: "https://randomuser.me/api/portraits/men/9.jpg",
-    email: "Mervin.Ruerford@hotmail.com",
-    dueDate: "2024-12-27T21:39:17.142Z",
-    amount: 384,
-    status: "Draft",
-  },
-  {
-    id: "79737",
-    name: "Mattie Miller",
-    userName: "Madison_MacGyver-Lesch52",
-    avatar: "https://randomuser.me/api/portraits/men/22.jpg",
-    email: "Bianka30@yahoo.com",
-    dueDate: "2025-06-27T15:53:33.802Z",
-    amount: 812,
-    status: "Paid",
-  },
-  {
-    id: "66747",
-    name: "Shelley Lind-VonRueden",
-    userName: "Issac_West",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    email: "Destini_Wiamson34@yahoo.com",
-    dueDate: "2024-12-29T09:04:48.858Z",
-    amount: 596,
-    status: "Pending",
-  },
-  {
-    id: "44937",
-    name: "Manuel Langworth",
-    userName: "Kelley71",
-    avatar: "https://randomuser.me/api/portraits/men/75.jpg",
-    email: "Philip.OKfe94@gmail.com",
-    dueDate: "2025-12-20T09:41:31.402Z",
-    amount: 545,
-    status: "Pending",
-  },
-  {
-    id: "11420",
-    name: "Dr. Guillermo Huels Jr.",
-    userName: "Linnie.Hane",
-    avatar: "https://randomuser.me/api/portraits/women/8.jpg",
-    email: "Ricky41@yahoo.com",
-    dueDate: "2023-03-26T14:06:10.093Z",
-    amount: 537,
-    status: "Paid",
-  },
+  // ... more data
 ];
 ```
 
-5. Create a **pagination.tsx** file
+<div className="mb-14" />
 
-<div className="mb-4" />
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 5
+  </Badge>
+  <span>
+    Create a <strong>pagination.tsx</strong> file for table pagination controls.
+  </span>
+</div>
 
-```ts
-import { ActionIcon, Select, SelectOption, Text } from "rizzui";
-import { type Table as ReactTableType } from "@tanstack/react-table";
+```tsx
+import { ActionIcon } from 'rizzui/action-icon';
+import { Select, SelectOption } from 'rizzui/select';
+import { Text } from 'rizzui/typography';
+import { type Table as ReactTableType } from '@tanstack/react-table';
 import {
   ChevronDoubleLeftIcon,
   ChevronDoubleRightIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-} from "@heroicons/react/20/solid";
+} from '@heroicons/react/20/solid';
 
 const options = [
-  { value: 5, label: "5" },
-  { value: 10, label: "10" },
-  { value: 15, label: "15" },
-  { value: 20, label: "20" },
+  { value: 5, label: '5' },
+  { value: 10, label: '10' },
+  { value: 15, label: '15' },
+  { value: 20, label: '20' },
 ];
 
 export default function TablePagination<TData extends Record<string, any>>({
@@ -492,62 +415,74 @@ export default function TablePagination<TData extends Record<string, any>>({
     <div className="flex w-full items-center justify-between @container">
       <div className="hidden @2xl:block">
         <Text>
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
+          {table.getFilteredSelectedRowModel().rows.length} of{' '}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </Text>
       </div>
       <div className="flex w-full items-center justify-between gap-6 @2xl:w-auto @2xl:gap-12">
         <div className="flex items-center gap-4">
-          <Text className="hidden font-medium text-gray-900 @md:block">Rows per page</Text>
+          <Text className="hidden text-sm font-medium text-[var(--text-secondary)] @md:block">
+            Rows per page
+          </Text>
           <Select
+            size="sm"
             options={options}
-            className="w-[70px]"
+            className="w-[52px]"
             value={table.getState().pagination.pageSize}
             onChange={(v: SelectOption) => {
               table.setPageSize(Number(v.value));
             }}
-            selectClassName="font-semibold text-sm ring-0 shadow-sm h-9"
+            selectClassName="font-semibold text-sm ring-0 shadow-sm"
             optionClassName="justify-center font-medium"
+            suffixClassName="[&_svg]:!size-3"
           />
         </div>
-        <Text className="hidden font-medium text-gray-900 @3xl:block">
-          Page {table.getState().pagination.pageIndex + 1} of{" "}
+        <Text className="hidden text-sm font-medium text-[var(--text-secondary)] @3xl:block">
+          Page {table.getState().pagination.pageIndex + 1} of{' '}
           {table.getPageCount().toLocaleString()}
         </Text>
         <div className="grid grid-cols-4 gap-2">
           <ActionIcon
+            size="sm"
+            rounded="lg"
             variant="outline"
             aria-label="Go to first page"
             onClick={() => table.firstPage()}
             disabled={!table.getCanPreviousPage()}
-            className="text-gray-900 shadow-sm disabled:text-gray-400 disabled:shadow-none"
+            className="text-[var(--text-primary)] shadow-sm disabled:text-[var(--muted-foreground)] disabled:shadow-none"
           >
             <ChevronDoubleLeftIcon className="size-5" />
           </ActionIcon>
           <ActionIcon
+            size="sm"
+            rounded="lg"
             variant="outline"
             aria-label="Go to previous page"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className="text-gray-900 shadow-sm disabled:text-gray-400 disabled:shadow-none"
+            className="text-[var(--text-primary)] shadow-sm disabled:text-[var(--muted-foreground)] disabled:shadow-none"
           >
             <ChevronLeftIcon className="size-5" />
           </ActionIcon>
           <ActionIcon
+            size="sm"
+            rounded="lg"
             variant="outline"
             aria-label="Go to next page"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className="text-gray-900 shadow-sm disabled:text-gray-400 disabled:shadow-none"
+            className="text-[var(--text-primary)] shadow-sm disabled:text-[var(--muted-foreground)] disabled:shadow-none"
           >
             <ChevronRightIcon className="size-5" />
           </ActionIcon>
           <ActionIcon
+            size="sm"
+            rounded="lg"
             variant="outline"
             aria-label="Go to last page"
             onClick={() => table.lastPage()}
             disabled={!table.getCanNextPage()}
-            className="text-gray-900 shadow-sm disabled:text-gray-400 disabled:shadow-none"
+            className="text-[var(--text-primary)] shadow-sm disabled:text-[var(--muted-foreground)] disabled:shadow-none"
           >
             <ChevronDoubleRightIcon className="size-5" />
           </ActionIcon>
@@ -558,41 +493,60 @@ export default function TablePagination<TData extends Record<string, any>>({
 }
 ```
 
-6. Create a **toolbar.tsx** file
+<div className="mb-14" />
 
-<div className="mb-4" />
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 6
+  </Badge>
+  <span>
+    Create a <strong>toolbar.tsx</strong> file for table toolbar with search and
+    filters.
+  </span>
+</div>
 
-```ts
-import { ActionIcon, Badge, Button, Checkbox, Input, Popover, Select, Text, Title } from "rizzui";
-import { type Table as ReactTableType } from "@tanstack/react-table";
+```tsx
+import {
+  ActionIcon,
+  Badge,
+  Button,
+  Checkbox,
+  Input,
+  Popover,
+  Select,
+  Text,
+  Title,
+} from 'rizzui';
+import { type Table as ReactTableType } from '@tanstack/react-table';
 import {
   AdjustmentsHorizontalIcon,
   MagnifyingGlassIcon,
   TrashIcon,
-} from "@heroicons/react/20/solid";
+} from '@heroicons/react/20/solid';
 
 interface TableToolbarProps<T extends Record<string, any>> {
   table: ReactTableType<T>;
 }
 
 const statusOptions = [
-  { label: "Paid", value: "Paid" },
-  { label: "Pending", value: "Pending" },
-  { label: "Draft", value: "Draft" },
+  { label: 'Paid', value: 'Paid' },
+  { label: 'Pending', value: 'Pending' },
+  { label: 'Draft', value: 'Draft' },
 ];
 
 export default function TableToolbar<TData extends Record<string, any>>({
   table,
 }: TableToolbarProps<TData>) {
-  const isFiltered = table.getState().globalFilter || table.getState().columnFilters.length > 0;
+  const isFiltered =
+    table.getState().globalFilter || table.getState().columnFilters.length > 0;
 
   return (
     <div className="flex items-center justify-between w-full mb-4">
       <Input
         type="search"
         placeholder="Search by anything..."
-        value={table.getState().globalFilter ?? ""}
-        onClear={() => table.setGlobalFilter("")}
+        value={table.getState().globalFilter ?? ''}
+        onClear={() => table.setGlobalFilter('')}
         onChange={(e) => table.setGlobalFilter(e.target.value)}
         inputClassName="h-9"
         clearable={true}
@@ -601,17 +555,19 @@ export default function TableToolbar<TData extends Record<string, any>>({
       <div className="flex items-center gap-4">
         <Select
           options={statusOptions}
-          value={table.getColumn("status")?.getFilterValue() ?? []}
-          onChange={(e) => table.getColumn("status")?.setFilterValue(e)}
+          value={table.getColumn('status')?.getFilterValue() ?? []}
+          onChange={(e) => table.getColumn('status')?.setFilterValue(e)}
           getOptionValue={(option: { value: any }) => option.value}
           getOptionDisplayValue={(option: { value: string }) =>
             renderOptionDisplayValue(option.value)
           }
           placeholder="Status..."
-          displayValue={(selected: string) => renderOptionDisplayValue(selected)}
-          className={"w-32"}
+          displayValue={(selected: string) =>
+            renderOptionDisplayValue(selected)
+          }
+          className={'w-32'}
           dropdownClassName="!z-20 h-auto"
-          selectClassName="h-[38px] ring-0"
+          selectClassName="ring-0"
         />
 
         {isFiltered && (
@@ -628,32 +584,26 @@ export default function TableToolbar<TData extends Record<string, any>>({
         )}
 
         {table && (
-          <Popover
-            shadow="sm"
-            placement="bottom-end"
-          >
+          <Popover shadow="sm" placement="bottom-end">
             <Popover.Trigger>
-              <ActionIcon title={"Toggle Columns"}>
+              <ActionIcon title={'Toggle Columns'}>
                 <AdjustmentsHorizontalIcon className="size-[18px]" />
               </ActionIcon>
             </Popover.Trigger>
             <Popover.Content className="z-0">
               <>
-                <Title
-                  as="h6"
-                  className="!mb-4 text-sm font-semibold"
-                >
+                <Title as="h6" className="!mb-4 text-sm font-semibold">
                   Toggle Columns
                 </Title>
                 <div className="grid grid-cols-1 gap-4">
                   {table.getAllLeafColumns().map((column) => {
                     return (
-                      typeof column.columnDef.header === "string" &&
+                      typeof column.columnDef.header === 'string' &&
                       column.columnDef.header.length > 0 && (
                         <Checkbox
                           size="sm"
                           key={column.id}
-                          label={<>{column.columnDef.header}</>}
+                          label={column.columnDef.header}
                           checked={column.getIsVisible()}
                           onChange={column.getToggleVisibilityHandler()}
                           iconClassName="size-4 translate-x-0.5"
@@ -673,59 +623,61 @@ export default function TableToolbar<TData extends Record<string, any>>({
 
 export function renderOptionDisplayValue(value: string) {
   switch (value.toLowerCase()) {
-    case "pending":
+    case 'pending':
       return (
-        <div className="flex items-center">
-          <Badge
-            color="warning"
-            renderAsDot
-          />
-          <Text className="!ms-2 font-medium capitalize text-orange-dark">{value}</Text>
+        <div className="flex items-center gap-2">
+          <Badge color="warning" renderAsDot />
+          <Text className="font-medium capitalize text-orange-dark">
+            {value}
+          </Text>
         </div>
       );
-    case "paid":
+    case 'paid':
       return (
-        <div className="flex items-center">
-          <Badge
-            color="success"
-            renderAsDot
-          />
-          <Text className="!ms-2 font-medium capitalize text-green-dark">{value}</Text>
+        <div className="flex items-center gap-2">
+          <Badge color="success" renderAsDot />
+          <Text className="font-medium capitalize text-green-dark">
+            {value}
+          </Text>
         </div>
       );
-    case "overdue":
+    case 'overdue':
       return (
-        <div className="flex items-center">
-          <Badge
-            color="danger"
-            renderAsDot
-          />
-          <Text className="!ms-2 font-medium capitalize text-red-dark">{value}</Text>
+        <div className="flex items-center gap-2">
+          <Badge color="danger" renderAsDot />
+          <Text className="font-medium capitalize text-red-dark">{value}</Text>
         </div>
       );
     default:
       return (
-        <div className="flex items-center">
-          <Badge
-            renderAsDot
-            className="bg-gray-400"
-          />
-          <Text className="!ms-2 font-medium capitalize text-gray-600">{value}</Text>
+        <div className="flex items-center gap-2">
+          <Badge renderAsDot className="bg-[var(--muted-foreground)]" />
+          <Text className="font-medium capitalize text-[var(--text-secondary)]">
+            {value}
+          </Text>
         </div>
       );
   }
 }
 ```
 
-7. Create a **utils.tsx** file
+<div className="mb-14" />
 
-- **Note:** This file is not required. If you don't need the insider components, you can remove this file. And all the components used in other file.
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 7
+  </Badge>
+  <span>
+    Create a <strong>utils.tsx</strong> file for utility components (optional).
+  </span>
+</div>
 
-<div className="mb-4" />
-
-```ts
-import dayjs from "dayjs";
-import { Avatar, AvatarProps, Badge, cn, Text } from "rizzui";
+```tsx
+import dayjs from 'dayjs';
+import { Avatar, AvatarProps } from 'rizzui/avatar';
+import { Badge } from 'rizzui/badge';
+import { Text } from 'rizzui/typography';
+import { cn } from 'rizzui';
 
 interface AvatarCardProps {
   src: string;
@@ -735,19 +687,25 @@ interface AvatarCardProps {
   avatarProps?: AvatarProps;
 }
 
-export function AvatarCard({ src, name, className, description, avatarProps }: AvatarCardProps) {
+export function AvatarCard({
+  src,
+  name,
+  className,
+  description,
+  avatarProps,
+}: AvatarCardProps) {
   return (
-    <figure className={cn("flex items-center gap-3", className)}>
-      <Avatar
-        name={name}
-        src={src}
-        {...avatarProps}
-      />
+    <figure className={cn('flex items-center gap-3', className)}>
+      <Avatar name={name} src={src} {...avatarProps} />
       <figcaption className="grid gap-0.5">
-        <Text className="font-lexend text-sm font-medium text-gray-900 dark:text-gray-700">
+        <Text className="font-lexend text-sm font-medium text-[var(--text-primary)] dark:text-[var(--text-secondary)]">
           {name}
         </Text>
-        {description && <Text className="!text-[13px] text-gray-500">{description}</Text>}
+        {description && (
+          <Text className="!text-[13px] !leading-normal text-[var(--muted-foreground)]">
+            {description}
+          </Text>
+        )}
       </figcaption>
     </figure>
   );
@@ -767,20 +725,26 @@ export function DateCell({
   className,
   timeClassName,
   dateClassName,
-  dateFormat = "MMMM D, YYYY",
-  timeFormat = "h:mm A",
+  dateFormat = 'MMMM D, YYYY',
+  timeFormat = 'h:mm A',
 }: DateCellProps) {
   return (
-    <div className={cn("grid gap-1", className)}>
+    <div className={cn('grid gap-0', className)}>
       <time
-        dateTime={formatDate(date, "YYYY-MM-DD")}
-        className={cn("font-medium text-gray-700", dateClassName)}
+        dateTime={formatDate(date, 'YYYY-MM-DD')}
+        className={cn(
+          'font-medium text-[var(--text-secondary)]',
+          dateClassName
+        )}
       >
         {formatDate(date, dateFormat)}
       </time>
       <time
-        dateTime={formatDate(date, "HH:mm:ss")}
-        className={cn("!text-[13px] text-gray-500", timeClassName)}
+        dateTime={formatDate(date, 'HH:mm:ss')}
+        className={cn(
+          'text-[13px] text-[var(--muted-foreground)] leading-normal',
+          timeClassName
+        )}
       >
         {formatDate(date, timeFormat)}
       </time>
@@ -788,75 +752,75 @@ export function DateCell({
   );
 }
 
-export function formatDate(date?: Date, format: string = "DD MMM, YYYY"): string {
-  if (!date) return "";
+export function formatDate(
+  date?: Date,
+  format: string = 'DD MMM, YYYY'
+): string {
+  if (!date) return '';
   return dayjs(date).format(format);
 }
 
 export function getStatusBadge(status: string) {
   switch (status?.toLowerCase()) {
-    case "pending":
+    case 'pending':
       return (
-        <div className="flex items-center">
-          <Badge
-            color="warning"
-            renderAsDot
-          />
-          <Text className="!ms-2 font-medium text-orange-dark">{status}</Text>
+        <div className="flex items-center gap-2">
+          <Badge color="warning" renderAsDot />
+          <Text className="font-medium text-orange-dark">{status}</Text>
         </div>
       );
-    case "paid":
+    case 'paid':
       return (
-        <div className="flex items-center">
-          <Badge
-            color="success"
-            renderAsDot
-          />
-          <Text className="!ms-2 font-medium text-green-dark">{status}</Text>
+        <div className="flex items-center gap-2">
+          <Badge color="success" renderAsDot />
+          <Text className="font-medium text-green-dark">{status}</Text>
         </div>
       );
-    case "overdue":
+    case 'overdue':
       return (
-        <div className="flex items-center">
-          <Badge
-            color="danger"
-            renderAsDot
-          />
-          <Text className="!ms-2 font-medium text-red-dark">{status}</Text>
+        <div className="flex items-center gap-2">
+          <Badge color="danger" renderAsDot />
+          <Text className="font-medium text-red-dark">{status}</Text>
         </div>
       );
     default:
       return (
-        <div className="flex items-center">
-          <Badge
-            renderAsDot
-            className="bg-gray-400"
-          />
-          <Text className="!ms-2 font-medium text-gray-600">{status}</Text>
+        <div className="flex items-center gap-2">
+          <Badge renderAsDot className="bg-[var(--muted-foreground)]" />
+          <Text className="font-medium text-[var(--text-secondary)]">
+            {status}
+          </Text>
         </div>
       );
   }
 }
 ```
 
-8. In your page file use the **MainTable** component.
+<div className="mb-14" />
 
-<div className="mb-4" />
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 8
+  </Badge>
+  <span>Use the components in your page file.</span>
+</div>
 
-```ts
-import MainTable from "./table";
+```tsx
+import React from 'react';
+import MainTable from './table';
 import {
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   useReactTable,
-} from "@tanstack/react-table";
-import { defaultData } from "./data";
-import { defaultColumns } from "./column";
-import TableToolbar from "./toolbar";
-import TablePagination from "./pagination";
+} from '@tanstack/react-table';
+import { defaultData } from './data';
+import { defaultColumns } from './column';
+import TableToolbar from './toolbar';
+import TablePagination from './pagination';
 
 export default function TanStackTableDemo() {
+  const [rowSelection, setRowSelection] = React.useState({});
   const table = useReactTable({
     data: defaultData,
     columns: defaultColumns,
@@ -866,6 +830,11 @@ export default function TanStackTableDemo() {
         pageSize: 5,
       },
     },
+    state: {
+      rowSelection,
+    },
+    enableRowSelection: true,
+    onRowSelectionChange: setRowSelection,
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -881,14 +850,119 @@ export default function TanStackTableDemo() {
 }
 ```
 
+<div className="mb-16" />
+
+## Advanced Usage
+
+### Custom Column Rendering
+
+Customize how columns are rendered:
+
+```tsx
+columnHelper.accessor('amount', {
+  size: 120,
+  header: 'Amount',
+  cell: ({ row }) => {
+    const amount = row.original.amount;
+    return (
+      <span
+        className={cn(
+          'font-medium',
+          amount > 500 ? 'text-green-dark' : 'text-orange-dark'
+        )}
+      >
+        $ {amount}
+      </span>
+    );
+  },
+});
+```
+
+### Column Sorting
+
+Enable sorting on columns:
+
+```tsx
+columnHelper.accessor('name', {
+  size: 280,
+  header: 'Customer',
+  enableSorting: true,
+  cell: ({ row: { original } }) => (
+    <AvatarCard
+      src={original.avatar}
+      name={original.name}
+      description={original.email.toLowerCase()}
+    />
+  ),
+});
+```
+
+### Custom Filters
+
+Add custom filtering logic:
+
+```tsx
+const table = useReactTable({
+  // ... other config
+  getFilteredRowModel: getFilteredRowModel(),
+  filterFns: {
+    customFilter: (row, columnId, filterValue) => {
+      // Custom filter logic
+      return row.getValue(columnId) === filterValue;
+    },
+  },
+});
+```
+
+### Row Expansion
+
+Add expandable rows:
+
+```tsx
+columnHelper.display({
+  id: 'expander',
+  cell: ({ row }) => (
+    <button onClick={() => row.toggleExpanded()}>
+      {row.getIsExpanded() ? '▼' : '▶'}
+    </button>
+  ),
+});
+```
+
+<div className="mb-20" />
+
+## Best Practices
+
+- **Use memoization** - Memoize columns and data to prevent unnecessary re-renders
+- **Virtual scrolling** - For large datasets, consider using virtual scrolling
+- **Column sizing** - Set appropriate column sizes for better layout control
+- **Accessibility** - Ensure proper ARIA labels and keyboard navigation
+- **Performance** - Use `getFilteredRowModel` and `getPaginationRowModel` for better performance
+- **State management** - Manage table state externally for better control
+- **Type safety** - Use TypeScript for type-safe column definitions
+- **Theme consistency** - Use RizzUI theme colors for consistent styling
+
 <div className="mb-20" />
 
 ## API Reference
 
-<hr />
+The TanStack Table component extends all features from [TanStack Table](https://tanstack.com/table). Refer to their documentation for a complete list of available APIs and options.
 
-<div className="mb-10" />
+### Common Table Options
 
-- **Note:** For more information, please refer to [**TanStack Table Documentation**](https://www.npmjs.com/package/@tanstack/react-table).
+| Option                    | Type                 | Description                           |
+| :------------------------ | :------------------- | :------------------------------------ |
+| **data**                  | `TData[]`            | Array of data to display in the table |
+| **columns**               | `ColumnDef<TData>[]` | Column definitions                    |
+| **getCoreRowModel**       | `() => RowModel`     | Core row model getter                 |
+| **getFilteredRowModel**   | `() => RowModel`     | Filtered row model getter             |
+| **getPaginationRowModel** | `() => RowModel`     | Pagination row model getter           |
+| **enableRowSelection**    | `boolean`            | Enable row selection                  |
+| **onRowSelectionChange**  | `(updater) => void`  | Row selection change handler          |
+| **initialState**          | `TableState`         | Initial table state                   |
 
-<div className="mb-10" />
+<div className="mb-4" />
+
+> **Note:** For more information, please refer to the [TanStack Table Documentation](https://tanstack.com/table/latest).
+
+<div className="mb-20" />

@@ -9,6 +9,7 @@ import NpmIcon from '@site/src/components/icons/npm-icon';
 import YarnIcon from '@site/src/components/icons/yarn-icon';
 import PnpmIcon from '@site/src/components/icons/pnpm-icon';
 import BunIcon from '@site/src/components/icons/bun-icon';
+import { Badge } from 'rizzui/badge';
 
 # Getting Started
 
@@ -33,7 +34,14 @@ Before you begin, make sure you have:
 
 ## Installation
 
-### Step 1: Install RizzUI & Core Dependencies
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 1
+  </Badge>
+  <span>
+    Install <strong>RizzUI & Core Dependencies</strong>
+  </span>
+</div>
 
 Navigate to your React/Next.js project and run:
 
@@ -99,7 +107,14 @@ Navigate to your React/Next.js project and run:
   styling
 </div>
 
-### Step 2: Install Tailwind CSS & Forms Plugin
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 2
+  </Badge>
+  <span>
+    Install <strong>Tailwind CSS & Forms Plugin</strong>
+  </span>
+</div>
 
 Install these development dependencies for styling:
 
@@ -163,7 +178,14 @@ Install these development dependencies for styling:
 
 ## Configuration
 
-### Step 3: Configure Your Styles
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 3
+  </Badge>
+  <span>
+    Configure <strong>Your Styles</strong>
+  </span>
+</div>
 
 Tailwind CSS v4 uses a modern CSS-first configuration approach. No `tailwind.config.js` file is required.
 
@@ -277,7 +299,14 @@ Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
   creating accessible and visually consistent color palettes.
 </div>
 
-### Step 4: Configure PostCSS
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 4
+  </Badge>
+  <span>
+    Configure <strong>PostCSS</strong>
+  </span>
+</div>
 
 Create or update your `postcss.config.mjs`:
 
@@ -299,13 +328,13 @@ Now you're ready to start using RizzUI components in your application. For dark 
 Here's a simple example to get you started:
 
 ```tsx
-import { Button } from 'rizzui';
+import { Button } from 'rizzui/button';
 
 export default function App() {
   return (
-    <div>
+    <>
       <Button>Get Started</Button>
-    </div>
+    </>
   );
 }
 ```

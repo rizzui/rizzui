@@ -3,6 +3,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Footer from '@site/src/components/home/footer';
+import { Button } from 'rizzui/button';
 
 // Blog post data
 const blogPosts = [
@@ -47,9 +48,9 @@ const blogPosts = [
 
 function BlogPostCard({ post }: { post: (typeof blogPosts)[0] }) {
   return (
-    <article className="border border-border dark:border-gray-800 p-1.5 rounded-xl flex flex-col justify-between bg-white dark:bg-gray-900 2xl:p-3">
+    <article className="border border-border p-1.5 rounded-xl flex flex-col justify-between bg-white dark:bg-[#111111] 2xl:p-3">
       <header className="p-3 pb-0">
-        <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+        <div className="text-sm text-gray-500 dark:text-text-secondary mb-2">
           {post.date} · {post.readingTime}
         </div>
         <h2 className="text-xl font-medium -mb-2">
@@ -62,21 +63,22 @@ function BlogPostCard({ post }: { post: (typeof blogPosts)[0] }) {
         </h2>
       </header>
       <div className="px-3 mt-3 flex-grow">
-        <p className="text-gray-700 dark:text-gray-300">{post.description}</p>
+        <p className="text-gray-600 dark:text-text-secondary">
+          {post.description}
+        </p>
         <ul className="!mt-6 space-y-2 !p-0">
           {post.features.map((feature, idx) => (
-            <li key={idx} className="text-gray-600 dark:text-gray-400">
+            <li key={idx} className="text-gray-600 dark:text-text-secondary">
               → {feature}
             </li>
           ))}
         </ul>
       </div>
       <footer className="mt-4 px-3 pb-3">
-        <Link
-          to={post.link}
-          className="block text-center bg-gray-200 dark:bg-slate-900 px-5 py-2 rounded-md hover:no-underline capitalize text-sm font-medium hover:bg-gray-200/50 dark:hover:bg-slate-800 transition-colors"
-        >
-          Read More
+        <Link to={post.link} className="block">
+          <Button as="span" className="w-full">
+            Read More
+          </Button>
         </Link>
       </footer>
     </article>
@@ -95,7 +97,7 @@ export default function BlogIndex(): React.JSX.Element {
       <div className="blog-banner">
         <div className="container mx-auto">
           <div className="blog-banner-content">
-            <h1 className="!text-3xl sm:!text-4xl !leading-[1.3] sm:!leading-[1.3] lg:!leading-[1.2] xl:!leading-[1.2] 2xl:!leading-[1.18] mb-4 font-semibold">
+            <h1 className="!text-3xl sm:!text-4xl !leading-[1.3] sm:!leading-[1.3] lg:!leading-[1.2] xl:!leading-[1.2] 2xl:!leading-[1.18] mb-4 font-semibold text-gray-900 dark:text-white">
               Latest Blog Posts
             </h1>
             <p className="blog-banner-description">

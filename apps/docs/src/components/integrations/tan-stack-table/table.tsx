@@ -22,7 +22,7 @@ export default function MainTable({ table }: TablePropsTypes) {
           width: table.getTotalSize(),
         }}
       >
-        <Table.Header className="!bg-gray-100 !border-y-0">
+        <Table.Header className="!bg-[var(--muted)] !border-y-0">
           {table.getHeaderGroups().map((headerGroup) => {
             return (
               <Table.Row key={headerGroup.id}>

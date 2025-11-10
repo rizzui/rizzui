@@ -5,12 +5,17 @@
 
 /* Banner Section - Positioned before the blog list page */
 .blog-list-page .blog-banner {
-  @apply w-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 border-b border-gray-100 dark:border-gray-800;
+  @apply w-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 border-b border-border;
   @apply py-12 md:py-16 lg:py-20 px-4 md:px-6;
   display: block;
   width: 100%;
   margin: 0;
   position: relative;
+  background-color: white;
+}
+
+[data-theme='dark'] .blog-list-page .blog-banner {
+  background: #111111;
 }
 
 .blog-banner-content {
@@ -49,7 +54,7 @@
 
 .blog-list-page #__docusaurus {
   article {
-    @apply border p-1.5 rounded-xl !mb-0 w-full flex flex-col justify-between;
+    @apply border p-1.5 rounded-xl !mb-0 w-full flex flex-col justify-between dark:bg-[#111111];
     border-color: var(--ifm-color-gray-200);
     header {
       @apply [&_.row]:hidden p-3 pb-0;
