@@ -1,113 +1,80 @@
-import React, { Fragment, useMemo, useState } from 'react';
+import {
+  useState,
+  useCallback,
+  useMemo,
+  type ReactNode,
+  type MouseEvent,
+  type InputHTMLAttributes,
+} from 'react';
 import {
   Label,
   Listbox,
-  Transition,
   ListboxButton,
   ListboxOption,
   ListboxOptions,
 } from '@headlessui/react';
-import { cn } from 'src/lib/cn';
-import { XIcon } from 'src/icons/x-mark';
-import { SearchIcon } from 'src/icons/search';
-import { ChevronDownIcon } from 'src/icons/chevron-down';
+import { tv, type VariantProps } from 'tailwind-variants';
+import { cn } from '../../lib/cn';
+import { XIcon } from '../../icons/x-mark';
+import { SearchIcon } from '../../icons/search';
+import { ChevronDownIcon } from '../../icons/chevron-down';
 import {
   useInternalState,
   ourPlacementObject,
   preventHeadlessUIKeyboardInterActions,
-} from './multi-select.lib';
-import { FieldError } from '../field-error-text';
-import { roundedStyles } from '../../lib/rounded';
+  useFilteredOptions,
+} from '../select/select-shared.lib';
+import { FieldErrorText } from '../field-error-text';
 import { labelStyles } from '../../lib/label-size';
-import { ExtractProps } from 'src/lib/extract-props';
+import type { ExtractProps } from '../../lib/extract-props';
 import { FieldHelperText } from '../field-helper-text';
-import { makeClassName } from 'src/lib/make-class-name';
 import { FieldClearButton } from '../field-clear-button';
-import { dropdownStyles } from '../../lib/dropdown-list-style';
-import { CheckmarkIcon } from 'src/icons/checkmark';
+import { CheckmarkIcon } from '../../icons/checkmark';
+import { optionListStyles, searchStyles } from '../select/select-shared.styles';
 
-const selectStyles = {
-  base: 'flex items-center peer border hover:border-primary w-full transition duration-200 ring-[0.6px] hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary',
-  disabled:
-    '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
-  error: '!border-red hover:!border-red focus:!border-red !ring-red',
-  size: {
-    sm: 'px-2 py-1 text-xs min-h-8',
-    md: 'px-3 py-2 text-sm min-h-10',
-    lg: 'px-4 py-2 text-base min-h-12',
-    xl: 'px-5 py-2.5 text-base min-h-14',
-  },
-  rounded: roundedStyles,
-  prefix: {
+const multiSelect = tv({
+  base: 'flex group items-center peer border-[length:var(--border-width)] hover:border-primary w-full transition duration-200 hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-[var(--border-radius)]',
+  variants: {
+    variant: {
+      text: 'border-transparent ring-transparent bg-transparent',
+      outline: 'border-border ring-border bg-transparent',
+    },
     size: {
-      sm: 'ps-1.5',
-      md: 'ps-2.5',
-      lg: 'ps-3.5',
-      xl: 'ps-4',
+      sm: 'px-2 py-1 text-xs min-h-8',
+      md: 'px-3 py-2 text-sm min-h-10',
+      lg: 'px-4 py-2 text-base min-h-12',
+    },
+    disabled: {
+      true: '!bg-muted/70 backdrop-blur cursor-not-allowed !border-muted text-muted-foreground placeholder:text-muted-foreground !ring-muted',
+    },
+    error: {
+      true: '!border-red hover:!border-red focus:!border-red !ring-red',
+    },
+    hasPrefix: {
+      true: '',
+    },
+    hasSuffix: {
+      true: '',
     },
   },
-  suffix: {
-    size: {
-      sm: 'pe-1.5',
-      md: 'pe-2.5',
-      lg: 'pe-3.5',
-      xl: 'pe-4',
-    },
+  compoundVariants: [
+    { hasPrefix: true, class: 'ps-2.5' },
+    { hasSuffix: true, class: 'pe-2.5' },
+  ],
+  defaultVariants: {
+    variant: 'outline',
+    size: 'md',
   },
-  variant: {
-    text: 'border-transparent ring-transparent bg-transparent',
-    flat: 'border-0 ring-muted/70 hover:ring-[1.8px] focus:ring-[1.8px] hover:bg-transparent focus:bg-transparent bg-muted/70 backdrop-blur',
-    outline: 'border border-muted ring-muted bg-transparent',
-  },
-};
-
-const optionListStyles = {
-  base: `${dropdownStyles.base} overflow-auto w-[var(--button-width)] !outline-none !ring-0 m-0 [&>li]:!m-0 [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg`,
-  shadow: dropdownStyles.shadow,
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    pill: 'rounded-xl',
-  },
-  item: {
-    size: {
-      sm: 'text-xs',
-      md: 'text-sm',
-      lg: 'text-base',
-      xl: 'text-base',
-    },
-    rounded: {
-      none: 'rounded-none',
-      sm: 'rounded-sm',
-      md: 'rounded-[4px]',
-      lg: 'rounded-md',
-      pill: 'rounded-lg',
-    },
-  },
-  inPortal: '[--anchor-max-height:256px;]',
-  notInPortal: 'absolute z-10 h-[256px] start-0 top-full mt-1.5',
-};
-
-const searchStyles = {
-  base: 'relative mb-2 block group [&.sticky]:mb-0',
-  inputBase: 'px-10 placeholder:text-muted-foreground',
-  prefix:
-    'absolute z-10 start-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
-  suffix:
-    'absolute z-10 end-1 top-5 group-[.sticky]:top-7 inline-block -translate-y-1/2 whitespace-nowrap leading-normal text-muted-foreground',
-  stickySearch: 'sticky top-0 z-10 bg-background pt-2 -translate-y-2',
-};
+});
 
 const checkboxStyles = {
-  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out size-5 rounded bg-transparent border border-muted ring-[0.6px] ring-muted focus:ring-muted checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
+  base: 'peer checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out size-5 rounded bg-transparent border border-border ring-border focus:ring-border checked:!bg-primary checked:!border-primary hover:enabled:border-primary',
   icon: 'peer-checked:opacity-100 absolute opacity-0 text-primary-foreground size-4 start-0.5 top-0.5',
 };
 
 export type MultiSelectOption = {
   label: string;
-  value: string;
+  value: string | number;
   disabled?: boolean;
   [key: string]: any;
 };
@@ -116,17 +83,17 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   typeof Listbox
 > & {
   /** The value of the select */
-  value?: string[];
+  value?: (string | number)[];
   /** The class name of the select */
   className?: string;
   /** Whether the select is focused by default or not */
   autoFocus?: boolean;
   /** The default value of the select */
-  defaultValue?: string[];
+  defaultValue?: (string | number)[];
   /** The function to call when the value changes */
-  onChange?: (value: string[]) => void;
+  onChange?: (value: (string | number)[]) => void;
   /** The function to call when the clear button is clicked */
-  onClear?: () => void;
+  onClear?: (event?: MouseEvent) => void;
   /** Event of the searchable input when change */
   onSearchChange?: (value: string) => void;
   /** Whether the select is disabled */
@@ -134,9 +101,9 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The placeholder of the select */
   placeholder?: string;
   /** The size of the select */
-  size?: keyof typeof selectStyles.size;
+  size?: VariantProps<typeof multiSelect>['size'];
   /** The label of the select */
-  label?: React.ReactNode;
+  label?: ReactNode;
   /** The weight of the label */
   labelWeight?: keyof typeof labelStyles.weight;
   /** The class name of the label */
@@ -151,16 +118,11 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   error?: string;
   /** Whether the select is in the portal */
   inPortal?: boolean;
-  /** The variant of the select */
-  variant?: keyof typeof selectStyles.variant;
-  /** The rounded of the select */
-  rounded?: keyof typeof selectStyles.rounded;
-  /** The shadow of the select */
-  shadow?: keyof typeof optionListStyles.shadow;
+  variant?: VariantProps<typeof multiSelect>['variant'];
   /** The prefix of the select */
-  prefix?: React.ReactNode;
+  prefix?: ReactNode;
   /** The suffix of the select */
-  suffix?: React.ReactNode;
+  suffix?: ReactNode;
   /** The class name of the prefix */
   prefixClassName?: string;
   /** The class name of the selected item */
@@ -176,7 +138,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The modal of the select */
   modal?: boolean;
   /** The helper text of the select */
-  helperText?: React.ReactNode;
+  helperText?: ReactNode;
   /** The class name of the dropdown */
   dropdownClassName?: string;
   /** The class name of the search */
@@ -190,9 +152,9 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The place holder of the search */
   searchPlaceHolder?: string;
   /** The search suffix */
-  searchSuffix?: React.ReactNode;
+  searchSuffix?: ReactNode;
   /** The search prefix */
-  searchPrefix?: React.ReactNode;
+  searchPrefix?: ReactNode;
   /** Whether the search is disabled */
   searchDisabled?: boolean;
   /** Whether the search is read only */
@@ -200,7 +162,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   /** The type of the search */
   searchType?: 'text' | 'search';
   /** The props of the search */
-  searchProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  searchProps?: InputHTMLAttributes<HTMLInputElement>;
   /** Whether the select is searchable or not */
   searchable?: boolean;
   /** Options for select */
@@ -211,7 +173,7 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   optionCheckBox?: boolean;
   /** The class name of the selected option */
   selectedOptionClassName?: string;
-  /** The key to get the value of the option */
+  /** The key to get the value of the option (string approach, alternative to getOptionValue) */
   getOptionValueKey?: string;
   /** Whether to hide the picked options */
   hideSelectedOptions?: boolean;
@@ -219,6 +181,8 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   selectContainerClassName?: string;
   /** The key to search in the options */
   searchByKey?: string;
+  /** Disable default filter */
+  disableDefaultFilter?: boolean;
   /** Whether the search input is sticky or not */
   stickySearch?: boolean;
   /**
@@ -228,10 +192,10 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
    * @returns React node to display for the selected item.
    */
   displayValue?: (
-    selectedItems: string[],
+    selectedItems: (string | number)[],
     options: MultiSelectOption[],
-    handleClearItem?: (item: string) => void
-  ) => React.ReactNode;
+    handleClearItem?: (item: string | number) => void
+  ) => ReactNode;
   /**
    * Use this function when you want to display something other than the default option displayValue.
    * @param option - The MultiSelectOption for which to get the display value.
@@ -241,7 +205,15 @@ export type MultiSelectProps<MultiSelectOption> = ExtractProps<
   getOptionDisplayValue?(
     option: MultiSelectOption,
     selected: boolean
-  ): React.ReactNode;
+  ): ReactNode;
+  /**
+   * Select whether the label or value should be returned in the onChange method (function approach, alternative to getOptionValueKey).
+   * @param option - The MultiSelectOption for which to get the value.
+   * @returns The selected value from the specified option.
+   */
+  getOptionValue?: (
+    option: MultiSelectOption
+  ) => MultiSelectOption[keyof MultiSelectOption] | MultiSelectOption;
 };
 
 export function MultiSelect<OptionType extends MultiSelectOption>({
@@ -262,12 +234,10 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   searchProps,
   stickySearch,
   displayValue,
-  shadow = 'md',
   prefix = null,
   labelClassName,
   onSearchChange,
   errorClassName,
-  rounded = 'md',
   inPortal = true,
   selectClassName,
   helperClassName,
@@ -283,6 +253,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   searchType = 'text',
   selectedItemClassName,
   getOptionDisplayValue,
+  getOptionValue,
   searchByKey = 'label',
   optionCheckBox = true,
   searchPrefixClassName,
@@ -297,6 +268,7 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
   hideSelectedOptions = false,
   placement = 'bottom-start',
   getOptionValueKey = 'value',
+  disableDefaultFilter,
   searchPlaceHolder = 'Search...',
   suffix = <ChevronDownIcon strokeWidth="2" className="size-4" />,
   searchPrefix = <SearchIcon strokeWidth="2" className="size-4" />,
@@ -307,35 +279,53 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
     value
   );
   const [searchQuery, setSearchQuery] = useState('');
-  const selectedItems = selectedValue ?? [];
+
+  const selectedItems = useMemo(() => selectedValue ?? [], [selectedValue]);
   const emptyValue = selectedItems.length === 0;
 
-  const filteredOptions = useMemo(
-    () =>
-      options.filter((item) =>
-        item[searchByKey]
-          .toLowerCase()
-          .includes(searchQuery.toLocaleLowerCase())
-      ),
-    [searchQuery, options]
+  // Use shared filter hook
+  const filteredOptions = useFilteredOptions(
+    options,
+    searchQuery,
+    searchByKey,
+    disableDefaultFilter
   );
 
-  const handleClear = () => {
-    setSelectedValue([]);
-    setSearchQuery('');
-    onClear?.();
-  };
+  // Memoized callbacks
+  const handleClear = useCallback(
+    (e?: MouseEvent) => {
+      e?.stopPropagation();
+      setSelectedValue([]);
+      setSearchQuery('');
+      onClear?.(e);
+    },
+    [onClear, setSelectedValue]
+  );
 
-  const handleClearItem = (item: string) => {
-    const filteredItems = selectedItems.filter((i) => i !== item);
-    setSelectedValue(filteredItems);
-    onChange?.(filteredItems);
-  };
+  const handleClearItem = useCallback(
+    (item: string | number) => {
+      const filteredItems = selectedItems.filter((i) => i !== item);
+      setSelectedValue(filteredItems);
+      onChange?.(filteredItems);
+    },
+    [selectedItems, setSelectedValue, onChange]
+  );
+
+  // Compute option value with support for both getOptionValue and getOptionValueKey
+  const computeOptionValue = useCallback(
+    (option: OptionType) => {
+      if (getOptionValue) {
+        return getOptionValue(option);
+      }
+      return option[getOptionValueKey];
+    },
+    [getOptionValue, getOptionValueKey]
+  );
 
   return (
     <div
       className={cn(
-        makeClassName(`multi-select-root`),
+        'rizzui-multi-select-root',
         'grid w-full grid-cols-1',
         className
       )}
@@ -345,312 +335,271 @@ export function MultiSelect<OptionType extends MultiSelectOption>({
         disabled={disabled}
         value={selectedValue}
         defaultValue={selectedValue}
-        onChange={
-          ((values: string[]) => {
-            onChange?.(values);
-            setSelectedValue(values);
-          }) as any
-        }
+        onChange={(values: (string | number)[]) => {
+          onChange?.(values);
+          setSelectedValue(values);
+        }}
         {...props}
       >
-        {({ open }) => (
-          <div>
-            {label && (
-              <Label
-                className={cn(
-                  makeClassName(`multi-select-label`),
-                  'block',
-                  labelStyles.size[size],
-                  labelStyles.weight[labelWeight],
-                  disabled && 'text-muted-foreground',
-                  labelClassName
-                )}
-              >
-                {label}
-              </Label>
-            )}
+        <div className="contents">
+          {label && (
+            <Label
+              className={cn(
+                'rizzui-multi-select-label',
+                'block',
+                labelStyles.size[size],
+                labelStyles.weight[labelWeight],
+                disabled && 'text-muted-foreground',
+                labelClassName
+              )}
+            >
+              {label}
+            </Label>
+          )}
 
-            <div className={cn('h-full', !inPortal && 'relative')}>
-              <ListboxButton
-                className={cn(
-                  makeClassName(`multi-select-button`),
-                  selectStyles.base,
-                  selectStyles.variant[variant],
-                  selectStyles.size[size],
-                  selectStyles.rounded[rounded],
-                  prefix && selectStyles.prefix.size[size],
-                  suffix && selectStyles.suffix.size[size],
-                  disabled && selectStyles.disabled,
-                  error && emptyValue && selectStyles.error,
-                  selectClassName
-                )}
-                autoFocus={autoFocus}
-              >
-                {prefix ? (
-                  <span
-                    className={cn(
-                      makeClassName(`multi-select-prefix`),
-                      'block whitespace-nowrap leading-normal',
-                      prefixClassName
-                    )}
-                  >
-                    {prefix}
-                  </span>
-                ) : null}
-
-                {displayValue &&
-                  displayValue(selectedItems, options, handleClearItem)}
-
-                {!displayValue && (
-                  <span
-                    className={cn(
-                      makeClassName(`multi-select-value`),
-                      'flex w-full flex-wrap items-center gap-2 truncate text-start',
-                      emptyValue && 'text-muted-foreground',
-                      prefix && selectStyles.prefix.size[size],
-                      suffix && selectStyles.suffix.size[size],
-                      selectContainerClassName
-                    )}
-                  >
-                    {emptyValue ? (
-                      placeholder
-                    ) : (
-                      <Fragment>
-                        {value?.map((item, index) => {
-                          const mainItem = options.find(
-                            (op) => op[getOptionValueKey] === item
-                          );
-                          return (
-                            <Fragment key={index}>
-                              <span
-                                className={cn(
-                                  'item-center flex gap-1 overflow-hidden rounded-md border border-muted text-xs',
-                                  selectedItemClassName
-                                )}
-                              >
-                                <span className="py-1 ps-2">
-                                  {mainItem?.label}
-                                </span>
-                                <span
-                                  className="px-1 py-1 hover:bg-muted"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleClearItem(item);
-                                  }}
-                                >
-                                  <XIcon
-                                    strokeWidth="2"
-                                    className="size-4 cursor-pointer"
-                                  />
-                                </span>
-                              </span>
-                            </Fragment>
-                          );
-                        })}
-                      </Fragment>
-                    )}
-                  </span>
-                )}
-
-                {clearable && !emptyValue && !disabled ? (
-                  <FieldClearButton
-                    as="span"
-                    size={size}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleClear();
-                    }}
-                    hasSuffix={Boolean(suffix)}
-                  />
-                ) : null}
-
-                {suffix ? (
-                  <span
-                    className={cn(
-                      makeClassName(`multi-select-suffix`),
-                      'whitespace-nowrap leading-normal transition-transform duration-200',
-                      open && 'rotate-180',
-                      suffixClassName
-                    )}
-                  >
-                    {suffix}
-                  </span>
-                ) : null}
-              </ListboxButton>
-            </div>
-
-            {open ? (
-              <Transition
-                as="div"
-                leave="transition ease-in duration-100"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <ListboxOptions
-                  modal={modal}
-                  portal={inPortal}
-                  {...(inPortal && {
-                    anchor: {
-                      to: ourPlacementObject[placement],
-                      gap: gap,
-                    },
-                  })}
+          <div className={cn(!inPortal && 'relative')}>
+            <ListboxButton
+              className={multiSelect({
+                variant,
+                size,
+                disabled,
+                error: Boolean(error && emptyValue),
+                hasPrefix: Boolean(prefix),
+                hasSuffix: Boolean(suffix),
+                className: selectClassName,
+              })}
+              autoFocus={autoFocus}
+            >
+              {prefix && (
+                <span
                   className={cn(
-                    makeClassName(`multi-select-options`),
-                    optionListStyles.base,
-                    optionListStyles.shadow[shadow],
-                    optionListStyles.rounded[rounded],
-                    inPortal
-                      ? optionListStyles.inPortal
-                      : optionListStyles.notInPortal,
-                    dropdownClassName
+                    'rizzui-multi-select-prefix',
+                    'block leading-normal whitespace-nowrap',
+                    prefixClassName
                   )}
                 >
-                  {searchable && (
-                    <div
+                  {prefix}
+                </span>
+              )}
+
+              {displayValue ? (
+                displayValue(selectedItems, options, handleClearItem)
+              ) : (
+                <span
+                  className={cn(
+                    'rizzui-multi-select-value',
+                    'flex w-full flex-wrap items-center gap-2 truncate text-start',
+                    emptyValue && 'text-muted-foreground',
+                    selectContainerClassName
+                  )}
+                >
+                  {emptyValue ? (
+                    placeholder
+                  ) : (
+                    <>
+                      {value?.map((item, index) => {
+                        const mainItem = options.find(
+                          (op) => op[getOptionValueKey] === item
+                        );
+                        return (
+                          <span
+                            key={index}
+                            className={cn(
+                              'item-center border-border flex gap-1 overflow-hidden rounded-md border text-xs',
+                              selectedItemClassName
+                            )}
+                          >
+                            <span className="py-1 ps-2">{mainItem?.label}</span>
+                            <span
+                              className="hover:bg-muted px-1 py-1"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleClearItem(item);
+                              }}
+                            >
+                              <XIcon
+                                strokeWidth="2"
+                                className="size-4 cursor-pointer"
+                              />
+                            </span>
+                          </span>
+                        );
+                      })}
+                    </>
+                  )}
+                </span>
+              )}
+
+              {clearable && !emptyValue && !disabled && (
+                <FieldClearButton
+                  as="span"
+                  size={size}
+                  onClick={handleClear}
+                  hasSuffix={Boolean(suffix)}
+                />
+              )}
+
+              {suffix && (
+                <span
+                  className={cn(
+                    'rizzui-multi-select-suffix',
+                    'leading-normal whitespace-nowrap transition-transform duration-200 group-data-open:rotate-180',
+                    suffixClassName
+                  )}
+                >
+                  {suffix}
+                </span>
+              )}
+            </ListboxButton>
+
+            <ListboxOptions
+              modal={modal}
+              portal={inPortal}
+              {...(inPortal && {
+                anchor: {
+                  to: ourPlacementObject[placement],
+                  gap: gap,
+                },
+              })}
+              className={cn(
+                'rizzui-multi-select-options',
+                optionListStyles.base,
+                optionListStyles.shadow,
+                inPortal
+                  ? optionListStyles.inPortal
+                  : optionListStyles.notInPortal,
+                dropdownClassName
+              )}
+            >
+              {searchable && (
+                <div
+                  className={cn(
+                    searchStyles.base,
+                    stickySearch && searchStyles.stickySearch,
+                    searchContainerClassName
+                  )}
+                >
+                  {searchPrefix && (
+                    <span
                       className={cn(
-                        searchStyles.base,
-                        stickySearch && searchStyles.stickySearch,
-                        searchContainerClassName
+                        'rizzui-multi-select-prefix',
+                        searchStyles.prefix,
+                        searchPrefixClassName
                       )}
                     >
-                      {searchPrefix ? (
-                        <span
-                          className={cn(
-                            makeClassName(`multi-select-prefix`),
-                            searchStyles.prefix,
-                            searchPrefix && selectStyles.prefix.size[size],
-                            searchPrefixClassName
-                          )}
-                        >
-                          {searchPrefix}
-                        </span>
-                      ) : null}
-                      <input
-                        type={searchType}
-                        spellCheck={false}
-                        value={searchQuery}
-                        disabled={searchDisabled}
-                        readOnly={searchReadOnly}
-                        placeholder={searchPlaceHolder}
-                        onChange={(e) => {
-                          setSearchQuery(e.target.value);
-                          onSearchChange && onSearchChange(e.target.value);
-                        }}
-                        // prevent headless ui from handling these keys
-                        onKeyDown={(e) =>
-                          preventHeadlessUIKeyboardInterActions(e)
-                        }
-                        className={cn(
-                          makeClassName(`multi-select-search`),
-                          selectStyles.base,
-                          selectStyles.size[size],
-                          selectStyles.variant[variant],
-                          selectStyles.rounded[rounded],
-                          searchDisabled && selectStyles.disabled,
-                          searchStyles.inputBase,
-                          searchClassName
-                        )}
-                        {...searchProps}
-                      />
-
-                      {searchSuffix ? (
-                        <span
-                          className={cn(
-                            makeClassName(`multi-select-suffix`),
-                            searchStyles.suffix,
-                            searchSuffix && selectStyles.suffix.size[size],
-                            searchSuffixClassName
-                          )}
-                        >
-                          {searchSuffix}
-                        </span>
-                      ) : null}
-                    </div>
+                      {searchPrefix}
+                    </span>
                   )}
+                  <input
+                    type={searchType}
+                    spellCheck={false}
+                    value={searchQuery}
+                    disabled={searchDisabled}
+                    readOnly={searchReadOnly}
+                    placeholder={searchPlaceHolder}
+                    onChange={(e) => {
+                      setSearchQuery(e.target.value);
+                      onSearchChange?.(e.target.value);
+                    }}
+                    // prevent headless ui from handling these keys
+                    onKeyDown={(e) => preventHeadlessUIKeyboardInterActions(e)}
+                    className={multiSelect({
+                      variant,
+                      size,
+                      disabled: searchDisabled,
+                      className: cn(searchStyles.inputBase, searchClassName),
+                    })}
+                    {...searchProps}
+                  />
 
-                  {filteredOptions.map((op, index) => {
-                    return (
-                      <ListboxOption
-                        key={index}
-                        value={op[getOptionValueKey]}
-                        {...(op?.disabled && {
-                          disabled: op?.disabled,
-                        })}
-                        className={({ focus, selected }) =>
-                          cn(
-                            makeClassName(`multi-select-option`),
-                            'flex w-full items-center px-3 py-1.5',
-                            focus && 'bg-muted/70',
-                            rounded && optionListStyles.item.rounded[rounded],
-                            size && optionListStyles.item.size[size],
-                            !op?.disabled && 'cursor-pointer',
-                            selected && hideSelectedOptions && '!hidden',
-                            optionClassName
-                          )
-                        }
-                      >
-                        {({ selected }) => {
-                          return (
-                            <Fragment>
-                              {getOptionDisplayValue ? (
-                                getOptionDisplayValue(op, selected)
-                              ) : (
-                                <Fragment>
-                                  <div
-                                    className={cn(
-                                      'flex items-center gap-2',
-                                      selected
-                                        ? 'font-medium'
-                                        : 'text-foreground',
-                                      selectedOptionClassName
-                                    )}
-                                  >
-                                    {optionCheckBox && (
-                                      <span className="relative leading-none">
-                                        <input
-                                          type="checkbox"
-                                          readOnly={true}
-                                          checked={selected}
-                                          className={cn(
-                                            makeClassName(`checkbox-input`),
-                                            checkboxStyles.base
-                                          )}
-                                        />
-                                        <CheckmarkIcon
-                                          className={cn(
-                                            makeClassName(`checkbox-icon`),
-                                            checkboxStyles.icon
-                                          )}
-                                        />
-                                      </span>
-                                    )}
-                                    {op.label}
-                                  </div>
-                                </Fragment>
-                              )}
-                            </Fragment>
-                          );
-                        }}
-                      </ListboxOption>
-                    );
-                  })}
-                </ListboxOptions>
-              </Transition>
-            ) : null}
+                  {searchSuffix && (
+                    <span
+                      className={cn(
+                        'rizzui-multi-select-suffix',
+                        searchStyles.suffix,
+                        searchSuffixClassName
+                      )}
+                    >
+                      {searchSuffix}
+                    </span>
+                  )}
+                </div>
+              )}
+
+              {filteredOptions.map((op, index) => {
+                return (
+                  <ListboxOption
+                    key={index}
+                    value={computeOptionValue(op)}
+                    {...(op?.disabled && {
+                      disabled: op?.disabled,
+                    })}
+                    className={({ focus, selected }) =>
+                      cn(
+                        'rizzui-multi-select-option',
+                        'flex w-full items-center px-3 py-1.5',
+                        focus && 'bg-muted/70',
+                        'rounded-[calc(var(--border-radius)/2)]',
+                        size && optionListStyles.item.size[size],
+                        !op?.disabled && 'cursor-pointer',
+                        selected && hideSelectedOptions && 'hidden!',
+                        optionClassName
+                      )
+                    }
+                  >
+                    {({ selected }) => (
+                      <>
+                        {getOptionDisplayValue ? (
+                          getOptionDisplayValue(op, selected)
+                        ) : (
+                          <div
+                            className={cn(
+                              'flex items-center gap-2',
+                              selected ? 'font-medium' : 'text-foreground',
+                              selectedOptionClassName
+                            )}
+                          >
+                            {optionCheckBox && (
+                              <span className="relative leading-none">
+                                <input
+                                  type="checkbox"
+                                  readOnly={true}
+                                  checked={selected}
+                                  className={cn(
+                                    'rizzui-checkbox-input',
+                                    checkboxStyles.base
+                                  )}
+                                />
+                                <CheckmarkIcon
+                                  className={cn(
+                                    'rizzui-checkbox-icon',
+                                    checkboxStyles.icon
+                                  )}
+                                />
+                              </span>
+                            )}
+                            {op.label}
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </ListboxOption>
+                );
+              })}
+            </ListboxOptions>
           </div>
-        )}
+        </div>
       </Listbox>
 
-      {!error && helperText ? (
+      {!error && helperText && (
         <FieldHelperText size={size} className={helperClassName}>
           {helperText}
         </FieldHelperText>
-      ) : null}
+      )}
 
-      {error && emptyValue ? (
-        <FieldError size={size} error={error} className={errorClassName} />
-      ) : null}
+      {error && (
+        <FieldErrorText size={size} error={error} className={errorClassName} />
+      )}
     </div>
   );
 }

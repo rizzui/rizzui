@@ -1,109 +1,191 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@source "../../node_modules/rizzui/src";
 
-@layer base {
-  /* --------------------------------- */
-  /* light theme */
-  /* --------------------------------- */
-  :root {
-    --background: 255 255 255; /* #ffffff */
-    --foreground: 72 72 72; /* #484848 */
-    --muted: 227 227 227; /* #e3e3e3 */
-    --muted-foreground: 146 146 146; /* #929292 */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-    /*
-    * primary colors
-    */
-    --primary-lighter: 227 227 227; /* #e3e3e3 */
-    --primary-default: 34 34 34; /* #222222 */
-    --primary-dark: 0 0 0; /* #000000 */
-    --primary-foreground: 255 255 255; /* #ffffff */
+:root {
+  /* ----------------------------------- */
+  /* body style */
+  /* ----------------------------------- */
+  --background: oklch(100% 0 0); /* #ffffff */
+  --foreground: oklch(40.17% 0 0); /* #484848 */
+  --muted: oklch(91.58% 0 0); /* #e3e3e3 */
+  --muted-foreground: oklch(66% 0 0); /* #929292 */
 
-    /*
-    * secondary colors
-    */
-    --secondary-lighter: 221 227 255; /* #dde3ff */
-    --secondary-default: 78 54 245; /* #4e36f5 */
-    --secondary-dark: 67 42 216; /* #432ad8 */
-    --secondary-foreground: 255 255 255; /* #ffffff */
+  /* ----------------------------------- */
+  /* border tokens */
+  /* ----------------------------------- */
+  --border-radius: 0.5rem; /* 8px */
+  --border-width: 0.0625rem; /* 1px */
+  --border-color: oklch(90.37% 0 0); /* #dfdfdf */
 
-    /*
-    * danger colors
-    */
-    --red-lighter: 247 212 214; /* #f7d4d6 */
-    --red-default: 238 0 0; /* #e00 */
-    --red-dark: 197 0 0; /* #c50000 */
+  /* ----------------------------------- */
+  /* text tokens */
+  /* ----------------------------------- */
+  --text-primary: oklch(0% 0 0); /* #000000 */
+  --text-secondary: oklch(40.17% 0 0); /* #484848 */
 
-    /*
-    * warning colors
-    */
-    --orange-lighter: 255 239 207; /* #ffefcf */
-    --orange-default: 245 166 35; /* #f5a623 */
-    --orange-dark: 171 87 10; /* #ab570a */
+  /* ----------------------------------- */
+  /* primary/brand colors */
+  /* ----------------------------------- */
+  --primary-lighter: oklch(91.58% 0 0); /* #e3e3e3 */
+  --primary: oklch(17.76% 0 0); /* #111111 */
+  --primary-dark: oklch(0% 0 0); /* #000000 */
+  --primary-foreground: oklch(100% 0 0); /* #ffffff */
 
-    /*
-    * info colors
-    */
-    --blue-lighter: 211 229 255; /* #d3e5ff */
-    --blue-default: 0 112 243; /* #0070f3 */
-    --blue-dark: 7 97 209; /* #0761d1 */
+  /* ----------------------------------- */
+  /* secondary colors */
+  /* ----------------------------------- */
+  --secondary-lighter: oklch(91.99% 0.0386 276.02); /* #dde3ff */
+  --secondary: oklch(50.51% 0.2633 276.95); /* #4e36f5 */
+  --secondary-dark: oklch(45.41% 0.2431 277.06); /* #432ad8 */
+  --secondary-foreground: oklch(100% 0 0); /* #ffffff */
 
-    /*
-    * success colors
-    */
-    --green-lighter: 185 249 207; /* #b9f9cf */
-    --green-default: 17 168 73; /* #11a849 */
-    --green-dark: 17 132 60; /* #11843c */
-  }
+  /* ----------------------------------- */
+  /* red/error colors */
+  /* ----------------------------------- */
+  --red-lighter: oklch(89.99% 0.0393 14); /* #f7d4d6 */
+  --red: oklch(59.6% 0.2445 29.23); /* #e00 */
+  --red-dark: oklch(51.71% 0.2121 29.2338); /* #c50000 */
 
-  /* --------------------------------- */
-  /* dark theme */
-  /* --------------------------------- */
-  [data-theme="dark"] {
-    --background: 8 9 14; /* #08090e */
-    --foreground: 223 223 223; /* #dfdfdf */
-    --muted: 51 51 51; /* #333333 */
-    --muted-foreground: 102 102 102; /* #666666 */
+  /* ----------------------------------- */
+  /* orange/warning colors */
+  /* ----------------------------------- */
+  --orange-lighter: oklch(95.67% 0.0452 84.5695); /* #ffefcf */
+  --orange: oklch(78.37% 0.1587 72.99); /* #f5a623 */
+  --orange-dark: oklch(54.83% 0.1339 53.95); /* #ab570a */
 
-    /*
-    * primary colors
-    */
-    --primary-lighter: 34 34 34; /* #222222 */
-    --primary-default: 241 241 241; /* #f1f1f1 */
-    --primary-dark: 255 255 255; /* #ffffff */
-    --primary-foreground: 0 0 0; /* #000000 */
+  /* ----------------------------------- */
+  /* blue/info colors */
+  /* ----------------------------------- */
+  --blue-lighter: oklch(91.66% 0.0404 257.5078); /* #d3e5ff */
+  --blue: oklch(57.31% 0.2144 258.25); /* #0070f3 */
+  --blue-dark: oklch(51.58% 0.1888 258.27); /* #0761d1 */
 
-    /*
-    * secondary colors
-    */
-    --secondary-lighter: 31 22 90; /* #1f165a */
-    --secondary-dark: 193 203 255; /* #c1cbff */
-
-    /*
-    * danger colors
-    */
-    --red-lighter: 80 0 0; /* #500000 */
-    --red-dark: 255 193 193; /* #ffc1c1 */
-
-    /*
-    * warning colors
-    */
-    --orange-lighter: 68 29 4; /* #441d04 */
-    --orange-dark: 252 234 139; /* #fcea8b */
-
-    /*
-    * info colors
-    */
-    --blue-lighter: 13 51 94; /* #0d335e */
-    --blue-dark: 181 233 255; /* #b5e9ff */
-
-    /*
-    * success colors
-    */
-    --green-lighter: 3 48 22; /* #033016 */
-    --green-dark: 185 249 207; /* #b9f9cf */
-
-    /* here you can customize other colors for dark theme if design required */
-  }
+  /* ----------------------------------- */
+  /* green/success colors */
+  /* ----------------------------------- */
+  --green-lighter: oklch(92.79% 0.086 155.61); /* #b9f9cf */
+  --green: oklch(64.01% 0.1776 148.74); /* #11a849 */
+  --green-dark: oklch(53.79% 0.1441 149.52); /* #11843c */
 }
+
+/* ----------------------------------- */
+/* dark theme */
+/* ----------------------------------- */
+[data-theme='dark'] {
+  /* body style */
+  --background: oklch(14.11% 0.0112 275.23); /* #08090e */
+  --foreground: oklch(90.37% 0 0); /* #dfdfdf */
+  --muted: oklch(32.11% 0 0); /* #333333 */
+  --muted-foreground: oklch(51.03% 0 0); /* #666666 */
+
+  /* border tokens */
+  --border-color: oklch(91.58% 0 0); /* #e3e3e3 */
+
+  /* text tokens */
+  --text-primary: oklch(100% 0 0); /* #ffffff */
+  --text-secondary: oklch(51.03% 0 0); /* #666666 */
+
+  /* ----------------------------------- */
+  /* primary/brand colors */
+  --primary-lighter: oklch(25.2% 0 0); /* #222222 */
+  --primary: oklch(95.81% 0 0); /* #f1f1f1 */
+  --primary-dark: oklch(100% 0 0); /* #ffffff */
+  --primary-foreground: oklch(0% 0 0); /* #000000 */
+
+  /* secondary colors */
+  --secondary-lighter: oklch(26.35% 0.1154 280.96); /* #1f165a */
+  --secondary-dark: oklch(85.2% 0.0733 276.238); /* #c1cbff */
+
+  /* red/error colors */
+  --red-lighter: oklch(27.08% 0.1111 29.23); /* #500000 */
+  --red-dark: oklch(86.69% 0.0714 18.6304); /* #ffc1c1 */
+
+  /* orange/warning colors */
+  --orange-lighter: oklch(28.29% 0.0698 49.34); /* #441d04 */
+  --orange-dark: oklch(93.15% 0.1175 98.83); /* #fcea8b */
+
+  /* blue/info colors */
+  --blue-lighter: oklch(32.05% 0.0873 254.4); /* #0d335e */
+  --blue-dark: oklch(90.53% 0.0611 225.72); /* #b5e9ff */
+
+  /* green/success colors */
+  --green-lighter: oklch(27.23% 0.0672 152.71); /* #033016 */
+  --green-dark: oklch(92.79% 0.086 155.61); /* #b9f9cf */
+}
+
+/* ----------------------------------- */
+/* UI Presets */
+/* ----------------------------------- */
+
+/* Modern: default rounded, clean, airy */
+[data-ui-preset='modern'] {
+  --border-radius: 0.5rem; /* 8px */
+  --border-width: 0.0625rem; /* 1px */
+}
+
+/* Minimal: subtle, thin borders, less radius */
+[data-ui-preset='minimal'] {
+  --border-radius: 0.25rem; /* 4px */
+  --border-width: 0.0625rem; /* 1px */
+}
+
+/* Bold: strong, thick borders, more radius */
+[data-ui-preset='bold'] {
+  --border-radius: 0.75rem; /* 12px */
+  --border-width: 0.125rem; /* 2px */
+}
+
+/* Soft: very rounded, pill-like */
+[data-ui-preset='soft'] {
+  --border-radius: 1rem; /* 16px */
+  --border-width: 0.0625rem; /* 1px */
+}
+
+/* ----------------------------------- */
+/* Tailwind Integration */
+/* ----------------------------------- */
+@theme inline {
+  /* body colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* border tokens */
+  --border-radius: var(--border-radius);
+  --color-border: var(--border-color);
+
+  /* text tokens */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  /* primary colors */
+  --color-primary-lighter: var(--primary-lighter);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* secondary colors */
+  --color-secondary-lighter: var(--secondary-lighter);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  /* semantic colors */
+  --color-red-lighter: var(--red-lighter);
+  --color-red: var(--red);
+  --color-red-dark: var(--red-dark);
+  --color-orange-lighter: var(--orange-lighter);
+  --color-orange: var(--orange);
+  --color-orange-dark: var(--orange-dark);
+  --color-blue-lighter: var(--blue-lighter);
+  --color-blue: var(--blue);
+  --color-blue-dark: var(--blue-dark);
+  --color-green-lighter: var(--green-lighter);
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
+}
+
+@plugin "@tailwindcss/forms";

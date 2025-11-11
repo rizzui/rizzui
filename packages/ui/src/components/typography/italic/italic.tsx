@@ -1,6 +1,5 @@
 import React from 'react';
 import { cn } from '../../../lib/cn';
-import { makeClassName } from '../../../lib/make-class-name';
 
 export type ItalicProps = {
   className?: string;
@@ -12,7 +11,10 @@ export function Italic({
   ...props
 }: React.PropsWithChildren<ItalicProps>) {
   return (
-    <i className={cn(makeClassName(`italic`), className)} {...props}>
+    <i
+      className={cn('rizzui-italic', 'text-text-secondary', className)}
+      {...props}
+    >
       {children}
     </i>
   );

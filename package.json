@@ -1,6 +1,6 @@
 {
   "name": "rizzui-repo",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -15,6 +15,9 @@
     "next-dev": "turbo run next-dev",
     "next-build": "turbo run next-build",
     "next-start": "turbo run next-start",
+    "legacy-docs-dev": "pnpm --filter legacy-docs dev",
+    "legacy-docs-build": "pnpm --filter legacy-docs build",
+    "legacy-docs-serve": "pnpm --filter legacy-docs serve",
     "clean": "turbo run clean && rm -rf node_modules .turbo",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish-packages": "turbo run build lint && changeset version && changeset publish",
@@ -22,15 +25,15 @@
   },
   "devDependencies": {
     "husky": "^9.1.7",
-    "prettier": "3.4.2",
-    "tsup": "8.3.5",
-    "turbo": "2.3.3"
+    "prettier": "3.6.2",
+    "tsup": "8.5.0",
+    "turbo": "^2.6.0"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.11"
+    "@changesets/cli": "^2.29.5"
   },
-  "packageManager": "pnpm@9.1.4"
+  "packageManager": "pnpm@10.12.4"
 }

@@ -1,0 +1,102 @@
+#__docusaurus a,
+#__docusaurus b,
+#__docusaurus strong,
+.button.button--secondary,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--ifm-color-gray-900);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.025em;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem !important;
+}
+
+.font-semibold,
+.text-quote,
+h2,
+h3,
+li strong,
+p strong {
+  font-weight: 600 !important;
+}
+
+.footer__links,
+.markdown h1:first-child,
+.mb-4 {
+  margin-bottom: 1rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem !important;
+}
+
+.m-0,
+.navbar__items--center .navbar__brand,
+blockquote,
+dd,
+dl,
+fieldset,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre {
+  margin: 0;
+}
+
+hr {
+  background-color: var(--ifm-color-gray-300);
+}
+
+.checkbox-props-row-highlight table tbody tr:nth-child(8),
+.multiselect-props-row-highlight table tbody tr:nth-child(12),
+.multiselect-props-row-highlight table tbody tr:nth-child(23),
+.password-props-row-highlight table tbody tr:nth-child(10),
+.password-props-row-highlight table tbody tr:nth-child(9),
+.select-props-row-highlight table tbody tr:nth-child(10),
+.select-props-row-highlight table tbody tr:nth-child(12) {
+  background-color: #0070f31a !important;
+}
+.mr-2 {
+  margin-right: 0.5rem;
+}
+.font-medium {
+  font-weight: 500 !important;
+}
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.theme-edit-this-page {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.prism-code {
+  code {
+    font-weight: 500 !important;
+  }
+}

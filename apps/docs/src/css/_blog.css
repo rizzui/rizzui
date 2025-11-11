@@ -1,0 +1,179 @@
+/* blog list page  */
+.blog-wrapper #__docusaurus .container {
+  @apply !max-w-none px-0;
+}
+
+/* Banner Section - Positioned before the blog list page */
+.blog-list-page .blog-banner {
+  @apply w-full bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 border-b border-border;
+  @apply py-12 md:py-16 lg:py-20 px-4 md:px-6;
+  display: block;
+  width: 100%;
+  margin: 0;
+  position: relative;
+  background-color: white;
+}
+
+[data-theme='dark'] .blog-list-page .blog-banner {
+  background: #111111;
+}
+
+.blog-banner-content {
+  @apply text-center;
+}
+
+.blog-banner-title {
+  @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4;
+}
+
+.blog-banner-description {
+  @apply text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto;
+}
+
+.blog-list-page #__docusaurus {
+  aside.col.col--3 {
+    display: none !important;
+  }
+
+  .container {
+    @apply !max-w-none px-0;
+  }
+
+  main {
+    @apply grid justify-between grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-4 gap-y-6 mx-auto !max-w-[1232px] w-full flex-auto px-4 md:px-6 py-8 md:py-12;
+    .hidden-for-blog-list-page {
+      @apply hidden;
+    }
+  }
+
+  /* Remove the old ::before title */
+  main::before {
+    display: none;
+  }
+}
+
+.blog-list-page #__docusaurus {
+  article {
+    @apply border p-1.5 rounded-xl !mb-0 w-full flex flex-col justify-between dark:bg-[#111111];
+    border-color: var(--ifm-color-gray-200);
+    header {
+      @apply [&_.row]:hidden p-3 pb-0;
+      h2 {
+        @apply text-xl font-medium !-mb-2 [&_a]:hover:no-underline [&_a]:text-blue;
+      }
+    }
+    .markdown {
+      @apply h-full [&>p]:line-clamp-3 [&_ul_li]:mt-1 [&_ul_li_a]:pointer-events-none [&_ul_li_a]:no-underline px-3;
+      .anchor {
+        @apply hidden;
+      }
+    }
+    footer {
+      @apply mt-4 block w-full [&_.col--9]:hidden [&.row]:mx-0;
+      .col {
+        @apply text-left px-0;
+        > a {
+          @apply block text-center bg-gray-200 dark:bg-slate-900 px-5 py-2 rounded-md hover:no-underline capitalize text-sm [&_b]:!font-medium hover:bg-gray-200/50 transition-colors;
+        }
+      }
+      .col--3 {
+        @apply !w-full block p-0;
+        --ifm-col-width: 100%;
+      }
+    }
+  }
+}
+
+/* blog single page  */
+.blog-post-page #__docusaurus {
+  .navbar__inner {
+    @apply max-w-[1536px];
+  }
+  div.col--2,
+  aside.col.col--3 {
+    @apply !hidden;
+  }
+  .container .row {
+    header {
+      @apply border-b border-gray-100 mb-8;
+      div[class*='container_'] {
+        @apply text-gray-400;
+      }
+      .row {
+        @apply !mt-6 pt-6 pb-0;
+      }
+      div[class*='authorCol_'] {
+        @apply block flex-none w-auto;
+        .avatar {
+          @apply items-center flex gap-4;
+        }
+        .avatar__photo {
+          @apply size-10;
+        }
+        .avatar__intro {
+          @apply block [&_small]:mt-0.5 [&_small]:text-xs;
+          div[class*='authorSocials_'] {
+            @apply hidden;
+          }
+        }
+        .avatar__name {
+          @apply text-primary [&_span]:font-medium [&_span]:text-sm;
+        }
+      }
+    }
+    main {
+      @apply mx-auto flex-auto max-w-[860px];
+      .hidden-for-blog-list-page {
+        @apply my-8;
+      }
+      h1 {
+        @apply text-4xl font-bold mt-2;
+      }
+      h2 {
+        @apply text-3xl;
+      }
+      h3 {
+        @apply text-2xl;
+      }
+      h4 {
+        @apply text-xl !mb-4;
+      }
+      h5 {
+        @apply text-lg;
+      }
+      h6 {
+        @apply text-base;
+      }
+      .markdown {
+        @apply [&_p]:text-base [&_p]:leading-[1.75rem];
+        li > a:hover {
+          text-decoration-thickness: 0rem;
+        }
+      }
+    }
+  }
+}
+
+.blog-post-page article header .row::before {
+  content: 'Posted By';
+  @apply ml-4 mb-3 text-sm w-full text-gray-400;
+}
+
+.docs-version-current #__docusaurus {
+  .menu__list-item > .menu__list {
+    @apply border-l-0;
+  }
+  li > .menu__link {
+    @apply border-l-0 pl-5;
+  }
+  li > .menu__link--active:not(.menu__link--sublist) {
+    @apply border-l-0 pl-5 ml-0;
+  }
+}
+#__docusaurus .theme-doc-sidebar-menu li > .menu__link::before {
+  @apply hidden;
+}
+
+.plugin-blog #__docusaurus .navbar__inner {
+  @apply container mx-auto !px-0;
+}

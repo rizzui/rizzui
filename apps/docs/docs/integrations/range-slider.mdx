@@ -2,14 +2,35 @@
 sidebar_position: 2
 ---
 
-import Paper from "@site/src/components/paper";
+import Paper from '@site/src/components/paper';
 import RangeSlider, {
   RangeSliderCounter,
-} from "@site/src/components/range-slider";
+} from '@site/src/components/range-slider';
+import { Badge } from 'rizzui/badge';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import NpmIcon from '@site/src/components/icons/npm-icon';
+import YarnIcon from '@site/src/components/icons/yarn-icon';
+import PnpmIcon from '@site/src/components/icons/pnpm-icon';
+import BunIcon from '@site/src/components/icons/bun-icon';
 
-# Rc Slider
+# Range Slider
 
-A slider component enables user to pick any value from a range.
+A flexible and intuitive slider component for selecting values from a range. Built on top of **rc-slider**, the RangeSlider component seamlessly integrates with RizzUI's design system, providing a consistent and accessible way to capture numeric input through visual interaction.
+
+<div className="mb-16" />
+
+## Features
+
+- 🎚️ **Range Selection** - Single value or dual-handle range selection
+- 📏 **Multiple Sizes** - Three size options (sm, md, lg) to match your design
+- 🎯 **Precise Control** - Support for steps and marks for guided selection
+- 📊 **Customizable Marks** - Add labels at specific points along the slider
+- 🎨 **Smooth Interactions** - Smooth dragging with visual feedback
+- ♿ **Accessible** - Built with accessibility best practices
+- 🎯 **Type Safe** - Full TypeScript support
+- 📝 **Form Integration** - Works seamlessly with form libraries
 
 <div className="mb-16" />
 
@@ -17,84 +38,148 @@ A slider component enables user to pick any value from a range.
 
 <hr />
 
-1.  Install the **rc-slider** package.
+Before using the RangeSlider component, you'll need to install the required dependency:
+
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 1
+  </Badge>
+  <span>
+    Install the <strong>rc-slider</strong> package.
+  </span>
+</div>
 
 <div className="mb-4" />
 
-```bash
-npm i rc-slider
-```
+<Tabs groupId="package-manager">
+  <TabItem
+    value="npm"
+    label={
+      <div className="flex items-center gap-2">
+        <NpmIcon className="size-5" /> npm
+      </div>
+    }
+    default
+  >
+    <CodeBlock language="bash">
+      {`npm install rc-slider`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="yarn"
+    label={
+      <div className="flex items-center gap-2">
+        <YarnIcon className="size-5" /> yarn
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`yarn add rc-slider`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="pnpm"
+    label={
+      <div className="flex items-center gap-2">
+        <PnpmIcon className="size-5" /> pnpm
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`pnpm add rc-slider`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="bun"
+    label={
+      <div className="flex items-center gap-2">
+        <BunIcon className="size-5" /> bun
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`bun add rc-slider`}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
 
-<div className="mb-4" />
+<div className="mb-14" />
 
-2. Create a range component, **components/range-slider.tsx**
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 2
+  </Badge>
+  <span>
+    Create a range slider component,{' '}
+    <strong>components/range-slider.tsx</strong>
+  </span>
+</div>
 
-<div className="mb-4" />
+```tsx
+import React from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
+import { cn } from 'rizzui/cn';
+import Slider from 'rc-slider';
+import type { SliderProps } from 'rc-slider';
+import 'rc-slider/assets/index.css';
 
-```ts
-import React from "react";
-import Slider from "rc-slider";
-import type { SliderProps } from "rc-slider";
-import { cn } from "rizzui";
-import "rc-slider/assets/index.css";
-
-const rangeStyles = {
-  base: "[&>.rc-slider-rail]:bg-muted [&>.rc-slider-handle]:opacity-100 [&>.rc-slider-handle-dragging]:!shadow-none [&>.rc-slider-handle-dragging]:ring-4",
-  size: {
-    sm: "[&>.rc-slider-rail]:h-0.5 [&>.rc-slider-track]:h-0.5 [&>.rc-slider-handle]:h-3 [&>.rc-slider-handle]:w-3 [&>.rc-slider-handle]:border-[3px]",
-    md: "[&>.rc-slider-rail]:h-1 [&>.rc-slider-track]:h-1 [&>.rc-slider-handle]:h-4 [&>.rc-slider-handle]:w-4 [&>.rc-slider-handle]:border-4 [&>.rc-slider-handle]:-mt-1.5",
-    lg: "[&>.rc-slider-rail]:h-2 [&>.rc-slider-track]:h-2 [&>.rc-slider-handle]:h-5 [&>.rc-slider-handle]:w-5 [&>.rc-slider-handle]:border-[5px] [&>.rc-slider-handle]:-mt-1.5",
-    xl: "[&>.rc-slider-rail]:h-3 [&>.rc-slider-track]:h-3 [&>.rc-slider-handle]:h-6 [&>.rc-slider-handle]:w-6 [&>.rc-slider-handle]:border-[6px] [&>.rc-slider-handle]:-mt-1.5",
+const rangeSlider = tv({
+  slots: {
+    container:
+      '[&>.rc-slider-rail]:!bg-gray-200 [&>.rc-slider-handle]:!opacity-100 [&>.rc-slider-handle-dragging]:!shadow-none [&>.rc-slider-handle-dragging]:!ring-4 [&>.rc-slider-track]:!bg-primary [&>.rc-slider-handle]:!border-primary-dark [&>.rc-slider-handle]:hover:!border-primary-dark [&>.rc-slider-handle-dragging]:!border-primary-dark [&>.rc-slider-handle-dragging]:!ring-primary/40 [&>.rc-slider-step>.rc-slider-dot-active]:!border-primary-dark',
   },
-  color: {
-    primary:
-      "[&>.rc-slider-track]:bg-primary [&>.rc-slider-handle]:border-primary-dark [&>.rc-slider-handle]:hover:border-primary-dark [&>.rc-slider-handle-dragging]:!border-primary-dark [&>.rc-slider-handle-dragging]:ring-primary/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-primary-dark",
-    secondary:
-      "[&>.rc-slider-track]:bg-secondary [&>.rc-slider-handle]:border-secondary-dark [&>.rc-slider-handle]:hover:border-secondary-dark [&>.rc-slider-handle-dragging]:!border-secondary-dark [&>.rc-slider-handle-dragging]:ring-secondary/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-secondary-dark",
-    danger:
-      "[&>.rc-slider-track]:bg-red [&>.rc-slider-handle]:border-red-dark [&>.rc-slider-handle]:hover:border-red-dark [&>.rc-slider-handle-dragging]:!border-red-dark [&>.rc-slider-handle-dragging]:ring-red/40 [&>.rc-slider-step>.rc-slider-dot-active]:border-red-dark",
+  variants: {
+    size: {
+      sm: {
+        container:
+          '[&>.rc-slider-rail]:!h-0.5 [&>.rc-slider-track]:!h-0.5 [&>.rc-slider-handle]:!h-3 [&>.rc-slider-handle]:!w-3 [&>.rc-slider-handle]:!border-[3px]',
+      },
+      md: {
+        container:
+          '[&>.rc-slider-rail]:!h-1 [&>.rc-slider-track]:!h-1 [&>.rc-slider-handle]:!h-4 [&>.rc-slider-handle]:!w-4 [&>.rc-slider-handle]:!border-4 [&>.rc-slider-handle]:!-mt-1.5',
+      },
+      lg: {
+        container:
+          '[&>.rc-slider-rail]:!h-2 [&>.rc-slider-track]:!h-2 [&>.rc-slider-handle]:!h-5 [&>.rc-slider-handle]:!w-5 [&>.rc-slider-handle]:!border-[5px] [&>.rc-slider-handle]:!-mt-1.5',
+      },
+    },
   },
-};
+  defaultVariants: {
+    size: 'md',
+  },
+});
 
 export interface RangeSliderProps extends SliderProps {
-  size?: keyof typeof rangeStyles.size;
-  color?: keyof typeof rangeStyles.color;
+  size?: VariantProps<typeof rangeSlider>['size'];
 }
 
 export default function RangeSlider({
-  size = "md",
-  color = "primary",
+  size = 'md',
   className,
   ...props
 }: RangeSliderProps) {
-  return (
-    <Slider
-      className={cn(
-        rangeStyles.base,
-        rangeStyles.size[size],
-        rangeStyles.color[color],
-        className
-      )}
-      {...props}
-    />
-  );
-}
+  const { container: containerClass } = rangeSlider({ size });
 
-RangeSlider.displayName = "RangeSlider";
+  return <Slider className={cn(containerClass(), className)} {...props} />;
+}
 ```
 
-<div className="mb-20 md:mb-28" />
+<div className="mb-16" />
 
-## Default
+## Usage
 
-The default style of **RangeSlider** component.
+<hr />
+
+### Basic Example
+
+The simplest way to use the RangeSlider component with default settings:
 
 <Paper>
   <RangeSlider defaultValue={20} />
 </Paper>
 
-```jsx
-import { RangeSlider } from "rizzui";
+```tsx
+import RangeSlider from '@components/range-slider';
 
 export default function App() {
   return <RangeSlider defaultValue={20} />;
@@ -103,19 +188,40 @@ export default function App() {
 
 <div className="mb-16" />
 
+### Controlled Component
+
+For controlled usage, manage the slider value with state:
+
+```tsx
+import React from 'react';
+import RangeSlider from '@components/range-slider';
+
+export default function App() {
+  const [value, setValue] = React.useState(20);
+
+  return (
+    <RangeSlider
+      value={value}
+      onChange={(newValue) => setValue(newValue as number)}
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
 ## Sizes
 
-You can change the size of **RangeSlider** using [**size**](#rangeslider-sizes) property.
+Choose from three size options to match your design requirements:
 
 <Paper className="gap-6">
   <RangeSlider size="sm" defaultValue={20} />
   <RangeSlider defaultValue={25} />
   <RangeSlider size="lg" defaultValue={30} />
-  <RangeSlider size="xl" defaultValue={35} />
 </Paper>
 
-```jsx
-import { RangeSlider } from "rizzui";
+```tsx
+import RangeSlider from '@components/range-slider';
 
 export default function App() {
   return (
@@ -123,7 +229,6 @@ export default function App() {
       <RangeSlider size="sm" defaultValue={20} />
       <RangeSlider defaultValue={25} />
       <RangeSlider size="lg" defaultValue={30} />
-      <RangeSlider size="xl" defaultValue={35} />
     </>
   );
 }
@@ -131,42 +236,16 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Colors
+## Range Mode
 
-You can change the color of **RangeSlider** using [**color**](#rangeslider-colors) property.
-
-<Paper className="gap-6">
-  <RangeSlider defaultValue={15} />
-  <RangeSlider defaultValue={25} color="secondary" />
-  <RangeSlider defaultValue={30} color="danger" />
-</Paper>
-
-```jsx
-import { RangeSlider } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <RangeSlider defaultValue={15} />
-      <RangeSlider defaultValue={25} color="secondary" />
-      <RangeSlider defaultValue={30} color="danger" />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## With Range
-
-When **range** is true, display as dual thumb mode.
+Enable dual-handle mode to select a range of values:
 
 <Paper>
   <RangeSlider defaultValue={[20, 60]} range />
 </Paper>
 
-```jsx
-import { RangeSlider } from "rizzui";
+```tsx
+import RangeSlider from '@components/range-slider';
 
 export default function App() {
   return <RangeSlider defaultValue={[20, 60]} range />;
@@ -177,36 +256,36 @@ export default function App() {
 
 ## With Marks & Steps
 
-You can set multiple marks and steps using **marks** & **step** property.
+Add marks and steps to guide users through specific values:
 
 <Paper>
   <RangeSlider
     marks={{
-      0: "0",
-      20: "2000",
-      40: "4000",
-      60: "6000",
-      80: "8000",
-      100: "10000",
+      0: '0',
+      20: '2000',
+      40: '4000',
+      60: '6000',
+      80: '8000',
+      100: '10000',
     }}
     step={20}
     defaultValue={40}
   />
 </Paper>
 
-```jsx
-import { RangeSlider } from "rizzui";
+```tsx
+import RangeSlider from '@components/range-slider';
 
 export default function App() {
   return (
     <RangeSlider
       marks={{
-        0: "0",
-        20: "2000",
-        40: "4000",
-        60: "6000",
-        80: "8000",
-        100: "10000",
+        0: '0',
+        20: '2000',
+        40: '4000',
+        60: '6000',
+        80: '8000',
+        100: '10000',
       }}
       step={20}
       defaultValue={40}
@@ -217,40 +296,40 @@ export default function App() {
 
 <div className="mb-16" />
 
-## With Marks & Steps in Range
+## Range with Marks & Steps
 
-Make multiple marks and steps with range using **marks**, **step**, & **range** property.
+Combine range mode with marks and steps for advanced range selection:
 
 <Paper>
   <RangeSlider
     range
     marks={{
-      0: "0",
-      20: "2000",
-      40: "4000",
-      60: "6000",
-      80: "8000",
-      100: "10000",
+      0: '0',
+      20: '2000',
+      40: '4000',
+      60: '6000',
+      80: '8000',
+      100: '10000',
     }}
     step={20}
     defaultValue={[20, 60]}
   />
 </Paper>
 
-```jsx
-import { RangeSlider } from "rizzui";
+```tsx
+import RangeSlider from '@components/range-slider';
 
 export default function App() {
   return (
     <RangeSlider
       range
       marks={{
-        0: "0",
-        20: "2000",
-        40: "4000",
-        60: "6000",
-        80: "8000",
-        100: "10000",
+        0: '0',
+        20: '2000',
+        40: '4000',
+        60: '6000',
+        80: '8000',
+        100: '10000',
       }}
       step={20}
       defaultValue={[20, 60]}
@@ -263,78 +342,158 @@ export default function App() {
 
 ## With Range Counter
 
-Customize your range slider according to your preference.
+Create a custom range slider with input fields for min and max values:
 
 <Paper className="block">
   <RangeSliderCounter />
 </Paper>
 
-```jsx
+```tsx
 import React from 'react';
-import { RangeSlider, cn } from 'rizzui';
+import RangeSlider from '@components/range-slider';
+import { cn } from 'rizzui/cn';
 
 export default function App() {
-	const [state, setState] = React.useState({
-		min: 200,
-		max: 600,
-	});
+  const [state, setState] = React.useState({
+    min: 200,
+    max: 600,
+  });
 
-	function handleRangeChange(value: any) {
-		setState({
-			min: value[0],
-			max: value[1],
-		});
-	}
-	function handleMaxChange(max: number) {
-		setState({
-			...state,
-			max: max || state.min,
-		});
-	}
-	function handleMinChange(min: number) {
-		setState({
-			...state,
-			min: min || 0,
-		});
-	}
+  function handleRangeChange(value: any) {
+    setState({
+      min: value[0],
+      max: value[1],
+    });
+  }
+  function handleMaxChange(max: number) {
+    setState({
+      ...state,
+      max: max || state.min,
+    });
+  }
+  function handleMinChange(min: number) {
+    setState({
+      ...state,
+      min: min || 0,
+    });
+  }
 
-	return (
-		<div>
-			<RangeSlider
-				range
-				min={0}
-				max={1000}
-				value={[state.min, state.max]}
-				onChange={(value: any) => handleRangeChange(value)}
-				className={cn('[&>.rc-slider-step]:hidden')}
-			/>
-			<div className="mt-5 grid grid-cols-2 items-center justify-between gap-5 text-sm font-bold">
-				<div className="overflow-hidden rounded-lg border py-2">
-					<p className="px-3 pt-1 text-gray-400">Min</p>
-					<input
-						type="number"
-						value={state.min}
-						onChange={(e) => handleMinChange(parseInt(e.target.value))}
-						className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
-						min={0}
-						max={state.max}
-						readOnly
-					/>
-				</div>
-				<div className="overflow-hidden rounded-lg border py-2">
-					<p className="px-3 pt-1 text-gray-400">Max</p>
-					<input
-						type="number"
-						value={state.max}
-						onChange={(e) => handleMaxChange(parseInt(e.target.value))}
-						className="w-full border-none bg-gray-lightest p-3 pb-1 pt-0 text-sm outline-none focus:shadow-none focus:ring-0"
-						min={state.min}
-						readOnly
-					/>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div>
+      <RangeSlider
+        range
+        min={0}
+        max={1000}
+        value={[state.min, state.max]}
+        onChange={(value: any) => handleRangeChange(value)}
+        className={cn('[&>.rc-slider-step]:hidden')}
+      />
+      <div className="mt-5 flex items-center justify-between gap-5 text-sm font-bold">
+        <div className="overflow-hidden rounded-lg max-w-[200px] w-full border border-gray-200 py-2">
+          <p className="px-3 pt-1 text-gray-400">Min</p>
+          <input
+            type="number"
+            value={state.min}
+            onChange={(e) => handleMinChange(parseInt(e.target.value))}
+            className="w-full border-none !bg-gray-lightest p-3 pb-1 text-sm outline-none focus:shadow-none focus:ring-0"
+            min={0}
+            max={state.max}
+            readOnly
+          />
+        </div>
+        <div className="overflow-hidden rounded-lg max-w-[200px] w-full border border-gray-200 py-2">
+          <p className="px-3 pt-1 text-gray-400">Max</p>
+          <input
+            type="number"
+            value={state.max}
+            onChange={(e) => handleMaxChange(parseInt(e.target.value))}
+            className="w-full border-none !bg-gray-lightest p-3 pb-1 text-sm outline-none focus:shadow-none focus:ring-0"
+            min={state.min}
+            readOnly
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Disabled State
+
+Disable the slider to prevent user interaction:
+
+<Paper>
+  <RangeSlider defaultValue={30} disabled />
+</Paper>
+
+```tsx
+import RangeSlider from '@components/range-slider';
+
+export default function App() {
+  return <RangeSlider defaultValue={30} disabled />;
+}
+```
+
+<div className="mb-16" />
+
+## Advanced Usage
+
+### Vertical Slider
+
+Display the slider vertically:
+
+```tsx
+import RangeSlider from '@components/range-slider';
+
+export default function App() {
+  return <RangeSlider vertical defaultValue={30} style={{ height: 200 }} />;
+}
+```
+
+### Custom Min/Max Values
+
+Set custom minimum and maximum values:
+
+```tsx
+import RangeSlider from '@components/range-slider';
+
+export default function App() {
+  return <RangeSlider min={10} max={100} defaultValue={50} />;
+}
+```
+
+### Custom Step Size
+
+Control the increment value:
+
+```tsx
+import RangeSlider from '@components/range-slider';
+
+export default function App() {
+  return <RangeSlider min={0} max={100} step={5} defaultValue={25} />;
+}
+```
+
+### Controlled Range
+
+Manage range values with state:
+
+```tsx
+import React from 'react';
+import RangeSlider from '@components/range-slider';
+
+export default function App() {
+  const [range, setRange] = React.useState([20, 80]);
+
+  return (
+    <RangeSlider
+      range
+      value={range}
+      onChange={(value) => setRange(value as number[])}
+    />
+  );
 }
 ```
 
@@ -348,114 +507,55 @@ export default function App() {
 
 ### RangeSlider Props
 
-Here is the API documentation of the RangeSlider component.
+| Prop               | Type                                             | Description                                    | Default     |
+| :----------------- | :----------------------------------------------- | :--------------------------------------------- | :---------- |
+| **size**           | `"sm" \| "md" \| "lg"`                           | Size of the slider component                   | `"md"`      |
+| **value**          | `number \| number[]`                             | Current slider value(s) (controlled)           | `undefined` |
+| **defaultValue**   | `number \| number[]`                             | Default slider value(s) (uncontrolled)         | `undefined` |
+| **range**          | `boolean`                                        | Enable dual-handle range mode                  | `false`     |
+| **min**            | `number`                                         | Minimum value                                  | `0`         |
+| **max**            | `number`                                         | Maximum value                                  | `100`       |
+| **step**           | `number \| null`                                 | Step size for value changes                    | `1`         |
+| **marks**          | `Record<string \| number, ReactNode \| MarkObj>` | Marks to display on the slider                 | `undefined` |
+| **disabled**       | `boolean`                                        | Disable all slider interactions                | `false`     |
+| **vertical**       | `boolean`                                        | Display slider vertically                      | `false`     |
+| **reverse**        | `boolean`                                        | Reverse the slider direction                   | `false`     |
+| **allowCross**     | `boolean`                                        | Allow handles to cross in range mode           | `true`      |
+| **pushable**       | `number \| boolean`                              | Minimum distance between handles in range mode | `false`     |
+| **draggableTrack** | `boolean`                                        | Allow dragging the track in range mode         | `false`     |
+| **onChange**       | `(value: number \| number[]) => void`            | Callback when value changes                    | `undefined` |
+| **onBeforeChange** | `(value: number \| number[]) => void`            | Callback before value changes                  | `undefined` |
+| **onAfterChange**  | `(value: number \| number[]) => void`            | Callback after value changes                   | `undefined` |
+| **className**      | `string`                                         | Additional CSS classes for the slider          | `undefined` |
+| **style**          | `CSSProperties`                                  | Inline styles for the slider                   | `undefined` |
 
-<div className="overflow-x-auto">
+<div className="mb-4" />
 
-|              Props              |                           Type                            |         Description         |   Default   |
-| :-----------------------------: | :-------------------------------------------------------: | :-------------------------: | :---------: |
-|          defaultValue           |                    `number` `number[]`                    |                             |    \_\_     |
-|              size               |          [RangesliderSizes](#rangeslider-sizes)           | Sizes of the component are: |   `"md"`    |
-|              color              |         [Rangeslidercolors](#rangeslider-colors)          |     Change slider color     | `"primary"` |
-|            prefixCls            |                         `string`                          |                             |    \_\_     |
-|            className            |                         `string`                          |                             |    \_\_     |
-|              style              |                      `CSSProperties`                      |                             |    \_\_     |
-|            disabled             |                         `boolean`                         |                             |    \_\_     |
-|            keyboard             |                         `boolean`                         |                             |    \_\_     |
-|            autoFocus            |                         `boolean`                         |                             |    \_\_     |
-|             onFocus             |   `((e: FocusEvent<HTMLDivElement, Element>) => void)`    |                             |    \_\_     |
-|             onBlur              |   `((e: FocusEvent<HTMLDivElement, Element>) => void)`    |                             |    \_\_     |
-|              range              |                         `boolean`                         |                             |    \_\_     |
-|              count              |                         `boolean`                         |                             |    \_\_     |
-|               min               |                         `number`                          |                             |    \_\_     |
-|               max               |                         `number`                          |                             |    \_\_     |
-|              step               |                      `number` `null`                      |                             |    \_\_     |
-|              value              |                    `number` `number[]`                    |                             |    \_\_     |
-|            onChange             |       [RangeSliderOnchange](#range-slider-onchange)       |                             |    \_\_     |
-|         onBeforeChange          | [RangeSliderOnbeforechange](#range-slider-onbeforechange) |                             |    \_\_     |
-|          onAfterChange          |  [RangeSliderOnafterchange](#range-slider-onafterchange)  |                             |    \_\_     |
-|           allowCross            |                         `boolean`                         |                             |    \_\_     |
-|            pushable             |                    `number` `boolean`                     |                             |    \_\_     |
-|         draggableTrack          |                         `boolean`                         |         range only          |    \_\_     |
-|             reverse             |                         `boolean`                         |                             |    \_\_     |
-|            vertical             |                         `boolean`                         |                             |    \_\_     |
-|            included             |                         `boolean`                         |                             |    \_\_     |
-|           startPoint            |                         `number`                          |                             |    \_\_     |
-|           trackStyle            |             `CSSProperties` `CSSProperties[]`             |                             |    \_\_     |
-|           handleStyle           |             `CSSProperties` `CSSProperties[]`             |                             |    \_\_     |
-|            railStyle            |                      `CSSProperties`                      |                             |    \_\_     |
-|            dotStyle             |  `CSSProperties` `((dotValue: number) => CSSProperties)`  |                             |    \_\_     |
-|         activeDotStyle          |  `CSSProperties` `((dotValue: number) => CSSProperties)`  |                             |    \_\_     |
-|              marks              |          [RangeSliderMarks](#range-slider-marks)          |                             |    \_\_     |
-|              dots               |                         `boolean`                         |                             |    \_\_     |
-|          handleRender           |  [RangeSliderHandleRender](#range-slider-handle-render)   |                             |    \_\_     |
-|            tabIndex             |                    `number` `number[]`                    |                             |    \_\_     |
-|       ariaLabelForHandle        |                    `string` `string[]`                    |                             |    \_\_     |
-|     ariaLabelledByForHandle     |                    `string` `string[]`                    |                             |    \_\_     |
-| ariaValueTextFormatterForHandle |           `AriaValueFormat` `AriaValueFormat[]`           |                             |    \_\_     |
-
-</div>
-
-- **Note:** You can check [**rc-slider documentation**](https://slider-react-component.vercel.app/) for more details.
+> **Note:** The RangeSlider component extends all props from [rc-slider](https://slider-react-component.vercel.app/), allowing you to use features like `handleRender`, `trackStyle`, `handleStyle`, `railStyle`, and more. Refer to the rc-slider documentation for a complete list of available props.
 
 <div className="mb-10" />
 
-### Rangeslider Sizes
-
-```tsx
-type RangesliderSize = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Rangeslider Colors
+### RangeSlider Sizes
 
 ```ts
-type Rangeslidercolors =
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+type RangeSliderSizes = 'sm' | 'md' | 'lg';
 ```
+
+- **sm** - Small size with compact handle (12px × 12px)
+- **md** - Medium size with standard handle (16px × 16px) - default
+- **lg** - Large size with larger handle (20px × 20px)
 
 <div className="mb-10" />
 
-### Range Slider onChange
+## Best Practices
 
-```ts
-type RangeSliderOnchange = (value: number | number[]) => void;
-```
+- **Set appropriate min/max** - Always define meaningful min and max values for your use case
+- **Use steps** - Provide step values for discrete selections when appropriate
+- **Add marks** - Use marks to guide users and show important value points
+- **Handle onChange** - Use controlled components for form integration
+- **Consider range mode** - Use range mode when users need to select a range of values
+- **Accessibility** - The component includes built-in ARIA attributes for screen readers
+- **Mobile considerations** - Ensure touch targets are large enough for mobile users
+- **Visual feedback** - The component provides visual feedback during dragging
 
-<div className="mb-10" />
-
-### Range Slider onBeforeChange
-
-```ts
-type RangeSliderOnbeforechange = (value: number | number[]) => void;
-```
-
-<div className="mb-10" />
-
-### Range Slider onAfterChange
-
-```ts
-type RangeSliderOnafterchange = (value: number | number[]) => void;
-```
-
-<div className="mb-10" />
-
-### Range Slider Marks
-
-```ts
-type RangeSliderMarks = Record<string | number, ReactNode | MarkObj>;
-```
-
-<div className="mb-10" />
-
-### Range Slider Handle Render
-
-```ts
-type RangeSliderHandleRender = ((origin: ReactElement<HandleProps, string | JSXElementConstructor<any>>, props: RenderProps) => ReactElement<any, string | JSXElementConstructor<...>>);
-```
+<div className="mb-20" />

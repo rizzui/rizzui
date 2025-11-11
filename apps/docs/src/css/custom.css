@@ -1,1593 +1,263 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* load local fonts */
-@import "../../static/fonts/geist-font.css";
-
-@layer base {
-  :root {
-    --background: 255 255 255; /* #ffffff */
-    --foreground: 72 72 72; /* #484848 */
-    --muted: 227 227 227; /* #e3e3e3 */
-    --muted-foreground: 146 146 146; /* #929292 */
-
-    /* ----------------------------------- */
-    /* gray colors */
-    /* ----------------------------------- */
-    --gray-50: 250 250 250; /* #fafafa */
-    --gray-100: 241 241 241; /* #f1f1f1 */
-    --gray-200: 227 227 227; /* #e3e3e3 */
-    --gray-300: 223 223 223; /* #dfdfdf */
-    --gray-400: 146 146 146; /* #929292 */
-    --gray-500: 102 102 102; /* #666666 */
-    --gray-600: 72 72 72; /* #484848 */
-    --gray-700: 51 51 51; /* #333333 */
-    --gray-800: 34 34 34; /* #222222 */
-    --gray-900: 17 17 17; /* #111111 */
-    --gray-950: 0 0 0; /* #000000 */
-
-    /* ----------------------------------- */
-    /* primary/brand colors */
-    /* ----------------------------------- */
-    --primary-lighter: 227 227 227; /* #e3e3e3 */
-    --primary-default: 17 17 17; /* #111111 */
-    --primary-dark: 0 0 0; /* #000000 */
-    --primary-foreground: 255 255 255; /* #ffffff */
-
-    /* ----------------------------------- */
-    /* secondary colors */
-    /* ----------------------------------- */
-    --secondary-lighter: 221 227 255; /* #dde3ff */
-    --secondary-default: 78 54 245; /* #4e36f5 */
-    --secondary-dark: 67 42 216; /* #432ad8 */
-    --secondary-foreground: 255 255 255; /* #ffffff */
-
-    /* ----------------------------------- */
-    /* red/error colors */
-    /* ----------------------------------- */
-    --red-lighter: 247 212 214; /* #f7d4d6 */
-    --red-default: 238 0 0; /* #e00 */
-    --red-dark: 197 0 0; /* #c50000 */
-
-    /* ----------------------------------- */
-    /* orange/warning colors */
-    /* ----------------------------------- */
-    --orange-lighter: 255 239 207; /* #ffefcf */
-    --orange-default: 245 166 35; /* #f5a623 */
-    --orange-dark: 171 87 10; /* #ab570a */
-
-    /* ----------------------------------- */
-    /* blue/info colors */
-    /* ----------------------------------- */
-    --blue-lighter: 211 229 255; /* #d3e5ff */
-    --blue-default: 0 112 243; /* #0070f3 */
-    --blue-dark: 7 97 209; /* #0761d1 */
-
-    /* ----------------------------------- */
-    /* green/success colors */
-    /* ----------------------------------- */
-    --green-lighter: 185 249 207; /* #b9f9cf */
-    --green-default: 17 168 73; /* #11a849 */
-    --green-dark: 17 132 60; /* #11843c */
-
-    /* docusaurus theme */
-    --ifm-color-primary: #111111;
-    --ifm-color-primary-dark: #222222;
-    --ifm-color-primary-darker: #111111;
-    --ifm-color-primary-darkest: #000000;
-    --ifm-color-primary-light: #33925d;
-    --ifm-color-primary-lighter: #359962;
-    --ifm-color-primary-lightest: #3cad6e;
-    --ifm-code-font-size: 95%;
-    --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
-    --ifm-scrollbar-track-background-color: transparent;
-    --ifm-scrollbar-thumb-background-color: rgba(0, 0, 0, 0.18);
-    --ifm-scrollbar-thumb-hover-background-color: #e3e3e3;
-    --ifm-scrollbar-size: 6px;
-
-    /* lists */
-    --ifm-list-left-padding: 1rem;
-    --ifm-list-item-margin: 0.875rem;
-
-    /* gray shades */
-    --ifm-color-gray-100: #f1f1f1;
-    --ifm-color-gray-200: #e3e3e3;
-    --ifm-color-gray-300: #dfdfdf;
-    --ifm-color-gray-400: #929292;
-    --ifm-color-gray-500: #666666;
-    --ifm-color-gray-600: #484848;
-    --ifm-color-gray-700: #333333;
-    --ifm-color-gray-800: #222222;
-    --ifm-color-gray-900: #111111;
-
-    /* fonts */
-    --ifm-font-family-base: "Geist", "sans-serif";
-
-    /* navbar */
-    --ifm-navbar-height: 4rem;
-
-    /* hr / border */
-    --ifm-hr-background-color: var(--ifm-color-gray-300);
-
-    /* border radius */
-    --ifm-global-radius: 0.25rem;
-    --ifm-toc-border-color: #e3e3e3;
-
-    /* shadow */
-    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-      0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --ifm-navbar-shadow: 0 1px 0 0 #e3e3e3;
-  }
-
-  /* dark theme */
-  html[data-theme="dark"] {
-    --ifm-scrollbar-track-background-color: transparent;
-
-    --background: 8 9 14; /* #08090e */
-    --foreground: 223 223 223; /* #dfdfdf */
-    --muted: 51 51 51; /* #333333 */
-    --muted-foreground: 102 102 102; /* #666666 */
-
-    /* ----------------------------------- */
-    /* gray/natural colors */
-    /* ----------------------------------- */
-    --gray-50: 17 17 17; /* #111111 */
-    --gray-100: 34 34 34; /* #222222 */
-    --gray-200: 51 51 51; /* #333333 */
-    --gray-300: 72 72 72; /* #484848 */
-    --gray-400: 102 102 102; /* #666666 */
-    --gray-500: 146 146 146; /* #929292 */
-    --gray-600: 223 223 223; /* #dfdfdf */
-    --gray-700: 227 227 227; /* #e3e3e3 */
-    --gray-800: 241 241 241; /* #f1f1f1 */
-    --gray-900: 250 250 250; /* #fafafa */
-    --gray-950: 255 255 255; /* #ffffff */
-
-    /* ----------------------------------- */
-    /* primary/brand colors */
-    /* ----------------------------------- */
-    --primary-lighter: 34 34 34; /* #222222 */
-    --primary-default: 241 241 241; /* #f1f1f1 */
-    --primary-dark: 255 255 255; /* #ffffff */
-    --primary-foreground: 0 0 0; /* #000000 */
-
-    /* ----------------------------------- */
-    /* secondary colors */
-    /* ----------------------------------- */
-    --secondary-lighter: 31 22 90; /* #1f165a */
-    --secondary-dark: 193 203 255; /* #c1cbff */
-
-    /* ----------------------------------- */
-    /* red/error colors */
-    /* ----------------------------------- */
-    --red-lighter: 80 0 0; /* #500000 */
-    --red-dark: 255 193 193; /* #ffc1c1 */
-
-    /* ----------------------------------- */
-    /* orange/warning colors */
-    /* ----------------------------------- */
-    --orange-lighter: 68 29 4; /* #441d04 */
-    --orange-dark: 252 234 139; /* #fcea8b */
-
-    /* ----------------------------------- */
-    /* blue/info colors */
-    /* ----------------------------------- */
-    --blue-lighter: 13 51 94; /* #0d335e */
-    --blue-dark: 181 233 255; /* #b5e9ff */
-
-    /* ----------------------------------- */
-    /* green/success colors */
-    /* ----------------------------------- */
-    --green-lighter: 3 48 22; /* #033016 */
-    --green-dark: 185 249 207; /* #b9f9cf */
-    /* here you can customize other colors for dark theme if design required */
-
-    /* docusaurus dark theme */
-    --ifm-background-color: #08090e;
-    --ifm-color-primary: #f1f1f1;
-    --ifm-color-primary-dark: #e3e3e3;
-    --ifm-color-primary-darker: #dfdfdf;
-    --ifm-color-primary-darkest: #929292;
-    --ifm-color-primary-light: #29d5b0;
-    --ifm-color-primary-lighter: #32d8b4;
-    --ifm-color-primary-lightest: #4fddbf;
-    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-
-    /* gray shades */
-    --ifm-color-gray-100: #111111;
-    --ifm-color-gray-200: #222222;
-    --ifm-color-gray-300: #333333;
-    --ifm-color-gray-400: #484848;
-    --ifm-color-gray-500: #666666;
-    --ifm-color-gray-600: #929292;
-    --ifm-color-gray-700: #dfdfdf;
-    --ifm-color-gray-800: #e3e3e3;
-    --ifm-color-gray-900: #f1f1f1;
-
-    /* hr / border */
-    --ifm-hr-background-color: var(--ifm-color-gray-300);
-
-    /* shadow */
-    --ifm-toc-border-color: #222222;
-    --ifm-global-shadow-lw: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-      0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --ifm-navbar-shadow: 0 1px 0 0 #222222;
-  }
-
-  input::-ms-clear,
-  input::-ms-reveal {
-    @apply hidden;
-  }
-
-  input[type="search"]::-webkit-search-cancel-button {
-    @apply hidden;
-  }
-
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    @apply m-0 appearance-none;
-  }
-}
-
-@layer components {
-  /* Password dot */
-  .password-dot {
-    -webkit-text-security: disc;
-    -moz-text-security: circle;
-    text-security: circle;
-  }
-}
-
-@layer utilities {
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-  .animation-delay-500 {
-    animation-delay: 500ms;
-  }
-  .animation-delay-700 {
-    animation-delay: 700ms;
-  }
-}
-
-/* ........................................ */
-/* custom scrollbar design for table  */
-/* ........................................ */
-
-.custom-scrollbar::-webkit-scrollbar {
-  @apply w-1.5 bg-transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  @apply bg-transparent shadow-none;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply rounded-sm bg-transparent;
-}
-
-.custom-scrollbar:hover::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-300;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-300;
-}
-
-.custom-scrollbar-x::-webkit-scrollbar {
-  @apply h-1.5;
-}
-
-.custom-scrollbar-none::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-}
-
-/* for firefox */
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0);
-}
-
-/* new badge css */
-.new-badge,
-.update-badge {
-  position: relative;
-}
-
-.new-badge:before,
-.update-badge:before {
-  position: absolute;
-  top: 6px;
-  right: 4px;
-  border-radius: 50px;
-  padding: 5px 8px;
-  text-transform: uppercase;
-  font-size: 10px;
-  line-height: 1;
-  letter-spacing: 0.5px;
-  font-weight: 600;
-}
-
-.new-badge:before {
-  content: "New";
-  background-color: #111111;
-  color: #ffffff;
-}
-
-/* update badge css */
-.update-badge:before {
-  content: "upd";
-  background-color: #4e36f5;
-  color: #ffffff;
-}
-
-/* ................................................... */
-/* React Datepicker Styling */
-/* ................................................... */
-.react-datepicker-popper .react-datepicker {
-  @apply bg-white font-geist text-gray-600 dark:border-gray-300 dark:bg-gray-50;
-}
-
-/* month container */
-.react-datepicker .react-datepicker__month-container {
-  @apply px-3;
-}
-
-/* time container */
-.react-datepicker .react-datepicker__time-container {
-  @apply w-auto border-l-0 pr-3.5;
-}
-
-.react-datepicker-popper
-  .react-datepicker__time-container
-  .react-datepicker__time {
-  @apply bg-gray-50 dark:bg-gray-200;
-}
-
-.react-datepicker__time-container
-  .react-datepicker__time
-  .react-datepicker__time-box
-  ul.react-datepicker__time-list
-  li.react-datepicker__time-list-item:hover {
-  @apply dark:bg-gray-300;
-}
-
-/* header */
-.react-datepicker .react-datepicker__header {
-  @apply border-b-transparent bg-white dark:border-transparent dark:bg-gray-50;
-}
-
-/* current month name in header */
-.react-datepicker .react-datepicker-year-header {
-  @apply dark:text-gray-700;
-}
-
-.react-datepicker .react-datepicker__current-month {
-  @apply mb-3 text-base font-medium dark:text-gray-700;
-}
-
-/* sun-sat day names in header */
-.react-datepicker .react-datepicker__day-names div {
-  @apply m-1.5 text-sm text-gray-700;
-}
-
-/* previous month button */
-.react-datepicker .react-datepicker__navigation--previous {
-  @apply ml-6 rtl:mr-6;
-}
-
-/* next month button */
-.react-datepicker .react-datepicker__navigation--next {
-  @apply mr-6 rtl:ml-6;
-}
-
-/* icon in previous month button */
-.react-datepicker .react-datepicker__navigation-icon--previous {
-  @apply right-0.5;
-}
-
-/* icon in next month button */
-.react-datepicker .react-datepicker__navigation-icon--next {
-  @apply left-0.5;
-}
-
-/* each day */
-.react-datepicker .react-datepicker__day {
-  @apply m-1.5 text-sm leading-7 text-gray-700;
-  @apply hover:rounded-full hover:bg-gray-100 hover:text-gray-900;
-}
-
-/* outside month */
-.react-datepicker .react-datepicker__day--outside-month {
-  @apply text-gray-500;
-}
-
-/* keyboard selected */
-.react-datepicker .react-datepicker__day--keyboard-selected {
-  @apply bg-gray-50;
-}
-
-/* today */
-.react-datepicker .react-datepicker__day--today {
-  @apply rounded-full border border-gray-300 bg-gray-50 leading-[26px] text-gray-900;
-  @apply hover:border-gray-600 hover:bg-gray-50;
-}
-
-/* while selecting */
-.react-datepicker div.react-datepicker__day--in-selecting-range {
-  @apply rounded-full bg-gray-200 text-gray-900;
-}
-
-.react-datepicker div.react-datepicker__year-text--in-selecting-range {
-  @apply bg-gray-200 text-gray-900;
-}
-
-.react-datepicker
-  div.react-datepicker__year-text--in-selecting-range.react-datepicker__year-text--disabled {
-  @apply bg-transparent text-gray-300;
-}
-
-/* in range */
-.react-datepicker .react-datepicker__day--in-range {
-  @apply rounded-full bg-gray-200 text-gray-900;
-}
-
-.react-datepicker .react-datepicker__year-text--in-range {
-  @apply bg-gray-200 text-gray-900;
-}
-
-/* selected */
-.react-datepicker .react-datepicker__day--range-start,
-.react-datepicker .react-datepicker__day--range-end,
-.react-datepicker .react-datepicker__day--selected {
-  @apply rounded-full border-none bg-gray-900 font-normal leading-7 text-gray-50;
-  @apply hover:bg-gray-900/80 hover:text-gray-50;
-}
-
-.react-datepicker .react-datepicker__year-text--range-end {
-  @apply border-none bg-gray-900 font-normal text-gray-50 hover:bg-gray-900/80 hover:text-gray-50;
-}
-
-/* time list */
-.react-datepicker .react-datepicker__time-list {
-  @apply !h-[247px];
-}
-
-/* time item */
-.react-datepicker .react-datepicker__time-list-item {
-  @apply my-2 rounded text-sm text-gray-500;
-  @apply hover:bg-gray-100 hover:text-gray-900;
-}
-
-/* selected time item */
-.react-datepicker .react-datepicker__time-list-item--selected {
-  @apply !bg-gray-100 !font-medium !text-gray-900;
-}
-
-/* time only box */
-.react-datepicker-popper .react-datepicker-time__header {
-  @apply text-gray-700;
-}
-.react-datepicker-popper
-  .react-datepicker__time-container
-  .react-datepicker__time
-  .react-datepicker__time-box {
-  width: 90px;
-}
-.react-datepicker--time-only
-  .react-datepicker__time-container
-  .react-datepicker__time
-  .react-datepicker__time-box {
-  @apply w-auto;
-}
-
-/* time only item */
-.react-datepicker--time-only .react-datepicker__time-list-item {
-  @apply rounded-none;
-}
-
-/* month picker text */
-.react-datepicker .react-datepicker__month-text {
-  @apply w-0 px-5 py-1.5;
-}
-
-/* keyboard selected month in month picker */
-.react-datepicker .react-datepicker__month-text--keyboard-selected {
-  @apply bg-gray-100 text-gray-900;
-}
-
-/* month in range */
-.react-datepicker .react-datepicker__month--in-range {
-  @apply bg-gray-200 text-gray-700;
-}
-
-/* hover on selected months in range */
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--in-range:hover {
-  @apply bg-gray-200 text-gray-900;
-}
-
-/* selected month in range */
-.react-datepicker .react-datepicker__month--range-start,
-.react-datepicker .react-datepicker__month--range-end,
-.react-datepicker .react-datepicker__month--selected {
-  @apply bg-gray-900 font-normal text-gray-50;
-}
-
-/* hover on selected range start and end month */
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--selected:hover,
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--range-start:hover,
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month--range-end:hover {
-  @apply bg-gray-900/80 text-gray-50;
-}
-
-/* year wrapper in year picker */
-.react-datepicker .react-datepicker__year-wrapper {
-  @apply inline-block max-w-[220px];
-}
-
-/* year text in year picker */
-.react-datepicker .react-datepicker__year-text {
-  @apply w-auto px-5 py-1.5 text-gray-600 dark:hover:text-gray-100;
-}
-
-.react-datepicker .react-datepicker__year-text--range-end {
-  @apply text-gray-50;
-}
-
-/* keyboard selected year in year picker */
-.react-datepicker .react-datepicker__year-text--keyboard-selected {
-  @apply bg-gray-200 text-gray-900;
-  @apply hover:bg-gray-300 hover:text-gray-900;
-}
-
-/* selected year & month in year picker */
-.react-datepicker
-  .react-datepicker__year-text.react-datepicker__year-text--selected,
-.react-datepicker
-  .react-datepicker__month-text.react-datepicker__month-text--selected {
-  @apply bg-gray-900 text-gray-50;
-  @apply hover:bg-gray-900/80 hover:text-gray-50;
-}
-
-/* year and month dropdown arrow */
-.react-datepicker .react-datepicker__year-read-view--down-arrow,
-.react-datepicker .react-datepicker__month-read-view--down-arrow {
-  @apply top-[5px] h-[7px] w-[7px] border-r-[1.5px] border-t-[1.5px] border-gray-400;
-}
-
-/* sub-header containing year and month dropdown */
-.react-datepicker
-  .react-datepicker__current-month--hasYearDropdown.react-datepicker__current-month--hasMonthDropdown
-  ~ .react-datepicker__header__dropdown {
-  @apply my-2 grid grid-cols-2 divide-x divide-gray-300 text-sm;
-}
-
-/* month and year dropdown button in sub-header */
-.react-datepicker .react-datepicker__month-dropdown-container--scroll,
-.react-datepicker .react-datepicker__year-dropdown-container--scroll {
-  @apply inline-flex justify-center;
-}
-
-/* month and year dropdown */
-.react-datepicker .react-datepicker__year-dropdown,
-.react-datepicker .react-datepicker__month-dropdown {
-  @apply top-auto w-2/5 border border-gray-100 bg-gray-50 shadow-md;
-}
-
-/* year dropdown */
-.react-datepicker .react-datepicker__year-dropdown {
-  @apply h-80;
-}
-
-/* month dropdown */
-.react-datepicker .react-datepicker__month-dropdown {
-  @apply py-3;
-}
-
-/* month and year option */
-.react-datepicker .react-datepicker__month-option,
-.react-datepicker .react-datepicker__year-option {
-  @apply my-1 py-1 text-sm text-gray-600;
-  @apply hover:bg-gray-100 hover:text-gray-900;
-}
-
-/* first and last type of month and year option */
-.react-datepicker .react-datepicker__month-option:first-of-type,
-.react-datepicker .react-datepicker__month-option:last-of-type,
-.react-datepicker .react-datepicker__year-option:first-of-type,
-.react-datepicker .react-datepicker__year-option:last-of-type {
-  @apply rounded-none;
-}
-
-/* selected month and year in dropdown */
-.react-datepicker .react-datepicker__month-option--selected_month,
-.react-datepicker .react-datepicker__year-option--selected_year {
-  @apply bg-gray-200 text-gray-900;
-  @apply [&>span]:hidden;
-}
-.react-datepicker .react-datepicker__day:hover,
-.react-datepicker .react-datepicker__month-text:hover,
-.react-datepicker .react-datepicker__quarter-text:hover,
-.react-datepicker .react-datepicker__year-text:hover {
-  @apply bg-gray-200 text-gray-900;
-}
-
-/* disabled item */
-.react-datepicker .react-datepicker__day--disabled {
-  @apply cursor-not-allowed text-gray-300 hover:bg-transparent hover:text-gray-300 dark:hover:text-gray-300;
-}
-
-.react-datepicker .react-datepicker__year-text--disabled {
-  @apply cursor-not-allowed text-gray-300 hover:bg-transparent dark:hover:text-gray-300;
-}
-/* end of rizzui & docusaurus css config */
-
-/* ------------------------------------- */
-/* custom styles of our doc site */
-/* ------------------------------------- */
-html,
-body {
-  @apply text-[var(--ifm-color-gray-700)] dark:text-[var(--ifm-color-gray-600)];
-}
-
-h1 {
-  @apply text-[26px] leading-tight xl:text-[28px] font-bold tracking-tight text-[var(--ifm-color-gray-900)];
-}
-
-h2 {
-  @apply text-h3;
-}
-
-h3 {
-  @apply text-h4;
-}
-
-h4 {
-  @apply text-h5;
-}
-
-h5 {
-  @apply text-h6;
-}
-
-h6 {
-  @apply text-sm;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply tracking-tight !mb-2 text-[var(--ifm-color-gray-900)];
-}
-
-#__docusaurus {
-  @apply font-geist text-[15px] antialiased;
-}
-
-#__docusaurus a,
-#__docusaurus strong,
-#__docusaurus b {
-  @apply text-[var(--ifm-color-gray-900)];
-}
-
-#__docusaurus .navbar__link {
-  @apply text-[var(--ifm-color-gray-600)];
-}
-
-#__docusaurus .navbar__link--active {
-  @apply text-[var(--ifm-color-gray-900)] !font-medium;
-}
-
-.navbar__items .navbar__toggle svg {
-  @apply w-6 h-auto sm:w-7;
-}
-
-.pagination-nav {
-  @apply content-start;
-}
-
-.pagination-nav__label {
-  @apply font-medium;
-}
-
-p strong,
-li strong {
-  @apply font-semibold;
-}
-
-.theme-edit-this-page svg {
-  @apply inline-block;
-}
-
-hr {
-  @apply h-[var(--ifm-hr-height)] my-[var(--ifm-hr-margin-vertical)];
-}
-
-/* navbar style */
-nav.navbar {
-  @apply bg-white/[0.7] backdrop-blur-lg z-[9999];
-  box-shadow:
-    0px 1.5px 0 rgba(0, 0, 0, 0.04),
-    0px 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-nav.navbar .navbar__inner {
-  @apply mx-auto w-full;
-}
-
-.navbar__toggle {
-  @apply mr-3;
-}
-
-/* TODO: uncomment when dark mode color issue fixed */
-/* .header-github-link {
-  @apply mr-4;
-} */
-
-/* TODO: removed wehn dark mode color issue fixed */
-[class*="colorModeToggle_"] {
-  /* @apply hidden !important; */
-  order: 2;
-  @apply ms-4;
-}
-
-#__docusaurus .navbar__logo {
-  /* @apply h-9; */
-  @apply h-6;
-}
-
-.header-github-link:before {
-  @apply w-[18px] h-[18px] flex;
-  background: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
-    no-repeat;
-  content: "";
-}
-
-.navbar-sidebar__item .header-github-link {
-  @apply ml-0;
-}
-
-.plugin-pages #__docusaurus .navbar__inner {
-  @apply container mx-auto !px-0;
-}
-
-svg[class*="lightToggleIcon"] {
-  @apply w-[21px] h-[21px];
-}
-
-.navbar-sidebar,
-.navbar-sidebar__backdrop {
-  @apply min-h-screen;
-}
-
-.navbar-sidebar__item {
-  @apply p-4;
-}
-
-.navbar-sidebar__back {
-  @apply hidden;
-}
-
-.navbar-sidebar div[class*="toggle_"] {
-  @apply ml-auto;
-}
-
-.navbar-sidebar__close {
-  @apply ml-1;
-}
-
-.navbar-sidebar__close svg {
-  @apply w-4 h-4;
-}
-
-.navbar-sidebar__close g {
-  stroke-width: 1.8;
-}
-
-.menu__list-item-collapsible--active {
-  @apply bg-transparent;
-}
-
-#__docusaurus .navbar__search {
-  @apply md:w-52;
-}
-
-#__docusaurus .navbar__search-input {
-  --ifm-navbar-search-input-background-color: var(--gray-50);
-  @apply ring-[1.5px] ring-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-900 md:w-full rounded-full;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E%0A");
-  background-position: 12px;
-  background-size: 16px;
-  background-repeat: no-repeat;
-}
-
-[data-theme="dark"] #__docusaurus .navbar__search-input {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23777' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z' /%3E%3C/svg%3E%0A");
-}
-
-#__docusaurus div[class*="searchHintContainer"] {
-  @apply right-3 gap-[3px];
-}
-
-#__docusaurus div[class*="searchHintContainer"] kbd {
-  @apply border-0 shadow-none p-0 font-semibold text-[13px] font-geist;
-}
-
-#__docusaurus input[class*="searchQueryInput"] {
-  @apply mt-8 border-2 px-5 border-gray-900 focus:outline-none h-12;
-}
-
-#__docusaurus div[class*="searchResultItem"] {
-  @apply px-5 py-4 border border-gray-300 shadow my-4 rounded-lg;
-}
-
-#__docusaurus div[class*="tocCollapsible_"] {
-  @apply bg-transparent border rounded-md mb-6;
-}
-
-#__docusaurus div[class*="tocCollapsible"] .table-of-contents {
-  @apply before:hidden pt-1 border-b-0 border-x-0;
-}
-
-#__docusaurus button[class*="tocCollapsibleButton_"] {
-  @apply text-gray-900 font-medium text-sm capitalize py-2;
-}
-
-#__docusaurus button[class*="tocCollapsibleButton_"]::after {
-  background-size: 1.6rem 1.6rem;
-}
-
-@media (min-width: 997px) {
-  nav.navbar {
-    @apply px-6;
-  }
-  .navbar__brand {
-    @apply mr-8;
-  }
-  #__docusaurus .theme-doc-sidebar-container {
-    --doc-sidebar-width: 270px;
-  }
-  .theme-doc-sidebar-container ~ main {
-    @apply ml-[270px] max-w-[calc(100%-270px)];
-  }
-  #__docusaurus div[class*="docItemCol_"] {
-    @apply !max-w-full;
-  }
-  #__docusaurus .theme-doc-toc-mobile {
-    @apply block;
-  }
-  .theme-doc-sidebar-container ~ main > .container .col.col--3 {
-    @apply hidden;
-  }
-  .container div[class*="docItemContainer_"] {
-    @apply flex flex-col min-h-[calc(100vh-112px)] py-6 pl-[1.5rem] pr-0;
-  }
-  .container div[class*="docItemContainer_"] > article {
-    @apply flex-grow;
-  }
-}
-
-.main-wrapper > div[class*="docPage"] {
-  @apply mx-auto w-full;
-}
-
-.container {
-  @apply px-4 sm:px-6 w-full;
-}
-
-@media (max-width: 1023px) {
-  .container {
-    @apply !max-w-full;
-  }
-}
-
-@media (min-width: 1280px) {
-  #__docusaurus .theme-doc-toc-mobile {
-    @apply hidden;
-  }
-  #__docusaurus div[class*="docItemCol_"] {
-    @apply !max-w-[75%];
-  }
-  .theme-doc-sidebar-container ~ main > .container .col.col--3 {
-    @apply block;
-  }
-}
-
-@media (min-width: 1536px) {
-  .theme-doc-sidebar-container ~ main > .container {
-    @apply mx-0 max-w-full;
-  }
-
-  #__docusaurus div[class*="docItemCol_"] {
-    max-width: calc(100% - 320px) !important;
-  }
-
-  .container div[class*="docItemContainer_"] {
-    @apply max-w-[960px] mx-auto;
-  }
-
-  .theme-doc-sidebar-container ~ main > .container .col.col--3 {
-    @apply w-80 fixed right-0 bg-white;
-  }
-
-  [data-theme="dark"]
-    .theme-doc-sidebar-container
-    ~ main
-    > .container
-    .col.col--3 {
-    @apply bg-[#08090e];
-  }
-}
-
-@media (min-width: 1680px) {
-  .slide-item-center {
-    transform: translateX(calc(max(1632px, 100vw) / 2 - calc(1632px / 2)));
-  }
-}
-
-@media (max-width: 1679px) {
-  .slide-item-center {
-    transform: translateX(20px);
-  }
-}
-
-.theme-doc-sidebar-container {
-  @apply fixed h-full overflow-y-auto overflow-x-hidden !border-[var(--ifm-color-gray-300)];
-}
-
-.theme-doc-sidebar-container nav.menu {
-  @apply pt-6 pl-5 pr-[1.1rem];
-}
-
-#__docusaurus .navbar__link {
-  @apply text-[15px] font-normal;
-}
-
-#__docusaurus .menu__list {
-  @apply text-sm font-normal pl-0;
-}
-
-#__docusaurus .menu__list-item > .menu__list {
-  @apply border-l border-gray-200 ml-1.5;
-}
-
-#__docusaurus li > .menu__link {
-  @apply py-2 px-0 text-[var(--ifm-color-gray-600)];
-}
-
-#__docusaurus .theme-doc-sidebar-menu li > .menu__link {
-  @apply px-5 relative before:block before:w-4 before:h-[20%] before:absolute before:-left-[1px] before:top-[11px] before:bg-transparent before:rounded-bl-2xl before:border-b before:border-l;
-}
-
-#__docusaurus .theme-doc-sidebar-menu li:last-child > .menu__link {
-  @apply after:block after:w-[3.5px] after:h-5 after:bg-white after:absolute after:top-[14px] after:-left-[3.5px] after:rounded-tl-3xl;
-}
-
-html[data-theme="dark"]
-  #__docusaurus
-  .theme-doc-sidebar-menu
-  li:last-child
-  > .menu__link::after {
-  background-color: #08090e;
-}
-
-#__docusaurus li > .menu__link:hover {
-  @apply bg-transparent text-[var(--ifm-color-gray-900)] font-medium;
-}
-
-#__docusaurus li > .menu__link--active {
-  @apply !font-medium text-[var(--ifm-color-gray-900)];
-}
-
-#__docusaurus li > .menu__link--active:not(.menu__link--sublist) {
-  @apply bg-transparent rounded-none border-l-[2px] border-gray-950 -ml-[1px] pl-[18px] before:left-0 before:w-[13px];
-}
-
-.menu__list-item-collapsible {
-  @apply hover:bg-transparent;
-}
-
-.menu__list-item-collapsible > a {
-  @apply text-sm font-medium flex-row-reverse justify-end px-0 -mx-1 text-[var(--ifm-color-gray-900)];
-}
-
-.menu__list-item-collapsible > a::after {
-  background-size: 1.4rem 1.4rem;
-  @apply ml-0 mr-1;
-}
-
-#__docusaurus .menu__list li:last-of-type {
-  @apply mb-4 pb-0.5;
-}
-
-#__docusaurus
-  .theme-doc-sidebar-item-category-level-2
-  .menu__list-item-collapsible
-  > a {
-  @apply border-l-2 rounded-none mx-0 font-normal !bg-gray-100 !text-sm px-5;
-}
-
-.theme-doc-sidebar-item-category-level-2
-  .menu__list-item-collapsible
-  > a::after {
-  @apply hidden;
-}
-
-#__docusaurus .theme-doc-sidebar-item-category-level-2 .menu__list {
-  @apply mt-0;
-}
-
-#__docusaurus li.theme-doc-sidebar-item-link-level-3 > a {
-  @apply border-l-2 rounded-none;
-}
-
-#__docusaurus li.theme-doc-sidebar-item-link-level-3 > .menu__link--active {
-  @apply border-gray-900 bg-transparent;
-}
-
-.theme-doc-sidebar-item-link-level-3.menu__list-item:not(:first-child) {
-  @apply mt-0;
-}
-
-.table-of-contents {
-  @apply text-sm;
-}
-
-.table-of-contents li {
-  @apply mx-0 my-1;
-}
-
-#__docusaurus .table-of-contents__left-border {
-  @apply border-l-0 pt-[1.6rem];
-}
-
-#__docusaurus .table-of-contents__link {
-  @apply text-[var(--ifm-color-gray-600)] py-1;
-}
-
-#__docusaurus .table-of-contents__link a {
-  @apply lg:inline-flex;
-}
-
-#__docusaurus .table-of-contents__link--active {
-  @apply font-medium text-[var(--ifm-color-gray-900)];
-}
-
-#__docusaurus .theme-doc-breadcrumbs {
-  @apply hidden;
-}
-
-ul.table-of-contents.table-of-contents__left-border::before {
-  @apply block mb-4 font-semibold text-[var(--ifm-color-gray-900)];
-  content: "On This Page";
-}
-
-/* markdown style */
-.markdown h1:first-child {
-  @apply mb-4;
-}
-
-.markdown {
-  @apply leading-[1.8];
-}
-
-#__docusaurus kbd {
-  @apply bg-transparent;
-}
-
-#__docusaurus code {
-  @apply inline-block m-0.5 py-[0.1rem] px-1.5 text-[12px] text-[#293548] bg-transparent font-semibold;
-}
-
-#__docusaurus pre code {
-  @apply bg-transparent m-0 p-[var(--ifm-pre-padding)] text-sm font-normal;
-}
-
-#__docusaurus .alert {
-  @apply bg-transparent shadow-none border-[1.5px] border-b-4;
-}
-
-[data-theme="dark"] #__docusaurus .prism-code {
-  --prism-background-color: #14171d;
-}
-
-#__docusaurus .theme-code-block {
-  @apply max-h-[800px] overflow-auto;
-  scrollbar-width: thin;
-}
-
-#__docusaurus .navbar-sidebar__item.menu {
-  scrollbar-width: thin;
-}
-
-#__docusaurus .theme-code-block::-webkit-scrollbar,
-#__docusaurus .navbar-sidebar__item.menu::-webkit-scrollbar {
-  height: var(--ifm-scrollbar-size);
-  width: var(--ifm-scrollbar-size);
-}
-
-#__docusaurus .theme-code-block::-webkit-scrollbar-track,
-#__docusaurus .navbar-sidebar__item.menu::-webkit-scrollbar-track {
-  background: var(--ifm-scrollbar-track-background-color);
-  border-radius: 10px;
-}
-
-[data-theme="dark"] #__docusaurus .theme-code-block::-webkit-scrollbar-track {
-  background: #14171d;
-}
-
-#__docusaurus .theme-code-block::-webkit-scrollbar-thumb,
-#__docusaurus .theme-code-block .thin-scrollbar::-webkit-scrollbar-thumb,
-#__docusaurus .navbar-sidebar__item.menu::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-}
-
-#__docusaurus .thin-scrollbar::-webkit-scrollbar-thumb,
-#__docusaurus .navbar-sidebar__item.menu::-webkit-scrollbar-thumb {
-  background: var(--ifm-scrollbar-thumb-hover-background-color);
-}
-
-#__docusaurus div[class*="codeBlockTitle_"] {
-  @apply font-normal text-[#90a1ba] bg-[#293548] dark:!bg-[#181f28] border-b-[#3a485d] dark:!border-b-[#232c39] py-2;
-}
-
-#__docusaurus .prism-code + div[class*="buttonGroup_"] button {
-  @apply opacity-60;
-}
-
-.markdown menu,
-.markdown ul {
-  @apply list-none pl-[calc(var(--ifm-list-left-padding)-0.25rem)];
-}
-
-.markdown > ul li:before {
-  @apply relative -left-[0.75rem];
-  content: "→";
-}
-
-.markdown ol {
-  @apply list-decimal pl-[calc(var(--ifm-list-left-padding)+0.25rem)];
-}
-
-.markdown p a,
-.markdown li a {
-  @apply text-gray-900 font-medium underline;
-}
-
-.pagination-nav__link {
-  @apply border-[var(--ifm-color-gray-200)] hover:shadow-[0_0_0_0.6px_currentColor];
-}
-
-.pagination-nav__sublabel {
-  @apply text-[11px] uppercase tracking-[2px] text-[var(--ifm-color-gray-400)] mb-1.5;
-}
-
-.pagination-nav__label {
-  @apply text-[15px] font-medium;
-}
-
-.pagination-nav__link--prev .pagination-nav__label::before {
-  content: "← ";
-}
-
-.pagination-nav__link--next .pagination-nav__label::after {
-  content: " →";
-}
-
-/* props table */
-.markdown table {
-  @apply font-geist border border-spacing-0 shadow text-sm table w-full;
-}
-
-.markdown table thead {
-  @apply bg-transparent border-y;
-}
-
-.markdown table th {
-  @apply font-medium text-gray-500;
-}
-
-.markdown table th:first-child {
-  border-top-left-radius: var(--ifm-global-radius);
-  border-bottom-left-radius: var(--ifm-global-radius);
-}
-
-.markdown table th:last-child {
-  border-top-right-radius: var(--ifm-global-radius);
-  border-bottom-right-radius: var(--ifm-global-radius);
-}
-
-.markdown table th,
-.markdown table td {
-  @apply border-0 py-3 px-[1.125rem] text-left;
-}
-
-.markdown table td {
-  @apply text-gray-600 dark:text-gray-500;
-}
-
-.markdown table td:nth-child(4n + 1) {
-  @apply font-semibold text-gray-600;
-}
-
-.markdown table th:nth-child(4n),
-.markdown table td:nth-child(4n) {
-  @apply text-center;
-}
-
-.markdown table tr {
-  @apply border-0 bg-transparent;
-}
-
-.markdown table a {
-  @apply font-medium underline;
-}
-
-.markdown table a:hover {
-  @apply underline-offset-4;
-}
-
-.markdown table code {
-  @apply whitespace-nowrap;
-}
-
-.markdown [class*="buttonGroup"] button {
-  @apply border-0 py-2;
-}
-
-#__docusaurus [class*="backToTopButton"] {
-  @apply w-10 h-10 bg-[var(--ifm-color-gray-300)];
-}
-
-.custom-not-found-wrapper {
-  @apply m-auto w-full max-w-lg text-center min-h-screen grid place-content-center;
-}
-
-.custom-not-found-wrapper p {
-  @apply leading-[1.8];
-}
-
-button[class*="toggleButton"].clean-btn:hover {
-  @apply !bg-transparent dark:text-gray-900;
-}
-
-/* ------------------------------------- */
-/* dark style adjustment */
-/* ------------------------------------- */
-[data-theme="dark"] nav.navbar {
-  @apply bg-black/[0.01] border-b border-b-gray-100;
-}
-
-[data-theme="dark"] nav.navbar .navbar__logo img {
-  filter: invert(100);
-}
-
-[data-theme="dark"] .theme-doc-sidebar-container img {
-  filter: invert(100);
-}
-
-[data-theme="dark"] .header-github-link:before {
-  filter: invert(100);
-  @apply opacity-60 hover:opacity-100;
-}
-
-[data-theme="dark"]
-  #__docusaurus
-  li
-  > .menu__link--active:not(.menu__link--sublist) {
-  @apply bg-transparent;
-}
-
-[data-theme="dark"] #__docusaurus code {
-  @apply bg-[var(--ifm-color-gray-200)] text-gray-600;
-}
-
-[data-theme="dark"] #__docusaurus pre code {
-  @apply bg-transparent text-current;
-}
-
-[data-theme="dark"] .markdown table th {
-  @apply bg-[var(--ifm-color-gray-200)];
-}
-
-[data-theme="dark"] #__docusaurus div[class*="codeBlockTitle"] {
-  @apply bg-[#2e2e31];
-}
-
-/* integrations datepicker paper custom css  */
-.react-datepicker .react-datepicker__year-text {
-  @apply px-0;
-}
-
-[class*="dropdownMenu_"] [class*="suggestion_"] {
-  @apply bg-gray-50 !important;
-}
-
-[class*="dropdownMenu_"] [class*="suggestion_"][class*="cursor"] {
-  @apply bg-gray-900 !important;
-}
-
-#__docusaurus
-  [class*="dropdownMenu_"]
-  [class*="suggestion_"][class*="cursor"]
-  * {
-  @apply text-gray-50 !important;
-}
-
-.navbar__search-input {
-  @apply text-gray-900 !important;
-}
-
-.navbar__search-input::placeholder {
-  @apply text-gray-500 !important;
-}
-
-.pagination-nav__link--prev .pagination-nav__label {
-  @apply before:hidden;
-}
-
-.pagination-nav__link--next .pagination-nav__label {
-  @apply after:hidden;
-}
-
-.grid-box {
-  background-size: 5rem 4rem;
-  background-image: linear-gradient(90deg, #f0f0f0 1px, transparent 0),
-    linear-gradient(180deg, #f0f0f0 1px, transparent 0);
-}
-
-/* .gradient-border:after {
-  --borderWidth: 4px;
-  content: "";
-  position: absolute;
-  top: calc(0.5 * var(--borderWidth));
-  left: calc(1 * var(--borderWidth));
-  height: calc(100% + var(--borderWidth) * 2);
-  width: calc(100% - var(--borderWidth));
-  background: linear-gradient(
-    60deg,
-    #f79533,
-    #f37055,
-    #ef4e7b,
-    #a166ab,
-    #5073b8,
-    #1098ad,
-    #07b39b,
-    #6fba82
-  );
-  border-radius: calc(2 * var(--borderWidth));
-  z-index: -1;
-  animation: animatedgradient 3s ease alternate infinite;
-  background-size: 300% 300%;
-  filter: blur(10px);
-}
-
-@keyframes animatedgradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-} */
-
-/* for firefox */
-#__docusaurus .theme-doc-sidebar-container {
-  scrollbar-color: rgba(0, 0, 0, 0.18) rgba(0, 0, 0, 0);
-}
-
-.straight-token-line span.token-line {
-  display: inline-block !important;
-}
-
-/* table row highlight  */
-
-.password-props-row-highlight table tbody tr:nth-child(10),
-.password-props-row-highlight table tbody tr:nth-child(9),
-.multiselect-props-row-highlight table tbody tr:nth-child(23),
-.multiselect-props-row-highlight table tbody tr:nth-child(12),
-.select-props-row-highlight table tbody tr:nth-child(12),
-.select-props-row-highlight table tbody tr:nth-child(10),
-.checkbox-props-row-highlight table tbody tr:nth-child(8)
-/* .grid-props-table-row-highlight table tbody tr:nth-child(7), */
-/* .grid-props-table-row-highlight table tbody tr:nth-child(8)  */ {
-  @apply bg-[#0070f3]/10;
-}
-
-/* For versioning */
-#__docusaurus .theme-doc-version-badge {
-  @apply hidden;
-}
-#__docusaurus .theme-doc-version-banner {
-  @apply mx-auto max-w-[960px];
-}
-#__docusaurus .customVersionDropdown + .menu__list {
-  @apply pl-2.5;
-}
-#__docusaurus .theme-doc-version-banner {
-  @apply min-[997px]:w-[calc(100%-24px)] ml-auto mr-0 min-[1600px]:!mx-auto min-[997px]:!-mb-5 min-[1280px]:!mb-2 min-[1280px]:mt-7 min-[1600px]:max-w-[936px] min-[1600px]:translate-x-3;
-}
-
-/* blog list page  */
-.blog-wrapper #__docusaurus .container {
-  @apply !max-w-none;
-}
-.blog-list-page #__docusaurus aside {
-  @apply hidden;
-}
-.blog-list-page #__docusaurus main::before {
-  content: "The Latest RizzUI News";
-  @apply col-span-full text-[28px] font-bold mt-2 mb-4 text-gray-700 dark:text-white;
-}
-.blog-list-page #__docusaurus main {
-  @apply grid justify-between grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-x-4 gap-y-6 mx-auto !max-w-[1232px] w-full flex-auto;
-}
-.blog-list-page #__docusaurus main .hidden-for-blog-list-page {
-  @apply hidden;
-}
-.blog-list-page #__docusaurus article {
-  @apply border p-1.5 rounded-xl !mb-0 w-full flex flex-col justify-between;
-}
-.blog-list-page #__docusaurus article header {
-  @apply [&_.row]:hidden p-3 pb-0;
-}
-.blog-list-page #__docusaurus article header h2 {
-  @apply text-xl font-medium !-mb-2 [&_a]:hover:no-underline [&_a]:text-blue;
-}
-.blog-list-page #__docusaurus article .markdown {
-  @apply h-full [&>p]:line-clamp-3 [&_ul_li]:mt-1 [&_ul_li_a]:pointer-events-none [&_ul_li_a]:no-underline px-3;
-}
-.blog-list-page #__docusaurus article .markdown .anchor {
-  @apply hidden;
-}
-.blog-list-page #__docusaurus article footer {
-  @apply mt-4 block w-full [&_.col--9]:hidden [&.row]:mx-0;
-}
-.blog-list-page #__docusaurus article footer .col {
-  @apply text-left px-0;
-}
-.blog-list-page #__docusaurus article footer .col--3 {
-  @apply !w-full block p-0;
-  --ifm-col-width: 100%;
-}
-.blog-list-page #__docusaurus article footer .col > a {
-  @apply block text-center bg-gray-200 dark:bg-slate-900 px-5 py-2 rounded-md hover:no-underline capitalize text-sm [&_b]:!font-medium hover:bg-gray-200/50 transition-colors;
-}
-
-/* blog single page  */
-.blog-post-page #__docusaurus div.col--2,
-.blog-post-page #__docusaurus aside {
-  @apply hidden;
-}
-.blog-post-page #__docusaurus .container .row main {
-  @apply mx-auto flex-auto max-w-[860px];
-}
-.blog-post-page #__docusaurus main .hidden-for-blog-list-page {
-  @apply my-8;
-}
-.blog-post-page #__docusaurus .container .row main h1 {
-  @apply text-4xl font-bold mt-2;
-}
-.blog-post-page #__docusaurus .container .row main h2 {
-  @apply text-3xl;
-}
-.blog-post-page #__docusaurus .container .row main h3 {
-  @apply text-2xl;
-}
-.blog-post-page #__docusaurus .container .row main h4 {
-  @apply text-xl !mb-4;
-}
-.blog-post-page #__docusaurus .container .row main h5 {
-  @apply text-lg;
-}
-.blog-post-page #__docusaurus .container .row main h6 {
-  @apply text-base;
-}
-.blog-post-page #__docusaurus .container .row header {
-  @apply border-b border-gray-100 mb-8;
-}
-.blog-post-page #__docusaurus .container .row header .row {
-  @apply !mt-6 pt-6 pb-0;
-}
-.blog-post-page #__docusaurus .container .row header div[class*="authorCol_"] {
-  @apply block flex-none w-auto;
-}
-.blog-post-page
-  #__docusaurus
-  .container
-  .row
-  header
-  div[class*="authorCol_"]
-  .avatar {
-  @apply items-center flex gap-4;
-}
-.blog-post-page
-  #__docusaurus
-  .container
-  .row
-  header
-  div[class*="authorCol_"]
-  .avatar__photo {
-  @apply size-10;
-}
-.blog-post-page
-  #__docusaurus
-  .container
-  .row
-  header
-  div[class*="authorCol_"]
-  .avatar__intro {
-  @apply block [&_small]:mt-0.5 [&_small]:text-xs;
-}
-.blog-post-page
-  #__docusaurus
-  .container
-  .row
-  header
-  div[class*="authorCol_"]
-  .avatar__intro
-  div[class*="authorSocials_"] {
-  @apply hidden;
-}
-.blog-post-page
-  #__docusaurus
-  .container
-  .row
-  header
-  div[class*="authorCol_"]
-  .avatar__name {
-  @apply text-primary [&_span]:font-medium [&_span]:text-sm;
-}
-.blog-post-page #__docusaurus .container .row header div[class*="container_"] {
-  @apply text-gray-400;
-}
-
-.blog-post-page #__docusaurus .container .row main .markdown {
-  @apply [&_p]:text-base [&_p]:leading-[1.75rem];
-}
-
-.blog-post-page article header .row::before {
-  content: "Posted By";
-  @apply ml-4 mb-3 text-sm w-full text-gray-400;
-}
-
-.docs-version-current #__docusaurus .menu__list-item > .menu__list {
-  @apply border-l-0;
-}
-.docs-version-current #__docusaurus li > .menu__link {
-  @apply border-l-0 pl-5;
-}
-.docs-version-current
-  #__docusaurus
-  li
-  > .menu__link--active:not(.menu__link--sublist) {
-  @apply border-l-0 pl-5 ml-0;
-}
-.docs-version-current
-  #__docusaurus
-  .theme-doc-sidebar-menu
-  li
-  > .menu__link::before {
-  @apply hidden;
-}
-
-.blog-list-page #__docusaurus .navbar__inner,
-.blog-post-page #__docusaurus .navbar__inner {
-  @apply max-w-[1536px];
-}
-
-.blog-post-page #__docusaurus .navbar__inner {
-  @apply max-w-[1536px];
-}
+@import 'tailwindcss';
+@import '../../static/fonts/outfit-font.css';
+@source "../../node_modules/rizzui/src";
+@source "../../docs/**/*.{md,mdx}";
+@source "../../blog/**/*.{md,mdx}";
+@source "../../src/components/";
+@source "../../src/pages/";
+@source "../../src/theme/";
+@source "../../src/contexts";
+@plugin "@tailwindcss/forms";
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root {
+  /* ----------------------------------- */
+  /* body style */
+  /* ----------------------------------- */
+  --background: oklch(100% 0 0); /* #ffffff */
+  --foreground: oklch(40.17% 0 0); /* #484848 */
+  --muted: oklch(91.58% 0 0); /* #e3e3e3 */
+  --muted-foreground: oklch(66% 0 0); /* #929292 */
+
+  /* ----------------------------------- */
+  /* border tokens */
+  /* ----------------------------------- */
+  --border-radius: 0.5rem; /* 8px */
+  --border-width: 0.0625rem; /* 1px */
+  --border-color: oklch(90.37% 0 0); /* #dfdfdf */
+
+  /* ----------------------------------- */
+  /* text tokens */
+  /* ----------------------------------- */
+  --text-primary: oklch(0% 0 0); /* #000000 */
+  --text-secondary: oklch(40.17% 0 0); /* #484848 */
+
+  /* ----------------------------------- */
+  /* gray colors */
+  /* ----------------------------------- */
+  --gray-50: oklch(98.51% 0 0); /* #fafafa */
+  --gray-100: oklch(95.81% 0 0); /* #f1f1f1 */
+  --gray-200: oklch(91.58% 0 0); /* #e3e3e3 */
+  --gray-300: oklch(90.37% 0 0); /* #dfdfdf */
+  --gray-400: oklch(66% 0 0); /* #929292 */
+  --gray-500: oklch(51.03% 0 0); /* #666666 */
+  --gray-600: oklch(40.17% 0 0); /* #484848 */
+  --gray-700: oklch(32.11% 0 0); /* #333333 */
+  --gray-800: oklch(25.2% 0 0); /* #222222 */
+  --gray-900: oklch(17.76% 0 0); /* #111111 */
+  --gray-950: oklch(0% 0 0); /* #000000 */
+
+  /* ----------------------------------- */
+  /* primary/brand colors */
+  /* ----------------------------------- */
+  --primary-lighter: oklch(91.58% 0 0); /* #e3e3e3 */
+  --primary: oklch(17.76% 0 0); /* #111111 */
+  --primary-dark: oklch(0% 0 0); /* #000000 */
+  --primary-foreground: oklch(100% 0 0); /* #ffffff */
+
+  /* ----------------------------------- */
+  /* secondary colors */
+  /* ----------------------------------- */
+  --secondary-lighter: oklch(91.99% 0.0386 276.02); /* #dde3ff */
+  --secondary: oklch(50.51% 0.2633 276.95); /* #4e36f5 */
+  --secondary-dark: oklch(45.41% 0.2431 277.06); /* #432ad8 */
+  --secondary-foreground: oklch(100% 0 0); /* #ffffff */
+
+  /* ----------------------------------- */
+  /* red/error colors */
+  /* ----------------------------------- */
+  --red-lighter: oklch(89.99% 0.0393 14); /* #f7d4d6 */
+  --red: oklch(59.6% 0.2445 29.23); /* #e00 */
+  --red-dark: oklch(51.71% 0.2121 29.2338); /* #c50000 */
+
+  /* ----------------------------------- */
+  /* orange/warning colors */
+  /* ----------------------------------- */
+  --orange-lighter: oklch(95.67% 0.0452 84.5695); /* #ffefcf */
+  --orange: oklch(78.37% 0.1587 72.99); /* #f5a623 */
+  --orange-dark: oklch(54.83% 0.1339 53.95); /* #ab570a */
+
+  /* ----------------------------------- */
+  /* blue/info colors */
+  /* ----------------------------------- */
+  --blue-lighter: oklch(91.66% 0.0404 257.5078); /* #d3e5ff */
+  --blue: oklch(57.31% 0.2144 258.25); /* #0070f3 */
+  --blue-dark: oklch(51.58% 0.1888 258.27); /* #0761d1 */
+
+  /* ----------------------------------- */
+  /* green/success colors */
+  /* ----------------------------------- */
+  --green-lighter: oklch(92.79% 0.086 155.61); /* #b9f9cf */
+  --green: oklch(64.01% 0.1776 148.74); /* #11a849 */
+  --green-dark: oklch(53.79% 0.1441 149.52); /* #11843c */
+}
+
+/* ----------------------------------- */
+/* dark theme */
+/* ----------------------------------- */
+[data-theme='dark'] {
+  /* body style */
+  --background: oklch(14.11% 0.0112 275.23); /* #08090e */
+  --foreground: oklch(90.37% 0 0); /* #dfdfdf */
+  --muted: oklch(32.11% 0 0); /* #333333 */
+  --muted-foreground: oklch(51.03% 0 0); /* #666666 */
+
+  /* border tokens */
+  --border-color: oklch(32.11% 0 0); /* #333333 */
+
+  /* text tokens */
+  --text-primary: oklch(100% 0 0); /* #ffffff */
+  --text-secondary: oklch(51.03% 0 0); /* #666666 */
+
+  /* ----------------------------------- */
+  /* gray/natural colors */
+  /* ----------------------------------- */
+  --gray-50: oklch(17.76% 0 0); /* #111111 */
+  --gray-100: oklch(25.2% 0 0); /* #222222 */
+  --gray-200: oklch(32.11% 0 0); /* #333333 */
+  --gray-300: oklch(40.17% 0 0); /* #484848 */
+  --gray-400: oklch(51.03% 0 0); /* #666666 */
+  --gray-500: oklch(66% 0 0); /* #929292 */
+  --gray-600: oklch(90.37% 0 0); /* #dfdfdf */
+  --gray-700: oklch(91.58% 0 0); /* #e3e3e3 */
+  --gray-800: oklch(95.81% 0 0); /* #f1f1f1 */
+  --gray-900: oklch(98.51% 0 0); /* #fafafa */
+  --gray-950: oklch(100% 0 0); /* #ffffff */
+
+  /* ----------------------------------- */
+  /* primary/brand colors */
+  /* ----------------------------------- */
+  --primary-lighter: oklch(25.2% 0 0); /* #222222 */
+  --primary: oklch(95.81% 0 0); /* #f1f1f1 */
+  --primary-dark: oklch(100% 0 0); /* #ffffff */
+  --primary-foreground: oklch(0% 0 0); /* #000000 */
+
+  /* ----------------------------------- */
+  /* secondary colors */
+  /* ----------------------------------- */
+  --secondary-lighter: oklch(26.35% 0.1154 280.96); /* #1f165a */
+  --secondary-dark: oklch(85.2% 0.0733 276.238); /* #c1cbff */
+
+  /* ----------------------------------- */
+  /* red/error colors */
+  /* ----------------------------------- */
+  --red-lighter: oklch(27.08% 0.1111 29.23); /* #500000 */
+  --red-dark: oklch(86.69% 0.0714 18.6304); /* #ffc1c1 */
+
+  /* ----------------------------------- */
+  /* orange/warning colors */
+  /* ----------------------------------- */
+  --orange-lighter: oklch(28.29% 0.0698 49.34); /* #441d04 */
+  --orange-dark: oklch(93.15% 0.1175 98.83); /* #fcea8b */
+
+  /* ----------------------------------- */
+  /* blue/info colors */
+  /* ----------------------------------- */
+  --blue-lighter: oklch(32.05% 0.0873 254.4); /* #0d335e */
+  --blue-dark: oklch(90.53% 0.0611 225.72); /* #b5e9ff */
+
+  /* ----------------------------------- */
+  /* green/success colors */
+  /* ----------------------------------- */
+  --green-lighter: oklch(27.23% 0.0672 152.71); /* #033016 */
+  --green-dark: oklch(92.79% 0.086 155.61); /* #b9f9cf */
+}
+
+/* ----------------------------------- */
+/* UI Presets */
+/* ----------------------------------- */
+
+/* Modern: default rounded, clean, airy */
+[data-ui-preset='modern'] {
+  --border-radius: 0.5rem; /* 8px */
+  --border-width: 0.0625rem; /* 1px */
+}
+
+/* Minimal: subtle, thin borders, less radius */
+[data-ui-preset='minimal'] {
+  --border-radius: 0.25rem; /* 4px */
+  --border-width: 0.0625rem; /* 1px */
+}
+
+/* Bold: strong, thick borders, more radius */
+[data-ui-preset='bold'] {
+  --border-radius: 0.75rem; /* 12px */
+  --border-width: 0.125rem; /* 2px */
+}
+
+/* Soft: very rounded, pill-like */
+[data-ui-preset='soft'] {
+  --border-radius: 1rem; /* 16px */
+  --border-width: 0.0625rem; /* 1px */
+}
+
+/* ----------------------------------- */
+/* Tailwind Integration */
+/* ----------------------------------- */
+@theme inline {
+  /* body colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* border tokens */
+  --border-radius: var(--border-radius);
+  --color-border: var(--border-color);
+
+  /* text tokens */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  /* gray colors */
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --color-gray-950: var(--gray-950);
+
+  /* primary colors */
+  --color-primary-lighter: var(--primary-lighter);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* secondary colors */
+  --color-secondary-lighter: var(--secondary-lighter);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  /* semantic colors */
+  --color-red-lighter: var(--red-lighter);
+  --color-red: var(--red);
+  --color-red-dark: var(--red-dark);
+  --color-orange-lighter: var(--orange-lighter);
+  --color-orange: var(--orange);
+  --color-orange-dark: var(--orange-dark);
+  --color-blue-lighter: var(--blue-lighter);
+  --color-blue: var(--blue);
+  --color-blue-dark: var(--blue-dark);
+  --color-green-lighter: var(--green-lighter);
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
+}
+
+@import './_variables.css';
+@import './_layout.css';
+@import './_common.css';
+@import './_navbar.css';
+@import './_sidebar.css';
+@import './_table-of-contents.css';
+@import './_mark-down.css';
+@import './_adomonition.css';
+@import './_blog.css';
+@import './_datepicker.css';
+@import './_home.css';

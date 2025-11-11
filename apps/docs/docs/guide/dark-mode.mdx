@@ -1,27 +1,90 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import NpmIcon from '@site/src/components/icons/npm-icon';
+import YarnIcon from '@site/src/components/icons/yarn-icon';
+import PnpmIcon from '@site/src/components/icons/pnpm-icon';
+import BunIcon from '@site/src/components/icons/bun-icon';
+import { Badge } from 'rizzui/badge';
 
 # Dark Mode
 
 Adding dark mode to your Next.js app, it's a one-time process. We use [next-themes](https://www.npmjs.com/package/next-themes) and [CSS variables](#configure-globalscss) for a seamless dark mode experience.
 
-## Install next-themes
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 1
+  </Badge>
+  <span>
+    Install <strong>next-themes</strong>
+  </span>
+</div>
 
 Install [next-themes](https://www.npmjs.com/package/next-themes) by running the following command:
 
-```bash title=Terminal
-npm i next-themes
-```
+<Tabs groupId="package-manager">
+  <TabItem
+    value="npm"
+    label={
+      <div className="flex items-center gap-2">
+        <NpmIcon className="size-6" /> npm
+      </div>
+    }
+    default
+  >
+    <CodeBlock language="js">{`npm i next-themes`}</CodeBlock>
+  </TabItem>
+  <TabItem
+    value="yarn"
+    label={
+      <div className="flex items-center gap-2">
+        <YarnIcon className="size-6" /> yarn
+      </div>
+    }
+  >
+    <CodeBlock language="js">{`yarn add next-themes`}</CodeBlock>
+  </TabItem>
+  <TabItem
+    value="pnpm"
+    label={
+      <div className="flex items-center gap-2">
+        <PnpmIcon className="size-6" /> pnpm
+      </div>
+    }
+  >
+    <CodeBlock language="js">{`pnpm i -D next-themes`}</CodeBlock>
+  </TabItem>
+  <TabItem
+    value="bun"
+    label={
+      <div className="flex items-center gap-2">
+        <BunIcon className="size-6" /> bun
+      </div>
+    }
+  >
+    <CodeBlock language="js">{`bun add -D next-themes`}</CodeBlock>
+  </TabItem>
+</Tabs>
 
-## Create a theme provider
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 2
+  </Badge>
+  <span>
+    Create a <strong>theme provider</strong>
+  </span>
+</div>
 
-Create a theme provider component, **components/theme-provider.tsx**
+Create a theme provider component, <strong>components/theme-provider.tsx</strong>
 
 ```tsx theme-provider.tsx
-"use client";
+'use client';
 
-import { ThemeProvider as NextThemeProvider } from "next-themes";
+import { ThemeProvider as NextThemeProvider } from 'next-themes';
 
 export function ThemeProvider({ children }: React.PropsWithChildren<{}>) {
   return (
@@ -36,17 +99,24 @@ export function ThemeProvider({ children }: React.PropsWithChildren<{}>) {
 }
 ```
 
-## Wrap your root layout
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 3
+  </Badge>
+  <span>
+    Wrap your <strong>root layout</strong>
+  </span>
+</div>
 
-Add the **ThemeProvider** component to your root layout, **app/layout.tsx**
+Add the <strong>ThemeProvider</strong> component to your root layout, <strong>app/layout.tsx</strong>
 
 ```tsx layout.tsx
-import { ThemeProvider } from "@/components/theme-provider";
-import "@/app/globals.css";
+import { ThemeProvider } from '@/components/theme-provider';
+import '@/app/globals.css';
 
 export const metadata = {
-  title: "App Name",
-  description: "Write your app description",
+  title: 'App Name',
+  description: 'Write your app description',
 };
 
 export default async function RootLayout({ children }: RootLayoutProps) {
@@ -66,17 +136,25 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 }
 ```
 
-## Add theme-switcher
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 4
+  </Badge>
+  <span>
+    Add <strong>theme-switcher</strong>
+  </span>
+</div>
 
-Add a theme switcher components, **components/theme-switcher.tsx**
+Add a theme switcher components, <strong>components/theme-switcher.tsx</strong>
 
 ```tsx theme-switcher.tsx
-"use client";
+'use client';
 
-import React from "react";
-import { useTheme } from "next-themes";
-import { ActionIcon, DropdownMenu } from "rizzui";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
+import React from 'react';
+import { useTheme } from 'next-themes';
+import { ActionIcon } from 'rizzui/action-icon';
+import { DropdownMenu } from 'rizzui/dropdown';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 export function ThemeSwitcher() {
   const { setTheme } = useTheme();
@@ -91,240 +169,214 @@ export function ThemeSwitcher() {
         </ActionIcon>
       </Dropdown.Trigger>
       <Dropdown.Menu>
-        <Dropdown.Item onClick={() => setTheme("light")}>Light</Dropdown.Item>
-        <Dropdown.Item onClick={() => setTheme("dark")}>Dark</Dropdown.Item>
-        <Dropdown.Item onClick={() => setTheme("system")}>System</Dropdown.Item>
+        <Dropdown.Item onClick={() => setTheme('light')}>Light</Dropdown.Item>
+        <Dropdown.Item onClick={() => setTheme('dark')}>Dark</Dropdown.Item>
+        <Dropdown.Item onClick={() => setTheme('system')}>System</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
 }
 ```
 
-## Configure globals.css
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 5
+  </Badge>
+  <span>
+    Configure <strong>globals.css</strong>
+  </span>
+</div>
 
-We are using rgb formated CSS variables to define our light & dark mode theme. Why we are not using hex code directly? Because opacity modifiers won't work according to the [TailwindCSS documentation](https://tailwindcss.com/docs/customizing-colors#using-css-variables). Please copy and paste this code in to your app style file.
+### Configure globals.css {#configure-globalscss}
+
+RizzUI 2.0 uses <strong>Tailwind CSS v4</strong> with the modern OKLCH color space for better color perception. Create or update your <code>app/globals.css</code>:
 
 ```css title=globals.css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Import Tailwind CSS v4 */
+@import 'tailwindcss';
 
-@layer base {
-  /* --------------------------------- */
-  /* light theme */
-  /* --------------------------------- */
-  :root {
-    --background: 255 255 255; /* #ffffff */
-    --foreground: 72 72 72; /* #484848 */
-    --muted: 227 227 227; /* #e3e3e3 */
-    --muted-foreground: 146 146 146; /* #929292 */
+/* Configure content sources for RizzUI components */
+@source '../node_modules/rizzui/dist';
 
-    /*
-    * primary colors
-    */
-    --primary-lighter: 227 227 227; /* #e3e3e3 */
-    --primary-default: 34 34 34; /* #222222 */
-    --primary-dark: 0 0 0; /* #000000 */
-    --primary-foreground: 255 255 255; /* #ffffff */
+/* Enable enhanced form styles */
+@plugin '@tailwindcss/forms';
 
-    /*
-    * secondary colors
-    */
-    --secondary-lighter: 221 227 255; /* #dde3ff */
-    --secondary-default: 78 54 245; /* #4e36f5 */
-    --secondary-dark: 67 42 216; /* #432ad8 */
-    --secondary-foreground: 255 255 255; /* #ffffff */
+/* Enable dark mode support */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-    /*
-    * danger colors
-    */
-    --red-lighter: 247 212 214; /* #f7d4d6 */
-    --red-default: 238 0 0; /* #e00 */
-    --red-dark: 197 0 0; /* #c50000 */
+/* Light theme colors */
+:root {
+  /* Base Colors */
+  --background: oklch(100% 0 0); /* #ffffff */
+  --foreground: oklch(40.17% 0 0); /* #484848 */
+  --muted: oklch(91.58% 0 0); /* #e3e3e3 */
+  --muted-foreground: oklch(66% 0 0); /* #929292 */
 
-    /*
-    * warning colors
-    */
-    --orange-lighter: 255 239 207; /* #ffefcf */
-    --orange-default: 245 166 35; /* #f5a623 */
-    --orange-dark: 171 87 10; /* #ab570a */
+  /* Border Tokens */
+  --border-radius: 0.5rem; /* 8px */
+  --border-width: 0.0625rem; /* 1px */
+  --border-color: oklch(90.37% 0 0); /* #dfdfdf */
 
-    /*
-    * info colors
-    */
-    --blue-lighter: 211 229 255; /* #d3e5ff */
-    --blue-default: 0 112 243; /* #0070f3 */
-    --blue-dark: 7 97 209; /* #0761d1 */
+  /* Text Tokens */
+  --text-primary: oklch(0% 0 0); /* #000000 */
+  --text-secondary: oklch(40.17% 0 0); /* #484848 */
 
-    /*
-    * success colors
-    */
-    --green-lighter: 185 249 207; /* #b9f9cf */
-    --green-default: 17 168 73; /* #11a849 */
-    --green-dark: 17 132 60; /* #11843c */
-  }
+  /* Primary Brand Colors */
+  --primary-lighter: oklch(91.58% 0 0); /* #e3e3e3 */
+  --primary: oklch(17.76% 0 0); /* #111111 */
+  --primary-dark: oklch(0% 0 0); /* #000000 */
+  --primary-foreground: oklch(100% 0 0); /* #ffffff */
 
-  /* --------------------------------- */
-  /* dark theme */
-  /* --------------------------------- */
-  [data-theme="dark"] {
-    --background: 8 9 14; /* #08090e */
-    --foreground: 223 223 223; /* #dfdfdf */
-    --muted: 51 51 51; /* #333333 */
-    --muted-foreground: 102 102 102; /* #666666 */
+  /* Secondary Colors */
+  --secondary-lighter: oklch(91.99% 0.0386 276.02); /* #dde3ff */
+  --secondary: oklch(50.51% 0.2633 276.95); /* #4e36f5 */
+  --secondary-dark: oklch(45.41% 0.2431 277.06); /* #432ad8 */
+  --secondary-foreground: oklch(100% 0 0); /* #ffffff */
 
-    /*
-    * primary colors
-    */
-    --primary-lighter: 34 34 34; /* #222222 */
-    --primary-default: 241 241 241; /* #f1f1f1 */
-    --primary-dark: 255 255 255; /* #ffffff */
-    --primary-foreground: 0 0 0; /* #000000 */
+  /* Danger/Error Colors */
+  --red-lighter: oklch(89.99% 0.0393 14); /* #f7d4d6 */
+  --red: oklch(59.6% 0.2445 29.23); /* #ee0000 */
+  --red-dark: oklch(51.71% 0.2121 29.2338); /* #c50000 */
 
-    /*
-    * secondary colors
-    */
-    --secondary-lighter: 31 22 90; /* #1f165a */
-    --secondary-dark: 193 203 255; /* #c1cbff */
+  /* Warning Colors */
+  --orange-lighter: oklch(95.67% 0.0452 84.5695); /* #ffefcf */
+  --orange: oklch(78.37% 0.1587 72.99); /* #f5a623 */
+  --orange-dark: oklch(54.83% 0.1339 53.95); /* #ab570a */
 
-    /*
-    * danger colors
-    */
-    --red-lighter: 80 0 0; /* #500000 */
-    --red-dark: 255 193 193; /* #ffc1c1 */
+  /* Info Colors */
+  --blue-lighter: oklch(91.66% 0.0404 257.5078); /* #d3e5ff */
+  --blue: oklch(57.31% 0.2144 258.25); /* #0070f3 */
+  --blue-dark: oklch(51.58% 0.1888 258.27); /* #0761d1 */
 
-    /*
-    * warning colors
-    */
-    --orange-lighter: 68 29 4; /* #441d04 */
-    --orange-dark: 252 234 139; /* #fcea8b */
+  /* Success Colors */
+  --green-lighter: oklch(92.79% 0.086 155.61); /* #b9f9cf */
+  --green: oklch(64.01% 0.1776 148.74); /* #11a849 */
+  --green-dark: oklch(53.79% 0.1441 149.52); /* #11843c */
+}
 
-    /*
-    * info colors
-    */
-    --blue-lighter: 13 51 94; /* #0d335e */
-    --blue-dark: 181 233 255; /* #b5e9ff */
+/* Dark theme colors */
+[data-theme='dark'] {
+  /* Base Colors */
+  --background: oklch(14.11% 0.0112 275.23); /* #08090e */
+  --foreground: oklch(90.37% 0 0); /* #dfdfdf */
+  --muted: oklch(32.11% 0 0); /* #333333 */
+  --muted-foreground: oklch(51.03% 0 0); /* #666666 */
 
-    /*
-    * success colors
-    */
-    --green-lighter: 3 48 22; /* #033016 */
-    --green-dark: 185 249 207; /* #b9f9cf */
+  /* Border Tokens */
+  --border-color: oklch(91.58% 0 0); /* #e3e3e3 */
 
-    /* here you can customize other colors for dark theme if design required */
-  }
+  /* Text Tokens */
+  --text-primary: oklch(100% 0 0); /* #ffffff */
+  --text-secondary: oklch(51.03% 0 0); /* #666666 */
+
+  /* Primary Brand Colors */
+  --primary-lighter: oklch(25.2% 0 0); /* #222222 */
+  --primary: oklch(95.81% 0 0); /* #f1f1f1 */
+  --primary-dark: oklch(100% 0 0); /* #ffffff */
+  --primary-foreground: oklch(0% 0 0); /* #000000 */
+
+  /* Secondary Colors */
+  --secondary-lighter: oklch(26.35% 0.1154 280.96); /* #1f165a */
+  --secondary-dark: oklch(85.2% 0.0733 276.238); /* #c1cbff */
+
+  /* Danger/Error Colors */
+  --red-lighter: oklch(27.08% 0.1111 29.23); /* #500000 */
+  --red-dark: oklch(86.69% 0.0714 18.6304); /* #ffc1c1 */
+
+  /* Warning Colors */
+  --orange-lighter: oklch(28.29% 0.0698 49.34); /* #441d04 */
+  --orange-dark: oklch(93.15% 0.1175 98.83); /* #fcea8b */
+
+  /* Info Colors */
+  --blue-lighter: oklch(32.05% 0.0873 254.4); /* #0d335e */
+  --blue-dark: oklch(90.53% 0.0611 225.72); /* #b5e9ff */
+
+  /* Success Colors */
+  --green-lighter: oklch(27.23% 0.0672 152.71); /* #033016 */
+  --green-dark: oklch(92.79% 0.086 155.61); /* #b9f9cf */
+}
+
+/* Map CSS variables to Tailwind's color system */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --border-radius: var(--border-radius);
+  --color-border: var(--border-color);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  --color-primary-lighter: var(--primary-lighter);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary-lighter: var(--secondary-lighter);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-red-lighter: var(--red-lighter);
+  --color-red: var(--red);
+  --color-red-dark: var(--red-dark);
+
+  --color-orange-lighter: var(--orange-lighter);
+  --color-orange: var(--orange);
+  --color-orange-dark: var(--orange-dark);
+
+  --color-blue-lighter: var(--blue-lighter);
+  --color-blue: var(--blue);
+  --color-blue-dark: var(--blue-dark);
+
+  --color-green-lighter: var(--green-lighter);
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
 }
 ```
 
-- **Note:** use our theming tools to customize these [CSS variables](/docs/guide/theming#theme-tokens)
+**Note:** use our theming tools to customize these [CSS variables](/docs/guide/theming#theme-tokens)
 
-## Configure tailwind.config.js
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 6
+  </Badge>
+  <span>
+    Configure <strong>PostCSS</strong>
+  </span>
+</div>
 
-You need to copy and paste the following tailwind configuration in your **tailwind.config.js** file. Check-out their [offical documentation](https://tailwindcss.com/docs/configuration) to configure other things like borderRadius, boxShadow, zIndex, and etc...
+Create or update your <code>postcss.config.mjs</code>:
 
-```js title=tailwind.config.js
-/** @type {import('tailwindcss').Config} */
-
-module.exports = {
-  content: [
-    "./node_modules/rizzui/dist/*.{js,ts,jsx,tsx}", // ⚠️ Required this line to compile RizzUI style
-    ...// 💡​ configure your components, and any other source files path that contain Tailwind class names.
-  ],
-  darkMode: ["class", '[data-theme="dark"]'], // ⚠️ Required this line for dark mode implementation
-  theme: {
-    extend: {
-      colors: {
-        /*
-        * body, modal, drawer background & ring-offset-color
-        */
-        background: 'rgb(var(--background) / <alpha-value>)',
-
-        /*
-        * body text color
-        */
-        foreground: 'rgb(var(--foreground) / <alpha-value>)',
-
-        /*
-        * border, default flat bg color for input components, tab & dropdown hover color
-        */
-        muted: 'rgb(var(--muted) / <alpha-value>)',
-
-        /*
-        * disable foreground color
-        */
-        'muted-foreground': 'rgb(var(--muted-foreground) / <alpha-value>)',
-
-        /*
-        * primary colors
-        */
-        primary: {
-          lighter: "rgb(var(--primary-lighter) / <alpha-value>)",
-          DEFAULT: "rgb(var(--primary-default) / <alpha-value>)",
-          dark: "rgb(var(--primary-dark) / <alpha-value>)",
-          foreground: "rgb(var(--primary-foreground) / <alpha-value>)",
-        },
-
-        /*
-        * secondary colors
-        */
-        secondary: {
-          lighter: "rgb(var(--secondary-lighter) / <alpha-value>)",
-          DEFAULT: "rgb(var(--secondary-default) / <alpha-value>)",
-          dark: "rgb(var(--secondary-dark) / <alpha-value>)",
-          foreground: "rgb(var(--secondary-foreground) / <alpha-value>)",
-        },
-
-        /*
-        * danger colors
-        */
-        red: {
-          lighter: "rgb(var(--red-lighter) / <alpha-value>)",
-          DEFAULT: "rgb(var(--red-default) / <alpha-value>)",
-          dark: "rgb(var(--red-dark) / <alpha-value>)",
-        },
-
-        /*
-        * warning colors
-        */
-        orange: {
-          lighter: "rgb(var(--orange-lighter) / <alpha-value>)",
-          DEFAULT: "rgb(var(--orange-default) / <alpha-value>)",
-          dark: "rgb(var(--orange-dark) / <alpha-value>)",
-        },
-
-        /*
-        * info colors
-        */
-        blue: {
-          lighter: "rgb(var(--blue-lighter) / <alpha-value>)",
-          DEFAULT: "rgb(var(--blue-default) / <alpha-value>)",
-          dark: "rgb(var(--blue-dark) / <alpha-value>)",
-        },
-
-        /*
-        * success colors
-        */
-        green: {
-          lighter: "rgb(var(--green-lighter) / <alpha-value>)",
-          DEFAULT: "rgb(var(--green-default) / <alpha-value>)",
-          dark: "rgb(var(--green-dark) / <alpha-value>)",
-        },
-      },
-      ... // here goes your additional configuration
-    },
+```js title=postcss.config.mjs
+const config = {
+  plugins: {
+    '@tailwindcss/postcss': {},
   },
-  plugins: [require("@tailwindcss/forms")], // ⚠️ Required @tailwindcss/forms plugin.
 };
+export default config;
 ```
 
-​🎉​ You are all set to use our components in your application.
+You are now ready to use dark mode in your application. Tailwind CSS v4 requires no `tailwind.config.js` file.
 
-## Usage
+## Test Your Dark Mode
+
+Use the theme switcher component to toggle between light and dark modes:
 
 ```tsx
-import { Button } from "rizzui";
+import { Button } from 'rizzui';
+import { ThemeSwitcher } from '@/components/theme-switcher';
 
 export default function App() {
-  return <Button>Default</Button>;
+  return (
+    <div>
+      <ThemeSwitcher />
+      <Button>Get Started</Button>
+    </div>
+  );
 }
 ```
+
+Your application will now seamlessly switch between light and dark themes based on user preference.

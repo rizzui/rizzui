@@ -1,12 +1,6 @@
-import React, {
-  cloneElement,
-  ReactElement,
-  RefObject,
-  useRef,
-  useState,
-} from 'react';
+import { useRef, useState, type ReactElement, type ReactNode } from 'react';
 import {
-  Placement,
+  type Placement,
   FloatingArrow,
   offset,
   flip,
@@ -22,26 +16,54 @@ import {
   useTransitionStyles,
   FloatingPortal,
 } from '@floating-ui/react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { makeClassName } from '../../lib/make-class-name';
-import { roundedStyles } from '../../lib/rounded';
 
-const tooltipStyles = {
-  base: 'text-center z-[9999] min-w-max',
-  shadow: {
-    sm: 'drop-shadow-md',
-    md: 'drop-shadow-lg',
-    lg: 'drop-shadow-xl',
-    xl: 'drop-shadow-2xl',
+const tooltip = tv({
+  base: 'text-center z-[9999] min-w-max rounded-[var(--border-radius)] border-[length:var(--border-width)] drop-shadow-[0px_8px_24px_rgba(149,157,165,0.2)]',
+  variants: {
+    size: {
+      sm: 'px-2.5 py-1 text-xs',
+      md: 'px-3 py-1.5 text-sm',
+      lg: 'px-3.5 py-2 text-base',
+    },
+    color: {
+      primary: '',
+      invert: '',
+      secondary: '',
+      danger: '',
+      info: '',
+      success: '',
+      warning: '',
+    },
   },
-  size: {
-    sm: 'px-2.5 py-1 text-xs',
-    md: 'px-3 py-1.5 text-sm',
-    lg: 'px-3.5 py-2 text-base',
-    xl: 'px-4 py-2.5 text-base',
+  compoundVariants: [
+    {
+      color: 'primary',
+      class: 'text-primary-foreground bg-primary border-transparent',
+    },
+    {
+      color: 'invert',
+      class:
+        'bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border-border',
+    },
+    {
+      color: 'secondary',
+      class: 'text-secondary-foreground bg-secondary border-transparent',
+    },
+    { color: 'danger', class: 'text-white bg-red border-transparent' },
+    { color: 'info', class: 'text-white bg-blue border-transparent' },
+    { color: 'success', class: 'text-white bg-green border-transparent' },
+    { color: 'warning', class: 'text-white bg-orange border-transparent' },
+  ],
+  defaultVariants: {
+    size: 'md',
+    color: 'primary',
   },
-  rounded: roundedStyles,
-  arrow: {
+});
+
+const tooltipArrow = tv({
+  variants: {
     color: {
       primary: 'fill-primary',
       invert:
@@ -53,22 +75,10 @@ const tooltipStyles = {
       warning: 'fill-orange',
     },
   },
-  variant: {
-    solid: {
-      base: '',
-      color: {
-        primary: 'text-primary-foreground bg-primary',
-        invert:
-          'bg-background dark:bg-muted/80 dark:backdrop-blur-3xl border border-muted',
-        secondary: 'text-secondary-foreground bg-secondary',
-        danger: 'text-white bg-red',
-        info: 'text-white bg-blue',
-        success: 'text-white bg-green',
-        warning: 'text-white bg-orange',
-      },
-    },
+  defaultVariants: {
+    color: 'primary',
   },
-};
+});
 
 const tooltipAnimation = {
   fadeIn: {
@@ -99,36 +109,21 @@ const tooltipAnimation = {
       transform: 'translateY(4px)',
     },
   },
-};
+} as const;
+
+type TooltipVariant = VariantProps<typeof tooltip>;
 
 export type TooltipProps = {
-  /** Pass children which will have tooltip */
-  children: ReactElement & { ref?: RefObject<any> };
-  /** Content for tooltip */
-  // content: ({ open, setOpen }: Content) => React.ReactNode;
-  content: React.ReactNode;
-  /** Change Tooltip color */
-  color?: keyof typeof tooltipStyles.variant.solid.color;
-  /** Supported Tooltip sizes are: */
-  size?: keyof typeof tooltipStyles.size;
-  /** The rounded variants are: */
-  rounded?: keyof typeof tooltipStyles.rounded;
-  /** Supported tooltip shadows are: */
-  shadow?: keyof typeof tooltipStyles.shadow;
-  /** Supported Tooltip Placements are: */
+  children: ReactElement;
+  content: ReactNode;
+  color?: TooltipVariant['color'];
+  size?: TooltipVariant['size'];
   placement?: Placement;
-  /** Set custom offset default is 8 */
   gap?: number;
-  /** Supported Animations are: */
   animation?: keyof typeof tooltipAnimation;
-  /** Add custom classes for Tooltip container or content */
   className?: string;
-  /** Add custom classes for Tooltip arrow */
   arrowClassName?: string;
-  /** Whether tooltip arrow should be shown or hidden */
   showArrow?: boolean;
-  /** Whether the tooltip is used as a popover component or not */
-  // isPopover?: boolean;
 };
 
 /**
@@ -143,19 +138,17 @@ export function Tooltip({
   animation = 'zoomIn',
   placement = 'top',
   size = 'md',
-  rounded = 'md',
-  shadow = 'md',
   color = 'primary',
   className,
   arrowClassName,
   showArrow = true,
 }: TooltipProps) {
   const [open, setOpen] = useState(false);
-  const arrowRef = useRef(null);
+  const arrowRef = useRef<SVGSVGElement | null>(null);
 
   const { x, y, refs, strategy, context } = useFloating({
     placement,
-    open: open,
+    open,
     onOpenChange: setOpen,
     middleware: [
       arrow({ element: arrowRef }),
@@ -178,15 +171,15 @@ export function Tooltip({
     ...tooltipAnimation[animation],
   });
 
+  const child = children as ReactElement<any>;
+  const triggerProps = getReferenceProps({
+    ref: refs.setReference,
+    ...child.props,
+  });
+
   return (
     <>
-      {cloneElement(
-        children,
-        getReferenceProps({
-          ref: refs.setReference,
-          ...(typeof children.props === 'object' ? children.props : {}),
-        })
-      )}
+      <child.type {...triggerProps} />
 
       {(isMounted || open) && (
         <FloatingPortal>
@@ -194,14 +187,8 @@ export function Tooltip({
             role="tooltip"
             ref={refs.setFloating}
             className={cn(
-              makeClassName(`tooltip-content`),
-              tooltipStyles.base,
-              tooltipStyles.size[size],
-              tooltipStyles.rounded[rounded],
-              tooltipStyles.variant.solid.base,
-              tooltipStyles.variant.solid.color[color],
-              tooltipStyles.shadow[shadow],
-              className
+              'rizzui-tooltip',
+              tooltip({ size, color, className })
             )}
             style={{
               position: strategy,
@@ -214,19 +201,13 @@ export function Tooltip({
             {content}
 
             {showArrow && (
-              <>
-                <FloatingArrow
-                  ref={arrowRef}
-                  context={context}
-                  data-testid="tooltip-arrow"
-                  className={cn(
-                    makeClassName(`tooltip-arrow`),
-                    tooltipStyles.arrow.color[color],
-                    arrowClassName
-                  )}
-                  style={{ strokeDasharray: '0,14, 5' }}
-                />
-              </>
+              <FloatingArrow
+                ref={arrowRef}
+                context={context}
+                data-testid="tooltip-arrow"
+                className={tooltipArrow({ color, className: arrowClassName })}
+                style={{ strokeDasharray: '0,14, 5' }}
+              />
             )}
           </div>
         </FloatingPortal>

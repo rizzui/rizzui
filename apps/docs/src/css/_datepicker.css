@@ -1,0 +1,336 @@
+/* Main calendar container */
+.react-datepicker-popper .react-datepicker {
+  @apply bg-[var(--background)] text-[var(--text-secondary)] dark:border-[var(--muted)] dark:bg-[var(--muted)] dark:text-[var(--foreground)];
+}
+
+/* Month container */
+.react-datepicker .react-datepicker__month-container {
+  @apply px-3;
+}
+
+/* Time container */
+.react-datepicker .react-datepicker__time-container {
+  @apply w-auto border-l-0 pr-3.5;
+}
+
+.react-datepicker-popper
+  .react-datepicker__time-container
+  .react-datepicker__time {
+  @apply bg-[var(--muted)] dark:bg-[var(--muted)];
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:hover {
+  @apply dark:bg-[var(--muted)];
+}
+
+/* Header */
+.react-datepicker .react-datepicker__header {
+  @apply border-b-transparent bg-[var(--background)] dark:border-transparent dark:bg-[var(--muted)];
+}
+
+/* Current month name in header */
+.react-datepicker .react-datepicker-year-header {
+  @apply dark:text-[var(--foreground)];
+}
+
+.react-datepicker .react-datepicker__current-month {
+  @apply mb-3 text-base font-medium text-[var(--text-secondary)] dark:text-[var(--foreground)];
+}
+
+/* Sun-Sat day names in header */
+.react-datepicker .react-datepicker__day-names div {
+  @apply m-1.5 text-sm text-[var(--text-secondary)] dark:text-[var(--foreground)];
+}
+
+/* Navigation buttons (previous/next) */
+.react-datepicker .react-datepicker__navigation {
+  @apply top-7 h-[22px] w-[22px] rounded-[var(--border-radius)] border border-[var(--border-color)] bg-[var(--background)] transition-colors;
+  @apply hover:border-[var(--text-primary)] hover:bg-[var(--muted)];
+  @apply dark:border-[var(--muted)] dark:bg-[var(--muted)] dark:hover:border-[var(--foreground)] dark:hover:bg-[var(--primary-lighter)];
+}
+
+/* Previous month button */
+.react-datepicker .react-datepicker__navigation--previous {
+  @apply ml-6 rtl:mr-6;
+}
+
+/* Next month button */
+.react-datepicker .react-datepicker__navigation--next {
+  @apply mr-6 rtl:ml-6;
+}
+
+/* Icon in previous month button */
+.react-datepicker .react-datepicker__navigation-icon--previous {
+  @apply right-0.5;
+}
+
+/* Icon in next month button */
+.react-datepicker .react-datepicker__navigation-icon--next {
+  @apply left-0.5;
+}
+
+/* Navigation icon border color */
+.react-datepicker .react-datepicker__navigation-icon::before {
+  @apply border-[var(--muted-foreground)] dark:border-[var(--foreground)];
+}
+
+.react-datepicker
+  .react-datepicker__navigation:hover
+  .react-datepicker__navigation-icon::before {
+  @apply border-[var(--text-primary)] dark:border-[var(--foreground)];
+}
+
+/* Each day */
+.react-datepicker .react-datepicker__day {
+  @apply m-1.5 text-sm leading-7 text-[var(--text-secondary)] dark:text-[var(--foreground)];
+  @apply hover:rounded-[var(--border-radius)] hover:bg-[var(--muted)] hover:text-[var(--text-primary)];
+  @apply dark:hover:bg-[var(--primary-lighter)] dark:hover:text-[var(--foreground)];
+}
+
+/* Outside month */
+.react-datepicker .react-datepicker__day--outside-month {
+  @apply text-[var(--muted-foreground)];
+}
+
+/* Keyboard selected */
+.react-datepicker .react-datepicker__day--keyboard-selected {
+  @apply bg-[var(--muted)] dark:bg-[var(--primary-lighter)] dark:text-[var(--foreground)];
+}
+
+/* Today */
+.react-datepicker .react-datepicker__day--today {
+  @apply rounded-[var(--border-radius)] border border-[var(--muted)] bg-[var(--muted)] leading-[26px] text-[var(--text-primary)];
+  @apply hover:border-[var(--border-color)] hover:bg-[var(--muted)];
+  @apply dark:border-[var(--muted)] dark:bg-[var(--primary-lighter)] dark:text-[var(--foreground)];
+  @apply dark:hover:border-[var(--muted)] dark:hover:bg-[var(--primary-lighter)];
+}
+
+/* While selecting */
+.react-datepicker div.react-datepicker__day--in-selecting-range {
+  @apply rounded-[var(--border-radius)] bg-[var(--muted)] text-[var(--text-primary)];
+  @apply dark:bg-[var(--primary-lighter)] dark:text-[var(--foreground)];
+}
+
+.react-datepicker div.react-datepicker__year-text--in-selecting-range {
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
+  @apply dark:bg-[var(--primary-lighter)] dark:text-[var(--foreground)];
+}
+
+.react-datepicker
+  div.react-datepicker__year-text--in-selecting-range.react-datepicker__year-text--disabled {
+  @apply bg-transparent text-[var(--muted-foreground)];
+}
+
+/* In range */
+.react-datepicker .react-datepicker__day--in-range {
+  @apply rounded-[var(--border-radius)] bg-[var(--muted)] text-[var(--text-primary)];
+  @apply dark:bg-[var(--primary-lighter)] dark:text-[var(--foreground)];
+}
+
+.react-datepicker .react-datepicker__year-text--in-range {
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
+  @apply dark:bg-[var(--primary-lighter)] dark:text-[var(--foreground)];
+}
+
+/* Selected */
+.react-datepicker .react-datepicker__day--range-start,
+.react-datepicker .react-datepicker__day--range-end,
+.react-datepicker .react-datepicker__day--selected {
+  @apply rounded-[var(--border-radius)] border-none bg-[var(--primary)] font-normal leading-7 text-[var(--primary-foreground)];
+  @apply hover:bg-[var(--primary-dark)] hover:text-[var(--primary-foreground)];
+  @apply dark:bg-[var(--primary)] dark:text-[var(--primary-foreground)];
+  @apply dark:hover:bg-[var(--primary-dark)] dark:hover:text-[var(--primary-foreground)];
+}
+
+.react-datepicker .react-datepicker__year-text--range-end {
+  @apply border-none bg-[var(--primary)] font-normal text-[var(--primary-foreground)] hover:bg-[var(--primary-dark)] hover:text-[var(--primary-foreground)];
+}
+
+/* Time list */
+.react-datepicker .react-datepicker__time-list {
+  @apply !h-[247px];
+}
+
+/* Time item */
+.react-datepicker .react-datepicker__time-list-item {
+  @apply my-2 rounded text-sm text-[var(--muted-foreground)];
+  @apply hover:bg-[var(--muted)] hover:text-[var(--text-primary)];
+  @apply dark:text-[var(--foreground)] dark:hover:bg-[var(--primary-lighter)] dark:hover:text-[var(--foreground)];
+}
+
+/* Selected time item */
+.react-datepicker .react-datepicker__time-list-item--selected {
+  @apply !bg-[var(--muted)] !font-medium !text-[var(--text-primary)];
+  @apply dark:!bg-[var(--primary-lighter)] dark:!text-[var(--foreground)];
+}
+
+/* Time only box */
+.react-datepicker-popper .react-datepicker-time__header {
+  @apply text-[var(--text-secondary)] dark:text-[var(--foreground)];
+}
+
+.react-datepicker-popper
+  .react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box {
+  width: 90px;
+}
+
+.react-datepicker--time-only
+  .react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box {
+  @apply w-auto;
+}
+
+/* Time only item */
+.react-datepicker--time-only .react-datepicker__time-list-item {
+  @apply rounded-none;
+}
+
+/* Month picker text */
+.react-datepicker .react-datepicker__month-text {
+  @apply w-0 px-5 py-1.5;
+}
+
+/* Keyboard selected month in month picker */
+.react-datepicker .react-datepicker__month-text--keyboard-selected {
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
+}
+
+/* Month in range */
+.react-datepicker .react-datepicker__month--in-range {
+  @apply bg-[var(--muted)] text-[var(--text-secondary)];
+}
+
+/* Hover on selected months in range */
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--in-range:hover {
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
+}
+
+/* Selected month in range */
+.react-datepicker .react-datepicker__month--range-start,
+.react-datepicker .react-datepicker__month--range-end,
+.react-datepicker .react-datepicker__month--selected {
+  @apply bg-[var(--primary)] font-normal text-[var(--primary-foreground)];
+}
+
+/* Hover on selected range start and end month */
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--selected:hover,
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--range-start:hover,
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--range-end:hover {
+  @apply bg-[var(--primary-dark)] text-[var(--primary-foreground)];
+}
+
+/* Year wrapper in year picker */
+.react-datepicker .react-datepicker__year-wrapper {
+  @apply inline-block max-w-[220px];
+}
+
+/* Year text in year picker */
+.react-datepicker .react-datepicker__year-text {
+  @apply w-auto px-5 py-1.5 text-[var(--text-secondary)] dark:hover:text-[var(--foreground)];
+}
+
+.react-datepicker .react-datepicker__year-text--range-end {
+  @apply text-[var(--primary-foreground)];
+}
+
+/* Keyboard selected year in year picker */
+.react-datepicker .react-datepicker__year-text--keyboard-selected {
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
+  @apply hover:bg-[var(--muted)] hover:text-[var(--text-primary)];
+}
+
+/* Selected year & month in year picker */
+.react-datepicker
+  .react-datepicker__year-text.react-datepicker__year-text--selected,
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month-text--selected {
+  @apply bg-[var(--primary)] text-[var(--primary-foreground)];
+  @apply hover:bg-[var(--primary-dark)] hover:text-[var(--primary-foreground)];
+}
+
+/* Year and month dropdown arrow */
+.react-datepicker .react-datepicker__year-read-view--down-arrow,
+.react-datepicker .react-datepicker__month-read-view--down-arrow {
+  @apply top-[5px] h-[7px] w-[7px] border-r-[length:var(--border-width)] border-t-[length:var(--border-width)] border-[var(--muted)];
+}
+
+/* Sub-header containing year and month dropdown */
+.react-datepicker
+  .react-datepicker__current-month--hasYearDropdown.react-datepicker__current-month--hasMonthDropdown
+  ~ .react-datepicker__header__dropdown {
+  @apply my-2 grid grid-cols-2 divide-x divide-[var(--muted)] text-sm;
+}
+
+/* Month and year dropdown button in sub-header */
+.react-datepicker .react-datepicker__month-dropdown-container--scroll,
+.react-datepicker .react-datepicker__year-dropdown-container--scroll {
+  @apply inline-flex justify-center;
+}
+
+/* Month and year dropdown */
+.react-datepicker .react-datepicker__year-dropdown,
+.react-datepicker .react-datepicker__month-dropdown {
+  @apply top-auto w-2/5 border border-[var(--border-color)] bg-[var(--muted)] shadow-md;
+  @apply dark:border-[var(--muted)] dark:bg-[var(--background)];
+}
+
+/* Year dropdown */
+.react-datepicker .react-datepicker__year-dropdown {
+  @apply h-80;
+}
+
+/* Month dropdown */
+.react-datepicker .react-datepicker__month-dropdown {
+  @apply py-3;
+}
+
+/* Month and year option */
+.react-datepicker .react-datepicker__month-option,
+.react-datepicker .react-datepicker__year-option {
+  @apply my-1 py-1 text-sm text-[var(--text-secondary)];
+  @apply hover:bg-[var(--muted)] hover:text-[var(--text-primary)];
+  @apply dark:text-[var(--foreground)] dark:hover:bg-[var(--primary-lighter)] dark:hover:text-[var(--foreground)];
+}
+
+/* First and last type of month and year option */
+.react-datepicker .react-datepicker__month-option:first-of-type,
+.react-datepicker .react-datepicker__month-option:last-of-type,
+.react-datepicker .react-datepicker__year-option:first-of-type,
+.react-datepicker .react-datepicker__year-option:last-of-type {
+  @apply rounded-none;
+}
+
+/* Selected month and year in dropdown */
+.react-datepicker .react-datepicker__month-option--selected_month,
+.react-datepicker .react-datepicker__year-option--selected_year {
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
+  @apply [&>span]:hidden;
+}
+
+.react-datepicker .react-datepicker__day:hover,
+.react-datepicker .react-datepicker__month-text:hover,
+.react-datepicker .react-datepicker__quarter-text:hover,
+.react-datepicker .react-datepicker__year-text:hover {
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
+  @apply dark:bg-[var(--primary-lighter)] dark:text-[var(--foreground)];
+}
+
+/* Disabled item */
+.react-datepicker .react-datepicker__day--disabled {
+  @apply cursor-not-allowed text-[var(--muted-foreground)] hover:bg-transparent hover:text-[var(--muted-foreground)] dark:hover:text-[var(--muted-foreground)];
+}
+
+.react-datepicker .react-datepicker__year-text--disabled {
+  @apply cursor-not-allowed text-[var(--muted-foreground)] hover:bg-transparent dark:hover:text-[var(--muted-foreground)];
+}

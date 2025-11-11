@@ -2,23 +2,24 @@
 sidebar_position: 1
 ---
 
-import { Input } from "rizzui";
-import Paper from "@site/src/components/paper";
-import InputCounter, { InputCharacterCounter, InputClearable } from "@site/src/components/input";
+import { Input } from 'rizzui/input';
+import Paper from '@site/src/components/paper';
+import InputCounter, {
+  InputCharacterCounter,
+  InputClearable,
+} from '@site/src/components/input';
 import {
   MagnifyingGlassIcon,
   ArrowRightIcon,
   CurrencyDollarIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 # Input
 
 A basic widget for getting the user input.
 
 ```tsx
-"use client"; 
-
-import { Input } from "rizzui";
+import { Input } from 'rizzui/input';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -31,21 +32,15 @@ The default style of **Input** component.
   <Input
     label="Name"
     placeholder="Enter your name"
+    className="w-full max-w-xs"
   />
 </Paper>
 
 ```tsx
-"use client"; 
-
-import { Input } from "rizzui";
+import { Input } from 'rizzui/input';
 
 export default function App() {
-  return (
-    <Input
-      label="Name"
-      placeholder="Enter your name"
-    />
-  );
+  return <Input label="Name" placeholder="Enter your name" />;
 }
 ```
 
@@ -57,117 +52,37 @@ You can change the type of **Input** using [**type**](#input-types) property.
 
 <Paper className="block">
   <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-950">
-    <Input
-      type="number"
-      label="Number"
-      placeholder="1234567890"
-    />
-    <Input
-      type="text"
-      label="Name"
-      placeholder="Enter your Name"
-    />
-    <Input
-      type="email"
-      label="Email"
-      placeholder="Your email"
-    />
-    <Input
-      type="time"
-      label="Time"
-    />
-    <Input
-      type="date"
-      label="Date"
-    />
-    <Input
-      type="datetime-local"
-      label="Datetime Local"
-    />
-    <Input
-      type="month"
-      label="Month"
-    />
-    <Input
-      type="search"
-      label="Search"
-      placeholder="Search"
-    />
-    <Input
-      type="tel"
-      label="Tel"
-      placeholder="Telephone"
-    />
-    <Input
-      type="url"
-      label="Url"
-      placeholder="Url"
-    />
-    <Input
-      type="week"
-      label="Week"
-    />
+    <Input type="number" label="Number" placeholder="1234567890" />
+    <Input type="text" label="Name" placeholder="Enter your Name" />
+    <Input type="email" label="Email" placeholder="Your email" />
+    <Input type="time" label="Time" />
+    <Input type="date" label="Date" />
+    <Input type="datetime-local" label="Datetime Local" />
+    <Input type="month" label="Month" />
+    <Input type="search" label="Search" placeholder="Search" />
+    <Input type="tel" label="Tel" placeholder="Telephone" />
+    <Input type="url" label="Url" placeholder="Url" />
+    <Input type="week" label="Week" />
   </div>
 </Paper>
 
 ```tsx
-"use client"; 
-
-import { Input } from "rizzui";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
     <>
-      <Input
-        type="number"
-        label="Number"
-        placeholder="1234567890"
-      />
-      <Input
-        type="text"
-        label="Name"
-        placeholder="Enter your Name"
-      />
-      <Input
-        type="email"
-        label="Email"
-        placeholder="Your email"
-      />
-      <Input
-        type="time"
-        label="Time"
-      />
-      <Input
-        type="date"
-        label="Date"
-      />
-      <Input
-        type="datetime-local"
-        label="Datetime Local"
-      />
-      <Input
-        type="month"
-        label="Month"
-      />
-      <Input
-        type="search"
-        label="Search"
-        placeholder="Search"
-      />
-      <Input
-        type="tel"
-        label="Tel"
-        placeholder="Telephone"
-      />
-      <Input
-        type="url"
-        label="Url"
-        placeholder="Url"
-      />
-      <Input
-        type="week"
-        label="Week"
-      />
+      <Input type="number" label="Number" placeholder="1234567890" />
+      <Input type="text" label="Name" placeholder="Enter your Name" />
+      <Input type="email" label="Email" placeholder="Your email" />
+      <Input type="time" label="Time" />
+      <Input type="date" label="Date" />
+      <Input type="datetime-local" label="Datetime Local" />
+      <Input type="month" label="Month" />
+      <Input type="search" label="Search" placeholder="Search" />
+      <Input type="tel" label="Tel" placeholder="Telephone" />
+      <Input type="url" label="Url" placeholder="Url" />
+      <Input type="week" label="Week" />
     </>
   );
 }
@@ -180,46 +95,20 @@ export default function App() {
 You can change the style of **Input** using [**variant**](#input-variants) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4 text-gray-950">
-  <Input
-    label="Outline"
-    placeholder="Enter your name"
-    variant="outline"
-  />
-  <Input
-    label="Flat"
-    placeholder="Enter your name"
-    variant="flat"
-  />
-  <Input
-    label="Text"
-    placeholder="Enter your name"
-    variant="text"
-  />
+  <Input label="Outline" placeholder="Enter your name" variant="outline" />
+  <Input label="Flat" placeholder="Enter your name" variant="flat" />
+  <Input label="Text" placeholder="Enter your name" variant="text" />
 </Paper>
 
 ```tsx
-"use client"; 
-
-import { Input } from "rizzui";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
     <>
-      <Input
-        label="Outline"
-        placeholder="Enter your name"
-        variant="outline"
-      />
-      <Input
-        label="Flat"
-        placeholder="Enter your name"
-        variant="flat"
-      />
-      <Input
-        label="Text"
-        placeholder="Enter your name"
-        variant="text"
-      />
+      <Input label="Outline" placeholder="Enter your name" variant="outline" />
+      <Input label="Flat" placeholder="Enter your name" variant="flat" />
+      <Input label="Text" placeholder="Enter your name" variant="text" />
     </>
   );
 }
@@ -237,30 +126,25 @@ You can change the sizes of **Input** using [**size**](#input-sizes) property.
     size="sm"
     label="Small"
     placeholder="Enter your email"
+    className="w-full max-w-xs"
   />
   <Input
     type="email"
     label="Default"
     placeholder="Enter your email"
+    className="w-full max-w-sm"
   />
   <Input
     type="email"
     size="lg"
     label="Large"
     placeholder="Enter your email"
-  />
-  <Input
-    type="email"
-    size="xl"
-    label="Extra Large"
-    placeholder="Enter your email"
+    className="w-full max-w-md"
   />
 </Paper>
 
 ```tsx
-"use client"; 
-
-import { Input } from "rizzui";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
@@ -271,21 +155,11 @@ export default function App() {
         label="Small"
         placeholder="Enter your email"
       />
-      <Input
-        type="email"
-        label="Default"
-        placeholder="Enter your email"
-      />
+      <Input type="email" label="Default" placeholder="Enter your email" />
       <Input
         type="email"
         size="lg"
         label="Large"
-        placeholder="Enter your email"
-      />
-      <Input
-        type="email"
-        size="xl"
-        label="Extra Large"
         placeholder="Enter your email"
       />
     </>
@@ -294,79 +168,6 @@ export default function App() {
 ```
 
 <div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of **Input** using [**rounded**](#input-rounded) property.
-
-<Paper className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-4 text-gray-950">
-  <Input
-    label="Rounded None"
-    placeholder="Enter your name"
-    rounded="none"
-  />
-  <Input
-    label="Rounded Small"
-    placeholder="Enter your name"
-    rounded="sm"
-  />
-  <Input
-    label="Rounded Default"
-    placeholder="Enter your name"
-  />
-  <Input
-    label="Rounded Large"
-    placeholder="Enter your name"
-    rounded="lg"
-  />
-  <Input
-    label="Rounded pill"
-    placeholder="Enter your name"
-    rounded="pill"
-  />
-</Paper>
-
-```tsx
-"use client"; 
-
-import { Input } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Input
-        label="Rounded Small"
-        placeholder="Enter your name"
-        variant="active"
-        rounded="sm"
-      />
-      <Input
-        label="Rounded Default"
-        placeholder="Enter your name"
-        variant="active"
-      />
-      <Input
-        label="Rounded Large"
-        placeholder="Enter your name"
-        variant="active"
-        rounded="lg"
-      />
-      <Input
-        label="Rounded None"
-        placeholder="Enter your name"
-        variant="active"
-        rounded="none"
-      />
-      <Input
-        label="Rounded pill"
-        placeholder="Enter your name"
-        variant="active"
-        rounded="pill"
-      />
-    </>
-  );
-}
-```
 
 <div className="mb-16" />
 
@@ -375,12 +176,7 @@ export default function App() {
 You can add any text or icon to the **Input** component using **prefix**, **suffix** props.
 
 <Paper className="grid grid-cols-1 gap-4 text-gray-950">
-  <Input
-    label="Url"
-    prefix="https://"
-    suffix=".com"
-    placeholder="mysite"
-  />
+  <Input label="Url" prefix="https://" suffix=".com" placeholder="mysite" />
   <Input
     type="number"
     label="Price"
@@ -397,24 +193,17 @@ You can add any text or icon to the **Input** component using **prefix**, **suff
 </Paper>
 
 ```tsx
-"use client"; 
-
-import { Input } from "rizzui";
+import { Input } from 'rizzui/input';
 import {
   MagnifyingGlassIcon,
   ArrowRightIcon,
   CurrencyDollarIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
     <>
-      <Input
-        label="Url"
-        prefix="https://"
-        suffix=".com"
-        placeholder="mysite"
-      />
+      <Input label="Url" prefix="https://" suffix=".com" placeholder="mysite" />
       <Input
         type="number"
         label="Price"
@@ -444,11 +233,11 @@ You can create quantity counter with **Input**.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { useState } from "react";
-import { Input } from "rizzui";
-import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import { useState } from 'react';
+import { Input } from 'rizzui/input';
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   const [state, setState] = useState(0);
@@ -495,14 +284,14 @@ You can create character counter with **Input**.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { useState } from "react";
-import { Input } from "rizzui";
+import { useState } from 'react';
+import { Input } from 'rizzui/input';
 
 export default function App() {
   const MAXLENGTH = 24;
-  const [state, setState] = React.useState("Chat GPT is awesome!");
+  const [state, setState] = useState('Chat GPT is awesome!');
 
   return (
     <Input
@@ -524,20 +313,17 @@ export default function App() {
 You can create clearable **Input** using **clearable** property.
 
 <Paper className="block text-gray-950">
-  <InputClearable
-    label="Name"
-    variant="active"
-  />
+  <InputClearable label="Name" variant="active" />
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { useState } from "react";
-import { Input } from "rizzui";
+import { useState } from 'react';
+import { Input } from 'rizzui/input';
 
 export default function App() {
-  const [state, setState] = useState("This is Jhon.");
+  const [state, setState] = useState('This is Jhon.');
 
   return (
     <Input
@@ -546,7 +332,7 @@ export default function App() {
       value={state}
       placeholder="clearable ..."
       onChange={(e) => setState(e.target.value)}
-      onClear={() => setState("")}
+      onClear={() => setState('')}
       clearable
     />
   );
@@ -557,7 +343,7 @@ export default function App() {
 
 ## Disabled
 
-You can make disable **Input** using **disabled** property.
+You can make disabled **Input** using **disabled** property.
 
 <Paper className="block text-gray-950">
   <Input
@@ -565,22 +351,16 @@ You can make disable **Input** using **disabled** property.
     label="Name"
     placeholder="Enter your name"
     disabled
+    className="w-full max-w-md"
   />
 </Paper>
 
 ```tsx
-"use client"; 
-
-import { Input } from "rizzui";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
-    <Input
-      type="text"
-      label="Name"
-      placeholder="Enter your name"
-      disabled
-    />
+    <Input type="text" label="Name" placeholder="Enter your name" disabled />
   );
 }
 ```
@@ -597,13 +377,12 @@ You can show field helper message to the **Input** using **helperText** property
     label="Email"
     placeholder="Your email"
     helperText="Example: john@doe.io"
+    className="w-full max-w-md"
   />
 </Paper>
 
 ```tsx
-"use client"; 
-
-import { Input } from "rizzui";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
@@ -628,13 +407,12 @@ You can show the validation error message using **error** property.
     label="Name"
     placeholder="Your Name"
     error="This field is required"
+    className="w-full max-w-md"
   />
 </Paper>
 
 ```tsx
-"use client"; 
-
-import { Input } from "rizzui";
+import { Input } from 'rizzui/input';
 
 export default function App() {
   return (
@@ -663,19 +441,18 @@ Here is the API documentation of the Input component. And the rest of the props 
 
 |      Props      |               Type               |                                                                Description                                                                |   Default   |
 | :-------------: | :------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------: | :---------: |
-|      type       |    [InputTypes](#input-types)    |                                               This Input component only support these types                                               |  `"text"`   |
+|      type       |    [InputTypes](#input-types)    |                                               This Input component only supports these types                                               |  `"text"`   |
 |      label      |           `ReactNode`            |                                                              Set field label                                                              |    \_\_     |
 |   labelWeight   |   [LabelWeight](#label-weight)   |                                                           Set label font weight                                                           | `"medium"`  |
 |     variant     | [InputVariants](#input-variants) |                                                    The variants of the component are:                                                     | `"outline"` |
 |      size       |    [InputSizes](#input-sizes)    |                                 The size of the component. "sm" is equivalent to the dense input styling.                                 |   `"md"`    |
-|     rounded     |  [InputRounded](#input-rounded)  |                                                         The rounded variants are:                                                         |   `"md"`    |
 |   placeholder   |             `string`             |                                                        Set input placeholder text                                                         |    \_\_     |
 |    disabled     |            `boolean`             |                                                   Whether the input is disabled or not                                                    |    \_\_     |
 |    clearable    |            `boolean`             |                                                           Add clearable option                                                            |    \_\_     |
-|     onClear     |  [InputOnclear](#input-onclear)  |                                                                clear event                                                                |    \_\_     |
-|     prefix      |           `ReactNode`            | The prefix is design for adding any icon or text on the Input field's start (it's a left icon for the `ltr` and right icon for the `rtl`) |    \_\_     |
-|     suffix      |           `ReactNode`            |  The suffix is design for adding any icon or text on the Input field's end (it's a right icon for the `ltr` and left icon for the `rtl`)  |    \_\_     |
-|   helperText    |           `ReactNode`            |                                         Add helper text. It could be string or a React component                                          |    \_\_     |
+|     onClear     |  [InputOnClear](#input-onclear)  |                                                                Callback function called when the clear button is clicked                                                                |    \_\_     |
+|     prefix      |           `ReactNode`            | The prefix is designed for adding any icon or text on the Input field's start (it's a left icon for the `ltr` and right icon for the `rtl`) |    \_\_     |
+|     suffix      |           `ReactNode`            |  The suffix is designed for adding any icon or text on the Input field's end (it's a right icon for the `ltr` and left icon for the `rtl`)  |    \_\_     |
+|   helperText    |           `ReactNode`            |                                         Add helper text. Can be a string or a React component                                          |    \_\_     |
 |      error      |             `string`             |                                                    Show error message using this prop                                                     |    \_\_     |
 | labelClassName  |             `string`             |                                                    Override default CSS style of label                                                    |    \_\_     |
 | inputClassName  |             `string`             |                                                    Override default CSS style of input                                                    |    \_\_     |
@@ -695,17 +472,17 @@ Here is the API documentation of the Input component. And the rest of the props 
 
 ```ts
 type InputTypes =
-  | "text"
-  | "number"
-  | "email"
-  | "time"
-  | "date"
-  | "datetime-local"
-  | "month"
-  | "search"
-  | "tel"
-  | "url"
-  | "week";
+  | 'text'
+  | 'number'
+  | 'email'
+  | 'time'
+  | 'date'
+  | 'datetime-local'
+  | 'month'
+  | 'search'
+  | 'tel'
+  | 'url'
+  | 'week';
 ```
 
 <div className="mb-10" />
@@ -713,7 +490,7 @@ type InputTypes =
 ### Label Weight
 
 ```ts
-type LabelWeight = "normal" | "medium" | "semibold" | "bold";
+type LabelWeight = 'normal' | 'medium' | 'semibold' | 'bold';
 ```
 
 <div className="mb-10" />
@@ -721,7 +498,7 @@ type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ### Input Variants
 
 ```ts
-type InputVariants = "outline" | "flat" | "text";
+type InputVariants = 'outline' | 'flat' | 'text';
 ```
 
 <div className="mb-10" />
@@ -729,15 +506,7 @@ type InputVariants = "outline" | "flat" | "text";
 ### Input Sizes
 
 ```ts
-type InputSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Input Rounded
-
-```ts
-type InputRounded = "sm" | "md" | "lg" | "none" | "pill";
+type InputSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
@@ -745,5 +514,5 @@ type InputRounded = "sm" | "md" | "lg" | "none" | "pill";
 ### Input onClear
 
 ```ts
-type InputOnclear = (event) => void;
+type InputOnClear = (event) => void;
 ```

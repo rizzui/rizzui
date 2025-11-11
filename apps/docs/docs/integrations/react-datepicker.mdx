@@ -11,12 +11,33 @@ import {
   CalendarWithTime,
   TimePicker,
   RangeDatePicker,
-} from "@site/src/components/date-picker";
-import Paper from "@site/src/components/paper";
+} from '@site/src/components/date-picker';
+import Paper from '@site/src/components/paper';
+import { Badge } from 'rizzui/badge';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import NpmIcon from '@site/src/components/icons/npm-icon';
+import YarnIcon from '@site/src/components/icons/yarn-icon';
+import PnpmIcon from '@site/src/components/icons/pnpm-icon';
+import BunIcon from '@site/src/components/icons/bun-icon';
 
 # React Datepicker
 
-A simple and reusable Datepicker component. We are using **react-datepicker** package. Please follow their [**Official documentation**](https://www.npmjs.com/package/react-datepicker) for more details.
+A powerful and flexible date picker component built on top of **react-datepicker**. Seamlessly integrated with RizzUI's design system, this component provides a consistent and accessible way to select dates, times, and date ranges in your application.
+
+<div className="mb-16" />
+
+## Features
+
+- 📅 **Multiple Selection Modes** - Single date, date range, month, year, and time-only pickers
+- 🎨 **Theme Integration** - Fully integrated with RizzUI theme colors and design tokens
+- 🌓 **Dark Mode Support** - Automatic dark mode styling using RizzUI theme variables
+- ♿ **Accessible** - Built with accessibility best practices and keyboard navigation
+- 🎯 **Type Safe** - Full TypeScript support with comprehensive type definitions
+- 📱 **Responsive** - Works seamlessly across all device sizes
+- 🎛️ **Customizable** - Extensive customization options for dates, formats, and behavior
+- 🔄 **Form Integration** - Works seamlessly with form libraries like React Hook Form
 
 <div className="mb-16" />
 
@@ -24,58 +45,109 @@ A simple and reusable Datepicker component. We are using **react-datepicker** pa
 
 <hr />
 
-1.  Install the **react-datepicker** and **@types/react-datepicker**
+Before using the React Datepicker component, you'll need to install the required dependencies:
+
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 1
+  </Badge>
+  <span>
+    Install the <strong>react-datepicker</strong> and <strong>@types/react-datepicker</strong> packages.
+  </span>
+</div>
 
 <div className="mb-4" />
 
-```bash
-npm i react-datepicker
-```
+<Tabs groupId="package-manager">
+  <TabItem
+    value="npm"
+    label={
+      <div className="flex items-center gap-2">
+        <NpmIcon className="size-5" /> npm
+      </div>
+    }
+    default
+  >
+    <CodeBlock language="bash">
+      {`npm install react-datepicker
+npm install --save-dev @types/react-datepicker`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="yarn"
+    label={
+      <div className="flex items-center gap-2">
+        <YarnIcon className="size-5" /> yarn
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`yarn add react-datepicker
+yarn add -D @types/react-datepicker`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="pnpm"
+    label={
+      <div className="flex items-center gap-2">
+        <PnpmIcon className="size-5" /> pnpm
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`pnpm add react-datepicker
+pnpm add -D @types/react-datepicker`}
+    </CodeBlock>
+  </TabItem>
+  <TabItem
+    value="bun"
+    label={
+      <div className="flex items-center gap-2">
+        <BunIcon className="size-5" /> bun
+      </div>
+    }
+  >
+    <CodeBlock language="bash">
+      {`bun add react-datepicker
+bun add -d @types/react-datepicker`}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
 
-```bash
-npm i --save @types/react-datepicker
-```
+<div className="mb-14" />
 
-<div className="mb-4" />
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 2
+  </Badge>
+  <span>
+    Create a DatePicker component, <strong>components/date-picker.tsx</strong>
+  </span>
+</div>
 
-2. Create a DatePicker component, **components/datepicker.tsx**
+```tsx
+import React from 'react';
+import { tv } from 'tailwind-variants';
+import { Input, InputProps } from 'rizzui/input';
+import { cn } from 'rizzui';
+import DatePicker, { type DatePickerProps } from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { CalendarIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
-<div className="mb-4" />
-
-```ts
-import React from "react";
-import { cn, Input, InputProps } from "rizzui";
-import DatePicker, { type DatePickerProps } from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { CalendarIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-
-const calendarContainerClasses = {
-  base: "[&.react-datepicker]:shadow-lg [&.react-datepicker]:border-gray-100 [&.react-datepicker]:rounded-md ",
-  monthContainer: {
-    padding: "[&.react-datepicker>div]:pt-5 [&.react-datepicker>div]:pb-3",
+const datePicker = tv({
+  slots: {
+    calendar:
+      '[&.react-datepicker]:!shadow-lg [&.react-datepicker]:!border-[var(--border-color)] [&.react-datepicker]:!rounded-[var(--border-radius)]',
+    monthContainer: '[&.react-datepicker>div]:!pt-5 [&.react-datepicker>div]:!pb-3',
+    prevNextButton:
+      '[&.react-datepicker>button]:!items-baseline [&.react-datepicker>button]:!top-7 [&.react-datepicker>button]:!border [&.react-datepicker>button]:!border-solid [&.react-datepicker>button]:!border-[var(--border-color)] [&.react-datepicker>button]:!rounded-[var(--border-radius)] [&.react-datepicker>button]:!h-[22px] [&.react-datepicker>button]:!w-[22px] hover:[&.react-datepicker>button]:!border-[var(--text-primary)] [&.react-datepicker>button:hover>span::before]:!border-[var(--text-primary)]',
+    prevNextButtonChild:
+      '[&.react-datepicker>button>span]:!top-0 [&.react-datepicker>button>span]:!before:border-t-[1.5px] [&.react-datepicker>button>span]:!before:border-r-[1.5px] [&.react-datepicker>button>span]:!before:border-[var(--muted-foreground)] [&.react-datepicker>button>span]:!before:h-[7px] [&.react-datepicker>button>span]:!before:w-[7px]',
+    timeOnly: '[&.react-datepicker--time-only>div]:!pr-0 [&.react-datepicker--time-only>div]:!w-28',
+    popper:
+      '[&>svg]:!fill-[var(--background)] dark:[&>svg]:!fill-[var(--muted)] [&>svg]:!stroke-[var(--border-color)] dark:[&>svg]:!stroke-[var(--muted)] dark:[&>svg]:!text-[var(--muted)]',
   },
-};
-
-const prevNextButtonClasses = {
-  base: "[&.react-datepicker>button]:items-baseline [&.react-datepicker>button]:top-7",
-  border:
-    "[&.react-datepicker>button]:border [&.react-datepicker>button]:border-solid [&.react-datepicker>button]:border-gray-300 [&.react-datepicker>button]:rounded-md",
-  size: "[&.react-datepicker>button]:h-[22px] [&.react-datepicker>button]:w-[22px] hover:[&.react-datepicker>button]:border-gray-900 [&.react-datepicker>button:hover>span::before]:border-gray-900",
-  children: {
-    position: "[&.react-datepicker>button>span]:top-0",
-    border:
-      "[&.react-datepicker>button>span]:before:border-t-[1.5px] [&.react-datepicker>button>span]:before:border-r-[1.5px] [&.react-datepicker>button>span]:before:border-gray-400",
-    size: "[&.react-datepicker>button>span]:before:h-[7px] [&.react-datepicker>button>span]:before:w-[7px]",
-  },
-};
-
-const timeOnlyClasses = {
-  base: "[&.react-datepicker--time-only>div]:pr-0 [&.react-datepicker--time-only>div]:w-28",
-};
-
-const popperClasses = {
-  base: "[&>svg]:!fill-white dark:[&>svg]:!fill-gray-100 [&>svg]:!stroke-gray-300 dark:[&>svg]:!stroke-muted dark:[&>svg]:!text-muted",
-};
+});
 
 export type ReactDatePickerProps = DatePickerProps & {
   inputProps?: InputProps;
@@ -93,15 +165,25 @@ const ReactDatePicker = ({
   const [isCalenderOpen, setIsCalenderOpen] = React.useState(false);
   const handleCalenderOpen = () => setIsCalenderOpen(true);
   const handleCalenderClose = () => setIsCalenderOpen(false);
+
+  const {
+    calendar: calendarClass,
+    monthContainer: monthContainerClass,
+    prevNextButton: prevNextButtonClass,
+    prevNextButtonChild: prevNextButtonChildClass,
+    timeOnly: timeOnlyClass,
+    popper: popperClass,
+  } = datePicker();
+
   return (
     <DatePicker
       customInput={
         customInput || (
           <Input
-            prefix={<CalendarIcon className="w-5 h-5 text-gray-500" />}
+            prefix={<CalendarIcon className="w-5 h-5 text-[var(--muted-foreground)]" />}
             suffix={
               <ChevronDownIcon
-                className={cn("h-4 w-4 text-gray-500 transition", isCalenderOpen && "rotate-180")}
+                className={cn('h-4 w-4 text-[var(--muted-foreground)] transition', isCalenderOpen && 'rotate-180')}
               />
             }
             {...inputProps}
@@ -111,51 +193,57 @@ const ReactDatePicker = ({
       onCalendarOpen={onCalendarOpen || handleCalenderOpen}
       onCalendarClose={onCalendarClose || handleCalenderClose}
       calendarClassName={cn(
-        calendarContainerClasses.base,
-        calendarContainerClasses.monthContainer.padding,
-        prevNextButtonClasses.base,
-        prevNextButtonClasses.border,
-        prevNextButtonClasses.size,
-        prevNextButtonClasses.children.position,
-        prevNextButtonClasses.children.border,
-        prevNextButtonClasses.children.size,
-        timeOnlyClasses.base,
+        calendarClass(),
+        monthContainerClass(),
+        prevNextButtonClass(),
+        prevNextButtonChildClass(),
+        timeOnlyClass(),
         calendarClassName
       )}
-      popperClassName={cn(popperClasses.base, popperClassName)}
+      popperClassName={cn(popperClass(), popperClassName)}
       {...props}
     />
   );
 };
 
-ReactDatePicker.displayName = "ReactDatePicker";
+ReactDatePicker.displayName = 'ReactDatePicker';
 export default ReactDatePicker;
 ```
 
-3. Copy and paste the following CSS code into your project CSS file.
+<div className="mb-14" />
+
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 3
+  </Badge>
+  <span>
+    Copy and paste the following CSS code into your project CSS file.
+  </span>
+</div>
 
 <div className="mb-4" />
 
 ```css
-/* ................................................... */
 /* React Datepicker Styling */
-/* ................................................... */
+/* Uses RizzUI theme colors and design tokens */
+
+/* Main calendar container */
 .react-datepicker-popper .react-datepicker {
-  @apply bg-white font-geist text-gray-600 dark:border-muted dark:bg-gray-50;
+  @apply bg-[var(--background)] text-[var(--text-secondary)] dark:border-[var(--muted)] dark:bg-[var(--muted)];
 }
 
-/* month container */
+/* Month container */
 .react-datepicker .react-datepicker__month-container {
   @apply px-3;
 }
 
-/* time container */
+/* Time container */
 .react-datepicker .react-datepicker__time-container {
   @apply w-auto border-l-0 pr-3.5;
 }
 
 .react-datepicker-popper .react-datepicker__time-container .react-datepicker__time {
-  @apply bg-gray-50 dark:bg-gray-200;
+  @apply bg-[var(--muted)] dark:bg-[var(--muted)];
 }
 
 .react-datepicker__time-container
@@ -163,131 +251,133 @@ export default ReactDatePicker;
   .react-datepicker__time-box
   ul.react-datepicker__time-list
   li.react-datepicker__time-list-item:hover {
-  @apply dark:bg-muted;
+  @apply dark:bg-[var(--muted)];
 }
 
-/* header */
+/* Header */
 .react-datepicker .react-datepicker__header {
-  @apply border-b-transparent bg-white dark:border-transparent dark:bg-gray-50;
+  @apply border-b-transparent bg-[var(--background)] dark:border-transparent dark:bg-[var(--muted)];
 }
 
-/* current month name in header */
+/* Current month name in header */
 .react-datepicker .react-datepicker-year-header {
-  @apply dark:text-gray-700;
+  @apply dark:text-[var(--text-secondary)];
 }
 
 .react-datepicker .react-datepicker__current-month {
-  @apply mb-3 text-base font-medium dark:text-gray-700;
+  @apply mb-3 text-base font-medium text-[var(--text-secondary)] dark:text-[var(--text-secondary)];
 }
 
-/* sun-sat day names in header */
+/* Sun-Sat day names in header */
 .react-datepicker .react-datepicker__day-names div {
-  @apply m-1.5 text-sm text-gray-700;
+  @apply m-1.5 text-sm text-[var(--text-secondary)];
 }
 
-/* previous month button */
+/* Previous month button */
 .react-datepicker .react-datepicker__navigation--previous {
   @apply ml-6 rtl:mr-6;
 }
 
-/* next month button */
+/* Next month button */
 .react-datepicker .react-datepicker__navigation--next {
   @apply mr-6 rtl:ml-6;
 }
 
-/* icon in previous month button */
+/* Icon in previous month button */
 .react-datepicker .react-datepicker__navigation-icon--previous {
   @apply right-0.5;
 }
 
-/* icon in next month button */
+/* Icon in next month button */
 .react-datepicker .react-datepicker__navigation-icon--next {
   @apply left-0.5;
 }
 
-/* each day */
+/* Each day */
 .react-datepicker .react-datepicker__day {
-  @apply m-1.5 text-sm leading-7 text-gray-700;
-  @apply hover:rounded-full hover:bg-gray-100 hover:text-gray-900;
+  @apply m-1.5 text-sm leading-7 text-[var(--text-secondary)];
+  @apply hover:rounded-[var(--border-radius)] hover:bg-[var(--muted)] hover:text-[var(--text-primary)];
 }
 
-/* outside month */
+/* Outside month */
 .react-datepicker .react-datepicker__day--outside-month {
-  @apply text-gray-500;
+  @apply text-[var(--muted-foreground)];
 }
 
-/* keyboard selected */
+/* Keyboard selected */
 .react-datepicker .react-datepicker__day--keyboard-selected {
-  @apply bg-gray-50;
+  @apply bg-[var(--muted)];
 }
 
-/* today */
+/* Today */
 .react-datepicker .react-datepicker__day--today {
-  @apply rounded-full border border-muted bg-gray-50 leading-[26px] text-gray-900;
-  @apply hover:border-gray-600 hover:bg-gray-50;
+  @apply rounded-[var(--border-radius)] border border-[var(--muted)] bg-[var(--muted)] leading-[26px] text-[var(--text-primary)];
+  @apply hover:border-[var(--border-color)] hover:bg-[var(--muted)];
 }
 
-/* while selecting */
+/* While selecting */
 .react-datepicker div.react-datepicker__day--in-selecting-range {
-  @apply rounded-full bg-gray-200 text-gray-900;
+  @apply rounded-[var(--border-radius)] bg-[var(--muted)] text-[var(--text-primary)];
 }
 
 .react-datepicker div.react-datepicker__year-text--in-selecting-range {
-  @apply bg-gray-200 text-gray-900;
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
 }
 
 .react-datepicker
   div.react-datepicker__year-text--in-selecting-range.react-datepicker__year-text--disabled {
-  @apply bg-transparent text-muted;
+  @apply bg-transparent text-[var(--muted-foreground)];
 }
 
-/* in range */
+/* In range */
 .react-datepicker .react-datepicker__day--in-range {
-  @apply rounded-full bg-gray-200 text-gray-900;
+  @apply rounded-[var(--border-radius)] bg-[var(--muted)] text-[var(--text-primary)];
 }
 
 .react-datepicker .react-datepicker__year-text--in-range {
-  @apply bg-gray-200 text-gray-900;
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
 }
 
-/* selected */
+/* Selected */
 .react-datepicker .react-datepicker__day--range-start,
 .react-datepicker .react-datepicker__day--range-end,
 .react-datepicker .react-datepicker__day--selected {
-  @apply rounded-full border-none bg-gray-900 font-normal leading-7 text-gray-50;
-  @apply hover:bg-gray-900/80 hover:text-gray-50;
+  @apply rounded-[var(--border-radius)] border-none bg-[var(--primary)] font-normal leading-7 text-[var(--primary-foreground)];
+  @apply hover:bg-[var(--primary-dark)] hover:text-[var(--primary-foreground)];
 }
 
 .react-datepicker .react-datepicker__year-text--range-end {
-  @apply border-none bg-gray-900 font-normal text-gray-50 hover:bg-gray-900/80 hover:text-gray-50;
+  @apply border-none bg-[var(--primary)] font-normal text-[var(--primary-foreground)] hover:bg-[var(--primary-dark)] hover:text-[var(--primary-foreground)];
 }
 
-/* time list */
+/* Time list */
 .react-datepicker .react-datepicker__time-list {
   @apply !h-[247px];
 }
 
-/* time item */
+/* Time item */
 .react-datepicker .react-datepicker__time-list-item {
-  @apply my-2 rounded text-sm text-gray-500;
-  @apply hover:bg-gray-100 hover:text-gray-900;
+  @apply my-2 rounded text-sm text-[var(--muted-foreground)];
+  @apply hover:bg-[var(--muted)] hover:text-[var(--text-primary)];
 }
 
-/* selected time item */
+/* Selected time item */
 .react-datepicker .react-datepicker__time-list-item--selected {
-  @apply !bg-gray-100 !font-medium !text-gray-900;
+  @apply !bg-[var(--muted)] !font-medium !text-[var(--text-primary)];
 }
 
-/* time only box */
+/* Time only box */
 .react-datepicker-popper .react-datepicker-time__header {
-  @apply text-gray-700;
+  @apply text-[var(--text-secondary)];
 }
+
 .react-datepicker-popper
   .react-datepicker__time-container
   .react-datepicker__time
   .react-datepicker__time-box {
   width: 90px;
 }
+
 .react-datepicker--time-only
   .react-datepicker__time-container
   .react-datepicker__time
@@ -295,115 +385,115 @@ export default ReactDatePicker;
   @apply w-auto;
 }
 
-/* time only item */
+/* Time only item */
 .react-datepicker--time-only .react-datepicker__time-list-item {
   @apply rounded-none;
 }
 
-/* month picker text */
+/* Month picker text */
 .react-datepicker .react-datepicker__month-text {
   @apply w-0 px-5 py-1.5;
 }
 
-/* keyboard selected month in month picker */
+/* Keyboard selected month in month picker */
 .react-datepicker .react-datepicker__month-text--keyboard-selected {
-  @apply bg-gray-100 text-gray-900;
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
 }
 
-/* month in range */
+/* Month in range */
 .react-datepicker .react-datepicker__month--in-range {
-  @apply bg-gray-200 text-gray-700;
+  @apply bg-[var(--muted)] text-[var(--text-secondary)];
 }
 
-/* hover on selected months in range */
+/* Hover on selected months in range */
 .react-datepicker .react-datepicker__month-text.react-datepicker__month--in-range:hover {
-  @apply bg-gray-200 text-gray-900;
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
 }
 
-/* selected month in range */
+/* Selected month in range */
 .react-datepicker .react-datepicker__month--range-start,
 .react-datepicker .react-datepicker__month--range-end,
 .react-datepicker .react-datepicker__month--selected {
-  @apply bg-gray-900 font-normal text-gray-50;
+  @apply bg-[var(--primary)] font-normal text-[var(--primary-foreground)];
 }
 
-/* hover on selected range start and end month */
+/* Hover on selected range start and end month */
 .react-datepicker .react-datepicker__month-text.react-datepicker__month--selected:hover,
 .react-datepicker .react-datepicker__month-text.react-datepicker__month--range-start:hover,
 .react-datepicker .react-datepicker__month-text.react-datepicker__month--range-end:hover {
-  @apply bg-gray-900/80 text-gray-50;
+  @apply bg-[var(--primary-dark)] text-[var(--primary-foreground)];
 }
 
-/* year wrapper in year picker */
+/* Year wrapper in year picker */
 .react-datepicker .react-datepicker__year-wrapper {
   @apply inline-block max-w-[220px];
 }
 
-/* year text in year picker */
+/* Year text in year picker */
 .react-datepicker .react-datepicker__year-text {
-  @apply w-auto px-5 py-1.5 text-gray-600 dark:hover:text-gray-100;
+  @apply w-auto px-5 py-1.5 text-[var(--text-secondary)] dark:hover:text-[var(--foreground)];
 }
 
 .react-datepicker .react-datepicker__year-text--range-end {
-  @apply text-gray-50;
+  @apply text-[var(--primary-foreground)];
 }
 
-/* keyboard selected year in year picker */
+/* Keyboard selected year in year picker */
 .react-datepicker .react-datepicker__year-text--keyboard-selected {
-  @apply bg-gray-200 text-gray-900;
-  @apply hover:bg-muted hover:text-gray-900;
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
+  @apply hover:bg-[var(--muted)] hover:text-[var(--text-primary)];
 }
 
-/* selected year & month in year picker */
+/* Selected year & month in year picker */
 .react-datepicker .react-datepicker__year-text.react-datepicker__year-text--selected,
 .react-datepicker .react-datepicker__month-text.react-datepicker__month-text--selected {
-  @apply bg-gray-900 text-gray-50;
-  @apply hover:bg-gray-900/80 hover:text-gray-50;
+  @apply bg-[var(--primary)] text-[var(--primary-foreground)];
+  @apply hover:bg-[var(--primary-dark)] hover:text-[var(--primary-foreground)];
 }
 
-/* year and month dropdown arrow */
+/* Year and month dropdown arrow */
 .react-datepicker .react-datepicker__year-read-view--down-arrow,
 .react-datepicker .react-datepicker__month-read-view--down-arrow {
-  @apply top-[5px] h-[7px] w-[7px] border-r-[1.5px] border-t-[1.5px] border-muted;
+  @apply top-[5px] h-[7px] w-[7px] border-r-[length:var(--border-width)] border-t-[length:var(--border-width)] border-[var(--muted)];
 }
 
-/* sub-header containing year and month dropdown */
+/* Sub-header containing year and month dropdown */
 .react-datepicker
   .react-datepicker__current-month--hasYearDropdown.react-datepicker__current-month--hasMonthDropdown
   ~ .react-datepicker__header__dropdown {
-  @apply my-2 grid grid-cols-2 divide-x divide-muted text-sm;
+  @apply my-2 grid grid-cols-2 divide-x divide-[var(--muted)] text-sm;
 }
 
-/* month and year dropdown button in sub-header */
+/* Month and year dropdown button in sub-header */
 .react-datepicker .react-datepicker__month-dropdown-container--scroll,
 .react-datepicker .react-datepicker__year-dropdown-container--scroll {
   @apply inline-flex justify-center;
 }
 
-/* month and year dropdown */
+/* Month and year dropdown */
 .react-datepicker .react-datepicker__year-dropdown,
 .react-datepicker .react-datepicker__month-dropdown {
-  @apply top-auto w-2/5 border border-gray-100 bg-gray-50 shadow-md;
+  @apply top-auto w-2/5 border border-[var(--border-color)] bg-[var(--muted)] shadow-md;
 }
 
-/* year dropdown */
+/* Year dropdown */
 .react-datepicker .react-datepicker__year-dropdown {
   @apply h-80;
 }
 
-/* month dropdown */
+/* Month dropdown */
 .react-datepicker .react-datepicker__month-dropdown {
   @apply py-3;
 }
 
-/* month and year option */
+/* Month and year option */
 .react-datepicker .react-datepicker__month-option,
 .react-datepicker .react-datepicker__year-option {
-  @apply my-1 py-1 text-sm text-gray-600;
-  @apply hover:bg-gray-100 hover:text-gray-900;
+  @apply my-1 py-1 text-sm text-[var(--text-secondary)];
+  @apply hover:bg-[var(--muted)] hover:text-[var(--text-primary)];
 }
 
-/* first and last type of month and year option */
+/* First and last type of month and year option */
 .react-datepicker .react-datepicker__month-option:first-of-type,
 .react-datepicker .react-datepicker__month-option:last-of-type,
 .react-datepicker .react-datepicker__year-option:first-of-type,
@@ -411,26 +501,27 @@ export default ReactDatePicker;
   @apply rounded-none;
 }
 
-/* selected month and year in dropdown */
+/* Selected month and year in dropdown */
 .react-datepicker .react-datepicker__month-option--selected_month,
 .react-datepicker .react-datepicker__year-option--selected_year {
-  @apply bg-gray-200 text-gray-900;
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
   @apply [&>span]:hidden;
 }
+
 .react-datepicker .react-datepicker__day:hover,
 .react-datepicker .react-datepicker__month-text:hover,
 .react-datepicker .react-datepicker__quarter-text:hover,
 .react-datepicker .react-datepicker__year-text:hover {
-  @apply bg-gray-200 text-gray-900;
+  @apply bg-[var(--muted)] text-[var(--text-primary)];
 }
 
-/* disabled item */
+/* Disabled item */
 .react-datepicker .react-datepicker__day--disabled {
-  @apply cursor-not-allowed text-muted hover:bg-transparent hover:text-muted dark:hover:text-muted;
+  @apply cursor-not-allowed text-[var(--muted-foreground)] hover:bg-transparent hover:text-[var(--muted-foreground)] dark:hover:text-[var(--muted-foreground)];
 }
 
 .react-datepicker .react-datepicker__year-text--disabled {
-  @apply cursor-not-allowed text-muted hover:bg-transparent dark:hover:text-muted;
+  @apply cursor-not-allowed text-[var(--muted-foreground)] hover:bg-transparent dark:hover:text-[var(--muted-foreground)];
 }
 ```
 
@@ -440,18 +531,17 @@ export default ReactDatePicker;
 
 <hr />
 
-<div className="mb-16" />
+### Default Date Picker
 
-## Default
-
-The default style of **DatePicker** component.
+The default date picker component with a clean, modern interface:
 
 <Paper className="block">
   <DatePickerDefault />
 </Paper>
 
 ```tsx
-import { ReactDatePicker } from "@components/datepicker";
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date | null>();
@@ -467,16 +557,17 @@ export default function App() {
 
 <div className="mb-16" />
 
-## MonthPicker
+### Month Picker
 
-You can use the **ReactDatePicker** component as a **MonthPicker**
+Select a month and year using the month picker:
 
 <Paper className="block">
   <MonthPicker />
 </Paper>
 
 ```tsx
-import { ReactDatePicker } from "@components/datepicker";
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date | null>();
@@ -496,16 +587,17 @@ export default function App() {
 
 <div className="mb-16" />
 
-## YearPicker
+### Year Picker
 
-You can use the **ReactDatePicker** component as a **YearPicker**
+Select a year using the year picker:
 
 <Paper className="block">
   <YearPicker />
 </Paper>
 
 ```tsx
-import { ReactDatePicker } from "@components/datepicker";
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date | null>();
@@ -525,14 +617,17 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Month Dropdown
+### Month Dropdown
+
+Select a month from a dropdown menu:
 
 <Paper className="block">
   <MonthDropdownPicker />
 </Paper>
 
 ```tsx
-import { ReactDatePicker } from "@components/datepicker";
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date | null>();
@@ -551,14 +646,17 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Year Dropdown
+### Year Dropdown
+
+Select a year from a scrollable dropdown:
 
 <Paper className="block">
   <YearDropdownPicker />
 </Paper>
 
 ```tsx
-import { ReactDatePicker } from "@components/datepicker";
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date | null>();
@@ -578,14 +676,17 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Calendar With Time
+### Calendar With Time
+
+Select both date and time in a single picker:
 
 <Paper className="block">
   <CalendarWithTime />
 </Paper>
 
 ```tsx
-import { ReactDatePicker } from "@components/datepicker";
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date | null>();
@@ -605,14 +706,17 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Time Only
+### Time Only Picker
+
+Select only the time without a date:
 
 <Paper className="block">
   <TimePicker />
 </Paper>
 
 ```tsx
-import { ReactDatePicker } from "@components/datepicker";
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
 
 export default function App() {
   const [startDate, setStartDate] = React.useState<Date | null>();
@@ -633,32 +737,181 @@ export default function App() {
 
 <div className="mb-16" />
 
-## Clearable Range Datepicker
+### Range Date Picker
+
+Select a date range with clearable functionality:
 
 <Paper className="block">
   <RangeDatePicker />
 </Paper>
 
 ```tsx
-import { ReactDatePicker } from "@components/datepicker";
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
 
 export default function App() {
-  const [starDate, setStartDate] = React.useState<[Date | null, Date | null]>();
+  const [dateRange, setDateRange] = React.useState<[Date | null, Date | null]>();
   return (
     <div className="h-96">
       <ReactDatePicker
-        startDate={starDate?.[0]!}
-        endDate={starDate?.[1]!}
-        onChange={(dates) => setStartDate(dates)}
+        startDate={dateRange?.[0]!}
+        endDate={dateRange?.[1]!}
+        onChange={(dates) => setDateRange(dates)}
         monthsShown={2}
         placeholderText="Select Date in a Range"
         selectsRange
         inputProps={{
           clearable: true,
-          onClear: () => setStartDate([null, null]),
+          onClear: () => setDateRange([null, null]),
         }}
       />
     </div>
   );
 }
 ```
+
+<div className="mb-16" />
+
+## Advanced Usage
+
+### Custom Date Format
+
+Customize the date format to match your requirements:
+
+```tsx
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+  return (
+    <ReactDatePicker
+      selected={startDate}
+      onChange={(date: Date) => setStartDate(date)}
+      dateFormat="dd/MM/yyyy"
+      placeholderText="DD/MM/YYYY"
+    />
+  );
+}
+```
+
+### Min and Max Dates
+
+Restrict date selection to a specific range:
+
+```tsx
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+  const minDate = new Date();
+  const maxDate = new Date();
+  maxDate.setMonth(maxDate.getMonth() + 3);
+
+  return (
+    <ReactDatePicker
+      selected={startDate}
+      onChange={(date: Date) => setStartDate(date)}
+      minDate={minDate}
+      maxDate={maxDate}
+      placeholderText="Select a date"
+    />
+  );
+}
+```
+
+### Filter Dates
+
+Filter out specific dates from selection:
+
+```tsx
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+
+  const isWeekday = (date: Date) => {
+    const day = date.getDay();
+    return day !== 0 && day !== 6;
+  };
+
+  return (
+    <ReactDatePicker
+      selected={startDate}
+      onChange={(date: Date) => setStartDate(date)}
+      filterDate={isWeekday}
+      placeholderText="Select a weekday"
+    />
+  );
+}
+```
+
+### Custom Input Component
+
+Use a custom input component:
+
+```tsx
+import React from 'react';
+import ReactDatePicker from '@components/date-picker';
+import { Button } from 'rizzui/button';
+
+export default function App() {
+  const [startDate, setStartDate] = React.useState<Date | null>();
+
+  return (
+    <ReactDatePicker
+      selected={startDate}
+      onChange={(date: Date) => setStartDate(date)}
+      customInput={<Button>Select Date</Button>}
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Best Practices
+
+- **Use controlled components** - Manage date state with React state for better control
+- **Provide clear placeholders** - Use descriptive placeholder text to guide users
+- **Set appropriate date ranges** - Use `minDate` and `maxDate` to prevent invalid selections
+- **Handle time zones** - Be aware of timezone differences when working with dates
+- **Accessibility** - The component includes built-in ARIA attributes for screen readers
+- **Form integration** - Use with form libraries like React Hook Form for validation
+- **Performance** - For large date ranges, consider using `filterDate` to optimize rendering
+- **Mobile considerations** - Test on mobile devices as date pickers behave differently on touch devices
+
+<div className="mb-20" />
+
+## API Reference
+
+The ReactDatePicker component extends all props from [react-datepicker](https://reactdatepicker.com/). Refer to their documentation for a complete list of available props and options.
+
+### Common Props
+
+| Prop | Type | Description |
+| :--- | :--- | :---------- |
+| **selected** | `Date \| null` | Currently selected date (controlled) |
+| **onChange** | `(date: Date \| null) => void` | Callback when date changes |
+| **placeholderText** | `string` | Placeholder text for the input |
+| **dateFormat** | `string` | Format string for the date display |
+| **minDate** | `Date` | Minimum selectable date |
+| **maxDate** | `Date` | Maximum selectable date |
+| **filterDate** | `(date: Date) => boolean` | Function to filter selectable dates |
+| **showTimeSelect** | `boolean` | Show time selection |
+| **showTimeSelectOnly** | `boolean` | Show only time selection |
+| **selectsRange** | `boolean` | Enable range selection mode |
+| **startDate** | `Date \| null` | Start date for range selection |
+| **endDate** | `Date \| null` | End date for range selection |
+| **inputProps** | `InputProps` | Props to pass to the Input component |
+| **customInput** | `ReactElement` | Custom input component |
+| **calendarClassName** | `string` | Additional CSS classes for calendar |
+| **popperClassName** | `string` | Additional CSS classes for popper |
+
+<div className="mb-4" />
+
+> **Note:** For a complete list of props and advanced features, please refer to the [react-datepicker documentation](https://reactdatepicker.com/).
+
+<div className="mb-20" />

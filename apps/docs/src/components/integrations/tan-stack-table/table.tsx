@@ -1,7 +1,7 @@
-import React from "react";
-import { Table } from "rizzui";
-import { Person } from "./data";
-import { flexRender, Table as TanStackTableTypes } from "@tanstack/react-table";
+import React from 'react';
+import { Table } from 'rizzui';
+import { Person } from './data';
+import { flexRender, Table as TanStackTableTypes } from '@tanstack/react-table';
 
 type TablePropsTypes = {
   table: TanStackTableTypes<Person>;
@@ -10,7 +10,9 @@ type TablePropsTypes = {
 export default function MainTable({ table }: TablePropsTypes) {
   const footers = table
     .getFooterGroups()
-    .map((group) => group.headers.map((header) => header.column.columnDef.footer))
+    .map((group) =>
+      group.headers.map((header) => header.column.columnDef.footer)
+    )
     .flat()
     .filter(Boolean);
 
@@ -22,7 +24,7 @@ export default function MainTable({ table }: TablePropsTypes) {
           width: table.getTotalSize(),
         }}
       >
-        <Table.Header className="!bg-gray-100 !border-y-0">
+        <Table.Header className="!bg-[var(--muted)]/50 !border-y-0">
           {table.getHeaderGroups().map((headerGroup) => {
             return (
               <Table.Row key={headerGroup.id}>
@@ -38,7 +40,10 @@ export default function MainTable({ table }: TablePropsTypes) {
                     >
                       {header.isPlaceholder
                         ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
                     </Table.Head>
                   );
                 })}
@@ -72,7 +77,12 @@ export default function MainTable({ table }: TablePropsTypes) {
                   return (
                     <Table.Cell key={footer.id}>
                       {footer.isPlaceholder ? null : (
-                        <>{flexRender(footer.column.columnDef.footer, footer.getContext())}</>
+                        <>
+                          {flexRender(
+                            footer.column.columnDef.footer,
+                            footer.getContext()
+                          )}
+                        </>
                       )}
                     </Table.Cell>
                   );

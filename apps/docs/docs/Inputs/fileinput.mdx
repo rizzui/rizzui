@@ -1,21 +1,19 @@
 ---
-sidebar_position: 14
+sidebar_position: 15
 ---
 
-import { FileInput } from "rizzui";
-import Paper from "@site/src/components/paper";
-import FileInputClearable from "@site/src/components/file-input";
+import { FileInput } from 'rizzui/file-input';
+import Paper from '@site/src/components/paper';
+import FileInputClearable from '@site/src/components/file-input';
 
 # FileInput
 
 A basic widget for getting the attachment file.
 
 ```tsx
-"use client";
+'use client';
 
-import { FileInput } from "rizzui";
-// or,
-import { FileInput } from "rizzui/upload";
+import { FileInput } from 'rizzui/file-input';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -29,9 +27,9 @@ The default style of **FileInput**.
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return <FileInput label="Upload File" />;
@@ -45,40 +43,22 @@ export default function App() {
 You can change the style of **FileInput** using [**variant**](#fileinput-variants) property.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-  <FileInput
-    label="Outline Variant"
-    variant="outline"
-  />
-  <FileInput
-    label="Flat Variant"
-    variant="flat"
-  />
-  <FileInput
-    label="Text Variant"
-    variant="text"
-  />
+  <FileInput label="Outline Variant" variant="outline" />
+  <FileInput label="Flat Variant" variant="flat" />
+  <FileInput label="Text Variant" variant="text" />
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return (
     <>
-      <FileInput
-        label="Outline Variant"
-        variant="outline"
-      />
-      <FileInput
-        label="Flat Variant"
-        variant="flat"
-      />
-      <FileInput
-        label="Text Variant"
-        variant="text"
-      />
+      <FileInput label="Outline Variant" variant="outline" />
+      <FileInput label="Flat Variant" variant="flat" />
+      <FileInput label="Text Variant" variant="text" />
     </>
   );
 }
@@ -91,98 +71,22 @@ export default function App() {
 You can change the size of **FileInput** using [**size**](#fileinput-sizes) property.
 
 <Paper className="justify-start items-start gap-6">
-  <FileInput
-    label="Small FileInput"
-    size="sm"
-  />
+  <FileInput label="Small FileInput" size="sm" />
   <FileInput label="Default FileInput" />
-  <FileInput
-    label="Large FileInput"
-    size="lg"
-  />
-  <FileInput
-    label="Extra Large FileInput"
-    size="xl"
-  />
+  <FileInput label="Large FileInput" size="lg" />
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return (
     <>
-      <FileInput
-        label="Small FileInput"
-        size="sm"
-      />
+      <FileInput label="Small FileInput" size="sm" />
       <FileInput label="Default FileInput" />
-      <FileInput
-        label="Large FileInput"
-        size="lg"
-      />
-      <FileInput
-        label="Extra Large FileInput"
-        size="xl"
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of **FileInput** using [**rounded**](#fileinput-rounded) property.
-
-<Paper className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-  <FileInput
-    label="Rounded Small"
-    rounded="sm"
-  />
-  <FileInput label="Rounded Default" />
-  <FileInput
-    label="Rounded Large"
-    rounded="lg"
-  />
-  <FileInput
-    label="Rounded None"
-    rounded="none"
-  />
-  <FileInput
-    label="Rounded Full"
-    rounded="pill"
-  />
-</Paper>
-
-```tsx
-"use client";
-
-import { FileInput } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <FileInput
-        label="Rounded Small"
-        rounded="sm"
-      />
-      <FileInput label="Rounded Default" />
-      <FileInput
-        label="Rounded Large"
-        rounded="lg"
-      />
-      <FileInput
-        label="Rounded None"
-        rounded="none"
-      />
-      <FileInput
-        label="Rounded Full"
-        rounded="pill"
-      />
+      <FileInput label="Large FileInput" size="lg" />
     </>
   );
 }
@@ -199,13 +103,13 @@ You can clear value of the **FileInput** using **clearable** & **onClear** prope
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import React from "react";
-import { FileInput } from "rizzui";
+import React from 'react';
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
-  const [state, setState] = React.useState<any>("");
+  const [state, setState] = React.useState<any>('');
 
   return (
     <FileInput
@@ -213,7 +117,7 @@ export default function App() {
       onChange={(e) => setState(e.target.value)}
       clearable={!!state}
       onClear={() => {
-        setState("");
+        setState('');
       }}
     />
   );
@@ -227,24 +131,16 @@ export default function App() {
 By enabling **multiple** property true, user can upload multiple files.
 
 <Paper className="block">
-  <FileInput
-    label="Upload Multiple Files"
-    multiple
-  />
+  <FileInput label="Upload Multiple Files" multiple />
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
-  return (
-    <FileInput
-      label="Upload Multiple Files"
-      multiple
-    />
-  );
+  return <FileInput label="Upload Multiple Files" multiple />;
 }
 ```
 
@@ -255,24 +151,16 @@ export default function App() {
 The disabled state of the **FileInput** component.
 
 <Paper className="block">
-  <FileInput
-    label="Upload File"
-    disabled
-  />
+  <FileInput label="Upload File" disabled />
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
-  return (
-    <FileInput
-      label="Upload File"
-      disabled
-    />
-  );
+  return <FileInput label="Upload File" disabled />;
 }
 ```
 
@@ -283,24 +171,16 @@ export default function App() {
 You can add helper text to the **FileInput** component using **helperText** property.
 
 <Paper className="block">
-  <FileInput
-    label="Upload Files"
-    helperText="This is helper text!"
-  />
+  <FileInput label="Upload Files" helperText="This is helper text!" />
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
-  return (
-    <FileInput
-      label="Upload Files"
-      helperText="This is helper text!"
-    />
-  );
+  return <FileInput label="Upload Files" helperText="This is helper text!" />;
 }
 ```
 
@@ -311,24 +191,16 @@ export default function App() {
 You can show the validation error message using **error** property.
 
 <Paper className="block">
-  <FileInput
-    label="Upload Files"
-    error="This is error message!"
-  />
+  <FileInput label="Upload Files" error="This is error message!" />
 </Paper>
 
 ```tsx
-"use client";
+'use client';
 
-import { FileInput } from "rizzui";
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
-  return (
-    <FileInput
-      label="Upload Files"
-      error="This is error message!"
-    />
-  );
+  return <FileInput label="Upload Files" error="This is error message!" />;
 }
 ```
 
@@ -352,12 +224,11 @@ Here is the API documentation of the Input component. And the rest of the props 
 |   labelWeight   |       [LabelWeight](#label-weight)       |                            Set label font weight                            | `"medium"`  |
 |     variant     | [FileinputVariants](#fileinput-variants) |                     The variants of the component are:                      | `"outline"` |
 |      size       |    [FileinputSizes](#fileinput-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. |   `"md"`    |
-|     rounded     |  [FileinputRounded](#fileinput-rounded)  |                          The rounded variants are:                          |   `"md"`    |
 |   placeholder   |                 `string`                 |                         Set input placeholder text                          |    \_\_     |
 |    disabled     |                `boolean`                 |                    Whether the input is disabled or not                     |    \_\_     |
-|    clearable    |                `boolean`                 |                            add clearable option                             |    \_\_     |
-|     onClear     |  [FileinputOnclear](#fileinput-onclear)  |                                 clear event                                 |    \_\_     |
-|   helperText    |               `ReactNode`                |          Add helper text. It could be string or a React component           |    \_\_     |
+|    clearable    |                `boolean`                 |                            Add clearable option                             |    \_\_     |
+|     onClear     |  [FileinputOnclear](#fileinput-onclear)  |          Callback function called when the clear button is clicked          |    \_\_     |
+|   helperText    |               `ReactNode`                |            Add helper text. Can be a string or a React component            |    \_\_     |
 |      error      |                 `string`                 |                     Show error message using this prop                      |    \_\_     |
 | labelClassName  |                 `string`                 |                     Override default CSS style of label                     |    \_\_     |
 | inputClassName  |                 `string`                 |                     Override default CSS style of input                     |    \_\_     |
@@ -374,7 +245,7 @@ Here is the API documentation of the Input component. And the rest of the props 
 ### Fileinput Variants
 
 ```ts
-type FileinputVariants = "outline" | "flat" | "text";
+type FileinputVariants = 'outline' | 'flat' | 'text';
 ```
 
 <div className="mb-10" />
@@ -382,7 +253,7 @@ type FileinputVariants = "outline" | "flat" | "text";
 ### Label Weight
 
 ```ts
-type LabelWeight = "normal" | "medium" | "semibold" | "bold";
+type LabelWeight = 'normal' | 'medium' | 'semibold' | 'bold';
 ```
 
 <div className="mb-10" />
@@ -390,15 +261,7 @@ type LabelWeight = "normal" | "medium" | "semibold" | "bold";
 ### Fileinput Sizes
 
 ```ts
-type FileinputSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Fileinput Rounded
-
-```ts
-type FileinputRounded = "sm" | "md" | "lg" | "none" | "pill";
+type FileinputSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />

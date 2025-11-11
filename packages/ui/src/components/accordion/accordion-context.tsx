@@ -1,11 +1,20 @@
-import React, { createContext, useContext, useRef, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  useRef,
+  useState,
+  type MutableRefObject,
+  type Dispatch,
+  type SetStateAction,
+  type ReactNode,
+} from 'react';
 
 type AccordionContextProps = {
   isOpen: boolean;
   toggle: () => void;
-  targetEl: React.MutableRefObject<any>;
+  targetEl: MutableRefObject<any>;
   openTargetEl: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 const AccordionContext = createContext<AccordionContextProps | null>(null);
@@ -13,13 +22,14 @@ const AccordionContext = createContext<AccordionContextProps | null>(null);
 type AccordionProviderProps = {
   defaultOpen?: boolean;
   duration?: number;
+  children: ReactNode;
 };
 
 export function AccordionProvider({
   defaultOpen = false,
   duration = 200,
   children,
-}: React.PropsWithChildren<AccordionProviderProps>) {
+}: AccordionProviderProps) {
   const targetEl = useRef<any>(null!);
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [openTargetEl, setOpenTargetEl] = useState(defaultOpen);
@@ -108,10 +118,10 @@ export function AccordionProvider({
   );
 }
 
-export const useAccordion = (): AccordionContextProps => {
+export function useAccordion(): AccordionContextProps {
   const context = useContext(AccordionContext);
   if (!context) {
     throw new Error('useAccordion must be used within a AccordionProvider');
   }
   return context;
-};
+}

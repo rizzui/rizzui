@@ -1,10 +1,9 @@
 import React from 'react';
-import { cn } from '../../../lib/cn';
-import { makeClassName } from '../../../lib/make-class-name';
+import { tv } from 'tailwind-variants';
 
-const blockquoteStyles = {
-  blockquote: 'border-l-4 border-mute text-quote py-3 px-4',
-};
+const blockquote = tv({
+  base: 'border-l-4 border-border text-quote py-3 px-4 text-text-primary',
+});
 
 export type BlockquoteProps = {
   className?: string;
@@ -16,14 +15,7 @@ export function Blockquote({
   ...props
 }: React.PropsWithChildren<BlockquoteProps>) {
   return (
-    <blockquote
-      className={cn(
-        makeClassName(`blockquote`),
-        blockquoteStyles.blockquote,
-        className
-      )}
-      {...props}
-    >
+    <blockquote className={blockquote({ className })} {...props}>
       {children}
     </blockquote>
   );
