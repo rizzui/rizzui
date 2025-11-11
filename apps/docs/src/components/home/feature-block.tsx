@@ -1,5 +1,5 @@
-import { Title } from 'rizzui/typography';
-import { Text } from 'rizzui/typography';
+import { Title } from 'rizzui/title';
+import { Text } from 'rizzui/text';
 import MegaPhoneIcon from '../icons/mega-phone';
 import ColorSwatchIcon from '../icons/color-swatch';
 import RocketIcon from '../icons/rocket';

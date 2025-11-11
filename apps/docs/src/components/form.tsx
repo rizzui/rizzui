@@ -21,7 +21,8 @@ import { CheckboxGroup } from 'rizzui/checkbox-group';
 import { RadioGroup } from 'rizzui/radio-group';
 import { Button } from 'rizzui/button';
 import { Modal } from 'rizzui/modal';
-import { Text, Title } from 'rizzui/typography';
+import { Title } from 'rizzui/title';
+import { Text } from 'rizzui/text';
 import { ActionIcon } from 'rizzui/action-icon';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 

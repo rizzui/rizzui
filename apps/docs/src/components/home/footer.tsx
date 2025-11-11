@@ -1,4 +1,4 @@
-import { Text } from 'rizzui/typography';
+import { Text } from 'rizzui/text';
 
 export default function Footer() {
   const year = new Date().getFullYear();

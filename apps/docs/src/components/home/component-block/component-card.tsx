@@ -1,7 +1,7 @@
 import { useHistory } from '@docusaurus/router';
 import { cn } from 'rizzui/cn';
-import { Title } from 'rizzui/typography';
-import { Text } from 'rizzui/typography';
+import { Title } from 'rizzui/title';
+import { Text } from 'rizzui/text';
 
 export default function ComponentCard({ item }: any) {
   const history = useHistory();

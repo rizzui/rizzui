@@ -1,7 +1,8 @@
 import { useHistory } from '@docusaurus/router';
 import { Announcement } from 'rizzui/announcement';
 import { Button } from 'rizzui/button';
-import { Title, Text } from 'rizzui/typography';
+import { Title } from 'rizzui/title';
+import { Text } from 'rizzui/text';
 import { cn } from 'rizzui/cn';
 import { GovernfulLogo } from '../icons/governful-logo';
 // import { TrueBeepLogo } from '../icons/truebeep-logo';
