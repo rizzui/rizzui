@@ -96,9 +96,9 @@ export default function BlogIndex(): React.JSX.Element {
       wrapperClassName="blog-list-page"
     >
       <div className="blog-banner">
-        <div className="container mx-auto">
+        <div className="container! mx-auto">
           <div className="blog-banner-content">
-            <h1 className="!text-3xl sm:!text-4xl !leading-[1.3] sm:!leading-[1.3] lg:!leading-[1.2] xl:!leading-[1.2] 2xl:!leading-[1.18] mb-4 font-semibold text-gray-900 dark:text-white">
+            <h1 className="text-3xl! sm:text-4xl! leading-[1.3]! sm:leading-[1.3]! lg:leading-[1.2]! xl:leading-[1.2]! 2xl:leading-[1.18]! mb-4! font-semibold text-gray-900 dark:text-white">
               Latest Blog Posts
             </h1>
             <p className="blog-banner-description">

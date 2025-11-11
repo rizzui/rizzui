@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 @import '../../static/fonts/outfit-font.css';
 @source "../../node_modules/rizzui/src";
+@source "../../docs/**/*.{md,mdx}";
+@source "../../blog/**/*.{md,mdx}";
+@source "../../src/components/";
+@source "../../src/pages/";
+@source "../../src/theme/";
+@source "../../src/contexts";
 @plugin "@tailwindcss/forms";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
@@ -254,3 +260,4 @@
 @import './_adomonition.css';
 @import './_blog.css';
 @import './_datepicker.css';
+@import './_home.css';

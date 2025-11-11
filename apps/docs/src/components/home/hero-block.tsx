@@ -20,7 +20,7 @@ export default function HeroBlock() {
   const history = useHistory();
 
   return (
-    <section className="py-16 md:py-20 lg:py-32 2xl:py-36 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full border-b border-gray-100/90">
+    <section className="py-16 md:py-20 lg:py-32 2xl:py-36 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full border-b border-border">
       {/* Dashed Top Fade Grid */}
       <div
         className="absolute inset-0 z-0 -mt-2 opacity-90 dark:opacity-50"
@@ -70,29 +70,32 @@ export default function HeroBlock() {
         }}
       />
 
-      <div className="container relative mx-auto">
-        <header className="text-center">
+      <div className="container! relative mx-auto">
+        <header className="text-center flex flex-col items-center justify-center">
+          <Announcement
+            badgeText="⚡ v2.0.0"
+            className="mb-6! md:mb-7! sm:hidden mx-auto border border-border [box-shadow:0_1px_0_var(--border-color)]"
+          >
+            — released
+          </Announcement>
           <Announcement
             badgeText="⚡ v2.0.0"
             highlightedText=" released"
             highlightedTextClassName="ml-1.5"
-            // badgeClassName="dark:bg-[#efefef]"
-            className="mb-6 md:!mb-7 mx-auto border border-border [box-shadow:0_1px_0_var(--border-color)]"
+            className="mb-6! hidden sm:block md:mb-7! mx-auto border border-border [box-shadow:0_1px_0_var(--border-color)]"
           >
             — upgraded for React 19 and beyond.
           </Announcement>
           <Title
             as="h1"
             dangerouslySetInnerHTML={{ __html: data.title }}
-            className={cn(
-              '!text-3xl sm:!text-4xl xl:!text-5xl !leading-[1.3] sm:!leading-[1.3] lg:!leading-[1.2] xl:!leading-[1.2] 2xl:!leading-[1.18] !mb-6 md:!mb-7 font-semibold'
-            )}
+            className={'home-page-hero-block-title'}
           />
-          <Text className="!text-[15px] md:!text-base !leading-[1.9] md:!leading-[1.9] max-w-[786px] !mx-auto !mb-8 md:!mb-12 text-gray-600 dark:text-gray-500 2xl:!text-lg">
+          <Text className="text-[15px] md:text-base leading-[1.9] md:leading-[1.9] max-w-[786px] mx-auto mb-8! md:mb-12 text-gray-600 dark:text-gray-500 2xl:text-lg">
             {data.description}
           </Text>
 
-          <div className="flex items-center justify-center gap-4 md:gap-5">
+          <div className="flex items-center justify-center gap-4 md:gap-5 flex-col sm:flex-row">
             <Button
               size="lg"
               className="text-sm md:text-base h-12 px-8 hover:shadow-2xl transition-all relative min-w-[160px]"
@@ -104,14 +107,14 @@ export default function HeroBlock() {
             <a
               target="_blank"
               href="https://github.com/rizzui/rizzui"
-              className="inline-flex items-center hover:!no-underline outline-none focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-offset-background focus:ring-primary rounded-[var(--border-radius)]"
+              className="inline-flex items-center outline-none focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-offset-background focus:ring-primary rounded-[var(--border-radius)] hover:no-underline!"
               rel="noreferrer noopener"
             >
               <Button
                 size="lg"
                 as="span"
                 variant="outline"
-                className="!text-sm md:!text-base h-12 bg-white dark:bg-gray-50 px-6 transition-all relative"
+                className="text-sm md:text-base h-12 bg-white dark:bg-gray-50 px-6 transition-all relative hover:no-underline!"
               >
                 View on Github
               </Button>
