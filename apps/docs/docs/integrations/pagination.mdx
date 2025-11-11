@@ -21,6 +21,12 @@ import BunIcon from '@site/src/components/icons/bun-icon';
 
 A flexible and customizable pagination component for navigating through large datasets. Built on top of **rc-pagination**, the Pagination component seamlessly integrates with RizzUI's design system, providing a consistent and accessible user experience for paginated content.
 
+<div className="mb-14" />
+
+<Paper disableShowCodeBtn>
+  <Pagination total={25} defaultCurrent={1} className="[&_li]:!mt-0" />
+</Paper>
+
 <div className="mb-16" />
 
 ## Features
@@ -63,9 +69,7 @@ Before using the Pagination component, you'll need to install the required depen
     }
     default
   >
-    <CodeBlock language="bash">
-      {`npm install rc-pagination`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`npm install rc-pagination`}</CodeBlock>
   </TabItem>
   <TabItem
     value="yarn"
@@ -75,9 +79,7 @@ Before using the Pagination component, you'll need to install the required depen
       </div>
     }
   >
-    <CodeBlock language="bash">
-      {`yarn add rc-pagination`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`yarn add rc-pagination`}</CodeBlock>
   </TabItem>
   <TabItem
     value="pnpm"
@@ -87,9 +89,7 @@ Before using the Pagination component, you'll need to install the required depen
       </div>
     }
   >
-    <CodeBlock language="bash">
-      {`pnpm add rc-pagination`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`pnpm add rc-pagination`}</CodeBlock>
   </TabItem>
   <TabItem
     value="bun"
@@ -99,9 +99,7 @@ Before using the Pagination component, you'll need to install the required depen
       </div>
     }
   >
-    <CodeBlock language="bash">
-      {`bun add rc-pagination`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`bun add rc-pagination`}</CodeBlock>
   </TabItem>
 </Tabs>
 
