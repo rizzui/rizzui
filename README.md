@@ -330,7 +330,7 @@ export function ThemeSwitcher() {
       <Dropdown.Trigger>
         <ActionIcon variant="outline">
           <SunIcon className="h-5 w-5 dark:hidden" />
-          <MoonIcon className="absolute h-5 w-5 hidden dark:block" />
+          <MoonIcon className="absolute hidden h-5 w-5 dark:block" />
           <span className="sr-only">Toggle theme</span>
         </ActionIcon>
       </Dropdown.Trigger>
@@ -371,6 +371,6 @@ Licensed under the [MIT License](https://choosealicense.com/licenses/mit/) - fee
 
 <br />
 <div align="center">
-  Made with ❤️ by the REDQ
+  Made with ❤️ by the <a href="https://redq.io/" target="_blank">REDQ</a>
 </div>
 <br />

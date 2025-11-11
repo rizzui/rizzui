@@ -371,6 +371,6 @@ Licensed under the [MIT License](https://choosealicense.com/licenses/mit/) - fee
 
 <br />
 <div align="center">
-  Made with ❤️ by the REDQ
+  Made with ❤️ by the <a href="https://redq.io/" target="_blank">REDQ</a>
 </div>
 <br />
