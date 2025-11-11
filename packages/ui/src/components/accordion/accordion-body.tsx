@@ -1,32 +1,40 @@
-import React, { useImperativeHandle } from 'react';
+import {
+  useImperativeHandle,
+  type ReactNode,
+  type Ref,
+  type HTMLAttributes,
+  type ElementType,
+} from 'react';
 import { useAccordion } from './accordion-context';
-import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 type AccordionBodyProps = {
   as?: 'div' | 'ul';
   className?: string;
-} & React.HTMLAttributes<HTMLDivElement> &
-  React.HTMLAttributes<HTMLUListElement>;
+  children?: ReactNode;
+  ref?: Ref<any>;
+} & HTMLAttributes<HTMLDivElement> &
+  HTMLAttributes<HTMLUListElement>;
 
-export const AccordionBody = React.forwardRef<
-  any,
-  React.PropsWithChildren<AccordionBodyProps>
->(({ as = 'div', className, children, ...props }, ref) => {
-  let Component = as;
+export function AccordionBody({
+  as = 'div',
+  className,
+  children,
+  ref,
+  ...props
+}: AccordionBodyProps) {
+  const Component = (as || 'div') as ElementType;
   const { targetEl, openTargetEl } = useAccordion();
-  useImperativeHandle(ref, () => targetEl);
+  useImperativeHandle(ref, () => targetEl.current);
 
   return (
     <Component
       ref={targetEl}
       style={!openTargetEl ? { display: 'none' } : { display: 'block' }}
-      className={cn(makeClassName(`accordion-panel`), className)}
+      className={cn('rizzui-accordion-panel', className)}
       {...props}
     >
       {children}
     </Component>
   );
-});
-
-AccordionBody.displayName = 'AccordionBody';
+}

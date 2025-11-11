@@ -1,130 +1,148 @@
-import React, { forwardRef } from 'react';
+import type { InputHTMLAttributes, ReactNode, Ref } from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { FieldError } from '../field-error-text';
+import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
-import { makeClassName } from '../../lib/make-class-name';
 import { labelStyles } from '../../lib/label-size';
+import { useRadioGroup } from '../radio-group/radio-group';
 
-const radioLabelStyles = {
-  weight: labelStyles.weight,
-  size: labelStyles.size,
-  margin: {
-    left: {
-      sm: 'me-1.5',
-      md: 'me-2',
-      lg: 'me-2.5',
-      xl: 'me-3',
+const radio = tv({
+  base: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted focus:ring-border focus:ring-offset-background text-primary dark:text-primary-foreground border-[length:var(--border-width)]',
+  variants: {
+    variant: {
+      outline:
+        'bg-transparent border-border checked:!bg-primary dark:checked:!bg-transparent checked:!border-primary hover:enabled:border-primary',
     },
-    right: {
-      sm: 'ms-1.5',
-      md: 'ms-2',
-      lg: 'ms-2.5',
-      xl: 'ms-3',
+    size: {
+      sm: 'h-5 w-5',
+      md: 'h-6 w-6',
+      lg: 'h-7 w-7',
     },
   },
-};
+  defaultVariants: {
+    variant: 'outline',
+    size: 'md',
+  },
+});
 
-const radioStyles = {
-  base: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:border-muted ring-[0.6px] focus:ring-muted focus:ring-offset-background text-primary dark:text-primary-foreground',
-  size: {
-    sm: 'h-5 w-5',
-    md: 'h-6 w-6',
-    lg: 'h-7 w-7',
-    xl: 'h-8 w-8',
+const radioLabel = tv({
+  base: 'mb-0',
+  variants: {
+    size: {
+      sm: 'text-xs',
+      md: 'text-sm',
+      lg: 'text-sm',
+    },
+    labelWeight: labelStyles.weight,
+    labelPlacement: {
+      left: '',
+      right: '',
+    },
+    disabled: {
+      true: 'text-muted-foreground',
+    },
   },
-  variant: {
-    outline:
-      'bg-transparent border border-muted ring-muted checked:!bg-primary dark:checked:!bg-transparent checked:!border-primary hover:enabled:border-primary',
-    flat: 'border-0 bg-muted/70 backdrop-blur ring-muted/70 hover:enabled:bg-muted/90 dark:checked:!bg-transparent dark:checked:!ring-primary checked:!bg-primary',
-  },
-};
+  compoundVariants: [
+    { labelPlacement: 'left', class: 'order-first' },
+    { labelPlacement: 'left', size: 'sm', class: 'me-1.5' },
+    { labelPlacement: 'left', size: 'md', class: 'me-2' },
+    { labelPlacement: 'left', size: 'lg', class: 'me-2.5' },
+    { labelPlacement: 'right', size: 'sm', class: 'ms-1.5' },
+    { labelPlacement: 'right', size: 'md', class: 'ms-2' },
+    { labelPlacement: 'right', size: 'lg', class: 'ms-2.5' },
+  ],
+});
+
+type RadioVariant = VariantProps<typeof radio>;
 
 export interface RadioProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  /** The variants of the component are: */
-  variant?: keyof typeof radioStyles.variant;
-  /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof radioStyles.size;
-  /** Available directions of the label are: */
-  labelPlacement?: keyof typeof radioLabelStyles.margin;
-  /** Set font weight for label */
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+  variant?: RadioVariant['variant'];
+  size?: RadioVariant['size'];
+  labelPlacement?: 'left' | 'right';
   labelWeight?: keyof typeof labelStyles.weight;
-  /** Whether the input is disabled */
   disabled?: boolean;
-  /** Set field label */
-  label?: React.ReactNode;
-  /** Show error message using this prop */
+  label?: ReactNode;
   error?: string;
-  /** Add helper text. It could be string or a React component */
-  helperText?: React.ReactNode;
-  /** Use className prop to apply style for entire component */
+  helperText?: ReactNode;
   className?: string;
-  /** Use labelClassName prop to apply some addition style for the field label */
   labelClassName?: string;
-  /** Add custom classes for the input filed extra style */
   inputClassName?: string;
-  /** This prop allows you to customize the error message style */
   errorClassName?: string;
-  /** This prop allows you to customize the helper message style */
   helperClassName?: string;
+  ref?: Ref<HTMLInputElement>;
 }
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  (
-    {
-      variant = 'outline',
-      size = 'md',
-      labelPlacement = 'right',
-      labelWeight = 'medium',
-      label,
-      disabled,
-      error,
-      helperText,
-      className,
-      labelClassName,
-      inputClassName,
-      errorClassName,
-      helperClassName,
-      ...radioProps
-    },
-    ref
-  ) => (
-    <div
-      className={cn(makeClassName(`radio-root`), 'flex flex-col', className)}
-    >
+export function Radio({
+  variant = 'outline',
+  size = 'md',
+  labelPlacement = 'right',
+  labelWeight = 'medium',
+  label,
+  disabled,
+  error,
+  helperText,
+  className,
+  labelClassName,
+  inputClassName,
+  errorClassName,
+  helperClassName,
+  ref,
+  value,
+  checked,
+  onChange,
+  ...radioProps
+}: RadioProps) {
+  // Try to get radio group context (optional)
+  let groupContext;
+  try {
+    groupContext = useRadioGroup();
+  } catch {
+    // Not in a radio group, use standalone mode
+    groupContext = null;
+  }
+
+  // Use group context if available, otherwise use individual props
+  const isChecked = groupContext
+    ? groupContext.isChecked(value as string)
+    : checked;
+  const handleChange = groupContext ? groupContext.onChange : onChange;
+
+  return (
+    <div className={cn('rizzui-radio-root', 'flex flex-col', className)}>
       <label
         className={cn(
-          makeClassName(`radio-container`),
+          'rizzui-radio-container',
           'flex cursor-pointer flex-row items-center',
-          disabled && 'cursor-not-allowed text-foreground/70'
+          disabled && 'text-foreground/70 cursor-not-allowed'
         )}
       >
         <input
           type="radio"
           ref={ref}
           disabled={disabled}
-          className={cn(
-            makeClassName(`radio-field`),
-            radioStyles.base,
-            radioStyles.size[size],
-            radioStyles.variant[variant],
-            inputClassName
-          )}
+          value={value}
+          checked={isChecked}
+          onChange={handleChange}
+          aria-invalid={error ? 'true' : undefined}
+          aria-required={radioProps.required}
+          className={radio({
+            variant,
+            size,
+            className: inputClassName,
+          })}
           {...radioProps}
         />
 
         {label ? (
           <span
-            className={cn(
-              makeClassName(`radio-label`),
-              radioLabelStyles.size[size],
-              radioLabelStyles.weight[labelWeight],
-              radioLabelStyles.margin[labelPlacement][size],
-              disabled && 'text-muted-foreground',
-              labelPlacement === 'left' && 'order-first',
-              'mb-0',
-              labelClassName
-            )}
+            className={radioLabel({
+              size,
+              labelWeight,
+              labelPlacement,
+              disabled,
+              className: labelClassName,
+            })}
           >
             {label}
           </span>
@@ -135,7 +153,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
         <FieldHelperText
           size={size}
           className={cn(
-            makeClassName(`radio-helper-text`),
+            'rizzui-radio-helper-text',
             disabled && 'text-muted-foreground',
             helperClassName
           )}
@@ -145,14 +163,12 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       ) : null}
 
       {error ? (
-        <FieldError
+        <FieldErrorText
           size={size}
           error={error}
-          className={cn(makeClassName(`radio-error-text`), errorClassName)}
+          className={cn('rizzui-radio-error-text', errorClassName)}
         />
       ) : null}
     </div>
-  )
-);
-
-Radio.displayName = 'Radio';
+  );
+}

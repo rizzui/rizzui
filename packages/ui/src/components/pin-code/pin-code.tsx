@@ -1,68 +1,74 @@
-import React, { useRef } from 'react';
+import {
+  useRef,
+  type Dispatch,
+  type SetStateAction,
+  type InputHTMLAttributes,
+  type ChangeEvent,
+  type KeyboardEvent,
+  type ClipboardEvent,
+} from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
-import { FieldError } from '../field-error-text';
-import { makeClassName } from '../../lib/make-class-name';
+import { FieldErrorText } from '../field-error-text';
 
-const containerClasses = {
+const pinCodeContainer = tv({
   base: 'flex flex-row',
-  center: 'justify-center align-center',
-};
+  variants: {
+    center: {
+      true: 'justify-center align-center',
+      false: '',
+    },
+  },
+  defaultVariants: {
+    center: false,
+  },
+});
 
-const pinCodeStyles = {
-  base: 'block peer text-center bg-transparent mr-2 focus:placeholder:opacity-0 focus:outline-none transition duration-200',
-  disabled:
-    'disabled:bg-muted/70 disabled:backdrop-blur disabled:placeholder:text-muted-foreground disabled:text-muted-foreground disabled:cursor-not-allowed disabled:border-muted',
-  error:
-    'border-red hover:enabled:!border-red focus:enabled:!border-red !ring-red',
-  size: {
-    sm: 'px-1 py-1 text-sm h-8 w-8',
-    md: 'px-2 py-2 text-sm h-10 w-10',
-    lg: 'px-2 py-2 text-base h-12 w-12',
-    xl: 'px-2.5 py-2.5 text-lg h-14 w-14',
+const pinCode = tv({
+  base: 'block peer text-center bg-transparent mr-2 focus:placeholder:opacity-0 focus:outline-none transition duration-200 rounded-[var(--border-radius)] border-[length:var(--border-width)]',
+  variants: {
+    variant: {
+      flat: 'focus:ring-[1.8px] border-0 placeholder:opacity-90 bg-muted/70 backdrop-blur focus:ring-primary focus:enabled:bg-transparent',
+      outline:
+        'bg-transparent focus:ring-[0.8px] ring-border border-border placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
+    },
+    size: {
+      sm: 'px-1 py-1 h-8 w-8 text-sm',
+      md: 'px-2 py-2 h-10 w-10 text-base',
+      lg: 'px-2 py-2 h-12 w-12 text-lg',
+    },
+    disabled: {
+      true: 'disabled:bg-muted/70 disabled:backdrop-blur disabled:placeholder:text-muted-foreground disabled:text-muted-foreground disabled:cursor-not-allowed disabled:border-muted',
+    },
+    error: {
+      true: 'border-red hover:enabled:!border-red focus:enabled:!border-red !ring-red',
+    },
   },
-  rounded: {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    full: 'rounded-full',
+  defaultVariants: {
+    variant: 'outline',
+    size: 'md',
   },
-  variant: {
-    flat: 'focus:ring-[1.8px] border-0 placeholder:opacity-90 bg-muted/70 backdrop-blur focus:ring-primary focus:enabled:bg-transparent',
-    outline:
-      'bg-transparent focus:ring-[0.8px] ring-[0.6px] ring-muted border border-muted placeholder:text-gray-500 hover:enabled:border-primary focus:enabled:border-primary focus:ring-primary',
-  },
-};
+});
+
+type PinCodeVariant = VariantProps<typeof pinCode>;
 
 export interface PinCodeProps
   extends Omit<
-    React.InputHTMLAttributes<HTMLInputElement>,
+    InputHTMLAttributes<HTMLInputElement>,
     'size' | 'type' | 'value'
   > {
-  /** Pass setState to get back the pin code value */
-  setValue?: React.Dispatch<React.SetStateAction<string | number | undefined>>;
-  /** This Pin Code component only support these two types */
+  setValue?: Dispatch<SetStateAction<string | number | undefined>>;
   type?: 'text' | 'number';
-  /** Mask and unmask to hide and show pin code */
   mask?: boolean;
-  /** Set pin code length */
   length?: number;
-  /** Make pin code horizontally center */
   center?: boolean;
-  /** Set placeholder text */
   placeholder?: string;
-  /** The size of the component. `"sm"` is equivalent to the dense input styling. */
-  size?: keyof typeof pinCodeStyles.size;
-  /** The rounded variants are: */
-  rounded?: keyof typeof pinCodeStyles.rounded;
-  /** The variants of the component are: */
-  variant?: keyof typeof pinCodeStyles.variant;
-  /** Show error message using this prop */
+  size?: PinCodeVariant['size'];
+  variant?: PinCodeVariant['variant'];
   error?: string;
-  /** Add custom classes for the input filed extra style */
   inputClassName?: string;
-  /** This prop allows you to customize the error message style */
   errorClassName?: string;
+  label?: string;
 }
 
 export function PinCode({
@@ -73,13 +79,15 @@ export function PinCode({
   setValue,
   center = true,
   size = 'md',
-  rounded = 'md',
   variant = 'outline',
   placeholder = '○',
   error,
   className,
   inputClassName,
   errorClassName,
+  disabled,
+  onChange,
+  label,
   ...props
 }: PinCodeProps) {
   const inputRefs = useRef<HTMLInputElement[]>([]);
@@ -91,20 +99,17 @@ export function PinCode({
   }
 
   function setPinValue() {
-    setValue && setValue(inputRefs.current.map((node) => node.value).join(''));
+    setValue?.(inputRefs.current.map((node) => node.value).join(''));
   }
 
-  function handleChange(
-    event: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) {
+  function handleChange(event: ChangeEvent<HTMLInputElement>, index: number) {
     const inputValues = event.target.value.split('');
     inputRefs.current[index].value = inputValues[inputValues.length - 1];
     if (index < length - 1) inputRefs.current[index + 1].focus();
     setPinValue();
   }
 
-  function handleKeyDown(event: React.KeyboardEvent, index: number) {
+  function handleKeyDown(event: KeyboardEvent, index: number) {
     const currentValue = inputRefs.current[index].value;
 
     if (event.key === 'ArrowRight' && index < length - 1) {
@@ -127,78 +132,88 @@ export function PinCode({
     }
   }
 
-  function handlePaste(
-    event: React.ClipboardEvent<HTMLInputElement>,
-    index: number
-  ) {
-    const copiedValue = event.clipboardData.getData('text').split('');
-    for (let i = 0; i < length - index; i += 1) {
-      inputRefs.current[index + i].value = copiedValue[i] ?? '';
-      if (index + i === length - 1) {
-        inputRefs.current[index + i].focus();
-      } else {
-        inputRefs.current[index + i + 1].focus();
+  function handlePaste(event: ClipboardEvent<HTMLInputElement>, index: number) {
+    event.preventDefault();
+    const pastedData = event.clipboardData.getData('text');
+    const copiedValue = pastedData.replace(/\D/g, '').split(''); // Remove non-digits for number type
+
+    // Fill inputs starting from the current index
+    for (let i = 0; i < length - index && i < copiedValue.length; i += 1) {
+      if (inputRefs.current[index + i]) {
+        inputRefs.current[index + i].value = copiedValue[i] ?? '';
       }
     }
-    event.preventDefault();
+
+    // Focus the last filled input or the last input if all are filled
+    const lastFilledIndex = Math.min(
+      index + copiedValue.length - 1,
+      length - 1
+    );
+    if (inputRefs.current[lastFilledIndex]) {
+      inputRefs.current[lastFilledIndex].focus();
+    }
+
     setPinValue();
   }
 
+  const pinGroupLabel = label || `Pin code, ${length} digits`;
+
   return (
-    <div
-      className={cn(makeClassName(`pin-code-root`), 'flex flex-col', className)}
-    >
+    <div className={cn('rizzui-pin-code-root', 'flex flex-col', className)}>
       <div
-        className={cn(
-          makeClassName(`pin-code-container`),
-          containerClasses.base,
-          center && containerClasses.center
-        )}
+        role="group"
+        aria-label={pinGroupLabel}
+        aria-invalid={error ? 'true' : undefined}
+        aria-required={props.required}
+        className={pinCodeContainer({ center })}
       >
         {Array.from({ length }, (_, index) => (
           <input
             key={index}
             ref={addInputRefs(index)}
             type={type}
-            inputMode={type === 'text' ? type : 'numeric'}
+            inputMode={type === 'text' ? 'text' : 'numeric'}
+            pattern={type === 'number' ? '[0-9]*' : undefined}
+            maxLength={1}
             defaultValue={
               defaultValue ? defaultValue.toString().split('')[index] : ''
             }
             autoCapitalize="off"
             autoCorrect="off"
-            autoComplete="off"
+            autoComplete="one-time-code"
             placeholder={placeholder}
+            aria-invalid={error ? 'true' : undefined}
+            aria-label={`${pinGroupLabel}, digit ${index + 1} of ${length}`}
             onChange={(event) => handleChange(event, index)}
             onKeyDown={(event) => handleKeyDown(event, index)}
             onPaste={(event) => handlePaste(event, index)}
-            className={cn(
-              makeClassName(`pin-code-field`),
-              pinCodeStyles.base,
-              pinCodeStyles.disabled,
-              pinCodeStyles.size[size],
-              pinCodeStyles.rounded[rounded],
-              pinCodeStyles.variant[variant],
-              error && pinCodeStyles.error,
-              mask &&
-                '[-moz-text-security:circle] [-webkit-text-security:disc] [text-security:circle]',
-              inputClassName
-            )}
+            className={pinCode({
+              variant,
+              size,
+              disabled: disabled,
+              error: !!error,
+              className: cn(
+                mask &&
+                  '[-moz-text-security:circle] [-webkit-text-security:disc] [text-security:circle]',
+                inputClassName
+              ),
+            })}
             {...props}
           />
         ))}
       </div>
 
-      {error ? (
-        <FieldError
+      {error && (
+        <FieldErrorText
           size={size}
           error={error}
           className={cn(
-            makeClassName(`pin-code-error-text`),
+            'rizzui-pin-code-error-text',
             center && 'flex justify-center',
             errorClassName
           )}
         />
-      ) : null}
+      )}
     </div>
   );
 }

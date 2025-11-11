@@ -1,8 +1,8 @@
 import { MouseEvent, useEffect, useRef, useState } from 'react';
-import { drawerClasses, isPlacementOnYAxis } from './drawer';
+import { isPlacementOnYAxis } from './drawer';
 
 export type ResizeProps = {
-  placement: keyof typeof drawerClasses.placement;
+  placement: 'left' | 'right' | 'top' | 'bottom';
   customSize?: number;
 };
 

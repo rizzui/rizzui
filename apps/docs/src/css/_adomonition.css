@@ -1,0 +1,64 @@
+.theme-admonition {
+  padding: 0.8rem 1.25rem;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+  border-radius: 12px;
+  margin: 1rem 0;
+  &::before {
+    display: none;
+  }
+
+  p {
+    code {
+      margin: 0 0.5rem;
+      padding: 0rem 0.25rem;
+    }
+    line-height: 1.5rem !important;
+  }
+
+  ol {
+    li {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}
+.theme-admonition-note {
+  border: 1px solid var(--admonition-note-border-color);
+  background-color: var(--admonition-note-background-color);
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--admonition-note-color);
+    display: flex;
+    align-items: start;
+    > svg {
+      margin-right: 1rem;
+    }
+  }
+  ol {
+    li {
+      color: var(--admonition-note-color);
+    }
+  }
+}
+.theme-admonition-tip {
+  border: 1px solid var(--admonition-tip-border-color);
+  background-color: var(--admonition-tip-background-color);
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--admonition-tip-color);
+    display: flex;
+    align-items: start;
+    > svg {
+      margin-right: 1rem;
+    }
+  }
+  ol {
+    li {
+      color: var(--admonition-tip-color);
+    }
+  }
+}

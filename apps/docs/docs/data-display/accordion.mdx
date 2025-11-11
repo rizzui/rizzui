@@ -2,22 +2,24 @@
 sidebar_position: 1
 ---
 
-import { Accordion, cn, Avatar } from "rizzui";
-import Paper from "@site/src/components/paper";
-import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import { Accordion } from 'rizzui/accordion';
+import { Avatar } from 'rizzui/avatar';
+import { cn } from 'rizzui';
+import Paper from '@site/src/components/paper';
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import {
   defaultCollapseData,
   customStyleCollapseData,
-} from "@site/src/data/collapse-data";
+} from '@site/src/data/collapse-data';
 
 # Accordion
 
 A content area which can be collapsed and expanded. Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS.
 
 ```tsx
-"use client"; 
+'use client';
 
-import { Accordion } from "rizzui";
+import { Accordion } from 'rizzui';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -27,11 +29,11 @@ import { Accordion } from "rizzui";
 A simple style of **Accordion**.
 
 <Paper className="block">
-  <div>
+  <div className="w-full">
     {defaultCollapseData.map((item) => (
       <Accordion
         key={item.title}
-        className="mx-8 border-b last-of-type:border-b-0"
+        className="mx-8 border-b border-gray-200 last-of-type:border-b-0"
       >
         <Accordion.Header>
           {({ open }) => (
@@ -39,21 +41,23 @@ A simple style of **Accordion**.
               {item.title}
               <ChevronDownIcon
                 className={cn(
-                  "h-5 w-5 -rotate-90 transform transition-transform duration-300",
-                  open && "-rotate-0"
+                  'h-5 w-5 -rotate-90 transform transition-transform duration-300',
+                  open && '-rotate-0'
                 )}
               />
             </div>
           )}
         </Accordion.Header>
-        <Accordion.Body className="mb-7">{item.content}</Accordion.Body>
+        <Accordion.Body className="mb-7 text-[15px]">
+          {item.content}
+        </Accordion.Body>
       </Accordion>
     ))}
   </div>
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { Accordion } from "rizzui";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
@@ -108,12 +112,12 @@ export default function App() {
 You can change the style of the **Accordion**.
 
 <Paper className="block">
-  <div className="rounded-3xl border">
+  <div className="rounded-3xl border border-gray-200 w-full">
     {customStyleCollapseData.map((item) => (
       <Accordion
         key={item.title}
         defaultOpen={item.defaultOpen}
-        className="mx-8 my-2 border-b last-of-type:border-b-0"
+        className="mx-8 my-2 border-b border-gray-200 last-of-type:border-b-0"
       >
         <Accordion.Header>
           {({ open }) => (
@@ -129,8 +133,8 @@ You can change the style of the **Accordion**.
               </div>
               <div
                 className={cn(
-                  "h-5 w-5 transform transition-transform duration-300",
-                  open && "-rotate-90"
+                  'h-5 w-5 transform transition-transform duration-300',
+                  open && '-rotate-90'
                 )}
               >
                 {item.icon}
@@ -138,14 +142,16 @@ You can change the style of the **Accordion**.
             </div>
           )}
         </Accordion.Header>
-        <Accordion.Body className="mb-7">{item.content}</Accordion.Body>
+        <Accordion.Body className="mb-7 text-[15px]">
+          {item.content}
+        </Accordion.Body>
       </Accordion>
     ))}
   </div>
 </Paper>
 
 ```tsx
-"use client"; 
+"use client";
 
 import { Accordion, Avatar } from "rizzui";
 import { SunIcon } from "@heroicons/react/20/solid";

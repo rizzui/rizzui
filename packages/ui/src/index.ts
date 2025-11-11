@@ -38,14 +38,13 @@ export * from './components/dropdown';
 export * from './components/empty';
 
 export * from './components/upload/file-input';
+export * from './components/upload/upload-zone';
 
 export * from './components/input';
 
 export * from './components/loader';
 
 export * from './components/modal';
-
-export * from './components/number-input';
 
 export * from './components/password';
 

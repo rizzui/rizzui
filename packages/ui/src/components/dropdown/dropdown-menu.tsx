@@ -1,14 +1,14 @@
-import React from 'react';
+import { type ReactNode } from 'react';
 import { cn } from '../../lib/cn';
 import { useDropdown } from './dropdown-context';
 import { ourPlacementObject } from './dropdown.lib';
-import { makeClassName } from '../../lib/make-class-name';
 import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { MenuItems, Transition, type MenuItemsProps } from '@headlessui/react';
 
 type DropdownMenuProps = {
   className?: string;
   anchorWidth?: boolean;
+  children?: ReactNode;
 } & MenuItemsProps;
 
 export function DropdownMenu({
@@ -16,8 +16,8 @@ export function DropdownMenu({
   children,
   anchorWidth,
   ...props
-}: React.PropsWithChildren<DropdownMenuProps>) {
-  const { rounded, shadow, placement, gap, inPortal, modal } = useDropdown();
+}: DropdownMenuProps) {
+  const { placement, gap, inPortal, modal } = useDropdown();
 
   return (
     <Transition
@@ -36,12 +36,11 @@ export function DropdownMenu({
           anchor: { to: ourPlacementObject[placement], gap: gap },
         })}
         className={cn(
-          makeClassName(`dropdown-menu`),
+          'rizzui-dropdown-menu',
           'w-48',
           dropdownStyles.base,
           anchorWidth && 'w-[--button-width]',
-          shadow && dropdownStyles.shadow[shadow],
-          rounded && dropdownStyles.rounded[rounded],
+          dropdownStyles.shadow,
           !inPortal && 'absolute start-0 z-10 mt-1.5',
           className
         )}

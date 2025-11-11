@@ -50,7 +50,7 @@ export function Highlight({
     <span
       ref={ref}
       className={cn(
-        'highlight absolute -z-[1] rounded-md bg-muted/60 transition',
+        'highlight bg-muted/60 absolute -z-1 rounded-md transition',
         visible ? 'opacity-100' : 'opacity-0',
         className
       )}

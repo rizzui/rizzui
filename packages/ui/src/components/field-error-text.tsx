@@ -1,43 +1,42 @@
 import React from 'react';
-import { cn } from '../lib/cn';
+import { tv, type VariantProps } from 'tailwind-variants';
 
-const errorStyles = {
+const fieldError = tv({
   base: 'text-red',
-  size: {
-    sm: 'text-[11px] mt-0.5',
-    md: 'text-[13px] mt-0.5',
-    lg: 'text-[13px] mt-1',
-    xl: 'text-sm mt-1',
+  variants: {
+    size: {
+      sm: 'text-[11px] mt-0.5',
+      md: 'text-[13px] mt-0.5',
+      lg: 'text-[13px] mt-1',
+    },
   },
-};
+});
 
-interface FieldErrorProps
+interface FieldErrorTextProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   as?: 'div' | 'span';
   error: string | null | undefined;
-  size?: keyof typeof errorStyles.size;
+  size?: VariantProps<typeof fieldError>['size'];
   className?: string;
 }
 
-export function FieldError({
+export function FieldErrorText({
   as = 'div',
   error,
   size,
   className,
-}: FieldErrorProps) {
+}: FieldErrorTextProps) {
   const Component = as;
+  if (!error) return null;
   return (
     <Component
       role="alert"
-      className={cn(
-        errorStyles.base,
-        size && errorStyles.size[size],
-        className
-      )}
+      aria-live="polite"
+      className={fieldError({ size, className })}
     >
       {error}
     </Component>
   );
 }
 
-FieldError.displayName = 'FieldError';
+FieldErrorText.displayName = 'FieldErrorText';

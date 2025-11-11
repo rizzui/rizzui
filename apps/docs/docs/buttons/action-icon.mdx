@@ -2,7 +2,8 @@
 sidebar_position: 1
 ---
 
-import { ActionIcon, Button } from "rizzui";
+import { ActionIcon } from 'rizzui/action-icon';
+import { Button } from 'rizzui/button';
 import {
   BellIcon,
   BoltIcon,
@@ -10,15 +11,15 @@ import {
   HandThumbUpIcon,
   ChatBubbleOvalLeftIcon,
   AdjustmentsHorizontalIcon,
-} from "@heroicons/react/24/outline";
-import Paper from "@site/src/components/paper";
+} from '@heroicons/react/24/outline';
+import Paper from '@site/src/components/paper';
 
 # ActionIcon
 
-Primary action icon button to trigger an operation. It's a simple button that contains no text but only icon.
+Primary action icon button to trigger an operation. It's a simple button that contains no text, only an icon.
 
 ```tsx
-import { ActionIcon } from "rizzui";
+import { ActionIcon } from 'rizzui';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -34,7 +35,7 @@ The default style of **ActionIcon** component.
 </Paper>
 
 ```tsx
-import { ActionIcon } from "rizzui";
+import { ActionIcon } from 'rizzui';
 
 export default function App() {
   return (
@@ -53,7 +54,7 @@ You can change the style of the **ActionIcon** using [**variant**](#actionicon-v
 
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <ActionIcon variant="text">
+    <ActionIcon variant="solid">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
     <ActionIcon variant="outline">
@@ -62,15 +63,18 @@ You can change the style of the **ActionIcon** using [**variant**](#actionicon-v
     <ActionIcon variant="flat">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
-    <ActionIcon variant="solid">
+    <ActionIcon variant="text">
+      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    </ActionIcon>
+    <ActionIcon variant="danger">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
   </div>
 </Paper>
 
 ```tsx
-import { ActionIcon } from "rizzui";
-import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
+import { ActionIcon } from 'rizzui';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
@@ -109,15 +113,12 @@ You can change the size of the **ActionIcon** using [**size**](#actionicon-sizes
     <ActionIcon size="lg">
       <AdjustmentsHorizontalIcon className="w-6 h-6" />
     </ActionIcon>
-    <ActionIcon size="xl">
-      <AdjustmentsHorizontalIcon className="w-7 h-7" />
-    </ActionIcon>
   </div>
 </Paper>
 
 ```tsx
-import { ActionIcon } from "rizzui";
-import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
+import { ActionIcon } from 'rizzui';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
@@ -131,72 +132,12 @@ export default function App() {
       <ActionIcon size="lg">
         <AdjustmentsHorizontalIcon className="w-6 h-6" />
       </ActionIcon>
-      <ActionIcon size="xl">
-        <AdjustmentsHorizontalIcon className="w-7 h-7" />
-      </ActionIcon>
     </>
   );
 }
 ```
 
 <div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of the **ActionIcon** using [**rounded**](#actionicon-rounded) property.
-
-<Paper>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <ActionIcon rounded="none">
-      <BoltIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon rounded="sm">
-      <HandThumbUpIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon>
-      <HeartIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon rounded="lg">
-      <ChatBubbleOvalLeftIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon rounded="full">
-      <BellIcon className="w-5 h-5" />
-    </ActionIcon>
-  </div>
-</Paper>
-
-```tsx
-import { ActionIcon } from "rizzui";
-import {
-  BellIcon,
-  BoltIcon,
-  HeartIcon,
-  HandThumbUpIcon,
-  ChatBubbleOvalLeftIcon,
-} from "@heroicons/react/24/outline";
-
-export default function App() {
-  return (
-    <>
-      <ActionIcon rounded="none">
-        <BoltIcon className="w-5 h-5" />
-      </ActionIcon>
-      <ActionIcon rounded="sm">
-        <HandThumbUpIcon className="w-5 h-5" />
-      </ActionIcon>
-      <ActionIcon>
-        <BoltIcon className="w-5 h-5" />
-      </ActionIcon>
-      <ActionIcon rounded="lg">
-        <BoltIcon className="w-5 h-5" />
-      </ActionIcon>
-      <ActionIcon rounded="full">
-        <BoltIcon className="w-5 h-5" />
-      </ActionIcon>
-    </>
-  );
-}
-```
 
 <div className="mb-16" />
 
@@ -219,8 +160,8 @@ You can change the color of the **ActionIcon** using [**color**](#actionicon-col
 </Paper>
 
 ```tsx
-import { ActionIcon } from "rizzui";
-import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
+import { ActionIcon } from 'rizzui';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
@@ -258,8 +199,8 @@ You can set the loading state of the **ActionIcon** button using **isLoading** p
 </Paper>
 
 ```tsx
-import { ActionIcon } from "rizzui";
-import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
+import { ActionIcon } from 'rizzui';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
@@ -291,8 +232,8 @@ The disabled style of the **ActionIcon** component.
 </Paper>
 
 ```tsx
-import { ActionIcon } from "rizzui";
-import { AdjustmentsHorizontalIcon } from "@heroicons/react/24/outline";
+import { ActionIcon } from 'rizzui';
+import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
@@ -324,7 +265,6 @@ Here is the API documentation of the ActionIcon component. And the rest of the p
 |   type    | [ActionIconButtonTypes](#action-icon-button-types) |                            Set the original HTML type of button                             | `"button"`  |
 |  variant  |     [ActionIconVariants](#actionicon-variants)     |                                 Set the ActionIcon variants                                 |  `"solid"`  |
 |   size    |        [ActionIconSizes](#actionicon-sizes)        | Set the size of the component. <br /> `"sm"` is equivalent to the dense ActionIcon styling. |   `"md"`    |
-|  rounded  |      [ActionIconRounded](#actionicon-rounded)      |                        Set border radius of the ActionIcon component                        |   `"md"`    |
 |   color   |       [ActionIconColors](#actionicon-colors)       |                                   Change ActionIcon color                                   | `"primary"` |
 | isLoading |                     `boolean`                      |                            Set the loading status of ActionIcon                             |    \_\_     |
 | disabled  |                     `boolean`                      |                              Disabled state of the ActionIcon                               |    \_\_     |
@@ -339,7 +279,7 @@ Here is the API documentation of the ActionIcon component. And the rest of the p
 ### Action Icon Button Types
 
 ```ts
-type ActionIconButtonTypes = "button" | "submit" | "reset";
+type ActionIconButtonTypes = 'button' | 'submit' | 'reset';
 ```
 
 <div className="mb-10" />
@@ -347,7 +287,7 @@ type ActionIconButtonTypes = "button" | "submit" | "reset";
 ### ActionIcon Variants
 
 ```ts
-type ActionIconVariants = "solid" | "flat" | "outline" | "text";
+type ActionIconVariants = 'solid' | 'flat' | 'outline' | 'text';
 ```
 
 <div className="mb-10" />
@@ -355,15 +295,7 @@ type ActionIconVariants = "solid" | "flat" | "outline" | "text";
 ### ActionIcon Sizes
 
 ```ts
-type ActionIconSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### ActionIcon Rounded
-
-```ts
-type ActionIconRounded = "sm" | "md" | "lg" | "none" | "full";
+type ActionIconSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
@@ -371,5 +303,5 @@ type ActionIconRounded = "sm" | "md" | "lg" | "none" | "full";
 ### ActionIcon Colors
 
 ```ts
-type ActionIconColors = "primary" | "secondary" | "danger";
+type ActionIconColors = 'primary' | 'secondary' | 'danger';
 ```

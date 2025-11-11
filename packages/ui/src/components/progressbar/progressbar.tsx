@@ -1,82 +1,70 @@
-import React from 'react';
+import type { HTMLAttributes } from 'react';
+import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from '../../lib/cn';
 import { Text } from '../typography';
-import { makeClassName } from '../../lib/make-class-name';
-import { roundedStyles } from '../../lib/rounded';
 
-const progressBarStyles = {
-  base: 'absolute top-0 bottom-0 left-0 h-full flex items-center justify-center',
-  size: {
-    sm: 'h-1.5',
-    md: 'h-2',
-    lg: 'h-3',
-    xl: 'h-4',
-  },
-  rounded: roundedStyles,
-  variant: {
-    solid: {
-      base: 'text-background',
-      color: {
-        primary: 'bg-primary',
-        secondary: 'bg-secondary',
-        danger: 'bg-red',
-        info: 'bg-blue',
-        success: 'bg-green',
-        warning: 'bg-orange',
-      },
-    },
-    flat: {
-      base: '',
-      color: {
-        primary: 'bg-primary/40 text-primary-dark',
-        secondary: 'bg-secondary/40 text-secondary-dark',
-        danger: 'bg-red/40 text-red-dark',
-        info: 'bg-blue/40 text-blue-dark',
-        success: 'bg-green/40 text-green-dark',
-        warning: 'bg-orange/40 text-orange-dark',
-      },
+const progressTrack = tv({
+  base: 'relative w-full bg-muted rounded-full overflow-hidden',
+  variants: {
+    size: {
+      sm: 'h-1.5',
+      md: 'h-2',
+      lg: 'h-3',
     },
   },
-  labelStyles: {
-    sm: 'text-xs font-bold',
-    md: 'text-sm font-bold',
-    lg: 'text-sm font-bold',
-    xl: 'text-sm font-bold',
+  defaultVariants: {
+    size: 'md',
   },
-};
+});
 
-export interface ProgressbarProps extends React.HTMLAttributes<HTMLDivElement> {
-  /** Percentage of filled bar */
+const progressBar = tv({
+  base: 'absolute top-0 bottom-0 left-0 h-full flex items-center justify-center rounded-full',
+  variants: {
+    color: {
+      primary: 'bg-primary',
+      secondary: 'bg-secondary',
+      danger: 'bg-red',
+      info: 'bg-blue',
+      success: 'bg-green',
+      warning: 'bg-orange',
+    },
+  },
+  defaultVariants: {
+    color: 'primary',
+  },
+});
+
+const progressLabel = tv({
+  base: 'font-bold',
+  variants: {
+    size: {
+      sm: 'text-xs',
+      md: 'text-sm',
+      lg: 'text-sm',
+    },
+  },
+});
+
+type ProgressTrackVariant = VariantProps<typeof progressTrack>;
+type ProgressBarVariant = VariantProps<typeof progressBar>;
+
+export interface ProgressbarProps extends HTMLAttributes<HTMLDivElement> {
   value?: number;
-  /** Pass label to show percentage inside bar */
   label?: string;
-  /** Size of the components are: */
-  size?: keyof typeof progressBarStyles.size;
-  /** The rounded variants are: */
-  rounded?: keyof typeof progressBarStyles.rounded;
-  /** Pass color variations */
-  color?: keyof typeof progressBarStyles.variant.flat.color;
-  /** The variants of the components are: */
-  variant?: keyof typeof progressBarStyles.variant;
-  /** Defines the label position of progressbar component */
+  size?: ProgressTrackVariant['size'];
+  color?: ProgressBarVariant['color'];
   labelPosition?: 'insideBar' | 'inlineLeft' | 'inlineRight';
-  /** To style the root of the component */
   className?: string;
-  /** To style progressbar track of the component */
   trackClassName?: string;
-  /** To style bar of the component */
   barClassName?: string;
-  /** To style label */
   labelClassName?: string;
 }
 
 export function Progressbar({
-  value,
+  value = 0,
   label = '',
   size = 'md',
-  rounded = 'pill',
   color = 'primary',
-  variant = 'solid',
   labelPosition = 'inlineRight',
   className,
   barClassName,
@@ -84,45 +72,39 @@ export function Progressbar({
   labelClassName,
   ...props
 }: ProgressbarProps) {
-  const isInsideBar = label && size === 'xl' && labelPosition === 'insideBar';
+  const isInsideBar = false;
+
   return (
     <div className={cn('flex w-full items-center gap-4', className)}>
       <div
         className={cn(
-          makeClassName(`progressbar-root`),
-          'relative w-full bg-muted',
-          progressBarStyles.size[size],
-          progressBarStyles.rounded[rounded],
-          trackClassName
+          'rizzui-progressbar-track',
+          progressTrack({ size, className: trackClassName })
         )}
       >
         <div
-          role={'progressbar'}
+          role="progressbar"
           aria-valuemax={100}
           aria-valuemin={0}
           aria-valuenow={value}
           aria-label={label}
-          className={cn(
-            makeClassName(`progressbar`),
-            progressBarStyles.base,
-            progressBarStyles.variant[variant].base,
-            progressBarStyles.variant[variant].color[color],
-            progressBarStyles.rounded[rounded],
-            barClassName
-          )}
+          className={progressBar({
+            color,
+            className: barClassName,
+          })}
           style={{ width: `${value}%` }}
           {...props}
         >
-          {isInsideBar ? (
+          {isInsideBar && (
             <ProgressbarLabel
               size={size}
               label={label}
               className={labelClassName}
             />
-          ) : null}
+          )}
         </div>
       </div>
-      {!isInsideBar ? (
+      {!isInsideBar && (
         <ProgressbarLabel
           size={size}
           label={label}
@@ -131,7 +113,7 @@ export function Progressbar({
             labelClassName
           )}
         />
-      ) : null}
+      )}
     </div>
   );
 }
@@ -141,17 +123,16 @@ function ProgressbarLabel({
   className,
   size = 'md',
 }: {
-  size: keyof typeof progressBarStyles.size;
+  size: ProgressTrackVariant['size'];
   label: string;
   className?: string;
 }) {
   return (
     <Text
-      className={cn(
-        makeClassName(`progressbar-label`),
-        progressBarStyles.labelStyles[size],
-        className
-      )}
+      className={progressLabel({
+        size,
+        className: cn(`rizzui-progressbar-label`, className),
+      })}
     >
       {label}
     </Text>

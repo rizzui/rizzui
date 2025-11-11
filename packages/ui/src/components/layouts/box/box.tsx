@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { type ElementType } from 'react';
 import { cn } from 'src/lib/cn';
 
-export interface BoxProps extends React.HTMLAttributes<HTMLElement> {
+export type BoxProps<T extends ElementType = 'div'> = {
   /* defines the component tag name to render */
-  as?: React.ElementType;
+  as?: T;
+  ref?: React.Ref<any>;
+  children?: React.ReactNode;
+} & Omit<React.ComponentPropsWithRef<T>, 'as' | 'ref' | 'className'> & {
+    className?: string;
+  };
+
+export function Box<T extends ElementType = 'div'>({
+  as,
+  ref,
+  children,
+  className,
+  ...rest
+}: BoxProps<T>) {
+  const Component = (as || 'div') as ElementType;
+
+  return (
+    <Component ref={ref} className={cn('block', className)} {...rest}>
+      {children}
+    </Component>
+  );
 }
-
-export const Box = React.forwardRef(
-  (props: BoxProps, ref: React.Ref<HTMLElement>) => {
-    const { as, children, className, ...rest } = props;
-
-    const Comp = as || 'div';
-
-    return (
-      <Comp ref={ref} className={cn('block', className)} {...rest}>
-        {children}
-      </Comp>
-    );
-  }
-);
-
-Box.displayName = 'Box';

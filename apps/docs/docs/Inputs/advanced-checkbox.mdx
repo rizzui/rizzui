@@ -2,13 +2,13 @@
 sidebar_position: 6
 ---
 
-import { AdvancedCheckbox, Text } from "rizzui";
+import { AdvancedCheckbox } from "rizzui/advanced-checkbox";
+import { Text } from "rizzui/typography";
 import {
   CurrencyBangladeshiIcon,
   CurrencyDollarIcon,
   CurrencyEuroIcon,
-  CurrencyPoundIcon,
-} from "@heroicons/react/24/outline";
+  CurrencyPoundIcon } from "@heroicons/react/24/outline";
 import Paper from "@site/src/components/paper";
 
 # AdvancedCheckbox
@@ -30,6 +30,7 @@ You can change style of **AdvancedCheckbox**.
     name="age"
     value="any"
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     Any
   </AdvancedCheckbox>
@@ -38,6 +39,7 @@ You can change style of **AdvancedCheckbox**.
     value="one"
     defaultChecked
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     1
   </AdvancedCheckbox>
@@ -45,6 +47,7 @@ You can change style of **AdvancedCheckbox**.
     name="age"
     value="two"
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     2
   </AdvancedCheckbox>
@@ -53,6 +56,7 @@ You can change style of **AdvancedCheckbox**.
     value="three"
     disabled
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     3
   </AdvancedCheckbox>
@@ -60,6 +64,7 @@ You can change style of **AdvancedCheckbox**.
     name="age"
     value="four"
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     4
   </AdvancedCheckbox>
@@ -67,6 +72,7 @@ You can change style of **AdvancedCheckbox**.
     name="age"
     value="five+"
     alignment="center"
+    contentClassName="[&>p]:mb-0!"
   >
     5+
   </AdvancedCheckbox>
@@ -78,11 +84,7 @@ import { AdvancedCheckbox } from "rizzui";
 export default function App() {
   return (
     <div className="flex flex-wrap gap-6">
-      <AdvancedCheckbox
-        name="age"
-        value="any"
-        alignment="center"
-      >
+      <AdvancedCheckbox name="age" value="any" alignment="center">
         Any
       </AdvancedCheckbox>
       <AdvancedCheckbox
@@ -93,33 +95,16 @@ export default function App() {
       >
         1
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        name="age"
-        value="two"
-        alignment="center"
-      >
+      <AdvancedCheckbox name="age" value="two" alignment="center">
         2
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        name="age"
-        value="three"
-        disabled
-        alignment="center"
-      >
+      <AdvancedCheckbox name="age" value="three" disabled alignment="center">
         3
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        name="age"
-        value="four"
-        alignment="center"
-      >
+      <AdvancedCheckbox name="age" value="four" alignment="center">
         4
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        name="age"
-        value="five+"
-        alignment="center"
-      >
+      <AdvancedCheckbox name="age" value="five+" alignment="center">
         5+
       </AdvancedCheckbox>
     </div>
@@ -134,32 +119,19 @@ export default function App() {
 You can give different style of **AdvancedCheckbox** as you need.
 
 <Paper className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-  <AdvancedCheckbox
-    name="currency"
-    value="taka"
-    defaultChecked
-  >
+  <AdvancedCheckbox name="currency" value="taka" defaultChecked>
     <CurrencyBangladeshiIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Taka</Text>
   </AdvancedCheckbox>
-  <AdvancedCheckbox
-    name="currency"
-    value="dollar"
-  >
+  <AdvancedCheckbox name="currency" value="dollar">
     <CurrencyDollarIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Dollar</Text>
   </AdvancedCheckbox>
-  <AdvancedCheckbox
-    name="currency"
-    value="euro"
-  >
+  <AdvancedCheckbox name="currency" value="euro">
     <CurrencyEuroIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Euro</Text>
   </AdvancedCheckbox>
-  <AdvancedCheckbox
-    name="currency"
-    value="pound"
-  >
+  <AdvancedCheckbox name="currency" value="pound">
     <CurrencyPoundIcon className="w-7 h-auto mb-4" />
     <Text className="font-semibold">Pound</Text>
   </AdvancedCheckbox>
@@ -172,32 +144,19 @@ import { CheckCircleIcon } from "@heroicons/react/20/solid";
 export default function App() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <AdvancedCheckbox
-        name="currency"
-        value="taka"
-        defaultChecked
-      >
+      <AdvancedCheckbox name="currency" value="taka" defaultChecked>
         <CurrencyBangladeshiIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Taka</Text>
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        name="currency"
-        value="dollar"
-      >
+      <AdvancedCheckbox name="currency" value="dollar">
         <CurrencyDollarIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Dollar</Text>
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        name="currency"
-        value="euro"
-      >
+      <AdvancedCheckbox name="currency" value="euro">
         <CurrencyEuroIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Euro</Text>
       </AdvancedCheckbox>
-      <AdvancedCheckbox
-        name="currency"
-        value="pound"
-      >
+      <AdvancedCheckbox name="currency" value="pound">
         <CurrencyPoundIcon className="w-7 h-auto mb-4" />
         <Text className="font-semibold">Pound</Text>
       </AdvancedCheckbox>
@@ -225,7 +184,6 @@ Here is the API documentation of the AdvancedCheckbox component. And the rest of
 |     children     |                  `ReactNode`                  |                            Pass content as children                             |  \_\_   |
 |     disabled     |                   `boolean`                   |                     Whether the checkbox is disabled or not                     |  \_\_   |
 |       size       |   [CheckboxSizes](#advanced-checkbox-sizes)   | The size of the component.<br /> "sm" is equivalent to the dense input styling. | `"md"`  |
-|     rounded      | [CheckboxRounded](#advanced-checkbox-rounded) |                            The rounded variants are:                            | `"md"`  |
 |  inputClassName  |                   `string`                    |                      Add inputClassName to style the input                      |  \_\_   |
 | contentClassName |                   `string`                    |                     Add contentClassName to style the input                     |  \_\_   |
 |    className     |                   `string`                    |                 Add custom classes to the root of the component                 |  \_\_   |
@@ -239,13 +197,11 @@ Here is the API documentation of the AdvancedCheckbox component. And the rest of
 ### Advanced Checkbox Sizes
 
 ```ts
-type CheckboxSizes = "sm" | "md" | "lg" | "xl";
+type CheckboxSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
 
-### Advanced Checkbox Rounded
 
 ```ts
-type CheckboxRounded = "sm" | "md" | "lg" | "pill" | "none";
 ```

@@ -2,15 +2,15 @@
 sidebar_position: 3
 ---
 
-import { Progressbar } from "rizzui";
-import Paper from "@site/src/components/paper";
+import { Progressbar } from 'rizzui/progressbar';
+import Paper from '@site/src/components/paper';
 
 # Progressbar
 
 A basic widget for showing the work progress.
 
 ```tsx
-import { Progressbar } from "rizzui";
+import { Progressbar } from 'rizzui/progressbar';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -24,7 +24,7 @@ The default style of **Progressbar**.
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return <Progressbar value={75} />;
@@ -38,30 +38,18 @@ export default function App() {
 You can change the style of **Progressbar** using **variant** property.
 
 <Paper className="gap-6">
-  <Progressbar
-    variant="flat"
-    value={50}
-  />
-  <Progressbar
-    variant="solid"
-    value={90}
-  />
+  <Progressbar variant="flat" value={50} />
+  <Progressbar variant="solid" value={90} />
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return (
     <>
-      <Progressbar
-        variant="flat"
-        value={75}
-      />
-      <Progressbar
-        variant="solid"
-        value={75}
-      />
+      <Progressbar variant="flat" value={75} />
+      <Progressbar variant="solid" value={75} />
     </>
   );
 }
@@ -74,94 +62,20 @@ export default function App() {
 You can change the size of **Progressbar** using [**size**](#progressbar-sizes) property.
 
 <Paper className="gap-6">
-  <Progressbar
-    value={45}
-    size="sm"
-  />
+  <Progressbar value={45} size="sm" />
   <Progressbar value={65} />
-  <Progressbar
-    value={75}
-    size="lg"
-  />
-  <Progressbar
-    value={85}
-    size="xl"
-  />
+  <Progressbar value={75} size="lg" />
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return (
     <>
-      <Progressbar
-        value={45}
-        size="sm"
-      />
+      <Progressbar value={45} size="sm" />
       <Progressbar value={65} />
-      <Progressbar
-        value={75}
-        size="lg"
-      />
-      <Progressbar
-        value={85}
-        size="xl"
-      />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Rounded
-
-You can change the border radius of **Progressbar** using [**rounded**](#progressbar-rounded) property.
-
-<Paper className="gap-6">
-  <Progressbar
-    value={45}
-    rounded="sm"
-  />
-  <Progressbar value={65} />
-  <Progressbar
-    value={75}
-    rounded="md"
-  />
-  <Progressbar
-    value={85}
-    rounded="lg"
-  />
-  <Progressbar
-    value={95}
-    rounded="none"
-  />
-</Paper>
-
-```tsx
-import { Progressbar } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <Progressbar
-        value={45}
-        rounded="sm"
-      />
-      <Progressbar value={65} />
-      <Progressbar
-        value={75}
-        rounded="md"
-      />
-      <Progressbar
-        value={85}
-        rounded="lg"
-      />
-      <Progressbar
-        value={95}
-        rounded="none"
-      />
+      <Progressbar value={75} size="lg" />
     </>
   );
 }
@@ -175,55 +89,25 @@ You can change the color of **Progressbar** using [**color**](#progressbar-color
 
 <Paper className="gap-6">
   <Progressbar value={25} />
-  <Progressbar
-    value={45}
-    color="secondary"
-  />
-  <Progressbar
-    value={65}
-    color="danger"
-  />
-  <Progressbar
-    value={75}
-    color="info"
-  />
-  <Progressbar
-    value={85}
-    color="success"
-  />
-  <Progressbar
-    value={95}
-    color="warning"
-  />
+  <Progressbar value={45} color="secondary" />
+  <Progressbar value={65} color="danger" />
+  <Progressbar value={75} color="info" />
+  <Progressbar value={85} color="success" />
+  <Progressbar value={95} color="warning" />
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return (
     <>
       <Progressbar value={25} />
-      <Progressbar
-        value={45}
-        color="secondary"
-      />
-      <Progressbar
-        value={65}
-        color="danger"
-      />
-      <Progressbar
-        value={75}
-        color="info"
-      />
-      <Progressbar
-        value={85}
-        color="success"
-      />
-      <Progressbar
-        value={95}
-        color="warning"
-      />
+      <Progressbar value={45} color="secondary" />
+      <Progressbar value={65} color="danger" />
+      <Progressbar value={75} color="info" />
+      <Progressbar value={85} color="success" />
+      <Progressbar value={95} color="warning" />
     </>
   );
 }
@@ -235,49 +119,25 @@ export default function App() {
 
 You can set label of **Progressbar** using **label** property. And set position of label using [**labelPosition**](#progressbar-label-position) property.
 
-Note: **labelPosition='insideBar'** property will only work when **size="xl"**.
+Note: **labelPosition='insideBar'** property will only work when **size="lg"**.
 
 <Paper>
   <div className="grid grid-cols-1 gap-10 w-full">
-    <Progressbar
-      value={75}
-      label="75%"
-    />
-    <Progressbar
-      value={75}
-      label="75%"
-      labelPosition="inlineLeft"
-    />
-    <Progressbar
-      value={75}
-      label="75%"
-      size="xl"
-      labelPosition="insideBar"
-    />
+    <Progressbar value={75} label="75%" />
+    <Progressbar value={75} label="75%" labelPosition="inlineLeft" />
+    <Progressbar value={75} label="75%" labelPosition="insideBar" />
   </div>
 </Paper>
 
 ```tsx
-import { Progressbar } from "rizzui";
+import { Progressbar } from 'rizzui/progressbar';
 
 export default function App() {
   return (
     <div className="grid grid-cols-1 gap-10 w-full">
-      <Progressbar
-        value={75}
-        label="75%"
-      />
-      <Progressbar
-        value={75}
-        label="75%"
-        labelPosition="inlineLeft"
-      />
-      <Progressbar
-        value={75}
-        label="75%"
-        size="xl"
-        labelPosition="insideBar"
-      />
+      <Progressbar value={75} label="75%" />
+      <Progressbar value={75} label="75%" labelPosition="inlineLeft" />
+      <Progressbar value={75} label="75%" labelPosition="insideBar" />
     </div>
   );
 }
@@ -300,10 +160,9 @@ Here is the API documentation of the Progressbar component.
 |     Props      |                          Type                           |                                  Description                                   |     Default     |
 | :------------: | :-----------------------------------------------------: | :----------------------------------------------------------------------------: | :-------------: |
 |     value      |                        `number`                         |                            Percentage of filled bar                            |      \_\_       |
-|     label      |                        `string`                         | Pass label to show percentage inside bar. It will only work when **size="xl"** |      `""`       |
+|     label      |                        `string`                         | Pass label to show percentage inside bar. It will only work when **size="lg"** |      `""`       |
 |    variant     |                     `solid` `flat`                      |                      The variants of the components are:                       |    `"solid"`    |
 |      size      |          [ProgressbarSize](#progressbar-sizes)          |                           Size of the components are                           |     `"md"`      |
-|    rounded     |       [ProgressbarRounded](#progressbar-rounded)        |                           The rounded variants are:                            |    `"pill"`     |
 |     color      |         [ProgressbarColor](#progressbar-colors)         |                             Pass color variations                              |   `"primary"`   |
 | labelPosition  | [ProgressbarLabelPosition](#progressbar-label-position) |                Sets the label position of progressbar component                | `"inlineRight"` |
 |   className    |                        `string`                         |                       To style the root of the component                       |      \_\_       |
@@ -318,15 +177,7 @@ Here is the API documentation of the Progressbar component.
 ### Progressbar Sizes
 
 ```ts
-type ProgressbarSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Progressbar Rounded
-
-```ts
-type ProgressbarRounded = "sm" | "md" | "lg" | "pill" | "none";
+type ProgressbarSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
@@ -334,7 +185,13 @@ type ProgressbarRounded = "sm" | "md" | "lg" | "pill" | "none";
 ### Progressbar Colors
 
 ```ts
-type ProgressbarColors = "primary" | "secondary" | "danger" | "info" | "success" | "warning";
+type ProgressbarColors =
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'info'
+  | 'success'
+  | 'warning';
 ```
 
 <div className="mb-10" />
@@ -342,5 +199,5 @@ type ProgressbarColors = "primary" | "secondary" | "danger" | "info" | "success"
 ### Progressbar Label Position
 
 ```ts
-type ProgressbarLabelPosition = "inlineLeft" | "inlineRight" | "insideBar";
+type ProgressbarLabelPosition = 'inlineLeft' | 'inlineRight' | 'insideBar';
 ```

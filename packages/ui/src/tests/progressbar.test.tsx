@@ -29,8 +29,8 @@ test('Progressbar with aria label', () => {
   expect(progressbarElement).toHaveAttribute('aria-label', '50%');
 });
 
-test('Progressbar with label and xl size props', () => {
-  render(<Progressbar value={50} label="50%" size="xl" />);
+test('Progressbar with label and lg size props', () => {
+  render(<Progressbar value={50} label="50%" size="lg" />);
   const progressbarLabel = screen.getByText('50%');
   expect(progressbarLabel).toBeInTheDocument();
 });

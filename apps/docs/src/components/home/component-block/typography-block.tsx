@@ -1,5 +1,4 @@
-import React from "react";
-import { Text } from "rizzui";
+import { Text } from 'rizzui/text';
 
 export default function TypographyBlock() {
   return (
