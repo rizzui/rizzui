@@ -50,8 +50,6 @@ RizzUI is designed for developers who want **beautiful, accessible components** 
 
 ## Quick Start
 
----
-
 ### Requirements
 
 - **React**: 19.1.0 or higher
@@ -285,8 +283,6 @@ export default function App() {
 
 ## Theme Support
 
----
-
 ### Theme Provider Setup
 
 RizzUI works seamlessly with `next-themes` for theme switching:
@@ -363,14 +359,3 @@ We love contributions! Whether it's fixing bugs, adding features, or improving d
 ## License
 
 Licensed under the [MIT License](https://choosealicense.com/licenses/mit/) - feel free to use RizzUI in your projects! 🎉
-
-<br />
-<br />
-
----
-
-<br />
-<div align="center">
-  Made with ❤️ by the <a href="https://redq.io/" target="_blank">REDQ</a>
-</div>
-<br />
