@@ -26,6 +26,12 @@ import BunIcon from '@site/src/components/icons/bun-icon';
 
 A powerful and flexible date picker component built on top of **react-datepicker**. Seamlessly integrated with RizzUI's design system, this component provides a consistent and accessible way to select dates, times, and date ranges in your application.
 
+<div className="mb-14" />
+
+<Paper disableShowCodeBtn>
+  <DatePickerDefault className="h-auto" />
+</Paper>
+
 <div className="mb-16" />
 
 ## Features
@@ -52,7 +58,8 @@ Before using the React Datepicker component, you'll need to install the required
     Step 1
   </Badge>
   <span>
-    Install the <strong>react-datepicker</strong> and <strong>@types/react-datepicker</strong> packages.
+    Install the <strong>react-datepicker</strong> and{' '}
+    <strong>@types/react-datepicker</strong> packages.
   </span>
 </div>
 
@@ -138,12 +145,14 @@ const datePicker = tv({
   slots: {
     calendar:
       '[&.react-datepicker]:!shadow-lg [&.react-datepicker]:!border-[var(--border-color)] [&.react-datepicker]:!rounded-[var(--border-radius)]',
-    monthContainer: '[&.react-datepicker>div]:!pt-5 [&.react-datepicker>div]:!pb-3',
+    monthContainer:
+      '[&.react-datepicker>div]:!pt-5 [&.react-datepicker>div]:!pb-3',
     prevNextButton:
       '[&.react-datepicker>button]:!items-baseline [&.react-datepicker>button]:!top-7 [&.react-datepicker>button]:!border [&.react-datepicker>button]:!border-solid [&.react-datepicker>button]:!border-[var(--border-color)] [&.react-datepicker>button]:!rounded-[var(--border-radius)] [&.react-datepicker>button]:!h-[22px] [&.react-datepicker>button]:!w-[22px] hover:[&.react-datepicker>button]:!border-[var(--text-primary)] [&.react-datepicker>button:hover>span::before]:!border-[var(--text-primary)]',
     prevNextButtonChild:
       '[&.react-datepicker>button>span]:!top-0 [&.react-datepicker>button>span]:!before:border-t-[1.5px] [&.react-datepicker>button>span]:!before:border-r-[1.5px] [&.react-datepicker>button>span]:!before:border-[var(--muted-foreground)] [&.react-datepicker>button>span]:!before:h-[7px] [&.react-datepicker>button>span]:!before:w-[7px]',
-    timeOnly: '[&.react-datepicker--time-only>div]:!pr-0 [&.react-datepicker--time-only>div]:!w-28',
+    timeOnly:
+      '[&.react-datepicker--time-only>div]:!pr-0 [&.react-datepicker--time-only>div]:!w-28',
     popper:
       '[&>svg]:!fill-[var(--background)] dark:[&>svg]:!fill-[var(--muted)] [&>svg]:!stroke-[var(--border-color)] dark:[&>svg]:!stroke-[var(--muted)] dark:[&>svg]:!text-[var(--muted)]',
   },
@@ -180,10 +189,15 @@ const ReactDatePicker = ({
       customInput={
         customInput || (
           <Input
-            prefix={<CalendarIcon className="w-5 h-5 text-[var(--muted-foreground)]" />}
+            prefix={
+              <CalendarIcon className="w-5 h-5 text-[var(--muted-foreground)]" />
+            }
             suffix={
               <ChevronDownIcon
-                className={cn('h-4 w-4 text-[var(--muted-foreground)] transition', isCalenderOpen && 'rotate-180')}
+                className={cn(
+                  'h-4 w-4 text-[var(--muted-foreground)] transition',
+                  isCalenderOpen && 'rotate-180'
+                )}
               />
             }
             {...inputProps}
@@ -216,9 +230,7 @@ export default ReactDatePicker;
   <Badge color="primary" size="sm" className="rounded-md">
     Step 3
   </Badge>
-  <span>
-    Copy and paste the following CSS code into your project CSS file.
-  </span>
+  <span>Copy and paste the following CSS code into your project CSS file.</span>
 </div>
 
 <div className="mb-4" />
@@ -242,7 +254,9 @@ export default ReactDatePicker;
   @apply w-auto border-l-0 pr-3.5;
 }
 
-.react-datepicker-popper .react-datepicker__time-container .react-datepicker__time {
+.react-datepicker-popper
+  .react-datepicker__time-container
+  .react-datepicker__time {
   @apply bg-[var(--muted)] dark:bg-[var(--muted)];
 }
 
@@ -312,7 +326,7 @@ export default ReactDatePicker;
 /* Today */
 .react-datepicker .react-datepicker__day--today {
   @apply rounded-[var(--border-radius)] border border-[var(--muted)] bg-[var(--muted)] leading-[26px] text-[var(--text-primary)];
-  @apply hover:border-[var(--border-color)] hover:bg-[var(--muted)];
+  @apply hover:border-[var(--border-color)] hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)];
 }
 
 /* While selecting */
@@ -406,7 +420,8 @@ export default ReactDatePicker;
 }
 
 /* Hover on selected months in range */
-.react-datepicker .react-datepicker__month-text.react-datepicker__month--in-range:hover {
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--in-range:hover {
   @apply bg-[var(--muted)] text-[var(--text-primary)];
 }
 
@@ -418,15 +433,23 @@ export default ReactDatePicker;
 }
 
 /* Hover on selected range start and end month */
-.react-datepicker .react-datepicker__month-text.react-datepicker__month--selected:hover,
-.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-start:hover,
-.react-datepicker .react-datepicker__month-text.react-datepicker__month--range-end:hover {
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--selected:hover,
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--range-start:hover,
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month--range-end:hover {
   @apply bg-[var(--primary-dark)] text-[var(--primary-foreground)];
 }
 
 /* Year wrapper in year picker */
 .react-datepicker .react-datepicker__year-wrapper {
   @apply inline-block max-w-[220px];
+}
+
+/* Year text in year picker - ensure width is auto */
+.react-datepicker__year .react-datepicker__year-text {
+  @apply !w-auto;
 }
 
 /* Year text in year picker */
@@ -445,8 +468,10 @@ export default ReactDatePicker;
 }
 
 /* Selected year & month in year picker */
-.react-datepicker .react-datepicker__year-text.react-datepicker__year-text--selected,
-.react-datepicker .react-datepicker__month-text.react-datepicker__month-text--selected {
+.react-datepicker
+  .react-datepicker__year-text.react-datepicker__year-text--selected,
+.react-datepicker
+  .react-datepicker__month-text.react-datepicker__month-text--selected {
   @apply bg-[var(--primary)] text-[var(--primary-foreground)];
   @apply hover:bg-[var(--primary-dark)] hover:text-[var(--primary-foreground)];
 }
@@ -513,6 +538,11 @@ export default ReactDatePicker;
 .react-datepicker .react-datepicker__quarter-text:hover,
 .react-datepicker .react-datepicker__year-text:hover {
   @apply bg-[var(--muted)] text-[var(--text-primary)];
+}
+
+/* Today hover - override general day hover */
+.react-datepicker .react-datepicker__day--today:hover {
+  @apply !bg-[var(--primary)] !text-[var(--primary-foreground)];
 }
 
 /* Disabled item */
@@ -750,7 +780,8 @@ import React from 'react';
 import ReactDatePicker from '@components/date-picker';
 
 export default function App() {
-  const [dateRange, setDateRange] = React.useState<[Date | null, Date | null]>();
+  const [dateRange, setDateRange] =
+    React.useState<[Date | null, Date | null]>();
   return (
     <div className="h-96">
       <ReactDatePicker
@@ -891,24 +922,24 @@ The ReactDatePicker component extends all props from [react-datepicker](https://
 
 ### Common Props
 
-| Prop | Type | Description |
-| :--- | :--- | :---------- |
-| **selected** | `Date \| null` | Currently selected date (controlled) |
-| **onChange** | `(date: Date \| null) => void` | Callback when date changes |
-| **placeholderText** | `string` | Placeholder text for the input |
-| **dateFormat** | `string` | Format string for the date display |
-| **minDate** | `Date` | Minimum selectable date |
-| **maxDate** | `Date` | Maximum selectable date |
-| **filterDate** | `(date: Date) => boolean` | Function to filter selectable dates |
-| **showTimeSelect** | `boolean` | Show time selection |
-| **showTimeSelectOnly** | `boolean` | Show only time selection |
-| **selectsRange** | `boolean` | Enable range selection mode |
-| **startDate** | `Date \| null` | Start date for range selection |
-| **endDate** | `Date \| null` | End date for range selection |
-| **inputProps** | `InputProps` | Props to pass to the Input component |
-| **customInput** | `ReactElement` | Custom input component |
-| **calendarClassName** | `string` | Additional CSS classes for calendar |
-| **popperClassName** | `string` | Additional CSS classes for popper |
+| Prop                   | Type                           | Description                          |
+| :--------------------- | :----------------------------- | :----------------------------------- |
+| **selected**           | `Date \| null`                 | Currently selected date (controlled) |
+| **onChange**           | `(date: Date \| null) => void` | Callback when date changes           |
+| **placeholderText**    | `string`                       | Placeholder text for the input       |
+| **dateFormat**         | `string`                       | Format string for the date display   |
+| **minDate**            | `Date`                         | Minimum selectable date              |
+| **maxDate**            | `Date`                         | Maximum selectable date              |
+| **filterDate**         | `(date: Date) => boolean`      | Function to filter selectable dates  |
+| **showTimeSelect**     | `boolean`                      | Show time selection                  |
+| **showTimeSelectOnly** | `boolean`                      | Show only time selection             |
+| **selectsRange**       | `boolean`                      | Enable range selection mode          |
+| **startDate**          | `Date \| null`                 | Start date for range selection       |
+| **endDate**            | `Date \| null`                 | End date for range selection         |
+| **inputProps**         | `InputProps`                   | Props to pass to the Input component |
+| **customInput**        | `ReactElement`                 | Custom input component               |
+| **calendarClassName**  | `string`                       | Additional CSS classes for calendar  |
+| **popperClassName**    | `string`                       | Additional CSS classes for popper    |
 
 <div className="mb-4" />
 

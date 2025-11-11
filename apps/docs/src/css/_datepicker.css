@@ -104,7 +104,7 @@
 /* Today */
 .react-datepicker .react-datepicker__day--today {
   @apply rounded-[var(--border-radius)] border border-[var(--muted)] bg-[var(--muted)] leading-[26px] text-[var(--text-primary)];
-  @apply hover:border-[var(--border-color)] hover:bg-[var(--muted)];
+  @apply hover:border-[var(--border-color)] hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)];
   @apply dark:border-[var(--muted)] dark:bg-[var(--primary-lighter)] dark:text-[var(--foreground)];
   @apply dark:hover:border-[var(--muted)] dark:hover:bg-[var(--primary-lighter)];
 }
@@ -235,7 +235,11 @@
   @apply inline-block max-w-[220px];
 }
 
-/* Year text in year picker */
+/* Year text in year picker - ensure width is auto */
+.react-datepicker__year .react-datepicker__year-text {
+  @apply !w-auto;
+}
+
 .react-datepicker .react-datepicker__year-text {
   @apply w-auto px-5 py-1.5 text-[var(--text-secondary)] dark:hover:text-[var(--foreground)];
 }
@@ -324,6 +328,12 @@
 .react-datepicker .react-datepicker__year-text:hover {
   @apply bg-[var(--muted)] text-[var(--text-primary)];
   @apply dark:bg-[var(--primary-lighter)] dark:text-[var(--foreground)];
+}
+
+/* Today hover - override general day hover */
+.react-datepicker .react-datepicker__day--today:hover {
+  @apply !bg-[var(--primary)] !text-[var(--primary-foreground)];
+  @apply dark:!bg-[var(--primary)] dark:!text-[var(--primary-foreground)];
 }
 
 /* Disabled item */
