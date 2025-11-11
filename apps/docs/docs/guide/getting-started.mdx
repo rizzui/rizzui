@@ -371,6 +371,49 @@ export default function App() {
 }
 ```
 
+#### Class Name Utility (`cn`)
+
+The `cn` utility helps you merge Tailwind CSS classes intelligently. It automatically resolves conflicting classes and combines multiple class sources into a single string.
+
+**Key Features:**
+
+- Resolves Tailwind class conflicts (e.g., `px-2` vs `px-4` → `px-4` wins)
+- Supports strings, arrays, objects, and conditional expressions
+- Type-safe with full TypeScript support
+
+**Example:**
+
+The `cn` utility function is used to conditionally combine class names based on component props, enabling dynamic styling of the component.
+
+```tsx
+import { cn } from 'rizzui/cn';
+import { Button } from 'rizzui/button';
+
+type CustomButtonProps = {
+  className?: string;
+  isVisible?: boolean;
+  isDisabled?: boolean;
+};
+
+const CustomButton = (props: CustomButtonProps) => {
+  const { className, isVisible = true, isDisabled = false, ...rest } = props;
+
+  return (
+    <Button
+      {...rest}
+      className={cn(
+        'transition-all',
+        !isVisible ? 'opacity-0 pointer-events-none' : 'opacity-100',
+        isDisabled && 'cursor-not-allowed',
+        className
+      )}
+    >
+      Click me
+    </Button>
+  );
+};
+```
+
 ## Next Steps
 
 Now that you have RizzUI set up, explore these resources to enhance your application:
