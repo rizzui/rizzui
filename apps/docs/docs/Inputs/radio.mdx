@@ -10,6 +10,8 @@ import Paper from '@site/src/components/paper';
 A basic widget for getting the user input. used for selecting single value from a list of options.
 
 ```tsx
+'use client';
+
 import { Radio } from 'rizzui/radio';
 ```
 
@@ -24,6 +26,8 @@ The default style of **Radio** component.
 </Paper>
 
 ```tsx
+'use client';
+
 import { Radio } from 'rizzui/radio';
 
 export default function App() {
@@ -45,6 +49,8 @@ You can change the style of **Radio** using [**variant**](#radio-variants) prope
 </Paper>
 
 ```tsx
+'use client';
+
 import { Radio } from 'rizzui/radio';
 
 export default function App() {
@@ -72,6 +78,8 @@ You can change the sizes of **Radio** using [**size**](#radio-sizes) property.
 </Paper>
 
 ```tsx
+'use client';
+
 import { Radio } from 'rizzui/radio';
 
 export default function App() {
@@ -99,6 +107,8 @@ You can set label on the two different sides using **labelPlacement** property.
 </Paper>
 
 ```tsx
+'use client';
+
 import { Radio } from 'rizzui/radio';
 
 export default function App() {
@@ -122,6 +132,8 @@ You can change style of **Radio** using **disabled** property.
 </Paper>
 
 ```tsx
+'use client';
+
 import { Radio } from 'rizzui/radio';
 
 export default function App() {
@@ -145,6 +157,8 @@ You can add helper text to **Radio**.
 </Paper>
 
 ```tsx
+'use client';
+
 import { Radio } from 'rizzui/radio';
 
 export default function App() {
@@ -175,6 +189,8 @@ You can show the validation error message using **error** property.
 </Paper>
 
 ```tsx
+'use client';
+
 import { Radio } from 'rizzui/radio';
 
 export default function App() {
@@ -212,8 +228,8 @@ Here is the API documentation of the radio component. And the rest of the props 
 |      size       |    [RadioSizes](#radio-sizes)    | The size of the component. <br /> "sm" is equivalent to the dense radio styling. |   `"md"`    |
 |    disabled     |            `boolean`             |                          Whether the radio is disabled                           |    \_\_     |
 |      error      |             `string`             |                        Show error message using this prop                        |    \_\_     |
-|   helperText    |           `ReactNode`            |             Add helper text. Can be a string or a React component             |    \_\_     |
-| labelClassName  |             `string`             |     Use labelClassName prop to apply some additional style for the field label     |    \_\_     |
+|   helperText    |           `ReactNode`            |              Add helper text. Can be a string or a React component               |    \_\_     |
+| labelClassName  |             `string`             |    Use labelClassName prop to apply some additional style for the field label    |    \_\_     |
 | inputClassName  |             `string`             |                Add custom classes for the input field extra style                |    \_\_     |
 | helperClassName |             `string`             |            This prop allows you to customize the helper message style            |    \_\_     |
 | errorClassName  |             `string`             |            This prop allows you to customize the error message style             |    \_\_     |

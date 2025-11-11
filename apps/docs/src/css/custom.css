@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @import '../../static/fonts/outfit-font.css';
 @source "../../node_modules/rizzui/src";
+@source "../../../packages/ui/src";
 @source "../../docs/**/*.{md,mdx}";
 @source "../../blog/**/*.{md,mdx}";
 @source "../../src/components/";
@@ -10,6 +11,21 @@
 @plugin "@tailwindcss/forms";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* Ensure animate-spin is included in production build */
+/* This ensures the animation is not purged during build */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 :root {
   /* ----------------------------------- */

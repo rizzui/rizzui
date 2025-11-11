@@ -2,21 +2,22 @@
 sidebar_position: 6
 ---
 
-import { AdvancedCheckbox } from "rizzui/advanced-checkbox";
-import { Text } from "rizzui/typography";
+import { AdvancedCheckbox } from 'rizzui/advanced-checkbox';
+import { Text } from 'rizzui/typography';
 import {
   CurrencyBangladeshiIcon,
   CurrencyDollarIcon,
   CurrencyEuroIcon,
-  CurrencyPoundIcon } from "@heroicons/react/24/outline";
-import Paper from "@site/src/components/paper";
+  CurrencyPoundIcon,
+} from '@heroicons/react/24/outline';
+import Paper from '@site/src/components/paper';
 
 # AdvancedCheckbox
 
 A basic widget for getting the user input of checkbox with advanced design.
 
 ```jsx
-import { AdvancedCheckbox } from "rizzui";
+import { AdvancedCheckbox } from 'rizzui/advanced-checkbox';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -79,7 +80,7 @@ You can change style of **AdvancedCheckbox**.
 </Paper>
 
 ```jsx
-import { AdvancedCheckbox } from "rizzui";
+import { AdvancedCheckbox } from 'rizzui/advanced-checkbox';
 
 export default function App() {
   return (
@@ -138,8 +139,14 @@ You can give different style of **AdvancedCheckbox** as you need.
 </Paper>
 
 ```jsx
-import { AdvancedCheckbox, CheckboxGroup, Text } from "rizzui";
-import { CheckCircleIcon } from "@heroicons/react/20/solid";
+import { AdvancedCheckbox } from 'rizzui/advanced-checkbox';
+import { Text } from 'rizzui/typography';
+import {
+  CurrencyBangladeshiIcon,
+  CurrencyDollarIcon,
+  CurrencyEuroIcon,
+  CurrencyPoundIcon,
+} from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
@@ -179,16 +186,16 @@ Here is the API documentation of the AdvancedCheckbox component. And the rest of
 
 <div className="overflow-x-auto">
 
-|      Props       |                     Type                      |                                   Description                                   | Default |
-| :--------------: | :-------------------------------------------: | :-----------------------------------------------------------------------------: | :-----: |
-|     children     |                  `ReactNode`                  |                            Pass content as children                             |  \_\_   |
-|     disabled     |                   `boolean`                   |                     Whether the checkbox is disabled or not                     |  \_\_   |
-|       size       |   [CheckboxSizes](#advanced-checkbox-sizes)   | The size of the component.<br /> "sm" is equivalent to the dense input styling. | `"md"`  |
-|  inputClassName  |                   `string`                    |                      Add inputClassName to style the input                      |  \_\_   |
-| contentClassName |                   `string`                    |                     Add contentClassName to style the input                     |  \_\_   |
-|    className     |                   `string`                    |                 Add custom classes to the root of the component                 |  \_\_   |
-|       ref        |            `Ref<HTMLInputElement>`            |                                                                                 |  \_\_   |
-|       ...        |             `InputHTMLAttributes`             |     native props like **value**, **onChange**, **onFocus**, **onBlur** ...      |  \_\_   |
+|      Props       |                   Type                    |                                   Description                                   | Default |
+| :--------------: | :---------------------------------------: | :-----------------------------------------------------------------------------: | :-----: |
+|     children     |                `ReactNode`                |                            Pass content as children                             |  \_\_   |
+|     disabled     |                 `boolean`                 |                     Whether the checkbox is disabled or not                     |  \_\_   |
+|       size       | [CheckboxSizes](#advanced-checkbox-sizes) | The size of the component.<br /> "sm" is equivalent to the dense input styling. | `"md"`  |
+|  inputClassName  |                 `string`                  |                      Add inputClassName to style the input                      |  \_\_   |
+| contentClassName |                 `string`                  |                     Add contentClassName to style the input                     |  \_\_   |
+|    className     |                 `string`                  |                 Add custom classes to the root of the component                 |  \_\_   |
+|       ref        |          `Ref<HTMLInputElement>`          |                                                                                 |  \_\_   |
+|       ...        |           `InputHTMLAttributes`           |     native props like **value**, **onChange**, **onFocus**, **onBlur** ...      |  \_\_   |
 
 </div>
 
@@ -197,11 +204,11 @@ Here is the API documentation of the AdvancedCheckbox component. And the rest of
 ### Advanced Checkbox Sizes
 
 ```ts
-type CheckboxSizes = "sm" | "md" | "lg";
+type CheckboxSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
 
-
 ```ts
+
 ```

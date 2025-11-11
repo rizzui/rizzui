@@ -4,7 +4,7 @@ sidebar_position: 1
 
 import { Accordion } from 'rizzui/accordion';
 import { Avatar } from 'rizzui/avatar';
-import { cn } from 'rizzui';
+import { cn } from 'rizzui/cn';
 import Paper from '@site/src/components/paper';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import {
@@ -19,7 +19,7 @@ A content area which can be collapsed and expanded. Completely unstyled, fully a
 ```tsx
 'use client';
 
-import { Accordion } from 'rizzui';
+import { Accordion } from 'rizzui/accordion';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -59,7 +59,7 @@ A simple style of **Accordion**.
 ```tsx
 "use client";
 
-import { Accordion } from "rizzui";
+import { Accordion } from "rizzui/accordion";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 const data = [
@@ -153,9 +153,9 @@ You can change the style of the **Accordion**.
 ```tsx
 "use client";
 
-import { Accordion, Avatar } from "rizzui";
-import { SunIcon } from "@heroicons/react/20/solid";
-import { MoonIcon, LinkIcon } from "@heroicons/react/24/outline";
+import { Accordion } from "rizzui/accordion";
+import { Avatar } from "rizzui/avatar";
+import { LinkIcon } from "@heroicons/react/24/outline";
 
 const data = [
   {

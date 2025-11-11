@@ -7,7 +7,6 @@ import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from 'rizzui/cn';
 import { FieldErrorText } from 'rizzui/field-error-text';
 import { FieldHelperText } from 'rizzui/field-helper-text';
-import { Tooltip } from 'rizzui/tooltip';
 
 const labelStyles = {
   size: {
@@ -62,31 +61,17 @@ const rate = tv({
 
 export interface RateProps
   extends Omit<RcRateProps, 'character' | 'className'> {
-  /** Set field label */
   label?: React.ReactNode;
-  /** The size of the component */
   size?: VariantProps<typeof rate>['size'];
-  /** Pass single custom character or an array of custom characters */
   character?: React.ReactNode | Array<React.ReactNode>;
-  /** Custom className for custom character */
   characterClassName?: string;
-  /** Provide tooltip texts for each character */
-  tooltips?: Array<string>;
-  /** Add helper text. It could be string or a React component */
   helperText?: React.ReactNode;
-  /** Show error message using this prop */
   error?: string;
-  /** Use labelClassName prop to do some addition style for the field label */
   labelClassName?: string;
-  /** Use rateClassName prop to do some addition style for the rate field */
   rateClassName?: string;
-  /** This prop allows you to customize the error message style */
   errorClassName?: string;
-  /** This prop allows you to customize the helper message style */
   helperClassName?: string;
-  /** Add custom classes into the component wrapper for extra style like spacing */
   className?: string;
-  /** Ref for the rate component */
   ref?: React.Ref<any>;
 }
 
@@ -95,7 +80,6 @@ const Rate = ({
   disabled = false,
   character = <StarIcon />,
   label,
-  tooltips,
   error,
   helperText,
   labelClassName,
@@ -117,62 +101,32 @@ const Rate = ({
     disabled,
   });
 
-  const characterRender = (
-    node: React.ReactElement,
-    { index }: RcStarProps
-  ) => {
-    if (!tooltips) {
-      return node;
-    }
-    return (
-      <Tooltip content={tooltips[index as number]} placement="top">
-        {node}
-      </Tooltip>
-    );
-  };
-
-  const value = props.value ?? props.defaultValue ?? 0;
   const count = props.count ?? 5;
 
   return (
     <div className={cn('rizzui-rate', className)}>
       {label && (
         <label
-          className={cn(
-            'block font-medium',
-            labelClass(),
-            labelClassName
-          )}
+          className={cn('block font-medium', labelClass(), labelClassName)}
         >
           {label}
         </label>
       )}
-      <div
-        role="radiogroup"
-        aria-invalid={error ? 'true' : undefined}
-      >
+      <div role="radiogroup" aria-invalid={error ? 'true' : undefined}>
         <RcRate
           ref={ref}
           disabled={disabled}
-          characterRender={characterRender}
           character={({ index }: RcStarProps) => (
             <div
-              className={cn(
-                characterClass(),
-                characterClassName
-              )}
-              aria-label={tooltips?.[index as number] || `Rate ${index + 1} out of ${count}`}
+              className={cn(characterClass(), characterClassName)}
+              aria-label={`Rate ${index + 1} out of ${count}`}
             >
               {Array.isArray(character)
                 ? character[index as number]
                 : character}
             </div>
           )}
-          className={cn(
-            containerClass(),
-            firstStarClass(),
-            rateClassName
-          )}
+          className={cn(containerClass(), firstStarClass(), rateClassName)}
           aria-label={typeof label === 'string' ? label : 'Rating'}
           {...props}
         />

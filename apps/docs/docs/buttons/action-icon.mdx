@@ -19,7 +19,7 @@ import Paper from '@site/src/components/paper';
 Primary action icon button to trigger an operation. It's a simple button that contains no text, only an icon.
 
 ```tsx
-import { ActionIcon } from 'rizzui';
+import { ActionIcon } from 'rizzui/action-icon';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -35,7 +35,7 @@ The default style of **ActionIcon** component.
 </Paper>
 
 ```tsx
-import { ActionIcon } from 'rizzui';
+import { ActionIcon } from 'rizzui/action-icon';
 
 export default function App() {
   return (
@@ -73,7 +73,7 @@ You can change the style of the **ActionIcon** using [**variant**](#actionicon-v
 </Paper>
 
 ```tsx
-import { ActionIcon } from 'rizzui';
+import { ActionIcon } from 'rizzui/action-icon';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
@@ -117,7 +117,7 @@ You can change the size of the **ActionIcon** using [**size**](#actionicon-sizes
 </Paper>
 
 ```tsx
-import { ActionIcon } from 'rizzui';
+import { ActionIcon } from 'rizzui/action-icon';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
@@ -139,79 +139,44 @@ export default function App() {
 
 <div className="mb-16" />
 
-<div className="mb-16" />
-
-## Colors
-
-You can change the color of the **ActionIcon** using [**color**](#actionicon-colors) property.
-
-<Paper>
-  <div className="flex items-center justify-around gap-4 w-full flex-wrap mb-10">
-    <ActionIcon>
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon color="secondary">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-    <ActionIcon color="danger">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
-    </ActionIcon>
-  </div>
-</Paper>
-
-```tsx
-import { ActionIcon } from 'rizzui';
-import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
-
-export default function App() {
-  return (
-    <>
-      <ActionIcon>
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
-      </ActionIcon>
-      <ActionIcon color="secondary">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
-      </ActionIcon>
-      <ActionIcon color="danger">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
-      </ActionIcon>
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
 ## Loading
 
 You can set the loading state of the **ActionIcon** button using **isLoading** property.
 
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <ActionIcon isLoading={true}>Primary</ActionIcon>
-    <ActionIcon isLoading={true} color="secondary">
+    <ActionIcon isLoading={true}>
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
-    <ActionIcon isLoading={true} color="danger">
+    <ActionIcon isLoading={true} variant="outline">
+      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    </ActionIcon>
+    <ActionIcon isLoading={true} variant="flat">
+      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    </ActionIcon>
+    <ActionIcon isLoading={true} variant="danger">
       <AdjustmentsHorizontalIcon className="w-5 h-5" />
     </ActionIcon>
   </div>
 </Paper>
 
 ```tsx
-import { ActionIcon } from 'rizzui';
+import { ActionIcon } from 'rizzui/action-icon';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 export default function App() {
   return (
     <>
-      <ActionIcon isLoading={true} color="primary">
+      <ActionIcon isLoading={true} variant="solid">
         <AdjustmentsHorizontalIcon className="w-5 h-5" />
       </ActionIcon>
-      <ActionIcon isLoading={true} color="secondary">
+      <ActionIcon isLoading={true} variant="outline">
         <AdjustmentsHorizontalIcon className="w-5 h-5" />
       </ActionIcon>
-      <ActionIcon isLoading={true} color="danger">
+      <ActionIcon isLoading={true} variant="flat">
+        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      </ActionIcon>
+      <ActionIcon isLoading={true} variant="danger">
         <AdjustmentsHorizontalIcon className="w-5 h-5" />
       </ActionIcon>
     </>
@@ -232,7 +197,7 @@ The disabled style of the **ActionIcon** component.
 </Paper>
 
 ```tsx
-import { ActionIcon } from 'rizzui';
+import { ActionIcon } from 'rizzui/action-icon';
 import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 
 export default function App() {

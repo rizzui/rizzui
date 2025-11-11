@@ -2,16 +2,16 @@
 sidebar_position: 6
 ---
 
-import { Badge } from "rizzui/badge";
-import Paper from "@site/src/components/paper";
-import { TableDemo } from "@site/src/components/table-two";
+import { Badge } from 'rizzui/badge';
+import Paper from '@site/src/components/paper';
+import { TableDemo } from '@site/src/components/table-two';
 
 # Table
 
 A content area which can be collapsed and expanded. Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS. Visit our [TanStack Table](/docs/integrations/tan-stack) integration page for a full table example with **TanStack Table**.
 
 ```tsx
-import { Table } from "rizzui";
+import { Table } from 'rizzui/table';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -25,7 +25,8 @@ The default style of **Table** component.
 </Paper>
 
 ```tsx
-import { Badge, Table } from "rizzui";
+import { Badge } from 'rizzui/badge';
+import { Table } from 'rizzui/table';
 
 export default function App() {
   return (
@@ -80,7 +81,7 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import { Table } from "rizzui";
+import { Table } from 'rizzui/table';
 
 export default function App() {
   return (
@@ -103,7 +104,7 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import { Table } from "rizzui";
+import { Table } from 'rizzui/table';
 
 export default function App() {
   return (
@@ -126,7 +127,7 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import { Table } from "rizzui";
+import { Table } from 'rizzui/table';
 
 export default function App() {
   return (
@@ -149,7 +150,7 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import { Table } from "rizzui";
+import { Table } from 'rizzui/table';
 
 export default function App() {
   return (
@@ -278,5 +279,5 @@ Here is the API documentation of the **Table.Cell** component.
 ### Table Variants
 
 ```ts
-type TableVariants = "modern" | "minimal" | "elegant" | "retro" | "classic";
+type TableVariants = 'modern' | 'minimal' | 'elegant' | 'retro' | 'classic';
 ```

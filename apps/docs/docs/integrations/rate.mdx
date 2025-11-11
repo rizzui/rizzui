@@ -19,6 +19,12 @@ import BunIcon from '@site/src/components/icons/bun-icon';
 
 A flexible and intuitive rating component for collecting user feedback through visual ratings. Built on top of **rc-rate**, the Rate component seamlessly integrates with RizzUI's design system, providing a consistent and accessible way to gather user opinions and ratings.
 
+<div className="mb-14" />
+
+<Paper disableShowCodeBtn>
+  <Rate className="[&_li]:!mt-0 [&_ul]:!pl-0" />
+</Paper>
+
 <div className="mb-16" />
 
 ## Features
@@ -27,7 +33,6 @@ A flexible and intuitive rating component for collecting user feedback through v
 - 📏 **Multiple Sizes** - Three size options (sm, md, lg) to match your design
 - 🎨 **Custom Characters** - Use any icon, emoji, or custom element as rating characters
 - 🔢 **Half Ratings** - Support for half-star ratings for more granular feedback
-- 💬 **Tooltips** - Optional tooltips for each rating level
 - ♿ **Accessible** - Built with accessibility best practices
 - 🎯 **Type Safe** - Full TypeScript support
 - 📝 **Form Integration** - Works seamlessly with form libraries
@@ -61,9 +66,7 @@ Before using the Rate component, you'll need to install the required dependency:
     }
     default
   >
-    <CodeBlock language="bash">
-      {`npm install rc-rate`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`npm install rc-rate`}</CodeBlock>
   </TabItem>
   <TabItem
     value="yarn"
@@ -73,9 +76,7 @@ Before using the Rate component, you'll need to install the required dependency:
       </div>
     }
   >
-    <CodeBlock language="bash">
-      {`yarn add rc-rate`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`yarn add rc-rate`}</CodeBlock>
   </TabItem>
   <TabItem
     value="pnpm"
@@ -85,9 +86,7 @@ Before using the Rate component, you'll need to install the required dependency:
       </div>
     }
   >
-    <CodeBlock language="bash">
-      {`pnpm add rc-rate`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`pnpm add rc-rate`}</CodeBlock>
   </TabItem>
   <TabItem
     value="bun"
@@ -97,9 +96,7 @@ Before using the Rate component, you'll need to install the required dependency:
       </div>
     }
   >
-    <CodeBlock language="bash">
-      {`bun add rc-rate`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`bun add rc-rate`}</CodeBlock>
   </TabItem>
 </Tabs>
 
@@ -124,7 +121,6 @@ import { tv, type VariantProps } from 'tailwind-variants';
 import { cn } from 'rizzui/cn';
 import { FieldErrorText } from 'rizzui/field-error-text';
 import { FieldHelperText } from 'rizzui/field-helper-text';
-import { Tooltip } from 'rizzui/tooltip';
 
 const labelStyles = {
   size: {
@@ -183,7 +179,6 @@ export interface RateProps
   size?: VariantProps<typeof rate>['size'];
   character?: React.ReactNode | Array<React.ReactNode>;
   characterClassName?: string;
-  tooltips?: Array<string>;
   helperText?: React.ReactNode;
   error?: string;
   labelClassName?: string;
@@ -199,7 +194,6 @@ const Rate = ({
   disabled = false,
   character = <StarIcon />,
   label,
-  tooltips,
   error,
   helperText,
   labelClassName,
@@ -221,19 +215,7 @@ const Rate = ({
     disabled,
   });
 
-  const characterRender = (
-    node: React.ReactElement,
-    { index }: RcStarProps
-  ) => {
-    if (!tooltips) {
-      return node;
-    }
-    return (
-      <Tooltip content={tooltips[index as number]} placement="top">
-        {node}
-      </Tooltip>
-    );
-  };
+  const count = props.count ?? 5;
 
   return (
     <div className={cn('rizzui-rate', className)}>
@@ -244,26 +226,27 @@ const Rate = ({
           {label}
         </label>
       )}
-      <RcRate
-        ref={ref}
-        disabled={disabled}
-        characterRender={characterRender}
-        character={({ index }: RcStarProps) => (
-          <div className={cn(characterClass(), characterClassName)}>
-            {Array.isArray(character)
-              ? character[index as number]
-              : character}
-          </div>
-        )}
-        className={cn(
-          containerClass(),
-          firstStarClass(),
-          rateClassName
-        )}
-        {...props}
-      />
+      <div role="radiogroup" aria-invalid={error ? 'true' : undefined}>
+        <RcRate
+          ref={ref}
+          disabled={disabled}
+          character={({ index }: RcStarProps) => (
+            <div
+              className={cn(characterClass(), characterClassName)}
+              aria-label={`Rate ${index + 1} out of ${count}`}
+            >
+              {Array.isArray(character)
+                ? character[index as number]
+                : character}
+            </div>
+          )}
+          className={cn(containerClass(), firstStarClass(), rateClassName)}
+          aria-label={typeof label === 'string' ? label : 'Rating'}
+          {...props}
+        />
+      </div>
       {!error && helperText && (
-        <FieldHelperText tag="div" size={size} className={helperClassName}>
+        <FieldHelperText as="div" size={size} className={helperClassName}>
           {helperText}
         </FieldHelperText>
       )}
@@ -313,12 +296,7 @@ import Rate from '@components/rate';
 export default function App() {
   const [value, setValue] = React.useState(0);
 
-  return (
-    <Rate
-      value={value}
-      onChange={(newValue) => setValue(newValue)}
-    />
-  );
+  return <Rate value={value} onChange={(newValue) => setValue(newValue)} />;
 }
 ```
 
@@ -330,7 +308,11 @@ Choose from three size options to match your design requirements:
 
 <Paper className="gap-4 items-start">
   <Rate label="Small" size="sm" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
-  <Rate label="Medium (Default)" size="md" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
+  <Rate
+    label="Medium (Default)"
+    size="md"
+    className="[&_li]:!mt-0 [&_ul]:!pl-0"
+  />
   <Rate label="Large" size="lg" className="[&_li]:!mt-0 [&_ul]:!pl-0" />
 </Paper>
 
@@ -344,34 +326,6 @@ export default function App() {
       <Rate label="Medium (Default)" size="md" />
       <Rate label="Large" size="lg" />
     </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## With Tooltips
-
-Add helpful tooltips to guide users through each rating level:
-
-<Paper>
-  <Rate
-    size="lg"
-    defaultValue={3}
-    className="[&_li]:!mt-0 [&_ul]:!pl-0"
-    tooltips={['terrible', 'bad', 'normal', 'good', 'wonderful']}
-  />
-</Paper>
-
-```tsx
-import Rate from '@components/rate';
-
-export default function App() {
-  return (
-    <Rate
-      defaultValue={3}
-      tooltips={['terrible', 'bad', 'normal', 'good', 'wonderful']}
-    />
   );
 }
 ```
@@ -418,12 +372,7 @@ import Rate from '@components/rate';
 import { HeartIcon } from '@heroicons/react/24/solid';
 
 export default function App() {
-  return (
-    <Rate
-      character={<HeartIcon className="w-6" />}
-      defaultValue={1.5}
-    />
-  );
+  return <Rate character={<HeartIcon className="w-6" />} defaultValue={1.5} />;
 }
 ```
 
@@ -518,10 +467,7 @@ export default function App() {
 Display validation errors using the `error` prop. When an error is present, the helper text is automatically hidden:
 
 <Paper>
-  <Rate
-    className="[&_li]:!mt-0 [&_ul]:pl-0"
-    error="Please provide a rating."
-  />
+  <Rate className="[&_li]:!mt-0 [&_ul]:pl-0" error="Please provide a rating." />
 </Paper>
 
 ```tsx
@@ -588,27 +534,26 @@ export default function App() {
 
 ### Rate Props
 
-| Prop | Type | Description | Default |
-| :--- | :--- | :---------- | :------ |
-| **label** | `ReactNode` | The label text displayed above the rating | `undefined` |
-| **size** | `"sm" \| "md" \| "lg"` | Size of the rating component | `"md"` |
-| **character** | `ReactNode \| ReactNode[]` | Custom character(s) to use instead of default star. Can be a single element or an array for different characters per level | `<StarIcon />` |
-| **characterClassName** | `string` | Additional CSS classes for the character element | `undefined` |
-| **tooltips** | `string[]` | Array of tooltip texts for each rating level | `undefined` |
-| **helperText** | `ReactNode` | Helper text displayed below the rating (hidden when error is present) | `undefined` |
-| **error** | `string` | Error message to display below the rating | `undefined` |
-| **disabled** | `boolean` | Disable all rating interactions | `false` |
-| **allowHalf** | `boolean` | Allow half-star ratings | `false` |
-| **count** | `number` | Number of rating items to display | `5` |
-| **value** | `number` | Current rating value (controlled) | `undefined` |
-| **defaultValue** | `number` | Default rating value (uncontrolled) | `undefined` |
-| **labelClassName** | `string` | Additional CSS classes for the label element | `undefined` |
-| **rateClassName** | `string` | Additional CSS classes for the rate container | `undefined` |
-| **errorClassName** | `string` | Additional CSS classes for the error message | `undefined` |
-| **helperClassName** | `string` | Additional CSS classes for the helper text | `undefined` |
-| **className** | `string` | Additional CSS classes for the root wrapper element | `undefined` |
-| **onChange** | `(value: number) => void` | Callback when rating changes | `undefined` |
-| **onHoverChange** | `(value: number) => void` | Callback when hovering over rating items | `undefined` |
+| Prop                   | Type                       | Description                                                                                                                | Default        |
+| :--------------------- | :------------------------- | :------------------------------------------------------------------------------------------------------------------------- | :------------- |
+| **label**              | `ReactNode`                | The label text displayed above the rating                                                                                  | `undefined`    |
+| **size**               | `"sm" \| "md" \| "lg"`     | Size of the rating component                                                                                               | `"md"`         |
+| **character**          | `ReactNode \| ReactNode[]` | Custom character(s) to use instead of default star. Can be a single element or an array for different characters per level | `<StarIcon />` |
+| **characterClassName** | `string`                   | Additional CSS classes for the character element                                                                           | `undefined`    |
+| **helperText**         | `ReactNode`                | Helper text displayed below the rating (hidden when error is present)                                                      | `undefined`    |
+| **error**              | `string`                   | Error message to display below the rating                                                                                  | `undefined`    |
+| **disabled**           | `boolean`                  | Disable all rating interactions                                                                                            | `false`        |
+| **allowHalf**          | `boolean`                  | Allow half-star ratings                                                                                                    | `false`        |
+| **count**              | `number`                   | Number of rating items to display                                                                                          | `5`            |
+| **value**              | `number`                   | Current rating value (controlled)                                                                                          | `undefined`    |
+| **defaultValue**       | `number`                   | Default rating value (uncontrolled)                                                                                        | `undefined`    |
+| **labelClassName**     | `string`                   | Additional CSS classes for the label element                                                                               | `undefined`    |
+| **rateClassName**      | `string`                   | Additional CSS classes for the rate container                                                                              | `undefined`    |
+| **errorClassName**     | `string`                   | Additional CSS classes for the error message                                                                               | `undefined`    |
+| **helperClassName**    | `string`                   | Additional CSS classes for the helper text                                                                                 | `undefined`    |
+| **className**          | `string`                   | Additional CSS classes for the root wrapper element                                                                        | `undefined`    |
+| **onChange**           | `(value: number) => void`  | Callback when rating changes                                                                                               | `undefined`    |
+| **onHoverChange**      | `(value: number) => void`  | Callback when hovering over rating items                                                                                   | `undefined`    |
 
 <div className="mb-4" />
 
@@ -631,7 +576,6 @@ type RateSizes = 'sm' | 'md' | 'lg';
 ## Best Practices
 
 - **Use appropriate labels** - Always provide clear labels to indicate what is being rated
-- **Provide tooltips** - Use tooltips to explain each rating level for better UX
 - **Consider half ratings** - Enable `allowHalf` for more granular feedback when needed
 - **Handle validation** - Use the `error` prop to display validation feedback
 - **Use helper text** - Provide context about the rating scale or expectations
