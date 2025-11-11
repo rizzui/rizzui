@@ -1,8 +1,8 @@
 ---
-sidebar_position: 14
+sidebar_position: 15
 ---
 
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 import Paper from '@site/src/components/paper';
 import FileInputClearable from '@site/src/components/file-input';
 
@@ -13,9 +13,7 @@ A basic widget for getting the attachment file.
 ```tsx
 'use client';
 
-import { FileInput } from 'rizzui/upload';
-// or,
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -31,7 +29,7 @@ The default style of **FileInput**.
 ```tsx
 'use client';
 
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return <FileInput label="Upload File" />;
@@ -53,7 +51,7 @@ You can change the style of **FileInput** using [**variant**](#fileinput-variant
 ```tsx
 'use client';
 
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return (
@@ -81,7 +79,7 @@ You can change the size of **FileInput** using [**size**](#fileinput-sizes) prop
 ```tsx
 'use client';
 
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return (
@@ -108,7 +106,7 @@ You can clear value of the **FileInput** using **clearable** & **onClear** prope
 'use client';
 
 import React from 'react';
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   const [state, setState] = React.useState<any>('');
@@ -139,7 +137,7 @@ By enabling **multiple** property true, user can upload multiple files.
 ```tsx
 'use client';
 
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return <FileInput label="Upload Multiple Files" multiple />;
@@ -159,7 +157,7 @@ The disabled state of the **FileInput** component.
 ```tsx
 'use client';
 
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return <FileInput label="Upload File" disabled />;
@@ -179,7 +177,7 @@ You can add helper text to the **FileInput** component using **helperText** prop
 ```tsx
 'use client';
 
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return <FileInput label="Upload Files" helperText="This is helper text!" />;
@@ -199,7 +197,7 @@ You can show the validation error message using **error** property.
 ```tsx
 'use client';
 
-import { FileInput } from 'rizzui/upload';
+import { FileInput } from 'rizzui/file-input';
 
 export default function App() {
   return <FileInput label="Upload Files" error="This is error message!" />;
@@ -229,8 +227,8 @@ Here is the API documentation of the Input component. And the rest of the props 
 |   placeholder   |                 `string`                 |                         Set input placeholder text                          |    \_\_     |
 |    disabled     |                `boolean`                 |                    Whether the input is disabled or not                     |    \_\_     |
 |    clearable    |                `boolean`                 |                            Add clearable option                             |    \_\_     |
-|     onClear     |  [FileinputOnclear](#fileinput-onclear)  |                                 Callback function called when the clear button is clicked                                 |    \_\_     |
-|   helperText    |               `ReactNode`                |          Add helper text. Can be a string or a React component           |    \_\_     |
+|     onClear     |  [FileinputOnclear](#fileinput-onclear)  |          Callback function called when the clear button is clicked          |    \_\_     |
+|   helperText    |               `ReactNode`                |            Add helper text. Can be a string or a React component            |    \_\_     |
 |      error      |                 `string`                 |                     Show error message using this prop                      |    \_\_     |
 | labelClassName  |                 `string`                 |                     Override default CSS style of label                     |    \_\_     |
 | inputClassName  |                 `string`                 |                     Override default CSS style of input                     |    \_\_     |

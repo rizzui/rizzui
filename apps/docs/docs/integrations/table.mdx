@@ -1,10 +1,12 @@
 ---
-sidebar_position: 3
-sidebar_class_name: hidden
+sidebar_position: 7
 ---
 
-import Paper from "@site/src/components/paper";
-import TableDefault, { TableModern, TableElegant, TableMinimal } from "@site/src/components/table";
+import Paper from '@site/src/components/paper';
+import TableModern, {
+  TableElegant,
+  TableMinimal,
+} from '@site/src/components/table';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
@@ -12,10 +14,32 @@ import NpmIcon from '@site/src/components/icons/npm-icon';
 import YarnIcon from '@site/src/components/icons/yarn-icon';
 import PnpmIcon from '@site/src/components/icons/pnpm-icon';
 import BunIcon from '@site/src/components/icons/bun-icon';
+import { Badge } from 'rizzui/badge';
 
 # Rc Table
 
-React table component with useful functions.
+A powerful, flexible table component built on top of **rc-table**. Seamlessly integrated with RizzUI's design system, this component provides a comprehensive solution for building data tables with sorting, filtering, and multiple visual variants.
+
+<div className="mb-14" />
+
+<Paper disableShowCodeBtn>
+  <TableModern />
+</Paper>
+
+<div className="mb-16" />
+
+## Features
+
+- 🎨 **Multiple Variants** - Modern, Minimal, and Elegant styles
+- ✅ **Row Selection** - Select all/deselect all with indeterminate state support
+- 🔍 **Sorting Support** - Built-in column sorting functionality
+- 📊 **Flexible Styling** - Customizable with RizzUI theme variables
+- 🎯 **TypeScript Support** - Full type safety out of the box
+- 🌓 **Dark Mode Ready** - Automatic dark mode styling
+- 📱 **Responsive** - Works seamlessly across all device sizes
+- ⚡ **Performant** - Optimized for large datasets
+- 🎛️ **Striped Rows** - Optional striped row styling
+- ♿ **Accessible** - Built with accessibility best practices
 
 <div className="mb-16" />
 
@@ -23,7 +47,16 @@ React table component with useful functions.
 
 <hr />
 
-1.  Install the **rc-table** package.
+Before using the Rc Table component, you'll need to install the required dependency:
+
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 1
+  </Badge>
+  <span>
+    Install the <strong>rc-table</strong> package.
+  </span>
+</div>
 
 <div className="mb-4" />
 
@@ -37,9 +70,7 @@ React table component with useful functions.
     }
     default
   >
-    <CodeBlock language="bash">
-      {`npm install rc-table`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`npm install rc-table`}</CodeBlock>
   </TabItem>
   <TabItem
     value="yarn"
@@ -49,9 +80,7 @@ React table component with useful functions.
       </div>
     }
   >
-    <CodeBlock language="bash">
-      {`yarn add rc-table`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`yarn add rc-table`}</CodeBlock>
   </TabItem>
   <TabItem
     value="pnpm"
@@ -61,9 +90,7 @@ React table component with useful functions.
       </div>
     }
   >
-    <CodeBlock language="bash">
-      {`pnpm add rc-table`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`pnpm add rc-table`}</CodeBlock>
   </TabItem>
   <TabItem
     value="bun"
@@ -73,70 +100,80 @@ React table component with useful functions.
       </div>
     }
   >
-    <CodeBlock language="bash">
-      {`bun add rc-table`}
-    </CodeBlock>
+    <CodeBlock language="bash">{`bun add rc-table`}</CodeBlock>
   </TabItem>
 </Tabs>
 
-<div className="mb-4" />
+<div className="mb-14" />
 
-2. Create a table component, **components/table.tsx**
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 2
+  </Badge>
+  <span>
+    Create a table component, <strong>components/table.tsx</strong>
+  </span>
+</div>
 
-<div className="mb-4" />
-
-```ts
-import React from "react";
-import Table from "rc-table";
-import { Empty } from "rizzui/empty";
-import { cn } from "rizzui";
+```tsx
+import React from 'react';
+import RcTable from 'rc-table';
+import { tv, type VariantProps } from 'tailwind-variants';
+import { Empty, cn } from 'rizzui';
 
 export type ExtractProps<T> = T extends React.ComponentType<infer P> ? P : T;
 
-const tableStyles = {
-  table:
-    "[&_.rc-table-content]:overflow-x-auto [&_table]:w-full [&_.rc-table-row:hover]:bg-muted/60",
-  thead:
-    "[&_thead]:text-left [&_thead]:rtl:text-right [&_th.rc-table-cell]:uppercase [&_th.rc-table-cell]:text-xs [&_th.rc-table-cell]:font-medium [&_th.rc-table-cell]:tracking-wide",
-  tCell:
-    "[&_.rc-table-cell]:px-3 [&_th.rc-table-cell]:py-3 [&_td.rc-table-cell]:py-4",
+const tableStyles = tv({
+  base: 'rizzui-rc-table [&_.rc-table-content]:overflow-x-auto [&_table]:w-full [&_.rc-table-row:hover]:bg-muted/60',
   variants: {
-    classic:
-      "[&_thead]:bg-muted/50 [&_.rc-table-container]:border-x [&_.rc-table-container]:border-muted [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted [&_thead]:border-y [&_thead]:border-muted",
-    modern:
-      "[&_thead]:bg-muted/50 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted",
-    minimal: "[&_thead]:bg-muted/50",
-    elegant:
-      "[&_thead]:border-y [&_thead]:border-muted [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-muted",
+    variant: {
+      modern:
+        '[&_thead]:bg-muted/50 [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-border]',
+      minimal: '[&_thead]:bg-muted/50]',
+      elegant:
+        '[&_thead]:border-y [&_thead]:border-border [&_td.rc-table-cell]:border-b [&_td.rc-table-cell]:border-border]',
+    },
+    striped: {
+      true: '[&_.rc-table-row:nth-child(2n)_.rc-table-cell]:bg-muted/40]',
+    },
   },
-  striped: "[&_.rc-table-row:nth-child(2n)_.rc-table-cell]:bg-muted/40",
-};
+  defaultVariants: {
+    variant: 'modern',
+    striped: false,
+  },
+});
 
-type RCTableProps = ExtractProps<typeof Table>;
+const theadStyles = tv({
+  base: '[&_thead]:text-left [&_thead]:rtl:text-right [&_th.rc-table-cell]:uppercase [&_th.rc-table-cell]:text-xs [&_th.rc-table-cell]:font-medium [&_th.rc-table-cell]:tracking-wide',
+});
+
+const tCellStyles = tv({
+  base: '[&_.rc-table-cell]:px-3 [&_th.rc-table-cell]:py-3 [&_td.rc-table-cell]:py-4]',
+});
+
+type RCTableProps = ExtractProps<typeof RcTable>;
 
 export interface TableProps
-  extends Omit<RCTableProps, "className" | "emptyText"> {
+  extends Omit<RCTableProps, 'className' | 'emptyText'> {
   emptyText?: React.ReactElement;
-  variant?: keyof typeof tableStyles.variants;
+  variant?: VariantProps<typeof tableStyles>['variant'];
   striped?: boolean;
   className?: string;
 }
 
-export default function RcTable({
+export default function Table({
   striped,
-  variant = "classic",
+  variant = 'modern',
   emptyText,
   className,
   ...props
 }: TableProps) {
   return (
-    <Table
+    <RcTable
       className={cn(
-        tableStyles.table,
-        tableStyles.thead,
-        tableStyles.tCell,
-        tableStyles.variants[variant],
-        striped && tableStyles.striped,
+        tableStyles({ variant, striped }),
+        theadStyles(),
+        tCellStyles(),
         className
       )}
       emptyText={emptyText ?? <Empty />}
@@ -145,18 +182,25 @@ export default function RcTable({
   );
 }
 
-RcTable.displayName = "Table";
+Table.displayName = 'Table';
 ```
 
-3. You need to create one more component for the table header cell
+<div className="mb-14" />
 
-<div className="mb-4" />
+<div className="flex items-center gap-2 mb-4">
+  <Badge color="primary" size="sm" className="rounded-md">
+    Step 3
+  </Badge>
+  <span>
+    Create a <strong>header-cell.tsx</strong> component for table header cells.
+  </span>
+</div>
 
-```ts
-import React from "react";
-import { cn } from "rizzui";
+```tsx
+import React from 'react';
+import { cn } from 'rizzui';
 
-type TextAlign = "left" | "center" | "right";
+type TextAlign = 'left' | 'center' | 'right';
 
 export interface HeaderCellProps {
   title: React.ReactNode;
@@ -170,14 +214,14 @@ export interface HeaderCellProps {
 }
 
 function handleTextAlignment(align: TextAlign) {
-  if (align === "center") return "justify-center";
-  if (align === "right") return "justify-end rtl:justify-start";
-  return "";
+  if (align === 'center') return 'justify-center';
+  if (align === 'right') return 'justify-end rtl:justify-start';
+  return '';
 }
 
 export default function HeaderCell({
   title,
-  align = "left",
+  align = 'left',
   width,
   ellipsis,
   sortable,
@@ -187,7 +231,7 @@ export default function HeaderCell({
 }: HeaderCellProps) {
   if (ellipsis && width === undefined) {
     console.warn(
-      "When ellipsis is true make sure you are using the same column width in HeaderCell component too."
+      'When ellipsis is true make sure you are using the same column width in HeaderCell component too.'
     );
   }
 
@@ -200,14 +244,14 @@ export default function HeaderCell({
   return (
     <div
       className={cn(
-        "flex items-center gap-1",
-        sortable && "cursor-pointer",
+        'flex items-center gap-1',
+        sortable && 'cursor-pointer',
         handleTextAlignment(align),
         className
       )}
     >
       <div
-        {...(ellipsis && { className: "truncate" })}
+        {...(ellipsis && { className: 'truncate' })}
         {...(ellipsis && width && { style: { width } })}
       >
         {title}
@@ -219,7 +263,7 @@ export default function HeaderCell({
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
-              className={cn("h-auto w-3", iconClassName)}
+              className={cn('h-auto w-3', iconClassName)}
               viewBox="0 0 16 16"
             >
               <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
@@ -228,7 +272,7 @@ export default function HeaderCell({
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
-              className={cn("h-auto w-3", iconClassName)}
+              className={cn('h-auto w-3', iconClassName)}
               viewBox="0 0 16 16"
             >
               <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -240,309 +284,10 @@ export default function HeaderCell({
   );
 }
 
-HeaderCell.displayName = "HeaderCell";
+HeaderCell.displayName = 'HeaderCell';
 ```
 
 <div className="mb-20 md:mb-28" />
-
-## Default
-
-The default style of **Table** component.
-
-<Paper className="block">
-  <TableDefault />
-</Paper>
-
-```tsx
-import React from "react";
-import Table from "@components/table";
-import HeaderCell from "@components/header-cell";
-import { Checkbox } from "rizzui/checkbox";
-import { Avatar } from "rizzui/avatar";
-import { Text } from "rizzui/typography";
-import { Badge } from "rizzui/badge";
-
-const initialData = [
-  {
-    id: "1",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "2",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "3",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "4",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "5",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "6",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-];
-
-function getStatusBadge(status: string) {
-  switch (status.toLowerCase()) {
-    case "pending":
-      return <Badge variant="flat">{status}</Badge>;
-    case "active":
-      return (
-        <Badge
-          variant="flat"
-          color="success"
-        >
-          {status}
-        </Badge>
-      );
-    case "warning":
-      return (
-        <Badge
-          variant="flat"
-          color="warning"
-        >
-          {status}
-        </Badge>
-      );
-    case "danger":
-      return (
-        <Badge
-          variant="flat"
-          color="danger"
-        >
-          {status}
-        </Badge>
-      );
-    default:
-      return null;
-  }
-}
-
-const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
-  {
-    title: <></>,
-    dataIndex: "checked",
-    key: "checked",
-    width: 50,
-    render: () => (
-      <div className="inline-flex cursor-pointer">
-        <Checkbox variant="flat" />
-      </div>
-    ),
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Id"
-        sortable
-        ascending={order === "asc" && column === "id"}
-      />
-    ),
-    onHeaderCell: () => onHeaderClick("id"),
-    dataIndex: "id",
-    key: "id",
-    width: 50,
-  },
-  {
-    title: <HeaderCell title="Employee" />,
-    dataIndex: "employee",
-    key: "employee",
-    width: 250,
-    render: (employee: any) => (
-      <div className="flex items-center">
-        <Avatar
-          name="John Doe"
-          src={employee.avatar}
-        />
-        <div className="ml-3 rtl:ml-0 rtl:mr-3">
-          <Text
-            as="h6"
-            className="mb-0.5 !text-sm font-medium"
-          >
-            {employee.name}
-          </Text>
-          <Text
-            as="p"
-            className="text-xs text-gray-400"
-          >
-            {employee.userName}
-          </Text>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="Designation" />,
-    dataIndex: "designation",
-    key: "designation",
-    width: 320,
-    render: (designation: any) => (
-      <div>
-        <Text
-          as="h6"
-          className="mb-0.5 !text-sm font-medium"
-        >
-          {designation.role}
-        </Text>
-        <Text
-          as="p"
-          className="text-xs text-gray-400"
-        >
-          {designation.company}
-        </Text>
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="Phone Number" />,
-    dataIndex: "phoneNumber",
-    key: "phoneNumber",
-    width: 200,
-  },
-  {
-    title: <HeaderCell title="Email" />,
-    dataIndex: "email",
-    key: "email",
-    width: 200,
-  },
-  {
-    title: <HeaderCell title="Status" />,
-    dataIndex: "status",
-    key: "status",
-    width: 120,
-    render: (value: string) => getStatusBadge(value),
-  },
-  {
-    title: <></>,
-    dataIndex: "action",
-    key: "action",
-    width: 120,
-    render: (_: string, row: any) => (
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          className="text-primary underline"
-          onClick={() => alert(`Edit item #${row.id}`)}
-        >
-          Edit
-        </button>
-        <button
-          type="button"
-          className="underline"
-        >
-          View
-        </button>
-      </div>
-    ),
-  },
-];
-
-export default function App() {
-  const [order, setOrder] = React.useState<string>("desc");
-  const [column, setColumn] = React.useState<string>("");
-  const [data, setData] = React.useState<typeof initialData>(initialData);
-  const onHeaderClick = (value: string) => ({
-    onClick: () => {
-      setColumn(value);
-      setOrder(order === "desc" ? "asc" : "desc");
-      if (order === "desc") {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
-      } else {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
-      }
-    },
-  });
-  const columns: any = React.useMemo(
-    () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
-  );
-
-  return (
-    <Table
-      data={data}
-      columns={columns}
-      className="text-sm"
-    />
-  );
-}
-```
-
-<div className="mb-16" />
 
 ## Modern
 
@@ -553,291 +298,20 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import React from "react";
-import Table from "@components/table";
-import HeaderCell from "@components/header-cell";
-import { Checkbox } from "rizzui/checkbox";
-import { Avatar } from "rizzui/avatar";
-import { Text } from "rizzui/typography";
-import { Badge } from "rizzui/badge";
-
-const initialData = [
-  {
-    id: "1",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "2",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "3",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "4",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "5",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "6",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-];
-
-function getStatusBadge(status: string) {
-  switch (status.toLowerCase()) {
-    case "pending":
-      return <Badge variant="flat">{status}</Badge>;
-    case "active":
-      return (
-        <Badge
-          variant="flat"
-          color="success"
-        >
-          {status}
-        </Badge>
-      );
-    case "warning":
-      return (
-        <Badge
-          variant="flat"
-          color="warning"
-        >
-          {status}
-        </Badge>
-      );
-    case "danger":
-      return (
-        <Badge
-          variant="flat"
-          color="danger"
-        >
-          {status}
-        </Badge>
-      );
-    default:
-      return null;
-  }
-}
-
-const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
-  {
-    title: <></>,
-    dataIndex: "checked",
-    key: "checked",
-    width: 50,
-    render: () => (
-      <div className="inline-flex cursor-pointer">
-        <Checkbox variant="flat" />
-      </div>
-    ),
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Id"
-        sortable
-        ascending={order === "asc" && column === "id"}
-      />
-    ),
-    onHeaderCell: () => onHeaderClick("id"),
-    dataIndex: "id",
-    key: "id",
-    width: 50,
-  },
-  {
-    title: <HeaderCell title="Employee" />,
-    dataIndex: "employee",
-    key: "employee",
-    width: 250,
-    render: (employee: any) => (
-      <div className="flex items-center">
-        <Avatar
-          name="John Doe"
-          src={employee.avatar}
-        />
-        <div className="ml-3 rtl:ml-0 rtl:mr-3">
-          <Text
-            as="h6"
-            className="mb-0.5 !text-sm font-medium"
-          >
-            {employee.name}
-          </Text>
-          <Text
-            as="p"
-            className="text-xs text-gray-400"
-          >
-            {employee.userName}
-          </Text>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="Designation" />,
-    dataIndex: "designation",
-    key: "designation",
-    width: 320,
-    render: (designation: any) => (
-      <div>
-        <Text
-          as="h6"
-          className="mb-0.5 !text-sm font-medium"
-        >
-          {designation.role}
-        </Text>
-        <Text
-          as="p"
-          className="text-xs text-gray-400"
-        >
-          {designation.company}
-        </Text>
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="Phone Number" />,
-    dataIndex: "phoneNumber",
-    key: "phoneNumber",
-    width: 200,
-  },
-  {
-    title: <HeaderCell title="Email" />,
-    dataIndex: "email",
-    key: "email",
-    width: 200,
-  },
-  {
-    title: <HeaderCell title="Status" />,
-    dataIndex: "status",
-    key: "status",
-    width: 120,
-    render: (value: string) => getStatusBadge(value),
-  },
-  {
-    title: <></>,
-    dataIndex: "action",
-    key: "action",
-    width: 120,
-    render: (_: string, row: any) => (
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          className="text-primary underline"
-          onClick={() => alert(`Edit item #${row.id}`)}
-        >
-          Edit
-        </button>
-        <button
-          type="button"
-          className="underline"
-        >
-          View
-        </button>
-      </div>
-    ),
-  },
-];
+// ... same setup as above ...
 
 export default function App() {
-  const [order, setOrder] = React.useState<string>("desc");
-  const [column, setColumn] = React.useState<string>("");
-  const [data, setData] = React.useState<typeof initialData>(initialData);
-  const onHeaderClick = (value: string) => ({
-    onClick: () => {
-      setColumn(value);
-      setOrder(order === "desc" ? "asc" : "desc");
-      if (order === "desc") {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
-      } else {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
-      }
-    },
-  });
-  const columns: any = React.useMemo(
-    () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
-  );
+  // ... same state and columns setup ...
 
   return (
-    <Table
-      data={data}
-      columns={columns}
-      className="text-sm"
-      variant="modern"
-    />
+    <div className="w-full overflow-x-auto">
+      <Table
+        data={data}
+        columns={columns}
+        variant="modern"
+        className="text-sm"
+      />
+    </div>
   );
 }
 ```
@@ -853,291 +327,20 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import React from "react";
-import Table from "@components/table";
-import HeaderCell from "@components/header-cell";
-import { Checkbox } from "rizzui/checkbox";
-import { Avatar } from "rizzui/avatar";
-import { Text } from "rizzui/typography";
-import { Badge } from "rizzui/badge";
-
-const initialData = [
-  {
-    id: "1",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "2",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "3",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "4",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "5",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "6",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-];
-
-function getStatusBadge(status: string) {
-  switch (status.toLowerCase()) {
-    case "pending":
-      return <Badge variant="flat">{status}</Badge>;
-    case "active":
-      return (
-        <Badge
-          variant="flat"
-          color="success"
-        >
-          {status}
-        </Badge>
-      );
-    case "warning":
-      return (
-        <Badge
-          variant="flat"
-          color="warning"
-        >
-          {status}
-        </Badge>
-      );
-    case "danger":
-      return (
-        <Badge
-          variant="flat"
-          color="danger"
-        >
-          {status}
-        </Badge>
-      );
-    default:
-      return null;
-  }
-}
-
-const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
-  {
-    title: <></>,
-    dataIndex: "checked",
-    key: "checked",
-    width: 50,
-    render: () => (
-      <div className="inline-flex cursor-pointer">
-        <Checkbox variant="flat" />
-      </div>
-    ),
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Id"
-        sortable
-        ascending={order === "asc" && column === "id"}
-      />
-    ),
-    onHeaderCell: () => onHeaderClick("id"),
-    dataIndex: "id",
-    key: "id",
-    width: 50,
-  },
-  {
-    title: <HeaderCell title="Employee" />,
-    dataIndex: "employee",
-    key: "employee",
-    width: 250,
-    render: (employee: any) => (
-      <div className="flex items-center">
-        <Avatar
-          name="John Doe"
-          src={employee.avatar}
-        />
-        <div className="ml-3 rtl:ml-0 rtl:mr-3">
-          <Text
-            as="h6"
-            className="mb-0.5 !text-sm font-medium"
-          >
-            {employee.name}
-          </Text>
-          <Text
-            as="p"
-            className="text-xs text-gray-400"
-          >
-            {employee.userName}
-          </Text>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="Designation" />,
-    dataIndex: "designation",
-    key: "designation",
-    width: 320,
-    render: (designation: any) => (
-      <div>
-        <Text
-          as="h6"
-          className="mb-0.5 !text-sm font-medium"
-        >
-          {designation.role}
-        </Text>
-        <Text
-          as="p"
-          className="text-xs text-gray-400"
-        >
-          {designation.company}
-        </Text>
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="Phone Number" />,
-    dataIndex: "phoneNumber",
-    key: "phoneNumber",
-    width: 200,
-  },
-  {
-    title: <HeaderCell title="Email" />,
-    dataIndex: "email",
-    key: "email",
-    width: 200,
-  },
-  {
-    title: <HeaderCell title="Status" />,
-    dataIndex: "status",
-    key: "status",
-    width: 120,
-    render: (value: string) => getStatusBadge(value),
-  },
-  {
-    title: <></>,
-    dataIndex: "action",
-    key: "action",
-    width: 120,
-    render: (_: string, row: any) => (
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          className="text-primary underline"
-          onClick={() => alert(`Edit item #${row.id}`)}
-        >
-          Edit
-        </button>
-        <button
-          type="button"
-          className="underline"
-        >
-          View
-        </button>
-      </div>
-    ),
-  },
-];
+// ... same setup as above ...
 
 export default function App() {
-  const [order, setOrder] = React.useState<string>("desc");
-  const [column, setColumn] = React.useState<string>("");
-  const [data, setData] = React.useState<typeof initialData>(initialData);
-  const onHeaderClick = (value: string) => ({
-    onClick: () => {
-      setColumn(value);
-      setOrder(order === "desc" ? "asc" : "desc");
-      if (order === "desc") {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
-      } else {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
-      }
-    },
-  });
-  const columns: any = React.useMemo(
-    () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
-  );
+  // ... same state and columns setup ...
 
   return (
-    <Table
-      data={data}
-      columns={columns}
-      className="text-sm"
-      variant="elegant"
-    />
+    <div className="w-full overflow-x-auto">
+      <Table
+        data={data}
+        columns={columns}
+        variant="elegant"
+        className="text-sm"
+      />
+    </div>
   );
 }
 ```
@@ -1153,294 +356,160 @@ You can change the style of **Table** by changing property [**variant**](#table-
 </Paper>
 
 ```tsx
-import React from "react";
-import Table from "@components/table";
-import HeaderCell from "@components/header-cell";
-import { Checkbox } from "rizzui/checkbox";
-import { Avatar } from "rizzui/avatar";
-import { Text } from "rizzui/typography";
-import { Badge } from "rizzui/badge";
-
-const initialData = [
-  {
-    id: "1",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "2",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/2.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "3",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "4",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/4.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "5",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-  {
-    id: "6",
-    employee: {
-      name: "Jon Brown",
-      userName: "@fredchaparro",
-      avatar: "https://randomuser.me/api/portraits/men/6.jpg",
-    },
-    designation: {
-      role: "Front-End Developer",
-      company: "REDQ",
-    },
-    phoneNumber: "+880136987584",
-    email: "jhondoe@aegonui.com",
-    status: "Active",
-  },
-];
-
-function getStatusBadge(status: string) {
-  switch (status.toLowerCase()) {
-    case "pending":
-      return <Badge variant="flat">{status}</Badge>;
-    case "active":
-      return (
-        <Badge
-          variant="flat"
-          color="success"
-        >
-          {status}
-        </Badge>
-      );
-    case "warning":
-      return (
-        <Badge
-          variant="flat"
-          color="warning"
-        >
-          {status}
-        </Badge>
-      );
-    case "danger":
-      return (
-        <Badge
-          variant="flat"
-          color="danger"
-        >
-          {status}
-        </Badge>
-      );
-    default:
-      return null;
-  }
-}
-
-const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
-  {
-    title: <></>,
-    dataIndex: "checked",
-    key: "checked",
-    width: 50,
-    render: () => (
-      <div className="inline-flex cursor-pointer">
-        <Checkbox variant="flat" />
-      </div>
-    ),
-  },
-  {
-    title: (
-      <HeaderCell
-        title="Id"
-        sortable
-        ascending={order === "asc" && column === "id"}
-      />
-    ),
-    onHeaderCell: () => onHeaderClick("id"),
-    dataIndex: "id",
-    key: "id",
-    width: 50,
-  },
-  {
-    title: <HeaderCell title="Employee" />,
-    dataIndex: "employee",
-    key: "employee",
-    width: 250,
-    render: (employee: any) => (
-      <div className="flex items-center">
-        <Avatar
-          name="John Doe"
-          src={employee.avatar}
-        />
-        <div className="ml-3 rtl:ml-0 rtl:mr-3">
-          <Text
-            as="h6"
-            className="mb-0.5 !text-sm font-medium"
-          >
-            {employee.name}
-          </Text>
-          <Text
-            as="p"
-            className="text-xs text-gray-400"
-          >
-            {employee.userName}
-          </Text>
-        </div>
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="Designation" />,
-    dataIndex: "designation",
-    key: "designation",
-    width: 320,
-    render: (designation: any) => (
-      <div>
-        <Text
-          as="h6"
-          className="mb-0.5 !text-sm font-medium"
-        >
-          {designation.role}
-        </Text>
-        <Text
-          as="p"
-          className="text-xs text-gray-400"
-        >
-          {designation.company}
-        </Text>
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="Phone Number" />,
-    dataIndex: "phoneNumber",
-    key: "phoneNumber",
-    width: 200,
-  },
-  {
-    title: <HeaderCell title="Email" />,
-    dataIndex: "email",
-    key: "email",
-    width: 200,
-  },
-  {
-    title: <HeaderCell title="Status" />,
-    dataIndex: "status",
-    key: "status",
-    width: 120,
-    render: (value: string) => getStatusBadge(value),
-  },
-  {
-    title: <></>,
-    dataIndex: "action",
-    key: "action",
-    width: 120,
-    render: (_: string, row: any) => (
-      <div className="flex items-center gap-2">
-        <button
-          type="button"
-          className="text-primary underline"
-          onClick={() => alert(`Edit item #${row.id}`)}
-        >
-          Edit
-        </button>
-        <button
-          type="button"
-          className="underline"
-        >
-          View
-        </button>
-      </div>
-    ),
-  },
-];
+// ... same setup as above ...
 
 export default function App() {
-  const [order, setOrder] = React.useState<string>("desc");
-  const [column, setColumn] = React.useState<string>("");
-  const [data, setData] = React.useState<typeof initialData>(initialData);
-  const onHeaderClick = (value: string) => ({
-    onClick: () => {
-      setColumn(value);
-      setOrder(order === "desc" ? "asc" : "desc");
-      if (order === "desc") {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
-      } else {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
-      }
-    },
-  });
-  const columns: any = React.useMemo(
-    () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
-  );
+  // ... same state and columns setup ...
 
   return (
-    <Table
-      data={data}
-      columns={columns}
-      className="text-sm"
-      variant="minimal"
-    />
+    <div className="w-full overflow-x-auto">
+      <Table
+        data={data}
+        columns={columns}
+        variant="minimal"
+        className="text-sm"
+      />
+    </div>
   );
 }
 ```
+
+<div className="mb-20" />
+
+## Advanced Usage
+
+### Striped Rows
+
+Add striped styling to alternate rows:
+
+```tsx
+<Table
+  data={data}
+  columns={columns}
+  variant="modern"
+  striped
+  className="text-sm"
+/>
+```
+
+### Custom Empty State
+
+Customize the empty state when there's no data:
+
+```tsx
+import { Empty } from 'rizzui/empty';
+
+<Table
+  data={[]}
+  columns={columns}
+  emptyText={<Empty text="No data available" className="py-12" />}
+/>;
+```
+
+### Row Selection
+
+Enable row selection with select all functionality:
+
+```tsx
+const [selectedRows, setSelectedRows] = React.useState<Set<string>>(new Set());
+
+const handleSelectAll = React.useCallback(
+  (checked: boolean) => {
+    if (checked) {
+      setSelectedRows(new Set(data.map((row) => row.id)));
+    } else {
+      setSelectedRows(new Set());
+    }
+  },
+  [data]
+);
+
+const handleSelectRow = React.useCallback((id: string, checked: boolean) => {
+  setSelectedRows((prev) => {
+    const newSet = new Set(prev);
+    if (checked) {
+      newSet.add(id);
+    } else {
+      newSet.delete(id);
+    }
+    return newSet;
+  });
+}, []);
+
+const getColumns = (
+  order: string,
+  column: string,
+  onHeaderClick: (value: string) => any,
+  selectedRows: Set<string>,
+  onSelectAll: (checked: boolean) => void,
+  onSelectRow: (id: string, checked: boolean) => void,
+  dataLength: number
+) => {
+  const allSelected = selectedRows.size > 0 && selectedRows.size === dataLength;
+  const someSelected = selectedRows.size > 0 && selectedRows.size < dataLength;
+
+  return [
+    {
+      title: (
+        <div className="inline-flex cursor-pointer">
+          <Checkbox
+            variant="flat"
+            checked={allSelected}
+            indeterminate={someSelected}
+            onChange={(e) => onSelectAll(e.target.checked)}
+            aria-label="Select all rows"
+          />
+        </div>
+      ),
+      dataIndex: 'checked',
+      key: 'checked',
+      width: 50,
+      render: (_: any, row: any) => (
+        <div className="inline-flex cursor-pointer">
+          <Checkbox
+            variant="flat"
+            checked={selectedRows.has(row.id)}
+            onChange={(e) => onSelectRow(row.id, e.target.checked)}
+            aria-label={`Select row ${row.id}`}
+          />
+        </div>
+      ),
+    },
+    // ... other columns
+  ];
+};
+```
+
+### Column Sorting
+
+Enable sorting on columns using the `HeaderCell` component:
+
+```tsx
+{
+  title: (
+    <HeaderCell
+      title="Name"
+      sortable
+      ascending={order === "asc" && column === "name"}
+    />
+  ),
+  onHeaderCell: () => onHeaderClick("name"),
+  dataIndex: "name",
+  key: "name",
+}
+```
+
+<div className="mb-20" />
+
+## Best Practices
+
+- **Use memoization** - Memoize columns and data to prevent unnecessary re-renders
+- **Column widths** - Set appropriate column widths for better layout control
+- **Accessibility** - Ensure proper ARIA labels and keyboard navigation
+- **Performance** - Use React.useMemo for columns and data when needed
+- **Type safety** - Use TypeScript for type-safe column definitions
+- **Theme consistency** - Use RizzUI theme variables for consistent styling
+- **Responsive design** - Wrap tables in overflow containers for mobile devices
 
 <div className="mb-20" />
 
@@ -1456,47 +525,47 @@ Here is the API documentation of the Table component.
 
 <div className="overflow-x-auto">
 
-|         Props          |                             Type                              |                        Description                         |   Default   |
-| :--------------------: | :-----------------------------------------------------------: | :--------------------------------------------------------: | :---------: |
-|       emptyText        |                          `ReactNode`                          | Set empty text, it will only appear when table has no data |    \_\_     |
-|        variant         |               [TableVariants](#table-variants)                |             The variants of the component are:             | `"classic"` |
-|        striped         |                           `boolean`                           |                     Add striping style                     |    \_\_     |
-|       className        |                           `string`                            |             Add custom classes for extra style             |    \_\_     |
-|           id           |                           `string`                            |                                                            |    \_\_     |
-|         style          |                        `CSSProperties`                        |                                                            |    \_\_     |
-|         title          |               `PanelRender<DefaultRecordType>`                |                                                            |    \_\_     |
-|        caption         |                          `ReactNode`                          |                                                            |    \_\_     |
-|          data          |                `readonly DefaultRecordType[]`                 |                                                            |    \_\_     |
-|         footer         |               `PanelRender<DefaultRecordType>`                |                                                            |    \_\_     |
-|        summary         |     `((data: readonly DefaultRecordType[]) => ReactNode)`     |                                                            |    \_\_     |
-|       prefixCls        |                           `string`                            |                                                            |    \_\_     |
-|       direction        |                          `ltr` `rtl`                          |                                                            |    \_\_     |
-|    expandedRowKeys     |                            `Key[]`                            |                                                            |    \_\_     |
-| defaultExpandedRowKeys |                            `key[]`                            |                                                            |    \_\_     |
-|   expandedRowRender    |            `ExpandedRowRender<DefaultRecordType>`             |                                                            |    \_\_     |
-|    expandRowByClick    |                           `boolean`                           |                                                            |    \_\_     |
-|       expandIcon       |             `RenderExpandIcon<DefaultRecordType>`             |                                                            |    \_\_     |
-|        onExpand        |  `((expanded: boolean, record: DefaultRecordType) => void)`   |                                                            |    \_\_     |
-|  onExpandedRowsChange  |               `((expandedKeys: Key[]) => void)`               |                                                            |    \_\_     |
-|  defaultExpandAllRows  |                           `boolean`                           |                                                            |    \_\_     |
-|       indentSize       |                           `number`                            |                                                            |    \_\_     |
-| expandIconColumnIndex  |                           `number`                            |                                                            |    \_\_     |
-|  expandedRowClassName  |               `RowClassName<DefaultRecordType>`               |                                                            |    \_\_     |
-|   childrenColumnName   |                           `string`                            |                                                            |    \_\_     |
-|        columns         |               `ColumnsType<DefaultRecordType>`                |                                                            |    \_\_     |
-|         rowKey         |            `string` `GetRowKey<DefaultRecordType>`            |                                                            |    \_\_     |
-|      tableLayout       |                        `fixed` `auto`                         |                                                            |    \_\_     |
-|         scroll         |                 [TableScroll](#table-scroll)                  |                                                            |    \_\_     |
-|       expandable       |             `ExpandableConfig<DefaultRecordType>`             |                     Config expand rows                     |    \_\_     |
-|      rowClassName      |          `string` `RowClassName<DefaultRecordType>`           |                                                            |    \_\_     |
-|       showHeader       |                           `boolean`                           |                                                            |    \_\_     |
-|       components       |             `TableComponents<DefaultRecordType>`              |                                                            |    \_\_     |
-|         onRow          |            `GetComponentProps<DefaultRecordType>`             |                                                            |    \_\_     |
-|      onHeaderRow       | `GetComponentProps<readonly ColumnType<DefaultRecordType>[]>` |                                                            |    \_\_     |
-|     internalHooks      |                           `string`                            |                                                            |    \_\_     |
-|    transformColumns    |       [TableTransformColumns](#table-transform-columns)       |                                                            |    \_\_     |
-|      internalRefs      |         `{ body: MutableRefObject<HTMLDivElement>; }`         |                                                            |    \_\_     |
-|         sticky         |                    `sticky` `tableSticky`                     |                                                            |    \_\_     |
+|         Props          |                             Type                              |                        Description                         |  Default   |
+| :--------------------: | :-----------------------------------------------------------: | :--------------------------------------------------------: | :--------: |
+|       emptyText        |                          `ReactNode`                          | Set empty text, it will only appear when table has no data |    \_\_    |
+|        variant         |               [TableVariants](#table-variants)                |             The variants of the component are:             | `"modern"` |
+|        striped         |                           `boolean`                           |                     Add striping style                     |    \_\_    |
+|       className        |                           `string`                            |             Add custom classes for extra style             |    \_\_    |
+|           id           |                           `string`                            |                                                            |    \_\_    |
+|         style          |                        `CSSProperties`                        |                                                            |    \_\_    |
+|         title          |               `PanelRender<DefaultRecordType>`                |                                                            |    \_\_    |
+|        caption         |                          `ReactNode`                          |                                                            |    \_\_    |
+|          data          |                `readonly DefaultRecordType[]`                 |                                                            |    \_\_    |
+|         footer         |               `PanelRender<DefaultRecordType>`                |                                                            |    \_\_    |
+|        summary         |     `((data: readonly DefaultRecordType[]) => ReactNode)`     |                                                            |    \_\_    |
+|       prefixCls        |                           `string`                            |                                                            |    \_\_    |
+|       direction        |                          `ltr` `rtl`                          |                                                            |    \_\_    |
+|    expandedRowKeys     |                            `Key[]`                            |                                                            |    \_\_    |
+| defaultExpandedRowKeys |                            `key[]`                            |                                                            |    \_\_    |
+|   expandedRowRender    |            `ExpandedRowRender<DefaultRecordType>`             |                                                            |    \_\_    |
+|    expandRowByClick    |                           `boolean`                           |                                                            |    \_\_    |
+|       expandIcon       |             `RenderExpandIcon<DefaultRecordType>`             |                                                            |    \_\_    |
+|        onExpand        |  `((expanded: boolean, record: DefaultRecordType) => void)`   |                                                            |    \_\_    |
+|  onExpandedRowsChange  |               `((expandedKeys: Key[]) => void)`               |                                                            |    \_\_    |
+|  defaultExpandAllRows  |                           `boolean`                           |                                                            |    \_\_    |
+|       indentSize       |                           `number`                            |                                                            |    \_\_    |
+| expandIconColumnIndex  |                           `number`                            |                                                            |    \_\_    |
+|  expandedRowClassName  |               `RowClassName<DefaultRecordType>`               |                                                            |    \_\_    |
+|   childrenColumnName   |                           `string`                            |                                                            |    \_\_    |
+|        columns         |               `ColumnsType<DefaultRecordType>`                |                                                            |    \_\_    |
+|         rowKey         |            `string` `GetRowKey<DefaultRecordType>`            |                                                            |    \_\_    |
+|      tableLayout       |                        `fixed` `auto`                         |                                                            |    \_\_    |
+|         scroll         |                 [TableScroll](#table-scroll)                  |                                                            |    \_\_    |
+|       expandable       |             `ExpandableConfig<DefaultRecordType>`             |                     Config expand rows                     |    \_\_    |
+|      rowClassName      |          `string` `RowClassName<DefaultRecordType>`           |                                                            |    \_\_    |
+|       showHeader       |                           `boolean`                           |                                                            |    \_\_    |
+|       components       |             `TableComponents<DefaultRecordType>`              |                                                            |    \_\_    |
+|         onRow          |            `GetComponentProps<DefaultRecordType>`             |                                                            |    \_\_    |
+|      onHeaderRow       | `GetComponentProps<readonly ColumnType<DefaultRecordType>[]>` |                                                            |    \_\_    |
+|     internalHooks      |                           `string`                            |                                                            |    \_\_    |
+|    transformColumns    |       [TableTransformColumns](#table-transform-columns)       |                                                            |    \_\_    |
+|      internalRefs      |         `{ body: MutableRefObject<HTMLDivElement>; }`         |                                                            |    \_\_    |
+|         sticky         |                    `sticky` `tableSticky`                     |                                                            |    \_\_    |
 
 </div>
 
@@ -1507,7 +576,7 @@ Here is the API documentation of the Table component.
 ### Table Variants
 
 ```ts
-type TableVariants = "classic" | "modern" | "minimal" | "elegant";
+type TableVariants = 'modern' | 'minimal' | 'elegant';
 ```
 
 <div className="mb-10" />
@@ -1515,7 +584,9 @@ type TableVariants = "classic" | "modern" | "minimal" | "elegant";
 ### Table Scroll
 
 ```ts
-type TableScroll = { x?: string | number | true; y?: string | number } | undefined;
+type TableScroll =
+  | { x?: string | number | true; y?: string | number }
+  | undefined;
 ```
 
 <div className="mb-10" />

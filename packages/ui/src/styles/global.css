@@ -198,4 +198,36 @@
   --color-green-dark: var(--green-dark);
 }
 
-@plugin "@tailwindcss/forms";
+@plugin '@tailwindcss/forms';
+
+/* ----------------------------------- */
+/* Autofill Styles */
+/* ----------------------------------- */
+/* Override browser autofill background for all input components */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: inherit;
+}
+
+/* Firefox autofill */
+input:-moz-autofill,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus,
+input:-moz-autofill:active,
+textarea:-moz-autofill,
+textarea:-moz-autofill:hover,
+textarea:-moz-autofill:focus,
+textarea:-moz-autofill:active {
+  background-color: transparent !important;
+  color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+}

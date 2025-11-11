@@ -56,7 +56,7 @@ Navigate to your React/Next.js project and run:
     default
   >
     <CodeBlock language="js">
-      {`npm i rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants`}
+      {`npm i rizzui @headlessui/react @floating-ui/react tailwind-variants`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -68,7 +68,7 @@ Navigate to your React/Next.js project and run:
     }
   >
     <CodeBlock language="js">
-      {`yarn add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants`}
+      {`yarn add rizzui @headlessui/react @floating-ui/react tailwind-variants`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -80,7 +80,7 @@ Navigate to your React/Next.js project and run:
     }
   >
     <CodeBlock language="js">
-      {`pnpm add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants`}
+      {`pnpm add rizzui @headlessui/react @floating-ui/react tailwind-variants`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -92,7 +92,7 @@ Navigate to your React/Next.js project and run:
     }
   >
     <CodeBlock language="js">
-      {`bun add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants`}
+      {`bun add rizzui @headlessui/react @floating-ui/react tailwind-variants`}
     </CodeBlock>
   </TabItem>
 </Tabs>
@@ -102,7 +102,6 @@ Navigate to your React/Next.js project and run:
   **`@headlessui/react`** - Provides accessible, unstyled primitives for complex
   components (dropdowns, modals, tabs) - **`@floating-ui/react`** - Advanced
   positioning system for tooltips, popovers, and dropdowns -
-  **`@tailwindcss/postcss`** - Tailwind CSS v4 PostCSS processing engine -
   **`tailwind-variants`** - Type-safe variant management system for component
   styling
 </div>
@@ -129,7 +128,7 @@ Install these development dependencies for styling:
     default
   >
     <CodeBlock language="js">
-      {`npm i -D tailwindcss @tailwindcss/forms`}
+      {`npm i -D tailwindcss @tailwindcss/forms @tailwindcss/postcss`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -141,7 +140,7 @@ Install these development dependencies for styling:
     }
   >
     <CodeBlock language="js">
-      {`yarn add -D tailwindcss @tailwindcss/forms`}
+      {`yarn add -D tailwindcss @tailwindcss/forms @tailwindcss/postcss`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -153,7 +152,7 @@ Install these development dependencies for styling:
     }
   >
     <CodeBlock language="js">
-      {`pnpm add -D tailwindcss @tailwindcss/forms`}
+      {`pnpm add -D tailwindcss @tailwindcss/forms @tailwindcss/postcss`}
     </CodeBlock>
   </TabItem>
   <TabItem
@@ -165,7 +164,7 @@ Install these development dependencies for styling:
     }
   >
     <CodeBlock language="js">
-      {`bun add -D tailwindcss @tailwindcss/forms`}
+      {`bun add -D tailwindcss @tailwindcss/forms @tailwindcss/postcss`}
     </CodeBlock>
   </TabItem>
 </Tabs>
@@ -173,7 +172,8 @@ Install these development dependencies for styling:
 <div className="!mt-6 !mb-8 p-4 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
   **Development Dependencies** - **`tailwindcss`** - The core Tailwind CSS v4
   framework - **`@tailwindcss/forms`** - Enhanced form styling with consistent,
-  accessible input designs
+  accessible input designs - **`@tailwindcss/postcss`** - Tailwind CSS v4
+  PostCSS processing engine
 </div>
 
 ## Configuration
@@ -289,6 +289,38 @@ Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
   --color-green-lighter: var(--green-lighter);
   --color-green: var(--green);
   --color-green-dark: var(--green-dark);
+}
+
+/* ----------------------------------- */
+/* Autofill Styles */
+/* ----------------------------------- */
+/* Override browser autofill background for all input components */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: inherit;
+}
+
+/* Firefox autofill */
+input:-moz-autofill,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus,
+input:-moz-autofill:active,
+textarea:-moz-autofill,
+textarea:-moz-autofill:hover,
+textarea:-moz-autofill:focus,
+textarea:-moz-autofill:active {
+  background-color: transparent !important;
+  color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 ```
 

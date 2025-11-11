@@ -70,7 +70,7 @@ const components = [
     id: 8,
     component: <IntegrationBlock />,
     name: 'Integrations',
-    count: 7,
+    count: 8,
     path: '/docs/Integrations/rate',
   },
 ];

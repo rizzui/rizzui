@@ -1,7 +1,8 @@
 ---
 title: RizzUI 2.0.0
-description: Major release with Tailwind CSS v4, CSS-first configuration, and modern React patterns.
+description: Major release with Tailwind CSS v4, CSS-first configuration, modern React patterns, and new UploadZone component.
 authors: [idris, nahid]
+date: 2025-11-11
 ---
 
 We're excited to announce **RizzUI 2.0.0**, a major release that brings significant improvements to the developer experience, performance, and modern web standards. This release represents a major step forward in making RizzUI more powerful, easier to use, and aligned with the latest web technologies.
@@ -21,6 +22,7 @@ We're excited to announce **RizzUI 2.0.0**, a major release that brings signific
 - [Enhanced Performance](#enhanced-performance)
 - [Improved Dark Mode](#improved-dark-mode)
 - [Updated Peer Dependencies](#updated-peer-dependencies)
+- [New UploadZone Component](#new-uploadzone-component)
 
 {/* truncate */}
 
@@ -289,6 +291,73 @@ If you're upgrading from RizzUI 1.x, here are the key steps:
 5. **Review component usage** - some components may have minor API changes
 
 For detailed migration instructions, please refer to our [documentation](/docs/guide/getting-started).
+
+<br />
+
+### New UploadZone Component
+
+RizzUI 2.0.0 introduces **UploadZone**, a powerful drag-and-drop file upload component built entirely with native HTML5 APIs. This component provides a modern, accessible, and performant solution for file uploads without any third-party dependencies.
+
+**Key Features:**
+
+- **Native Drag & Drop**: Built using HTML5 Drag and Drop API for seamless file uploads
+- **Built-in Preview**: Automatic image preview with closeable thumbnails
+- **React Hook Form Integration**: Seamless integration with React Hook Form via controlled component pattern
+- **Accessibility First**: Full ARIA support with keyboard navigation and screen reader announcements
+- **Zero Dependencies**: No third-party libraries required - pure React and native APIs
+- **Tree-Shakeable**: Import only what you need: `import { UploadZone } from 'rizzui/upload-zone'`
+- **Performance Optimized**: Efficient memory management with automatic URL cleanup
+- **Type Safe**: Full TypeScript support with comprehensive prop types
+
+**Example Usage:**
+
+```jsx
+import { UploadZone } from 'rizzui/upload-zone';
+
+function MyForm() {
+  const [files, setFiles] = (useState < FileList) | (null > null);
+
+  return (
+    <UploadZone
+      label="Upload Files"
+      multiple
+      accept="image/*"
+      onChange={(files) => setFiles(files)}
+      helperText="Drag and drop images or click to browse"
+    />
+  );
+}
+```
+
+**React Hook Form Integration:**
+
+```jsx
+import { UploadZone } from 'rizzui/upload-zone';
+import { useForm, Controller } from 'react-hook-form';
+
+function FormWithUpload() {
+  const { control } = useForm();
+
+  return (
+    <Controller
+      name="resume"
+      control={control}
+      render={({ field: { value, onChange }, fieldState: { error } }) => (
+        <UploadZone
+          label="Upload Resume"
+          accept=".pdf,.doc,.docx"
+          value={value}
+          onChange={onChange}
+          error={error?.message}
+          helperText="Upload your resume in PDF, DOC, or DOCX format"
+        />
+      )}
+    />
+  );
+}
+```
+
+UploadZone follows all RizzUI design patterns and integrates seamlessly with the existing component ecosystem. It's optimized for bundle size, performance, and accessibility, making it the perfect choice for modern file upload needs.
 
 <br />
 

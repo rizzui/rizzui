@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 ---
 
 import Paper from '@site/src/components/paper';
@@ -33,7 +33,7 @@ import { Checkbox } from 'rizzui/checkbox';
 import { Radio } from 'rizzui/radio';
 import { Switch } from 'rizzui/switch';
 import { PinCode } from 'rizzui/pin-code';
-import { FileInput } from 'rizzui/upload';
+import { UploadZone } from 'rizzui/upload-zone';
 import { AdvancedRadio } from 'rizzui/advanced-radio';
 import { CheckboxGroup } from 'rizzui/checkbox-group';
 import { RadioGroup } from 'rizzui/radio-group';
@@ -552,14 +552,15 @@ export default function RizzUIForm() {
             control={control}
             name="resume"
             render={({ field: { onChange, value }, fieldState: { error } }) => (
-              <FileInput
+              <UploadZone
                 label="Upload Resume"
                 accept=".pdf,.doc,.docx"
-                onChange={(e) => onChange(e.target.files)}
+                value={value}
+                onChange={onChange}
                 error={error?.message}
+                helperText="Upload your resume in PDF, DOC, or DOCX format"
               />
             )}
-          />
         </div>
       </div>
 

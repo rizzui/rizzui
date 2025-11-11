@@ -15,8 +15,7 @@ import { MultiSelect, type MultiSelectOption } from 'rizzui/multi-select';
 import { Checkbox } from 'rizzui/checkbox';
 import { Radio } from 'rizzui/radio';
 import { Switch } from 'rizzui/switch';
-import { PinCode } from 'rizzui/pin-code';
-import { FileInput } from 'rizzui/upload';
+import { UploadZone } from 'rizzui/upload-zone';
 import { AdvancedRadio } from 'rizzui/advanced-radio';
 import { CheckboxGroup } from 'rizzui/checkbox-group';
 import { RadioGroup } from 'rizzui/radio-group';
@@ -49,7 +48,6 @@ const schema = z
     confirmPassword: z
       .string()
       .min(8, { message: 'Please confirm your password' }),
-    pinCode: z.string().length(6, { message: 'PIN code must be 6 digits' }),
 
     // Location
     country: z.string().min(1, { message: 'Country is required' }),
@@ -206,11 +204,11 @@ export default function RizzUIForm() {
     <div className="w-full max-w-5xl mx-auto mb-10">
       <Toaster />
 
-      <form noValidate onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+      <form noValidate onSubmit={handleSubmit(onSubmit)} className="space-y-14">
         {/* Basic Information Section */}
         <div className="space-y-6">
           <div className="mb-4">
-            <Title as="h3" className="text-xl font-semibold">
+            <Title as="h3" className="text-lg font-medium">
               Basic Information
             </Title>
           </div>
@@ -259,7 +257,7 @@ export default function RizzUIForm() {
         {/* Password & Security Section */}
         <div className="space-y-6">
           <div className="mb-4">
-            <Title as="h3" className="text-xl font-semibold">
+            <Title as="h3" className="text-lg font-medium">
               Password & Security
             </Title>
           </div>
@@ -278,29 +276,13 @@ export default function RizzUIForm() {
               {...register('confirmPassword')}
               error={errors.confirmPassword?.message}
             />
-
-            <div className="md:col-span-2">
-              <Controller
-                control={control}
-                name="pinCode"
-                render={({ field: { onChange }, fieldState: { error } }) => (
-                  <div>
-                    <PinCode
-                      length={6}
-                      setValue={(val) => onChange(val)}
-                      error={error?.message}
-                    />
-                  </div>
-                )}
-              />
-            </div>
           </div>
         </div>
 
         {/* Location Section */}
         <div className="space-y-6">
           <div className="mb-4">
-            <Title as="h3" className="text-xl font-semibold">
+            <Title as="h3" className="text-lg font-medium">
               Location
             </Title>
           </div>
@@ -352,7 +334,7 @@ export default function RizzUIForm() {
         {/* Professional Information Section */}
         <div className="space-y-6">
           <div className="mb-4">
-            <Title as="h3" className="text-xl font-semibold">
+            <Title as="h3" className="text-lg font-medium">
               Professional Information
             </Title>
           </div>
@@ -375,11 +357,12 @@ export default function RizzUIForm() {
                     experienceOptions?.find((r) => r.value === selected)
                       ?.label ?? ''
                   }
+                  className="md:col-span-2"
                 />
               )}
             />
 
-            <div>
+            <div className="md:col-span-2">
               <Text className="mb-2 font-medium">Job Type</Text>
               <div className="grid grid-cols-2 gap-4">
                 <AdvancedRadio
@@ -525,7 +508,7 @@ export default function RizzUIForm() {
         {/* Preferences Section */}
         <div className="space-y-6">
           <div className="mb-4">
-            <Title as="h3" className="text-xl font-semibold">
+            <Title as="h3" className="text-lg font-medium">
               Preferences
             </Title>
           </div>
@@ -546,7 +529,7 @@ export default function RizzUIForm() {
         {/* Additional Information Section */}
         <div className="space-y-6">
           <div className="mb-4">
-            <Title as="h3" className="text-xl font-semibold">
+            <Title as="h3" className="text-lg font-medium">
               Additional Information
             </Title>
           </div>
@@ -567,11 +550,13 @@ export default function RizzUIForm() {
                 field: { onChange, value },
                 fieldState: { error },
               }) => (
-                <FileInput
+                <UploadZone
                   label="Upload Resume"
                   accept=".pdf,.doc,.docx"
-                  onChange={(e) => onChange(e.target.files)}
+                  value={value}
+                  onChange={onChange}
                   error={error?.message}
+                  helperText="Upload your resume in PDF, DOC, or DOCX format"
                 />
               )}
             />

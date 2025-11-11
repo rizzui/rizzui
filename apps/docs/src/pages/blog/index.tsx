@@ -9,10 +9,10 @@ import { Button } from 'rizzui/button';
 const blogPosts = [
   {
     title: 'RizzUI 2.0.0',
-    date: 'January 15, 2025',
-    readingTime: '6 min read',
+    date: 'November 11, 2025',
+    readingTime: '7 min read',
     description:
-      "We're excited to announce RizzUI 2.0.0, a major release that brings significant improvements to the developer experience, performance, and modern web standards. This release represents a major step forward in making RizzUI more powerful, easier to use, and aligned with the latest web technologies.",
+      "We're excited to announce RizzUI 2.0.0, a major release that brings significant improvements to the developer experience, performance, and modern web standards. This release includes the new UploadZone component, Tailwind CSS v4 migration, and represents a major step forward in making RizzUI more powerful, easier to use, and aligned with the latest web technologies.",
     features: [
       'Tailwind CSS v4 Migration',
       'CSS-First Configuration',
@@ -23,8 +23,9 @@ const blogPosts = [
       'Enhanced Performance',
       'Improved Dark Mode',
       'Updated Peer Dependencies',
+      'New UploadZone Component',
     ],
-    link: '/blog/2025/1/15/2025/',
+    link: '/blog/2025/11/11/2025/',
   },
   {
     title: 'RizzUI 1.0.0',

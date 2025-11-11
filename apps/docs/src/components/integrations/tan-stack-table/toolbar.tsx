@@ -40,7 +40,6 @@ export default function TableToolbar<TData extends Record<string, any>>({
         value={table.getState().globalFilter ?? ''}
         onClear={() => table.setGlobalFilter('')}
         onChange={(e) => table.setGlobalFilter(e.target.value)}
-        inputClassName="h-9"
         clearable={true}
         prefix={<MagnifyingGlassIcon className="size-4" />}
       />

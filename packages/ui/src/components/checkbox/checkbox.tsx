@@ -159,7 +159,7 @@ export function Checkbox({
           {indeterminate && (
             <span
               className={cn(
-                'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden rounded-[--border-radius] bg-black peer-checked:hidden'
+                'absolute inset-0 flex h-full w-full items-center justify-center overflow-hidden rounded-[var(--border-radius)] bg-black peer-checked:hidden'
               )}
             >
               <span className={indeterminateIcon({ size })} />
