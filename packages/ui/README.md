@@ -20,9 +20,6 @@
   <a href="https://www.rizzui.com/docs/guide/getting-started">
     <img alt="Read the documentation" src="https://img.shields.io/badge/Docs-blue?style=flat&logo=readthedocs&labelColor=5c5c5c&color=16a679" height="20" width="auto" />
   </a>
-  <a href="https://github.com/rizzui/rizzui">
-    <img alt="GitHub stars" src="https://img.shields.io/github/stars/rizzui/rizzui?style=flat&color=16a679" />
-  </a>
 </div>
 
 <br />
@@ -34,19 +31,7 @@
 </div>
 
 <br />
-
-<div align="center">
-  <h3>✨ Build beautiful React apps faster with Tailwind CSS v4</h3>
-  <p>A modern, minimal UI component library that gets out of your way</p>
-</div>
-
 <br />
-
-<div align="center">
-
-<img alt="Readme Banner" style='border-radius: 4px;' src="https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/develop/apps/docs/static/img/banner.png" width="auto" />
-
-</div>
 
 ## Why RizzUI?
 
@@ -61,7 +46,11 @@ RizzUI is designed for developers who want **beautiful, accessible components** 
 - 📦 **Zero Config** - Works with Tailwind CSS v4's CSS-first approach
 - 🚀 **React 19 Ready** - Built for the latest React features
 
+<br />
+
 ## Quick Start
+
+---
 
 ### Requirements
 
@@ -189,10 +178,10 @@ Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  
+
   --border-radius: var(--border-radius);
   --color-border: var(--border-color);
-  
+
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
 
@@ -221,6 +210,38 @@ Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
   --color-green-lighter: var(--green-lighter);
   --color-green: var(--green);
   --color-green-dark: var(--green-dark);
+}
+
+/* ----------------------------------- */
+/* Autofill Styles */
+/* ----------------------------------- */
+/* Override browser autofill background for all input components */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: inherit;
+}
+
+/* Firefox autofill */
+input:-moz-autofill,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus,
+input:-moz-autofill:active,
+textarea:-moz-autofill,
+textarea:-moz-autofill:hover,
+textarea:-moz-autofill:focus,
+textarea:-moz-autofill:active {
+  background-color: transparent !important;
+  color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 ```
 
@@ -262,9 +283,9 @@ export default function App() {
 
 <br />
 
-![RizzUI Button View](https://raw.githubusercontent.com/rizzui/rizzui/refs/heads/bugfix/apps/docs/static/img/example.png)
-
 ## Theme Support
+
+---
 
 ### Theme Provider Setup
 
@@ -323,6 +344,8 @@ export function ThemeSwitcher() {
 }
 ```
 
+<br />
+
 ## Documentation
 
 📚 **Full documentation available at [rizzui.com](https://www.rizzui.com/docs/guide/getting-started)**
@@ -341,8 +364,13 @@ We love contributions! Whether it's fixing bugs, adding features, or improving d
 
 Licensed under the [MIT License](https://choosealicense.com/licenses/mit/) - feel free to use RizzUI in your projects! 🎉
 
+<br />
+<br />
+
 ---
 
+<br />
 <div align="center">
-  Made with ❤️ by the REDQ team
+  Made with ❤️ by the REDQ
 </div>
+<br />
