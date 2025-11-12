@@ -263,14 +263,11 @@ That's it! You're ready to use RizzUI components. Import them individually for o
 ```jsx
 import { Button } from 'rizzui/button';
 import { Input } from 'rizzui/input';
-import { Card } from 'rizzui/card';
 
 export default function App() {
   return (
     <div>
-      <Button variant="solid" color="primary">
-        Click me
-      </Button>
+      <Button>Click me</Button>
       <Input placeholder="Enter your name" />
     </div>
   );
@@ -325,8 +322,8 @@ export function ThemeSwitcher() {
     <Dropdown>
       <Dropdown.Trigger>
         <ActionIcon variant="outline">
-          <SunIcon className="h-5 w-5 dark:hidden" />
-          <MoonIcon className="absolute hidden h-5 w-5 dark:block" />
+          <SunIcon className="size-5 dark:hidden" />
+          <MoonIcon className="absolute hidden size-5 dark:block" />
           <span className="sr-only">Toggle theme</span>
         </ActionIcon>
       </Dropdown.Trigger>

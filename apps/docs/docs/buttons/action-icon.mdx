@@ -30,7 +30,7 @@ The default style of **ActionIcon** component.
 
 <Paper>
   <ActionIcon>
-    <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    <AdjustmentsHorizontalIcon className="size-5" />
   </ActionIcon>
 </Paper>
 
@@ -40,7 +40,7 @@ import { ActionIcon } from 'rizzui/action-icon';
 export default function App() {
   return (
     <ActionIcon>
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
   );
 }
@@ -54,20 +54,20 @@ You can change the style of the **ActionIcon** using [**variant**](#actionicon-v
 
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
-    <ActionIcon variant="solid">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    <ActionIcon>
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
     <ActionIcon variant="outline">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
     <ActionIcon variant="flat">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
     <ActionIcon variant="text">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
     <ActionIcon variant="danger">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
   </div>
 </Paper>
@@ -79,17 +79,20 @@ import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 export default function App() {
   return (
     <>
-      <ActionIcon variant="text">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <ActionIcon>
+        <AdjustmentsHorizontalIcon className="size-5" />
       </ActionIcon>
       <ActionIcon variant="outline">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        <AdjustmentsHorizontalIcon className="size-5" />
       </ActionIcon>
       <ActionIcon variant="flat">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        <AdjustmentsHorizontalIcon className="size-5" />
       </ActionIcon>
-      <ActionIcon variant="solid">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <ActionIcon variant="text">
+        <AdjustmentsHorizontalIcon className="size-5" />
+      </ActionIcon>
+      <ActionIcon variant="danger">
+        <AdjustmentsHorizontalIcon className="size-5" />
       </ActionIcon>
     </>
   );
@@ -108,7 +111,7 @@ You can change the size of the **ActionIcon** using [**size**](#actionicon-sizes
       <AdjustmentsHorizontalIcon className="w-4 h-4" />
     </ActionIcon>
     <ActionIcon>
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
     <ActionIcon size="lg">
       <AdjustmentsHorizontalIcon className="w-6 h-6" />
@@ -127,7 +130,7 @@ export default function App() {
         <AdjustmentsHorizontalIcon className="w-4 h-4" />
       </ActionIcon>
       <ActionIcon>
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        <AdjustmentsHorizontalIcon className="size-5" />
       </ActionIcon>
       <ActionIcon size="lg">
         <AdjustmentsHorizontalIcon className="w-6 h-6" />
@@ -146,16 +149,16 @@ You can set the loading state of the **ActionIcon** button using **isLoading** p
 <Paper>
   <div className="flex items-center justify-around gap-4 w-full flex-wrap">
     <ActionIcon isLoading={true}>
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
     <ActionIcon isLoading={true} variant="outline">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
     <ActionIcon isLoading={true} variant="flat">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
     <ActionIcon isLoading={true} variant="danger">
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
   </div>
 </Paper>
@@ -168,16 +171,16 @@ export default function App() {
   return (
     <>
       <ActionIcon isLoading={true} variant="solid">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        <AdjustmentsHorizontalIcon className="size-5" />
       </ActionIcon>
       <ActionIcon isLoading={true} variant="outline">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        <AdjustmentsHorizontalIcon className="size-5" />
       </ActionIcon>
       <ActionIcon isLoading={true} variant="flat">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        <AdjustmentsHorizontalIcon className="size-5" />
       </ActionIcon>
       <ActionIcon isLoading={true} variant="danger">
-        <AdjustmentsHorizontalIcon className="w-5 h-5" />
+        <AdjustmentsHorizontalIcon className="size-5" />
       </ActionIcon>
     </>
   );
@@ -192,7 +195,7 @@ The disabled style of the **ActionIcon** component.
 
 <Paper>
   <ActionIcon disabled={true}>
-    <AdjustmentsHorizontalIcon className="w-5 h-5" />
+    <AdjustmentsHorizontalIcon className="size-5" />
   </ActionIcon>
 </Paper>
 
@@ -203,7 +206,7 @@ import { AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 export default function App() {
   return (
     <ActionIcon disabled={true}>
-      <AdjustmentsHorizontalIcon className="w-5 h-5" />
+      <AdjustmentsHorizontalIcon className="size-5" />
     </ActionIcon>
   );
 }
