@@ -62,16 +62,16 @@ Install RizzUI and its peer dependencies:
 
 ```bash
 # Using pnpm (recommended)
-pnpm add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants
+pnpm add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants tailwind-merge
 
 # Using npm
-npm install rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants
+npm install rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants tailwind-merge
 
 # Using yarn
-yarn add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants
+yarn add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants tailwind-merge
 
 # Using bun
-bun add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants
+bun add rizzui @headlessui/react @floating-ui/react @tailwindcss/postcss tailwind-variants tailwind-merge
 ```
 
 ### Configure Tailwind CSS v4
