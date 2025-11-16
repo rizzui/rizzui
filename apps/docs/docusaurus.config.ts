@@ -54,7 +54,7 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
-          postsPerPage: 5,
+          postsPerPage: 12,
           blogTitle: 'RizzUI Blogs',
           blogDescription: 'Read blog posts about RizzUI updates from team.',
           blogSidebarCount: 'ALL',

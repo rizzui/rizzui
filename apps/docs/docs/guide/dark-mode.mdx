@@ -187,7 +187,7 @@ export function ThemeSwitcher() {
   </span>
 </div>
 
-### Configure globals.css {#configure-globalscss}
+### Configure globals.css
 
 RizzUI 2.0 uses <strong>Tailwind CSS v4</strong> with the modern OKLCH color space for better color perception. Create or update your <code>app/globals.css</code>:
 
@@ -207,93 +207,93 @@ RizzUI 2.0 uses <strong>Tailwind CSS v4</strong> with the modern OKLCH color spa
 /* Light theme colors */
 :root {
   /* Base Colors */
-  --background: oklch(100% 0 0); /* #ffffff */
-  --foreground: oklch(40.17% 0 0); /* #484848 */
-  --muted: oklch(91.58% 0 0); /* #e3e3e3 */
-  --muted-foreground: oklch(66% 0 0); /* #929292 */
+  --background: oklch(100% 0 0);
+  --foreground: oklch(40.17% 0 0);
+  --muted: oklch(91.58% 0 0);
+  --muted-foreground: oklch(66% 0 0);
 
   /* Border Tokens */
-  --border-radius: 0.5rem; /* 8px */
-  --border-width: 0.0625rem; /* 1px */
-  --border-color: oklch(90.37% 0 0); /* #dfdfdf */
+  --border-radius: 0.5rem;
+  --border-width: 0.0625rem;
+  --border-color: oklch(90.37% 0 0);
 
   /* Text Tokens */
-  --text-primary: oklch(0% 0 0); /* #000000 */
-  --text-secondary: oklch(40.17% 0 0); /* #484848 */
+  --text-primary: oklch(0% 0 0);
+  --text-secondary: oklch(40.17% 0 0);
 
   /* Primary Brand Colors */
-  --primary-lighter: oklch(91.58% 0 0); /* #e3e3e3 */
-  --primary: oklch(17.76% 0 0); /* #111111 */
-  --primary-dark: oklch(0% 0 0); /* #000000 */
-  --primary-foreground: oklch(100% 0 0); /* #ffffff */
+  --primary-lighter: oklch(91.58% 0 0);
+  --primary: oklch(17.76% 0 0);
+  --primary-dark: oklch(0% 0 0);
+  --primary-foreground: oklch(100% 0 0);
 
   /* Secondary Colors */
-  --secondary-lighter: oklch(91.99% 0.0386 276.02); /* #dde3ff */
-  --secondary: oklch(50.51% 0.2633 276.95); /* #4e36f5 */
-  --secondary-dark: oklch(45.41% 0.2431 277.06); /* #432ad8 */
-  --secondary-foreground: oklch(100% 0 0); /* #ffffff */
+  --secondary-lighter: oklch(91.99% 0.0386 276.02);
+  --secondary: oklch(50.51% 0.2633 276.95);
+  --secondary-dark: oklch(45.41% 0.2431 277.06);
+  --secondary-foreground: oklch(100% 0 0);
 
   /* Danger/Error Colors */
-  --red-lighter: oklch(89.99% 0.0393 14); /* #f7d4d6 */
-  --red: oklch(59.6% 0.2445 29.23); /* #ee0000 */
-  --red-dark: oklch(51.71% 0.2121 29.2338); /* #c50000 */
+  --red-lighter: oklch(89.99% 0.0393 14);
+  --red: oklch(59.6% 0.2445 29.23);
+  --red-dark: oklch(51.71% 0.2121 29.2338);
 
   /* Warning Colors */
-  --orange-lighter: oklch(95.67% 0.0452 84.5695); /* #ffefcf */
-  --orange: oklch(78.37% 0.1587 72.99); /* #f5a623 */
-  --orange-dark: oklch(54.83% 0.1339 53.95); /* #ab570a */
+  --orange-lighter: oklch(95.67% 0.0452 84.5695);
+  --orange: oklch(78.37% 0.1587 72.99);
+  --orange-dark: oklch(54.83% 0.1339 53.95);
 
   /* Info Colors */
-  --blue-lighter: oklch(91.66% 0.0404 257.5078); /* #d3e5ff */
-  --blue: oklch(57.31% 0.2144 258.25); /* #0070f3 */
-  --blue-dark: oklch(51.58% 0.1888 258.27); /* #0761d1 */
+  --blue-lighter: oklch(91.66% 0.0404 257.5078);
+  --blue: oklch(57.31% 0.2144 258.25);
+  --blue-dark: oklch(51.58% 0.1888 258.27);
 
   /* Success Colors */
-  --green-lighter: oklch(92.79% 0.086 155.61); /* #b9f9cf */
-  --green: oklch(64.01% 0.1776 148.74); /* #11a849 */
-  --green-dark: oklch(53.79% 0.1441 149.52); /* #11843c */
+  --green-lighter: oklch(92.79% 0.086 155.61);
+  --green: oklch(64.01% 0.1776 148.74);
+  --green-dark: oklch(53.79% 0.1441 149.52);
 }
 
 /* Dark theme colors */
 [data-theme='dark'] {
   /* Base Colors */
-  --background: oklch(14.11% 0.0112 275.23); /* #08090e */
-  --foreground: oklch(90.37% 0 0); /* #dfdfdf */
-  --muted: oklch(32.11% 0 0); /* #333333 */
-  --muted-foreground: oklch(51.03% 0 0); /* #666666 */
+  --background: oklch(14.11% 0.0112 275.23);
+  --foreground: oklch(90.37% 0 0);
+  --muted: oklch(32.11% 0 0);
+  --muted-foreground: oklch(51.03% 0 0);
 
   /* Border Tokens */
-  --border-color: oklch(91.58% 0 0); /* #e3e3e3 */
+  --border-color: oklch(91.58% 0 0);
 
   /* Text Tokens */
-  --text-primary: oklch(100% 0 0); /* #ffffff */
-  --text-secondary: oklch(51.03% 0 0); /* #666666 */
+  --text-primary: oklch(100% 0 0);
+  --text-secondary: oklch(51.03% 0 0);
 
   /* Primary Brand Colors */
-  --primary-lighter: oklch(25.2% 0 0); /* #222222 */
-  --primary: oklch(95.81% 0 0); /* #f1f1f1 */
-  --primary-dark: oklch(100% 0 0); /* #ffffff */
-  --primary-foreground: oklch(0% 0 0); /* #000000 */
+  --primary-lighter: oklch(25.2% 0 0);
+  --primary: oklch(95.81% 0 0);
+  --primary-dark: oklch(100% 0 0);
+  --primary-foreground: oklch(0% 0 0);
 
   /* Secondary Colors */
-  --secondary-lighter: oklch(26.35% 0.1154 280.96); /* #1f165a */
-  --secondary-dark: oklch(85.2% 0.0733 276.238); /* #c1cbff */
+  --secondary-lighter: oklch(26.35% 0.1154 280.96);
+  --secondary-dark: oklch(85.2% 0.0733 276.238);
 
   /* Danger/Error Colors */
-  --red-lighter: oklch(27.08% 0.1111 29.23); /* #500000 */
-  --red-dark: oklch(86.69% 0.0714 18.6304); /* #ffc1c1 */
+  --red-lighter: oklch(27.08% 0.1111 29.23);
+  --red-dark: oklch(86.69% 0.0714 18.6304);
 
   /* Warning Colors */
-  --orange-lighter: oklch(28.29% 0.0698 49.34); /* #441d04 */
-  --orange-dark: oklch(93.15% 0.1175 98.83); /* #fcea8b */
+  --orange-lighter: oklch(28.29% 0.0698 49.34);
+  --orange-dark: oklch(93.15% 0.1175 98.83);
 
   /* Info Colors */
-  --blue-lighter: oklch(32.05% 0.0873 254.4); /* #0d335e */
-  --blue-dark: oklch(90.53% 0.0611 225.72); /* #b5e9ff */
+  --blue-lighter: oklch(32.05% 0.0873 254.4);
+  --blue-dark: oklch(90.53% 0.0611 225.72);
 
   /* Success Colors */
-  --green-lighter: oklch(27.23% 0.0672 152.71); /* #033016 */
-  --green-dark: oklch(92.79% 0.086 155.61); /* #b9f9cf */
+  --green-lighter: oklch(27.23% 0.0672 152.71);
+  --green-dark: oklch(92.79% 0.086 155.61);
 }
 
 /* Map CSS variables to Tailwind's color system */
@@ -334,6 +334,35 @@ RizzUI 2.0 uses <strong>Tailwind CSS v4</strong> with the modern OKLCH color spa
   --color-green-lighter: var(--green-lighter);
   --color-green: var(--green);
   --color-green-dark: var(--green-dark);
+}
+
+/* Override browser autofill background for all input components */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: inherit;
+}
+
+/* Firefox autofill */
+input:-moz-autofill,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus,
+input:-moz-autofill:active,
+textarea:-moz-autofill,
+textarea:-moz-autofill:hover,
+textarea:-moz-autofill:focus,
+textarea:-moz-autofill:active {
+  background-color: transparent !important;
+  color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
 ```
 
