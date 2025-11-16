@@ -33,7 +33,7 @@ export default function DocItemContent({ children }: Props): ReactNode {
     <div
       className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown relative')}
     >
-      <div className="absolute top-0.5 right-0">
+      <div className="my-3 sm:my-0 sm:absolute sm:top-0 sm:right-0">
         <PageActionsDropdown />
       </div>
       {syntheticTitle && (

@@ -178,7 +178,7 @@ function PageActionsDropdownContent() {
       const url = getCurrentUrl();
       // Claude AI URL
       window.open(
-        `https://claude.ai/chat?q=${encodeURIComponent(`I'm reviewing the RizzUI documentation: ${url}. Please help me understand how to use it, including explanations, examples, and debugging support if needed.`)}`,
+        `https://claude.ai/new?q=${encodeURIComponent(`I'm reviewing the RizzUI documentation: ${url}. Please help me understand how to use it, including explanations, examples, and debugging support if needed.`)}`,
         '_blank'
       );
     }
