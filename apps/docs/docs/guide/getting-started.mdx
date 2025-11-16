@@ -203,52 +203,52 @@ Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
 
 /* Define color palette using OKLCH color space */
 :root {
-  /* Base Colors - backgrounds, text, and borders */
-  --background: oklch(100% 0 0); /* #ffffff */
-  --foreground: oklch(40.17% 0 0); /* #484848 */
-  --muted: oklch(91.58% 0 0); /* #e3e3e3 */
-  --muted-foreground: oklch(66% 0 0); /* #929292 */
+  /* Base Colors */
+  --background: oklch(100% 0 0);
+  --foreground: oklch(40.17% 0 0);
+  --muted: oklch(91.58% 0 0);
+  --muted-foreground: oklch(66% 0 0);
 
   /* Border Tokens */
-  --border-radius: 0.5rem; /* 8px */
-  --border-width: 0.0625rem; /* 1px */
-  --border-color: oklch(90.37% 0 0); /* #dfdfdf */
+  --border-radius: 0.5rem;
+  --border-width: 0.0625rem;
+  --border-color: oklch(90.37% 0 0);
 
   /* Text Tokens */
-  --text-primary: oklch(0% 0 0); /* #000000 */
-  --text-secondary: oklch(40.17% 0 0); /* #484848 */
+  --text-primary: oklch(0% 0 0);
+  --text-secondary: oklch(40.17% 0 0);
 
-  /* Primary Brand Colors - buttons, links, and focus states */
-  --primary-lighter: oklch(91.58% 0 0); /* #e3e3e3 */
-  --primary: oklch(17.76% 0 0); /* #111111 */
-  --primary-dark: oklch(0% 0 0); /* #000000 */
-  --primary-foreground: oklch(100% 0 0); /* #ffffff */
+  /* Primary Brand Colors */
+  --primary-lighter: oklch(91.58% 0 0);
+  --primary: oklch(17.76% 0 0);
+  --primary-dark: oklch(0% 0 0);
+  --primary-foreground: oklch(100% 0 0);
 
-  /* Secondary Colors - accents and highlights */
-  --secondary-lighter: oklch(91.99% 0.0386 276.02); /* #dde3ff */
-  --secondary: oklch(50.51% 0.2633 276.95); /* #4e36f5 */
-  --secondary-dark: oklch(45.41% 0.2431 277.06); /* #432ad8 */
-  --secondary-foreground: oklch(100% 0 0); /* #ffffff */
+  /* Secondary Colors */
+  --secondary-lighter: oklch(91.99% 0.0386 276.02);
+  --secondary: oklch(50.51% 0.2633 276.95);
+  --secondary-dark: oklch(45.41% 0.2431 277.06);
+  --secondary-foreground: oklch(100% 0 0);
 
-  /* Danger/Error - error messages and destructive actions */
-  --red-lighter: oklch(89.99% 0.0393 14); /* #f7d4d6 */
-  --red: oklch(59.6% 0.2445 29.23); /* #ee0000 */
-  --red-dark: oklch(51.71% 0.2121 29.2338); /* #c50000 */
+  /* Danger/Error Colors */
+  --red-lighter: oklch(89.99% 0.0393 14);
+  --red: oklch(59.6% 0.2445 29.23);
+  --red-dark: oklch(51.71% 0.2121 29.2338);
 
-  /* Warning - warning messages and caution states */
-  --orange-lighter: oklch(95.67% 0.0452 84.5695); /* #ffefcf */
-  --orange: oklch(78.37% 0.1587 72.99); /* #f5a623 */
-  --orange-dark: oklch(54.83% 0.1339 53.95); /* #ab570a */
+  /* Warning Colors */
+  --orange-lighter: oklch(95.67% 0.0452 84.5695);
+  --orange: oklch(78.37% 0.1587 72.99);
+  --orange-dark: oklch(54.83% 0.1339 53.95);
 
-  /* Info - informational messages and highlights */
-  --blue-lighter: oklch(91.66% 0.0404 257.5078); /* #d3e5ff */
-  --blue: oklch(57.31% 0.2144 258.25); /* #0070f3 */
-  --blue-dark: oklch(51.58% 0.1888 258.27); /* #0761d1 */
+  /* Info Colors */
+  --blue-lighter: oklch(91.66% 0.0404 257.5078);
+  --blue: oklch(57.31% 0.2144 258.25);
+  --blue-dark: oklch(51.58% 0.1888 258.27);
 
-  /* Success - success messages and positive states */
-  --green-lighter: oklch(92.79% 0.086 155.61); /* #b9f9cf */
-  --green: oklch(64.01% 0.1776 148.74); /* #11a849 */
-  --green-dark: oklch(53.79% 0.1441 149.52); /* #11843c */
+  /* Success Colors */
+  --green-lighter: oklch(92.79% 0.086 155.61);
+  --green: oklch(64.01% 0.1776 148.74);
+  --green-dark: oklch(53.79% 0.1441 149.52);
 }
 
 /* Map CSS variables to Tailwind's color system */
@@ -291,9 +291,6 @@ Create or update your `app/globals.css` (or `src/app/globals.css` for Next.js):
   --color-green-dark: var(--green-dark);
 }
 
-/* ----------------------------------- */
-/* Autofill Styles */
-/* ----------------------------------- */
 /* Override browser autofill background for all input components */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -389,29 +386,18 @@ The `cn` utility function is used to conditionally combine class names based on 
 import { cn } from 'rizzui/cn';
 import { Button } from 'rizzui/button';
 
-type CustomButtonProps = {
-  className?: string;
-  isVisible?: boolean;
-  isDisabled?: boolean;
-};
-
-const CustomButton = (props: CustomButtonProps) => {
-  const { className, isVisible = true, isDisabled = false, ...rest } = props;
-
-  return (
-    <Button
-      {...rest}
-      className={cn(
-        'transition-all',
-        !isVisible ? 'opacity-0 pointer-events-none' : 'opacity-100',
-        isDisabled && 'cursor-not-allowed',
-        className
-      )}
-    >
-      Click me
-    </Button>
-  );
-};
+const CustomButton = ({ className, variant = 'primary', ...props }) => (
+  <Button
+    {...props}
+    className={cn(
+      'bg-gradient-to-r text-white shadow-lg hover:shadow-xl transition-all',
+      variant === 'primary'
+        ? 'from-purple-600 via-purple-500 to-blue-600'
+        : 'from-pink-500 via-rose-500 to-orange-500',
+      className
+    )}
+  />
+);
 ```
 
 ## Next Steps

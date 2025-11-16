@@ -135,6 +135,9 @@ importers:
       tailwindcss:
         specifier: 4.1.11
         version: 4.1.11
+      turndown:
+        specifier: 7.2.2
+        version: 7.2.2
       uuid:
         specifier: 11.1.0
         version: 11.1.0
@@ -148,6 +151,9 @@ importers:
       '@docusaurus/plugin-content-blog':
         specifier: 3.9.2
         version: 3.9.2(@docusaurus/plugin-content-docs@3.9.2(@mdx-js/react@3.1.0(@types/react@19.1.13)(react@19.1.0))(acorn@8.15.0)(esbuild@0.25.10)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3))(@mdx-js/react@3.1.0(@types/react@19.1.13)(react@19.1.0))(acorn@8.15.0)(esbuild@0.25.10)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
+      '@docusaurus/plugin-content-docs':
+        specifier: 3.9.2
+        version: 3.9.2(@mdx-js/react@3.1.0(@types/react@19.1.13)(react@19.1.0))(acorn@8.15.0)(esbuild@0.25.10)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       '@docusaurus/types':
         specifier: 3.9.2
         version: 3.9.2(acorn@8.15.0)(esbuild@0.25.10)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -2663,6 +2669,9 @@ packages:
     peerDependencies:
       '@types/react': '>=16'
       react: '>=16'
+
+  '@mixmark-io/domino@2.2.0':
+    resolution: {integrity: sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw==}
 
   '@monaco-editor/loader@1.5.0':
     resolution: {integrity: sha512-hKoGSM+7aAc7eRTRjpqAZucPmoNOC4UUbknb/VNoTkEIkCPhqV8LfbsgM1webRM7S/z21eHEx9Fkwx8Z/C/+Xw==}
@@ -9723,6 +9732,9 @@ packages:
     resolution: {integrity: sha512-kC5VJqOXo50k0/0jnJDDjibLAXalqT9j7PQ56so0pN+81VR4Fwb2QgIE9dTzT3phqOTQuEXkPh3sCpnv5Isz2g==}
     hasBin: true
 
+  turndown@7.2.2:
+    resolution: {integrity: sha512-1F7db8BiExOKxjSMU2b7if62D/XOyQyZbPKq/nUwopfgnHlqXHqQ0lvfUTeUIr1lZJzOPFn43dODyMSIfvWRKQ==}
+
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
@@ -14579,6 +14591,8 @@ snapshots:
       '@types/mdx': 2.0.13
       '@types/react': 19.2.2
       react: 19.0.0
+
+  '@mixmark-io/domino@2.2.0': {}
 
   '@monaco-editor/loader@1.5.0':
     dependencies:
@@ -23140,6 +23154,10 @@ snapshots:
       turbo-linux-arm64: 2.6.0
       turbo-windows-64: 2.6.0
       turbo-windows-arm64: 2.6.0
+
+  turndown@7.2.2:
+    dependencies:
+      '@mixmark-io/domino': 2.2.0
 
   type-check@0.4.0:
     dependencies:
