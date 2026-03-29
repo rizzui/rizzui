@@ -1,0 +1,397 @@
+---
+sidebar_position: 5
+---
+
+import { Checkbox } from "rizzui";
+import Paper from "@site/src/components/paper";
+
+# Checkbox
+
+A basic widget for getting the user input, used for selecting multiple values from several options.
+
+```tsx
+import { Checkbox } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+The default style of **Checkbox** component.
+
+<Paper className="text-gray-900">
+  <Checkbox label="Remember me" />
+</Paper>
+
+```tsx
+import { Checkbox } from "rizzui";
+
+export default function App() {
+  return <Checkbox label="Remember me" />;
+}
+```
+
+<div className="mb-16" />
+
+## Variants
+
+You can change the style of **Checkbox** using [**variant**](#checkbox-variants) property.
+
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
+  <Checkbox
+    className="m-2"
+    label="Outline"
+    variant="outline"
+  />
+  <Checkbox
+    className="m-2"
+    label="Flat"
+    variant="flat"
+  />
+</Paper>
+
+```tsx
+import { Checkbox } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Checkbox
+        className="m-2"
+        label="Outline"
+        variant="outline"
+      />
+      <Checkbox
+        className="m-2"
+        label="Flat"
+        variant="flat"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the sizes of **Checkbox** using [**size**](#checkbox-sizes) property.
+
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
+  <Checkbox
+    className="m-2"
+    label="Small"
+    size="sm"
+  />
+  <Checkbox
+    className="m-2"
+    label="Default"
+    size="md"
+  />
+  <Checkbox
+    className="m-2"
+    label="Large"
+    size="lg"
+  />
+  <Checkbox
+    className="m-2"
+    label="Extra Large"
+    size="xl"
+  />
+</Paper>
+
+```tsx
+import { Checkbox } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Checkbox
+        className="m-2"
+        label="Small"
+        size="sm"
+      />
+      <Checkbox
+        className="m-2"
+        label="Default"
+        size="md"
+      />
+      <Checkbox
+        className="m-2"
+        label="Large"
+        size="lg"
+      />
+      <Checkbox
+        className="m-2"
+        label="Extra Large"
+        size="xl"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change the border radius of **Checkbox** using [**rounded**](#checkbox-rounded) property.
+
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
+  <Checkbox
+    className="m-2"
+    label="Rounded Small"
+    rounded="sm"
+  />
+  <Checkbox
+    className="m-2"
+    label="Rounded Default"
+  />
+  <Checkbox
+    className="m-2"
+    label="Rounded Large"
+    rounded="lg"
+  />
+  <Checkbox
+    className="m-2"
+    label="Rounded None"
+    rounded="none"
+  />
+  <Checkbox
+    className="m-2"
+    label="Rounded Circle"
+    rounded="full"
+  />
+</Paper>
+
+```tsx
+import { Checkbox } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Checkbox
+        className="m-2"
+        label="Rounded Small"
+        rounded="sm"
+      />
+      <Checkbox
+        className="m-2"
+        label="Rounded Default"
+      />
+      <Checkbox
+        className="m-2"
+        label="Rounded Large"
+        rounded="lg"
+      />
+      <Checkbox
+        className="m-2"
+        label="Rounded None"
+        rounded="none"
+      />
+      <Checkbox
+        className="m-2"
+        label="Rounded Circle"
+        rounded="full"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Label Placement
+
+You can set label on the two diffrient side using **labelPlacement** property.
+
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
+  <Checkbox
+    className="m-2"
+    label="Left Placement"
+    labelPlacement="left"
+  />
+  <Checkbox
+    className="m-2"
+    label="Right Placement"
+    labelPlacement="right"
+  />
+</Paper>
+
+```tsx
+import { Checkbox } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Checkbox
+        className="m-2"
+        label="Left Placement"
+        labelPlacement="left"
+      />
+      <Checkbox
+        className="m-2"
+        label="Right Placement"
+        labelPlacement="right"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Disabled
+
+The disabled style of the **Checkbox** component.
+
+<Paper className="flex-row flex-wrap justify-around gap-4 text-gray-900">
+  <Checkbox
+    className="m-2"
+    label="Disabled"
+    disabled
+  />
+</Paper>
+
+```tsx
+import { Checkbox } from "rizzui";
+
+export default function App() {
+  return (
+    <Checkbox
+      className="m-2"
+      label="Left Placement"
+      disabled
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Helper Text
+
+You can add helper text to **Checkbox** using **helperText** property.
+
+<Paper className="text-gray-900">
+  <Checkbox
+    className="m-2"
+    label="John"
+    value="john"
+    helperText="Hi! My name is John Doe."
+  />
+</Paper>
+
+```tsx
+import { Checkbox } from "rizzui";
+
+export default function App() {
+  return (
+    <Checkbox
+      className="m-2"
+      label="John"
+      value="john"
+      helperText="Hi! My name is John Doe."
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Error Message
+
+You can show the validation error message using **error** property.
+
+<Paper className="text-gray-900">
+  <Checkbox
+    className="m-2"
+    label="Yes"
+    value="yes"
+    error="This field is required"
+  />
+</Paper>
+
+```tsx
+import { Checkbox } from "rizzui";
+
+export default function App() {
+  return (
+    <Checkbox
+      className="m-2"
+      label="Yes"
+      value="yes"
+      error="This field is required"
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### Checkbox Props
+
+Here is the API documentation of the Checkbox component. And the rest of the props of Checkbox are the same as the original html input field.
+
+<div className="overflow-x-auto checkbox-props-row-highlight">
+
+|      Props      |                  Type                  |                                   Description                                   |   Default   |
+| :-------------: | :------------------------------------: | :-----------------------------------------------------------------------------: | :---------: |
+|      label      |              `ReactNode`               |                                 Set field label                                 |    \_\_     |
+|   labelWeight   |      [LabelWeight](#label-weight)      |                              Set label font weight                              | `"medium"`  |
+| labelPlacement  |             `left` `right`             |                             Change label direction                              |  `"right"`  |
+|     variant     | [CheckboxVariants](#checkbox-variants) |                       The variants of the component are:                        | `"outline"` |
+|      size       |    [CheckboxSizes](#checkbox-sizes)    | The size of the component.<br /> "sm" is equivalent to the dense input styling. |   `"md"`    |
+|     rounded     |  [CheckboxRounded](#checkbox-rounded)  |                            The rounded variants are:                            |   `"md"`    |
+|    disabled     |               `boolean`                |                      Whether the input is disabled or not                       |    \_\_     |
+|  indeterminate  |               `boolean`                |                     Whether the input indeterminate or not                      |    \_\_     |
+|      error      |                `string`                |                       Show error message using this prop                        |    \_\_     |
+|   helperText    |              `ReactNode`               |            Add helper text. It could be string or a React component             |    \_\_     |
+|  iconClassName  |                `string`                |    Use iconClassName prop to apply some additonal style for check mark icon     |    \_\_     |
+| labelClassName  |                `string`                |    Use labelClassName prop to apply some addition style for the field label     |    \_\_     |
+| inputClassName  |                `string`                |               Add custom classes for the input filed extra style                |    \_\_     |
+| helperClassName |                `string`                |           This prop allows you to customize the helper message style            |    \_\_     |
+| errorClassName  |                `string`                |            This prop allows you to customize the error message style            |    \_\_     |
+|    className    |                `string`                |                 Add custom classes to the root of the component                 |    \_\_     |
+|       ref       |        `Ref<HTMLInputElement>`         |                                                                                 |    \_\_     |
+|       ...       |         `InputHTMLAttributes`          |     native props like **value**, **onChange**, **onFocus**, **onBlur** ...      |    \_\_     |
+
+</div>
+
+<div className="mb-10" />
+
+### Checkbox Variants
+
+```ts
+type CheckboxVariants = "outline" | "flat";
+```
+
+<div className="mb-10" />
+
+### Label Weight
+
+```ts
+type LabelWeight = "normal" | "medium" | "semibold" | "bold";
+```
+
+<div className="mb-10" />
+
+### Checkbox Sizes
+
+```ts
+type CheckboxSizes = "sm" | "md" | "lg" | "xl";
+```
+
+<div className="mb-10" />
+
+### Checkbox Rounded
+
+```ts
+type CheckboxRounded = "sm" | "md" | "lg" | "full" | "none";
+```

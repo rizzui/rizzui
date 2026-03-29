@@ -1,0 +1,443 @@
+---
+sidebar_position: 14
+---
+
+import { UploadZone } from 'rizzui/upload-zone';
+import Paper from '@site/src/components/paper';
+
+# UploadZone
+
+A drag-and-drop file upload component with built-in preview functionality.
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+The default style of **UploadZone**.
+
+<Paper className="block">
+  <UploadZone label="Upload File" className="w-full" />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return <UploadZone label="Upload File" />;
+}
+```
+
+<div className="mb-16" />
+
+## Variants
+
+You can change the style of **UploadZone** using [**variant**](#uploadzone-variants) property.
+
+<Paper className="grid grid-cols-1 gap-6">
+  <UploadZone label="Outline Variant" variant="outline" />
+  <UploadZone label="Flat Variant" variant="flat" />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return (
+    <>
+      <UploadZone label="Outline Variant" variant="outline" />
+      <UploadZone label="Flat Variant" variant="flat" />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can change the size of **UploadZone** using [**size**](#uploadzone-sizes) property.
+
+<Paper className="justify-start items-start gap-6">
+  <UploadZone label="Small UploadZone" size="sm" className="w-full" />
+  <UploadZone label="Default UploadZone" className="w-full" />
+  <UploadZone label="Large UploadZone" size="lg" className="w-full" />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return (
+    <>
+      <UploadZone label="Small UploadZone" size="sm" />
+      <UploadZone label="Default UploadZone" />
+      <UploadZone label="Large UploadZone" size="lg" />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Multiple Files
+
+By enabling **multiple** property true, user can upload multiple files.
+
+<Paper className="block">
+  <UploadZone label="Upload Multiple Files" multiple className="w-full" />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return <UploadZone label="Upload Multiple Files" multiple />;
+}
+```
+
+<div className="mb-16" />
+
+## Accept File Types
+
+You can restrict file types using **accept** property.
+
+<Paper className="grid grid-cols-1 gap-6">
+  <UploadZone
+    label="Upload Images"
+    accept="image/*"
+    helperText="Only image files are allowed"
+  />
+  <UploadZone
+    label="Upload PDF"
+    accept=".pdf,application/pdf"
+    helperText="Only PDF files are allowed"
+  />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return (
+    <>
+      <UploadZone
+        label="Upload Images"
+        accept="image/*"
+        helperText="Only image files are allowed"
+      />
+      <UploadZone
+        label="Upload PDF"
+        accept=".pdf,application/pdf"
+        helperText="Only PDF files are allowed"
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Custom Placeholder & Icon
+
+You can customize the placeholder text and icon using **placeholder** and **icon** properties.
+
+<Paper className="grid grid-cols-1 gap-6">
+  <UploadZone
+    label="Custom Placeholder"
+    placeholder="Drop your files here or click to select"
+  />
+  <UploadZone
+    label="Custom Icon"
+    icon={
+      <svg
+        className="w-12 h-12 text-primary"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M12 4v16m8-8H4"
+        />
+      </svg>
+    }
+  />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return (
+    <>
+      <UploadZone
+        label="Custom Placeholder"
+        placeholder="Drop your files here or click to select"
+      />
+      <UploadZone
+        label="Custom Icon"
+        icon={
+          <svg
+            className="w-12 h-12 text-primary"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 4v16m8-8H4"
+            />
+          </svg>
+        }
+      />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Disabled
+
+The disabled state of the **UploadZone** component.
+
+<Paper className="block">
+  <UploadZone label="Upload File" disabled className="w-full" />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return <UploadZone label="Upload File" disabled />;
+}
+```
+
+<div className="mb-16" />
+
+## With Helper Text
+
+You can add helper text to the **UploadZone** component using **helperText** property.
+
+<Paper className="block">
+  <UploadZone
+    label="Upload Files"
+    helperText="Maximum file size: 10MB. Supported formats: PDF, DOC, DOCX"
+    className="w-full"
+  />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return (
+    <UploadZone
+      label="Upload Files"
+      helperText="Maximum file size: 10MB. Supported formats: PDF, DOC, DOCX"
+      className="w-full"
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Error Message
+
+You can show the validation error message using **error** property.
+
+<Paper className="block">
+  <UploadZone
+    label="Upload Files"
+    error="Please select a valid file"
+    className="w-full"
+  />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return <UploadZone label="Upload Files" error="Please select a valid file" />;
+}
+```
+
+<div className="mb-16" />
+
+## Controlled Component
+
+You can control the **UploadZone** component using **value** and **onChange** properties.
+
+<Paper className="block">
+  <UploadZone
+    label="Controlled UploadZone"
+    multiple
+    onChange={(files) => {
+      if (files) {
+        console.log('Selected files:', files);
+      }
+    }}
+    className="w-full"
+  />
+</Paper>
+
+```tsx
+'use client';
+
+import { useState } from 'react';
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  const [files, setFiles] = useState<FileList | null>(null);
+
+  return (
+    <UploadZone
+      label="Controlled UploadZone"
+      multiple
+      value={files}
+      onChange={(files) => {
+        setFiles(files);
+        if (files) {
+          console.log('Selected files:', files);
+        }
+      }}
+      className="w-full"
+    />
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Drag and Drop Callback
+
+You can use **onDrop** callback to handle drag-and-drop events specifically.
+
+<Paper className="block">
+  <UploadZone
+    label="Upload Files"
+    multiple
+    onDrop={(files) => {
+      console.log('Files dropped:', files);
+    }}
+    className="w-full"
+  />
+</Paper>
+
+```tsx
+'use client';
+
+import { UploadZone } from 'rizzui/upload-zone';
+
+export default function App() {
+  return (
+    <UploadZone
+      label="Upload Files"
+      multiple
+      onDrop={(files) => {
+        console.log('Files dropped:', files);
+        // Handle file upload
+      }}
+      onChange={(files) => {
+        console.log('Files selected:', files);
+      }}
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### UploadZone Props
+
+Here is the API documentation of the UploadZone component. And the rest of the props are the same as the original html input field.
+
+<div className="overflow-x-auto">
+
+|        Props        |                    Type                    |                                 Description                                 |   Default   |
+| :-----------------: | :----------------------------------------: | :-------------------------------------------------------------------------: | :---------: |
+|        label        |                `ReactNode`                 |                               Set field label                               |    \_\_     |
+|     labelWeight     |        [LabelWeight](#label-weight)        |                            Set label font weight                            | `"medium"`  |
+|       variant       | [UploadZoneVariants](#uploadzone-variants) |                     The variants of the component are:                      | `"outline"` |
+|        size         |    [UploadZoneSizes](#uploadzone-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. |   `"md"`    |
+|     placeholder     |                `ReactNode`                 |                      Set placeholder text (can be JSX)                      |    \_\_     |
+|        icon         |            `ReactNode \| null`             |                    Set custom icon (set to null to hide)                    |    \_\_     |
+|      disabled       |                 `boolean`                  |                    Whether the input is disabled or not                     |    \_\_     |
+|      multiple       |                 `boolean`                  |                        Allow multiple file selection                        |    \_\_     |
+|       accept        |                  `string`                  |               Accepted file types (e.g., 'image/\*', '.pdf')                |    \_\_     |
+|        value        |        `FileList \| File[] \| null`        |                         Controlled value for files                          |    \_\_     |
+|      onChange       |    `(files: FileList \| null) => void`     |                      Callback when files are selected                       |    \_\_     |
+|       onDrop        |        `(files: FileList) => void`         |               Callback specifically for drag-and-drop events                |    \_\_     |
+|     helperText      |                `ReactNode`                 |            Add helper text. Can be a string or a React component            |    \_\_     |
+|        error        |                  `string`                  |                     Show error message using this prop                      |    \_\_     |
+|   labelClassName    |                  `string`                  |                     Override default CSS style of label                     |    \_\_     |
+| uploadZoneClassName |                  `string`                  |               Override default CSS style of upload zone area                |    \_\_     |
+|  contentClassName   |                  `string`                  |                 Override default CSS style of content area                  |    \_\_     |
+|  previewClassName   |                  `string`                  |               Override default CSS style of preview container               |    \_\_     |
+|   helperClassName   |                  `string`                  |                  Override default CSS style of helperText                   |    \_\_     |
+|   errorClassName    |                  `string`                  |                 Override default CSS style of error message                 |    \_\_     |
+|      className      |                  `string`                  |               Add custom classes to the root of the component               |    \_\_     |
+|         ref         |          `Ref<HTMLInputElement>`           |                                                                             |    \_\_     |
+|        name         |                  `string`                  |                      Input name (for form submission)                       |    \_\_     |
+|         ...         |           `InputHTMLAttributes`            |         native props like **required**, **onFocus**, **onBlur** ...         |    \_\_     |
+
+</div>
+
+<div className="mb-10" />
+
+### UploadZone Variants
+
+```ts
+type UploadZoneVariants = 'outline' | 'flat';
+```
+
+<div className="mb-10" />
+
+### Label Weight
+
+```ts
+type LabelWeight = 'normal' | 'medium' | 'semibold' | 'bold';
+```
+
+<div className="mb-10" />
+
+### UploadZone Sizes
+
+```ts
+type UploadZoneSizes = 'sm' | 'md' | 'lg';
+```

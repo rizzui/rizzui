@@ -2,22 +2,21 @@
 sidebar_position: 38
 ---
 
-import Paper from "@site/src/components/paper";
+import Paper from '@site/src/components/paper';
 import ModalDefault, {
   ModalSizes,
-  ModalRounded,
   ModalCustomSize,
   ModalCustomStyle,
-} from "@site/src/components/modal";
+} from '@site/src/components/modal';
 
 # Modal
 
 A fully-managed renderless Modal component. When requiring users to interact with the application, but without jumping to a new page and interrupting the user's workflow, you can use Modal to create a new floating layer over the current page to get user feedback or display information.
 
 ```tsx
-"use client"; 
+'use client';
 
-import { Modal } from "rizzui";
+import { Modal } from 'rizzui/modal';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -31,9 +30,9 @@ A simple sigun up modal example.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Modal,
   Button,
@@ -43,8 +42,8 @@ import {
   Input,
   Password,
   Checkbox,
-} from "rizzui";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+} from 'rizzui';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export default function App() {
   const [modalState, setModalState] = useState(false);
@@ -90,8 +89,8 @@ export default function App() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s{' '}
+                  <a className="underline">Terms of Service</a> and{' '}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -123,9 +122,9 @@ You can change the size of **Modal** using [**size**](#modal-sizes) property.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Modal,
   Button,
@@ -135,13 +134,13 @@ import {
   Input,
   Password,
   Checkbox,
-} from "rizzui";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+} from 'rizzui';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export default function App() {
   const [modalState, setModalState] = useState({
     isOpen: false,
-    size: "md",
+    size: 'md',
   });
   return (
     <>
@@ -152,7 +151,7 @@ export default function App() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "sm",
+              size: 'sm',
             }))
           }
         >
@@ -164,7 +163,7 @@ export default function App() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "md",
+              size: 'md',
             }))
           }
         >
@@ -176,7 +175,7 @@ export default function App() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "lg",
+              size: 'lg',
             }))
           }
         >
@@ -188,19 +187,7 @@ export default function App() {
             setModalState((prevState) => ({
               ...prevState,
               isOpen: true,
-              size: "xl",
-            }))
-          }
-        >
-          xl
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() =>
-            setModalState((prevState) => ({
-              ...prevState,
-              isOpen: true,
-              size: "full",
+              size: 'full',
             }))
           }
         >
@@ -254,174 +241,8 @@ export default function App() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
-                  <a className="underline">Privacy Policy</a>
-                </Text>
-              }
-            />
-            <Button
-              type="submit"
-              size="lg"
-              className="col-span-2 mt-2"
-              onClick={() =>
-                setModalState((prevState) => ({ ...prevState, isOpen: false }))
-              }
-            >
-              Create an Account
-            </Button>
-          </div>
-        </div>
-      </Modal>
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Rounded
-
-You can change rounded corner style of **Modal** using [**rounded**](#modal-rounded) property.
-
-<Paper className="block">
-  <ModalRounded />
-</Paper>
-
-```tsx
-"use client"; 
-
-import { useState } from "react";
-import {
-  Modal,
-  Button,
-  Title,
-  Text,
-  ActionIcon,
-  Input,
-  Password,
-  Checkbox,
-} from "rizzui";
-import { XMarkIcon } from "@heroicons/react/20/solid";
-
-export default function App() {
-  const [modalState, setModalState] = useState({
-    isOpen: false,
-    rounded: "md",
-  });
-  return (
-    <>
-      <div className="flex items-center justify-around gap-2 flex-wrap">
-        <Button
-          variant="outline"
-          onClick={() =>
-            setModalState((prevState) => ({
-              ...prevState,
-              isOpen: true,
-              rounded: "none",
-            }))
-          }
-        >
-          None
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() =>
-            setModalState((prevState) => ({
-              ...prevState,
-              isOpen: true,
-              rounded: "sm",
-            }))
-          }
-        >
-          sm
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() =>
-            setModalState((prevState) => ({
-              ...prevState,
-              isOpen: true,
-              rounded: "md",
-            }))
-          }
-        >
-          Default
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() =>
-            setModalState((prevState) => ({
-              ...prevState,
-              isOpen: true,
-              rounded: "lg",
-            }))
-          }
-        >
-          lg
-        </Button>
-        <Button
-          variant="outline"
-          onClick={() =>
-            setModalState((prevState) => ({
-              ...prevState,
-              isOpen: true,
-              rounded: "xl",
-            }))
-          }
-        >
-          xl
-        </Button>
-      </div>
-      <Modal
-        isOpen={modalState.isOpen}
-        rounded={modalState.rounded}
-        onClose={() =>
-          setModalState((prevState) => ({ ...prevState, isOpen: false }))
-        }
-      >
-        <div className="m-auto px-7 pt-6 pb-8">
-          <div className="mb-7 flex items-center justify-between">
-            <Title as="h3">Welcome to RizzUI</Title>
-            <ActionIcon
-              size="sm"
-              variant="text"
-              onClick={() =>
-                setModalState((prevState) => ({ ...prevState, isOpen: false }))
-              }
-            >
-              <XMarkIcon className="h-auto w-6" strokeWidth={1.8} />
-            </ActionIcon>
-          </div>
-          <div className="grid grid-cols-2 gap-y-6 gap-x-5 [&_label>span]:font-medium">
-            <Input label="First Name *" inputClassName="border-2" size="lg" />
-            <Input label="Last Name *" inputClassName="border-2" size="lg" />
-            <Input
-              label="Email *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
-            <Password
-              label="Password *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
-            <Password
-              label="Confirm Password *"
-              inputClassName="border-2"
-              size="lg"
-              className="col-span-2"
-            />
-            <Checkbox
-              size="lg"
-              inputClassName="border-2"
-              className="col-span-2"
-              label={
-                <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s{' '}
+                  <a className="underline">Terms of Service</a> and{' '}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -455,9 +276,9 @@ You can use change the **Modal** size style using **customSize** property.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Modal,
   Button,
@@ -467,8 +288,8 @@ import {
   Input,
   Password,
   Checkbox,
-} from "rizzui";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+} from 'rizzui';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export default function App() {
   const [modalState, setModalState] = useState(false);
@@ -518,8 +339,8 @@ export default function App() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s{' '}
+                  <a className="underline">Terms of Service</a> and{' '}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -551,9 +372,9 @@ The customization options are limitless, You can customize as per your preferenc
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Modal,
   Button,
@@ -563,8 +384,8 @@ import {
   Input,
   Password,
   Checkbox,
-} from "rizzui";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+} from 'rizzui';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 
 export default function App() {
   const [modalState, setModalState] = useState(false);
@@ -615,8 +436,8 @@ export default function App() {
               className="col-span-2"
               label={
                 <Text className="text-sm">
-                  I agree to RizzUI&lsquo;s{" "}
-                  <a className="underline">Terms of Service</a> and{" "}
+                  I agree to RizzUI&lsquo;s{' '}
+                  <a className="underline">Terms of Service</a> and{' '}
                   <a className="underline">Privacy Policy</a>
                 </Text>
               }
@@ -651,17 +472,16 @@ Here is the API documentation of the Modal component.
 
 <div className="overflow-x-auto">
 
-|       Props        |              Type              |                                                                 Description                                                                  | Default |
-| :----------------: | :----------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: | :-----: |
-|       isOpen       |           `boolean`            |                                                       Whether the Modal is open or not                                                       |  \_\_   |
-|      onClose       |          `() => void`          |                               Called when modal is closed (Escape key and click outside, depending on options)                               |  \_\_   |
-|        size        |   [ModalSizes](#modal-sizes)   |                                                 Preset size of modal is sm, md, lg, xl, full                                                 | `"md"`  |
-|      rounded       | [ModalRounded](#modal-rounded) |                                                          The rounded variants are:                                                           | `"md"`  |
-|     customSize     |            `number`            |         Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize=\{500\}             |  \_\_   |
-|      noGutter      |           `boolean`            |                                           This prop will remove extra padding spacing from screen                                            |  \_\_   |
-|  overlayClassName  |            `string`            |                                                Override default CSS style of Modal's overlay                                                 |  \_\_   |
-| containerClassName |            `string`            |            Set custom style classes for the Modal container, where you can set custom Modal size and padding and background color            |  \_\_   |
-|     className      |            `string`            |                                             Set custom style classes for the Modal root element                                              |  \_\_   |
+|       Props        |            Type            |                                                       Description                                                        | Default |
+| :----------------: | :------------------------: | :----------------------------------------------------------------------------------------------------------------------: | :-----: |
+|       isOpen       |         `boolean`          |                                             Whether the Modal is open or not                                             |  \_\_   |
+|      onClose       |        `() => void`        |                     Called when modal is closed (Escape key and click outside, depending on options)                     |  \_\_   |
+|        size        | [ModalSizes](#modal-sizes) |                                       Preset size of modal is sm, md, lg, xl, full                                       | `"md"`  |
+|     customSize     |          `number`          | Size prop will not work when you are using customSize prop. Here is the example of using this prop -> customSize=\{500\} |  \_\_   |
+|      noGutter      |         `boolean`          |                                 This prop will remove extra padding spacing from screen                                  |  \_\_   |
+|  overlayClassName  |          `string`          |                                      Override default CSS style of Modal's overlay                                       |  \_\_   |
+| containerClassName |          `string`          |  Set custom style classes for the Modal container, where you can set custom Modal size and padding and background color  |  \_\_   |
+|     className      |          `string`          |                                   Set custom style classes for the Modal root element                                    |  \_\_   |
 
 </div>
 
@@ -670,13 +490,7 @@ Here is the API documentation of the Modal component.
 ### Modal Sizes
 
 ```ts
-type ModalSizes = "sm" | "md" | "lg" | "xl" | "full";
+type ModalSizes = 'sm' | 'md' | 'lg' | 'full';
 ```
 
 <div className="mb-10" />
-
-### Modal Rounded
-
-```ts
-type ModalRounded = "sm" | "md" | "lg" | "xl" | "none";
-```

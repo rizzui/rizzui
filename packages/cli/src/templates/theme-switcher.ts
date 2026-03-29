@@ -3,7 +3,8 @@ export function generateThemeSwitcher(isTypeScript: boolean = true): string {
 
 import React from 'react';
 import { useTheme } from 'next-themes';
-import { ActionIcon, Dropdown } from 'rizzui';
+import { ActionIcon } from 'rizzui/action-icon';
+import { Dropdown } from 'rizzui/dropdown';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 export function ThemeSwitcher() {

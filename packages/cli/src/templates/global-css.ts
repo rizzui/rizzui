@@ -1,149 +1,244 @@
-import { ColorName, TAILWIND_COLORS, hexToRgb } from '../utils/colors';
-import { ThemeOption } from './tailwind-config';
+/**
+ * Canonical RizzUI global stylesheet (aligned with packages/ui/src/styles/global.css),
+ * with a Tailwind v4 @source line for scanning rizzui/dist class names.
+ * `rizzuiSourceRelativePath` is POSIX-style, relative to the globals.css file directory.
+ */
+export function generateGlobalCss(rizzuiSourceRelativePath: string): string {
+  const source = rizzuiSourceRelativePath.replace(/\\/g, '/');
+  return `@import 'tailwindcss';
 
-export interface GlobalCssOptions {
-  themeOption: ThemeOption;
-  isDarkMode: boolean;
-  customColors?: {
-    primary?: ColorName;
-    secondary?: ColorName;
-    danger?: ColorName;
-    warning?: ColorName;
-    info?: ColorName;
-    success?: ColorName;
-  };
+@source ${source};
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+:root {
+  /* ----------------------------------- */
+  /* body style */
+  /* ----------------------------------- */
+  --background: oklch(100% 0 0); /* #ffffff */
+  --foreground: oklch(40.17% 0 0); /* #484848 */
+  --muted: oklch(91.58% 0 0); /* #e3e3e3 */
+  --muted-foreground: oklch(66% 0 0); /* #929292 */
+
+  /* ----------------------------------- */
+  /* border tokens */
+  /* ----------------------------------- */
+  --border-radius: 0.5rem; /* 8px */
+  --border-width: 0.0625rem; /* 1px */
+  --border-color: oklch(90.37% 0 0); /* #dfdfdf */
+
+  /* ----------------------------------- */
+  /* text tokens */
+  /* ----------------------------------- */
+  --text-primary: oklch(0% 0 0); /* #000000 */
+  --text-secondary: oklch(40.17% 0 0); /* #484848 */
+
+  /* ----------------------------------- */
+  /* primary/brand colors */
+  /* ----------------------------------- */
+  --primary-lighter: oklch(91.58% 0 0); /* #e3e3e3 */
+  --primary: oklch(17.76% 0 0); /* #111111 */
+  --primary-dark: oklch(0% 0 0); /* #000000 */
+  --primary-foreground: oklch(100% 0 0); /* #ffffff */
+
+  /* ----------------------------------- */
+  /* secondary colors */
+  /* ----------------------------------- */
+  --secondary-lighter: oklch(91.99% 0.0386 276.02); /* #dde3ff */
+  --secondary: oklch(50.51% 0.2633 276.95); /* #4e36f5 */
+  --secondary-dark: oklch(45.41% 0.2431 277.06); /* #432ad8 */
+  --secondary-foreground: oklch(100% 0 0); /* #ffffff */
+
+  /* ----------------------------------- */
+  /* red/error colors */
+  /* ----------------------------------- */
+  --red-lighter: oklch(89.99% 0.0393 14); /* #f7d4d6 */
+  --red: oklch(59.6% 0.2445 29.23); /* #e00 */
+  --red-dark: oklch(51.71% 0.2121 29.2338); /* #c50000 */
+
+  /* ----------------------------------- */
+  /* orange/warning colors */
+  /* ----------------------------------- */
+  --orange-lighter: oklch(95.67% 0.0452 84.5695); /* #ffefcf */
+  --orange: oklch(78.37% 0.1587 72.99); /* #f5a623 */
+  --orange-dark: oklch(54.83% 0.1339 53.95); /* #ab570a */
+
+  /* ----------------------------------- */
+  /* blue/info colors */
+  /* ----------------------------------- */
+  --blue-lighter: oklch(91.66% 0.0404 257.5078); /* #d3e5ff */
+  --blue: oklch(57.31% 0.2144 258.25); /* #0070f3 */
+  --blue-dark: oklch(51.58% 0.1888 258.27); /* #0761d1 */
+
+  /* ----------------------------------- */
+  /* green/success colors */
+  /* ----------------------------------- */
+  --green-lighter: oklch(92.79% 0.086 155.61); /* #b9f9cf */
+  --green: oklch(64.01% 0.1776 148.74); /* #11a849 */
+  --green-dark: oklch(53.79% 0.1441 149.52); /* #11843c */
 }
 
-export function generateGlobalCss(options: GlobalCssOptions): string {
-  const { isDarkMode, customColors } = options;
-
-  const primaryColor = customColors?.primary || 'gray';
-  const secondaryColor = customColors?.secondary || 'indigo';
-  const dangerColor = customColors?.danger || 'red';
-  const warningColor = customColors?.warning || 'amber';
-  const infoColor = customColors?.info || 'sky';
-  const successColor = customColors?.success || 'emerald';
-
-  let css = `@import "tailwindcss";
-
-/* RizzUI Theme Configuration */
-@theme {
-  /* Color Palette */
-  --color-background: #ffffff;
-  --color-foreground: #484848;
-  --color-muted: #e3e3e3;
-  --color-muted-foreground: #929292;
-
-  /* Primary Colors */
-  --color-primary-lighter: ${TAILWIND_COLORS[primaryColor][200]};
-  --color-primary: ${TAILWIND_COLORS[primaryColor][800]};
-  --color-primary-dark: ${TAILWIND_COLORS[primaryColor][950]};
-  --color-primary-foreground: #ffffff;
-
-  /* Secondary Colors */
-  --color-secondary-lighter: ${TAILWIND_COLORS[secondaryColor][200]};
-  --color-secondary: ${TAILWIND_COLORS[secondaryColor][500]};
-  --color-secondary-dark: ${TAILWIND_COLORS[secondaryColor][700]};
-  --color-secondary-foreground: #ffffff;
-
-  /* Danger Colors */
-  --color-red-lighter: ${TAILWIND_COLORS[dangerColor][200]};
-  --color-red: ${TAILWIND_COLORS[dangerColor][500]};
-  --color-red-dark: ${TAILWIND_COLORS[dangerColor][700]};
-
-  /* Warning Colors */
-  --color-orange-lighter: ${TAILWIND_COLORS[warningColor][200]};
-  --color-orange: ${TAILWIND_COLORS[warningColor][500]};
-  --color-orange-dark: ${TAILWIND_COLORS[warningColor][700]};
-
-  /* Info Colors */
-  --color-blue-lighter: ${TAILWIND_COLORS[infoColor][200]};
-  --color-blue: ${TAILWIND_COLORS[infoColor][500]};
-  --color-blue-dark: ${TAILWIND_COLORS[infoColor][700]};
-
-  /* Success Colors */
-  --color-green-lighter: ${TAILWIND_COLORS[successColor][200]};
-  --color-green: ${TAILWIND_COLORS[successColor][500]};
-  --color-green-dark: ${TAILWIND_COLORS[successColor][700]};
-}`;
-
-  if (isDarkMode) {
-    css += `
-
-/* Dark Mode Theme Variables */
-@media (prefers-color-scheme: dark) {
-  @theme {
-    --color-background: #08090e;
-    --color-foreground: #dfdfdf;
-    --color-muted: #333333;
-    --color-muted-foreground: #666666;
-
-    /* Primary Colors - Dark Mode */
-    --color-primary-lighter: ${TAILWIND_COLORS[primaryColor][800]};
-    --color-primary: ${TAILWIND_COLORS[primaryColor][100]};
-    --color-primary-dark: ${TAILWIND_COLORS[primaryColor][50]};
-    --color-primary-foreground: #000000;
-
-    /* Secondary Colors - Dark Mode */
-    --color-secondary-lighter: ${TAILWIND_COLORS[secondaryColor][900]};
-    --color-secondary-dark: ${TAILWIND_COLORS[secondaryColor][300]};
-
-    /* Danger Colors - Dark Mode */
-    --color-red-lighter: ${TAILWIND_COLORS[dangerColor][900]};
-    --color-red-dark: ${TAILWIND_COLORS[dangerColor][300]};
-
-    /* Warning Colors - Dark Mode */
-    --color-orange-lighter: ${TAILWIND_COLORS[warningColor][900]};
-    --color-orange-dark: ${TAILWIND_COLORS[warningColor][300]};
-
-    /* Info Colors - Dark Mode */
-    --color-blue-lighter: ${TAILWIND_COLORS[infoColor][900]};
-    --color-blue-dark: ${TAILWIND_COLORS[infoColor][300]};
-
-    /* Success Colors - Dark Mode */
-    --color-green-lighter: ${TAILWIND_COLORS[successColor][900]};
-    --color-green-dark: ${TAILWIND_COLORS[successColor][300]};
-  }
-}
-
-/* Manual Dark Mode Toggle Support */
+/* ----------------------------------- */
+/* dark theme */
+/* ----------------------------------- */
 [data-theme='dark'] {
-  color-scheme: dark;
+  /* body style */
+  --background: oklch(14.11% 0.0112 275.23); /* #08090e */
+  --foreground: oklch(90.37% 0 0); /* #dfdfdf */
+  --muted: oklch(32.11% 0 0); /* #333333 */
+  --muted-foreground: oklch(51.03% 0 0); /* #666666 */
+
+  /* border tokens */
+  --border-color: oklch(91.58% 0 0); /* #e3e3e3 */
+
+  /* text tokens */
+  --text-primary: oklch(100% 0 0); /* #ffffff */
+  --text-secondary: oklch(51.03% 0 0); /* #666666 */
+
+  /* ----------------------------------- */
+  /* primary/brand colors */
+  /* ----------------------------------- */
+  --primary-lighter: oklch(25.2% 0 0); /* #222222 */
+  --primary: oklch(95.81% 0 0); /* #f1f1f1 */
+  --primary-dark: oklch(100% 0 0); /* #ffffff */
+  --primary-foreground: oklch(0% 0 0); /* #000000 */
+
+  /* ----------------------------------- */
+  /* secondary colors */
+  /* ----------------------------------- */
+  --secondary-lighter: oklch(26.35% 0.1154 280.96); /* #1f165a */
+  --secondary-dark: oklch(85.2% 0.0733 276.238); /* #c1cbff */
+
+  /* ----------------------------------- */
+  /* red/error colors */
+  /* ----------------------------------- */
+  --red-lighter: oklch(27.08% 0.1111 29.23); /* #500000 */
+  --red-dark: oklch(86.69% 0.0714 18.6304); /* #ffc1c1 */
+
+  /* ----------------------------------- */
+  /* orange/warning colors */
+  /* ----------------------------------- */
+  --orange-lighter: oklch(28.29% 0.0698 49.34); /* #441d04 */
+  --orange-dark: oklch(93.15% 0.1175 98.83); /* #fcea8b */
+
+  /* ----------------------------------- */
+  /* blue/info colors */
+  /* ----------------------------------- */
+  --blue-lighter: oklch(32.05% 0.0873 254.4); /* #0d335e */
+  --blue-dark: oklch(90.53% 0.0611 225.72); /* #b5e9ff */
+
+  /* ----------------------------------- */
+  /* green/success colors */
+  /* ----------------------------------- */
+  --green-lighter: oklch(27.23% 0.0672 152.71); /* #033016 */
+  --green-dark: oklch(92.79% 0.086 155.61); /* #b9f9cf */
 }
 
-[data-theme='dark'] * {
-  --color-background: #08090e;
-  --color-foreground: #dfdfdf;
-  --color-muted: #333333;
-  --color-muted-foreground: #666666;
+/* ----------------------------------- */
+/* UI Presets */
+/* ----------------------------------- */
 
-  /* Primary Colors - Dark Mode */
-  --color-primary-lighter: ${TAILWIND_COLORS[primaryColor][800]};
-  --color-primary: ${TAILWIND_COLORS[primaryColor][100]};
-  --color-primary-dark: ${TAILWIND_COLORS[primaryColor][50]};
-  --color-primary-foreground: #000000;
+/* Modern: default rounded, clean, airy */
+[data-ui-preset='modern'] {
+  --border-radius: 0.5rem; /* 8px */
+  --border-width: 0.0625rem; /* 1px */
+}
 
-  /* Secondary Colors - Dark Mode */
-  --color-secondary-lighter: ${TAILWIND_COLORS[secondaryColor][900]};
-  --color-secondary-dark: ${TAILWIND_COLORS[secondaryColor][300]};
+/* Minimal: subtle, thin borders, less radius */
+[data-ui-preset='minimal'] {
+  --border-radius: 0.25rem; /* 4px */
+  --border-width: 0.0625rem; /* 1px */
+}
 
-  /* Danger Colors - Dark Mode */
-  --color-red-lighter: ${TAILWIND_COLORS[dangerColor][900]};
-  --color-red-dark: ${TAILWIND_COLORS[dangerColor][300]};
+/* Bold: strong, thick borders, more radius */
+[data-ui-preset='bold'] {
+  --border-radius: 0.75rem; /* 12px */
+  --border-width: 0.125rem; /* 2px */
+}
 
-  /* Warning Colors - Dark Mode */
-  --color-orange-lighter: ${TAILWIND_COLORS[warningColor][900]};
-  --color-orange-dark: ${TAILWIND_COLORS[warningColor][300]};
+/* Soft: very rounded, pill-like */
+[data-ui-preset='soft'] {
+  --border-radius: 1rem; /* 16px */
+  --border-width: 0.0625rem; /* 1px */
+}
 
-  /* Info Colors - Dark Mode */
-  --color-blue-lighter: ${TAILWIND_COLORS[infoColor][900]};
-  --color-blue-dark: ${TAILWIND_COLORS[infoColor][300]};
+/* ----------------------------------- */
+/* Tailwind Integration */
+/* ----------------------------------- */
+@theme inline {
+  /* body colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
 
-  /* Success Colors - Dark Mode */
-  --color-green-lighter: ${TAILWIND_COLORS[successColor][900]};
-  --color-green-dark: ${TAILWIND_COLORS[successColor][300]};
-}`;
-  }
+  /* border tokens */
+  --border-radius: var(--border-radius);
+  --color-border: var(--border-color);
 
-  return css;
+  /* text tokens */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+
+  /* primary colors */
+  --color-primary-lighter: var(--primary-lighter);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* secondary colors */
+  --color-secondary-lighter: var(--secondary-lighter);
+  --color-secondary: var(--secondary);
+  --color-secondary-dark: var(--secondary-dark);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  /* semantic colors */
+  --color-red-lighter: var(--red-lighter);
+  --color-red: var(--red);
+  --color-red-dark: var(--red-dark);
+  --color-orange-lighter: var(--orange-lighter);
+  --color-orange: var(--orange);
+  --color-orange-dark: var(--orange-dark);
+  --color-blue-lighter: var(--blue-lighter);
+  --color-blue: var(--blue);
+  --color-blue-dark: var(--blue-dark);
+  --color-green-lighter: var(--green-lighter);
+  --color-green: var(--green);
+  --color-green-dark: var(--green-dark);
+}
+
+@plugin '@tailwindcss/forms';
+
+/* ----------------------------------- */
+/* Autofill Styles */
+/* ----------------------------------- */
+/* Override browser autofill background for all input components */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: inherit;
+}
+
+/* Firefox autofill */
+input:-moz-autofill,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus,
+input:-moz-autofill:active,
+textarea:-moz-autofill,
+textarea:-moz-autofill:hover,
+textarea:-moz-autofill:focus,
+textarea:-moz-autofill:active {
+  background-color: transparent !important;
+  color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+`;
 }

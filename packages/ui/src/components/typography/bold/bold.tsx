@@ -1,6 +1,5 @@
 import React from 'react';
 import { cn } from '../../../lib/cn';
-import { makeClassName } from '../../../lib/make-class-name';
 
 export type BoldProps = {
   className?: string;
@@ -12,7 +11,10 @@ export function Bold({
   ...props
 }: React.PropsWithChildren<BoldProps>) {
   return (
-    <b className={cn(makeClassName(`bold`), className)} {...props}>
+    <b
+      className={cn('rizzui-bold', 'text-text-primary', className)}
+      {...props}
+    >
       {children}
     </b>
   );

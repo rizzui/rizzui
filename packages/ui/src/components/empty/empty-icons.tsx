@@ -10,6 +10,7 @@ export function DefaultIcon({ className = 'w-44 h-auto' }: EmptySVGIconProps) {
       data-testid="empty-default-icon"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 184 152"
+      aria-hidden="true"
       {...(className && { className })}
     >
       <g fill="none" fillRule="evenodd">
@@ -58,6 +59,7 @@ export function EmptyBoxIcon({ className = 'h-16 w-auto' }: EmptySVGIconProps) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 103 64"
+      aria-hidden="true"
       {...(className && { className })}
     >
       <path
@@ -84,6 +86,7 @@ export function EmptyProductBoxIcon({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 350 351"
+      aria-hidden="true"
       {...(className && { className })}
     >
       <path
@@ -194,6 +197,7 @@ export function SearchNotFoundIcon({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 350 350"
+      aria-hidden="true"
       {...(className && { className })}
     >
       <path

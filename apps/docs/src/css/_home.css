@@ -1,0 +1,52 @@
+#__docusaurus {
+  .home-page-hero-block-title {
+    font-size: 1.875rem; /* text-3xl */
+    line-height: 1.3;
+    margin-bottom: 1.5rem; /* mb-6 */
+    font-weight: 600; /* font-semibold */
+  }
+
+  .page-section-heading-title {
+    font-size: 1.5rem; /* text-2xl */
+    line-height: 1.35;
+    font-weight: 600; /* font-semibold */
+  }
+
+  @media (min-width: 640px) {
+    .home-page-hero-block-title {
+      font-size: 2.25rem; /* sm:text-4xl */
+    }
+  }
+
+  @media (min-width: 768px) {
+    .home-page-hero-block-title {
+      margin-bottom: 1.75rem; /* md:mb-7 */
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .home-page-hero-block-title {
+      line-height: 1.2; /* lg:leading-[1.2] */
+    }
+    .page-section-heading-title {
+      font-size: 1.875rem; /* lg:text-3xl */
+      line-height: 1.3; /* lg:leading-[1.3] */
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .home-page-hero-block-title {
+      font-size: 3rem; /* xl:text-5xl */
+      line-height: 1.2; /* xl:leading-[1.2] */
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .home-page-hero-block-title {
+      line-height: 1.18; /* 2xl:leading-[1.18] */
+    }
+    .page-section-heading-title {
+      font-size: 2.25rem; /* 2xl:text-4xl */
+    }
+  }
+}

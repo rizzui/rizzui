@@ -51,10 +51,12 @@ test('Radio button with helper and error text', () => {
       />
     </div>
   );
-  const errorHelperText = screen.getAllByRole('alert');
-  expect(errorHelperText[0]).toHaveTextContent(/this radio has value of one/i);
-  expect(errorHelperText[1]).toHaveTextContent(/this field is required/i);
-  expect(errorHelperText[1]).toHaveClass('text-red');
+  const helperText = screen.getByText(/this radio has value of one/i);
+  const errorText = screen.getByRole('alert');
+  
+  expect(helperText).toBeInTheDocument();
+  expect(errorText).toHaveTextContent(/this field is required/i);
+  expect(errorText).toHaveClass('text-red');
 });
 
 test('Disabled radio button', async () => {

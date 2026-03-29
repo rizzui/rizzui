@@ -12,12 +12,12 @@ import SelectBox, {
 
 # Select
 
-Listboxes are a great foundation for building custom, accessible select menus for your app, complete with robust support for keyboard navigation..
+Listboxes are a great foundation for building custom, accessible select menus for your app, complete with robust support for keyboard navigation.
 
 ```tsx
 "use client"; 
 
-import { Select } from "rizzui";
+import { Select } from "rizzui/select";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -34,7 +34,7 @@ The default style of **Select** component.
 "use client"; 
 
 import { useState } from 'react'
-import { Select } from "rizzui";
+import { Select } from "rizzui/select";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -73,7 +73,7 @@ You can clear **Select** value using clearable property.
 "use client"; 
 
 import { useState } from 'react'
-import { Select } from "rizzui";
+import { Select } from "rizzui/select";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -111,7 +111,8 @@ Here is the custom option **Select** example.
 "use client"; 
 
 import { useState } from 'react'
-import { Select, type SelectOption, Text } from "rizzui";
+import { Select, type SelectOption } from "rizzui/select";
+import { Text } from "rizzui/typography";
 
 const options = [
   {
@@ -188,7 +189,7 @@ You can search inside **Select** options.
 "use client"; 
 
 import { useState } from 'react';
-import { Select } from "rizzui";
+import { Select } from "rizzui/select";
 
 const options = [
   { label: 'Apple 🍎', value: 'apple' },
@@ -224,7 +225,8 @@ In this example, we are going to use **React Hook Form** and **Zod** for validat
 ```tsx
 "use client"; 
 
-import { Select, Button } from "rizzui";
+import { Select } from "rizzui/select";
+import { Button } from "rizzui/button";
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -297,13 +299,12 @@ Here is the API documentation of the **Select** component.
 | :----------------------: | :-------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
 |         options          | [`SelectOption[]`](#select-option-type) |                                                                                Add options data using this prop. **options** prop is required.                                                                                 |     \_\_      |
 |          value           |                   `T`                   |                                                                                        The selected value. **value** prop is required.                                                                                         |     \_\_      |
-|         onChange         |          `(value: T) => void`           |                                                                      The function to call when a new option is selected.. **onChange** prop is required.                                                                       |     \_\_      |
-|      onSearchChange      |        `(value: string) => void`        |                                                                                    The function to call when type in options search panel.                                                                                     |     \_\_      |
+|         onChange         |          `(value: T) => void`           |                                                                      The function to call when a new option is selected. **onChange** prop is required.                                                                       |     \_\_      |
+|      onSearchChange      |        `(value: string) => void`        |                                                                                    The function to call when typing in the options search panel.                                                                                     |     \_\_      |
 |          label           |               `ReactNode`               |                                                                                                        Set field label                                                                                                         |     \_\_      |
 |       labelWeight        |      [LabelWeight](#label-weight)       |                                                                                                     Set label font weight                                                                                                      |  `"medium"`   |
 |         variant          |   [SelectVariants](#select-variants)    |                                                                                               The variants of the component are:                                                                                               |  `"outline"`  |
 |           size           |      [SelectSizes](#select-sizes)       |                                                                           The size of the component. "sm" is equivalent to the dense select styling.                                                                           |    `"md"`     |
-|         rounded          |    [SelectRounded](#select-rounded)     |                                                                                                   The rounded variants are:                                                                                                    |    `"md"`     |
 |        autoFocus         |                `boolean`                |                                                                                          Whether select is focused by default or not                                                                                           |   `"false"`   |
 |         inPortal         |                `boolean`                |                                                                                    Whether select options is rendered on the portal or not                                                                                     |   `"true"`    |
 |   disableDefaultFilter   |                `boolean`                |                                                                                Whether the default filter works or not when search for options                                                                                 |   `"false"`   |
@@ -312,10 +313,10 @@ Here is the API documentation of the **Select** component.
 |       placeholder        |                `string`                 |                                                                                                  Set select placeholder text                                                                                                   | `"Select..."` |
 |         disabled         |                `boolean`                |                                                                                             Whether the select is disabled or not                                                                                              |     \_\_      |
 |        clearable         |                `boolean`                |                                                                                                      Add clearable option                                                                                                      |     \_\_      |
-|         onClear          |    [SelectOnClear](#select-onclear)     |                                                                                                          clear event                                                                                                           |     \_\_      |
-|          prefix          |               `ReactNode`               |                                           The prefix is design for adding any icon or text on the Select field's start (it's a left icon for the `ltr` and right icon for the `rtl`)                                           |     \_\_      |
-|          suffix          |               `ReactNode`               |                                            The suffix is design for adding any icon or text on the Select field's end (it's a right icon for the `ltr` and left icon for the `rtl`)                                            |     \_\_      |
-|        helperText        |               `ReactNode`               |                                                                                    Add helper text. It could be string or a React component                                                                                    |     \_\_      |
+|         onClear          |    [SelectOnClear](#select-onclear)     |                                                                                                          Callback function called when the clear button is clicked                                                                                                           |     \_\_      |
+|          prefix          |               `ReactNode`               |                                           The prefix is designed for adding any icon or text on the Select field's start (it's a left icon for the `ltr` and right icon for the `rtl`)                                           |     \_\_      |
+|          suffix          |               `ReactNode`               |                                            The suffix is designed for adding any icon or text on the Select field's end (it's a right icon for the `ltr` and left icon for the `rtl`)                                            |     \_\_      |
+|        helperText        |               `ReactNode`               |                                                                                    Add helper text. Can be a string or a React component                                                                                    |     \_\_      |
 |          error           |                `string`                 |                                                                                               Show error message using this prop                                                                                               |     \_\_      |
 |       displayValue       |               `function`                |                          A function to determine the display value of the selected item. **@param value** - The value of the selected item, **@returns ReactNode** to display for the selected item.                           |     \_\_      |
 |  getOptionDisplayValue   |               `function`                | Use this function when you want to display something other than the default displayValue. **@param option** - The SelectOption for which to get the display value, **@returns ReactNode** to display for the specified option. |     \_\_      |
@@ -335,8 +336,8 @@ Here is the API documentation of the **Select** component.
 |        searchType        |             `text` `search`             |                                                                                                     Set search input type                                                                                                      |   `"text"`    |
 |      searchReadOnly      |                `boolean`                |                                                                                              Set search input is readonly or not                                                                                               |   `"false"`   |
 |      searchDisabled      |                `boolean`                |                                                                                              Set search input is disabled or not                                                                                               |   `"false"`   |
-|       searchPrefix       |               `ReactNode`               |                                           The prefix is design for adding any icon or text on the Search field's start (it's a left icon for the `ltr` and right icon for the `rtl`)                                           |     \_\_      |
-|       searchSuffix       |               `ReactNode`               |                                            The suffix is design for adding any icon or text on the Search field's end (it's a right icon for the `ltr` and left icon for the `rtl`)                                            |     \_\_      |
+|       searchPrefix       |               `ReactNode`               |                                           The prefix is designed for adding any icon or text on the Search field's start (it's a left icon for the `ltr` and right icon for the `rtl`)                                           |     \_\_      |
+|       searchSuffix       |               `ReactNode`               |                                            The suffix is designed for adding any icon or text on the Search field's end (it's a right icon for the `ltr` and left icon for the `rtl`)                                            |     \_\_      |
 | searchContainerClassName |                `string`                 |                                                                                           Override default CSS style of search root                                                                                            |     \_\_      |
 |  searchPrefixClassName   |                `string`                 |                                                                                          Override default CSS style of search prefix                                                                                           |     \_\_      |
 |     searchClassName      |                `string`                 |                                                                                           Override default CSS style of search input                                                                                           |     \_\_      |
@@ -380,15 +381,7 @@ type SelectVariants = "outline" | "flat" | "text";
 ### Select Sizes
 
 ```ts
-type SelectSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Select Rounded
-
-```ts
-type SelectRounded = "sm" | "md" | "lg" | "none" | "pill";
+type SelectSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />
@@ -396,5 +389,5 @@ type SelectRounded = "sm" | "md" | "lg" | "none" | "pill";
 ### Select onClear
 
 ```ts
-type InputOnclear = (event) => void;
+type InputOnClear = (event) => void;
 ```

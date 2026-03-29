@@ -2,7 +2,11 @@
 sidebar_position: 31
 ---
 
-import { Popover, Title, Text, Button, ActionIcon, Avatar } from "rizzui";
+import { Popover } from "rizzui/popover";
+import { Title, Text } from "rizzui/typography";
+import { Button } from "rizzui/button";
+import { ActionIcon } from "rizzui/action-icon";
+import { Avatar } from "rizzui/avatar";
 import Paper from "@site/src/components/paper";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
@@ -13,7 +17,7 @@ Popover is a simple dialog alert which can have details of the content. It can e
 ```tsx
 "use client"; 
 
-import { Popover } from "rizzui";
+import { Popover } from "rizzui/popover";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -39,7 +43,9 @@ A simple **Popover** component.
 ```tsx
 "use client"; 
 
-import { Popover, Title, Text, Button } from "rizzui";
+import { Popover } from "rizzui/popover";
+import { Title, Text } from "rizzui/typography";
+import { Button } from "rizzui/button";
 
 export default function App() {
   return (
@@ -98,7 +104,9 @@ You can create actionable **Popover** using state.
 "use client"; 
 
 import React from "react";
-import { Popover, Title, Text, Button } from "rizzui";
+import { Popover } from "rizzui/popover";
+import { Title, Text } from "rizzui/typography";
+import { Button } from "rizzui/button";
 import { TrashIcon } from "@heroicons/react/24/solid";
 
 export default function App() {
@@ -154,7 +162,9 @@ You can control Popover state with **isOpen** and **setIsOpen** props:
 "use client"; 
 
 import React, { useState } from "react";
-import { Popover, Title, Text, Button } from "rizzui";
+import { Popover } from "rizzui/popover";
+import { Title, Text } from "rizzui/typography";
+import { Button } from "rizzui/button";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState();
@@ -244,7 +254,9 @@ You can render any thing using our **Popover** component.
 "use client"; 
 
 import React from "react";
-import { Popover, Button, Avatar } from "rizzui";
+import { Popover } from "rizzui/popover";
+import { Button } from "rizzui/button";
+import { Avatar } from "rizzui/avatar";
 
 export default function App() {
   return (
@@ -325,12 +337,11 @@ Here is the API documentation of the Popover component.
 
 |      Props       |                   Type                   |                             Description                              |  Default   |
 | :--------------: | :--------------------------------------: | :------------------------------------------------------------------: | :--------: |
-|     children     |                   \_\_                   |      Use **Popover.Trigger** & **Popover.Content** as childrens      |    \_\_    |
+|     children     |                   \_\_                   |      Use **Popover.Trigger** & **Popover.Content** as children      |    \_\_    |
 |       gap        |                 `number`                 | Set the offset value from **Popover.Trigger** to **Popover.Content** |   `"8"`    |
 |      isOpen      |                `boolean`                 |         Pass **isOpen** state to toggle the popover content          |    \_\_    |
 |    setIsOpen     |   `Dispatch<SetStateAction<boolean>>`    |                 Pass **setIsOpen** to set open value                 |    \_\_    |
 |       size       |      [PopoverSizes](#popover-sizes)      |                     Supported popover sizes are:                     |   `"md"`   |
-|     rounded      |    [PopoverRounded](#popover-rounded)    |                      The rounded variants are:                       |   `"md"`   |
 |    placement     | [PopoverPlacements](#popover-placements) |                  Supported popover placements are:                   | `"bottom"` |
 |      shadow      |    [PopoverShadow](#popover-shadows)     |                    Supported popover shadows are:                    |   `"md"`   |
 |    animation     | [PopoverAnimation](#popover-animations)  |                  Supported popover animations are:                   | `"zoomIn"` |
@@ -346,15 +357,7 @@ Here is the API documentation of the Popover component.
 ### Popover Sizes
 
 ```ts
-type PopoverSizes = "sm" | "md" | "lg" | "xl";
-```
-
-<div className="mb-10" />
-
-### Popover Rounded
-
-```ts
-type PopoverRounded = "sm" | "md" | "lg" | "none" | "pill";
+type PopoverSizes = "sm" | "md" | "lg";
 ```
 
 <div className="mb-10" />

@@ -1,26 +1,34 @@
-import React from "react";
-import { Badge, Table, TableVariantProps, cn } from "rizzui";
+import { Badge } from 'rizzui/badge';
+import { Table } from 'rizzui/table';
+import { cn } from 'rizzui/cn';
+import type { TableVariantProps } from 'rizzui/table';
 
-export function TableDemo({ variant = "modern" }: { variant: TableVariantProps }) {
+export function TableDemo({
+  variant = 'modern',
+}: {
+  variant: TableVariantProps;
+}) {
   return (
     <div className="overflow-x-auto overflow-y-hidden w-full">
       <Table
         variant={variant}
         className={cn(
-          "!shadow-none",
-          variant === "modern" && "!border-0",
-          variant === "minimal" && "!border-0",
-          variant === "elegant" && "!border-0",
-          variant === "retro" && "!border-0"
+          '!shadow-none',
+          variant === 'modern' && '!border-0',
+          variant === 'minimal' && '!border-0',
+          variant === 'elegant' && '!border-0',
+          variant === 'retro' && '!border-0'
         )}
       >
         <Table.Header
           className={cn(
-            "!bg-gray-100",
-            variant === "modern" && "!border-y-0",
-            variant === "minimal" && "!border-y-0",
-            variant === "elegant" && "!bg-transparent dark:[&>tr>th]:!bg-transparent",
-            variant === "retro" && "!bg-transparent dark:[&>tr>th]:!bg-transparent"
+            '!bg-gray-100',
+            variant === 'modern' && '!border-y-0',
+            variant === 'minimal' && '!border-y-0',
+            variant === 'elegant' &&
+              '!bg-transparent dark:[&>tr>th]:!bg-transparent',
+            variant === 'retro' &&
+              '!bg-transparent dark:[&>tr>th]:!bg-transparent'
           )}
         >
           <Table.Row>

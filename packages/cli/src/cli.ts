@@ -13,7 +13,7 @@ const program = new Command();
 
 program
   .name('rizzui-cli')
-  .description('CLI tool to configure RizzUI with Next.js applications')
+  .description('Scaffold RizzUI 2.x in Next.js (Tailwind v4, globals.css, rizzui.config.json)')
   .version(version);
 
 program
@@ -35,9 +35,12 @@ program
 
 program
   .command('add')
-  .description('Add RizzUI components to your project')
-  .argument('[components...]', 'Components to add')
-  .option('-a, --all', 'Add all components')
+  .description(
+    'Copy RizzUI TypeScript sources into components/ui (interactive list), or pass slugs; use --print-imports for npm import lines only'
+  )
+  .argument('[components...]', 'Optional slugs, e.g. button modal tabs cn variants')
+  .option('-a, --all', '(Deprecated) same as --print-imports')
+  .option('-p, --print-imports', 'Print subpath import lines only — no files copied')
   .action(async (components, options) => {
     try {
       await AddCommand.run(components, options);

@@ -218,15 +218,17 @@ function renderDisplayValue(
               <Text fontWeight="medium">{item.label}</Text>
               <Text>{item.value}</Text>
             </div>
-            <span
-              className="p-1 hover:bg-muted rounded-full cursor-pointer"
+            <button
+              type="button"
+              aria-label={`Remove ${item.label}`}
+              className="p-1 hover:bg-muted rounded-full cursor-pointer border-0 bg-transparent"
               onClick={(e) => {
                 e.stopPropagation();
                 handleClearItem(item.value);
               }}
             >
-              <XMarkIcon className="size-4" />
-            </span>
+              <XMarkIcon className="size-4" aria-hidden="true" />
+            </button>
           </div>
         ))}
       </div>
@@ -296,15 +298,17 @@ function renderDisplayValueTwo(
               className="flex items-center gap-3 border border-muted rounded ps-2 [&>p]:!mb-0 [&>p]:leading-snug!"
             >
               <Text fontWeight="medium">{item.label}</Text>
-              <span
-                className="p-1 hover:bg-muted rounded-full cursor-pointer"
+              <button
+                type="button"
+                aria-label={`Remove ${item.label}`}
+                className="p-1 hover:bg-muted rounded-full cursor-pointer border-0 bg-transparent"
                 onClick={(e) => {
                   e.stopPropagation();
                   handleClearItem(item.value);
                 }}
               >
-                <XMarkIcon className="size-4" />
-              </span>
+                <XMarkIcon className="size-4" aria-hidden="true" />
+              </button>
             </div>
           ))}
         </div>

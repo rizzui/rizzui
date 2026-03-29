@@ -90,21 +90,21 @@ export const defaultColumns = [
             <Button
               size="sm"
               variant="text"
-              className="hover:bg-gray-100 gap-2 justify-start"
+              className="hover:bg-[var(--muted)] gap-2 justify-start"
             >
               <PencilIcon className="size-3.5" /> Edit
             </Button>
             <Button
               size="sm"
               variant="text"
-              className="hover:bg-gray-100 gap-2 justify-start"
+              className="hover:bg-[var(--muted)] gap-2 justify-start"
             >
               <EyeIcon className="size-3.5" /> View
             </Button>
             <Button
               size="sm"
               variant="text"
-              className="hover:bg-gray-100 gap-2 justify-start"
+              className="hover:bg-[var(--muted)] gap-2 justify-start"
             >
               <TrashIcon className="size-3.5" /> Delete
             </Button>

@@ -1,4 +1,13 @@
-import React, { createContext, useContext } from 'react';
+import {
+  createContext,
+  useContext,
+  type MutableRefObject,
+  type MouseEvent,
+  type FocusEvent,
+  type Dispatch,
+  type SetStateAction,
+  type ReactNode,
+} from 'react';
 
 type Rect = {
   top: number;
@@ -10,19 +19,19 @@ type Rect = {
 };
 
 type TabContextProps = {
-  ref: React.MutableRefObject<HTMLDivElement | null>;
+  ref: MutableRefObject<HTMLDivElement | null>;
   rect: Rect;
   setRect: (
     eventOrRef:
-      | React.MouseEvent<HTMLElement>
-      | React.FocusEvent<HTMLElement>
-      | React.MutableRefObject<HTMLElement | null>,
+      | MouseEvent<HTMLElement>
+      | FocusEvent<HTMLElement>
+      | MutableRefObject<HTMLElement | null>,
     getContainer?: () => HTMLElement | null
   ) => void;
   vertical?: boolean;
   hideHoverAnimation?: boolean;
   displayHighlight?: boolean;
-  setDisplayHighlight?: React.Dispatch<React.SetStateAction<boolean>>;
+  setDisplayHighlight?: Dispatch<SetStateAction<boolean>>;
   activeTab?: number;
   highlightClassName?: string;
 };
@@ -32,14 +41,17 @@ const TabContext = createContext<TabContextProps | null>(null);
 export function TabProvider({
   value,
   children,
-}: React.PropsWithChildren<{ value: TabContextProps }>) {
+}: {
+  value: TabContextProps;
+  children: ReactNode;
+}) {
   return <TabContext.Provider value={value}>{children}</TabContext.Provider>;
 }
 
-export const useTab = (): TabContextProps => {
+export function useTab(): TabContextProps {
   const context = useContext(TabContext);
   if (!context) {
     throw new Error('useTab must be used within a TabProvider');
   }
   return context;
-};
+}

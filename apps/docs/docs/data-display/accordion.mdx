@@ -2,7 +2,9 @@
 sidebar_position: 1
 ---
 
-import { Accordion, cn, Avatar } from 'rizzui';
+import { Accordion } from 'rizzui/accordion';
+import { Avatar } from 'rizzui/avatar';
+import { cn } from 'rizzui/cn';
 import Paper from '@site/src/components/paper';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import {
@@ -17,7 +19,7 @@ A content area which can be collapsed and expanded. Completely unstyled, fully a
 ```tsx
 'use client';
 
-import { Accordion } from 'rizzui';
+import { Accordion } from 'rizzui/accordion';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -27,7 +29,7 @@ import { Accordion } from 'rizzui';
 A simple style of **Accordion**.
 
 <Paper className="block">
-  <div>
+  <div className="w-full">
     {defaultCollapseData.map((item) => (
       <Accordion
         key={item.title}
@@ -57,7 +59,7 @@ A simple style of **Accordion**.
 ```tsx
 "use client";
 
-import { Accordion } from "rizzui";
+import { Accordion } from "rizzui/accordion";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
 const data = [
@@ -110,7 +112,7 @@ export default function App() {
 You can change the style of the **Accordion**.
 
 <Paper className="block">
-  <div className="rounded-3xl border border-gray-200">
+  <div className="rounded-3xl border border-gray-200 w-full">
     {customStyleCollapseData.map((item) => (
       <Accordion
         key={item.title}
@@ -140,7 +142,9 @@ You can change the style of the **Accordion**.
             </div>
           )}
         </Accordion.Header>
-        <Accordion.Body className="mb-7 text-[15px]">{item.content}</Accordion.Body>
+        <Accordion.Body className="mb-7 text-[15px]">
+          {item.content}
+        </Accordion.Body>
       </Accordion>
     ))}
   </div>
@@ -149,9 +153,9 @@ You can change the style of the **Accordion**.
 ```tsx
 "use client";
 
-import { Accordion, Avatar } from "rizzui";
-import { SunIcon } from "@heroicons/react/20/solid";
-import { MoonIcon, LinkIcon } from "@heroicons/react/24/outline";
+import { Accordion } from "rizzui/accordion";
+import { Avatar } from "rizzui/avatar";
+import { LinkIcon } from "@heroicons/react/24/outline";
 
 const data = [
   {

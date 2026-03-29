@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Textarea } from "rizzui";
+import React, { useState } from 'react';
+import { Textarea } from 'rizzui';
 
 export default function TextareaCharacterCount() {
-  const [state, setState] = useState("Do not lose hope, nor be sad.");
+  const [state, setState] = useState('Do not lose hope, nor be sad.');
 
   return (
     <Textarea
@@ -15,13 +15,14 @@ export default function TextareaCharacterCount() {
           {characterCount}/{maxLength}
         </div>
       )}
+      className="w-full max-w-md"
     />
   );
 }
 
 export function TextareaClear() {
   const [state, setState] = useState(
-    "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.'
   );
 
   return (
@@ -29,8 +30,9 @@ export function TextareaClear() {
       label="Message"
       value={state}
       clearable
-      onClear={() => setState("")}
+      onClear={() => setState('')}
       onChange={(e) => setState(e.target.value)}
+      className="w-full max-w-md"
     />
   );
 }

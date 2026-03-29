@@ -1,8 +1,7 @@
-import React from "react";
 import {
   XMarkIcon,
   ExclamationTriangleIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 export default function FeedbackBlock() {
   return (

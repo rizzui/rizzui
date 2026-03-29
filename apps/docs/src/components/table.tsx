@@ -7,11 +7,11 @@ import { initialData } from "@site/src/data/table-data";
 export function getStatusBadge(status: string) {
   switch (status.toLowerCase()) {
     case "pending":
-      return <Badge variant="flat">{status}</Badge>;
+      return <Badge variant="solid">{status}</Badge>;
     case "active":
       return (
         <Badge
-          variant="flat"
+          variant="solid"
           color="success"
         >
           {status}
@@ -20,7 +20,7 @@ export function getStatusBadge(status: string) {
     case "warning":
       return (
         <Badge
-          variant="flat"
+          variant="solid"
           color="warning"
         >
           {status}
@@ -29,7 +29,7 @@ export function getStatusBadge(status: string) {
     case "danger":
       return (
         <Badge
-          variant="flat"
+          variant="solid"
           color="danger"
         >
           {status}
@@ -40,18 +40,45 @@ export function getStatusBadge(status: string) {
   }
 }
 
-const getColumns = (order: string, column: string, onHeaderClick: (value: string) => any) => [
-  {
-    title: <></>,
-    dataIndex: "checked",
-    key: "checked",
-    width: 50,
-    render: () => (
-      <div className="inline-flex cursor-pointer">
-        <Checkbox variant="flat" />
-      </div>
-    ),
-  },
+const getColumns = (
+  order: string,
+  column: string,
+  onHeaderClick: (value: string) => any,
+  selectedRows: Set<string>,
+  onSelectAll: (checked: boolean) => void,
+  onSelectRow: (id: string, checked: boolean) => void,
+  dataLength: number
+) => {
+  const allSelected = selectedRows.size > 0 && selectedRows.size === dataLength;
+  const someSelected = selectedRows.size > 0 && selectedRows.size < dataLength;
+
+  return [
+    {
+      title: (
+        <div className="inline-flex cursor-pointer">
+          <Checkbox
+            variant="flat"
+            checked={allSelected}
+            indeterminate={someSelected}
+            onChange={(e) => onSelectAll(e.target.checked)}
+            aria-label="Select all rows"
+          />
+        </div>
+      ),
+      dataIndex: "checked",
+      key: "checked",
+      width: 50,
+      render: (_: any, row: any) => (
+        <div className="inline-flex cursor-pointer">
+          <Checkbox
+            variant="flat"
+            checked={selectedRows.has(row.id)}
+            onChange={(e) => onSelectRow(row.id, e.target.checked)}
+            aria-label={`Select row ${row.id}`}
+          />
+        </div>
+      ),
+    },
   {
     title: (
       <HeaderCell
@@ -89,29 +116,6 @@ const getColumns = (order: string, column: string, onHeaderClick: (value: string
     ),
   },
   {
-    title: <HeaderCell title="Designation" />,
-    dataIndex: "designation",
-    key: "designation",
-    width: 320,
-    render: (designation: any) => (
-      <div>
-        <Text className="mb-0.5 !text-sm font-medium">{designation.role}</Text>
-        <Text
-          as="p"
-          className="text-xs text-gray-400"
-        >
-          {designation.company}
-        </Text>
-      </div>
-    ),
-  },
-  {
-    title: <HeaderCell title="Phone Number" />,
-    dataIndex: "phoneNumber",
-    key: "phoneNumber",
-    width: 200,
-  },
-  {
     title: <HeaderCell title="Email" />,
     dataIndex: "email",
     key: "email",
@@ -147,12 +151,15 @@ const getColumns = (order: string, column: string, onHeaderClick: (value: string
       </div>
     ),
   },
-];
+  ];
+};
 
-export default function TableDefault() {
+export default function TableModern() {
   const [order, setOrder] = React.useState<string>("desc");
   const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
+  const [selectedRows, setSelectedRows] = React.useState<Set<string>>(new Set());
+
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
@@ -166,48 +173,40 @@ export default function TableDefault() {
       }
     },
   });
-  const columns: any = React.useMemo(
-    () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
-  );
 
-  return (
-    <Table
-      data={data}
-      columns={columns}
-      className="text-sm [&_table]:mb-0 [&_table_h6]:!mb-0.5 [&_table_tbody_td]:!font-normal first:[&_table_th]:rounded-tl-none first:[&_table_th]:rounded-bl-none last:[&_table_th]:rounded-br-none last:[&_table_th]:rounded-tr-none"
-    />
-  );
-}
+  const handleSelectAll = React.useCallback((checked: boolean) => {
+    if (checked) {
+      setSelectedRows(new Set(data.map((row) => row.id)));
+    } else {
+      setSelectedRows(new Set());
+    }
+  }, [data]);
 
-export function TableModern() {
-  const [order, setOrder] = React.useState<string>("desc");
-  const [column, setColumn] = React.useState<string>("");
-  const [data, setData] = React.useState<typeof initialData>(initialData);
-  const onHeaderClick = (value: string) => ({
-    onClick: () => {
-      setColumn(value);
-      setOrder(order === "desc" ? "asc" : "desc");
-      if (order === "desc") {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? -1 : 1))]);
+  const handleSelectRow = React.useCallback((id: string, checked: boolean) => {
+    setSelectedRows((prev) => {
+      const newSet = new Set(prev);
+      if (checked) {
+        newSet.add(id);
       } else {
-        // @ts-ignore
-        setData([...data.sort((a, b) => (a[value] > b[value] ? 1 : -1))]);
+        newSet.delete(id);
       }
-    },
-  });
+      return newSet;
+    });
+  }, []);
+
   const columns: any = React.useMemo(
-    () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
+    () => getColumns(order, column, onHeaderClick, selectedRows, handleSelectAll, handleSelectRow, data.length),
+    [order, column, onHeaderClick, selectedRows, handleSelectAll, handleSelectRow, data.length]
   );
   return (
-    <Table
-      columns={columns}
-      data={data}
-      variant="modern"
-      className="text-sm [&_table]:mb-0 [&_table_h6]:!mb-0.5 [&_table_tbody_td]:!font-normal first:[&_table_th]:rounded-tl-none first:[&_table_th]:rounded-bl-none last:[&_table_th]:rounded-br-none last:[&_table_th]:rounded-tr-none"
-    />
+    <div className="w-full overflow-x-auto">
+      <Table
+        columns={columns}
+        data={data}
+        variant="modern"
+        className="text-sm [&_table]:mb-0 [&_table_h6]:!mb-0.5 [&_table_tbody_td]:!font-normal first:[&_table_th]:rounded-tl-none first:[&_table_th]:rounded-bl-none last:[&_table_th]:rounded-br-none last:[&_table_th]:rounded-tr-none"
+      />
+    </div>
   );
 }
 
@@ -215,6 +214,8 @@ export function TableElegant() {
   const [order, setOrder] = React.useState<string>("desc");
   const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
+  const [selectedRows, setSelectedRows] = React.useState<Set<string>>(new Set());
+
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
@@ -228,17 +229,40 @@ export function TableElegant() {
       }
     },
   });
+
+  const handleSelectAll = React.useCallback((checked: boolean) => {
+    if (checked) {
+      setSelectedRows(new Set(data.map((row) => row.id)));
+    } else {
+      setSelectedRows(new Set());
+    }
+  }, [data]);
+
+  const handleSelectRow = React.useCallback((id: string, checked: boolean) => {
+    setSelectedRows((prev) => {
+      const newSet = new Set(prev);
+      if (checked) {
+        newSet.add(id);
+      } else {
+        newSet.delete(id);
+      }
+      return newSet;
+    });
+  }, []);
+
   const columns: any = React.useMemo(
-    () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
+    () => getColumns(order, column, onHeaderClick, selectedRows, handleSelectAll, handleSelectRow, data.length),
+    [order, column, onHeaderClick, selectedRows, handleSelectAll, handleSelectRow, data.length]
   );
   return (
-    <Table
-      columns={columns}
-      data={data}
-      variant="elegant"
-      className="text-sm [&_table]:mb-0 [&_table_th]:!bg-transparent [&_table_h6]:!mb-0.5 [&_table_tbody_td]:!font-normal first:[&_table_th]:rounded-tl-none first:[&_table_th]:rounded-bl-none last:[&_table_th]:rounded-br-none last:[&_table_th]:rounded-tr-none"
-    />
+    <div className="w-full overflow-x-auto">
+      <Table
+        columns={columns}
+        data={data}
+        variant="elegant"
+        className="text-sm [&_table]:mb-0 [&_table_th]:!bg-transparent [&_table_h6]:!mb-0.5 [&_table_tbody_td]:!font-normal first:[&_table_th]:rounded-tl-none first:[&_table_th]:rounded-bl-none last:[&_table_th]:rounded-br-none last:[&_table_th]:rounded-tr-none"
+      />
+    </div>
   );
 }
 
@@ -246,6 +270,8 @@ export function TableMinimal() {
   const [order, setOrder] = React.useState<string>("desc");
   const [column, setColumn] = React.useState<string>("");
   const [data, setData] = React.useState<typeof initialData>(initialData);
+  const [selectedRows, setSelectedRows] = React.useState<Set<string>>(new Set());
+
   const onHeaderClick = (value: string) => ({
     onClick: () => {
       setColumn(value);
@@ -259,16 +285,39 @@ export function TableMinimal() {
       }
     },
   });
+
+  const handleSelectAll = React.useCallback((checked: boolean) => {
+    if (checked) {
+      setSelectedRows(new Set(data.map((row) => row.id)));
+    } else {
+      setSelectedRows(new Set());
+    }
+  }, [data]);
+
+  const handleSelectRow = React.useCallback((id: string, checked: boolean) => {
+    setSelectedRows((prev) => {
+      const newSet = new Set(prev);
+      if (checked) {
+        newSet.add(id);
+      } else {
+        newSet.delete(id);
+      }
+      return newSet;
+    });
+  }, []);
+
   const columns: any = React.useMemo(
-    () => getColumns(order, column, onHeaderClick),
-    [order, column, onHeaderClick]
+    () => getColumns(order, column, onHeaderClick, selectedRows, handleSelectAll, handleSelectRow, data.length),
+    [order, column, onHeaderClick, selectedRows, handleSelectAll, handleSelectRow, data.length]
   );
   return (
-    <Table
-      columns={columns}
-      data={data}
-      variant="minimal"
-      className="text-sm [&_table]:mb-0 [&_table_h6]:!mb-0.5 [&_table_tbody_td]:!font-normal first:[&_table_th]:rounded-tl-none first:[&_table_th]:rounded-bl-none last:[&_table_th]:rounded-br-none last:[&_table_th]:rounded-tr-none"
-    />
+    <div className="w-full overflow-x-auto">
+      <Table
+        columns={columns}
+        data={data}
+        variant="minimal"
+        className="text-sm [&_table]:mb-0 [&_table_h6]:!mb-0.5 [&_table_tbody_td]:!font-normal first:[&_table_th]:rounded-tl-none first:[&_table_th]:rounded-bl-none last:[&_table_th]:rounded-br-none last:[&_table_th]:rounded-tr-none"
+      />
+    </div>
   );
 }

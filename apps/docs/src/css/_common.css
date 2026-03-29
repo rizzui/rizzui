@@ -94,3 +94,9 @@ hr {
   align-items: center;
   font-size: 15px;
 }
+
+.prism-code {
+  code {
+    font-weight: 500 !important;
+  }
+}

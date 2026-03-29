@@ -29,7 +29,7 @@ export default function TablePagination<TData extends Record<string, any>>({
       </div>
       <div className="flex w-full items-center justify-between gap-6 @2xl:w-auto @2xl:gap-12">
         <div className="flex items-center gap-4">
-          <Text className="hidden font-medium text-gray-900 @md:block">Rows per page</Text>
+          <Text className="hidden whitespace-nowrap text-sm font-medium text-[var(--text-secondary)] @md:block">Rows per page</Text>
           <Select
             size="sm"
             options={options}
@@ -43,7 +43,7 @@ export default function TablePagination<TData extends Record<string, any>>({
             suffixClassName="[&_svg]:!size-3"
           />
         </div>
-        <Text className="hidden font-medium text-gray-900 @3xl:block">
+        <Text className="hidden text-sm font-medium text-[var(--text-secondary)] @3xl:block">
           Page {table.getState().pagination.pageIndex + 1} of{" "}
           {table.getPageCount().toLocaleString()}
         </Text>
@@ -55,7 +55,7 @@ export default function TablePagination<TData extends Record<string, any>>({
             aria-label="Go to first page"
             onClick={() => table.firstPage()}
             disabled={!table.getCanPreviousPage()}
-            className="text-gray-900 shadow-sm disabled:text-gray-400 disabled:shadow-none"
+            className="text-[var(--text-primary)] shadow-sm disabled:text-[var(--muted-foreground)] disabled:shadow-none"
           >
             <ChevronDoubleLeftIcon className="size-5" />
           </ActionIcon>
@@ -66,7 +66,7 @@ export default function TablePagination<TData extends Record<string, any>>({
             aria-label="Go to previous page"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className="text-gray-900 shadow-sm disabled:text-gray-400 disabled:shadow-none"
+            className="text-[var(--text-primary)] shadow-sm disabled:text-[var(--muted-foreground)] disabled:shadow-none"
           >
             <ChevronLeftIcon className="size-5" />
           </ActionIcon>
@@ -77,7 +77,7 @@ export default function TablePagination<TData extends Record<string, any>>({
             aria-label="Go to next page"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className="text-gray-900 shadow-sm disabled:text-gray-400 disabled:shadow-none"
+            className="text-[var(--text-primary)] shadow-sm disabled:text-[var(--muted-foreground)] disabled:shadow-none"
           >
             <ChevronRightIcon className="size-5" />
           </ActionIcon>
@@ -88,7 +88,7 @@ export default function TablePagination<TData extends Record<string, any>>({
             aria-label="Go to last page"
             onClick={() => table.lastPage()}
             disabled={!table.getCanNextPage()}
-            className="text-gray-900 shadow-sm disabled:text-gray-400 disabled:shadow-none"
+            className="text-[var(--text-primary)] shadow-sm disabled:text-[var(--muted-foreground)] disabled:shadow-none"
           >
             <ChevronDoubleRightIcon className="size-5" />
           </ActionIcon>

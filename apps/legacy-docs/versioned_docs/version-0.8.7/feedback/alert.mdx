@@ -1,0 +1,548 @@
+---
+sidebar_position: 1
+---
+
+import { Alert, Text } from "rizzui";
+import Paper from "@site/src/components/paper";
+import AlertClearable from "@site/src/components/alert";
+import { EnvelopeIcon, TrashIcon } from "@heroicons/react/24/outline";
+
+# Alert
+
+A simple alert component for showing alert messages.
+
+```jsx
+import { Alert } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Variants
+
+You can change the style of **Alert** using the **variant** property.
+
+<Paper className="grid grid-cols-1 gap-4 text-gray-950">
+  <Alert
+    variant="flat"
+    color="info"
+  >
+    <Text className="font-semibold">Flat variant</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    variant="outline"
+    color="info"
+  >
+    <Text className="font-semibold">Outline variant</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+</Paper>
+
+```jsx
+import { Alert, Text } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Alert
+        variant="flat"
+        color="info"
+      >
+        <Text className="font-semibold">Flat variant</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert color="info">
+        <Text className="font-semibold">Outline variant</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can set diffirent size of the **Alert** using [**size**](#alert-sizes) property.
+
+<Paper className="gap-4 justify-start items-start text-gray-950">
+  <Alert
+    size="sm"
+    color="danger"
+  >
+    <Text className="font-semibold">Alert Small</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert color="danger">
+    <Text className="font-semibold">Alert Default</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    size="lg"
+    color="danger"
+  >
+    <Text className="font-semibold">Alert Large</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    size="xl"
+    color="danger"
+  >
+    <Text className="font-semibold">Alert Extra Large</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+</Paper>
+
+```jsx
+import { Alert } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Alert
+        size="sm"
+        color="danger"
+      >
+        <Text className="font-semibold">Alert Small</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert color="danger">
+        <Text className="font-semibold">Alert Default</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        size="lg"
+        color="danger"
+      >
+        <Text className="font-semibold">Alert Large</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        size="xl"
+        color="danger"
+      >
+        <Text className="font-semibold">Alert Extra Large</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+Change border radius of the **Alert** component using [**rounded**](#alert-rounded) property.
+
+<Paper className="gap-4 justify-start items-start text-gray-950">
+  <Alert
+    color="success"
+    rounded="none"
+  >
+    <Text className="font-semibold">Rounded None</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    color="success"
+    rounded="sm"
+  >
+    <Text className="font-semibold">Rounded Small</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert color="success">
+    <Text className="font-semibold">Rounded Default</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    color="success"
+    rounded="lg"
+  >
+    <Text className="font-semibold">Rounded Large</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    color="success"
+    rounded="xl"
+  >
+    <Text className="font-semibold">Rounded Extra Large</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+</Paper>
+
+```tsx
+import { Alert } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Alert
+        color="success"
+        rounded="none"
+      >
+        <Text className="font-semibold">Alert Rounded None</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        color="success"
+        rounded="sm"
+      >
+        <Text className="font-semibold">Alert Rounded Small</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert color="success">
+        <Text className="font-semibold">Alert Rounded Default</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        color="success"
+        rounded="lg"
+      >
+        <Text className="font-semibold">Alert Rounded Large</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        color="success"
+        rounded="xl"
+      >
+        <Text className="font-semibold">Alert Rounded Extra Large</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Colors
+
+You can set different states of **Alert** using [**color**](#alert-colors) property.
+
+<Paper className="gap-4 grid grid-cols-1 text-gray-950">
+  <Alert
+    color="danger"
+    variant="flat"
+  >
+    <Text className="font-semibold">Danger Alert</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    color="info"
+    variant="flat"
+  >
+    <Text className="font-semibold">Info Alert</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    color="success"
+    variant="flat"
+  >
+    <Text className="font-semibold">Success Alert</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    color="warning"
+    variant="flat"
+  >
+    <Text className="font-semibold">Warning Alert</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+</Paper>
+
+```tsx
+import { Alert } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Alert
+        color="danger"
+        variant="flat"
+      >
+        <Text className="font-semibold">Danger Alert</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        color="info"
+        variant="flat"
+      >
+        <Text className="font-semibold">Info Alert</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        color="success"
+        variant="flat"
+      >
+        <Text className="font-semibold">Success Alert</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        color="warning"
+        variant="flat"
+      >
+        <Text className="font-semibold">Warning Alert</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Custom Icons
+
+You can change style of **Alert** with property **icon**, **clearIcon**.
+
+<Paper className="text-gray-950">
+  <Alert
+    color="info"
+    icon={<EnvelopeIcon className="w-6 text-blue-dark" />}
+    clearIcon={<TrashIcon className="w-6 text-blue-dark" />}
+  >
+    <Text className="font-semibold">Customizable icon Alert</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+</Paper>
+
+```tsx
+import { Alert } from "rizzui";
+import { EnvelopeIcon, TrashIcon } from "@heroicons/react/24/outline";
+
+export default function App() {
+  return (
+    <Alert
+      color="info"
+      icon={<EnvelopeIcon className="w-6 text-blue-dark" />}
+      clearIcon={<TrashIcon className="w-6 text-blue-dark" />}
+    >
+      <Text className="font-semibold">Customizable icon Alert</Text>
+      <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+    </Alert>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Bar
+
+You can make a classic bar **Alert** by using **bar** property.
+
+<Paper className="grid grid-cols-1 gap-4 text-gray-950">
+  <Alert
+    color="danger"
+    bar={true}
+  >
+    <Text className="font-semibold">Danger Alert</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    color="info"
+    bar={true}
+  >
+    <Text className="font-semibold">Info Alert</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    color="success"
+    bar={true}
+  >
+    <Text className="font-semibold">Success Alert</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+  <Alert
+    color="warning"
+    bar={true}
+  >
+    <Text className="font-semibold">Warning Alert</Text>
+    <Text>Attention All! We are excited to announce the launch of our new product/service.</Text>
+  </Alert>
+</Paper>
+
+```tsx
+import { Alert } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Alert
+        color="danger"
+        bar={true}
+      >
+        <Text className="font-semibold">Danger Alert</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        color="info"
+        bar={true}
+      >
+        <Text className="font-semibold">Info Alert</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        color="success"
+        bar={true}
+      >
+        <Text className="font-semibold">Success Alert</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+      <Alert
+        color="warning"
+        bar={true}
+      >
+        <Text className="font-semibold">Warning Alert</Text>
+        <Text>
+          Attention All! We are excited to announce the launch of our new product/service.
+        </Text>
+      </Alert>
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Close Button
+
+You can make a closable **Alert** component using **closable** property.
+
+<Paper className="text-gray-950 justify-start items-start gap-4">
+  <AlertClearable />
+</Paper>
+
+```tsx
+import React from "react";
+import { Alert, Button } from "rizzui";
+
+export default function App() {
+  const [isOpen, setIsOpen] = React.useState(true);
+  return (
+    <>
+      <Button
+        color="info"
+        onClick={() => setIsOpen(true)}
+        className="tracking-wider"
+      >
+        Info Alert
+      </Button>
+      {isOpen && (
+        <Alert
+          color="info"
+          variant="flat"
+          closable
+          onClose={() => setIsOpen(false)}
+        >
+          <Text className="font-semibold">Alert with info</Text>
+          <Text>
+            Attention All! We are excited to announce the launch of our new product/service.
+          </Text>
+        </Alert>
+      )}
+    </>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### Alert Props
+
+Here is the API documentation of the Alert component. You can use these props to customize our **Alert** component.
+
+<div className="overflow-x-auto">
+
+|         Props          |              Type              |                    Description                    |   Default   |
+| :--------------------: | :----------------------------: | :-----------------------------------------------: | :---------: |
+|         color          |  [AlertColors](#alert-colors)  |                   Change color                    |    \_\_     |
+|        children        |          `ReactNode`           |          Pass alert message as children           |    \_\_     |
+|          size          |   [AlertSizes](#alert-sizes)   |            The size of the component.             |    `md"`    |
+|        rounded         | [AlertRounded](#alert-rounded) |             The rounded variants are:             |   `"md"`    |
+|        variant         |        `flat` `outline`        |        The variants of the component are:         | `"outline"` |
+|          bar           |           `boolean`            |        Whether left bar should be visible         |  `"false"`  |
+|        closable        |           `boolean`            |                Add closable option                |    \_\_     |
+|        onClose         | [AlertOnClose](#alert-onclose) |       Pass onClose function to clear alert        |    \_\_     |
+|          icon          |          `ReactNode`           | Customize alert icon according to your preference |    \_\_     |
+|       closeIcon        |          `ReactNode`           | Customize close icon according to your preference |    \_\_     |
+|       className        |            `string`            |       Add className to design the container       |    \_\_     |
+|      barClassName      |            `string`            |      Add barClassName to design the left bar      |    \_\_     |
+| iconContainerClassName |            `string`            | Add iconContainerClassName to position the icons  |    \_\_     |
+|     iconClassName      |            `string`            |   Add iconClassName to design the default icons   |    \_\_     |
+
+</div>
+
+<div className="mb-10" />
+
+### Alert Colors
+
+```ts
+type AlertColors = "danger" | "info" | "success" | "warning";
+```
+
+<div className="mb-10" />
+
+### Alert Sizes
+
+```ts
+type AlertSizes = "sm" | "md" | "lg" | "xl";
+```
+
+<div className="mb-10" />
+
+### Alert Rounded
+
+```ts
+type AlertRounded = "sm" | "md" | "lg" | "xl" | "none";
+```
+
+<div className="mb-10" />
+
+### Alert onClose
+
+```ts
+type AlertOnClose = (event: MouseEvent<Element, MouseEvent>) => void;
+```

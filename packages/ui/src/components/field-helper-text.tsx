@@ -1,19 +1,20 @@
 import React from 'react';
-import { cn } from '../lib/cn';
+import { createVariant, type VariantProps } from '../lib/variants';
 
-const helperTextStyles = {
-  size: {
-    sm: 'text-[11px] mt-0.5',
-    md: 'text-[13px] mt-0.5',
-    lg: 'text-[13px] mt-1',
-    xl: 'text-sm mt-1',
+const fieldHelperText = createVariant({
+  variants: {
+    size: {
+      sm: 'text-[11px] mt-0.5',
+      md: 'text-[13px] mt-0.5',
+      lg: 'text-[13px] mt-1',
+    },
   },
-};
+});
 
 export interface FieldHelperTextProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLSpanElement> {
   as?: 'div' | 'span';
-  size?: keyof typeof helperTextStyles.size;
+  size?: VariantProps<typeof fieldHelperText>['size'];
   className?: string;
 }
 
@@ -24,11 +25,9 @@ export function FieldHelperText({
   className,
 }: React.PropsWithChildren<FieldHelperTextProps>) {
   const Component = as;
+  if (!children) return null;
   return (
-    <Component
-      role="alert"
-      className={cn(size && helperTextStyles.size[size], className)}
-    >
+    <Component className={fieldHelperText({ size, className })}>
       {children}
     </Component>
   );

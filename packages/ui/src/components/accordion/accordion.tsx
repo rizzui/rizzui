@@ -1,8 +1,7 @@
-import React from 'react';
+import type { ReactNode, ElementType } from 'react';
 import { AccordionHeader } from './accordion-header';
 import { AccordionBody } from './accordion-body';
 import { AccordionProvider } from './accordion-context';
-import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 export type AccordionProps = {
@@ -10,6 +9,7 @@ export type AccordionProps = {
   defaultOpen?: boolean;
   duration?: number;
   className?: string;
+  children?: ReactNode;
 };
 
 export function Accordion({
@@ -18,21 +18,13 @@ export function Accordion({
   duration,
   className,
   children,
-}: React.PropsWithChildren<AccordionProps>) {
-  let Component = as;
+}: AccordionProps) {
+  const Component = (as || 'div') as ElementType;
 
   return (
     <AccordionProvider defaultOpen={defaultOpen} duration={duration}>
-      <Component className={cn(makeClassName(`accordion-root`), className)}>
-        {React.Children.map(children, (child) => {
-          if (React.isValidElement(child) && child.type === AccordionHeader) {
-            return React.cloneElement(child);
-          }
-          if (React.isValidElement(child) && child.type === AccordionBody) {
-            return child;
-          }
-          return null;
-        })}
+      <Component className={cn('rizzui-accordion-root', className)}>
+        {children}
       </Component>
     </AccordionProvider>
   );
@@ -40,5 +32,3 @@ export function Accordion({
 
 Accordion.Header = AccordionHeader;
 Accordion.Body = AccordionBody;
-
-Accordion.displayName = 'Accordion';

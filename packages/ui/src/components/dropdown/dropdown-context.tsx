@@ -1,13 +1,11 @@
-import React, { createContext, useContext } from 'react';
-import { TheirPlacementType } from './dropdown.lib';
+import { createContext, useContext, type ReactNode } from 'react';
+import type { TheirPlacementType } from './dropdown.lib';
 
 type DropdownContextProps = {
   inPortal?: boolean;
   placement: TheirPlacementType;
   gap?: number;
   modal?: boolean;
-  rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
-  shadow?: 'none' | 'sm' | 'md' | 'lg' | 'xl';
 };
 
 const DropdownContext = createContext<DropdownContextProps | null>(null);
@@ -15,7 +13,10 @@ const DropdownContext = createContext<DropdownContextProps | null>(null);
 export function DropdownProvider({
   value,
   children,
-}: React.PropsWithChildren<{ value: DropdownContextProps }>) {
+}: {
+  value: DropdownContextProps;
+  children: ReactNode;
+}) {
   return (
     <DropdownContext.Provider value={value}>
       {children}
@@ -23,10 +24,10 @@ export function DropdownProvider({
   );
 }
 
-export const useDropdown = (): DropdownContextProps => {
+export function useDropdown(): DropdownContextProps {
   const context = useContext(DropdownContext);
   if (!context) {
     throw new Error('useDropdown must be used within a DropdownProvider');
   }
   return context;
-};
+}

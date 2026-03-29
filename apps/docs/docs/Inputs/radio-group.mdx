@@ -12,7 +12,7 @@ You can make a group of multiple choices **Radio** using **RadioGroup** componen
 ```tsx
 "use client"; 
 
-import { RadioGroup } from "rizzui";
+import { RadioGroup } from "rizzui/radio-group";
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -29,7 +29,8 @@ Checkout the **RadioGroup** demo with **Radio** components.
 "use client"; 
 
 import { useState } from "react";
-import { Radio, RadioGroup } from "rizzui";
+import { Radio } from "rizzui/radio";
+import { RadioGroup } from "rizzui/radio-group";
 
 export default function App() {
   const [value, setValue] = useState("apple");
@@ -76,7 +77,9 @@ Checkout the **RadioGroup** demo with **AdvancedRadio** components.
 "use client"; 
 
 import { useState } from "react";
-import { AdvancedRadio, RadioGroup, Text } from "rizzui";
+import { AdvancedRadio } from "rizzui/advanced-radio";
+import { RadioGroup } from "rizzui/radio-group";
+import { Text } from "rizzui/typography";
 
 const options = [
   {

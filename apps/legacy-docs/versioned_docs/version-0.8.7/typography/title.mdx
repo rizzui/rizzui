@@ -1,0 +1,139 @@
+---
+sidebar_position: 1
+---
+
+import { Title, Text } from "rizzui";
+import Paper from "@site/src/components/paper";
+
+# Title
+
+Title component is the used to render headings from h1 to h6. It renders as **h2** by default.
+
+```jsx
+import { Title } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+The default style of the **Title**.
+
+<Paper>
+  <Title>The brown fox jumps over the lazy dog</Title>
+</Paper>
+
+```jsx
+import { Title } from "rizzui";
+
+export default function App() {
+  return <Title>The brown fox jumps over the lazy dog</Title>;
+}
+```
+
+<div className="mb-16" />
+
+## Typography
+
+You can change style by just changing **tag** property in **Text** component.
+
+<Paper>
+  <div className="grid gap-8 py-2">
+    <div>
+      <Text as="span" className="tracking-wider text-gray-500">
+        h1
+      </Text>
+      <Title as="h1">The brown fox jumps over the lazy dog</Title>
+    </div>
+    <div>
+      <Text as="span" className="tracking-wider text-gray-500">
+        h2
+      </Text>
+      <Title as="h2">The brown fox jumps over the lazy dog</Title>
+    </div>
+    <div>
+      <Text as="span" className="tracking-wider text-gray-500">
+        h3
+      </Text>
+      <Title as="h3">The brown fox jumps over the lazy dog</Title>
+    </div>
+    <div>
+      <Text as="span" className="tracking-wider text-gray-500">
+        h4
+      </Text>
+      <Title as="h4">The brown fox jumps over the lazy dog</Title>
+    </div>
+    <div>
+      <Text as="span" className="tracking-wider text-gray-500">
+        h5
+      </Text>
+      <Title as="h5">The brown fox jumps over the lazy dog</Title>
+    </div>
+    <div>
+      <Text as="span" className="tracking-wider text-gray-500">
+        h6
+      </Text>
+      <Title as="h6">The brown fox jumps over the lazy dog</Title>
+    </div>
+  </div>
+</Paper>
+
+```jsx
+import { Title } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <Title as="h1">The brown fox jumps over the lazy dog</Title>
+
+      <Title as="h2">The brown fox jumps over the lazy dog</Title>
+
+      <Title as="h3">The brown fox jumps over the lazy dog</Title>
+
+      <Title as="h4">The brown fox jumps over the lazy dog</Title>
+
+      <Title as="h5">The brown fox jumps over the lazy dog</Title>
+
+      <Title as="h6">The brown fox jumps over the lazy dog</Title>
+    </>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### Title Props
+
+Here is the API documentation of the Title component.
+
+<div className="overflow-x-auto">
+
+|   Props    |              Type              |            Description             | Default  |
+| :--------: | :----------------------------: | :--------------------------------: | :------: |
+|     as     |    [TitleTags](#title-tags)    |                                    |  `"h2"`  |
+| fontWeight | [TitleWeights](#title-weights) |          Set font weight           | `"bold"` |
+| className  |            `string`            | Add custom classes for extra style |   \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Title Tags
+
+```ts
+type TitleTags = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+```
+
+<div className="mb-10" />
+
+### Title Weights
+
+```ts
+type TitleWeights = "bold" | "normal" | "medium" | "semibold" | "extraBold";
+```

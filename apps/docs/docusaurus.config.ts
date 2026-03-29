@@ -16,7 +16,12 @@ const config: Config = {
   projectName: 'rizzui',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   i18n: {
     defaultLocale: 'en',
@@ -45,15 +50,7 @@ const config: Config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.ts'),
           editUrl: 'https://github.com/rizzui/rizzui/apps/docs',
-          lastVersion: 'current',
-          versions: {
-            current: {
-              label: 'v-1.0.0',
-            },
-            '0.8.7': {
-              label: 'v-0.8.7',
-            },
-          },
+          routeBasePath: 'docs',
         },
         blog: {
           showReadingTime: true,
@@ -61,11 +58,12 @@ const config: Config = {
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
-          postsPerPage: 5,
+          postsPerPage: 12,
           blogTitle: 'RizzUI Blogs',
           blogDescription: 'Read blog posts about RizzUI updates from team.',
           blogSidebarCount: 'ALL',
           blogSidebarTitle: 'List of all posts',
+          blogListComponent: '@site/src/pages/blog/index',
         },
         theme: {
           customCss: [require.resolve('./src/css/custom.css')],
@@ -78,8 +76,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/rizz-social-card.png',
     fonts: {
-      myFont: ['Geist', 'sans-serif'],
-      myOtherFont: ['-apple-system', 'system-ui', 'sans-serif'],
+      myFont: ['Outfit', 'sans-serif'],
     },
     navbar: {
       logo: {
@@ -93,7 +90,7 @@ const config: Config = {
           label: 'Documentation',
         },
         {
-          to: 'docs/buttons/action-icon',
+          to: 'docs/guide/components',
           position: 'left',
           label: 'Components',
         },
@@ -109,19 +106,25 @@ const config: Config = {
           'aria-label': 'GitHub',
         },
         {
-          type: 'docsVersionDropdown',
+          type: 'dropdown',
+          label: 'v-2.1.0',
           position: 'right',
-          className: 'customVersionDropdown',
+          items: [
+            {
+              label: 'v-1.0.0',
+              href: 'https://legacy-docs.rizzui.com/docs/guide/getting-started', // Replace with your actual URL
+            },
+            {
+              label: 'v-0.8.7',
+              href: 'https://legacy-docs.rizzui.com/docs/0.8.7/guide/getting-started', // Replace with your actual URL
+            },
+          ],
         },
       ],
     },
-    // colorMode: {
-    //   defaultMode: "light",
-    //   respectPrefersColorScheme: false,
-    // },
     prism: {
-      theme: prismThemes.nightOwl,
-      darkTheme: prismThemes.nightOwl,
+      theme: prismThemes.oceanicNext,
+      darkTheme: prismThemes.oceanicNext,
     },
   } satisfies Preset.ThemeConfig,
 };

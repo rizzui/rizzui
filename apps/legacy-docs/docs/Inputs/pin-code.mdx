@@ -1,0 +1,306 @@
+---
+sidebar_position: 12
+---
+
+import { PinCode } from "rizzui";
+import Paper from "@site/src/components/paper";
+
+# PinCode
+
+A basic widget for getting pin code for verifications.
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+The default style of **PinCode** component.
+
+<Paper>
+  <PinCode />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <PinCode />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Variants
+
+We have three diffrient style. You can select any of them using [**variant**](#pincode-variants) property.
+
+<Paper className="flex-row flex-wrap gap-4">
+  <PinCode variant="outline" />
+  <PinCode variant="flat" />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <PinCode variant="flat" />
+      <PinCode variant="outline" />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Sizes
+
+You can set diffrient sizes of the **PinCode** using [**size**](#pincode-sizes) property.
+
+<Paper className="gap-6 justify-start items-start">
+  <PinCode size="sm" />
+  <PinCode />
+  <PinCode size="lg" />
+  <PinCode size="xl" />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <PinCode size="sm" />
+      <PinCode />
+      <PinCode size="lg" />
+      <PinCode size="xl" />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Rounded
+
+You can change border radius of the **PinCode** using [**rounded**](#pincode-rounded) property.
+
+<Paper className="flex-row flex-wrap justify-around items-start gap-8">
+  <PinCode rounded="none" />
+  <PinCode rounded="sm" />
+  <PinCode />
+  <PinCode rounded="lg" />
+  <PinCode rounded="full" />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <PinCode rounded="none" />
+      <PinCode rounded="sm" />
+      <PinCode />
+      <PinCode rounded="lg" />
+      <PinCode rounded="full" />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## With Mask
+
+You can hide pin code value using **mask** property.
+
+<Paper>
+  <PinCode mask={true} />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+
+export default function App() {
+  return <PinCode mask={true} />;
+}
+```
+
+<div className="mb-16" />
+
+## With Placeholder
+
+You can set custom placeholder using **placeholder** property.
+
+<Paper>
+  <PinCode placeholder="😀" />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+
+export default function App() {
+  return <PinCode placeholder="😀" />;
+}
+```
+
+<div className="mb-16" />
+
+## With Length
+
+You can set custom length of the **PinCode** using **length** property.
+
+<Paper className="justify-around flex-row gap-8 flex-wrap">
+  <PinCode length={4} />
+  <PinCode length={5} />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+
+export default function App() {
+  return (
+    <>
+      <PinCode length={4} />
+      <PinCode length={5} />
+    </>
+  );
+}
+```
+
+<div className="mb-16" />
+
+## Disabled
+
+You can disable the **PinCode** using **disabled** property.
+
+<Paper>
+  <PinCode disabled />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+
+export default function App() {
+  return <PinCode disabled />;
+}
+```
+
+<div className="mb-16" />
+
+## With Error Message
+
+You can show the validation error message using **error** property.
+
+<Paper>
+  <PinCode
+    center={false}
+    error="This field is required"
+  />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { PinCode } from "rizzui";
+
+export default function App() {
+  return (
+    <PinCode
+      center={false}
+      error="This field is required"
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### PinCode Props
+
+Here is the API documentation of the Pin Code component.
+
+<div className="overflow-x-auto">
+
+|     Props      |                 Type                 |                                 Description                                 |   Default   |
+| :------------: | :----------------------------------: | :-------------------------------------------------------------------------: | :---------: |
+|    setValue    | [PincodeSetvalue](#pincode-setvalue) |                Pass setState to get back the pin code value                 |    \_\_     |
+|      type      |           `number` `text`            |            This Pin Code component only support these two types             |  `"text"`   |
+|      mask      |              `boolean`               |                  Mask and unmask to hide and show pin code                  |   `false`   |
+|     length     |               `number`               |                             Set pin code length                             |     `4`     |
+|     center     |              `boolean`               |                      Make pin code horizontally center                      |   `true`    |
+|  placeholder   |               `string`               |                            Set placeholder text                             |    `"o"`    |
+|    variant     | [PincodeVariants](#pincode-variants) |                     The variants of the component are:                      | `"outline"` |
+|      size      |    [PincodeSizes](#pincode-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. |   `"md"`    |
+|    rounded     |  [PincodeRounded](#pincode-rounded)  |                          The rounded variants are:                          |   `"md"`    |
+|     error      |               `string`               |                     Show error message using this prop                      |    \_\_     |
+| inputClassName |               `string`               |             Add custom classes for the input filed extra style              |    \_\_     |
+| errorClassName |               `string`               |          This prop allows you to customize the error message style          |    \_\_     |
+|   className    |               `string`               |               Add custom classes to the root of the component               |    \_\_     |
+
+</div>
+
+<div className="mb-10" />
+
+### Pincode Setvalue
+
+```tsx
+type PincodeSetvalue = Dispatch<SetStateAction<string | number | undefined>>;
+```
+
+<div className="mb-10" />
+
+### Pincode Variants
+
+```tsx
+type PincodeVariants = "outline" | "flat";
+```
+
+<div className="mb-10" />
+
+### Pincode Sizes
+
+```tsx
+type PincodeSizes = "sm" | "md" | "lg" | "xl";
+```
+
+<div className="mb-10" />
+
+### Pincode Rounded
+
+```tsx
+type PincodeRounded = "sm" | "md" | "lg" | "none" | "full";
+```

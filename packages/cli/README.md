@@ -1,112 +1,99 @@
 # RizzUI CLI
 
-A command-line interface tool to configure RizzUI with Next.js applications seamlessly, featuring **Tailwind CSS v4** support.
+Command-line tool to scaffold **RizzUI 2.x** in a **Next.js** app: Tailwind CSS v4 (PostCSS), OKLCH theme tokens, `@source` for scanning `rizzui/dist`, optional **next-themes** setup, and a small **`rizzui.config.json`** for your project.
+
+## Requirements
+
+- Node.js 18+
+- A Next.js project (`next` in `package.json`)
 
 ## Installation
 
 ```bash
 npm install -g rizzui-cli
 # or
-yarn global add rizzui-cli
-# or
 pnpm add -g rizzui-cli
 ```
 
-## Usage
+## Commands
 
-### Initialize RizzUI in your Next.js project
+### `rizzui init`
 
-```bash
-rizzui init
+Detects your Next.js app, updates `package.json` dependencies, writes:
+
+- `postcss.config.mjs` (Tailwind v4 PostCSS plugin)
+- **`app/globals.css`** or **`src/app/globals.css`** when the App Router directory exists; otherwise **`styles/globals.css`** or **`src/styles/globals.css`**
+- **`rizzui.config.json`** — `{ version, globalsPath, darkMode, uiPreset }`
+- With **light + dark**: `components/theme-provider` and `components/theme-switcher` (or under `src/components/`), plus `next-themes` and `@heroicons/react`
+
+**Options**
+
+- `-d, --default` — Light-only theme, non-interactive; patches the root layout import without prompting when the layout file exists.
+- `--typescript` / `--no-typescript` — Reserved for future use; TS/JS is detected from the project today.
+- `-s, --src-dir` / `--no-src-dir` — Reserved; `src/` is auto-detected.
+
+**Layout import**
+
+If `app/layout.tsx` (or `src/app/...`) exists, the CLI can insert:
+
+```ts
+import './globals.css';
 ```
 
-This command will:
-- Detect your Next.js project configuration
-- Install required dependencies (including **Tailwind CSS v4**)
-- Generate PostCSS configuration for Tailwind CSS v4
-- Set up global styles with modern `@import` and `@theme` syntax
-- Configure dark mode support (optional)
-- Create theme components (if dark mode is enabled)
+Interactive runs ask for confirmation first; `--default` adds it without prompting.
 
-### Options
+**Peer / dev dependencies** (aligned with the `rizzui` package and example app):
 
-- `--default` - Use default configuration without prompts
-- `--typescript` - Force TypeScript configuration (auto-detected by default)
-- `--no-typescript` - Force JavaScript configuration
-- `--src-dir` - Force src directory structure (auto-detected by default)
-- `--no-src-dir` - Force root directory structure
+- `rizzui@^2.1.0`, `react@^19.2.3`, `react-dom@^19.2.3`, `@headlessui/react@^2.2.9`, `@floating-ui/react@^0.27.16`
+- Dev: `tailwindcss@^4.1.18`, `@tailwindcss/postcss@^4.1.18`, `postcss@^8.5.6`, `@tailwindcss/forms@^0.5.10`
+- Dark mode: `next-themes@^0.4.6`, `@heroicons/react@^2.2.0`
 
-### Examples
+Then run your package manager’s install (e.g. `pnpm install`).
 
-```bash
-# Interactive setup with prompts
-rizzui init
+**Theme provider**
 
-# Quick setup with defaults (light mode only)
-rizzui init --default
+Generated `ThemeProvider` uses `next-themes` with **`attribute="data-theme"`** so RizzUI’s `[data-theme='dark']` CSS and `dark:` variants work.
 
-# Force TypeScript setup
-rizzui init --typescript
-```
+### `rizzui add`
 
-### Add Components (Coming Soon)
+Copies **RizzUI TypeScript source** from `node_modules/rizzui/src` into **`components/ui`** or **`src/components/ui`**, mirroring the library layout (`components/`, `lib/`, `icons/`) so relative imports keep working. Local imports are followed transitively (e.g. `button` pulls in `loader`, `lib/variants`, `lib/cn`, …).
+
+**Interactive (recommended):** run with no arguments for a **multi-select** checklist (space to toggle, enter to confirm).
 
 ```bash
-rizzui add [components...]
-rizzui add button input modal
-rizzui add --all
+rizzui add
 ```
 
-## Features
+**Non-interactive:** pass one or more slugs (same names as `rizzui add` help / docs).
 
-- ✅ **Tailwind CSS v4** support with modern configuration
-- ✅ Automatic Next.js project detection
-- ✅ TypeScript/JavaScript detection
-- ✅ Package manager detection (npm, yarn, pnpm, bun)
-- ✅ Interactive color scheme selection
-- ✅ Dark mode configuration with CSS-first approach
-- ✅ PostCSS configuration generation
-- ✅ Global styles with `@import` and `@theme` blocks
-- ✅ Theme provider components
-- 🔄 Component installation (coming soon)
+```bash
+rizzui add button modal cn variants
+```
 
-## Requirements
+**Print import lines only** (no files written): npm subpath imports and install hints.
 
-- Node.js 18.0.0 or later
-- Next.js project
-- TailwindCSS (will be installed if not present)
+```bash
+rizzui add --print-imports
+# or: rizzui add --all   (deprecated alias)
+```
 
-## Color Customization
+Requires **`rizzui@^2.1.0`** with published `src` (`src/components`, `src/lib`, `src/icons`). Example import after vendoring:
 
-When using interactive mode, you can customize colors for:
-- Primary colors
-- Secondary colors
-- Danger/Error colors
-- Warning colors
-- Info colors
-- Success colors
+```ts
+import { Button } from '@/components/ui/components/button';
+```
 
-All colors are based on Tailwind CSS color palette and support both light and dark modes.
+## Generated CSS (summary)
 
-## Generated Files
+- `@import 'tailwindcss';` and a computed **`@source`** to `node_modules/rizzui/dist`
+- `@custom-variant dark` for `data-theme`
+- `:root` and `[data-theme='dark']` OKLCH variables, `@theme inline`, `@plugin '@tailwindcss/forms'`, UI preset hooks, autofill resets — aligned with `packages/ui/src/styles/global.css` in this monorepo
 
-### Light Mode Only
-- `postcss.config.mjs` - PostCSS configuration for Tailwind CSS v4
-- `styles/globals.css` or `src/styles/globals.css` - Global styles with `@import` and `@theme`
+## Optional HTML preset
 
-### With Dark Mode
-- `postcss.config.mjs` - PostCSS configuration for Tailwind CSS v4
-- `styles/globals.css` or `src/styles/globals.css` - Global styles with CSS variables and dark mode
-- `components/theme-provider.tsx` - Next.js theme provider
-- `components/theme-switcher.tsx` - Theme toggle component
+Set on `<html>` or `<body>`:
 
-## What's New in Tailwind CSS v4
-
-- **Simplified Installation**: Fewer dependencies, zero configuration
-- **CSS-First Configuration**: Use `@theme` blocks instead of `tailwind.config.js`
-- **Modern Import Syntax**: Single `@import "tailwindcss";` replaces multiple directives
-- **Performance**: Up to 5x faster builds, 100x faster incremental builds
-- **Modern CSS Features**: Built on cascade layers and registered custom properties
+`data-ui-preset="modern" | "minimal" | "bold" | "soft"`
 
 ## License
 

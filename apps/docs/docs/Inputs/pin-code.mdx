@@ -2,17 +2,17 @@
 sidebar_position: 12
 ---
 
-import { PinCode } from "rizzui";
-import Paper from "@site/src/components/paper";
+import { PinCode } from 'rizzui/pin-code';
+import Paper from '@site/src/components/paper';
 
 # PinCode
 
 A basic widget for getting pin code for verifications.
 
 ```tsx
-"use client"; 
+'use client';
 
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui/pin-code';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -26,9 +26,9 @@ The default style of **PinCode** component.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui/pin-code';
 
 export default function App() {
   return (
@@ -43,7 +43,7 @@ export default function App() {
 
 ## Variants
 
-We have three diffrient style. You can select any of them using [**variant**](#pincode-variants) property.
+We have three different styles. You can select any of them using [**variant**](#pincode-variants) property.
 
 <Paper className="flex-row flex-wrap gap-4">
   <PinCode variant="outline" />
@@ -51,9 +51,9 @@ We have three diffrient style. You can select any of them using [**variant**](#p
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui/pin-code';
 
 export default function App() {
   return (
@@ -69,19 +69,18 @@ export default function App() {
 
 ## Sizes
 
-You can set diffrient sizes of the **PinCode** using [**size**](#pincode-sizes) property.
+You can set different sizes of the **PinCode** using [**size**](#pincode-sizes) property.
 
 <Paper className="gap-6 justify-start items-start">
   <PinCode size="sm" />
   <PinCode />
   <PinCode size="lg" />
-  <PinCode size="xl" />
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui/pin-code';
 
 export default function App() {
   return (
@@ -89,39 +88,6 @@ export default function App() {
       <PinCode size="sm" />
       <PinCode />
       <PinCode size="lg" />
-      <PinCode size="xl" />
-    </>
-  );
-}
-```
-
-<div className="mb-16" />
-
-## Rounded
-
-You can change border radius of the **PinCode** using [**rounded**](#pincode-rounded) property.
-
-<Paper className="flex-row flex-wrap justify-around items-start gap-8">
-  <PinCode rounded="none" />
-  <PinCode rounded="sm" />
-  <PinCode />
-  <PinCode rounded="lg" />
-  <PinCode rounded="full" />
-</Paper>
-
-```tsx
-"use client"; 
-
-import { PinCode } from "rizzui";
-
-export default function App() {
-  return (
-    <>
-      <PinCode rounded="none" />
-      <PinCode rounded="sm" />
-      <PinCode />
-      <PinCode rounded="lg" />
-      <PinCode rounded="full" />
     </>
   );
 }
@@ -138,9 +104,9 @@ You can hide pin code value using **mask** property.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui/pin-code';
 
 export default function App() {
   return <PinCode mask={true} />;
@@ -158,9 +124,9 @@ You can set custom placeholder using **placeholder** property.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui/pin-code';
 
 export default function App() {
   return <PinCode placeholder="😀" />;
@@ -179,9 +145,9 @@ You can set custom length of the **PinCode** using **length** property.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui/pin-code';
 
 export default function App() {
   return (
@@ -204,9 +170,9 @@ You can disable the **PinCode** using **disabled** property.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui/pin-code';
 
 export default function App() {
   return <PinCode disabled />;
@@ -220,24 +186,16 @@ export default function App() {
 You can show the validation error message using **error** property.
 
 <Paper>
-  <PinCode
-    center={false}
-    error="This field is required"
-  />
+  <PinCode center={false} error="This field is required" />
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { PinCode } from "rizzui";
+import { PinCode } from 'rizzui/pin-code';
 
 export default function App() {
-  return (
-    <PinCode
-      center={false}
-      error="This field is required"
-    />
-  );
+  return <PinCode center={false} error="This field is required" />;
 }
 ```
 
@@ -258,16 +216,15 @@ Here is the API documentation of the Pin Code component.
 |     Props      |                 Type                 |                                 Description                                 |   Default   |
 | :------------: | :----------------------------------: | :-------------------------------------------------------------------------: | :---------: |
 |    setValue    | [PincodeSetvalue](#pincode-setvalue) |                Pass setState to get back the pin code value                 |    \_\_     |
-|      type      |           `number` `text`            |            This Pin Code component only support these two types             |  `"text"`   |
+|      type      |           `number` `text`            |            This Pin Code component only supports these two types             |  `"text"`   |
 |      mask      |              `boolean`               |                  Mask and unmask to hide and show pin code                  |   `false`   |
 |     length     |               `number`               |                             Set pin code length                             |     `4`     |
 |     center     |              `boolean`               |                      Make pin code horizontally center                      |   `true`    |
 |  placeholder   |               `string`               |                            Set placeholder text                             |    `"o"`    |
 |    variant     | [PincodeVariants](#pincode-variants) |                     The variants of the component are:                      | `"outline"` |
 |      size      |    [PincodeSizes](#pincode-sizes)    | The size of the component. `"sm"` is equivalent to the dense input styling. |   `"md"`    |
-|    rounded     |  [PincodeRounded](#pincode-rounded)  |                          The rounded variants are:                          |   `"md"`    |
 |     error      |               `string`               |                     Show error message using this prop                      |    \_\_     |
-| inputClassName |               `string`               |             Add custom classes for the input filed extra style              |    \_\_     |
+| inputClassName |               `string`               |             Add custom classes for the input field extra style              |    \_\_     |
 | errorClassName |               `string`               |          This prop allows you to customize the error message style          |    \_\_     |
 |   className    |               `string`               |               Add custom classes to the root of the component               |    \_\_     |
 
@@ -286,7 +243,7 @@ type PincodeSetvalue = Dispatch<SetStateAction<string | number | undefined>>;
 ### Pincode Variants
 
 ```tsx
-type PincodeVariants = "outline" | "flat";
+type PincodeVariants = 'outline' | 'flat';
 ```
 
 <div className="mb-10" />
@@ -294,13 +251,7 @@ type PincodeVariants = "outline" | "flat";
 ### Pincode Sizes
 
 ```tsx
-type PincodeSizes = "sm" | "md" | "lg" | "xl";
+type PincodeSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
-
-### Pincode Rounded
-
-```tsx
-type PincodeRounded = "sm" | "md" | "lg" | "none" | "full";
-```

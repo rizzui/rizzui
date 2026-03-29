@@ -1,18 +1,16 @@
-import React from 'react';
 import {
   TabPanel as HeadlessTabPanel,
   type TabPanelProps as HeadlessTabPanelProps,
 } from '@headlessui/react';
 import { cn } from '../../lib/cn';
-import { ExtractProps } from '../../lib/extract-props';
-import { makeClassName } from '../../lib/make-class-name';
+import type { ExtractProps } from '../../lib/extract-props';
 
-export type TabPanelProps = ExtractProps<HeadlessTabPanelProps> & {};
+export type TabPanelProps = ExtractProps<HeadlessTabPanelProps>;
 
 export function TabPanel({ children, className, ...props }: TabPanelProps) {
   return (
     <HeadlessTabPanel
-      className={cn(makeClassName(`tab-panel`), className)}
+      className={cn('rizzui-tab-panel', className)}
       {...props}
     >
       {children}

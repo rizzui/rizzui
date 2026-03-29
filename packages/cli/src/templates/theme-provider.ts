@@ -11,6 +11,7 @@ interface ThemeProviderProps extends PropsWithChildren {}` : ''}
 export function ThemeProvider({ children }${isTypeScript ? ': ThemeProviderProps' : ''}) {
   return (
     <NextThemeProvider
+      attribute="data-theme"
       enableSystem
       defaultTheme="system"
       disableTransitionOnChange

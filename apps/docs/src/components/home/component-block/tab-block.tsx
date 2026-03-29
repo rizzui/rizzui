@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function TabBlock() {
   return (
     <div className="w-full h-9 rounded-md bg-gray-200">

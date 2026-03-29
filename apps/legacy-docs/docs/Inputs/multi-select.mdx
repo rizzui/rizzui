@@ -1,0 +1,598 @@
+---
+sidebar_position: 11
+---
+
+import Paper from "@site/src/components/paper";
+import MultiSelectBox, {
+  MultiSelectWithForm,
+  MultiSelectBoxClearable,
+  MultiSelectBoxCustomOption,
+  MultiSelectBoxCustomOptionTwo,
+  MultiSelectWithSearchAble,
+} from "@site/src/components/multi-select";
+
+# MultiSelect
+
+Listboxes are a great foundation for building custom, accessible Multi-Select menus for your app, complete with robust support for keyboard navigation.
+
+```tsx
+"use client"; 
+
+import { MultiSelect } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Default
+
+The default style of **MultiSelect** component.
+
+<Paper>
+  <MultiSelectBox className="w-full max-w-md" />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { useState } from 'react'
+import { MultiSelect } from "rizzui";
+
+const options = [
+  { label: 'Apple 🍎', value: 'apple' },
+  { label: 'Banana 🍌', value: 'banana' },
+  { label: 'Cherry 🍒', value: 'cherry' },
+  ...
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+  return (
+    <MultiSelect
+      value={value}
+      options={options}
+      label="Multi Select"
+      onChange={setValue}
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With Clearable Button
+
+You can clear **MultiSelect** values using **clearable** property.
+
+<Paper>
+  <MultiSelectBoxClearable className="w-full max-w-md" />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { useState } from 'react'
+import { MultiSelect } from "rizzui";
+
+const options = [
+  { label: 'Apple 🍎', value: 'apple' },
+  { label: 'Banana 🍌', value: 'banana' },
+  { label: 'Cherry 🍒', value: 'cherry' },
+  ...
+];
+
+export default function App() {
+  const [value, setValue] = useState(options[0].value, options[1].value);
+  return (
+    <MultiSelect
+      value={value}
+      options={options}
+      label="Multi Select"
+      onChange={setValue}
+      clearable={true}
+      onClear={() => setValue([])}
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With Custom Option
+
+Here is the custom option **MultiSelect** example.
+
+<Paper>
+  <MultiSelectBoxCustomOption className="w-full max-w-2xl" />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { useState } from 'react'
+import { MultiSelect, cn } from "rizzui";
+
+const customOptions = [
+  {
+    label: "Wolverine",
+    value: "wolverine@rizzui.io",
+    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
+  },
+  {
+    label: "MessiJr",
+    value: "messijr@rizzui.io",
+    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+  },
+ ...
+];
+
+export default function App() {
+  const [value, setValue] = React.useState([customOptions[0].value, customOptions[1].value]);
+
+  return (
+      <MultiSelect
+        label = "Multi Select",
+        value={value}
+        options={customOptions}
+        onChange={setValue}
+        displayValue={renderDisplayValue}
+        getOptionDisplayValue={renderOptionDisplayValue}
+        optionClassName="p-0"
+      />
+  );
+}
+
+function renderDisplayValue(option: MultiSelectOption, handleClearItem: (value: string) => void) {
+  return (
+    <div className="flex items-center gap-3 p-1">
+      <img
+        src={option.avatar}
+        alt={option.label}
+        className="size-8 object-cover rounded-full bg-muted"
+      />
+      <div>
+        <Text fontWeight="medium">{option.label}</Text>
+        <Text>{option.value}</Text>
+      </div>
+      <span
+        className="p-1 hover:bg-muted rounded-full cursor-pointer"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleClearItem(option.value);
+        }}
+      >
+        <XMarkIcon className="size-4" />
+      </span>
+    </div>
+  );
+}
+
+function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) {
+  return (
+    <div className={cn("flex items-center gap-3 py-1.5 px-3 pe-4 w-full")}>
+      <img
+        src={option.avatar}
+        alt={option.label}
+        className="size-9 object-cover rounded bg-muted"
+      />
+      <div>
+        <Text fontWeight="medium">{option.label}</Text>
+        <Text>{option.value}</Text>
+      </div>
+      {selected && <CheckIcon className="ms-auto size-5" />}
+    </div>
+  );
+}
+
+```
+
+<Paper>
+  <div className="flex justify-center">
+    <MultiSelectBoxCustomOptionTwo />
+  </div>
+</Paper>
+
+```tsx
+"use client"; 
+
+import { useState } from 'react'
+import { MultiSelect, cn } from "rizzui";
+
+const customOptions = [
+  {
+    label: "Wolverine",
+    value: "wolverine@rizzui.io",
+    avatar: "https://randomuser.me/api/portraits/men/43.jpg",
+  },
+  {
+    label: "MessiJr",
+    value: "messijr@rizzui.io",
+    avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+  },
+ ...
+];
+
+export default function App() {
+  const [value, setValue] = React.useState([customOptions[0].value, customOptions[1].value, customOptions[2].value]);
+
+  return (
+      <MultiSelect
+      clearable
+      value={value}
+      suffix={<></>}
+      onChange={setValue}
+      label='Multi Select'
+      optionClassName="p-0"
+      options={customOptions}
+      dropdownClassName="min-w-80"
+      onClear={() => setValue([])}
+      displayValue={renderDisplayValue}
+      getOptionDisplayValue={renderOptionDisplayValue}
+    />
+  );
+}
+
+function renderDisplayValue(
+  selectedItems: string[],
+  options: MultiSelectOption[],
+  handleClearItem: (value: string) => void
+) {
+  const filteredItems = options.filter((option) => selectedItems.includes(option.value));
+  const isEmpty = filteredItems.length === 0;
+  const isLongerThanTwo = filteredItems.length > 2;
+
+  return (
+    <div className={cn("flex w-full flex-wrap items-center gap-2 text-start", !isEmpty && "me-6")}>
+      <div className="flex items-center gap-1">
+        <PlusCircleIcon className="size-5 text-muted-foreground" />
+        Status
+      </div>
+      {isLongerThanTwo ? (
+        <span className="border-s border-muted ps-2 ms-2">{filteredItems.length} Selected</span>
+      ) : (
+        <div className="ps-2 border-s border-muted flex items-center gap-2">
+          {filteredItems.slice(0, 2).map((item) => (
+            <div className="flex items-center gap-3 border border-muted rounded ps-2">
+              <Text fontWeight="medium">{item.label}</Text>
+              <span
+                className="p-1 hover:bg-muted rounded-full cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleClearItem(item.value);
+                }}
+              >
+                <XMarkIcon className="size-4" />
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function renderOptionDisplayValue(option: MultiSelectOption, selected: boolean) {
+  return (
+    <div className={cn("flex items-center gap-3 py-1.5 px-3 pe-4 w-full")}>
+      <img
+        src={option.avatar}
+        alt={option.label}
+        className="size-9 object-cover rounded bg-muted"
+      />
+      <div>
+        <Text fontWeight="medium">{option.label}</Text>
+        <Text>{option.value}</Text>
+      </div>
+      {selected && <CheckIcon className="ms-auto size-5" />}
+    </div>
+  );
+}
+
+```
+
+<div className="mb-20" />
+
+## Hide Selected Options
+
+You can hide **MultiSelect** options using **hideSelectedOptions** property.
+
+<Paper>
+  <MultiSelectBox
+    hideSelectedOptions={true}
+    className="w-full max-w-md"
+  />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { useState } from 'react'
+import { MultiSelect } from "rizzui";
+
+const options = [
+  { label: 'Apple 🍎', value: 'apple' },
+  { label: 'Banana 🍌', value: 'banana' },
+  { label: 'Cherry 🍒', value: 'cherry' },
+  ...
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+  return (
+    <MultiSelect
+      value={value}
+      options={options}
+      label="Multi Select"
+      onChange={setValue}
+      hideSelectedOptions={true}
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Use Custom Key as Value
+
+You can use custom option key of **MultiSelect** options as value property. In this case we are going to use **customOptionKey** as value. Open the console to see the selected values.
+
+<Paper>
+  <MultiSelectBox
+    getOptionValueKey="customOptionKey"
+    className="w-full max-w-md"
+  />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { useState } from 'react'
+import { MultiSelect } from "rizzui";
+
+const options = [
+  { label: "Apple 🍎", value: "apple", customOptionKey: "movie" },
+  { label: "Banana 🍌", value: "banana", customOptionKey: "footballPlayer" },
+  { label: "Cherry 🍒", value: "cherry", customOptionKey: "fight" },
+ ...
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+  return (
+    <MultiSelect
+      value={value}
+      options={options}
+      onChange={setValue}
+      label="Multi Select"
+      getOptionValueKey="customOptionKey"
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With Searchable
+
+You can search inside **MultiSelect** options.
+
+<Paper>
+  <MultiSelectWithSearchAble className="w-full max-w-md" />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { useState } from 'react'
+import { MultiSelect } from "rizzui";
+
+const options = [
+  { label: "Apple 🍎", value: "apple" },
+  { label: "Banana 🍌", value: "banana" },
+  { label: "Cherry 🍒", value: "cherry" },
+ ...
+];
+
+export default function App() {
+  const [value, setValue] = useState([]);
+  return (
+    <MultiSelect
+      value={value}
+      clearable={true}
+      searchable={true}
+      options={options}
+      onChange={setValue}
+      onClear={() => setValue([])}
+      label="Multi Select"
+    />
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With React Hook Form and Zod Validation
+
+In this example, we are going to use **React Hook Form** and **Zod** for validation. Open browser console to see the submitted data.
+
+<Paper>
+  <MultiSelectWithForm />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { z } from "zod";
+import { MultiSelect, Button } from "rizzui";
+import { Controller, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const options = [
+  { label: "Apple 🍎", value: "apple" },
+  { label: "Banana 🍌", value: "banana" },
+  { label: "Cherry 🍒", value: "cherry" },
+ ...
+];
+
+const schema = z.object({
+  multiSelect: z.array(z.string()).min(1, { message: "Minimum 1 item required!" }),
+});
+
+type SchemaType = z.infer<typeof schema>;
+
+export function MultiSelectWithForm() {
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      multiSelect: ["apple", "banana"],
+    },
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: SchemaType) => {
+    console.log("Submitted data", data);
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full max-w-md"
+    >
+      <Controller
+        control={control}
+        name="multiSelect"
+        render={({ field: { value, onChange }, fieldState: { error } }) => (
+          <MultiSelect
+            label="Multi Select"
+            value={value}
+            options={options}
+            onChange={onChange}
+            error={error?.message}
+            className="w-full max-w-md"
+            clearable={true}
+            onClear={() => onChange([])}
+          />
+        )}
+      />
+
+      <Button className="mt-4 w-full">Submit</Button>
+    </form>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### MultiSelect Props
+
+Here is the API documentation of the **MultiSelect** component.
+
+<div className="overflow-x-auto multiselect-props-row-highlight">
+
+|          Props           |                       Type                        |                                                                                                              Description                                                                                                              |    Default    |
+| :----------------------: | :-----------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------: |
+|          value           |                    `string[]`                     |                                                                                            The selected value. **value** prop is required.                                                                                            |     \_\_      |
+|         options          | [`MultiSelectOption[]`](#multiselect-option-type) |                                                                                    Add options data using this prop. **options** prop is required.                                                                                    |     \_\_      |
+|         onChange         |            `(value: string[]) => void`            |                                                                          The function to call when a new option is selected.. **onChange** prop is required.                                                                          |     \_\_      |
+|      onSearchChange      |             `(value: string) => void`             |                                                                                        The function to call when type in options search panel.                                                                                        |     \_\_      |
+|         onClear          |                   `() => void `                   |                                                                                                              clear event                                                                                                              |     \_\_      |
+|          label           |                    `ReactNode`                    |                                                                                                            Set field label                                                                                                            |     \_\_      |
+|       labelWeight        |           [LabelWeight](#label-weight)            |                                                                                                         Set label font weight                                                                                                         |  `"medium"`   |
+|      optionCheckBox      |                     `boolean`                     |                                                                                                 Show checkbox in option list or not.                                                                                                  |   `"true"`    |
+|         variant          |   [MultiSelectVariants](#multiselect-variants)    |                                                                                                  The variants of the component are:                                                                                                   |  `"outline"`  |
+|           size           |      [MultiSelectSizes](#multiselect-sizes)       |                                                                              The size of the component. "sm" is equivalent to the dense select styling.                                                                               |    `"md"`     |
+|         rounded          |    [MultiSelectRounded](#multiselect-rounded)     |                                                                                                       The rounded variants are:                                                                                                       |    `"md"`     |
+|        autoFocus         |                     `boolean`                     |                                                                                              Whether select is focused by default or not                                                                                              |   `"false"`   |
+|         inPortal         |                     `boolean`                     |                                                                                        Whether select options is rendered on the portal or not                                                                                        |   `"true"`    |
+|          modal           |                     `boolean`                     |                                                                                 Whether the body scrollbar is hidden or not when dropdown is visible.                                                                                 |   `"false"`   |
+|           gap            |                     `number`                      |                                                                                      Sets the gap between trigger and dropdown if portal is true                                                                                      |     `"6"`     |
+|       placeholder        |                     `string`                      |                                                                                                      Set select placeholder text                                                                                                      | `"Select..."` |
+|         disabled         |                     `boolean`                     |                                                                                                 Whether the select is disabled or not                                                                                                 |     \_\_      |
+|        clearable         |                     `boolean`                     |                                                                                                         Add clearable option                                                                                                          |     \_\_      |
+|          prefix          |                    `ReactNode`                    |                                              The prefix is design for adding any icon or text on the Select field's start (it's a left icon for the `ltr` and right icon for the `rtl`)                                               |     \_\_      |
+|          suffix          |                    `ReactNode`                    |                                               The suffix is design for adding any icon or text on the Select field's end (it's a right icon for the `ltr` and left icon for the `rtl`)                                                |     \_\_      |
+|        helperText        |                    `ReactNode`                    |                                                                                       Add helper text. It could be string or a React component                                                                                        |     \_\_      |
+|          error           |                     `string`                      |                                                                                                  Show error message using this prop                                                                                                   |     \_\_      |
+|       displayValue       |                    `function`                     | A function to determine the display value of the selected item. **@param selectedItems** - **@param options** - **@param handleClearItem** - The value of the selected item, **@returns ReactNode** to display for the selected item. |     \_\_      |
+|  getOptionDisplayValue   |                    `function`                     |    Use this function when you want to change the default options look. **@param option** - **@param selected** - The SelectOption for which to get the display value, **@returns ReactNode** to display for the specified option.     |     \_\_      |
+|    getOptionValueKey     |                     `string`                      |                                                                            Can use any property as value inside your options object rather then **value**                                                                             |     \_\_      |
+|   hideSelectedOptions    |                     `boolean`                     |                                                                                   Removes the selected items from options dropdown if set to `true`                                                                                   |    `false`    |
+|        className         |                     `string`                      |                                                                                            Add custom classes to the root of the component                                                                                            |     \_\_      |
+|      labelClassName      |                     `string`                      |                                                                                                  Override default CSS style of label                                                                                                  |     \_\_      |
+|     selectClassName      |                     `string`                      |                                                                                              Override default CSS style of select button                                                                                              |     \_\_      |
+|    dropdownClassName     |                     `string`                      |                                                                                             Override default CSS style of select dropdown                                                                                             |     \_\_      |
+|     optionClassName      |                     `string`                      |                                                                                              Override default CSS style of select option                                                                                              |     \_\_      |
+|     prefixClassName      |                     `string`                      |                                                                                                 Override default CSS style of prefix                                                                                                  |     \_\_      |
+|     suffixClassName      |                     `string`                      |                                                                                                 Override default CSS style of suffix                                                                                                  |     \_\_      |
+|     helperClassName      |                     `string`                      |                                                                                               Override default CSS style of helperText                                                                                                |     \_\_      |
+|      errorClassName      |                     `string`                      |                                                                                              Override default CSS style of error message                                                                                              |     \_\_      |
+| selectContainerClassName |                     `string`                      |                                                                                         Add custom class to the container of selected values                                                                                          |     \_\_      |
+|  selectedItemClassName   |                     `string`                      |                                                                                                 Add custom class to the selected item                                                                                                 |     \_\_      |
+| selectedOptionClassName  |                     `string`                      |                                                                                               Add custom class to the selected options                                                                                                |     \_\_      |
+|        searchable        |                     `boolean`                     |                                                                                                  Is select options searchable or not                                                                                                  |   `"false"`   |
+|       stickySearch       |                     `boolean`                     |                                                                                                    Is search input sticky or not.                                                                                                     |   `"false"`   |
+|    searchPlaceholder     |                     `string`                      |                                                                                                   Set search input placeholder text                                                                                                   | `"Search..."` |
+|        searchType        |                  `text` `search`                  |                                                                                                         Set search input type                                                                                                         |   `"text"`    |
+|      searchReadOnly      |                     `boolean`                     |                                                                                                  Set search input is readonly or not                                                                                                  |   `"false"`   |
+|      searchDisabled      |                     `boolean`                     |                                                                                                  Set search input is disabled or not                                                                                                  |   `"false"`   |
+|       searchPrefix       |                    `ReactNode`                    |                                              The prefix is design for adding any icon or text on the Search field's start (it's a left icon for the `ltr` and right icon for the `rtl`)                                               |     \_\_      |
+|       searchSuffix       |                    `ReactNode`                    |                                               The suffix is design for adding any icon or text on the Search field's end (it's a right icon for the `ltr` and left icon for the `rtl`)                                                |     \_\_      |
+| searchContainerClassName |                     `string`                      |                                                                                               Override default CSS style of search root                                                                                               |     \_\_      |
+|  searchPrefixClassName   |                     `string`                      |                                                                                              Override default CSS style of search prefix                                                                                              |     \_\_      |
+|     searchClassName      |                     `string`                      |                                                                                              Override default CSS style of search input                                                                                               |     \_\_      |
+|  searchSuffixClassName   |                     `string`                      |                                                                                              Override default CSS style of search suffix                                                                                              |     \_\_      |
+|       searchByKey        |                     `string`                      |                                                                                                 Set a custom key to search in options                                                                                                 |   `'label'`   |
+|       searchProps        |                `HTMLInputElement`                 |                                                                                            Set's extra attributes for search input element                                                                                            |     \_\_      |
+
+</div>
+
+<div className="mb-10" />
+
+### MultiSelect Option type
+
+```ts
+type MultiSelectOption = {
+  label: string;
+  value: string;
+  disabled?: boolean;
+  [key: string]: any;
+};
+```
+
+<div className="mb-10" />
+
+### Label Weight
+
+```ts
+type LabelWeight = "normal" | "medium" | "semibold" | "bold";
+```
+
+<div className="mb-10" />
+
+### MultiSelect Variants
+
+```ts
+type MultiSelectVariants = "outline" | "flat" | "text";
+```
+
+<div className="mb-10" />
+
+### MultiSelect Sizes
+
+```ts
+type MultiSelectSizes = "sm" | "md" | "lg" | "xl";
+```
+
+<div className="mb-10" />
+
+### MultiSelect Rounded
+
+```ts
+type MultiSelectRounded = "sm" | "md" | "lg" | "none" | "pill";
+```
+
+<div className="mb-10" />

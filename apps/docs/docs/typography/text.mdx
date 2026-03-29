@@ -2,15 +2,15 @@
 sidebar_position: 2
 ---
 
-import { Text } from "rizzui";
-import Paper from "@site/src/components/paper";
+import { Text } from 'rizzui/text';
+import Paper from '@site/src/components/paper';
 
 # Text
 
 Text component is the used to render text and paragraphs within an interface using well-defined typographic styles. It renders a **p** tag by default.
 
 ```jsx
-import { Text } from "rizzui";
+import { Text } from 'rizzui/text';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -24,7 +24,7 @@ The default style of the **Text**.
 </Paper>
 
 ```jsx
-import { Text } from "rizzui";
+import { Text } from 'rizzui/text';
 
 export default function App() {
   return <Text>The brown fox jumps over the lazy dog</Text>;
@@ -40,111 +40,75 @@ You can change style by just changing **tag** property in **Text** component.
 <Paper>
   <div className="grid gap-8 py-2">
     <div>
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         p
       </Text>
       <Text as="p">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         i
       </Text>
       <Text as="i">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         del
       </Text>
       <Text as="del">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         mark
       </Text>
       <Text as="mark">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         b
       </Text>
       <Text as="b">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         em
       </Text>
       <Text as="em">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         strong
       </Text>
       <Text as="strong">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         small
       </Text>
       <Text as="small">The brown fox jumps over the lazy dog</Text>
     </div>
     <div className="grid">
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         abbr
       </Text>
-      <Text
-        as="abbr"
-        title="Hello World!"
-      >
+      <Text as="abbr" title="Hello World!">
         HW
       </Text>
     </div>
     <div className="grid">
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         q
       </Text>
       <Text as="q">The brown fox jumps over the lazy dog</Text>
     </div>
     <div>
-      <Text
-        as="span"
-        className="tracking-wider text-gray-500"
-      >
+      <Text as="span" className="tracking-wider text-gray-500">
         kbd
       </Text>
       <div className="mt-2 grid gap-5">
         <Text>
-          Please press <Text as="kbd">Ctrl</Text> + <Text as="kbd">Shift</Text> +{" "}
-          <Text as="kbd">R</Text> to reload this page.
+          Please press <Text as="kbd">Ctrl</Text> + <Text as="kbd">Shift</Text>{' '}
+          + <Text as="kbd">R</Text> to reload this page.
         </Text>
       </div>
     </div>
@@ -175,7 +139,7 @@ You can change style by just changing **tag** property in **Text** component.
 </Paper>
 
 ```jsx
-import { Text } from "rizzui";
+import { Text } from 'rizzui/text';
 
 export default function App() {
   return (
@@ -196,22 +160,20 @@ export default function App() {
 
       <Text as="small">The brown fox jumps over the lazy dog</Text>
 
-      <Text
-        as="abbr"
-        title="Hello World!"
-      >
+      <Text as="abbr" title="Hello World!">
         HW - abbr
       </Text>
 
       <Text as="q">The brown fox jumps over the lazy dog</Text>
 
       <Text as="p">
-        Please press <Text as="kbd">Ctrl</Text> + <Text as="kbd">Shift</Text> +{" "}
+        Please press <Text as="kbd">Ctrl</Text> + <Text as="kbd">Shift</Text> +{' '}
         <Text as="kbd">R</Text> to reload this page.
       </Text>
 
       <Text as="p">
-        (a+b)<Text as="sup">2</Text> = a<Text as="sup">2</Text> + 2ab + b<Text as="sup">2</Text>
+        (a+b)<Text as="sup">2</Text> = a<Text as="sup">2</Text> + 2ab + b
+        <Text as="sup">2</Text>
       </Text>
 
       <Text as="em">
@@ -252,20 +214,20 @@ Here is the API documentation of the Text component.
 
 ```ts
 type TextTags =
-  | "p"
-  | "b"
-  | "span"
-  | "strong"
-  | "abbr"
-  | "q"
-  | "del"
-  | "em"
-  | "i"
-  | "kbd"
-  | "mark"
-  | "small"
-  | "sub"
-  | "sup";
+  | 'p'
+  | 'b'
+  | 'span'
+  | 'strong'
+  | 'abbr'
+  | 'q'
+  | 'del'
+  | 'em'
+  | 'i'
+  | 'kbd'
+  | 'mark'
+  | 'small'
+  | 'sub'
+  | 'sup';
 ```
 
 <div className="mb-10" />
@@ -273,5 +235,5 @@ type TextTags =
 ### Title Weights
 
 ```ts
-type TitleWeights = "bold" | "normal" | "medium" | "semibold";
+type TitleWeights = 'bold' | 'normal' | 'medium' | 'semibold';
 ```

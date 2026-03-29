@@ -1,0 +1,211 @@
+---
+sidebar_position: 2
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+# Variant Utility
+
+The `createVariant` function is a **type-safe** way to define Tailwind-based variants for your own components.
+It is the same system RizzUI uses internally for all variant-driven components.
+
+## Import
+
+```tsx
+import { createVariant } from 'rizzui/variants';
+```
+
+## IntelliSense
+
+You can enable autocompletion inside `createVariant` using the steps below:
+
+**Visual Studio Code:**
+
+1. Install the ["Tailwind CSS IntelliSense"](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) Visual Studio Code extension
+
+2. Add the following to your `settings.json`:
+
+```json
+{
+  "tailwindCSS.classFunctions": ["cn", "createVariant"]
+}
+```
+
+This will provide full IntelliSense support for Tailwind classes when using `createVariant` and the `cn` utility function, making it easier to write and maintain your variant definitions.
+
+---
+
+## Core Ideas
+
+- **Base styles** - classes that always apply
+- **Variants** - named options like `variant`, `size`, `state`, etc.
+- **Default variants** - sensible defaults for each variant
+- **Compound variants** - extra classes when multiple conditions are met
+- **Slots** - style multi-part components (e.g. `root`, `icon`, `label`)
+
+---
+
+## Simple Button Variants
+
+```tsx
+import { createVariant, type VariantProps } from 'rizzui/variants';
+
+const button = createVariant({
+  base: 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+  variants: {
+    variant: {
+      primary: 'bg-primary text-primary-foreground hover:bg-primary-dark',
+      outline: 'border border-border bg-transparent hover:border-primary hover:text-primary',
+      ghost: 'bg-transparent hover:bg-muted',
+    },
+    size: {
+      sm: 'h-8 px-2 text-xs',
+      md: 'h-9 px-3 text-sm',
+      lg: 'h-10 px-4 text-base',
+    },
+    disabled: {
+      true: 'opacity-50 cursor-not-allowed pointer-events-none',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+});
+
+type ButtonVariants = VariantProps<typeof button>;
+
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & ButtonVariants;
+
+export function Button({ variant, size, disabled, className, ...props }: ButtonProps) {
+  return (
+    <button
+      {...props}
+      disabled={disabled}
+      className={button({ variant, size, disabled, className })}
+    />
+  );
+}
+```
+
+### Notes
+
+- **Boolean variants** like `disabled: { true: '...' }` are supported.
+- Passing `disabled` as a boolean automatically selects the correct variant classes.
+- `VariantProps<typeof button>` gives you a strongly-typed prop shape for free.
+
+---
+
+## Compound Variants
+
+Use compound variants to add styles when **multiple** conditions are true.
+
+```tsx
+import { createVariant, type VariantProps } from 'rizzui/variants';
+
+const alert = createVariant({
+  base: 'relative flex w-full gap-2 rounded-md border px-3 py-2 text-sm',
+  variants: {
+    tone: {
+      info: 'border-blue text-blue bg-blue/5',
+      success: 'border-green text-green bg-green/5',
+      warning: 'border-orange text-orange bg-orange/5',
+      danger: 'border-red text-red bg-red/5',
+    },
+    soft: {
+      true: '',
+    },
+  },
+  compoundVariants: [
+    {
+      tone: 'info',
+      soft: true,
+      class: 'bg-blue/10',
+    },
+    {
+      tone: 'danger',
+      soft: true,
+      class: 'bg-red/10',
+    },
+  ],
+  defaultVariants: {
+    tone: 'info',
+  },
+});
+```
+
+---
+
+## Slots Example - Icon Button
+
+Slots let you define styles for multiple parts of a component in one place.
+
+```tsx
+import { createVariant, type VariantProps } from 'rizzui/variants';
+
+const iconButton = createVariant({
+  slots: {
+    root: 'inline-flex items-center justify-center rounded-full p-2 transition-colors',
+    icon: 'size-4',
+    label: 'ml-2 text-xs font-medium',
+  },
+  variants: {
+    variant: {
+      primary: {
+        root: 'bg-primary text-primary-foreground hover:bg-primary-dark',
+      },
+      outline: {
+        root: 'border border-border bg-transparent hover:border-primary hover:text-primary',
+      },
+    },
+    size: {
+      sm: {
+        root: 'h-8 px-2',
+        icon: 'size-3.5',
+        label: 'text-[11px]',
+      },
+      md: {
+        root: 'h-9 px-3',
+        icon: 'size-4',
+        label: 'text-xs',
+      },
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+});
+
+type IconButtonVariants = VariantProps<typeof iconButton>;
+
+type IconButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & IconButtonVariants & {
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  label?: string;
+};
+
+export function IconButton({ icon: Icon, label, variant, size, className, ...props }: IconButtonProps) {
+  const { root, icon, label: labelSlot } = iconButton({ variant, size });
+
+  return (
+    <button {...props} className={root({ className })}>
+      <Icon className={icon()} />
+      {label ? <span className={labelSlot()}>{label}</span> : null}
+    </button>
+  );
+}
+```
+
+---
+
+## When to Reach for `createVariant`
+
+Use `createVariant` when:
+
+- You have **repeated Tailwind class combinations** across your app
+- A component has **multiple variants / sizes / states**
+- You want **strong TypeScript inference** for your variant props
+- You need **compound behavior** or **slot-based styling**
+
+For simple one-off styling, using plain Tailwind classes or `cn` is usually enough.
+

@@ -1,36 +1,33 @@
-import React from 'react';
+import type { ReactNode, Ref, ButtonHTMLAttributes } from 'react';
 import { useAccordion } from './accordion-context';
-import { makeClassName } from '../../lib/make-class-name';
 import { cn } from '../../lib/cn';
 
 type AccordionHeaderProps = {
   className?: string;
-  children:
-    | React.ReactNode
-    | (({ open }: { open: boolean }) => React.ReactNode);
-} & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
+  children: ReactNode | (({ open }: { open: boolean }) => ReactNode);
+  ref?: Ref<HTMLButtonElement>;
+} & Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'>;
 
-export const AccordionHeader = React.forwardRef<
-  HTMLButtonElement,
-  AccordionHeaderProps
->(({ children, className, ...props }, ref) => {
+export function AccordionHeader({
+  children,
+  className,
+  ref,
+  ...props
+}: AccordionHeaderProps) {
   const { isOpen, toggle } = useAccordion();
-  const isChildrenFunction = typeof children === 'function';
 
   return (
     <button
       ref={ref}
       onClick={() => toggle()}
       className={cn(
-        makeClassName(`accordion-header`),
+        'rizzui-accordion-header',
         'block w-full',
         className
       )}
       {...props}
     >
-      {isChildrenFunction ? children({ open: isOpen }) : children}
+      {typeof children === 'function' ? children({ open: isOpen }) : children}
     </button>
   );
-});
-
-AccordionHeader.displayName = 'AccordionHeader';
+}

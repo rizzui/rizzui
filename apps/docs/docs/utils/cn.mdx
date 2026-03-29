@@ -1,0 +1,94 @@
+---
+sidebar_position: 1
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+# Class Name Utility
+
+The `cn` utility is a small helper that makes working with Tailwind CSS class names **clean, composable, and type-safe**.
+
+It is exported from `rizzui/cn` and built on top of `clsx`, so it supports strings, arrays, and conditional objects out of the box.
+
+## Import
+
+```tsx
+import { cn } from 'rizzui/cn';
+```
+
+## When to Use
+
+- **Merge base styles with overrides**
+- **Apply classes conditionally** based on props or state
+- **Forward user-provided `className`** without losing your defaults
+
+## Basic Usage
+
+```tsx
+import { cn } from 'rizzui/cn';
+
+const base =
+  'inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium transition-colors';
+
+const Button = ({
+  className,
+  primary,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & { primary?: boolean }) => {
+  return (
+    <button
+      {...props}
+      className={cn(
+        base,
+        primary
+          ? 'bg-primary text-primary-foreground hover:bg-primary-dark'
+          : 'bg-muted text-foreground hover:bg-muted/80',
+        className
+      )}
+    />
+  );
+};
+```
+
+## Conditional Classes
+
+You can pass objects for conditional classes, just like with `clsx`:
+
+```tsx
+<div
+  className={cn(
+    'rounded border px-3 py-2 text-sm',
+    {
+      'border-red text-red': status === 'error',
+      'border-green text-green': status === 'success',
+    }
+  )}
+>
+  {message}
+</div>
+```
+
+## Combining with RizzUI Components
+
+Use `cn` to extend or override styles on top of RizzUI components:
+
+```tsx
+import { Button } from 'rizzui/button';
+import { cn } from 'rizzui/cn';
+
+export function GradientButton({
+  className,
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  return (
+    <Button
+      {...props}
+      className={cn(
+        'bg-gradient-to-r from-purple-600 via-purple-500 to-blue-600 text-white shadow-lg hover:shadow-xl',
+        className
+      )}
+    />
+  );
+}
+```
+

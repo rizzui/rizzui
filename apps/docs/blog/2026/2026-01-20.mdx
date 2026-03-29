@@ -1,0 +1,227 @@
+---
+title: RizzUI 2.1.0
+description: Custom createVariant system, TypeScript improvements, and minor component fixes.
+authors: [idris]
+date: 2026-01-20
+---
+
+We're excited to announce **RizzUI 2.1.0**, a maintenance release that introduces our custom `createVariant` system, fixes TypeScript type issues, and resolves minor component bugs. This release replaces the dependency on `tailwind-variants` with our own production-ready variant system.
+
+<div className="hidden-for-blog-list-page">
+
+**RizzUI 2.1.0** introduces our custom variant system and important fixes. Key updates include:
+
+</div>
+
+- [Custom createVariant System](#custom-createvariant-system)
+- [No More tailwind-variants Dependency](#no-more-tailwind-variants-dependency)
+- [Fixed Variant Type Definitions](#fixed-variant-type-definitions)
+
+{/* truncate */}
+
+<br />
+
+### Custom createVariant System
+
+RizzUI 2.1.0 introduces our own **custom variant system** built from the ground up. The `createVariant` function is a type-safe, production-ready alternative to `tailwind-variants`, providing full TypeScript inference and zero runtime dependencies (except for the `cn` utility).
+
+**Key Features:**
+
+- **Type-safe** - Full TypeScript inference with no type assertions needed
+- **Zero dependencies** - No external variant library required
+- **Slots support** - Built-in support for multi-part components
+- **Compound variants** - Support for conditional styling based on multiple variants
+- **Boolean variants** - Native support for boolean variants with `true`/`false` keys
+
+**Example Usage:**
+
+```tsx
+import { createVariant, type VariantProps } from 'rizzui/variants';
+
+// Regular variants
+const button = createVariant({
+  base: 'px-4 py-2 rounded-md font-medium',
+  variants: {
+    variant: {
+      primary: 'bg-primary text-primary-foreground',
+      outline: 'border border-border bg-transparent',
+    },
+    size: {
+      sm: 'h-8 px-2 text-xs',
+      md: 'h-9 px-3 text-sm',
+      lg: 'h-10 px-4 text-base',
+    },
+    disabled: {
+      true: 'opacity-50 cursor-not-allowed',
+    },
+  },
+  defaultVariants: {
+    variant: 'primary',
+    size: 'md',
+  },
+});
+
+// Slots variants (for multi-part components)
+const alert = createVariant({
+  slots: {
+    root: 'relative block w-full',
+    bar: 'absolute left-0 top-0',
+    content: '',
+  },
+  variants: {
+    size: {
+      sm: {
+        root: 'px-2.5 py-2',
+        content: 'ps-6',
+      },
+      md: {
+        root: 'px-4 py-3',
+        content: 'ps-8',
+      },
+    },
+  },
+  compoundVariants: [
+    { color: 'danger', class: { root: 'border-muted' } },
+    { color: 'danger', class: { bar: 'bg-red' } },
+  ],
+});
+
+// Type inference works perfectly
+type ButtonProps = VariantProps<typeof button>;
+```
+
+The `createVariant` system is now used internally by all RizzUI components and is also available as a public API for creating your own variant-driven components.
+
+#### IntelliSense
+
+You can enable autocompletion inside `createVariant` using the steps below:
+
+**Visual Studio Code:**
+
+1. Install the ["Tailwind CSS IntelliSense"](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) Visual Studio Code extension
+
+2. Add the following to your `settings.json`:
+
+```json
+{
+  "tailwindCSS.classFunctions": ["cn", "createVariant"]
+}
+```
+
+This will provide full IntelliSense support for Tailwind classes when using `createVariant` and the `cn` utility function, making it easier to write and maintain your variant definitions.
+
+<br />
+
+### No More tailwind-variants Dependency
+
+RizzUI 2.1.0 **removes the dependency on `tailwind-variants`**. We've built our own variant system that:
+
+- **Reduces bundle size** - No external variant library in your bundle
+- **Better type safety** - Custom types designed specifically for RizzUI's needs
+- **More control** - Full control over the variant system's behavior and features
+- **Better performance** - Optimized for our specific use cases
+
+If you were using `tailwind-variants` directly in your codebase, you can now use `createVariant` from `rizzui/variants` instead, which provides the same API with better TypeScript support.
+
+**Migration:**
+
+```tsx
+// Before (using tailwind-variants)
+import { tv } from 'tailwind-variants';
+
+// After (using RizzUI's createVariant)
+import { createVariant } from 'rizzui/variants';
+```
+
+The API is compatible, so migration is straightforward. Simply replace `tv` with `createVariant` and update your imports.
+
+<br />
+
+### Fixed Variant Type Definitions
+
+RizzUI 2.1.0 fixes several TypeScript type issues in the variant system:
+
+#### Fixed SlotsVariants Type
+
+The `SlotsVariants` type now correctly matches the nested structure used in slots variants:
+
+```typescript
+// Fixed type definition
+type SlotsVariants<TVariants extends Variants = Variants> = {
+  [K in keyof TVariants]: Record<string | number, Record<string, string>>;
+};
+```
+
+This ensures that components like `FileInput`, `Alert`, and other slots-based components have correct TypeScript types without compilation errors.
+
+#### Fixed SlotsCompoundVariant Type
+
+The `SlotsCompoundVariant` type has been enhanced to properly support compound variants with slot-specific classes:
+
+```typescript
+type SlotsCompoundVariant<TVariants extends Variants = Variants> = {
+  [K in keyof TVariants]?: keyof TVariants[K] | boolean;
+} & {
+  class?: string | Record<string, string> | any;
+};
+```
+
+This allows you to apply different classes to different slots when multiple variant conditions are met, with full type safety.
+
+**Example:**
+
+```tsx
+const alert = createVariant({
+  slots: {
+    root: 'relative block',
+    bar: 'absolute left-0',
+    content: '',
+  },
+  variants: {
+    color: {
+      danger: {},
+      info: {},
+    },
+  },
+  compoundVariants: [
+    { color: 'danger', class: { root: 'border-muted', bar: 'bg-red' } },
+    { color: 'info', class: { bar: 'bg-blue' } },
+  ],
+});
+```
+
+These fixes eliminate the need for `@ts-ignore` comments and provide better autocomplete and error checking in your IDE.
+
+<br />
+
+### Migration from 2.0.0
+
+RizzUI 2.1.0 is a **drop-in replacement** for RizzUI 2.0.0. No code changes are required - simply update your dependency:
+
+```bash
+# Using pnpm (recommended)
+pnpm add rizzui@2.1.0
+
+# Using npm
+npm install rizzui@2.1.0
+
+# Using yarn
+yarn add rizzui@2.1.0
+```
+
+**Note:** If you were using `tailwind-variants` directly in your codebase, you can now use `createVariant` from `rizzui/variants` instead. The API is compatible, so you can simply replace `tv` with `createVariant`.
+
+If you were using `@ts-ignore` comments to work around variant type issues, you can now remove them as these issues have been resolved.
+
+<br />
+
+### What's Next
+
+RizzUI 2.1.0 continues to improve the foundation laid in 2.0.0. We're committed to:
+
+- Further enhancing the variant system
+- Improving developer experience with better TypeScript support
+- Adding more components and features
+- Maintaining backward compatibility
+
+We're excited to see what you build with RizzUI 2.1.0! If you have any questions or feedback, please reach out to us on [GitHub](https://github.com/rizzui/rizzui).

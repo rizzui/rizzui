@@ -1,6 +1,6 @@
-import React from "react";
-import { Input } from "rizzui";
-import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import React from 'react';
+import { Input } from 'rizzui';
+import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 export default function InputCounter() {
   const [state, setState] = React.useState(0);
@@ -30,13 +30,14 @@ export default function InputCounter() {
           </button>
         </div>
       }
+      className="w-full max-w-md"
     />
   );
 }
 
 export function InputCharacterCounter() {
   const MAXLENGTH = 24;
-  const [state, setState] = React.useState("Chat GPT is awesome!");
+  const [state, setState] = React.useState('Chat GPT is awesome!');
 
   return (
     <Input
@@ -47,12 +48,13 @@ export function InputCharacterCounter() {
       onChange={(e) => setState(() => e.target.value)}
       suffix={state.length + `/${MAXLENGTH}`}
       suffixClassName="opacity-70"
+      className="w-full max-w-md"
     />
   );
 }
 
 export function InputClearable({ label }) {
-  const [state, setState] = React.useState("This is Jhon.");
+  const [state, setState] = React.useState('This is Jhon.');
   return (
     <Input
       type="text"
@@ -60,8 +62,9 @@ export function InputClearable({ label }) {
       placeholder="clearable ..."
       value={state}
       onChange={(e) => setState(e.target.value)}
-      onClear={() => setState("")}
+      onClear={() => setState('')}
       clearable
+      className="w-full max-w-md"
     />
   );
 }

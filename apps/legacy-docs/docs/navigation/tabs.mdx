@@ -1,0 +1,305 @@
+---
+sidebar_position: 27
+---
+
+import { Tab } from "rizzui";
+import {
+  UserIcon,
+  BuildingOfficeIcon,
+  UsersIcon,
+  CreditCardIcon,
+} from "@heroicons/react/24/outline";
+import Paper from "@site/src/components/paper";
+import AuthResponsiveTab from "@site/src/components/auto-responsive-tab";
+
+# Tabs
+
+The Tabs Component allows the content author to organize page content within multiple tabs.
+
+```tsx
+"use client"; 
+
+import { Tab } from "rizzui";
+```
+
+<div className="mb-20 md:mb-28" />
+
+## Simple Tabs
+
+A simple style of **Tabs**.
+
+<Paper>
+  <Tab>
+    <Tab.List>
+      <Tab.ListItem>Recent</Tab.ListItem>
+      <Tab.ListItem>Popular</Tab.ListItem>
+      <Tab.ListItem>Trending</Tab.ListItem>
+    </Tab.List>
+    <Tab.Panels>
+      <Tab.Panel>Recent panel</Tab.Panel>
+      <Tab.Panel>Popular panel</Tab.Panel>
+      <Tab.Panel>Trending panel</Tab.Panel>
+    </Tab.Panels>
+  </Tab>
+</Paper>
+
+```tsx
+"use client"; 
+
+import { Tab } from "rizzui";
+
+export default function App() {
+  return (
+    <Tab>
+      <Tab.List>
+        <Tab.ListItem>Recent</Tab.ListItem>
+        <Tab.ListItem>Popular</Tab.ListItem>
+        <Tab.ListItem>Trending</Tab.ListItem>
+      </Tab.List>
+      <Tab.Panels>
+        <Tab.Panel>Recent panel</Tab.Panel>
+        <Tab.Panel>Popular panel</Tab.Panel>
+        <Tab.Panel>Trending panel</Tab.Panel>
+      </Tab.Panels>
+    </Tab>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## With Icon
+
+You can use icon in the tab list item
+
+<Paper>
+  <Tab>
+    <Tab.List>
+      <Tab.ListItem>
+        <UserIcon className="h-4 w-4" />
+        <span>My Account</span>
+      </Tab.ListItem>
+      <Tab.ListItem>
+        <BuildingOfficeIcon className="h-4 w-4" />
+        <span>Company</span>
+      </Tab.ListItem>
+      <Tab.ListItem>
+        <UsersIcon className="h-4 w-4" />
+        <span>Team Member</span>
+      </Tab.ListItem>
+      <Tab.ListItem>
+        <CreditCardIcon className="h-4 w-4" />
+        <span>Billing</span>
+      </Tab.ListItem>
+    </Tab.List>
+    <Tab.Panels>
+      <Tab.Panel>Account panel</Tab.Panel>
+      <Tab.Panel>Company panel</Tab.Panel>
+      <Tab.Panel>Team member panel</Tab.Panel>
+      <Tab.Panel>Billing panel</Tab.Panel>
+    </Tab.Panels>
+  </Tab>
+</Paper>
+
+```tsx
+"use client"; 
+
+import { Tab } from "rizzui";
+import {
+  UserIcon,
+  BuildingOfficeIcon,
+  UsersIcon,
+  CreditCardIcon,
+} from "@heroicons/react/24/outline";
+
+export default function App() {
+  return (
+    <Tab>
+      <Tab.List>
+        <Tab.ListItem>
+          <UserIcon className="h-4 w-4" /> My Account
+        </Tab.ListItem>
+        <Tab.ListItem>
+          <BuildingOfficeIcon className="h-4 w-4" /> Company
+        </Tab.ListItem>
+        <Tab.ListItem>
+          <UsersIcon className="h-4 w-4" /> Team Member
+        </Tab.ListItem>
+        <Tab.ListItem>
+          <CreditCardIcon className="h-4 w-4" /> Billing
+        </Tab.ListItem>
+      </Tab.List>
+      <Tab.Panels>
+        <Tab.Panel>Account panel</Tab.Panel>
+        <Tab.Panel>Company panel</Tab.Panel>
+        <Tab.Panel>Team member panel</Tab.Panel>
+        <Tab.Panel>Billing panel</Tab.Panel>
+      </Tab.Panels>
+    </Tab>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Vertical Tabs
+
+You can create a vertical tab by adding a **vertical** prop into the **Tab** component.
+
+<Paper>
+  <Tab vertical>
+    <Tab.List>
+      <Tab.ListItem>Recent</Tab.ListItem>
+      <Tab.ListItem>Popular</Tab.ListItem>
+      <Tab.ListItem>Trending</Tab.ListItem>
+    </Tab.List>
+    <Tab.Panels>
+      <Tab.Panel>Recent panel</Tab.Panel>
+      <Tab.Panel>Popular panel</Tab.Panel>
+      <Tab.Panel>Trending panel</Tab.Panel>
+    </Tab.Panels>
+  </Tab>
+</Paper>
+
+```tsx
+"use client"; 
+
+import { Tab } from "rizzui";
+
+export default function App() {
+  return (
+    <Tab vertical>
+      <Tab.List>
+        <Tab.ListItem>Recent</Tab.ListItem>
+        <Tab.ListItem>Popular</Tab.ListItem>
+        <Tab.ListItem>Trending</Tab.ListItem>
+      </Tab.List>
+      <Tab.Panels>
+        <Tab.Panel>Recent panel</Tab.Panel>
+        <Tab.Panel>Popular panel</Tab.Panel>
+        <Tab.Panel>Trending panel</Tab.Panel>
+      </Tab.Panels>
+    </Tab>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## Auto Responsive
+
+Experience our auto-responsive, scrollable tabs. The active tab stays visible, whether the tab was partially visibile or last hidden tab. Swipe or use left, right arrow keys or shift mousewheel to access hidden tabs.
+
+<Paper>
+  <AuthResponsiveTab />
+</Paper>
+
+```tsx
+"use client"; 
+
+import { Tab } from "rizzui";
+
+export default function App() {
+  return (
+    <Tab>
+      <Tab.List>
+        <Tab.ListItem>Home</Tab.ListItem>
+        <Tab.ListItem>Explore</Tab.ListItem>
+        <Tab.ListItem>Products</Tab.ListItem>
+        ...
+      </Tab.List>
+      <Tab.Panels>
+        <Tab.Panel>Home</Tab.Panel>
+        <Tab.Panel>Explore</Tab.Panel>
+        <Tab.Panel>Products</Tab.Panel>
+        ...
+      </Tab.Panels>
+    </Tab>
+  );
+}
+```
+
+<div className="mb-20" />
+
+## API Reference
+
+<hr />
+
+<div className="mb-10" />
+
+### Tab Props
+
+Here is the API documentation of the **Tab** component.
+
+<div className="overflow-x-auto">
+
+|       Props        |            Type             |                                                Description                                                | Default |
+| :----------------: | :-------------------------: | :-------------------------------------------------------------------------------------------------------: | :-----: |
+|      vertical      |          `boolean`          | When true, the orientation of the **Tab.List** will be **vertical**, otherwise it will be **horizontal**. |  \_\_   |
+|   selectedIndex    |          `number`           |            The selected index if you want to use the Tab component as a controlled component.             |  \_\_   |
+|      onChange      | `((index: number) => void)` |                            A function called whenever the active tab changes.                             |  \_\_   |
+| hideHoverAnimation |          `boolean`          |                                   Use this prop to hide hover animation                                   |  false  |
+|      children      |       `ReactElement`        |                          Only allow **Tab.List** and **Tab.Panels** as children                           |  \_\_   |
+|     className      |          `string`           |                             Add classes to the main wrapper of this component                             |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Tab.List Props
+
+Here is the API documentation of the **Tab.List** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |      Type      |                    Description                    | Default |
+| :-------: | :------------: | :-----------------------------------------------: | :-----: |
+| children  | `ReactElement` |      Only allow **Tab.ListItem** as children      |  \_\_   |
+| className |    `string`    | Add classes to the **Tab.List** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Tab.ListItem Props
+
+Here is the API documentation of the **Tab.ListItem** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |    Type     |                      Description                      | Default |
+| :-------: | :---------: | :---------------------------------------------------: | :-----: |
+| children  | `ReactNode` |         Use any valid React element or string         |  \_\_   |
+| className |  `string`   | Add classes to the **Tab.ListItem** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Tab.Panels Props
+
+Here is the API documentation of the **Tab.Panels** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |      Type      |                     Description                     | Default |
+| :-------: | :------------: | :-------------------------------------------------: | :-----: |
+| children  | `ReactElement` |        Only allow **Tab.Panel** as children         |  \_\_   |
+| className |    `string`    | Add classes to the **Tab.Panels** of this component |  \_\_   |
+
+</div>
+
+<div className="mb-10" />
+
+### Tab.Panel Props
+
+Here is the API documentation of the **Tab.Panel** component.
+
+<div className="overflow-x-auto">
+
+|   Props   |    Type     |                    Description                     | Default |
+| :-------: | :---------: | :------------------------------------------------: | :-----: |
+| children  | `ReactNode` |       Use any valid React element or string        |  \_\_   |
+| className |  `string`   | Add classes to the **Tab.Panel** of this component |  \_\_   |
+
+</div>

@@ -81,4 +81,73 @@ export class FileOperations {
       throw error;
     }
   }
+
+  static layoutImportsGlobals(content: string): boolean {
+    return /import\s+[^'"\n]*['"][^'"\n]*globals\.css['"]/.test(content);
+  }
+
+  static insertGlobalsImportLine(content: string, importLine: string): string {
+    const lines = content.split(/\r?\n/);
+    let i = 0;
+    let insertAt = 0;
+
+    while (i < lines.length) {
+      const t = lines[i].trim();
+      if (t === '' || t.startsWith('//')) {
+        i++;
+        continue;
+      }
+      if (t === "'use client';" || t === '"use client";') {
+        insertAt = i + 1;
+        i++;
+        continue;
+      }
+      break;
+    }
+
+    insertAt = i;
+    while (i < lines.length) {
+      const t = lines[i].trim();
+      if (t.startsWith('import ')) {
+        insertAt = i + 1;
+        i++;
+        continue;
+      }
+      if (t === '' || t.startsWith('//')) {
+        i++;
+        continue;
+      }
+      break;
+    }
+
+    lines.splice(insertAt, 0, importLine);
+    return lines.join('\n');
+  }
+
+  /**
+   * Ensures root layout imports globals.css. Returns whether the layout file existed.
+   */
+  static async ensureLayoutImportsGlobals(layoutAbsolutePath: string, importLine: string): Promise<boolean> {
+    if (!(await this.pathExists(layoutAbsolutePath))) {
+      return false;
+    }
+    const content = await this.readFile(layoutAbsolutePath);
+    if (this.layoutImportsGlobals(content)) {
+      Logger.info(`Layout already imports globals.css`);
+      return true;
+    }
+    const next = this.insertGlobalsImportLine(content, importLine);
+    await fs.writeFile(layoutAbsolutePath, next, 'utf8');
+    Logger.success(`Added ${importLine.trim()} to ${layoutAbsolutePath}`);
+    return true;
+  }
+
+  static async writeRizzuiConfig(
+    projectRoot: string,
+    config: Record<string, string | number | boolean>
+  ): Promise<void> {
+    const configPath = path.join(projectRoot, 'rizzui.config.json');
+    await fs.writeJson(configPath, config, { spaces: 2 });
+    Logger.success(`Wrote ${configPath}`);
+  }
 }

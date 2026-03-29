@@ -2,24 +2,24 @@
 sidebar_position: 34
 ---
 
-import { Stepper } from "rizzui";
+import { Stepper } from 'rizzui/stepper';
 import {
   UserIcon,
   DocumentMagnifyingGlassIcon,
   CreditCardIcon,
   FaceSmileIcon,
-} from "@heroicons/react/24/outline";
-import FunctionalStepper from "@site/src/components/stepper";
-import Paper from "@site/src/components/paper";
+} from '@heroicons/react/24/outline';
+import FunctionalStepper from '@site/src/components/stepper';
+import Paper from '@site/src/components/paper';
 
 # Stepper
 
 Stepper tool is used to enlighten user regarding the progress of the task. **Stepper** component displays the progress of the task in a sequence of numbered steps through **Step** component.
 
 ```tsx
-"use client"; 
+'use client';
 
-import { Stepper } from "rizzui";
+import { Stepper } from 'rizzui/stepper';
 ```
 
 <div className="mb-20 md:mb-28" />
@@ -37,9 +37,9 @@ A simple stepper with component **Stepper** and **Step**.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { Stepper } from "rizzui";
+import { Stepper } from 'rizzui/stepper';
 
 export default function App() {
   return (
@@ -83,9 +83,9 @@ You can use outline variant with **Stepper**.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { Stepper } from "rizzui";
+import { Stepper } from 'rizzui/stepper';
 
 export default function App() {
   return (
@@ -147,9 +147,9 @@ You can use custom icon inside **Stepper** and **Step**.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { Stepper } from "rizzui";
+import { Stepper } from 'rizzui/stepper';
 
 export default function App() {
   return (
@@ -206,9 +206,9 @@ You can use colors with **Stepper**.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { Stepper } from "rizzui";
+import { Stepper } from 'rizzui/stepper';
 
 export default function App() {
   return (
@@ -241,9 +241,9 @@ You can use error step with **Step** component.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import { Stepper } from "rizzui";
+import { Stepper } from 'rizzui/stepper';
 
 export default function App() {
   return (
@@ -274,10 +274,10 @@ You can use functional with **Stepper** and **Step**.
 </Paper>
 
 ```tsx
-"use client"; 
+'use client';
 
-import React from "react";
-import { Stepper, Button } from "rizzui";
+import React from 'react';
+import { Stepper, Button } from 'rizzui';
 
 export default function App() {
   const [currentStep, setCurrentStep] = React.useState(0);
@@ -334,7 +334,7 @@ Here is the API documentation of the Stepper component. You can use the followin
 ### Stepper Directions
 
 ```ts
-type StepperDirection = "vertical" | "horizontal";
+type StepperDirection = 'vertical' | 'horizontal';
 ```
 
 <div className="mb-20" />
@@ -369,7 +369,7 @@ Here is the API documentation of the Step component. You can use the following p
 ### Step Status
 
 ```ts
-type StepStatus = "error" | "waiting" | "in-progress" | "completed";
+type StepStatus = 'error' | 'waiting' | 'in-progress' | 'completed';
 ```
 
 <div className="mb-10" />
@@ -377,7 +377,7 @@ type StepStatus = "error" | "waiting" | "in-progress" | "completed";
 ### Step Sizes
 
 ```ts
-type StepSizes = "sm" | "md" | "lg";
+type StepSizes = 'sm' | 'md' | 'lg';
 ```
 
 <div className="mb-10" />
@@ -385,7 +385,7 @@ type StepSizes = "sm" | "md" | "lg";
 ### Step Variants
 
 ```ts
-type StepVariants = "solid" | "outline";
+type StepVariants = 'solid' | 'outline';
 ```
 
 <div className="mb-10" />
@@ -394,10 +394,10 @@ type StepVariants = "solid" | "outline";
 
 ```ts
 type StepColors =
-  | "primary"
-  | "secondary"
-  | "danger"
-  | "info"
-  | "success"
-  | "warning";
+  | 'primary'
+  | 'secondary'
+  | 'danger'
+  | 'info'
+  | 'success'
+  | 'warning';
 ```

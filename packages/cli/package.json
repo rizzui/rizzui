@@ -1,7 +1,7 @@
 {
   "name": "rizzui-cli",
   "version": "1.0.0",
-  "description": "CLI tool to configure RizzUI with Next.js applications seamlessly",
+  "description": "CLI to scaffold RizzUI 2.x in Next.js: Tailwind v4, OKLCH tokens, optional next-themes, and subpath import help",
   "main": "./dist/index.js",
   "bin": {
     "rizzui-cli": "./dist/cli.js",

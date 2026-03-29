@@ -38,6 +38,7 @@ export * from './components/dropdown';
 export * from './components/empty';
 
 export * from './components/upload/file-input';
+export * from './components/upload/upload-zone';
 
 export * from './components/input';
 

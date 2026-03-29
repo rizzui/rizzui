@@ -1,0 +1,186 @@
+---
+title: RizzUI 1.0.0
+description: The very first stable release of RizzUI.
+authors:
+  - name: Idris
+    title: Sr. Software Engineer
+    image_url: https://avatars.githubusercontent.com/u/25410591?v=4
+  - name: Nahid
+    title: Software Engineer
+    image_url: https://avatars.githubusercontent.com/u/63222312?v=4
+---
+
+In this ever-evolving landscape of web development, creating modern, accessible, and responsive user interfaces has become more critical than ever. To meet these demands, we are thrilled to introduce RizzUI, a next-generation React UI library that offers limitless customization options, unparalleled ease of use, and robust type safety.
+
+<div className="hidden-for-blog-list-page">
+
+**RizzUI 1.0.0** brings core upgrades, new APIs, and improvements to the developer experience. Key updates include:
+
+</div>
+
+- [React 19 support](#react-19-support)
+- [Versioned doc](#versioned-doc)
+- [Tree shaking](#tree-shaking)
+- [Client components](#client-components)
+- [Server components](#server-components)
+- [Integrated Components](#integrated-components)
+- [Select search field sticky](#select-search-field-sticky)
+- [MultiSelect search field sticky](#multiselect-search-field-sticky)
+
+{/* truncate */}
+
+<br />
+
+### React 19 Support
+
+RizzUI now supports React 19. You can now use the latest version of React with RizzUI.
+
+<br />
+
+### Versioned Doc
+
+We have introduced versioned documentation for RizzUI. You can now switch between different versions of the documentation to view the changes and updates made in each version.
+
+<br />
+
+### Tree Shaking
+
+RizzUI now supports tree shaking. You can now import components individually or in bulk.
+
+<br />
+
+### Client Components
+
+Whenever you are importing these components you have to use `"use client"` as a prefix. Because of the use cases of these components they are mostly used in the client side.
+
+```jsx
+// highlight-next-line
+"use client";
+
+import { Input } from "rizzui/input";
+
+export default App () {
+  return (
+    <Input label="Input" />
+  );
+}
+```
+
+<br />
+
+#### List of client components
+
+Components that are not listed here can be used in server components.
+
+```jsx
+"use client"; // prefix is required for all client components
+
+import { Input } from "rizzui/input";
+import { Password } from "rizzui/password";
+import { Textarea } from "rizzui/textarea";
+import { CheckboxGroup } from "rizzui/checkbox-group";
+import { RadioGroup } from "rizzui/radio-group";
+import { Select } from "rizzui/select";
+import { MultiSelect } from "rizzui/multi-select";
+import { PinCode } from "rizzui/pin-code";
+import { NumberInput } from "rizzui/number-input";
+import { Dropdown } from "rizzui/dropdown";
+import { Tabs } from "rizzui/tabs";
+import { Stepper } from "rizzui/stepper";
+import { Tooltip } from "rizzui/tooltip";
+import { Popover } from "rizzui/popover";
+import { Modal } from "rizzui/modal";
+import { Drawer } from "rizzui/drawer";
+import { Accordion } from "rizzui/accordion";
+import { FileInput } from 'rizzui/upload';
+import { RadialProgressBar } from 'rizzui/radial-progressbar';
+import { Avatar } from "rizzui/avatar";
+```
+
+<br />
+
+### Server Components
+
+Components that supports server side rendering. Whenever you are importing these components you don't need to use `"use client"` as a prefix. But if you are using events like **onClick**, **onChange** etc. you have to use `"use client"` as a prefix.
+
+```jsx
+import { Button } from "rizzui/button";
+
+export default App () {
+  return (
+    <Button>Click Me</Button>
+  );
+}
+```
+
+**Example:** if you are using events
+
+```jsx
+// highlight-next-line
+"use client";
+
+import { Button } from "rizzui/button";
+
+export default App () {
+  return (
+    <Button onClick={() => console.log('clicked')}>Click Me</Button>
+  );
+}
+```
+
+<br />
+
+### Integrated Components
+
+These components are categorized as integration components due to their varied use cases. To use them, simply copy and paste the code from the documentation into your project. You can customize them to fit your requirements. By default, if you copy the code from the documentation, they will support our design system.
+
+#### List of integration components
+
+- [Rc Rate](/docs/integrations/rate)
+- [Rc Slider](/docs/integrations/range-slider)
+- [Tanstack Table](/docs/integrations/tan-stack)
+- [Rc Pagination](/docs/integrations/pagination)
+- [PhoneNumber](/docs/integrations/phone-number)
+- [React Datepicker](/docs/integrations/react-datepicker)
+
+<br />
+
+### Select Search Field Sticky
+
+The search field in the Select component is now can be sticky. When you scroll down the list of options, the search field will remain visible at the top of the dropdown.
+
+**Example:**
+
+```jsx
+"use client";
+
+import { Select } from "rizzui/select";
+
+export default App () {
+  return (
+    // highlight-next-line
+    <Select label="Select" options={options} stickySearch={true} />
+  );
+}
+```
+
+<br />
+
+### MultiSelect Search Field Sticky
+
+The search field in the MultiSelect component is now can be sticky. When you scroll down the list of options, the search field will remain visible at the top of the dropdown.
+
+**Example:**
+
+```jsx
+"use client";
+
+import { MultiSelect } from "rizzui/multi-select";
+
+export default App () {
+  return (
+    // highlight-next-line
+    <MultiSelect label="MultiSelect" options={options} stickySearch={true} />
+  );
+}
+```
