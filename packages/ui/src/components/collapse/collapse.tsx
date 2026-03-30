@@ -1,6 +1,6 @@
 import type { ReactNode, ElementType } from 'react';
 import { cn } from '../../lib/cn';
-import { useCollapse } from '../../lib/use-collapse';
+import { useCollapse } from './use-collapse';
 
 export interface CollapseHeader {
   open?: boolean;

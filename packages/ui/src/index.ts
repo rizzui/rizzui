@@ -1,6 +1,5 @@
 // Utils & Hooks
 export * from './lib/cn';
-export * from './lib/use-collapse';
 
 export * from './components/field-clear-button';
 

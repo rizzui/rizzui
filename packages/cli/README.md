@@ -56,7 +56,7 @@ Generated `ThemeProvider` uses `next-themes` with **`attribute="data-theme"`** s
 
 ### `rizzui add`
 
-Copies **RizzUI TypeScript source** bundled with **rizzui-cli** (`dist/ui-src`) into **`components/ui`** or **`src/components/ui`**, mirroring the library layout (`components/`, `lib/`) so relative imports keep working. No separate `rizzui` source install is required. Local imports are followed transitively (e.g. `button` pulls in `loader`, `lib/variants`, `lib/cn`, …).
+Copies **RizzUI TypeScript source** bundled with **rizzui-cli** (`dist/ui-src`) into **`components/ui`** or **`src/components/ui`**. Component folders are written **directly under `ui`** (e.g. `ui/button/`, `ui/action-icon/`), not `ui/components/...`. Shared **`lib/`** (`cn`, `variants`, `extract-props`, `use-rect`, …) is written to **`src/lib`** (or **`lib/`** at the project root when there is no `src/` folder), not under `ui`. **Existing files in that lib folder are never overwritten** so your local utilities stay intact; only missing lib files are added. Imports in vendored components are **relative** paths into `src/lib`. No `.backup` files are written on overwrite.
 
 **Interactive (recommended):** run with no arguments for a **multi-select** checklist (space to toggle, enter to confirm).
 
@@ -67,7 +67,7 @@ rizzui add
 **Non-interactive:** pass one or more slugs (same names as `rizzui add` help / docs).
 
 ```bash
-rizzui add button modal cn variants
+rizzui add button modal lib
 ```
 
 **Print import lines only** (no files written): npm subpath imports and install hints.
@@ -77,11 +77,13 @@ rizzui add --print-imports
 # or: rizzui add --all   (deprecated alias)
 ```
 
-Requires a **built `rizzui-cli`** (the `build` script copies `packages/ui` sources into `dist/ui-src`). Example import after vendoring:
+Requires a **built `rizzui-cli`**. Example vendored imports:
 
 ```ts
-import { Button } from '@/components/ui/components/button';
+import { Button } from '@/components/ui/button';
 ```
+
+Slugs **`cn`**, **`variants`**, and **`create-variant`** copy the **`lib`** bundle (same as `rizzui add lib`).
 
 ## Generated CSS (summary)
 

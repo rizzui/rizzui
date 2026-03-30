@@ -51,25 +51,35 @@ export class AddCommand {
 
     const rizzuiSrc = resolveRizzuiSrcRoot(projectInfo.projectRoot);
     const uiRoot = path.join(projectInfo.projectRoot, ProjectDetector.getComponentsDir(projectInfo), 'ui');
+    const libRoot = path.join(projectInfo.projectRoot, ProjectDetector.getLibDir(projectInfo));
 
     Logger.info(
-      `Copying bundled RizzUI sources (rizzui-cli) into ${path.relative(projectInfo.projectRoot, uiRoot)}/`
+      `Copying bundled RizzUI sources (rizzui-cli) into ${path.relative(projectInfo.projectRoot, uiRoot)}/ and ${path.relative(projectInfo.projectRoot, libRoot)}/`
+    );
+    Logger.newLine();
+    Logger.info(
+      'Shared utilities (`cn`, `variants`, …) go under `src/lib` (or `lib/` without a `src/` folder). Existing files there are left unchanged. Run `add lib` to copy only utilities.'
     );
     Logger.newLine();
 
     try {
-      const { fileCount } = await copyRizzUiSourcesToProject({
+      const { fileCount, skippedLibCount } = await copyRizzUiSourcesToProject({
         projectRoot: projectInfo.projectRoot,
         rizzuiSrcRoot: rizzuiSrc,
         destUiRoot: uiRoot,
+        destLibRoot: libRoot,
         selected,
       });
       Logger.newLine();
-      Logger.success(`Wrote ${fileCount} file(s). Relative imports inside the package are preserved.`);
-      Logger.info('Example import (if you use @/ → src/):');
-      Logger.log(`  import { Button } from '@/components/ui/components/button';`);
+      Logger.success(`Wrote ${fileCount} file(s).`);
+      if (skippedLibCount > 0) {
+        Logger.info(`Skipped ${skippedLibCount} lib file(s) that already exist (your code was kept).`);
+      }
+      Logger.info('Example vendored import (if @/ → src/):');
+      Logger.log(`  import { Button } from '@/components/ui/button';`);
       Logger.newLine();
-      Logger.info('You can delete `rizzui` from package.json later if you only use vendored sources — keep peers (headlessui, floating-ui).');
+      Logger.info('For npm usage (no vendored sources), use:');
+      Logger.log(`  import { Button } from 'rizzui/button';`);
     } catch (err) {
       Logger.error(err instanceof Error ? err.message : String(err));
       throw err;
@@ -98,6 +108,7 @@ export class AddCommand {
     const ids: string[] = [];
     const seen = new Set<string>();
     for (const raw of trimmed) {
+      const key = raw.toLowerCase();
       const id = resolveSlugToCopyId(raw);
       if (!id || !COPY_MANIFEST_BY_ID[id]) {
         Logger.warning(`Unknown "${raw}". Try: ${ALL_COMPONENT_SLUGS.slice(0, 10).join(', ')}… or run with no args for the full list.`);

@@ -9,6 +9,7 @@ export type CopyManifestEntry = {
 };
 
 export const COPY_MANIFEST: CopyManifestEntry[] = [
+  { id: 'lib', label: 'Lib (cn, variants, shared utils)', seeds: ['lib'] },
   { id: 'accordion', label: 'Accordion', seeds: ['components/accordion'] },
   { id: 'action-icon', label: 'Action icon', seeds: ['components/action-icon'] },
   { id: 'advanced-checkbox', label: 'Advanced checkbox', seeds: ['components/advanced-checkbox'] },
@@ -58,10 +59,7 @@ export const COPY_MANIFEST: CopyManifestEntry[] = [
   { id: 'field-clear-button', label: 'Field clear button', seeds: ['components/field-clear-button.tsx'] },
   { id: 'field-error-text', label: 'Field error text', seeds: ['components/field-error-text.tsx'] },
   { id: 'field-helper-text', label: 'Field helper text', seeds: ['components/field-helper-text.tsx'] },
-  { id: 'highlight', label: 'Highlight', seeds: ['components/highlight.tsx'] },
-  { id: 'cn', label: 'cn (util)', seeds: ['lib/cn.ts'] },
-  { id: 'variants', label: 'createVariant / variants', seeds: ['lib/variants'] },
-  { id: 'use-collapse', label: 'useCollapse hook', seeds: ['lib/use-collapse.ts'] },
+  { id: 'highlight', label: 'Highlight', seeds: ['components/highlight'] },
 ];
 
 export const COPY_MANIFEST_BY_ID: Record<string, CopyManifestEntry> = Object.fromEntries(

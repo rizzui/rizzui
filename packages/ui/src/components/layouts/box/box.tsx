@@ -1,5 +1,5 @@
 import React, { type ElementType } from 'react';
-import { cn } from 'src/lib/cn';
+import { cn } from '../../../lib/cn';
 
 export type BoxProps<T extends ElementType = 'div'> = {
   /* defines the component tag name to render */

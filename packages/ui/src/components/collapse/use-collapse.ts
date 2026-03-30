@@ -21,7 +21,6 @@ export function useCollapse(
     target.style.paddingBottom = 0;
     target.style.marginTop = 0;
     target.style.marginBottom = 0;
-    // set custom delay to animated
     setOpen(() => false);
     window.setTimeout(() => {
       target.style.display = 'none';
@@ -58,7 +57,6 @@ export function useCollapse(
     target.style.removeProperty('padding-bottom');
     target.style.removeProperty('margin-top');
     target.style.removeProperty('margin-bottom');
-    // set custom delay to animated
     setOpen(() => true);
     window.setTimeout(() => {
       target.style.removeProperty('height');

@@ -1,7 +1,7 @@
 import React, { useMemo, useRef } from 'react';
-import { isUnplacedRect, ReactiveDomReact } from '../lib/use-rect';
-import usePrevious from '../lib/use-previous';
-import { cn } from '../lib/cn';
+import { isUnplacedRect, ReactiveDomReact } from '../../lib/use-rect';
+import usePrevious from './use-previous';
+import { cn } from '../../lib/cn';
 
 type Props = {
   rect: ReactiveDomReact;

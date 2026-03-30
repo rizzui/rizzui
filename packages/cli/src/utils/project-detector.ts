@@ -67,6 +67,11 @@ export class ProjectDetector {
     return projectInfo.hasSrcDir ? 'src/components' : 'components';
   }
 
+  /** Vendored RizzUI `lib` utilities (`cn`, `variants`, …) — not under `components/ui`. */
+  static getLibDir(projectInfo: ProjectInfo): string {
+    return projectInfo.hasSrcDir ? path.join('src', 'lib') : 'lib';
+  }
+
   static getStylesDir(projectInfo: ProjectInfo): string {
     return projectInfo.hasSrcDir ? 'src/styles' : 'styles';
   }

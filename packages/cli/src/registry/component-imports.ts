@@ -78,7 +78,7 @@ export const COMPONENT_DEFINITIONS: ComponentDefinitionRow[] = [
   { slugs: ['upload'], copyId: 'upload', entry: e('upload', ['FileInput', 'UploadZone']) },
   {
     slugs: ['variants', 'create-variant'],
-    copyId: 'variants',
+    copyId: 'lib',
     entry: {
       subpath: 'variants',
       importLine: "import { createVariant, type VariantProps } from 'rizzui/variants';",
@@ -86,7 +86,7 @@ export const COMPONENT_DEFINITIONS: ComponentDefinitionRow[] = [
   },
   {
     slugs: ['cn'],
-    copyId: 'cn',
+    copyId: 'lib',
     entry: {
       subpath: 'cn',
       importLine: "import { cn } from 'rizzui/cn';",
@@ -130,8 +130,9 @@ export function resolveComponent(slug: string): ComponentRegistryEntry | undefin
 }
 
 const COPY_SLUG_ALIASES: Record<string, string> = {
-  usecollapse: 'use-collapse',
-  use_collapse: 'use-collapse',
+  usecollapse: 'collapse',
+  use_collapse: 'collapse',
+  'use-collapse': 'collapse',
 };
 
 export function resolveSlugToCopyId(slug: string): string | undefined {
