@@ -5,7 +5,19 @@ import { cn } from '../../lib/cn';
 import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
-import { labelStyles } from '../../lib/label-size';
+const labelStyles = {
+  weight: {
+    normal: 'font-normal',
+    medium: 'font-medium',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+  } as const,
+  size: {
+    sm: 'text-xs mb-1',
+    md: 'text-sm mb-1.5',
+    lg: 'text-sm mb-1.5',
+  },
+} as const;
 
 const inputContainer = createVariant({
   base: 'flex items-center peer w-full transition duration-200 border-(length:--border-width) focus-within:ring-[0.8px] hover:border-primary focus-within:border-primary focus-within:ring-primary [&_input::placeholder]:opacity-60 rounded-(--border-radius)',

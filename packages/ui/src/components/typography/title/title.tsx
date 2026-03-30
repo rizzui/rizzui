@@ -1,9 +1,11 @@
 import React from 'react';
 import { createVariant, type VariantProps } from '../../../lib/variants';
-import { fontWeightStyles } from '../../../lib/font-weight';
 
 const fontWeight = {
-  ...fontWeightStyles,
+  normal: 'font-normal',
+  medium: 'font-medium',
+  semibold: 'font-semibold',
+  bold: 'font-bold',
   extraBold: 'font-extrabold',
 } as const;
 

@@ -11,7 +11,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && node ./scripts/copy-ui-sources.mjs",
     "dev": "tsup --watch",
     "lint": "tsc --noEmit"
   },

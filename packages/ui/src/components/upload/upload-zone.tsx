@@ -12,7 +12,19 @@ import { createVariant, type VariantProps } from '../../lib/variants';
 import { cn } from '../../lib/cn';
 import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
-import { labelStyles } from '../../lib/label-size';
+const labelStyles = {
+  weight: {
+    normal: 'font-normal',
+    medium: 'font-medium',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+  } as const,
+  size: {
+    sm: 'text-xs mb-1',
+    md: 'text-sm mb-1.5',
+    lg: 'text-sm mb-1.5',
+  },
+} as const;
 
 // Constants extracted outside component to prevent recreation
 const DEFAULT_PLACEHOLDER = 'Drag & drop files here or click to browse';

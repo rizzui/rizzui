@@ -13,9 +13,23 @@ function readPackageName(dir: string): string | undefined {
 }
 
 /**
+ * Sources shipped inside rizzui-cli next to cli.js (`dist/ui-src`).
+ */
+export function resolveBundledUiSrc(): string | null {
+  const bundled = path.join(__dirname, 'ui-src');
+  if (
+    fs.existsSync(path.join(bundled, 'components')) &&
+    fs.existsSync(path.join(bundled, 'lib'))
+  ) {
+    return bundled;
+  }
+  return null;
+}
+
+/**
  * Find `node_modules/rizzui` starting at projectRoot, walking up to disk root (pnpm / monorepo).
  */
-function resolveRizzuiPackageRoot(projectRoot: string): string {
+function resolveRizzuiPackageRootFromNodeModules(projectRoot: string): string | null {
   let dir = path.resolve(projectRoot);
   const { root } = path.parse(dir);
 
@@ -27,26 +41,32 @@ function resolveRizzuiPackageRoot(projectRoot: string): string {
     if (dir === root) break;
     dir = path.dirname(dir);
   }
-
-  throw new Error(
-    'Could not find `rizzui` in node_modules. Run `pnpm add rizzui` (or npm/yarn) in your project first.'
-  );
+  return null;
 }
 
 /**
- * Resolved directory containing RizzUI published source (`components`, `lib`, `icons`).
+ * Resolved directory mirroring published RizzUI source (`components`, `lib`).
+ * Prefers **bundled** `ui-src` inside rizzui-cli (always available after install).
+ * Falls back to `node_modules/rizzui/src` when present (e.g. monorepo link).
  */
 export function resolveRizzuiSrcRoot(projectRoot: string): string {
-  const base = resolveRizzuiPackageRoot(projectRoot);
-  const src = path.join(base, 'src');
-  if (
-    !fs.existsSync(path.join(src, 'components')) ||
-    !fs.existsSync(path.join(src, 'lib'))
-  ) {
-    throw new Error(
-      'The installed `rizzui` package does not include source files under src/. Upgrade to `rizzui@^2.1.0` (ships src/components, src/lib, src/icons).'
-    );
+  const bundled = resolveBundledUiSrc();
+  if (bundled) {
+    return bundled;
   }
 
-  return src;
+  const pkgRoot = resolveRizzuiPackageRootFromNodeModules(projectRoot);
+  if (pkgRoot) {
+    const fromNode = path.join(pkgRoot, 'src');
+    if (
+      fs.existsSync(path.join(fromNode, 'components')) &&
+      fs.existsSync(path.join(fromNode, 'lib'))
+    ) {
+      return fromNode;
+    }
+  }
+
+  throw new Error(
+    'RizzUI CLI could not find bundled sources (dist/ui-src). Reinstall rizzui-cli or rebuild the package.'
+  );
 }

@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 
 import { Alert } from '../components/alert';
-import { XIcon } from '../icons/x-mark';
+import { XIcon } from '../components/alert/icons';
 
 describe('Alert Component', () => {
   describe('Color Variants', () => {

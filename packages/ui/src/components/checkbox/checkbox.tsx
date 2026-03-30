@@ -1,11 +1,40 @@
-import type { InputHTMLAttributes, ReactNode, Ref } from 'react';
+import type { InputHTMLAttributes, ReactNode, Ref, SVGProps } from 'react';
 import { createVariant, type VariantProps } from '../../lib/variants';
 import { cn } from '../../lib/cn';
-import { CheckmarkIcon } from '../../icons/checkmark';
 import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
-import { labelStyles } from '../../lib/label-size';
 import { useCheckboxGroup } from '../checkbox-group/checkbox-group';
+
+function CheckmarkIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      {...props}
+    >
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+const labelStyles = {
+  weight: {
+    normal: 'font-normal',
+    medium: 'font-medium',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+  } as const,
+  size: {
+    sm: 'text-xs mb-1',
+    md: 'text-sm mb-1.5',
+    lg: 'text-sm mb-1.5',
+  },
+} as const;
 
 const checkbox = createVariant({
   base: 'peer outline-none focus:outline-none checked:bg-none focus:ring-offset-background transition duration-200 ease-in-out rounded-(--border-radius) border-(length:--border-width)',

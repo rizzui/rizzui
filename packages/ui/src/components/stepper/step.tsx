@@ -1,8 +1,40 @@
-import { useId, type HTMLAttributes, type ReactNode } from 'react';
+import { useId, type HTMLAttributes, type ReactNode, type SVGProps } from 'react';
 import { cn } from '../../lib/cn';
-import { XIcon } from '../../icons/x-mark';
-import { CheckmarkIcon } from '../../icons/checkmark';
 import { useStepper } from './stepper';
+
+function XIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  );
+}
+
+function CheckmarkIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      {...props}
+    >
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
 
 const lineClasses = {
   base: 'rizzui-step-line absolute w-full group-last:hidden block h-px',

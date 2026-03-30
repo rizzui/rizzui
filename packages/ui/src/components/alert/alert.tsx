@@ -1,7 +1,6 @@
 import type { ReactNode, MouseEvent } from 'react';
 import { createVariant, type VariantProps } from '../../lib/variants';
-import { XIcon } from '../../icons/x-mark';
-import { AlertIcon } from './icons';
+import { AlertIcon, XIcon } from './icons';
 import { cn } from '../../lib/cn';
 
 const alert = createVariant({

@@ -56,7 +56,7 @@ Generated `ThemeProvider` uses `next-themes` with **`attribute="data-theme"`** s
 
 ### `rizzui add`
 
-Copies **RizzUI TypeScript source** from `node_modules/rizzui/src` into **`components/ui`** or **`src/components/ui`**, mirroring the library layout (`components/`, `lib/`, `icons/`) so relative imports keep working. Local imports are followed transitively (e.g. `button` pulls in `loader`, `lib/variants`, `lib/cn`, …).
+Copies **RizzUI TypeScript source** bundled with **rizzui-cli** (`dist/ui-src`) into **`components/ui`** or **`src/components/ui`**, mirroring the library layout (`components/`, `lib/`) so relative imports keep working. No separate `rizzui` source install is required. Local imports are followed transitively (e.g. `button` pulls in `loader`, `lib/variants`, `lib/cn`, …).
 
 **Interactive (recommended):** run with no arguments for a **multi-select** checklist (space to toggle, enter to confirm).
 
@@ -77,7 +77,7 @@ rizzui add --print-imports
 # or: rizzui add --all   (deprecated alias)
 ```
 
-Requires **`rizzui@^2.1.0`** with published `src` (`src/components`, `src/lib`, `src/icons`). Example import after vendoring:
+Requires a **built `rizzui-cli`** (the `build` script copies `packages/ui` sources into `dist/ui-src`). Example import after vendoring:
 
 ```ts
 import { Button } from '@/components/ui/components/button';

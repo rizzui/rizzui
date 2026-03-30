@@ -4,7 +4,19 @@ import { cn } from '../../lib/cn';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldErrorText } from '../field-error-text';
 import { FieldClearButton } from '../field-clear-button';
-import { labelStyles } from '../../lib/label-size';
+const labelStyles = {
+  weight: {
+    normal: 'font-normal',
+    medium: 'font-medium',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+  } as const,
+  size: {
+    sm: 'text-xs mb-1',
+    md: 'text-sm mb-1.5',
+    lg: 'text-sm mb-1.5',
+  },
+} as const;
 
 const textarea = createVariant({
   base: 'block focus:outline-none bg-transparent transition duration-200 placeholder:opacity-60 focus-within:ring-[0.8px] focus-within:ring-primary hover:border-primary focus-within:border-primary [scrollbar-width:thin] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-[2px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb:hover]:bg-muted-foreground [&::-webkit-scrollbar-track]:rounded-[2px] [&::-webkit-scrollbar-track]:bg-transparent rounded-(--border-radius) border-(length:--border-width)',

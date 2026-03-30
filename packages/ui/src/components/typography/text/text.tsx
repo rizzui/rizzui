@@ -1,6 +1,12 @@
 import React from 'react';
 import { createVariant, type VariantProps } from '../../../lib/variants';
-import { fontWeightStyles } from '../../../lib/font-weight';
+
+const fontWeightStyles = {
+  normal: 'font-normal',
+  medium: 'font-medium',
+  semibold: 'font-semibold',
+  bold: 'font-bold',
+} as const;
 
 const text = createVariant({
   base: 'rizzui-text text-text-secondary',

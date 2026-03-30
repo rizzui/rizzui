@@ -38,9 +38,6 @@
   "sideEffects": false,
   "files": [
     "dist",
-    "src/components",
-    "src/lib",
-    "src/icons",
     "README.md",
     "License"
   ],

@@ -5,6 +5,7 @@ import {
   type ReactNode,
   type MouseEvent,
   type InputHTMLAttributes,
+  type SVGProps,
 } from 'react';
 import {
   Label,
@@ -15,9 +16,6 @@ import {
 } from '@headlessui/react';
 import { createVariant, type VariantProps } from '../../lib/variants';
 import { cn } from '../../lib/cn';
-import { XIcon } from '../../icons/x-mark';
-import { SearchIcon } from '../../icons/search';
-import { ChevronDownIcon } from '../../icons/chevron-down';
 import {
   useInternalState,
   ourPlacementObject,
@@ -25,12 +23,96 @@ import {
   useFilteredOptions,
 } from '../select/select-shared.lib';
 import { FieldErrorText } from '../field-error-text';
-import { labelStyles } from '../../lib/label-size';
 import type { ExtractProps } from '../../lib/extract-props';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
-import { CheckmarkIcon } from '../../icons/checkmark';
 import { optionListStyles, searchStyles } from '../select/select-shared.styles';
+
+function XIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  );
+}
+
+function SearchIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      {...props}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+      />
+    </svg>
+  );
+}
+
+function ChevronDownIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={props.strokeWidth ?? 1.5}
+      stroke="currentColor"
+      {...props}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+      />
+    </svg>
+  );
+}
+
+function CheckmarkIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      {...props}
+    >
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+const labelStyles = {
+  weight: {
+    normal: 'font-normal',
+    medium: 'font-medium',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+  } as const,
+  size: {
+    sm: 'text-xs mb-1',
+    md: 'text-sm mb-1.5',
+    lg: 'text-sm mb-1.5',
+  },
+} as const;
 
 const multiSelect = createVariant({
   base: 'flex group items-center peer border-(length:--border-width) hover:border-primary w-full transition duration-200 hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-(--border-radius)',

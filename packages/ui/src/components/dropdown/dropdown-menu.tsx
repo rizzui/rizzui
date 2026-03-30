@@ -2,8 +2,12 @@ import { type ReactNode } from 'react';
 import { cn } from '../../lib/cn';
 import { useDropdown } from './dropdown-context';
 import { ourPlacementObject } from './dropdown.lib';
-import { dropdownStyles } from '../../lib/dropdown-list-style';
 import { MenuItems, Transition, type MenuItemsProps } from '@headlessui/react';
+
+const dropdownStyles = {
+  base: 'z-[999] border-(length:--border-width) border-border bg-background !p-1.5 focus-visible:outline-none rounded-(--border-radius)',
+  shadow: 'shadow-[0px_8px_24px_rgba(149,157,165,0.2)] dark:shadow-[0px_8px_24px_rgba(0,0,0,0.2)]',
+};
 
 type DropdownMenuProps = {
   className?: string;

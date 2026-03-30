@@ -4,6 +4,7 @@ import {
   type ReactNode,
   type MouseEvent,
   type InputHTMLAttributes,
+  type SVGProps,
 } from 'react';
 import {
   Listbox,
@@ -18,9 +19,6 @@ import type { ExtractProps } from '../../lib/extract-props';
 import { FieldErrorText } from '../field-error-text';
 import { FieldHelperText } from '../field-helper-text';
 import { FieldClearButton } from '../field-clear-button';
-import { ChevronDownIcon } from '../../icons/chevron-down';
-import { labelStyles } from '../../lib/label-size';
-import { SearchIcon } from '../../icons/search';
 import {
   type TheirPlacementType,
   displayValueFn,
@@ -36,6 +34,58 @@ import {
   useInternalState,
 } from './select-shared.lib';
 import { optionListStyles, searchStyles } from './select-shared.styles';
+
+function ChevronDownIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={props.strokeWidth ?? 1.5}
+      stroke="currentColor"
+      {...props}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+      />
+    </svg>
+  );
+}
+
+function SearchIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      {...props}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+      />
+    </svg>
+  );
+}
+
+const labelStyles = {
+  weight: {
+    normal: 'font-normal',
+    medium: 'font-medium',
+    semibold: 'font-semibold',
+    bold: 'font-bold',
+  } as const,
+  size: {
+    sm: 'text-xs mb-1',
+    md: 'text-sm mb-1.5',
+    lg: 'text-sm mb-1.5',
+  },
+} as const;
 
 const select = createVariant({
   base: 'flex group items-center peer border-(length:--border-width) hover:border-primary w-full transition duration-200 hover:ring-primary focus:border-primary focus:ring-[0.8px] focus:ring-primary rounded-(--border-radius)',

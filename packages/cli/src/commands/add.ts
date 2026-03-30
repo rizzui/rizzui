@@ -52,7 +52,9 @@ export class AddCommand {
     const rizzuiSrc = resolveRizzuiSrcRoot(projectInfo.projectRoot);
     const uiRoot = path.join(projectInfo.projectRoot, ProjectDetector.getComponentsDir(projectInfo), 'ui');
 
-    Logger.info(`Copying sources from rizzui into ${path.relative(projectInfo.projectRoot, uiRoot)}/`);
+    Logger.info(
+      `Copying bundled RizzUI sources (rizzui-cli) into ${path.relative(projectInfo.projectRoot, uiRoot)}/`
+    );
     Logger.newLine();
 
     try {

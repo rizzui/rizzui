@@ -1,4 +1,7 @@
-import { dropdownStyles } from '../../lib/dropdown-list-style';
+const dropdownStyles = {
+  base: 'z-[999] border-(length:--border-width) border-border bg-background !p-1.5 focus-visible:outline-none rounded-(--border-radius)',
+  shadow: 'shadow-[0px_8px_24px_rgba(149,157,165,0.2)] dark:shadow-[0px_8px_24px_rgba(0,0,0,0.2)]',
+};
 
 export const optionListStyles = {
   base: `${dropdownStyles.base} overflow-auto w-(--button-width) !outline-none !ring-0 m-0 [&>li]:m-0! [scrollbar-width:thin] [scrollbar-color:rgba(0,0,0,0.2)_rgba(0,0,0,0)] [-ms-overflow-style:none] [&::-webkit-scrollbar-track]:shadow-none [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-[5px] [&::-webkit-scrollbar-thumb]:bg-muted [&::-webkit-scrollbar-thumb]:rounded-lg data-[open]:opacity-100 data-[leave]:data-[closed]:opacity-100`,
