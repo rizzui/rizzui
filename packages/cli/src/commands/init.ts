@@ -1,7 +1,17 @@
 import { select, confirm } from '@inquirer/prompts';
 import path from 'path';
 import fs from 'fs-extra';
-import { ProjectDetector, ProjectInfo, FileOperations, Logger } from '../utils';
+import {
+  ProjectDetector,
+  ProjectInfo,
+  FileOperations,
+  Logger,
+  promptSectionHeader,
+  promptStepLabel,
+  promptBlock,
+  promptHint,
+  type SupportedFramework,
+} from '../utils';
 import {
   generatePostCSSConfig,
   generateGlobalCss,
@@ -15,18 +25,22 @@ interface InitOptions {
   default?: boolean;
   typescript?: boolean;
   srcDir?: boolean;
+  framework?: SupportedFramework;
 }
 
 export class InitCommand {
   static async run(options: InitOptions): Promise<void> {
-    Logger.info('Initializing RizzUI in your Next.js project...');
+    Logger.info('Initializing RizzUI in your project...');
     Logger.newLine();
 
     try {
-      const projectInfo = await ProjectDetector.detect();
-      Logger.success(`Detected Next.js project with ${projectInfo.hasTypeScript ? 'TypeScript' : 'JavaScript'}`);
+      const projectInfo = await ProjectDetector.detect(process.cwd(), options.framework);
+      Logger.success(
+        `Detected ${projectInfo.adapter.label} project with ${projectInfo.hasTypeScript ? 'TypeScript' : 'JavaScript'}`
+      );
       Logger.info(`Package manager: ${projectInfo.packageManager}`);
       Logger.info(`Source directory: ${projectInfo.hasSrcDir ? 'src/' : 'root'}`);
+      Logger.info(`Framework: ${projectInfo.framework}`);
       Logger.newLine();
 
       let config: TailwindConfigOptions;
@@ -37,7 +51,10 @@ export class InitCommand {
         };
         Logger.info('Using default light-only theme');
       } else {
+        Logger.section('Let\'s configure your RizzUI project', 'Interactive setup');
+        Logger.divider();
         config = await this.promptForConfiguration();
+        Logger.newLine();
       }
 
       const globalsRel = ProjectDetector.getGlobalCssRelativePath(projectInfo);
@@ -53,35 +70,10 @@ export class InitCommand {
 
       await this.generateConfigFiles(projectInfo, globalCss, globalsRel);
 
-      const layoutRel = ProjectDetector.getRootLayoutRelativePath(projectInfo);
-      if (layoutRel) {
-        const layoutAbs = path.join(projectInfo.projectRoot, layoutRel);
-        if (await FileOperations.pathExists(layoutAbs)) {
-          const importLine = "import './globals.css';";
-          let shouldPatch = options.default;
-          if (!options.default) {
-            shouldPatch = await confirm({
-              message: `Add ${importLine.trim()} to ${layoutRel.split(path.sep).join('/')}?`,
-              default: true,
-            });
-          }
-          if (shouldPatch) {
-            await FileOperations.ensureLayoutImportsGlobals(layoutAbs, importLine);
-          }
-        } else {
-          Logger.warning(
-            `Root layout not found at ${layoutRel.split(path.sep).join('/')}. Create it and add: import './globals.css';`
-          );
-        }
-      } else {
-        Logger.warning(
-          'No App Router directory (app/ or src/app/) found. Import your globals stylesheet from pages/_app or your root layout.'
-        );
-      }
-
       if (config.isDarkMode) {
         await this.generateThemeComponents(projectInfo);
       }
+      await this.patchFrameworkRootEntry(projectInfo, options.default === true, config.isDarkMode);
 
       const rizzuiConfig: RizzuiConfigFile = {
         version: 1,
@@ -117,8 +109,15 @@ export class InitCommand {
   }
 
   private static async promptForConfiguration(): Promise<TailwindConfigOptions> {
+    const message = [
+      promptSectionHeader('Theme setup'),
+      promptBlock(promptStepLabel(1, 1, 'Choose your theme mode')),
+      promptHint('Use arrow keys and press Enter to continue'),
+      '',
+    ].join('\n');
+
     const themeOption = await select({
-      message: 'Choose your theme configuration:',
+      message,
       choices: [
         { name: 'Light theme only', value: 'default-light' as const },
         {
@@ -205,6 +204,90 @@ export class InitCommand {
     await FileOperations.writeFile(themeSwitcherPath, themeSwitcher);
 
     Logger.stopSpinner(true, 'Generated theme components');
+  }
+
+  private static async patchFrameworkRootEntry(
+    projectInfo: ProjectInfo,
+    nonInteractive: boolean,
+    withDarkMode: boolean
+  ): Promise<void> {
+    const rootEntryRel = ProjectDetector.getRootEntryRelativePath(projectInfo);
+    if (!rootEntryRel) {
+      if (projectInfo.framework === 'next') {
+        Logger.warning(
+          'No App Router directory (app/ or src/app/) found. Import your globals stylesheet from pages/_app or your root layout.'
+        );
+      } else {
+        Logger.warning('Could not find TanStack Start root route file. Import globals.css manually.');
+      }
+      return;
+    }
+
+    const rootEntryAbs = path.join(projectInfo.projectRoot, rootEntryRel);
+    if (!(await FileOperations.pathExists(rootEntryAbs))) {
+      Logger.warning(`Root entry not found at ${rootEntryRel.split(path.sep).join('/')}`);
+      return;
+    }
+
+    const globalsRel = ProjectDetector.getGlobalCssRelativePath(projectInfo);
+    const importTarget = path
+      .relative(path.dirname(rootEntryAbs), path.join(projectInfo.projectRoot, globalsRel))
+      .replace(/\\/g, '/');
+    const normalizedImportTarget = importTarget.startsWith('.') ? importTarget : `./${importTarget}`;
+    const importLine = `import '${normalizedImportTarget}';`;
+
+    let shouldPatchImport = nonInteractive;
+    if (!nonInteractive) {
+      shouldPatchImport = await confirm({
+        message: `Add ${importLine.trim()} to ${rootEntryRel.split(path.sep).join('/')}?`,
+        default: true,
+      });
+    }
+    if (shouldPatchImport) {
+      await FileOperations.ensureLayoutImportsGlobals(rootEntryAbs, importLine);
+    }
+
+    if (projectInfo.framework === 'tanstack-start' && withDarkMode) {
+      await this.patchTanStackRootWithThemeProvider(rootEntryAbs, projectInfo);
+    }
+  }
+
+  private static async patchTanStackRootWithThemeProvider(
+    rootEntryAbs: string,
+    projectInfo: ProjectInfo
+  ): Promise<void> {
+    const relativeComponents = path
+      .relative(path.dirname(rootEntryAbs), path.join(projectInfo.projectRoot, ProjectDetector.getComponentsDir(projectInfo)))
+      .replace(/\\/g, '/');
+    const prefix = relativeComponents.startsWith('.') ? relativeComponents : `./${relativeComponents}`;
+    const providerImportPath = `${prefix}/theme-provider`;
+    let content = await FileOperations.readFile(rootEntryAbs);
+
+    if (!content.includes(providerImportPath)) {
+      const importLine = `import { ThemeProvider } from '${providerImportPath}';`;
+      content = FileOperations.insertGlobalsImportLine(content, importLine);
+    }
+
+    if (!content.includes('<ThemeProvider>') && content.includes('function RootComponent')) {
+      content = content.replace(
+        /function RootComponent\(\)\s*\{\s*return\s*\(\s*/m,
+        "function RootComponent() {\n  return (\n    <ThemeProvider>\n"
+      );
+      content = content.replace(/\n\s*\);\s*\n\}/m, '\n    </ThemeProvider>\n  );\n}');
+      await fs.writeFile(rootEntryAbs, content, 'utf8');
+      Logger.success(`Wrapped RootComponent with ThemeProvider in ${rootEntryAbs}`);
+      return;
+    }
+
+    if (!content.includes('<ThemeProvider>')) {
+      Logger.warning(
+        `Could not auto-wrap TanStack root component in ${rootEntryAbs}. Add <ThemeProvider> manually around your root component tree.`
+      );
+      await fs.writeFile(rootEntryAbs, content, 'utf8');
+      return;
+    }
+
+    await fs.writeFile(rootEntryAbs, content, 'utf8');
   }
 
   private static getInstallCommand(packageManager: ProjectInfo['packageManager']): string {

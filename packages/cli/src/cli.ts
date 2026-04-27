@@ -31,18 +31,20 @@ Examples:
 
   program
     .command('init')
-    .description('Initialize RizzUI in your Next.js project')
+    .description('Initialize RizzUI in your Next.js or TanStack Start project')
     .option('-d, --default', 'Use default configuration')
     .option('-t, --typescript', 'Use TypeScript (default: true)')
     .option('--no-typescript', 'Use JavaScript')
     .option('-s, --src-dir', 'Use src directory (default: auto-detect)')
     .option('--no-src-dir', 'Do not use src directory')
+    .option('-f, --framework <framework>', 'Framework override: next | tanstack-start')
     .addHelpText(
       'after',
       `
 Examples:
   $ rizzui init
-  $ rizzui init --default`,
+  $ rizzui init --default
+  $ rizzui init --framework tanstack-start`,
     )
     .action(async (options) => {
       try {
@@ -66,12 +68,14 @@ Examples:
       'Optional slugs, e.g. button modal tabs cn variants',
     )
     .option('-l, --list', 'List all available component/util slugs')
+    .option('-f, --framework <framework>', 'Framework override: next | tanstack-start')
     .addHelpText(
       'after',
       `
 Examples:
   $ rizzui add
   $ rizzui add button modal
+  $ rizzui add button --framework next
   $ rizzui add lib
   $ rizzui add --list`,
     )

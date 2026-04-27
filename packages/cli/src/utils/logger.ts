@@ -20,6 +20,21 @@ export class Logger {
     console.log(chalk.blue('ℹ'), message);
   }
 
+  static muted(message: string): void {
+    console.log(chalk.gray(message));
+  }
+
+  static section(title: string, subtitle?: string): void {
+    console.log(chalk.cyan.bold(`◇ ${title}`));
+    if (subtitle) {
+      console.log(chalk.gray(`  ${subtitle}`));
+    }
+  }
+
+  static divider(char: string = '─', width: number = 42): void {
+    console.log(chalk.gray(char.repeat(width)));
+  }
+
   static log(message: string): void {
     console.log(message);
   }

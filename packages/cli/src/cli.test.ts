@@ -15,5 +15,14 @@ test('add command help includes list option', () => {
   assert.ok(addCommand);
   const help = addCommand.helpInformation();
   assert.match(help, /--list/);
-  assert.match(help, /Optional slugs, e\.g\. button modal tabs cn variants/);
+  assert.match(help, /--framework <framework>/);
+  assert.match(help, /Optional slugs, e\.g\.[\s\S]*cn[\s\S]*variants/);
+});
+
+test('init command help includes framework override', () => {
+  const initCommand = createProgram().commands.find((command) => command.name() === 'init');
+  assert.ok(initCommand);
+  const help = initCommand.helpInformation();
+  assert.match(help, /--framework <framework>/);
+  assert.match(help, /next \| tanstack-start/);
 });

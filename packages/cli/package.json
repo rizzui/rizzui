@@ -1,7 +1,7 @@
 {
   "name": "rizzui-cli",
   "version": "0.1.0",
-  "description": "CLI to scaffold RizzUI 2.x in Next.js: Tailwind v4, OKLCH tokens, optional next-themes, and subpath import help",
+  "description": "CLI to scaffold RizzUI 2.x in Next.js and TanStack Start: Tailwind v4, OKLCH tokens, optional next-themes, and subpath import help",
   "main": "./dist/index.js",
   "exports": {
     ".": {

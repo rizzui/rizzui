@@ -1,6 +1,15 @@
 import path from 'path';
 import { checkbox } from '@inquirer/prompts';
-import { Logger, ProjectDetector, type ProjectInfo } from '../utils';
+import {
+  Logger,
+  ProjectDetector,
+  promptSectionHeader,
+  promptStepLabel,
+  promptBlock,
+  promptHint,
+  type ProjectInfo,
+  type SupportedFramework,
+} from '../utils';
 import {
   ALL_COMPONENT_SLUGS,
   resolveSlugToCopyId,
@@ -11,6 +20,7 @@ import { copyRizzUiSourcesToProject } from '../add-copy/copy-to-ui-folder';
 
 interface AddOptions {
   list?: boolean;
+  framework?: SupportedFramework;
 }
 
 export class AddCommand {
@@ -20,7 +30,7 @@ export class AddCommand {
       return;
     }
 
-    const projectInfo = await ProjectDetector.detect();
+    const projectInfo = await ProjectDetector.detect(process.cwd(), options.framework);
     const copyIds = await this.resolveSelectedCopyIds(components, projectInfo);
 
     if (copyIds.length === 0) {
@@ -41,6 +51,8 @@ export class AddCommand {
     Logger.info(
       `Copying bundled RizzUI sources (rizzui-cli) into ${path.relative(projectInfo.projectRoot, uiRoot)}/ and ${path.relative(projectInfo.projectRoot, libRoot)}/`
     );
+    Logger.newLine();
+    Logger.info(`Framework: ${projectInfo.framework}`);
     Logger.newLine();
     Logger.info(
       'Shared utilities (`cn`, `variants`, …) go under `src/lib` (or `lib/` without a `src/` folder). Existing files there are left unchanged. Run `add lib` to copy only utilities.'
@@ -79,14 +91,20 @@ export class AddCommand {
 
     if (trimmed.length === 0) {
       const sorted = [...COPY_MANIFEST].sort((a, b) => a.label.localeCompare(b.label));
+      Logger.section('Let\'s configure your RizzUI source import', 'Interactive component picker');
+      Logger.divider();
       const answer = await checkbox({
-        message:
-          'Select RizzUI sources to copy into components/ui (space = toggle, enter = confirm). ' +
-          `Project: ${path.basename(projectInfo.projectRoot)}`,
+        message: [
+          promptSectionHeader('Component selection'),
+          promptBlock(promptStepLabel(1, 1, `Pick items for ${path.basename(projectInfo.projectRoot)}`)),
+          promptHint('Space = toggle, Enter = confirm'),
+          '',
+        ].join('\n'),
         choices: sorted.map((e) => ({ name: e.label, value: e.id })),
         validate: (choices) =>
           choices.length > 0 ? true : 'Pick at least one component or util.',
       });
+      Logger.newLine();
       return answer as string[];
     }
 

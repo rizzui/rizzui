@@ -1,11 +1,13 @@
 # RizzUI CLI
 
-Professional CLI for scaffolding RizzUI in Next.js and vendoring RizzUI component source into your app.
+Professional CLI for scaffolding RizzUI in Next.js or TanStack Start and vendoring RizzUI component source into your app.
 
 ## Requirements
 
 - Node.js 18+
-- A Next.js project (`next` in `dependencies` or `devDependencies`)
+- A supported TypeScript app:
+  - Next.js (`next` dependency), or
+  - TanStack Start (`@tanstack/start` / `@tanstack/react-start`)
 
 ## Install
 
@@ -38,16 +40,22 @@ The binary is available as both `rizzui` and `rizzui-cli`.
 
 ### `rizzui init`
 
-Initializes RizzUI in an existing Next.js project.
+Initializes RizzUI in an existing supported project (Next.js or TanStack Start).
 
 Writes/updates:
 - `postcss.config.mjs` (Tailwind v4 PostCSS plugin)
-- `app/globals.css` or `src/app/globals.css` (App Router), else `styles/globals.css` or `src/styles/globals.css`
+- globals stylesheet:
+  - Next.js: `app/globals.css` or `src/app/globals.css` (App Router), else `styles/globals.css` or `src/styles/globals.css`
+  - TanStack Start: `styles/globals.css` or `src/styles/globals.css`
 - `rizzui.config.json` (`{ version, globalsPath, darkMode, uiPreset }`)
 - for dark mode setup: `components/theme-provider` + `components/theme-switcher` (or under `src/components`)
+- root entry patching:
+  - Next.js: adds globals import to App Router layout
+  - TanStack Start: adds globals import to root route and attempts ThemeProvider wrapping in `routes/__root.tsx`
 
 Options:
 - `-d, --default` light-only mode, non-interactive
+- `-f, --framework <next|tanstack-start>` framework override (auto-detect by default)
 - `--typescript` / `--no-typescript` reserved for future use (auto-detected today)
 - `-s, --src-dir` / `--no-src-dir` reserved for future use (auto-detected today)
 
@@ -56,6 +64,7 @@ Examples:
 ```bash
 rizzui init
 rizzui init --default
+rizzui init --framework tanstack-start
 ```
 
 ### `rizzui add [components...]`
@@ -70,6 +79,7 @@ Modes:
 - interactive picker: `rizzui add`
 - explicit slugs: `rizzui add button modal lib`
 - list all slugs: `rizzui add --list`
+- framework override: `rizzui add button --framework next`
 
 Examples:
 
@@ -77,6 +87,7 @@ Examples:
 rizzui add
 rizzui add button modal
 rizzui add --list
+rizzui add button --framework tanstack-start
 ```
 
 ## Standalone npm Publishing Behavior
@@ -94,8 +105,13 @@ This means published CLI users can vendor components from the CLI package itself
 - **No `package.json` found**  
   Run the command from your app root.
 
-- **Not a Next.js project**  
-  Add `next` to your project first, then rerun `rizzui init`.
+- **Unsupported project**  
+  Use Next.js or TanStack Start, then rerun `rizzui init`.
+
+- **Ambiguous framework auto-detection**  
+  Pass an explicit override:
+  - `rizzui init --framework next`
+  - `rizzui init --framework tanstack-start`
 
 - **Bundled source missing error**  
   Reinstall `rizzui-cli` or rebuild before publishing:
