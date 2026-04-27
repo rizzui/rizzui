@@ -1,11 +1,17 @@
-export function generateThemeSwitcher(isTypeScript: boolean = true): string {
+import type { SupportedFramework } from '../utils';
+
+export function generateThemeSwitcher(framework: SupportedFramework): string {
+  const useThemeImport =
+    framework === 'next'
+      ? "import { useTheme } from 'next-themes';"
+      : "import { useTheme } from './theme-provider';";
+
   return `'use client';
 
 import React from 'react';
-import { useTheme } from 'next-themes';
-import { ActionIcon } from 'rizzui/action-icon';
-import { Dropdown } from 'rizzui/dropdown';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { ActionIcon } from './action-icon';
+import { Dropdown } from './dropdown';
+${useThemeImport}
 
 export function ThemeSwitcher() {
   const { setTheme } = useTheme();
@@ -14,8 +20,8 @@ export function ThemeSwitcher() {
     <Dropdown>
       <Dropdown.Trigger>
         <ActionIcon variant="outline">
-          <SunIcon className="h-5 w-5 dark:hidden" />
-          <MoonIcon className="absolute h-5 w-5 hidden dark:block" />
+          <span aria-hidden className="text-base leading-none dark:hidden">☀️</span>
+          <span aria-hidden className="absolute text-base leading-none hidden dark:block">🌙</span>
           <span className="sr-only">Toggle theme</span>
         </ActionIcon>
       </Dropdown.Trigger>

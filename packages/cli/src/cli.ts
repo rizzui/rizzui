@@ -37,7 +37,10 @@ Examples:
     .option('--no-typescript', 'Use JavaScript')
     .option('-s, --src-dir', 'Use src directory (default: auto-detect)')
     .option('--no-src-dir', 'Do not use src directory')
-    .option('-f, --framework <framework>', 'Framework override: next | tanstack-start')
+    .option(
+      '-f, --framework <framework>',
+      'Framework override: next | tanstack-start',
+    )
     .addHelpText(
       'after',
       `
@@ -68,7 +71,10 @@ Examples:
       'Optional slugs, e.g. button modal tabs cn variants',
     )
     .option('-l, --list', 'List all available component/util slugs')
-    .option('-f, --framework <framework>', 'Framework override: next | tanstack-start')
+    .option(
+      '-f, --framework <framework>',
+      'Framework override: next | tanstack-start',
+    )
     .addHelpText(
       'after',
       `

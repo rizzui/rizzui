@@ -20,6 +20,9 @@ import {
   TailwindConfigOptions,
 } from '../templates';
 import type { RizzuiConfigFile } from '../schema/rizzui-config';
+import { COPY_MANIFEST_BY_ID } from '../add-copy/copy-manifest';
+import { resolveRizzuiSrcRoot } from '../add-copy/resolve-rizzui-src';
+import { copyRizzUiSourcesToProject } from '../add-copy/copy-to-ui-folder';
 
 interface InitOptions {
   default?: boolean;
@@ -60,7 +63,7 @@ export class InitCommand {
       const globalsRel = ProjectDetector.getGlobalCssRelativePath(projectInfo);
       const globalsRelPosix = globalsRel.split(path.sep).join('/');
 
-      await this.installDependencies(projectInfo, config.isDarkMode);
+      const addedDependencies = await this.installDependencies(projectInfo, config.isDarkMode);
 
       const sourceRel = ProjectDetector.getRizzuiSourceRelativeToGlobals(
         projectInfo.projectRoot,
@@ -88,17 +91,37 @@ export class InitCommand {
       Logger.newLine();
       Logger.success('RizzUI has been configured with Tailwind CSS v4.');
       Logger.newLine();
-      Logger.info('Next steps:');
-      Logger.log('1. Run: ' + this.getInstallCommand(projectInfo.packageManager));
-
-      if (config.isDarkMode) {
-        Logger.log('2. Wrap your app with ThemeProvider from components/theme-provider');
-        Logger.log('3. Use ThemeSwitcher where you want a theme control');
-        Logger.log('4. Import components from subpaths, e.g. import { Button } from \'rizzui/button\';');
+      Logger.section('Setup summary');
+      Logger.divider();
+      Logger.log('Dependencies');
+      if (addedDependencies.length > 0) {
+        for (const dependency of addedDependencies) {
+          Logger.log(`  • Added: ${dependency}`);
+        }
       } else {
-        Logger.log('2. Import components from subpaths, e.g. import { Button } from \'rizzui/button\';');
+        Logger.log('  • No new packages were added');
       }
 
+      Logger.log('Generated');
+      Logger.log(`  • ${globalsRelPosix}`);
+      Logger.log('  • postcss.config.mjs');
+      Logger.log('  • rizzui.config.json');
+      if (config.isDarkMode) {
+        Logger.log('  • components/ui/theme-provider');
+        Logger.log('  • components/ui/theme-switcher');
+        Logger.log('  • required UI dependencies under components/ui (dropdown, action-icon)');
+        Logger.log('  • required lib utilities under lib or src/lib');
+      }
+
+      Logger.log('Next steps');
+      Logger.log(`  1) Run: ${this.getInstallCommand(projectInfo.packageManager)}`);
+      if (config.isDarkMode) {
+        Logger.log('  2) Wrap your app with ThemeProvider from components/ui/theme-provider');
+        Logger.log('  3) Use ThemeSwitcher from components/ui/theme-switcher where needed');
+        Logger.log('  4) Import components from subpaths, e.g. import { Button } from \'rizzui/button\';');
+      } else {
+        Logger.log('  2) Import components from subpaths, e.g. import { Button } from \'rizzui/button\';');
+      }
       Logger.newLine();
       Logger.info('Optional: set data-ui-preset on <html> or <body> — modern | minimal | bold | soft');
       Logger.newLine();
@@ -121,7 +144,7 @@ export class InitCommand {
       choices: [
         { name: 'Light theme only', value: 'default-light' as const },
         {
-          name: 'Light and dark theme (next-themes + data-theme)',
+          name: 'Light and dark theme (data-theme)',
           value: 'default-with-dark' as const,
         },
       ],
@@ -132,32 +155,45 @@ export class InitCommand {
     return { themeOption, isDarkMode };
   }
 
-  private static async installDependencies(projectInfo: ProjectInfo, isDarkMode: boolean): Promise<void> {
-    Logger.startSpinner('Updating package.json...');
+  private static async installDependencies(
+    projectInfo: ProjectInfo,
+    isDarkMode: boolean
+  ): Promise<string[]> {
+    const packageJsonPath = path.join(projectInfo.projectRoot, 'package.json');
+    const packageJson = await fs.readJson(packageJsonPath);
+    const currentDependencies = {
+      ...(packageJson.dependencies ?? {}),
+      ...(packageJson.devDependencies ?? {}),
+    } as Record<string, string>;
 
-    const dependencies: Record<string, string> = {
-      rizzui: '^2.1.0',
-      react: '^19.2.3',
-      'react-dom': '^19.2.3',
-      '@headlessui/react': '^2.2.9',
-      '@floating-ui/react': '^0.27.16',
-    };
+    const dependenciesToAdd: Record<string, string> = {};
+    const addedDependencies: string[] = [];
 
-    const devDependencies: Record<string, string> = {
-      tailwindcss: '^4.1.18',
-      '@tailwindcss/postcss': '^4.1.18',
-      postcss: '^8.5.6',
-      '@tailwindcss/forms': '^0.5.10',
-    };
-
-    if (isDarkMode) {
-      dependencies['next-themes'] = '^0.4.6';
-      devDependencies['@heroicons/react'] = '^2.2.0';
+    if (!currentDependencies['clsx']) {
+      dependenciesToAdd['clsx'] = '^2.1.1';
+      addedDependencies.push('clsx');
     }
 
-    await FileOperations.updatePackageJson(projectInfo.projectRoot, dependencies, devDependencies);
+    if (!currentDependencies['tailwind-merge']) {
+      dependenciesToAdd['tailwind-merge'] = '^3.3.0';
+      addedDependencies.push('tailwind-merge');
+    }
 
-    Logger.stopSpinner(true, 'Updated package.json');
+    const needsNextThemes = isDarkMode && projectInfo.framework === 'next';
+    if (needsNextThemes && !currentDependencies['next-themes']) {
+      dependenciesToAdd['next-themes'] = '^0.4.6';
+      addedDependencies.push('next-themes');
+    }
+
+    if (Object.keys(dependenciesToAdd).length === 0) {
+      Logger.info('No package.json updates required for this setup.');
+      return addedDependencies;
+    }
+
+    Logger.startSpinner('Updating package.json...');
+    await FileOperations.updatePackageJson(projectInfo.projectRoot, dependenciesToAdd);
+    Logger.stopSpinner(true, `Updated package.json (${addedDependencies.join(', ')})`);
+    return addedDependencies;
   }
 
   private static async generateConfigFiles(
@@ -184,26 +220,45 @@ export class InitCommand {
   private static async generateThemeComponents(projectInfo: ProjectInfo): Promise<void> {
     Logger.startSpinner('Generating theme components...');
 
+    const rizzuiSrc = resolveRizzuiSrcRoot(projectInfo.projectRoot);
     const componentsDir = ProjectDetector.getComponentsDir(projectInfo);
+    const uiRoot = path.join(projectInfo.projectRoot, componentsDir, 'ui');
+    const libRoot = path.join(projectInfo.projectRoot, ProjectDetector.getLibDir(projectInfo));
     const isTypeScript = projectInfo.hasTypeScript;
 
-    const themeProvider = generateThemeProvider(isTypeScript);
+    const selected = [
+      COPY_MANIFEST_BY_ID['action-icon'],
+      COPY_MANIFEST_BY_ID['dropdown'],
+      COPY_MANIFEST_BY_ID['lib'],
+    ].filter(Boolean);
+
+    await copyRizzUiSourcesToProject({
+      projectRoot: projectInfo.projectRoot,
+      rizzuiSrcRoot: rizzuiSrc,
+      destUiRoot: uiRoot,
+      destLibRoot: libRoot,
+      selected,
+    });
+
+    const themeProvider = generateThemeProvider(projectInfo.framework, isTypeScript);
     const themeProviderPath = path.join(
       projectInfo.projectRoot,
       componentsDir,
+      'ui',
       `theme-provider.${isTypeScript ? 'tsx' : 'jsx'}`
     );
     await FileOperations.writeFile(themeProviderPath, themeProvider);
 
-    const themeSwitcher = generateThemeSwitcher(isTypeScript);
+    const themeSwitcher = generateThemeSwitcher(projectInfo.framework);
     const themeSwitcherPath = path.join(
       projectInfo.projectRoot,
       componentsDir,
+      'ui',
       `theme-switcher.${isTypeScript ? 'tsx' : 'jsx'}`
     );
     await FileOperations.writeFile(themeSwitcherPath, themeSwitcher);
 
-    Logger.stopSpinner(true, 'Generated theme components');
+    Logger.stopSpinner(true, 'Generated theme files and required UI components');
   }
 
   private static async patchFrameworkRootEntry(
@@ -260,7 +315,7 @@ export class InitCommand {
       .relative(path.dirname(rootEntryAbs), path.join(projectInfo.projectRoot, ProjectDetector.getComponentsDir(projectInfo)))
       .replace(/\\/g, '/');
     const prefix = relativeComponents.startsWith('.') ? relativeComponents : `./${relativeComponents}`;
-    const providerImportPath = `${prefix}/theme-provider`;
+    const providerImportPath = `${prefix}/ui/theme-provider`;
     let content = await FileOperations.readFile(rootEntryAbs);
 
     if (!content.includes(providerImportPath)) {
