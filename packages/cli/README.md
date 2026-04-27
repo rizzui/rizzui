@@ -1,101 +1,118 @@
 # RizzUI CLI
 
-Command-line tool to scaffold **RizzUI 2.x** in a **Next.js** app: Tailwind CSS v4 (PostCSS), OKLCH theme tokens, `@source` for scanning `rizzui/dist`, optional **next-themes** setup, and a small **`rizzui.config.json`** for your project.
+Professional CLI for scaffolding RizzUI in Next.js and vendoring RizzUI component source into your app.
 
 ## Requirements
 
 - Node.js 18+
-- A Next.js project (`next` in `package.json`)
+- A Next.js project (`next` in `dependencies` or `devDependencies`)
 
-## Installation
+## Install
+
+### One-off via npx
+
+```bash
+npx rizzui-cli init
+```
+
+### Global install
 
 ```bash
 npm install -g rizzui-cli
 # or
 pnpm add -g rizzui-cli
+# or
+yarn global add rizzui-cli
 ```
 
-## Commands
+### Local dev dependency
+
+```bash
+pnpm add -D rizzui-cli
+pnpm rizzui init
+```
+
+The binary is available as both `rizzui` and `rizzui-cli`.
+
+## Command Reference
 
 ### `rizzui init`
 
-Detects your Next.js app, updates `package.json` dependencies, writes:
+Initializes RizzUI in an existing Next.js project.
 
+Writes/updates:
 - `postcss.config.mjs` (Tailwind v4 PostCSS plugin)
-- **`app/globals.css`** or **`src/app/globals.css`** when the App Router directory exists; otherwise **`styles/globals.css`** or **`src/styles/globals.css`**
-- **`rizzui.config.json`** — `{ version, globalsPath, darkMode, uiPreset }`
-- With **light + dark**: `components/theme-provider` and `components/theme-switcher` (or under `src/components/`), plus `next-themes` and `@heroicons/react`
+- `app/globals.css` or `src/app/globals.css` (App Router), else `styles/globals.css` or `src/styles/globals.css`
+- `rizzui.config.json` (`{ version, globalsPath, darkMode, uiPreset }`)
+- for dark mode setup: `components/theme-provider` + `components/theme-switcher` (or under `src/components`)
 
-**Options**
+Options:
+- `-d, --default` light-only mode, non-interactive
+- `--typescript` / `--no-typescript` reserved for future use (auto-detected today)
+- `-s, --src-dir` / `--no-src-dir` reserved for future use (auto-detected today)
 
-- `-d, --default` — Light-only theme, non-interactive; patches the root layout import without prompting when the layout file exists.
-- `--typescript` / `--no-typescript` — Reserved for future use; TS/JS is detected from the project today.
-- `-s, --src-dir` / `--no-src-dir` — Reserved; `src/` is auto-detected.
+Examples:
 
-**Layout import**
-
-If `app/layout.tsx` (or `src/app/...`) exists, the CLI can insert:
-
-```ts
-import './globals.css';
+```bash
+rizzui init
+rizzui init --default
 ```
 
-Interactive runs ask for confirmation first; `--default` adds it without prompting.
+### `rizzui add [components...]`
 
-**Peer / dev dependencies** (aligned with the `rizzui` package and example app):
+Copies bundled RizzUI TypeScript source files into your project.
 
-- `rizzui@^2.1.0`, `react@^19.2.3`, `react-dom@^19.2.3`, `@headlessui/react@^2.2.9`, `@floating-ui/react@^0.27.16`
-- Dev: `tailwindcss@^4.1.18`, `@tailwindcss/postcss@^4.1.18`, `postcss@^8.5.6`, `@tailwindcss/forms@^0.5.10`
-- Dark mode: `next-themes@^0.4.6`, `@heroicons/react@^2.2.0`
+- UI components go to `components/ui` or `src/components/ui`
+- Shared utils (`cn`, `variants`, etc.) go to `lib` or `src/lib`
+- Existing files in the destination lib folder are preserved
 
-Then run your package manager’s install (e.g. `pnpm install`).
+Modes:
+- interactive picker: `rizzui add`
+- explicit slugs: `rizzui add button modal lib`
+- list all slugs: `rizzui add --list`
 
-**Theme provider**
-
-Generated `ThemeProvider` uses `next-themes` with **`attribute="data-theme"`** so RizzUI’s `[data-theme='dark']` CSS and `dark:` variants work.
-
-### `rizzui add`
-
-Copies **RizzUI TypeScript source** bundled with **rizzui-cli** (`dist/ui-src`) into **`components/ui`** or **`src/components/ui`**. Component folders are written **directly under `ui`** (e.g. `ui/button/`, `ui/action-icon/`), not `ui/components/...`. Shared **`lib/`** (`cn`, `variants`, `extract-props`, `use-rect`, …) is written to **`src/lib`** (or **`lib/`** at the project root when there is no `src/` folder), not under `ui`. **Existing files in that lib folder are never overwritten** so your local utilities stay intact; only missing lib files are added. Imports in vendored components are **relative** paths into `src/lib`. No `.backup` files are written on overwrite.
-
-**Interactive (recommended):** run with no arguments for a **multi-select** checklist (space to toggle, enter to confirm).
+Examples:
 
 ```bash
 rizzui add
+rizzui add button modal
+rizzui add --list
 ```
 
-**Non-interactive:** pass one or more slugs (same names as `rizzui add` help / docs).
+## Standalone npm Publishing Behavior
 
-```bash
-rizzui add button modal lib
-```
+`rizzui add` is designed to work when `rizzui-cli` is installed as a standalone npm package.
 
-**Print import lines only** (no files written): npm subpath imports and install hints.
+Source resolution order:
+1. bundled sources inside `rizzui-cli` (`dist/ui-src`)
+2. fallback to `node_modules/rizzui/src` (useful in monorepo/local development setups)
 
-```bash
-rizzui add --print-imports
-# or: rizzui add --all   (deprecated alias)
-```
+This means published CLI users can vendor components from the CLI package itself, without depending on `rizzui/src` being present.
 
-Requires a **built `rizzui-cli`**. Example vendored imports:
+## Troubleshooting
 
-```ts
-import { Button } from '@/components/ui/button';
-```
+- **No `package.json` found**  
+  Run the command from your app root.
 
-Slugs **`cn`**, **`variants`**, and **`create-variant`** copy the **`lib`** bundle (same as `rizzui add lib`).
+- **Not a Next.js project**  
+  Add `next` to your project first, then rerun `rizzui init`.
 
-## Generated CSS (summary)
+- **Bundled source missing error**  
+  Reinstall `rizzui-cli` or rebuild before publishing:
+  - `pnpm --filter rizzui-cli build`
+  - `pnpm --filter rizzui-cli verify:ui-src`
 
-- `@import 'tailwindcss';` and a computed **`@source`** to `node_modules/rizzui/dist`
-- `@custom-variant dark` for `data-theme`
-- `:root` and `[data-theme='dark']` OKLCH variables, `@theme inline`, `@plugin '@tailwindcss/forms'`, UI preset hooks, autofill resets — aligned with `packages/ui/src/styles/global.css` in this monorepo
+- **Need list of supported add slugs**  
+  Run `rizzui add --list`.
 
-## Optional HTML preset
+## Maintainer Release Notes
 
-Set on `<html>` or `<body>`:
+Before `npm publish`, ensure:
+- `pnpm --filter rizzui-cli build`
+- `pnpm --filter rizzui-cli verify:ui-src`
+- `npm pack` includes `dist/ui-src/components` and `dist/ui-src/lib`
 
-`data-ui-preset="modern" | "minimal" | "bold" | "soft"`
+`prepack` runs build + source verification automatically.
 
 ## License
 

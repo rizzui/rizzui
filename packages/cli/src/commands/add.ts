@@ -3,7 +3,6 @@ import { checkbox } from '@inquirer/prompts';
 import { Logger, ProjectDetector, type ProjectInfo } from '../utils';
 import {
   ALL_COMPONENT_SLUGS,
-  allUniqueImportLines,
   resolveSlugToCopyId,
 } from '../registry/component-imports';
 import { COPY_MANIFEST, COPY_MANIFEST_BY_ID } from '../add-copy/copy-manifest';
@@ -11,27 +10,13 @@ import { resolveRizzuiSrcRoot } from '../add-copy/resolve-rizzui-src';
 import { copyRizzUiSourcesToProject } from '../add-copy/copy-to-ui-folder';
 
 interface AddOptions {
-  /** @deprecated use printImports */
-  all?: boolean;
-  printImports?: boolean;
+  list?: boolean;
 }
 
 export class AddCommand {
   static async run(components: string[], options: AddOptions): Promise<void> {
-    const printOnly = options.printImports === true || options.all === true;
-
-    if (printOnly) {
-      Logger.info('RizzUI package imports (install `rizzui` from npm for compiled components):');
-      Logger.newLine();
-      Logger.log('Core peer dependencies:');
-      Logger.log('  pnpm add rizzui @headlessui/react @floating-ui/react');
-      Logger.log('  pnpm add -D tailwindcss @tailwindcss/postcss @tailwindcss/forms');
-      Logger.newLine();
-      Logger.info('Subpath imports (one line per entry point):');
-      Logger.newLine();
-      for (const line of allUniqueImportLines()) {
-        Logger.log(line);
-      }
+    if (options.list === true) {
+      this.printAvailableSlugs();
       return;
     }
 
@@ -111,7 +96,9 @@ export class AddCommand {
       const key = raw.toLowerCase();
       const id = resolveSlugToCopyId(raw);
       if (!id || !COPY_MANIFEST_BY_ID[id]) {
-        Logger.warning(`Unknown "${raw}". Try: ${ALL_COMPONENT_SLUGS.slice(0, 10).join(', ')}… or run with no args for the full list.`);
+        Logger.warning(
+          `Unknown "${raw}". Try: ${ALL_COMPONENT_SLUGS.slice(0, 10).join(', ')}… or run "rizzui add --list" for all slugs.`
+        );
         continue;
       }
       if (!seen.has(id)) {
@@ -121,4 +108,15 @@ export class AddCommand {
     }
     return ids;
   }
+
+  private static printAvailableSlugs(): void {
+    Logger.info('Available slugs for `rizzui add`');
+    Logger.newLine();
+    Logger.log(ALL_COMPONENT_SLUGS.join('\n'));
+    Logger.newLine();
+    Logger.info('Examples:');
+    Logger.log('  rizzui add button modal');
+    Logger.log('  rizzui add lib');
+  }
+
 }

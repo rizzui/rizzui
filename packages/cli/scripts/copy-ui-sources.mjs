@@ -9,6 +9,11 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoUiSrc = path.resolve(__dirname, '../../ui/src');
 const destRoot = path.resolve(__dirname, '../dist/ui-src');
+const ALLOWED_EXTENSIONS = new Set([
+  '.ts',
+  '.tsx',
+  '.css',
+]);
 
 function rmrf(dir) {
   if (fs.existsSync(dir)) {
@@ -16,17 +21,25 @@ function rmrf(dir) {
   }
 }
 
+function shouldCopy(filePath) {
+  const ext = path.extname(filePath);
+  return ALLOWED_EXTENSIONS.has(ext);
+}
+
 function copyDir(src, dest) {
+  let copied = 0;
   fs.mkdirSync(dest, { recursive: true });
   for (const ent of fs.readdirSync(src, { withFileTypes: true })) {
     const from = path.join(src, ent.name);
     const to = path.join(dest, ent.name);
     if (ent.isDirectory()) {
-      copyDir(from, to);
-    } else {
+      copied += copyDir(from, to);
+    } else if (shouldCopy(from)) {
       fs.copyFileSync(from, to);
+      copied++;
     }
   }
+  return copied;
 }
 
 rmrf(destRoot);
@@ -38,7 +51,8 @@ for (const name of ['components', 'lib']) {
     console.error(`copy-ui-sources: missing ${src}`);
     process.exit(1);
   }
-  copyDir(src, path.join(destRoot, name));
+  const copiedCount = copyDir(src, path.join(destRoot, name));
+  console.log(`copy-ui-sources: copied ${copiedCount} file(s) from ${name}`);
 }
 
 console.log('copy-ui-sources: copied ui components + lib → dist/ui-src');

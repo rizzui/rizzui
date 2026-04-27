@@ -46,7 +46,7 @@ export class ProjectDetector {
     };
   }
 
-  private static detectPackageManager(cwd: string): 'npm' | 'yarn' | 'pnpm' | 'bun' {
+  static detectPackageManager(cwd: string): 'npm' | 'yarn' | 'pnpm' | 'bun' {
     if (fs.existsSync(path.join(cwd, 'pnpm-lock.yaml'))) {
       return 'pnpm';
     }

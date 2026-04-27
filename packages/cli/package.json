@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "description": "CLI to scaffold RizzUI 2.x in Next.js: Tailwind v4, OKLCH tokens, optional next-themes, and subpath import help",
   "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "bin": {
     "rizzui-cli": "./dist/cli.js",
     "rizzui": "./dist/cli.js"
@@ -13,7 +20,10 @@
   "scripts": {
     "build": "tsup && node ./scripts/copy-ui-sources.mjs",
     "dev": "tsup --watch",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "test": "tsx --test \"src/**/*.test.ts\"",
+    "verify:ui-src": "node ./scripts/verify-ui-sources.mjs",
+    "prepack": "pnpm run build && pnpm run verify:ui-src"
   },
   "keywords": [
     "rizzui",
@@ -50,6 +60,7 @@
     "@types/node": "^20.17.11",
     "tsconfig": "workspace:*",
     "tsup": "8.5.0",
+    "tsx": "^4.20.6",
     "typescript": "5.8.3"
   },
   "engines": {

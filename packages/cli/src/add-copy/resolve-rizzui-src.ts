@@ -15,8 +15,8 @@ function readPackageName(dir: string): string | undefined {
 /**
  * Sources shipped inside rizzui-cli next to cli.js (`dist/ui-src`).
  */
-export function resolveBundledUiSrc(): string | null {
-  const bundled = path.join(__dirname, 'ui-src');
+export function resolveBundledUiSrc(baseDir: string = __dirname): string | null {
+  const bundled = path.join(baseDir, 'ui-src');
   if (
     fs.existsSync(path.join(bundled, 'components')) &&
     fs.existsSync(path.join(bundled, 'lib'))
