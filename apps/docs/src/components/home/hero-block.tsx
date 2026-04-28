@@ -18,7 +18,7 @@ export default function HeroBlock() {
 
   return (
     <section className="py-16 px-4 md:px-6 md:py-20 lg:py-32 2xl:py-36 relative before:h-3/5 before:absolute before:bg-gradient-to-t before:from-gray-50/30 before:bottom-0 before:w-full">
-      <div className="max-w-screen-xl relative mx-auto">
+      <div className="max-w-screen-xl relative mx-auto flex justify-between">
         <header className="text-left flex flex-col items-start justify-start max-w-xl">
           <Title
             as="h1"
