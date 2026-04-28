@@ -77,5 +77,5 @@ html {
 }
 
 .plugin-pages #__docusaurus .navbar__inner {
-  @apply container mx-auto !px-0;
+  @apply max-w-screen-xl mx-auto !px-0;
 }

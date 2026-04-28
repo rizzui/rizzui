@@ -84,10 +84,6 @@ hr {
 .font-medium {
   font-weight: 500 !important;
 }
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
-}
 
 .theme-edit-this-page {
   display: flex;

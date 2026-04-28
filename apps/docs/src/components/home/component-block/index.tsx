@@ -84,37 +84,37 @@ export default function ComponentBlock() {
   });
 
   return (
-    <section className="pt-10 md:pt-16 xl:pt-20 2xl:pt-24 pb-14 md:pb-20 group">
-      <header className="text-center mb-8 sm:mb-10 md:mb-12">
-        <div ref={ref} className="container! mx-auto">
-          <Text className="mb-3! text-[11px] sm:text-xs lg:text-sm tracking-[4px] uppercase text-gray-500">
-            Beautifully Crafted
-          </Text>
+    <section className="pt-10 md:pt-16 xl:pt-20 2xl:pt-24 pb-14 md:pb-20 group px-4 md:px-6">
+      <header className="mb-8 sm:mb-10 md:mb-12 max-w-screen-xl mx-auto">
+        <div ref={ref} className="max-w-xl">
           <Title as="h2" className="page-section-heading-title">
             <NumberFlow
               value={isInView ? 50 : 0}
               animated={isInView ? true : false}
             />
-            + Production Ready Components
+            + Components
           </Title>
+          <Text className="text-base 2xl:text-lg text-gray-500">
+            From buttons to complex data tables. Every component is crafted with
+            attention to detail and accessibility.
+          </Text>
         </div>
       </header>
 
-      <div className="container! mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
+      <div className="max-w-screen-xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-2">
           {components.map((item, idx) => (
             <ComponentCard key={`${item.name}-${idx}`} item={item} />
           ))}
         </div>
 
-        <div className="mt-8! xl:mt-10! 2xl:mt-12! flex items-center justify-center">
+        <div className="mt-8! xl:mt-10! flex items-center justify-center">
           <Button
-            size="lg"
             onClick={() => history.push('/docs/guide/components')}
             className="min-w-[160px] shadow-sm hover:ring-[0.5px] hover:ring-gray-900 relative"
           >
             Explore More{' '}
-            <ArrowRightIcon strokeWidth={2} className="size-[18px] ms-2" />
+            <ArrowRightIcon strokeWidth={1.75} className="size-4 ms-3" />
           </Button>
         </div>
       </div>

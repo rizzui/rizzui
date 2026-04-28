@@ -1,14 +1,14 @@
 #__docusaurus {
   .home-page-hero-block-title {
-    font-size: 1.875rem; /* text-3xl */
-    line-height: 1.3;
+    font-size: 2.25rem; /* text-4xl */
+    line-height: 1.2;
     margin-bottom: 1.5rem; /* mb-6 */
     font-weight: 600; /* font-semibold */
   }
 
   .page-section-heading-title {
-    font-size: 1.5rem; /* text-2xl */
-    line-height: 1.35;
+    font-size: 1.75rem; /* text-3xl */
+    line-height: 1.25;
     font-weight: 600; /* font-semibold */
   }
 
@@ -26,27 +26,27 @@
 
   @media (min-width: 1024px) {
     .home-page-hero-block-title {
-      line-height: 1.2; /* lg:leading-[1.2] */
+      font-size: 3rem; /* lg:text-5xl */
     }
     .page-section-heading-title {
-      font-size: 1.875rem; /* lg:text-3xl */
+      font-size: 2rem; /* lg:text-3xl */
       line-height: 1.3; /* lg:leading-[1.3] */
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .home-page-hero-block-title {
-      font-size: 3rem; /* xl:text-5xl */
-      line-height: 1.2; /* xl:leading-[1.2] */
     }
   }
 
   @media (min-width: 1536px) {
     .home-page-hero-block-title {
-      line-height: 1.18; /* 2xl:leading-[1.18] */
+      font-size: 3.5rem;
+      line-height: 1.05;
     }
     .page-section-heading-title {
-      font-size: 2.25rem; /* 2xl:text-4xl */
+      font-size: 2.5rem; /* 2xl:text-5xl */
     }
   }
+}
+
+.bg-stripes {
+  background-image: url("data:image/svg+xml,%0A%3Csvg fill='none' height='6' viewBox='0 0 6 6' width='6' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3CclipPath id='a'%3E%3Cpath d='m0 0h6v6h-6z'/%3E%3C/clipPath%3E%3Cg clip-path='url(%23a)' fill='%23000' fill-opacity='.04'%3E%3Cpath d='m3.70703 0-3.70703 3.70703v-1.41406l2.29297-2.29297z'/%3E%3Cpath d='m6 3.70703-2.29297 2.29297h-1.41406l3.70703-3.70703z'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: 0 0;
+  background-size: 6px;
 }

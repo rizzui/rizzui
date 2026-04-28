@@ -1,63 +1,86 @@
 import { Title } from 'rizzui/title';
 import { Text } from 'rizzui/text';
-import MegaPhoneIcon from '../icons/mega-phone';
-import ColorSwatchIcon from '../icons/color-swatch';
-import RocketIcon from '../icons/rocket';
-import ShieldIcon from '../icons/shield';
 
 const features = [
   {
-    icon: <ColorSwatchIcon className="w-6 h-auto" />,
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="size-8"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
+        />
+      </svg>
+    ),
+    title: 'Lightning Fast',
+    description:
+      'Optimized components built with performance in mind. Zero bloat, maximum speed. Your users will notice.',
+  },
+  {
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="size-7"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4.098 19.902a3.75 3.75 0 0 0 5.304 0l6.401-6.402M6.75 21A3.75 3.75 0 0 1 3 17.25V4.125C3 3.504 3.504 3 4.125 3h5.25c.621 0 1.125.504 1.125 1.125v4.072M6.75 21a3.75 3.75 0 0 0 3.75-3.75V8.197M6.75 21h13.125c.621 0 1.125-.504 1.125-1.125v-5.25c0-.621-.504-1.125-1.125-1.125h-4.072M10.5 8.197l2.88-2.88c.438-.439 1.15-.439 1.59 0l3.712 3.713c.44.44.44 1.152 0 1.59l-2.879 2.88M6.75 17.25h.008v.008H6.75v-.008Z"
+        />
+      </svg>
+    ),
     title: 'Fully Customizable',
     description:
-      "If you need to customize a component beyond what is available through TailwindCSS classes, you can easily do so by using the component's props.",
+      'Design tokens and CSS variables give you complete control. Make it yours without writing a single override.',
   },
   {
-    icon: <RocketIcon className="w-6 h-auto" />,
-    title: 'Easy to Use',
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="size-7"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5"
+        />
+      </svg>
+    ),
+    title: 'Developer First',
     description:
-      'Our components have a simple and intuitive API that makes them easy to use in your React application.',
-  },
-  {
-    icon: <ShieldIcon className="w-[26px] h-auto" />,
-    title: 'Type Safety',
-    description:
-      'Build type safe applications, all components export types it easier to use TypeScript in your project and provide better type support',
-  },
-  {
-    icon: <MegaPhoneIcon className="w-[25px] h-auto" />,
-    title: 'Accessibility',
-    description:
-      'We have made sure that our components meet accessibility standards so that they can be used by people with disabilities',
+      'Clean, intuitive APIs. Copy-paste examples. Great documentation. Everything built for the developer experience.',
   },
 ];
 
 export default function FeatureBlock() {
   return (
-    <section className="py-16 lg:py-20">
-      <div className="container! mx-auto px-4 md:px-6">
-        <header className="text-center mb-8 sm:mb-10 md:mb-12">
-          <Text className="mb-3! lg:mb-4! text-[11px] sm:text-xs lg:text-sm tracking-[4px] uppercase text-gray-500">
-            Why RizzUI?
-          </Text>
-          <Title as="h2" className="page-section-heading-title">
-            A Next Gen UI Library with <br className="hidden sm:inline-block" />{' '}
-            Limitless Customization Options
-          </Title>
-        </header>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 2xl:gap-5">
+    <section className="py-16 lg:py-20 px-4 md:px-6 bg-stripes">
+      <div className="max-w-screen-xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 2xl:gap-10">
           {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="border 2xl:px-7 border-border [box-shadow:0_1.5px_0_var(--border-color)] rounded-xl py-7 px-6 2xl:pt-8"
-            >
-              <div className="h-11 w-11 xl:w-12 xl:h-12 rounded-lg text-gray-900 mb-6 border border-border bg-gradient-to-t from-gray-100/60 flex items-center justify-center">
+            <div key={feature.title}>
+              <div className="text-gray-900 mb-6 border size-13 flex items-center justify-center border-border [box-shadow:0_1.5px_0_var(--border-color)] rounded-lg bg-white dark:bg-transparent">
                 {feature.icon}
               </div>
-              <Title as="h5" className="font-semibold text-lg!">
+              <Title as="h5" className="font-medium text-base! 2xl:text-lg!">
                 {feature.title}
               </Title>
-              <Text className="leading-loose text-gray-600 dark:text-gray-500 mb-0">
+              <Text className="text-gray-500 mb-0 text-sm 2xl:text-base">
                 {feature.description}
               </Text>
             </div>

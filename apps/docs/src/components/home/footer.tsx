@@ -3,10 +3,10 @@ import { Text } from 'rizzui/text';
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-4 sm:mt-6 md:mt-12 border-t border-gray-200 py-3">
-      <div className="container! mx-auto text-center">
+    <footer className="pb-4 pt-6">
+      <div className="max-w-screen-xl mx-auto text-center">
         <div className="flex items-center justify-between text-[15px]">
-          <Text className="text-gray-500 dark:text-gray-500">
+          <Text className="text-gray-600 dark:text-gray-500">
             © {year} RizzUI. All rights reserved.
           </Text>
           <a
