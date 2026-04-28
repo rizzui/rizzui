@@ -15,7 +15,7 @@ export function createProgram(): Command {
   program
     .name('rizzui')
     .description(
-      'CLI for bootstrapping RizzUI in Next.js projects and vendoring component source code',
+      'CLI for bootstrapping RizzUI in Next.js or TanStack Start projects and vendoring component source code',
     )
     .version(version)
     .addHelpText(

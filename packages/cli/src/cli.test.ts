@@ -5,7 +5,7 @@ import { createProgram } from './cli';
 test('top-level help includes polished command descriptions', () => {
   const help = createProgram().helpInformation();
   assert.match(help, /Usage: rizzui/);
-  assert.match(help, /CLI for bootstrapping RizzUI/);
+  assert.match(help, /CLI for bootstrapping RizzUI in Next\.js or TanStack Start projects/);
   assert.match(help, /init \[options\]/);
   assert.match(help, /add \[options\] \[components\.\.\.\]/);
 });
