@@ -21,6 +21,7 @@
     "clean": "turbo run clean && rm -rf node_modules .turbo",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "publish-packages": "turbo run build lint && changeset version && changeset publish",
+    "publish-cli": "pnpm --filter rizzui-cli publish --access public",
     "prepare": "husky install"
   },
   "devDependencies": {
