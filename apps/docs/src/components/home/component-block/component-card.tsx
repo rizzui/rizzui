@@ -2,8 +2,9 @@ import { useHistory } from '@docusaurus/router';
 import { cn } from 'rizzui/cn';
 import { Title } from 'rizzui/title';
 import { Text } from 'rizzui/text';
+import NumberFlow from '@number-flow/react';
 
-export default function ComponentCard({ item }: any) {
+export default function ComponentCard({ item, isInView }: any) {
   const history = useHistory();
 
   return (
@@ -21,7 +22,13 @@ export default function ComponentCard({ item }: any) {
         <Title as="h5" className="font-medium !mb-0 !text-lg">
           {item.name}
         </Title>
-        <Text className="text-gray-500 !mb-0">{item.count} components</Text>
+        <Text className="text-gray-500 !mb-0">
+          <NumberFlow
+            value={isInView ? item.count : 0}
+            animated={isInView ? true : false}
+          />{' '}
+          components
+        </Text>
       </div>
     </div>
   );

@@ -14,13 +14,14 @@
 <br />
 
 <div align="center">
-  <strong>rizzui-cli</strong> — scaffold RizzUI in your app and vendor component source from the command line.
+  <strong>rizzui-cli</strong><br />
+  Scaffold <a href="https://www.rizzui.com">RizzUI</a> in Next.js or TanStack Start and vendor components into your repo.
 </div>
 
 <br />
 
 <div align="center">
-  <a href="https://www.rizzui.com/docs/guide/getting-started">Documentation</a> &bull;
+  <a href="https://www.rizzui.com/docs/guide/getting-started">Docs</a> &bull;
   <a href="https://www.rizzui.com">Website</a> &bull;
   <a href="https://github.com/rizzui/rizzui">GitHub</a>
 </div>
@@ -28,173 +29,105 @@
 <br />
 <br />
 
-## What it does
+Use the CLI from your **project root** (where `package.json` is). **Node.js 18+** and **Next.js** or **TanStack Start** required.
 
-**rizzui-cli** helps you adopt [RizzUI](https://www.rizzui.com) in an existing **Next.js** or **TanStack Start** project. It scaffolds the files RizzUI expects for **Tailwind CSS v4** (PostCSS plugin, globals with OKLCH-oriented tokens), optional **dark mode** helpers (`theme-provider`, `theme-switcher`), and a small **`rizzui.config.json`**. The **`rizzui add`** command copies RizzUI TypeScript sources into your repo so you can own and customize components locally.
-
-For installing the `rizzui` package, peer dependencies, and full styling reference, follow the [Getting started](https://www.rizzui.com/docs/guide/getting-started) guide after running `init`.
+After `init`, add the `rizzui` npm package and peers — see [Getting started](https://www.rizzui.com/docs/guide/getting-started).
 
 <br />
 
-## Why use this CLI?
+## init
 
-- **Framework-aware** — Detects Next.js or TanStack Start; override with `--framework` when needed.
-- **Sensible defaults** — Use `rizzui init --default` for a non-interactive, light-theme-only setup.
-- **Vendored UI** — `rizzui add` ships with bundled library sources, so you are not tied to `rizzui` publishing `src` in `node_modules`.
-- **Clear layout** — Components under `components/ui` (or `src/components/ui`), shared helpers under `lib` (or `src/lib`), with existing lib files preserved where applicable.
-
-<br />
-
-## Quick start
-
-From your **app root** (where `package.json` lives):
+Initialize Tailwind v4 scaffolding (PostCSS, globals, `rizzui.config.json`), optional dark-mode helpers, and framework wiring for Next.js or TanStack Start.
 
 ```bash
-npx rizzui-cli init
+npx rizzui-cli@latest init
 ```
-
-Add components (interactive picker, or pass slugs):
-
-```bash
-npx rizzui-cli add
-# or
-npx rizzui-cli add button modal
-```
-
-Then install RizzUI and peers as described in the [documentation](https://www.rizzui.com/docs/guide/getting-started) if you have not already.
-
-<br />
-
-## Requirements
-
-- **Node.js** 18 or later
-- A supported app:
-  - **Next.js** (with `next` installed), or
-  - **TanStack Start** (`@tanstack/start` / `@tanstack/react-start`)
-
-<br />
-
-## Installation
-
-### One-off (recommended to try)
-
-```bash
-npx rizzui-cli init
-```
-
-### Global install
-
-```bash
-npm install -g rizzui-cli
-# or
-pnpm add -g rizzui-cli
-# or
-yarn global add rizzui-cli
-```
-
-### Dev dependency (pin a version in the repo)
-
-```bash
-pnpm add -D rizzui-cli
-pnpm rizzui init
-```
-
-The executable is available as both **`rizzui`** and **`rizzui-cli`**.
-
-<br />
-
-## Command reference
-
-### `rizzui init`
-
-Initializes RizzUI in an existing supported project.
-
-**Writes or updates**
-
-| Area                    | Details                                                                                                                                                                                            |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| PostCSS                 | `postcss.config.mjs` (Tailwind v4 PostCSS plugin)                                                                                                                                                  |
-| Globals                 | **Next.js:** `app/globals.css` or `src/app/globals.css` (App Router), else `styles/globals.css` or `src/styles/globals.css`. **TanStack Start:** `styles/globals.css` or `src/styles/globals.css`. |
-| Config                  | `rizzui.config.json` (`version`, `globalsPath`, `darkMode`, `uiPreset`)                                                                                                                            |
-| Dark mode (when chosen) | `components/theme-provider` and `components/theme-switcher` (or under `src/components`)                                                                                                            |
-| Entry wiring            | **Next.js:** globals import on App Router layout. **TanStack Start:** globals on root route and ThemeProvider wiring attempted in `routes/__root.tsx`.                                             |
 
 **Options**
 
-- `-d, --default` — Light-only defaults, non-interactive
-- `-f, --framework <next|tanstack-start>` — Override auto-detection
-- `--typescript` / `--no-typescript` — Reserved (auto-detected today)
-- `-s, --src-dir` / `--no-src-dir` — Reserved (auto-detected today)
-
-**Examples**
-
-```bash
-rizzui init
-rizzui init --default
-rizzui init --framework tanstack-start
-```
-
-### `rizzui add [components...]`
-
-Copies bundled RizzUI TypeScript sources into your project.
-
-- UI files: `components/ui` or `src/components/ui`
-- Shared utils (`cn`, `variants`, etc.): `lib` or `src/lib` (existing destination files in `lib` are preserved)
-
-**Modes**
-
-- Interactive: `rizzui add`
-- Explicit slugs: `rizzui add button modal lib`
-- List slugs: `rizzui add --list`
-- Framework hint: `rizzui add button --framework next`
-
-**Examples**
-
-```bash
-rizzui add
-rizzui add button modal
-rizzui add --list
-rizzui add button --framework tanstack-start
-```
+| Flag | Description |
+|------|-------------|
+| `-d`, `--default` | Non-interactive, light theme only |
+| `-f`, `--framework` | `next` or `tanstack-start` (override detection) |
 
 <br />
 
-## How `rizzui add` resolves sources
+## add
 
-When `rizzui-cli` is installed from npm, **`rizzui add`** resolves files in this order:
+Copy RizzUI component sources into `components/ui` or `src/components/ui` (shared utils under `lib` / `src/lib`). Interactive picker, or pass component slugs.
 
-1. **Bundled sources** inside the package (`dist/ui-src` next to the CLI build)
-2. **Fallback:** `node_modules/rizzui/src` (handy in monorepos or local development)
+```bash
+npx rizzui-cli@latest add
+```
 
-So published installs can vendor components **without** relying on the `rizzui` package shipping `src`.
+```bash
+npx rizzui-cli@latest add button modal
+```
+
+```bash
+npx rizzui-cli@latest add --list
+```
+
+**Options**
+
+| Flag | Description |
+|------|-------------|
+| `--list` | List available component slugs |
+| `--framework` | `next` or `tanstack-start` (hint when adding) |
+
+**Resolve order for sources:** bundled CLI package first, then `node_modules/rizzui/src` (e.g. monorepos).
 
 <br />
 
-## Troubleshooting
+<details>
+<summary><strong>Install CLI in the project</strong></summary>
 
-- **No `package.json` found** — Run commands from the project root.
-- **Unsupported project** — Use Next.js or TanStack Start, then run `rizzui init` again.
-- **Ambiguous framework detection** — Pass `--framework next` or `--framework tanstack-start`.
-- **Bundled source missing** — Reinstall `rizzui-cli`, or from the monorepo run `pnpm --filter rizzui-cli build` and `pnpm --filter rizzui-cli verify:ui-src`.
-- **List available slugs** — Run `rizzui add --list`.
+```bash
+npm install --save-dev rizzui-cli
+npx rizzui-cli init
+npx rizzui-cli add
+```
+
+Global install: `npm i -g rizzui-cli` — then run `rizzui` or `rizzui-cli` (same binary).
+
+</details>
+
+<details>
+<summary><strong>What <code>init</code> touches</strong></summary>
+
+| Area | Output |
+|------|--------|
+| PostCSS | `postcss.config.mjs` |
+| Globals | Next.js: `app/globals.css` / `src/app/…` or `styles/globals.css`; TanStack Start: `styles/globals.css` |
+| Config | `rizzui.config.json` |
+| Dark mode (optional) | `theme-provider`, `theme-switcher` under `components` or `src/components` |
+| Wiring | Next.js App Router layout import; TanStack Start root route / `routes/__root.tsx` |
+
+</details>
+
+<details>
+<summary><strong>Troubleshooting</strong></summary>
+
+| Issue | Fix |
+|-------|-----|
+| No `package.json` | Run from repo root |
+| Unsupported framework | Use Next.js or TanStack Start |
+| Wrong framework detected | `init` / `add` with `--framework next` or `tanstack-start` |
+| Missing bundled UI sources | Reinstall `rizzui-cli`; maintainers: `pnpm --filter rizzui-cli build && pnpm --filter rizzui-cli verify:ui-src` |
+
+</details>
 
 <br />
 
 ## License
 
-MIT. See [LICENSE](LICENSE) in this package.
-
-<br />
+MIT — see [LICENSE](LICENSE).
 
 <details>
-<summary><strong>Maintainers — release checklist</strong></summary>
-
-Before publishing:
+<summary>Maintainers — release</summary>
 
 - `pnpm --filter rizzui-cli build`
 - `pnpm --filter rizzui-cli verify:ui-src`
-- Confirm `npm pack` contains `dist/cli.js`, `dist/ui-src/components`, and `dist/ui-src/lib`
-
-The `prepack` script runs build and source verification automatically.
+- `npm pack` should include `dist/cli.js`, `dist/ui-src/components`, `dist/ui-src/lib`
 
 </details>
